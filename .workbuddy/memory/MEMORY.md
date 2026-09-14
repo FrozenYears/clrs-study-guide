@@ -25,6 +25,18 @@
    （约占全书两成），修完后正文块从 10190 恢复到 12284。
 4. 章节内容按 `data/blocks/<part-slug>__ch<NN>.json` 取材，一章一个文件，
    并行开发时一个 agent 只碰自己那一章。
+5. **写完关卡必须跑合规闸门**：`node tools/dump_levels.mjs && python tools/04_verify_level.py`，
+   要求 0 ERROR。它断言每条英文引述的字**一个不缺、按原序**出现在声明页 ±1 的窗口里，
+   并校验内嵌 C 与 `c/*.c` 一致、解锁链接有效、术语卡有出处。**没有相似度阈值**。
+6. **页眉剥离正则必须形状严格，且全项目只有一套**（`03_segment.py` 的 `RUNHEAD_RES`，
+   `04_verify_level.py` 复用）。教训：宽松版 `^(?:\d+ )?(?:Chapter|Part|Appendix)\s+\d+.*$`
+   把正文句 `Chapter 4 presents the "master theorem," …` 整行删掉，导致该页引述永远比对失败
+   且现场看不出原因。
+7. **引述比对只有一个入口且必须用 `qnorm`**（去空白、去连字符、下标折数字、省略号折点、
+   弯引号折直）。教训：曾并存「折叠空白」与 `qnorm` 两套，术语卡走了弱的那套，
+   `random-access machine` 在语料 `randomaccessma- chine` 上永远匹配不上。
+8. **关卡里内嵌的 C 代码块必须与 `c/*.c` 逐字节一致**，改一份就同步另一份
+   （闸门会查；此前 s01/s03 都漂移过）。
 
 ## 环境坑（本机）
 
