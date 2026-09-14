@@ -27,8 +27,24 @@ const dirs = fs
   .filter((d) => fs.statSync(path.join(CH_DIR, d)).isDirectory())
   .sort();
 
+/** 关卡文件里的 `【TODO …】` 计数。骨架生成器（05_new_level.py）留下的待办标记，
+ *  由检查器单独汇总——它既不是 ERROR 也不是 WARN，而是一张待办清单。
+ *  关卡文件与关卡的对应关系走命名约定：<dir>/<key>-<slug>.js。 */
+function todosIn(dir, key) {
+  let file = null;
+  try {
+    file = fs.readdirSync(dir).find((f) => f.startsWith(key + '-') && f.endsWith('.js'));
+  } catch (e) {
+    return { file: null, todos: 0 };
+  }
+  if (!file) return { file: null, todos: 0 };
+  const src = fs.readFileSync(path.join(dir, file), 'utf8');
+  return { file, todos: (src.match(/【TODO/g) || []).length };
+}
+
 for (const slug of dirs) {
-  const cf = path.join(CH_DIR, slug, 'chapter.js');
+  const dir = path.join(CH_DIR, slug);
+  const cf = path.join(dir, 'chapter.js');
   if (!fs.existsSync(cf)) {
     problems.push(`${slug}: 缺少 chapter.js`);
     continue;
@@ -63,6 +79,7 @@ for (const slug of dirs) {
       sourceNote: l.sourceNote || null,
       prerequisites: l.prerequisites || [],
       stages: l.stages || [],
+      ...todosIn(dir, l.key),
     })),
   });
 }

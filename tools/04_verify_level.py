@@ -480,6 +480,10 @@ def verify():
                 if not q["en"].strip():
                     err("%s 处 en 为空" % q["path"])
                     continue
+                if "【TODO" in q["en"]:
+                    # 骨架生成器留下的占位引述：它还不是引述，逐字比对没有意义。
+                    # 由待办清单（TODOS）单独汇总，避免同一个问题报两遍。
+                    continue
                 if "**" in q["en"]:
                     err("%s 的英文原文含 ** 粗体标记（原文不该有本站的排版标记）"
                         % q["path"])
@@ -540,6 +544,10 @@ def verify():
                 c = s.get("c") or {}
                 fname = c.get("file")
                 code = c.get("code")
+                if "【TODO" in json.dumps(s, ensure_ascii=False):
+                    # 骨架阶段：c.file / c.code 还是占位符，一致性无从谈起。
+                    # 由待办清单盯着它；TODO 清空后这条检查自动生效。
+                    continue
                 if not fname:
                     err("%s 的 code 阶段缺 c.file" % tag)
                     continue
@@ -656,15 +664,41 @@ def first_mismatch(needle, hay):
     return ctx.replace("\n", " ")
 
 
+def collect_todos(data=None):
+    """骨架里还没填的占位标记（`【TODO …】`）。
+
+    单独一档：它既不是 ERROR（内容没错）也不是 WARN（不是可接受的现状），
+    而是一张待办清单——由 tools/05_new_level.py 生成骨架时留下，填完即消失。
+    不计入退出码，所以骨架可以在仓库里存在而不让闸门变红。
+    """
+    if data is None:
+        try:
+            data = json.load(open(LEVELS_JSON, encoding="utf-8"))
+        except Exception:
+            return []
+    out = []
+    for ch in data.get("chapters", []):
+        for lv in ch.get("levels", []):
+            n = lv.get("todos") or 0
+            if n:
+                out.append("%s/%s（%s）还有 %d 处 【TODO…】"
+                           % (ch.get("slug"), lv.get("key"), lv.get("file") or "?", n))
+    return out
+
+
 def main():
     strict = "--strict" in sys.argv
     verify()
+    todos = collect_todos()
     for w in warns:
         print("  WARN  " + w)
     for e in errors:
         print("  ERROR " + e)
+    for d in todos:
+        print("  TODO  " + d)
     print()
-    print("==== 结果：%d 个 ERROR，%d 个 WARN ====" % (len(errors), len(warns)))
+    print("==== 结果：%d 个 ERROR，%d 个 WARN，%d 关含 TODO ===="
+          % (len(errors), len(warns), len(todos)))
     if errors or (strict and warns):
         return 1
     return 0
