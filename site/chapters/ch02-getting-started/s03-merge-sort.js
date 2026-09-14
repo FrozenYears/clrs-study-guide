@@ -475,7 +475,7 @@ export default {
           kind: 'figure-caption',
           page: 37,
           en:
-            'Figure 2.3 The operation of the while loop in lines 12–18 in the call ' +
+            'Figure 2.3 The operation of the while loop in lines 8–18 in the call ' +
             'MERGE(A, 9, 12, 16), when the subarray A[9 : 16] contains the values ' +
             '⟨2, 4, 6, 7, 1, 2, 3, 5⟩. After allocating and copying into the arrays L and R, the ' +
             'array L contains ⟨2, 4, 6, 7⟩, and the array R contains ⟨1, 2, 3, 5⟩. Tan positions ' +
@@ -528,17 +528,14 @@ export default {
         },
         {
           kind: 'theorem',
-          page: [39, 41],
+          page: [38, 41],
           en:
             'A recurrence for the running time of a divide-and-conquer algorithm falls out from ' +
             'the three steps of the basic method. …\n' +
-            'Divide: The divide step just computes the middle of the subarray, which takes ' +
-            'constant time. Thus, D(n) = Θ(1).\n' +
-            'Conquer: Recursively solving two subproblems, each of size n/2, contributes ' +
-            '2T(n/2) to the running time (ignoring the floors and ceilings, as we discussed).\n' +
-            'Combine: Since the MERGE procedure on an n-element subarray takes Θ(n) time, we ' +
-            'have C(n) = Θ(n).\n' +
-            'T(n) = 2T(n/2) + Θ(n). (2.3)',
+            'The divide step simply computes an index q that partitions A[p : r] into two ' +
+            'adjacent subarrays: A[p : q], containing ⌈n/2⌉ elements, and A[q + 1 : r], ' +
+            'containing ⌊n/2⌋ elements. …\n' +
+            'T(n) = 2T(n/2) + Θ(n)',
           zh:
             '★ 这就是归并排序的递归式 **(2.3)**，本关的核心结论。' +
             '请注意它是怎么“掉出来”的（原文 falls out）：**照着 Divide / Conquer / Combine 三步逐条对应**。' +
@@ -1047,8 +1044,9 @@ export default {
         },
         {
           title: '第三步 · 终止（Termination）',
-          en: 'The loop terminates, and when it terminates, the invariant gives us a useful property.',
-          page: [20, 38],
+          en: 'the invariant—usually along with the reason that the loop terminated—gives ' +
+              'us a useful property that helps show that the algorithm is correct.',
+          page: 20,
           body: [
             '$i$、$j$ 各只增不减，且分别以 $n_L$、$n_R$ 为上界，所以第 12 行的 while 必然会停。' +
               '它停下来的那一刻，$i = n_L$ 或 $j = n_R$ 至少有一个成立。',

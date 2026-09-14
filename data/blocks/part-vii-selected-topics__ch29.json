@@ -39,7 +39,7 @@
    "section_title": "29.1 Linear programming formulations and algorithms",
    "printed_page": 853,
    "pdf_page": 874,
-   "text": "Linear programs take a particular form, which we wi ll examine in this section."
+   "text": "Linear programs take a particular form, which we will examine in this section."
   },
   {
    "type": "body",
@@ -48,7 +48,7 @@
    "section_title": "29.1 Linear programming formulations and algorithms",
    "printed_page": 853,
    "pdf_page": 874,
-   "text": "Multiple algorithms have been developed to solve li near programs. Some run in polynomial time, some do not, but they are all too complicated to show here. In- stead, we will give an example that demonstrates so me ideas behind the simplex algorithm, which is currently the most commonly deployed solution method."
+   "text": "Multiple algorithms have been developed to solve linear programs. Some run in polynomial time, some do not, but they are all too complicated to show here. In- stead, we will give an example that demonstrates so me ideas behind the simplex algorithm, which is currently the most commonly deployed solution method."
   },
   {
    "type": "body",
@@ -75,7 +75,7 @@
    "section_title": "29.1 Linear programming formulations and algorithms",
    "printed_page": 853,
    "pdf_page": 874,
-   "text": "If b is a real number and f is a linear function, then the equation f(x 1 ,x 2 ,…,x n ) = b is a linear equality and the inequalities f(x 1 ,x 2 ,…,x n ) ≤ b and f(x 1 ,x 2 ,…,x n ) ≥ b are linear inequalities. We use the general term linear constraints to denote either linear equalities or linear inequalities. Linear pr ogramming does not allow strict inequalities. Formally, a linear-programming problem is the problem of either minimizing or maximizing a linear function subject to a finite set of linear constraints. If minimizing, we call the linear program a minimization linear program, and if maximizing, we call the linear program a maximization linear program."
+   "text": "If b is a real number and f is a linear function, then the equation f(x 1 ,x 2 ,…,x n ) = b is a linear equality and the inequalities f(x 1 ,x 2 ,…,x n ) ≤ b and f(x 1 ,x 2 ,…,x n ) ≥ b are linear inequalities. We use the general term linear constraints to denote either linear equalities or linear inequalities. Linear programming does not allow strict inequalities. Formally, a linear-programming problem is the problem of either minimizing or maximizing a linear function subject to a finite set of linear constraints. If minimizing, we call the linear program a minimization linear program, and if maximizing, we call the linear program a maximization linear program."
   },
   {
    "type": "body",
@@ -165,7 +165,7 @@
    "section_title": "29.1 Linear programming formulations and algorithms",
    "printed_page": 855,
    "pdf_page": 876,
-   "text": "One of the reasons for the power and popularity of linear programming is that linear programs can, in general, be solved efficiently. There are two classes of algorithms, known as ellipsoid algorithms and interior-point algorithms, that solve linear programs in polynomial time. In addition, th e simplex algorithm is widely used. Although it does not run in polynomial time i n the worst case, it tends to perform well in practice."
+   "text": "One of the reasons for the power and popularity of linear programming is that linear programs can, in general, be solved efficiently. There are two classes of algorithms, known as ellipsoid algorithms and interior-point algorithms, that solve linear programs in polynomial time. In addition, the simplex algorithm is widely used. Although it does not run in polynomial time i n the worst case, it tends to perform well in practice."
   },
   {
    "type": "body",
@@ -228,7 +228,7 @@
    "section_title": "29.1 Linear programming formulations and algorithms",
    "printed_page": 855,
    "pdf_page": 876,
-   "text": "The feasible region in the two-dimensional space (highlighted in blue in the figure) is convex. 1 Conceptually, you could evaluate the objective function x 1 + x 2 at each point in the feasible region, and then identif y a point that has the maximum objective value as an optimal solution. For this ex ample (and for most linear programs), however, the feasible region contains an infinite number of points, and so to solve this linear program, you need an efficient way to find a point that achieves the maximum objective value without explicitly evaluating the objective function at every point in the feasible region."
+   "text": "The feasible region in the two-dimensional space (highlighted in blue in the figure) is convex. 1 Conceptually, you could evaluate the objective function x 1 + x 2 at each point in the feasible region, and then identify a point that has the maximum objective value as an optimal solution. For this example (and for most linear programs), however, the feasible region contains an infinite number of points, and so to solve this linear program, you need an efficient way to find a point that achieves the maximum objective value without explicitly evaluating the objective function at every point in the feasible region."
   },
   {
    "type": "body",
@@ -291,7 +291,7 @@
    "section_title": "29.1 Linear programming formulations and algorithms",
    "printed_page": 856,
    "pdf_page": 877,
-   "text": "Figure 29.2 (a) The linear program given in (29.18)3(29.21). Each constraint is represented by a line and a direction. The intersection of the constraints, which is the feasible region, is highlighte d in blue. (b) The red lines show, respectively, the points for which the objective value is 0, 4, and 8."
+   "text": "Figure 29.2 (a) The linear program given in (29.18)3(29.21). Each constraint is represented by a line and a direction. The intersection of the constraints, which is the feasible region, is highlighted in blue. (b) The red lines show, respectively, the points for which the objective value is 0, 4, and 8."
   },
   {
    "type": "body",
@@ -309,7 +309,7 @@
    "section_title": "29.1 Linear programming formulations and algorithms",
    "printed_page": 856,
    "pdf_page": 877,
-   "text": "It is no accident that an optimal solution to the linear program occurs at a vertex of the feasible region. The maximum value of ´ for which the line x 1 + x 2 = ´ intersects the feasible region must be on the bound ary of the feasible region, and thus the intersection of this line with the boundary of the feasible region is either a single vertex or a line segment. If the intersectio n is a single vertex, then there is just one optimal solution, and it is that vertex. If the intersection is a line segment, every point on that line segment must have the same objective value. In particular, both endpoints of the line segment are optimal solutions. Since each endpoint of a line segment is a vertex, there is an optimal solution at a vertex in this case as well."
+   "text": "It is no accident that an optimal solution to the linear program occurs at a vertex of the feasible region. The maximum value of ´ for which the line x 1 + x 2 = ´ intersects the feasible region must be on the bound ary of the feasible region, and thus the intersection of this line with the boundary of the feasible region is either a single vertex or a line segment. If the intersection is a single vertex, then there is just one optimal solution, and it is that vertex. If the intersection is a line segment, every point on that line segment must have the same objective value. In particular, both endpoints of the line segment are optimal solutions. Since each endpoint of a line segment is a vertex, there is an optimal solution at a vertex in this case as well."
   },
   {
    "type": "body",
@@ -318,7 +318,7 @@
    "section_title": "29.1 Linear programming formulations and algorithms",
    "printed_page": 856,
    "pdf_page": 877,
-   "text": "Although you cannot easily graph linear programs with more than two variables, the same intuition holds. If you have three variables, then each constraint corresponds to a half-space in three-dimensional space. The intersection of these half- spaces forms the feasible region. The set of points for which the objective function obtains a given value ´ is now a plane (assuming no degenerate conditions). If all coefficients of the objective function are nonnegative, and if the origin is a feasible solution to the linear program, then as you move this plane away from the origin, in a direction normal to the objective function, you find points of increasing objective value. (If the origin is not feasible or if some coefficients in the objective function are negative, the intuitive picture becomes slightly more complicated.) As in two dimensions, because the feasible region is convex, the set of points that achieve the optimal objective value must include a vertex o f the feasible region. Similarly, if you have n variables, each constraint defines a half-space in n-dimensional space. We call the feasible region formed by the in tersection of these half-spaces a simplex. The objective function is now a hyperplane and, b ecause of convexity, an optimal solution still occurs at a vertex of the simplex. Any algorithm for linear programming must also identify linear programs that have no solutions, as well as linear programs that have no finite optimal solution."
+   "text": "Although you cannot easily graph linear programs with more than two variables, the same intuition holds. If you have three variables, then each constraint corresponds to a half-space in three-dimensional space. The intersection of these half- spaces forms the feasible region. The set of points for which the objective function obtains a given value ´ is now a plane (assuming no degenerate conditions). If all coefficients of the objective function are nonnegative, and if the origin is a feasible solution to the linear program, then as you move this plane away from the origin, in a direction normal to the objective function, you find points of increasing objective value. (If the origin is not feasible or if some coefficients in the objective function are negative, the intuitive picture becomes slightly more complicated.) As in two dimensions, because the feasible region is convex, the set of points that achieve the optimal objective value must include a vertex o f the feasible region. Similarly, if you have n variables, each constraint defines a half-space in n-dimensional space. We call the feasible region formed by the in tersection of these half-spaces a simplex. The objective function is now a hyperplane and, because of convexity, an optimal solution still occurs at a vertex of the simplex. Any algorithm for linear programming must also identify linear programs that have no solutions, as well as linear programs that have no finite optimal solution."
   },
   {
    "type": "body",
@@ -327,7 +327,7 @@
    "section_title": "29.1 Linear programming formulations and algorithms",
    "printed_page": 857,
    "pdf_page": 878,
-   "text": "The simplex algorithm takes as input a linear program and returns an optimal solution. It starts at some vertex of the simplex a nd performs a sequence of iterations. In each iteration, it moves along an edge of the simplex from a current vertex to a neighboring vertex whose objective value is no smaller than that of the current vertex (and usually is larger.) The simplex algorithm terminates when it reaches a local maximum, which is a vertex from which all n eighboring vertices have a smaller objective value. Because the feasible regio n is convex and the objective function is linear, this local optimum is actually a global optimum. In Section 29.3, we’ll see an important concept called \"duality,\" which we’ll use to prove that the solution returned by the simplex algorithm is indeed optimal."
+   "text": "The simplex algorithm takes as input a linear program and returns an optimal solution. It starts at some vertex of the simplex a nd performs a sequence of iterations. In each iteration, it moves along an edge of the simplex from a current vertex to a neighboring vertex whose objective value is no smaller than that of the current vertex (and usually is larger.) The simplex algorithm terminates when it reaches a local maximum, which is a vertex from which all neighboring vertices have a smaller objective value. Because the feasible region is convex and the objective function is linear, this local optimum is actually a global optimum. In Section 29.3, we’ll see an important concept called \"duality,\" which we’ll use to prove that the solution returned by the simplex algorithm is indeed optimal."
   },
   {
    "type": "body",
@@ -336,7 +336,7 @@
    "section_title": "29.1 Linear programming formulations and algorithms",
    "printed_page": 857,
    "pdf_page": 878,
-   "text": "The simplex algorithm, when implemented carefully, often solves general linear programs quickly in practice. With some careful ly contrived inputs, however, the simplex algorithm can require exponential time. The first polynomial-time algorithm for linear programming was the ellipsoid algorithm, which runs slowly in practice. A second class of polynomial-time algorithms are known as interiorpoint methods. In contrast to the simplex algorithm, which moves along the exterior of the feasible region and maintains a feasibl e solution that is a vertex of the simplex at each iteration, these algorithms move through the interior of the feasible region. The intermediate solutions, while feasible, are not necessarily vertices of the simplex, but the final solution is a vertex. For large inputs, interior-point algorithms can run as fast as, and sometimes faster tha n, the simplex algorithm. The chapter notes point you to more information about these algorithms."
+   "text": "The simplex algorithm, when implemented carefully, often solves general linear programs quickly in practice. With some careful ly contrived inputs, however, the simplex algorithm can require exponential time. The first polynomial-time algorithm for linear programming was the ellipsoid algorithm, which runs slowly in practice. A second class of polynomial-time algorithms are known as interiorpoint methods. In contrast to the simplex algorithm, which moves along the exterior of the feasible region and maintains a feasible solution that is a vertex of the simplex at each iteration, these algorithms move through the interior of the feasible region. The intermediate solutions, while feasible, are not necessarily vertices of the simplex, but the final solution is a vertex. For large inputs, interior-point algorithms can run as fast as, and sometimes faster than, the simplex algorithm. The chapter notes point you to more information about these algorithms."
   },
   {
    "type": "body",
@@ -480,7 +480,7 @@
    "section_title": "29.1 Linear programming formulations and algorithms",
    "printed_page": 859,
    "pdf_page": 880,
-   "text": "29.1-8 In the political problem at the beginning of this chapter, there are feasible solutions that correspond to winning more voters than there a ctually are in the district. For example, you can set x 2 to 200, x 3 to 200, and x 1 = x 4 = 0. That solution is feasible, yet it seems to say that you will win 400,000 suburban voters, even though there are only 200,000 actual suburban voter s. What constraints can you add to the linear program to ensure that you never seem to win more voters than there actually are? Even if you don’t add these constraints, argue that the optimal solution to this linear program can never win more voters than there actually are in the district."
+   "text": "29.1-8 In the political problem at the beginning of this chapter, there are feasible solutions that correspond to winning more voters than there a ctually are in the district. For example, you can set x 2 to 200, x 3 to 200, and x 1 = x 4 = 0. That solution is feasible, yet it seems to say that you will win 400,000 suburban voters, even though there are only 200,000 actual suburban voters. What constraints can you add to the linear program to ensure that you never seem to win more voters than there actually are? Even if you don’t add these constraints, argue that the optimal solution to this linear program can never win more voters than there actually are in the district."
   },
   {
    "type": "body",
@@ -507,7 +507,7 @@
    "section_title": "29.2 Formulating problems as linear programs",
    "printed_page": 860,
    "pdf_page": 881,
-   "text": "• An oil company wants to decide where to drill for oil. Siting a drill at a particular location has an associated cost and, based on geological surveys, an expected payoff of some number of barrels of oil. The company has a limited budget for locating new drills and wants to maximize the amoun t of oil it expects to find, given this budget."
+   "text": "• An oil company wants to decide where to drill for oil. Siting a drill at a particular location has an associated cost and, based on geological surveys, an expected payoff of some number of barrels of oil. The company has a limited budget for locating new drills and wants to maximize the amount of oil it expects to find, given this budget."
   },
   {
    "type": "body",
@@ -516,7 +516,7 @@
    "section_title": "29.2 Formulating problems as linear programs",
    "printed_page": 860,
    "pdf_page": 881,
-   "text": "Linear programs also model and solve graph and combinatorial problems, such as those appearing in this book. We have already se en a special case of linear programming used to solve systems of difference constraints in Section 22.4. In this section, we’ll study how to formulate several graph and network-flow problems as linear programs. Section 35.4 uses linear programming as a tool to find an approximate solution to another graph problem."
+   "text": "Linear programs also model and solve graph and combinatorial problems, such as those appearing in this book. We have already seen a special case of linear programming used to solve systems of difference constraints in Section 22.4. In this section, we’ll study how to formulate several graph and network-flow problems as linear programs. Section 35.4 uses linear programming as a tool to find an approximate solution to another graph problem."
   },
   {
    "type": "body",
@@ -534,7 +534,7 @@
    "section_title": "29.2 Formulating problems as linear programs",
    "printed_page": 860,
    "pdf_page": 881,
-   "text": "We’ll look at several concrete examples of linear-programming problems. We start with two problems that we have already studie d: the single-source shortestpaths problem from Chapter 22 and the maximum-flow problem from Chapter 24."
+   "text": "We’ll look at several concrete examples of linear-programming problems. We start with two problems that we have already studied: the single-source shortestpaths problem from Chapter 22 and the maximum-flow problem from Chapter 24."
   },
   {
    "type": "body",
@@ -597,7 +597,7 @@
    "section_title": "29.2 Formulating problems as linear programs",
    "printed_page": 861,
    "pdf_page": 882,
-   "text": "G = (V,E) , with weight function w W E ! R mapping edges to real-valued weights, a source vertex s , and destination vertex t . The goal is to compute the value d t , which is the weight of a shortest path from s to t . To express this problem as a linear program, you need to determine a se t of variables and constraints that define when you have a shortest path from s to t . The triangle inequality"
+   "text": "G = (V,E) , with weight function w W E ! R mapping edges to real-valued weights, a source vertex s , and destination vertex t . The goal is to compute the value d t , which is the weight of a shortest path from s to t . To express this problem as a linear program, you need to determine a set of variables and constraints that define when you have a shortest path from s to t . The triangle inequality"
   },
   {
    "type": "body",
@@ -975,7 +975,7 @@
    "section_title": "29.2 Formulating problems as linear programs",
    "printed_page": 864,
    "pdf_page": 885,
-   "text": "Puck company from Section 24.1 decides to diversify its product line and ship not only hockey pucks, but also hockey sticks and h ockey helmets. Each piece of equipment is manufactured in its own factory, has i ts own warehouse, and must be shipped, each day, from factory to warehouse. Th e sticks are manufactured in Vancouver and are needed in Saskatoon, and the h elmets are manufactured in Edmonton and must be shipped to Regina. The capacit y of the shipping network does not change, however, and the different items, or commodities, must share the same network."
+   "text": "Puck company from Section 24.1 decides to diversify its product line and ship not only hockey pucks, but also hockey sticks and hockey helmets. Each piece of equipment is manufactured in its own factory, has i ts own warehouse, and must be shipped, each day, from factory to warehouse. Th e sticks are manufactured in Vancouver and are needed in Saskatoon, and the h elmets are manufactured in Edmonton and must be shipped to Regina. The capacity of the shipping network does not change, however, and the different items, or commodities, must share the same network."
   },
   {
    "type": "body",
@@ -1119,7 +1119,7 @@
    "section_title": "29.3 Duality",
    "printed_page": 866,
    "pdf_page": 887,
-   "text": "We will now introduce a powerful concept called linear-programming duality. In general, given a maximization problem, duality allows you to formulate a related minimization problem that has the same objective va lue. The idea of duality is actually more general than linear programming, but we restrict our attention to linear programming in this section."
+   "text": "We will now introduce a powerful concept called linear-programming duality. In general, given a maximization problem, duality allows you to formulate a related minimization problem that has the same objective value. The idea of duality is actually more general than linear programming, but we restrict our attention to linear programming in this section."
   },
   {
    "type": "body",
@@ -1254,7 +1254,7 @@
    "section_title": "29.3 Duality",
    "printed_page": 868,
    "pdf_page": 889,
-   "text": "Now, as long as this constraint has coefficients of x 1 , x 2 , and x 3 that are at least their objective-function coefficients, it is a valid upper bound. That is, as long as y 1 + 2y 2 + 4y 3 ≥ 3; y 1 + 2y 2 + y 3 ≥ 1; 3y 1 + 5y 2 + 2y 3 ≥ 4; you have a valid upper bound of 30y 1 + 24y 2 + 36y 3 . The multipliers y 1 , y 2 , and y 3 must be nonnegative, because otherwise you cannot c ombine the inequalities. Of course, you would like the upper bound to be as small as possible, and so you want to choose y to minimize 30y 1 + 24y 2 + 36y 3 . Observe that we have just described the dual linear program as the problem of finding the smallest possible upper bound on the primal."
+   "text": "Now, as long as this constraint has coefficients of x 1 , x 2 , and x 3 that are at least their objective-function coefficients, it is a valid upper bound. That is, as long as y 1 + 2y 2 + 4y 3 ≥ 3; y 1 + 2y 2 + y 3 ≥ 1; 3y 1 + 5y 2 + 2y 3 ≥ 4; you have a valid upper bound of 30y 1 + 24y 2 + 36y 3 . The multipliers y 1 , y 2 , and y 3 must be nonnegative, because otherwise you cannot combine the inequalities. Of course, you would like the upper bound to be as small as possible, and so you want to choose y to minimize 30y 1 + 24y 2 + 36y 3 . Observe that we have just described the dual linear program as the problem of finding the smallest possible upper bound on the primal."
   },
   {
    "type": "body",
@@ -1263,7 +1263,7 @@
    "section_title": "29.3 Duality",
    "printed_page": 868,
    "pdf_page": 889,
-   "text": "We’ll formalize this idea and show in Theorem 29.4 that, if the linear program and its dual are feasible and bounded, then the optimal value of the dual linear program is always equal to the optimal value of the primal linear program. We begin by demonstrating weak duality, which states that any feasible solution to the primal linear program has a value no greater than t hat of any feasible solution to the dual linear program."
+   "text": "We’ll formalize this idea and show in Theorem 29.4 that, if the linear program and its dual are feasible and bounded, then the optimal value of the dual linear program is always equal to the optimal value of the primal linear program. We begin by demonstrating weak duality, which states that any feasible solution to the primal linear program has a value no greater than that of any feasible solution to the dual linear program."
   },
   {
    "type": "lemma",
@@ -1542,7 +1542,7 @@
    "section_title": "29.3 Duality",
    "printed_page": 870,
    "pdf_page": 891,
-   "text": "Because the augmented primal is infeasible, condition 1 of Farkas’s lemma does not hold. Therefore, condition 2 must apply, so tha t there must exist a w 2 R m + 1 such that w ≥ 0, w T M = 0, and w T g<0 . Let’s write w as w ="
+   "text": "Because the augmented primal is infeasible, condition 1 of Farkas’s lemma does not hold. Therefore, condition 2 must apply, so that there must exist a w 2 R m + 1 such that w ≥ 0, w T M = 0, and w T g<0 . Let’s write w as w ="
   },
   {
    "type": "body",
@@ -1713,7 +1713,7 @@
    "section_title": "29.3 Duality",
    "printed_page": 871,
    "pdf_page": 892,
-   "text": "Thus, y 0 is a feasible dual solution with objective value st rictly less than Ω, a contradiction. We conclude that the augmented primal has a feasible solution, and the theorem is proved."
+   "text": "Thus, y 0 is a feasible dual solution with objective value strictly less than Ω, a contradiction. We conclude that the augmented primal has a feasible solution, and the theorem is proved."
   },
   {
    "type": "body",
@@ -1911,7 +1911,7 @@
    "section_title": "29.3 Duality",
    "printed_page": 873,
    "pdf_page": 894,
-   "text": "Complementary slackness describes a relationship between the values of primal variables and dual constraints and between the values of dual variables and primal constraints. Let N x be a feasible solution to the primal linear program given in (29.31)3(29.33), and let N y be a feasible solution to the dual linear program given in (29.34)3(29.36). Complementary slackness states that the following conditions are necessary and sufficient for N x and N y to be optimal: m X i D1 a ij N y i = c j or N x j = 0 for j = 1,2,…,n and n X j D1 a ij N x j = b i or N y i = 0 for i = 1,2,…,m: a. Verify that complementary slackness holds for the l inear program in lines"
+   "text": "Complementary slackness describes a relationship between the values of primal variables and dual constraints and between the values of dual variables and primal constraints. Let N x be a feasible solution to the primal linear program given in (29.31)3(29.33), and let N y be a feasible solution to the dual linear program given in (29.34)3(29.36). Complementary slackness states that the following conditions are necessary and sufficient for N x and N y to be optimal: m X i D1 a ij N y i = c j or N x j = 0 for j = 1,2,…,n and n X j D1 a ij N x j = b i or N y i = 0 for i = 1,2,…,m: a. Verify that complementary slackness holds for the linear program in lines"
   },
   {
    "type": "body",
@@ -1920,7 +1920,7 @@
    "section_title": "29.3 Duality",
    "printed_page": 874,
    "pdf_page": 895,
-   "text": "(29.37)3(29.41). b. Prove that complementary slackness holds for any pr imal linear program and its corresponding dual. c. Prove that a feasible solution N x to a primal linear program given in lines"
+   "text": "(29.37)3(29.41). b. Prove that complementary slackness holds for any primal linear program and its corresponding dual. c. Prove that a feasible solution N x to a primal linear program given in lines"
   },
   {
    "type": "body",
@@ -2001,7 +2001,7 @@
    "section_title": "29.3 Duality",
    "printed_page": 875,
    "pdf_page": 896,
-   "text": "This problem considers a variant of the minimum-cost-flow problem from Section 29.2 in which there is no demand, source, or s ink. Instead, the input, as before, contains a flow network, capacity constraints c(u,v) , and edge costs a(u,v) ."
+   "text": "This problem considers a variant of the minimum-cost-flow problem from Section 29.2 in which there is no demand, source, or sink. Instead, the input, as before, contains a flow network, capacity constraints c(u,v) , and edge costs a(u,v) ."
   },
   {
    "type": "body",

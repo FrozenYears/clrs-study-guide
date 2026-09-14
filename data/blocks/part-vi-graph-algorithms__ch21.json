@@ -64,7 +64,7 @@
    "section_title": "21.1 Growing a minimum spanning tree",
    "printed_page": 586,
    "pdf_page": 607,
-   "text": "Because a tree is a type of graph, in order to be p recise we must define a tree in terms of not just its edges, but its vertices as well. Because this chapter focuses on trees in terms of their edges, we9ll implicitly understand that the vertices of a tree T are those that some edge of T is incident on."
+   "text": "Because a tree is a type of graph, in order to be precise we must define a tree in terms of not just its edges, but its vertices as well. Because this chapter focuses on trees in terms of their edges, we9ll implicitly understand that the vertices of a tree T are those that some edge of T is incident on."
   },
   {
    "type": "body",
@@ -91,7 +91,7 @@
    "section_title": "21.1 Growing a minimum spanning tree",
    "printed_page": 586,
    "pdf_page": 607,
-   "text": "This greedy strategy is captured by the procedure GENERIC-MST on the facing page, which grows the minimum spanning tree one edg e at a time. The generic method manages a set A of edges, maintaining the following loop invariant:"
+   "text": "This greedy strategy is captured by the procedure GENERIC-MST on the facing page, which grows the minimum spanning tree one edge at a time. The generic method manages a set A of edges, maintaining the following loop invariant:"
   },
   {
    "type": "body",
@@ -223,7 +223,7 @@
    "section_title": "21.1 Growing a minimum spanning tree",
    "printed_page": 587,
    "pdf_page": 608,
-   "text": "(V,E) is a partition of V . Figure 21.2 illustrates this notion. We say that an edge (u,v) 2 E crosses the cut (S,V − S) if one of its endpoints belongs to S and the other belongs to V − S . A cut respects a set A of edges if no edge in A crosses the cut. An edge is a light edge crossing a cut if its weight is the minimum of any edge crossing the cut. There can be more than one l ight edge crossing a cut in the case of ties. More generally, we say that an edge i s a light edge satisfying a given property if its weight is the minimum of any edge satisfying the property."
+   "text": "(V,E) is a partition of V . Figure 21.2 illustrates this notion. We say that an edge (u,v) 2 E crosses the cut (S,V − S) if one of its endpoints belongs to S and the other belongs to V − S . A cut respects a set A of edges if no edge in A crosses the cut. An edge is a light edge crossing a cut if its weight is the minimum of any edge crossing the cut. There can be more than one light edge crossing a cut in the case of ties. More generally, we say that an edge i s a light edge satisfying a given property if its weight is the minimum of any edge satisfying the property."
   },
   {
    "type": "body",
@@ -340,7 +340,7 @@
    "section_title": "21.1 Growing a minimum spanning tree",
    "printed_page": 589,
    "pdf_page": 610,
-   "text": "At any point in the execution, the graph G A = (V,A) is a forest, and each of the connected components of G A is a tree. (Some of the trees may contain just one vertex, as is the case, for example, when the metho d begins: A is empty and the forest contains |V| trees, one for each vertex.) Moreover, any safe edge (u,v) for A connects distinct components of G A , since A [ f(u,v) g must be acyclic."
+   "text": "At any point in the execution, the graph G A = (V,A) is a forest, and each of the connected components of G A is a tree. (Some of the trees may contain just one vertex, as is the case, for example, when the method begins: A is empty and the forest contains |V| trees, one for each vertex.) Moreover, any safe edge (u,v) for A connects distinct components of G A , since A [ f(u,v) g must be acyclic."
   },
   {
    "type": "body",
@@ -466,7 +466,7 @@
    "section_title": "21.1 Growing a minimum spanning tree",
    "printed_page": 590,
    "pdf_page": 611,
-   "text": "21.1-6 Show that a graph has a unique minimum spanning tre e if, for every cut of the graph, there is a unique light edge crossing the cu t. Show that the converse is not true by giving a counterexample."
+   "text": "21.1-6 Show that a graph has a unique minimum spanning tree if, for every cut of the graph, there is a unique light edge crossing the cut. Show that the converse is not true by giving a counterexample."
   },
   {
    "type": "exercise",
@@ -1164,7 +1164,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 597,
    "pdf_page": 618,
-   "text": "You can further improve the asymptotic running time of Prim9 s algorithm by implementing the min-priority queue with a Fibonacci heap (see page 478). If a Fibonacci heap holds |V| elements, an EXTRACT-MIN operation takes O(lg V) amortized time and each INSERT and DECREASE-KEY operation takes only O(1) amortized time. Therefore, by using a Fibonacci hea p to implement the minpriority queue Q, the running time of Prim9s algorithm improves to O(ECV lg V) ."
+   "text": "You can further improve the asymptotic running time of Prim9 s algorithm by implementing the min-priority queue with a Fibonacci heap (see page 478). If a Fibonacci heap holds |V| elements, an EXTRACT-MIN operation takes O(lg V) amortized time and each INSERT and DECREASE-KEY operation takes only O(1) amortized time. Therefore, by using a Fibonacci heap to implement the minpriority queue Q, the running time of Prim9s algorithm improves to O(ECV lg V) ."
   },
   {
    "type": "exercise",
@@ -1344,7 +1344,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 600,
    "pdf_page": 621,
-   "text": "Then, contract all chosen edges (see Section B.4). Rather than contracting these edges one at a time, first identify sets of vertices that are united into the same new vertex. Then create the graph that would have resulted from contracting these edges one at a time, but do so by \"renaming\" edges according to the sets into which their endpoints were placed. Several edges from the original graph might be renamed the same as each other. In such a case, only one ed ge results, and its weight is the minimum of the weights of the corresponding original edges."
+   "text": "Then, contract all chosen edges (see Section B.4). Rather than contracting these edges one at a time, first identify sets of vertices that are united into the same new vertex. Then create the graph that would have resulted from contracting these edges one at a time, but do so by \"renaming\" edges according to the sets into which their endpoints were placed. Several edges from the original graph might be renamed the same as each other. In such a case, only one edge results, and its weight is the minimum of the weights of the corresponding original edges."
   },
   {
    "type": "body",
@@ -1529,7 +1529,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 601,
    "pdf_page": 622,
-   "text": "Consider the three algorithms MAYBE-MST-A, MAYBE-MST-B, and MAYBE- MST-C on the next page. Each one takes a connected graph and a w eight function as input and returns a set of edges T . For each algorithm, either prove that T is a minimum spanning tree or prove that T is not necessarily a minimum spanning tree. Also describe the most efficient implementation of each algorithm, regardless of whether it computes a minimum spanning tree."
+   "text": "Consider the three algorithms MAYBE-MST-A, MAYBE-MST-B, and MAYBE- MST-C on the next page. Each one takes a connected graph and a weight function as input and returns a set of edges T . For each algorithm, either prove that T is a minimum spanning tree or prove that T is not necessarily a minimum spanning tree. Also describe the most efficient implementation of each algorithm, regardless of whether it computes a minimum spanning tree."
   },
   {
    "type": "problem",
@@ -1694,7 +1694,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 602,
    "pdf_page": 623,
-   "text": "Part (a) shows that finding a bottleneck spanning tree is no harder than finding a minimum spanning tree. In the remaining parts, yo u will show how to find a bottleneck spanning tree in linear time. b. Give a linear-time algorithm that, given a graph G and an integer b, determines whether the value of the bottleneck spanning tree is at most b. c. Use your algorithm for part (b) as a subroutine in a linear-time algorithm for the bottleneck-spanning-tree problem. (Hint: You might want to use a subroutine that contracts sets of edges, as in the MST-REDUCE procedure described in Problem 21-2.)"
+   "text": "Part (a) shows that finding a bottleneck spanning tree is no harder than finding a minimum spanning tree. In the remaining parts, you will show how to find a bottleneck spanning tree in linear time. b. Give a linear-time algorithm that, given a graph G and an integer b, determines whether the value of the bottleneck spanning tree is at most b. c. Use your algorithm for part (b) as a subroutine in a linear-time algorithm for the bottleneck-spanning-tree problem. (Hint: You might want to use a subroutine that contracts sets of edges, as in the MST-REDUCE procedure described in Problem 21-2.)"
   },
   {
    "type": "chapter-notes",
@@ -1739,7 +1739,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 603,
    "pdf_page": 624,
-   "text": "When |E| = ].V lg V/, Prim9s algorithm, implemented with a Fibonacci heap, runs in O(E) time. For sparser graphs, using a combination of th e ideas from Prim9s algorithm, Kruskal9s algorithm, and Bor˚ uvka9s algorithm, together with advanced data structures, Fredman and Tarjan [156] give an algorithm that runs in O(E lg − V) time. Gabow, Galil, Spencer, and Tarjan [165] improved this algorithm to run in O(E lg lg − V) time. Chazelle [83] gives an algorithm that runs in O(E y ˛.E,V)/ time, where y ˛.E,V/ is the functional inverse of Ackermann9s function. (See the chapter notes for Chapter 19 for a brief discussion of Ackermann9s function and its inverse.) Unlike previous minimum-spanning-tree algorithms, Chazelle9s algorithm does not follow the greedy method. Pettie and Ramachandran [356] give an algorithm based on precomputed \"MST decision trees\" that also runs in O(E y ˛.E,V)/ time."
+   "text": "When |E| = ].V lg V/, Prim9s algorithm, implemented with a Fibonacci heap, runs in O(E) time. For sparser graphs, using a combination of the ideas from Prim9s algorithm, Kruskal9s algorithm, and Bor˚ uvka9s algorithm, together with advanced data structures, Fredman and Tarjan [156] give an algorithm that runs in O(E lg − V) time. Gabow, Galil, Spencer, and Tarjan [165] improved this algorithm to run in O(E lg lg − V) time. Chazelle [83] gives an algorithm that runs in O(E y ˛.E,V)/ time, where y ˛.E,V/ is the functional inverse of Ackermann9s function. (See the chapter notes for Chapter 19 for a brief discussion of Ackermann9s function and its inverse.) Unlike previous minimum-spanning-tree algorithms, Chazelle9s algorithm does not follow the greedy method. Pettie and Ramachandran [356] give an algorithm based on precomputed \"MST decision trees\" that also runs in O(E y ˛.E,V)/ time."
   },
   {
    "type": "body",
@@ -1784,7 +1784,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 604,
    "pdf_page": 625,
-   "text": "Suppose that you need to drive from Oceanside, New York, to Oceanside, California, by the shortest possible route. Your GPS contains information about the entire road network of the United States, including the ro ad distance between each pair of adjacent intersections. How can your GPS determine this shortest route?"
+   "text": "Suppose that you need to drive from Oceanside, New York, to Oceanside, California, by the shortest possible route. Your GPS contains information about the entire road network of the United States, including the road distance between each pair of adjacent intersections. How can your GPS determine this shortest route?"
   },
   {
    "type": "body",

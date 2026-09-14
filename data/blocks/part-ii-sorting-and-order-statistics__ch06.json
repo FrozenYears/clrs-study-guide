@@ -115,7 +115,7 @@
    "section_title": "6.1 Heaps",
    "printed_page": 162,
    "pdf_page": 183,
-   "text": "Figure 6.1 A max-heap viewed as (a) a binary tree and (b) an array. The number within the circle at each node in the tree is the value stored at that node. The number above a node is the corresponding index in the array. Above and below the array are l ines showing parent-child relationships, with parents always to the left of their children. The t ree has height 3, and the node at index 4 (with value 8) has height 1. there’s a simple way to compute the indices of its parent, left child, and right child with the one-line procedures PARENT , LEFT, and RIGHT ."
+   "text": "Figure 6.1 A max-heap viewed as (a) a binary tree and (b) an array. The number within the circle at each node in the tree is the value stored at that node. The number above a node is the corresponding index in the array. Above and below the array are lines showing parent-child relationships, with parents always to the left of their children. The tree has height 3, and the node at index 4 (with value 8) has height 1. there’s a simple way to compute the indices of its parent, left child, and right child with the one-line procedures PARENT , LEFT, and RIGHT ."
   },
   {
    "type": "body",
@@ -259,7 +259,7 @@
    "section_title": "6.1 Heaps",
    "printed_page": 163,
    "pdf_page": 184,
-   "text": "• The procedures MAX-HEAP-INSERT , MAX-HEAP-EXTRACT-MAX, MAX- HEAP-INCREASE-KEY, and MAX-HEAP-MAXIMUM allow the heap data structure to implement a priority queue. They run i n O(lg n) time plus the time for mapping between objects being inserted int o the priority queue and indices in the heap."
+   "text": "• The procedures MAX-HEAP-INSERT , MAX-HEAP-EXTRACT-MAX, MAX- HEAP-INCREASE-KEY, and MAX-HEAP-MAXIMUM allow the heap data structure to implement a priority queue. They run i n O(lg n) time plus the time for mapping between objects being inserted into the priority queue and indices in the heap."
   },
   {
    "type": "exercise",
@@ -340,7 +340,7 @@
    "section_title": "6.1 Heaps",
    "printed_page": 164,
    "pdf_page": 185,
-   "text": "6.1-8 Show that, with the array representation for storin g an n-element heap, the leaves are the nodes indexed ⌊y bn/2⌋ + 1; ⌊n/2⌋ + 2,…,n ."
+   "text": "6.1-8 Show that, with the array representation for storing an n-element heap, the leaves are the nodes indexed ⌊y bn/2⌋ + 1; ⌊n/2⌋ + 2,…,n ."
   },
   {
    "type": "body",
@@ -492,7 +492,7 @@
    "section_title": "6.2 Maintaining the heap property",
    "printed_page": 166,
    "pdf_page": 187,
-   "text": "The solution to this recurrence, by case 2 of the m aster theorem (Theorem 4.1 on page 102), is T(n) = O(lg n). Alternatively, we can characterize the running time"
+   "text": "The solution to this recurrence, by case 2 of the master theorem (Theorem 4.1 on page 102), is T(n) = O(lg n). Alternatively, we can characterize the running time"
   },
   {
    "type": "body",
@@ -1261,7 +1261,7 @@
    "section_title": "6.5 Priority queues",
    "printed_page": 173,
    "pdf_page": 194,
-   "text": "Among their other applications, you can use max-priority queues to schedule jobs on a computer shared among multiple users. The max-priority queue keeps track of the jobs to be performed and their relativ e priorities. When a job is finished or interrupted, the scheduler selects the highest-priority job from among those pending by calling EXTRACT-MAX. The scheduler can add a new job to the queue at any time by calling INSERT ."
+   "text": "Among their other applications, you can use max-priority queues to schedule jobs on a computer shared among multiple users. The max-priority queue keeps track of the jobs to be performed and their relative priorities. When a job is finished or interrupted, the scheduler selects the highest-priority job from among those pending by calling EXTRACT-MAX. The scheduler can add a new job to the queue at any time by calling INSERT ."
   },
   {
    "type": "body",
@@ -1297,7 +1297,7 @@
    "section_title": "6.5 Priority queues",
    "printed_page": 173,
    "pdf_page": 194,
-   "text": "When you use a heap to implement a priority queue w ithin a given application, elements of the priority queue correspond to object s in the application. Each object contains a key. If the priority queue is implemented by a heap, you need to determine which application object corresponds to a given heap element, and vice versa. Because the heap elements are stored in an a rray, you need a way to map application objects to and from array indices."
+   "text": "When you use a heap to implement a priority queue within a given application, elements of the priority queue correspond to object s in the application. Each object contains a key. If the priority queue is implemented by a heap, you need to determine which application object corresponds to a given heap element, and vice versa. Because the heap elements are stored in an a rray, you need a way to map application objects to and from array indices."
   },
   {
    "type": "body",
@@ -1306,7 +1306,7 @@
    "section_title": "6.5 Priority queues",
    "printed_page": 173,
    "pdf_page": 194,
-   "text": "One way to map between application objects and heap elements uses handles, which are additional information stored in the objects and heap elements that give enough information to perform the mapping. Handles are often implemented to be opaque to the surrounding code, thereby maintaining an abstraction barrier between the application and the priority queue. For e xample, the handle within an application object might contain the corresponding index into the heap array. But since only the code for the priority queue accesses this index, the index is entirely hidden from the application code. Because heap elements change locations within the array during heap operations, an actual implementation of the priority queue, upon relocating a heap element, must also update th e array indices in the corresponding handles. Conversely, each element in the h eap might contain a pointer to the corresponding application object, but the he ap element knows this pointer as only an opaque handle and the application maps t his handle to an application object. Typically, the worst-case overhead for maintaining handles is O(1) per access."
+   "text": "One way to map between application objects and heap elements uses handles, which are additional information stored in the objects and heap elements that give enough information to perform the mapping. Handles are often implemented to be opaque to the surrounding code, thereby maintaining an abstraction barrier between the application and the priority queue. For example, the handle within an application object might contain the corresponding index into the heap array. But since only the code for the priority queue accesses this index, the index is entirely hidden from the application code. Because heap elements change locations within the array during heap operations, an actual implementation of the priority queue, upon relocating a heap element, must also update the array indices in the corresponding handles. Conversely, each element in the heap might contain a pointer to the corresponding application object, but the he ap element knows this pointer as only an opaque handle and the application maps this handle to an application object. Typically, the worst-case overhead for maintaining handles is O(1) per access."
   },
   {
    "type": "body",
@@ -1333,7 +1333,7 @@
    "section_title": "6.5 Priority queues",
    "printed_page": 174,
    "pdf_page": 195,
-   "text": "Let’s see how to implement the operations of a max-priority queue using a maxheap. In the previous sections, we treated the arra y elements as the keys to be sorted, implicitly assuming that any satellite data moved with the corresponding keys. When a heap implements a priority queue, we i nstead treat each array element as a pointer to an object in the priority queue, so that the object is analogous to the satellite data when sorting. We further assume that each such object has an attribute key, which determines where in the heap the object belongs. For a heap implemented by an array A, we refer to A[i]: key."
+   "text": "Let’s see how to implement the operations of a max-priority queue using a maxheap. In the previous sections, we treated the array elements as the keys to be sorted, implicitly assuming that any satellite data moved with the corresponding keys. When a heap implements a priority queue, we i nstead treat each array element as a pointer to an object in the priority queue, so that the object is analogous to the satellite data when sorting. We further assume that each such object has an attribute key, which determines where in the heap the object belongs. For a heap implemented by an array A, we refer to A[i]: key."
   },
   {
    "type": "body",
@@ -1463,7 +1463,7 @@
    "section_title": "6.5 Priority queues",
    "printed_page": 175,
    "pdf_page": 196,
-   "text": "The procedure MAX-HEAP-INSERT on the next page implements the INSERT operation. It takes as inputs the array A implementing the max-heap, the new object x to be inserted into the max-heap, and the size n of array A. The procedure first verifies that the array has room for the new element. It then expands the max-heap by adding to the tree a new leaf whose key is −1. Then it calls MAX- HEAP-INCREASE-KEY to set the key of this new element to its correct v alue and maintain the max-heap property. The running time of MAX-HEAP-INSERT on an n-element heap is O(lg n) plus the overhead for mapping priority queue objects to indices."
+   "text": "The procedure MAX-HEAP-INSERT on the next page implements the INSERT operation. It takes as inputs the array A implementing the max-heap, the new object x to be inserted into the max-heap, and the size n of array A. The procedure first verifies that the array has room for the new element. It then expands the max-heap by adding to the tree a new leaf whose key is −1. Then it calls MAX- HEAP-INCREASE-KEY to set the key of this new element to its correct value and maintain the max-heap property. The running time of MAX-HEAP-INSERT on an n-element heap is O(lg n) plus the overhead for mapping priority queue objects to indices."
   },
   {
    "type": "body",
@@ -1729,7 +1729,7 @@
    "section_title": "6.5 Priority queues",
    "printed_page": 178,
    "pdf_page": 199,
-   "text": "6.5-11 Give an O(n lg k)-time algorithm to merge k sorted lists into one sorted list, where n is the total number of elements in all the input li sts. ( Hint: Use a minheap for k-way merging.)"
+   "text": "6.5-11 Give an O(n lg k)-time algorithm to merge k sorted lists into one sorted list, where n is the total number of elements in all the input lists. ( Hint: Use a minheap for k-way merging.)"
   },
   {
    "type": "problem",
@@ -1799,7 +1799,7 @@
    "section_title": "6.5 Priority queues",
    "printed_page": 179,
    "pdf_page": 200,
-   "text": "A d -ary heap is like a binary heap, but (with one possible exception) nonleaf nodes have d children instead of two children. In all parts of t his problem, assume that the time to maintain the mapping between objects an d heap elements is O(1) per operation. a. Describe how to represent a d -ary heap in an array. b. Using Θ-notation, express the height of a d -ary heap of n elements in terms of n and d . c. Give an efficient implementation of EXTRACT-MAX in a d -ary max-heap. Analyze its running time in terms of d and n. d. Give an efficient implementation of INCREASE-KEY in a d -ary max-heap. Analyze its running time in terms of d and n. e. Give an efficient implementation of INSERT in a d -ary max-heap. Analyze its running time in terms of d and n."
+   "text": "A d -ary heap is like a binary heap, but (with one possible exception) nonleaf nodes have d children instead of two children. In all parts of this problem, assume that the time to maintain the mapping between objects an d heap elements is O(1) per operation. a. Describe how to represent a d -ary heap in an array. b. Using Θ-notation, express the height of a d -ary heap of n elements in terms of n and d . c. Give an efficient implementation of EXTRACT-MAX in a d -ary max-heap. Analyze its running time in terms of d and n. d. Give an efficient implementation of INCREASE-KEY in a d -ary max-heap. Analyze its running time in terms of d and n. e. Give an efficient implementation of INSERT in a d -ary max-heap. Analyze its running time in terms of d and n."
   },
   {
    "type": "problem",

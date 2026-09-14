@@ -56,7 +56,7 @@
    "section_title": "4.1 Multiplying square matrices",
    "printed_page": 80,
    "pdf_page": 101,
-   "text": "We want simple-to-use tools that can handle the most commonly occurring situations. But we also want general tools that work, pe rhaps with a little more effort, for less common cases. This chapter offers four methods for solving recurrences:"
+   "text": "We want simple-to-use tools that can handle the most commonly occurring situations. But we also want general tools that work, perhaps with a little more effort, for less common cases. This chapter offers four methods for solving recurrences:"
   },
   {
    "type": "body",
@@ -824,7 +824,7 @@
    "section_title": "4.2 Strassen’s algorithm for matrix multiplication",
    "printed_page": 85,
    "pdf_page": 106,
-   "text": "The key to Strassen’s method is to use the divide-and-conquer idea from the MATRIX-MULTIPLY-RECURSIVE procedure, but make the recursion tree less bushy. We’ll actually increase the work for each divide and combine step by a constant factor, but the reduction in bushiness wil l pay off. We won’t reduce the bushiness from the eight-way branching of recurrence (4.9) all the way down to the two-way branching of recurrence (2.3), but we’ll improve it just a little, and that will make a big difference. Instead of perform ing eight recursive multiplications of n/2 × n/2 matrices, Strassen’s algorithm performs only seven. The cost of eliminating one matrix multiplication is several new additions and subtractions of n/2 × n/2 matrices, but still only a constant number. Rather than saying <additions and subtractions= everywhere, we’ll adopt the common terminology of calling them both \"additions\" because subtraction is structurally the same computation as addition, except for a change of sign."
+   "text": "The key to Strassen’s method is to use the divide-and-conquer idea from the MATRIX-MULTIPLY-RECURSIVE procedure, but make the recursion tree less bushy. We’ll actually increase the work for each divide and combine step by a constant factor, but the reduction in bushiness will pay off. We won’t reduce the bushiness from the eight-way branching of recurrence (4.9) all the way down to the two-way branching of recurrence (2.3), but we’ll improve it just a little, and that will make a big difference. Instead of perform ing eight recursive multiplications of n/2 × n/2 matrices, Strassen’s algorithm performs only seven. The cost of eliminating one matrix multiplication is several new additions and subtractions of n/2 × n/2 matrices, but still only a constant number. Rather than saying <additions and subtractions= everywhere, we’ll adopt the common terminology of calling them both \"additions\" because subtraction is structurally the same computation as addition, except for a change of sign."
   },
   {
    "type": "body",
@@ -833,7 +833,7 @@
    "section_title": "4.2 Strassen’s algorithm for matrix multiplication",
    "printed_page": 86,
    "pdf_page": 107,
-   "text": "To get an inkling how the number of multiplications might be reduced, as well as why reducing the number of multiplications might be desirable for matrix calculations, suppose that you have two numbers x and y , and you want to calculate the quantity x 2 − y 2 . The straightforward calculation requires two mult iplications to square x and y , followed by one subtraction (which you can think of as a <negative addition=). But let’s recall the old algebra trick x 2 − y 2 = x 2 − xy C xy − y 2 = x(x − y) + y(x − y) = (x + y).x − y/. Using this formulation of the desired quantity, you could instead compute the sum x + y and the difference x − y and then multiply them, requiring only a single multiplication and two additions. At the cost of an extra addition, only one multiplication is needed to compute an ex- pression that looks as if it requires two. If x and y are scalars, there’s not much difference: both approaches require three scalar op erations. If x and y are large matrices, however, the cost of multiplying outweighs the cost of adding, in which case the second method outperforms the first, although not asymptotically."
+   "text": "To get an inkling how the number of multiplications might be reduced, as well as why reducing the number of multiplications might be desirable for matrix calculations, suppose that you have two numbers x and y , and you want to calculate the quantity x 2 − y 2 . The straightforward calculation requires two mult iplications to square x and y , followed by one subtraction (which you can think of as a <negative addition=). But let’s recall the old algebra trick x 2 − y 2 = x 2 − xy C xy − y 2 = x(x − y) + y(x − y) = (x + y).x − y/. Using this formulation of the desired quantity, you could instead compute the sum x + y and the difference x − y and then multiply them, requiring only a single multiplication and two additions. At the cost of an extra addition, only one multiplication is needed to compute an ex- pression that looks as if it requires two. If x and y are scalars, there’s not much difference: both approaches require three scalar operations. If x and y are large matrices, however, the cost of multiplying outweighs the cost of adding, in which case the second method outperforms the first, although not asymptotically."
   },
   {
    "type": "body",
@@ -896,7 +896,7 @@
    "section_title": "4.2 Strassen’s algorithm for matrix multiplication",
    "printed_page": 86,
    "pdf_page": 107,
-   "text": "3. Using the submatrices from step 1 and the matrices S 1 ,S 2 ,…,S 10 created in step 2, recursively compute each of the seven matri x products P 1 ,P 2 ,…,P 7 , taking 7T(n/2) time."
+   "text": "3. Using the submatrices from step 1 and the matrices S 1 ,S 2 ,…,S 10 created in step 2, recursively compute each of the seven matrix products P 1 ,P 2 ,…,P 7 , taking 7T(n/2) time."
   },
   {
    "type": "body",
@@ -1373,7 +1373,7 @@
    "section_title": "4.3 The substitution method for solving recurrences",
    "printed_page": 91,
    "pdf_page": 112,
-   "text": "Assume by induction that this bound holds for all n umbers at least as big as n 0 and less than n. In particular, therefore, if n ≥ 2n 0 , it holds for ⌊n/2⌋, yielding"
+   "text": "Assume by induction that this bound holds for all numbers at least as big as n 0 and less than n. In particular, therefore, if n ≥ 2n 0 , it holds for ⌊n/2⌋, yielding"
   },
   {
    "type": "body",
@@ -1445,7 +1445,7 @@
    "section_title": "4.3 The substitution method for solving recurrences",
    "printed_page": 91,
    "pdf_page": 112,
-   "text": "We’ve shown that the inductive hypothesis holds for the inductive case, but we also need to prove that the inductive hypothesis ho lds for the base cases of the induction, that is, that T(n) ≤ cn lg n when n 0 ≤ n<2n 0 . As long as n 0 >1 (a new constraint on n 0 ), we have lg n > 0, which implies that n lg n > 0. So let’s pick n 0 = 2. Since the base case of recurrence (4.11) is not stated explicitly, by our convention, T(n) is algorithmic, which means that T(2) and T(3) are constant (as they should be if they describe the worst-case running time of any real program on inputs of size 2 or 3). Picking c = max fT(2),T(3) g yields T(2) ≤ c <.2 lg 2/c and T(3) ≤ c<.3 lg 3/c , establishing the inductive hypothesis for the base cases."
+   "text": "We’ve shown that the inductive hypothesis holds for the inductive case, but we also need to prove that the inductive hypothesis holds for the base cases of the induction, that is, that T(n) ≤ cn lg n when n 0 ≤ n<2n 0 . As long as n 0 >1 (a new constraint on n 0 ), we have lg n > 0, which implies that n lg n > 0. So let’s pick n 0 = 2. Since the base case of recurrence (4.11) is not stated explicitly, by our convention, T(n) is algorithmic, which means that T(2) and T(3) are constant (as they should be if they describe the worst-case running time of any real program on inputs of size 2 or 3). Picking c = max fT(2),T(3) g yields T(2) ≤ c <.2 lg 2/c and T(3) ≤ c<.3 lg 3/c , establishing the inductive hypothesis for the base cases."
   },
   {
    "type": "body",
@@ -1472,7 +1472,7 @@
    "section_title": "4.3 The substitution method for solving recurrences",
    "printed_page": 91,
    "pdf_page": 112,
-   "text": "In the algorithms literature, people rarely carry o ut their substitution proofs to this level of detail, especially in their treatment of base cases. The reason is that for most algorithmic divide-and-conquer recurrences, the base cases are all handled in pretty much the same way. You ground the induction on a range of values from a convenient positive constant n 0 up to some constant n 0"
+   "text": "In the algorithms literature, people rarely carry out their substitution proofs to this level of detail, especially in their treatment of base cases. The reason is that for most algorithmic divide-and-conquer recurrences, the base cases are all handled in pretty much the same way. You ground the induction on a range of values from a convenient positive constant n 0 up to some constant n 0"
   },
   {
    "type": "body",
@@ -1526,7 +1526,7 @@
    "section_title": "4.3 The substitution method for solving recurrences",
    "printed_page": 92,
    "pdf_page": 113,
-   "text": "Unfortunately, there is no general way to correctly guess the tightest asymptotic solution to an arbitrary recurrence. Making a good guess takes experience and, occasionally, creativity. Fortunately, learning som e recurrence-solving heuristics, as well as playing around with recurrences to gain experience, can help you become a good guesser. You can also use recursion trees, which we’ll see in Section 4.4, to help generate good guesses."
+   "text": "Unfortunately, there is no general way to correctly guess the tightest asymptotic solution to an arbitrary recurrence. Making a good guess takes experience and, occasionally, creativity. Fortunately, learning some recurrence-solving heuristics, as well as playing around with recurrences to gain experience, can help you become a good guesser. You can also use recursion trees, which we’ll see in Section 4.4, to help generate good guesses."
   },
   {
    "type": "body",
@@ -1652,7 +1652,7 @@
    "section_title": "4.3 The substitution method for solving recurrences",
    "printed_page": 93,
    "pdf_page": 114,
-   "text": "be tempted to try a larger guess, say T(n) = O(n 2 ). Although this larger guess works, it provides only a loose upper bound. It turns out that our original guess of T(n) = O(n) is correct and tight. In order to show that it is c orrect, however, we must strengthen our inductive hypothesis."
+   "text": "be tempted to try a larger guess, say T(n) = O(n 2 ). Although this larger guess works, it provides only a loose upper bound. It turns out that our original guess of T(n) = O(n) is correct and tight. In order to show that it is correct, however, we must strengthen our inductive hypothesis."
   },
   {
    "type": "body",
@@ -1751,7 +1751,7 @@
    "section_title": "4.3 The substitution method for solving recurrences",
    "printed_page": 93,
    "pdf_page": 114,
-   "text": "Avoid using asymptotic notation in the inductive hy pothesis for the substitution method because it’s error prone. For example, for recurrence (4.11), we can falsely"
+   "text": "Avoid using asymptotic notation in the inductive hypothesis for the substitution method because it’s error prone. For example, for recurrence (4.11), we can falsely"
   },
   {
    "type": "body",
@@ -1796,7 +1796,7 @@
    "section_title": "4.3 The substitution method for solving recurrences",
    "printed_page": 94,
    "pdf_page": 115,
-   "text": "The problem with this reasoning is that the constan t hidden by the O-notation changes. We can expose the fallacy by repeating the \"proof\" using an explicit constant. For the inductive hypothesis, assume that T(n) ≤ cn for all n ≥ n 0 , where c,n 0 >0 are constants. Repeating the first two steps in the inequality chain yields"
+   "text": "The problem with this reasoning is that the constant hidden by the O-notation changes. We can expose the fallacy by repeating the \"proof\" using an explicit constant. For the inductive hypothesis, assume that T(n) ≤ cn for all n ≥ n 0 , where c,n 0 >0 are constants. Repeating the first two steps in the inequality chain yields"
   },
   {
    "type": "body",
@@ -2039,7 +2039,7 @@
    "section_title": "4.4 The recursion-tree method for solving recurrences",
    "printed_page": 95,
    "pdf_page": 116,
-   "text": "Figure 4.1 shows how to derive the recursion tree for T(n) = 3T(n/4) C cn 2 , where the constant c >0 is the upper-bound constant in the Θ(n 2 ) term. Part (a) of the figure shows T(n), which part (b) expands into an equivalent tree representing the recurrence. The cn 2 term at the root represents the cost at the top level of recursion, and the three subtrees of the root re present the costs incurred by the …"
+   "text": "Figure 4.1 shows how to derive the recursion tree for T(n) = 3T(n/4) C cn 2 , where the constant c >0 is the upper-bound constant in the Θ(n 2 ) term. Part (a) of the figure shows T(n), which part (b) expands into an equivalent tree representing the recurrence. The cn 2 term at the root represents the cost at the top level of recursion, and the three subtrees of the root represent the costs incurred by the …"
   },
   {
    "type": "body",
@@ -2489,7 +2489,7 @@
    "section_title": "4.4 The recursion-tree method for solving recurrences",
    "printed_page": 99,
    "pdf_page": 120,
-   "text": "It remains to deal with the leaves of the recursion tree, which represent base cases, each costing Θ(1). How many leaves are there? It’s tempting to upperbound their number by the number of leaves in a complete binary tree of height h = blog 3/2 (n/n 0 )c + 1, since the recursion tree is contained within such a complete binary tree. But this approach turns out to g ive us a poor bound. The complete binary tree has 1 node at the root, 2 nodes at depth 1, and generally 2 k nodes at depth k. Since the height is h = ⌊ log 3/2 n⌋ + 1, there are 2 h = 2 ⌊log 3/2 n⌋ + 1 ≤ 2n log 3/2 2 leaves in the complete binary tree, which is an upper bound on the number of leaves in the recursio n tree. Because the cost of each leaf is Θ(1), this analysis says that the total cost of all leaves in the recursion tree is O(n log 3/2 2 ) = O(n 1:71 ), which is an asymptotically greater bound than the"
+   "text": "It remains to deal with the leaves of the recursion tree, which represent base cases, each costing Θ(1). How many leaves are there? It’s tempting to upperbound their number by the number of leaves in a com plete binary tree of height h = blog 3/2 (n/n 0 )c + 1, since the recursion tree is contained within such a complete binary tree. But this approach turns out to give us a poor bound. The complete binary tree has 1 node at the root, 2 nodes at depth 1, and generally 2 k nodes at depth k. Since the height is h = ⌊ log 3/2 n⌋ + 1, there are 2 h = 2 ⌊log 3/2 n⌋ + 1 ≤ 2n log 3/2 2 leaves in the complete binary tree, which is an upper bound on the number of leaves in the recursion tree. Because the cost of each leaf is Θ(1), this analysis says that the total cost of all leaves in the recursion tree is O(n log 3/2 2 ) = O(n 1:71 ), which is an asymptotically greater bound than the"
   },
   {
    "type": "body",
@@ -2660,7 +2660,7 @@
    "section_title": "4.4 The recursion-tree method for solving recurrences",
    "printed_page": 101,
    "pdf_page": 122,
-   "text": "4.4-1 For each of the following recurrences, sketch its r ecursion tree, and guess a good asymptotic upper bound on its solution. Then use the substitution method to verify your answer. a. T(n) = T(n/2) + n 3 ."
+   "text": "4.4-1 For each of the following recurrences, sketch its recursion tree, and guess a good asymptotic upper bound on its solution. Then use the substitution method to verify your answer. a. T(n) = T(n/2) + n 3 ."
   },
   {
    "type": "body",
@@ -2723,7 +2723,7 @@
    "section_title": "4.4 The recursion-tree method for solving recurrences",
    "printed_page": 101,
    "pdf_page": 122,
-   "text": "4.4-4 Use a recursion tree to justify a good guess for th e solution to the recurrence"
+   "text": "4.4-4 Use a recursion tree to justify a good guess for the solution to the recurrence"
   },
   {
    "type": "body",
@@ -2768,7 +2768,7 @@
    "section_title": "4.5 The master method for solving recurrences",
    "printed_page": 102,
    "pdf_page": 123,
-   "text": "The algorithm solves the a subproblems recursively, each in T(n/b) time. The driving function f(n) encompasses the cost of dividing the problem before the re- cursion, as well as the cost of combining the results of the recursive solutions to subproblems. For example, the recurrence arising fr om Strassen’s algorithm is a master recurrence with a = 7, b = 2, and driving function f(n) = Θ(n 2 )."
+   "text": "The algorithm solves the a subproblems recursively, each in T(n/b) time. The driving function f(n) encompasses the cost of dividing the problem before the re- cursion, as well as the cost of combining the results of the recursive solutions to subproblems. For example, the recurrence arising from Strassen’s algorithm is a master recurrence with a = 7, b = 2, and driving function f(n) = Θ(n 2 )."
   },
   {
    "type": "body",
@@ -2885,7 +2885,7 @@
    "section_title": "4.5 The master method for solving recurrences",
    "printed_page": 103,
    "pdf_page": 124,
-   "text": "In case 1, not only must the watershed function grow asymptotically faster than the driving function, it must grow polynomially faster. That is, the watershed function n log b a must be asymptotically larger than the driving function f(n) by at least a factor of Θ.n • / for some constant Ω>0 . The master theorem then says that the solution is T(n) = Θ(n log b a ). In this case, if we look at the recursion tree fo r the recurrence, the cost per level grows at least geometrically from root to leaves, and the total cost of leaves dominates the total cost of the internal nodes."
+   "text": "In case 1, not only must the watershed function grow asymptotically faster than the driving function, it must grow polynomially faster. That is, the watershed function n log b a must be asymptotically larger than the driving function f(n) by at least a factor of Θ.n • / for some constant Ω>0 . The master theorem then says that the solution is T(n) = Θ(n log b a ). In this case, if we look at the recursion tree for the recurrence, the cost per level grows at least geometrically from root to leaves, and the total cost of leaves dominates the total cost of the internal nodes."
   },
   {
    "type": "body",
@@ -2903,7 +2903,7 @@
    "section_title": "4.5 The master method for solving recurrences",
    "printed_page": 103,
    "pdf_page": 124,
-   "text": "Θ(n log b a lg k + 1 n). In this case, each level of the recursion tree co sts approximately the same4Θ(n log b a lg k n)4and there are Θ(lg n) levels. In practice, the most common situation for case 2 occurs when k = 0, in which case the watershed and driving functions have the same asymptotic growth, and the solution is T(n) = Θ(n log b a lg n)."
+   "text": "Θ(n log b a lg k + 1 n). In this case, each level of the recursion tree costs approximately the same4Θ(n log b a lg k n)4and there are Θ(lg n) levels. In practice, the most common situation for case 2 occurs when k = 0, in which case the watershed and driving functions have the same asymptotic growth, and the solution is T(n) = Θ(n log b a lg n)."
   },
   {
    "type": "body",
@@ -2912,7 +2912,7 @@
    "section_title": "4.5 The master method for solving recurrences",
    "printed_page": 103,
    "pdf_page": 124,
-   "text": "Case 3 mirrors case 1. Not only must the driving function grow asymptotically faster than the watershed function, it must grow polynomially faster. That is, the driving function f(n) must be asymptotically larger than the watershed fu nction n log b a by at least a factor of Θ.n • / for some constant Ω>0 . Moreover, the driving function must satisfy the regularity condition that af(n/b) ≤ cf.n/. This condition is satisfied by most of the polynomially bounded functions that you’re likely to encounter when applying case 3. The regularity condition might not be satisfied if the driving function grows slowly in local areas , yet relatively quickly overall."
+   "text": "Case 3 mirrors case 1. Not only must the driving function grow asymptotically faster than the watershed function, it must grow polynomially faster. That is, the driving function f(n) must be asymptotically larger than the watershed function n log b a by at least a factor of Θ.n • / for some constant Ω>0 . Moreover, the driving function must satisfy the regularity condition that af(n/b) ≤ cf.n/. This condition is satisfied by most of the polynomially bounded functions that you’re likely to encounter when applying case 3. The regularity condition might not be satisfied if the driving function grows slowly in local areas , yet relatively quickly overall."
   },
   {
    "type": "body",
@@ -3110,7 +3110,7 @@
    "section_title": "4.5 The master method for solving recurrences",
    "printed_page": 105,
    "pdf_page": 126,
-   "text": "Even when the relative growths of the driving and w atershed functions can be compared, the master theorem does not cover all the possibilities. There is a gap between cases 1 and 2 when f(n) = o(n log b a ), yet the watershed function does not grow polynomially faster than the driving function. Similarly, there is a gap between cases 2 and 3 when f(n) = !.n log b a / and the driving function grows more than polylogarithmically faster than the water shed function, but it does not grow polynomially faster. If the driving function falls into one of these gaps, or if the regularity condition in case 3 fails to hold, you’ll need to use something other than the master method to solve the recurrence."
+   "text": "Even when the relative growths of the driving and watershed functions can be compared, the master theorem does not cover all the possibilities. There is a gap between cases 1 and 2 when f(n) = o(n log b a ), yet the watershed function does not grow polynomially faster than the driving function. Similarly, there is a gap between cases 2 and 3 when f(n) = !.n log b a / and the driving function grows more than polylogarithmically faster than the water shed function, but it does not grow polynomially faster. If the driving function falls into one of these gaps, or if the regularity condition in case 3 fails to hold, you’ll need to use something other than the master method to solve the recurrence."
   },
   {
    "type": "body",
@@ -3290,7 +3290,7 @@
    "section_title": "4.6 Proof of the continuous master theorem",
    "printed_page": 107,
    "pdf_page": 128,
-   "text": "Proving the master theorem (Theorem 4.1) in its full generality, especially dealing with the knotty technical issue of floors and ceilings, is beyond the scope of this book. This section, however, states and proves a va riant of the master theorem, called the continuous master theorem 1 in which the master recurrence (4.17) is defined over sufficiently large positive real numbers. The proof of this version, uncomplicated by floors and ceilings, contains the main ideas needed to understand how master recurrences behave. Section 4.7 discusses floors and ceilings in divideand-conquer recurrences at greater length, presenting sufficient conditions for them not to affect the asymptotic solutions."
+   "text": "Proving the master theorem (Theorem 4.1) in its full generality, especially dealing with the knotty technical issue of floors and ceilings, is beyond the scope of this book. This section, however, states and proves a variant of the master theorem, called the continuous master theorem 1 in which the master recurrence (4.17) is defined over sufficiently large positive real numbers. The proof of this version, uncomplicated by floors and ceilings, contains the main ideas needed to understand how master recurrences behave. Section 4.7 discusses floors and ceilings in divideand-conquer recurrences at greater length, presenting sufficient conditions for them not to affect the asymptotic solutions."
   },
   {
    "type": "body",
@@ -3308,7 +3308,7 @@
    "section_title": "4.6 Proof of the continuous master theorem",
    "printed_page": 107,
    "pdf_page": 128,
-   "text": "Although we usually assume that recurrences are algorithmic and don’t require an explicit statement of a base case, we must be much more careful for proofs that justify the practice. The lemmas and theorem in this section explicitly state the base cases, because the inductive proofs require mathematical grounding. It is common in the world of mathematics to be extraordinarily c areful proving theorems that justify acting more casually in practice."
+   "text": "Although we usually assume that recurrences are algorithmic and don’t require an explicit statement of a base case, we must be much more careful for proofs that justify the practice. The lemmas and theorem in this section explicitly state the base cases, because the inductive proofs require mathematical grounding. It is common in the world of mathematics to be extraordinarily careful proving theorems that justify acting more casually in practice."
   },
   {
    "type": "body",
@@ -3416,7 +3416,7 @@
    "section_title": "4.6 Proof of the continuous master theorem",
    "printed_page": 108,
    "pdf_page": 129,
-   "text": "We are now in a position to derive equation (4.18) by summing the costs of the nodes at each depth in the tree, as shown in the figure. The first term in the equation is the total costs of the leaves. Since ea ch leaf is at depth blog b nc + 1 and n/b blog b nc + 1 < 1, the base case of the recurrence gives the cost of a leaf: T(n/b blog b nc + 1 ) = Θ(1). Hence the cost of all Θ(n log b a ) leaves is Θ(n log b a ) • Θ(1) = Θ(n log b a ) by Problem 3-5(d). The second term in equation (4.18) is the cost of the internal nodes, which, in the underlying divide-andconquer algorithm, represents the costs of dividing problems into subproblems and …"
+   "text": "We are now in a position to derive equation (4.18) by summing the costs of the nodes at each depth in the tree, as shown in the figure. The first term in the equation is the total costs of the leaves. Since each leaf is at depth blog b nc + 1 and n/b blog b nc + 1 < 1, the base case of the recurrence gives the cost of a leaf: T(n/b blog b nc + 1 ) = Θ(1). Hence the cost of all Θ(n log b a ) leaves is Θ(n log b a ) • Θ(1) = Θ(n log b a ) by Problem 3-5(d). The second term in equation (4.18) is the cost of the internal nodes, which, in the underlying divide-andconquer algorithm, represents the costs of dividing problems into subproblems and …"
   },
   {
    "type": "body",
@@ -3461,7 +3461,7 @@
    "section_title": "4.6 Proof of the continuous master theorem",
    "printed_page": 109,
    "pdf_page": 130,
-   "text": "Figure 4.3 The recursion tree generated by T(n) = aT(n/b) + f(n) . The tree is a complete a-ary tree with a blog b nc + 1 leaves and height blog b nc + 1. The cost of the nodes at each depth is shown at the right, and their sum is given in equation (4.18). then recombining the subproblems. Since the cost fo r all the internal nodes at depth j is a j f(n/b j ), the total cost of all internal nodes is blog b nc X j D0 a j f(n/b j ):"
+   "text": "Figure 4.3 The recursion tree generated by T(n) = aT(n/b) + f(n) . The tree is a complete a-ary tree with a blog b nc + 1 leaves and height blog b nc + 1. The cost of the nodes at each depth is shown at the right, and their sum is given in equation (4.18). then recombining the subproblems. Since the cost for all the internal nodes at depth j is a j f(n/b j ), the total cost of all internal nodes is blog b nc X j D0 a j f(n/b j ):"
   },
   {
    "type": "body",
@@ -4460,7 +4460,7 @@
    "section_title": "4.7 Akra-Bazzi recurrences",
    "printed_page": 115,
    "pdf_page": 136,
-   "text": "This section provides an overview of two advanced t opics related to divide-andconquer recurrences. The first deals with technicalities arising from the use of floors and ceilings, and the second discusses the Akra-Bazzi method, which in- volves a little calculus, for solving complicated divide-and-conquer recurrences."
+   "text": "This section provides an overview of two advanced topics related to divide-andconquer recurrences. The first deals with technicalities arising from the use of floors and ceilings, and the second discusses the Akra-Bazzi method, which in- volves a little calculus, for solving complicated divide-and-conquer recurrences."
   },
   {
    "type": "body",
@@ -4514,7 +4514,7 @@
    "section_title": "4.7 Akra-Bazzi recurrences",
    "printed_page": 115,
    "pdf_page": 136,
-   "text": "The difference may not seem to be much—especially because that’s often the truth with recurrences—but to be mathematically correct, we must be careful with our assumptions. Since our end goal is to understand al gorithms and not the vagaries of mathematical corner cases, we’d like to be casual yet rigorous. How can we treat floors and ceilings casually while still ensuring rigor?"
+   "text": "The difference may not seem to be much—especially because that’s often the truth with recurrences—but to be mathematically correct, we must be careful with our assumptions. Since our end goal is to understand algorithms and not the vagaries of mathematical corner cases, we’d like to be casual yet rigorous. How can we treat floors and ceilings casually while still ensuring rigor?"
   },
   {
    "type": "body",
@@ -4676,7 +4676,7 @@
    "section_title": "4.7 Akra-Bazzi recurrences",
    "printed_page": 117,
    "pdf_page": 138,
-   "text": "But much larger perturbations are tolerable. As lon g as the driving function f(n) in recurrence (4.22) satisfies the polynomial-growth condition, it turns out that re- placing any term T(n/b i ) with T(n/b i + h i (n)), where jh i (n)j = O(n= lg 1C• n) for some constant Ω > 0 and sufficiently large n, leaves the asymptotic solution unaffected. Thus, the divide step in a divide-and-conquer algorithm can be moderately coarse without affecting the solution to its running-time recurrence."
+   "text": "But much larger perturbations are tolerable. As long as the driving function f(n) in recurrence (4.22) satisfies the polynomial-growth condition, it turns out that re- placing any term T(n/b i ) with T(n/b i + h i (n)), where jh i (n)j = O(n= lg 1C• n) for some constant Ω > 0 and sufficiently large n, leaves the asymptotic solution unaffected. Thus, the divide step in a divide-and-conquer algorithm can be moderately coarse without affecting the solution to its running-time recurrence."
   },
   {
    "type": "body",
@@ -4829,7 +4829,7 @@
    "section_title": "4.7 Akra-Bazzi recurrences",
    "printed_page": 118,
    "pdf_page": 139,
-   "text": "Although the Akra-Bazzi method is more general than the master theorem, it requires calculus and sometimes a bit more reasonin g. You also must ensure that your driving function satisfies the polynomial-growth condition if you want to ignore floors and ceilings, although that’s rarely a problem. When it applies, the master method is much simpler to use, but only when subproblem sizes are more or less equal. They are both good tools for your algorithmic toolkit."
+   "text": "Although the Akra-Bazzi method is more general than the master theorem, it requires calculus and sometimes a bit more reasoning. You also must ensure that your driving function satisfies the polynomial-growth condition if you want to ignore floors and ceilings, although that’s rarely a problem. When it applies, the master method is much simpler to use, but only when subproblem sizes are more or less equal. They are both good tools for your algorithmic toolkit."
   },
   {
    "type": "body",
@@ -5099,7 +5099,7 @@
    "section_title": "4.7 Akra-Bazzi recurrences",
    "printed_page": 120,
    "pdf_page": 141,
-   "text": "Give nine recurrences T a1 (N,n),T a2 (N,n),…,T c3 (N,n) for the worst-case running times of each of the three algorithms above wh en arrays and matrices are passed using each of the three parameter-passing strategies above. Solve your re- currences, giving tight asymptotic bounds."
+   "text": "Give nine recurrences T a1 (N,n),T a2 (N,n),…,T c3 (N,n) for the worst-case running times of each of the three algorithms above when arrays and matrices are passed using each of the three parameter-passing strategies above. Solve your re- currences, giving tight asymptotic bounds."
   },
   {
    "type": "problem",
@@ -5279,7 +5279,7 @@
    "section_title": "4.7 Akra-Bazzi recurrences",
    "printed_page": 121,
    "pdf_page": 142,
-   "text": "This problem develops properties of the Fibonacci n umbers, which are defined by recurrence (3.31) on page 69. We’ll explore the technique of generating functions to solve the Fibonacci recurrence. Define the generating function (or formal power series) F as F .´/ ="
+   "text": "This problem develops properties of the Fibonacci numbers, which are defined by recurrence (3.31) on page 69. We’ll explore the technique of generating functions to solve the Fibonacci recurrence. Define the generating function (or formal power series) F as F .´/ ="
   },
   {
    "type": "footnote",
@@ -5468,7 +5468,7 @@
    "section_title": "4.7 Akra-Bazzi recurrences",
    "printed_page": 123,
    "pdf_page": 144,
-   "text": "Now you will design an algorithm to identify which chips are good and which are bad, assuming that more than n/2 of the chips are good. First, you will determine how to identify one good chip. b. Show that ⌊n/2⌋ pairwise tests are sufficient to reduce the problem to one of nearly half the size. That is, show how to use ⌊n/2⌋ pairwise tests to obtain a set with at most ⌈n/2⌉ chips that still has the property that more than ha lf of the chips are good. c. Show how to apply the solution to part (b) recursively to identify one good chip. Give and solve the recurrence that describes the number of tests needed to identify one good chip."
+   "text": "Now you will design an algorithm to identify which chips are good and which are bad, assuming that more than n/2 of the chips are good. First, you will determine how to identify one good chip. b. Show that ⌊n/2⌋ pairwise tests are sufficient to reduce the problem to one of nearly half the size. That is, show how to use ⌊n/2⌋ pairwise tests to obtain a set with at most ⌈n/2⌉ chips that still has the property that more than half of the chips are good. c. Show how to apply the solution to part (b) recursively to identify one good chip. Give and solve the recurrence that describes the number of tests needed to identify one good chip."
   },
   {
    "type": "body",
@@ -5594,7 +5594,7 @@
    "section_title": "4.7 Akra-Bazzi recurrences",
    "printed_page": 123,
    "pdf_page": 144,
-   "text": "(Hint: For the \"if\" part, use induction separately on rows and columns.) b. The following array is not Monge. Change one elemen t in order to make it"
+   "text": "(Hint: For the \"if\" part, use induction separately on rows and columns.) b. The following array is not Monge. Change one element in order to make it"
   },
   {
    "type": "body",
@@ -5684,7 +5684,7 @@
    "section_title": "4.7 Akra-Bazzi recurrences",
    "printed_page": 124,
    "pdf_page": 145,
-   "text": "(given that the leftmost minimum of the even-numbered rows is known) in O(m + n) time. e. Write the recurrence for the running time of the al gorithm in part (d). Show that its solution is O(m + n log m)."
+   "text": "(given that the leftmost minimum of the even-numbered rows is known) in O(m + n) time. e. Write the recurrence for the running time of the algorithm in part (d). Show that its solution is O(m + n log m)."
   },
   {
    "type": "chapter-notes",
@@ -5729,7 +5729,7 @@
    "section_title": "4.7 Akra-Bazzi recurrences",
    "printed_page": 124,
    "pdf_page": 145,
-   "text": "(and which is frequently miscited in the literature ), may enhance the practicality of the method, but it does not affect its asymptoti c performance. Probert [368] described Winograd’s algorithm and showed that with seven multiplications, 15 additions is the minimum possible."
+   "text": "(and which is frequently miscited in the literature ), may enhance the practicality of the method, but it does not affect its asymptotic performance. Probert [368] described Winograd’s algorithm and showed that with seven multiplications, 15 additions is the minimum possible."
   },
   {
    "type": "body",
@@ -5819,7 +5819,7 @@
    "section_title": "4.7 Akra-Bazzi recurrences",
    "printed_page": 126,
    "pdf_page": 147,
-   "text": "This chapter introduces probabilistic analysis and randomized algorithms. If you are unfamiliar with the basics of probability theor y, you should read Sections"
+   "text": "This chapter introduces probabilistic analysis and randomized algorithms. If you are unfamiliar with the basics of probability theory, you should read Sections"
   },
   {
    "type": "body",
@@ -5837,7 +5837,7 @@
    "section_title": "4.7 Akra-Bazzi recurrences",
    "printed_page": 126,
    "pdf_page": 147,
-   "text": "Suppose that you need to hire a new office assistant. Your previous attempts at hiring have been unsuccessful, and you decide to use an employment agency. The employment agency sends you one candidate each day. You interview that person and then decide either to hire that person or not. You must pay the employment agency a small fee to interview an applicant. To actually hire an applicant is more costly, however, since you must fire your current office assistant and also pay a substantial hiring fee to the employment agency. You are committed to having, at all times, the best possible person for the job. Th erefore, you decide that, after interviewing each applicant, if that applicant is b etter qualified than the current office assistant, you will fire the current office assistant and hire the new applicant."
+   "text": "Suppose that you need to hire a new office assistant. Your previous attempts at hiring have been unsuccessful, and you decide to use an employment agency. The employment agency sends you one candidate each day. You interview that person and then decide either to hire that person or not. You must pay the employment agency a small fee to interview an applicant. To actually hire an applicant is more costly, however, since you must fire your current office assistant and also pay a substantial hiring fee to the employment agency. You are committed to having, at all times, the best possible person for the job. Th erefore, you decide that, after interviewing each applicant, if that applicant is better qualified than the current office assistant, you will fire the current office assistant and hire the new applicant."
   },
   {
    "type": "body",

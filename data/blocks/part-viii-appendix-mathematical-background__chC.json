@@ -52,7 +52,7 @@
    "section_title": "C.1 Counting",
    "printed_page": 1178,
    "pdf_page": 1199,
-   "text": "Section C.1 reviews elementary results in counting theory, including standard formulas for counting permutations and combinations. The axioms of probability and basic facts concerning probability distribution s form Section C.2. Random variables are introduced in Section C.3, along with the properties of expectation and variance. Section C.4 investigates the geometric and binomial distributions that arise from studying Bernoulli trials. The stud y of the binomial distribution continues in Section C.5, an advanced discussion of the \"tails\" of the distribution."
+   "text": "Section C.1 reviews elementary results in counting theory, including standard formulas for counting permutations and combinations. The axioms of probability and basic facts concerning probability distribution s form Section C.2. Random variables are introduced in Section C.3, along with the properties of expectation and variance. Section C.4 investigates the geometric and binomial distributions that arise from studying Bernoulli trials. The study of the binomial distribution continues in Section C.5, an advanced discussion of the \"tails\" of the distribution."
   },
   {
    "type": "body",
@@ -79,7 +79,7 @@
    "section_title": "C.1 Counting",
    "printed_page": 1178,
    "pdf_page": 1199,
-   "text": "This section reviews the elements of counting theor y. Since some of the material assumes a basic understanding of sets, you might wi sh to start by reviewing the material in Section B.1."
+   "text": "This section reviews the elements of counting theory. Since some of the material assumes a basic understanding of sets, you might wish to start by reviewing the material in Section B.1."
   },
   {
    "type": "body",
@@ -124,7 +124,7 @@
    "section_title": "C.1 Counting",
    "printed_page": 1179,
    "pdf_page": 1200,
-   "text": "The rule of product says that the number of ways to choose an ordered p air is the number of ways to choose the first element times the number of ways to choose the second element. That is, if A and B are two finite sets, then jA × B j = |A|•|B|, which is simply equation (B.4) on page 1157. For example, if an ice-cream parlor offers 28 flavors of ice cream and four toppings, the number of possible sundaes with one scoop of ice cream and one topping is 28 • 4 = 112."
+   "text": "The rule of product says that the number of ways to choose an ordered pair is the number of ways to choose the first element times the number of ways to choose the second element. That is, if A and B are two finite sets, then jA × B j = |A|•|B|, which is simply equation (B.4) on page 1157. For example, if an ice-cream parlor offers 28 flavors of ice cream and four toppings, the number of possible sundaes with one scoop of ice cream and one topping is 28 • 4 = 112."
   },
   {
    "type": "body",
@@ -151,7 +151,7 @@
    "section_title": "C.1 Counting",
    "printed_page": 1179,
    "pdf_page": 1200,
-   "text": "(Here we use the shorthand of omitting the angle br ackets when denoting a sequence.) We sometimes call a string of length k a k-string. A substring s 0 of a string s is an ordered sequence of consecutive elements of s . A k-substring of a string is a substring of length k. For example, 010 is a 3-substring of 01101001"
+   "text": "(Here we use the shorthand of omitting the angle brackets when denoting a sequence.) We sometimes call a string of length k a k-string. A substring s 0 of a string s is an ordered sequence of consecutive elements of s . A k-substring of a string is a substring of length k. For example, 010 is a 3-substring of 01101001"
   },
   {
    "type": "body",
@@ -1078,7 +1078,7 @@
    "section_title": "C.2 Probability",
    "printed_page": 1185,
    "pdf_page": 1206,
-   "text": "Most of the probability distributions we see in this book are over finite or countable sample spaces, and we generally consider all subsets of a sample s pace to be events. A notable exception is the continuous uniform probability distribution, which we’ll see shortly."
+   "text": "Most of the probability distributions we see in this book are over finite or countable sample spaces, and we generally consider all subsets of a sample space to be events. A notable exception is the continuous uniform probability distribution, which we’ll see shortly."
   },
   {
    "type": "body",
@@ -1195,7 +1195,7 @@
    "section_title": "C.2 Probability",
    "printed_page": 1186,
    "pdf_page": 1207,
-   "text": "The continuous uniform probability distribution is an example of a probability distribution in which not all subsets of the sample sp ace are considered to be events."
+   "text": "The continuous uniform probability distribution is an example of a probability distribution in which not all subsets of the sample space are considered to be events."
   },
   {
    "type": "body",
@@ -1204,7 +1204,7 @@
    "section_title": "C.2 Probability",
    "printed_page": 1186,
    "pdf_page": 1207,
-   "text": "The continuous uniform probability distribution is defined over a closed inter- val [a; b] of the reals, where a < b. The intuition is that each point in the in- terval [a; b] should be \"equally likely.\" Because there are an un countable number"
+   "text": "The continuous uniform probability distribution is defined over a closed inter- val [a; b] of the reals, where a < b. The intuition is that each point in the in- terval [a; b] should be \"equally likely.\" Because there are an uncountable number"
   },
   {
    "type": "body",
@@ -1744,7 +1744,7 @@
    "section_title": "C.3 Discrete random variables",
    "printed_page": 1191,
    "pdf_page": 1212,
-   "text": "A (discrete) random variable X is a function from a finite or countably infinite sample space S to the real numbers. It associates a real number with each possible outcome of an experiment, which allows us to work w ith the probability distribution induced on the resulting set of numbers. Ran dom variables can also be defined for uncountably infinite sample spaces, but they raise technical issues that are unnecessary to address for our purposes. Therefore we’ll assume that random variables are discrete."
+   "text": "A (discrete) random variable X is a function from a finite or countably infinite sample space S to the real numbers. It associates a real number with each possible outcome of an experiment, which allows us to work with the probability distribution induced on the resulting set of numbers. Ran dom variables can also be defined for uncountably infinite sample spaces, but they raise technical issues that are unnecessary to address for our purposes. Therefore we’ll assume that random variables are discrete."
   },
   {
    "type": "body",
@@ -1798,7 +1798,7 @@
    "section_title": "C.3 Discrete random variables",
    "printed_page": 1191,
    "pdf_page": 1212,
-   "text": "As an example, consider the experiment of rolling a pair of ordinary, 6-sided dice. There are 36 possible outcomes in the sample space. Assume that the probability distribution is uniform, so that each o utcome s 2 S is equally likely:"
+   "text": "As an example, consider the experiment of rolling a pair of ordinary, 6-sided dice. There are 36 possible outcomes in the sample space. Assume that the probability distribution is uniform, so that each outcome s 2 S is equally likely:"
   },
   {
    "type": "body",
@@ -2176,7 +2176,7 @@
    "section_title": "C.3 Discrete random variables",
    "printed_page": 1194,
    "pdf_page": 1215,
-   "text": "The expected value of a random variable does not ex press how \"spread out\" the variable’s values are. For example, consider random variables X and Y for which"
+   "text": "The expected value of a random variable does not express how \"spread out\" the variable’s values are. For example, consider random variables X and Y for which"
   },
   {
    "type": "body",
@@ -3238,7 +3238,7 @@
    "section_title": "C.4 The geometric and binomial distributions",
    "printed_page": 1201,
    "pdf_page": 1222,
-   "text": "Show that the variance of the geometric distributio n is q/p 2 . ( Hint: Use Exercise A.1-6 on page 1144.)"
+   "text": "Show that the variance of the geometric distribution is q/p 2 . ( Hint: Use Exercise A.1-6 on page 1144.)"
   },
   {
    "type": "body",
@@ -3517,7 +3517,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1203,
    "pdf_page": 1224,
-   "text": "The following corollary restates the theorem for th e left tail of the binomial distribution. In general, we’ll leave it to you to adapt the proofs from one tail to the other."
+   "text": "The following corollary restates the theorem for the left tail of the binomial distribution. In general, we’ll leave it to you to adapt the proofs from one tail to the other."
   },
   {
    "type": "body",
@@ -3769,7 +3769,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1204,
    "pdf_page": 1225,
-   "text": "Consider a sequence of n Bernoulli trials, where success occurs with probability p and failure with probability q = 1 − p. Then for 0<k ≤ np/2, the probability of fewer than k successes is less than half the probability of fewe r than k + 1 successes."
+   "text": "Consider a sequence of n Bernoulli trials, where success occurs with probability p and failure with probability q = 1 − p. Then for 0<k ≤ np/2, the probability of fewer than k successes is less than half the probability of fewer than k + 1 successes."
   },
   {
    "type": "body",
@@ -4399,7 +4399,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1208,
    "pdf_page": 1229,
-   "text": "When applied to Bernoulli trials in which each tria l has the same probability of success, Theorem C.8 yields the following corollary bounding the right tail of a binomial distribution."
+   "text": "When applied to Bernoulli trials in which each trial has the same probability of success, Theorem C.8 yields the following corollary bounding the right tail of a binomial distribution."
   },
   {
    "type": "body",
@@ -4570,7 +4570,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1210,
    "pdf_page": 1231,
-   "text": "Merrill to open one of the other doors, revealing a goat (not a valuable prize). He asks whether you would like to stick with your current choice or to switch to the other closed door. What should you do to maximize y our chances of winning the automobile and not the other goat?"
+   "text": "Merrill to open one of the other doors, revealing a goat (not a valuable prize). He asks whether you would like to stick with your current choice or to switch to the other closed door. What should you do to maximize your chances of winning the automobile and not the other goat?"
   },
   {
    "type": "body",
@@ -4579,7 +4579,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1210,
    "pdf_page": 1231,
-   "text": "The answer to this question—stick or switch?4has been heavily debated, in part because the problem setup is ambiguous. We’ll explore different subtle assumptions. a. Suppose that your first pick is random, with probability 1/3 of choosing the right door. Moreover, you know that Monty always gives every contestant (and will give you) the opportunity to switch. Prove tha t it is better to switch than stick. What is your probability of winning the automobile?"
+   "text": "The answer to this question—stick or switch?4has been heavily debated, in part because the problem setup is ambiguous. We’ll explore different subtle assumptions. a. Suppose that your first pick is random, with probability 1/3 of choosing the right door. Moreover, you know that Monty always gives every contestant (and will give you) the opportunity to switch. Prove that it is better to switch than stick. What is your probability of winning the automobile?"
   },
   {
    "type": "body",
@@ -4687,7 +4687,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1211,
    "pdf_page": 1232,
-   "text": "Let’s now analyze this game and understand how the choices of p right , p wrong , and p switch influence the probability of winning. b. What are the six outcomes in the sample space for this game? Which outcomes correspond to you winning the automobile? What are the probabilities in terms of p right , p wrong , and p switch of each outcome? Organize your answers into a table. c. Use the results of your table (or other means) to p rove that the probability of winning the automobile is 3 .2p wrong p switch − p right p switch C 1/:"
+   "text": "Let’s now analyze this game and understand how the choices of p right , p wrong , and p switch influence the probability of winning. b. What are the six outcomes in the sample space for this game? Which outcomes correspond to you winning the automobile? What are the probabilities in terms of p right , p wrong , and p switch of each outcome? Organize your answers into a table. c. Use the results of your table (or other means) to prove that the probability of winning the automobile is 3 .2p wrong p switch − p right p switch C 1/:"
   },
   {
    "type": "body",
@@ -4759,7 +4759,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1212,
    "pdf_page": 1233,
-   "text": "This problem investigates the effect of various assumptions on the number of ways of placing n balls into b distinct bins. a. Suppose that the n balls are distinct and that their order within a bi n does not matter. Argue that the number of ways of placing the balls in the bins is b n . b. Suppose that the balls are distinct and that the ba lls in each bin are ordered."
+   "text": "This problem investigates the effect of various assumptions on the number of ways of placing n balls into b distinct bins. a. Suppose that the n balls are distinct and that their order within a bin does not matter. Argue that the number of ways of placing the balls in the bins is b n . b. Suppose that the balls are distinct and that the balls in each bin are ordered."
   },
   {
    "type": "body",

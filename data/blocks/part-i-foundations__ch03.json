@@ -120,7 +120,7 @@
    "section_title": "3.1 O-notation, Ω-notation, and Θ-notation",
    "printed_page": 50,
    "pdf_page": 71,
-   "text": "Because this function grows no faster than n 3 , we can write that it is O(n 3 ). You might be surprised that we can also write that the function 7n 3 + 100n 2 − 20n + 6 is O(n 4 ). Why? Because the function grows more slowly than n 4 , we are correct in saying that it grows no faster. As you might hav e guessed, this function is also"
+   "text": "Because this function grows no faster than n 3 , we can write that it is O(n 3 ). You might be surprised that we can also write that the function 7n 3 + 100n 2 − 20n + 6 is O(n 4 ). Why? Because the function grows more slowly than n 4 , we are correct in saying that it grows no faster. As you might have guessed, this function is also"
   },
   {
    "type": "body",
@@ -273,7 +273,7 @@
    "section_title": "3.1 O-notation, Ω-notation, and Θ-notation",
    "printed_page": 51,
    "pdf_page": 72,
-   "text": "What can we observe about how the pseudocode operates? The procedure has nested loops. The outer loop is a for loop that runs n − 1 times, regardless of the values being sorted. The inner loop is a while loop, but the number of iterations it makes depends on the values being sorted. The lo op variable j starts at i − 1 each of the n/3 largest values moves through each of these n/3 positions to somewhere in these n/3 positions"
+   "text": "What can we observe about how the pseudocode operates? The procedure has nested loops. The outer loop is a for loop that runs n − 1 times, regardless of the values being sorted. The inner loop is a while loop, but the number of iterations it makes depends on the values being sorted. The loop variable j starts at i − 1 each of the n/3 largest values moves through each of these n/3 positions to somewhere in these n/3 positions"
   },
   {
    "type": "body",
@@ -300,7 +300,7 @@
    "section_title": "3.1 O-notation, Ω-notation, and Θ-notation",
    "printed_page": 52,
    "pdf_page": 73,
-   "text": "These observations suffice to deduce an O(n 2 ) running time for any case of INSERTION-SORT, giving us a blanket statement that covers all inputs. The ru n- ning time is dominated by the inner loop. Because e ach of the n − 1 iterations of the outer loop causes the inner loop to iterate at most i − 1 times, and because i is at most n, the total number of iterations of the inner loop is at most (n − 1).n − 1/, which is less than n 2 . Since each iteration of the inner loop takes cons tant time, the total time spent in the inner loop is at most a constant times n 2 , or O(n 2 )."
+   "text": "These observations suffice to deduce an O(n 2 ) running time for any case of INSERTION-SORT, giving us a blanket statement that covers all inputs. The running time is dominated by the inner loop. Because each of the n − 1 iterations of the outer loop causes the inner loop to iterate at most i − 1 times, and because i is at most n, the total number of iterations of the inner loop is at most (n − 1).n − 1/, which is less than n 2 . Since each iteration of the inner loop takes constant time, the total time spent in the inner loop is at most a constant times n 2 , or O(n 2 )."
   },
   {
    "type": "body",
@@ -417,7 +417,7 @@
    "section_title": "3.2 Asymptotic notation: formal definitions",
    "printed_page": 54,
    "pdf_page": 75,
-   "text": "Figure 3.2 Graphic examples of the O, Ω, and Θ notations. In each part, the value of n 0 shown is the minimum possible value, but any greater valu e also works. (a) O-notation gives an upper bound for a function to within a constant factor. W e write f(n) = O(g(n)) if there are positive constants n 0 and c such that at and to the right of n 0 , the value of f(n) always lies on or below cg(n). (b) Ω-notation gives a lower bound for a function to within a constant factor. We write f(n) = Ω(g(n)) if there are positive constants n 0 and c such that at and to the right of n 0 , the value of f(n) always lies on or above cg(n). (c) Θ-notation bounds a function to within constant factors."
+   "text": "Figure 3.2 Graphic examples of the O, Ω, and Θ notations. In each part, the value of n 0 shown is the minimum possible value, but any greater value also works. (a) O-notation gives an upper bound for a function to within a constant factor. W e write f(n) = O(g(n)) if there are positive constants n 0 and c such that at and to the right of n 0 , the value of f(n) always lies on or below cg(n). (b) Ω-notation gives a lower bound for a function to within a constant factor. We write f(n) = Ω(g(n)) if there are positive constants n 0 and c such that at and to the right of n 0 , the value of f(n) always lies on or above cg(n). (c) Θ-notation bounds a function to within constant factors."
   },
   {
    "type": "body",
@@ -741,7 +741,7 @@
    "section_title": "3.2 Asymptotic notation: formal definitions",
    "printed_page": 57,
    "pdf_page": 78,
-   "text": "That is an overstatement because by omitting \"worst-case\" from the statement, we’re left with a blanket statement covering all cases. The error here is that insertion sort does not run in Θ(n 2 ) time in all cases since, as we’ve seen, it runs in Θ(n) time in the best case. We can correctly say that insertion sort’s running time is O(n 2 ), however, because in all cases, its running time g rows no faster than n 2 ."
+   "text": "That is an overstatement because by omitting \"worst-case\" from the statement, we’re left with a blanket statement covering all cases. The error here is that insertion sort does not run in Θ(n 2 ) time in all cases since, as we’ve seen, it runs in Θ(n) time in the best case. We can correctly say that insertion sort’s running time is O(n 2 ), however, because in all cases, its running time grows no faster than n 2 ."
   },
   {
    "type": "body",
@@ -795,7 +795,7 @@
    "section_title": "3.2 Asymptotic notation: formal definitions",
    "printed_page": 57,
    "pdf_page": 78,
-   "text": "We typically use asymptotic notation to provide the simplest and most precise bounds possible. For example, if an algorithm has a running time of 3n 2 + 20n in all cases, we use asymptotic notation to write t hat its running time is Θ(n 2 )."
+   "text": "We typically use asymptotic notation to provide the simplest and most precise bounds possible. For example, if an algorithm has a running time of 3n 2 + 20n in all cases, we use asymptotic notation to write that its running time is Θ(n 2 )."
   },
   {
    "type": "body",
@@ -804,7 +804,7 @@
    "section_title": "3.2 Asymptotic notation: formal definitions",
    "printed_page": 57,
    "pdf_page": 78,
-   "text": "Strictly speaking, we are also correct in writing t hat the running time is O(n 3 ) or Θ(3n 2 + 20n). Neither of these expressions is as useful as writing Θ(n 2 ) in this case, however: O(n 3 ) is less precise than Θ(n 2 ) if the running time is 3n 2 + 20n, and Θ(3n 2 + 20n) introduces complexity that obscures the order of gr owth. By writing the simplest and most precise bound, such a s Θ(n 2 ), we can categorize and compare different algorithms. Throughout the bo ok, you will see asymptotic running times that are almost always based on polynomials and logarithms: functions such as n, n lg 2 n, n 2 lg n, or n 1/2 . You will also see some other functions, such as exponentials, lg lg n, and lg − n (see Section 3.3). It is usually fairly easy to compare the rates of growth of these functions. Problem 3-3 gives you good practice."
+   "text": "Strictly speaking, we are also correct in writing that the running time is O(n 3 ) or Θ(3n 2 + 20n). Neither of these expressions is as useful as writing Θ(n 2 ) in this case, however: O(n 3 ) is less precise than Θ(n 2 ) if the running time is 3n 2 + 20n, and Θ(3n 2 + 20n) introduces complexity that obscures the order of growth. By writing the simplest and most precise bound, such a s Θ(n 2 ), we can categorize and compare different algorithms. Throughout the book, you will see asymptotic running times that are almost always based on polynomials and logarithms: functions such as n, n lg 2 n, n 2 lg n, or n 1/2 . You will also see some other functions, such as exponentials, lg lg n, and lg − n (see Section 3.3). It is usually fairly easy to compare the rates of growth of these functions. Problem 3-3 gives you good practice."
   },
   {
    "type": "body",
@@ -858,7 +858,7 @@
    "section_title": "3.2 Asymptotic notation: formal definitions",
    "printed_page": 58,
    "pdf_page": 79,
-   "text": "Using asymptotic notation in this manner can help e liminate inessential detail and clutter in an equation. For example, in Chapter 2 we expressed the worst-case running time of merge sort as the recurrence"
+   "text": "Using asymptotic notation in this manner can help eliminate inessential detail and clutter in an equation. For example, in Chapter 2 we expressed the worst-case running time of merge sort as the recurrence"
   },
   {
    "type": "body",
@@ -876,7 +876,7 @@
    "section_title": "3.2 Asymptotic notation: formal definitions",
    "printed_page": 58,
    "pdf_page": 79,
-   "text": "If we are interested only in the asymptotic behavio r of T(n) , there is no point in specifying all the lower-order terms exactly, because they are all understood to be included in the anonymous function denoted by the term Θ(n)."
+   "text": "If we are interested only in the asymptotic behavior of T(n) , there is no point in specifying all the lower-order terms exactly, because they are all understood to be included in the anonymous function denoted by the term Θ(n)."
   },
   {
    "type": "body",
@@ -885,7 +885,7 @@
    "section_title": "3.2 Asymptotic notation: formal definitions",
    "printed_page": 58,
    "pdf_page": 79,
-   "text": "The number of anonymous functions in an expression is understood to be equal to the number of times the asymptotic notation appears. For e xample, in the ex- pression n X i D1"
+   "text": "The number of anonymous functions in an expression is understood to be equal to the number of times the asymptotic notation appears. For example, in the ex- pression n X i D1"
   },
   {
    "type": "body",
@@ -975,7 +975,7 @@
    "section_title": "3.2 Asymptotic notation: formal definitions",
    "printed_page": 59,
    "pdf_page": 80,
-   "text": "Besides the abuse of equality to mean set membershi p, which we now see has a precise mathematical interpretation, another abuse of asymptotic notation occurs when the variable tending toward 1 must be inferred from context. For example, when we say O(g(n)), we can assume that we’re interested in the growth of g(n)"
+   "text": "Besides the abuse of equality to mean set membership, which we now see has a precise mathematical interpretation, another abuse of asymptotic notation occurs when the variable tending toward 1 must be inferred from context. For example, when we say O(g(n)), we can assume that we’re interested in the growth of g(n)"
   },
   {
    "type": "body",
@@ -993,7 +993,7 @@
    "section_title": "3.2 Asymptotic notation: formal definitions",
    "printed_page": 59,
    "pdf_page": 80,
-   "text": "The most common situation requiring contextual know ledge of which variable tends to 1 occurs when the function inside the asymptotic notation is a constant, as in the expression O(1). We cannot infer from the expression which variabl e is going to 1, because no variable appears there. The context must disambiguate. For example, if the equation using asymptotic notation is f(n) = O(1), it’s apparent that the variable we’re interested in is n. Knowing from context that the variable of interest is n, however, allows us to make perfect sense of the e xpression by using the formal definition of O-notation: the expression f(n) = O(1) means that the function f(n) is bounded from above by a constant as n goes to 1. Technically, it might be less ambiguous if we explicitly indicated the variable tending to 1 in the asymptotic notation itself, but that would clutter the notation. Instead, we simply ensure that the context makes it clear which variable (or variables) tend to 1."
+   "text": "The most common situation requiring contextual know ledge of which variable tends to 1 occurs when the function inside the asymptotic notation is a constant, as in the expression O(1). We cannot infer from the expression which variable is going to 1, because no variable appears there. The context must disambiguate. For example, if the equation using asymptotic notation is f(n) = O(1), it’s apparent that the variable we’re interested in is n. Knowing from context that the variable of interest is n, however, allows us to make perfect sense of the expression by using the formal definition of O-notation: the expression f(n) = O(1) means that the function f(n) is bounded from above by a constant as n goes to 1. Technically, it might be less ambiguous if we explicitly indicated the variable tending to 1 in the asymptotic notation itself, but that would clutter the notation. Instead, we simply ensure that the context makes it clear which variable (or variables) tend to 1."
   },
   {
    "type": "body",
@@ -1011,7 +1011,7 @@
    "section_title": "3.2 Asymptotic notation: formal definitions",
    "printed_page": 59,
    "pdf_page": 80,
-   "text": "especially when stating recurrences. We may write s omething like T(n) = O(1) for n < 3. According to the formal definition of O-notation, this statement is meaningless, because the definition only says that T(n) is bounded above by a"
+   "text": "especially when stating recurrences. We may write something like T(n) = O(1) for n < 3. According to the formal definition of O-notation, this statement is meaningless, because the definition only says that T(n) is bounded above by a"
   },
   {
    "type": "body",
@@ -1776,7 +1776,7 @@
    "section_title": "3.3 Standard notations and common functions",
    "printed_page": 66,
    "pdf_page": 87,
-   "text": "We adopt the following notational convention: in th e absence of parentheses, a logarithm function applies only to the next term in the formula, so that lg n + 1 means (lg n) + 1 and not lg(n + 1)."
+   "text": "We adopt the following notational convention: in the absence of parentheses, a logarithm function applies only to the next term in the formula, so that lg n + 1 means (lg n) + 1 and not lg(n + 1)."
   },
   {
    "type": "body",
@@ -1911,7 +1911,7 @@
    "section_title": "3.3 Standard notations and common functions",
    "printed_page": 67,
    "pdf_page": 88,
-   "text": "; (3.25) where e is the base of the natural logarithm, gives us a ti ghter upper bound, and a lower bound as well. Exercise 3.3-4 asks you to prove the three facts n! = o(n n ); (3.26) n! = !.2 n /; (3.27) lg.n!/ = Θ(n lg n); (3.28) where Stirling’s approximation is helpful in proving equation (3.28). The following equation also holds for all n ≥ 1: n! = p"
+   "text": "; (3.25) where e is the base of the natural logarithm, gives us a tighter upper bound, and a lower bound as well. Exercise 3.3-4 asks you to prove the three facts n! = o(n n ); (3.26) n! = !.2 n /; (3.27) lg.n!/ = Θ(n lg n); (3.28) where Stirling’s approximation is helpful in proving equation (3.28). The following equation also holds for all n ≥ 1: n! = p"
   },
   {
    "type": "body",

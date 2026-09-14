@@ -72,7 +72,7 @@
    "section_title": "9.1 Minimum and maximum",
    "printed_page": 228,
    "pdf_page": 249,
-   "text": "How many comparisons are necessary to determine the minimum of a set of n elements? To obtain an upper bound of n − 1 comparisons, just examine each element of the set in turn and keep track of the sm allest element seen so far. The"
+   "text": "How many comparisons are necessary to determine the minimum of a set of n elements? To obtain an upper bound of n − 1 comparisons, just examine each element of the set in turn and keep track of the smallest element seen so far. The"
   },
   {
    "type": "body",
@@ -144,7 +144,7 @@
    "section_title": "9.1 Minimum and maximum",
    "printed_page": 229,
    "pdf_page": 250,
-   "text": "Although 2n − 2 comparisons is asymptotically optimal, it is possible to improve the leading constant. We can find both the minimum and the maximum using at most 3 ⌊n/2⌋ comparisons. The trick is to maintain both the minimum and maximum elements seen thus far. Rather than processing each element of the input by comparing it against the current minimum and maximu m, at a cost of 2 comparisons per element, process elements in pairs. Compa re pairs of elements from the input first with each other, and then compare the smaller with the current minimum and the larger to the current maximum, at a cos t of 3 comparisons for every"
+   "text": "Although 2n − 2 comparisons is asymptotically optimal, it is possible to improve the leading constant. We can find both the minimum and the maximum using at most 3 ⌊n/2⌋ comparisons. The trick is to maintain both the minimum and maximum elements seen thus far. Rather than processing each element of the input by comparing it against the current minimum and maximum, at a cost of 2 comparisons per element, process elements in pairs. Compa re pairs of elements from the input first with each other, and then compare the smaller with the current minimum and the larger to the current maximum, at a cost of 3 comparisons for every"
   },
   {
    "type": "body",
@@ -427,7 +427,7 @@
    "section_title": "9.2 Selection in expected linear time",
    "printed_page": 231,
    "pdf_page": 252,
-   "text": "A[p : r], showing the values of the parameters p, r , and i at each recursive call. The subarray A[p : r] in each recursive step is shown in tan, with the da rk tan element selected as the pivot for the next partitioning. Blue elements are outside A[p : r]. The answer is the tan element in the bottom array , where √D r = 5 and i = 1. The array designations A .0/ ,A .1/ ,…,A .5/ , the partitioning numbers, and whether the partitioning is helpful are explained on the following page. the number of elements in the low side of the partition, plus 1 for the pivot element."
+   "text": "A[p : r], showing the values of the parameters p, r , and i at each recursive call. The subarray A[p : r] in each recursive step is shown in tan, with the dark tan element selected as the pivot for the next partitioning. Blue elements are outside A[p : r]. The answer is the tan element in the bottom array , where √D r = 5 and i = 1. The array designations A .0/ ,A .1/ ,…,A .5/ , the partitioning numbers, and whether the partitioning is helpful are explained on the following page. the number of elements in the low side of the partition, plus 1 for the pivot element."
   },
   {
    "type": "body",
@@ -445,7 +445,7 @@
    "section_title": "9.2 Selection in expected linear time",
    "printed_page": 231,
    "pdf_page": 252,
-   "text": "A[p : q − 1] and A[q + 1 : r] the i th smallest element lies. If i <k, then the desired element lies on the low side of the partition, and line 8 recursively selects it from the subarray. If i >k, however, then the desired element lies on the hig h side of the partition. Since we already know k values that are smaller than the i th smallest element of A[p : r]4namely, the elements of A[p : q]4the desired element is the (i − k)th smallest element of A[q + 1 : r], which line 9 finds recursively. The code appears to allow recursive calls to subarrays with 0 elements, but Exercise 9.2-1 asks you to show that this situation cannot happen."
+   "text": "A[p : q − 1] and A[q + 1 : r] the i th smallest element lies. If i <k, then the desired element lies on the low side of the partition, and line 8 recursively selects it from the subarray. If i >k, however, then the desired element lies on the high side of the partition. Since we already know k values that are smaller than the i th smallest element of A[p : r]4namely, the elements of A[p : q]4the desired element is the (i − k)th smallest element of A[q + 1 : r], which line 9 finds recursively. The code appears to allow recursive calls to subarrays with 0 elements, but Exercise 9.2-1 asks you to show that this situation cannot happen."
   },
   {
    "type": "body",
@@ -472,7 +472,7 @@
    "section_title": "9.2 Selection in expected linear time",
    "printed_page": 232,
    "pdf_page": 253,
-   "text": "To see the intuition behind the linear expected run ning time, suppose that each time the algorithm randomly selects a pivot element , the pivot lies somewhere within the second and third quartiles—the <middle half/4of the remaining elements in sorted order. If the i th smallest element is less than the pivot, then al l the elements greater than the pivot are ignored in all future recursive calls. These ignored elements include at least the uppermost quartile, and possibly more. Likewise, if the i th smallest element is greater than the pivot, then all the elements less than the pivot—at least the first quartile—are ignored in all future recursive calls. Either way, therefore, at least 1/4 of the remaining elements are ignored in all future recursive calls, leaving at most 3/4 of the remaining elements in play: residing in the subarray A[p : r]. Since RANDOMIZED-PARTITION takes Θ(n) time on a subarray of n elements, the recurrence for the worst-case running time is T(n) = T(3n/4) + Θ(n). By case 3 of the master method (Theorem 4.1 on"
+   "text": "To see the intuition behind the linear expected run ning time, suppose that each time the algorithm randomly selects a pivot element , the pivot lies somewhere within the second and third quartiles—the <middle half/4of the remaining elements in sorted order. If the i th smallest element is less than the pivot, then all the elements greater than the pivot are ignored in all future recursive calls. These ignored elements include at least the uppermost quartile, and possibly more. Likewise, if the i th smallest element is greater than the pivot, then all the elements less than the pivot—at least the first quartile—are ignored in all future recursive calls. Either way, therefore, at least 1/4 of the remaining elements are ignored in all future recursive calls, leaving at most 3/4 of the remaining elements in play: residing in the subarray A[p : r]. Since RANDOMIZED-PARTITION takes Θ(n) time on a subarray of n elements, the recurrence for the worst-case running time is T(n) = T(3n/4) + Θ(n). By case 3 of the master method (Theorem 4.1 on"
   },
   {
    "type": "body",
@@ -508,7 +508,7 @@
    "section_title": "9.2 Selection in expected linear time",
    "printed_page": 232,
    "pdf_page": 253,
-   "text": "In other words, we expect that half of the partitionings reduce the number of elements still in play by at least 3/4 and that half of the partitionings do not help as much. Consequently, the expected number of partitionings at most doubles from the case when the pivot always falls into the middl e half. The cost of each extra partitioning is less than the one that preceded it, so that the expected running time is still Θ(n)."
+   "text": "In other words, we expect that half of the partitionings reduce the number of elements still in play by at least 3/4 and that half of the partitionings do not help as much. Consequently, the expected number of partitionings at most doubles from the case when the pivot always falls into the middle half. The cost of each extra partitioning is less than the one that preceded it, so that the expected running time is still Θ(n)."
   },
   {
    "type": "body",
@@ -526,7 +526,7 @@
    "section_title": "9.2 Selection in expected linear time",
    "printed_page": 232,
    "pdf_page": 253,
-   "text": "Let’s call the j th partitioning helpful if jA (j ) j ≤ .3/4/jA (j −1) j. Figure 9.1 shows the sets A (j ) and whether partitionings are helpful for an exampl e array."
+   "text": "Let’s call the j th partitioning helpful if jA (j ) j ≤ .3/4/jA (j −1) j. Figure 9.1 shows the sets A (j ) and whether partitionings are helpful for an example array."
   },
   {
    "type": "body",
@@ -562,7 +562,7 @@
    "section_title": "9.2 Selection in expected linear time",
    "printed_page": 233,
    "pdf_page": 254,
-   "text": "Proof Whether a partitioning is helpful depends on the ra ndomly chosen pivot."
+   "text": "Proof Whether a partitioning is helpful depends on the randomly chosen pivot."
   },
   {
    "type": "body",
@@ -580,7 +580,7 @@
    "section_title": "9.2 Selection in expected linear time",
    "printed_page": 233,
    "pdf_page": 254,
-   "text": "⌈n/4⌉ − 1 and greatest ⌈n/4⌉ − 1 elements (that is, all but the first ⌈n/4⌉ − 1 and last ⌈n/4⌉ − 1 elements if the subarray were sorted). We’ll prove that if the pivot falls into the middle half, then the pivot le ads to a helpful partitioning, and we’ll also prove that the probability of the pivot falling into the middle half is at least 1/2."
+   "text": "⌈n/4⌉ − 1 and greatest ⌈n/4⌉ − 1 elements (that is, all but the first ⌈n/4⌉ − 1 and last ⌈n/4⌉ − 1 elements if the subarray were sorted). We’ll prove that if the pivot falls into the middle half, then the pivot leads to a helpful partitioning, and we’ll also prove that the probability of the pivot falling into the middle half is at least 1/2."
   },
   {
    "type": "body",
@@ -589,7 +589,7 @@
    "section_title": "9.2 Selection in expected linear time",
    "printed_page": 233,
    "pdf_page": 254,
-   "text": "Regardless of where the pivot falls, either all the elements greater than it or all the elements less than it, along with the pivot itself, will no longer be in play after partitioning. If the pivot falls into the middle ha lf, therefore, at least ⌈n/4⌉ − 1 elements less than the pivot or ⌈n/4⌉ − 1 elements greater than the pivot, plus the pivot, will no longer be in play after partitioning. That is, at least ⌈n/4⌉ elements will no longer be in play. The number of elements remaining in play will be at most n − ⌈n/4⌉, which equals ⌊3n/4⌋ by Exercise 3.3-2 on page 70. Since"
+   "text": "Regardless of where the pivot falls, either all the elements greater than it or all the elements less than it, along with the pivot itself, will no longer be in play after partitioning. If the pivot falls into the middle half, therefore, at least ⌈n/4⌉ − 1 elements less than the pivot or ⌈n/4⌉ − 1 elements greater than the pivot, plus the pivot, will no longer be in play after partitioning. That is, at least ⌈n/4⌉ elements will no longer be in play. The number of elements remaining in play will be at most n − ⌈n/4⌉, which equals ⌊3n/4⌋ by Exercise 3.3-2 on page 70. Since"
   },
   {
    "type": "body",
@@ -967,7 +967,7 @@
    "section_title": "9.2 Selection in expected linear time",
    "printed_page": 235,
    "pdf_page": 256,
-   "text": "Since n 0 is the size of the original array A, we conclude that the expected number of comparisons, and thus the expected running t ime, for RANDOMIZED-SELECT is O(n). All n elements are examined in the first call of RANDOMIZED -"
+   "text": "Since n 0 is the size of the original array A, we conclude that the expected number of comparisons, and thus the expected running time, for RANDOMIZED-SELECT is O(n). All n elements are examined in the first call of RANDOMIZED -"
   },
   {
    "type": "body",
@@ -1193,7 +1193,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 238,
    "pdf_page": 259,
-   "text": "Figure 9.3 The relationships between elements (shown as circles) immediately after line 17 of the selection algorithm SELECT . There are g = (r − p + 1)/5 groups of 5 elements, each of which occupies a column. For example, the leftmost column c ontains elements A[p], A[p + g], A[p + 2g], A[p + 3g], A[p + 4g], and the next column contains A[p + 1], A[p + g + 1], A[p + 2g + 1], A[p + 3g + 1], A[p + 4g + 1]. The medians of the groups are red, and the pivot x is labeled."
+   "text": "Figure 9.3 The relationships between elements (shown as circles) immediately after line 17 of the selection algorithm SELECT . There are g = (r − p + 1)/5 groups of 5 elements, each of which occupies a column. For example, the leftmost column contains elements A[p], A[p + g], A[p + 2g], A[p + 3g], A[p + 4g], and the next column contains A[p + 1], A[p + g + 1], A[p + 2g + 1], A[p + 3g + 1], A[p + 4g + 1]. The medians of the groups are red, and the pivot x is labeled."
   },
   {
    "type": "body",
@@ -1319,7 +1319,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 239,
    "pdf_page": 260,
-   "text": "Now let’s determine the running time for the recursive calls. The recursive call to find the pivot in line 16 takes T(g) ≤ T(n/5) time, since g ≤ n/5 and T(n) monotonically increases. Of the two recursive calls in lines 23 and 24, at most one is executed. But we’ll see that no matter which of these two recursive calls to SELECT actually executes, the number of elements in the re cursive call turns out to be at most 7n/10, and hence the worst-case cost for lines 23 and 24 is at most T(7n/10). Let’s now show that the machinations with group medians and the choice of the pivot x as the median of the group medians guarantees this property."
+   "text": "Now let’s determine the running time for the recursive calls. The recursive call to find the pivot in line 16 takes T(g) ≤ T(n/5) time, since g ≤ n/5 and T(n) monotonically increases. Of the two recursive calls in lines 23 and 24, at most one is executed. But we’ll see that no matter which of these two recursive calls to SELECT actually executes, the number of elements in the recursive call turns out to be at most 7n/10, and hence the worst-case cost for lines 23 and 24 is at most T(7n/10). Let’s now show that the machinations with group medians and the choice of the pivot x as the median of the group medians guarantees this property."
   },
   {
    "type": "body",
@@ -1436,7 +1436,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 241,
    "pdf_page": 262,
-   "text": "As in a comparison sort (see Section 8.1), SELECT and RANDOMIZED-SELECT determine information about the relative order of elements only by comparing elements. Recall from Chapter 8 that sorting requires Ω(n lg n) time in the comparison model, even on average (see Problem 8-1). The linear-time sorting algorithms in Chapter 8 make assumptions about the type of the input. In contrast, the lineartime selection algorithms in this chapter do not require any assumptions about the input’s type, only that the elements are distinct and can be pairwise compared according to a linear order. The algorithms in this c hapter are not subject to the Ω(n lg n) lower bound, because they manage to solve the selection problem without sorting all the elements. Thus, solving the selection problem by sorting and indexing, as presented in the introduction to this chapter, is asymptotically inefficient in the comparison model."
+   "text": "As in a comparison sort (see Section 8.1), SELECT and RANDOMIZED-SELECT determine information about the relative order of elements only by comparing elements. Recall from Chapter 8 that sorting requires Ω(n lg n) time in the comparison model, even on average (see Problem 8-1). The linear-time sorting algorithms in Chapter 8 make assumptions about the type of the input. In contrast, the lineartime selection algorithms in this chapter do not require any assumptions about the input’s type, only that the elements are distinct and can be pairwise compared according to a linear order. The algorithms in this chapter are not subject to the Ω(n lg n) lower bound, because they manage to solve the selection problem without sorting all the elements. Thus, solving the selection problem by sorting and indexing, as presented in the introduction to this chapter, is asymptotically inefficient in the comparison model."
   },
   {
    "type": "exercise",
@@ -1756,7 +1756,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 245,
    "pdf_page": 266,
-   "text": "(Hint: Begin with ⌊n/2⌋ disjoint pairwise comparisons, and recurse on the s et containing the smaller element from each pair.) b. Show that, if i <n/2, then U i (n) = n + O(S(2i) lg(n/i)) . c. Show that if i is a constant less than n/2, then U i (n) = n + O(lg n). d. Show that if i = n/k for k ≥ 2, then U i (n) = n + O(S(2n/k) lg k)."
+   "text": "(Hint: Begin with ⌊n/2⌋ disjoint pairwise comparisons, and recurse on the set containing the smaller element from each pair.) b. Show that, if i <n/2, then U i (n) = n + O(S(2i) lg(n/i)) . c. Show that if i is a constant less than n/2, then U i (n) = n + O(lg n). d. Show that if i = n/k for k ≥ 2, then U i (n) = n + O(S(2n/k) lg k)."
   },
   {
    "type": "problem",
@@ -1783,7 +1783,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 245,
    "pdf_page": 266,
-   "text": "As in the quicksort analysis, we assume that all el ements are distinct, and we rename the elements of the input array A as ´ 1 ,´ 2 ,…,´ n , where ´ i is the i th smallest element. Thus the call RANDOMIZED-SELECT (A,1,n,i) returns ´ i ."
+   "text": "As in the quicksort analysis, we assume that all elements are distinct, and we rename the elements of the input array A as ´ 1 ,´ 2 ,…,´ n , where ´ i is the i th smallest element. Thus the call RANDOMIZED-SELECT (A,1,n,i) returns ´ i ."
   },
   {
    "type": "body",
@@ -1846,7 +1846,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 246,
    "pdf_page": 267,
-   "text": "Because the bound in part (b) is just an upper boun d, we do not know whether the groups-of-3 strategy actually runs in O(n) time. But by repeating the groups-"
+   "text": "Because the bound in part (b) is just an upper bound, we do not know whether the groups-of-3 strategy actually runs in O(n) time. But by repeating the groups-"
   },
   {
    "type": "body",
@@ -2034,7 +2034,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 247,
    "pdf_page": 268,
-   "text": "It is still unknown exactly how many comparisons ar e needed to determine the median. Bent and John [48] gave a lower bound of 2n comparisons for median finding, and Sch¨ onhage, Paterson, and Pippenger [397] gave an upper bound of 3n."
+   "text": "It is still unknown exactly how many comparisons are needed to determine the median. Bent and John [48] gave a lower bound of 2n comparisons for median finding, and Sch¨ onhage, Paterson, and Pippenger [397] gave an upper bound of 3n."
   },
   {
    "type": "body",
@@ -2097,7 +2097,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 249,
    "pdf_page": 270,
-   "text": "Algorithms may require several types of operations to be performed on sets. For example, many algorithms need only the ability to i nsert elements into, delete elements from, and test membership in a set. We call a dynamic set that supports these operations a dictionary. Other algorithms require more complicated operations. For example, min-priority queues, which Chapter 6 introduced in the context of the heap data structure, support the operations of inserting an element into and extracting the smallest element from a set. The bes t way to implement a dynamic set depends upon the operations that you need to support."
+   "text": "Algorithms may require several types of operations to be performed on sets. For example, many algorithms need only the ability to i nsert elements into, delete elements from, and test membership in a set. We call a dynamic set that supports these operations a dictionary. Other algorithms require more complicated operations. For example, min-priority queues, which Chapter 6 introduced in the context of the heap data structure, support the operations of inserting an element into and extracting the smallest element from a set. The best way to implement a dynamic set depends upon the operations that you need to support."
   },
   {
    "type": "body",
@@ -2115,7 +2115,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 249,
    "pdf_page": 270,
-   "text": "In a typical implementation of a dynamic set, each element is represented by an object whose attributes can be examined and manipul ated given a pointer to the object. Some kinds of dynamic sets assume that one of the object’s attributes is an identifying key. If the keys are all different, we can think of th e dynamic set as being a set of key values. The object may contain satellite data, which are carried around in other object attributes but are otherwise unused by the set implementation. It may also have attributes that are manipula ted by the set operations. These attributes may contain data or pointers to other objects in the set."
+   "text": "In a typical implementation of a dynamic set, each element is represented by an object whose attributes can be examined and manipul ated given a pointer to the object. Some kinds of dynamic sets assume that one of the object’s attributes is an identifying key. If the keys are all different, we can think of the dynamic set as being a set of key values. The object may contain satellite data, which are carried around in other object attributes but are otherwise unused by the set implementation. It may also have attributes that are manipula ted by the set operations. These attributes may contain data or pointers to other objects in the set."
   },
   {
    "type": "body",
@@ -2124,7 +2124,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 249,
    "pdf_page": 270,
-   "text": "Some dynamic sets presuppose that the keys are draw n from a totally ordered set, such as the real numbers, or the set of all wo rds under the usual alphabetic"
+   "text": "Some dynamic sets presuppose that the keys are draw n from a totally ordered set, such as the real numbers, or the set of all words under the usual alphabetic"
   },
   {
    "type": "body",
@@ -2205,7 +2205,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 250,
    "pdf_page": 271,
-   "text": "A modifying operation that, given a pointer x to an element in the set S , re- moves x from S . (Note that this operation takes a pointer to an e lement x , not a key value.)"
+   "text": "A modifying operation that, given a pointer x to an element in the set S , re- moves x from S . (Note that this operation takes a pointer to an element x , not a key value.)"
   },
   {
    "type": "body",
@@ -2304,7 +2304,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 251,
    "pdf_page": 272,
-   "text": "The advantage of doing so is that the algorithms fo r the dynamic-set operations are simple. The downside, however, is that many of these operations have a worstcase running time of Θ(n). If the array is not sorted, INSERT and DELETE can take Θ(1) time, but the remaining operations take Θ(n) time. If instead the array is maintained in sorted order, then MINIMUM , MAXIMUM , SUCCESSOR , and PREDECESSOR take Θ(1) time; SEARCH takes O(lg n) time if implemented with binary search; but INSERT and DELETE take Θ(n) time in the worst case. The data structures studied in this part improve on the array implementation for many of the dynamic-set operations."
+   "text": "The advantage of doing so is that the algorithms for the dynamic-set operations are simple. The downside, however, is that many of these operations have a worstcase running time of Θ(n). If the array is not sorted, INSERT and DELETE can take Θ(1) time, but the remaining operations take Θ(n) time. If instead the array is maintained in sorted order, then MINIMUM , MAXIMUM , SUCCESSOR , and PREDECESSOR take Θ(1) time; SEARCH takes O(lg n) time if implemented with binary search; but INSERT and DELETE take Θ(n) time in the worst case. The data structures studied in this part improve on the array implementation for many of the dynamic-set operations."
   },
   {
    "type": "body",
@@ -2358,7 +2358,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 251,
    "pdf_page": 272,
-   "text": "Binary search trees, which are covered in Chapter 12, support all the dynamicset operations listed above. In the worst case, eac h operation takes Θ(n) time on a tree with n elements. Binary search trees serve as the basis fo r many other data structures."
+   "text": "Binary search trees, which are covered in Chapter 12, support all the dynamicset operations listed above. In the worst case, each operation takes Θ(n) time on a tree with n elements. Binary search trees serve as the basis for many other data structures."
   },
   {
    "type": "body",
@@ -2430,7 +2430,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 252,
    "pdf_page": 273,
-   "text": "Assuming that the computer can access all memory lo cations in the same amount of time (as in the RAM model described in Section 2 .2), it takes constant time to access any array element, regardless of the index."
+   "text": "Assuming that the computer can access all memory locations in the same amount of time (as in the RAM model described in Section 2 .2), it takes constant time to access any array element, regardless of the index."
   },
   {
    "type": "body",
@@ -2439,7 +2439,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 252,
    "pdf_page": 273,
-   "text": "Most programming languages require each element of a particular array to be the same size. If the elements of a given array might occupy different numbers of bytes, then the above formulas fail to apply, si nce the element size b is not a constant. In such cases, the array elements are usually objects of varying sizes, and what actually appears in each array element is a pointer to the object. The number of bytes occupied by a pointer is typically the same, no matter what the pointer references, so that to access an object in an array, the above formulas give the address of the pointer to the object and then t he pointer must be followed to access the object itself."
+   "text": "Most programming languages require each element of a particular array to be the same size. If the elements of a given array might occupy different numbers of bytes, then the above formulas fail to apply, since the element size b is not a constant. In such cases, the array elements are usually objects of varying sizes, and what actually appears in each array element is a pointer to the object. The number of bytes occupied by a pointer is typically the same, no matter what the pointer references, so that to access an object in an array, the above formulas give the address of the pointer to the object and then t he pointer must be followed to access the object itself."
   }
  ]
 }

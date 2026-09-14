@@ -426,36 +426,54 @@ def _angle(m):
 # 成因是字体的字距：某些字母对被抽成带间距的文本段，词中间多出一个空格。
 # 它**不是**断行造成的（同一行内就有）。
 #
-# 判定不依赖外部词典，用「语料自证 + 三个必要条件」。逐条都是被实测逼出来的：
+# 判定不依赖外部词典，用「语料自证 + 六道守卫」。每一条都是被实测的误并逼出来的：
 #
 #   ① words[a+b] >= 3  且  words[a+b] >= 3 * splits[(a,b)]
 #      合并后的词必须真是本书的词，而且要比「拆开写」常见得多。
 #      这一条就挡掉了 `based on`（basedon 不是词）。
-#   ② len(follow[a]) <= 3
-#      真词后面会跟很多不同的词（`the` 跟上百个词搭配），破损片段只会跟着它
-#      那半截（`cha` 只跟 `racterize`）。这一条挡掉了 `the re`（there）、
-#      `are as`（areas）、`key word`（keyword）、`with in`（within）。
+#   ② 左片段必须「自证是碎片」，分两档：
+#      · 长片段（≥3 字母）：len(follow[a]) <= 3 —— 真词后面会跟很多不同的词
+#        （`the` 跟上百个词搭配），破损片段只跟着它那半截（`cha` 只跟 `racterize`）。
+#        挡掉 `the re`（there）、`are as`（areas）、`key word`（keyword）、
+#        `with in`（within）。
+#      · 短片段（1–2 字母）：a 不是英文功能词。短片段的「后继词」不可靠 ——
+#        实测 `e` 的后继词有 146 个，全是它自己的其它碎片（`e ach` / `e dge`…），
+#        沿用长片段的判据会漏掉整类（`ea ch` / `ti me` / `wh ich` / `ru nning`
+#        / `e ach`，共 515 种形状）。改判「不是功能词」后，`no thing` / `so me`
+#        / `in to` / `a long` / `at tempt` / `up on` 全部照旧被挡住。
 #   ③ 右片段不得是虚词（FUNCTION_WORDS），除非它在 SPLIT_WHITELIST 里
 #      挡掉 `pay off`（off 是虚词，pay off 本就是合法短语）、`speed up`、
 #      `fix up`；而 `chap ter`（ter 不是词）、`con text`（text 是实词）、
 #      `sub array`（array 是实词）照常合并。白名单里那 22 条是实测确认的
 #      真破损（functi on、inserti on、beg in、squ are …），右片段虽是虚词，
 #      但左片段确实不是词。
-#   ④ 左片段必须从词首开始（词边界）
-#      TOK 正则没有 lookbehind，会把词中间切开（`c hapter` -> `hap ter`），
-#      于是 `hapter` 被当成真词而误并。
+#   ④ 右片段不得是数学函数名（MATH_FUNCTION_NAMES）
+#      `b lg n` 是 b·lg n、`d lg n` 是 ⌈lg n⌉、`b log_b a` 是幂记号。这一条是实测
+#      逼出来的：不加它，`b lg` 会被并成 `blg`（全书 3 处）、`b log` 并成 `blog`
+#      （6 处）、`d lg` 并成 `dlg`（2 处）—— 全是把数学记号毁掉。
+#   ⑤ 短词干（≤2 字母）不得接序数后缀 th/st/nd/rd
+#      `the h k th partitioning` 是 hᵏ-th，并成 `kth` 是错的（2 处）。
+#   ⑥ 左片段必须在词首（前一个字符是空白或文本开头）
+#      两个真实误并都从这里漏出去过：`=k new`（左片段前是 '='，k 是数学变量）、
+#      `can’t im-`（左片段前是弯撇号，'t' 是 can't 的尾巴）。只查 isalpha()
+#      挡不住，因为这两种前面都不是字母。
 #
 # 判定必须**逐个空格**考察左右两侧的完整小写词，不能写成正则替换：正则会先把
 # 前一个词一起吃掉（`the runn ing` 里的 `the runn` 先命中且被拒，`runn ing`
 # 就再也轮不到）。
 #
-# 实测（在**未修复的原始语料**上）：命中 929 处 / 761 种形状，31 条关键
-# 用例（该合并的 16 条 + 不该动的 15 条）全部正确，无一是两个真词被误拼。
+# 实测（在**未修复的原始语料**上）：终版命中 1267 种形状；41 条关键用例
+# （该合并的 19 条 + 不该动的 22 条，含 `b lg n` / `=k new` / `can't im-` /
+# `pay off` / `in to` / `no thing`）全部正确，无一是两个真词被误拼。
 # ★ 审计必须在 data/pages.jsonl（原文）上做：修复后的文本里伪影已消失，
 #   拿它当依据会得出完全错误的结论（这一条踩过）。
 # ---------------------------------------------------------------------------
 TOKEN_RE = re.compile(r"(?<![A-Za-z])([A-Za-z]{3,})(?![A-Za-z])")
-PAIR_RE = re.compile(r"(?<![A-Za-z])([a-z]{3,}) ([a-z]{2,10})(?![a-z])")
+# ★ 左片段是 [a-z]+ 而不是 {3,}：字距伪影的左片段可能只有 1–2 个字母
+#   （`ea ch` / `ru nning` / `ti me`）。若这里要求 ≥3，这些片段的「后继词」
+#   就统计不到，follow 守卫随之失效 —— 那样 `no thing` 会被错并成 `nothing`
+#   （实测过）。计数与扫描必须用同一个宽度。
+PAIR_RE = re.compile(r"(?<![A-Za-z])([a-z]+) ([a-z]{1,10})(?![a-z])")
 _TWO_WORDS_RE = re.compile(r"([a-z]+) ([a-z]+)")
 
 # 右片段若是这些虚词，说明多半是「真词 + 虚词」的合法短语，不合并
@@ -466,6 +484,19 @@ was were be been being it its he she they we you i do does did has have had can 
 will would shall should may might must one two all any each every other more most
 less least same
 """.split())
+
+# 守卫④ 用：真正的数学函数名。右片段是它们时**绝不合并** ——
+# `b lg n` 是 b·lg n、`d lg n` 是 ⌈lg n⌉ 一类、`b log_b a` 是幂记号，
+# 合并会产出 `blg` / `dlg` / `blog` 这种不存在的「词」，把记号毁掉。
+# （与上面 MATH_FUNCS 分开：那个表还含 key/size/cost 等「可跟在空格+点号后」的
+#   实词，是给括号规则用的，拿来当守卫会多挡掉 `empha size` 这类真破损。）
+MATH_FUNCTION_NAMES = {
+    "mod", "lg", "ln", "log", "max", "min", "gcd", "exp", "degree", "pow",
+    "det", "rank", "lim", "sup", "inf", "arg", "poly", "sin", "cos", "tan",
+}
+
+# 守卫⑤ 用：序数后缀。`h k th` 是 hᵏ-th（k 是上标），短词干接序数后缀一律不合并
+ORDINAL_SUFFIXES = {"th", "st", "nd", "rd"}
 
 # 右片段是虚词、但实测确认左片段不是词的真破损（逐条在原始语料里核对过）。
 # 其余“真词 + 虚词”的组合一律不合并，例如 pay off / speed up / fix up。
@@ -499,7 +530,10 @@ def build_split_state(texts):
 
 
 def _join_split_words(txt, state):
-    """逐个空格考察；命中就合并，并把游标推过合并后的词。"""
+    """逐个空格考察；命中就合并，并把游标推过合并后的词。
+
+    六道守卫，每一道都是被实测的误并逼出来的（详见上面规则表的注释）。
+    """
     if not state:
         return txt
     words = state["words"]
@@ -513,20 +547,31 @@ def _join_split_words(txt, state):
             out.append(txt[i:])
             break
         a, b = m.group(1), m.group(2)
-        # 词边界：左片段前面不能还是字母。TOK 正则没有 lookbehind，会把
-        # 词中间切开（`c hapter` -> `hap ter`），于是 `hapter` 这种不存在的
-        # 词被当成「合并后的真词」而误并。PAIR_RE 有 lookbehind，两边必须一致。
-        if m.start() > 0 and txt[m.start() - 1].isalpha():
+        # 守卫⑥ 左片段必须在**词首**：前一个字符必须是空白或文本开头。
+        #   两个真实误并都是这里漏出来的：
+        #     `=k new`  左片段前面是 '='（数学变量 k 被当成了碎片）
+        #     `can’t im-` 左片段前面是弯撇号（'t' 是 can't 的尾巴）
+        #   只查 isalpha() 挡不住这两种，因为它们前面都不是字母。
+        prev = txt[m.start() - 1] if m.start() > 0 else " "
+        if not prev.isspace():
             # ★ 必须把跳过的片段写回输出，否则这段文本会被直接丢掉
             out.append(txt[i:m.start() + len(a) + 1])
             i = m.start() + len(a) + 1
             continue
         joined = a + b
         w = words.get(joined, 0)
-        ok = (len(a) >= 3 and 2 <= len(b) <= 10
-              and (b not in FUNCTION_WORDS or (a, b) in SPLIT_WHITELIST)
+        ok = (1 <= len(a) and 1 <= len(b) <= 10
+              # 守卫④ 右片段不得是数学函数名：`b lg n` 是 b·lg n，并成 `blg` 就毁了记号
+              and b not in MATH_FUNCTION_NAMES
+              # 守卫⑤ 短词干不得接序数后缀：`h k th` 是 hᵏ-th，并成 `kth` 是错的；
+              #   真词干（four + th -> fourth）长度够，照常合并
+              and not (len(a) <= 2 and b in ORDINAL_SUFFIXES)
               and w >= 3 and w >= 3 * splits.get((a, b), 0)
-              and len(follow.get(a, ())) <= 3)
+              # 守卫② 左片段自证：长片段靠「后继词少」，短片段靠「不是功能词」
+              and (len(follow.get(a, ())) <= 3 if len(a) >= 3
+                   else a not in FUNCTION_WORDS)
+              # 守卫③ 右片段不得是虚词（白名单除外）
+              and (b not in FUNCTION_WORDS or (a, b) in SPLIT_WHITELIST))
         if ok:
             out.append(txt[i:m.start()])
             out.append(joined)
@@ -538,6 +583,13 @@ def _join_split_words(txt, state):
 
 
 def repair_text(txt, state=None):
+    # --- 2a. angle-bracket tuples, guarded (see _angle). ★ 必须**最先**跑。 ---
+    #   理由：角括号的开符 `h` 与随后的变量名会被词内空格规则当成碎片
+    #   （`ha n\ue0021 ;…;a 0 i` 里的 `ha n` 会被并成 `han`，把 ⟨a_{n−1} 毁掉）。
+    #   角括号先行后，`h`/`i` 变成 ⟨/⟩（非字母），后续规则都不会再碰它。
+    #   守卫里已认 `;` 作为列表分隔符，所以在原文（`:::` 尚未折成 `…`）上也成立。
+    txt = ANGLE_RE.sub(_angle, txt)
+
     # --- 2a0. 词内空格伪影（cha racterize -> characterize）。放在最前面，让后面
     #          的规则看到完整的单词。state 为空时该规则不生效（单测可显式传入）。 ---
     txt = _join_split_words(txt, _SPLIT_STATE if state is None else state)
@@ -583,8 +635,7 @@ def repair_text(txt, state=None):
     #           before the quote rules, which would otherwise emit a literal W. ---
     txt = QUOTED_COLON_RE.sub('":"', txt)
 
-    # --- 2b'''. angle-bracket tuples, guarded (see _angle). ---
-    txt = ANGLE_RE.sub(_angle, txt)
+    # --- 2b'''. angle-bracket tuples 已上移到函数最开头（见 2a 的说明）。 ---
 
     # --- 2b''''. ';' glued to the next character is the math comma. ---
     txt = SEMI_RE.sub(",", txt)
@@ -621,6 +672,10 @@ def repair_text(txt, state=None):
     #         which would otherwise eat the '=' inside them) ---
     txt = CEIL_RE.sub("⌈\\1/\\2⌉", txt)
     txt = FLOOR_RE.sub("⌊\\1/\\2⌋", txt)
+    # 闭合取整符在 PDF 里常被抽成开口符（p38：⌈n/2⌈ 应为 ⌈n/2⌉）。取整记号的
+    # 两个括号必须是一对开口/闭合，短跨度内出现两个开口就是抽取伪影。
+    txt = re.sub(r"⌈([^⌉⌈]{1,24})⌈", "⌈\\1⌉", txt)
+    txt = re.sub(r"⌊([^⌋⌊]{1,24})⌊", "⌊\\1⌋", txt)
 
     # --- 2f. remaining alnum '=' alnum is division ('=' is never equals here).
     #         Runs BEFORE the quote rules on purpose: a quotation's '=' always
@@ -689,7 +744,7 @@ def main():
                 all_recs.append(json.loads(line))
     _SPLIT_STATE = build_split_state(r["text"] for r in all_recs)
 
-    with open(PAGES_OUT, "w", encoding="utf-8") as fout:
+    with open(PAGES_OUT, "w", newline="\n", encoding="utf-8") as fout:
         for rec in all_recs:
             t0 = rec["text"]
             t1 = repair_text(t0)
@@ -759,6 +814,19 @@ def main():
             for k, v in DIRECT.items()
         ],
         "context_rules": [
+            {"rule": "_join_split_words", "target": "词内空格（cha racterize / ea ch / ti me）",
+             "rationale":
+                "字体字距把单词切成带空格的碎片。判定用「语料自证」+ 六道守卫："
+                "① words[a+b]>=3 且 >=3*splits[(a,b)]；② 长片段 len(follow[a])<=3、"
+                "短片段（1–2 字母）a 不是英文功能词；③ 右片段不得是虚词（白名单除外）；"
+                "④ 右片段不得是数学函数名（否则 `b lg n` 并成 `blg`）；"
+                "⑤ 短词干不得接序数后缀（`h k th` 并成 `kth` 是错的）；"
+                "⑥ 左片段必须在词首（挡掉 `=k new` 与 `can’t im-`）。"
+                "实测 1267 种形状；41 条关键用例全部正确。"},
+            {"rule": "build_split_state", "target": "语料自证三张表",
+             "rationale":
+                "words/splits/follow 三张表必须在**未修复的原始语料**（pages.jsonl）上统计 —— "
+                "修复后的文本里伪影已消失，拿它当依据会得出完全错误的结论。"},
             {"rule": "_resolve_fffd stack", "target": "� (U+FFFD)",
              "rationale": "Ambiguous between ']' and 'Ω'; emits ']' iff an open '[' is pending, else 'Ω'."},
             {"rule": "QUOTE_BOTH_RE / QUOTE_OPEN_RE", "target": "= and <",
@@ -812,7 +880,7 @@ def main():
             for c, n in after.most_common()
         ],
     }
-    with open(REPORT_OUT, "w", encoding="utf-8") as f:
+    with open(REPORT_OUT, "w", newline="\n", encoding="utf-8") as f:
         json.dump(report, f, ensure_ascii=False, indent=2)
 
     print("pages processed:", n_pages)

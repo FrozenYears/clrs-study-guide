@@ -50,7 +50,7 @@
    "section_title": "13.1 Properties of red-black trees",
    "printed_page": 331,
    "pdf_page": 352,
-   "text": "A red-black tree is a binary search tree with one extra bit of storage per node: its color, which can be either RED or BLACK . By constraining the node colors on any simple path from the root to a leaf, red-black trees ensure that no such path is more than twice as long as any other, so that the t ree is approximately balanced."
+   "text": "A red-black tree is a binary search tree with one extra bit of storage per node: its color, which can be either RED or BLACK . By constraining the node colors on any simple path from the root to a leaf, red-black trees ensure that no such path is more than twice as long as any other, so that the tree is approximately balanced."
   },
   {
    "type": "body",
@@ -149,7 +149,7 @@
    "section_title": "13.1 Properties of red-black trees",
    "printed_page": 332,
    "pdf_page": 353,
-   "text": "As a matter of convenience in dealing with boundary conditions in red-black tree code, we use a single sentinel to represent NIL (see page 262). For a red-black tree T , the sentinel T: nil is an object with the same attributes as an ordinar y node in the tree. Its color attribute is BLACK, and its other attributes—p, left , right , and key—can take on arbitrary values. As Figure 13.1(b) shows, all pointers to NIL are replaced by pointers to the sentinel T: nil."
+   "text": "As a matter of convenience in dealing with boundary conditions in red-black tree code, we use a single sentinel to represent NIL (see page 262). For a red-black tree T , the sentinel T: nil is an object with the same attributes as an ordinary node in the tree. Its color attribute is BLACK, and its other attributes—p, left , right , and key—can take on arbitrary values. As Figure 13.1(b) shows, all pointers to NIL are replaced by pointers to the sentinel T: nil."
   },
   {
    "type": "body",
@@ -320,7 +320,7 @@
    "section_title": "13.1 Properties of red-black trees",
    "printed_page": 335,
    "pdf_page": 356,
-   "text": "13.1-4 Suppose that every black node in a red-black tree \"absorbs\" all of its red children, so that the children of any red node become childre n of the black parent. (Ignore what happens to the keys.) What are the possible de grees of a black node after all its red children are absorbed? What can you say about the depths of the leaves of the resulting tree?"
+   "text": "13.1-4 Suppose that every black node in a red-black tree \"absorbs\" all of its red children, so that the children of any red node become children of the black parent. (Ignore what happens to the keys.) What are the possible degrees of a black node after all its red children are absorbed? What can you say about the depths of the leaves of the resulting tree?"
   },
   {
    "type": "exercise",
@@ -951,7 +951,7 @@
    "section_title": "13.3 Insertion",
    "printed_page": 340,
    "pdf_page": 361,
-   "text": "What violations of the red-black properties might occur upon the call to RB-I NSERT-FIXUP ? Property 1 certainly continues to hold (every node is either red or black), as does property 3 (every leaf is black), since both children of the newly inserted red node are the sentinel T: nil. Property 5, which says that the number of black nodes is the same on every simple path from a given node, is satisfied as well, because node ´ replaces the (black) sentinel, and node ´ is red with sentinel children. Thus, the only properties that m ight be violated are property 2, which requires the root to be black, and property 4, which says that a red node cannot have a red child. Both possible violations m ay arise because ´ is colored red. Property 2 is violated if ´ is the root, and property 4 is violated if ´’s parent is red. Figure 13.4(a) shows a violation of property 4 after the node ´ has been inserted."
+   "text": "What violations of the red-black properties might occur upon the call to RB-I NSERT-FIXUP ? Property 1 certainly continues to hold (every node is either red or black), as does property 3 (every leaf is black), since both children of the newly inserted red node are the sentinel T: nil. Property 5, which says that the number of black nodes is the same on every simple path from a given node, is satisfied as well, because node ´ replaces the (black) sentinel, and node ´ is red with sentinel children. Thus, the only properties that might be violated are property 2, which requires the root to be black, and property 4, which says that a red node cannot have a red child. Both possible violations may arise because ´ is colored red. Property 2 is violated if ´ is the root, and property 4 is violated if ´’s parent is red. Figure 13.4(a) shows a violation of property 4 after the node ´ has been inserted."
   },
   {
    "type": "body",
@@ -969,7 +969,7 @@
    "section_title": "13.3 Insertion",
    "printed_page": 340,
    "pdf_page": 361,
-   "text": "We’ll show that the while loop maintains the following three-part invariant at the start of each iteration of the loop: a. Node ´ is red. b. If ´: p is the root, then ´: p is black. c. If the tree violates any of the red-black properties, then it violates at most one of them, and the violation is of either propert y 2 or property 4, but not both. If the tree violates property 2, it is be cause ´ is the root and is red. If the tree violates property 4, it is because both ´ and ´: p are red."
+   "text": "We’ll show that the while loop maintains the following three-part invariant at the start of each iteration of the loop: a. Node ´ is red. b. If ´: p is the root, then ´: p is black. c. If the tree violates any of the red-black properties, then it violates at most one of them, and the violation is of either property 2 or property 4, but not both. If the tree violates property 2, it is be cause ´ is the root and is red. If the tree violates property 4, it is because both ´ and ´: p are red."
   },
   {
    "type": "body",
@@ -1041,7 +1041,7 @@
    "section_title": "13.3 Insertion",
    "printed_page": 342,
    "pdf_page": 363,
-   "text": "Recall that to use a loop invariant, we need to sho w that the invariant is true upon entering the first iteration of the loop, that each iteration maintains it, that the loop terminates, and that the loop invariant gi ves us a useful property at loop termination. We’ll see that each iteration of the loop has two possible outcomes: either the pointer ´ moves up the tree, or some rotations occur and then the loop terminates."
+   "text": "Recall that to use a loop invariant, we need to show that the invariant is true upon entering the first iteration of the loop, that each iteration maintains it, that the loop terminates, and that the loop invariant gives us a useful property at loop termination. We’ll see that each iteration of the loop has two possible outcomes: either the pointer ´ moves up the tree, or some rotations occur and then the loop terminates."
   },
   {
    "type": "body",
@@ -1068,7 +1068,7 @@
    "section_title": "13.3 Insertion",
    "printed_page": 342,
    "pdf_page": 363,
-   "text": "If the tree violates property 2 (the root must be b lack), then the red root must be the newly added node ´, which is the only internal node in the tree."
+   "text": "If the tree violates property 2 (the root must be black), then the red root must be the newly added node ´, which is the only internal node in the tree."
   },
   {
    "type": "body",
@@ -1095,7 +1095,7 @@
    "section_title": "13.3 Insertion",
    "printed_page": 342,
    "pdf_page": 363,
-   "text": "If the tree violates property 4, then, because the children of node ´ are black sentinels and the tree had no other violations prio r to ´ being added, the violation must be because both ´ and ´: p are red. Moreover, the tree violates no other red-black properties."
+   "text": "If the tree violates property 4, then, because the children of node ´ are black sentinels and the tree had no other violations prior to ´ being added, the violation must be because both ´ and ´: p are red. Moreover, the tree violates no other red-black properties."
   },
   {
    "type": "body",
@@ -1167,7 +1167,7 @@
    "section_title": "13.3 Insertion",
    "printed_page": 343,
    "pdf_page": 364,
-   "text": "Now, we show that case 1 maintains the loop invariant at the start of the next iteration. We use ´ to denote node ´ in the current iteration, and ´ 0 = ´: p: p to denote the node that will be called node ´ at the test in line 1 upon the next iteration. a. Because this iteration colors ´: p: p red, node ´ 0 is red at the start of the next iteration. b. The node ´ 0 : p is ´: p: p: p in this iteration, and the color of this node does not change. If this node is the root, it was black prio r to this iteration, and it remains black at the start of the next iteration."
+   "text": "Now, we show that case 1 maintains the loop invariant at the start of the next iteration. We use ´ to denote node ´ in the current iteration, and ´ 0 = ´: p: p to denote the node that will be called node ´ at the test in line 1 upon the next iteration. a. Because this iteration colors ´: p: p red, node ´ 0 is red at the start of the next iteration. b. The node ´ 0 : p is ´: p: p: p in this iteration, and the color of this node does not change. If this node is the root, it was black prior to this iteration, and it remains black at the start of the next iteration."
   },
   {
    "type": "figure-caption",
@@ -1284,7 +1284,7 @@
    "section_title": "13.3 Insertion",
    "printed_page": 345,
    "pdf_page": 366,
-   "text": "If either case 2 or case 3 occurs, then we’ve seen that the loop terminates. Since the loop terminates because ´: p is black, the tree does not violate property 4 at loop termination. By the loop invariant, the onl y property that might fail to hold is property 2. Line 30 restores this property by coloring the root black, so that when RB-I NSERT-FIXUP terminates, all the red-black properties hold."
+   "text": "If either case 2 or case 3 occurs, then we’ve seen that the loop terminates. Since the loop terminates because ´: p is black, the tree does not violate property 4 at loop termination. By the loop invariant, the only property that might fail to hold is property 2. Line 30 restores this property by coloring the root black, so that when RB-I NSERT-FIXUP terminates, all the red-black properties hold."
   },
   {
    "type": "body",
@@ -1782,7 +1782,7 @@
    "section_title": "13.4 Deletion",
    "printed_page": 350,
    "pdf_page": 371,
-   "text": "(As in RB-I NSERT-FIXUP, the cases in RB-DELETE-FIXUP are not mutually ex- clusive.) Before examining each case in detail, let’s look more generally at how we can verify that the transformation in each of th e cases preserves property 5."
+   "text": "(As in RB-I NSERT-FIXUP, the cases in RB-DELETE-FIXUP are not mutually ex- clusive.) Before examining each case in detail, let’s look more generally at how we can verify that the transformation in each of the cases preserves property 5."
   },
   {
    "type": "body",
@@ -2393,7 +2393,7 @@
    "section_title": "13.4 Deletion",
    "printed_page": 354,
    "pdf_page": 375,
-   "text": "FIXUP takes O(lg n) time. Within RB-DELETE-FIXUP, each of cases 1, 3, and 4 lead to termination after performing a constant num ber of color changes and at most three rotations. Case 2 is the only case in wh ich the while loop can be re- peated, and then the pointer x moves up the tree at most O(lg n) times, performing"
+   "text": "FIXUP takes O(lg n) time. Within RB-DELETE-FIXUP, each of cases 1, 3, and 4 lead to termination after performing a constant num ber of color changes and at most three rotations. Case 2 is the only case in which the while loop can be re- peated, and then the pointer x moves up the tree at most O(lg n) times, performing"
   },
   {
    "type": "body",
@@ -2456,7 +2456,7 @@
    "section_title": "13.4 Deletion",
    "printed_page": 354,
    "pdf_page": 375,
-   "text": "13.4-6 In each of the cases of Figure 13.7, give the count of black nodes from the root of the subtree shown to the roots of each of the subtrees ˛; ˇ; : : : ; Ω , and verify that each count remains the same after the transformatio n. When a node has a color attribute c or c 0 , use the notation count(c) or count(c 0 ) symbolically in your count."
+   "text": "13.4-6 In each of the cases of Figure 13.7, give the count of black nodes from the root of the subtree shown to the roots of each of the subtrees ˛; ˇ; : : : ; Ω , and verify that each count remains the same after the transformation. When a node has a color attribute c or c 0 , use the notation count(c) or count(c 0 ) symbolically in your count."
   },
   {
    "type": "exercise",
@@ -2519,7 +2519,7 @@
    "section_title": "13.4 Deletion",
    "printed_page": 355,
    "pdf_page": 376,
-   "text": "During the course of an algorithm, you sometimes find that you need to maintain past versions of a dynamic set as it is updated. We call such a set persistent. One way to implement a persistent set is to copy the en tire set whenever it is modified, but this approach can slow down a program and also consume a lot of space."
+   "text": "During the course of an algorithm, you sometimes find that you need to maintain past versions of a dynamic set as it is updated. We call such a set persistent. One way to implement a persistent set is to copy the entire set whenever it is modified, but this approach can slow down a program and also consume a lot of space."
   },
   {
    "type": "body",
@@ -2537,7 +2537,7 @@
    "section_title": "13.4 Deletion",
    "printed_page": 355,
    "pdf_page": 376,
-   "text": "Consider a persistent set S with the operations INSERT , DELETE , and SEARCH , which you implement using binary search trees as shown in Figure 13.8(a). Maintain a separate root for every version of the set. In order to insert the key 5 into the set, create a new node with key 5. This node becomes the left child of a new node with key 7, since you cannot modify the existing node with ke y 7. Similarly, the new node with key 7 becomes the left child of a new node with key 8 whose right child is the existing node with key 10. The new node with key 8 becomes, in turn, the right child of a new root r 0 with key 4 whose left child is the existing node with key 3. Thus, you copy only part of the tree and share so me of the nodes with the original tree, as shown in Figure 13.8(b)."
+   "text": "Consider a persistent set S with the operations INSERT , DELETE , and SEARCH , which you implement using binary search trees as shown in Figure 13.8(a). Maintain a separate root for every version of the set. In order to insert the key 5 into the set, create a new node with key 5. This node becomes the left child of a new node with key 7, since you cannot modify the existing node with key 7. Similarly, the new node with key 7 becomes the left child of a new node with key 8 whose right child is the existing node with key 10. The new node with key 8 becomes, in turn, the right child of a new root r 0 with key 4 whose left child is the existing node with key 3. Thus, you copy only part of the tree and share so me of the nodes with the original tree, as shown in Figure 13.8(b)."
   },
   {
    "type": "body",
@@ -2564,7 +2564,7 @@
    "section_title": "13.4 Deletion",
    "printed_page": 356,
    "pdf_page": 377,
-   "text": "Figure 13.8 (a) A binary search tree with keys 2,3,4,7,8,10 . (b) The persistent binary search tree that results from the insertion of key 5. The most recent version of the set consists of th e nodes reachable from the root r 0 , and the previous version consists of the nodes re achable from r . Blue nodes are added when key 5 is inserted. b. Write a procedure PERSISTENT-TREE-INSERT .T,´/ that, given a persistent binary search tree T and a node ´ to insert, returns a new persistent tree T 0 that is the result of inserting ´ into T . Assume that you have a procedure"
+   "text": "Figure 13.8 (a) A binary search tree with keys 2,3,4,7,8,10 . (b) The persistent binary search tree that results from the insertion of key 5. The most recent version of the set consists of the nodes reachable from the root r 0 , and the previous version consists of the nodes reachable from r . Blue nodes are added when key 5 is inserted. b. Write a procedure PERSISTENT-TREE-INSERT .T,´/ that, given a persistent binary search tree T and a node ´ to insert, returns a new persistent tree T 0 that is the result of inserting ´ into T . Assume that you have a procedure"
   },
   {
    "type": "body",
@@ -2582,7 +2582,7 @@
    "section_title": "13.4 Deletion",
    "printed_page": 356,
    "pdf_page": 377,
-   "text": "(The space requirement is proportional to the number of nodes that are copied.) d. Suppose that you include the parent attribute in ea ch node. In this case, the PERSISTENT-TREE-INSERT procedure needs to perform additional copying."
+   "text": "(The space requirement is proportional to the number of nodes that are copied.) d. Suppose that you include the parent attribute in each node. In this case, the PERSISTENT-TREE-INSERT procedure needs to perform additional copying."
   },
   {
    "type": "body",
@@ -2618,7 +2618,7 @@
    "section_title": "13.4 Deletion",
    "printed_page": 356,
    "pdf_page": 377,
-   "text": "S = S 1 [ fx g [ S 2 . In this problem, we investigate how to implement the join operation on red-black trees. a. Suppose that you store the black-height of a red-black tree T as the new attribute T: bh. Argue that RB-I NSERT and RB-DELETE can maintain the bh attribute without requiring extra storage in the no des of the tree and without increasing the asymptotic running times. Show how t o determine the blackheight of each node visited while descending throug h T , using O(1) time per node visited."
+   "text": "S = S 1 [ fx g [ S 2 . In this problem, we investigate how to implement the join operation on red-black trees. a. Suppose that you store the black-height of a red-black tree T as the new attribute T: bh. Argue that RB-I NSERT and RB-DELETE can maintain the bh attribute without requiring extra storage in the no des of the tree and without increasing the asymptotic running times. Show how t o determine the blackheight of each node visited while descending through T , using O(1) time per node visited."
   },
   {
    "type": "body",
@@ -2843,7 +2843,7 @@
    "section_title": "13.4 Deletion",
    "printed_page": 361,
    "pdf_page": 382,
-   "text": "Like dynamic-programming algorithms, greedy algorithms typically apply to optimization problems in which you make a set of ch oices in order to arrive at an optimal solution. The idea of a greedy algorithm is to make each choice in a locally optimal manner, resulting in a faster algorithm than you get with dynamic programming. Chapter 15 will help you determine when the greedy approach works."
+   "text": "Like dynamic-programming algorithms, greedy algorithms typically apply to optimization problems in which you make a set of choices in order to arrive at an optimal solution. The idea of a greedy algorithm is to make each choice in a locally optimal manner, resulting in a faster algorithm than you get with dynamic programming. Chapter 15 will help you determine when the greedy approach works."
   },
   {
    "type": "body",
@@ -2852,7 +2852,7 @@
    "section_title": "13.4 Deletion",
    "printed_page": 361,
    "pdf_page": 382,
-   "text": "The technique of amortized analysis applies to certain algorithms that perform a sequence of similar operations. Instead of bounding the cost of the sequence of operations by bounding the actual cost of each operation separately, an amortized analysis provides a worst-case bound on the actual cost of the entire sequence. One advantage of this approach is that although some op erations might be expensive, many others might be cheap. You can use amortized a nalysis when designing algorithms, since the design of an algorithm and th e analysis of its running time are often closely intertwined. Chapter 16 introduces three ways to perform an amortized analysis of an algorithm."
+   "text": "The technique of amortized analysis applies to certain algorithms that perform a sequence of similar operations. Instead of bounding the cost of the sequence of operations by bounding the actual cost of each operation separately, an amortized analysis provides a worst-case bound on the actual cost of the entire sequence. One advantage of this approach is that although some operations might be expensive, many others might be cheap. You can use amortized a nalysis when designing algorithms, since the design of an algorithm and the analysis of its running time are often closely intertwined. Chapter 16 introduces three ways to perform an amortized analysis of an algorithm."
   },
   {
    "type": "footnote",
@@ -2879,7 +2879,7 @@
    "section_title": "13.4 Deletion",
    "printed_page": 362,
    "pdf_page": 383,
-   "text": "Dynamic programming typically applies to optimization problems. Such problems can have many possible solutions. Each solutio n has a value, and you want to find a solution with the optimal (minimum or maximum) value. We call such a solution an optimal solution to the problem, as opposed to the optimal solution, since there may be several solutions that achieve the optimal value."
+   "text": "Dynamic programming typically applies to optimization problems. Such problems can have many possible solutions. Each solution has a value, and you want to find a solution with the optimal (minimum or maximum) value. We call such a solution an optimal solution to the problem, as opposed to the optimal solution, since there may be several solutions that achieve the optimal value."
   },
   {
    "type": "body",

@@ -50,7 +50,7 @@
    "section_title": "5.1 The hiring problem",
    "printed_page": 126,
    "pdf_page": 147,
-   "text": "This chapter introduces probabilistic analysis and randomized algorithms. If you are unfamiliar with the basics of probability theor y, you should read Sections"
+   "text": "This chapter introduces probabilistic analysis and randomized algorithms. If you are unfamiliar with the basics of probability theory, you should read Sections"
   },
   {
    "type": "body",
@@ -68,7 +68,7 @@
    "section_title": "5.1 The hiring problem",
    "printed_page": 126,
    "pdf_page": 147,
-   "text": "Suppose that you need to hire a new office assistant. Your previous attempts at hiring have been unsuccessful, and you decide to use an employment agency. The employment agency sends you one candidate each day. You interview that person and then decide either to hire that person or not. You must pay the employment agency a small fee to interview an applicant. To actually hire an applicant is more costly, however, since you must fire your current office assistant and also pay a substantial hiring fee to the employment agency. You are committed to having, at all times, the best possible person for the job. Th erefore, you decide that, after interviewing each applicant, if that applicant is b etter qualified than the current office assistant, you will fire the current office assistant and hire the new applicant."
+   "text": "Suppose that you need to hire a new office assistant. Your previous attempts at hiring have been unsuccessful, and you decide to use an employment agency. The employment agency sends you one candidate each day. You interview that person and then decide either to hire that person or not. You must pay the employment agency a small fee to interview an applicant. To actually hire an applicant is more costly, however, since you must fire your current office assistant and also pay a substantial hiring fee to the employment agency. You are committed to having, at all times, the best possible person for the job. Th erefore, you decide that, after interviewing each applicant, if that applicant is better qualified than the current office assistant, you will fire the current office assistant and hire the new applicant."
   },
   {
    "type": "body",
@@ -150,7 +150,7 @@
    "section_title": "5.1 The hiring problem",
    "printed_page": 127,
    "pdf_page": 148,
-   "text": "HIRE-ASSISTANT (n) may seem very different from analyzing the running time of, say, merge sort. The analytical techniques used, however, are identical whether we are analyzing cost or running time. In either case, we are counting th e number of times certain basic operations are executed."
+   "text": "HIRE-ASSISTANT (n) may seem very different from analyzing the running time of, say, merge sort. The analytical techniques used, however, are identical whether we are analyzing cost or running time. In either case, we are counting the number of times certain basic operations are executed."
   },
   {
    "type": "body",
@@ -249,7 +249,7 @@
    "section_title": "5.1 The hiring problem",
    "printed_page": 128,
    "pdf_page": 149,
-   "text": "In order to use probabilistic analysis, you need to know something about the distribution of the inputs. In many cases, you know li ttle about the input distribution. Even if you do know something about the distribution, you might not be able to model this knowledge computationally. Yet, probability and randomness often serve as tools for algorithm design and analysis, b y making part of the algorithm behave randomly."
+   "text": "In order to use probabilistic analysis, you need to know something about the distribution of the inputs. In many cases, you know little about the input distribution. Even if you do know something about the distribution, you might not be able to model this knowledge computationally. Yet, probability and randomness often serve as tools for algorithm design and analysis, b y making part of the algorithm behave randomly."
   },
   {
    "type": "body",
@@ -267,7 +267,7 @@
    "section_title": "5.1 The hiring problem",
    "printed_page": 128,
    "pdf_page": 149,
-   "text": "Thus, in order to develop a randomized algorithm for the hiring problem, you need greater control over the order in which you’ll interview the candidates. We will, therefore, change the model slightly. The employmen t agency sends you a list of the n candidates in advance. On each day, you choose, randomly, which candidate to interview. Although you know nothing about the candidates (besides their names), we have made a significant change. Instead of accepting the order given to you by the employment agency and hoping that it’s random, you have instead gained control of the process and enforced a random order."
+   "text": "Thus, in order to develop a randomized algorithm for the hiring problem, you need greater control over the order in which you’ll interview the candidates. We will, therefore, change the model slightly. The employment agency sends you a list of the n candidates in advance. On each day, you choose, randomly, which candidate to interview. Although you know nothing about the candidates (besides their names), we have made a significant change. Instead of accepting the order given to you by the employment agency and hoping that it’s random, you have instead gained control of the process and enforced a random order."
   },
   {
    "type": "body",
@@ -303,7 +303,7 @@
    "section_title": "5.1 The hiring problem",
    "printed_page": 129,
    "pdf_page": 150,
-   "text": "When analyzing the running time of a randomized algorithm, we take the expectation of the running time over the distribution of values returned by the random number generator. We distinguish these algorithms f rom those in which the input is random by referring to the running time of a ran domized algorithm as an ex- pected running time. In general, we discuss the average-case running time when the probability distribution is over the inputs to the algorithm, and we discuss the expected running time when the algorithm itself makes random choices."
+   "text": "When analyzing the running time of a randomized algorithm, we take the expectation of the running time over the distribution of values returned by the random number generator. We distinguish these algorithms from those in which the input is random by referring to the running time of a ran domized algorithm as an ex- pected running time. In general, we discuss the average-case running time when the probability distribution is over the inputs to the algorithm, and we discuss the expected running time when the algorithm itself makes random choices."
   },
   {
    "type": "exercise",
@@ -339,7 +339,7 @@
    "section_title": "5.1 The hiring problem",
    "printed_page": 129,
    "pdf_page": 150,
-   "text": "BIASED-RANDOM as a subroutine, and returns an unbiased answer, re turning 0 with probability 1/2 and 1 with probability 1/2. What is the expected running time of your algorithm as a function of p?"
+   "text": "BIASED-RANDOM as a subroutine, and returns an unbiased answer, returning 0 with probability 1/2 and 1 with probability 1/2. What is the expected running time of your algorithm as a function of p?"
   },
   {
    "type": "body",
@@ -348,7 +348,7 @@
    "section_title": "5.2 Indicator random variables",
    "printed_page": 130,
    "pdf_page": 151,
-   "text": "In order to analyze many algorithms, including the hiring problem, we use indicator random variables. Indicator random variables provid e a convenient method for converting between probabilities and expectations. Given a sample space S and an event A, the indicator random variable I fAg associated with event A is defined as I fAg ="
+   "text": "In order to analyze many algorithms, including the hiring problem, we use indicator random variables. Indicator random variables provide a convenient method for converting between probabilities and expectations. Given a sample space S and an event A, the indicator random variable I fAg associated with event A is defined as I fAg ="
   },
   {
    "type": "body",
@@ -564,7 +564,7 @@
    "section_title": "5.2 Indicator random variables",
    "printed_page": 131,
    "pdf_page": 152,
-   "text": "In order to compute the expected number of heads, t ake the expectation of both sides of the above equation to obtain E [X ] = E"
+   "text": "In order to compute the expected number of heads, take the expectation of both sides of the above equation to obtain E [X ] = E"
   },
   {
    "type": "body",
@@ -582,7 +582,7 @@
    "section_title": "5.2 Indicator random variables",
    "printed_page": 131,
    "pdf_page": 152,
-   "text": "By Lemma 5.1, the expectation of each of the random variables is E [X i ] = 1/2 for i = 1,2,…,n . Then we can compute the sum of the expectations: P n i D1 E [X i ] = n/2. But equation (5.2) calls for the expectation of the sum, not the sum of the ex- pectations. How can we resolve this conundrum? Linearity of expectation, equation (C.24) on page 1192, to the rescue: the expectation of the sum always equals the sum of the expectations. Linearity of expectation applies even when there is dependence among the random variables. Combining in dicator random variables with linearity of expectation gives us a powerful t echnique to compute expected values when multiple events occur. We now can compute the expected number of heads:"
+   "text": "By Lemma 5.1, the expectation of each of the random variables is E [X i ] = 1/2 for i = 1,2,…,n . Then we can compute the sum of the expectations: P n i D1 E [X i ] = n/2. But equation (5.2) calls for the expectation of the sum, not the sum of the ex- pectations. How can we resolve this conundrum? Linearity of expectation, equation (C.24) on page 1192, to the rescue: the expectation of the sum always equals the sum of the expectations. Linearity of expectation applies even when there is dependence among the random variables. Combining in dicator random variables with linearity of expectation gives us a powerful technique to compute expected values when multiple events occur. We now can compute the expected number of heads:"
   },
   {
    "type": "body",
@@ -843,7 +843,7 @@
    "section_title": "5.3 Randomized algorithms",
    "printed_page": 134,
    "pdf_page": 155,
-   "text": "In the previous section, we showed how knowing a di stribution on the inputs can help us to analyze the average-case behavior of an algorithm. What if you do not know the distribution? Then you cannot perform an average-case analysis."
+   "text": "In the previous section, we showed how knowing a distribution on the inputs can help us to analyze the average-case behavior of an algorithm. What if you do not know the distribution? Then you cannot perform an average-case analysis."
   },
   {
    "type": "body",
@@ -870,7 +870,7 @@
    "section_title": "5.3 Randomized algorithms",
    "printed_page": 134,
    "pdf_page": 155,
-   "text": "Let us further explore the distinction between probabilistic analysis and randomized algorithms. In Section 5.2, we claimed that, assuming that the candidates arrive in a random order, the expected number of ti mes you hire a new office assistant is about ln n. This algorithm is deterministic: for any particular input, the number of times a new office assistant is hired is always the same. Furthermore, the number of times you hire a new office assistant differs for different inputs, and it depends on the ranks of the various candidates. Since this number depends only on the ranks of the candidates, to represent a particular input, we can just list, in order, the ranks hrank(1); rank(2),…; rank(n)i of the candidates. Given the rank list A 1 = ⟨1,2,3,4,5,6,7,8,9,10⟩, a new office assistant is always hired 10 times, since each successive candidate is better than the previous one, and lines 5–6 of HIRE-ASSISTANT are executed in each iteration. Given the list of ranks A 2 = ⟨10,9,8,7,6,5,4,3,2,1⟩, a new office assistant is hired only once, in the first iteration. Given a list of ranks A 3 = ⟨5,2,1,8,4,7,10,9,3,6⟩, a new office assistant is hired three times, upon interviewing the candidates with ranks 5, 8, and 10. Recalling that the cost of our algorithm depends on how many times you hire a new office assistant, we see that there are expensive inputs such as A 1 , inexpensive inputs such as A 2 , and moderately expensive inputs such as A 3 ."
+   "text": "Let us further explore the distinction between probabilistic analysis and randomized algorithms. In Section 5.2, we claimed that, assuming that the candidates arrive in a random order, the expected number of times you hire a new office assistant is about ln n. This algorithm is deterministic: for any particular input, the number of times a new office assistant is hired is always the same. Furthermore, the number of times you hire a new office assistant differs for different inputs, and it depends on the ranks of the various candidates. Since this number depends only on the ranks of the candidates, to represent a particular input, we can just list, in order, the ranks hrank(1); rank(2),…; rank(n)i of the candidates. Given the rank list A 1 = ⟨1,2,3,4,5,6,7,8,9,10⟩, a new office assistant is always hired 10 times, since each successive candidate is better than the previous one, and lines 5–6 of HIRE-ASSISTANT are executed in each iteration. Given the list of ranks A 2 = ⟨10,9,8,7,6,5,4,3,2,1⟩, a new office assistant is hired only once, in the first iteration. Given a list of ranks A 3 = ⟨5,2,1,8,4,7,10,9,3,6⟩, a new office assistant is hired three times, upon interviewing the candidates with ranks 5, 8, and 10. Recalling that the cost of our algorithm depends on how many times you hire a new office assistant, we see that there are expensive inputs such as A 1 , inexpensive inputs such as A 2 , and moderately expensive inputs such as A 3 ."
   },
   {
    "type": "pseudocode",
@@ -1002,7 +1002,7 @@
    "section_title": "5.3 Randomized algorithms",
    "printed_page": 136,
    "pdf_page": 157,
-   "text": "Many randomized algorithms randomize the input by p ermuting a given input array. We’ll see elsewhere in this book other ways to randomize an algorithm, but now, let’s see how we can randomly permute an array of n elements. The goal is to produce a uniform random permutation, that is, a permutation that is as likely as any other permutation. Since there are n! possible permutations, we want the probability that any particular permutation is produced to be 1/n!."
+   "text": "Many randomized algorithms randomize the input by permuting a given input array. We’ll see elsewhere in this book other ways to randomize an algorithm, but now, let’s see how we can randomly permute an array of n elements. The goal is to produce a uniform random permutation, that is, a permutation that is as likely as any other permutation. Since there are n! possible permutations, we want the probability that any particular permutation is produced to be 1/n!."
   },
   {
    "type": "body",
@@ -1375,14 +1375,14 @@
     },
     {
      "n": 6,
-     "code": "else S = S [ fi g"
+     "code": "else S = S [ fig"
     },
     {
      "n": 7,
      "code": "return S"
     }
    ],
-   "text": "1 S = ;\n2 for k = n − m + 1 to n / / iterates m times\n3 i DRANDOM(1,k)\n4 if i 2 S\n5 S = S [ fkg\n6 else S = S [ fi g\n7 return S"
+   "text": "1 S = ;\n2 for k = n − m + 1 to n / / iterates m times\n3 i DRANDOM(1,k)\n4 if i 2 S\n5 S = S [ fkg\n6 else S = S [ fig\n7 return S"
   },
   {
    "type": "body",
@@ -1652,7 +1652,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 141,
    "pdf_page": 162,
-   "text": "Pr fB k g = Pr fB k−1 g Pr fA k j B k−1 g ; (5.8) where we take Pr fB 1 g = Pr fA 1 g = 1 as an initial condition. In other words, the probability that b 1 ,b 2 ,…,b k are distinct birthdays equals the probability that b 1 ,b 2 ,…,b k−1 are distinct birthdays multiplied by the probabilit y that b k ≠ b i for i = 1,2,…,k − 1, given that b 1 ,b 2 ,…,b k−1 are distinct."
+   "text": "Pr fB k g = Pr fB k−1 g Pr fA k j B k−1 g ; (5.8) where we take Pr fB 1 g = Pr fA 1 g = 1 as an initial condition. In other words, the probability that b 1 ,b 2 ,…,b k are distinct birthdays equals the probability that b 1 ,b 2 ,…,b k−1 are distinct birthdays multiplied by the probability that b k ≠ b i for i = 1,2,…,k − 1, given that b 1 ,b 2 ,…,b k−1 are distinct."
   },
   {
    "type": "body",
@@ -1895,7 +1895,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 142,
    "pdf_page": 163,
-   "text": "Letting X be the random variable that counts the number of pa irs of individuals having the same birthday, we have"
+   "text": "Letting X be the random variable that counts the number of pairs of individuals having the same birthday, we have"
   },
   {
    "type": "body",
@@ -1994,7 +1994,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 143,
    "pdf_page": 164,
-   "text": "The first analysis, which used only probabilities, determined the number of people required for the probability to exceed 1/2 that a matching pair of birthdays exists, and the second analysis, which used indicator random variables, determined the number such that the expected number of matchin g birthdays is 1. Although the exact numbers of people differ for the two situations, they are the same asymptotically: Θ. √n/."
+   "text": "The first analysis, which used only probabilities, determined the number of people required for the probability to exceed 1/2 that a matching pair of birthdays exists, and the second analysis, which used indicator random variables, determined the number such that the expected number of matching birthdays is 1. Although the exact numbers of people differ for the two situations, they are the same asymptotically: Θ. √n/."
   },
   {
    "type": "body",
@@ -2291,7 +2291,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 145,
    "pdf_page": 166,
-   "text": "We can use inequality (5.10) to bound the length of the longest streak. For j = 0,1,2,…,n , let L j be the event that the longest streak of heads has l ength exactly j , and let L be the length of the longest streak. By the definition of ex- pected value, we have"
+   "text": "We can use inequality (5.10) to bound the length of the longest streak. For j = 0,1,2,…,n , let L j be the event that the longest streak of heads has length exactly j , and let L be the length of the longest streak. By the definition of ex- pected value, we have"
   },
   {
    "type": "body",
@@ -2624,7 +2624,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 148,
    "pdf_page": 169,
-   "text": "We want to bound the probability that the longest s treak equals or exceeds"
+   "text": "We want to bound the probability that the longest streak equals or exceeds"
   },
   {
    "type": "body",
@@ -2975,7 +2975,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 150,
    "pdf_page": 171,
-   "text": "Instead, you are willing to settle for a candidate who is close to the best, in ex- change for hiring exactly once. You must obey one c ompany requirement: after each interview you must either immediately offer th e position to the applicant or immediately reject the applicant. What is the trade-off between minimizing the amount of interviewing and maximizing the quality of the candidate hired?"
+   "text": "Instead, you are willing to settle for a candidate who is close to the best, in ex- change for hiring exactly once. You must obey one company requirement: after each interview you must either immediately offer the position to the applicant or immediately reject the applicant. What is the trade-off between minimizing the amount of interviewing and maximizing the quality of the candidate hired?"
   },
   {
    "type": "body",
@@ -3155,7 +3155,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 152,
    "pdf_page": 173,
-   "text": "Evaluating these definite integrals gives us the bounds k n (ln n − ln k) ≤ Pr fS g ≤ k n (ln(n − 1) − ln(k − 1)); which provide a rather tight bound for Pr fS g. Because you wish to maximize your probability of success, let us focus on choosing th e value of k that maximizes the lower bound on Pr fS g. (Besides, the lower-bound expression is easier to maximize than the upper-bound expression.) Differentiating the expression (k/n).ln n −ln k/ with respect to k, we obtain n (ln n − ln k − 1):"
+   "text": "Evaluating these definite integrals gives us the bounds k n (ln n − ln k) ≤ Pr fS g ≤ k n (ln(n − 1) − ln(k − 1)); which provide a rather tight bound for Pr fS g. Because you wish to maximize your probability of success, let us focus on choosing the value of k that maximizes the lower bound on Pr fS g. (Besides, the lower-bound expression is easier to maximize than the upper-bound expression.) Differentiating the expression (k/n).ln n −ln k/ with respect to k, we obtain n (ln n − ln k − 1):"
   },
   {
    "type": "body",
@@ -3182,7 +3182,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 152,
    "pdf_page": 173,
-   "text": "5.4-1 How many people must there be in a room before the probability that someone has the same birthday as you do is at least 1/2? How many people must there be before the probability that at least two people hav e a birthday on July 4 is greater than 1/2?"
+   "text": "5.4-1 How many people must there be in a room before the probability that someone has the same birthday as you do is at least 1/2? How many people must there be before the probability that at least two people have a birthday on July 4 is greater than 1/2?"
   },
   {
    "type": "exercise",
@@ -3236,7 +3236,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 153,
    "pdf_page": 174,
-   "text": "You toss n balls into n bins, where each toss is independent and the ball is equally likely to end up in any bin. What is the expected n umber of empty bins? What is the expected number of bins with exactly one ball?"
+   "text": "You toss n balls into n bins, where each toss is independent and the ball is equally likely to end up in any bin. What is the expected number of empty bins? What is the expected number of bins with exactly one ball?"
   },
   {
    "type": "body",
@@ -3344,7 +3344,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 154,
    "pdf_page": 175,
-   "text": "Now consider a deterministic linear search algorith m. The algorithm, which we call DETERMINISTIC-SEARCH , searches A for x in order, considering A[1]; A[2]; Notes for Chapter 5 155"
+   "text": "Now consider a deterministic linear search algorithm. The algorithm, which we call DETERMINISTIC-SEARCH , searches A for x in order, considering A[1]; A[2]; Notes for Chapter 5 155"
   },
   {
    "type": "body",
@@ -3515,7 +3515,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 157,
    "pdf_page": 178,
-   "text": "The structure of the data In practice, the numbers to be sorted are rarely isolated values. Each is usually part of a collection of data called a record. Each record contains a key, which is the value to be sorted. The remainder of the record consists of satellite data, which are usually carried around with the key. In practice, when a sorting algorithm permutes the keys, it must permute the satellite data as wel l. If each record includes a large amount of satellite data, it often pays to permute an array of pointers to the records rather than the records themselves in order to minimize data movement."
+   "text": "The structure of the data In practice, the numbers to be sorted are rarely isolated values. Each is usually part of a collection of data called a record. Each record contains a key, which is the value to be sorted. The remainder of the record consists of satellite data, which are usually carried around with the key. In practice, when a sorting algorithm permutes the keys, it must permute the satellite data as well. If each record includes a large amount of satellite data, it often pays to permute an array of pointers to the records rather than the records themselves in order to minimize data movement."
   },
   {
    "type": "body",
@@ -3524,7 +3524,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 157,
    "pdf_page": 178,
-   "text": "In a sense, it is these implementation details that distinguish an algorithm from a full-blown program. A sorting algorithm describes the method to determine the sorted order, regardless of whether what’s being sorted are individual numbers or large records containing many bytes of satellite da ta. Thus, when focusing on the problem of sorting, we typically assume that the in put consists only of numbers."
+   "text": "In a sense, it is these implementation details that distinguish an algorithm from a full-blown program. A sorting algorithm describes the method to determine the sorted order, regardless of whether what’s being sorted are individual numbers or large records containing many bytes of satellite data. Thus, when focusing on the problem of sorting, we typically assume that the in put consists only of numbers."
   },
   {
    "type": "body",
@@ -3578,7 +3578,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 158,
    "pdf_page": 179,
-   "text": "• Algorithms often use sorting as a key subroutine. F or example, a program that renders graphical objects which are layered on top of each other might have to sort the objects according to an \"above\" relatio n so that it can draw these objects from bottom to top. We will see numerous al gorithms in this text that use sorting as a subroutine."
+   "text": "• Algorithms often use sorting as a key subroutine. F or example, a program that renders graphical objects which are layered on top of each other might have to sort the objects according to an \"above\" relation so that it can draw these objects from bottom to top. We will see numerous algorithms in this text that use sorting as a subroutine."
   },
   {
    "type": "body",
@@ -3587,7 +3587,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 158,
    "pdf_page": 179,
-   "text": "• We can draw from among a wide variety of sorting algorithms, and they employ a rich set of techniques. In fact, many important t echniques used throughout algorithm design appear in sorting algorithms that have been developed over the years. In this way, sorting is also a problem of historical interest."
+   "text": "• We can draw from among a wide variety of sorting algorithms, and they employ a rich set of techniques. In fact, many important techniques used throughout algorithm design appear in sorting algorithms that have been developed over the years. In this way, sorting is also a problem of historical interest."
   },
   {
    "type": "body",
@@ -3614,7 +3614,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 158,
    "pdf_page": 179,
-   "text": "• Many engineering issues come to the fore when implementing sorting algorithms. The fastest sorting program for a particula r situation may depend on many factors, such as prior knowledge about the key s and satellite data, the memory hierarchy (caches and virtual memory) of the host computer, and the software environment. Many of these issues are best dealt with at the algorithmic level, rather than by \"tweaking\" the code."
+   "text": "• Many engineering issues come to the fore when implementing sorting algorithms. The fastest sorting program for a particular situation may depend on many factors, such as prior knowledge about the key s and satellite data, the memory hierarchy (caches and virtual memory) of the host computer, and the software environment. Many of these issues are best dealt with at the algorithmic level, rather than by \"tweaking\" the code."
   },
   {
    "type": "body",
@@ -3686,7 +3686,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 159,
    "pdf_page": 180,
-   "text": "Chapter 8 then goes on to show that we might be able to beat this lower bound of Ω(n lg n) if an algorithm can gather information about the so rted order of the input by means other than comparing elements. The c ounting sort algorithm, for example, assumes that the input numbers belong to the set f0,1,…,k g. By using array indexing as a tool for determining relative o rder, counting sort can sort n numbers in Θ(k + n) time. Thus, when k = O(n), counting sort runs in time that is linear in the size of the input array. A related algorithm, radix sort, can be used to extend the range of counting sort. If there are n integers to sort, each integer has d digits, and each digit can take on up to k possible values, then radix sort can sort the numbers in Θ(d(n + k)) time. When d is a constant and k is O(n), radix sort runs in linear time. A third algorithm, bucket sort, requires knowledge of the probabilistic distribution of numbers in the input array. It can sort n real numbers uniformly distributed in the half-open interval [0,1/ in average-case O(n) time."
+   "text": "Chapter 8 then goes on to show that we might be able to beat this lower bound of Ω(n lg n) if an algorithm can gather information about the so rted order of the input by means other than comparing elements. The counting sort algorithm, for example, assumes that the input numbers belong to the set f0,1,…,k g. By using array indexing as a tool for determining relative order, counting sort can sort n numbers in Θ(k + n) time. Thus, when k = O(n), counting sort runs in time that is linear in the size of the input array. A related algorithm, radix sort, can be used to extend the range of counting sort. If there are n integers to sort, each integer has d digits, and each digit can take on up to k possible values, then radix sort can sort the numbers in Θ(d(n + k)) time. When d is a constant and k is O(n), radix sort runs in linear time. A third algorithm, bucket sort, requires knowledge of the probabilistic distribution of numbers in the input array. It can sort n real numbers uniformly distributed in the half-open interval [0,1/ in average-case O(n) time."
   },
   {
    "type": "body",
@@ -3821,7 +3821,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 160,
    "pdf_page": 181,
-   "text": "You can, of course, select the i th order statistic by sorting the input and indexin g the i th element of the output. With no assumptions about the input distribution, this method runs in Ω(n lg n) time, as the lower bound proved in Chapter 8 shows."
+   "text": "You can, of course, select the i th order statistic by sorting the input and indexing the i th element of the output. With no assumptions about the input distribution, this method runs in Ω(n lg n) time, as the lower bound proved in Chapter 8 shows."
   },
   {
    "type": "body",
@@ -3830,7 +3830,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 160,
    "pdf_page": 181,
-   "text": "Chapter 9 shows how to find the i th smallest element in O(n) time, even when the elements are arbitrary real numbers. We present a randomized algorithm with tight pseudocode that runs in Θ(n 2 ) time in the worst case, but whose expected running time is O(n). We also give a more complicated algorithm that ru ns in"
+   "text": "Chapter 9 shows how to find the i th smallest element in O(n) time, even when the elements are arbitrary real numbers. We present a randomized algorithm with tight pseudocode that runs in Θ(n 2 ) time in the worst case, but whose expected running time is O(n). We also give a more complicated algorithm that runs in"
   },
   {
    "type": "body",

@@ -41,7 +41,7 @@
    "section_title": "8.1 Lower bounds for sorting",
    "printed_page": 205,
    "pdf_page": 226,
-   "text": "We have now seen a handful of algorithms that can s ort n numbers in O(n lg n) time. Whereas merge sort and heapsort achieve this upper bound in the worst case, quicksort achieves it on average. Moreover, for eac h of these algorithms, we can produce a sequence of n input numbers that causes the algorithm to run in Ω(n lg n) time."
+   "text": "We have now seen a handful of algorithms that can sort n numbers in O(n lg n) time. Whereas merge sort and heapsort achieve this upper bound in the worst case, quicksort achieves it on average. Moreover, for each of these algorithms, we can produce a sequence of n input numbers that causes the algorithm to run in Ω(n lg n) time."
   },
   {
    "type": "body",
@@ -50,7 +50,7 @@
    "section_title": "8.1 Lower bounds for sorting",
    "printed_page": 205,
    "pdf_page": 226,
-   "text": "These algorithms share an interesting property: the sorted order they determine is based only on comparisons between the input elements. We call such sorting algorithms comparison sorts. All the sorting algorithms introduced thus far ar e comparison sorts."
+   "text": "These algorithms share an interesting property: the sorted order they determine is based only on comparisons between the input elements. We call such sorting algorithms comparison sorts. All the sorting algorithms introduced thus far are comparison sorts."
   },
   {
    "type": "body",
@@ -113,7 +113,7 @@
    "section_title": "8.1 Lower bounds for sorting",
    "printed_page": 206,
    "pdf_page": 227,
-   "text": "Figure 8.1 The decision tree for insertion sort operating on t hree elements. An internal node"
+   "text": "Figure 8.1 The decision tree for insertion sort operating on three elements. An internal node"
   },
   {
    "type": "body",
@@ -194,7 +194,7 @@
    "section_title": "8.1 Lower bounds for sorting",
    "printed_page": 207,
    "pdf_page": 228,
-   "text": "The length of the longest simple path from the root of a decision tree to any of its reachable leaves represents the worst-case number of comparisons that the corresponding sorting algorithm performs. Consequently , the worst-case number of comparisons for a given comparison sort algorithm equals the height of its decision tree. A lower bound on the heights of all decision trees in which each permutation appears as a reachable leaf is therefore a lower bo und on the running time of any comparison sort algorithm. The following theorem establishes such a lower bound."
+   "text": "The length of the longest simple path from the root of a decision tree to any of its reachable leaves represents the worst-case number of comparisons that the corresponding sorting algorithm performs. Consequently , the worst-case number of comparisons for a given comparison sort algorithm equals the height of its decision tree. A lower bound on the heights of all decision trees in which each permutation appears as a reachable leaf is therefore a lower bound on the running time of any comparison sort algorithm. The following theorem establishes such a lower bound."
   },
   {
    "type": "theorem",
@@ -338,7 +338,7 @@
    "section_title": "8.2 Counting sort",
    "printed_page": 208,
    "pdf_page": 229,
-   "text": "The COUNTING-SORT procedure on the facing page takes as input an arra y"
+   "text": "The COUNTING-SORT procedure on the facing page takes as input an array"
   },
   {
    "type": "body",
@@ -443,7 +443,7 @@
    "section_title": "8.2 Counting sort",
    "printed_page": 209,
    "pdf_page": 230,
-   "text": "Finally, the for loop of lines 11–13 makes another pass over A, but in reverse, to place each element A[j] into its correct sorted position in the output arra y B ."
+   "text": "Finally, the for loop of lines 11–13 makes another pass over A, but in reverse, to place each element A[j] into its correct sorted position in the output array B ."
   },
   {
    "type": "body",
@@ -479,7 +479,7 @@
    "section_title": "8.2 Counting sort",
    "printed_page": 209,
    "pdf_page": 230,
-   "text": "Counting sort can beat the lower bound of Ω(n lg n) proved in Section 8.1 because it is not a comparison sort. In fact, no comparisons between input elements occur anywhere in the code. Instead, counting sort uses the actual values of the 2 5 3 0 2 3 0 3"
+   "text": "Counting sort can beat the lower bound of Ω(n lg n) proved in Section 8.1 because it is not a comparison sort. In fact, no comp arisons between input elements occur anywhere in the code. Instead, counting sort uses the actual values of the 2 5 3 0 2 3 0 3"
   },
   {
    "type": "pseudocode",
@@ -680,7 +680,7 @@
    "section_title": "8.3 Radix sort",
    "printed_page": 211,
    "pdf_page": 232,
-   "text": "Show that the algorithm still works properly, but that it is not stable. Then rewrite the pseudocode for counting sort so that elements w ith the same value are written into the output array in order of increasing index and the algorithm is stable."
+   "text": "Show that the algorithm still works properly, but that it is not stable. Then rewrite the pseudocode for counting sort so that elements with the same value are written into the output array in order of increasing index and the algorithm is stable."
   },
   {
    "type": "exercise",
@@ -725,7 +725,7 @@
    "section_title": "8.2 Counting sort",
    "printed_page": 211,
    "pdf_page": 232,
-   "text": "8.2-7 Counting sort can also work efficiently if the input values have fractional parts, but the number of digits in the fractional part is smal l. Suppose that you are given n numbers in the range 0 to k, each with at most d decimal (base 10) digits to the right of the decimal point. Modify counting sort to run in Θ(n + 10 d k) time."
+   "text": "8.2-7 Counting sort can also work efficiently if the input values have fractional parts, but the number of digits in the fractional part is small. Suppose that you are given n numbers in the range 0 to k, each with at most d decimal (base 10) digits to the right of the decimal point. Modify counting sort to run in Θ(n + 10 d k) time."
   },
   {
    "type": "body",
@@ -770,7 +770,7 @@
    "section_title": "8.3 Radix sort",
    "printed_page": 212,
    "pdf_page": 233,
-   "text": "Intuitively, you might sort numbers on their most significant (leftmost) digit, sort each of the resulting bins recursively, and th en combine the decks in order."
+   "text": "Intuitively, you might sort numbers on their most significant (leftmost) digit, sort each of the resulting bins recursively, and then combine the decks in order."
   },
   {
    "type": "body",
@@ -806,7 +806,7 @@
    "section_title": "8.3 Radix sort",
    "printed_page": 212,
    "pdf_page": 233,
-   "text": "In order for radix sort to work correctly, the digit sorts must be stable. The sort performed by a card sorter is stable, but the operator must be careful not to change the order of the cards as they come out of a bin, e ven though all the cards in a bin have the same digit in the chosen column."
+   "text": "In order for radix sort to work correctly, the digit sorts must be stable. The sort performed by a card sorter is stable, but the operator must be careful not to change the order of the cards as they come out of a bin, even though all the cards in a bin have the same digit in the chosen column."
   },
   {
    "type": "body",
@@ -872,7 +872,7 @@
    "section_title": "8.3 Radix sort",
    "printed_page": 213,
    "pdf_page": 234,
-   "text": "Although the pseudocode for RADIX-SORT does not specify which stable sort to use, COUNTING-SORT is commonly used. If you use COUNTING-SORT as the stable sort, you can make RADIX-SORT a little more efficient by revising COUNTING- SORT to take a pointer to the output array as a paramete r, having RADIX-SORT preallocate this array, and alternating input and o utput between the two arrays in successive iterations of the for loop in RADIX-SORT."
+   "text": "Although the pseudocode for RADIX-SORT does not specify which stable sort to use, COUNTING-SORT is commonly used. If you use COUNTING-SORT as the stable sort, you can make RADIX-SORT a little more efficient by revising COUNTING- SORT to take a pointer to the output array as a parameter, having RADIX-SORT preallocate this array, and alternating input and output between the two arrays in successive iterations of the for loop in RADIX-SORT."
   },
   {
    "type": "lemma",
@@ -989,7 +989,7 @@
    "section_title": "8.3 Radix sort",
    "printed_page": 214,
    "pdf_page": 235,
-   "text": "(e.g., quicksort often uses hardware caches more ef fectively than radix sort), and of the input data. Moreover, the version of radix sort that uses counting sort as the intermediate stable sort does not sort in place, wh ich many of the Θ(n lg n)-time comparison sorts do. Thus, when primary memory storage is at a premium, an in-place algorithm such as quicksort could be the better choice."
+   "text": "(e.g., quicksort often uses hardware caches more effectively than radix sort), and of the input data. Moreover, the version of radix sort that uses counting sort as the intermediate stable sort does not sort in place, which many of the Θ(n lg n)-time comparison sorts do. Thus, when primary memory storage is at a premium, an in-place algorithm such as quicksort could be the better choice."
   },
   {
    "type": "exercise",
@@ -1016,7 +1016,7 @@
    "section_title": "8.3 Radix sort",
    "printed_page": 215,
    "pdf_page": 236,
-   "text": "8.3-2 Which of the following sorting algorithms are stabl e: insertion sort, merge sort, heapsort, and quicksort? Give a simple scheme that makes any comparison sort stable. How much additional time and space does your scheme entail?"
+   "text": "8.3-2 Which of the following sorting algorithms are stable: insertion sort, merge sort, heapsort, and quicksort? Give a simple scheme that makes any comparison sort stable. How much additional time and space does your scheme entail?"
   },
   {
    "type": "exercise",
@@ -1542,7 +1542,7 @@
    "section_title": "8.4 Bucket sort",
    "printed_page": 219,
    "pdf_page": 240,
-   "text": "Now consider a randomized comparison sort B . We can extend the decision-tree model to handle randomization by incorporating two kinds of nodes: ordinary comparison nodes and \"randomization\" nodes. A randomization node models a random choice of the form RANDOM(1,r) made by algorithm B . The node has r children, each of which is equally likely to be chosen during an execution of the algorithm. f. Show that for any randomized comparison sort B , there exists a deterministic comparison sort A whose expected number of comparisons is no more tha n those made by B ."
+   "text": "Now consider a randomized comparison sort B . We can extend the decision-tree model to handle randomization by incorporating two kinds of nodes: ordinary comparison nodes and \"randomization\" nodes. A randomization node models a random choice of the form RANDOM(1,r) made by algorithm B . The node has r children, each of which is equally likely to be chosen during an execution of the algorithm. f. Show that for any randomized comparison sort B , there exists a deterministic comparison sort A whose expected number of comparisons is no more than those made by B ."
   },
   {
    "type": "problem",
@@ -1560,7 +1560,7 @@
    "section_title": "8.4 Bucket sort",
    "printed_page": 220,
    "pdf_page": 241,
-   "text": "You have an array of n data records to sort, each with a key of 0 or 1. An algorithm for sorting such a set of records might possess som e subset of the following three desirable characteristics:"
+   "text": "You have an array of n data records to sort, each with a key of 0 or 1. An algorithm for sorting such a set of records might possess some subset of the following three desirable characteristics:"
   },
   {
    "type": "body",
@@ -2002,7 +2002,7 @@
    "section_title": "8.4 Bucket sort",
    "printed_page": 224,
    "pdf_page": 245,
-   "text": "6. Shift the top half of each column into the bottom half of the same column, and shift the bottom half of each column into the top half of the next column to the right. Leave the top half of the leftmost column em pty. Shift the bottom half of the last column into the top half of a new right most column, and leave the bottom half of this new column empty."
+   "text": "6. Shift the top half of each column into the bottom half of the same column, and shift the bottom half of each column into the top half of the next column to the right. Leave the top half of the leftmost column empty. Shift the bottom half of the last column into the top half of a new right most column, and leave the bottom half of this new column empty."
   },
   {
    "type": "body",
@@ -2047,7 +2047,7 @@
    "section_title": "8.4 Bucket sort",
    "printed_page": 225,
    "pdf_page": 246,
-   "text": "Although it might seem hard to believe that columns ort actually sorts, you will use the 0-1 sorting lemma to prove that it does. The 0-1 sorting lemma applies because we can treat columnsort as an oblivious compare-exchange algorithm. A couple of definitions will help you apply the 0-1 sorting lemma. We say that an area of an array is clean if we know that it contains either all 0s or all 1s or if it is empty. Otherwise, the area might contain mixed 0s and 1s, and it is dirty. From here on, assume that the input array contains only 0s and 1s, and that we can treat it as an array with r rows and s columns. d. Prove that after steps 1–3, the array consists of clean rows of 0s at the top, clean rows of 1s at the bottom, and at most s dirty rows between them. (One of the clean rows could be empty.) e. Prove that after step 4, the array, read in column-major order, starts with a clean area of 0s, ends with a clean area of 1s, and has a dirty area of at most s 2 elements in the middle. (Again, one of the clean areas could be empty.) f. Prove that steps 5–8 produce a fully sorted 0-1 output. Conclude that columnsort correctly sorts all inputs containing arbitrary values. g. Now suppose that s does not divide r . Prove that after steps 1–3, the array consists of clean rows of 0s at the top, clean rows of 1s at the bottom, and at most 2s − 1 dirty rows between them. (Once again, one of the clean areas could be empty.) How large must r be, compared with s , for columnsort to correctly sort when s does not divide r ? h. Suggest a simple change to step 1 that allows us to maintain the requirement that r ≥ 2s 2 even when s does not divide r , and prove that with your change, columnsort correctly sorts."
+   "text": "Although it might seem hard to believe that columnsort actually sorts, you will use the 0-1 sorting lemma to prove that it does. The 0-1 sorting lemma applies because we can treat columnsort as an oblivious compare-exchange algorithm. A couple of definitions will help you apply the 0-1 sorting lemma. We say that an area of an array is clean if we know that it contains either all 0s or all 1s or if it is empty. Otherwise, the area might contain mixed 0s and 1s, and it is dirty. From here on, assume that the input array contains only 0s and 1s, and that we can treat it as an array with r rows and s columns. d. Prove that after steps 1–3, the array consists of clean rows of 0s at the top, clean rows of 1s at the bottom, and at most s dirty rows between them. (One of the clean rows could be empty.) e. Prove that after step 4, the array, read in column-major order, starts with a clean area of 0s, ends with a clean area of 1s, and has a dirty area of at most s 2 elements in the middle. (Again, one of the clean areas could be empty.) f. Prove that steps 5–8 produce a fully sorted 0-1 output. Conclude that columnsort correctly sorts all inputs containing arbitrary values. g. Now suppose that s does not divide r . Prove that after steps 1–3, the array consists of clean rows of 0s at the top, clean rows of 1s at the bottom, and at most 2s − 1 dirty rows between them. (Once again, one of the clean areas could be empty.) How large must r be, compared with s , for columnsort to correctly sort when s does not divide r ? h. Suggest a simple change to step 1 that allows us to maintain the requirement that r ≥ 2s 2 even when s does not divide r , and prove that with your change, columnsort correctly sorts."
   },
   {
    "type": "chapter-notes",
@@ -2101,7 +2101,7 @@
    "section_title": "8.4 Bucket sort",
    "printed_page": 226,
    "pdf_page": 247,
-   "text": "The case of sorting n b-bit integers in o(n lg n) time has been considered by many researchers. Several positive results have been obtained, each under slightly different assumptions about the model of computatio n and the restrictions placed on the algorithm. All the results assume that the computer memory is divided into addressable b-bit words. Fredman and Willard [157] introduced the fusion tree data structure and used it to sort n integers in O(n lg n= lg lg n) time. This bound was"
+   "text": "The case of sorting n b-bit integers in o(n lg n) time has been considered by many researchers. Several positive results have been obtained, each under slightly different assumptions about the model of computation and the restrictions placed on the algorithm. All the results assume that the computer memory is divided into addressable b-bit words. Fredman and Willard [157] introduced the fusion tree data structure and used it to sort n integers in O(n lg n= lg lg n) time. This bound was"
   },
   {
    "type": "body",
@@ -2110,7 +2110,7 @@
    "section_title": "8.4 Bucket sort",
    "printed_page": 226,
    "pdf_page": 247,
-   "text": "later improved to O(n p lg n) time by Andersson [17]. These algorithms require the use of multiplication and several precomputed constants. Andersson, Hagerup, Nilsson, and Raman [18] have shown how to sort n integers in O(n lg lg n) time without using multiplication, but their method requires storage that can be unbounded in terms of n. Using multiplicative hashing, we can reduce the s torage needed to O(n), but then the O(n lg lg n) worst-case bound on the running time becomes an expected-time bound. Generalizing the exponential search trees of Andersson [17], Thorup [434] gave an O(n(lg lg n) 2 )-time sorting algorithm that does not use multiplication or randomization, and it uses linear space. Combining these techniques with some new ideas, Han [207] improved the bound for sorting to O(n lg lg n lg lg lg n) time. Although these algorithms are important theoretical breakthroughs, they are all fairly complicated and at the present time seem unlikely to compete with existing sorting algorithms in practice."
+   "text": "later improved to O(n p lg n) time by Andersson [17]. These algorithms require the use of multiplication and several precomputed constants. Andersson, Hagerup, Nilsson, and Raman [18] have shown how to sort n integers in O(n lg lg n) time without using multiplication, but their method requires storage that can be unbounded in terms of n. Using multiplicative hashing, we can reduce the storage needed to O(n), but then the O(n lg lg n) worst-case bound on the running time becomes an expected-time bound. Generalizing the exponential search trees of Andersson [17], Thorup [434] gave an O(n(lg lg n) 2 )-time sorting algorithm that does not use multiplication or randomization, and it uses linear space. Combining these techniques with some new ideas, Han [207] improved the bound for sorting to O(n lg lg n lg lg lg n) time. Although these algorithms are important theoretical breakthroughs, they are all fairly complicated and at the present time seem unlikely to compete with existing sorting algorithms in practice."
   },
   {
    "type": "body",
@@ -2137,7 +2137,7 @@
    "section_title": "8.4 Bucket sort",
    "printed_page": 227,
    "pdf_page": 248,
-   "text": "The i th order statistic of a set of n elements is the i th smallest element. For example, the minimum of a set of elements is the first order statistic (i = 1), and the maximum is the nth order statistic (i = n). A median, informally, is the \"halfway point\" of the set. When n is odd, the median is unique, occurring at i = (n + 1)/2. When n is even, there are two medians, the lower median occurring at i = n/2 and the upper median occurring at i = n/2 + 1. Thus, regardless of the parity of n, medians occur at i = ⌊(n + 1)/2⌋ and i = ⌈(n + 1)/2⌉. For simplicity in this text, however, we consistently u se the phrase \"the median\" to refer to the lower median."
+   "text": "The i th order statistic of a set of n elements is the i th smallest element. For example, the minimum of a set of elements is the first order statistic (i = 1), and the maximum is the nth order statistic (i = n). A median, informally, is the \"halfway point\" of the set. When n is odd, the median is unique, occurring at i = (n + 1)/2. When n is even, there are two medians, the lower median occurring at i = n/2 and the upper median occurring at i = n/2 + 1. Thus, regardless of the parity of n, medians occur at i = ⌊(n + 1)/2⌋ and i = ⌈(n + 1)/2⌉. For simplicity in this text, however, we consistently use the phrase \"the median\" to refer to the lower median."
   },
   {
    "type": "body",
@@ -2146,7 +2146,7 @@
    "section_title": "8.4 Bucket sort",
    "printed_page": 227,
    "pdf_page": 248,
-   "text": "This chapter addresses the problem of selecting the i th order statistic from a set of n distinct numbers. We assume for convenience that th e set contains distinct numbers, although virtually everything that we do extends to the situation in which a set contains repeated values. We formally s pecify the selection problem as follows:"
+   "text": "This chapter addresses the problem of selecting the i th order statistic from a set of n distinct numbers. We assume for convenience that the set contains distinct numbers, although virtually everything that we do extends to the situation in which a set contains repeated values. We formally specify the selection problem as follows:"
   },
   {
    "type": "body",

@@ -48,7 +48,7 @@
    "section_title": "25.1 Maximum bipartite matching (revisited)",
    "printed_page": 705,
    "pdf_page": 726,
-   "text": "An undirected graph need not be bipartite for the c oncept of matching to apply. Matching in general undirected graphs has applications in areas such as scheduling and computational chemistry. It models problems in which you want to pair up entities, represented by vertices. Two v ertices are adjacent if they represent compatible entities, and you need to find a large set of compatible pairs."
+   "text": "An undirected graph need not be bipartite for the concept of matching to apply. Matching in general undirected graphs has applications in areas such as scheduling and computational chemistry. It models problems in which you want to pair up entities, represented by vertices. Two vertices are adjacent if they represent compatible entities, and you need to find a large set of compatible pairs."
   },
   {
    "type": "body",
@@ -733,7 +733,7 @@
    "section_title": "25.1 Maximum bipartite matching (revisited)",
    "printed_page": 711,
    "pdf_page": 732,
-   "text": "You might have noticed that in this example, this m aximal set of two vertexdisjoint shortest M -augmenting paths is not a maximum set. The graph contains three vertex-disjoint shortest M -augmenting paths: h(r 1 ,l 2 ),.l 2 ,r 2 /,.r 2 ,l 1 /i, h(r 4 ,l 3 ),.l 3 ,r 3 /,.r 3 ,l 4 /i, and h(r 6 ,l 5 ),.l 5 ,r 7 /,.r 7 ,l 6 /i. No matter: the algorithm layer 0 layer 1 layer 2 layer 3 l 4 l 6 l 1 r 2 r 3 r 7 l 2 l 3 l 5 r 1 r 4 r 5 r 6"
+   "text": "You might have noticed that in this example, this maximal set of two vertexdisjoint shortest M -augmenting paths is not a maximum set. The graph contains three vertex-disjoint shortest M -augmenting paths: h(r 1 ,l 2 ),.l 2 ,r 2 /,.r 2 ,l 1 /i, h(r 4 ,l 3 ),.l 3 ,r 3 /,.r 3 ,l 4 /i, and h(r 6 ,l 5 ),.l 5 ,r 7 /,.r 7 ,l 6 /i. No matter: the algorithm layer 0 layer 1 layer 2 layer 3 l 4 l 6 l 1 r 2 r 3 r 7 l 2 l 3 l 5 r 1 r 4 r 5 r 6"
   },
   {
    "type": "figure-caption",
@@ -967,7 +967,7 @@
    "section_title": "25.1 Maximum bipartite matching (revisited)",
    "printed_page": 714,
    "pdf_page": 735,
-   "text": "The next lemma bounds the size of a maximum matchin g, based on the length of a shortest augmenting path."
+   "text": "The next lemma bounds the size of a maximum matching, based on the length of a shortest augmenting path."
   },
   {
    "type": "lemma",
@@ -1228,7 +1228,7 @@
    "section_title": "25.1 Maximum bipartite matching (revisited)",
    "printed_page": 715,
    "pdf_page": 736,
-   "text": "|L| = |R|. For any X ⊆ V , define the neighborhood of X as N(X) = fy 2 V W (x,y) 2 E for some x 2 X g ; that is, the set of vertices adjacent to some membe r of X . Prove Hall’s theorem: there exists a perfect matching in G if and only if |A| ≤ jN(A)j for every subset"
+   "text": "|L| = |R|. For any X ⊆ V , define the neighborhood of X as N(X) = fy 2 V W (x,y) 2 E for some x 2 X g ; that is, the set of vertices adjacent to some member of X . Prove Hall’s theorem: there exists a perfect matching in G if and only if |A| ≤ jN(A)j for every subset"
   },
   {
    "type": "exercise",
@@ -1237,7 +1237,7 @@
    "section_title": "25.1 Maximum bipartite matching (revisited)",
    "printed_page": 716,
    "pdf_page": 737,
-   "text": "25.1-6 In a d -regular graph, every vertex has degree d . If G = (V,E) is bipartite with vertex partition V = L [ R and also d -regular, then |L| = |R|. Use Hall’s theorem (see Exercise 25.1-5) to prove that every d -regular bipartite graph contains a perfect matching. Then use that result to prove t hat every d -regular bipartite graph contains d disjoint perfect matchings."
+   "text": "25.1-6 In a d -regular graph, every vertex has degree d . If G = (V,E) is bipartite with vertex partition V = L [ R and also d -regular, then |L| = |R|. Use Hall’s theorem (see Exercise 25.1-5) to prove that every d -regular bipartite graph contains a perfect matching. Then use that result to prove that every d -regular bipartite graph contains d disjoint perfect matchings."
   },
   {
    "type": "body",
@@ -1273,7 +1273,7 @@
    "section_title": "25.2 The stable-marriage problem",
    "printed_page": 716,
    "pdf_page": 737,
-   "text": "If a woman and a man are not matched to each other but each prefers the other over their assigned partner, they form a blocking pair. A blocking pair has incentive to opt out of the assigned pairing and get together on their own. If that were to occur, then this pair would block the matching f rom being \"stable.\" A stable"
+   "text": "If a woman and a man are not matched to each other but each prefers the other over their assigned partner, they form a blocking pair. A blocking pair has incentive to opt out of the assigned pairing and get together on their own. If that were to occur, then this pair would block the matching from being \"stable.\" A stable"
   },
   {
    "type": "footnote",
@@ -1606,7 +1606,7 @@
    "section_title": "25.2 The stable-marriage problem",
    "printed_page": 718,
    "pdf_page": 739,
-   "text": "Matching 2 is the opposite, with all men getting their first choice and all women getting their last choice. When all the women or al l the men get their first choice, there plainly cannot be a blocking pair. In matching 3, everyone gets their second choice. You can verify that there are no blocking pairs."
+   "text": "Matching 2 is the opposite, with all men getting their first choice and all women getting their last choice. When all the women or all the men get their first choice, there plainly cannot be a blocking pair. In matching 3, everyone gets their second choice. You can verify that there are no blocking pairs."
   },
   {
    "type": "body",
@@ -1624,7 +1624,7 @@
    "section_title": "25.2 The stable-marriage problem",
    "printed_page": 718,
    "pdf_page": 739,
-   "text": "Matching Program, where each hospital takes on multiple students, it is always possible to devise a stable assignment.) A simple a lgorithm known as the Gale- Shapley algorithm always finds a stable matching. The algorithm has two variants, which mirror each other: \"woman-oriented\" and \"man-oriented.\" Let’s examine the woman-oriented version. Each participant is either \"free\" or \"engaged.\" Everyone starts out free. Engagements occur when a fr ee woman proposes to a man."
+   "text": "Matching Program, where each hospital takes on multiple students, it is always possible to devise a stable assignment.) A simple a lgorithm known as the Gale- Shapley algorithm always finds a stable matching. The algorithm has two variants, which mirror each other: \"woman-oriented\" and \"man-oriented.\" Let’s examine the woman-oriented version. Each participant is either \"free\" or \"engaged.\" Everyone starts out free. Engagements occur when a free woman proposes to a man."
   },
   {
    "type": "body",
@@ -1633,7 +1633,7 @@
    "section_title": "25.2 The stable-marriage problem",
    "printed_page": 718,
    "pdf_page": 739,
-   "text": "When a man is first proposed to, he goes from free to engaged, and he always stays engaged, though not necessarily to the same woman. If an engaged man receives a proposal from a woman whom he prefers to the woman he’s currently engaged to, that engagement is broken, the woman to whom he had been engaged becomes free, and the man and the woman whom he prefers become engaged. Each woman proposes to the men in her preference list, in order, until the last time she becomes engaged. When a woman is engaged, she temporarily s tops proposing, but if she becomes free again, she continues down her list. Once everyone is engaged, the algorithm terminates. The procedure GALE-SHAPLEY on the next page makes this process more concrete. The procedure allows for som e choice: any free woman may be selected in line 2. We’ll see that the procedure produces a stable matching regardless of the order in which line 2 chooses fre e women. For the man-oriented version, just reverse the roles of men and women in the procedure."
+   "text": "When a man is first proposed to, he goes from free to engaged, and he always stays engaged, though not necessarily to the same woman. If an engaged man receives a proposal from a woman whom he prefers to the woman he’s currently engaged to, that engagement is broken, the woman to whom he had been engaged becomes free, and the man and the woman whom he prefers become engaged. Each woman proposes to the men in her preference list, in order, until the last time she becomes engaged. When a woman is engaged, she temporarily stops proposing, but if she becomes free again, she continues down her list. Once everyone is engaged, the algorithm terminates. The procedure GALE-SHAPLEY on the next page makes this process more concrete. The procedure allows for some choice: any free woman may be selected in line 2. We’ll see that the procedure produces a stable matching regardless of the order in which line 2 chooses free women. For the man-oriented version, just reverse the roles of men and women in the procedure."
   },
   {
    "type": "body",
@@ -1740,7 +1740,7 @@
    "section_title": "25.2 The stable-marriage problem",
    "printed_page": 719,
    "pdf_page": 740,
-   "text": "Brent breaks the engagement to Wanda, who becomes f ree. Lacey and Brent become engaged, with Lacey no longer free."
+   "text": "Brent breaks the engagement to Wanda, who becomes free. Lacey and Brent become engaged, with Lacey no longer free."
   },
   {
    "type": "body",
@@ -1875,7 +1875,7 @@
    "section_title": "25.2 The stable-marriage problem",
    "printed_page": 720,
    "pdf_page": 741,
-   "text": "Proof Let’s first show that the while loop of lines 2–9 always terminates, so that the procedure terminates. The proof is by contradiction. If the loop fails to terminate, it is because some woman remains free. In order for a woman to remain free, she must have proposed to all the men and bee n rejected by each one. In order for a man to reject a woman, he must be already engaged. Therefore, all the men are engaged. Once engaged, a man stays engaged (though not necessarily to the same woman). There are an equal number n of women and men, however, which means that every woman is engaged, leading to the contradiction that no women are free. We must also show that the while loop makes a bounded number of iterations. Since each of the n women goes through her ranking of the n men in order, possibly not reaching the end of her list, t he total number of iterations is at most n 2 . Therefore, the while loop always terminates, and the procedure returns a matching."
+   "text": "Proof Let’s first show that the while loop of lines 2–9 always terminates, so that the procedure terminates. The proof is by contradiction. If the loop fails to terminate, it is because some woman remains free. In order for a woman to remain free, she must have proposed to all the men and been rejected by each one. In order for a man to reject a woman, he must be already engaged. Therefore, all the men are engaged. Once engaged, a man stays engaged (though not necessarily to the same woman). There are an equal number n of women and men, however, which means that every woman is engaged, leading to the contradiction that no women are free. We must also show that the while loop makes a bounded number of iterations. Since each of the n women goes through her ranking of the n men in order, possibly not reaching the end of her list, t he total number of iterations is at most n 2 . Therefore, the while loop always terminates, and the procedure returns a matching."
   },
   {
    "type": "body",
@@ -1992,7 +1992,7 @@
    "section_title": "25.2 The stable-marriage problem",
    "printed_page": 721,
    "pdf_page": 742,
-   "text": "Since w 0 does not prefer anyone to m 0 in a stable matching and w 0 is not matched with m 0 in M 0 (because m 0 is matched with w in M 0 ), w 0 prefers m 0 to her partner in M 0 . Since w 0 prefers m 0 over her partner in M 0 and m 0 prefers w 0 over his partner w in M 0 , the pair w 0 and m 0 is a blocking pair in M 0 . Because M 0 has a blocking pair, it cannot be a stable matching, thereby contradicting the assumption that there exists some stable matching in which eac h woman has the best partner possible other than the matching M returned by GALE-SHAPLEY ."
+   "text": "Since w 0 does not prefer anyone to m 0 in a stable matching and w 0 is not matched with m 0 in M 0 (because m 0 is matched with w in M 0 ), w 0 prefers m 0 to her partner in M 0 . Since w 0 prefers m 0 over her partner in M 0 and m 0 prefers w 0 over his partner w in M 0 , the pair w 0 and m 0 is a blocking pair in M 0 . Because M 0 has a blocking pair, it cannot be a stable matching, thereby contradicting the assumption that there exists some stable matching in which each woman has the best partner possible other than the matching M returned by GALE-SHAPLEY ."
   },
   {
    "type": "body",
@@ -2001,7 +2001,7 @@
    "section_title": "25.2 The stable-marriage problem",
    "printed_page": 721,
    "pdf_page": 742,
-   "text": "We put no condition on the execution of the procedure, which means that all possible orders in which line 2 selects women resul t in the same stable matching being returned."
+   "text": "We put no condition on the execution of the procedure, which means that all possible orders in which line 2 selects women result in the same stable matching being returned."
   },
   {
    "type": "corollary",
@@ -2028,7 +2028,7 @@
    "section_title": "25.2 The stable-marriage problem",
    "printed_page": 721,
    "pdf_page": 742,
-   "text": "Proof Theorem 25.11 says that for a given set of rankings, GALE-SHAPLEY re- turns just one matching, no matter how it chooses women in line 2. The earlier ex- ample of three women and three men with three different stable matchings shows that there can be multiple stable matchings for a g iven set of rankings. A call of GALE-SHAPLEY is capable of returning only one of these stable matchings."
+   "text": "Proof Theorem 25.11 says that for a given set of rankings, GALE-SHAPLEY re- turns just one matching, no matter how it chooses women in line 2. The earlier ex- ample of three women and three men with three different stable matchings shows that there can be multiple stable matchings for a given set of rankings. A call of GALE-SHAPLEY is capable of returning only one of these stable matchings."
   },
   {
    "type": "body",
@@ -2091,7 +2091,7 @@
    "section_title": "25.2 The stable-marriage problem",
    "printed_page": 722,
    "pdf_page": 743,
-   "text": "25.2-3 The National Resident Matching Program differs from the scenario for the stablemarriage problem set out in this section in two way s. First, a hospital may be matched with more than one student, so that hospita l h takes r h ≥ 1 students."
+   "text": "25.2-3 The National Resident Matching Program differs from the scenario for the stablemarriage problem set out in this section in two way s. First, a hospital may be matched with more than one student, so that hospital h takes r h ≥ 1 students."
   },
   {
    "type": "body",
@@ -2145,7 +2145,7 @@
    "section_title": "25.2 The stable-marriage problem",
    "printed_page": 723,
    "pdf_page": 744,
-   "text": "25.2-5 The stable-roommates problem is similar to the stable-marriage problem, except that the graph is a complete graph, not bipartite, with an even number of vertices. Each vertex represents a person, and each pe rson ranks all the other people. The definitions of blocking pairs and stable matching extend in the natural way: a blocking pair comprises two people who both prefer each other to their current partner, and a matching is stable if there are no blocking pairs. For example, consider four people—Wendy, Xenia, Yolanda, and Zelda—with the following preference lists:"
+   "text": "25.2-5 The stable-roommates problem is similar to the stable-marriage problem, except that the graph is a complete graph, not bipartite, with an even number of vertices. Each vertex represents a person, and each person ranks all the other people. The definitions of blocking pairs and stable matching extend in the natural way: a blocking pair comprises two people who both prefer each other to their current partner, and a matching is stable if there are no blocking pairs. For example, consider four people—Wendy, Xenia, Yolanda, and Zelda—with the following preference lists:"
   },
   {
    "type": "body",
@@ -2181,7 +2181,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 723,
    "pdf_page": 744,
-   "text": "Let us once again add some information to a complete bipartite graph G = (V,E) , where V = L [ R. This time, instead of having the vertices of each side rank the vertices on the other side, we assign a weight to e ach edge. Ag ain, let’s assume that the vertex sets L and R each contain n vertices, so that the graph contains n 2 edges. For l 2 L and r 2 R, denote the weight of edge (l,r) by w(l,r) , which represents the utility gained by matching vertex l with vertex r ."
+   "text": "Let us once again add some information to a complete bipartite graph G = (V,E) , where V = L [ R. This time, instead of having the vertices of each side rank the vertices on the other side, we assign a weight to each edge. Ag ain, let’s assume that the vertex sets L and R each contain n vertices, so that the graph contains n 2 edges. For l 2 L and r 2 R, denote the weight of edge (l,r) by w(l,r) , which represents the utility gained by matching vertex l with vertex r ."
   },
   {
    "type": "body",
@@ -2460,7 +2460,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 725,
    "pdf_page": 746,
-   "text": "To understand the equality subgraph better, conside r again the proof of Theorem 25.14 and, in the second half, let M be any matching. The proof is still valid, in particular, inequality (25.3): the weight of any matching is always at most the sum of the vertex labels. If we choose any set of vertex labels that define an equality subgraph, then a maximum-cardinality matching in this equality subgraph has total value at most the sum of the vertex labels. If the set of vertex labels is the \"right\" one, then it will have total value equal to w.M − /, and a maximum-cardinality matching in the equality subgraph is also a maximum-weight perfect matching."
+   "text": "To understand the equality subgraph better, consider again the proof of Theorem 25.14 and, in the second half, let M be any matching. The proof is still valid, in particular, inequality (25.3): the weight of any matching is always at most the sum of the vertex labels. If we choose any set of vertex labels that define an equality subgraph, then a maximum-cardinality matching in this equality subgraph has total value at most the sum of the vertex labels. If the set of vertex labels is the \"right\" one, then it will have total value equal to w.M − /, and a maximum-cardinality matching in the equality subgraph is also a maximum-weight perfect matching."
   },
   {
    "type": "body",
@@ -2478,7 +2478,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 725,
    "pdf_page": 746,
-   "text": "The Hungarian algorithm starts with any feasible ve rtex labeling h and any matching M in the equality subgraph G h . It repeatedly finds an M -augmenting path P in G h and, using Lemma 25.1, updates the matching to be M ˚ P , thereby incrementing the size of the matching. As long as there is some equality subgraph that contains an M -augmenting path, the size of the matching can increase, until a perfect matching is achieved."
+   "text": "The Hungarian algorithm starts with any feasible vertex labeling h and any matching M in the equality subgraph G h . It repeatedly finds an M -augmenting path P in G h and, using Lemma 25.1, updates the matching to be M ˚ P , thereby incrementing the size of the matching. As long as there is some equality subgraph that contains an M -augmenting path, the size of the matching can increase, until a perfect matching is achieved."
   },
   {
    "type": "pseudocode",
@@ -2587,7 +2587,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 726,
    "pdf_page": 747,
-   "text": "The feasible vertex labels, given by the default ve rtex labeling, appear to the left of and above the matrix. Matrix entries in red indicate edges (l i ,r j ) for which l i : h + r j : h = w(l i ,r j ), that is, edges in the equality subgraph G h appearing in part (b) of the figure."
+   "text": "The feasible vertex labels, given by the default vertex labeling, appear to the left of and above the matrix. Matrix entries in red indicate edges (l i ,r j ) for which l i : h + r j : h = w(l i ,r j ), that is, edges in the equality subgraph G h appearing in part (b) of the figure."
   },
   {
    "type": "body",
@@ -3217,7 +3217,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 728,
    "pdf_page": 749,
-   "text": "With the directed equality subgraph G M,h in hand, the Hungarian algorithm searches for an M -augmenting path from any unmatched vertex in L to any unmatched vertex in R. Any exhaustive graph-search method suffices. Here, we’ll use breadth-first search, starting from all the unmatched vertices in L (just as the Hopcroft-Karp algorithm does when creating the dag H ), but stopping upon first discovering some unmatched vertex in R. Figure 25.5 shows the idea. To start from all the unmatched vertices in L, initialize the first-in, first-out queue with all the unmatched vertices in L, rather than just one source vertex. Unlike the da g H in the Hopcroft-Karp algorithm, here each vertex needs just one predecessor, so that the breadth-first search creates a breadth-first forest F = (V F ,E F ). Each unmatched vertex in L is a root in F ."
+   "text": "With the directed equality subgraph G M,h in hand, the Hungarian algorithm searches for an M -augmenting path from any unmatched vertex in L to any unmatched vertex in R. Any exhaustive graph-search method suffices. Here, we’ll use breadth-first search, starting from all the unmatched vertices in L (just as the Hopcroft-Karp algorithm does when creating the dag H ), but stopping upon first discovering some unmatched vertex in R. Figure 25.5 shows the idea. To start from all the unmatched vertices in L, initialize the first-in, first-out queue with all the unmatched vertices in L, rather than just one source vertex. Unlike the dag H in the Hopcroft-Karp algorithm, here each vertex needs just one predecessor, so that the breadth-first search creates a breadth-first forest F = (V F ,E F ). Each unmatched vertex in L is a root in F ."
   },
   {
    "type": "body",
@@ -3226,7 +3226,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 728,
    "pdf_page": 749,
-   "text": "In Figure 25.5(g), the breadth-first search has found the M -augmenting path h(l 4 ,r 2 ),.r 2 ,l 1 /,.l 1 ,r 3 /,.r 3 ,l 6 /,.l 6 ,r 5 /i. Figure 25.6(a) shows the new matching created by taking the symmetric difference of the m atching M in Figure 25.5(a) with this M -augmenting path."
+   "text": "In Figure 25.5(g), the breadth-first search has found the M -augmenting path h(l 4 ,r 2 ),.r 2 ,l 1 /,.l 1 ,r 3 /,.r 3 ,l 6 /,.l 6 ,r 5 /i. Figure 25.6(a) shows the new matching created by taking the symmetric difference of the matching M in Figure 25.5(a) with this M -augmenting path."
   },
   {
    "type": "body",
@@ -3262,7 +3262,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 728,
    "pdf_page": 749,
-   "text": "In Figure 25.6(d), the queue contains vertices l 4 and l 3 . Neither of these vertices has an edge that leaves it, however, so that once t hese vertices are removed from the queue, the queue becomes empty. The search term inates at this point, before discovering an unmatched vertex in R to yield an M -augmenting path. Whenever this situation occurs, the most recently discovered vertices must belong to L."
+   "text": "In Figure 25.6(d), the queue contains vertices l 4 and l 3 . Neither of these vertices has an edge that leaves it, however, so that once these vertices are removed from the queue, the queue becomes empty. The search term inates at this point, before discovering an unmatched vertex in R to yield an M -augmenting path. Whenever this situation occurs, the most recently discovered vertices must belong to L."
   },
   {
    "type": "body",
@@ -3280,7 +3280,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 728,
    "pdf_page": 749,
-   "text": "Recall that we have the freedom to work with any eq uality subgraph. We can change the directed equality subgraph \"on the fly,\" as long we do not counteract the work already done. The Hungarian algorithm updates the feasible vertex labeling h to fulfill the following criteria:"
+   "text": "Recall that we have the freedom to work with any equality subgraph. We can change the directed equality subgraph \"on the fly,\" as long we do not counteract the work already done. The Hungarian algorithm updates the feasible vertex labeling h to fulfill the following criteria:"
   },
   {
    "type": "body",
@@ -3424,7 +3424,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 730,
    "pdf_page": 751,
-   "text": "Figure 25.6 (a) The new matching M and the new directed equality subgraph G M:h after updating the matching in Figure 25.5(a) with the M -augmenting path in Figure 25.5(g). (b)–(d) Successive versions of the breadth-first forest F in a new breadth-first search with roots l 5 and l 7 . After the vertices l 4 and l 3 in part (d) have been removed from the queue, the q ueue becomes empty before the search can discover an unmatched vertex in R. the breadth-first forest F . Newly discovered vertices in R are enqueued, but their distances are not necessarily 1 greater than the distances of the most recently discovered vertices in L."
+   "text": "Figure 25.6 (a) The new matching M and the new directed equality subgraph G M:h after updating the matching in Figure 25.5(a) with the M -augmenting path in Figure 25.5(g). (b)–(d) Successive versions of the breadth-first forest F in a new breadth-first search with roots l 5 and l 7 . After the vertices l 4 and l 3 in part (d) have been removed from the queue, the queue becomes empty before the search can discover an unmatched vertex in R. the breadth-first forest F . Newly discovered vertices in R are enqueued, but their distances are not necessarily 1 greater than the distances of the most recently discovered vertices in L."
   },
   {
    "type": "body",
@@ -3559,7 +3559,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 731,
    "pdf_page": 752,
-   "text": "2. We claim that at the time the Hungarian algorith m computes the new feasible vertex labeling h 0 , for every edge (l,r) 2 M , we have l 2 F L if and only if r 2 F R . To see why, consider a matched vertex r and let (l,r) 2 M . First suppose that r 2 F R , so that the search discovered r and enqueued it. When r was removed from the queue, l was discovered, so l 2 F L . Now suppose that r … F R , so r is undiscovered. We will show that l … F L . The only edge in G M,h that enters l is (r,l) , and since r is undiscovered, the search has not taken this edge; if l 2 F L , it is not because of the edge (r,l) . The only other way that a vertex in L can be in F L is if it is a root of the search, but only unmatche d vertices in L are roots and l is matched. Thus, l … F L , and the claim is proved."
+   "text": "2. We claim that at the time the Hungarian algorithm computes the new feasible vertex labeling h 0 , for every edge (l,r) 2 M , we have l 2 F L if and only if r 2 F R . To see why, consider a matched vertex r and let (l,r) 2 M . First suppose that r 2 F R , so that the search discovered r and enqueued it. When r was removed from the queue, l was discovered, so l 2 F L . Now suppose that r … F R , so r is undiscovered. We will show that l … F L . The only edge in G M,h that enters l is (r,l) , and since r is undiscovered, the search has not taken this edge; if l 2 F L , it is not because of the edge (r,l) . The only other way that a vertex in L can be in F L is if it is a root of the search, but only unmatched vertices in L are roots and l is matched. Thus, l … F L , and the claim is proved."
   },
   {
    "type": "body",
@@ -3658,7 +3658,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 732,
    "pdf_page": 753,
-   "text": "Figure 25.10(a) shows the results of decreasing the feasible vertex label of each vertex in F L by 2 and increasing the feasible vertex label of each ve rtex in F R"
+   "text": "Figure 25.10(a) shows the results of decreasing the feasible vertex label of each vertex in F L by 2 and increasing the feasible vertex label of each vertex in F R"
   },
   {
    "type": "body",
@@ -3802,7 +3802,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 735,
    "pdf_page": 756,
-   "text": "After the vertex l 4 in part (h) has been removed from the queue, the qu eue becomes empty before the search discovers an unmatched vertex in R."
+   "text": "After the vertex l 4 in part (h) has been removed from the queue, the queue becomes empty before the search discovers an unmatched vertex in R."
   },
   {
    "type": "body",
@@ -4053,7 +4053,7 @@
     },
     {
      "n": 7,
-     "code": "F L = F L [ fl g / / forest F starts with unmatched vertices in L"
+     "code": "F L = F L [ flg / / forest F starts with unmatched vertices in L"
     },
     {
      "n": 8,
@@ -4108,7 +4108,7 @@
      "code": "an M -augmenting path has been found"
     }
    ],
-   "text": "1 Q = ;\n2 F L = ;\n3 F R = ;\n4 for each unmatched vertex l 2 L\n5 l:Ω  DNIL\n6 ENQUEUE(Q,l)\n7 F L = F L [ fl g / / forest F starts with unmatched vertices in L\n8 repeat\n9 if Q is empty / / ran out of vertices to search from?\n10 i = min fl: h + r: h − w(l,r)  : l 2 F L and r 2 R − F R g\n11 for each vertex l 2 F L\n12 l: h = l: h − i / / relabel according to equation (25.5)\n13 for each vertex r 2 F R\n14 r: h = r: h + i / / relabel according to equation (25.5)\n15 from G, M , and h, form a new directed equality graph G M,h\n16 for each new edge (l,r)  in G M,h / / continue search with new edges\n17 if r … F R\n18 r:] = l / / discover r , add it to F\n19 if r is unmatched\n20 an M -augmenting path has been found"
+   "text": "1 Q = ;\n2 F L = ;\n3 F R = ;\n4 for each unmatched vertex l 2 L\n5 l:Ω  DNIL\n6 ENQUEUE(Q,l)\n7 F L = F L [ flg / / forest F starts with unmatched vertices in L\n8 repeat\n9 if Q is empty / / ran out of vertices to search from?\n10 i = min fl: h + r: h − w(l,r)  : l 2 F L and r 2 R − F R g\n11 for each vertex l 2 F L\n12 l: h = l: h − i / / relabel according to equation (25.5)\n13 for each vertex r 2 F R\n14 r: h = r: h + i / / relabel according to equation (25.5)\n15 from G, M , and h, form a new directed equality graph G M,h\n16 for each new edge (l,r)  in G M,h / / continue search with new edges\n17 if r … F R\n18 r:] = l / / discover r , add it to F\n19 if r is unmatched\n20 an M -augmenting path has been found"
   },
   {
    "type": "body",
@@ -4333,7 +4333,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 739,
    "pdf_page": 760,
-   "text": "25.3-5 Professor Hrabosky asserts that the directed equality subgraph G M,h must be constructed and maintained by the Hungarian algorithm, so that line 6 of HUNGARIAN and line 15 of FIND-AUGMENTING-PATH are required. Argue that the professor is incorrect by showing how to determine whether an ed ge belongs to E M,h without explicitly constructing G M,h ."
+   "text": "25.3-5 Professor Hrabosky asserts that the directed equality subgraph G M,h must be constructed and maintained by the Hungarian algorithm, so that line 6 of HUNGARIAN and line 15 of FIND-AUGMENTING-PATH are required. Argue that the professor is incorrect by showing how to determine whether an edge belongs to E M,h without explicitly constructing G M,h ."
   },
   {
    "type": "exercise",
@@ -4360,7 +4360,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 740,
    "pdf_page": 761,
-   "text": "25-1 Perfect matchings in a regular bipartite graph a. Problem 20-3 asked about Euler tours in directed graphs. Prove that a connected, undirected graph G = (V,E) has an Euler tour—a cycle traversing each edge exactly once, though it may visit a verte x multiple times—if and only if the degree of every vertex in V is even. b. Assuming that G is connected, undirected, and every vertex in V has even degree, give an O(E)-time algorithm to find an Euler tour of G, as in Problem 20-3(b). c. Exercise 25.1-6 states that if G = (V,E) is a d -regular bipartite graph, then it contains d disjoint perfect matchings. Suppose that d is an exact power of 2."
+   "text": "25-1 Perfect matchings in a regular bipartite graph a. Problem 20-3 asked about Euler tours in directed graphs. Prove that a connected, undirected graph G = (V,E) has an Euler tour—a cycle traversing each edge exactly once, though it may visit a vertex multiple times—if and only if the degree of every vertex in V is even. b. Assuming that G is connected, undirected, and every vertex in V has even degree, give an O(E)-time algorithm to find an Euler tour of G, as in Problem 20-3(b). c. Exercise 25.1-6 states that if G = (V,E) is a d -regular bipartite graph, then it contains d disjoint perfect matchings. Suppose that d is an exact power of 2."
   },
   {
    "type": "body",
@@ -4387,7 +4387,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 740,
    "pdf_page": 761,
-   "text": "In this problem, you will show how to reduce the ru nning time of the Hungarian algorithm from O(n 4 ) to O(n 3 ) by showing how to reduce the running time of"
+   "text": "In this problem, you will show how to reduce the running time of the Hungarian algorithm from O(n 4 ) to O(n 3 ) by showing how to reduce the running time of"
   },
   {
    "type": "body",
@@ -4396,7 +4396,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 740,
    "pdf_page": 761,
-   "text": "the FIND-AUGMENTING-PATH procedure from O(n 3 ) to O(n 2 ). Exercise 25.3-5 demonstrates that line 6 of HUNGARIAN and line 15 of FIND-AUGMENTING-PATH are unnecessary. Now you will show how to reduce th e running time of each execution of line 10 in FIND-AUGMENTING-PATH to O(n)."
+   "text": "the FIND-AUGMENTING-PATH procedure from O(n 3 ) to O(n 2 ). Exercise 25.3-5 demonstrates that line 6 of HUNGARIAN and line 15 of FIND-AUGMENTING-PATH are unnecessary. Now you will show how to reduce the running time of each execution of line 10 in FIND-AUGMENTING-PATH to O(n)."
   },
   {
    "type": "body",
@@ -4531,7 +4531,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 741,
    "pdf_page": 762,
-   "text": "(u,v)2E w(u,v)x(u,v) . Extend the results of the previous parts to show that in a weighted bi partite graph, the maximum value of a weighted fractional matching is equal to the value of a maximum weighted matching. d. In a general graph, the analogous results do not ne cessarily hold. Give an ex- ample of a small graph that is not bipartite for wh ich the fractional matching with maximum value is not a maximum matching."
+   "text": "(u,v)2E w(u,v)x(u,v) . Extend the results of the previous parts to show that in a weighted bipartite graph, the maximum value of a weighted fractional matching is equal to the value of a maximum weighted matching. d. In a general graph, the analogous results do not necessarily hold. Give an ex- ample of a small graph that is not bipartite for which the fractional matching with maximum value is not a maximum matching."
   },
   {
    "type": "problem",
@@ -4621,7 +4621,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 742,
    "pdf_page": 763,
-   "text": "Corollary 25.4 is due to Berge [53], and it also holds in graphs that are not bipartite. Matching in general graphs requires more c omplicated algorithms. The first polynomial-time algorithm, running in O(V 4 ) time, is due to Edmonds [130]"
+   "text": "Corollary 25.4 is due to Berge [53], and it also holds in graphs that are not bipartite. Matching in general graphs requires more complicated algorithms. The first polynomial-time algorithm, running in O(V 4 ) time, is due to Edmonds [130]"
   },
   {
    "type": "body",
@@ -4729,7 +4729,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 745,
    "pdf_page": 766,
-   "text": "This part contains a selection of algorithmic topic s that extend and complement earlier material in this book. Some chapters introduce new models of computation such as circuits or parallel computers. Others cover specialized domains such as matrices or number theory. The last two chapters di scuss some of the known limitations to the design of efficient algorithms and introduce techniques for coping with those limitations."
+   "text": "This part contains a selection of algorithmic topics that extend and complement earlier material in this book. Some chapters introduce new models of computation such as circuits or parallel computers. Others cover specialized domains such as matrices or number theory. The last two chapters discuss some of the known limitations to the design of efficient algorithms and introduce techniques for coping with those limitations."
   },
   {
    "type": "body",
@@ -4747,7 +4747,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 745,
    "pdf_page": 766,
-   "text": "An algorithm that receives its input over time, rather than having the entire input available at the start, is called an \"online\" algorithm. Chapter 27 examines techniques used in online algorithms, starting with the \"toy\" problem of how long to wait for an elevator before taking the stairs. It t hen studies the \"move-to-front\" heuristic for maintaining a linked list and finishes with the online version of the caching problem we saw back in Section 15.4. The analyses of these online algorithms are remarkable in that they prove that the se algorithms, which do not know their future inputs, perform within a constant factor of optimal algorithms that know the future inputs."
+   "text": "An algorithm that receives its input over time, rather than having the entire input available at the start, is called an \"online\" algorithm. Chapter 27 examines techniques used in online algorithms, starting with the \"toy\" problem of how long to wait for an elevator before taking the stairs. It then studies the \"move-to-front\" heuristic for maintaining a linked list and finishes with the online version of the caching problem we saw back in Section 15.4. The analyses of these online algorithms are remarkable in that they prove that the se algorithms, which do not know their future inputs, perform within a constant factor of optimal algorithms that know the future inputs."
   },
   {
    "type": "body",
@@ -4756,7 +4756,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 745,
    "pdf_page": 766,
-   "text": "Chapter 28 studies efficient algorithms for operating on matrices. It presents two general methods—LU decomposition and LUP decomposition—for solving linear equations by Gaussian elimination in O(n 3 ) time. It also shows that matrix inversion and matrix multiplication can be performe d equally fast. The chapter concludes by showing how to compute a least-squares approximate solution when a set of linear equations has no exact solution."
+   "text": "Chapter 28 studies efficient algorithms for operating on matrices. It presents two general methods—LU decomposition and LUP decomposition—for solving linear equations by Gaussian elimination in O(n 3 ) time. It also shows that matrix inversion and matrix multiplication can be performed equally fast. The chapter concludes by showing how to compute a least-squares approximate solution when a set of linear equations has no exact solution."
   },
   {
    "type": "footnote",
@@ -4801,7 +4801,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 746,
    "pdf_page": 767,
-   "text": "Chapter 31 presents number-theoretic algorithms. After reviewing elementary number theory, it presents Euclid’s algorithm for computing greatest common divisors. Next, it studies algorithms for solving modular linear equations and for raising one number to a power modulo another number. Then, it explores an important application of number-theoretic algorithms: the RSA public-key cryptosystem."
+   "text": "Chapter 31 presents number-theoretic algorithms. After reviewing elementary number theory, it presents Euclid’s algorithm for computing greatest common divisors. Next, it studies algorithms for solving mod ular linear equations and for raising one number to a power modulo another number. Then, it explores an important application of number-theoretic algorithms: the RSA public-key cryptosystem."
   },
   {
    "type": "body",
@@ -4810,7 +4810,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 746,
    "pdf_page": 767,
-   "text": "This cryptosystem can be used not only to encrypt m essages so that an adversary cannot read them, but also to provide digital signatures. The chapter finishes with the Miller-Rabin randomized primality test, which enables finding large primes efficiently—an essential requirement for the RSA system."
+   "text": "This cryptosystem can be used not only to encrypt messages so that an adversary cannot read them, but also to provide digital signatures. The chapter finishes with the Miller-Rabin randomized primality test, which enables finding large primes efficiently—an essential requirement for the RSA system."
   },
   {
    "type": "body",

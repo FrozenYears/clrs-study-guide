@@ -478,7 +478,7 @@
    "section_title": "D.1 Matrices and matrix operations",
    "printed_page": 1217,
    "pdf_page": 1238,
-   "text": "Such a matrix is called a permutation matrix becaus e multiplying a vector x by a permutation matrix has the effect of permuting (rearranging) the elements of x . Exercise D.1-4 explores additional properties of permutation matrices."
+   "text": "Such a matrix is called a permutation matrix because multiplying a vector x by a permutation matrix has the effect of permuting (rearranging) the elements of x . Exercise D.1-4 explores additional properties of permutation matrices."
   },
   {
    "type": "body",
@@ -1036,7 +1036,7 @@
    "section_title": "D.2 Basic matrix properties",
    "printed_page": 1221,
    "pdf_page": 1242,
-   "text": "The following theorems, whose proofs are omitted, e xpress fundamental properties of the determinant."
+   "text": "The following theorems, whose proofs are omitted, express fundamental properties of the determinant."
   },
   {
    "type": "body",
@@ -1594,7 +1594,7 @@
    "section_title": "D.2 Basic matrix properties",
    "printed_page": 1226,
    "pdf_page": 1247,
-   "text": "Because multiplying the zero vector by any matrix y ields a zero vector, the set of permutations of S n defined by multiplying by n × n0-1 matrices with full rank over GF(2) cannot include all permutations of S n . Let’s extend the class of permutations defined by matrix-vector multiplication to include an additive term, so that x 2 S n maps to Ax + c , where c is an n-bit vector and addition is performed over GF(2). For example, when"
+   "text": "Because multiplying the zero vector by any matrix yields a zero vector, the set of permutations of S n defined by multiplying by n × n0-1 matrices with full rank over GF(2) cannot include all permutations of S n . Let’s extend the class of permutations defined by matrix-vector multiplication to include an additive term, so that x 2 S n maps to Ax + c , where c is an n-bit vector and addition is performed over GF(2). For example, when"
   },
   {
    "type": "problem",
@@ -2728,7 +2728,7 @@
    "section_title": "D.2 Basic matrix properties",
    "printed_page": 1231,
    "pdf_page": 1252,
-   "text": "Stark. Detecting data races in Cilk programs that u se locks. In Proceedings of the 10th"
+   "text": "Stark. Detecting data races in Cilk programs that use locks. In Proceedings of the 10th"
   },
   {
    "type": "body",
@@ -3880,7 +3880,7 @@
    "section_title": "D.2 Basic matrix properties",
    "printed_page": 1236,
    "pdf_page": 1257,
-   "text": "[179] F˘ anic˘ a Gavril. Algorithms for minimum coloring, maximum clique, minimum covering by cliques, and maximum independent set of a chordal g raph. SIAM Journal on Computing, 1(2):1803187, 1972."
+   "text": "[179] F˘ anic˘ a Gavril. Algorithms for minimum coloring, maximum clique, minimum covering by cliques, and maximum independent set of a chordal graph. SIAM Journal on Computing, 1(2):1803187, 1972."
   },
   {
    "type": "body",
@@ -3952,7 +3952,7 @@
    "section_title": "D.2 Basic matrix properties",
    "printed_page": 1236,
    "pdf_page": 1257,
-   "text": "[184] Michel X. Goemans and David P. Williamson. The primal-dual method for approximation algorithms and its application to network design pr oblems. In Dorit S. Hochbaum, editor, Approximation Algorithms for NP-Hard Problems, pages 1443191. PWS Publishing Company, 1997."
+   "text": "[184] Michel X. Goemans and David P. Williamson. The primal-dual method for approximation algorithms and its application to network design problems. In Dorit S. Hochbaum, editor, Approximation Algorithms for NP-Hard Problems, pages 1443191. PWS Publishing Company, 1997."
   },
   {
    "type": "body",

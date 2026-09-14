@@ -682,7 +682,7 @@
    "section_title": "B.1 Sets",
    "printed_page": 1157,
    "pdf_page": 1178,
-   "text": "Intervals are continuous sets of real numbers. We d enote them with parentheses and/or brackets. Given real numbers a and b, the closed interval [a; b] is the set fx 2 R W a ≤ x ≤ bg of reals between a and b, including both a and b."
+   "text": "Intervals are continuous sets of real numbers. We denote them with parentheses and/or brackets. Given real numbers a and b, the closed interval [a; b] is the set fx 2 R W a ≤ x ≤ bg of reals between a and b, including both a and b."
   },
   {
    "type": "body",
@@ -1411,7 +1411,7 @@
    "section_title": "B.4 Graphs",
    "printed_page": 1166,
    "pdf_page": 1187,
-   "text": "An undirected graph is connected if every vertex is reachable from all other vertices. The connected components of an undirected graph are the equivalence classes of vertices under the \"is reachable from\" r elation. The graph shown in Figure B.2(b) has three connected components: f1,2,5 g, f3,6 g, and f—g. Every vertex in the connected component f1,2,5 g is reachable from every other vertex in f1,2,5 g. An undirected graph is connected if it has exactly one connected component. The edges of a connected component are those that are incident on only the vertices of the component. In other words, edge (u,v) is an edge of a connected component only if both u and v are vertices of the component."
+   "text": "An undirected graph is connected if every vertex is reachable from all other vertices. The connected components of an undirected graph are the equivalence classes of vertices under the \"is reachable from\" relation. The graph shown in Figure B.2(b) has three connected components: f1,2,5 g, f3,6 g, and f—g. Every vertex in the connected component f1,2,5 g is reachable from every other vertex in f1,2,5 g. An undirected graph is connected if it has exactly one connected component. The edges of a connected component are those that are incident on only the vertices of the component. In other words, edge (u,v) is an edge of a connected component only if both u and v are vertices of the component."
   },
   {
    "type": "body",
@@ -1420,7 +1420,7 @@
    "section_title": "B.4 Graphs",
    "printed_page": 1166,
    "pdf_page": 1187,
-   "text": "A directed graph is strongly connected if every two vertices are reachable from each other. The strongly connected components of a directed graph are the equivalence classes of vertices under the \"are mutually reachable\" relation. A directed graph is strongly connected if it has only one strongly connected component. The graph in Figure B.2(a) has three strongly connected components: f1,2,4,5 g, f3g, and f6g. All pairs of vertices in f1,2,4,5 g are mutually reachable. The vertices f3,6 g do not form a strongly connected component, since v ertex 6 cannot be reached from vertex 3."
+   "text": "A directed graph is strongly connected if every two vertices are reachable from each other. The strongly connected components of a directed graph are the equivalence classes of vertices under the \"are mutually reachable\" relation. A directed graph is strongly connected if it has only one strongly connected component. The graph in Figure B.2(a) has three strongly connected components: f1,2,4,5 g, f3g, and f6g. All pairs of vertices in f1,2,4,5 g are mutually reachable. The vertices f3,6 g do not form a strongly connected component, since vertex 6 cannot be reached from vertex 3."
   },
   {
    "type": "body",
@@ -1555,7 +1555,7 @@
    "section_title": "B.4 Graphs",
    "printed_page": 1168,
    "pdf_page": 1189,
-   "text": "Attendees of a faculty party shake hands to greet e ach other, with every pair of professors shaking hands one time. Each professor remembers the number of times he or she shook hands. At the end of the party, the department head asks the professors for their totals and adds them all up. S how that the result is even by proving the handshaking lemma: if G = (V,E) is an undirected graph, then"
+   "text": "Attendees of a faculty party shake hands to greet each other, with every pair of professors shaking hands one time. Each professor remembers the number of times he or she shook hands. At the end of the party, the department head asks the professors for their totals and adds them all up. S how that the result is even by proving the handshaking lemma: if G = (V,E) is an undirected graph, then"
   },
   {
    "type": "body",
@@ -1591,7 +1591,7 @@
    "section_title": "B.4 Graphs",
    "printed_page": 1168,
    "pdf_page": 1189,
-   "text": "Verify that in an undirected graph, the \"is reachable from\" relation is an equivalence relation on the vertices of the graph. Which of the three properties of an equivalence relation hold in general for the \"is re achable from\" relation on the vertices of a directed graph?"
+   "text": "Verify that in an undirected graph, the \"is reachable from\" relation is an equivalence relation on the vertices of the graph. Which of the three properties of an equivalence relation hold in general for the \"is reachable from\" relation on the vertices of a directed graph?"
   },
   {
    "type": "body",
@@ -2023,7 +2023,7 @@
    "section_title": "B.5 Trees",
    "printed_page": 1173,
    "pdf_page": 1194,
-   "text": "That is, if a node has k children, then there is a first child, a second child, and so on, up to and including a kth child. The two trees in Figure B.6 are different when considered to be ordered trees, but the same when c onsidered to be just rooted trees."
+   "text": "That is, if a node has k children, then there is a first child, a second child, and so on, up to and including a kth child. The two trees in Figure B.6 are different when considered to be ordered trees, but the same when considered to be just rooted trees."
   },
   {
    "type": "body",
@@ -2059,7 +2059,7 @@
    "section_title": "B.5 Trees",
    "printed_page": 1173,
    "pdf_page": 1194,
-   "text": "The binary tree that contains no nodes is called th e empty tree or null tree, sometimes denoted NIL. If the left subtree is nonempty, its root is called the left child of the root of the entire tree. Likewise, the root of a nonnull right subtree is the right child of the root of the entire tree. If a subtree is the null tree NIL, we say that the child is absent or missing. Figure B.7(a) shows a binary tree."
+   "text": "The binary tree that contains no nodes is called the empty tree or null tree, sometimes denoted NIL. If the left subtree is nonempty, its root is called the left child of the root of the entire tree. Likewise, the root of a nonnull right subtree is the right child of the root of the entire tree. If a subtree is the null tree NIL, we say that the child is absent or missing. Figure B.7(a) shows a binary tree."
   },
   {
    "type": "body",
@@ -2068,7 +2068,7 @@
    "section_title": "B.5 Trees",
    "printed_page": 1173,
    "pdf_page": 1194,
-   "text": "A binary tree is not simply an ordered tree in whic h each node has degree at most 2. For example, in a binary tree, if a node has just one child, the position of the child—whether it is the left child or the right child—matters. In an ordered tree, there is no distinguishing a sole child as being either left or right. Figure B.7(b) shows a binary tree that differs from the tree in Figure B.7(a) because of the position of one node. Considered as ordered trees, however, the two trees are identical."
+   "text": "A binary tree is not simply an ordered tree in which each node has degree at most 2. For example, in a binary tree, if a node has just one child, the position of the child—whether it is the left child or the right child—matters. In an ordered tree, there is no distinguishing a sole child as being either left or right. Figure B.7(b) shows a binary tree that differs from the tree in Figure B.7(a) because of the position of one node. Considered as ordered trees, however, the two trees are identical."
   },
   {
    "type": "body",
@@ -2104,7 +2104,7 @@
    "section_title": "B.5 Trees",
    "printed_page": 1174,
    "pdf_page": 1195,
-   "text": "Figure B.7 Binary trees. (a) A binary tree drawn in a standard way. The left child of a node is drawn beneath the node and to the left. The right child is drawn beneath and to the right. (b) A binary tree different from the one in (a). In (a), the lef t child of node 7 is 5 and the right child is absent."
+   "text": "Figure B.7 Binary trees. (a) A binary tree drawn in a standard way. The left child of a node is drawn beneath the node and to the left. The right child is drawn beneath and to the right. (b) A binary tree different from the one in (a). In (a), the left child of node 7 is 5 and the right child is absent."
   },
   {
    "type": "body",
@@ -2185,7 +2185,7 @@
    "section_title": "B.5 Trees",
    "printed_page": 1175,
    "pdf_page": 1196,
-   "text": "Show by induction that the number of degree-2 nodes in any nonempty binary tree is one less than the number of leaves. Conclude tha t the number of internal nodes in a full binary tree is one less than the number of leaves."
+   "text": "Show by induction that the number of degree-2 nodes in any nonempty binary tree is one less than the number of leaves. Conclude that the number of internal nodes in a full binary tree is one less than the number of leaves."
   },
   {
    "type": "body",
@@ -2203,7 +2203,7 @@
    "section_title": "B.5 Trees",
    "printed_page": 1175,
    "pdf_page": 1196,
-   "text": "Use induction to show that a nonempty binary tree w ith n nodes has height at least blg nc."
+   "text": "Use induction to show that a nonempty binary tree with n nodes has height at least blg nc."
   },
   {
    "type": "body",
@@ -2329,7 +2329,7 @@
    "section_title": "B.5 Trees",
    "printed_page": 1176,
    "pdf_page": 1197,
-   "text": "Reword each of the following statements as a theore m about undirected graphs, and then prove it. Assume that friendship is symmetric but not reflexive. a. Any group of at least two people contains at least two people with the same number of friends in the group. b. Every group of six people contains either at least three mutual friends or at least three mutual strangers. c. Any group of people can be partitioned into two subgroups such that at least half the friends of each person belong to the subgroup of which that person is not a member."
+   "text": "Reword each of the following statements as a theorem about undirected graphs, and then prove it. Assume that friendship is symmetric but not reflexive. a. Any group of at least two people contains at least two people with the same number of friends in the group. b. Every group of six people contains either at least three mutual friends or at least three mutual strangers. c. Any group of people can be partitioned into two subgroups such that at least half the friends of each person belong to the subgroup of which that person is not a member."
   },
   {
    "type": "chapter-notes",
@@ -2338,7 +2338,7 @@
    "section_title": "B.5 Trees",
    "printed_page": 1177,
    "pdf_page": 1198,
-   "text": "Notes for Appendix B 1177 d. If everyone in a group is the friend of at least half the people in the group, then the group can be seated around a table in such a wa y that everyone is seated between two friends."
+   "text": "Notes for Appendix B 1177 d. If everyone in a group is the friend of at least half the people in the group, then the group can be seated around a table in such a way that everyone is seated between two friends."
   },
   {
    "type": "body",
@@ -2410,7 +2410,7 @@
    "section_title": "B.5 Trees",
    "printed_page": 1178,
    "pdf_page": 1199,
-   "text": "Section C.1 reviews elementary results in counting theory, including standard formulas for counting permutations and combinations. The axioms of probability and basic facts concerning probability distribution s form Section C.2. Random variables are introduced in Section C.3, along with the properties of expectation and variance. Section C.4 investigates the geometric and binomial distributions that arise from studying Bernoulli trials. The stud y of the binomial distribution continues in Section C.5, an advanced discussion of the \"tails\" of the distribution."
+   "text": "Section C.1 reviews elementary results in counting theory, including standard formulas for counting permutations and combinations. The axioms of probability and basic facts concerning probability distribution s form Section C.2. Random variables are introduced in Section C.3, along with the properties of expectation and variance. Section C.4 investigates the geometric and binomial distributions that arise from studying Bernoulli trials. The study of the binomial distribution continues in Section C.5, an advanced discussion of the \"tails\" of the distribution."
   },
   {
    "type": "body",
@@ -2437,7 +2437,7 @@
    "section_title": "B.5 Trees",
    "printed_page": 1178,
    "pdf_page": 1199,
-   "text": "This section reviews the elements of counting theor y. Since some of the material assumes a basic understanding of sets, you might wi sh to start by reviewing the material in Section B.1."
+   "text": "This section reviews the elements of counting theory. Since some of the material assumes a basic understanding of sets, you might wish to start by reviewing the material in Section B.1."
   },
   {
    "type": "body",

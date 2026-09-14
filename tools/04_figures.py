@@ -311,7 +311,7 @@ def build_contact_sheet(index: list[dict], out_dir: str, suspects: dict | None =
         parts.append("</div>")
     parts.append("</body></html>")
     sheet = os.path.join(out_dir, "_contact-sheet.html")
-    with open(sheet, "w", encoding="utf-8") as f:
+    with open(sheet, "w", newline="\n", encoding="utf-8") as f:
         f.write("\n".join(parts))
     return sheet
 
@@ -340,7 +340,7 @@ def main():
     cache = os.path.join(args.out, "_captions.json")
     print("扫描全文图注 ...", flush=True)
     caps = scan_captions(doc)
-    with open(cache, "w", encoding="utf-8") as f:
+    with open(cache, "w", newline="\n", encoding="utf-8") as f:
         json.dump(caps, f, ensure_ascii=False, indent=1)
     print(f"图注总数：{len(caps)}", flush=True)
 
@@ -386,7 +386,7 @@ def main():
             done = {(r["fig_id"], r["pdf_page"]) for r in index}
             index = [r for r in old if (r["fig_id"], r["pdf_page"]) not in done] + index
     index.sort(key=lambda r: (r["pdf_page"], r["bbox"][1]))
-    with open(args.index, "w", encoding="utf-8") as f:
+    with open(args.index, "w", newline="\n", encoding="utf-8") as f:
         json.dump(index, f, ensure_ascii=False, indent=1)
 
     suspects_path = os.path.join(ROOT, "data", "figures_suspect.json")

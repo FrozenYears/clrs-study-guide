@@ -219,7 +219,7 @@
    "section_title": "28.1 Solving systems of linear equations",
    "printed_page": 820,
    "pdf_page": 841,
-   "text": "There are other possibilities, however, which merit a brief discussion. If the number of equations is less than the number n of unknowns—or, more generally, if the rank of A is less than n—then the system is underdetermined. An underdetermined system typically has infinitely many solutions, although it may have no solutions at all if the equations are inconsistent. If the nu mber of equations ex- ceeds the number n of unknowns, the system is overdetermined, and there may not exist any solutions. Section 28.3 addresses the important problem of finding good approximate solutions to overdetermined systems of linear equations."
+   "text": "There are other possibilities, however, which merit a brief discussion. If the number of equations is less than the number n of unknowns—or, more generally, if the rank of A is less than n—then the system is underdetermined. An underdetermined system typically has infinitely many solutions, although it may have no solutions at all if the equations are inconsistent. If the number of equations ex- ceeds the number n of unknowns, the system is overdetermined, and there may not exist any solutions. Section 28.3 addresses the important problem of finding good approximate solutions to overdetermined systems of linear equations."
   },
   {
    "type": "body",
@@ -873,7 +873,7 @@
    "section_title": "28.1 Solving systems of linear equations",
    "printed_page": 825,
    "pdf_page": 846,
-   "text": "Ð are all 0, the bottom n − 1 rows of this matrix must have row rank strictly les s than n − 1. The row rank of the entire matrix, therefore, is strictly less than n."
+   "text": "Ð are all 0, the bottom n − 1 rows of this matrix must have row rank strictly less than n − 1. The row rank of the entire matrix, therefore, is strictly less than n."
   },
   {
    "type": "body",
@@ -1141,7 +1141,7 @@
    "section_title": "28.1 Solving systems of linear equations",
    "printed_page": 827,
    "pdf_page": 848,
-   "text": "Each recursive step in the description above takes place in one iteration of the outer for loop of lines 4–11. Within this loop, line 5 determines the pivot to be u kk = a kk . The for loop in lines 6–8 (which does not execute when k = n) uses the v and w vectors to update L and U . Line 7 determines the below-diagonal elements of L, storing v i =a kk in l i k , and line 8 computes the above-diagonal elements of U , storing w i in u ki . Finally, lines 9–11 compute the elements of the Schur complement and store them back into the matri x A. (There is no need to divide by a kk in line 11 because that already happened when line 7 computed l i k .)"
+   "text": "Each recursive step in the description above takes place in one iteration of the outer for loop of lines 4–11. Within this loop, line 5 determines the pivot to be u kk = a kk . The for loop in lines 6–8 (which does not execute when k = n) uses the v and w vectors to update L and U . Line 7 determines the below-diagonal elements of L, storing v i =a kk in l i k , and line 8 computes the above-diagonal elements of U , storing w i in u ki . Finally, lines 9–11 compute the elements of the Schur complement and store them back into the matrix A. (There is no need to divide by a kk in line 11 because that already happened when line 7 computed l i k .)"
   },
   {
    "type": "body",
@@ -1279,7 +1279,7 @@
    "section_title": "28.1 Solving systems of linear equations",
    "printed_page": 828,
    "pdf_page": 849,
-   "text": "Figure 28.1 The operation of LU-DECOMPOSITION . (a) The matrix A. (b) The result of the first iteration of the outer for loop of lines 4–11. The element a 11 = 2 highlighted in blue is the pivot, the tan column is v/a 11 , and the tan row is w T . The elements of U computed thus far are above the horizontal line, and the elements of L are to the left of the vertical line. The Schur complement matrix A 0 − vw T =a 11 occupies the lower right. (c) The result of the next iteration of the outer for loop, on the Schur complement matrix from part (b). The element a 22 = 4 highlighted in blue is the pivot, and the tan column and row are v/a 22 and w T (in the partitioning of the Schur complement), respectively. Lines divide the matrix into the elements of U computed so far (above), the elements of L computed so far (left), and the new Schur complement (lower right). (d) After the next iteration, the matrix A is factored. The element 3 in the new Schur complement becomes part of U when the recursion terminates.) (e) The factorization ADLU ."
+   "text": "Figure 28.1 The operation of LU-DECOMPOSITION . (a) The matrix A. (b) The result of the first iteration of the outer for loop of lines 4–11. The element a 11 = 2 highlighted in blue is the pivot, the tan column is v/a 11 , and the tan row is w T . The elements of U computed thus far are above the horizontal line, and the elements of L are to the left of the vertical line. The Schur com plement matrix A 0 − vw T =a 11 occupies the lower right. (c) The result of the next iteration of the outer for loop, on the Schur complement matrix from part (b). The element a 22 = 4 highlighted in blue is the pivot, and the tan column and row are v/a 22 and w T (in the partitioning of the Schur complement), respectively. Lines divide the matrix into the elements of U computed so far (above), the elements of L computed so far (left), and the new Schur complement (lower right). (d) After the next iteration, the matrix A is factored. The element 3 in the new Schur complement becomes part of U when the recursion terminates.) (e) The factorization ADLU ."
   },
   {
    "type": "body",
@@ -2759,7 +2759,7 @@
    "section_title": "28.2 Inverting matrices",
    "printed_page": 837,
    "pdf_page": 858,
-   "text": "A T A is symmetric positive-definite, it can be factored by computing an LU decomposition. Then, use forward and back substitutio n to solve for x in the equation (A T A)x = y . Although this method is theoretically correct, in practice the procedure LUP-DECOMPOSITION works much better. LUP decomposition re- quires fewer arithmetic operations by a constant factor, and it has somewhat better numerical properties."
+   "text": "A T A is symmetric positive-definite, it can be factored by computing an LU decomposition. Then, use forward and back substitution to solve for x in the equation (A T A)x = y . Although this method is theoretically correct, in practice the procedure LUP-DECOMPOSITION works much better. LUP decomposition re- quires fewer arithmetic operations by a constant factor, and it has somewhat better numerical properties."
   },
   {
    "type": "exercise",
@@ -3812,7 +3812,7 @@
    "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
    "printed_page": 846,
    "pdf_page": 867,
-   "text": "28.3-4 Prove that the determinant of each leading submatri x of a symmetric positivedefinite matrix is positive."
+   "text": "28.3-4 Prove that the determinant of each leading submatrix of a symmetric positivedefinite matrix is positive."
   },
   {
    "type": "exercise",
@@ -4064,7 +4064,7 @@
    "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
    "printed_page": 848,
    "pdf_page": 869,
-   "text": "Many excellent texts describe numerical and scientific computation in much greater detail than we have room for here. The following ar e especially readable: George"
+   "text": "Many excellent texts describe numerical and scientific computation in much greater detail than we have room for here. The following are especially readable: George"
   },
   {
    "type": "chapter-notes",
@@ -4172,7 +4172,7 @@
    "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
    "printed_page": 850,
    "pdf_page": 871,
-   "text": "Many problems take the form of maximizing or minimizing an objective, given limited resources and competing constraints. If you can specify the objective as a linear function of certain variables, and if you can specify the constraints on resources as equalities or inequalities on those va riables, then you have a linearprogramming problem. Linear programs arise in a variety of practical applications. We begin by studying an application in electoral politics."
+   "text": "Many problems take the form of maximizing or minimizing an objective, given limited resources and competing constraints. If you can specify the objective as a linear function of certain variables, and if you can specify the constraints on resources as equalities or inequalities on those variables, then you have a linearprogramming problem. Linear programs arise in a variety of practical applications. We begin by studying an application in electoral politics."
   },
   {
    "type": "body",
@@ -4190,7 +4190,7 @@
    "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
    "printed_page": 850,
    "pdf_page": 871,
-   "text": "Suppose that you are a politician trying to win an election. Your district has three different types of areas—urban, suburban, and rural. These areas have, respectively, 100,000, 200,000, and 50,000 registered voters. Although not all the registered voters actually go to the polls, you decide that to govern effectively, you would like at least half the registered voters in e ach of the three regions to vote for you. You are honorable and would never consider supporting policies you don’t believe in. You realize, however, that certain issues may be more effective in winning votes in certain places. Your primary issues are preparing for a zombie apocalypse, equipping sharks with lasers, building highways for flying cars, and allowing dolphins to vote."
+   "text": "Suppose that you are a politician trying to win an election. Your district has three different types of areas—urban, suburban, and rural. These areas have, respectively, 100,000, 200,000, and 50,000 registered voters. Although not all the registered voters actually go to the polls, you decide that to govern effectively, you would like at least half the registered voters in each of the three regions to vote for you. You are honorable and would never consider supporting policies you don’t believe in. You realize, however, that certain issues may be more effective in winning votes in certain places. Your primary issues are preparing for a zombie apocalypse, equipping sharks with lasers, building highways for flying cars, and allowing dolphins to vote."
   },
   {
    "type": "body",
@@ -4199,7 +4199,7 @@
    "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
    "printed_page": 850,
    "pdf_page": 871,
-   "text": "According to your campaign staff’s research, you can estimate how many votes you win or lose from each population segment by spending $1,000 on advertising on each issue. This information appears in the tabl e of Figure 29.1. In this table, each entry indicates the number of thousands of either urban, suburban, or rural voters who would be won over by spending $1,000 on advertising in support of a particular issue. Negative entries denote votes tha t would be lost. Your task is to figure out the minimum amount of money that you need to spend in order to win 50,000 urban votes, 100,000 suburban votes, and 25,000 rural votes."
+   "text": "According to your campaign staff’s research, you can estimate how many votes you win or lose from each population segment by spending $1,000 on advertising on each issue. This information appears in the table of Figure 29.1. In this table, each entry indicates the number of thousands of either urban, suburban, or rural voters who would be won over by spending $1,000 on advertising in support of a particular issue. Negative entries denote votes that would be lost. Your task is to figure out the minimum amount of money that you need to spend in order to win 50,000 urban votes, 100,000 suburban votes, and 25,000 rural votes."
   },
   {
    "type": "body",
@@ -4208,7 +4208,7 @@
    "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
    "printed_page": 850,
    "pdf_page": 871,
-   "text": "You could, by trial and error, devise a strategy th at wins the required number of votes, but the strategy you come up with might n ot be the least expensive one."
+   "text": "You could, by trial and error, devise a strategy th at wins the required number of votes, but the strategy you come up with might not be the least expensive one."
   },
   {
    "type": "body",
@@ -4217,7 +4217,7 @@
    "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
    "printed_page": 850,
    "pdf_page": 871,
-   "text": "For example, you could devote $20,000 of advertisin g to preparing for a zombie"
+   "text": "For example, you could devote $20,000 of advertising to preparing for a zombie"
   }
  ]
 }

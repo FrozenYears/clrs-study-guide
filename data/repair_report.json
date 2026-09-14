@@ -180,6 +180,16 @@
   ],
   "context_rules": [
     {
+      "rule": "_join_split_words",
+      "target": "词内空格（cha racterize / ea ch / ti me）",
+      "rationale": "字体字距把单词切成带空格的碎片。判定用「语料自证」+ 六道守卫：① words[a+b]>=3 且 >=3*splits[(a,b)]；② 长片段 len(follow[a])<=3、短片段（1–2 字母）a 不是英文功能词；③ 右片段不得是虚词（白名单除外）；④ 右片段不得是数学函数名（否则 `b lg n` 并成 `blg`）；⑤ 短词干不得接序数后缀（`h k th` 并成 `kth` 是错的）；⑥ 左片段必须在词首（挡掉 `=k new` 与 `can’t im-`）。实测 1267 种形状；41 条关键用例全部正确。"
+    },
+    {
+      "rule": "build_split_state",
+      "target": "语料自证三张表",
+      "rationale": "words/splits/follow 三张表必须在**未修复的原始语料**（pages.jsonl）上统计 —— 修复后的文本里伪影已消失，拿它当依据会得出完全错误的结论。"
+    },
+    {
       "rule": "_resolve_fffd stack",
       "target": "� (U+FFFD)",
       "rationale": "Ambiguous between ']' and 'Ω'; emits ']' iff an open '[' is pending, else 'Ω'."

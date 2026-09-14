@@ -55,7 +55,7 @@
    "section_title": "1.1 Algorithms",
    "printed_page": 5,
    "pdf_page": 26,
-   "text": "You can also view an algorithm as a tool for solving a well-specified computational problem. The statement of the problem specifies in general terms the desired input/output relationship for problem instances, ty pically of arbitrarily large size."
+   "text": "You can also view an algorithm as a tool for solving a well-specified computational problem. The statement of the problem specifies in general terms the desired input/output relationship for problem instances, typically of arbitrarily large size."
   },
   {
    "type": "body",
@@ -136,7 +136,7 @@
    "section_title": "1.1 Algorithms",
    "printed_page": 6,
    "pdf_page": 27,
-   "text": "Because many programs use it as an intermediate step, sorting is a fundamental operation in computer science. As a result, you hav e a large number of good sorting algorithms at your disposal. Which algorithm is best for a given application depends on—among other factors—the number of items to be sorted, the extent to which the items are already somewhat sorted, possible restrictions on the item values, the architecture of the computer, and the kind of storage devices to be used: main memory, disks, or even—archaically—tapes."
+   "text": "Because many programs use it as an intermediate step, sorting is a fundamental operation in computer science. As a result, you have a large number of good sorting algorithms at your disposal. Which algorithm is best for a given application depends on—among other factors—the number of items to be sorted, the extent to which the items are already somewhat sorted, possible restrictions on the item values, the architecture of the computer, and the kind of storage devices to be used: main memory, disks, or even—archaically—tapes."
   },
   {
    "type": "body",
@@ -172,7 +172,7 @@
    "section_title": "1.1 Algorithms",
    "printed_page": 6,
    "pdf_page": 27,
-   "text": "Sorting is by no means the only computational problem for which algorithms have been developed. (You probably suspected as much whe n you saw the size of this book.) Practical applications of algorithms are ubi quitous and include the following examples:"
+   "text": "Sorting is by no means the only computational problem for which algorithms have been developed. (You probably suspected as much when you saw the size of this book.) Practical applications of algorithms are ubi quitous and include the following examples:"
   },
   {
    "type": "body",
@@ -190,7 +190,7 @@
    "section_title": "1.1 Algorithms",
    "printed_page": 6,
    "pdf_page": 27,
-   "text": "\"problems.\" in Chapter 14, is an important technique for solving several of these biological problems, particularly ones that involve determinin g similarity between DNA sequences. The savings realized are in time, both h uman and machine, and in money, as more information can be extracted by laboratory techniques."
+   "text": "\"problems.\" in Chapter 14, is an important technique for solving several of these biological problems, particularly ones that involve determining similarity between DNA sequences. The savings realized are in time, both human and machine, and in money, as more information can be extracted by laboratory techniques."
   },
   {
    "type": "body",
@@ -199,7 +199,7 @@
    "section_title": "1.1 Algorithms",
    "printed_page": 7,
    "pdf_page": 28,
-   "text": "• The internet enables people all around the world to quickly access and retrieve large amounts of information. With the aid of cleve r algorithms, sites on the internet are able to manage and manipulate this lar ge volume of data. Examples of problems that make essential use of algorithms include finding good routes on which the data travels (techniques for so lving such problems appear in Chapter 22), and using a search engine to quickly find pages on which particular information resides (related techniques are in Chapters 11 and 32)."
+   "text": "• The internet enables people all around the world to quickly access and retrieve large amounts of information. With the aid of clever algorithms, sites on the internet are able to manage and manipulate this lar ge volume of data. Examples of problems that make essential use of algorithms include finding good routes on which the data travels (techniques for so lving such problems appear in Chapter 22), and using a search engine to quickly find pages on which particular information resides (related techniques are in Chapters 11 and 32)."
   },
   {
    "type": "body",
@@ -208,7 +208,7 @@
    "section_title": "1.1 Algorithms",
    "printed_page": 7,
    "pdf_page": 28,
-   "text": "• Electronic commerce enables goods and services to b e negotiated and ex- changed electronically, and it depends on the priva cy of per sonal information such as credit card numbers, passwords, and ba nk statements. The core technologies used in electronic commerce include public-key cryptography and digital signatures (covered in Chapter 31), which are based on numerical algorithms and number theory."
+   "text": "• Electronic commerce enables goods and services to b e negotiated and ex- changed electronically, and it depends on the priva cy of per sonal information such as credit card numbers, passwords, and bank statements. The core technologies used in electronic commerce include public-key cryptography and digital signatures (covered in Chapter 31), which are based on numerical algorithms and number theory."
   },
   {
    "type": "body",
@@ -217,7 +217,7 @@
    "section_title": "1.1 Algorithms",
    "printed_page": 7,
    "pdf_page": 28,
-   "text": "• Manufacturing and other commercial enterprises ofte n need to allocate scarce resources in the most beneficial way. An oil company might wish to know where to place its wells in order to maximize its e xpected profit. A political candidate might want to determine where to spend money buying campaign advertising in order to maximize the chances of winning an election. An airline might wish to assign crews to flights in the least expensive way possible, making sure that each flight is covered and that government regulations regarding crew scheduling are met. An internet service provider might wish to determine where to place additional resources in order to serve its customers more effectively. All of these are examples of problems that can be solved by modeling them as linear programs, which Chapter 29 explores."
+   "text": "• Manufacturing and other commercial enterprises often need to allocate scarce resources in the most beneficial way. An oil company might wish to know where to place its wells in order to maximize its expected profit. A political candidate might want to determine where to spend money buying campaign advertising in order to maximize the chances of winning an election. An airline might wish to assign crews to flights in the least expensive way possible, making sure that each flight is covered and that government regulations regarding crew scheduling are met. An internet service provider might wish to determine where to place additional resources in order to serve its customers more effectively. All of these are examples of problems that can be solved by modeling them as linear programs, which Chapter 29 explores."
   },
   {
    "type": "body",
@@ -235,7 +235,7 @@
    "section_title": "1.1 Algorithms",
    "printed_page": 7,
    "pdf_page": 28,
-   "text": "• You have a road map on which the distance between e ach pair of adjacent in- tersections is marked, and you wish to determine th e shortest route from one intersection to another. The number of possible routes can be huge, even if you disallow routes that cross over themselves. How can you choose which of all possible routes is the shortest? You can start by modeling the road map (which is itself a model of the actual roads) as a graph ( which we will meet in Part VI and Appendix B). In this graph, you wish to find the shortest path from one vertex to another. Chapter 22 shows how to solve this problem efficiently."
+   "text": "• You have a road map on which the distance between each pair of adjacent in- tersections is marked, and you wish to determine the shortest route from one intersection to another. The number of possible routes can be huge, even if you disallow routes that cross over themselves. How can you choose which of all possible routes is the shortest? You can start by modeling the road map (which is itself a model of the actual roads) as a graph ( which we will meet in Part VI and Appendix B). In this graph, you wish to find the shortest path from one vertex to another. Chapter 22 shows how to solve this problem efficiently."
   },
   {
    "type": "body",
@@ -253,7 +253,7 @@
    "section_title": "1.1 Algorithms",
    "printed_page": 8,
    "pdf_page": 29,
-   "text": "• A doctor needs to determine whether an image represents a cancerous tumor or a benign one. The doctor has available images of ma ny other tumors, some of which are known to be cancerous and some of which a re known to be benign."
+   "text": "• A doctor needs to determine whether an image represents a cancerous tumor or a benign one. The doctor has available images of many other tumors, some of which are known to be cancerous and some of which a re known to be benign."
   },
   {
    "type": "body",
@@ -262,7 +262,7 @@
    "section_title": "1.1 Algorithms",
    "printed_page": 8,
    "pdf_page": 29,
-   "text": "A cancerous tumor is likely to be more similar to o ther cancerous tumors than to benign tumors, and a benign tumor is more likely to be similar to other benign tumors. By using a clustering algorithm, as in Chapter 33, the doctor can identify which outcome is more likely."
+   "text": "A cancerous tumor is likely to be more similar to other cancerous tumors than to benign tumors, and a benign tumor is more likely to be similar to other benign tumors. By using a clustering algorithm, as in Chapter 33, the doctor can identify which outcome is more likely."
   },
   {
    "type": "body",
@@ -289,7 +289,7 @@
    "section_title": "1.1 Algorithms",
    "printed_page": 8,
    "pdf_page": 29,
-   "text": "These lists are far from exhaustive (as you again h ave probably surmised from this book’s heft), but they exhibit two characteristics common to many interesting algorithmic problems:"
+   "text": "These lists are far from exhaustive (as you again have probably surmised from this book’s heft), but they exhibit two characteristics common to many interesting algorithmic problems:"
   },
   {
    "type": "body",
@@ -316,7 +316,7 @@
    "section_title": "1.1 Algorithms",
    "printed_page": 8,
    "pdf_page": 29,
-   "text": "Not every problem solved by algorithms has an easily identified set of candidate solutions. For example, given a set of numerical values representing samples of a signal taken at regular time intervals, the di screte Fourier transform converts the time domain to the frequency domain. That is, i t approximates the signal as a weighted sum of sinusoids, producing the strength o f various frequencies which, when summed, approximate the sampled signal. In addition to lying at the heart of signal processing, discrete Fourier transforms have applications in data compression and multiplying large polynomials and integers. Chapter 30 gives an efficient algorithm, the fast Fourier transform (commonly called the FFT), for this problem."
+   "text": "Not every problem solved by algorithms has an easily identified set of candidate solutions. For example, given a set of numerical values representing samples of a signal taken at regular time intervals, the discrete Fourier transform converts the time domain to the frequency domain. That is, i t approximates the signal as a weighted sum of sinusoids, producing the strength o f various frequencies which, when summed, approximate the sampled signal. In addition to lying at the heart of signal processing, discrete Fourier transforms have applications in data compression and multiplying large polynomials and integers. Chapter 30 gives an efficient algorithm, the fast Fourier transform (commonly called the FFT), for this problem."
   },
   {
    "type": "body",
@@ -388,7 +388,7 @@
    "section_title": "1.1 Algorithms",
    "printed_page": 9,
    "pdf_page": 30,
-   "text": "Most of this book is about efficient algorithms. Our usual measure of efficiency is speed: how long does an algorithm take to produc e its result? There are some problems, however, for which we know of no algorith m that runs in a reasonable amount of time. Chapter 34 studies an interesting subset of these problems, which are known as NP-complete."
+   "text": "Most of this book is about efficient algorithms. Our usual measure of efficiency is speed: how long does an algorithm take to produce its result? There are some problems, however, for which we know of no algorithm that runs in a reasonable amount of time. Chapter 34 studies an interesting subset of these problems, which are known as NP-complete."
   },
   {
    "type": "body",
@@ -406,7 +406,7 @@
    "section_title": "1.1 Algorithms",
    "printed_page": 10,
    "pdf_page": 31,
-   "text": "You should know about NP-complete problems because some of them arise surprisingly often in real applications. If you are ca lled upon to produce an efficient algorithm for an NP-complete problem, you are likely to spend a lot of time in a fruitless search. If, instead, you can show that th e problem is NP-complete, you can spend your time developing an efficient approximation algorithm, that is, an algorithm that gives a good, but not necessarily the best possible, solution."
+   "text": "You should know about NP-complete problems because some of them arise surprisingly often in real applications. If you are called upon to produce an efficient algorithm for an NP-complete problem, you are likely to spend a lot of time in a fruitless search. If, instead, you can show that the problem is NP-complete, you can spend your time developing an efficient approximation algorithm, that is, an algorithm that gives a good, but not necessarily the best possible, solution."
   },
   {
    "type": "body",
@@ -433,7 +433,7 @@
    "section_title": "1.1 Algorithms",
    "printed_page": 10,
    "pdf_page": 31,
-   "text": "For many years, we could count on processor clock s peeds increasing at a steady rate. Physical limitations present a fundamental roadblock to ever-increasing clock speeds, however: because power density increases superlinearly with clock speed, chips run the risk of melting once their clock speeds become high enough. In order to perform more computations per second, therefore, chips are being designed to contain not just one but several processing \"cor es.\" We can liken these multi- core computers to several sequential computers on a single chip. In other words, they are a type of \"parallel computer.\" In order to elicit the best performance from multicore computers, we need to design algorithms with parallelism in mind."
+   "text": "For many years, we could count on processor clock speeds increasing at a steady rate. Physical limitations present a fundamental roadblock to ever-increasing clock speeds, however: because power density increases superlinearly with clock speed, chips run the risk of melting once their clock speeds become high enough. In order to perform more computations per second, therefore, chips are being designed to contain not just one but several processing \"cor es.\" We can liken these multi- core computers to several sequential computers on a single chip. In other words, they are a type of \"parallel computer.\" In order to elicit the best performance from multicore computers, we need to design algorithms with parallelism in mind."
   },
   {
    "type": "body",
@@ -451,7 +451,7 @@
    "section_title": "1.1 Algorithms",
    "printed_page": 11,
    "pdf_page": 32,
-   "text": "Most of the examples in this book assume that all of the input data are available when an algorithm begins running. Much of the work in algorithm design makes the same assumption. For many important real-world examples, however, the input actually arrives over time, and the algorithm must decide how to proceed without knowing what data will arrive in the future. In a d ata center, jobs are constantly arriving and departing, and a scheduling algorithm must decide when and where to run a job, without knowing what jobs will be arriving in the future. Traffic must be routed in the internet based on the current stat e, without knowing about where traffic will arrive in the future. Hospital emergency rooms make triage decisions about which patients to treat first without knowing when other patients will be arriving in the future and what treatments they wil l need. Algorithms that receive their input over time, rather than having all the input present at the start, are online algorithms, which Chapter 27 examines."
+   "text": "Most of the examples in this book assume that all of the input data are available when an algorithm begins running. Much of the work in algorithm design makes the same assumption. For many important real-world examples, however, the input actually arrives over time, and the algorithm must decide how to proceed without knowing what data will arrive in the future. In a data center, jobs are constantly arriving and departing, and a scheduling algorithm must decide when and where to run a job, without knowing what jobs will be arriving in the future. Traffic must be routed in the internet based on the current state, without knowing about where traffic will arrive in the future. Hospital emergency rooms make triage decisions about which patients to treat first without knowing when other patients will be arriving in the future and what treatments they will need. Algorithms that receive their input over time, rather than having all the input present at the start, are online algorithms, which Chapter 27 examines."
   },
   {
    "type": "exercise",
@@ -532,7 +532,7 @@
    "section_title": "1.2 Algorithms as a technology",
    "printed_page": 12,
    "pdf_page": 33,
-   "text": "If computers were infinitely fast, any correct method for solving a problem would do. You would probably want your implementation to be within the bounds of good software engineering practice (for example, your implementation should be well designed and documented), but you would mos t often use whichever method was the easiest to implement."
+   "text": "If computers were infinitely fast, any correct method for solving a problem would do. You would probably want your implementation to be within the bounds of good software engineering practice (for example, your implementation should be well designed and documented), but you would most often use whichever method was the easiest to implement."
   },
   {
    "type": "body",
@@ -568,7 +568,7 @@
    "section_title": "1.2 Algorithms as a technology",
    "printed_page": 12,
    "pdf_page": 33,
-   "text": "As an example, Chapter 2 introduces two algorithms for sorting. The first, known as insertion sort, takes time roughly equal to c 1 n 2 to sort n items, where c 1 is a constant that does not depend on n. That is, it takes time roughly proportional to n 2 . The second, merge sort, takes time roughly equal to c 2 n lg n, where lg n stands for log 2 n and c 2 is another constant that also does not depend on n. Insertion sort typically has a smaller constant factor t han merge sort, so that c 1 < c 2 ."
+   "text": "As an example, Chapter 2 introduces two algorithms for sorting. The first, known as insertion sort, takes time roughly equal to c 1 n 2 to sort n items, where c 1 is a constant that does not depend on n. That is, it takes time roughly proportional to n 2 . The second, merge sort, takes time roughly equal to c 2 n lg n, where lg n stands for log 2 n and c 2 is another constant that also does not depend on n. Insertion sort typically has a smaller constant factor than merge sort, so that c 1 < c 2 ."
   },
   {
    "type": "body",
@@ -586,7 +586,7 @@
    "section_title": "1.2 Algorithms as a technology",
    "printed_page": 13,
    "pdf_page": 34,
-   "text": "For a concrete example, let us pit a faster computer (computer A) running insertion sort against a slower computer (computer B) ru nning merge sort. They each must sort an array of 10 million numbers. (Although 10 million numbers might seem like a lot, if the numbers are eight-byte integers, then the input occupies about 80 megabytes, which fits in the memory of even an inexpensive laptop computer many times over.) Suppose that computer A executes 10 billion instructions per second (faster than any single sequential computer at the time of this writing) and computer B executes only 10 million instructions per second (much slower than most contemporary computers), so that computer A is 1000 times faster than computer B in raw computing power. To make the difference even more dramatic, suppose that the world’s craftiest programmer codes insertion sort in machine language for computer A, and the resulting code requires 2n 2 instructions to sort n numbers. Suppose further that just an average programmer implements merge sort, using a high-level language with an inefficient compiler, with the resulting code taking 50n lg n instructions. To sort 10 million numbers, computer A takes"
+   "text": "For a concrete example, let us pit a faster computer (computer A) running insertion sort against a slower computer (computer B) running merge sort. They each must sort an array of 10 million numbers. (Although 10 million numbers might seem like a lot, if the numbers are eight-byte integers, then the input occupies about 80 megabytes, which fits in the memory of even an inexpensive laptop computer many times over.) Suppose that computer A executes 10 billion instructions per second (faster than any single sequential computer at the time of this writing) and computer B executes only 10 million instructions per second (much slower than most contemporary computers), so that computer A is 1000 times faster than computer B in raw computing power. To make the difference even more dramatic, suppose that the world’s craftiest programmer codes insertion sort in machine language for computer A, and the resulting code requires 2n 2 instructions to sort n numbers. Suppose further that just an average programmer implements merge sort, using a high-level language with an inefficient compiler, with the resulting code taking 50n lg n instructions. To sort 10 million numbers, computer A takes"
   },
   {
    "type": "body",
@@ -676,7 +676,7 @@
    "section_title": "1.2 Algorithms as a technology",
    "printed_page": 14,
    "pdf_page": 35,
-   "text": "The answer is yes. Although some applications do no t explicitly require algorithmic content at the application level (such as some simple, web-based applications), many do. For example, consider a web-based service that determines how to travel from one location to another. Its implementation wo uld rely on fast hardware, a graphical user interface, wide-area networking, and also possibly on object orientation. It would also require algorithms for operations such as finding routes"
+   "text": "The answer is yes. Although some applications do no t explicitly require algorithmic content at the application level (such as some simple, web-based applications), many do. For example, consider a web-based service that determines how to travel from one location to another. Its implementation would rely on fast hardware, a graphical user interface, wide-area networking, and also possibly on object orientation. It would also require algorithms for operations such as finding routes"
   },
   {
    "type": "body",
@@ -703,7 +703,7 @@
    "section_title": "1.2 Algorithms as a technology",
    "printed_page": 14,
    "pdf_page": 35,
-   "text": "Was the application written in a language other tha n machine code? Then it was processed by a compiler, interpreter, or assembler, all of which make extensive use of algorithms. Algorithms are at the core of most t echnologies used in contemporary computers."
+   "text": "Was the application written in a language other than machine code? Then it was processed by a compiler, interpreter, or assembler, all of which make extensive use of algorithms. Algorithms are at the core of most t echnologies used in contemporary computers."
   },
   {
    "type": "body",
@@ -712,7 +712,7 @@
    "section_title": "1.2 Algorithms as a technology",
    "printed_page": 14,
    "pdf_page": 35,
-   "text": "Machine learning can be thought of as a method for performing algorithmic tasks without explicitly designing an algorithm, but instead inferring patterns from data and thereby automatically learning a solution. At first glance, machine learning, which automates the process of algorithmic design, may seem to make learning about algorithms obsolete. The opposite is true, ho wever. Machine learning is itself a collection of algorithms, just under a different name. Furthermore, it currently seems that the successes of machine learning are mainly for problems for which we, as humans, do not really understand what the right algorithm is. Prominent examples include computer vision and automatic language translation. For algorithmic problems that humans understand well, s uch as most of the problems in this book, efficient algorithms designed to solve a specific problem are typically more successful than machine-learning approaches."
+   "text": "Machine learning can be thought of as a method for performing algorithmic tasks without explicitly designing an algorithm, but instead inferring patterns from data and thereby automatically learning a solution. At first glance, machine learning, which automates the process of algorithmic design, may seem to make learning about algorithms obsolete. The opposite is true, however. Machine learning is itself a collection of algorithms, just under a different name. Furthermore, it currently seems that the successes of machine learning are mainly for problems for which we, as humans, do not really understand what the right algorithm is. Prominent examples include computer vision and automatic language translation. For algorithmic problems that humans understand well, such as most of the problems in this book, efficient algorithms designed to solve a specific problem are typically more successful than machine-learning approaches."
   },
   {
    "type": "body",
@@ -739,7 +739,7 @@
    "section_title": "1.2 Algorithms as a technology",
    "printed_page": 15,
    "pdf_page": 36,
-   "text": "Having a solid base of algorithmic knowledge and technique is one characteristic that defines the truly skilled programmer. With modern computing technology, you can accomplish some tasks without knowing much abou t algorithms, but with a good background in algorithms, you can do much, much more."
+   "text": "Having a solid base of algorithmic knowledge and technique is one characteristic that defines the truly skilled programmer. With modern computing technology, you can accomplish some tasks without knowing much about algorithms, but with a good background in algorithms, you can do much, much more."
   },
   {
    "type": "exercise",
@@ -874,7 +874,7 @@
    "section_title": "1.2 Algorithms as a technology",
    "printed_page": 17,
    "pdf_page": 38,
-   "text": "We’ll begin by examining the insertion sort algorithm to solve the sorting problem introduced in Chapter 1. We’ll specify algorithms using a pseudocode that should be understandable to you if you have done co mputer programming. We’ll see why insertion sort correctly sorts and analyze its running time. The analysis introduces a notation that describes how running ti me increases with the number of items to be sorted. Following a discussion of in sertion sort, we’ll use a method called divide-and-conquer to develop a sorting algorithm called merge sort. We’ll end with an analysis of merge sort’s running time."
+   "text": "We’ll begin by examining the insertion sort algorithm to solve the sorting problem introduced in Chapter 1. We’ll specify algorithms using a pseudocode that should be understandable to you if you have done computer programming. We’ll see why insertion sort correctly sorts and analyze its running time. The analysis introduces a notation that describes how running time increases with the number of items to be sorted. Following a discussion of in sertion sort, we’ll use a method called divide-and-conquer to develop a sorting algorithm called merge sort. We’ll end with an analysis of merge sort’s running time."
   },
   {
    "type": "body",
@@ -928,7 +928,7 @@
    "section_title": "1.2 Algorithms as a technology",
    "printed_page": 17,
    "pdf_page": 38,
-   "text": "The numbers to be sorted are also known as the keys. Although the problem is conceptually about sorting a sequence, the input comes in the form of an array with n elements. When we want to sort numbers, it’s often because they are the keys associated with other data, which we call satellite data. Together, a key and satellite data form a record. For example, consider a spreadsheet containing st udent records with many associated pieces of data such as age, grade-point average, and number of courses taken. Any one of these quantities could be a key, but when the"
+   "text": "The numbers to be sorted are also known as the keys. Although the problem is conceptually about sorting a sequence, the input comes in the form of an array with n elements. When we want to sort numbers, it’s often because they are the keys associated with other data, which we call satellite data. Together, a key and satellite data form a record. For example, consider a spreadsheet containing student records with many associated pieces of data such as age, grade-point average, and number of courses taken. Any one of these quantities could be a key, but when the"
   }
  ]
 }

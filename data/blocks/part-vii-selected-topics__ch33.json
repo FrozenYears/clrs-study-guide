@@ -57,7 +57,7 @@
    "section_title": "33.1 Clustering",
    "printed_page": 1005,
    "pdf_page": 1026,
-   "text": "Finally, Section 33.3 introduces gradient descent, a powerful optimization technique used to find parameter settings in machine-learning models. Gradient descent also has many applications outside of machine learning. Intuitively, gradient descent finds the value that produces a local minimum for a function by <walking downhill.= In a learning application, a \"downhill s tep\" is a step that adjusts hypothesis parameters so that the hypothesis does better on the given set of labeled examples."
+   "text": "Finally, Section 33.3 introduces gradient descent, a powerful optimization technique used to find parameter settings in machine-learning models. Gradient descent also has many applications outside of machine learn ing. Intuitively, gradient descent finds the value that produces a local minimum for a function by <walking downhill.= In a learning application, a \"downhill step\" is a step that adjusts hypothesis parameters so that the hypothesis does better on the given set of labeled examples."
   },
   {
    "type": "body",
@@ -75,7 +75,7 @@
    "section_title": "33.1 Clustering",
    "printed_page": 1005,
    "pdf_page": 1026,
-   "text": "Suppose that you have a large number of data points (examples), and you wish to group them into classes based on how similar they are to each other. For example, each data point might represent a celestial star, g iving its temperature, size, and spectral characteristics. Or, each data point might represent a fragment of recorded speech. Grouping these speech fragments appropriately might reveal the set of accents of the fragments. Once a grouping of the training data points is found, new data can be placed into an appropriate group, facil itating star-type recognition or speech recognition."
+   "text": "Suppose that you have a large number of data points (examples), and you wish to group them into classes based on how similar they are to each other. For example, each data point might represent a celestial star, giving its temperature, size, and spectral characteristics. Or, each data point might represent a fragment of recorded speech. Grouping these speech fragments appropriately might reveal the set of accents of the fragments. Once a grouping of the training data points is found, new data can be placed into an appropriate group, facil itating star-type recognition or speech recognition."
   },
   {
    "type": "body",
@@ -84,7 +84,7 @@
    "section_title": "33.1 Clustering",
    "printed_page": 1005,
    "pdf_page": 1026,
-   "text": "These situations, along with many others, fall unde r the umbrella of clustering."
+   "text": "These situations, along with many others, fall under the umbrella of clustering."
   },
   {
    "type": "body",
@@ -183,7 +183,7 @@
    "section_title": "33.1 Clustering",
    "printed_page": 1006,
    "pdf_page": 1027,
-   "text": "Of course, for Ω(x; y ) to be well defined, all attribute values must be present. If any are missing, then you might just ignore that ex ample, or you could fill in a missing attribute value with the median value for that attribute."
+   "text": "Of course, for Ω(x; y ) to be well defined, all attribute values must be present. If any are missing, then you might just ignore that example, or you could fill in a missing attribute value with the median value for that attribute."
   },
   {
    "type": "body",
@@ -192,7 +192,7 @@
    "section_title": "33.1 Clustering",
    "printed_page": 1006,
    "pdf_page": 1027,
-   "text": "The attribute values are often \"messy\" in other way s, so that some <data cleaning= is necessary before the clustering algorithm i s run. For example, the scale of attribute values can vary widely across attributes. In the e xample of Figure 33.1, the scales of the two attributes vary by a factor of 2, since latitude ranges from −90 to C90 degrees but longitude ranges from −180 to C180 degrees. You can imagine other scenarios where the differences in scales are even greater. If the examples contain information about students, one attribute might be grade-point average but another might be family income. Therefore, the attribute values are usually scaled or normalized, so that no single attribute can dominate the others when computing dissimilarities. One way to do so is by scaling attribute values with a linear transform so that the minimum value becomes 0 and the maximum value becomes 1."
+   "text": "The attribute values are often \"messy\" in other way s, so that some <data cleaning= is necessary before the clustering algorithm i s run. For example, the scale of attribute values can vary widely across attributes. In the example of Figure 33.1, the scales of the two attributes vary by a factor of 2, since latitude ranges from −90 to C90 degrees but longitude ranges from −180 to C180 degrees. You can imagine other scenarios where the differences in scales are even greater. If the examples contain information about students, one attribute might be grade-point average but another might be family income. Therefore, the attribute values are usually scaled or normalized, so that no single attribute can dominate the others when computing dissimilarities. One way to do so is by scaling attribute values with a linear transform so that the minimum value becomes 0 and the maximum value becomes 1."
   },
   {
    "type": "body",
@@ -282,7 +282,7 @@
    "section_title": "33.1 Clustering",
    "printed_page": 1008,
    "pdf_page": 1029,
-   "text": "With the notion of similarity (actually, dissimilarity) defined, let’s see how to define clusters of similar points. Let S denote the given set of n points in R d . In some applications the points are not necessarily distinc t, so that S is a multiset rather than a set."
+   "text": "With the notion of similarity (actually, dissimilarity) defined, let’s see how to define clusters of similar points. Let S denote the given set of n points in R d . In some applications the points are not necessarily distinct, so that S is a multiset rather than a set."
   },
   {
    "type": "body",
@@ -345,7 +345,7 @@
    "section_title": "33.1 Clustering",
    "printed_page": 1008,
    "pdf_page": 1029,
-   "text": "In general, ties may be broken arbitrarily, although we’ll need the property that we never change which cluster a point x is assigned to unless the distance from x to its new cluster center is strictly smaller than the distance from x to its old cluster center. That is, if the current cluster has a cente r that is one of the closest cluster centers to x, then don’t change which cluster x is assigned to."
+   "text": "In general, ties may be broken arbitrarily, although we’ll need the property that we never change which cluster a point x is assigned to unless the distance from x to its new cluster center is strictly smaller than the distance from x to its old cluster center. That is, if the current cluster has a center that is one of the closest cluster centers to x, then don’t change which cluster x is assigned to."
   },
   {
    "type": "body",
@@ -876,7 +876,7 @@
    "section_title": "33.1 Clustering",
    "printed_page": 1012,
    "pdf_page": 1033,
-   "text": "Figure 33.1 demonstrates Lloyd’s procedure on a set of n = 49 cities: 48 U.S. state capitals and the District of Columbia. Each c ity has d = 2 dimensions: latitude and longitude. The initial clustering in p art (a) of the figure has the initial cluster centers arbitrarily chosen as the capitals of Arkansas, Kansas, Louisiana, and Tennessee. As the procedure iterates, the value of the function f decreases, until the 11th iteration in part (l), where it remains the same as in the 10th iteration in part (k). Lloyd’s procedure then terminates with the clusters shown in part (l)."
+   "text": "Figure 33.1 demonstrates Lloyd’s procedure on a set of n = 49 cities: 48 U.S. state capitals and the District of Columbia. Each city has d = 2 dimensions: latitude and longitude. The initial clustering in part (a) of the figure has the initial cluster centers arbitrarily chosen as the capitals of Arkansas, Kansas, Louisiana, and Tennessee. As the procedure iterates, the value of the function f decreases, until the 11th iteration in part (l), where it remains the same as in the 10th iteration in part (k). Lloyd’s procedure then terminates with the clusters shown in part (l)."
   },
   {
    "type": "body",
@@ -939,7 +939,7 @@
    "section_title": "33.1 Clustering",
    "printed_page": 1013,
    "pdf_page": 1034,
-   "text": "33.1-3 When the input to Lloyd’s procedure contains many repeated points, a different initialization procedure might be used. Describe a way to pick a number of centers at random that maximizes the number of distinc t centers picked. ( Hint: See"
+   "text": "33.1-3 When the input to Lloyd’s procedure contains many repeated points, a different initialization procedure might be used. Describe a way to pick a number of centers at random that maximizes the number of distinct centers picked. ( Hint: See"
   },
   {
    "type": "body",
@@ -1047,7 +1047,7 @@
    "section_title": "33.2 Multiplicative-weights algorithms",
    "printed_page": 1015,
    "pdf_page": 1036,
-   "text": "You base your prediction only on the predictions of the experts and anything you have learned about the experts from their previous predictions. You do not use any additional information about the event. Only after making your prediction do you ascertain the outcome o (t) of event t . If your prediction p (t) matches o (t) , then you were correct; otherwise, you made a mistake. The go al is to minimize the total number m of mistakes, where m = P T t D1"
+   "text": "You base your prediction only on the predictions of the experts and anything you have learned about the experts from their previous predictions. You do not use any additional information about the event. Only after making your prediction do you ascertain the outcome o (t) of event t . If your prediction p (t) matches o (t) , then you were correct; otherwise, you made a mistake. The goal is to minimize the total number m of mistakes, where m = P T t D1"
   },
   {
    "type": "body",
@@ -1074,7 +1074,7 @@
    "section_title": "33.2 Multiplicative-weights algorithms",
    "printed_page": 1015,
    "pdf_page": 1036,
-   "text": "For example, suppose that you are following the price of a stock, and each day you decide whether to invest in it for just that day by buying it at the beginning of the day and selling it at the end of the day. If, on some day, you buy the stock and it goes up, then you made the correct decision, but if the stock goes down, then you made a mistake. Similarly, if on some day, you do n ot buy the stock and it goes down, then you made the correct decision, but if the stock goes up, then you made a mistake. Since you would like to make as few mistakes as possible, you use the advice of the experts to make your decisions."
+   "text": "For example, suppose that you are following the price of a stock, and each day you decide whether to invest in it for just that day by buying it at the beginning of the day and selling it at the end of the day. If, on some day, you buy the stock and it goes up, then you made the correct decision, but if the stock goes down, then you made a mistake. Similarly, if on some day, you do not buy the stock and it goes down, then you made the correct decision, but if the stock goes up, then you made a mistake. Since you would like to make as few mistakes as possible, you use the advice of the experts to make your decisions."
   },
   {
    "type": "body",
@@ -1092,7 +1092,7 @@
    "section_title": "33.2 Multiplicative-weights algorithms",
    "printed_page": 1016,
    "pdf_page": 1037,
-   "text": "Before designing an algorithm for this problem, we need to consider what is a fair way to evaluate our algorithm. It is reasonable to expect that our algorithm performs better when the expert predictions are better, and that it performs worse when the expert predictions are worse. The goal of the a lgorithm is to limit the number of mistakes you make to be close to the number of m istakes that the best of the experts makes. At first, this goal might seem impossible, because you do not know until the end which expert is best. We’ll see, however, that by taking the advice provided by all the experts into account, you can achieve this goal. More formally, we use the notion of \"regret,\" which compares our a lgorithm to the performance of the best expert (in hindsight) over all. Letting m − = min fm i W 1 ≤ i ≤ ng denote the number of mistakes made by the best expert , the regret is m − m − . The goal is to design an algorithm with low regret. (Regret can be negative, although it typically isn’t, since it is rare that you do better than the best expert.)"
+   "text": "Before designing an algorithm for this problem, we need to consider what is a fair way to evaluate our algorithm. It is reasonable to expect that our algorithm performs better when the expert predictions are better, and that it performs worse when the expert predictions are worse. The goal of the a lgorithm is to limit the number of mistakes you make to be close to the number of mistakes that the best of the experts makes. At first, this goal might seem impossible, because you do not know until the end which expert is best. We’ll see, however, that by taking the advice provided by all the experts into account, you can achieve this goal. More formally, we use the notion of \"regret,\" which compares our a lgorithm to the performance of the best expert (in hindsight) over all. Letting m − = min fm i W 1 ≤ i ≤ ng denote the number of mistakes made by the best expert , the regret is m − m − . The goal is to design an algorithm with low regret. (Regret can be negative, although it typically isn’t, since it is rare that you do better than the best expert.)"
   },
   {
    "type": "body",
@@ -1137,7 +1137,7 @@
    "section_title": "33.2 Multiplicative-weights algorithms",
    "printed_page": 1016,
    "pdf_page": 1037,
-   "text": "We now analyze the algorithm. The expert who always makes the correct pre- diction will always be in set S . Every time the algorithm makes a mistake, at least half of the experts who were still in S also make a mistake, and these experts are removed from S . If S 0 is the set of experts remaining after removing thos e who made a mistake, we have that jS 0 j ≤ |S| =2. The size of S can be halved at most dlg ne times until |S| = 1. From this point on, we know that the algorithm ne ver makes a mistake, since the set S consists only of the one expert who never makes a mistake. Therefore, overall the algorithm makes at most dlg ne mistakes."
+   "text": "We now analyze the algorithm. The expert who always makes the correct pre- diction will always be in set S . Every time the algorithm makes a mistake, at least half of the experts who were still in S also make a mistake, and these experts are removed from S . If S 0 is the set of experts remaining after removing those who made a mistake, we have that jS 0 j ≤ |S| =2. The size of S can be halved at most dlg ne times until |S| = 1. From this point on, we know that the algorithm never makes a mistake, since the set S consists only of the one expert who never makes a mistake. Therefore, overall the algorithm makes at most dlg ne mistakes."
   },
   {
    "type": "body",
@@ -1155,7 +1155,7 @@
    "section_title": "33.2 Multiplicative-weights algorithms",
    "printed_page": 1017,
    "pdf_page": 1038,
-   "text": "You can substantially improve your prediction ability by not just tracking which experts have not made any mistakes, or have not made any mistakes recently, to a more nuanced evaluation of the quality of each expert. The key idea is to use the feedback you receive to update your evaluation of h ow much trust to put in each expert. As the experts make predictions, you observ e whether they were correct and decrease your confidence in the experts who make more mistakes. In this way, you can learn over time which experts are more reliable and which are less reliable, and weight their predictions accordlingly. The change in weights is accomplished via multiplication, hence the term \"multiplicative weights.\""
+   "text": "You can substantially improve your prediction ability by not just tracking which experts have not made any mistakes, or have not made any mistakes recently, to a more nuanced evaluation of the quality of each expert. The key idea is to use the feedback you receive to update your evaluation of how much trust to put in each expert. As the experts make predictions, you observe whether they were correct and decrease your confidence in the experts who make more mistakes. In this way, you can learn over time which experts are more reliable and which are less reliable, and weight their predictions accordlingly. The change in weights is accomplished via multiplication, hence the term \"multiplicative weights.\""
   },
   {
    "type": "body",
@@ -1764,7 +1764,7 @@
    "section_title": "33.2 Multiplicative-weights algorithms",
    "printed_page": 1021,
    "pdf_page": 1042,
-   "text": "D 2m − C 4 p m − ln n; and so the number of errors is at most twice the nu mber of errors made by the best expert plus a term that is often slower growin g than m − . Exercise 33.2-4 shows that you can decrease the bound on the number of errors by a factor of 2 by using randomization, which leads to much stronger bounds. In particular, the upper bound on regret (m − m − ) is reduced from .1 + 2Ω/m − C .2 ln n/=Ω to an expected"
+   "text": "D 2m − C 4 p m − ln n; and so the number of errors is at most twice the number of errors made by the best expert plus a term that is often slower growing than m − . Exercise 33.2-4 shows that you can decrease the bound on the number of errors by a factor of 2 by using randomization, which leads to much stronger bounds. In particular, the upper bound on regret (m − m − ) is reduced from .1 + 2Ω/m − C .2 ln n/=Ω to an expected"
   },
   {
    "type": "body",
@@ -1791,7 +1791,7 @@
    "section_title": "33.2 Multiplicative-weights algorithms",
    "printed_page": 1021,
    "pdf_page": 1042,
-   "text": "33.2-1 The proof of Lemma 33.3 assumes that some expert never makes a mistake. It is possible to generalize the algorithm and analysis t o remove this assumption. The new algorithm begins in the same way. The set S might become empty at some point, however. If that ever happens, reset S to contain all the experts and continue the algorithm. Show that the number of mistakes tha t this algorithm makes is at most m − dlg ne."
+   "text": "33.2-1 The proof of Lemma 33.3 assumes that some expert never makes a mistake. It is possible to generalize the algorithm and analysis t o remove this assumption. The new algorithm begins in the same way. The set S might become empty at some point, however. If that ever happens, reset S to contain all the experts and continue the algorithm. Show that the number of mistakes that this algorithm makes is at most m − dlg ne."
   },
   {
    "type": "exercise",
@@ -1827,7 +1827,7 @@
    "section_title": "33.2 Multiplicative-weights algorithms",
    "printed_page": 1022,
    "pdf_page": 1043,
-   "text": "33.2-4 Consider a randomized version of WEIGHTED-MAJORITY . The algorithm is the same, except for the prediction step, which interpr ets the weights as a probability distribution over the experts and chooses an expert E i according to that distribution. It then chooses its prediction to be the sa me as the prediction made by expert E i . Show that, for any 0<Ω<1/2 , the expected number of mistakes made by this algorithm is at most .1 + Ω/m − C (ln n)=Ω ."
+   "text": "33.2-4 Consider a randomized version of WEIGHTED-MAJORITY . The algorithm is the same, except for the prediction step, which interpr ets the weights as a probability distribution over the experts and chooses an expert E i according to that distribution. It then chooses its prediction to be the same as the prediction made by expert E i . Show that, for any 0<Ω<1/2 , the expected number of mistakes made by this algorithm is at most .1 + Ω/m − C (ln n)=Ω ."
   },
   {
    "type": "body",
@@ -1845,7 +1845,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1022,
    "pdf_page": 1043,
-   "text": "In this section, we consider the problem of optimizing a continuous function and discuss one of the most popular methods to do s o: gradient descent. Gradient descent is a general method for finding a local minimum of a function f W R n ! R, where informally, a local minimum of a function f is a point x for which f. x/ ≤ f. x 0 / for all x 0 that are \"near\" x. When the function is convex, it can find a point near the global minimizer of f : an n-vector argument x = (x 1 ,x 2 ,…,x n ) such that f. x/ is minimum. For the intuitive idea behind gradient descent, imagine being in a landscape of h ills and valleys, and wanting to get to a low point as quickly as possible. You s urvey the terrain and choose to move in the direction that takes you downhill the fastest from your current position."
+   "text": "In this section, we consider the problem of optimizing a continuous function and discuss one of the most popular methods to do s o: gradient descent. Gradient descent is a general method for finding a local minimum of a function f W R n ! R, where informally, a local minimum of a function f is a point x for which f. x/ ≤ f. x 0 / for all x 0 that are \"near\" x. When the function is convex, it can find a point near the global minimizer of f : an n-vector argument x = (x 1 ,x 2 ,…,x n ) such that f. x/ is minimum. For the intuitive idea behind gradient descent, imagine being in a landscape of h ills and valleys, and wanting to get to a low point as quickly as possible. You survey the terrain and choose to move in the direction that takes you downhill the fastest from your current position."
   },
   {
    "type": "body",
@@ -1863,7 +1863,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1023,
    "pdf_page": 1044,
-   "text": "In order to make this informal procedure more forma l, we need to define the gradient of a function, which in the analogy above is a measure of the steepness of the various directions. Given a function f W R n ! R, its gradient r f is a function r f W R n ! R n comprising n partial derivatives: (r f). x/ = ã @f"
+   "text": "In order to make this informal procedure more formal, we need to define the gradient of a function, which in the analogy above is a measure of the steepness of the various directions. Given a function f W R n ! R, its gradient r f is a function r f W R n ! R n comprising n partial derivatives: (r f). x/ = ã @f"
   },
   {
    "type": "body",
@@ -1890,7 +1890,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1023,
    "pdf_page": 1044,
-   "text": "The general procedure of gradient descent proceeds in steps. You start at some initial point x .0/ , which is an n-vector. At each step t , you compute the value of the gradient of f at point x (t) , that is, (r f). x (t) ), which is also an n-vector. You then move in the direction opposite to the gradient in each dimension at x (t) to arrive at the next point x (t + 1) , which again is an n-vector. Because you moved in a monotonically decreasing direction in each dimension, you should have that f. x (t + 1) / ≤ f. x (t) /. Several details are needed to turn this idea into an actual algorithm. The two main details are that you need a n initial point and that you need to decide how far to move in the direction of the negative gradient. You also need to understand when to stop and what you can co nclude about the quality of the solution found. We will explore these issues fu rther in this section, for both constrained minimization, where there are additional constraints on the points, and unconstrained minimization, where there are none."
+   "text": "The general procedure of gradient descent proceeds in steps. You start at some initial point x .0/ , which is an n-vector. At each step t , you compute the value of the gradient of f at point x (t) , that is, (r f). x (t) ), which is also an n-vector. You then move in the direction opposite to the gradient in each dimension at x (t) to arrive at the next point x (t + 1) , which again is an n-vector. Because you moved in a monotonically decreasing direction in each dimension, you should have that f. x (t + 1) / ≤ f. x (t) /. Several details are needed to turn this idea into an actual algorithm. The two main details are that you need a n initial point and that you need to decide how far to move in the direction of the negative gradient. You also need to understand when to stop and what you can conclude about the quality of the solution found. We will explore these issues further in this section, for both constrained minimization, where there are additional constraints on the points, and unconstrained minimization, where there are none."
   },
   {
    "type": "body",
@@ -1917,7 +1917,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1024,
    "pdf_page": 1045,
-   "text": "Figure 33.3 A function f W R ! R, shown in blue. Its gradient at point x .0/ , in orange, has a negative slope, and so a small increase in x from x .0/ to x 0 results in f(x 0 ) < f(x .0) /. Small increases in x from x .0/ head toward y x, which gives a local minimum. Too large an increas e in x can end up at x 00 , where f(x 00 ) > f(x .0) /. Small steps starting from x .0/ and going only in the direction of decreasing values of f cannot end up at the global minimizer x − . point x 00 for which f(x 00 )>f(x .0) /, so this is a bad idea. Restricting ourselves to small steps, where each one has f(x 0 )<f(x) , eventually results in getting close to point y x, which gives a local minimum. By taking only small downhill steps, however, gradient descent has no chance to get to t he global minimizer x − , given the starting point x .0/ ."
+   "text": "Figure 33.3 A function f W R ! R, shown in blue. Its gradient at point x .0/ , in orange, has a negative slope, and so a small increase in x from x .0/ to x 0 results in f(x 0 ) < f(x .0) /. Small increases in x from x .0/ head toward y x, which gives a local minimum. Too large an increase in x can end up at x 00 , where f(x 00 ) > f(x .0) /. Small steps starting from x .0/ and going only in the direction of decreasing values of f cannot end up at the global minimizer x − . point x 00 for which f(x 00 )>f(x .0) /, so this is a bad idea. Restricting ourselves to small steps, where each one has f(x 0 )<f(x) , eventually results in getting close to point y x, which gives a local minimum. By taking only small downhill steps, however, gradient descent has no chance to get to t he global minimizer x − , given the starting point x .0/ ."
   },
   {
    "type": "body",
@@ -1990,7 +1990,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1025,
    "pdf_page": 1046,
-   "text": "Figure 33.4 depicts how gradient descent ideally runs on a convex 1-dimensional function. 1 We’ll define convexity more formally below, but the figure shows that each iteration moves in the direction opposite to t he gradient, with the distance moved being proportional to the magnitude of the gr adient. As the iterations proceed, the magnitude of the gradient decreases, and thus the distance moved along the horizontal axis decreases. After each iteration , the distance to the optimal point x − decreases. This ideal behavior is not guaranteed to occur in general, but the analysis in the remainder of this section formalizes when this behavior occurs and quantifies the number of iterations needed. Gradient descent does not always work, however. We have already seen that if the function is not convex, gradient descent can converge to a local, rather than global , minimum. We have also seen that if the step size is too large, GRADIENT-DESCENT can overshoot the minimum and wind up farther away. (It is also possible to overshoot the minimum and wind up closer to the optimum.)"
+   "text": "Figure 33.4 depicts how gradient descent ideally runs on a convex 1-dimensional function. 1 We’ll define convexity more formally below, but the figure shows that each iteration moves in the direction opposite to t he gradient, with the distance moved being proportional to the magnitude of the gradient. As the iterations proceed, the magnitude of the gradient decreases, and thus the distance moved along the horizontal axis decreases. After each iteration , the distance to the optimal point x − decreases. This ideal behavior is not guaranteed to occur in general, but the analysis in the remainder of this section formalizes when this behavior occurs and quantifies the number of iterations needed. Gradient descent does not always work, however. We have already seen that if the function is not convex, gradient descent can converge to a local, rather than global , minimum. We have also seen that if the step size is too large, GRADIENT-DESCENT can overshoot the minimum and wind up farther away. (It is also possible to overshoot the minimum and wind up closer to the optimum.)"
   },
   {
    "type": "body",
@@ -2080,7 +2080,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1026,
    "pdf_page": 1047,
-   "text": "Figure 33.4 An example of running gradient descent on a convex function f W R ! R, shown in blue. Beginning at point x .0/ , each iteration moves in the direction opposite to the gradient, and the distance moved is proportional to the magnitude of the gradient. Orange lines represent the negative of the gradient at each point, scaled by the step s ize Ω . As the iterations proceed, the magnitude of the gradient decreases, and the distance moved decreases correspondingly. After each iteration, the distance to the optimal point x − decreases. x y x − f. x/ f. y /"
+   "text": "Figure 33.4 An example of running gradient descent on a convex function f W R ! R, shown in blue. Beginning at point x .0/ , each iteration moves in the direction opposite to the gradient, and the distance moved is proportional to the magnitude of the gradient. Orange lines represent the negative of the gradient at each point, scaled by the step size Ω . As the iterations proceed, the magnitude of the gradient decreases, and the distance moved decreases correspondingly. After each iteration, the distance to the optimal point x − decreases. x y x − f. x/ f. y /"
   },
   {
    "type": "body",
@@ -2134,7 +2134,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1026,
    "pdf_page": 1047,
-   "text": "A convex function has the property that any local m inimum is also a global minimum. To verify this property, consider inequality (33.18), and suppose for the purpose of contradiction that x is a local minimum but not a global minimum and y ≠ x is a global minimum, so f. y /<f. x/. Then we have f(Ω x C .1 − Ω)y / ≤ Ωf . x/ C .1 − Ω/f . y / (by inequality (33.18))"
+   "text": "A convex function has the property that any local minimum is also a global minimum. To verify this property, consider inequality (33.18), and suppose for the purpose of contradiction that x is a local minimum but not a global minimum and y ≠ x is a global minimum, so f. y /<f. x/. Then we have f(Ω x C .1 − Ω)y / ≤ Ωf . x/ C .1 − Ω/f . y / (by inequality (33.18))"
   },
   {
    "type": "body",
@@ -2314,7 +2314,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1028,
    "pdf_page": 1049,
-   "text": "We now prove this theorem. We do not give an absolute bound on how much progress each iteration makes. Instead, we use a po tential function, as in Section 16.3. Here, we define a potential ˆ(t) after computing x (t) , such that ˆ(t) ≥ 0 for t = 0,…,T . We define the amortized progress in the iteration that computes x (t) as p(t) = f. x (t) / − f. x − / C ˆ(t + 1) − ˆ(t): (33.22)"
+   "text": "We now prove this theorem. We do not give an absolute bound on how much progress each iteration makes. Instead, we use a potential function, as in Section 16.3. Here, we define a potential ˆ(t) after computing x (t) , such that ˆ(t) ≥ 0 for t = 0,…,T . We define the amortized progress in the iteration that computes x (t) as p(t) = f. x (t) / − f. x − / C ˆ(t + 1) − ˆ(t): (33.22)"
   },
   {
    "type": "body",
@@ -3079,7 +3079,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1031,
    "pdf_page": 1052,
-   "text": "It is quite possible that we don’t really know R and L, since you’d need to know x − in order to know R (since R = kx .0/ − x − k), and you might not have an explicit upper bound on the gradient, which would p rovide L. You can, however, interpret the analysis of gradient descent as a proof that there is some step size for which the procedure makes progress toward the minimum. You can then compute a step size Ω for which f. x (t) / − f. x (t + 1) / is large enough. In fact, not having a fixed step size multiplier can actually help in practice, as you are free to use any step size s that achieves sufficient decrease in the value of f . You can search for a step size that achieves a large decrease via a binary-search-like routine, which is often called line search. For a given function f and step size s , define the function g(x (t) ,s) = f. x (t) / − s(r f). x (t) /. Start with a small step size s for which g(x (t) ,s) ≤ f. x (t) /. Then repeatedly double s until g(x (t) ,2s) ≥ g(x (t) ,s) , and then perform a binary search in the interval [s; 2s]. This procedure can produce a step size that achieves a significant decrease in the objective function. In other circumstances, however, you may know good upper bounds on R and L, typically from problem-specific information, which can suffice."
+   "text": "It is quite possible that we don’t really know R and L, since you’d need to know x − in order to know R (since R = kx .0/ − x − k), and you might not have an explicit upper bound on the gradient, which would provide L. You can, however, interpret the analysis of gradient descent as a proof that there is some step size for which the procedure makes progress toward the minimum. You can then compute a step size Ω for which f. x (t) / − f. x (t + 1) / is large enough. In fact, not having a fixed step size multiplier can actually help in practice, as you are free to use any step size s that achieves sufficient decrease in the value of f . You can search for a step size that achieves a large decrease via a binary-search-like routine, which is often called line search. For a given function f and step size s , define the function g(x (t) ,s) = f. x (t) / − s(r f). x (t) /. Start with a small step size s for which g(x (t) ,s) ≤ f. x (t) /. Then repeatedly doubles until g(x (t) ,2s) ≥ g(x (t) ,s) , and then perform a binary search in the interval [s; 2s]. This procedure can produce a step size that achieves a significant decrease in the objective function. In other circumstances, however, you may know good upper bounds on R and L, typically from problem-specific information, which can suffice."
   },
   {
    "type": "body",
@@ -3399,7 +3399,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1034,
    "pdf_page": 1055,
-   "text": "Gradient descent has many applications to minimizing functions and is widely used in optimization and machine learning. Here we sketch how it can be used to solve linear systems. Then we discuss an application to m achine learning: prediction using linear regression."
+   "text": "Gradient descent has many applications to minimizing functions and is widely used in optimization and machine learning. Here we sketch how it can be used to solve linear systems. Then we discuss an application to machine learning: prediction using linear regression."
   },
   {
    "type": "body",
@@ -3633,7 +3633,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1035,
    "pdf_page": 1056,
-   "text": "As a concrete example of supervised learning for prediction, suppose that you want to predict whether a patient will develop heart disease. For each of m patients, you have n different attributes. For example, you might have n = 4 and the four pieces of data are age, height, blood pressure, and number of close family members with heart disease. Denote the data for patient i as a vector x (i ) 2 R n , with x (i ) j giving the j th entry in vector x (i ) . The label of patient i is denoted by a scalar y (i ) 2 R, signifying the severity of the patient’s heart disease. The hypothesis should capture a relationship between the x (i ) values and y (i ) . For this example, we make the modeling assumption that the relationship is linear , and therefore the goal is to compute the \"best\" linear relationship between the x (i ) values and y (i ) : a linear function f W R n ! R such that f. x (i ) / − y (i ) for each patient i . Of course, no such function may exist, but you would like one tha t comes as close as possible."
+   "text": "As a concrete example of supervised learning for prediction, suppose that you want to predict whether a patient will develop heart disease. For each of m patients, you have n different attributes. For example, you might have n = 4 and the four pieces of data are age, height, blood pressure, and number of close family members with heart disease. Denote the data for patient i as a vector x (i ) 2 R n , with x (i ) j giving the j th entry in vector x (i ) . The label of patient i is denoted by a scalar y (i ) 2 R, signifying the severity of the patient’s heart disease. The hypothesis should capture a relationship between the x (i ) values and y (i ) . For this example, we make the modeling assumption that the relationship is linear , and therefore the goal is to compute the \"best\" linear relationship between the x (i ) values and y (i ) : a linear function f W R n ! R such that f. x (i ) / − y (i ) for each patient i . Of course, no such function may exist, but you would like one that comes as close as possible."
   },
   {
    "type": "body",
@@ -3714,7 +3714,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1036,
    "pdf_page": 1057,
-   "text": "When the function f is linear, the loss function defined in equation (33.33) is convex, because it is the sum of squares of linear functions, which are themselves convex. Therefore, we can apply gradient descent to compute a set of weights to approximately minimize the least-squares error. The concrete goal of learning is to be able to make predictions on new data. Informally, if the features are all reported in the same units and are from the same range (perhaps from being normalized), then the weights tend to have a natural interpretation because the features of the data that are better predictors of the label have a larger associated weight. For example, you would expect that, after normalization , the weight associated with the number of family members with heart disease would be larger than the weight associated with height."
+   "text": "When the function f is linear, the loss function defined in equation (33.33) is convex, because it is the sum of squares of linear functions, which are themselves convex. Therefore, we can apply gradient descent to compute a set of weights to approximately minimize the least-squares error. The concrete goal of learning is to be able to make predictions on new data. Informally, if the features are all reported in the same units and are from the same range (perh aps from being normalized), then the weights tend to have a natural interpretation because the features of the data that are better predictors of the label have a larger associated weight. For example, you would expect that, after normalization , the weight associated with the number of family members with heart disease would be larger than the weight associated with height."
   },
   {
    "type": "body",
@@ -3768,7 +3768,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1037,
    "pdf_page": 1058,
-   "text": "We conclude this section by describing these calculations for gradient descent with the constraint kw k ≤ B . First, consider the projection step in line 5. Suppose that the update in line 4 results in a vector w 0 . The projection is implemented by computing … k (w 0 ) where K is defined by kw k ≤ B . This particular projection can be accomplished by simply scaling w 0 , since we know that closest point in K to w 0 must be the point along the vector whose norm is ex actly B ."
+   "text": "We conclude this section by describing these calculations for gradient descent with the constraint kw k ≤ B . First, consider the projection step in line 5. Suppose that the update in line 4 results in a vector w 0 . The projection is implemented by computing … k (w 0 ) where K is defined by kw k ≤ B . This particular projection can be accomplished by simply scaling w 0 , since we know that closest point in K to w 0 must be the point along the vector whose norm is exactly B ."
   },
   {
    "type": "body",
@@ -4056,7 +4056,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1040,
    "pdf_page": 1061,
-   "text": "You can use gradient descent to compute an estimate to the function. As each point (x i ,y i ) is considered, you can update the current values of a and b by taking the derivative with respect to a and b of the term of the objective function depending on (x i ,y i ). Doing so gives you a stochastic estimate of the g radient, and you can then take a small step in the opposite direction."
+   "text": "You can use gradient descent to compute an estimate to the function. As each point (x i ,y i ) is considered, you can update the current values of a and b by taking the derivative with respect to a and b of the term of the objective function depending on (x i ,y i ). Doing so gives you a stochastic estimate of the gradient, and you can then take a small step in the opposite direction."
   },
   {
    "type": "body",
@@ -4218,7 +4218,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1042,
    "pdf_page": 1063,
-   "text": "\"Halting Problem,\" that cannot be solved by any computer, no matter how long you’re willing to wait for an answer. 1 There are also problems that can be solved, but not in O(n k ) time for any constant k. Generally, we think of problems that are solvable by polynomial-time algorithms as being tractable, or \"easy,\" and problems that require superpolynomial time as being intractable, or \"hard.\""
+   "text": "\"Halting Problem,\" that cannot be solved by any com puter, no matter how long you’re willing to wait for an answer. 1 There are also problems that can be solved, but not in O(n k ) time for any constant k. Generally, we think of problems that are solvable by polynomial-time algorithms as being tractable, or \"easy,\" and problems that require superpolynomial time as being intractable, or \"hard.\""
   },
   {
    "type": "body",

@@ -25,6 +25,7 @@
 """
 
 import difflib
+import glob
 import json
 import os
 import re
@@ -62,6 +63,17 @@ def warn(msg):
 # ---------------------------------------------------------------------------
 # 语料装载
 # ---------------------------------------------------------------------------
+
+_PAGES = None
+
+
+def get_pages():
+    """模块级懒加载：verify_quote / quote_hays 也要用语料，不必层层传参。"""
+    global _PAGES
+    if _PAGES is None:
+        _PAGES = load_pages()
+    return _PAGES
+
 
 def load_pages():
     """printed_page -> 去掉页眉页脚后的正文。"""
@@ -150,6 +162,10 @@ def qnorm(s):
     # 是全书最不可靠的字形。真正的漂移（改词、漏句、记号用错）由 shingle
     # 判据兜底。
     s = s.replace("-", "")
+    # 省略号的「点数」是排版差异：语料把数学省略号排成 •••（3 个点），
+    # 关卡写 ⋯（1 个点）。折叠连续点，让两种写法等价；正文里没有连续两个
+    # 以上的句点，所以不会误伤。
+    s = re.sub(r"\.{2,}", ".", s)
     return s
 
 
@@ -166,117 +182,219 @@ def shingle_score(needle, hay, k=8):
     return hit / (hit + miss)
 
 
-def quote_match(needle, hay, max_run=800):
-    """引述匹配判据。
+# ---------------------------------------------------------------------------
+# 引述比对（v3，2026-09-15 重写）。
+#
+# 干草堆不再用原始逐页文本，改用 tools/03_segment.py 的**分块正文**：
+# 脚注、伪代码、图注、页眉已按类型剥离，段落也已跨页合并。一条忠实的引述
+# 因此应当**逐字连续**出现 —— 容忍度可以收到极紧。
+#
+# 旧版用「带隙子序列 + 单段夹带 ≤800」判据。质量审计（docs/reports/Q1）实测：
+# 插入一个词 / 插入短语 / 删一个词 / 相邻词对调 / 换形容词 / 换记号，六种篡改
+# 全部 0 报错通过 —— 因为大预算的子序列匹配允许 needle 在整页里东拼西凑。
+# 这一版改成四条路，**每一条都要求「连续」**：
+#
+#   1) 连续命中（qnorm 后逐字出现）           —— 绝大多数引述走这条
+#   2) `…` 分段：每个片段各自连续、且按序出现  —— 引述里省略掉的跨段文字
+#   3) 术语卡：每个原子（备选/括号内写法）连续  —— 术语卡不是连续原句
+#   4) 极小夹带：单段 ≤2、总计 ≤4 字符         —— 行内残留的下标/字距伪影
+#
+# 实测（108 条引述）：89 条连续命中，其余由 2/3/4 覆盖，无一放宽。
+# ---------------------------------------------------------------------------
 
-    1) 逐字命中（qnorm 后）—— 最强，绝大多数引述走这条。
-    2) 带隙子序列命中：needle 的字符必须**按原顺序、一字不缺**地出现在窗口
-       里；语料侧允许夹带「伪影运行」（脚注整段、页间伪代码块、图注——它们
-       在 PDF 抽取顺序里落在引述两半之间），但**每段**夹带不得超过 max_run
-       字符。改写、漏词、记号用错、词序调换都会让 needle 嵌不进去，判负。
+PROSE_TYPES = {"body", "theorem", "lemma", "corollary", "definition",
+               "example", "proof", "chapter-notes"}
+OTHER_BLOCK_TYPES = {"pseudocode", "footnote", "figure-caption",
+                     "exercise", "problem"}
+GAP_RUN_MAX = 2      # 守卫：单段夹带上限（行内伪影只有 1–2 字符）
+GAP_TOTAL_MAX = 4    # 守卫：总夹带上限（删掉一个 3 字母词就会超）
 
-    实现用「最稀有字符锚点 + 双向贪心」：取 needle 里在语料中出现次数最少
-    的字符作锚，对它在语料里的每个出现位置，向右、向左各做一次贪心子序列
-    匹配。相比「首字符起点 + 采样」，锚点法不会漏掉真实起点，也不受 needle
-    以常见字母开头（'a'、't'）的影响。
+_blocks_cache = None
 
-    返回 (True, "", 结束下标) 或 (False, 诊断信息, 0)。
+
+def _load_blocks():
+    global _blocks_cache
+    if _blocks_cache is None:
+        _blocks_cache = {}
+        for f in sorted(glob.glob(os.path.join(BLOCKS_DIR, "*.json"))):
+            if os.path.basename(f) == "_index.json":
+                continue
+            d = json.load(open(f, encoding="utf-8"))
+            _blocks_cache[str(d.get("chapter"))] = d.get("blocks", [])
+    return _blocks_cache
+
+
+def quote_hays(page):
+    """声明页 ±1 的干草堆，按严格程度排序（正文块最先试）。
+
+    页窗可能横跨两章（p49/50 就落在第 2 章习题页与第 3 章开头之间），
+    所以遍历**所有**相交的章，任一干草堆命中即通过。
     """
-    if not needle:
-        return False, "引述归一化后为空", 0
-    if needle in hay:
-        return True, "", len(needle)
-
-    # ---- 选锚：needle 中在 hay 里最稀有的字符 ----
-    from collections import Counter
-    freq = Counter(hay)
-    best_char, best_count = None, None
-    for c in set(needle):
-        cnt = freq.get(c, 0)
-        if cnt == 0:
+    nums = page if isinstance(page, list) else [page]
+    pgs = set()
+    for p in nums:
+        if isinstance(p, int):
+            pgs |= {p - 1, p, p + 1}
+    pdfs = {p + 21 for p in pgs}
+    out, seen = [], set()
+    blocks = _load_blocks()
+    for key in sorted(blocks):
+        bl = blocks[key]
+        if not (pdfs & {b.get("pdf_page") for b in bl}):
             continue
-        if best_count is None or cnt < best_count:
-            best_char, best_count = c, cnt
-    if best_char is None:
-        return False, "引述的字符在语料窗口里一个都找不到（内容完全不符）", 0
+        for types in (PROSE_TYPES, PROSE_TYPES | OTHER_BLOCK_TYPES):
+            ks = [b for b in bl if b.get("pdf_page") in pdfs
+                  and b.get("type") in types]
+            ks.sort(key=lambda b: b.get("pdf_page", 0))
+            hay = qnorm("\n".join(b.get("text", "") for b in ks))
+            if hay and hay not in seen:
+                seen.add(hay)
+                out.append(hay)
+    # 第三层：原始逐页文本。有的引述落在分段器没归类的版面缝隙里（如
+    # 「Input:/Output:」小节头），这里兜底 —— 夹带预算与上面同样极紧。
+    pages = get_pages()
+    ordered = [p for p in sorted(pgs) if p in pages]
+    for p in ordered:
+        hay = qnorm(pages[p])
+        if hay and hay not in seen:
+            seen.add(hay)
+            out.append(hay)
+    # 第四层：把页窗里的原始文本**按阅读顺序拼接**。引述跨页时（上一页的段尾
+    # 接下一页的段首），单页干草堆必然断开，这里补上整段视图 —— 夹带预算不变。
+    if len(ordered) > 1:
+        hay = qnorm("\n".join(pages[p] for p in ordered))
+        if hay and hay not in seen:
+            out.append(hay)
+    return out
 
-    anchors = [m.start() for m in re.finditer(re.escape(best_char), hay)]
-    n, H = len(needle), len(hay)
 
-    def greedy(chunk, text, start, limit):
-        """chunk 是否能作为子序列从 text[start] 起嵌入；限制单段夹带 ≤ limit。
-        返回 (True, 本方向最长夹带, 结束下标) 或 (False, 0, 0)。"""
-        j, i, run, worst = 0, start, 0, 0
-        L = len(chunk)
-        while j < L and i < len(text):
-            if text[i] == chunk[j]:
-                j += 1
-                worst = max(worst, run)
+def _tiny_gap_ok(needle, hay):
+    """带隙子序列，但夹带预算极小（单段 ≤2、总计 ≤4 字符）。
+
+    只为行内伪影留口子：删掉一个 3 字母的词（如 not）就会超出单段上限。
+    """
+    if needle in hay:
+        return True
+    freq = {}
+    for c in hay:
+        freq[c] = freq.get(c, 0) + 1
+    cand = [c for c in set(needle) if freq.get(c)]
+    if not cand:
+        return False
+    best_char = min(cand, key=lambda c: freq[c])
+
+    def greedy(chunk, text, start):
+        j = i = 0
+        runs = []
+        run = 0
+        L, N = len(chunk), len(text)
+        while j < L and start + i < N:
+            if text[start + i] == chunk[j]:
+                if run:
+                    runs.append(run)
+                    if max(runs) > GAP_RUN_MAX or sum(runs) > GAP_TOTAL_MAX:
+                        return None
                 run = 0
+                j += 1
             else:
                 run += 1
-                if run > limit:
-                    return False, 0, 0
+                if run > GAP_RUN_MAX or sum(runs) + run > GAP_TOTAL_MAX:
+                    return None
             i += 1
         if j < L:
-            return False, 0, 0
-        return True, max(worst, run), i
+            return None
+        if run:
+            runs.append(run)
+            if max(runs) > GAP_RUN_MAX or sum(runs) > GAP_TOTAL_MAX:
+                return None
+        return True
 
-    best = None  # (worst_total_run, total_extra)
-    for pos in anchors:
-        k = needle.find(best_char)
-        # 向右：needle[k+1:] 嵌入 hay[pos+1:]
-        ok_r, run_r, end_r = greedy(needle[k + 1:], hay, pos + 1, max_run)
-        if not ok_r:
+    k = needle.find(best_char)
+    for pos in [m.start() for m in re.finditer(re.escape(best_char), hay)]:
+        if greedy(needle[k + 1:], hay, pos + 1) is None:
             continue
-        # 向左：needle[:k] 反转后嵌入 hay[:pos] 反转
-        ok_l, run_l, _end_l = greedy(needle[:k][::-1], hay[:pos][::-1], 0, max_run)
-        if not ok_l:
+        if greedy(needle[:k][::-1], hay[:pos][::-1], 0) is None:
             continue
-        worst = max(run_l, run_r)
-        total = run_l + run_r
-        if best is None or (worst, total) < best:
-            best = (worst, total)
-        if worst <= max_run:
-            return True, "", end_r
-
-    if best is not None:
-        return False, ("引述字符都能按序找到，但语料在首尾之间夹带了一段 %d 字符的"
-                       "内容（容忍值 %d）——若这是脚注/伪代码块请报告，否则引述有误"
-                       % (best[0], max_run)), 0
-
-    # needle 根本嵌不进去 —— 用 difflib 找出 needle 侧到底缺了什么
-    sm = difflib.SequenceMatcher(None, hay, needle, autojunk=False)
-    missing = [needle[b1:b2] for op, _a1, _a2, b1, b2 in sm.get_opcodes()
-               if op in ("insert", "replace") and b2 > b1]
-    ctx_at = needle.find(missing[0]) if missing else 0
-    ctx = needle[max(0, ctx_at - 24):ctx_at + 34]
-    return False, ("引述中有 %d 处片段在语料窗口里找不到（共 %d 字符）：%r；"
-                   "第一处上下文：…%s…"
-                   % (len(missing), sum(len(m) for m in missing),
-                      missing[:4], ctx)), 0
+        return True
+    return False
 
 
-def quote_match_seq(raw, hay):
-    """省略号感知的引述匹配。
+def ver_qnorm_contains(frag, hay):
+    return qnorm(frag) in hay
 
-    引述里的 `…` / `...` 是关卡作者的省略标记（"此处略去原文若干字"），
-    语义上允许语料在两段之间有**任意长**的内容（跨页、跨节都合法），但两段
-    各自仍受 quote_match 的严格约束，且必须按原顺序出现。注意：原书正文里
-    本身就有的省略号（如 ⟨a₁, a₂, …, aₙ⟩）被同样处理并无碍——片段仍需按序
-    逐字嵌入，只是夹带容忍按段计。
-    """
-    parts = [p for p in re.split(r"\u2026|\.\.\.", raw) if p.strip()]
-    if len(parts) <= 1:
-        ok, diag, _end = quote_match(qnorm(raw), hay)
-        return ok, diag
-    cursor = 0
-    for frag in parts:
-        ok, diag, end = quote_match(qnorm(frag), hay[cursor:])
-        if not ok:
-            return False, diag
-        cursor += max(1, end)
-    return True, ""
+
+def verify_quote(en, page, is_term=False):
+    """引述溯源判据。返回 (ok, 诊断)。"""
+    needle = qnorm(en)
+    if not needle:
+        return False, "引述归一化后为空"
+    hays = quote_hays(page)
+    if not hays:
+        return False, ("声明页 %s 在分块语料里取不到任何正文 —— 页码很可能写错了"
+                       % (page,))
+
+    # 1) 连续命中
+    for hay in hays:
+        if needle in hay:
+            return True, ""
+
+    # 2) `…` 分段：每个片段都要逐字连续出现在页窗里。
+    #    不强制片段之间的先后顺序 —— 作者可能按教学顺序重排引文（例如先给
+    #    总结句再给定义句），只要每一段都是逐字原文，就没有杜撰空间。
+    parts = [p for p in re.split(r"…|\.\.\.", en) if p.strip()]
+    if len(parts) > 1:
+        missing = [p for p in parts
+                   if not any(ver_qnorm_contains(p, hay) for hay in hays)]
+        if not missing:
+            return True, ""
+        return False, ("引述里标了省略号，但这些片段没有逐字连续出现：%r —— "
+                       "请核对省略号的位置，或把该片段改回原书原文"
+                       % ([m[:60] for m in missing],))
+
+    # 3) 术语卡：不是连续原句，而是词表 / 备选写法。
+    #    `A / B` 是两个备选；`X (Y)` 的括号里是同义的另一种写法。
+    #    每个「原子」都必须**逐字连续**出现 —— 比旧版的词表存在性强得多。
+    if is_term:
+        alts = []
+        for alt in re.split(r"/", en):
+            alt = alt.strip()
+            if not alt:
+                continue
+            if "(" in alt and ")" in alt:
+                # `RAM model (random-access machine)`：外层与括号内是两种写法，
+                # 各自都要成立；整串（含括号）反而不必连续。
+                alts.append(re.sub(r"\s*\([^()]*\)", "", alt).strip())
+                for grp in re.findall(r"\(([^()]*)\)", alt):
+                    if grp.strip():
+                        alts.append(grp.strip())
+            else:
+                alts.append(alt)
+        alts = [a for a in alts if len(qnorm(a)) >= 3]
+        if alts:
+            missing = [a for a in alts if not any(qnorm(a) in hay for hay in hays)]
+            if not missing:
+                return True, ""
+            return False, ("术语卡的这些写法在声明页附近都找不到逐字连续的出现：%r"
+                           % (missing[:4],))
+
+    # 4) 极小夹带（行内残留的下标/字距伪影）
+    for hay in hays:
+        if _tiny_gap_ok(needle, hay):
+            return True, ""
+
+    # 诊断：给出最接近的干草堆上的第一处分叉
+    for hay in hays:
+        i = hay.find(needle[:20])
+        if i >= 0:
+            n = 0
+            while n < len(needle) and i + n < len(hay) and needle[n] == hay[i + n]:
+                n += 1
+            return False, ("逐字连续匹配失败：前 %d 个字符能对上，从 %r 起分叉；"
+                           "语料该处是 %r。引述必须逐字照抄原书（要省略就用 … 标出）"
+                           % (n, needle[max(0, n - 12):n + 18],
+                              hay[i + max(0, n - 12):i + n + 34]))
+    return False, ("引述开头 %r 在声明页附近的语料里完全找不到 —— 页码或内容必有一处错了"
+                   % (needle[:24],))
 
 
 def page_window(pages, spec):
@@ -404,6 +522,7 @@ def verify():
 
     pages = load_pages()
     struct = structure_index()
+    valid_chapters = set(struct.keys())
     c_files = registered_c_names()
     viz_reg, algo_reg = registered_viz_algo()
 
@@ -490,41 +609,12 @@ def verify():
                 if q["page"] is None:
                     err("%s 有 en 但没有 page，无法溯源" % q["path"])
                     continue
-                if "/terms[" in q["path"]:
-                    # 术语卡是词表（如 Initialization / Maintenance / Termination、
-                    # RAM model (random access machine)），不是连续原句，逐字比对
-                    # 必然失败。改校验：每个备选写法的全部英文单词（≥3 字母）都
-                    # 出现在声明页附近的窗口里即可。
-                    wt_norm = qwindow_text(pages, q["page"])
-                    if not wt_norm:
-                        err("%s 声明的页码 %s 在语料里取不到文本" % (q["path"], q["page"]))
-                        continue
-
-                    def _has(w):
-                        # 语料里没有空格也没有连字符：`random-access machine` 可能被
-                        # 排成 `randomaccessma- chine`（行尾断词 + 字距伪影）。所以
-                        # 一律在 qnorm 干草堆上做子串判断，而不是 \b 词边界搜索。
-                        return qnorm(w) in wt_norm
-
-                    alts = [a for a in re.split(r"/", q["en"]) if a.strip()]
-                    ok_alt = []
-                    for a in alts:
-                        words = re.findall(r"[A-Za-z]{3,}", a)
-                        ok_alt.append(all(_has(w) for w in words) if words else True)
-                    if not any(ok_alt):
-                        absent = sorted({w.lower() for a in alts
-                                         for w in re.findall(r"[A-Za-z]{3,}", a)
-                                         if not _has(w)})
-                        err("%s 的术语 %r 在印刷页 %s 附近一个词都对不上（缺失：%s）"
-                            % (q["path"], q["en"], q["page"], ", ".join(absent[:6])))
-                    continue
-                wt = qwindow_text(pages, q["page"])
-                if not wt:
-                    err("%s 声明的页码 %s 在语料里取不到文本" % (q["path"], q["page"]))
-                    continue
-                ok, diag = quote_match_seq(q["en"], wt)
+                # 术语卡（/terms/ 下的条目）是词表或备选写法，不是连续原句；
+                # verify_quote 会对它们走「逐原子连续」这条更严的路。
+                ok, diag = verify_quote(q["en"], q["page"],
+                                        is_term=("/terms[" in q["path"]))
                 if not ok:
-                    err("%s 的原文与语料比对失败：%s" % (q["path"], diag))
+                    err("%s 的原文溯源失败：%s" % (q["path"], diag))
 
             # --- 6. 前向页码引用必须有 preview 标记 ---
             if printed:
@@ -615,10 +705,30 @@ def verify():
                     continue
                 two = "/".join(parts[:2])
                 if u.count("/") >= 2:
-                    if two not in all_ids and two not in ("ch02", ""):
+                    if two not in all_ids:
                         # 允许 #/ch02/s02 这样不带阶段号的链接
                         if not any(i.startswith(two + "/") or i == two for i in all_ids):
-                            if "/unlocks[" in path:
+                            # ★ 先分清「写错的章号」和「还没建好的关卡」：
+                            #   ch 号必须存在于原书目录（structure.json）里。
+                            #   `#/ch77/s01` 是手滑 —— 升级为 ERROR；`#/ch04/s01`
+                            #   是对下一章的正常预告 —— 保持 WARN，等那一关建成。
+                            # ★ 先分清「写错的章号」和「还没建好的关卡」：
+                            #   ch 号必须存在于原书目录（structure.json）里。
+                            #   `#/ch77/s01` 是手滑 —— 升级为 ERROR；`#/ch04/s01`
+                            #   是对下一章的正常预告 —— 保持 WARN，等那一关建成。
+                            if parts[0] == "appendix":
+                                ch_key = parts[1].upper() if len(parts) > 1 else ""
+                            elif parts[0].startswith("ch"):
+                                ch_key = parts[0][2:]
+                                if ch_key.isdigit():
+                                    ch_key = str(int(ch_key))   # ch04 -> 4
+                            else:
+                                ch_key = parts[0]
+                            if ch_key not in valid_chapters:
+                                err("%s 的链接 %s 指向不存在的章 %r"
+                                    "（原书目录里只有：%s）"
+                                    % (path, u, ch_key, sorted(valid_chapters)))
+                            elif "/unlocks[" in path:
                                 # 解锁预告链接：关卡写好的时候后一关还没建是常态，
                                 # 降级为 WARN；等那一关真的写错号时再升级。
                                 warn("%s 的解锁预告链接 %s 指向尚未构建的关卡"

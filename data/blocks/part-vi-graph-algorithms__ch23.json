@@ -94,7 +94,7 @@
    "section_title": "23.1 Shortest paths and matrix multiplication",
    "printed_page": 648,
    "pdf_page": 669,
-   "text": "Before proceeding, we need to establish some conventions for adjacency-matrix representations. First, we generally assume that the input graph G = (V,E) has n vertices, so that n = |V|. Second, we use the convention of denoting matrice s by uppercase letters, such as W , L, or D, and their individual elements by subscripted lowercase letters, such as w ij , l ij , or d ij . Finally, some matrices have parenthesized superscripts, as in L (r) = ã l (r) ij ä or = (r) = ã d (r) ij ä"
+   "text": "Before proceeding, we need to establish some conventions for adjacency-matrix representations. First, we generally assume that the input graph G = (V,E) has n vertices, so that n = |V|. Second, we use the convention of denoting matrices by uppercase letters, such as W , L, or D, and their individual elements by subscripted lowercase letters, such as w ij , l ij , or d ij . Finally, some matrices have parenthesized superscripts, as in L (r) = ã l (r) ij ä or = (r) = ã d (r) ij ä"
   },
   {
    "type": "body",
@@ -175,7 +175,7 @@
    "section_title": "23.1 Shortest paths and matrix multiplication",
    "printed_page": 649,
    "pdf_page": 670,
-   "text": "Let9s start by characterizing the structure of an optimal solution. Lemma 22.1 tells us that all subpaths of a shortest path are s hortest paths. Consider a shortest path p from vertex i to vertex j , and suppose that p contains at most r edges."
+   "text": "Let9s start by characterizing the structure of an optimal solution. Lemma 22.1 tells us that all subpaths of a shortest path are shortest paths. Consider a shortest path p from vertex i to vertex j , and suppose that p contains at most r edges."
   },
   {
    "type": "body",
@@ -869,7 +869,7 @@
    "section_title": "23.1 Shortest paths and matrix multiplication",
    "printed_page": 653,
    "pdf_page": 674,
-   "text": "Because each of the dlg(n − 1)e matrix products takes Θ(n 3 ) time, FASTER- APSP runs in Θ(n 3 lg n) time. The code is tight, containing no elaborate da ta structures, and the constant hidden in the Θ-notation is therefore small."
+   "text": "Because each of the dlg(n − 1)e matrix products takes Θ(n 3 ) time, FASTER- APSP runs in Θ(n 3 lg n) time. The code is tight, containing no elaborate data structures, and the constant hidden in the Θ-notation is therefore small."
   },
   {
    "type": "exercise",
@@ -2392,7 +2392,7 @@
    "section_title": "23.3 Johnson’s algorithm for sparse graphs",
    "printed_page": 662,
    "pdf_page": 683,
-   "text": "How is the matrix ˆ like the s table in the matrix-chain multiplication problem of Section 14.2?"
+   "text": "How is the matrix ˆ like the stable in the matrix-chain multiplication problem of Section 14.2?"
   },
   {
    "type": "exercise",
@@ -2941,7 +2941,7 @@
    "section_title": "23.3 Johnson’s algorithm for sparse graphs",
    "printed_page": 667,
    "pdf_page": 688,
-   "text": "You wish to maintain the transitive closure of a di rected graph G = (V,E) as you insert edges into E. That is, after inserting an edge, you update the transitive closure of the edges inserted so far. Start with G having no edges initially, and represent the transitive closure by a boolean matrix. a. Show how to update the transitive closure G − = .V,E − / of a graph G = (V,E) in O(V 2 ) time when a new edge is added to G. b. Give an example of a graph G and an edge e such that Ω(V 2 ) time is required to update the transitive closure after inserting e into G, no matter what algorithm is used. c. Give an algorithm for updating the transitive closure as edges are inserted into the graph. For any sequence of r insertions, your algorithm should run in time P r i D1 t i = O(V 3 ), where t i is the time to update the transitive closure upon inserting the i th edge. Prove that your algorithm attains this time bound."
+   "text": "You wish to maintain the transitive closure of a directed graph G = (V,E) as you insert edges into E. That is, after inserting an edge, you update the transitive closure of the edges inserted so far. Start with G having no edges initially, and represent the transitive closure by a boolean matrix. a. Show how to update the transitive closure G − = .V,E − / of a graph G = (V,E) in O(V 2 ) time when a new edge is added to G. b. Give an example of a graph G and an edge e such that Ω(V 2 ) time is required to update the transitive closure after inserting e into G, no matter what algorithm is used. c. Give an algorithm for updating the transitive closure as edges are inserted into the graph. For any sequence of r insertions, your algorithm should run in time P r i D1 t i = O(V 3 ), where t i is the time to update the transitive closure upon inserting the i th edge. Prove that your algorithm attains this time bound."
   },
   {
    "type": "problem",
@@ -3013,7 +3013,7 @@
    "section_title": "23.3 Johnson’s algorithm for sparse graphs",
    "printed_page": 669,
    "pdf_page": 690,
-   "text": "Notes for Chapter 23 669 has been improved several times, and the fastest al gorithm is now by Williams"
+   "text": "Notes for Chapter 23 669 has been improved several times, and the fastest algorithm is now by Williams"
   },
   {
    "type": "body",
@@ -3031,7 +3031,7 @@
    "section_title": "23.3 Johnson’s algorithm for sparse graphs",
    "printed_page": 669,
    "pdf_page": 690,
-   "text": "Another line of research demonstrates how to apply algorithms for fast matrix multiplication (see the chapter notes for Chapter 4) to the all-pairs shortest paths problem. Let O.n ! / be the running time of the fastest algorithm for mu ltiplying two n × n matrices. Galil and Margalit [170, 171] and Seidel [403] designed algorithms that solve the all-pairs shortest paths problem in undirected, unweighted graphs in (V ! p(V)) time, where p(n) denotes a particular function that is polylogarithmically bounded in n. In dense graphs, these algorithms are faster than the O(VE) time needed to perform |V| breadth-first searches. Several researchers have extended these results to give algorithms for solving the all-pairs shortest paths problem in undirected graphs in which the edg e weights are integers in the range f1,2,…,W g. The asymptotically fastest such algorithm, by Sho shan and Zwick [410], runs in O(WV ! p(VW)) time. In directed graphs, the best algorithm to date is due to Zwick [467] and runs in e O(W 1=.4−!/ V 2 + 1=.4−!/ ) time."
+   "text": "Another line of research demonstrates how to apply algorithms for fast matrix multiplication (see the chapter notes for Chapter 4) to the all-pairs shortest paths problem. Let O.n ! / be the running time of the fastest algorithm for multiplying two n × n matrices. Galil and Margalit [170, 171] and Seidel [403] designed algorithms that solve the all-pairs shortest paths problem in undirected, unweighted graphs in (V ! p(V)) time, where p(n) denotes a particular function that is polylogarithmically bounded in n. In dense graphs, these algorithms are faster than the O(VE) time needed to perform |V| breadth-first searches. Several researchers have extended these results to give algorithms for solving the all-pairs shortest paths problem in undirected graphs in which the edge weights are integers in the range f1,2,…,W g. The asymptotically fastest such algorithm, by Sho shan and Zwick [410], runs in O(WV ! p(VW)) time. In directed graphs, the best algorithm to date is due to Zwick [467] and runs in e O(W 1=.4−!/ V 2 + 1=.4−!/ ) time."
   },
   {
    "type": "body",
@@ -3121,7 +3121,7 @@
    "section_title": "23.3 Johnson’s algorithm for sparse graphs",
    "printed_page": 670,
    "pdf_page": 691,
-   "text": "You can think of each directed edge in a flow network as a conduit for the material. Each conduit has a stated capacity, given as a maximum rate at which the material can flow through the conduit, such as 200 gallons of liquid per hour through a pipe or 20 amperes of electrical current through a wire. Verti ces are conduit junctions, and other than the source and sink, material flows through the vertices without collecting in them. In other words, the rate at which material enters a vertex must equal the rate at which it leaves the vertex. We call t his property <flow conservation,= and it is equivalent to Kirchhoff9s current law when the material is electrical current."
+   "text": "You can think of each directed edge in a flow network as a conduit for the material. Each conduit has a stated capacity, given as a maximum rate at which the material can flow through the conduit, such as 200 gallons of liquid per hour through a pipe or 20 amperes of electrical current through a wire. Verti ces are conduit junctions, and other than the source and sink, material flows through the vertices without collecting in them. In other words, the rate at which material enters a vertex must equal the rate at which it leaves the vertex. We call this property <flow conservation,= and it is equivalent to Kirchhoff9s current law when the material is electrical current."
   },
   {
    "type": "body",

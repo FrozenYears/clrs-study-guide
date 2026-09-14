@@ -139,7 +139,7 @@ def main():
     # ---------- 2. per-page raw text ----------
     pages_path = os.path.join(DATA, "pages.jsonl")
     glyphs = Counter()
-    with open(pages_path, "w", encoding="utf-8") as f:
+    with open(pages_path, "w", newline="\n", encoding="utf-8") as f:
         for idx, page in enumerate(reader.pages):
             try:
                 txt = page.extract_text() or ""

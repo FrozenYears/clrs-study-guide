@@ -388,7 +388,7 @@
    "section_title": "A.1 Summation formulas and properties",
    "printed_page": 1142,
    "pdf_page": 1163,
-   "text": "Integrating or differentiating the formulas above y ields additional formulas. For example, differentiating both sides of the infinite geometric series (A.7) and multiplying by x gives"
+   "text": "Integrating or differentiating the formulas above yields additional formulas. For example, differentiating both sides of the infinite geometric series (A.7) and multiplying by x gives"
   },
   {
    "type": "footnote",
@@ -883,7 +883,7 @@
    "section_title": "A.2 Bounding summations",
    "printed_page": 1146,
    "pdf_page": 1167,
-   "text": "You need to take care when using asymptotic notatio n to prove bounds by in- duction. Consider the following fallacious proof th at P n kD1 k = O(n). Certainly, P 1 kD1 k = O(1). Assuming that the bound holds for n, we now prove it for n + 1: n + 1 X kD1 k = n X kD1 k C (n + 1)"
+   "text": "You need to take care when using asymptotic notation to prove bounds by in- duction. Consider the following fallacious proof th at P n kD1 k = O(n). Certainly, P 1 kD1 k = O(1). Assuming that the bound holds for n, we now prove it for n + 1: n + 1 X kD1 k = n X kD1 k C (n + 1)"
   },
   {
    "type": "body",
@@ -1063,7 +1063,7 @@
    "section_title": "A.2 Bounding summations",
    "printed_page": 1147,
    "pdf_page": 1168,
-   "text": "A common bug in applying this method is to show tha t the ratio o f consecutive terms is less than 1 and then to assume that the summation is bounded by a geometric series. An example is the infinite harmonic series, which diverges since"
+   "text": "A common bug in applying this method is to show that the ratio o f consecutive terms is less than 1 and then to assume that the summation is bounded by a geometric series. An example is the infinite harmonic series, which diverges since"
   },
   {
    "type": "footnote",
@@ -1180,7 +1180,7 @@
    "section_title": "A.2 Bounding summations",
    "printed_page": 1148,
    "pdf_page": 1169,
-   "text": "D Θ(1) C n X kDk 0 a k ; since the initial terms of the summation are all co nstant and there are a constant number of them. You can then use other methods to b ound P n kDk 0 a k . This technique applies to infinite summations as well. For example, let’s find an asymptotic upper bound on P 1 kD0 k 2/2 k . The ratio of consecutive terms is A.2 Bounding summations 1149"
+   "text": "D Θ(1) C n X kDk 0 a k ; since the initial terms of the summation are all constant and there are a constant number of them. You can then use other methods to bound P n kDk 0 a k . This technique applies to infinite summations as well. For example, let’s find an asymptotic upper bound on P 1 kD0 k 2/2 k . The ratio of consecutive terms is A.2 Bounding summations 1149"
   },
   {
    "type": "body",

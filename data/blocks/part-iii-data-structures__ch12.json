@@ -39,7 +39,7 @@
    "section_title": "12.1 What is a binary search tree?",
    "printed_page": 312,
    "pdf_page": 333,
-   "text": "The search tree data structure supports each of the dynamic-set operations listed on page 250: SEARCH , MINIMUM , MAXIMUM , PREDECESSOR , SUCCESSOR , INSERT , and DELETE . Thus, you can use a search tree both as a diction ary and as a priority queue."
+   "text": "The search tree data structure supports each of the dynamic-set operations listed on page 250: SEARCH , MINIMUM , MAXIMUM , PREDECESSOR , SUCCESSOR , INSERT , and DELETE . Thus, you can use a search tree both as a dictionary and as a priority queue."
   },
   {
    "type": "body",
@@ -66,7 +66,7 @@
    "section_title": "12.1 What is a binary search tree?",
    "printed_page": 312,
    "pdf_page": 333,
-   "text": "A binary search tree is organized, as the name suggests, in a binary tree, as shown in Figure 12.1. You can represent such a tree with a linked data structure, as in Section 10.3. In addition to a key and satellite data, each node object contains attributes left , right , and p that point to the nodes corresponding to its left c hild, its right child, and its parent, respectively. If a child or the parent is missing, the appropriate attribute contains the value NIL. The tree itself has an attribute root"
+   "text": "A binary search tree is organized, as the name suggests, in a binary tree, as shown in Figure 12.1. You can represent such a tree with a linked data structure, as in Section 10.3. In addition to a key and satellite data, each node object contains attributes left , right , and p that point to the nodes corresponding to its left child, its right child, and its parent, respectively. If a child or the parent is missing, the appropriate attribute contains the value NIL. The tree itself has an attribute root"
   },
   {
    "type": "body",
@@ -140,7 +140,7 @@
    "section_title": "12.1 What is a binary search tree?",
    "printed_page": 314,
    "pdf_page": 335,
-   "text": "Thus, in Figure 12.1(a), the key of the root is 6, the keys 2, 5, and 5 in its left subtree are no larger than 6, and the keys 7 and 8 in its right subtree are no smaller than 6. The same property holds for every node in the tre e. For example, looking at the root’s left child as the root of a subtree, this subtree root has the key 5, the key 2 in its left subtree is no larger than 5, and the key 5 in its right subtree is no smaller than 5."
+   "text": "Thus, in Figure 12.1(a), the key of the root is 6, the keys 2, 5, and 5 in its left subtree are no larger than 6, and the keys 7 and 8 in its right subtree are no smaller than 6. The same property holds for every node in the tree. For example, looking at the root’s left child as the root of a subtree, this subtree root has the key 5, the key 2 in its left subtree is no larger than 5, and the key 5 in its right subtree is no smaller than 5."
   },
   {
    "type": "body",
@@ -167,7 +167,7 @@
    "section_title": "12.1 What is a binary search tree?",
    "printed_page": 314,
    "pdf_page": 335,
-   "text": "It takes Θ(n) time to walk an n-node binary search tree, since after the initial call, the procedure calls itself recursively exactly twice for each node in the tree4 once for its left child and once for its right chil d. The following theorem gives a formal proof that it takes linear time to perform an inorder tree walk."
+   "text": "It takes Θ(n) time to walk an n-node binary search tree, since after the initial call, the procedure calls itself recursively exactly twice for each node in the tree4 once for its left child and once for its right child. The following theorem gives a formal proof that it takes linear time to perform an inorder tree walk."
   },
   {
    "type": "theorem",
@@ -293,7 +293,7 @@
    "section_title": "12.1 What is a binary search tree?",
    "printed_page": 315,
    "pdf_page": 336,
-   "text": "12.1-3 Give a nonrecursive algorithm that performs an inorder tree walk. (Hint: An easy solution uses a stack as an auxiliary data structur e. A more c omplicated, but elegant, solution uses no stack but assumes that you can test two pointers for equality.)"
+   "text": "12.1-3 Give a nonrecursive algorithm that performs an inorder tree walk. (Hint: An easy solution uses a stack as an auxiliary data structure. A more complicated, but elegant, solution uses no stack but assumes that you can test two pointers for equality.)"
   },
   {
    "type": "exercise",
@@ -404,7 +404,7 @@
    "section_title": "12.2 Querying a binary search tree",
    "printed_page": 316,
    "pdf_page": 337,
-   "text": "To search for a node with a given key in a binary s earch tree, call the TREE- SEARCH procedure. Given a pointer x to the root of a subtree and a key k, TREE-SEARCH (x,k) returns a pointer to a node with key k if one exists in the subtree; otherwise, it returns NIL. To search for key k in the entire binary search tree T , call TREE-SEARCH (T: root ,k) ."
+   "text": "To search for a node with a given key in a binary search tree, call the TREE- SEARCH procedure. Given a pointer x to the root of a subtree and a key k, TREE-SEARCH (x,k) returns a pointer to a node with key k if one exists in the subtree; otherwise, it returns NIL. To search for key k in the entire binary search tree T , call TREE-SEARCH (T: root ,k) ."
   },
   {
    "type": "body",
@@ -449,7 +449,7 @@
    "section_title": "12.2 Querying a binary search tree",
    "printed_page": 316,
    "pdf_page": 337,
-   "text": "The nodes encountered during the recursion form a s imple path downward from the root of the tree, and thus the running time of TREE-SEARCH is O(h), where h is the height of the tree."
+   "text": "The nodes encountered during the recursion form a simple path downward from the root of the tree, and thus the running time of TREE-SEARCH is O(h), where h is the height of the tree."
   },
   {
    "type": "figure-caption",
@@ -476,7 +476,7 @@
    "section_title": "12.2 Querying a binary search tree",
    "printed_page": 317,
    "pdf_page": 338,
-   "text": "Since the TREE-SEARCH procedure recurses on either the left subtree or th e right subtree, but not both, we can rewrite the algorithm to \"unroll\" the recursion into a while loop. On most computers, the ITERATIVE-TREE-SEARCH procedure on the facing page is more efficient."
+   "text": "Since the TREE-SEARCH procedure recurses on either the left subtree or the right subtree, but not both, we can rewrite the algorithm to \"unroll\" the recursion into a while loop. On most computers, the ITERATIVE-TREE-SEARCH procedure on the facing page is more efficient."
   },
   {
    "type": "body",
@@ -670,7 +670,7 @@
    "section_title": "12.2 Querying a binary search tree",
    "printed_page": 319,
    "pdf_page": 340,
-   "text": "TREE-SUCCESSOR (x) left child is also an ancestor of x . In Figure 12.2(d), the successor of the node with key 13 is the node with key 15. To find y , go up the tree from x until you encounter either the root or a node that is the lef t child of its parent. Lines 4–8 of TREE-SUCCESSOR handle this case."
+   "text": "TREE-SUCCESSOR (x) left child is also an ancestor of x . In Figure 12.2(d), the successor of the node with key 13 is the node with key 15. To find y , go up the tree from x until you encounter either the root or a node that is the left child of its parent. Lines 4–8 of TREE-SUCCESSOR handle this case."
   },
   {
    "type": "body",
@@ -897,7 +897,7 @@
    "section_title": "12.3 Insertion and deletion",
    "printed_page": 321,
    "pdf_page": 342,
-   "text": "The TREE-INSERT procedure inserts a new node into a binary search t ree. The procedure takes a binary search tree T and a node ´ for which ´: key has already been filled in, ´: left DNIL , and ´: right DNIL. It modifies T and some of the attributes of ´ so as to insert ´ into an appropriate position in the tree."
+   "text": "The TREE-INSERT procedure inserts a new node into a binary search tree. The procedure takes a binary search tree T and a node ´ for which ´: key has already been filled in, ´: left DNIL , and ´: right DNIL. It modifies T and some of the attributes of ´ so as to insert ´ into an appropriate position in the tree."
   },
   {
    "type": "body",
@@ -915,7 +915,7 @@
    "section_title": "12.3 Insertion and deletion",
    "printed_page": 321,
    "pdf_page": 342,
-   "text": "Figure 12.3 shows how TREE-INSERT works. Just like the procedures TREE- SEARCH and ITERATIVE-TREE-SEARCH , TREE-INSERT begins at the root of the tree and the pointer x traces a simple path downward looking for a NIL to replace with the input node ´. The procedure maintains the trailing pointer y as the parent of x . After initialization, the while loop in lines 3–7 causes these two pointers to move down the tree, going left or right dependin g on the comparison of ´: key with x: key, until x becomes NIL. This NIL occupies the position where node ´ will go. More precisely, this NIL is a left or right attribute of the node that will become"
+   "text": "Figure 12.3 shows how TREE-INSERT works. Just like the procedures TREE- SEARCH and ITERATIVE-TREE-SEARCH , TREE-INSERT begins at the root of the tree and the pointer x traces a simple path downward looking for a NIL to replace with the input node ´. The procedure maintains the trailing pointer y as the parent of x . After initialization, the while loop in lines 3–7 causes these two pointers to move down the tree, going left or right depending on the comparison of ´: key with x: key, until x becomes NIL. This NIL occupies the position where node ´ will go. More precisely, this NIL is a left or right attribute of the node that will become"
   },
   {
    "type": "body",
@@ -1332,7 +1332,7 @@
    "section_title": "12.3 Insertion and deletion",
    "printed_page": 326,
    "pdf_page": 347,
-   "text": "12.3-3 You can sort a given set of n numbers by first building a binary search tree containing these numbers (using TREE-INSERT repeatedly to insert the numbers one by one) and then printing the numbers by an inorder tr ee walk. What are the worstcase and best-case running times for this sorting algorithm?"
+   "text": "12.3-3 You can sort a given set of n numbers by first building a binary search tree containing these numbers (using TREE-INSERT repeatedly to insert the numbers one by one) and then printing the numbers by an inorder tree walk. What are the worstcase and best-case running times for this sorting algorithm?"
   },
   {
    "type": "exercise",
@@ -1368,7 +1368,7 @@
    "section_title": "12.3 Insertion and deletion",
    "printed_page": 326,
    "pdf_page": 347,
-   "text": "12.3-7 When node ´ in TREE-DELETE has two children, you can choose node y to be its predecessor rather than its successor. What other changes to TREE-DELETE are necessary if you do so? Some have argued that a fair strategy, giving equal priority to predecessor and successor, yields bette r empirical performance. How might TREE-DELETE be minimally changed to implement such a fair strategy?"
+   "text": "12.3-7 When node ´ in TREE-DELETE has two children, you can choose node y to be its predecessor rather than its successor. What other changes to TREE-DELETE are necessary if you do so? Some have argued that a fair strategy, giving equal priority to predecessor and successor, yields better empirical performance. How might TREE-DELETE be minimally changed to implement such a fair strategy?"
   },
   {
    "type": "problem",
@@ -1656,7 +1656,7 @@
    "section_title": "12.3 Insertion and deletion",
    "printed_page": 330,
    "pdf_page": 351,
-   "text": "Knuth [261] contains a good discussion of simple binary search trees as well as many variations. Binary search trees seem to have b een independently discovered by a number of people in the late 1950s. Radix trees are often called \"tries,\" which comes from the middle letters in the word retrieval. Knuth [261] also discusses them."
+   "text": "Knuth [261] contains a good discussion of simple binary search trees as well as many variations. Binary search trees seem to have been independently discovered by a number of people in the late 1950s. Radix trees are often called \"tries,\" which comes from the middle letters in the word retrieval. Knuth [261] also discusses them."
   },
   {
    "type": "body",
@@ -1701,7 +1701,7 @@
    "section_title": "12.3 Insertion and deletion",
    "printed_page": 331,
    "pdf_page": 352,
-   "text": "A red-black tree is a binary search tree with one extra bit of storage per node: its color, which can be either RED or BLACK . By constraining the node colors on any simple path from the root to a leaf, red-black trees ensure that no such path is more than twice as long as any other, so that the t ree is approximately balanced."
+   "text": "A red-black tree is a binary search tree with one extra bit of storage per node: its color, which can be either RED or BLACK . By constraining the node colors on any simple path from the root to a leaf, red-black trees ensure that no such path is more than twice as long as any other, so that the tree is approximately balanced."
   },
   {
    "type": "body",

@@ -177,9 +177,9 @@
   "part-iii-data-structures__ch11.json": {
    "chapter": 11,
    "chapter_title": "11 Hash Tables",
-   "blocks": 406,
+   "blocks": 405,
    "by_type": {
-    "body": 353,
+    "body": 352,
     "exercise": 17,
     "figure-caption": 5,
     "theorem": 8,
@@ -458,7 +458,7 @@
   "part-vii-selected-topics__ch26.json": {
    "chapter": 26,
    "chapter_title": "26 Parallel Algorithms",
-   "blocks": 406,
+   "blocks": 405,
    "by_type": {
     "body": 340,
     "pseudocode": 25,
@@ -469,7 +469,7 @@
     "corollary": 2,
     "exercise": 19,
     "problem": 6,
-    "chapter-notes": 2
+    "chapter-notes": 1
    },
    "sections": 3,
    "sections_found": 3
@@ -699,10 +699,10 @@
  },
  "totals_by_type": {
   "footnote": 154,
-  "body": 12290,
+  "body": 12289,
   "exercise": 759,
   "problem": 166,
-  "chapter-notes": 57,
+  "chapter-notes": 56,
   "pseudocode": 209,
   "figure-caption": 192,
   "example": 1,
@@ -711,6 +711,6 @@
   "proof": 201,
   "corollary": 45
  },
- "total_blocks": 14275,
+ "total_blocks": 14273,
  "missing_sections": []
 }

@@ -34,7 +34,7 @@
    "section_title": "14.1 Rod cutting",
    "printed_page": 363,
    "pdf_page": 384,
-   "text": "rods of smaller length in a way that maximizes thei r total value. Section 14.2 shows how to multiply a chain of matrices while performing the fewest total scalar multiplications. Given these examples of dynamic programming, Section 14.3 discusses two key characteristics that a problem must have for dynamic programming to be a viable solution technique. Section 14.4 then shows how to find the longest common subsequence of two sequences via dynamic pro gramming. Finally, Section 14.5 uses dynamic programming to construct binary search trees that are optimal, given a known distribution of keys to be looked up."
+   "text": "rods of smaller length in a way that maximizes their total value. Section 14.2 shows how to multiply a chain of matrices while performing the fewest total scalar multiplications. Given these examples of dynamic programming, Section 14.3 discusses two key characteristics that a problem must have for dynamic programming to be a viable solution technique. Section 14.4 then shows how to find the longest common subsequence of two sequences via dynamic pro gramming. Finally, Section 14.5 uses dynamic programming to construct binary search trees that are optimal, given a known distribution of keys to be looked up."
   },
   {
    "type": "body",
@@ -187,7 +187,7 @@
    "section_title": "14.1 Rod cutting",
    "printed_page": 365,
    "pdf_page": 386,
-   "text": "To solve the original problem of size n, you solve smaller problems of the same type. Once you make the first cut, the two resulting pieces form independent in- stances of the rod-cutting problem. The overall optimal solution incorporates optimal solutions to the two resulting subproblems, m aximizing revenue from each of those two pieces. We say that the rod-cutting problem exhibits optimal sub- structure: optimal solutions to a problem incorporate optima l solutions to related subproblems, which you may solve independently."
+   "text": "To solve the original problem of size n, you solve smaller problems of the same type. Once you make the first cut, the two resulting pieces form independent in- stances of the rod-cutting problem. The overall optimal solution incorporates optimal solutions to the two resulting subproblems, maximizing revenue from each of those two pieces. We say that the rod-cutting problem exhibits optimal sub- structure: optimal solutions to a problem incorporate optimal solutions to related subproblems, which you may solve independently."
   },
   {
    "type": "body",
@@ -232,7 +232,7 @@
    "section_title": "14.1 Rod cutting",
    "printed_page": 365,
    "pdf_page": 386,
-   "text": "The CUT-ROD procedure on the following page implements the computation implicit in equation (14.2) in a straightforward, top-down, recursive manner. It takes as input an array p[1 : n] of prices and an integer n, and it returns the maximum revenue possible for a rod of length n. For length n = 0, no revenue is possible, and so CUT-ROD returns 0 in line 2. Line 3 initializes the maximum revenue q to −1, so that the for loop in lines 4–5 correctly computes q = max fp i CCUT-ROD(p,n − i) W 1 ≤ i ≤ ng. Line 6 then returns this value."
+   "text": "The CUT-ROD procedure on the following page implements the comp utation implicit in equation (14.2) in a straightforward, top-down, recursive manner. It takes as input an array p[1 : n] of prices and an integer n, and it returns the maximum revenue possible for a rod of length n. For length n = 0, no revenue is possible, and so CUT-ROD returns 0 in line 2. Line 3 initializes the maximum revenue q to −1, so that the for loop in lines 4–5 correctly computes q = max fp i CCUT-ROD(p,n − i) W 1 ≤ i ≤ ng. Line 6 then returns this value."
   },
   {
    "type": "pseudocode",
@@ -368,7 +368,7 @@
    "section_title": "14.1 Rod cutting",
    "printed_page": 367,
    "pdf_page": 388,
-   "text": "Figure 14.3 The recursion tree showing recursive calls resultin g from a call CUT-ROD(p,n) for n = 4. Each node label gives the size n of the corresponding subproblem, so that an edge fr om a parent with label s to a child with label t corresponds to cutting off an initial piece of size s − t and leaving a remaining subproblem of size t . A path from the root to a leaf corresponds to one of the 2 n−1 ways of cutting up a rod of length n. In general, this recursion tree has 2 n nodes and 2 n−1 leaves. are there? A rod of length n has n − 1 potential locations to cut. Each possible way to cut up the rod makes a cut at some subset of these n − 1 locations, including the empty set, which makes for no cuts. Viewing each cut location as a distinct member of a set of n − 1 elements, you can see that there are 2 n−1 subsets. Each leaf in the recursion tree of Figure 14.3 corresponds to one possible way to cut up the rod. Hence, the recursion tree has 2 n−1 leaves. The labels on the simple path from the root to a leaf give the sizes of each remaining right-hand piece before making each cut. That is, the labels give the correspondin g cut points, measured from the right-hand end of the rod."
+   "text": "Figure 14.3 The recursion tree showing recursive calls resulting from a call CUT-ROD(p,n) for n = 4. Each node label gives the size n of the corresponding subproblem, so that an edge from a parent with label s to a child with label t corresponds to cutting off an initial piece of size s − t and leaving a remaining subproblem of size t . A path from the root to a leaf corresponds to one of the 2 n−1 ways of cutting up a rod of length n. In general, this recursion tree has 2 n nodes and 2 n−1 leaves. are there? A rod of length n has n − 1 potential locations to cut. Each possible way to cut up the rod makes a cut at some subset of these n − 1 locations, including the empty set, which makes for no cuts. Viewing each cut location as a distinct member of a set of n − 1 elements, you can see that there are 2 n−1 subsets. Each leaf in the recursion tree of Figure 14.3 corresponds to one possible way to cut up the rod. Hence, the recursion tree has 2 n−1 leaves. The labels on the simple path from the root to a leaf give the sizes of each remaining right-hand piece before making each cut. That is, the labels give the corresponding cut points, measured from the right-hand end of the rod."
   },
   {
    "type": "body",
@@ -431,7 +431,7 @@
    "section_title": "14.1 Rod cutting",
    "printed_page": 368,
    "pdf_page": 389,
-   "text": "The second approach is the bottom-up method. This approach typically depends on some natural notion of the \"size\" of a subproblem, such that solving any particular subproblem depends only on solving \"smaller\" subproblems. Solve the subproblems in size order, smallest first, storing the solution to each subproblem when it is first solved. In this way, when solving a particular subproblem, there are already saved solutions for all of the smaller subproblems its solution depends upon. You need to solve each subproblem only once, and when you first see it, you have already solved all of its prerequisite subproblems."
+   "text": "The second approach is the bottom-up method. This approach typically depends on some natural notion of the \"size\" of a subproblem, such that solving any particular subproblem depends only on solving \"smal ler\" subproblems. Solve the subproblems in size order, smallest first, storing the solution to each subproblem when it is first solved. In this way, when solving a particular subproblem, there are already saved solutions for all of the smaller subproblems its solution depends upon. You need to solve each subproblem only once, and when you first see it, you have already solved all of its prerequisite subproblems."
   },
   {
    "type": "body",
@@ -626,7 +626,7 @@
    "section_title": "14.1 Rod cutting",
    "printed_page": 369,
    "pdf_page": 390,
-   "text": "Line 1 of BOTTOM-UP-CUT-ROD creates a new array r[0 : n] in which to save the results of the subproblems, and line 2 initializes r[0] to 0, since a rod of length 0 earns no revenue. Lines 3–6 solve each subproblem of size j , for j = 1,2,…,n , in order of increasing size. The approach used to s olve a problem of a particular size j is the same as that used by CUT-ROD, except that line 6 now directly references array entry r[j −i] instead of making a recursive call to solve the subproblem of size j − i . Line 7 saves in r[j] the solution to the subproblem of size j . Finally, line 8 returns r[n], which equals the optimal value r n ."
+   "text": "Line 1 of BOTTOM-UP-CUT-ROD creates a new array r[0 : n] in which to save the results of the subproblems, and line 2 initializes r[0] to 0, since a rod of length 0 earns no revenue. Lines 3–6 solve each subproblem of size j , for j = 1,2,…,n , in order of increasing size. The approach used to solve a problem of a particular size j is the same as that used by CUT-ROD, except that line 6 now directly references array entry r[j −i] instead of making a recursive call to solve the subproblem of size j − i . Line 7 saves in r[j] the solution to the subproblem of size j . Finally, line 8 returns r[n], which equals the optimal value r n ."
   },
   {
    "type": "body",
@@ -698,7 +698,7 @@
    "section_title": "14.1 Rod cutting",
    "printed_page": 371,
    "pdf_page": 392,
-   "text": "The bottom-up method for dynamic programming considers the vertices of the subproblem graph in such an order that you solve th e subproblems y adjacent to a given subproblem x before you solve subproblem x . (As Section B.4 notes, the adjacency relation in a directed graph is not necessarily symmetric.) Using terminology that we’ll see in Section 20.4, in a bottom-up dynamic-programming algorithm, you consider the vertices of the subproblem graph in an order that is a \"reverse topological sort,\" or a \"topological sort of the transpose\" of the subproblem graph. In other words, no subproblem is considered until all of the subproblems it depends upon have been solved. Similarly, using notions that we’ll visit in Section 20.3, you can view the top-down method (with memoization) for dynamic programming as a \"depth-first search\" of the subproblem graph."
+   "text": "The bottom-up method for dynamic programming considers the vertices of the subproblem graph in such an order that you solve the subproblems y adjacent to a given subproblem x before you solve subproblem x . (As Section B.4 notes, the adjacency relation in a directed graph is not necessarily symmetric.) Using terminology that we’ll see in Section 20.4, in a bottom-up dynamic-programming algorithm, you consider the vertices of the subproblem graph in an order that is a \"reverse topological sort,\" or a \"topological sort of the transpose\" of the subproblem graph. In other words, no subproblem is considered until all of the subproblems it depends upon have been solved. Similarly, using notions that we’ll visit in Section 20.3, you can view the top-down method (with memoization) for dynamic programming as a \"depth-first search\" of the subproblem graph."
   },
   {
    "type": "body",
@@ -987,7 +987,7 @@
    "section_title": "14.2 Matrix-chain multiplication",
    "printed_page": 373,
    "pdf_page": 394,
-   "text": "You can evaluate the expression (14.5) using the algorithm for multiplying pairs of rectangular matrices as a subroutine once you ha ve parenthesized it to resolve all ambiguities in how the matrices are multiplied together. Matrix multiplication is associative, and so all parenthesizations yield the same product. A product of 3 None of the three methods from Sections 4.1 and Section 4.2 can be used directly, because they apply only to square matrices. matrices is fully parenthesized if it is either a single matrix or the product of t wo fully parenthesized matrix products, surrounded by parentheses. For example, if the chain of matrices is ⟨A 1 ,A 2 ,A 3 ,A 4⟩, then you can fully parenthesize the product A 1 A 2 A 3 A 4 in five distinct ways:"
+   "text": "You can evaluate the expression (14.5) using the algorithm for multiplying pairs of rectangular matrices as a subroutine once you have parenthesized it to resolve all ambiguities in how the matrices are multiplied together. Matrix multiplication is associative, and so all parenthesizations yield the same product. A product of 3 None of the three methods from Sections 4.1 and Section 4.2 can be used directly, because they apply only to square matrices. matrices is fully parenthesized if it is either a single matrix or the product of two fully parenthesized matrix products, surrounded by parentheses. For example, if the chain of matrices is ⟨A 1 ,A 2 ,A 3 ,A 4⟩, then you can fully parenthesize the product A 1 A 2 A 3 A 4 in five distinct ways:"
   },
   {
    "type": "pseudocode",
@@ -1034,7 +1034,7 @@
    "section_title": "14.2 Matrix-chain multiplication",
    "printed_page": 374,
    "pdf_page": 395,
-   "text": "How you parenthesize a chain of matrices can have a dramatic impact on the cost of evaluating the product. Consider first the cost of multiplying two rectangular matrices. The standard algorithm is given by th e procedure RECTANGULAR-MATRIX-MULTIPLY, which generalizes the square-matrix multiplication procedure MATRIX-MULTIPLY on page 81. The RECTANGULAR-MATRIX-MULTIPLY procedure computes C = + C A • B for three matrices A = (a ij ), B = (b ij ), and C = (c ij ), where A is p × q, B is q × r , and C is p × r ."
+   "text": "How you parenthesize a chain of matrices can have a dramatic impact on the cost of evaluating the product. Consider first the cost of multiplying two rectangular matrices. The standard algorithm is given by the procedure RECTANGULAR-MATRIX-MULTIPLY, which generalizes the square-matrix multiplication procedure MATRIX-MULTIPLY on page 81. The RECTANGULAR-MATRIX-MULTIPLY procedure computes C = + C A • B for three matrices A = (a ij ), B = (b ij ), and C = (c ij ), where A is p × q, B is q × r , and C is p × r ."
   },
   {
    "type": "body",
@@ -1115,7 +1115,7 @@
    "section_title": "14.2 Matrix-chain multiplication",
    "printed_page": 375,
    "pdf_page": 396,
-   "text": "The matrix-chain multiplication problem does not entail actually multiplying matrices. The goal is only to determine an order fo r multiplying matrices that has the lowest cost. Typically, the time invested in determining this optimal order is more than paid for by the time saved later on wh en actually performing the matrix multiplications (such as performing only 7500 scalar multiplications instead of 75,000)."
+   "text": "The matrix-chain multiplication problem does not entail actually multiplying matrices. The goal is only to determine an order for multiplying matrices that has the lowest cost. Typically, the time invested in determining this optimal order is more than paid for by the time saved later on when actually performing the matrix multiplications (such as performing only 7500 scalar multiplications instead of 75,000)."
   },
   {
    "type": "body",
@@ -1250,7 +1250,7 @@
    "section_title": "14.2 Matrix-chain multiplication",
    "printed_page": 376,
    "pdf_page": 397,
-   "text": "In the first step of the dynamic-programming method, you find the optimal sub- structure and then use it to construct an optimal solution to the problem from optimal solutions to subproblems. To perform this step for the matrix-chain multiplication problem, it’s convenient to first introduce some notation. Let A i Wj , where i ≤ j , denote the matrix that results from evaluating th e product A i A i + 1 • • • A j ."
+   "text": "In the first step of the dynamic-programming method, you find the optimal sub- structure and then use it to construct an optimal solution to the problem from optimal solutions to subproblems. To perform this step for the matrix-chain multiplication problem, it’s convenient to first introduce some notation. Let A i Wj , where i ≤ j , denote the matrix that results from evaluating the product A i A i + 1 • • • A j ."
   },
   {
    "type": "body",
@@ -1313,7 +1313,7 @@
    "section_title": "14.2 Matrix-chain multiplication",
    "printed_page": 376,
    "pdf_page": 397,
-   "text": "Now let’s use the optimal substructure to show how to construct an optimal solution to the problem from optimal solutions to s ubproblems. Any solution to a nontrivial instance of the matrix-chain multiplication problem requires splitting the product, and any optimal solution contains within it optimal solutions to subproblem instances. Thus, to build an optimal solution to an instance of the matrix-chain multiplication problem, split the problem into two subproblems (optimally parenthesizing A i A i + 1 • • • A k and A k + 1 A k + 2 • • • A j ), find optimal solutions to the two subproblem instances, and then combine these optima l subproblem solutions. To ensure that you’ve examined the optimal split, you must consider all possible splits."
+   "text": "Now let’s use the optimal substructure to show how to construct an optimal solution to the problem from optimal solutions to subproblems. Any solution to a nontrivial instance of the matrix-chain multiplication problem requires splitting the product, and any optimal solution contains within it optimal solutions to subproblem instances. Thus, to build an optimal solution to an instance of the matrix-chain multiplication problem, split the problem into two subproblems (optimally parenthesizing A i A i + 1 • • • A k and A k + 1 A k + 2 • • • A j ), find optimal solutions to the two subproblem instances, and then combine these optimal subproblem solutions. To ensure that you’ve examined the optimal split, you must consider all possible splits."
   },
   {
    "type": "body",
@@ -1358,7 +1358,7 @@
    "section_title": "14.2 Matrix-chain multiplication",
    "printed_page": 377,
    "pdf_page": 398,
-   "text": "This recursive equation assumes that you know the v alue of k. But you don’t, at least not yet. You have to try all possible values of k. How many are there?"
+   "text": "This recursive equation assumes that you know the value of k. But you don’t, at least not yet. You have to try all possible values of k. How many are there?"
   },
   {
    "type": "body",
@@ -1403,7 +1403,7 @@
    "section_title": "14.2 Matrix-chain multiplication",
    "printed_page": 377,
    "pdf_page": 398,
-   "text": "The m[i,j] values give the costs of optimal solutions to subproblems, but they do not provide all the information you need to cons truct an optimal solution. To help you do so, let’s define s[i,j] to be a value of k at which you split the product"
+   "text": "The m[i,j] values give the costs of optimal solutions to subproblems, but they do not provide all the information you need to construct an optimal solution. To help you do so, let’s define s[i,j] to be a value of k at which you split the product"
   },
   {
    "type": "body",
@@ -1430,7 +1430,7 @@
    "section_title": "14.2 Matrix-chain multiplication",
    "printed_page": 377,
    "pdf_page": 398,
-   "text": "At this point, you could write a recursive algorith m based on recurrence (14.7) to compute the minimum cost m[1,n] for multiplying A 1 A 2 • • • A n . But as we saw for the rod-cutting problem, and as we shall see in Section 14.3, this recursive algorithm takes exponential time. That’s no better than the brute-force method of checking each way of parenthesizing the product."
+   "text": "At this point, you could write a recursive algorithm based on recurrence (14.7) to compute the minimum cost m[1,n] for multiplying A 1 A 2 • • • A n . But as we saw for the rod-cutting problem, and as we shall see in Section 14.3, this recursive algorithm takes exponential time. That’s no better than the brute-force method of checking each way of parenthesizing the product."
   },
   {
    "type": "pseudocode",
@@ -1522,7 +1522,7 @@
    "section_title": "14.2 Matrix-chain multiplication",
    "printed_page": 378,
    "pdf_page": 399,
-   "text": "A recursive algorithm may encounter each subproblem many times in different branches of its recursion tree. This property of ov erlapping subproblems is the second hallmark of when dynamic programming applies (the first hallmark being optimal substructure)."
+   "text": "A recursive algorithm may encounter each subproblem many times in different branches of its recursion tree. This property of overlapping subproblems is the second hallmark of when dynamic programming applies (the first hallmark being optimal substructure)."
   },
   {
    "type": "body",
@@ -1567,7 +1567,7 @@
    "section_title": "14.2 Matrix-chain multiplication",
    "printed_page": 379,
    "pdf_page": 400,
-   "text": "Now, let’s see how the MATRIX-CHAIN-ORDER procedure fills in the m[i,j] entries in order of increasing chain length. Lines 2–3 initialize m[i,i] = 0 for i = 1,2,…,n , since any matrix chain with just one matrix requires no scalar multiplications. In the for loop of lines 4–12, the loop variable l denotes the length of matrix chains whose minimum costs are being computed. Each iteration of this loop uses recurrence (14.7) to compute m[i,i + l − 1] for i = 1,2,…,n − l + 1. In the first iteration, l = 2, and so the loop computes m[i,i + 1] for i = 1,2,…,n −1: the minimum costs for chains of length l = 2. The second time through the loop, it computes m[i,i + 2] for i = 1,2,…,n − 2: the minimum costs for chains of length l = 3. And so on, ending with a single matrix chain of l ength l = n and computing m[1,n]. When lines 7–12 compute an m[i,j] cost, this cost depends only on table entries m[i,k] and m[k + 1,j] , which have already been computed."
+   "text": "Now, let’s see how the MATRIX-CHAIN-ORDER procedure fills in the m[i,j] entries in order of increasing chain length. Lines 2–3 initialize m[i,i] = 0 for i = 1,2,…,n , since any matrix chain with just one matrix requires no scalar multiplications. In the for loop of lines 4–12, the loop variable l denotes the length of matrix chains whose minimum costs are being computed. Each iteration of this loop uses recurrence (14.7) to compute m[i,i + l − 1] for i = 1,2,…,n − l + 1. In the first iteration, l = 2, and so the loop computes m[i,i + 1] for i = 1,2,…,n −1: the minimum costs for chains of length l = 2. The second time through the loop, it computes m[i,i + 2] for i = 1,2,…,n − 2: the minimum costs for chains of length l = 3. And so on, ending with a single matrix chain of length l = n and computing m[1,n]. When lines 7–12 compute an m[i,j] cost, this cost depends only on table entries m[i,k] and m[k + 1,j] , which have already been computed."
   },
   {
    "type": "body",
@@ -1702,7 +1702,7 @@
    "section_title": "14.2 Matrix-chain multiplication",
    "printed_page": 380,
    "pdf_page": 401,
-   "text": "The tables are rotated so that the main diagonal ru ns horizontally. The m table uses only the main diagonal and upper triangle, and the s table uses only the upper triangle. The minimum num ber of scalar multiplications to multiply the 6 matrices is m[1,6] = 15,125. Of the entries that are not tan, the pairs that have the same color are taken together in line 9 when computing m[2,5] = min ˆ <"
+   "text": "The tables are rotated so that the main diagonal runs horizontally. The m table uses only the main diagonal and upper triangle, and the stable uses only the upper triangle. The minimum num ber of scalar multiplications to multiply the 6 matrices is m[1,6] = 15,125. Of the entries that are not tan, the pairs that have the same color are taken together in line 9 when computing m[2,5] = min ˆ <"
   },
   {
    "type": "body",
@@ -1729,7 +1729,7 @@
    "section_title": "14.2 Matrix-chain multiplication",
    "printed_page": 380,
    "pdf_page": 401,
-   "text": "Although MATRIX-CHAIN-ORDER determines the optimal number of scalar multiplications needed to compute a matrix-chain product, it does not directly show how to multiply the matrices. The table s[1 : n − 1,2 W n] provides the information needed to do so. Each entry s[i,j] records a value of k such that an optimal parenthesization of A i A i + 1 • • • A j splits the product between A k and A k + 1 . The final matrix multiplication in computing A 1Wn optimally is A 1Ws[1,nŁ A s[1,nŁC1Wn . The s table contains the information needed to determine the earlier matrix multiplications as well, using recursion: s[1,s[1,n]] determines the last matrix multiplication when computing A 1Ws[1,nŁ and s[s[1,n] + 1,n] determines the last matrix multiplication when computing A s[1,nŁC1Wn . The recursive procedure PRINT-OPTIMAL-PARENS on the facing page prints an optimal parenthesization of the matrix chain product"
+   "text": "Although MATRIX-CHAIN-ORDER determines the optimal number of scalar multiplications needed to compute a matrix-chain product, it does not directly show how to multiply the matrices. The table s[1 : n − 1,2 W n] provides the information needed to do so. Each entry s[i,j] records a value of k such that an optimal parenthesization of A i A i + 1 • • • A j splits the product between A k and A k + 1 . The final matrix multiplication in computing A 1Wn optimally is A 1Ws[1,nŁ A s[1,nŁC1Wn . The stable contains the information needed to determine the earlier matrix multiplications as well, using recursion: s[1,s[1,n]] determines the last matrix multiplication when computing A 1Ws[1,nŁ and s[s[1,n] + 1,n] determines the last matrix multiplication when computing A s[1,nŁC1Wn . The recursive procedure PRINT-OPTIMAL-PARENS on the facing page prints an optimal parenthesization of the matrix chain product"
   },
   {
    "type": "body",
@@ -1738,7 +1738,7 @@
    "section_title": "14.2 Matrix-chain multiplication",
    "printed_page": 380,
    "pdf_page": 401,
-   "text": "A i A i + 1 • • • A j , given the s table computed by MATRIX-CHAIN-ORDER and the in- dices i and j . The initial call PRINT-OPTIMAL-PARENS (s,1,n) prints an optimal parenthesization of the full matrix chain product A 1 A 2 • • • A n . In the example of Figure 14.5, the call PRINT-OPTIMAL-PARENS (s,1,6) prints the optimal parenthesization ..A 1 (A 2 A 3 )/..A 4 A 5 /A 6 //."
+   "text": "A i A i + 1 • • • A j , given the stable computed by MATRIX-CHAIN-ORDER and the in- dices i and j . The initial call PRINT-OPTIMAL-PARENS (s,1,n) prints an optimal parenthesization of the full matrix chain product A 1 A 2 • • • A n . In the example of Figure 14.5, the call PRINT-OPTIMAL-PARENS (s,1,6) prints the optimal parenthesization ..A 1 (A 2 A 3 )/..A 4 A 5 /A 6 //."
   },
   {
    "type": "pseudocode",
@@ -1802,7 +1802,7 @@
    "section_title": "14.2 Matrix-chain multiplication",
    "printed_page": 381,
    "pdf_page": 402,
-   "text": "14.2-2 Give a recursive algorithm MATRIX-CHAIN-MULTIPLY (A,s,i,j) that actually performs the optimal matrix-chain multiplication, given the sequence of matrices ⟨A 1 ,A 2 ,…,A n⟩, the s table computed by MATRIX-CHAIN-ORDER , and the indices i and j . (The initial call is MATRIX-CHAIN-MULTIPLY (A,s,1,n) .) Assume that the call RECTANGULAR-MATRIX-MULTIPLY (A,B) returns the product of matrices A and B ."
+   "text": "14.2-2 Give a recursive algorithm MATRIX-CHAIN-MULTIPLY (A,s,i,j) that actually performs the optimal matrix-chain multiplication, given the sequence of matrices ⟨A 1 ,A 2 ,…,A n⟩, the stable computed by MATRIX-CHAIN-ORDER , and the indices i and j . (The initial call is MATRIX-CHAIN-MULTIPLY (A,s,1,n) .) Assume that the call RECTANGULAR-MATRIX-MULTIPLY (A,B) returns the product of matrices A and B ."
   },
   {
    "type": "exercise",
@@ -1811,7 +1811,7 @@
    "section_title": "14.2 Matrix-chain multiplication",
    "printed_page": 381,
    "pdf_page": 402,
-   "text": "14.2-3 Use the substitution method to show that the solution to the r ecurrence (14.6) is Ω(2 n )."
+   "text": "14.2-3 Use the substitution method to show that the solution to the recurrence (14.6) is Ω(2 n )."
   },
   {
    "type": "exercise",
@@ -1892,7 +1892,7 @@
    "section_title": "14.3 Elements of dynamic programming",
    "printed_page": 382,
    "pdf_page": 403,
-   "text": "The first step in solving an optimization problem by dynamic programming is to characterize the structure of an optimal solution. Recall that a problem exhibits optimal substructure if an optimal solution to the problem contains within it optimal solutions to subproblems. When a problem exhibits optimal substructure, that gives you a good clue that dynamic programming migh t apply. ( As Chapter 15 discusses, it also might mean that a greedy strateg y applies, however.) Dynamic programming builds an optimal solution to the problem from optimal solutions to subproblems. Consequently, you must take care to en sure that the range of sub- problems you consider includes those used in an optimal solution."
+   "text": "The first step in solving an optimization problem by dynamic programming is to characterize the structure of an optimal solution. Recall that a problem exhibits optimal substructure if an optimal solution to the problem contains within it optimal solutions to subproblems. When a problem exhibits optimal substructure, that gives you a good clue that dynamic programming might apply. ( As Chapter 15 discusses, it also might mean that a greedy strategy applies, however.) Dynamic programming builds an optimal solution to the problem from optimal solutions to subproblems. Consequently, you must take care to ensure that the range of sub- problems you consider includes those used in an optimal solution."
   },
   {
    "type": "body",
@@ -1901,7 +1901,7 @@
    "section_title": "14.3 Elements of dynamic programming",
    "printed_page": 382,
    "pdf_page": 403,
-   "text": "Optimal substructure was key to solving both of the previous problems in this chapter. In Section 14.1, we observed that the optimal way of cutting up a rod of length n (if Serling Enterprises makes any cuts at all) involves optimally cutting up the two pieces resulting from the first cut. In Section 14.2, we noted that an optimal parenthesization of the matrix chain produc t A i A i + 1 • • • A j that splits the product between A k and A k + 1 contains within it optimal solutions to the problems of parenthesizing A i A i + 1 • • • A k and A k + 1 A k + 2 • • • A j ."
+   "text": "Optimal substructure was key to solving both of the previous problems in this chapter. In Section 14.1, we observed that the optimal way of cutting up a rod of length n (if Serling Enterprises makes any cuts at all) involves optimally cutting up the two pieces resulting from the first cut. In Section 14.2, we noted that an optimal parenthesization of the matrix chain product A i A i + 1 • • • A j that splits the product between A k and A k + 1 contains within it optimal solutions to the problems of parenthesizing A i A i + 1 • • • A k and A k + 1 A k + 2 • • • A j ."
   },
   {
    "type": "body",
@@ -1928,7 +1928,7 @@
    "section_title": "14.3 Elements of dynamic programming",
    "printed_page": 383,
    "pdf_page": 404,
-   "text": "2. You suppose that for a given problem, you are gi ven the choice that leads to an optimal solution. You do not concern yourself yet w ith how to determine this choice. You just assume that it has been given to you."
+   "text": "2. You suppose that for a given problem, you are given the choice that leads to an optimal solution. You do not concern yourself yet with how to determine this choice. You just assume that it has been given to you."
   },
   {
    "type": "body",
@@ -1946,7 +1946,7 @@
    "section_title": "14.3 Elements of dynamic programming",
    "printed_page": 383,
    "pdf_page": 404,
-   "text": "4. You show that the solutions to the subproblems used within an optimal solution to the problem must themselves be optimal by using a \"cut-and-paste\" technique. You do so by supposing that each of the subproblem solutions is not optimal and then deriving a contradiction. In particular, by \"cutting out\" the nonoptimal solution to each subproblem and \"pasting in\" the optimal one, you show that you can get a better solution to the original problem, thus contradicting your supposition that you already had an optima l solution. If an optimal solution gives rise to more than one subproblem, th ey are typically so similar that you can modify the cut-and-paste argument for one to apply to the others with little effort."
+   "text": "4. You show that the solutions to the subproblems used within an optimal solution to the problem must themselves be optimal by using a \"cut-and-paste\" technique. You do so by supposing that each of the subproblem solutions is not optimal and then deriving a contradiction. In particular, by \"cutting out\" the nonoptimal solution to each subproblem and \"pasting in\" the optimal one, you show that you can get a better solution to the original problem, thus contradicting your supposition that you already had an optimal solution. If an optimal solution gives rise to more than one subproblem, they are typically so similar that you can modify the cut-and-paste argument for one to apply to the others with little effort."
   },
   {
    "type": "body",
@@ -1955,7 +1955,7 @@
    "section_title": "14.3 Elements of dynamic programming",
    "printed_page": 383,
    "pdf_page": 404,
-   "text": "To characterize the space of subproblems, a good ru le of thumb says to try to keep the space as simple as possible and then expand it as necessary. For example, the space of subproblems for the rod-cutting problem contained the problems of optimally cutting up a rod of length i for each size i . This subproblem space worked well, and it was not necessary to try a more general space of subproblems."
+   "text": "To characterize the space of subproblems, a good rule of thumb says to try to keep the space as simple as possible and then expand it as necessary. For example, the space of subproblems for the rod-cutting problem contained the problems of optimally cutting up a rod of length i for each size i . This subproblem space worked well, and it was not necessary to try a more general space of subproblems."
   },
   {
    "type": "body",
@@ -2009,7 +2009,7 @@
    "section_title": "14.3 Elements of dynamic programming",
    "printed_page": 383,
    "pdf_page": 404,
-   "text": "1. how many subproblems an optimal solution to the original problem uses, and 2. how many choices you have in determining which s ubproblem(s) to use in an optimal solution."
+   "text": "1. how many subproblems an optimal solution to the original problem uses, and 2. how many choices you have in determining which subproblem(s) to use in an optimal solution."
   },
   {
    "type": "body",
@@ -2063,7 +2063,7 @@
    "section_title": "14.3 Elements of dynamic programming",
    "printed_page": 384,
    "pdf_page": 405,
-   "text": "That is, you first find optimal solutions to subproblems and, having solved the subproblems, you find an optimal solution to the problem. Finding an optimal solution to the problem entails making a choice among subproblems as to which you will use in solving the problem. The cost of the pr oblem solution is usually the subproblem costs plus a cost that is directly attri butable to the choice itself. In rod cutting, for example, first we solved the subproblems of determining optimal ways to cut up rods of length i for i = 0,1,…,n − 1, and then we determined which of these subproblems yielded an optimal solution for a rod of length n, using equation (14.2). The cost attributable to the choice itself is the term √i in equation (14.2). In matrix-chain multiplication, we determined optimal parenthesizations of subchains of A i A i + 1 • • • A j , and then we chose the matrix A k at which to split the product. The cost attributable to the choice itself is the term √i −1 √k √j ."
+   "text": "That is, you first find optimal solutions to subproblems and, having solved the subproblems, you find an optimal solution to the problem. Finding an optimal solution to the problem entails making a choice among subproblems as to which you will use in solving the problem. The cost of the problem solution is usually the subproblem costs plus a cost that is directly attri butable to the choice itself. In rod cutting, for example, first we solved the subproblems of determining optimal ways to cut up rods of length i for i = 0,1,…,n − 1, and then we determined which of these subproblems yielded an optimal solution for a rod of length n, using equation (14.2). The cost attributable to the choice itself is the term √i in equation (14.2). In matrix-chain multiplication, we determined optimal parenthesizations of subchains of A i A i + 1 • • • A j , and then we chose the matrix A k at which to split the product. The cost attributable to the choice itself is the term √i −1 √k √j ."
   },
   {
    "type": "body",
@@ -2117,7 +2117,7 @@
    "section_title": "14.3 Elements of dynamic programming",
    "printed_page": 385,
    "pdf_page": 406,
-   "text": "Unweighted longest simple path: Find a simple path from u to v consisting of the most edges. (Without the requirement that the p ath must be simple, the problem is undefined, since repeatedly traversing a cycle creates paths with an arbitrarily large number of edges.)"
+   "text": "Unweighted longest simple path: Find a simple path from u to v consisting of the most edges. (Without the requirement that the path must be simple, the problem is undefined, since repeatedly traversing a cycle creates paths with an arbitrarily large number of edges.)"
   },
   {
    "type": "body",
@@ -2216,7 +2216,7 @@
    "section_title": "14.3 Elements of dynamic programming",
    "printed_page": 386,
    "pdf_page": 407,
-   "text": "This example shows that for longest simple paths, n ot only does the problem lack optimal substructure, but you cannot necessarily assemble a \"legal\" solution to the problem from solutions to subproblems. If yo u combine the longest simple paths q ! s ! t ! r and r ! q ! s ! t , you get the path q ! s ! t ! r ! q ! s ! t , which is not simple. Indeed, the problem of finding an unweighted longest simple path does not appear to have any sor t of optimal substructure. No efficient dynamic-programming algorithm for this problem has ever been found. In fact, this problem is NP-complete, which—as we shall see in Chapter 344means that we are unlikely to find a way to solve it in polynomial time."
+   "text": "This example shows that for longest simple paths, not only does the problem lack optimal substructure, but you cannot necessarily assemble a \"legal\" solution to the problem from solutions to subproblems. If you combine the longest simple paths q ! s ! t ! r and r ! q ! s ! t , you get the path q ! s ! t ! r ! q ! s ! t , which is not simple. Indeed, the problem of finding an unweighted longest simple path does not appear to have any sort of optimal substructure. No efficient dynamic-programming algorithm for this problem has ever been found. In fact, this problem is NP-complete, which—as we shall see in Chapter 344means that we are unlikely to find a way to solve it in polynomial time."
   },
   {
    "type": "body",
@@ -2225,7 +2225,7 @@
    "section_title": "14.3 Elements of dynamic programming",
    "printed_page": 386,
    "pdf_page": 407,
-   "text": "Why is the substructure of a longest simple path so different from that of a shortest path? Although a solution to a problem for both longest and shortest paths uses two subproblems, the subproblems in finding the longest simple path are not independent, whereas for shortest paths they are. What do we m ean by subproblems being independent? We mean that the solution to one subproblem does not affect the solution to another subproblem of the same problem. For the example of Figure 14.6, we have the problem of finding a longest simple path from q to t with two subproblems: finding longest simple paths from q to r and from r to t . For the first of these subproblems, we chose the path q ! s ! t ! r , which used the vertices s and t . These vertices cannot appear in a solution to the second sub- problem, since the combination of the two solutions to subproblems yields a path that is not simple. If vertex t cannot be in the solution to the second problem, then there is no way to solve it, since t is required to be on the path that forms the solution, and it is not the vertex where the subproblem solutions are \"spliced\" together"
+   "text": "Why is the substructure of a longest simple path so different from that of a shortest path? Although a solution to a problem for both longest and shortest paths uses two subproblems, the subproblems in finding the longest simple path are not independent, whereas for shortest paths they are. What do we mean by subproblems being independent? We mean that the solution to one subproblem does not affect the solution to another subproblem of the same problem. For the example of Figure 14.6, we have the problem of finding a longest simple path from q to t with two subproblems: finding longest simple paths from q to r and from r to t . For the first of these subproblems, we chose the path q ! s ! t ! r , which used the vertices s and t . These vertices cannot appear in a solution to the second sub- problem, since the combination of the two solutions to subproblems yields a path that is not simple. If vertex t cannot be in the solution to the second problem, then there is no way to solve it, since t is required to be on the path that forms the solution, and it is not the vertex where the subproblem solutions are \"spliced\" together"
   },
   {
    "type": "body",
@@ -2234,7 +2234,7 @@
    "section_title": "14.3 Elements of dynamic programming",
    "printed_page": 386,
    "pdf_page": 407,
-   "text": "(that vertex being r ). Because vertices s and t appear in one subproblem solution, they cannot appear in the other subproblem solution. One of them must be in the solution to the other subproblem, however, and an o ptimal solution requires both."
+   "text": "(that vertex being r ). Because vertices s and t appear in one subproblem solution, they cannot appear in the other subproblem solution. One of them must be in the solution to the other subproblem, however, and an optimal solution requires both."
   },
   {
    "type": "body",
@@ -2342,7 +2342,7 @@
    "section_title": "14.3 Elements of dynamic programming",
    "printed_page": 387,
    "pdf_page": 408,
-   "text": "The second ingredient that an optimization problem must have for dynamic programming to apply is that the space of subproblems must be \"small\" in the sense that a recursive algorithm for the problem solves t he same subproblems over and over, rather than always generating new subproblems. Typically, the total number of distinct subproblems is a polynomial in the inpu t size. When a recursive algorithm revisits the same problem repeatedly, we say that the optimization problem has overlapping subproblems. 6 In contrast, a problem for which a divide-and- 6 It may seem strange that dynamic programming relies on subproblems being both independent and overlapping. Although these requirements may sound contradictory, they describe two different notions, rather than two points on the same axis. T wo subproblems of the same problem are independent if they do not share resources. Two subproblems are overlapping if they are really the same subproblem that occurs as a subproblem of different problems."
+   "text": "The second ingredient that an optimization problem must have for dynamic programming to apply is that the space of subproblems must be \"small\" in the sense that a recursive algorithm for the problem solves t he same subproblems over and over, rather than always generating new subproblems. Typically, the total number of distinct subproblems is a polynomial in the input size. When a recursive algorithm revisits the same problem repeatedly, we say that the optimization problem has overlapping subproblems. 6 In contrast, a problem for which a divide-and- 6 It may seem strange that dynamic programming relies on subproblems being both independent and overlapping. Although these requirements may sound contradictory, they describe two different notions, rather than two points on the same axis. T wo subproblems of the same problem are independent if they do not share resources. Two subproblems are overlapping if they are really the same subproblem that occurs as a subproblem of different problems."
   },
   {
    "type": "body",
@@ -2387,7 +2387,7 @@
    "section_title": "14.3 Elements of dynamic programming",
    "printed_page": 388,
    "pdf_page": 409,
-   "text": "Each node contains the parameters i and j . The computations performed in a subtree shaded bl ue are replaced by a single table lookup in MEMOIZED-MATRIX-CHAIN . conquer approach is suitable usually generates brand-new problems at each step of the recursion. Dynamic-programming algorithms typically take advantage of overlapping subproblems by solving each subproblem once and then storing the solution in a table where it can be looked up when needed, using constant time per lookup."
+   "text": "Each node contains the parameters i and j . The computations performed in a subtree shaded blue are replaced by a single table lookup in MEMOIZED-MATRIX-CHAIN . conquer approach is suitable usually generates brand-new problems at each step of the recursion. Dynamic-programming algorithms typically take advantage of overlapping subproblems by solving each subproblem once and then storing the solution in a table where it can be looked up when needed, using constant time per lookup."
   },
   {
    "type": "body",
@@ -2645,7 +2645,7 @@
    "section_title": "14.3 Elements of dynamic programming",
    "printed_page": 390,
    "pdf_page": 411,
-   "text": "Compare this top-down, recursive algorithm (without memoization) with the bottom-up dynamic-programming algorithm. The latter is more efficient because it takes advantage of the overlapping-subproblems property. Matrix-chain multiplication has only Θ(n 2 ) distinct subproblems, and the dynamic-programming algorithm solves each exactly once. The recursive algorithm, on the other hand, must solve each subproblem every time it reappears in th e recursion tree. Whenever a recursion tree for the natural recursive solution to a problem contains the same sub- problem repeatedly, and the total number of distinct subproblems is small, dynamic programming can improve efficiency, sometimes dramatically."
+   "text": "Compare this top-down, recursive algorithm (without memoization) with the bottom-up dynamic-programming algorithm. The latter is more efficient because it takes advantage of the overlapping-subproblems property. Matrix-chain multiplication has only Θ(n 2 ) distinct subproblems, and the dynamic-programming algorithm solves each exactly once. The recursive algorithm, on the other hand, must solve each subproblem every time it reappears in the recursion tree. Whenever a recursion tree for the natural recursive solution to a problem contains the same sub- problem repeatedly, and the total number of distinct subproblems is small, dynamic programming can improve efficiency, sometimes dramatically."
   },
   {
    "type": "body",
@@ -2904,7 +2904,7 @@
    "section_title": "14.3 Elements of dynamic programming",
    "printed_page": 392,
    "pdf_page": 413,
-   "text": "fore, there are O(n 3 ) calls of the second type in all. Each call of the s econd type"
+   "text": "fore, there are O(n 3 ) calls of the second type in all. Each call of the second type"
   },
   {
    "type": "body",
@@ -3530,7 +3530,7 @@
    "section_title": "14.4 Longest common subsequence",
    "printed_page": 397,
    "pdf_page": 418,
-   "text": "With the b table returned by LCS-LENGTH , you can quickly construct an LCS of X = ⟨x 1 ,x 2 ,…,x m⟩ and Y = ⟨y 1 ,y 2 ,…,y n⟩. Begin at b[m,n] and trace through the table by following the arrows. Each \" -\" encountered in an entry b[i,j] implies that x i = y j is an element of the LCS that LCS-LENGTH found. This method gives you the elements of this LCS in revers e order. Th e recursive procedure PRINT-LCS prints out an LCS of X and Y in the proper, forward order."
+   "text": "With the b table returned by LCS-LENGTH , you can quickly construct an LCS of X = ⟨x 1 ,x 2 ,…,x m⟩ and Y = ⟨y 1 ,y 2 ,…,y n⟩. Begin at b[m,n] and trace through the table by following the arrows. Each \" -\" encountered in an entry b[i,j] implies that x i = y j is an element of the LCS that LCS-LENGTH found. This method gives you the elements of this LCS in reverse order. Th e recursive procedure PRINT-LCS prints out an LCS of X and Y in the proper, forward order."
   },
   {
    "type": "body",
@@ -3683,7 +3683,7 @@
    "section_title": "14.4 Longest common subsequence",
    "printed_page": 398,
    "pdf_page": 419,
-   "text": "In the LCS algorithm, for example, you can eliminat e the b table altogether."
+   "text": "In the LCS algorithm, for example, you can eliminate the b table altogether."
   },
   {
    "type": "body",
@@ -3692,7 +3692,7 @@
    "section_title": "14.4 Longest common subsequence",
    "printed_page": 398,
    "pdf_page": 419,
-   "text": "Each c[i,j] entry depends on only three other c table entries: c[i − 1,j − 1], c[i − 1,j] , and c[i,j − 1]. Given the value of c[i,j] , you can determine in O(1) time which of these three values was used to comput e c[i,j] , without inspecting table b. Thus, you can reconstruct an LCS in O(m + n) time using a procedure similar to PRINT-LCS. (Exercise 14.4-2 asks you to give the pseudocode.) Alt hough this method saves Θ(mn) space, the auxiliary space requirement for computin g an LCS does not asymptotically decrease, since the c table takes Θ(mn) space anyway."
+   "text": "Each c[i,j] entry depends on only three other c table entries: c[i − 1,j − 1], c[i − 1,j] , and c[i,j − 1]. Given the value of c[i,j] , you can determine in O(1) time which of these three values was used to compute c[i,j] , without inspecting table b. Thus, you can reconstruct an LCS in O(m + n) time using a procedure similar to PRINT-LCS. (Exercise 14.4-2 asks you to give the pseudocode.) Alt hough this method saves Θ(mn) space, the auxiliary space requirement for computing an LCS does not asymptotically decrease, since the c table takes Θ(mn) space anyway."
   },
   {
    "type": "body",
@@ -3800,7 +3800,7 @@
    "section_title": "14.5 Optimal binary search trees",
    "printed_page": 400,
    "pdf_page": 421,
-   "text": "Latvian equivalent. You can perform these lookup operations by building a binary search tree with n English words as keys and their Latvian equivalents as satellite data. Because you will search the tree for each individual word in the text, you want the total time spent searching to be as low as possible. You can ensure an O(lg n) search time per occurrence by using a red-black tree or any other balanced binary search tree. Words appear with different frequencie s, however, and a frequently used word such as the can end up appearing far from the root while a rarely used word such as naumachia appears near the root. Such an organization would s low down the translation, since the number of nodes visited when searching for a key in a binary search tree equals 1 plus the depth of the node containing the key. You want words that occur frequently in the text to be placed nearer the root. 8 Moreover, some words in the text might have no Latvian translation, 9 and such words would not appear in the binary search tree at all. How ca n you organize a binary search tree so as to minimize the number of nodes visited in all searches, given that you know how often each word occurs?"
+   "text": "Latvian equivalent. You can perform these lookup operations by building a binary search tree with n English words as keys and their Latvian equivalents as satellite data. Because you will search the tree for each individual word in the text, you want the total time spent searching to be as low as possible. You can ensure an O(lg n) search time per occurrence by using a red-black tree or any other balanced binary search tree. Words appear with different frequencies, however, and a frequently used word such as the can end up appearing far from the root while a rarely used word such as naumachia appears near the root. Such an organization would slow down the translation, since the number of nodes visited when searching for a key in a binary search tree equals 1 plus the depth of the node containing the key. You want words that occur frequently in the text to be placed nearer the root. 8 Moreover, some words in the text might have no Latvian translation, 9 and such words would not appear in the binary search tree at all. How can you organize a binary search tree so as to minimize the number of nodes visited in all searches, given that you know how often each word occurs?"
   },
   {
    "type": "body",
@@ -3953,7 +3953,7 @@
    "section_title": "14.5 Optimal binary search trees",
    "printed_page": 402,
    "pdf_page": 423,
-   "text": "For a given set of probabilities, your goal is to c onstruct a binary search tree whose expected search cost is smallest. We call suc h a tree an optimal binary search tree. Figure 14.9(a) shows one binary search tree, with expected cost 2:80, for the probabilities given in the figure caption. Part (b) of the figure displays an optimal binary search tree, with expected cost 2:75. This example demonstrates that an optimal binary search tree is not necessarily a tree whose overall height is smallest. Nor does an optimal binary search tree always have the key with the greatest probability at the root. Here, key k 5 has the greatest search probability of any key, yet the root of the optimal binary search tree shown is k 2 . (The lowest expected cost of any binary search tree with k 5 at the root is 2.85.)"
+   "text": "For a given set of probabilities, your goal is to construct a binary search tree whose expected search cost is smallest. We call such a tree an optimal binary search tree. Figure 14.9(a) shows one binary search tree, with expected cost 2:80, for the probabilities given in the figure caption. Part (b) of the figure displays an optimal binary search tree, with expected cost 2:75. This example demonstrates that an optimal binary search tree is not necessarily a tree whose overall height is smallest. Nor does an optimal binary search tree always have the key with the greatest probability at the root. Here, key k 5 has the greatest search probability of any key, yet the root of the optimal binary search tree shown is k 2 . (The lowest expected cost of any binary search tree with k 5 at the root is 2.85.)"
   },
   {
    "type": "body",
@@ -3962,7 +3962,7 @@
    "section_title": "14.5 Optimal binary search trees",
    "printed_page": 402,
    "pdf_page": 423,
-   "text": "As with matrix-chain multiplication, exhaustive checking of all possibilities fails to yield an efficient algorithm. You can label the nodes of any n-node binary tree with the keys k 1 ,k 2 ,…,k n to construct a binary search tree, and then add in the dummy keys as leaves. In Problem 12-4 on page 329, we saw that the number of binary trees with n nodes is Ω(4 n =n 3/2 ). Thus you would need to examine an exponential number of binary search trees to perfor m an exhaustive search. We’ll see how to solve this problem more efficiently with dynamic programming."
+   "text": "As with matrix-chain multiplication, exhaustive checking of all possibilities fails to yield an efficient algorithm. You can label the nodes of any n-node binary tree with the keys k 1 ,k 2 ,…,k n to construct a binary search tree, and then add in the dummy keys as leaves. In Problem 12-4 on page 329, we saw that the number of binary trees with n nodes is Ω(4 n =n 3/2 ). Thus you would need to examine an exponential number of binary search trees to perform an exhaustive search. We’ll see how to solve this problem more efficiently with dynamic programming."
   },
   {
    "type": "body",
@@ -3980,7 +3980,7 @@
    "section_title": "14.5 Optimal binary search trees",
    "printed_page": 402,
    "pdf_page": 423,
-   "text": "To characterize the optimal substructure of optimal binary search trees, we start with an observation about subtrees. Consider any su btree of a binary search tree."
+   "text": "To characterize the optimal substructure of optimal binary search trees, we start with an observation about subtrees. Consider any subtree of a binary search tree."
   },
   {
    "type": "body",
@@ -4007,7 +4007,7 @@
    "section_title": "14.5 Optimal binary search trees",
    "printed_page": 402,
    "pdf_page": 423,
-   "text": "Now we can state the optimal substructure: if an op timal binary search tree T has a subtree T 0 containing keys k i ,…,k j , then this subtree T 0 must be optimal as well for the subproblem with keys k i ,…,k j and dummy keys d i −1 ,…,d j . The usual cut-and-paste argument applies. If there were a subtree T 00 whose expected cost is lower than that of T 0 , then cutting T 0 out of T and pasting in T 00 would result in a binary search tree of lower expected cost than T , thus contradicting the optimality of T ."
+   "text": "Now we can state the optimal substructure: if an optimal binary search tree T has a subtree T 0 containing keys k i ,…,k j , then this subtree T 0 must be optimal as well for the subproblem with keys k i ,…,k j and dummy keys d i −1 ,…,d j . The usual cut-and-paste argument applies. If there were a subtree T 00 whose expected cost is lower than that of T 0 , then cutting T 0 out of T and pasting in T 00 would result in a binary search tree of lower expected cost than T , thus contradicting the optimality of T ."
   },
   {
    "type": "body",
@@ -4052,7 +4052,7 @@
    "section_title": "14.5 Optimal binary search trees",
    "printed_page": 403,
    "pdf_page": 424,
-   "text": "To define the value of an optimal solution recursively, the subproblem domain is finding an optimal binary search tree containing the keys k i ,…,k j , where i ≥ 1, j ≤ n, and j ≥ i − 1. (When j = i − 1, there is just the dummy key d i −1 , but no actual keys.) Let e[i,j] denote the expected cost of searching an optimal binary search tree containing the keys k i ,…,k j . Your goal is to compute e[1,n] , the expected cost of searching an optimal binary se arch tree for all the actual and dummy keys."
+   "text": "To define the value of an optimal solution recursively, the subproblem domain is finding an optimal binary search tree containing the keys k i ,…,k j , where i ≥ 1, j ≤ n, and j ≥ i − 1. (When j = i − 1, there is just the dummy key d i −1 , but no actual keys.) Let e[i,j] denote the expected cost of searching an optimal binary search tree containing the keys k i ,…,k j . Your goal is to compute e[1,n] , the expected cost of searching an optimal binary search tree for all the actual and dummy keys."
   },
   {
    "type": "body",
@@ -4070,7 +4070,7 @@
    "section_title": "14.5 Optimal binary search trees",
    "printed_page": 403,
    "pdf_page": 424,
-   "text": "When j ≥ i , you need to select a root k r from among k i ,…,k j and then make an optimal binary search tree with keys k i ,…,k r −1 as its left subtree and an optimal binary search tree with keys k r + 1 ,…,k j as its right subtree. What happens to the expected search cost of a subtree wh en it becomes a subtree of a node? The depth of each node in the subtree increases by 1. By equation (14.11), the expected search cost of this subtree increases by the sum of all the probabilities in the subtree. For a subtree with keys k i ,…,k j , denote this sum of probabilities as w(i,j) = j X l Di"
+   "text": "When j ≥ i , you need to select a root k r from among k i ,…,k j and then make an optimal binary search tree with keys k i ,…,k r −1 as its left subtree and an optimal binary search tree with keys k r + 1 ,…,k j as its right subtree. What happens to the expected search cost of a subtree when it becomes a subtree of a node? The depth of each node in the subtree increases by 1. By equation (14.11), the expected search cost of this subtree increases by the sum of all the probabilities in the subtree. For a subtree with keys k i ,…,k j , denote this sum of probabilities as w(i,j) = j X l Di"
   },
   {
    "type": "body",
@@ -4151,7 +4151,7 @@
    "section_title": "14.5 Optimal binary search trees",
    "printed_page": 404,
    "pdf_page": 425,
-   "text": "At this point, you may have noticed some similarities between our characterizations of optimal binary search trees and matrix-chain multiplication. For both problem domains, the subproblems consist of contiguous index subranges. A direct, recursive implementation of equation (14.14) would be just as inefficient as a direct, recursive matrix-chain multiplication algorithm. Instead, you can store the e[i,j] values in a table e[1 : n + 1,0 W n]. The first index needs to run to n + 1 rather than n because in order to have a subtree containing only the dummy key d n , you need to compute and store e[n + 1,n] . The second index needs to start from 0 because in order to have a subtree containing only the dummy k ey d 0 , you need to compute and store e[1,0]. Only the entries e[i,j] for which j ≥ i − 1 are filled in. The table root [i,j] records the root of the subtree containing keys k i ,…,k j and uses only the entries for which 1 ≤ i ≤ j ≤ n."
+   "text": "At this point, you may have noticed some similarities between our characterizations of optimal binary search trees and matrix-chain multiplication. For both problem domains, the subproblems consist of contiguous index subranges. A direct, recursive implementation of equation (14.14) would be just as inefficient as a direct, recursive matrix-chain multiplication algorithm. Instead, you can store the e[i,j] values in a table e[1 : n + 1,0 W n]. The first index needs to run to n + 1 rather than n because in order to have a subtree containing only the dummy key d n , you need to compute and store e[n + 1,n] . The second index needs to start from 0 because in order to have a subtree containing only the dummy key d 0 , you need to compute and store e[1,0]. Only the entries e[i,j] for which j ≥ i − 1 are filled in. The table root [i,j] records the root of the subtree containing keys k i ,…,k j and uses only the entries for which 1 ≤ i ≤ j ≤ n."
   },
   {
    "type": "body",
@@ -4521,7 +4521,7 @@
    "section_title": "14.5 Optimal binary search trees",
    "printed_page": 408,
    "pdf_page": 429,
-   "text": "Consider the problem of neatly printing a paragraph with a monospaced font (all characters having the same width). The input text i s a sequence of n words of lengths l 1 ,l 2 ,…,l n , measured in characters, which are to be printed n eatly on a number of lines that hold a maximum of M characters each. No word exceeds the line length, so that l i ≤ M for i = 1,2,…,n . The criterion of \"neatness\" is as follows. If a given line contains words i through j , where i ≤ j , and exactly one space appears between words, then the number of extra space characters at the end of the line is M − j + i − P j kDi l k , which must be nonnegative so that the words fit on the line. The goal is to minimize the sum, over all lines except the last, of the cubes of the numbers of extra space characters at the ends of lines. Give a dynamic-programming algorithm to print a paragraph of n words neatly. Analyze the running time and space requirements of your algorithm."
+   "text": "Consider the problem of neatly printing a paragraph with a monospaced font (all characters having the same width). The input text i s a sequence of n words of lengths l 1 ,l 2 ,…,l n , measured in characters, which are to be printed neatly on a number of lines that hold a maximum of M characters each. No word exceeds the line length, so that l i ≤ M for i = 1,2,…,n . The criterion of \"neatness\" is as follows. If a given line contains words i through j , where i ≤ j , and exactly one space appears between words, then the number of extra space characters at the end of the line is M − j + i − P j kDi l k , which must be nonnegative so that the words fit on the line. The goal is to minimize the sum, over all lines except the last, of the cubes of the numbers of extra space characters at the ends of lines. Give a dynamic-programming algorithm to print a paragraph of n words neatly. Analyze the running time and space requirements of your algorithm."
   },
   {
    "type": "problem",
@@ -4629,7 +4629,7 @@
    "section_title": "14.5 Optimal binary search trees",
    "printed_page": 409,
    "pdf_page": 430,
-   "text": "Assume that Q C < Q = + Q I and Q R < Q = + Q I , since otherwise, the copy and replace operations would not be used. The cost of a given sequence of transformation operations is the sum of the costs o f the individual operations in the sequence. For the sequence above, the cost of t ransforming algorithm to altruistic is 3Q + C Q R + Q = + 4Q I + Q T + Q K . a. Given two sequences x[1 : m] and y[1 : n] and the costs of the transformation operations, the edit distance from x to y is the cost of the least expensive op- Operation x ´ initial strings a lgorithm copy al gorithm a copy algorithm al replace by t algo rithm alt delete algor ithm alt copy algori thm altr insert u algori thm altru insert i algori thm altrui insert s algori thm altruis twiddle algorith m altruisti insert c algorith m altruistic kill algorithm altruistic"
+   "text": "Assume that Q C < Q = + Q I and Q R < Q = + Q I , since otherwise, the copy and replace operations would not be used. The cost of a given sequence of transformation operations is the sum of the costs o f the individual operations in the sequence. For the sequence above, the cost of t ransforming algorithm to altruistic is 3Q + C Q R + Q = + 4Q I + Q T + Q K . a. Given two sequences x[1 : m] and y[1 : n] and the costs of the transformation operations, the edit distance from x to y is the cost of the least expensive op- Operation x ´ initial strings a lgorithm copy algorithm a copy algorithm al replace by t algo rithm alt delete algor ithm alt copy algori thm altr insert u algori thm altru insert i algori thm altrui insert s algori thm altruis twiddle algorith m altruisti insert c algorith m altruistic kill algorithm altruistic"
   },
   {
    "type": "figure-caption",
@@ -4764,7 +4764,7 @@
    "section_title": "14.5 Optimal binary search trees",
    "printed_page": 411,
    "pdf_page": 432,
-   "text": "Dynamic programming on a directed graph can play a part in speech recognition. A directed graph G = (V,E) with labeled edges forms a formal model of a person speaking a restricted language. Each ed ge (u,v) 2 E is labeled with a sound Ω (u; v) from a finite set † of sounds. Each directed path in the graph starting from a distinguished vertex v 0 2 V corresponds to a possible sequence of sounds produced by the model, with the label of a path being the concatenation of the labels of the edges on that path. a. Describe an efficient algorithm that, given an edge-labeled directed graph G with distinguished vertex v 0 and a sequence s = ⟨Ω 1 ; Ω 2 ; : : : ; Ω k⟩ of sounds from †, returns a path in G that begins at v 0 and has s as its label, if any such path exists. Otherwise, the algorithm should return NO- SUCH- PATH. Analyze the running time of your algorithm. ( Hint: You may find concepts from Chapter 20 useful.)"
+   "text": "Dynamic programming on a directed graph can play a part in speech recognition. A directed graph G = (V,E) with labeled edges forms a formal model of a person speaking a restricted language. Each edge (u,v) 2 E is labeled with a sound Ω (u; v) from a finite set † of sounds. Each directed path in the graph starting from a distinguished vertex v 0 2 V corresponds to a possible sequence of sounds produced by the model, with the label of a path being the concatenation of the labels of the edges on that path. a. Describe an efficient algorithm that, given an edge-labeled directed graph G with distinguished vertex v 0 and a sequence s = ⟨Ω 1 ; Ω 2 ; : : : ; Ω k⟩ of sounds from †, returns a path in G that begins at v 0 and has s as its label, if any such path exists. Otherwise, the algorithm should return NO- SUCH- PATH. Analyze the running time of your algorithm. ( Hint: You may find concepts from Chapter 20 useful.)"
   },
   {
    "type": "body",
@@ -4773,7 +4773,7 @@
    "section_title": "14.5 Optimal binary search trees",
    "printed_page": 411,
    "pdf_page": 432,
-   "text": "Now suppose that every edge (u,v) 2 E has an associated nonnegative probability p(u,v) of being traversed, so that the corresponding sound is produced. The sum of the probabilities of the edges leaving any v ertex equals 1. The probability of a path is defined to be the product of the probabilities of its edges. Think of the probability of a path beginning at vertex v 0 as the probability that a <random walk= beginning at v 0 follows the specified path, where the edge leaving a vertex u is taken randomly, according to the probabilities of the available edges leaving u. b. Extend your answer to part (a) so that if a path is returned, it is a most probable path starting at vertex v 0 and having label s . Analyze the running time of your algorithm."
+   "text": "Now suppose that every edge (u,v) 2 E has an associated nonnegative probability p(u,v) of being traversed, so that the corresponding sound is produced. The sum of the probabilities of the edges leaving any vertex equals 1. The probability of a path is defined to be the product of the probabilities of its edges. Think of the probability of a path beginning at vertex v 0 as the probability that a <random walk= beginning at v 0 follows the specified path, where the edge leaving a vertex u is taken randomly, according to the probabilities of the available edges leaving u. b. Extend your answer to part (a) so that if a path is returned, it is a most probable path starting at vertex v 0 and having label s . Analyze the running time of your algorithm."
   },
   {
    "type": "problem",
@@ -4854,7 +4854,7 @@
    "section_title": "14.5 Optimal binary search trees",
    "printed_page": 413,
    "pdf_page": 434,
-   "text": "Your knowledge of algorithms helps you obtain an exciting job with a hot startup, along with a $10,000 signing bonus. You decide to invest this money with the goal of maximizing your return at the end of 10 years. You decide to use your investment manager, G. I. Luvcache, to manage your signing bonus. The company that Luvcache works with requires you to observe th e following rules. It offers n different investments, numbered 1 through n. In each year j , investment i provides a return rate of r ij . In other words, if you invest d dollars in investment i in year j , then at the end of year j , you have dr ij dollars. The return rates are guaranteed, that is, you are given all the return rates for the next 10 years for each investment."
+   "text": "Your knowledge of algorithms helps you obtain an exciting job with a hot startup, along with a $10,000 signing bonus. You decide to invest this money with the goal of maximizing your return at the end of 10 years. You decide to use your investment manager, G. I. Luvcache, to manage your signing bonus. The company that Luvcache works with requires you to observe the following rules. It offers n different investments, numbered 1 through n. In each year j , investment i provides a return rate of r ij . In other words, if you invest d dollars in investment i in year j , then at the end of year j , you have dr ij dollars. The return rates are guaranteed, that is, you are given all the return rates for the next 10 years for each investment."
   },
   {
    "type": "body",
@@ -4944,7 +4944,7 @@
    "section_title": "14.5 Optimal binary search trees",
    "printed_page": 415,
    "pdf_page": 436,
-   "text": "To determine how valuable a player is going to be, you decide to use a sabermetric statistic 11 known as \"WAR,\" or \"wins above replacement.\" A player with a higher WAR is more valuable than a player with a lower WAR. It is not necessarily more expensive to sign a player with a higher WAR t han a player with a lower"
+   "text": "To determine how valuable a player is going to be, you decide to use a sabermetric statistic 11 known as \"WAR,\" or \"wins above replacement.\" A player with a higher WAR is more valuable than a player with a lower WAR. It is not necessarily more expensive to sign a player with a higher WAR than a player with a lower"
   },
   {
    "type": "body",
@@ -5052,7 +5052,7 @@
    "section_title": "14.5 Optimal binary search trees",
    "printed_page": 415,
    "pdf_page": 436,
-   "text": "11 Sabermetrics is the application of statistical analysis to baseball records. It provides several ways to compare the relative values of individual players. algorithms for the LCS problem exist. Masek and Paterson [316] answered this question in the affirmative by giving an algorithm that runs in O(mn= lg n) time, where n ≤ m and the sequences are drawn from a set of bounded s ize. For the special case in which no element appears more than once in an input sequence, Szymanski [425] shows how to solve the problem in O..n + m/ lg(n + m)/ time."
+   "text": "11 Sabermetrics is the application of statistical analysis to baseball records. It provides several ways to compare the relative values of individual players. algorithms for the LCS problem exist. Masek and Paterson [316] answered this question in the affirmative by giving an algorithm that runs in O(mn= lg n) time, where n ≤ m and the sequences are drawn from a set of bounded size. For the special case in which no element appears more than once in an input sequence, Szymanski [425] shows how to solve the problem in O..n + m/ lg(n + m)/ time."
   },
   {
    "type": "body",
@@ -5061,7 +5061,7 @@
    "section_title": "14.5 Optimal binary search trees",
    "printed_page": 416,
    "pdf_page": 437,
-   "text": "Many of these results extend to the problem of computing string edit distances"
+   "text": "Many of these results extend to the problem of comp uting string edit distances"
   },
   {
    "type": "body",
@@ -5115,7 +5115,7 @@
    "section_title": "14.5 Optimal binary search trees",
    "printed_page": 417,
    "pdf_page": 438,
-   "text": "Algorithms for optimization problems typically go t hrough a sequence of steps, with a set of choices at each step. For many optimization problems, using dynamic programming to determine the best choices is overkill, and simpler, more efficient algorithms will do. A greedy algorithm always makes the choice that looks best at the moment. That is, it makes a local ly optimal choice in the hope that this choice leads to a globally optimal solution. This c hapter explores optimization problems for which greedy algorithms provide optimal solutions. Before reading this chapter, you should read about dynamic programming in Chapter 14, particularly Section 14.3."
+   "text": "Algorithms for optimization problems typically go through a sequence of steps, with a set of choices at each step. For many optimization problems, using dynamic programming to determine the best choices is overkill, and simpler, more efficient algorithms will do. A greedy algorithm always makes the choice that looks best at the moment. That is, it makes a local ly optimal choice in the hope that this choice leads to a globally optimal solution. This chapter explores optimization problems for which greedy algorithms provide optimal solutions. Before reading this chapter, you should read about dynamic programming in Chapter 14, particularly Section 14.3."
   },
   {
    "type": "body",

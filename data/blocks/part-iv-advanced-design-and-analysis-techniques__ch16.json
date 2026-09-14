@@ -59,7 +59,7 @@
    "section_title": "16.1 Aggregate analysis",
    "printed_page": 449,
    "pdf_page": 470,
-   "text": "While reading this chapter, bear in mind that the c harges assigned during an amortized analysis are for analysis purposes only. They need not—and should not"
+   "text": "While reading this chapter, bear in mind that the charges assigned during an amortized analysis are for analysis purposes only. They need not—and should not"
   },
   {
    "type": "body",
@@ -319,7 +319,7 @@
    "section_title": "16.1 Aggregate analysis",
    "printed_page": 451,
    "pdf_page": 472,
-   "text": "Aggregate analysis assigns the amortized cost of each operation to be the average cost. In this example, therefore, all three stack o perations have an amortized cost of O(1)."
+   "text": "Aggregate analysis assigns the amortized cost of each operation to be the average cost. In this example, therefore, all three stack operations have an amortized cost of O(1)."
   },
   {
    "type": "body",
@@ -580,7 +580,7 @@
    "section_title": "16.1 Aggregate analysis",
    "printed_page": 452,
    "pdf_page": 473,
-   "text": "Figure 16.2 An 8-bit binary counter as its value goes from 0 to 16 by a sequence of 16 INCREMENT operations. Bits that flip to achieve the next value are shaded in blue. The running cost for flipping bits is shown at the right. The total cost is alway s less than twice the total number of INCREMENT operations. position i + 1 during the next iteration of the loop. Otherwise, the loop ends, and then, if i <k, A[i ] must be 0, so that line 6 adds a 1 into position i , flipping the 0 to a 1. If the loop ends with i = k, then the call of INCREMENT flipped all k bits from 1 to 0. The cost of each INCREMENT operation is linear in the number of bits flipped."
+   "text": "Figure 16.2 An 8-bit binary counter as its value goes from 0 to 16 by a sequence of 16 INCREMENT operations. Bits that flip to achieve the next value are shaded in blue. The running cost for flipping bits is shown at the right. The total cost is always less than twice the total number of INCREMENT operations. position i + 1 during the next iteration of the loop. Otherwise, the loop ends, and then, if i <k, A[i ] must be 0, so that line 6 adds a 1 into position i , flipping the 0 to a 1. If the loop ends with i = k, then the call of INCREMENT flipped all k bits from 1 to 0. The cost of each INCREMENT operation is linear in the number of bits flipped."
   },
   {
    "type": "body",
@@ -679,7 +679,7 @@
    "section_title": "16.2 The accounting method",
    "printed_page": 453,
    "pdf_page": 474,
-   "text": "You must choose the amortized costs of operations carefully. If you want to use amortized costs to show that in the worst case the average cost per operation is small, you must ensure that the total amortized cos t of a sequence of operations provides an upper bound on the total actual cost of the sequence. Moreover, as in aggregate analysis, the upper bound must apply t o all sequences of operations."
+   "text": "You must choose the amortized costs of operations carefully. If you want to use amortized costs to show that in the worst case the average cost per operation is small, you must ensure that the total amortized cost of a sequence of operations provides an upper bound on the total actual cost of the sequence. Moreover, as in aggregate analysis, the upper bound must apply t o all sequences of operations."
   },
   {
    "type": "body",
@@ -688,7 +688,7 @@
    "section_title": "16.2 The accounting method",
    "printed_page": 454,
    "pdf_page": 475,
-   "text": "Let’s denote the actual cost of the i th operation by c i and the amortized cost of the i th operation by y c i . Then you need to have n X i D1 y c i ≥ n X i D1 c i (16.1) for all sequences of n operations. The total credit stored in the data structure is the difference between the total amortized cost and the total actual cost, or P n i D1 y c i − P n i D1 c i . By inequality (16.1), the total credit associated with the data structure must be nonnegative at all times. If you ever allowed the total credit to become negative (the result of undercharging early operations with the promise of repaying the account later on), then the total amortized costs incurred at that time would be below the total actual costs incurred. In that case, for the sequence of operations up to that time, the total amortized cos t would not be an upper bound on the total actual cost. Thus, you must take care that the total credit in the data structure never becomes negative."
+   "text": "Let’s denote the actual cost of the i th operation by c i and the amortized cost of the i th operation by y c i . Then you need to have n X i D1 y c i ≥ n X i D1 c i (16.1) for all sequences of n operations. The total credit stored in the data structure is the difference between the total amortized cost and the total actual cost, or P n i D1 y c i − P n i D1 c i . By inequality (16.1), the total credit associated with the data structure must be nonnegative at all times. If you ever allowed the total credit to become negative (the result of undercharging early operations with the promise of repaying the account later on), then the total amortized costs incurred at that time would be below the total actual costs incurred. In that case, for the sequence of operations up to that time, the total amortized cost would not be an upper bound on the total actual cost. Thus, you must take care that the total credit in the data structure never becomes negative."
   },
   {
    "type": "body",
@@ -814,7 +814,7 @@
    "section_title": "16.2 The accounting method",
    "printed_page": 455,
    "pdf_page": 476,
-   "text": "For the amortized analysis, the amortized cost to s et a 0-bit to 1 is $2. When a bit is set to 1, $1 of the $2 pays to actually set the bit. The second $1 resides on the bit as credit to be used later if and when the bit is reset to 0. At any point in time, every 1-bit in the counter has $1 of credit on it, and thus resetting a bit to 0 can be viewed as costing nothing, and the $1 on the bit prepays for the reset."
+   "text": "For the amortized analysis, the amortized cost to set a 0-bit to 1 is $2. When a bit is set to 1, $1 of the $2 pays to actually set the bit. The second $1 resides on the bit as credit to be used later if and when the bit is reset to 0. At any point in time, every 1-bit in the counter has $1 of credit on it, and thus resetting a bit to 0 can be viewed as costing nothing, and the $1 on the bit prepays for the reset."
   },
   {
    "type": "body",
@@ -841,7 +841,7 @@
    "section_title": "16.3 The potential method",
    "printed_page": 456,
    "pdf_page": 477,
-   "text": "ically, for backup purposes. Show that the cost of n stack operations, including copying the stack, is O(n) by assigning suitable amortized costs to the variou s stack operations."
+   "text": "ically, for backup purposes. Show that the cost of n stack operations, including copying the stack, is O(n) by assigning suitable amortized costs to the various stack operations."
   },
   {
    "type": "exercise",
@@ -868,7 +868,7 @@
    "section_title": "16.3 The potential method",
    "printed_page": 456,
    "pdf_page": 477,
-   "text": "Instead of representing prepaid work as credit stored with specific objects in the data structure, the potential method of amortized analysis represents the prepaid work as \"potential energy,\" or just \"potential,\" wh ich can be released to pay for future operations. The potential applies to the data structure as a whole rather than to specific objects within the data structure."
+   "text": "Instead of representing prepaid work as credit stored with specific objects in the data structure, the potential method of amortized analysis represents the prepaid work as \"potential energy,\" or just \"potential,\" which can be released to pay for future operations. The potential applies to the data structure as a whole rather than to specific objects within the data structure."
   },
   {
    "type": "body",
@@ -1147,7 +1147,7 @@
    "section_title": "16.3 The potential method",
    "printed_page": 459,
    "pdf_page": 480,
-   "text": "The potential method provides a simple and clever w ay to analyze the counter even when it does not start at 0. The counter starts with b 0 1-bits, and after n"
+   "text": "The potential method provides a simple and clever way to analyze the counter even when it does not start at 0. The counter starts with b 0 1-bits, and after n"
   },
   {
    "type": "body",
@@ -1264,7 +1264,7 @@
    "section_title": "16.3 The potential method",
    "printed_page": 459,
    "pdf_page": 480,
-   "text": "Note that in the analysis, n is the number of items currently in the heap, and y ou do not know a bound on the maximum number of items that can ever be stored in the heap."
+   "text": "Note that in the analysis, n is the number of items currently in the heap, and you do not know a bound on the maximum number of items that can ever be stored in the heap."
   },
   {
    "type": "exercise",
@@ -1291,7 +1291,7 @@
    "section_title": "16.3 The potential method",
    "printed_page": 460,
    "pdf_page": 481,
-   "text": "16.3-6 Design a data structure to support the following tw o operations for a dynamic multiset S of integers, which allows duplicate values:"
+   "text": "16.3-6 Design a data structure to support the following two operations for a dynamic multiset S of integers, which allows duplicate values:"
   },
   {
    "type": "body",
@@ -1318,7 +1318,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 460,
    "pdf_page": 481,
-   "text": "Explain how to implement this data structure so tha t any sequence of m INSERT and DELETE-LARGER-HALF operations runs in O(m) time. Your implementation should also include a way to output the elements of S in O(|S|) time."
+   "text": "Explain how to implement this data structure so that any sequence of m INSERT and DELETE-LARGER-HALF operations runs in O(m) time. Your implementation should also include a way to output the elements of S in O(|S|) time."
   },
   {
    "type": "body",
@@ -1327,7 +1327,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 460,
    "pdf_page": 481,
-   "text": "When you design an application that uses a table, y ou do not always know in advance how many items the table will hold. You might allocate space for the table, only to find out later that it is not enough. The program must then reallocate the table with a larger size and copy all items stored in the original table over into the new, larger table. Similarly, if many items hav e been deleted from the table, it might be worthwhile to reallocate the table with a smaller size. This section studies this problem of dynamically expanding and contracting a table. Amortized analyses will show that the amortized cost of insertion and deletion is only O(1), even though the actual cost of an operation is larg e when it triggers an expansion or a contraction. Moreover, you’ll see how to guarantee that the unused space in a dynamic table never exceeds a constant fraction of the total space."
+   "text": "When you design an application that uses a table, you do not always know in advance how many items the table will hold. You might allocate space for the table, only to find out later that it is not enough. The program must then reallocate the table with a larger size and copy all items stored in the original table over into the new, larger table. Similarly, if many items have been deleted from the table, it might be worthwhile to reallocate the table with a smaller size. This section studies this problem of dynamically expanding and contracting a table. Amortized analyses will show that the amortized cost of insertion and deletion is only O(1), even though the actual cost of an operation is large when it triggers an expansion or a contraction. Moreover, you’ll see how to guarantee that the unused space in a dynamic table never exceeds a constant fraction of the total space."
   },
   {
    "type": "body",
@@ -1336,7 +1336,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 460,
    "pdf_page": 481,
-   "text": "Let’s assume that the dynamic table supports the operations TABLE-INSERT and TABLE-DELETE . TABLE-INSERT inserts into the table an item that occupies a single slot, that is, a space for one item. Likewise, TABLE-DELETE removes an item from the table, thereby freeing a slot. The details of the data-structuring method used to organize the table are unimportant: it coul d be a stack (Section 10.1.3), a heap (Chapter 6), a hash table (Chapter 11), or something else."
+   "text": "Let’s assume that the dynamic table supports the operations TABLE-INSERT and TABLE-DELETE . TABLE-INSERT inserts into the table an item that occupies a single slot, that is, a space for one item. Likewise, TABLE-DELETE removes an item from the table, thereby freeing a slot. The details of the data-structuring method used to organize the table are unimportant: it could be a stack (Section 10.1.3), a heap (Chapter 6), a hash table (Chapter 11), or something else."
   },
   {
    "type": "body",
@@ -1372,7 +1372,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 461,
    "pdf_page": 482,
-   "text": "Let’s assume that storage for a table is allocated as an array of slots. A table fills up when all slots have been used or, equivalently, when its load factor is 1. 1 In some software environments, upon an attempt to insert an item into a full table, the only alternative is to abort with an error. The scenario in this se ction assumes, however, that the software environment, like many modern ones, provides a memorymanagement system that can allocate and free blocks of storage on request. Thus, upon inserting an item into a full table, the syste m can expand the table by allocating a new table with more slots than the old table had. Because the table must always reside in contiguous memory, the system must allocate a new array for the larger table and then copy items from the old table into the new table."
+   "text": "Let’s assume that storage for a table is allocated as an array of slots. A table fills up when all slots have been used or, equivalently, when its load factor is 1. 1 In some software environments, upon an attempt to insert an item into a full table, the only alternative is to abort with an error. The scenario in this section assumes, however, that the software environment, like many modern ones, provides a memorymanagement system that can allocate and free blocks of storage on request. Thus, upon inserting an item into a full table, the system can expand the table by allocating a new table with more slots than the old table had. Because the table must always reside in contiguous memory, the system must allocate a new array for the larger table and then copy items from the old table into the new table."
   },
   {
    "type": "body",
@@ -1381,7 +1381,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 461,
    "pdf_page": 482,
-   "text": "A common heuristic allocates a new table with twice as many slots as the old one. If the only table operations are insertions, t hen the load factor of the table is always at least 1/2, and thus the amount of wasted space never exceeds half the total space in the table."
+   "text": "A common heuristic allocates a new table with twice as many slots as the old one. If the only table operations are insertions, then the load factor of the table is always at least 1/2, and thus the amount of wasted space never exceeds half the total space in the table."
   },
   {
    "type": "body",
@@ -1483,7 +1483,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 462,
    "pdf_page": 483,
-   "text": "Now, we’ll use all three amortized analysis techniques to analyze a sequence of n TABLE-INSERT operations on an initially empty table. First, we n eed to determine the actual cost c i of the i th operation. If the current table has room for the new item (or if this is the first operation), then c i = 1, since the only elementary insertion performed is the one in line 10. If the current table is full, however, and an expansion occurs, then c i = i : the cost is 1 for the elementary insertion in line 10 plus i − 1 for the items copied from the old table to the new table in line 6. For n operations, the worst-case cost of an operation is O(n), which leads to an upper"
+   "text": "Now, we’ll use all three amortized analysis techniques to analyze a sequence of n TABLE-INSERT operations on an initially empty table. First, we need to determine the actual cost c i of the i th operation. If the current table has room for the new item (or if this is the first operation), then c i = 1, since the only elementary insertion performed is the one in line 10. If the current table is full, however, and an expansion occurs, then c i = i : the cost is 1 for the elementary insertion in line 10 plus i − 1 for the items copied from the old table to the new table in line 6. For n operations, the worst-case cost of an operation is O(n), which leads to an upper"
   },
   {
    "type": "body",
@@ -1501,7 +1501,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 462,
    "pdf_page": 483,
-   "text": "This bound is not tight, because the table rarely e xpands in the course of n"
+   "text": "This bound is not tight, because the table rarely expands in the course of n"
   },
   {
    "type": "body",
@@ -1591,7 +1591,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 463,
    "pdf_page": 484,
-   "text": "Figure 16.3 Analysis of table expansion by the accounting metho d. Each call of TABLE-INSERT charges $3 as follows: $1 to pay for the elementary insertion, $1 on the item inserted as prepayment for it to be reinserted later, and $1 on an item that was already in the table, also as p repayment for reinsertion. (a) The table immediately after an expansion, with 8 slots, 4 items (tan slots), and no stored credit. (b)–(e) After each of 4 calls to TABLE-INSERT , the table has one more item, with $1 stored on the new item and $1 stored on one of the 4 items that were present immediately after the expansion. Slots with these new items are blue. (f) Upon the next call to TABLE-INSERT , the table is full, and so it expands again. Each item had $1 to pay for it to be reinserted. Now the table looks as it did in part (a), with no stored credit but 16 slots and 8 items. because at most n operations cost 1 each and the costs of the remaining operations form a geometric series. Since the total cost of n TABLE-INSERT operations is bounded by 3n, the amortized cost of a single operation is at most 3."
+   "text": "Figure 16.3 Analysis of table expansion by the accounting method. Each call of TABLE-INSERT charges $3 as follows: $1 to pay for the elementary insertion, $1 on the item inserted as prepayment for it to be reinserted later, and $1 on an item that was already in the table, also as p repayment for reinsertion. (a) The table immediately after an expansion, with 8 slots, 4 items (tan slots), and no stored credit. (b)–(e) After each of 4 calls to TABLE-INSERT , the table has one more item, with $1 stored on the new item and $1 stored on one of the 4 items that were present immediately after the expansion. Slots with these new items are blue. (f) Upon the next call to TABLE-INSERT , the table is full, and so it expands again. Each item had $1 to pay for it to be reinserted. Now the table looks as it did in part (a), with no stored credit but 16 slots and 8 items. because at most n operations cost 1 each and the costs of the remaining operations form a geometric series. Since the total cost of n TABLE-INSERT operations is bounded by 3n, the amortized cost of a single operation is at most 3."
   },
   {
    "type": "body",
@@ -1600,7 +1600,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 463,
    "pdf_page": 484,
-   "text": "The accounting method can provide some intuition fo r why the amortized cost of a TABLE-INSERT operation should be 3. You can think of each item paying for three elementary insertions: inserting itself into the current table, moving itself the next time that the table expands, and moving some o ther item that was already in the table the next time that the table expands. For example, suppose that the size of the table is m immediately after an expansion, as shown in Figure 16.3 for m = 8."
+   "text": "The accounting method can provide some intuition for why the amortized cost of a TABLE-INSERT operation should be 3. You can think of each item paying for three elementary insertions: inserting itself into the current table, moving itself the next time that the table expands, and moving some other item that was already in the table the next time that the table expands. For example, suppose that the size of the table is m immediately after an expansion, as shown in Figure 16.3 for m = 8."
   },
   {
    "type": "body",
@@ -1627,7 +1627,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 463,
    "pdf_page": 484,
-   "text": "Now, let’s see how to use the potential method. We’ll use it again in Section 16.4.2 to design a TABLE-DELETE operation that has an O(1) amortized cost as well. Just as the accounting method had no stored credit immediately after an expansion—that is, when T: num = T: size/24let’s define the potential to be 0 when T: num = T: size/2. As elementary insertions occur, the potential needs to increase enough to pay for all the reinsertions tha t will happen when the table next expands. The table fills after another T: size/2 calls of TABLE-INSERT , when"
+   "text": "Now, let’s see how to use the potential method. We’ll use it again in Section 16.4.2 to design a TABLE-DELETE operation that has an O(1) amortized cost as well. Just as the accounting method had no stored credit immediately after an expansion—that is, when T: num = T: size/24let’s define the potential to be 0 when T: num = T: size/2. As elementary insertions occur, the potential needs to increase enough to pay for all the reinsertions that will happen when the table next expands. The table fills after another T: size/2 calls of TABLE-INSERT , when"
   },
   {
    "type": "body",
@@ -1681,7 +1681,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 464,
    "pdf_page": 485,
-   "text": "Now, consider the change in potential when the tabl e does expand during the i th insertion because it was full immediately before th e insertion. Let num i denote the number of items stored in the table after the i th operation and size i denote the total size of the table after the i th operation, so that size i −1 = num i −1 = i − 1"
+   "text": "Now, consider the change in potential when the table does expand during the i th insertion because it was full immediately before the insertion. Let num i denote the number of items stored in the table after the i th operation and size i denote the total size of the table after the i th operation, so that size i −1 = num i −1 = i − 1"
   },
   {
    "type": "body",
@@ -1753,7 +1753,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 465,
    "pdf_page": 486,
-   "text": "To implement a TABLE-DELETE operation, it is simple enough to remove the specified item from the table. In order to limit the amount of wasted space, however, you might want to contract the table when the load factor becomes too small. Table contraction is analogous to table expansion: wh en the number of items in the table drops too low, allocate a new, smaller table and then copy the items from the old table into the new one. You can then free the storage for the old table by returning it to the memory-management system. In order to not waste space, yet keep the amortized costs low, the insertion and deletion procedures should preserve two properties:"
+   "text": "To implement a TABLE-DELETE operation, it is simple enough to remove the specified item from the table. In order to limit the amount of wasted space, however, you might want to contract the table when the load factor becomes too small. Table contraction is analogous to table expansion: when the number of items in the table drops too low, allocate a new, smaller table and then copy the items from the old table into the new one. You can then free the storage for the old table by returning it to the memory-management system. In order to not waste space, yet keep the amortized costs low, the insertion and deletion procedures should preserve two properties:"
   },
   {
    "type": "body",
@@ -1789,7 +1789,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 466,
    "pdf_page": 487,
-   "text": "You might think that if you double the table size u pon inserting an item into a full table, then you should halve the size when deleting an item that would cause the table to become less than half full. This strategy does indeed guarantee that the load factor of the table never drops below 1/2. Unfortunately, it can also cause the amortized cost of an operation to be quite large. C onsider the following scenario."
+   "text": "You might think that if you double the table size upon inserting an item into a full table, then you should halve the size when deleting an item that would cause the table to become less than half full. This strategy does indeed guarantee that the load factor of the table never drops below 1/2. Unfortunately, it can also cause the amortized cost of an operation to be quite large. C onsider the following scenario."
   },
   {
    "type": "body",
@@ -1825,7 +1825,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 466,
    "pdf_page": 487,
-   "text": "The problem with this strategy is that after the ta ble expands, not enough deletions occur to pay for a contraction. Likewise, after the table contracts, not enough insertions take place to pay for an expansion."
+   "text": "The problem with this strategy is that after the table expands, not enough deletions occur to pay for a contraction. Likewise, after the table contracts, not enough insertions take place to pay for an expansion."
   },
   {
    "type": "body",
@@ -1834,7 +1834,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 466,
    "pdf_page": 487,
-   "text": "How can we solve this problem? Allow the load factor of the table to drop below 1/2. Specifically, continue to double the table size upon inserting an item into a full table, but halve the table size when de leting an item causes the table to become less than 1/4 full, rather than 1/2 full as before. The load factor of the table is therefore bounded below by the constant 1/4, and the load factor is 1/2 immediately after a contraction."
+   "text": "How can we solve this problem? Allow the load factor of the table to drop below 1/2. Specifically, continue to double the table size upon inserting an item into a full table, but halve the table size when deleting an item causes the table to become less than 1/4 full, rather than 1/2 full as before. The load factor of the table is therefore bounded below by the constant 1/4, and the load factor is 1/2 immediately after a contraction."
   },
   {
    "type": "body",
@@ -1987,7 +1987,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 467,
    "pdf_page": 488,
-   "text": "How do we design a potential function that gives co nstant amortized time for both insertion and deletion? When the load factor is at least 1/2, the same potential function, ˆ(T) = 2.T: num − T: size/2/, that we used for insertion still works."
+   "text": "How do we design a potential function that gives constant amortized time for both insertion and deletion? When the load factor is at least 1/2, the same potential function, ˆ(T) = 2.T: num − T: size/2/, that we used for insertion still works."
   },
   {
    "type": "body",
@@ -1996,7 +1996,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 467,
    "pdf_page": 488,
-   "text": "When the table is at least half full, each insertion increases the potential by 2 if the table does not expand, and each deletion reduces th e potential by 2 if it does not cause the load factor to drop below 1/2."
+   "text": "When the table is at least half full, each insertion increases the potential by 2 if the table does not expand, and each deletion reduces the potential by 2 if it does not cause the load factor to drop below 1/2."
   },
   {
    "type": "body",
@@ -2077,7 +2077,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 468,
    "pdf_page": 489,
-   "text": "Now, let’s determine the amortized costs of each operation. As before, let num i denote the number of items stored in the table afte r the i th operation, size i denote the total size of the table after the i th operation, ˛ i = num i =size i denote the load factor after the i th operation, ˆ i denote the potential after the i th operation, and Ωˆ i denote the change in potential due to the i th operation. Initially, num 0 = 0, size 0 = 0, and ˆ 0 = 0."
+   "text": "Now, let’s determine the amortized costs of each operation. As before, let num i denote the number of items stored in the table after the i th operation, size i denote the total size of the table after the i th operation, ˛ i = num i =size i denote the load factor after the i th operation, ˆ i denote the potential after the i th operation, and Ωˆ i denote the change in potential due to the i th operation. Initially, num 0 = 0, size 0 = 0, and ˆ 0 = 0."
   },
   {
    "type": "body",
@@ -2095,7 +2095,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 468,
    "pdf_page": 489,
-   "text": "Likewise, if the i th operation is a deletion and ˛ i ≥ 1/2, then Ωˆ i = −2. Furthermore, if ˛ i −1 < 1/2 and the i th operation is a deletion that does not trigger a contraction, then Ωˆ i = 1, and if the i th operation is an insertion and ˛ i < 1/2 , then Ωˆ i = −1. In other words, if no expansion or contraction oc curs and the load factor does not cross ˛ = 1/2, then"
+   "text": "Likewise, if the i th operation is a deletion and ˛ i ≥ 1/2, then Ωˆ i = −2. Furthermore, if ˛ i −1 < 1/2 and the i th operation is a deletion that does not trigger a contraction, then Ωˆ i = 1, and if the i th operation is an insertion and ˛ i < 1/2 , then Ωˆ i = −1. In other words, if no expansion or contraction occurs and the load factor does not cross ˛ = 1/2, then"
   },
   {
    "type": "body",
@@ -2248,7 +2248,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 470,
    "pdf_page": 491,
-   "text": "Since the i th operation is a deletion that does not cause a co ntraction, the actual cost c i equals 1, and the amortized cost y c i is c i + Ωˆ i = 1 + 1 = 2."
+   "text": "Since the i th operation is a deletion that does not cause a contraction, the actual cost c i equals 1, and the amortized cost y c i is c i + Ωˆ i = 1 + 1 = 2."
   },
   {
    "type": "body",
@@ -2257,7 +2257,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 470,
    "pdf_page": 491,
-   "text": "Conversely, if the i th operation is an insertion that takes the load fa ctor from below 1/2 to equaling 1/2, the change in potential Ωˆ i equals −1. Again, the actual cost c i is 1, and now the amortized cost y c i is c i + Ωˆ i = 1 C .−1/ = 0."
+   "text": "Conversely, if the i th operation is an insertion that takes the load factor from below 1/2 to equaling 1/2, the change in potential Ωˆ i equals −1. Again, the actual cost c i is 1, and now the amortized cost y c i is c i + Ωˆ i = 1 C .−1/ = 0."
   },
   {
    "type": "body",
@@ -2284,7 +2284,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 470,
    "pdf_page": 491,
-   "text": "16.4-2 You wish to implement a dynamic, open-address hash table. Why might you consider the table to be full when its load factor reaches some value ˛ that is strictly less than 1? Describe briefly how to make insertion into a dynamic, open-address hash table run in such a way that the expected valu e of the amortized cost per insertion is O(1). Why is the expected value of the actual cost per insertion not necessarily O(1) for all insertions?"
+   "text": "16.4-2 You wish to implement a dynamic, open-address hash table. Why might you consider the table to be full when its load factor reaches some value ˛ that is strictly less than 1? Describe briefly how to make insertion into a dynamic, open-address hash table run in such a way that the expected value of the amortized cost per insertion is O(1). Why is the expected value of the actual cost per insertion not necessarily O(1) for all insertions?"
   },
   {
    "type": "exercise",
@@ -2446,7 +2446,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 473,
    "pdf_page": 494,
-   "text": "For the remainder of this problem, assume that the constant ˛ is strictly greater than 1/2. Suppose that you implement INSERT and DELETE as usual for an n-node binary search tree, except that after every such op eration, if any node in the tree is no longer ˛-balanced, then you \"rebuild\" the subtree rooted at the highest such node in the tree so that it becomes 1/2-balanced."
+   "text": "For the remainder of this problem, assume that the constant ˛ is strictly greater than 1/2. Suppose that you implement INSERT and DELETE as usual for an n-node binary search tree, except that after every such operation, if any node in the tree is no longer ˛-balanced, then you \"rebuild\" the subtree rooted at the highest such node in the tree so that it becomes 1/2-balanced."
   },
   {
    "type": "body",
@@ -2491,7 +2491,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 473,
    "pdf_page": 494,
-   "text": "Ω(x) ; where c is a sufficiently large constant that depends on ˛. c. Argue that any binary search tree has nonnegative p otential and also that a 1/2-balanced tree has potential 0. d. Suppose that m units of potential can pay for rebuilding an m-node subtree."
+   "text": "Ω(x) ; where c is a sufficiently large constant that depends on ˛. c. Argue that any binary search tree has nonnegative potential and also that a 1/2-balanced tree has potential 0. d. Suppose that m units of potential can pay for rebuilding an m-node subtree."
   },
   {
    "type": "body",
@@ -2518,7 +2518,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 473,
    "pdf_page": 494,
-   "text": "There are four basic operations on red-black trees that perform structural modifications: node insertions, node deletions, rotations, and c olor changes. We have seen that RB-I NSERT and RB-DELETE use only O(1) rotations, node insertions, and node deletions to maintain the red-black properties, but they may make many more color changes. a. Describe a legal red-black tree with n nodes such that calling RB-I NSERT to add the (n + 1)st node causes Ω(lg n) color changes. Then describe a legal red-black tree with n nodes for which calling RB-DELETE on a particular node causes Ω(lg n) color changes."
+   "text": "There are four basic operations on red-black trees that perform structural modifications: node insertions, node deletions, rotations, and color changes. We have seen that RB-I NSERT and RB-DELETE use only O(1) rotations, node insertions, and node deletions to maintain the red-black properties, but they may make many more color changes. a. Describe a legal red-black tree with n nodes such that calling RB-I NSERT to add the (n + 1)st node causes Ω(lg n) color changes. Then describe a legal red-black tree with n nodes for which calling RB-DELETE on a particular node causes Ω(lg n) color changes."
   },
   {
    "type": "body",
@@ -2536,7 +2536,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 474,
    "pdf_page": 495,
-   "text": "Although the worst-case number of color changes per operation can be logarithmic, you will prove that any sequence of m RB-I NSERT and RB-DELETE operations on an initially empty red-black tree causes O(m) structural modifications in the worst case. b. Some of the cases handled by the main loop of the c ode of both RB-INSERT- FIXUP and RB-DELETE-FIXUP are terminating: once encountered, they cause the loop to terminate after a constant number of additional operations. For each of the cases of RB-I NSERT-FIXUP and RB-DELETE-FIXUP , specify which are terminating and which are not. ( Hint: Look at Figures 13.5, 13.6, and 13.7 in Sections 13.3 and 13.4.)"
+   "text": "Although the worst-case number of color changes per operation can be logarithmic, you will prove that any sequence of m RB-I NSERT and RB-DELETE operations on an initially empty red-black tree causes O(m) structural modifications in the worst case. b. Some of the cases handled by the main loop of the code of both RB-INSERT- FIXUP and RB-DELETE-FIXUP are terminating: once encountered, they cause the loop to terminate after a constant number of additional operations. For each of the cases of RB-I NSERT-FIXUP and RB-DELETE-FIXUP , specify which are terminating and which are not. ( Hint: Look at Figures 13.5, 13.6, and 13.7 in Sections 13.3 and 13.4.)"
   },
   {
    "type": "body",
@@ -2662,7 +2662,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 477,
    "pdf_page": 498,
-   "text": "Chapter 18 presents B-trees, which are balanced search trees specifically designed to be stored on disks. Since disks operate m uch more slowly than randomaccess memory, B-tree performance depends not only on how much computing time the dynamic-set operations consume but also on how many disk accesses they perform. For each B-tree operation, the number of disk accesses increases with the height of the B-tree, but B-tree operations keep the height low."
+   "text": "Chapter 18 presents B-trees, which are balanced search trees specifically designed to be stored on disks. Since disks operate much more slowly than randomaccess memory, B-tree performance depends not only on how much computing time the dynamic-set operations consume but also on how many disk accesses they perform. For each B-tree operation, the number of disk accesses increases with the height of the B-tree, but B-tree operations keep the height low."
   },
   {
    "type": "body",
@@ -2734,7 +2734,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 478,
    "pdf_page": 499,
-   "text": "• Dynamic trees [415, 429] maintain a forest of disjoint rooted trees. Each edge in each tree has a real-valued cost. Dynamic trees support queries to find parents, roots, edge costs, and the minimum edge cost on a simple path from a node up to a root. Trees may be manipulated by cutting edges, updating all edge costs on a simple path from a node up to a root, linking a root into another tree, and making a node the root of the tree it appears in. One implementation of dynamic trees gives an O(lg n) amortized time bound for each operation, while a mo re"
+   "text": "• Dynamic trees [415, 429] maintain a forest of disjoint rooted trees. Each edge in each tree has a real-valued cost. Dynamic trees support queries to find parents, roots, edge costs, and the minimum edge cost on a simple path from a node up to a root. Trees may be manipulated by cutting edges, updating all edge costs on a simple path from a node up to a root, linking a root into another tree, and making a node the root of the tree it appears in. One implementation of dynamic trees gives an O(lg n) amortized time bound for each operation, while a more"
   },
   {
    "type": "body",
@@ -2761,7 +2761,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 478,
    "pdf_page": 499,
-   "text": "• Persistent data structures allow queries, and sometimes updates as well, on past versions of a data structure. For example, linked d ata structures can be made persistent with only a small time and space cost [126]. Problem 13-1 gives a simple example of a persistent dynamic set."
+   "text": "• Persistent data structures allow queries, and sometimes updates as well, on past versions of a data structure. For example, linked data structures can be made persistent with only a small time and space cost [126]. Problem 13-1 gives a simple example of a persistent dynamic set."
   },
   {
    "type": "body",
@@ -2797,7 +2797,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 479,
    "pdf_page": 500,
-   "text": "• Dynamic graph data structures support various queries while allowing the structure of a graph to change through operations t hat insert or delete vertices or edges. Examples of the queries that they support include vertex connectivity"
+   "text": "• Dynamic graph data structures support various queries while allowing the structure of a graph to change through operations that insert or delete vertices or edges. Examples of the queries that they support include vertex connectivity"
   },
   {
    "type": "body",

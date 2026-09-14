@@ -524,7 +524,7 @@ export default {
         { en: 'RAM model (random-access machine)', zh: '随机存取机模型：本书分析的机器假设', page: 26 },
         { en: 'running time', zh: '运行时间（执行的指令与数据访问的**次数**）', page: 29 },
         { en: 'input size', zh: '输入规模（排序问题里就是元素个数 n）', page: 28 },
-        { en: 'cost c_k', zh: '第 k 行执行一次的代价，是个常数', page: 29 },
+        { en: 'c_k', zh: '第 k 行执行一次的代价，是个常数', page: 29 },
         { en: 't_i', zh: '第 5 行被求值的次数（含最后那次为假的判断）', page: 29 },
         { en: 'T(n)', zh: '规模为 n 的输入上的运行时间', page: 29 },
         { en: 'best case', zh: '最好情况（插入排序里 = 输入已排序）', page: 30 },

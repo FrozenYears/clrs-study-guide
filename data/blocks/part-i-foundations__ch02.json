@@ -57,7 +57,7 @@
    "section_title": "2.1 Insertion sort",
    "printed_page": 17,
    "pdf_page": 38,
-   "text": "We’ll begin by examining the insertion sort algorithm to solve the sorting problem introduced in Chapter 1. We’ll specify algorithms using a pseudocode that should be understandable to you if you have done co mputer programming. We’ll see why insertion sort correctly sorts and analyze its running time. The analysis introduces a notation that describes how running ti me increases with the number of items to be sorted. Following a discussion of in sertion sort, we’ll use a method called divide-and-conquer to develop a sorting algorithm called merge sort. We’ll end with an analysis of merge sort’s running time."
+   "text": "We’ll begin by examining the insertion sort algorithm to solve the sorting problem introduced in Chapter 1. We’ll specify algorithms using a pseudocode that should be understandable to you if you have done computer programming. We’ll see why insertion sort correctly sorts and analyze its running time. The analysis introduces a notation that describes how running time increases with the number of items to be sorted. Following a discussion of in sertion sort, we’ll use a method called divide-and-conquer to develop a sorting algorithm called merge sort. We’ll end with an analysis of merge sort’s running time."
   },
   {
    "type": "body",
@@ -111,7 +111,7 @@
    "section_title": "2.1 Insertion sort",
    "printed_page": 17,
    "pdf_page": 38,
-   "text": "The numbers to be sorted are also known as the keys. Although the problem is conceptually about sorting a sequence, the input comes in the form of an array with n elements. When we want to sort numbers, it’s often because they are the keys associated with other data, which we call satellite data. Together, a key and satellite data form a record. For example, consider a spreadsheet containing st udent records with many associated pieces of data such as age, grade-point average, and number of courses taken. Any one of these quantities could be a key, but when the spreadsheet sorts, it moves the associated record ( the satellite data) with the key."
+   "text": "The numbers to be sorted are also known as the keys. Although the problem is conceptually about sorting a sequence, the input comes in the form of an array with n elements. When we want to sort numbers, it’s often because they are the keys associated with other data, which we call satellite data. Together, a key and satellite data form a record. For example, consider a spreadsheet containing student records with many associated pieces of data such as age, grade-point average, and number of courses taken. Any one of these quantities could be a key, but when the spreadsheet sorts, it moves the associated record ( the satellite data) with the key."
   },
   {
    "type": "body",
@@ -120,7 +120,7 @@
    "section_title": "2.1 Insertion sort",
    "printed_page": 18,
    "pdf_page": 39,
-   "text": "When describing a sorting algorithm, we focus on th e keys, but it is important to remember that there usually is associated satellite data."
+   "text": "When describing a sorting algorithm, we focus on the keys, but it is important to remember that there usually is associated satellite data."
   },
   {
    "type": "body",
@@ -156,7 +156,7 @@
    "section_title": "2.1 Insertion sort",
    "printed_page": 18,
    "pdf_page": 39,
-   "text": "We start with insertion sort, which is an efficient algorithm for sorting a small number of elements. Insertion sort works the way you might sort a hand of playing cards. Start with an empty left hand and the cards in a pile on the table. Pick up the first card in the pile and hold it with your left hand. Then, with your right hand, remove one card at a time from the pile, and insert it into the correct position in your left hand. As Figure 2.1 illustrates, you find the correct position for a card by comparing it with each of the cards already in y our left hand, starting at the right and moving left. As soon as you see a card in your left hand whose value is less than or equal to the card you’re holding in your right hand, insert the card that you’re holding in your right hand just to the right of this card in your left hand. If all the cards in your left hand have values greater than the card in your right hand, then place this card as the leftmost card in your l eft hand. At all times, the cards held in your left hand are sorted, and these cards were originally the top cards of the pile on the table."
+   "text": "We start with insertion sort, which is an efficient algorithm for sorting a small number of elements. Insertion sort works the way you might sort a hand of playing cards. Start with an empty left hand and the cards in a pile on the table. Pick up the first card in the pile and hold it with your left hand. Then, with your right hand, remove one card at a time from the pile, and insert it into the correct position in your left hand. As Figure 2.1 illustrates, you find the correct position for a card by comparing it with each of the cards already in your left hand, starting at the right and moving left. As soon as you see a card in your left hand whose value is less than or equal to the card you’re holding in your right hand, insert the card that you’re holding in your right hand just to the right of this card in your left hand. If all the cards in your left hand have values greater than the card in your right hand, then place this card as the leftmost card in your left hand. At all times, the cards held in your left hand are sorted, and these cards were originally the top cards of the pile on the table."
   },
   {
    "type": "body",
@@ -255,7 +255,7 @@
    "section_title": "2.1 Insertion sort",
    "printed_page": 19,
    "pdf_page": 40,
-   "text": "Figure 2.2 shows how this algorithm works for an ar ray A that starts out with the sequence ⟨5,2,4,6,1,3⟩. The index i indicates the \"current card\" being inserted into the hand. At the beginning of each it eration of the for loop, which is indexed by i , the subarray (a contiguous portion of the array) consisting of elements A[1 : i − 1] (that is, A[1] through A[i − 1]) constitutes the currently sorted hand, and the remaining subarray A[i + 1 : n] (elements A[i + 1] through A[n]) corresponds to the pile of cards still on the table. In fact, elements A[1 : i − 1] are the elements originally in positions 1 through i − 1, but now in sorted order. We state these properties of A[1 : i − 1] formally as a loop invariant:"
+   "text": "Figure 2.2 shows how this algorithm works for an array A that starts out with the sequence ⟨5,2,4,6,1,3⟩. The index i indicates the \"current card\" being inserted into the hand. At the beginning of each it eration of the for loop, which is indexed by i , the subarray (a contiguous portion of the array) consisting of elements A[1 : i − 1] (that is, A[1] through A[i − 1]) constitutes the currently sorted hand, and the remaining subarray A[i + 1 : n] (elements A[i + 1] through A[n]) corresponds to the pile of cards still on the table. In fact, elements A[1 : i − 1] are the elements originally in positions 1 through i − 1, but now in sorted order. We state these properties of A[1 : i − 1] formally as a loop invariant:"
   },
   {
    "type": "body",
@@ -381,7 +381,7 @@
    "section_title": "2.1 Insertion sort",
    "printed_page": 20,
    "pdf_page": 41,
-   "text": "⟨5,2,4,6,1,3⟩ and n = 6. Array indices appear above the rectangles, and va lues stored in the array positions appear within the rectangles. (a)–(e) The iterations of the for loop of lines 1–8. In each iteration, the blue rectangle holds the key ta ken from A[i], which is compared with the values in tan rectangles to its left in the test of line 5. Orange arrows show array values moved one position to the right in line 6, and blue arrows indicate where the key moves to in line 8. (f) The final sorted array."
+   "text": "⟨5,2,4,6,1,3⟩ and n = 6. Array indices appear above the rectangles, and values stored in the array positions appear within the rectangles. (a)–(e) The iterations of the for loop of lines 1–8. In each iteration, the blue rectangle holds the key taken from A[i], which is compared with the values in tan rectangles to its left in the test of line 5. Orange arrows show array values moved one position to the right in line 6, and blue arrows indicate where the key moves to in line 8. (f) The final sorted array."
   },
   {
    "type": "body",
@@ -426,7 +426,7 @@
    "section_title": "2.1 Insertion sort",
    "printed_page": 20,
    "pdf_page": 41,
-   "text": "Maintenance: If it is true before an iteration of the loop, it r emains true before the next iteration."
+   "text": "Maintenance: If it is true before an iteration of the loop, it remains true before the next iteration."
   },
   {
    "type": "body",
@@ -489,7 +489,7 @@
    "section_title": "2.1 Insertion sort",
    "printed_page": 21,
    "pdf_page": 42,
-   "text": "Maintenance: Next, we tackle the second property: showing that e ach iteration maintains the loop invariant. Informally, the body of the for loop works by moving the values in A[i − 1], A[i − 2], A[i − 3], and so on by one position to the right until it finds the proper position for A[i] (lines 4–7), at which point it inserts the value of A[i] (line 8). The subarray A[1 : i] then consists of the elements originally in A[1 : i], but in sorted order. Incrementing i (increasing its value by 1) for the next iteration of the for loop then preserves the loop invariant."
+   "text": "Maintenance: Next, we tackle the second property: showing that each iteration maintains the loop invariant. Informally, the body of the for loop works by moving the values in A[i − 1], A[i − 2], A[i − 3], and so on by one position to the right until it finds the proper position for A[i] (lines 4–7), at which point it inserts the value of A[i] (line 8). The subarray A[1 : i] then consists of the elements originally in A[1 : i], but in sorted order. Incrementing i (increasing its value by 1) for the next iteration of the for loop then preserves the loop invariant."
   },
   {
    "type": "body",
@@ -498,7 +498,7 @@
    "section_title": "2.1 Insertion sort",
    "printed_page": 21,
    "pdf_page": 42,
-   "text": "A more formal treatment of the second property woul d require us to state and show a loop invariant for the while loop of lines 5–7. Let’s not get bogged down in such formalism just yet. Instead, we’ll rely on our informal analysis to show that the second property holds for the outer loop."
+   "text": "A more formal treatment of the second property would require us to state and show a loop invariant for the while loop of lines 5–7. Let’s not get bogged down in such formalism just yet. Instead, we’ll rely on our informal analysis to show that the second property holds for the outer loop."
   },
   {
    "type": "body",
@@ -552,7 +552,7 @@
    "section_title": "2.1 Insertion sort",
    "printed_page": 22,
    "pdf_page": 43,
-   "text": "• The looping constructs while, for, and repeat-until and the if-else conditional construct have interpretations similar to those in C, C++, Java, Python, and JavaScript. 5 In this book, the loop counter retains its value af ter the loop is exited, unlike some situations that arise in C++ and Java. Thus, immediately after a for loop, the loop counter’s value is the value that first exceeded the for loop bound. 6 We used this property in our correctness argument f or insertion sort. The for loop header in line 1 is for i = 2 to n, and so when this loop terminates, i equals n + 1. We use the keyword to when a for loop increments its loop counter in each iteration, and we use the keyword downto when a for loop decrements its loop counter (reduces its value by 1 in each iteration). When the loop counter changes by an amount greater than 1, the amount of change follows the optional keyword by."
+   "text": "• The looping constructs while, for, and repeat-until and the if-else conditional construct have interpretations similar to those in C, C++, Java, Python, and JavaScript. 5 In this book, the loop counter retains its value after the loop is exited, unlike some situations that arise in C++ and Java. Thus, immediately after a for loop, the loop counter’s value is the value that first exceeded the for loop bound. 6 We used this property in our correctness argument f or insertion sort. The for loop header in line 1 is for i = 2 to n, and so when this loop terminates, i equals n + 1. We use the keyword to when a for loop increments its loop counter in each iteration, and we use the keyword downto when a for loop decrements its loop counter (reduces its value by 1 in each iteration). When the loop counter changes by an amount greater than 1, the amount of change follows the optional keyword by."
   },
   {
    "type": "body",
@@ -579,7 +579,7 @@
    "section_title": "2.1 Insertion sort",
    "printed_page": 22,
    "pdf_page": 43,
-   "text": "• We access array elements by specifying the array na me followed by the index in square brackets. For example, A[i] indicates the i th element of the array A."
+   "text": "• We access array elements by specifying the array name followed by the index in square brackets. For example, A[i] indicates the i th element of the array A."
   },
   {
    "type": "body",
@@ -606,7 +606,7 @@
    "section_title": "2.1 Insertion sort",
    "printed_page": 22,
    "pdf_page": 43,
-   "text": "4 Each pseudocode procedure in this book appears on o ne page so that you do not need to discern levels of indentation in pseudocode that is split across pages."
+   "text": "4 Each pseudocode procedure in this book appears on one page so that you do not need to discern levels of indentation in pseudocode that is split across pages."
   },
   {
    "type": "footnote",
@@ -642,7 +642,7 @@
    "section_title": "2.1 Insertion sort",
    "printed_page": 22,
    "pdf_page": 43,
-   "text": "6 In Python, the loop counter retains its value after the loop is exited, but the value it retains is th e value it had during the final iteration of the for loop, rather than the value that exceeded the loop bound. That is because a Python for loop iterates through a list, which may contain non numeric values. clear about whether a particular algorithm assumes 0-origin or 1-origin indexing, we’ll specify the bounds of the arrays explicitly. If you are implementing an algorithm that we specify using 1-origin indexing, but you’re writing in a programming language that enforces 0-origin indexing (such as C, C++, Java, Python, or JavaScript), then give yourself credit for being able to adjust. You can either always subtract 1 from each index or allocate each array with one extra position and just ignore position 0."
+   "text": "6 In Python, the loop counter retains its value after the loop is exited, but the value it retains is the value it had during the final iteration of the for loop, rather than the value that exceeded the loop bound. That is because a Python for loop iterates through a list, which may contain non numeric values. clear about whether a particular algorithm assumes 0-origin or 1-origin indexing, we’ll specify the bounds of the arrays explicitly. If you are implementing an algorithm that we specify using 1-origin indexing, but you’re writing in a programming language that enforces 0-origin indexing (such as C, C++, Java, Python, or JavaScript), then give yourself credit for being able to adjust. You can either always subtract 1 from each index or allocate each array with one extra position and just ignore position 0."
   },
   {
    "type": "body",
@@ -741,7 +741,7 @@
    "section_title": "2.1 Insertion sort",
    "printed_page": 24,
    "pdf_page": 45,
-   "text": "• The keyword error indicates that an error occurred because conditions were wrong for the procedure to have been called, and th e procedure immediately terminates. The calling procedure is responsible fo r handling the error, and so we do not specify what action to take."
+   "text": "• The keyword error indicates that an error occurred because conditions were wrong for the procedure to have been called, and the procedure immediately terminates. The calling procedure is responsible for handling the error, and so we do not specify what action to take."
   },
   {
    "type": "exercise",
@@ -759,7 +759,7 @@
    "section_title": "2.1 Insertion sort",
    "printed_page": 24,
    "pdf_page": 45,
-   "text": "2.1-2 Consider the procedure SUM-ARRAY on the facing page. It computes the sum of the n numbers in array A[1 : n]. State a loop invariant for this procedure, and us e its initialization, maintenance, and termination pr operties to show that the SUM- ARRAY procedure returns the sum of the numbers in A[1 : n]."
+   "text": "2.1-2 Consider the procedure SUM-ARRAY on the facing page. It computes the sum of the n numbers in array A[1 : n]. State a loop invariant for this procedure, and use its initialization, maintenance, and termination properties to show that the SUM- ARRAY procedure returns the sum of the numbers in A[1 : n]."
   },
   {
    "type": "footnote",
@@ -869,7 +869,7 @@
    "section_title": "2.2 Analyzing algorithms",
    "printed_page": 25,
    "pdf_page": 46,
-   "text": "Analyzing an algorithm has come to mean predicting the resources that the algorithm requires. You might consider resources such a s memory, communication bandwidth, or energy consumption. Most often, however, you’ll want to measure computational time. If you analyze several candidat e algorithms for a problem, you can identify the most efficient one. There might be more than just one viable candidate, but you can often rule out several inferior algorithms in the process."
+   "text": "Analyzing an algorithm has come to mean predicting the resources that the algorithm requires. You might consider resources such a s memory, communication bandwidth, or energy consumption. Most often, however, you’ll want to measure computational time. If you analyze several candidate algorithms for a problem, you can identify the most efficient one. There might be more than just one viable candidate, but you can often rule out several inferior algorithms in the process."
   },
   {
    "type": "body",
@@ -878,7 +878,7 @@
    "section_title": "2.2 Analyzing algorithms",
    "printed_page": 26,
    "pdf_page": 47,
-   "text": "Before you can analyze an algorithm, you need a model of the technology that it runs on, including the resources of that technology and a way to express their costs. Most of this book assumes a generic one-processor, random-access machine (RAM) model of computation as the implementation technology, with the understanding that algorithms are implemented as computer programs. In the RAM model, instructions execute one after another, with no concurrent operations. The"
+   "text": "Before you can analyze an algorithm, you need a mod el of the technology that it runs on, including the resources of that technology and a way to express their costs. Most of this book assumes a generic one-processor, random-access machine (RAM) model of computation as the implementation technology, with the understanding that algorithms are implemented as computer programs. In the RAM model, instructions execute one after another, with no concurrent operations. The"
   },
   {
    "type": "body",
@@ -887,7 +887,7 @@
    "section_title": "2.2 Analyzing algorithms",
    "printed_page": 26,
    "pdf_page": 47,
-   "text": "RAM model assumes that each instruction takes the s ame amount of time as any other instruction and that each data access—using the value of a variable or storing into a variable—takes the same amount of time as any other data access. In other words, in the RAM model each instruction or data access takes a constant amount of time—even indexing into an array. 9"
+   "text": "RAM model assumes that each instruction takes the same amount of time as any other instruction and that each data access—using the value of a variable or storing into a variable—takes the same amount of time as any other data access. In other words, in the RAM model each instruction or data access takes a constant amount of time—even indexing into an array. 9"
   },
   {
    "type": "body",
@@ -905,7 +905,7 @@
    "section_title": "2.2 Analyzing algorithms",
    "printed_page": 26,
    "pdf_page": 47,
-   "text": "For example, what if a RAM had an instruction that sorts? Then you could sort in just one step. Such a RAM would be unrealistic, since such instructions do not appear in real computers. Our guide, therefore, is how real computers are designed. The RAM model contains instructions commonly found in real computers: arithmetic (such as add, subtract, multiply, divide , remainder, floor, ceiling), data movement (load, store, copy), and control (conditional and unconditional branch, subroutine call and return)."
+   "text": "For example, what if a RAM had an instruction that sorts? Then you could sort in just one step. Such a RAM would be unrealistic, since such instructions do not appear in real computers. Our guide, therefore, is how real computers are designed. The RAM model contains instructions commonly found in real computers: arithmetic (such as add, subtract, multiply, divide , remainder, floor, ceiling), data movement (load, store, copy), and control (conditio nal and unconditional branch, subroutine call and return)."
   },
   {
    "type": "body",
@@ -932,7 +932,7 @@
    "section_title": "2.2 Analyzing algorithms",
    "printed_page": 26,
    "pdf_page": 47,
-   "text": "1000 + 4.i − 1/. In general, computing the address in memory of a particular array element requires at most one subtraction (no subtraction for a 0-origin array), one multiplication (often implemented as a shift operation if the element size is an exac t power of 2), and one addition. Furthermore, for code that iterates through the elements of an array in order, an optimizing compiler can generate the address of each element using just one addition, by adding the element size to the address of the preceding element. assume that integers are represented by c log 2 n bits for some constant c ≥ 1. We require c ≥ 1 so that each word can hold the value of n, enabling us to index the individual input elements, and we restrict c to be a constant so that the word size does not grow arbitrarily. (If the word size c ould grow arbitrarily, we could store huge amounts of data in one word and operate on it all in constant time—an unrealistic scenario.)"
+   "text": "1000 + 4.i − 1/. In general, computing the address in memory of a particular array element requires at most one subtraction (no subtraction for a 0-origin array), one multiplication (often implemented as a shift operation if the element size is an exact power of 2), and one addition. Furthermore, for code that iterates through the elements of an array in order, an optimizing compiler can generate the address of each element using just one addition, by adding the element size to the address of the preceding element. assume that integers are represented by c log 2 n bits for some constant c ≥ 1. We require c ≥ 1 so that each word can hold the value of n, enabling us to index the individual input elements, and we restrict c to be a constant so that the word size does not grow arbitrarily. (If the word size could grow arbitrarily, we could store huge amounts of data in one word and operate on it all in constant time—an unrealistic scenario.)"
   },
   {
    "type": "body",
@@ -959,7 +959,7 @@
    "section_title": "2.2 Analyzing algorithms",
    "printed_page": 27,
    "pdf_page": 48,
-   "text": "The RAM model does not account for the memory hierarchy that is common in contemporary computers. It models neither caches nor virtual memory. Several other computational models attempt to account for memory-hierarchy effects, which are sometimes significant in real programs on real machines. Section 11.5 and a handful of problems in this book examine memory-hierarchy effects, but for the most part, the analyses in this book do not consider them. Models that include the memory hierarchy are quite a bit more complex t han the RAM model, and so they can be difficult to work with. Moreover, RAM-model analyses are usually excellent predictors of performance on actual machines."
+   "text": "The RAM model does not account for the memory hierarchy that is common in contemporary computers. It models neither caches nor virtual memory. Several other computational models attempt to account for memory-hierarchy effects, which are sometimes significant in real programs on real machines. Section 11.5 and a handful of problems in this book examine memory-hierarchy effects, but for the most part, the analyses in this book do not consider them. Models that include the memory hierarchy are quite a bit more complex than the RAM model, and so they can be difficult to work with. Moreover, RAM-model analyses are usually excellent predictors of performance on actual machines."
   },
   {
    "type": "body",
@@ -968,7 +968,7 @@
    "section_title": "2.2 Analyzing algorithms",
    "printed_page": 27,
    "pdf_page": 48,
-   "text": "Although it is often straightforward to analyze an algorithm in the RAM model, sometimes it can be quite a challenge. You might ne ed to employ mathematical tools such as combinatorics, probability theory, algebraic dexterity, and the ability to identify the most significant terms in a formula. Because an algorithm might behave differently for each possible input, we need a means for summarizing that behavior in simple, easily understood formulas."
+   "text": "Although it is often straightforward to analyze an algorithm in the RAM model, sometimes it can be quite a challenge. You might need to employ mathematical tools such as combinatorics, probability theory, algebraic dexterity, and the ability to identify the most significant terms in a formula. Because an algorithm might behave differently for each possible input, we need a means for summarizing that behavior in simple, easily understood formulas."
   },
   {
    "type": "body",
@@ -986,7 +986,7 @@
    "section_title": "2.2 Analyzing algorithms",
    "printed_page": 27,
    "pdf_page": 48,
-   "text": "How long does the INSERTION-SORT procedure take? One way to tell would be for you to run it on your computer and time how long it takes to run. Of course, you’d first have to implement it in a real programming language, since you cannot run our pseudocode directly. What would such a timing test tell you? You would find out how long insertion sort takes to run on your particular computer, on that particular input, under the particular implementation that you created, with the particular compiler or interpreter that you ran, with the part icular libraries that you linked in, and with the particular background tasks that w ere running on your computer concurrently with your timing test (such as checking for incoming information over a network). If you run insertion sort again on your computer with the same input, you might even get a different timing result. From running just one implementation of insertion sort on just one computer and on just one input, what would you be able to determine about insertion sort’s running time if you were to give it a different input, if you were to run it on a different computer, or if you were to implement it in a different programming language? Not much. We need a way to predict, given a new input, how long insertion sort will take."
+   "text": "How long does the INSERTION-SORT procedure take? One way to tell would be for you to run it on your computer and time how long it takes to run. Of course, you’d first have to implement it in a real programming language, since you cannot run our pseudocode directly. What would such a timing test tell you? You would find out how long insertion sort takes to run on your particular computer, on that particular input, under the particular implementation that you created, with the particular compiler or interpreter that you ran, with the part icular libraries that you linked in, and with the particular background tasks that were running on your computer concurrently with your timing test (such as checking for incoming information over a network). If you run insertion sort again on your computer with the same input, you might even get a different timing result. From running just one implementation of insertion sort on just one computer and on just one input, what would you be able to determine about insertion sort’s running time if you were to give it a different input, if you were to run it on a different computer, or if you were to implement it in a different programming language? Not much. We need a way to predict, given a new input, how long insertion sort will take."
   },
   {
    "type": "body",
@@ -995,7 +995,7 @@
    "section_title": "2.2 Analyzing algorithms",
    "printed_page": 28,
    "pdf_page": 49,
-   "text": "Instead of timing a run, or even several runs, of insertion sort, we can determine how long it takes by analyzing the algorithm itself. We’ll examine how many times it executes each line of pseudocode and how long ea ch line of pseudocode takes to run. We’ll first come up with a precise but complicated formula for the running time. Then, we’ll distill the important part of the formula using a convenient notation that can help us compare the running times o f different algorithms for the same problem."
+   "text": "Instead of timing a run, or even several runs, of insertion sort, we can determine how long it takes by analyzing the algorithm itself. We’ll examine how many times it executes each line of pseudocode and how long each line of pseudocode takes to run. We’ll first come up with a precise but complicated formula for the running time. Then, we’ll distill the important part of the formula using a convenient notation that can help us compare the running times o f different algorithms for the same problem."
   },
   {
    "type": "body",
@@ -1031,7 +1031,7 @@
    "section_title": "2.2 Analyzing algorithms",
    "printed_page": 29,
    "pdf_page": 50,
-   "text": "The running time of an algorithm on a particular input is the number of in- structions and data accesses executed. How we account for these costs should be independent of any particular computer, but within the framework of the RAM model. For the moment, let us adopt the following v iew. A constant amount of time is required to execute each line of our pseudocode. One line might take more or less time than another line, but we’ll assume that each execution of the kth line takes c k time, where c k is a constant. This viewpoint is in keeping with th e RAM model, and it also reflects how the pseudocode would be implemented on most actual computers. 10"
+   "text": "The running time of an algorithm on a particular input is the number of in- structions and data accesses executed. How we account for these costs should be independent of any particular computer, but within the framework of the RAM model. For the moment, let us adopt the following view. A constant amount of time is required to execute each line of our pseudocode. One line might take more or less time than another line, but we’ll assume that each execution of the kth line takes c k time, where c k is a constant. This viewpoint is in keeping with the RAM model, and it also reflects how the pseudocode would be implemented on most actual computers. 10"
   },
   {
    "type": "body",
@@ -1433,7 +1433,7 @@
    "section_title": "2.2 Analyzing algorithms",
    "printed_page": 31,
    "pdf_page": 52,
-   "text": "• For some algorithms, the worst case occurs fairly often. For example, in searching a database for a particular piece of informatio n, the searching algorithm’s worst case often occurs when the information is not present in the database. In some applications, searches for absent information may be frequent."
+   "text": "• For some algorithms, the worst case occurs fairly often. For example, in searching a database for a particular piece of information, the searching algorithm’s worst case often occurs when the information is not present in the database. In some applications, searches for absent information may be frequent."
   },
   {
    "type": "body",
@@ -1442,7 +1442,7 @@
    "section_title": "2.2 Analyzing algorithms",
    "printed_page": 32,
    "pdf_page": 53,
-   "text": "• The \"average case\" is often roughly as bad as the w orst case. Suppose that you run insertion sort on an array of n randomly chosen numbers. How long does it take to determine where in subarray A[1 : i − 1] to insert element A[i]?"
+   "text": "• The \"average case\" is often roughly as bad as the worst case. Suppose that you run insertion sort on an array of n randomly chosen numbers. How long does it take to determine where in subarray A[1 : i − 1] to insert element A[i]?"
   },
   {
    "type": "body",
@@ -1568,7 +1568,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 34,
    "pdf_page": 55,
-   "text": "You can choose from a wide range of algorithm desig n techniques. Insertion sort uses the incremental method: for each element A[i], insert it into its proper place in the subarray A[1 : i], having already sorted the subarray A[1 : i − 1]."
+   "text": "You can choose from a wide range of algorithm design techniques. Insertion sort uses the incremental method: for each element A[i], insert it into its proper place in the subarray A[1 : i], having already sorted the subarray A[1 : i − 1]."
   },
   {
    "type": "body",
@@ -1658,7 +1658,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 35,
    "pdf_page": 56,
-   "text": "Divide the subarray A[p : r] to be sorted into two adjacent subarrays, each of h alf the size. To do so, compute the midpoint q of A[p : r] (taking the average of p and r ), and divide A[p : r] into subarrays A[p : q] and A[q + 1 : r]."
+   "text": "Divide the subarray A[p : r] to be sorted into two adjacent subarrays, each of half the size. To do so, compute the midpoint q of A[p : r] (taking the average of p and r ), and divide A[p : r] into subarrays A[p : q] and A[q + 1 : r]."
   },
   {
    "type": "body",
@@ -1694,7 +1694,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 35,
    "pdf_page": 56,
-   "text": "The key operation of the merge sort algorithm occur s in the \"combine\" step, which merges two adjacent, sorted subarrays. The me rge operation is performed by the auxiliary procedure MERGE(A,p,q,r) on the following page, where A is an array and p, q, and r are indices into the array such that p ≤ q < r . The procedure assumes that the adjacent subarrays A[p : q] and A[q + 1 : r] were already recursively sorted. It merges the two sorted subarrays to form a single sorted subarray that replaces the current subarray A[p : r]."
+   "text": "The key operation of the merge sort algorithm occur s in the \"combine\" step, which merges two adjacent, sorted subarrays. The merge operation is performed by the auxiliary procedure MERGE(A,p,q,r) on the following page, where A is an array and p, q, and r are indices into the array such that p ≤ q < r . The procedure assumes that the adjacent subarrays A[p : q] and A[q + 1 : r] were already recursively sorted. It merges the two sorted subarrays to form a single sorted subarray that replaces the current subarray A[p : r]."
   },
   {
    "type": "body",
@@ -1703,7 +1703,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 35,
    "pdf_page": 56,
-   "text": "To understand how the MERGE procedure works, let’s return to our card-playing motif. Suppose that you have two piles of cards fac e up on a table. Each pile is sorted, with the smallest-value cards on top. You wish to merge the two piles into a single sorted output pile, which is to be fa ce down on the table. The basic step consists of choosing the smaller of the two ca rds on top of the face-up piles, removing it from its pile—which exposes a new top card—and placing this card face down onto the output pile. Repeat this step un til one input pile is empty, at which time you can just take the remaining input pile and flip over the entire pile, placing it face down onto the output pile."
+   "text": "To understand how the MERGE procedure works, let’s return to our card-playing motif. Suppose that you have two piles of cards face up on a table. Each pile is sorted, with the smallest-value cards on top. You wish to merge the two piles into a single sorted output pile, which is to be face down on the table. The basic step consists of choosing the smaller of the two cards on top of the face-up piles, removing it from its pile—which exposes a new top card—and placing this card face down onto the output pile. Repeat this step until one input pile is empty, at which time you can just take the remaining input pile and flip over the entire pile, placing it face down onto the output pile."
   },
   {
    "type": "body",
@@ -1712,7 +1712,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 35,
    "pdf_page": 56,
-   "text": "Let’s think about how long it takes to merge two sorted piles of cards. Each basic step takes constant time, since you are comparing just the two top cards. If the two sorted piles that you start with each have n/2 cards, then the number of basic steps is at least n/2 (since in whichever pile was emptied, every card wa s found to be smaller than some card from the other pile) and at most n (actually, at most n − 1, since after n − 1 basic steps, one of the piles must be empty). With each basic step taking constant time and the total number of basic steps being between n/2 and n, we can say that merging takes time roughly proportional to n. That is, merging takes Θ(n) time."
+   "text": "Let’s think about how long it takes to merge two sorted piles of cards. Each basic step takes constant time, since you are comparing just the two top cards. If the two sorted piles that you start with each have n/2 cards, then the number of basic steps is at least n/2 (since in whichever pile was emptied, every card was found to be smaller than some card from the other pile) and at most n (actually, at most n − 1, since after n − 1 basic steps, one of the piles must be empty). With each basic step taking constant time and the total number of basic steps being between n/2 and n, we can say that merging takes time roughly proportional to n. That is, merging takes Θ(n) time."
   },
   {
    "type": "body",
@@ -2130,7 +2130,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 37,
    "pdf_page": 58,
-   "text": "Figure 2.3 The operation of the while loop in lines 8–18 in the call MERGE(A,9,12,16) , when the subarray A[9 : 16] contains the values ⟨2,4,6,7,1,2,3,5⟩. After allocating and copying into the arrays L and R, the array L contains ⟨2,4,6,7⟩, and the array R contains ⟨1,2,3,5⟩. Tan positions in A contain their final values, and tan positions in L and R contain values that have yet to be copied back into A. Taken together, the tan positions always comprise the values originally in A[9 : 16]. Blue positions in A contain values that will be copied over, and dark p ositions in L and R contain values that have already been copied back into A. (a)–(g) The arrays A, L, and R, and their respective indices k, i , and j prior to each iteration of the loop of lines 12–18. At the point in part (g), all values in R have been copied back into A (indicated by j equaling the length of R), and so the while loop in lines 12–18 terminates. (h) The arrays and indices at termination. The while loops of lines 20–23 and 24–27 copied back into A the remaining values in L and R, which are the largest values originally in A[9 : 16]. Here, lines 20–23 copied L[2 : 3] into A[15 : 16], and because all values in R had already been copied back into A, the while loop of lines 24–27 iterated 0 times."
+   "text": "Figure 2.3 The operation of the while loop in lines 8–18 in the call MERGE(A,9,12,16) , when the subarray A[9 : 16] contains the values ⟨2,4,6,7,1,2,3,5⟩. After allocating and copying into the arrays L and R, the array L contains ⟨2,4,6,7⟩, and the array R contains ⟨1,2,3,5⟩. Tan positions in A contain their final values, and tan positions in L and R contain values that have yet to be copied back into A. Taken together, the tan positions always comprise the values originally in A[9 : 16]. Blue positions in A contain values that will be copied over, and dark positions in L and R contain values that have already been copied back into A. (a)–(g) The arrays A, L, and R, and their respective indices k, i , and j prior to each iteration of the loop of lines 12–18. At the point in part (g), all values in R have been copied back into A (indicated by j equaling the length of R), and so the while loop in lines 12–18 terminates. (h) The arrays and indices at termination. The while loops of lines 20–23 and 24–27 copied back into A the remaining values in L and R, which are the largest values originally in A[9 : 16]. Here, lines 20–23 copied L[2 : 3] into A[15 : 16], and because all values in R had already been copied back into A, the while loop of lines 24–27 iterated 0 times."
   },
   {
    "type": "body",
@@ -2139,7 +2139,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 37,
    "pdf_page": 58,
-   "text": "At this point, the subarray in A[9 : 16] is sorted. be copied back into A[p : r] and copies it back in. As the comments indicate, th e index k gives the position of A that is being filled in, and the indices i and j give the positions in L and R, respectively, of the smallest remaining values. E ventually, either all of L or all of R is copied back into A[p : r], and this loop terminates."
+   "text": "At this point, the subarray in A[9 : 16] is sorted. be copied back into A[p : r] and copies it back in. As the comments indicate, the index k gives the position of A that is being filled in, and the indices i and j give the positions in L and R, respectively, of the smallest remaining values. E ventually, either all of L or all of R is copied back into A[p : r], and this loop terminates."
   },
   {
    "type": "body",
@@ -2166,7 +2166,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 38,
    "pdf_page": 59,
-   "text": "We can now use the MERGE procedure as a subroutine in the merge sort algorithm. The procedure MERGE-SORT(A,p,r) on the facing page sorts the elements in the subarray A[p : r]. If p equals r , the subarray has just 1 element and is therefore already sorted. Otherwise, we must have p < r , and MERGE-SORT runs the divide, conquer, and combine steps. The di vide step simply computes an index q that partitions A[p : r] into two adjacent subarrays: A[p : q], containing"
+   "text": "We can now use the MERGE procedure as a subroutine in the merge sort algorithm. The procedure MERGE-SORT(A,p,r) on the facing page sorts the elements in the subarray A[p : r]. If p equals r , the subarray has just 1 element and is therefore already sorted. Otherwise, we must have p < r , and MERGE-SORT runs the divide, conquer, and combine steps. The divide step simply computes an index q that partitions A[p : r] into two adjacent subarrays: A[p : q], containing"
   },
   {
    "type": "body",
@@ -2193,7 +2193,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 38,
    "pdf_page": 59,
-   "text": "Figure 2.4 illustrates the operation of the procedure for n = 8, showing also the sequence of divide and merge steps. The algorithm r ecursively divides the array down to 1-element subarrays. The combine steps merge pairs of 1-element subar- 13 If you’re wondering where the \"C1\" comes from, imagine that r = p + 1. Then the subarray A[p : r] consists of two elements, and r − p + 1 = 2."
+   "text": "Figure 2.4 illustrates the operation of the procedure for n = 8, showing also the sequence of divide and merge steps. The algorithm recursively divides the array down to 1-element subarrays. The combine steps merge pairs of 1-element subar- 13 If you’re wondering where the \"C1\" comes from, imagine that r = p + 1. Then the subarray A[p : r] consists of two elements, and r − p + 1 = 2."
   },
   {
    "type": "body",
@@ -2270,7 +2270,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 39,
    "pdf_page": 60,
-   "text": "When an algorithm contains a recursive call, you ca n often describe its running time by a recurrence equation or recurrence, which describes the overall running time on a problem of size n in terms of the running time of the same algorithm on smaller inputs. You can then use mathematical tools to solve the recurrence and provide bounds on the performance of the algorithm."
+   "text": "When an algorithm contains a recursive call, you can often describe its running time by a recurrence equation or recurrence, which describes the overall running time on a problem of size n in terms of the running time of the same algorithm on smaller inputs. You can then use mathematical tools to solve the recurrence and provide bounds on the performance of the algorithm."
   },
   {
    "type": "body",
@@ -2693,7 +2693,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 42,
    "pdf_page": 63,
-   "text": "Part (a) of the figure shows T(n) , which part (b) expands into an equivalent tree representing the recurrence. The c 2 n term denotes the cost of dividing and combining at the top level of recursion, and the two s ubtrees of the root are the two smaller recurrences T(n/2) . Part (c) shows this process carried one step further by"
+   "text": "Part (a) of the figure shows T(n) , which part (b) expands into an equivalent tree representing the recurrence. The c 2 n term denotes the cost of dividing and combining at the top level of recursion, and the two subtrees of the root are the two smaller recurrences T(n/2) . Part (c) shows this process carried one step further by"
   },
   {
    "type": "body",
@@ -2702,7 +2702,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 42,
    "pdf_page": 63,
-   "text": "expanding T(n/2) . The cost for dividing and combining at each of th e two nodes at the second level of recursion is c 2 n/2. Continue to expand each node in the tree by breaking it into its constituent parts as determined by the recurrence, until the problem sizes get down to 1, each with a cost of c 1 . Part (d) shows the resulting recursion tree."
+   "text": "expanding T(n/2) . The cost for dividing and combining at each of the two nodes at the second level of recursion is c 2 n/2. Continue to expand each node in the tree by breaking it into its constituent parts as determined by the recurrence, until the problem sizes get down to 1, each with a cost of c 1 . Part (d) shows the resulting recursion tree."
   },
   {
    "type": "body",
@@ -2711,7 +2711,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 42,
    "pdf_page": 63,
-   "text": "Next, add the costs across each level of the tree. The top level has total cost c 2 n, the next level down has total cost c 2 (n/2) + c 2 (n/2) = c 2 n, the level after that has total cost c 2 (n/4) + c 2 (n/4) + c 2 (n/4) + c 2 (n/4) = c 2 n, and so on. Each level has twice as many nodes as the level above, but eac h node contributes only half the cost of a node from the level above. From one l evel to the next, doubling and halving cancel each other out, so that the cost across each level is the same: c 2 n. In general, the level that is i levels below the top has 2 i nodes, each contributing a cost of c 2 (n/2 i ), so that the i th level below the top has total cost 2 i • c 2 (n/2 i ) = c 2 n."
+   "text": "Next, add the costs across each level of the tree. The top level has total cost c 2 n, the next level down has total cost c 2 (n/2) + c 2 (n/2) = c 2 n, the level after that has total cost c 2 (n/4) + c 2 (n/4) + c 2 (n/4) + c 2 (n/4) = c 2 n, and so on. Each level has twice as many nodes as the level above, but each node contributes only half the cost of a node from the level above. From one level to the next, doubling and halving cancel each other out, so that the cost across each level is the same: c 2 n. In general, the level that is i levels below the top has 2 i nodes, each contributing a cost of c 2 (n/2 i ), so that the i th level below the top has total cost 2 i • c 2 (n/2 i ) = c 2 n."
   },
   {
    "type": "body",
@@ -2792,7 +2792,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 43,
    "pdf_page": 64,
-   "text": "Figure 2.5 How to construct a recursion tree for the recurrence (2.4). Part (a) shows T(n) , which progressively expands in (b)–(d) to form the recursion tree. The fully expanded tree in part (d) has lg n + 1 levels. Each level above the leaves contributes a t otal cost of c 2 n, and the leaf level contributes c 1 n. The total cost, therefore, is c 2 n lg n + c 1 n = Θ(n lg n). level than a tree with 2 i leaves, and so the total number of levels is (i + 1) + 1 = lg 2 i + 1 + 1."
+   "text": "Figure 2.5 How to construct a recursion tree for the recurrence (2.4). Part (a) shows T(n) , which progressively expands in (b)–(d) to form the recursion tree. The fully expanded tree in part (d) has lg n + 1 levels. Each level above the leaves contributes a total cost of c 2 n, and the leaf level contributes c 1 n. The total cost, therefore, is c 2 n lg n + c 1 n = Θ(n lg n). level than a tree with 2 i leaves, and so the total number of levels is (i + 1) + 1 = lg 2 i + 1 + 1."
   },
   {
    "type": "body",
@@ -3246,7 +3246,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 48,
    "pdf_page": 69,
-   "text": "The early history of proving programs correct is de scribed by Gries [200], who credits P. Naur with the first article in this field. Gries attributes loop invariants to R. W. Floyd. The textbook by Mitchell [329] is a good reference on how to prove programs correct."
+   "text": "The early history of proving programs correct is described by Gries [200], who credits P. Naur with the first article in this field. Gries attributes loop invariants to R. W. Floyd. The textbook by Mitchell [329] is a good reference on how to prove programs correct."
   },
   {
    "type": "footnote",
@@ -3264,7 +3264,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 49,
    "pdf_page": 70,
-   "text": "The order of growth of the running time of an algorithm, defined in Chapter 2, gives a simple way to characterize the algorithm’s efficiency and also allows us to compare it with alternative algorithms. Once the input size n becomes large enough, merge sort, with its Θ(n lg n) worst-case running time, beats insertion sort, whose worst-case running time is Θ(n 2 ). Although we can sometimes determine the exact running time of an algorithm, as we did f or insertion sort in Chapter 2, the extra precision is rarely worth the effort of c omputing it. For large enough inputs, the multiplicative constants and lower-order terms of an exact running time are dominated by the effects of the input size itself."
+   "text": "The order of growth of the running time of an algorithm, defined in Chapter 2, gives a simple way to characterize the algorithm’s efficiency and also allows us to compare it with alternative algorithms. Once the input size n becomes large enough, merge sort, with its Θ(n lg n) worst-case running time, beats insertion sort, whose worst-case running time is Θ(n 2 ). Although we can sometimes determine the exact running time of an algorithm, as we did f or insertion sort in Chapter 2, the extra precision is rarely worth the effort of computing it. For large enough inputs, the multiplicative constants and lower-order terms of an exact running time are dominated by the effects of the input size itself."
   },
   {
    "type": "body",
@@ -3273,7 +3273,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 49,
    "pdf_page": 70,
-   "text": "When we look at input sizes large enough to make re levant only the order of growth of the running time, we are studying the asymptotic efficiency of algorithms. That is, we are concerned with how the running time of an algorithm increases with the size of the input in the limit, as the size of the input increases without bound. Usually, an algorithm that is asymptotically more efficient is the best choice for all but very small inputs."
+   "text": "When we look at input sizes large enough to make relevant only the order of growth of the running time, we are studying the asymptotic efficiency of algorithms. That is, we are concerned with how the running time of an algorithm increases with the size of the input in the limit, as the size of the input increases without bound. Usually, an algorithm that is asymptotically more efficient is the best choice for all but very small inputs."
   },
   {
    "type": "body",
@@ -3282,7 +3282,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 49,
    "pdf_page": 70,
-   "text": "This chapter gives several standard methods for simplifying the asymptotic analysis of algorithms. The next section presents informally the three most commonly used types of \"asymptotic notation,\" of which we ha ve already seen an example in Θ-notation. It also shows one way to use these asymptotic notations to reason about the worst-case running time of insertion sort. Then we look at asymptotic notations more formally and present several notational conventions used throughout this book. The last section reviews the behavio r of functions that commonly arise when analyzing algorithms."
+   "text": "This chapter gives several standard methods for simplifying the asymptotic analysis of algorithms. The next section presents informally the three most commonly used types of \"asymptotic notation,\" of which we have already seen an example in Θ-notation. It also shows one way to use these asymptotic notations to reason about the worst-case running time of insertion sort. Then we look at asymptotic notations more formally and present several notational conventions used throughout this book. The last section reviews the behavior of functions that commonly arise when analyzing algorithms."
   }
  ]
 }

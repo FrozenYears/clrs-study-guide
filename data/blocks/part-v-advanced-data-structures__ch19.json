@@ -369,7 +369,7 @@
    "section_title": "19.1 Disjoint-set operations",
    "printed_page": 522,
    "pdf_page": 543,
-   "text": "In an actual implementation of this connected-components algorithm, the representations of the graph and the disjoint-set data structure would need to reference each other. That is, an object representing a verte x would contain a pointer to the corresponding disjoint-set object, and vice versa. Since these programming details depend on the implementation language, we do not address them further here."
+   "text": "In an actual implementation of this connected-components algorithm, the representations of the graph and the disjoint-set data structure would need to reference each other. That is, an object representing a vertex would contain a pointer to the corresponding disjoint-set object, and vice versa. Since these programming details depend on the implementation language, we do not address them further here."
   },
   {
    "type": "body",
@@ -441,7 +441,7 @@
    "section_title": "19.2 Linked-list representation of disjoint sets",
    "printed_page": 523,
    "pdf_page": 544,
-   "text": "Figure 19.2(a) shows a simple way to implement a disjoint-set data structure: each set is represented by its own linked list. The object for each set has attributes head, pointing to the first object in the list, and tail, pointing to the last object. Each object in the list contains a set member, a pointer to the next object in the list, and a pointer back to the set object. Within each linke d list, the objects may appear in any order. The representative is the set member in the first object in the list."
+   "text": "Figure 19.2(a) shows a simple way to implement a disjoint-set data structure: each set is represented by its own linked list. The object for each set has attributes head, pointing to the first object in the list, and tail, pointing to the last object. Each object in the list contains a set member, a pointer to the next object in the list, and a pointer back to the set object. Within each linked list, the objects may appear in any order. The representative is the set member in the first object in the list."
   },
   {
    "type": "body",
@@ -486,7 +486,7 @@
    "section_title": "19.2 Linked-list representation of disjoint sets",
    "printed_page": 524,
    "pdf_page": 545,
-   "text": "Figure 19.2 (a) Linked-list representations of two sets. Set S 1 contains members d , f , and g, with representative f , and set S 2 contains members b, c, e, and h, with representative c. Each object in the list contains a set member, a pointer to the ne xt object in the list, and a pointer back to the se t object. Each set object has pointers head and tail to the first and last objects, respectively. (b) The result of UNION(g,e) , which appends the linked list containing e to the linked list containing g. The representative of the resulting set is f . The set object for e’s list, S 2 , is destroyed."
+   "text": "Figure 19.2 (a) Linked-list representations of two sets. Set S 1 contains members d , f , and g, with representative f , and set S 2 contains members b, c, e, and h, with representative c. Each object in the list contains a set member, a pointer to the next object in the list, and a pointer back to the set object. Each set object has pointers head and tail to the first and last objects, respectively. (b) The result of UNION(g,e) , which appends the linked list containing e to the linked list containing g. The representative of the resulting set is f . The set object for e’s list, S 2 , is destroyed."
   },
   {
    "type": "body",
@@ -648,7 +648,7 @@
    "section_title": "19.2 Linked-list representation of disjoint sets",
    "printed_page": 525,
    "pdf_page": 546,
-   "text": "In the worst case, the above implementation of UNION requires an average of Θ(n) time per call, because it might be appending a long er list onto a shorter list, and the procedure must update the pointer to the set ob ject for each member of the longer list. Suppose instead that each list also includes the length of the list (which can be maintained straightforwardly with constant o verhead) and that the UNION procedure always appends the shorter list onto the longer, breaking ties arbitrarily."
+   "text": "In the worst case, the above implementation of UNION requires an average of Θ(n) time per call, because it might be appending a long er list onto a shorter list, and the procedure must update the pointer to the set object for each member of the longer list. Suppose instead that each list also includes the length of the list (which can be maintained straightforwardly with constant overhead) and that the UNION procedure always appends the shorter list onto the longer, breaking ties arbitrarily."
   },
   {
    "type": "body",
@@ -702,7 +702,7 @@
    "section_title": "19.2 Linked-list representation of disjoint sets",
    "printed_page": 525,
    "pdf_page": 546,
-   "text": "UNION operations occur over all. We now bound the total t ime taken by these"
+   "text": "UNION operations occur over all. We now bound the total time taken by these"
   },
   {
    "type": "pseudocode",
@@ -768,7 +768,7 @@
    "section_title": "19.2 Linked-list representation of disjoint sets",
    "printed_page": 526,
    "pdf_page": 547,
-   "text": "UNION operations. We start by determining, for each objec t, an upper bound on the number of times the object’s pointer back to its set object is updated. Consider a particular object x . Each time x ’s pointer is updated, x must have started in the smaller set. The first time x ’s pointer is updated, therefore, the resulting set must have at least 2 members. Similarly, the next time x ’s pointer is updated, the resulting set must have had at least 4 members. Continuing on, for any k ≤ n, after x ’s pointer has been updated dlg ke times, the resulting set must have at least k members. Since the largest set has at most n members, each object’s pointer is updated at most dlg ne times over all the UNION operations. Thus the total time spent updating object pointers over all UNION operations is O(n lg n). We must also account for updating the tail pointers and the list lengths, which take only"
+   "text": "UNION operations. We start by determining, for each object, an upper bound on the number of times the object’s pointer back to its set object is updated. Consider a particular object x . Each time x ’s pointer is updated, x must have started in the smaller set. The first time x ’s pointer is updated, therefore, the resulting set must have at least 2 members. Similarly, the next time x ’s pointer is updated, the resulting set must have had at least 4 members. Continuing on, for any k ≤ n, after x ’s pointer has been updated dlg ke times, the resulting set must have at least k members. Since the largest set has at most n members, each object’s pointer is updated at most dlg ne times over all the UNION operations. Thus the total time spent updating object pointers over all UNION operations is O(n lg n). We must also account for updating the tail pointers and the list lengths, which take only"
   },
   {
    "type": "body",
@@ -840,7 +840,7 @@
    "section_title": "19.2 Linked-list representation of disjoint sets",
    "printed_page": 527,
    "pdf_page": 548,
-   "text": "19.2-5 Professor Gompers suspects that it might be possible to keep just one pointer in each set object, rather than two (head and tail), while keeping the number of pointers in each list element at two. Show that the professor’s suspicion is well founded by describing how to represent each set by a linked list such that each operation has the same running time as the operations described in this section. Describe also how the operations work. Your scheme should al low for the weighted-union heuristic, with the same effect as described in this section. ( Hint: Use the tail of a linked list as its set’s representative.)"
+   "text": "19.2-5 Professor Gompers suspects that it might be possible to keep just one pointer in each set object, rather than two (head and tail), while keeping the number of pointers in each list element at two. Show that the professor’s suspicion is well founded by describing how to represent each set by a linked list such that each operation has the same running time as the operations described in this section. Describe also how the operations work. Your scheme should allow for the weighted-union heuristic, with the same effect as described in this section. ( Hint: Use the tail of a linked list as its set’s representative.)"
   },
   {
    "type": "exercise",
@@ -867,7 +867,7 @@
    "section_title": "19.3 Disjoint-set forests",
    "printed_page": 527,
    "pdf_page": 548,
-   "text": "The three disjoint-set operations have simple implementations. AMAKE-SET operation simply creates a tree with just one node. AFIND-SET operation follows parent pointers until it reaches the root of the tr ee. The nodes visited on this simh e b d g"
+   "text": "The three disjoint-set operations have simple implementations. AMAKE-SET operation simply creates a tree with just one node. AFIND-SET operation follows parent pointers until it reaches the root of the tree. The nodes visited on this simh e b d g"
   },
   {
    "type": "body",
@@ -912,7 +912,7 @@
    "section_title": "19.3 Disjoint-set forests",
    "printed_page": 528,
    "pdf_page": 549,
-   "text": "So far, disjoint-set forests have not improved on the linked-list implementation. A sequence of n − 1 UNION operations could create a tree that is just a linea r chain of n nodes. By using two heuristics, however, we can ach ieve a running time that is almost linear in the total number m of operations."
+   "text": "So far, disjoint-set forests have not improved on the linked-list implementation. A sequence of n − 1 UNION operations could create a tree that is just a linear chain of n nodes. By using two heuristics, however, we can ach ieve a running time that is almost linear in the total number m of operations."
   },
   {
    "type": "body",
@@ -975,7 +975,7 @@
    "section_title": "19.3 Disjoint-set forests",
    "printed_page": 529,
    "pdf_page": 550,
-   "text": "Figure 19.5 Path compression during the operation FIND-S ET. Arrows and self-loops at roots are omitted. (a) A tree representing a set prior to executing FIND-S ET(a). Triangles represent subtrees whose roots are the nodes shown. Each node has a po inter to its parent. (b) The same set after executing FIND-S ET(a). Each node on the find path now points directly to the root. corresponding tree has an initial rank of 0. Each FIND-SET operation leaves all ranks unchanged. The UNION operation has two cases, depending on whether the roots of the trees have equal rank. If the roots ha ve unequal ranks, make the root with higher rank the parent of the root with lower rank, but don’t change the ranks themselves. If the roots have equal ranks, arbitrarily choose one of the roots as the parent and increment its rank."
+   "text": "Figure 19.5 Path compression during the operation FIND-S ET. Arrows and self-loops at roots are omitted. (a) A tree representing a set prior to executing FIND-S ET(a). Triangles represent subtrees whose roots are the nodes shown. Each node has a pointer to its parent. (b) The same set after executing FIND-S ET(a). Each node on the find path now points directly to the root. corresponding tree has an initial rank of 0. Each FIND-SET operation leaves all ranks unchanged. The UNION operation has two cases, depending on whether the roots of the trees have equal rank. If the roots have unequal ranks, make the root with higher rank the parent of the root with lower rank, but don’t change the ranks themselves. If the roots have equal ranks, arbitrarily choose one of the roots as the parent and increment its rank."
   },
   {
    "type": "body",
@@ -1144,7 +1144,7 @@
    "section_title": "19.3 Disjoint-set forests",
    "printed_page": 530,
    "pdf_page": 551,
-   "text": "Separately, either union by rank or path compressio n improves the running time of the operations on disjoint-set forests, and combining the two heuristics yields an even greater improvement. Alone, union by rank y ields a running time of O(m lg n) for a sequence of m operations, n of which are MAKE-SET (see Ex- ercise 19.4-4), and this bound is tight (see Exercise 19.3-3). Although we won’t prove it here, for a sequence of n MAKE-SET operations (and hence at most n − 1"
+   "text": "Separately, either union by rank or path compression improves the running time of the operations on disjoint-set forests, and combining the two heuristics yields an even greater improvement. Alone, union by rank yields a running time of O(m lg n) for a sequence of m operations, n of which are MAKE-SET (see Ex- ercise 19.4-4), and this bound is tight (see Exercise 19.3-3). Although we won’t prove it here, for a sequence of n MAKE-SET operations (and hence at most n − 1"
   },
   {
    "type": "body",
@@ -1693,7 +1693,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 533,
    "pdf_page": 554,
-   "text": "It is only for values of n so large that the term \"astronomical\" understates t hem"
+   "text": "It is only for values of n so large that the term \"astronomical\" understates them"
   },
   {
    "type": "body",
@@ -1846,7 +1846,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 534,
    "pdf_page": 555,
-   "text": "In order to prove the O(m˛.n)/ time bound, we’ll use the potential method of amortized analysis from Section 16.3. In performing the amortized analysis, it will be convenient to assume that we invoke the LINK operation rather than the UNION operation. That is, since the parameters of the LINK procedure are pointers to two roots, we act as though we perform the appropriate FIND-SET operations separately. The following lemma shows that even if we c ount the extra FIND-SET operations induced by UNION calls, the asymptotic running time remains unchanged."
+   "text": "In order to prove the O(m˛.n)/ time bound, we’ll use the potential method of amortized analysis from Section 16.3. In performing the amortized analysis, it will be convenient to assume that we invoke the LINK operation rather than the UNION operation. That is, since the parameters of the LINK procedure are pointers to two roots, we act as though we perform the appropriate FIND-SET operations separately. The following lemma shows that even if we count the extra FIND-SET operations induced by UNION calls, the asymptotic running time remains unchanged."
   },
   {
    "type": "lemma",
@@ -2305,7 +2305,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 537,
    "pdf_page": 558,
-   "text": "Proof Because x is not a root, the qth operation does not change x: rank, and because n does not change after the initial n MAKE-SET operations, ˛.n/ remains unchanged as well. Hence, these components of the f ormula for x ’s potential re- main the same after the qth operation. If x: rank = 0, then Ω q (x) = Ω q−1 (x) = 0."
+   "text": "Proof Because x is not a root, the qth operation does not change x: rank, and because n does not change after the initial n MAKE-SET operations, ˛.n/ remains unchanged as well. Hence, these components of the formula for x ’s potential re- main the same after the qth operation. If x: rank = 0, then Ω q (x) = Ω q−1 (x) = 0."
   },
   {
    "type": "body",
@@ -3056,7 +3056,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 547,
    "pdf_page": 568,
-   "text": "Graph problems pervade computer science, and algorithms for working with them are fundamental to the field. Hundreds of interesting computational problems are couched in terms of graphs. This part touches on a few of the mo re significant ones."
+   "text": "Graph problems pervade computer science, and algorithms for working with them are fundamental to the field. Hundreds of interesting computational problems are couched in terms of graphs. This part touches on a few of the more significant ones."
   },
   {
    "type": "body",
@@ -3065,7 +3065,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 547,
    "pdf_page": 568,
-   "text": "Chapter 20 shows how to represent a graph in a computer and then discusses algorithms based on searching a graph using either breadth-first search or depthfirst search. The chapter gives two applications of depth-first search: topologically sorting a directed acyclic graph and decomposing a directed graph into its strongly connected components."
+   "text": "Chapter 20 shows how to represent a graph in a comp uter and then discusses algorithms based on searching a graph using either breadth-first search or depthfirst search. The chapter gives two applications of depth-first search: topologically sorting a directed acyclic graph and decomposing a directed graph into its strongly connected components."
   },
   {
    "type": "body",
@@ -3074,7 +3074,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 547,
    "pdf_page": 568,
-   "text": "Chapter 21 describes how to compute a minimum-weight spanning tree of a graph: the least-weight way of connecting all of the vertices together when each edge has an associated weight. The algorithms for c omputing minimum spanning trees serve as good examples of greedy algorithms (see Chapter 15)."
+   "text": "Chapter 21 describes how to compute a minimum-weight spanning tree of a graph: the least-weight way of connecting all of the vertices together when each edge has an associated weight. The algorithms for computing minimum spanning trees serve as good examples of greedy algorithms (see Chapter 15)."
   },
   {
    "type": "body",
@@ -3101,7 +3101,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 547,
    "pdf_page": 568,
-   "text": "Finally, Chapter 25 explores matchings in bipartite graphs: methods for pairing up vertices that are partitioned into two sets by s electing edges that go between the sets. Bipartite-matching problems model several situations that arise in the real world. The chapter examines how to find a matching of maximum cardinality; the 548 Part VI Graph Algorithms"
+   "text": "Finally, Chapter 25 explores matchings in bipartite graphs: methods for pairing up vertices that are partitioned into two sets by selecting edges that go between the sets. Bipartite-matching problems model several situations that arise in the real world. The chapter examines how to find a matching of maximum cardinality; the 548 Part VI Graph Algorithms"
   },
   {
    "type": "body",
@@ -3119,7 +3119,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 548,
    "pdf_page": 569,
-   "text": "When we characterize the running time of a graph al gorithm on a given graph"
+   "text": "When we characterize the running time of a graph algorithm on a given graph"
   },
   {
    "type": "body",
@@ -3164,7 +3164,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 549,
    "pdf_page": 570,
-   "text": "Searching a graph means systematically following th e edges of the graph so as to visit the vertices of the graph. A graph-searching algorithm can discover much about the structure of a graph. Many algorithms begin by searching their input graph to obtain this structural information. Severa l other graph algorithms elaborate on basic graph searching. Techniques for searching a graph lie at the heart of the field of graph algorithms."
+   "text": "Searching a graph means systematically following the edges of the graph so as to visit the vertices of the graph. A graph-searching algorithm can discover much about the structure of a graph. Many algorithms begin by searching their input graph to obtain this structural information. Severa l other graph algorithms elaborate on basic graph searching. Techniques for searching a graph lie at the heart of the field of graph algorithms."
   },
   {
    "type": "body",

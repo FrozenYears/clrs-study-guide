@@ -39,7 +39,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 750,
    "pdf_page": 771,
-   "text": "• The fork-join programming model is a simple extension of the familiar serial programming model used in most of this book. To des cribe a fork-join parallel algorithm, the pseudocode in this book needs just three added keywords: parallel, spawn, and sync. Deleting these parallel keywords from the paralle l pseudocode results in ordinary serial pseudocode for the same problem, which we call the \"serial projection\" of the parallel algorithm."
+   "text": "• The fork-join programming model is a simple extension of the familiar serial programming model used in most of this book. To describe a fork-join parallel algorithm, the pseudocode in this book needs just three added keywords: parallel, spawn, and sync. Deleting these parallel keywords from the parallel pseudocode results in ordinary serial pseudocode for the same problem, which we call the \"serial projection\" of the parallel algorithm."
   },
   {
    "type": "body",
@@ -297,7 +297,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 751,
    "pdf_page": 772,
-   "text": "Thus this procedure is a particularly slow way to c ompute Fibonacci numbers, since it runs in exponential time. (See Problem 31-3 on page 954 for faster ways.)"
+   "text": "Thus this procedure is a particularly slow way to compute Fibonacci numbers, since it runs in exponential time. (See Problem 31-3 on page 954 for faster ways.)"
   },
   {
    "type": "body",
@@ -360,7 +360,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 752,
    "pdf_page": 773,
-   "text": "Figure 26.1 The invocation tree for FIB(6). Each node in the tree represents a procedure instance whose children are the procedure instances it calls during its execution. Since each instance of FIB with the same argument does the same work to produc e the same r esult, the inefficiency of this algorithm for computing the Fibonacci numbers can b e seen by the vast number of repeated calls to compute the same thing. The portion of the tree shaded blue appears in task-parallel form in Figure 26.2. results in a call to FIB(4). Both instances of FIB(4) return the same result (F 4 = 3)."
+   "text": "Figure 26.1 The invocation tree for FIB(6). Each node in the tree represents a procedure instance whose children are the procedure instances it calls during its execution. Since each instance of FIB with the same argument does the same work to produce the same result, the inefficiency of this algorithm for computing the Fibonacci numbers can b e seen by the vast number of repeated calls to compute the same thing. The portion of the tree shaded blue appears in task-parallel form in Figure 26.2. results in a call to FIB(4). Both instances of FIB(4) return the same result (F 4 = 3)."
   },
   {
    "type": "body",
@@ -378,7 +378,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 752,
    "pdf_page": 773,
-   "text": "Although the FIB procedure is a poor way to compute Fibonacci number s, it can help us warm up to parallelism concepts. Perhap s the most basic concept is to understand is that if two parallel tasks operate on entirely different data, then4 absent other interference—they each produce the same outcomes when executed at the same time as when they run serially one afte r the other. Within FIB(n), for example, the two recursive calls in line 3 to FIB(n − 1) and in line 4 to FIB(n − 2) can safely execute in parallel because the computation performed by one in no way affects the other."
+   "text": "Although the FIB procedure is a poor way to compute Fibonacci number s, it can help us warm up to parallelism concepts. Perhap s the most basic concept is to understand is that if two parallel tasks operate on entirely different data, then4 absent other interference—they each produce the same outcomes when executed at the same time as when they run serially one after the other. Within FIB(n), for example, the two recursive calls in line 3 to FIB(n − 1) and in line 4 to FIB(n − 2) can safely execute in parallel because the computation performed by one in no way affects the other."
   },
   {
    "type": "body",
@@ -478,7 +478,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 753,
    "pdf_page": 774,
-   "text": "P-FIB(n−2) in line 4 in parallel with the spawned child. Since the P-FIB procedure is recursive, these two subroutine calls themselves create nested parallelism, as do their children, thereby creating a potentially v ast tree of subcomputations, all executing in parallel."
+   "text": "P-FIB(n−2) in line 4 in parallel with the spawned child. Since the P-FIB procedure is recursive, these two subroutine calls themselves create nested parallelism, as do their children, thereby creating a potentially vast tree of subcomputations, all executing in parallel."
   },
   {
    "type": "body",
@@ -541,7 +541,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 754,
    "pdf_page": 775,
-   "text": "It’s sometimes inconvenient, especially if we want to focus on the parallel structure of a computation, for a vertex of a trace to represent only one executed instruction. Consequently, if a chain of instructions contains no parallel or procedural control (no spawn, sync, procedure call, or return—via either an explicit return statement or the return that happens implicitly upo n reaching the end of a procedure), we group the entire chain into a single strand. As an example, Figure 26.2 shows the trace that results from computing P-FIB(4) in the portion of Figure 26.1 shaded blue. Strands do not include instructions that involve parallel or procedural control. These control dependencies must be represented as edges in the trace."
+   "text": "It’s sometimes inconvenient, especially if we want to focus on the parallel structure of a computation, for a vertex of a trace to represent only one executed instruction. Consequently, if a chain of instructions contains no parallel or procedural control (no spawn, sync, procedure call, or return—via either an explicit return statement or the return that happens implicitly upon reaching the end of a procedure), we group the entire chain into a single strand. As an example, Figure 26.2 shows the trace that results from computing P-FIB(4) in the portion of Figure 26.1 shaded blue. Strands do not include instructions that involve parallel or procedural control. These control dependencies must be represented as edges in the trace."
   },
   {
    "type": "body",
@@ -550,7 +550,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 754,
    "pdf_page": 775,
-   "text": "When a parent procedure calls a child, the trace co ntains an edge (u,v) from the strand u in the parent that executes the call to the first strand v of the spawned child, as illustrated in Figure 26.2 by the edge from the orange strand in P-FIB(4) to the blue strand in P-FIB(2). When the last strand v 0 in the child returns, the trace contains an edge (v 0 ,u 0 ) to the strand u 0 , where u 0 is the successor strand of u in the parent, as with the edge from the white strand in P-FIB(2) to the white strand in P-FIB(4)."
+   "text": "When a parent procedure calls a child, the trace contains an edge (u,v) from the strand u in the parent that executes the call to the first strand v of the spawned child, as illustrated in Figure 26.2 by the edge from the orange strand in P-FIB(4) to the blue strand in P-FIB(2). When the last strand v 0 in the child returns, the trace contains an edge (v 0 ,u 0 ) to the strand u 0 , where u 0 is the successor strand of u in the parent, as with the edge from the white strand in P-FIB(2) to the white strand in P-FIB(4)."
   },
   {
    "type": "footnote",
@@ -676,7 +676,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 756,
    "pdf_page": 777,
-   "text": "A fork-join parallel trace can be pictured as a dag of strands embedded in an invocation tree of procedure instances. For example, Figure 26.1 shows the invocation tree for FIB(6), which also serves as the invocation tree for P-FIB(6), the edges between procedure instances now representing either calls or spawns. Figure 26.2 zooms in on the subtree that is shaded blue, showing the strands that constitute each procedure instance in P-FIB(4). All directed edges connecting strands run either within a procedure or along undirected e dges of the invocation tree in Figure 26.1. (More general task-parallel traces that are not fork-join traces may contain some directed edges that do not run along the undirected tree edges.)"
+   "text": "A fork-join parallel trace can be pictured as a dag of strands embedded in an invocation tree of procedure instances. For example, Figure 26.1 shows the invocation tree for FIB(6), which also serves as the invocation tree for P-FIB(6), the edges between procedure instances now representing either calls or spawns. Figure 26.2 zooms in on the subtree that is shaded blue, showing the strands that constitute each procedure instance in P-FIB(4). All directed edges connecting strands run either within a procedure or along undirected edges of the invocation tree in Figure 26.1. (More general task-parallel traces that are not fork-join traces may contain some directed edges that do not run along the undirected tree edges.)"
   },
   {
    "type": "body",
@@ -685,7 +685,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 756,
    "pdf_page": 777,
-   "text": "Our analyses generally assume that parallel algorithms execute on an ideal parallel computer, which consists of a set of processors and a sequentially consistent shared memory. To understand sequential consistency, you first need to know that memory is accessed by load instructions, which copy data from a location in the memory to a register within a processor, and by store instructions, which copy data from a processor register to a location in the memory. A single line of pseudocode can entail several such instructions. For example, the line x = y C ´ could result in load instructions to fetch each of y and ´ from memory into a processor, an in- struction to add them together inside the processor, and a store instruction to place the result x back into memory. In a parallel computer, several p rocessors might need to load or store at the same time. Sequential consistency means that even if multiple processors attempt to access the memory simultaneously, the shared memory behaves as if exactly one instruction from one of the processors is executed at a time, even though the actual transfer of data may happen at the same time. It is as if the instructions were executed one at a time sequentially according to some global linear order among all the processors that preserves the individual orders in which each processor executes its own instructions."
+   "text": "Our analyses generally assume that parallel algorithms execute on an ideal parallel computer, which consists of a set of processors and a sequentially consistent shared memory. To understand sequential consistency, you first need to know that memory is accessed by load instructions, which copy data from a location in the memory to a register within a processor, and by store instructions, which copy data from a processor register to a location in the memory. A single line of pseudocode can entail several such instructions. For example, the line x = y C ´ could result in load instructions to fetch each of y and ´ from memory into a processor, an in- struction to add them together inside the processor, and a store instruction to place the result x back into memory. In a parallel computer, several processors might need to load or store at the same time. Sequential consistency means that even if multiple processors attempt to access the memory simultaneously, the shared memory behaves as if exactly one instruction from one of the processors is executed at a time, even though the actual transfer of data may happen at the same time. It is as if the instructions were executed one at a time sequentially according to some global linear order among all the processors that preserves the individual orders in which each processor executes its own instructions."
   },
   {
    "type": "body",
@@ -694,7 +694,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 756,
    "pdf_page": 777,
-   "text": "For task-parallel computations, which are scheduled onto processors automatically by a runtime system, the sequentially consistent shared memory behaves as if a parallel computation’s executed instructions were executed one by one in the order of a topological sort (see Section 20.4) of its trace. That is, you can reason about the execution by imagining that the individual instructions (not generally the strands, which may aggregate many instructions) are interleaved in some linear order that preserves the partial order of the trace . Depending on scheduling, the linear order could vary from one run of the program to the next, but the behavior of any execution is always as if the instructions e xecuted serially in a linear order consistent with the dependencies within the trace."
+   "text": "For task-parallel computations, which are scheduled onto processors automatically by a runtime system, the sequentially consistent shared memory behaves as if a parallel computation’s executed instructions were executed one by one in the order of a topological sort (see Section 20.4) of its trace. That is, you can reason about the execution by imagining that the individual instructions (not generally the strands, which may aggregate many instructions) are interleaved in some linear order that preserves the partial order of the trace . Depending on scheduling, the linear order could vary from one run of the program to the next, but the behavior of any execution is always as if the instructions executed serially in a linear order consistent with the dependencies within the trace."
   },
   {
    "type": "body",
@@ -721,7 +721,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 757,
    "pdf_page": 778,
-   "text": "We can gauge the theoretical efficiency of a task-parallel algorithm using work/ span analysis, which is based on two metrics: \"work\" and \"span.\" The work of a task-parallel computation is the total time to execute the entire computation on one processor. In other words, the work is the sum of the times taken by each of the strands. If each strand takes unit time, the wo rk is just the number of vertices in the trace. The span is the fastest possible time to execute the computation on an unlimited number of processors, which corresponds t o the sum of the times taken by the strands along a longest path in the trace, w here \"longest\" means that each strand is weighted by its execution time. Such a lo ngest path is called the critical path of the trace, and thus the span is the weight of th e longest (weighted) path in the trace. (Section 22.2, pages 6173619 shows how to find a critical path in a dag G = (V,E) in Θ(V + E) time.) For a trace in which each strand takes unit time, the span equals the number of strands on the critical path. For example, the trace of Figure 26.2 has 17 vertices in all and 8 vertices on its critical path, so that if each strand takes unit time, its work is 17 time units and its span is 8 time units."
+   "text": "We can gauge the theoretical efficiency of a task-parallel algorithm using work/ span analysis, which is based on two metrics: \"work\" and \"span.\" The work of a task-parallel computation is the total time to execute the entire computation on one processor. In other words, the work is the sum of the times taken by each of the strands. If each strand takes unit time, the work is just the number of vertices in the trace. The span is the fastest possible time to execute the computation on an unlimited number of processors, which corresponds t o the sum of the times taken by the strands along a longest path in the trace, where \"longest\" means that each strand is weighted by its execution time. Such a longest path is called the critical path of the trace, and thus the span is the weight of the longest (weighted) path in the trace. (Section 22.2, pages 6173619 shows how to find a critical path in a dag G = (V,E) in Θ(V + E) time.) For a trace in which each strand takes unit time, the span equals the number of strands on the critical path. For example, the trace of Figure 26.2 has 17 vertices in all and 8 vertices on its critical path, so that if each strand takes unit time, its work is 17 time units and its span is 8 time units."
   },
   {
    "type": "body",
@@ -730,7 +730,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 757,
    "pdf_page": 778,
-   "text": "The actual running time of a task-parallel computation depends not only on its work and its span, but also on how many processors are available and how the scheduler allocates strands to processors. To denot e the running time of a taskparallel computation on P processors, we subscript by P . For example, we might denote the running time of an algorithm on P processors by T P . The work is the running time on a single processor, or T 1 . The span is the running time if we could run each strand on its own processor—in other words, if we had an unlimited number of processors—and so we denote the span by T 1 ."
+   "text": "The actual running time of a task-parallel computation depends not only on its work and its span, but also on how many processors are available and how the scheduler allocates strands to processors. To denote the running time of a taskparallel computation on P processors, we subscript by P . For example, we might denote the running time of an algorithm on P processors by T P . The work is the running time on a single processor, or T 1 . The span is the running time if we could run each strand on its own processor—in other words, if we had an unlimited number of processors—and so we denote the span by T 1 ."
   },
   {
    "type": "body",
@@ -784,7 +784,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 758,
    "pdf_page": 779,
-   "text": "We define the speedup of a computation on P processors by the ratio T 1/T P , which says how many times faster the computation ru ns on P processors than on one processor. By the work law, we have T P ≥ T 1/P , which implies that T 1/T P ≤ P . Thus, the speedup on a P -processor ideal parallel computer can be at most P . When the speedup is linear in the number of processors, that is, when"
+   "text": "We define the speedup of a computation on P processors by the ratio T 1/T P , which says how many times faster the computation runs on P processors than on one processor. By the work law, we have T P ≥ T 1/P , which implies that T 1/T P ≤ P . Thus, the speedup on a P -processor ideal parallel computer can be at most P . When the speedup is linear in the number of processors, that is, when"
   },
   {
    "type": "body",
@@ -802,7 +802,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 758,
    "pdf_page": 779,
-   "text": "The ratio T 1/T 1 of the work to the span gives the parallelism of the parallel computation. We can view the parallelism from three perspectives. As a ratio, the parallelism denotes the average amount of work that can be performed in parallel for each step along the critical path. As an upper bound, the parallelism gives the maximum possible speedup that can be achieved on any number of processors. Perhaps most important, the parallelism provides a limit on the possibility of attaining perfect linear speedup. Specifically, once the number of processors exceeds the parallelism, the computation cannot possibly achiev e perfect linear speedup. To see this last point, suppose that P >T 1/T 1 , in which case the span law implies that the speedup satisfies T 1/T P ≤ T 1/T 1 < P . Moreover, if the number P of processors in the ideal parallel computer greatly e xceeds the parallelism—that is, if P ≫ T 1/T 1 4then T 1/T P ≪ P , so that the speedup is much less than the number of processors. In other words, if the number of processors exceeds the parallelism, adding even more processors makes the speedup less perfect."
+   "text": "The ratio T 1/T 1 of the work to the span gives the parallelism of the parallel computation. We can view the parallelism from three perspectives. As a ratio, the parallelism denotes the average amount of work that can be performed in parallel for each step along the critical path. As an upper bound, the parallelism gives the maximum possible speedup that can be achieved on any number of processors. Perhaps most important, the parallelism provides a limit on the possibility of attaining perfect linear speedup. Specifically, once the number of processors exceeds the parallelism, the computation cannot possibly achieve perfect linear speedup. To see this last point, suppose that P >T 1/T 1 , in which case the span law implies that the speedup satisfies T 1/T P ≤ T 1/T 1 < P . Moreover, if the number P of processors in the ideal parallel computer greatly exceeds the parallelism—that is, if P ≫ T 1/T 1 4then T 1/T P ≪ P , so that the speedup is much less than the number of processors. In other words, if the number of processors exceeds the parallelism, adding even more processors makes the speedup less perfect."
   },
   {
    "type": "body",
@@ -856,7 +856,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 759,
    "pdf_page": 780,
-   "text": "Good performance depends on more than just minimizing the work and span. The strands must also be scheduled efficiently onto the processors of the parallel machine. Our fork-join parallel-programming model provides no way for a programmer to specify which strands to execute on which pr ocessors. Instead, we rely on the runtime system’s scheduler to map the dynamically unfolding computation to individual processors. In practice, the scheduler maps the strands to static threads, and the operating system schedules the threads on t he processors themselves. But this extra level of indirection is unnecessary for our understanding of scheduling."
+   "text": "Good performance depends on more than just minimizing the work and span. The strands must also be scheduled efficiently onto the processors of the parallel machine. Our fork-join parallel-programming model provides no way for a programmer to specify which strands to execute on which processors. Instead, we rely on the runtime system’s scheduler to map the dynamically unfolding computation to individual processors. In practice, the scheduler maps the strands to static threads, and the operating system schedules the threads on t he processors themselves. But this extra level of indirection is unnecessary for our understanding of scheduling."
   },
   {
    "type": "body",
@@ -1063,7 +1063,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 761,
    "pdf_page": 782,
-   "text": "The next corollary shows that, in fact, a greedy sc heduler achieves near-perfect linear speedup on any task-parallel computation as the slackness grows."
+   "text": "The next corollary shows that, in fact, a greedy scheduler achieves near-perfect linear speedup on any task-parallel computation as the slackness grows."
   },
   {
    "type": "corollary",
@@ -1099,7 +1099,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 761,
    "pdf_page": 782,
-   "text": "The ≪ symbol denotes \"much less,\" but how much is \"much less\"? As a rule of thumb, a slackness of at least 104that is, 10 times more parallelism than processors—generally suffices to achieve good speedup. Then, the span term in the greedy bound, inequality (26.4), is less than 10% of the work-per-processor term, which is good enough for most engineering situations. For example, if a computation runs on only 10 or 100 processors, it doesn’t make sense to value parallelism of, say 1,000,000, over parallelism of 10,000, even with the factor of 100 difference. As Problem 26-2 shows, sometimes reducing extreme parallelism yields algorithms that are better with respect to other co ncerns and which still scale up well on reasonable numbers of processors."
+   "text": "The ≪ symbol denotes \"much less,\" but how much is \"much less\"? As a rule of thumb, a slackness of at least 104that is, 10 times more parallelism than processors—generally suffices to achieve good speedup. Then, the span term in the greedy bound, inequality (26.4), is less than 10% of the work-per-processor term, which is good enough for most engineering situations. For example, if a computation runs on only 10 or 100 processors, it doesn’t make sense to value parallelism of, say 1,000,000, over parallelism of 10,000, even with the factor of 100 difference. As Problem 26-2 shows, sometimes reducing extreme parallelism yields algorithms that are better with respect to other concerns and which still scale up well on reasonable numbers of processors."
   },
   {
    "type": "body",
@@ -1180,7 +1180,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 762,
    "pdf_page": 783,
-   "text": "Figure 26.3 Series-parallel composition of parallel traces. (a) When two traces are joined in series, the work of the composition is the sum of their work, and the span of the composition is the sum of their spans. (b) When two traces are joined in parallel, the work of the composition remains the sum of their work, but the span of the composition is only the maximum of their spans. in parallel, the span of their composition is the m aximum of the spans of the two traces. As it turns out, the trace of any fork-join parallel computation can be built up from single strands by series-parallel composition."
+   "text": "Figure 26.3 Series-parallel composition of parallel traces. (a) When two traces are joined in series, the work of the composition is the sum of their work, and the span of the composition is the sum of their spans. (b) When two traces are joined in parallel, the work of the composition remains the sum of their work, but the span of the composition is only the maximum of their spans. in parallel, the span of their composition is the maximum of the spans of the two traces. As it turns out, the trace of any fork-join parallel computation can be built up from single strands by series-parallel composition."
   },
   {
    "type": "body",
@@ -1354,7 +1354,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 763,
    "pdf_page": 784,
-   "text": "P-MAT-VEC-RECURSIVE and call P-MAT-VEC-RECURSIVE (A,x,y,n,1,n) in the place where the loop would be in the compiled c ode. As Figu re 26.4 illustrates, this procedure recursively spawns the first half of the iterations of the loop to execute in parallel (line 5) with the second half of the iterations (line 6) and then executes a sync (line 7), thereby creating a binary tree of parallel execution. Each leaf represents a base case, which is the serial for loop of lines 2–3."
+   "text": "P-MAT-VEC-RECURSIVE and call P-MAT-VEC-RECURSIVE (A,x,y,n,1,n) in the place where the loop would be in the compiled code. As Figu re 26.4 illustrates, this procedure recursively spawns the first half of the iterations of the loop to execute in parallel (line 5) with the second half of the iterations (line 6) and then executes a sync (line 7), thereby creating a binary tree of parallel execution. Each leaf represents a base case, which is the serial for loop of lines 2–3."
   },
   {
    "type": "body",
@@ -1372,7 +1372,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 763,
    "pdf_page": 784,
-   "text": "To calculate the work T 1 (n) of P-MAT-VEC on an n × n matrix, simply compute the running time of its serial projection, which co mes from replacing the parallel"
+   "text": "To calculate the work T 1 (n) of P-MAT-VEC on an n × n matrix, simply compute the running time of its serial projection, which comes from replacing the parallel"
   },
   {
    "type": "body",
@@ -1399,7 +1399,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 764,
    "pdf_page": 785,
-   "text": "Figure 26.4 A trace for the computation of P-MAT-VEC-RECURSIVE(A,x,y,8,1,8) . The two numbers within each rounded rectangle give the values of the last two parameters ( i and i 0 in the procedure header) in the invocation (spawn, in blue, or call, in tan) of the procedure. The blue circles represent strands corresponding to the part of the procedure up to the spawn of P-MAT-VEC-RECURSIVE in line 5. The orange circles represent strands corresponding to the part of the procedure that calls P-MAT-VEC-RECURSIVE in line 6 up to the sync in line 7, where it suspends until the spawned subroutine in line 5 returns. The white circles represent strands corresponding to the (negligible) part of the procedure after the sync up to the point where it returns. for loop in line 1 with an ordinary for loop. The running time of the resulting serial pseudocode is Θ(n 2 ), which means that T 1 (n) = Θ(n 2 ). This analysis seems to ignore the overhead for recursive spawning in implementing the parallel loops, however. Indeed, the overhead of recursive spawning does increase the work of a parallel loop compared with that of its serial pr ojection, but not asymptotically."
+   "text": "Figure 26.4 A trace for the computation of P-MAT-VEC-RECURSIVE(A,x,y,8,1,8) . The two numbers within each rounded rectangle give the values of the last two parameters ( i and i 0 in the procedure header) in the invocation (spawn, in blue, or call, in tan) of the procedure. The blue circles represent strands corresponding to the part of the procedure up to the spawn of P-MAT-VEC-RECURSIVE in line 5. The orange circles represent strands corresponding to the part of the procedure that calls P-MAT-VEC-RECURSIVE in line 6 up to the sync in line 7, where it suspends until the spawned subroutine in line 5 returns. The white circles represent strands corresponding to the (negligible) part of the procedure after the sync up to the point where it returns. for loop in line 1 with an ordinary for loop. The running time of the resulting serial pseudocode is Θ(n 2 ), which means that T 1 (n) = Θ(n 2 ). This analysis seems to ignore the overhead for recursive spawning in implementing the parallel loops, however. Indeed, the overhead of recursive spawning does increase the work of a parallel loop compared with that of its serial projection, but not asymptotically."
   },
   {
    "type": "body",
@@ -1408,7 +1408,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 764,
    "pdf_page": 785,
-   "text": "To see why, observe that since the tree of recursiv e procedure instances is a full binary tree, the number of internal nodes is one le ss than the number of leaves"
+   "text": "To see why, observe that since the tree of recursive procedure instances is a full binary tree, the number of internal nodes is one less than the number of leaves"
   },
   {
    "type": "body",
@@ -1417,7 +1417,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 764,
    "pdf_page": 785,
-   "text": "(see Exercise B.5-3 on page 1175). Each internal node performs constant work to divide the iteration range, and each leaf corresponds to a base case, which takes at least constant time (Θ(n) time in this case). Thus, by amortizing the overhea d of recursive spawning over the work of the iterations in the leaves, we see that the overall work increases by at most a constant factor."
+   "text": "(see Exercise B.5-3 on page 1175). Each internal node performs constant work to divide the iteration range, and each leaf corresponds to a base case, which takes at least constant time (Θ(n) time in this case). Thus, by amortizing the overhead of recursive spawning over the work of the iterations in the leaves, we see that the overall work increases by at most a constant factor."
   },
   {
    "type": "body",
@@ -1426,7 +1426,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 764,
    "pdf_page": 785,
-   "text": "To reduce the overhead of recursive spawning, task-parallel platforms sometimes coarsen the leaves of the recursion by executing several iterations in a single leaf, either automatically or under programmer control. T his optimization comes at the expense of reducing the parallelism. If the computation has sufficient parallel slackness, however, near-perfect linear speedup won’t be sacrificed."
+   "text": "To reduce the overhead of recursive spawning, task-parallel platforms sometimes coarsen the leaves of the recursion by executing several iterations in a single leaf, either automatically or under programmer control. T his optimization comes at the expense of reducing the parallelism. If the com putation has sufficient parallel slackness, however, near-perfect linear speedup won’t be sacrificed."
   },
   {
    "type": "body",
@@ -1444,7 +1444,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 765,
    "pdf_page": 786,
-   "text": "For example, let’s compute the span of the doubly nested loops in lines 1–3 of P-MAT-VEC. The span for the parallel for loop control is Θ(lg n). For each iteration of the outer parallel loop, the inner seria l for loop contains n iterations of line 3. Since each iteration takes constant time, the total span for the inner serial for loop is Θ(n), no matter which iteration of the outer parallel for loop it’s in. Thus, taking the maximum over all iterations of the outer loop and adding in the Θ(lg n) for loop control yields an overall span of T 1 n = Θ(n) + Θ(lg n) = Θ(n) for the procedure. Since the work is Θ(n 2 ), the parallelism is Θ(n 2 )=Θ(n) = Θ(n). (Ex- ercise 26.1-7 asks you to provide an implementation with even more parallelism.)"
+   "text": "For example, let’s compute the span of the doubly nested loops in lines 1–3 of P-MAT-VEC. The span for the parallel for loop control is Θ(lg n). For each iteration of the outer parallel loop, the inner serial for loop contains n iterations of line 3. Since each iteration takes constant time, the total span for the inner serial for loop is Θ(n), no matter which iteration of the outer parallel for loop it’s in. Thus, taking the maximum over all iterations of the outer loop and adding in the Θ(lg n) for loop control yields an overall span of T 1 n = Θ(n) + Θ(lg n) = Θ(n) for the procedure. Since the work is Θ(n 2 ), the parallelism is Θ(n 2 )=Θ(n) = Θ(n). (Ex- ercise 26.1-7 asks you to provide an implementation with even more parallelism.)"
   },
   {
    "type": "body",
@@ -1581,7 +1581,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 766,
    "pdf_page": 787,
-   "text": "Figure 26.5(a) illustrates a trace representing the execution of RACE-EXAMPLE , with the strands broken down to individual instructions. Recall that since an ideal parallel computer supports sequential consistency, you can view the parallel ex- ecution of a parallel algorithm as an interleaving of instructions that respects the dependencies in the trace. Part (b) of the figure shows the values in an execution of the computation that elicits the anomaly. The va lue x is kept in memory, and r 1 and r 2 are processor registers. In step 1, one of the processors sets x to 0. In steps 2 and 3, processor 1 loads x from memory into its register r 1 and increments it, producing the value 1 in r 1 . At that point, processor 2 comes into the picture , executing instructions 436. Processor 2 loads x from memory into register r 2 ; in- crements it, producing the value 1 in r 2 ; and then stores this value into x , setting x to 1. Now, processor 1 resumes with step 7, storing the value 1 in r 1 into x , which leaves the value of x unchanged. Therefore, step 8 prints the value 1, rather than the value 2 that the serial projection would print."
+   "text": "Figure 26.5(a) illustrates a trace representing the execution of RACE-EXAMPLE , with the strands broken down to individual instructions. Recall that since an ideal parallel computer supports sequential consistency, you can view the parallel ex- ecution of a parallel algorithm as an interleaving of instructions that respects the dependencies in the trace. Part (b) of the figure shows the values in an execution of the computation that elicits the anomaly. The value x is kept in memory, and r 1 and r 2 are processor registers. In step 1, one of the processors sets x to 0. In steps 2 and 3, processor 1 loads x from memory into its register r 1 and increments it, producing the value 1 in r 1 . At that point, processor 2 comes into the picture , executing instructions 436. Processor 2 loads x from memory into register r 2 ; in- crements it, producing the value 1 in r 2 ; and then stores this value into x , setting x to 1. Now, processor 1 resumes with step 7, storing the value 1 in r 1 into x , which leaves the value of x unchanged. Therefore, step 8 prints the value 1, rather than the value 2 that the serial projection would print."
   },
   {
    "type": "body",
@@ -1608,7 +1608,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 767,
    "pdf_page": 788,
-   "text": "Of course, many executions do not elicit the bug. That’s the problem with determinacy races. Generally, most instruction orderings produce correct results, such as any where the instructions on the left branch ex ecute before the instructions on the right branch, or vice versa. But some orderi ngs generate improper results when the instructions interleave. Consequently, races can be extremely hard to test for. Your program may fail, but you may be unable t o reliably reproduce the failure in subsequent tests, confounding your attempts to locate the bug in your code and fix it. Task-parallel programming environments often provide race-detection productivity tools to help you isolate race bugs."
+   "text": "Of course, many executions do not elicit the bug. That’s the problem with determinacy races. Generally, most instruction orderings produce correct results, such as any where the instructions on the left branch execute before the instructions on the right branch, or vice versa. But some orderi ngs generate improper results when the instructions interleave. Consequently, races can be extremely hard to test for. Your program may fail, but you may be unable t o reliably reproduce the failure in subsequent tests, confounding your attempts to locate the bug in your code and fix it. Task-parallel programming environments often provide race-detection productivity tools to help you isolate race bugs."
   },
   {
    "type": "body",
@@ -1653,7 +1653,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 767,
    "pdf_page": 788,
-   "text": "As an example of how easy it is to write code with unintentional races, the P-MAT-VEC-WRONG procedure on the next page is a faulty parallel implementation of matrix-vector multiplication that achieves a span of Θ(lg n) by parallelizing the inner for loop. This procedure is incorrect, unfortunately, d ue to determinacy races when updating y i in line 3, which executes in parallel for all n values of j ."
+   "text": "As an example of how easy it is to write code with unintentional races, the P-MAT-VEC-WRONG procedure on the next page is a faulty parallel implementation of matrix-vector multiplication that achieves a span of Θ(lg n) by parallelizing the inner for loop. This procedure is incorrect, unfortunately, due to determinacy races when updating y i in line 3, which executes in parallel for all n values of j ."
   },
   {
    "type": "body",
@@ -1705,7 +1705,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 768,
    "pdf_page": 789,
-   "text": "A parallel algorithm with races can sometimes be de terministic. As an example, two parallel threads might store the same valu e into a shared variable, and it wouldn’t matter which stored the value first. For simplicity , however, we generally prefer code without determinacy races, even if the races are benign. And good parallel programmers frown on code with determinacy races that cause nondeterministic behavior, if deterministic code that performs comparably is an option."
+   "text": "A parallel algorithm with races can sometimes be de terministic. As an example, two parallel threads might store the same value into a shared variable, and it wouldn’t matter which stored the value first. For simplicity , however, we generally prefer code without determinacy races, even if the races are benign. And good parallel programmers frown on code with determinacy races that cause nondeterministic behavior, if deterministic code that performs comparably is an option."
   },
   {
    "type": "body",
@@ -1714,7 +1714,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 768,
    "pdf_page": 789,
-   "text": "But nondeterministic code does have its place. For example, you can’t implement a parallel hash table, a highly practical d ata structure, without writing code containing determinacy races. Much research has centered around how to ex- tend the fork-join model to incorporate limited \"structured\" nondeterminism while avoiding the full measure of complications that arise when nondeterminism is completely unrestricted."
+   "text": "But nondeterministic code does have its place. For example, you can’t implement a parallel hash table, a highly practical data structure, without writing code containing determinacy races. Much research has centered around how to ex- tend the fork-join model to incorporate limited \"structured\" nondeterminism while avoiding the full measure of complications that arise when nondeterminism is completely unrestricted."
   },
   {
    "type": "body",
@@ -1849,7 +1849,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 769,
    "pdf_page": 790,
-   "text": "10 seconds. The optimization that speeds up the progra m on 32 processors makes the program run for twice as long on 512 processors! The optimized version’s span of 8, which is not the dominant term in the running tim e on 32 processors, becomes the dominant term on 512 processors, nullifying the advantage from using more processors. The optimization does not scale up."
+   "text": "10 seconds. The optimization that speeds up the program on 32 processors makes the program run for twice as long on 512 processors! The optimized version’s span of 8, which is not the dominant term in the running time on 32 processors, becomes the dominant term on 512 processors, nullifying the advantage from using more processors. The optimization does not scale up."
   },
   {
    "type": "body",
@@ -1885,7 +1885,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 769,
    "pdf_page": 790,
-   "text": "26.1-3 Draw the trace that results from executing P-FIB(5). Assuming that each strand in the computation takes unit time, what are the wo rk, span, and parallelism of the computation? Show how to schedule the trace on 3 processors using greedy scheduling by labeling each strand with the time step in which it is executed."
+   "text": "26.1-3 Draw the trace that results from executing P-FIB(5). Assuming that each strand in the computation takes unit time, what are the work, span, and parallelism of the computation? Show how to schedule the trace on 3 processors using greedy scheduling by labeling each strand with the time step in which it is executed."
   },
   {
    "type": "exercise",
@@ -1955,7 +1955,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 770,
    "pdf_page": 791,
-   "text": "26.1-6 Professor Karan measures her deterministic task-parallel algorithm on 4, 10, and 64 processors of an ideal parallel computer using a gr eedy scheduler. She claims that the three runs yielded T 4 = 80 seconds, T 10 = 42 seconds, and T 64 = 10 seconds. Argue that the professor is either lying o r incompetent. ( Hint: Use the work law (26.2), the span law (26.3), and inequality (26.5) from Exercise 26.1-4.)"
+   "text": "26.1-6 Professor Karan measures her deterministic task-parallel algorithm on 4, 10, and 64 processors of an ideal parallel computer using a greedy scheduler. She claims that the three runs yielded T 4 = 80 seconds, T 10 = 42 seconds, and T 64 = 10 seconds. Argue that the professor is either lying o r incompetent. ( Hint: Use the work law (26.2), the span law (26.3), and inequality (26.5) from Exercise 26.1-4.)"
   },
   {
    "type": "exercise",
@@ -2119,7 +2119,7 @@
    "section_title": "26.2 Parallel matrix multiplication",
    "printed_page": 771,
    "pdf_page": 792,
-   "text": "C = + C A • B by recursively performing eight multiplications of n/2 × n/2 submatrices of A and B . The P-MATRIX-MULTIPLY-RECURSIVE procedure on the following page implements the same divide-and-conquer strategy, but it uses spawning to perform the eight multiplications in pa rallel. To avoid determinacy races in updating the elements of C , it creates a temporary matrix = to store four of the submatrix products. At the end, it adds C and = together to produce the final result. (Problem 26-2 asks you to eliminate the temporary matrix = at the expense of some parallelism.)"
+   "text": "C = + C A • B by recursively performing eight multiplications of n/2 × n/2 submatrices of A and B . The P-MATRIX-MULTIPLY-RECURSIVE procedure on the following page implements the same divide-and-conquer strategy, but it uses spawning to perform the eight multiplications in parallel. To avoid determinacy races in updating the elements of C , it creates a temporary matrix = to store four of the submatrix products. At the end, it adds C and = together to produce the final result. (Problem 26-2 asks you to eliminate the temporary matrix = at the expense of some parallelism.)"
   },
   {
    "type": "body",
@@ -2362,7 +2362,7 @@
    "section_title": "26.2 Parallel matrix multiplication",
    "printed_page": 773,
    "pdf_page": 794,
-   "text": "Let’s determine the span M 1 (n) of P-MATRIX-MULTIPLY-RECURSIVE . Because the eight parallel recursive spawns all execute on matrices of the same size, the maximum span for any recursive spawn is just th e span of a single one of them, or M 1 (n/2). The span for the doubly nested parallel for loops in lines 5–7 is Θ(lg n) because each loop control adds Θ(lg n) to the constant span of line 7."
+   "text": "Let’s determine the span M 1 (n) of P-MATRIX-MULTIPLY-RECURSIVE . Because the eight parallel recursive spawns all execute on matrices of the same size, the maximum span for any recursive spawn is just the span of a single one of them, or M 1 (n/2). The span for the doubly nested parallel for loops in lines 5–7 is Θ(lg n) because each loop control adds Θ(lg n) to the constant span of line 7."
   },
   {
    "type": "body",
@@ -2533,7 +2533,7 @@
    "section_title": "26.2 Parallel matrix multiplication",
    "printed_page": 774,
    "pdf_page": 795,
-   "text": "26.2-4 Give pseudocode for an efficient parallel algorithm that multiplies a p × q matrix by a q × r matrix. Your algorithm should be highly parallel ev en if any of p, q, and r equal 1. Analyze your algorithm."
+   "text": "26.2-4 Give pseudocode for an efficient parallel algorithm that multiplies a p × q matrix by a q × r matrix. Your algorithm should be highly parallel even if any of p, q, and r equal 1. Analyze your algorithm."
   },
   {
    "type": "pseudocode",
@@ -2640,7 +2640,7 @@
    "section_title": "26.3 Parallel merge sort",
    "printed_page": 775,
    "pdf_page": 796,
-   "text": "First, let’s use work/span analysis to get some intuition for why we need a parallel merge procedure. After all, it may seem as th ough there should be plenty of parallelism just by parallelizing MERGE-SORT without worrying about parallelizing the merge. But what would happen if the call to P-MERGE in line 10 of P-MERGE-SORT were replaced by a call to the serial MERGE procedure on page 36? Let’s call the pseudocode so modified P-NAIVE-MERGE-SORT."
+   "text": "First, let’s use work/span analysis to get some intuition for why we need a parallel merge procedure. After all, it may seem as though there should be plenty of parallelism just by parallelizing MERGE-SORT without worrying about parallelizing the merge. But what would happen if the call to P-MERGE in line 10 of P-MERGE-SORT were replaced by a call to the serial MERGE procedure on page 36? Let’s call the pseudocode so modified P-NAIVE-MERGE-SORT."
   },
   {
    "type": "body",
@@ -2730,7 +2730,7 @@
    "section_title": "26.3 Parallel merge sort",
    "printed_page": 776,
    "pdf_page": 797,
-   "text": "Specifically, the recursive merging algorithm picks the pivot x as the middle element of the larger of the two input subarrays, w hich we can assume without loss of generality is A[p 1 : r 1 ], since otherwise, the two subarrays can just switc h roles. That is, x = A[q 1 ], where q 1 = ⌊(p 1 + r 1 )/2⌋. Because A[p 1 : r 1 ] is sorted, x is a median of the subarray elements: every element in A[p 1 : q 1 − 1] is no more than x , and every element in A[q 1 + 1 : r 1 ] is no less than x . Then the …"
+   "text": "Specifically, the recursive merging algorithm picks the pivot x as the middle element of the larger of the two input subarrays, which we can assume without loss of generality is A[p 1 : r 1 ], since otherwise, the two subarrays can just switch roles. That is, x = A[q 1 ], where q 1 = ⌊(p 1 + r 1 )/2⌋. Because A[p 1 : r 1 ] is sorted, x is a median of the subarray elements: every element in A[p 1 : q 1 − 1] is no more than x , and every element in A[q 1 + 1 : r 1 ] is no less than x . Then the …"
   },
   {
    "type": "body",
@@ -2892,7 +2892,7 @@
    "section_title": "26.3 Parallel merge sort",
    "printed_page": 778,
    "pdf_page": 799,
-   "text": "Because FIND-SPLIT-POINT contains no parallelism, its span is just its seria l running time, which is also its work. On a subarray A[p : r] of size n = r − p + 1, each iteration of the while loop halves the search range, which means that the loop terminates after Θ(lg n) iterations. Since each iteration takes constant tim e, the algorithm runs in Θ(lg n) (worst-case) time. Thus the procedure has work and span Θ(lg n)."
+   "text": "Because FIND-SPLIT-POINT contains no parallelism, its span is just its serial running time, which is also its work. On a subarray A[p : r] of size n = r − p + 1, each iteration of the while loop halves the search range, which means that the loop terminates after Θ(lg n) iterations. Since each iteration takes constant time, the algorithm runs in Θ(lg n) (worst-case) time. Thus the procedure has work and span Θ(lg n)."
   },
   {
    "type": "body",
@@ -3165,7 +3165,7 @@
    "section_title": "26.3 Parallel merge sort",
    "printed_page": 780,
    "pdf_page": 801,
-   "text": "Because this recurrence falls under case 2 of the m aster theorem with k = 1, its solution is T 1 (n) = Θ(lg 2 n)."
+   "text": "Because this recurrence falls under case 2 of the master theorem with k = 1, its solution is T 1 (n) = Θ(lg 2 n)."
   },
   {
    "type": "body",
@@ -3264,7 +3264,7 @@
    "section_title": "26.3 Parallel merge sort",
    "printed_page": 781,
    "pdf_page": 802,
-   "text": "The execution of the pseudocode in the P-MERGE procedure itself does not add asymptotically to the work and span of P-MERGE-AUX. The parallel for loop in lines 3–4 has Θ(lg n) span due to the loop control, and each iteration ru ns in constant time. Thus the Θ(lg 2 n) span of P-MERGE-AUX dominates, yielding"
+   "text": "The execution of the pseudocode in the P-MERGE procedure itself does not add asymptotically to the work and span of P-MERGE-AUX. The parallel for loop in lines 3–4 has Θ(lg n) span due to the loop control, and each iteration runs in constant time. Thus the Θ(lg 2 n) span of P-MERGE-AUX dominates, yielding"
   },
   {
    "type": "body",
@@ -3336,7 +3336,7 @@
    "section_title": "26.3 Parallel merge sort",
    "printed_page": 782,
    "pdf_page": 803,
-   "text": "D Θ(n= lg 2 n); which is much better, both in theory and in practic e. A good implementation in practice would sacrifice some parallelism by coarsening the base case in order to reduce the constants hidden by the asymptotic notation. For example, you could switch to an efficient serial sort, perhaps quicksort, when the number of elements to be sorted is sufficiently small."
+   "text": "D Θ(n= lg 2 n); which is much better, both in theory and in practice. A good implementation in practice would sacrifice some parallelism by coarsening the base case in order to reduce the constants hidden by the asymptotic notation. For example, you could switch to an efficient serial sort, perhaps quicksort, when the number of elements to be sorted is sufficiently small."
   },
   {
    "type": "exercise",
@@ -4045,7 +4045,7 @@
    "section_title": "26.3 Parallel merge sort",
    "printed_page": 787,
    "pdf_page": 808,
-   "text": "Computational science is replete with algorithms that require the entries of an array to be filled in with values that depend on the values of certain already computed neighboring entries, along with other information t hat does not change over the course of the computation. The pattern of neighboring entries does not change during the computation and is called a stencil. For example, Section 14.4 presents a stencil algorithm to compute a longest common subsequence, where the value in entry c[i; j ] depends only on the values in c[i − 1; j ], c[i,j − 1], and c[i − 1,j − 1], as well as the elements x i and y j within the two sequences given as inputs. The input sequences are fixed, but the algorithm fills in the two-dimensional array c so that it computes entry c[i; j ] after computing all three entries c[i − 1; j ], c[i,j − 1], and c[i − 1,j − 1]."
+   "text": "Computational science is replete with algorithms that require the entries of an array to be filled in with values that depend on the values of certain already computed neighboring entries, along with other information that does not change over the course of the computation. The pattern of neighboring entries does not change during the computation and is called a stencil. For example, Section 14.4 presents a stencil algorithm to compute a longest common subsequence, where the value in entry c[i; j ] depends only on the values in c[i − 1; j ], c[i,j − 1], and c[i − 1,j − 1], as well as the elements x i and y j within the two sequences given as inputs. The input sequences are fixed, but the algorithm fills in the two-dimensional array c so that it computes entry c[i; j ] after computing all three entries c[i − 1; j ], c[i,j − 1], and c[i − 1,j − 1]."
   },
   {
    "type": "body",
@@ -4126,16 +4126,7 @@
    "section_title": "26.3 Parallel merge sort",
    "printed_page": 788,
    "pdf_page": 809,
-   "text": "You can immediately fill in subarray A 11 recursively, since it does not depend on the entries in the other three subarrays. Once the computation of A 11 finishes, you can fill in A 12 and A 21 recursively in parallel, because although they both depend on A 11 , they do not depend on each other. Finally, you can fill in A 22 recursively. a. Give parallel pseudocode that performs this simple stencil calculation using a divide-and-conquer algorithm SIMPLE-STENCIL based on the decomposition (26.9) and the discussion above. (Don’t worry about the details of the base case, which depends on the specific stencil.) Give and solve recurrences for the work and span of this algorithm in terms of n. What is the parallelism? b. Modify your solution to part (a) to divide an n × n array into nine n/3 × n/3 subarrays, again recursing with as much parallelism as possible. Analyze this algorithm. How much more or less parallelism does t his algorithm have compared with the algorithm from part (a)? c. Generalize your solutions to parts (a) and (b) as follows. Choose an integer b ≥ 2. Divide an n × n array into b 2 subarrays, each of size n/b × n/b, recursing with as much parallelism as possible. In terms of n and b, what are the work, span, and parallelism of your algorithm? Argue that, using this approach, the parallelism must be o(n) for any choice of b ≥ 2. (Hint: For this argument, show that the exponent of n in the parallelism is strictly less than 1 for any choice of b ≥ 2.) d. Give pseudocode for a parallel algorithm for this simple stencil calculation that achieves Θ(n= lg n) parallelism. Argue using notions of work and span t hat"
-  },
-  {
-   "type": "chapter-notes",
-   "chapter": 26,
-   "section": "26.3",
-   "section_title": "26.3 Parallel merge sort",
-   "printed_page": 789,
-   "pdf_page": 810,
-   "text": "Notes for Chapter 26 789 the problem has Θ(n) inherent parallelism. Unfortunately, simple fork-join parallelism does not let you achieve this maximal parallelism."
+   "text": "You can immediately fill in subarray A 11 recursively, since it does not depend on the entries in the other three subarrays. Once the computation of A 11 finishes, you can fill in A 12 and A 21 recursively in parallel, because although they both depend on A 11 , they do not depend on each other. Finally, you can fill in A 22 recursively. a. Give parallel pseudocode that performs this simple stencil calculation using a divide-and-conquer algorithm SIMPLE-STENCIL based on the decomposition (26.9) and the discussion above. (Don’t worry about the details of the base case, which depends on the specific stencil.) Give and solve recurrences for the work and span of this algorithm in terms of n. What is the parallelism? b. Modify your solution to part (a) to divide an n × n array into nine n/3 × n/3 subarrays, again recursing with as much parallelism as possible. Analyze this algorithm. How much more or less parallelism does this algorithm have compared with the algorithm from part (a)? c. Generalize your solutions to parts (a) and (b) as follows. Choose an integer b ≥ 2. Divide an n × n array into b 2 subarrays, each of size n/b × n/b, recursing with as much parallelism as possible. In terms of n and b, what are the work, span, and parallelism of your algorithm? Argue that, using this approach, the parallelism must be o(n) for any choice of b ≥ 2. (Hint: For this argument, show that the exponent of n in the parallelism is strictly less than 1 for any choice of b ≥ 2.) d. Give pseudocode for a parallel algorithm for this simple stencil calculation that achieves Θ(n= lg n) parallelism. Argue using notions of work and span that Notes for Chapter 26 789 the problem has Θ(n) inherent parallelism. Unfortunately, simple fork-join parallelism does not let you achieve this maximal parallelism."
   },
   {
    "type": "problem",
@@ -4288,7 +4279,7 @@
    "section_title": "26.3 Parallel merge sort",
    "printed_page": 791,
    "pdf_page": 812,
-   "text": "Most problems described in this book have assumed that the entire input was available before the algorithm executes. In many situations, however, the input becomes available not in advance, but only as the algorithm executes. This idea was implicit in much of the discussion of data structures in Par t III. The reason that you want to design, for example, a data structure that can h andle n INSERT , DELETE , and SEARCH operations in O(lg n) time per operation is most likely because you are going to receive n such operation requests without knowing in advance what operations will be coming. This idea was also implicit in amortized analysis in Chapter 16, where we saw how to maintain a table that can grow or shrink in response to a sequence of insertion and deletion operations, yet with a constant amortized cost per operation."
+   "text": "Most problems described in this book have assumed that the entire input was available before the algorithm executes. In many situations, however, the input becomes available not in advance, but only as the algorithm executes. This idea was implicit in much of the discussion of data structures in Par t III. The reason that you want to design, for example, a data structure that can handle n INSERT , DELETE , and SEARCH operations in O(lg n) time per operation is most likely because you are going to receive n such operation requests without knowing in advance what operations will be coming. This idea was also implicit in amortized analysis in Chapter 16, where we saw how to maintain a table that can grow or shrink in response to a sequence of insertion and deletion operations, yet with a constant amortized cost per operation."
   },
   {
    "type": "body",

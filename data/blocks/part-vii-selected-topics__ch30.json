@@ -39,7 +39,7 @@
    "section_title": "30.1 Representing polynomials",
    "printed_page": 879,
    "pdf_page": 900,
-   "text": "Section 30.1 presents two ways to represent polynomials: the coefficient representation and the point-value representation. The straightforward method for multiplying polynomials of degree n—equations (30.1) and (30.2)4takes Θ(n 2 ) time with polynomials represented in coefficient form, but only Θ(n) time with point-value form. Converting between the two representations, h owever, reduces the time to multiply polynomials to just Θ(n lg n). To see why this approach works, you must first understand complex roots of unity, which Section 30.2 covers. Section 30.2 then uses the FFT and its inverse to perform the co nversions. Because the FFT is used so often in signal processing, it is often implemented as a circuit in hardware, and Section 30.3 illustrates the structure of such circuits."
+   "text": "Section 30.1 presents two ways to represent polynomials: the coefficient representation and the point-value representation. The straightforward method for multiplying polynomials of degree n—equations (30.1) and (30.2)4takes Θ(n 2 ) time with polynomials represented in coefficient form, but only Θ(n) time with point-value form. Converting between the two representations, however, reduces the time to multiply polynomials to just Θ(n lg n). To see why this approach works, you must first understand complex roots of unity, which Section 30.2 covers. Section 30.2 then uses the FFT and its inverse to perform the co nversions. Because the FFT is used so often in signal processing, it is often implemented as a circuit in hardware, and Section 30.3 illustrates the structure of such circuits."
   },
   {
    "type": "body",
@@ -435,7 +435,7 @@
    "section_title": "30.1 Representing polynomials",
    "printed_page": 881,
    "pdf_page": 902,
-   "text": "Thus, n-point evaluation and interpolation are well-defined inverse operations that transform between the coefficient representation of a polynomial and a pointvalue representation. 1 The algorithms described above for these problems t ake"
+   "text": "Thus, n-point evaluation and interpolation are well-defined inverse operations that transform between the coefficient representation of a polynomial and a pointvalue representation. 1 The algorithms described above for these problems take"
   },
   {
    "type": "body",
@@ -588,7 +588,7 @@
    "section_title": "30.1 Representing polynomials",
    "printed_page": 882,
    "pdf_page": 903,
-   "text": "Finally, let’s consider how to evaluate a polynomial given in point-value form at a new point. For this problem, the simplest approac h known is to first convert the polynomial to coefficient form and then evaluate it at the new point."
+   "text": "Finally, let’s consider how to evaluate a polynomial given in point-value form at a new point. For this problem, the simplest approach known is to first convert the polynomial to coefficient form and then evaluate it at the new point."
   },
   {
    "type": "body",
@@ -1967,7 +1967,7 @@
    "section_title": "30.2 The DFT and FFT",
    "printed_page": 892,
    "pdf_page": 913,
-   "text": "Thus, the FFT and the inverse FFT provide a way to transform a polynomial of degree-bound n back and forth between its coefficient representation and a pointvalue representation in only Θ(n lg n) time. In the context of polynomial multi- plication, we have shown the following about the co nvolution a ˝ b of vectors a and b:"
+   "text": "Thus, the FFT and the inverse FFT provide a way to transform a polynomial of degree-bound n back and forth between its coefficient representation and a pointvalue representation in only Θ(n lg n) time. In the context of polynomial multi- plication, we have shown the following about the convolution a ˝ b of vectors a and b:"
   },
   {
    "type": "theorem",
@@ -2219,7 +2219,7 @@
    "section_title": "30.3 FFT circuits",
    "printed_page": 894,
    "pdf_page": 915,
-   "text": "Figure 30.3 A circuit for a butterfly operation. (a) The two input values enter from the left, the twiddle factor ! k n is multiplied by y odd k , and the sum and difference are output on the righ t. (b) A simplified drawing of a butterfly operation, which we’ll use when drawing the parallel FFT circuit."
+   "text": "Figure 30.3 A circuit for a butterfly operation. (a) The two input values enter from the left, the twiddle factor ! k n is multiplied by y odd k , and the sum and difference are output on the right. (b) A simplified drawing of a butterfly operation, which we’ll use when drawing the parallel FFT circuit."
   },
   {
    "type": "figure-caption",
@@ -2381,7 +2381,7 @@
    "section_title": "30.3 FFT circuits",
    "printed_page": 896,
    "pdf_page": 917,
-   "text": "How does the divide step enter into the circuit design? Let’s examine how input vectors to the various recursive calls of the FFT procedure relate to the original input vector, so that the circuit can emulate the divide step at the start for all levels of recursion. Figure 30.5 arranges the input vectors to the recursive calls in an invocation of FFT in a tree structure, where the in itial call is for n = 8. The tree has one node for each call of the procedure, labele d by the elements of the initial call as they appear in the corresponding input vector. Each FFT invocation makes two recursive calls, unless it has received a 1-element vector. The first call appears in the left child, and the second call appears in the right child."
+   "text": "How does the divide step enter into the circuit design? Let’s examine how input vectors to the various recursive calls of the FFT procedure relate to the original input vector, so that the circuit can emulate the divide step at the start for all levels of recursion. Figure 30.5 arranges the input vectors to the recursive calls in an invocation of FFT in a tree structure, where the in itial call is for n = 8. The tree has one node for each call of the procedure, labeled by the elements of the initial call as they appear in the corresponding input vector. Each FFT invocation makes two recursive calls, unless it has received a 1-element vector. The first call appears in the left child, and the second call appears in the right child."
   },
   {
    "type": "body",
@@ -2390,7 +2390,7 @@
    "section_title": "30.3 FFT circuits",
    "printed_page": 896,
    "pdf_page": 917,
-   "text": "Looking at the tree, observe that if you arrange the elements of the initial vector a into the order in which they appear in the leaves, you can trace the execution of the FFT procedure, but bottom up instead of top down. F irst, take the elements in pairs, compute the DFT of each pair using one butterfly operation, and replace the pair with its DFT. The vector then holds n/2 two-element DFTs. Next, take these n/2 DFTs in pairs and compute the DFT of the four vecto r elements they come from by executing two butterfly operations, replacing two two-element DFTs with one four-element DFT. The vector then holds n/4 four-element DFTs. Continue in this manner until the vector holds two (n/2)-element DFTs, which n/2 butterfly operations combine into the final n-element DFT. In other words, you can start with the elements of the initial vector a, but rearranged as in the leaves of Figure 30.5, and then feed them directly into a circuit that follows the schema in Figure 30.4."
+   "text": "Looking at the tree, observe that if you arrange the elements of the initial vector a into the order in which they appear in the leaves, you can trace the execution of the FFT procedure, but bottom up instead of top down. F irst, take the elements in pairs, compute the DFT of each pair using one butterfly operation, and replace the pair with its DFT. The vector then holds n/2 two-element DFTs. Next, take these n/2 DFTs in pairs and compute the DFT of the four vector elements they come from by executing two butterfly operations, replacing two two-element DFTs with one four-element DFT. The vector then holds n/4 four-element DFTs. Continue in this manner until the vector holds two (n/2)-element DFTs, which n/2 butterfly operations combine into the final n-element DFT. In other words, you can start with the elements of the initial vector a, but rearranged as in the leaves of Figure 30.5, and then feed them directly into a circuit that follows the schema in Figure 30.4."
   },
   {
    "type": "body",
@@ -2408,7 +2408,7 @@
    "section_title": "30.3 FFT circuits",
    "printed_page": 897,
    "pdf_page": 918,
-   "text": "Figure 30.5, for example, the leaves appear in the order 0,4,2,6,1,5,3,7 . This sequence in binary is 000,100,010,110,001,101,011,111 , and you can obtain it by reversing the bits of each number in the sequence 0,1,2,3,4,6,7 or, in binary, 000,001,010,011,100,101,110,111 . To see in general that the input vector should be rearranged by a bit-reversal permutation, note that at the top level of the tree, indices whose low-order bit is 0 go into the left subtree and indices whose low-order bit is 1 go into the right subtree. Stripping off the low-order bit at each level, continue this process down the tree, until y ou get the order given by the bit-reversal permutation at the leaves."
+   "text": "Figure 30.5, for example, the leaves appear in the order 0,4,2,6,1,5,3,7 . This sequence in binary is 000,100,010,110,001,101,011,111 , and you can obtain it by reversing the bits of each number in the sequence 0,1,2,3,4,6,7 or, in binary, 000,001,010,011,100,101,110,111 . To see in general that the input vector should be rearranged by a bit-reversal permutation, note that at the top level of the tree, indices whose low-order bit is 0 go into the left subtree and indices whose low-order bit is 1 go into the right subtree. Stripping off the low-order bit at each level, continue this process down the tree, until you get the order given by the bit-reversal permutation at the leaves."
   },
   {
    "type": "body",
@@ -2471,7 +2471,7 @@
    "section_title": "30.3 FFT circuits",
    "printed_page": 898,
    "pdf_page": 919,
-   "text": "Figure 30.6 A full circuit that computes the FFT in parallel, h ere shown for n = 8 inputs. It has lg n stages, and each stage comprises n/2 butterflies that can operate in parallel. As in Figure 30.4, only the top and bottom wires entering a butterfly interact with it. For example, the top butterfly in stage 2 has inputs and outputs only on wires 0 and 2 (the wires with outputs y 0 and y 2 , respectively)."
+   "text": "Figure 30.6 A full circuit that computes the FFT in parallel, here shown for n = 8 inputs. It has lg n stages, and each stage comprises n/2 butterflies that can operate in parallel. As in Figure 30.4, only the top and bottom wires entering a butterfly interact with it. For example, the top butterfly in stage 2 has inputs and outputs only on wires 0 and 2 (the wires with outputs y 0 and y 2 , respectively)."
   },
   {
    "type": "body",
@@ -2507,7 +2507,7 @@
    "section_title": "30.3 FFT circuits",
    "printed_page": 898,
    "pdf_page": 919,
-   "text": "Suppose that the adders within the butterfly operations of a given FFT circuit sometimes fail in such a manner that they always produc e a 0 output, independent of their inputs. In addition, suppose that exactly one adder has failed, but you don’t know which one. Describe how you can identify the f ailed adder by supplying inputs to the overall FFT circuit and observing the outputs. How efficient is your method?"
+   "text": "Suppose that the adders within the butterfly operations of a given FFT circuit sometimes fail in such a manner that they always produce a 0 output, independent of their inputs. In addition, suppose that exactly one adder has failed, but you don’t know which one. Describe how you can identify the f ailed adder by supplying inputs to the overall FFT circuit and observing the outputs. How efficient is your method?"
   },
   {
    "type": "problem",
@@ -2570,7 +2570,7 @@
    "section_title": "30.3 FFT circuits",
    "printed_page": 899,
    "pdf_page": 920,
-   "text": "DFTs along dimension 3, and so on, through dimension d . b. Show that the ordering of dimensions does not matte r, so that if you compute the 1-dimensional DFTs in any order of the d dimensions, you compute the d -dimensional DFT. c. Show that if you compute each 1-dimensional DFT by computing the fast"
+   "text": "DFTs along dimension 3, and so on, through dimension d . b. Show that the ordering of dimensions does not matter, so that if you compute the 1-dimensional DFTs in any order of the d dimensions, you compute the d -dimensional DFT. c. Show that if you compute each 1-dimensional DFT by computing the fast"
   },
   {
    "type": "body",
@@ -2804,7 +2804,7 @@
    "section_title": "30.3 FFT circuits",
    "printed_page": 901,
    "pdf_page": 922,
-   "text": "Let g be a generator of Z − p , and let w = g k mod p. b. Argue that the DFT and the inverse DFT are well-defined inverse operations modulo p, where w is used as a principal nth root of unity. c. Show how to make the FFT and its inverse work modul o p in O(n lg n) time,"
+   "text": "Let g be a generator of Z − p , and let w = g k mod p. b. Argue that the DFT and the inverse DFT are well-defined inverse operations modulo p, where w is used as a principal nth root of unity. c. Show how to make the FFT and its inverse work modulo p in O(n lg n) time,"
   },
   {
    "type": "body",
@@ -2885,7 +2885,7 @@
    "section_title": "30.3 FFT circuits",
    "printed_page": 902,
    "pdf_page": 923,
-   "text": "Frigo and Johnson [161] developed a fast and flexible implementation of the FFT, called FFTW (\"fastest Fourier transform in the West\"). FFTW is designed for situations requiring multiple DFT computations on the same problem size. Before actually computing the DFTs, FFTW executes a \"plann er,\" which, by a series of trial runs, determines how best to decompose the FF T computation for the given problem size on the host machine. FFTW adapts to us e the hardware cache efficiently, and once subproblems are small enough, FFTW solves them with optimized, straight-line code. Moreover, FFTW has the advantage of taking Θ(n lg n) time for any problem size n, even when n is a large prime."
+   "text": "Frigo and Johnson [161] developed a fast and flexible implementation of the FFT, called FFTW (\"fastest Fourier transform in the West\"). FFTW is designed for situations requiring multiple DFT computations on the same problem size. Before actually computing the DFTs, FFTW executes a \"plann er,\" which, by a series of trial runs, determines how best to decompose the FF T computation for the given problem size on the host machine. FFTW adapts to use the hardware cache efficiently, and once subproblems are small enough, FFTW solves them with optimized, straight-line code. Moreover, FFTW has the advantage of taking Θ(n lg n) time for any problem size n, even when n is a large prime."
   },
   {
    "type": "body",

@@ -300,7 +300,7 @@
    "section_title": "24.1 Flow networks",
    "printed_page": 673,
    "pdf_page": 694,
-   "text": "Additionally, the model must obey flow conservation, for in a steady state, the rate at which pucks enter an intermediate city must equa l the rate at which they leave."
+   "text": "Additionally, the model must obey flow conservation, for in a steady state, the rate at which pucks enter an intermediate city must equal the rate at which they leave."
   },
   {
    "type": "body",
@@ -336,7 +336,7 @@
    "section_title": "24.1 Flow networks",
    "printed_page": 673,
    "pdf_page": 694,
-   "text": "This network suffers from one problem, however: it violates the original assumption that if edge (v 1 ,v 2 ) 2 E, then (v 2 ,v 1 ) … E. We call the two edges (v 1 ,v 2 ) and (v 2 ,v 1 ) antiparallel. Thus, to model a flow problem with antiparallel edges, the network must be transformed into an equivalent one containing no antiparallel edges. Figure 24.2(b) displays this equivalent network. To transform the network, choose one of the two antiparallel edges, in this case (v 1 ,v 2 ), and split it by adding a new vertex v 0 and replacing edge (v 1 ,v 2 ) with the pair of edges (v 1 ,v 0 ) and (v 0 ,v 2 ). Also set the capacity of both new edges to the ca pacity of the original edge. The resulting network satisfies the property that if an edge belongs to ∞"
+   "text": "This network suffers from one problem, however: it violates the original assumption that if edge (v 1 ,v 2 ) 2 E, then (v 2 ,v 1 ) … E. We call the two edges (v 1 ,v 2 ) and (v 2 ,v 1 ) antiparallel. Thus, to model a flow problem with antiparallel edges, the network must be transformed into an equivalent one containing no antiparallel edges. Figure 24.2(b) displays this equivalent network. To transform the network, choose one of the two antiparallel edges, in this case (v 1 ,v 2 ), and split it by adding a new vertex v 0 and replacing edge (v 1 ,v 2 ) with the pair of edges (v 1 ,v 0 ) and (v 0 ,v 2 ). Also set the capacity of both new edges to the capacity of the original edge. The resulting network satisfies the property that if an edge belongs to ∞"
   },
   {
    "type": "body",
@@ -372,7 +372,7 @@
    "section_title": "24.1 Flow networks",
    "printed_page": 674,
    "pdf_page": 695,
-   "text": "A maximum-flow problem may have several sources and sinks, rather than just one of each. The Lucky Puck Company, for example, m ight actually have a set of m factories fs 1 ; s 2 ; : : : ; s m g and a set of n warehouses ft 1 ; t 2 ; : : : ; t n g, as shown in Figure 24.3(a). Fortunately, this problem is no harder than ordinary maximum flow."
+   "text": "A maximum-flow problem may have several sources and sinks, rather than just one of each. The Lucky Puck Company, for example, might actually have a set of m factories fs 1 ; s 2 ; : : : ; s m g and a set of n warehouses ft 1 ; t 2 ; : : : ; t n g, as shown in Figure 24.3(a). Fortunately, this problem is no harder than ordinary maximum flow."
   },
   {
    "type": "body",
@@ -462,7 +462,7 @@
    "section_title": "24.1 Flow networks",
    "printed_page": 675,
    "pdf_page": 696,
-   "text": "The professor has a map of his town. Show how to fo rmulate the problem of determining whether both his children can go to the same school as a maximum-flow problem."
+   "text": "The professor has a map of his town. Show how to formulate the problem of determining whether both his children can go to the same school as a maximum-flow problem."
   },
   {
    "type": "pseudocode",
@@ -1742,7 +1742,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 682,
    "pdf_page": 703,
-   "text": "You probably noticed that the definitions of flow across a cut and capacity of a cut differ in that flow counts edges going in both directions across the cut, but capacity counts only edges going from the source si de of the cut toward the sink side. This asymmetry is intentional and important. The reason for this difference will become apparent later in this section."
+   "text": "You probably noticed that the definitions of flow across a cut and capacity of a cut differ in that flow counts edges going in both directions across the cut, but capacity counts only edges going from the source side of the cut toward the sink side. This asymmetry is intentional and important. The reason for this difference will become apparent later in this section."
   },
   {
    "type": "body",
@@ -2421,7 +2421,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 689,
    "pdf_page": 710,
-   "text": "Let’s now prove that the Edmonds-Karp algorithm runs in O(VE 2 ) time. The analysis depends on the distances to vertices in th e residual network G f . The notation i f (u,v) denotes the shortest-path distance from u to v in G f , where each edge has unit distance."
+   "text": "Let’s now prove that the Edmonds-Karp algorithm runs in O(VE 2 ) time. The analysis depends on the distances to vertices in the residual network G f . The notation i f (u,v) denotes the shortest-path distance from u to v in G f , where each edge has unit distance."
   },
   {
    "type": "lemma",
@@ -2619,7 +2619,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 691,
    "pdf_page": 712,
-   "text": "Consequently, from the time (u,v) becomes critical to the time when it next becomes critical, the distance of u from the source increases by at least 2. The distance of u from the source is initially at least 0. Because edge (u,v) is on an augmenting path, and augmenting paths end at t , we know that u cannot be t , so that in any residual network that has a path from s to u, the shortest such path has at most |V| − 2 edges. Thus, after the first time that (u,v) becomes critical, it can become critical at most .|V| − 2/=2 = |V| =2 − 1 times more, for a total of at most |V| =2 times. Since there are O(E) pairs of vertices that can have an edge between them in a residual network, the total numbe r of critical edges during the entire execution of the Edmonds-Karp algorithm is O(VE) . Each augmenting path has at least one critical edge, and hence the theorem follows."
+   "text": "Consequently, from the time (u,v) becomes critical to the time when it next becomes critical, the distance of u from the source increases by at least 2. The distance of u from the source is initially at least 0. Because edge (u,v) is on an augmenting path, and augmenting paths end at t , we know that u cannot be t , so that in any residual network that has a path from s to u, the shortest such path has at most |V| − 2 edges. Thus, after the first time that (u,v) becomes critical, it can become critical at most .|V| − 2/=2 = |V| =2 − 1 times more, for a total of at most |V| =2 times. Since there are O(E) pairs of vertices that can have an edge between them in a residual network, the total number of critical edges during the entire execution of the Edmonds-Karp algorithm is O(VE) . Each augmenting path has at least one critical edge, and hence the theorem follows."
   },
   {
    "type": "body",
@@ -3492,7 +3492,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 702,
    "pdf_page": 723,
-   "text": "Consider the algorithm that repeatedly chooses an edge at random and contracts it until the multigraph has exactly two vertices, s ay u and v. At that point, the multigraph corresponds to a cut in the original graph, with vertex u representing all the nodes in one side of the original graph, an d v representing all the vertices on the other side. The number of edges given by c(u,v) corresponds exactly to the number of edges crossing the corresponding cut in the original graph. We call this algorithm the contraction algorithm. f. Suppose that the contraction algorithm terminates w ith a multigraph whose only vertices are u and v. Show that Pr fc(u,v) = Ω(G)g = Ω"
+   "text": "Consider the algorithm that repeatedly chooses an edge at random and contracts it until the multigraph has exactly two vertices, say u and v. At that point, the multigraph corresponds to a cut in the original graph, with vertex u representing all the nodes in one side of the original graph, an d v representing all the vertices on the other side. The number of edges given by c(u,v) corresponds exactly to the number of edges crossing the corresponding cut in the original graph. We call this algorithm the contraction algorithm. f. Suppose that the contraction algorithm terminates with a multigraph whose only vertices are u and v. Show that Pr fc(u,v) = Ω(G)g = Ω"
   },
   {
    "type": "body",
@@ -3510,7 +3510,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 702,
    "pdf_page": 723,
-   "text": ". g. Prove that if the contraction algorithm repeats ã |V| ä ln |V| times, then the probability that at least one of the runs returns the minimum cut is at least 1 − 1= |V|. h. Give a detailed implementation of the contraction algorithm that runs in O(V 2 ) time. i. Combine the previous parts and remove the assumptio n that the minimum cut must be unique, to conclude that running the contraction algorithm ã |V| ä ln |V| times yields an algorithm that runs in O(V 4 lg V) time and returns a minimum cut with probability at least 1 − 1/V ."
+   "text": ". g. Prove that if the contraction algorithm repeats ã |V| ä ln |V| times, then the probability that at least one of the runs returns the minimum cut is at least 1 − 1= |V|. h. Give a detailed implementation of the contraction algorithm that runs in O(V 2 ) time. i. Combine the previous parts and remove the assumption that the minimum cut must be unique, to conclude that running the contraction algorithm ã |V| ä ln |V| times yields an algorithm that runs in O(V 4 lg V) time and returns a minimum cut with probability at least 1 − 1/V ."
   },
   {
    "type": "chapter-notes",
@@ -3663,7 +3663,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 704,
    "pdf_page": 725,
-   "text": "For example, consider the following scenario. You h ave one or more positions to fill and several candidates to interview. According to your schedule, you are able to interview candidates at certain time slots. You ask the candidates to indicate the subsets of time slots at which they are av ailable. How can you schedule the interviews so that each time slot has at most o ne candidate scheduled, while maximizing the number of candidates that you can interview? You can model this scenario as a matching problem on a bipartite graph in which each vertex represents either a candidate or a time slot, with an edge between a candidate and a time slot if the candidate is available then. If an edge is included in the matching, that means you are scheduling a particular candidate for a particular time slot. Your goal is to find a maximum matching: a matching of maximum cardinality. One of the authors of this book was faced with exactly this situation when hiring teaching assistants for a large class. He used the Hopcroft-Karp algorithm in Section 25.1 to schedule the interviews."
+   "text": "For example, consider the following scenario. You have one or more positions to fill and several candidates to interview. According to your schedule, you are able to interview candidates at certain time slots. You ask the candidates to indicate the subsets of time slots at which they are available. How can you schedule the interviews so that each time slot has at most one candidate scheduled, while maximizing the number of candidates that you can interview? You can model this scenario as a matching problem on a bipartite graph in which each vertex represents either a candidate or a time slot, with an edge between a candidate and a time slot if the candidate is available then. If an edge is included in the matching, that means you are scheduling a particular candidate for a particular time slot. Your goal is to find a maximum matching: a matching of maximum cardinality. One of the authors of this book was faced with exactly this situation when hiring teaching assistants for a large class. He used the Hopcroft-Karp algorithm in Section 25.1 to schedule the interviews."
   },
   {
    "type": "body",
@@ -3672,7 +3672,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 704,
    "pdf_page": 725,
-   "text": "Another application of matching is the U.S. Nationa l Resident Matching Program, in which medical students are matched to hospitals where they will be stationed as medical residents. Each student ranks the hospitals by preference, and each hospital ranks the students. The goal is to as sign students to hospitals so that there is never a student and a hospital that both have regrets because the student was not assigned to the hospital, yet each ranked the o ther higher than who or where they were assigned. This scenario is perhaps the best-known real-world example of the \"stable-marriage problem,\" which Section 25.2 examines."
+   "text": "Another application of matching is the U.S. Nationa l Resident Matching Program, in which medical students are matched to hospitals where they will be stationed as medical residents. Each student ranks the hospitals by preference, and each hospital ranks the students. The goal is to as sign students to hospitals so that there is never a student and a hospital that both have regrets because the student was not assigned to the hospital, yet each ranked the other higher than who or where they were assigned. This scenario is perhaps the best-known real-world example of the \"stable-marriage problem,\" which Section 25.2 examines."
   },
   {
    "type": "body",

@@ -67,7 +67,7 @@
    "section_title": "31.1 Elementary number-theoretic notions",
    "printed_page": 904,
    "pdf_page": 925,
-   "text": "This section provides a brief review of notions fro m elementary number theory concerning the set Z = f…; −2; −1,0,1,2,… g of integers and the set N = f0,1,2,… g of natural numbers."
+   "text": "This section provides a brief review of notions from elementary number theory concerning the set Z = f…; −2; −1,0,1,2,… g of integers and the set N = f0,1,2,… g of natural numbers."
   },
   {
    "type": "body",
@@ -301,7 +301,7 @@
    "section_title": "31.1 Elementary number-theoretic notions",
    "printed_page": 906,
    "pdf_page": 927,
-   "text": "The following theorem provides an alternative and u seful way to characterize gcd(a,b) ."
+   "text": "The following theorem provides an alternative and useful way to characterize gcd(a,b) ."
   },
   {
    "type": "theorem",
@@ -823,7 +823,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 911,
    "pdf_page": 932,
-   "text": "We restrict ourselves in this section to nonnegativ e integers. This restriction is justified by equation (31.8), which states that gcd(a,b) = gcd(|a|; |b|)."
+   "text": "We restrict ourselves in this section to nonnegative integers. This restriction is justified by equation (31.8), which states that gcd(a,b) = gcd(|a|; |b|)."
   },
   {
    "type": "body",
@@ -877,7 +877,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 911,
    "pdf_page": 932,
-   "text": "The best algorithms to date for factoring do not ru n in polynomial time. Thus, this approach to computing greatest common divisors seems unlikely to yield an efficient algorithm."
+   "text": "The best algorithms to date for factoring do not run in polynomial time. Thus, this approach to computing greatest common divisors seems unlikely to yield an efficient algorithm."
   },
   {
    "type": "body",
@@ -1046,7 +1046,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 912,
    "pdf_page": 933,
-   "text": "The correctness of EUCLID follows from Theorem 31.9 and the property that if the algorithm returns a in line 2, then b = 0, so that by equation (31.9), gcd(a,b) = gcd(a,0) = a. The algorithm cannot recurse indefinitely, since the second argument strictly decreases in each recursiv e call and is always nonnegative. Therefore, EUCLID always terminates with the correct answer."
+   "text": "The correctness of EUCLID follows from Theorem 31.9 and the property that if the algorithm returns a in line 2, then b = 0, so that by equation (31.9), gcd(a,b) = gcd(a,0) = a. The algorithm cannot recurse indefinitely, since the second argument strictly decreases in each recursive call and is always nonnegative. Therefore, EUCLID always terminates with the correct answer."
   },
   {
    "type": "body",
@@ -1064,7 +1064,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 912,
    "pdf_page": 933,
-   "text": "Let’s analyze the worst-case running time of EUCLID as a function of the size of a and b. The overall running time of EUCLID is proportional to the number of recursive calls it makes. The analysis assumes t hat a > b ≥ 0, that is, the first argument is greater than the second argument. Why? If b = a > 0, then a mod b = 0 and the procedure terminates after one recursive call. If b>a ≥ 0, then the procedure makes just one more recursive call than when a>b , because in this case EUCLID(a,b) immediately makes the recursive call EUCLID(b,a) , and now the first argument is greater than the second."
+   "text": "Let’s analyze the worst-case running time of EUCLID as a function of the size of a and b. The overall running time of EUCLID is proportional to the number of recursive calls it makes. The analysis assumes that a > b ≥ 0, that is, the first argument is greater than the second argument. Why? If b = a > 0, then a mod b = 0 and the procedure terminates after one recursive call. If b>a ≥ 0, then the procedure makes just one more recursive call than when a>b , because in this case EUCLID(a,b) immediately makes the recursive call EUCLID(b,a) , and now the first argument is greater than the second."
   },
   {
    "type": "body",
@@ -1286,7 +1286,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 914,
    "pdf_page": 935,
-   "text": "EXTENDED-EUCLID takes as input a pair of nonnegative integers and r eturns a triple of the form (d,x,y) that satisfies equation (31.16). As an example, Figure 31.1 traces out the call EXTENDED-EUCLID .99,78/ ."
+   "text": "EXTENDED-EUCLID takes as input a pair of nonnegative integers and returns a triple of the form (d,x,y) that satisfies equation (31.16). As an example, Figure 31.1 traces out the call EXTENDED-EUCLID .99,78/ ."
   },
   {
    "type": "body",
@@ -1556,7 +1556,7 @@
    "section_title": "31.3 Modular arithmetic",
    "printed_page": 916,
    "pdf_page": 937,
-   "text": "Informally, you can think of modular arithmetic as arithmetic as usual over the integers, except that when working modulo n, then every result x is replaced by the element of f0,1,…,n − 1g that is equivalent to x , modulo n (so that x is replaced by x mod n). This informal model suffices if you stick to the operations of addition, subtraction, and multiplication. A mor e formal model for modular arithmetic, which follows, is best described within the framework of group theory."
+   "text": "Informally, you can think of modular arithmetic as arithmetic as usual over the integers, except that when working modulo n, then every result x is replaced by the element of f0,1,…,n − 1g that is equivalent to x , modulo n (so that x is replaced by x mod n). This informal model suffices if you stick to the operations of addition, subtraction, and multiplication. A more formal model for modular arithmetic, which follows, is best described within the framework of group theory."
   },
   {
    "type": "body",
@@ -1637,7 +1637,7 @@
    "section_title": "31.3 Modular arithmetic",
    "printed_page": 917,
    "pdf_page": 938,
-   "text": "We can form two finite abelian groups by using addition and multiplication modulo n, where n is a positive integer. These groups are based on th e equivalence classes of the integers modulo n, defined in Section 31.1."
+   "text": "We can form two finite abelian groups by using addition and multiplication modulo n, where n is a positive integer. These groups are based on the equivalence classes of the integers modulo n, defined in Section 31.1."
   },
   {
    "type": "body",
@@ -2141,7 +2141,7 @@
    "section_title": "31.3 Modular arithmetic",
    "printed_page": 920,
    "pdf_page": 941,
-   "text": "As a further convenience, we sometimes refer to a g roup (S; Ü) merely as S when the operation Ü is understood from context. We may thus refer to the groups"
+   "text": "As a further convenience, we sometimes refer to a group (S; Ü) merely as S when the operation Ü is understood from context. We may thus refer to the groups"
   },
   {
    "type": "body",
@@ -3204,7 +3204,7 @@
    "section_title": "31.5 The Chinese remainder theorem",
    "printed_page": 928,
    "pdf_page": 949,
-   "text": "Z n 1 × Z n 2 × • • • × Z n k with componentwise addition and multiplication modulo n i in the i th component. Second, this description helps in des igning efficient algorithms, since working in each of the systems Z n i can be more efficient (in terms of bit operations) than working modulo n."
+   "text": "Z n 1 × Z n 2 × • • • × Z n k with componentwise addition and multiplication modulo n i in the i th component. Second, this description helps in designing efficient algorithms, since working in each of the systems Z n i can be more efficient (in terms of bit operations) than working modulo n."
   },
   {
    "type": "theorem",
@@ -3312,7 +3312,7 @@
    "section_title": "31.5 The Chinese remainder theorem",
    "printed_page": 929,
    "pdf_page": 950,
-   "text": "D a i (mod n i ); which is what we wished to show: our method of computing a from the a i ’s produces a result a that satisfies the constraints a = a i (mod n i ) for i = 1,2,…,k ."
+   "text": "D a i (mod n i ); which is what we wished to show: our method of comp uting a from the a i ’s produces a result a that satisfies the constraints a = a i (mod n i ) for i = 1,2,…,k ."
   },
   {
    "type": "body",
@@ -3465,7 +3465,7 @@
    "section_title": "31.5 The Chinese remainder theorem",
    "printed_page": 931,
    "pdf_page": 952,
-   "text": "Figure 31.3 An illustration of the Chinese remainder theorem fo r n 1 = 5 and n 2 = 13. For this example, c 1 = 26 and c 2 = 40. In row i , column j is shown the value of a, modulo 65, such that a mod 5 = i and a mod 13 = j . Note that row 0, column 0 contains a 0. Similarly, row 4, column 12 contains a 64 (equivalent to −1). Since c 1 = 26, moving down a row increases a by 26."
+   "text": "Figure 31.3 An illustration of the Chinese remainder theorem for n 1 = 5 and n 2 = 13. For this example, c 1 = 26 and c 2 = 40. In row i , column j is shown the value of a, modulo 65, such that a mod 5 = i and a mod 13 = j . Note that row 0, column 0 contains a 0. Similarly, row 4, column 12 contains a 64 (equivalent to −1). Since c 1 = 26, moving down a row increases a by 26."
   },
   {
    "type": "body",
@@ -3852,7 +3852,7 @@
    "section_title": "31.6 Powers of an element",
    "printed_page": 934,
    "pdf_page": 955,
-   "text": "A number x is a nontrivial square root of 1, modulo n, if it satisfies the equation x 2 = 1 (mod n) but x is equivalent to neither of the two \"trivial\" squar e roots:"
+   "text": "A number x is a nontrivial square root of 1, modulo n, if it satisfies the equation x 2 = 1 (mod n) but x is equivalent to neither of the two \"trivial\" square roots:"
   },
   {
    "type": "body",
@@ -4001,7 +4001,7 @@
    "section_title": "31.6 Powers of an element",
    "printed_page": 935,
    "pdf_page": 956,
-   "text": "Figure 31.4 The values of the parameter b, the local variable d , and the value returned for recursive calls of MODULAR-EXPONENTIATION with parameter values a = 7, b = 560, and n = 561. The value returned by each recursive call is assigned d irectly to d . The result of the call with a = 7, b = 560, and n = 561 is 1."
+   "text": "Figure 31.4 The values of the parameter b, the local variable d , and the value returned for recursive calls of MODULAR-EXPONENTIATION with parameter values a = 7, b = 560, and n = 561. The value returned by each recursive call is assigned directly to d . The result of the call with a = 7, b = 560, and n = 561 is 1."
   },
   {
    "type": "body",
@@ -4127,7 +4127,7 @@
    "section_title": "31.7 The RSA public-key cryptosystem",
    "printed_page": 936,
    "pdf_page": 957,
-   "text": "Each participant creates his or her own public and secret keys. Secret keys are kept secret, but public keys can be revealed to any one or even published. In fact, it is often convenient to assume that everyone’s public key is available in a public directory, so that any participant can easily o btain the public key of any other participant. decrypt communication channel encrypt"
+   "text": "Each participant creates his or her own public and secret keys. Secret keys are kept secret, but public keys can be revealed to any one or even published. In fact, it is often convenient to assume that everyone’s public key is available in a public directory, so that any participant can easily obtain the public key of any other participant. decrypt communication channel encrypt"
   },
   {
    "type": "body",
@@ -4163,7 +4163,7 @@
    "section_title": "31.7 The RSA public-key cryptosystem",
    "printed_page": 937,
    "pdf_page": 958,
-   "text": "Figure 31.5 Encryption in a public key system. Bob encrypts the message M using Alice’s public key P A and transmits the resulting ciphertext C = P A (M) over a communication channel to Alice. An eavesdropper who captures the transmitted c iphertext gains no information about M . Alice receives C and decrypts it using her secret key to obtain the original message M = S A (C) ."
+   "text": "Figure 31.5 Encryption in a public key system. Bob encrypts the message M using Alice’s public key P A and transmits the resulting ciphertext C = P A (M) over a communication channel to Alice. An eavesdropper who captures the transmitted ciphertext gains no information about M . Alice receives C and decrypts it using her secret key to obtain the original message M = S A (C) ."
   },
   {
    "type": "body",
@@ -4316,7 +4316,7 @@
    "section_title": "31.7 The RSA public-key cryptosystem",
    "printed_page": 938,
    "pdf_page": 959,
-   "text": "Digital signatures can be implemented within this f ormulation of a public-key cryptosystem. (There are other ways to construct di gital signatures, but we won’t go into them here.) Suppose now that Alice wishes t o send Bob a digitally signed response M 0 . Figure 31.6 shows how the digital-signature scenario proceeds."
+   "text": "Digital signatures can be implemented within this formulation of a public-key cryptosystem. (There are other ways to construct digital signatures, but we won’t go into them here.) Suppose now that Alice wishes t o send Bob a digitally signed response M 0 . Figure 31.6 shows how the digital-signature scenario proceeds."
   },
   {
    "type": "body",
@@ -4352,7 +4352,7 @@
    "section_title": "31.7 The RSA public-key cryptosystem",
    "printed_page": 938,
    "pdf_page": 959,
-   "text": "Alice’s public key to verify the equation M 0 = P A (Ω ). (Presumably, M 0 contains Alice’s name, so that Bob knows whose public key to use.) If the equation holds, then Bob concludes that the message M 0 was actually signed by Alice. If the equation fails to hold, Bob concludes either that the information he received was corrupted by transmission errors or that the pa ir (M 0 ; Ω ) is an attempted forgery."
+   "text": "Alice’s public key to verify the equation M 0 = P A (Ω ). (Presumably, M 0 contains Alice’s name, so that Bob knows whose public key to use.) If the equation holds, then Bob concludes that the message M 0 was actually signed by Alice. If the equation fails to hold, Bob concludes either that the information he received was corrupted by transmission errors or that the pair (M 0 ; Ω ) is an attempted forgery."
   },
   {
    "type": "body",
@@ -4379,7 +4379,7 @@
    "section_title": "31.7 The RSA public-key cryptosystem",
    "printed_page": 939,
    "pdf_page": 960,
-   "text": "A signed message may or may not be encrypted. The m essage can be <in the clear= and not protected from disclosure. By compos ing the above protocols for encryption and for signatures, Alice can create a message to Bob that is both signed and encrypted. Alice first appends her digital signature to the message and then encrypts the resulting message/signature pair with Bob’s public key. Bob decrypts the received message with his secret key to obtain both the original message and its digital signature. Bob can then verify the signatur e using Alice’s public key. The corresponding combined process using paper-based systems would be to sign the paper document and then seal the document inside a paper envelope that is opened only by the intended recipient."
+   "text": "A signed message may or may not be encrypted. The message can be <in the clear= and not protected from disclosure. By compos ing the above protocols for encryption and for signatures, Alice can create a message to Bob that is both signed and encrypted. Alice first appends her digital signature to the message and then encrypts the resulting message/signature pair with Bob’s public key. Bob decrypts the received message with his secret key to obtain both the original message and its digital signature. Bob can then verify the signature using Alice’s public key. The corresponding combined process using paper-based systems would be to sign the paper document and then seal the document inside a paper envelope that is opened only by the intended recipient."
   },
   {
    "type": "body",
@@ -4622,7 +4622,7 @@
    "section_title": "31.7 The RSA public-key cryptosystem",
    "printed_page": 941,
    "pdf_page": 962,
-   "text": "The security of the RSA cryptosystem rests in large part on the difficulty of factoring large integers. If an adversary can factor the modulus n in a public key, then the adversary can derive the secret key from the pu blic key, using the knowledge of the factors p and q in the same way that the creator of the public key used them."
+   "text": "The security of the RSA cryptosystem rests in large part on the difficulty of factoring large integers. If an adversary can factor the modulus n in a public key, then the adversary can derive the secret key from the public key, using the knowledge of the factors p and q in the same way that the creator of the public key used them."
   },
   {
    "type": "body",
@@ -4631,7 +4631,7 @@
    "section_title": "31.7 The RSA public-key cryptosystem",
    "printed_page": 941,
    "pdf_page": 962,
-   "text": "Therefore, if factoring large integers is easy, then breaking the RSA cryptosystem is easy. The converse statement, that if factoring large integers is hard, then breaking RSA is hard, is unproven. After two decades of research, however, no easier method has been found to break the RSA public-key cryptosystem than to factor the modulus n. And factoring large integers is surprisingly difficult. By randomly selecting and multiplying together two 1024-bit primes, you can create a public key that cannot be \"broken\" in any feasible amount of time with current technology. In the absence of a fundamental breakthrough in the de sign of number-theoretic algorithms, and when implemented with care following recommended standards, the RSA cryptosystem is capable of providing a high degree of security in applications."
+   "text": "Therefore, if factoring large integers is easy, then breaking the RSA cryptosystem is easy. The converse statement, that if factoring large integers is hard, then breaking RSA is hard, is unproven. After two decades of research, however, no easier method has been found to break the RSA public-key cryptosystem than to factor the modulus n. And factoring large integers is surprisingly difficult. By randomly selecting and multiplying together two 1024-bit primes, you can create a public key that cannot be \"broken\" in any feasible amount of time with current technology. In the absence of a fundamental breakthrough in the design of number-theoretic algorithms, and when implemented with care following recommended standards, the RSA cryptosystem is capable of providing a high degree of security in applications."
   },
   {
    "type": "body",
@@ -4757,7 +4757,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 942,
    "pdf_page": 963,
-   "text": "This section shows how to find large primes. We begin with a discussion of the density of primes, proceed to examine a plausible, but incomplete, approach to primality testing, and then present an effective ra ndomized primality test due to Miller and Rabin."
+   "text": "This section shows how to find large primes. We begin with a discussion of the density of primes, proceed to examine a plausible, but incomplete, approach to primality testing, and then present an effective randomized primality test due to Miller and Rabin."
   },
   {
    "type": "body",
@@ -4829,7 +4829,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 943,
    "pdf_page": 964,
-   "text": "The process of randomly selecting an integer n and determining whether it is prime is really just a Bernoulli trial (see Section C.4). By the prime number theorem, the probability of a success—that is, the probability that n is prime—is approximately 1= ln n. The geometric distribution says how many trials m ust occur to obtain a success, and by equation (C.36) on page 1197, the expected number of trials is approximately ln n. Thus, in order to find a prime that has the same length as n by testing integers chosen randomly near n, the expected number ex- amined would be approximately ln n. For example, the expectation is that finding a 1024-bit prime would require testing approximately ln 2 1024 − 710 randomly chosen 1024-bit numbers for primality. (Of course, to cut this figure in half, choose only odd integers.)"
+   "text": "The process of randomly selecting an integer n and determining whether it is prime is really just a Bernoulli trial (see Section C.4). By the prime number theorem, the probability of a success—that is, the probability that n is prime—is approximately 1= ln n. The geometric distribution says how many trials must occur to obtain a success, and by equation (C.36) on page 1197, the expected number of trials is approximately ln n. Thus, in order to find a prime that has the same length as n by testing integers chosen randomly near n, the expected number ex- amined would be approximately ln n. For example, the expectation is that finding a 1024-bit prime would require testing approximately ln 2 1024 − 710 randomly chosen 1024-bit numbers for primality. (Of course, to cut this figure in half, choose only odd integers.)"
   },
   {
    "type": "body",
@@ -4838,7 +4838,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 943,
    "pdf_page": 964,
-   "text": "The remainder of this section shows how to determin e whether a large odd in- teger n is prime. For notational convenience, we assume tha t n has the prime factorization n = √e 1"
+   "text": "The remainder of this section shows how to determine whether a large odd in- teger n is prime. For notational convenience, we assume that n has the prime factorization n = √e 1"
   },
   {
    "type": "body",
@@ -4964,7 +4964,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 944,
    "pdf_page": 965,
-   "text": "How often does PSEUDOPRIME err? Surprisingly rarely. There are only 22 values of n less than 10,000 for which it errs, the first four of which are 341, 561, 645, PSEUDOPRIME (n) and 1105. We won’t prove it, but the probability that this program makes an error on a randomly chosen ˇ-bit number goes to 0 as ˇ approaches 1. Using more precise estimates due to Pomerance [361] of the number of base-2 pseudoprimes of a given size, a randomly chosen 512-bit number that is called prime by PSEU- DOPRIME has less than one chance in 10 20 of being a base-2 pseudoprime, and a randomly chosen 1024-bit number that is called prime has less than one chance in 10 41 of being a base-2 pseudoprime. Thus, if you are merely trying to find a large prime for some application, for all practical purposes you almost never go wrong by choosing large numbers at random until one of th em causes PSEUDOPRIME to return PRIME . But when the numbers being tested for primality a re not randomly chosen, you might need a better approach for testing primality. As we’ll see, a little more cleverness, and some randomization, will yield a primality-testing method that works well on all inputs."
+   "text": "How often does PSEUDOPRIME err? Surprisingly rarely. There are only 22 values of n less than 10,000 for which it errs, the first four of which are 341, 561, 645, PSEUDOPRIME (n) and 1105. We won’t prove it, but the probability that this program makes an error on a randomly chosen ˇ-bit number goes to 0 as ˇ approaches 1. Using more precise estimates due to Pomerance [361] of the number of base-2 pseudoprimes of a given size, a randomly chosen 512-bit number that is called prime by PSEU- DOPRIME has less than one chance in 10 20 of being a base-2 pseudoprime, and a randomly chosen 1024-bit number that is called prime has less than one chance in 10 41 of being a base-2 pseudoprime. Thus, if you are merely trying to find a large prime for some application, for all practical purposes you almost never go wrong by choosing large numbers at random until one of them causes PSEUDOPRIME to return PRIME . But when the numbers being tested for primality a re not randomly chosen, you might need a better approach for testing primality. As we’ll see, a little more cleverness, and some randomization, will yield a primality-testing method that works well on all inputs."
   },
   {
    "type": "pseudocode",
@@ -4998,7 +4998,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 945,
    "pdf_page": 966,
-   "text": "Since PSEUDOPRIME checks equation (31.39) for only a = 2, you might think that you could eliminate all the errors by simply c hecking equation (31.39) for a second base number, say a = 3. Better yet, you could check equation (31.39) for even more values of a. Unfortunately, even checking for several values o f a does not eliminate all errors, because there exist composite integers n, known as Carmichael numbers, that satisfy equation (31.39) for all a 2 Z − n . (The equation does fail when gcd(a,n)>1 4that is, when a … Z − n 4but demonstrating that n is composite by finding such an a can be difficult if n has only large prime factors.)"
+   "text": "Since PSEUDOPRIME checks equation (31.39) for only a = 2, you might think that you could eliminate all the errors by simply checking equation (31.39) for a second base number, say a = 3. Better yet, you could check equation (31.39) for even more values of a. Unfortunately, even checking for several values o f a does not eliminate all errors, because there exist composite integers n, known as Carmichael numbers, that satisfy equation (31.39) for all a 2 Z − n . (The equation does fail when gcd(a,n)>1 4that is, when a … Z − n 4but demonstrating that n is composite by finding such an a can be difficult if n has only large prime factors.)"
   },
   {
    "type": "body",
@@ -5296,7 +5296,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 947,
    "pdf_page": 968,
-   "text": "Let’s explore an alternative view of the behavior of WITNESS as a function of the sequence X = ⟨x 0 ,x 1 ,…,x t⟩. We’ll find this view useful later on, when we analyze the error rate of the Miller-Rabin primality test. Note that if x i = 1 for some 0 ≤ i <t , WITNESS might not compute the rest of the sequence. If it w ere to do so, however, each value x i + 1 ,x i + 2 ,…,x t would be 1, so we can consider these positions in the sequence X as being all 1s. There are four cases:"
+   "text": "Let’s explore an alternative view of the behavior of WITNESS as a function of the sequence X = ⟨x 0 ,x 1 ,…,x t⟩. We’ll find this view useful later on, when we analyze the error rate of the Miller-Rabin primality test. Note that if x i = 1 for some 0 ≤ i <t , WITNESS might not compute the rest of the sequence. If it were to do so, however, each value x i + 1 ,x i + 2 ,…,x t would be 1, so we can consider these positions in the sequence X as being all 1s. There are four cases:"
   },
   {
    "type": "body",
@@ -5449,7 +5449,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 949,
    "pdf_page": 970,
-   "text": "To complete the proof, we show that not only are al l nonwitnesses contained in Z − n , they are all contained in a proper subgroup B of Z − n (recall that B is a proper subgroup of Z − n when B is subgroup of Z − n but B is not equal to Z − n ). By"
+   "text": "To complete the proof, we show that not only are all nonwitnesses contained in Z − n , they are all contained in a proper subgroup B of Z − n (recall that B is a proper subgroup of Z − n when B is subgroup of Z − n but B is not equal to Z − n ). By"
   },
   {
    "type": "corollary",
@@ -5629,7 +5629,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 950,
    "pdf_page": 971,
-   "text": "Thus, (n − 1,0) is an acceptable pair. Now pick the largest possibl e j such that there exists an acceptable pair (v,j) , and fix v so that (v,j) is an acceptable pair."
+   "text": "Thus, (n − 1,0) is an acceptable pair. Now pick the largest possible j such that there exists an acceptable pair (v,j) , and fix v so that (v,j) is an acceptable pair."
   },
   {
    "type": "body",
@@ -5737,7 +5737,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 951,
    "pdf_page": 972,
-   "text": "In either case, the number of witnesses to the compositeness of n is at least"
+   "text": "In either case, the number of witnesses to the comp ositeness of n is at least"
   },
   {
    "type": "body",
@@ -5773,7 +5773,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 951,
    "pdf_page": 972,
-   "text": "Proof By Theorem 31.39, if n is composite, then each execution of the for loop of lines 1–4 of MILLER-RABIN has a probability of at least 1/2 of discovering a witness to the compositeness of n. MILLER-RABIN makes an error only if it is so unlucky as to miss discovering a witness to the compositeness of n on each of the s iterations of the main loop. The probability of suc h a sequence of misses is at most 2 −s ."
+   "text": "Proof By Theorem 31.39, if n is composite, then each execution of the for loop of lines 1–4 of MILLER-RABIN has a probability of at least 1/2 of discovering a witness to the compositeness of n. MILLER-RABIN makes an error only if it is so unlucky as to miss discovering a witness to the compositeness of n on each of the s iterations of the main loop. The probability of such a sequence of misses is at most 2 −s ."
   },
   {
    "type": "body",
@@ -5791,7 +5791,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 952,
    "pdf_page": 973,
-   "text": "When applying MILLER-RABIN to a large randomly chosen integer n, however, we need to consider as well the prior probability t hat n is prime, in order to correctly interpret MILLER-RABIN’s result. Suppose that we fix a bit length ˇ and choose at random an integer n of length ˇ bits to be tested for primality, so that ˇ − lg n − 1:443 ln n. Let A denote the event that n is prime. By the prime number theorem (Theorem 31.37), the probability that n is prime is approximately"
+   "text": "When applying MILLER-RABIN to a large randomly chosen integer n, however, we need to consider as well the prior probability that n is prime, in order to correctly interpret MILLER-RABIN’s result. Suppose that we fix a bit length ˇ and choose at random an integer n of length ˇ bits to be tested for primality, so that ˇ − lg n − 1:443 ln n. Let A denote the event that n is prime. By the prime number theorem (Theorem 31.37), the probability that n is prime is approximately"
   },
   {
    "type": "body",
@@ -5926,7 +5926,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 952,
    "pdf_page": 973,
-   "text": "In fact, the situation is much better. If you are trying to find large primes by applying MILLER-RABIN to large randomly chosen odd integers, then choosing a small value of s (say 3) is unlikely to lead to erroneous results, though we won’t prove it here. The reason is that for a randomly ch osen odd composite integer n, the expected number of nonwitnesses to the compositeness of n is likely to be considerably smaller than (n − 1)/2."
+   "text": "In fact, the situation is much better. If you are trying to find large primes by applying MILLER-RABIN to large randomly chosen odd integers, then choosing a small value of s (say 3) is unlikely to lead to erroneous results, though we won’t prove it here. The reason is that for a randomly chosen odd composite integer n, the expected number of nonwitnesses to the compositeness of n is likely to be considerably smaller than (n − 1)/2."
   },
   {
    "type": "body",
@@ -6070,7 +6070,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 954,
    "pdf_page": 975,
-   "text": "This problem compares the efficiency of three methods for computing the nth Fibonacci number F n , given n. Assume that the cost of adding, subtracting, or multiplying two numbers is O(1), independent of the size of the numbers. a. Show that the running time of the straightforward r ecursive method for computing F n based on recurrence (3.31) on page 69 is exponential in n. (See, for example, the FIB procedure on page 751.) b. Show how to compute F n in O(n) time using memoization."
+   "text": "This problem compares the efficiency of three methods for computing the nth Fibonacci number F n , given n. Assume that the cost of adding, subtracting, or multiplying two numbers is O(1), independent of the size of the numbers. a. Show that the running time of the straightforward recursive method for computing F n based on recurrence (3.31) on page 69 is exponential in n. (See, for example, the FIB procedure on page 751.) b. Show how to compute F n in O(n) time using memoization."
   },
   {
    "type": "body",
@@ -6295,7 +6295,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 957,
    "pdf_page": 978,
-   "text": "Text-editing programs frequently need to find all occurrences of a pattern in the text. Typically, the text is a document being edite d, and the pattern searched for is a particular word supplied by the user. Efficient algorithms for this problem"
+   "text": "Text-editing programs frequently need to find all occurrences of a pattern in the text. Typically, the text is a document being edited, and the pattern searched for is a particular word supplied by the user. Efficient algorithms for this problem"
   },
   {
    "type": "body",

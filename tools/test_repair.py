@@ -147,6 +147,14 @@ def main():
     rule("(mod p)", "we compute .mod p/ and", "we compute (mod p) and")
     rule("(lg n)", "it takes O.lg n/ time", "O(lg n) time")
 
+    # --- 角括号必须先于词合并跑 ---
+    # 否则 `ha n−1 ;…;a 0 i`（= ⟨a_{n−1},…,a_0⟩）里的 `ha n` 会被并成 `han`，
+    # 把左尖括号毁掉。这条断言锁住 repair_text 里的规则顺序。
+    rule("角括号不被词合并毁掉（顺序守卫）",
+         "A D ha n\ue0021 ;a  n\ue0022 ;:::;a  0 i",
+         "A = ⟨a n−1 ,a  n−2 ,…,a  0⟩")
+    rule("真角括号照常修复", "ha 1 ;a 2 i", "⟨a 1 ,a 2⟩")
+
     # --- 附录 A：求和 ---
     rule("阶乘", "n Š = n  .n  1/", "n ! = n")
     rule("根号（真）", "lg n \np n \nn", "√n")
@@ -192,11 +200,11 @@ def main():
     keep("英文分号不受影响", "it is sorted; then we return")
 
     # ---------------------------------------------------------------
-    # B2. 词内空格伪影（cha racterize / runn ing）
+    # B2. 词内空格伪影（cha racterize / runn ing / ea ch / ti me）
     #     判定要用「语料自证」的三张表，所以这里手工构造状态，
-    #     让每条断言精确对应一个必要条件。
+    #     让每条断言精确对应一道守卫。
     # ---------------------------------------------------------------
-    print("\n[B2] 词内空格伪影（三张表 + 三个必要条件）")
+    print("\n[B2] 词内空格伪影（语料自证 + 六道守卫）")
 
     def make_state(words, follow):
         # 判定只用 .get()，普通 dict 就够（不依赖 Counter）
@@ -207,14 +215,20 @@ def main():
         # ① 合并后的词必须是真词
         words={"characterize": 25, "running": 724, "example": 648, "which": 900,
                "merge": 300, "table": 449, "algorithms": 800, "procedure": 783,
-               "chapter": 300, "context": 200, "subarray": 600,
+               "chapter": 300, "context": 200, "subarray": 600, "fourth": 10,
+               # 短左片段（1–2 字母）要合并的那些：
+               "each": 2104, "time": 2620, "not": 3000, "one": 1500, "set": 900,
+               "you": 800, "before": 400, "running": 724,
+               # 右片段只有 1 个字母的那些：
+               "have": 500, "more": 800, "size": 400,
                # 下面是「合法短语合并后也会成词」的陷阱词：判定必须挡住
                "payoff": 40, "areas": 50, "within": 60, "keyword": 30, "there": 400},
-        # ② 真词后面跟很多不同的词；破损片段只跟着它那半截
+        # ② 长片段：真词后面跟很多不同的词；破损片段只跟着它那半截
         follow={
             "cha": "racterize", "runn": "ing", "exam": "ple", "whi": "ch",
             "mer": "ge", "tab": "le", "procedu": "re", "alg": "orithms orithm",
             "chap": "ter", "con": "text stant", "sub": "array set",
+            "four": "th",          # 真词干接序数后缀，长度够，照常合并
             # 真词（后继词多）：
             "based": "on the whole", "depends": "on upon",
             "pay": "off for the", "are": "as the of both",
@@ -242,7 +256,25 @@ def main():
     rule_s("see chap ter three", "see chapter three")
     rule_s("con text free grammar", "context free grammar")
     rule_s("the sub array of A", "the subarray of A")
-    # ★ 不该合并的：逐条对应一个必要条件
+    # 短左片段（1–2 字母）也是真破损 —— 这一整类曾因「后继词数」判据失效而漏掉
+    rule_s("ea ch of the items", "each of the items")
+    rule_s("the ti me complexity", "the time complexity")
+    rule_s("wh ich is optimal", "which is optimal")
+    rule_s("is ru nning", "is running")
+    rule_s("e ach iteration", "each iteration")
+    rule_s("o ne page", "one page")
+    rule_s("n ot only", "not only")
+    rule_s("s et of keys", "set of keys")
+    rule_s("y ou do not", "you do not")
+    rule_s("b efore the loop", "before the loop")
+    # 序数后缀：真词干（four）照常合并
+    rule_s("the four th candidate", "the fourth candidate")
+    # 右片段只有 1 个字母也是真破损（`hav e` 一整类，实测 277 种形状）
+    rule_s("hav e guessed", "have guessed")
+    rule_s("mor e than", "more than")
+    rule_s("ther e is", "there is")
+    rule_s("siz e of", "size of")
+    # ★ 不该合并的：逐条对应一道守卫
     keep_s("based on the bound")        # ① basedon 不是词
     keep_s("depends on the input")      # ① dependson 不是词
     keep_s("the re is no")              # ② the 的后继词太多
@@ -250,9 +282,27 @@ def main():
     keep_s("with in the range")         # ② with 的后继词太多
     keep_s("key word list")             # ② key 的后继词太多
     keep_s("pay off the loan")          # ③ off 是虚词
-    keep_s("a long time")               # 左片段长度 1
-    keep_s("in to the array")           # 左片段长度 2
+    keep_s("a long time")               # ② 短片段 'a' 是功能词
+    keep_s("in to the array")           # ② 短片段 'in' 是功能词
+    keep_s("no thing here")             # ② 短片段 'no' 是功能词
+    keep_s("so me where")               # ② 短片段 'so' 是功能词
     keep_s("sort the array")            # sortthe 不是词
+    # ④ 右片段是数学函数名时绝不合并（`b lg n` 是 b·lg n，并成 blg 就毁了记号）
+    keep_s("b lg nc")
+    keep_s("d lg n")
+    keep_s("b log b a")
+    keep_s("the n lg n bound")
+    # ⑤ 短词干不得接序数后缀（`h k th` 是 hᵏ-th）
+    keep_s("the h k th partitioning")
+    # ⑥ 左片段必须在词首：前面是 '=' 或弯撇号时都不是碎片
+    keep_s("at least jU i j =k new elements")
+    keep_s("you can\u2019t im-plement it")
+    keep_s("=k new")
+    keep_s("the h k th partitioning")
+    # ⑦ 数学变量不能与后面的词合并（`the edge e is` 里的 e 是变量，不是碎片）
+    keep_s("the edge e is")
+    keep_s("let e denote the edge")
+    keep_s("the node v and")
     # 没有状态时规则完全不生效（保证单测/其他调用方不被隐式改变）
     check(rep.repair_text("cha racterize") == "cha racterize",
           "未提供状态时词内空格规则不生效")
@@ -336,12 +386,18 @@ def main():
     for src, want in [("alg orithms", "algorithms"), ("cha racterize", "characterize"),
                       ("runn ing", "running"), ("exam ple", "example"),
                       ("chap ter", "chapter"), ("whi ch", "which"),
-                      ("con text", "context")]:
+                      ("con text", "context"),
+                      # 短左片段（1–2 字母）也必须在真实语料上合并
+                      ("ea ch", "each"), ("ti me", "time"), ("ru nning", "running"),
+                      ("wh ich", "which"), ("o ne", "one"), ("n ot", "not"),
+                      ("s et", "set"), ("y ou", "you")]:
         got = rep.repair_text(src, state=st_raw)
         check(got == want, "[真实语料] 词内空格 %r -> %r（实际 %r）" % (src, want, got))
-    for src in ["based on", "depends on", "pay off", "with in the", "are as"]:
+    for src in ["based on", "depends on", "pay off", "with in the", "are as",
+                # 真实语料上这几条必须保持原样（数学记号 / 句中错切）
+                "b lg nc", "d lg n", "b log", "=k new", "h k th"]:
         got = rep.repair_text(src, state=st_raw)
-        check(got == src, "[真实语料] 合法短语不被合并：%r（实际 %r）" % (src, got))
+        check(got == src, "[真实语料] 合法写法不被合并：%r（实际 %r）" % (src, got))
 
     # 词内空格伪影：原书共 407 处。列一批已知形状，确认成品里一个都不剩。
     KNOWN_SPLITS = ["alg orithms", "runn ing", "cha racterize", "examp le", "whi ch",

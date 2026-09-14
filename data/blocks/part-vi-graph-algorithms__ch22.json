@@ -187,7 +187,7 @@
    "section_title": "22.1 The Bellman-Ford algorithm",
    "printed_page": 613,
    "pdf_page": 634,
-   "text": "(t,x),.t,y/,.t,´/,.x,t/,.y,x/,.y,´/,.´,x/,.´,s/,.s; t/,.s,y/ . (a) The situation just before the first pass over the edges. (b)–(e) The situation after each successive pass over the e dges. Vertices whose shortest-path estimates and predecessors have changed due to a pass are highlighted in orange."
+   "text": "(t,x),.t,y/,.t,´/,.x,t/,.y,x/,.y,´/,.´,x/,.´,s/,.s; t/,.s,y/ . (a) The situation just before the first pass over the edges. (b)–(e) The situation after each successive pass over the edges. Vertices whose shortest-path estimates and predecessors have changed due to a pass are highlighted in orange."
   },
   {
    "type": "body",
@@ -403,7 +403,7 @@
    "section_title": "22.1 The Bellman-Ford algorithm",
    "printed_page": 615,
    "pdf_page": 636,
-   "text": "22.1-1 Run the Bellman-Ford algorithm on the directed graph of Figure 22.4, using vertex ´ as the source. In each pass, relax edges in the same order as in the figure, and show the d and Ω values after each pass. Now, change the weight of e dge .´,x/ to 4 and run the algorithm again, using s as the source."
+   "text": "22.1-1 Run the Bellman-Ford algorithm on the directed graph of Figure 22.4, using vertex ´ as the source. In each pass, relax edges in the same order as in the figure, and show the d and Ω values after each pass. Now, change the weight of edge .´,x/ to 4 and run the algorithm again, using s as the source."
   },
   {
    "type": "exercise",
@@ -484,7 +484,7 @@
    "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
    "printed_page": 616,
    "pdf_page": 637,
-   "text": "The algorithm starts by topologically sorting the d ag (see Section 20.4) to impose a linear ordering on the vertices. If the dag contains a path from vertex u to vertex v, then u precedes v in the topological sort. The DAG-SHORTEST-PATHS procedure makes just one pass over the vertices in the topologically sorted order."
+   "text": "The algorithm starts by topologically sorting the dag (see Section 20.4) to impose a linear ordering on the vertices. If the dag contains a path from vertex u to vertex v, then u precedes v in the topological sort. The DAG-SHORTEST-PATHS procedure makes just one pass over the vertices in the topologically sorted order."
   },
   {
    "type": "pseudocode",
@@ -625,7 +625,7 @@
    "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
    "printed_page": 617,
    "pdf_page": 638,
-   "text": "A useful application of this algorithm arises in de termining critical paths in PERT chart 2 analysis. A job consists of several tasks. Each tas k takes a certain 2 \"PERT\" is an acronym for \"program evaluation and review technique.\""
+   "text": "A useful application of this algorithm arises in determining critical paths in PERT chart 2 analysis. A job consists of several tasks. Each task takes a certain 2 \"PERT\" is an acronym for \"program evaluation and review technique.\""
   },
   {
    "type": "body",
@@ -760,7 +760,7 @@
    "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
    "printed_page": 618,
    "pdf_page": 639,
-   "text": "Figure 22.5 The execution of the algorithm for shortest paths i n a directed acyclic graph. The vertices are topologically sorted from left to righ t. The source vertex is s . The d values appear within the vertices, and blue edges indicate the Ω values. (a) The situation before the first iteration of the for loop of lines 3–5. (b)–(g) The situation after each iteration of the for loop of lines 3–5."
+   "text": "Figure 22.5 The execution of the algorithm for shortest paths i n a directed acyclic graph. The vertices are topologically sorted from left to right. The source vertex is s . The d values appear within the vertices, and blue edges indicate the Ω values. (a) The situation before the first iteration of the for loop of lines 3–5. (b)–(g) The situation after each iteration of the for loop of lines 3–5."
   },
   {
    "type": "body",
@@ -778,7 +778,7 @@
    "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
    "printed_page": 618,
    "pdf_page": 639,
-   "text": "For example, if the job is to build a house, then the foundation must be completed before starting to frame the exterior walls, which must be completed before starting on the roof. Some tasks require more than one other task to be completed before they can be started: before the drywall can be inst alled over the wall framing, both the electrical system and plumbing must be installed. A dag models the tasks and dependencies. Edges represent tasks, with the w eight of an edge indicating the time required to perform the task. Vertices represent \"milestones,\" which are achieved when all the tasks represented by the edges entering the vertex have been completed. If edge (u,v) enters vertex v and edge (v,x) leaves v, then task (u,v) must be completed before task (v,x) is started. A path through this dag represents a sequence of tasks that must be performed in a particular order. A critical path is a longest path through the dag, corresponding to the longest time to perform any sequence of tasks. Thus, the weight of a critical path provides a lower bound on the total time to perform all the tasks, even if as many tasks as possible are performed simultaneously. You can find a critical path by either"
+   "text": "For example, if the job is to build a house, then the foundation must be completed before starting to frame the exterior walls, which must be completed before starting on the roof. Some tasks require more than one other task to be completed before they can be started: before the drywall can be inst alled over the wall framing, both the electrical system and plumbing must be installed. A dag models the tasks and dependencies. Edges represent tasks, with the weight of an edge indicating the time required to perform the task. Vertices represent \"milestones,\" which are achieved when all the tasks represented by the edges entering the vertex have been completed. If edge (u,v) enters vertex v and edge (v,x) leaves v, then task (u,v) must be completed before task (v,x) is started. A path through this dag represents a sequence of tasks that must be performed in a particular order. A critical path is a longest path through the dag, corresponding to the longest time to perform any sequence of tasks. Thus, the weight of a critical path provides a lower bound on the total time to perform all the tasks, even if as many tasks as possible are performed simultaneously. You can find a critical path by either"
   },
   {
    "type": "body",
@@ -929,7 +929,7 @@
    "section_title": "22.3 Dijkstra’s algorithm",
    "printed_page": 620,
    "pdf_page": 641,
-   "text": "You can think of Dijkstra9s algorithm as generalizing breadth-first search to weighted graphs. A wave emanates from the source, and the first time that a wave arrives at a vertex, a new wave emanates from that vertex. Whereas breadth-first search operates as if each wave takes unit time to traverse an edge, in a weighted graph, the time for a wave to traverse an edge is g iven by the edge9s weight. Because a shortest path in a weighted graph might not have the fewest edges, a simple, first-in, first-out queue won9t suffice for choosing the next vertex from which to send out a wave."
+   "text": "You can think of Dijkstra9s algorithm as generalizing breadth-first search to weighted graphs. A wave emanates from the source, and the first time that a wave arrives at a vertex, a new wave emanates from that vertex. Whereas breadth-first search operates as if each wave takes unit time to traverse an edge, in a weighted graph, the time for a wave to traverse an edge is given by the edge9s weight. Because a shortest path in a weighted graph might not have the fewest edges, a simple, first-in, first-out queue won9t suffice for choosing the next vertex from which to send out a wave."
   },
   {
    "type": "body",
@@ -1028,7 +1028,7 @@
    "section_title": "22.3 Dijkstra’s algorithm",
    "printed_page": 621,
    "pdf_page": 642,
-   "text": "Figure 22.6 The execution of Dijkstra9s algorithm. The source s is the leftmost vertex. The shortest-path estimates appear within the vertices, and blue edges indicate predecessor values. Blue vertices belong to the set S , and tan vertices are in the min-priority queue Q = V − S . (a) The situation just before the first iteration of the while loop of lines 6–12. (b)–(f) The situation after each successive iteration of the while loop. In each part, the vertex highlighted in orang e was chosen as vertex u in line 7, and each edge highlighted in orange caused a d value and a predecessor to change when the edge was relaxed. The d values and predecessors shown in part (f) are the final values. of the while loop of lines 6–12. Lines 3–5 initialize the min-priority queue Q to contain all the vertices in V . Since S = ; at that time, the invariant is true upon first reaching line 6. Each time through the while loop of lines 6–12, line 7 extracts a vertex u from Q = V − S and line 8 adds it to set S , thereby maintaining the invariant. (The first time through this loop, u = s .) Vertex u, therefore, has the smallest shortest-path estimate of any vertex in V − S . Then, lines 9–12 relax each edge (u,v) leaving u, thus updating the estimate v: d and the predecessor v:Ω if the shortest path to v found so far improves by going through u. Whenever a relaxation step changes the d and Ω values, the call to DECREASE-KEY in line 12 updates the min-priority queue. The algorithm never inserts vertices into Q after the for loop of lines 4–5, and each vertex is extracted from Q and added to S exactly once, so that the while loop of lines 6–12 iterates exactly |V| times."
+   "text": "Figure 22.6 The execution of Dijkstra9s algorithm. The source s is the leftmost vertex. The shortest-path estimates appear within the vertices, and blue edges indicate predecessor values. Blue vertices belong to the set S , and tan vertices are in the min-priority queue Q = V − S . (a) The situation just before the first iteration of the while loop of lines 6–12. (b)–(f) The situation after each successive iteration of the while loop. In each part, the vertex highlighted in orange was chosen as vertex u in line 7, and each edge highlighted in orange caused a d value and a predecessor to change when the edge was relaxed. The d values and predecessors shown in part (f) are the final values. of the while loop of lines 6–12. Lines 3–5 initialize the min-priority queue Q to contain all the vertices in V . Since S = ; at that time, the invariant is true upon first reaching line 6. Each time through the while loop of lines 6–12, line 7 extracts a vertex u from Q = V − S and line 8 adds it to set S , thereby maintaining the invariant. (The first time through this loop, u = s .) Vertex u, therefore, has the smallest shortest-path estimate of any vertex in V − S . Then, lines 9–12 relax each edge (u,v) leaving u, thus updating the estimate v: d and the predecessor v:Ω if the shortest path to v found so far improves by going through u. Whenever a relaxation step changes the d and Ω values, the call to DECREASE-KEY in line 12 updates the min-priority queue. The algorithm never inserts vertices into Q after the for loop of lines 4–5, and each vertex is extracted from Q and added to S exactly once, so that the while loop of lines 6–12 iterates exactly |V| times."
   },
   {
    "type": "body",
@@ -1199,7 +1199,7 @@
    "section_title": "22.3 Dijkstra’s algorithm",
    "printed_page": 623,
    "pdf_page": 644,
-   "text": "DECREASE-KEY operation takes O(lg V) time, and there are still at most |E| such operations. The total running time is therefor e O..V + E/ lg V/ , which is O(E lg V) in the typical case that |E| = Ω(V ) . This running time improves upon the straightforward O(V 2 )-time implementation if E = o(V 2 = lg V) ."
+   "text": "DECREASE-KEY operation takes O(lg V) time, and there are still at most |E| such operations. The total running time is therefore O..V + E/ lg V/ , which is O(E lg V) in the typical case that |E| = Ω(V ) . This running time improves upon the straightforward O(V 2 )-time implementation if E = o(V 2 = lg V) ."
   },
   {
    "type": "body",
@@ -1325,7 +1325,7 @@
    "section_title": "22.3 Dijkstra’s algorithm",
    "printed_page": 625,
    "pdf_page": 646,
-   "text": "22.3-6 Professor Newman thinks that he has worked out a si mpler proof of correctness for Dijkstra9s algorithm. He claims that Dijkstra9s algorithm relaxes the edges of every shortest path in the graph in the order in which they appear on the path, and therefore the path-relaxation property applies to every vertex reachable from the source. Show that the professor is mistaken by cons tructing a directed graph for which Dijkstra9s algorithm relaxes the edges of a shortest path out of order."
+   "text": "22.3-6 Professor Newman thinks that he has worked out a simpler proof of correctness for Dijkstra9s algorithm. He claims that Dijkstra9s algorithm relaxes the edges of every shortest path in the graph in the order in which they appear on the path, and therefore the path-relaxation property applies to every vertex reachable from the source. Show that the professor is mistaken by constructing a directed graph for which Dijkstra9s algorithm relaxes the edges of a shortest path out of order."
   },
   {
    "type": "exercise",
@@ -1424,7 +1424,7 @@
    "section_title": "22.4 Difference constraints and shortest paths",
    "printed_page": 626,
    "pdf_page": 647,
-   "text": "Chapter 29 studies the general linear-programming problem, showing how to optimize a linear function subject to a set of linear inequalities. This section in- vestigates a special case of linear programming tha t reduces to finding shortest paths from a single source. The Bellman-Ford algorithm then solves the resulting single-source shortest-paths problem, thereby also solving the linear-programming problem."
+   "text": "Chapter 29 studies the general linear-programming problem, showing how to optimize a linear function subject to a set of linear inequalities. This section in- vestigates a special case of linear programming that reduces to finding shortest paths from a single source. The Bellman-Ford algorithm then solves the resulting single-source shortest-paths problem, thereby also solving the linear-programming problem."
   },
   {
    "type": "body",
@@ -1451,7 +1451,7 @@
    "section_title": "22.4 Difference constraints and shortest paths",
    "printed_page": 626,
    "pdf_page": 647,
-   "text": "The most popular method for solving linear programs is the simplex algorithm, which Section 29.1 discusses. Although the simplex algorithm does not always run in time polynomial in the size of its input, there are other linear-programming algorithms that do run in polynomial time. We offer here two reasons to understand the setup of linear-programming problems. First, if you know that you can cast a given problem as a polynomial-sized linear-programming problem, then you immediately have a polynomial-time algorithm to solve the problem. Second, faster algorithms exist for many special cases of linear p rogramming. For example, the single-pair shortest-path problem (Exercise 22.4-4) and the maximum-flow problem (Exercise 24.1-5) are special cases of linear programming."
+   "text": "The most popular method for solving linear programs is the simplex algorithm, which Section 29.1 discusses. Although the simplex algorithm does not always run in time polynomial in the size of its input, there are other linear-programming algorithms that do run in polynomial time. We offer here two reasons to understand the setup of linear-programming problems. First, if you know that you can cast a given problem as a polynomial-sized linear-programming problem, then you immediately have a polynomial-time algorithm to solve the problem. Second, faster algorithms exist for many special cases of linear programming. For example, the single-pair shortest-path problem (Exercise 22.4-4) and the maximum-flow problem (Exercise 24.1-5) are special cases of linear programming."
   },
   {
    "type": "body",
@@ -1631,7 +1631,7 @@
    "section_title": "22.4 Difference constraints and shortest paths",
    "printed_page": 628,
    "pdf_page": 649,
-   "text": "Systems of difference constraints occur in various applications. For example, the unknowns x i might be times at which events are to occur. Each c onstraint states that at least a certain amount of time, or at most a certain amount of time, must elapse between two events. Perhaps the events are jobs to be performed during the assembly of a product. If the manufacturer applies an adhesive that takes 2 hours to set at time x 1 and has to wait until it sets to install a part at time x 2 , then there is a constraint that x 2 ≥ x 1 + 2 or, equivalently, that x 1 − x 2 ≤ −2. Alternatively, the manufacturer might require the part to be installed after the adhesive has been applied but no later than the time that the adhesiv e has set halfway. In this case, there is a pair of constraints x 2 ≥ x 1 and x 2 ≤ x 1 + 1 or, equivalently, x 1 − x 2 ≤ 0 and x 2 − x 1 ≤ 1."
+   "text": "Systems of difference constraints occur in various applications. For example, the unknowns x i might be times at which events are to occur. Each constraint states that at least a certain amount of time, or at most a certain amount of time, must elapse between two events. Perhaps the events are jobs to be performed during the assembly of a product. If the manufacturer applies an adhesive that takes 2 hours to set at time x 1 and has to wait until it sets to install a part at time x 2 , then there is a constraint that x 2 ≥ x 1 + 2 or, equivalently, that x 1 − x 2 ≤ −2. Alternatively, the manufacturer might require the part to be installed after the adhesive has been applied but no later than the time that the adhesiv e has set halfway. In this case, there is a pair of constraints x 2 ≥ x 1 and x 2 ≤ x 1 + 1 or, equivalently, x 1 − x 2 ≤ 0 and x 2 − x 1 ≤ 1."
   },
   {
    "type": "body",
@@ -1712,7 +1712,7 @@
    "section_title": "22.4 Difference constraints and shortest paths",
    "printed_page": 629,
    "pdf_page": 650,
-   "text": "The constraint graph includes the additional vertex v 0 , as we shall see shortly, to guarantee that the graph has some vertex that can r each all other vertices. Thus, the vertex set V consists of a vertex v i for each unknown x i , plus an additional vertex v 0 . The edge set E contains an edge for each difference constraint, pl us an edge (v 0 ,v i ) for each unknown x i . If x j − x i ≤ b k is a difference constraint, then the weight of edge (v i ,v j ) is w(v i ,v j ) = b k . The weight of each edge leaving v 0 is 0. Figure 22.8 shows the constraint graph for the system (22.2)–(22.9) of difference constraints."
+   "text": "The constraint graph includes the additional vertex v 0 , as we shall see shortly, to guarantee that the graph has some vertex that can r each all other vertices. Thus, the vertex set V consists of a vertex v i for each unknown x i , plus an additional vertex v 0 . The edge set E contains an edge for each difference constraint, plus an edge (v 0 ,v i ) for each unknown x i . If x j − x i ≤ b k is a difference constraint, then the weight of edge (v i ,v j ) is w(v i ,v j ) = b k . The weight of each edge leaving v 0 is 0. Figure 22.8 shows the constraint graph for the system (22.2)–(22.9) of difference constraints."
   },
   {
    "type": "body",
@@ -1982,7 +1982,7 @@
    "section_title": "22.5 Proofs of shortest-paths properties",
    "printed_page": 633,
    "pdf_page": 654,
-   "text": "In studying breadth-first search (Section 20.2), we proved as Lemma 20.1 a simple property of shortest distances in unweighted gr aphs. The triangle inequality generalizes the property to weighted graphs."
+   "text": "In studying breadth-first search (Section 20.2), we proved as Lemma 20.1 a simple property of shortest distances in unweighted graphs. The triangle inequality generalizes the property to weighted graphs."
   },
   {
    "type": "lemma",
@@ -2144,7 +2144,7 @@
    "section_title": "22.5 Proofs of shortest-paths properties",
    "printed_page": 634,
    "pdf_page": 655,
-   "text": "Then, after the graph is initialized by INITIALIZE-SINGLE-SOURCE (G,s) , we have v: d = i(s,v) = 1 , and this equation is maintained as an invariant o ver any sequence of relaxation steps on the edges of G."
+   "text": "Then, after the graph is initialized by INITIALIZE-SINGLE-SOURCE (G,s) , we have v: d = i(s,v) = 1 , and this equation is maintained as an invariant over any sequence of relaxation steps on the edges of G."
   },
   {
    "type": "proof",
@@ -2243,7 +2243,7 @@
    "section_title": "22.5 Proofs of shortest-paths properties",
    "printed_page": 635,
    "pdf_page": 656,
-   "text": "Proof By the upper-bound property, if u: d = i(s,u) at some point prior to relaxing edge (u,v) , then this equation holds thereafter. In particula r, after edge (u,v) is relaxed, we have v: d ≤ u: d + w(u,v) (by Lemma 22.13)"
+   "text": "Proof By the upper-bound property, if u: d = i(s,u) at some point prior to relaxing edge (u,v) , then this equation holds thereafter. In particular, after edge (u,v) is relaxed, we have v: d ≤ u: d + w(u,v) (by Lemma 22.13)"
   },
   {
    "type": "body",
@@ -2342,7 +2342,7 @@
    "section_title": "22.5 Proofs of shortest-paths properties",
    "printed_page": 636,
    "pdf_page": 657,
-   "text": "Proof Initially, the only vertex in G − is the source vertex, and the lemma is trivially true. Consider a predecessor subgraph G − that arises after a sequence of relaxation steps. We first prove that G − is acyclic. Suppose for the sake of contradiction that some relaxation step creates a cycle in the graph G − . Let the cycle be c = ⟨v 0 ,v 1 ,…,v k⟩, where v k = v 0 . Then, v i :Ω = v i −1 for i = 1,2,…,k and, without loss of generality, assume that relaxing ed ge (v k−1 ,v k ) created the cycle in G − ."
+   "text": "Proof Initially, the only vertex in G − is the source vertex, and the lemma is trivially true. Consider a predecessor subgraph G − that arises after a sequence of relaxation steps. We first prove that G − is acyclic. Suppose for the sake of contradiction that some relaxation step creates a cycle in the graph G − . Let the cycle be c = ⟨v 0 ,v 1 ,…,v k⟩, where v k = v 0 . Then, v i :Ω = v i −1 for i = 1,2,…,k and, without loss of generality, assume that relaxing edge (v k−1 ,v k ) created the cycle in G − ."
   },
   {
    "type": "body",
@@ -2711,7 +2711,7 @@
    "section_title": "22.5 Proofs of shortest-paths properties",
    "printed_page": 640,
    "pdf_page": 661,
-   "text": "Suppose that each pass of the Bellman-Ford algorithm relaxes edges in the following way. First, visit each vertex in the order v 1 ,v 2 ,…,v |V| , relaxing edges of E f that leave the vertex. Then visit each vertex in the order v |V| ,v |V|−1 ,…,v 1 , relaxing edges of E b that leave the vertex. b. Prove that with this scheme, if G contains no negative-weight cycles that are reachable from the source vertex s , then after only ⌈|V| /2⌉ passes over the edges, v: d = i(s,v) for all vertices v 2 V . c. Does this scheme improve the asymptotic running tim e of the B ellman-Ford algorithm?"
+   "text": "Suppose that each pass of the Bellman-Ford algorithm relaxes edges in the following way. First, visit each vertex in the order v 1 ,v 2 ,…,v |V| , relaxing edges of E f that leave the vertex. Then visit each vertex in the order v |V| ,v |V|−1 ,…,v 1 , relaxing edges of E b that leave the vertex. b. Prove that with this scheme, if G contains no negative-weight cycles that are reachable from the source vertex s , then after only ⌈|V| /2⌉ passes over the edges, v: d = i(s,v) for all vertices v 2 V . c. Does this scheme improve the asymptotic running time of the B ellman-Ford algorithm?"
   },
   {
    "type": "problem",
@@ -2747,7 +2747,7 @@
    "section_title": "22.5 Proofs of shortest-paths properties",
    "printed_page": 641,
    "pdf_page": 662,
-   "text": "Arbitrage is the use of discrepancies in currency exchange ra tes to transform one unit of a currency into more than one unit of the s ame currency. For example, suppose that one U.S. dollar buys 64 Indian rupees, one Indian rupee buys 1:8"
+   "text": "Arbitrage is the use of discrepancies in currency exchange rates to transform one unit of a currency into more than one unit of the same currency. For example, suppose that one U.S. dollar buys 64 Indian rupees, one Indian rupee buys 1:8"
   },
   {
    "type": "body",
@@ -2810,7 +2810,7 @@
    "section_title": "22.5 Proofs of shortest-paths properties",
    "printed_page": 641,
    "pdf_page": 662,
-   "text": "This problem examines an algorithm for computing th e shortest paths from a single source by scaling edge weights. The input is a directed graph G = (V,E) with nonnegative integer edge weights w. Let W = max fw(u,v) W (u,v) 2 Eg be the maximum weight of any edge. In this problem, you will develop an algorithm that runs in O(E lg W) time. Assume that all vertices are reachable from the source."
+   "text": "This problem examines an algorithm for computing the shortest paths from a single source by scaling edge weights. The input is a directed graph G = (V,E) with nonnegative integer edge weights w. Let W = max fw(u,v) W (u,v) 2 Eg be the maximum weight of any edge. In this problem, you will develop an algorithm that runs in O(E lg W) time. Assume that all vertices are reachable from the source."
   },
   {
    "type": "body",
@@ -2963,7 +2963,7 @@
    "section_title": "22.5 Proofs of shortest-paths properties",
    "printed_page": 643,
    "pdf_page": 664,
-   "text": "(Hint: Show how to extend a shortest path to any vertex on a minimum meanweight cycle along the cycle to make a shortest pat h to the next vertex on the cycle.) e. Show that if Ω − = 0, then the minimum value of max ï i n (s,v) − i k (s,v) n − k W 0 ≤ k ≤ n − 1 ð"
+   "text": "(Hint: Show how to extend a shortest path to any vertex on a minimum meanweight cycle along the cycle to make a shortest path to the next vertex on the cycle.) e. Show that if Ω − = 0, then the minimum value of max ï i n (s,v) − i k (s,v) n − k W 0 ≤ k ≤ n − 1 ð"
   },
   {
    "type": "body",
@@ -3062,7 +3062,7 @@
    "section_title": "22.5 Proofs of shortest-paths properties",
    "printed_page": 645,
    "pdf_page": 666,
-   "text": "(lg V) 1/3C• ,. lg W/ 1/4C• }ä time. These two algorithms use an amount of space that depends on the word size of th e underlying machine. Although the amount of space used can be unbounded in the size of the input, it can be reduced to be linear in the size of the input using randomized hashing."
+   "text": "(lg V) 1/3C• ,. lg W/ 1/4C• }ä time. These two algorithms use an amount of space that depends on the word size of the underlying machine. Although the amount of space used can be unbounded in the size of the input, it can be reduced to be linear in the size of the input using randomized hashing."
   },
   {
    "type": "body",
@@ -3152,7 +3152,7 @@
    "section_title": "22.5 Proofs of shortest-paths properties",
    "printed_page": 646,
    "pdf_page": 667,
-   "text": "A legitimate application of all-pairs shortest paths is to determine the diameter of a network: the longest of all shortest paths. If a directed graph models a communication network, with the weight of an edge indicating the time required for a message to traverse a communication link, then th e diameter gives the longest possible transit time for a message in the network."
+   "text": "A legitimate application of all-pairs shortest paths is to determine the diameter of a network: the longest of all shortest paths. If a directed graph models a communication network, with the weight of an edge indicating the time required for a message to traverse a communication link, then the diameter gives the longest possible transit time for a message in the network."
   },
   {
    "type": "body",

@@ -345,7 +345,7 @@
    "section_title": "35.2 The traveling-salesperson problem",
    "printed_page": 1109,
    "pdf_page": 1130,
-   "text": "Consider the following heuristic to solve the vertex-cover problem. Repeatedly select a vertex of highest degree, and remove all o f its incident edges. Give an example to show that this heuristic does not provid e an approximation ratio of 2."
+   "text": "Consider the following heuristic to solve the vertex-cover problem. Repeatedly select a vertex of highest degree, and remove all o f its incident edges. Give an example to show that this heuristic does not provide an approximation ratio of 2."
   },
   {
    "type": "body",
@@ -408,7 +408,7 @@
    "section_title": "35.2 The traveling-salesperson problem",
    "printed_page": 1110,
    "pdf_page": 1131,
-   "text": "The triangle inequality seems as though it should n aturally hold, and it is automatically satisfied in several applications. For example, if the vertices of the graph are points in the plane and the cost of traveling between two vertices is the ordinary euclidean distance between them, then the triangle inequality is satisfied."
+   "text": "The triangle inequality seems as though it should naturally hold, and it is automatically satisfied in several applications. For example, if the vertices of the graph are points in the plane and the cost of traveling between two vertices is the ordinary euclidean distance between them, then the triangle inequality is satisfied."
   },
   {
    "type": "body",
@@ -426,7 +426,7 @@
    "section_title": "35.2 The traveling-salesperson problem",
    "printed_page": 1110,
    "pdf_page": 1131,
-   "text": "As Exercise 35.2-2 shows, the traveling-salesperson problem is NP-complete even if you require the cost function to satisfy th e triangle inequality. Thus, you should not expect to find a polynomial-time algorithm for solving this problem ex- actly. Your time would be better spent looking for good approximation algorithms."
+   "text": "As Exercise 35.2-2 shows, the traveling-salesperson problem is NP-complete even if you require the cost function to satisfy the triangle inequality. Thus, you should not expect to find a polynomial-time algorithm for solving this problem ex- actly. Your time would be better spent looking for good approximation algorithms."
   },
   {
    "type": "body",
@@ -453,7 +453,7 @@
    "section_title": "35.2 The traveling-salesperson problem",
    "printed_page": 1110,
    "pdf_page": 1131,
-   "text": "Applying the methodology of the previous section, s tart by computing a structure"
+   "text": "Applying the methodology of the previous section, start by computing a structure"
   },
   {
    "type": "body",
@@ -572,7 +572,7 @@
    "section_title": "35.2 The traveling-salesperson problem",
    "printed_page": 1111,
    "pdf_page": 1132,
-   "text": "The cost function between two points is the ordinar y euclidean distance. (b) A minimum spanning tree T of the complete graph, as computed by MST-PRIM . Vertex a is the root vertex. Only edges in the minimum spanning tree are shown. The vertices happen to be labeled in such a way that they are added to the main tree by MST-PRIM in alphabetical order. (c) A walk of T , starting at a. A full walk of the tree visits the vertices in the or der a,b,c,b,h,b,a,d,e,f,e,g,e,d,a . A preorder walk of T lists a vertex just when it is first encountered, as indicated by the dot next to each vertex, yielding the ordering a,b,c,h,d,e,f,g . (d) A tour obtained by visiting the vertices in the ord er given by the preorder walk, which is the tour H returned by APPROX-TSP-TOUR. Its total cost is approximately 19:074. (e) An optimal tour H − for the original complete graph. Its total cost is approximately 14:715."
+   "text": "The cost function between two points is the ordinary euclidean distance. (b) A minimum spanning tree T of the complete graph, as computed by MST-PRIM . Vertex a is the root vertex. Only edges in the minimum spanning tree are shown. The vertices happen to be labeled in such a way that they are added to the main tree by MST-PRIM in alphabetical order. (c) A walk of T , starting at a. A full walk of the tree visits the vertices in the or der a,b,c,b,h,b,a,d,e,f,e,g,e,d,a . A preorder walk of T lists a vertex just when it is first encountered, as indicated by the dot next to each vertex, yielding the ordering a,b,c,h,d,e,f,g . (d) A tour obtained by visiting the vertices in the ord er given by the preorder walk, which is the tour H returned by APPROX-TSP-TOUR. Its total cost is approximately 19:074. (e) An optimal tour H − for the original complete graph. Its total cost is approximately 14:715."
   },
   {
    "type": "body",
@@ -635,7 +635,7 @@
    "section_title": "35.2 The traveling-salesperson problem",
    "printed_page": 1112,
    "pdf_page": 1133,
-   "text": "Let H − denote an optimal tour for the given set of vertice s. Deleting any edge from a tour yields a spanning tree, and each edge c ost is nonnegative. Therefore, the weight of the minimum spanning tree T computed in line 2 of APPROX-TSP- TOUR provides a lower bound on the cost of an optimal tour: c(T) ≤ c.H − /: (35.4)"
+   "text": "Let H − denote an optimal tour for the given set of vertices. Deleting any edge from a tour yields a spanning tree, and each edge cost is nonnegative. Therefore, the weight of the minimum spanning tree T computed in line 2 of APPROX-TSP- TOUR provides a lower bound on the cost of an optimal tour: c(T) ≤ c.H − /: (35.4)"
   },
   {
    "type": "body",
@@ -671,7 +671,7 @@
    "section_title": "35.2 The traveling-salesperson problem",
    "printed_page": 1112,
    "pdf_page": 1133,
-   "text": "Of course, the full walk W is not a tour, since it visits some vertices more t han once. By the triangle inequality, however, deleting a visit to any vertex from W does not increase the cost. (When a vertex v is deleted from W between visits to u and w, the resulting ordering specifies going directly from u to w.) Repeatedly apply this operation on each visit to a vertex after the first time it’s visited in W , so that W is left with only the first visit to each vertex. In our example, this process leaves the ordering a,b,c,h,d,e,f,g:"
+   "text": "Of course, the full walk W is not a tour, since it visits some vertices more than once. By the triangle inequality, however, deleting a visit to any vertex from W does not increase the cost. (When a vertex v is deleted from W between visits to u and w, the resulting ordering specifies going directly from u to w.) Repeatedly apply this operation on each visit to a vertex after the first time it’s visited in W , so that W is left with only the first visit to each vertex. In our example, this process leaves the ordering a,b,c,h,d,e,f,g:"
   },
   {
    "type": "body",
@@ -851,7 +851,7 @@
    "section_title": "35.2 The traveling-salesperson problem",
    "printed_page": 1114,
    "pdf_page": 1135,
-   "text": "The proof of Theorem 35.3 serves as an example of a general technique to prove that no good approximation algorithm exists for a p articular problem. Given an"
+   "text": "The proof of Theorem 35.3 serves as an example of a general technique to prove that no good approximation algorithm exists for a particular problem. Given an"
   },
   {
    "type": "body",
@@ -878,7 +878,7 @@
    "section_title": "35.2 The traveling-salesperson problem",
    "printed_page": 1114,
    "pdf_page": 1135,
-   "text": "35.2-2 Show how in polynomial time to transform one instance of the t raveling-salesperson problem into another instance whose cost function satisfies the triangle in- equality. The two instances must have the same set of optimal tours. Explain why"
+   "text": "35.2-2 Show how in polynomial time to transform one instance of the traveling-salesperson problem into another instance whose cost function satisfies the triangle in- equality. The two instances must have the same set of optimal tours. Explain why"
   },
   {
    "type": "body",
@@ -923,7 +923,7 @@
    "section_title": "35.3 The set-covering problem",
    "printed_page": 1115,
    "pdf_page": 1136,
-   "text": "Show recursively how to visit all the nodes in a bo ttleneck spanning tree, as discussed in Problem 21-4 on page 601, exactly once by taking a full walk of the tree and skipping nodes, but without skipping more than two consecutive intermediate nodes. Show that the costliest edge in a bottleneck spanning tree has a cost bounded from above by the cost of the costliest edg e in a bottleneck hamiltonian cycle.)"
+   "text": "Show recursively how to visit all the nodes in a bottleneck spanning tree, as discussed in Problem 21-4 on page 601, exactly once by taking a full walk of the tree and skipping nodes, but without skipping more than two consecutive intermediate nodes. Show that the costliest edge in a bottleneck spanning tree has a cost bounded from above by the cost of the costliest edge in a bottleneck hamiltonian cycle.)"
   },
   {
    "type": "exercise",
@@ -1098,7 +1098,7 @@
    "section_title": "35.3 The set-covering problem",
    "printed_page": 1117,
    "pdf_page": 1138,
-   "text": "The greedy algorithm works as follows. At the start of each iteration, U i is a subset of X containing the remaining uncovered elements, with t he initial sub- set U 0 containing all the elements in X . The set C contains the subfamily being constructed. Line 5 is the greedy decision-making step, choosing a subset S that covers as many uncovered elements as possible (breaking ties arbitrarily). After"
+   "text": "The greedy algorithm works as follows. At the start of each iteration, U i is a subset of X containing the remaining uncovered elements, with t he initial sub- set U 0 containing all the elements in X . The set C contains the subfamily being constructed. Line 5 is the greedy decision-making step, choosing a subset S that covers as many uncovered elements as possible (brea king ties arbitrarily). After"
   },
   {
    "type": "body",
@@ -1161,7 +1161,7 @@
    "section_title": "35.3 The set-covering problem",
    "printed_page": 1118,
    "pdf_page": 1139,
-   "text": "If an optimal set cover for an instance (U i ; F ) has size at most k, at least one of the sets in C covers at least jU i j =k new elements. Thus, line 5 of GREEDY- SET-COVER, which chooses a set with the maximum number of un covered elements, must choose a set in which the number of new ly covered elements is at least jU i j =k . These elements are removed when constructing U i + 1 , giving jU i + 1 j ≤ j U i j − jU i j =k"
+   "text": "If an optimal set cover for an instance (U i ; F ) has size at most k, at least one of the sets in C covers at least jU i j =k new elements. Thus, line 5 of GREEDY- SET-COVER, which chooses a set with the maximum number of uncovered elements, must choose a set in which the number of new ly covered elements is at least jU i j =k . These elements are removed when constructing U i + 1 , giving jU i + 1 j ≤ j U i j − jU i j =k"
   },
   {
    "type": "body",
@@ -1233,7 +1233,7 @@
    "section_title": "35.3 The set-covering problem",
    "printed_page": 1119,
    "pdf_page": 1140,
-   "text": "35.3-1 Consider each of the following words as a set of le tters: farid; dash; drain; heard; lost ; nose ; shun; slate; snare; threadg. Show which set cover"
+   "text": "35.3-1 Consider each of the following words as a set of letters: farid; dash; drain; heard; lost ; nose ; shun; slate; snare; threadg. Show which set cover"
   },
   {
    "type": "body",
@@ -1296,7 +1296,7 @@
    "section_title": "35.4 Randomization and linear programming",
    "printed_page": 1119,
    "pdf_page": 1140,
-   "text": "This section studies two useful techniques for designing approximation algorithms: randomization and linear programming. It starts wit h a simple randomized algorithm for an optimization version of 3-CNF satisfiability, and then it shows how to design an approximation algorithm for a weighted version of the vertex-cover problem based on linear programming. This section o nly scratches the surface of these two powerful techniques. The chapter notes give references for further study of these areas."
+   "text": "This section studies two useful techniques for designing approximation algorithms: randomization and linear programming. It starts with a simple randomized algorithm for an optimization version of 3-CNF satisfiability, and then it shows how to design an approximation algorithm for a weighted version of the vertex-cover problem based on linear programming. This section only scratches the surface of these two powerful techniques. The chapter notes give references for further study of these areas."
   },
   {
    "type": "body",
@@ -1843,7 +1843,7 @@
    "section_title": "35.5 The subset-sum problem",
    "printed_page": 1125,
    "pdf_page": 1146,
-   "text": "We start this section with an exponential-time algorithm to compute the optimal value for this optimization problem. Then we show h ow to modify the algorithm so that it becomes a fully polynomial-time approximation scheme. (Recall that a fully polynomial-time approximation scheme has a running time that is polynomial in 1=Ω as well as in the size of the input.)"
+   "text": "We start this section with an exponential-time algorithm to compute the optimal value for this optimization problem. Then we show how to modify the algorithm so that it becomes a fully polynomial-time approximation scheme. (Recall that a fully polynomial-time approximation scheme has a running time that is polynomial in 1=Ω as well as in the size of the input.)"
   },
   {
    "type": "body",
@@ -1960,7 +1960,7 @@
    "section_title": "35.5 The subset-sum problem",
    "printed_page": 1126,
    "pdf_page": 1147,
-   "text": "The key to devising a fully polynomial-time approximation scheme for the subsetsum problem is to \"trim\" each list L i after it is created. Here’s the idea behind trimming: if two values in L are close to each other, then since the goal is jus t an approximate solution, there is no need to maintain both of them explicitly. More precisely, use a trimming parameter i such that 0 < i < 1. When trimming a list L by i , remove as many elements from L as possible, in such a way that if L 0 is the result of trimming L, then for every element y that was removed from L, some element ´ still in L 0 approximates y . For ´ to approximate y , it must be no greater than y and also within a factor of 1 + i of y , so that y"
+   "text": "The key to devising a fully polynomial-time approximation scheme for the subsetsum problem is to \"trim\" each list L i after it is created. Here’s the idea behind trimming: if two values in L are close to each other, then since the goal is just an approximate solution, there is no need to maintain both of them explicitly. More precisely, use a trimming parameter i such that 0 < i < 1. When trimming a list L by i , remove as many elements from L as possible, in such a way that if L 0 is the result of trimming L, then for every element y that was removed from L, some element ´ still in L 0 approximates y . For ´ to approximate y , it must be no greater than y and also within a factor of 1 + i of y , so that y"
   },
   {
    "type": "body",
@@ -2523,7 +2523,7 @@
    "section_title": "35.5 The subset-sum problem",
    "printed_page": 1131,
    "pdf_page": 1152,
-   "text": "The algorithm takes each object i in turn and places it in the lowest-numbered bin that can still accommodate it. If no bin can ac commodate object i , then b is incremented and a new bin B b is opened, containing object i . Let S = P n i D1 s i . b. Argue that the optimal number of bins required is at least dS e. c. Argue that the first-fit heuristic leaves at most one bin at most half full. d. Prove that the number of bins used by the first-fit heuristic never exceeds d2S e. e. Prove an approximation ratio of 2 for the first-fit heuristic. f. Give an efficient implementation of the first-fit heuristic, and analyze its running time."
+   "text": "The algorithm takes each object i in turn and places it in the lowest-numbered bin that can still accommodate it. If no bin can accommodate object i , then b is incremented and a new bin B b is opened, containing object i . Let S = P n i D1 s i . b. Argue that the optimal number of bins required is at least dS e. c. Argue that the first-fit heuristic leaves at most one bin at most half full. d. Prove that the number of bins used by the first-fit heuristic never exceeds d2S e. e. Prove an approximation ratio of 2 for the first-fit heuristic. f. Give an efficient implementation of the first-fit heuristic, and analyze its running time."
   },
   {
    "type": "problem",
@@ -2541,7 +2541,7 @@
    "section_title": "35.5 The subset-sum problem",
    "printed_page": 1131,
    "pdf_page": 1152,
-   "text": "Let G = (V,E) be an undirected graph. For any k ≥ 1, define G (k) to be the undirected graph (V (k) ,E (k) ), where V (k) is the set of all ordered k-tuples of vertices from V and E (k) is defined so that (v 1 ,v 2 ,…,v k ) is adjacent to (w 1 ,w 2 ,…,w k ) if and only if for i = 1,2,…,k , either vertex v i is adjacent to w i in G, or else v i = w i . a. Prove that the size of the maximum clique in G (k) is equal to the kth power of the size of the maximum clique in G. b. Argue that if there is an approximation algorithm t hat has a constant approximation ratio for finding a maximum-size clique, then there is a polynomial-time approximation scheme for the problem."
+   "text": "Let G = (V,E) be an undirected graph. For any k ≥ 1, define G (k) to be the undirected graph (V (k) ,E (k) ), where V (k) is the set of all ordered k-tuples of vertices from V and E (k) is defined so that (v 1 ,v 2 ,…,v k ) is adjacent to (w 1 ,w 2 ,…,w k ) if and only if for i = 1,2,…,k , either vertex v i is adjacent to w i in G, or else v i = w i . a. Prove that the size of the maximum clique in G (k) is equal to the kth power of the size of the maximum clique in G. b. Argue that if there is an approximation algorithm that has a constant approximation ratio for finding a maximum-size clique, then there is a polynomial-time approximation scheme for the problem."
   },
   {
    "type": "problem",
@@ -2604,7 +2604,7 @@
    "section_title": "35.5 The subset-sum problem",
    "printed_page": 1132,
    "pdf_page": 1153,
-   "text": "Recall that for an undirected graph G, a matching is a set of edges such that no two edges in the set are incident on the same verte x. Section 2 5.1 showed how to find a maximum matching in a bipartite graph, that is, a matching such that no other matching in G contains more edges. This problem examines matching s in undirected graphs that are not required to be bipartite. a. Show that a maximal matching need not be a maximum matching by exhibiting an undirected graph G and a maximal matching M in G that is not a maximum matching. (Hint: You can find such a graph with only four vertices.) b. Consider a connected, undirected graph G = (V,E). Give an O(E)-time greedy algorithm to find a maximal matching in G."
+   "text": "Recall that for an undirected graph G, a matching is a set of edges such that no two edges in the set are incident on the same vertex. Section 2 5.1 showed how to find a maximum matching in a bipartite graph, that is, a matching such that no other matching in G contains more edges. This problem examines matching s in undirected graphs that are not required to be bipartite. a. Show that a maximal matching need not be a maximum matching by exhibiting an undirected graph G and a maximal matching M in G that is not a maximum matching. (Hint: You can find such a graph with only four vertices.) b. Consider a connected, undirected graph G = (V,E). Give an O(E)-time greedy algorithm to find a maximal matching in G."
   },
   {
    "type": "body",
@@ -2676,7 +2676,7 @@
    "section_title": "35.5 The subset-sum problem",
    "printed_page": 1133,
    "pdf_page": 1154,
-   "text": "Consider the following greedy algorithm for paralle l machine scheduling: whenever a machine is idle, schedule any job that has not yet been scheduled. c. Write pseudocode to implement this greedy algorithm . What is the running time of your algorithm? d. For the schedule returned by the greedy algorithm, show that C max ≤ 1 m n X kD1"
+   "text": "Consider the following greedy algorithm for parallel machine scheduling: whenever a machine is idle, schedule any job that has not yet been scheduled. c. Write pseudocode to implement this greedy algorithm . What is the running time of your algorithm? d. For the schedule returned by the greedy algorithm, show that C max ≤ 1 m n X kD1"
   },
   {
    "type": "body",
@@ -2712,7 +2712,7 @@
    "section_title": "35.5 The subset-sum problem",
    "printed_page": 1134,
    "pdf_page": 1155,
-   "text": "Let G = (V,E) be an undirected graph with distinct edge weights w(u,v) on each edge (u,v) 2 E. For each vertex v 2 V , denote by max.v/ the maximum-weight edge incident on that vertex. Let S G = fmax(v) W v 2 V g be the set of maximumweight edges incident on each vertex, and let T G be the maximum-weight spanning tree of G, that is, the spanning tree of maximum total weigh t. For any subset of edges E 0 ⊆ E, define w(E 0 ) = P"
+   "text": "Let G = (V,E) be an undirected graph with distinct edge weights w(u,v) on each edge (u,v) 2 E. For each vertex v 2 V , denote by max.v/ the maximum-weight edge incident on that vertex. Let S G = fmax(v) W v 2 V g be the set of maximumweight edges incident on each vertex, and let T G be the maximum-weight spanning tree of G, that is, the spanning tree of maximum total weight. For any subset of edges E 0 ⊆ E, define w(E 0 ) = P"
   },
   {
    "type": "body",
@@ -2748,7 +2748,7 @@
    "section_title": "35.5 The subset-sum problem",
    "printed_page": 1134,
    "pdf_page": 1155,
-   "text": "In the 0-1 knapsack problem, the goal is to find a subset of the items whose total weight is at most W and whose total value is maximum. The fractional kn apsack problem is like the 0-1 knapsack problem, except that a fraction of each item may be put into the knapsack, rather than either all or none of each item. If a fraction x i of item i goes into the knapsack, where 0 ≤ x i ≤ 1, it contributes x i w i to the weight of the knapsack and adds value x i v i . The goal of this problem is to develop a polynomial-time 2-approximation algorithm for the 0-1 knapsack problem."
+   "text": "In the 0-1 knapsack problem, the goal is to find a subset of the items whose total weight is at most W and whose total value is maximum. The fractional knapsack problem is like the 0-1 knapsack problem, except that a fraction of each item may be put into the knapsack, rather than either all or none of each item. If a fraction x i of item i goes into the knapsack, where 0 ≤ x i ≤ 1, it contributes x i w i to the weight of the knapsack and adds value x i v i . The goal of this problem is to develop a polynomial-time 2-approximation algorithm for the 0-1 knapsack problem."
   },
   {
    "type": "body",
@@ -2793,7 +2793,7 @@
    "section_title": "35.5 The subset-sum problem",
    "printed_page": 1135,
    "pdf_page": 1156,
-   "text": "Although methods that do not necessarily compute ex act solutions have been known for thousands of years (for example, methods to approximate the value of Ω ), the notion of an approximation algorithm is much more recent. Hochbaum"
+   "text": "Although methods that do not necessarily compute exact solutions have been known for thousands of years (for example, methods to approximate the value of Ω ), the notion of an approximation algorithm is much more recent. Hochbaum"
   },
   {
    "type": "body",
@@ -2910,7 +2910,7 @@
    "section_title": "35.5 The subset-sum problem",
    "printed_page": 1136,
    "pdf_page": 1157,
-   "text": "As mentioned in the chapter notes for Chapter 34, results in probabilistically checkable proofs have led to lower bounds on the ap proximability of many problems, including several in this chapter. In additio n to the references there, the chapter by Arora and Lund [26] contains a good description of the relationship between probabilistically checkable proofs and the hardness of approximating various problems."
+   "text": "As mentioned in the chapter notes for Chapter 34, results in probabilistically checkable proofs have led to lower bounds on the ap proximability of many problems, including several in this chapter. In addition to the references there, the chapter by Arora and Lund [26] contains a good description of the relationship between probabilistically checkable proofs and the hardness of approximating various problems."
   },
   {
    "type": "body",
@@ -2964,7 +2964,7 @@
    "section_title": "35.5 The subset-sum problem",
    "printed_page": 1139,
    "pdf_page": 1160,
-   "text": "Appendix C begins with elementary principles of counting: permutations, combinations, and the like. The remainder contains definitions and properties of basic probability. Most of the algorithms in this book re quire no probability for their analysis, and thus you can easily omit the latter s ections of the chapter on a first reading, even without skimming them. Later, when yo u encounter a probabilistic analysis that you want to understand better, you will find Appendix C well organized for reference purposes."
+   "text": "Appendix C begins with elementary principles of counting: permutations, combinations, and the like. The remainder contains definitions and properties of basic probability. Most of the algorithms in this book require no probability for their analysis, and thus you can easily omit the latter sections of the chapter on a first reading, even without skimming them. Later, when you encounter a probabilistic analysis that you want to understand better, you will find Appendix C well organized for reference purposes."
   },
   {
    "type": "body",
@@ -2973,7 +2973,7 @@
    "section_title": "35.5 The subset-sum problem",
    "printed_page": 1139,
    "pdf_page": 1160,
-   "text": "Appendix = defines matrices, their operations, and some of their basic properties. You have probably seen most of this materia l already if you have taken a course in linear algebra. But you might find it helpful to have one place to look for notations and definitions."
+   "text": "Appendix = defines matrices, their operations, and some of their basic properties. You have probably seen most of this material already if you have taken a course in linear algebra. But you might find it helpful to have one place to look for notations and definitions."
   },
   {
    "type": "body",

@@ -551,7 +551,7 @@
    "section_title": "17.1 Dynamic order statistics",
    "printed_page": 485,
    "pdf_page": 506,
-   "text": "Deletion from a red-black tree also consists of two phases: the first operates on the underlying search tree, and the second cause s at most three rotations and otherwise performs no structural changes. (See Section 13.4.) The first phase removes one node ´ from the tree and could move at most two other nodes within the tree (nodes y and x in Figure 12.4 on page 323). To update the subtree sizes, simply traverse a simple path from the lowest node that moves (starting from its original position within the tree) up to the root, decrementing the size attribute of each node on the path. Since this path has lengt h O(lg n) in an n-node redblack tree, the additional time spent maintaining size attributes in the first phase is O(lg n). For the O(1) rotations in the second phase of deletion, handle t hem in the same manner as for insertion. Thus, both insertion and deletion, including maintaining the size attributes, take O(lg n) time for an n-node order-statistic tree."
+   "text": "Deletion from a red-black tree also consists of two phases: the first operates on the underlying search tree, and the second cause s at most three rotations and otherwise performs no structural changes. (See Section 13.4.) The first phase removes one node ´ from the tree and could move at most two other nodes within the tree (nodes y and x in Figure 12.4 on page 323). To update the subtree sizes, simply traverse a simple path from the lowest node that moves (starting from its original position within the tree) up to the root, decrementing the size attribute of each node on the path. Since this path has length O(lg n) in an n-node redblack tree, the additional time spent maintaining size attributes in the first phase is O(lg n). For the O(1) rotations in the second phase of deletion, handle them in the same manner as for insertion. Thus, both insertion and deletion, including maintaining the size attributes, take O(lg n) time for an n-node order-statistic tree."
   },
   {
    "type": "exercise",
@@ -605,7 +605,7 @@
    "section_title": "17.1 Dynamic order statistics",
    "printed_page": 486,
    "pdf_page": 507,
-   "text": "17.1-6 The procedures OS-SELECT and OS-RANK use the size attribute of a node only to compute a rank. Suppose that you store in each n ode its rank in the subtree of which it is the root instead of the size attribute. Show how to maintain this information during insertion and deletion. (Remembe r that these two operations can cause rotations.)"
+   "text": "17.1-6 The procedures OS-SELECT and OS-RANK use the size attribute of a node only to compute a rank. Suppose that you store in each node its rank in the subtree of which it is the root instead of the size attribute. Show how to maintain this information during insertion and deletion. (Remembe r that these two operations can cause rotations.)"
   },
   {
    "type": "exercise",
@@ -740,7 +740,7 @@
    "section_title": "17.2 How to augment a data structure",
    "printed_page": 487,
    "pdf_page": 508,
-   "text": "In Step 2, we added the size attribute, so that each node x stores the size of the subtree rooted at x . Generally, the additional information makes operations more efficient. For example, it is possible to implement OS-SELECT and OS-RANK using just the keys stored in the tree, but then th ey would not run in O(lg n) time."
+   "text": "In Step 2, we added the size attribute, so that each node x stores the size of the subtree rooted at x . Generally, the additional information makes operations more efficient. For example, it is possible to implement OS-SELECT and OS-RANK using just the keys stored in the tree, but then they would not run in O(lg n) time."
   },
   {
    "type": "body",
@@ -758,7 +758,7 @@
    "section_title": "17.2 How to augment a data structure",
    "printed_page": 487,
    "pdf_page": 508,
-   "text": "For step 3, we ensured that insertion and deletion can maintain the size attributes while still running in O(lg n) time. Ideally, you would like to update only a few elements of the data structure in order to maintain the additional information. For example, if each node simply stores its rank in the tree, the OS-SELECT and OS-RANK procedures run quickly, but inserting a new minimum element might cause a change to this information in every node of the tree. Because we chose to store subtree sizes instead, inserting a new elemen t causes information to change in only O(lg n) nodes."
+   "text": "For step 3, we ensured that insertion and deletion can maintain the size attributes while still running in O(lg n) time. Ideally, you would like to update only a few elements of the data structure in order to maintain the additional information. For example, if each node simply stores its rank in the tree, the OS-SELECT and OS-RANK procedures run quickly, but inserting a new minimum element might cause a change to this information in every node of the tree. Because we chose to store subtree sizes instead, inserting a new element causes information to change in only O(lg n) nodes."
   },
   {
    "type": "body",
@@ -821,7 +821,7 @@
    "section_title": "17.2 How to augment a data structure",
    "printed_page": 488,
    "pdf_page": 509,
-   "text": "As we saw in Section 13.3, insertion of a node x into red-black tree T consists of two phases. If the tree T is empty, then the first phase simply makes x be the root of T . If T is not empty, then the first phase inserts x as a child of an existing node. Because we assume that the value of x: f depends only on information in the other attributes of x itself and the information in x ’s children, and because x ’s children are both the sentinel T: nil, it takes only O(1) time to compute the value of x: f . Having computed x: f , the change propagates up the tree. Thus, the tota l time for the first phase of insertion is O(lg n). During the second phase, the only structural changes to the tree come from rotations. Since only two nodes change in a rotation, but a change to an attribute might need to propagate up to the root, the total time for updating the f attributes is O(lg n) per rotation. Since the number"
+   "text": "As we saw in Section 13.3, insertion of a node x into red-black tree T consists of two phases. If the tree T is empty, then the first phase simply makes x be the root of T . If T is not empty, then the first phase inserts x as a child of an existing node. Because we assume that the value of x: f depends only on information in the other attributes of x itself and the information in x ’s children, and because x ’s children are both the sentinel T: nil, it takes only O(1) time to compute the value of x: f . Having computed x: f , the change propagates up the tree. Thus, the total time for the first phase of insertion is O(lg n). During the second phase, the only structural changes to the tree come from rotations. Since only two nodes change in a rotation, but a change to an attribute might need to propagate up to the root, the total time for updating the f attributes is O(lg n) per rotation. Since the number"
   },
   {
    "type": "body",
@@ -839,7 +839,7 @@
    "section_title": "17.2 How to augment a data structure",
    "printed_page": 488,
    "pdf_page": 509,
-   "text": "Like insertion, deletion has two phases, as Section 13.4 discusses. In the first phase, changes to the tree occur when a node is deleted, and at most two other nodes could move within the tree. Propagating the u pdates to f caused by these changes costs at most O(lg n), since the changes modify the tree locally along a simple path from the lowest changed node to the root. Fixing up the red-black tree during the second phase requires at most three rotations, and each rotation requires at most O(lg n) time to propagate the updates to f . Thus, like insertion, the total"
+   "text": "Like insertion, deletion has two phases, as Section 13.4 discusses. In the first phase, changes to the tree occur when a node is deleted, and at most two other nodes could move within the tree. Propagating the updates to f caused by these changes costs at most O(lg n), since the changes modify the tree locally along a simple path from the lowest changed node to the root. Fixing up the red-black tree during the second phase requires at most three rotations, and each rotation requires at most O(lg n) time to propagate the updates to f . Thus, like insertion, the total"
   },
   {
    "type": "body",
@@ -866,7 +866,7 @@
    "section_title": "17.2 How to augment a data structure",
    "printed_page": 488,
    "pdf_page": 509,
-   "text": "On the other hand, when an update after a rotation requires a traversal all the way up to the root, it is important that insertion into and deletion from a red-black tree require a constant number of rotations. The chapter notes for Chapter 13 list other schemes for balancing search trees that do not boun d the number of rotations per insertion or deletion by a constant. If each operation might require Θ(lg n) rota-"
+   "text": "On the other hand, when an update after a rotation requires a traversal all the way up to the root, it is important that insertion into and deletion from a red-black tree require a constant number of rotations. The chapter notes for Chapter 13 list other schemes for balancing search trees that do not bound the number of rotations per insertion or deletion by a constant. If each operation might require Θ(lg n) rota-"
   },
   {
    "type": "body",
@@ -902,7 +902,7 @@
    "section_title": "17.2 How to augment a data structure",
    "printed_page": 489,
    "pdf_page": 510,
-   "text": "17.2-3 Let ˝ be an associative binary operator, and let a be an attribute maintained in each node of a red-black tree. Suppose that you want to include in each node x an additional attribute f such that x: f = x 1 : a ˝ x 2 : a ˝ • • • ˝ x m : a, where x 1 ,x 2 ,…,x m is the inorder listing of nodes in the subtree rooted at x . Show how to update the f attributes in O(1) time after a rotation. Modify your argument slightl y to apply it to the size attributes in order-statistic trees."
+   "text": "17.2-3 Let ˝ be an associative binary operator, and let a be an attribute maintained in each node of a red-black tree. Suppose that you want to include in each node x an additional attribute f such that x: f = x 1 : a ˝ x 2 : a ˝ • • • ˝ x m : a, where x 1 ,x 2 ,…,x m is the inorder listing of nodes in the subtree rooted at x . Show how to update the f attributes in O(1) time after a rotation. Modify your argument slightly to apply it to the size attributes in order-statistic trees."
   },
   {
    "type": "body",
@@ -1028,7 +1028,7 @@
    "section_title": "17.3 Interval trees",
    "printed_page": 490,
    "pdf_page": 511,
-   "text": "A red-black tree serves as the underlying data structure. Each node x contains an interval x: int. The key of x is the low endpoint, x: int: low, of the interval. Thus, an inorder tree walk of the data structure lists th e intervals in sorted order by low endpoint."
+   "text": "A red-black tree serves as the underlying data structure. Each node x contains an interval x: int. The key of x is the low endpoint, x: int: low, of the interval. Thus, an inorder tree walk of the data structure lists the intervals in sorted order by low endpoint."
   },
   {
    "type": "body",
@@ -1064,7 +1064,7 @@
    "section_title": "17.3 Interval trees",
    "printed_page": 491,
    "pdf_page": 512,
-   "text": "(b) The interval tree that represents them. Each node x contains an interval, shown above the dashed line, and the maximum value of any interval endpoin t in the subtree rooted at x, shown below the dashed line. An inorder tree walk of the tree lists the nodes in sorted order by left endpoint."
+   "text": "(b) The interval tree that represents them. Each node x contains an interval, shown above the dashed line, and the maximum value of any interval endpoint in the subtree rooted at x, shown below the dashed line. An inorder tree walk of the tree lists the nodes in sorted order by left endpoint."
   },
   {
    "type": "body",
@@ -1254,7 +1254,7 @@
    "section_title": "17.3 Interval trees",
    "printed_page": 493,
    "pdf_page": 514,
-   "text": "Proof The while loop of lines 2–5 terminates when either x = T: nil or i overlaps x: int. In the latter case, it is certainly correct to re turn x . Therefore, we focus on the former case, in which the while loop terminates because x = T: nil, which is the node that INTERVAL-SEARCH returns."
+   "text": "Proof The while loop of lines 2–5 terminates when either x = T: nil or i overlaps x: int. In the latter case, it is certainly correct to return x . Therefore, we focus on the former case, in which the while loop terminates because x = T: nil, which is the node that INTERVAL-SEARCH returns."
   },
   {
    "type": "body",
@@ -1290,7 +1290,7 @@
    "section_title": "17.3 Interval trees",
    "printed_page": 493,
    "pdf_page": 514,
-   "text": "For both cases, we rely on the interval trichotomy. Let’s start with the case where the search goes right, whose proof is simpler . By the te sts in line 3, we know that x: left = T: nil or x: left: max < i: low. If x: left = T: nil, then x ’s left subtree contains no interval that overlaps i , since it contains no intervals at all. Now suppose that x: left ≠ T: nil, so that we must have x: left: max < i: low. Consider any interval i 0 in x ’s left subtree. Because x: left : max is the maximum endpoint in x ’s left subtree, we have i 0 : high ≤ x: left: max. Thus, as Figure 17.5(a) shows, i 0 : high ≤ x: left: max"
+   "text": "For both cases, we rely on the interval trichotomy. Let’s start with the case where the search goes right, whose proof is simpler . By the tests in line 3, we know that x: left = T: nil or x: left: max < i: low. If x: left = T: nil, then x ’s left subtree contains no interval that overlaps i , since it contains no intervals at all. Now suppose that x: left ≠ T: nil, so that we must have x: left: max < i: low. Consider any interval i 0 in x ’s left subtree. Because x: left : max is the maximum endpoint in x ’s left subtree, we have i 0 : high ≤ x: left: max. Thus, as Figure 17.5(a) shows, i 0 : high ≤ x: left: max"
   },
   {
    "type": "body",
@@ -1317,7 +1317,7 @@
    "section_title": "17.3 Interval trees",
    "printed_page": 493,
    "pdf_page": 514,
-   "text": "Now we examine the case in which the search goes le ft. If the left subtree of node x contains an interval that overlaps i , we’re done, so let’s assume that no node i"
+   "text": "Now we examine the case in which the search goes left. If the left subtree of node x contains an interval that overlaps i , we’re done, so let’s assume that no node i"
   },
   {
    "type": "body",
@@ -1362,7 +1362,7 @@
    "section_title": "17.3 Interval trees",
    "printed_page": 494,
    "pdf_page": 515,
-   "text": "Now we bring in the property that interval trees ar e keyed on the low endpoints of intervals. Because i 0 is in x ’s left subtree, we have i 0 : low ≤ x: int: low. Now consider any interval i 00 in x ’s right subtree, so that x: int: low ≤ i 00 : low. Putting inequalities together, we get i: high < i 0 : low"
+   "text": "Now we bring in the property that interval trees are keyed on the low endpoints of intervals. Because i 0 is in x ’s left subtree, we have i 0 : low ≤ x: int: low. Now consider any interval i 00 in x ’s right subtree, so that x: int: low ≤ i 00 : low. Putting inequalities together, we get i: high < i 0 : low"
   },
   {
    "type": "body",
@@ -1488,7 +1488,7 @@
    "section_title": "17.3 Interval trees",
    "printed_page": 495,
    "pdf_page": 516,
-   "text": "VLSI databases commonly represent an integrated circuit as a list of rectangles. Assume that each rectangle is rectilinearly o riented (sides parallel to the x - and y -axes), so that each rectangle is represented by four values: its minimum and maximum x - and y -coordinates. Give an O(n lg n)-time algorithm to decide whether a set of n rectangles so represented contains two rectangles t hat overlap."
+   "text": "VLSI databases commonly represent an integrated circuit as a list of rectangles. Assume that each rectangle is rectilinearly oriented (sides parallel to the x - and y -axes), so that each rectangle is represented by four values: its minimum and maximum x - and y -coordinates. Give an O(n lg n)-time algorithm to decide whether a set of n rectangles so represented contains two rectangles that overlap."
   },
   {
    "type": "body",
@@ -1515,7 +1515,7 @@
    "section_title": "17.3 Interval trees",
    "printed_page": 496,
    "pdf_page": 517,
-   "text": "You wish to keep track of a point of maximum overlap in a set of intervals—a point with the largest number of intervals in the set that overlap it. a. Show that there is always a point of maximum overla p that is an endpoint of one of the intervals. b. Design a data structure that efficiently supports the operations INTERVAL- INSERT , INTERVAL-DELETE , and FIND-POM, which returns a point of maximum overlap. ( Hint: Keep a red-black tree of all the endpoints. Associate a value of C1 with each left endpoint, and associate a value of −1 with each right endpoint. Augment each node of the tree with some extra information to maintain the point of maximum overlap.)"
+   "text": "You wish to keep track of a point of maximum overlap in a set of intervals—a point with the largest number of intervals in the set that overlap it. a. Show that there is always a point of maximum overlap that is an endpoint of one of the intervals. b. Design a data structure that efficiently supports the operations INTERVAL- INSERT , INTERVAL-DELETE , and FIND-POM, which returns a point of maximum overlap. ( Hint: Keep a red-black tree of all the endpoints. Associate a value of C1 with each left endpoint, and associate a value of −1 with each right endpoint. Augment each node of the tree with some extra information to maintain the point of maximum overlap.)"
   },
   {
    "type": "problem",
@@ -1560,7 +1560,7 @@
    "section_title": "17.3 Interval trees",
    "printed_page": 496,
    "pdf_page": 517,
-   "text": "Mc + reight (1981). The book details an interval tree that, gi ven a static database of n intervals, allows us to enumerate all k intervals that overlap a given query interval in O(k C lg n) time."
+   "text": "Mc + reight (1981). The book details an interval tree that, given a static database of n intervals, allows us to enumerate all k intervals that overlap a given query interval in O(k C lg n) time."
   },
   {
    "type": "footnote",
@@ -1587,7 +1587,7 @@
    "section_title": "17.3 Interval trees",
    "printed_page": 497,
    "pdf_page": 518,
-   "text": "(Chapter 13), but they are better at minimizing the number of operations that access disks. (We often say just \"disk\" instead of \"disk d rive.\") Many database systems use B-trees, or variants of B-trees, to store information."
+   "text": "(Chapter 13), but they are better at minimizing the number of operations that access disks. (We often say just \"disk\" instead of \"disk drive.\") Many database systems use B-trees, or variants of B-trees, to store information."
   },
   {
    "type": "body",
@@ -1596,7 +1596,7 @@
    "section_title": "17.3 Interval trees",
    "printed_page": 497,
    "pdf_page": 518,
-   "text": "B-trees differ from red-black trees in that B-tree nodes may have many children, from a few to thousands. That is, the \"branching fa ctor\" of a B-tree can be quite large, although it usually depends on characteristics of the disk drive used. B-trees are similar to red-black trees in that every n-node B-tree has height O(lg n), so that"
+   "text": "B-trees differ from red-black trees in that B-tree nodes may have many children, from a few to thousands. That is, the \"branching factor\" of a B-tree can be quite large, although it usually depends on characteristics of the disk drive used. B-trees are similar to red-black trees in that every n-node B-tree has height O(lg n), so that"
   },
   {
    "type": "body",

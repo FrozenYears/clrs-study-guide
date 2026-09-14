@@ -428,7 +428,7 @@ def main():
                 "sections_found": sorted(found_sections),
                 "blocks": blocks,
             }
-            with open(os.path.join(BLOCKS_DIR, fname), "w", encoding="utf-8") as f:
+            with open(os.path.join(BLOCKS_DIR, fname), "w", newline="\n", encoding="utf-8") as f:
                 json.dump(payload, f, ensure_ascii=False, indent=1)
             cnt = Counter(b["type"] for b in blocks)
             type_totals.update(cnt)
@@ -443,7 +443,7 @@ def main():
             print("%-46s blocks=%-5d %s" % (fname, len(blocks),
                                             " ".join("%s:%d" % kv for kv in sorted(cnt.items()))))
 
-    with open(os.path.join(BLOCKS_DIR, "_index.json"), "w", encoding="utf-8") as f:
+    with open(os.path.join(BLOCKS_DIR, "_index.json"), "w", newline="\n", encoding="utf-8") as f:
         json.dump({
             "chapters": index,
             "totals_by_type": dict(type_totals),

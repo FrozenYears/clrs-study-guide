@@ -84,7 +84,7 @@
    "section_title": "18.1 Definition of B-trees",
    "printed_page": 501,
    "pdf_page": 522,
-   "text": "Large B-trees stored on disk drives often have branching factors between 50 and 2000, depending on the size of a key relative to the si ze of a block. A large branching factor dramatically reduces both the height of the tree and the number of disk accesses required to find any key. Figure 18.3 shows a B-tree with a branching factor of 1001 and height 2 that can store over one billion keys. Nevertheless, if the root node is kept permanently in main memory, at mo st two disk accesses suffice to find any key in this tree."
+   "text": "Large B-trees stored on disk drives often have branching factors between 50 and 2000, depending on the size of a key relative to the size of a block. A large branching factor dramatically reduces both the height of the tree and the number of disk accesses required to find any key. Figure 18.3 shows a B-tree with a branching factor of 1001 and height 2 that can store over one billion keys. Nevertheless, if the root node is kept permanently in main memory, at mo st two disk accesses suffice to find any key in this tree."
   },
   {
    "type": "body",
@@ -93,7 +93,7 @@
    "section_title": "18.1 Definition of B-trees",
    "printed_page": 501,
    "pdf_page": 522,
-   "text": "To keep things simple, let’s assume, as we have for binary search trees and redblack trees, that any satellite information associated with a key resides in the same node as the key. In practice, you might actually st ore with each key just a pointer to another disk block containing the satellite information for that key. The pseudocode in this chapter implicitly assumes that the satellite information associated with a key, or the pointer to such satellite information, travels with the key whenever the key is moved from node to node. A common variant on a B-tree, known as a B C -tree, stores all the satellite information in the leave s and stores only keys and child pointers in the internal nodes, thus maximizing the branching factor of the internal nodes."
+   "text": "To keep things simple, let’s assume, as we have for binary search trees and redblack trees, that any satellite information associated with a key resides in the same node as the key. In practice, you might actually store with each key just a pointer to another disk block containing the satellite information for that key. The pseudocode in this chapter implicitly assumes that the satellite information associated with a key, or the pointer to such satellite information, travels with the key whenever the key is moved from node to node. A common variant on a B-tree, known as a B C -tree, stores all the satellite information in the leave s and stores only keys and child pointers in the internal nodes, thus maximizing the branching factor of the internal nodes."
   },
   {
    "type": "body",
@@ -589,7 +589,7 @@
    "section_title": "18.2 Basic operations on B-trees",
    "printed_page": 506,
    "pdf_page": 527,
-   "text": "Inserting a key into a B-tree is significantly more complicated than inserting a key into a binary search tree. As with binary searc h trees, you search for the leaf position at which to insert the new key. With a B-tree, however, you cannot simply create a new leaf node and insert it, as the result ing tree would fail to be a valid"
+   "text": "Inserting a key into a B-tree is significantly more complicated than inserting a key into a binary search tree. As with binary search trees, you search for the leaf position at which to insert the new key. With a B-tree, however, you cannot simply create a new leaf node and insert it, as the result ing tree would fail to be a valid"
   },
   {
    "type": "body",
@@ -598,7 +598,7 @@
    "section_title": "18.2 Basic operations on B-trees",
    "printed_page": 506,
    "pdf_page": 527,
-   "text": "B-tree. Instead, you insert the new key into an existing leaf node. Since you cannot insert a key into a leaf node that is full, you nee d an operation that splits a full node y (having 2t − 1 keys) around its median key y: key t into two nodes having only t − 1 keys each. The median key moves up into y ’s parent to identify the dividing point between the two new trees. But if y ’s parent is also full, you must split it before you can insert the new key, and thu s you could end up splitting full nodes all the way up the tree."
+   "text": "B-tree. Instead, you insert the new key into an existing leaf node. Since you cannot insert a key into a leaf node that is full, you need an operation that splits a full node y (having 2t − 1 keys) around its median key y: key t into two nodes having only t − 1 keys each. The median key moves up into y ’s parent to identify the dividing point between the two new trees. But if y ’s parent is also full, you must split it before you can insert the new key, and thus you could end up splitting full nodes all the way up the tree."
   },
   {
    "type": "body",
@@ -868,7 +868,7 @@
    "section_title": "18.2 Basic operations on B-trees",
    "printed_page": 508,
    "pdf_page": 529,
-   "text": "The B-TREE-INSERT procedure uses B-TREE-SPLIT-CHILD to guarantee that the recursion never descends to a full node. If the roo t is full, B-TREE-INSERT splits it by calling the procedure B-TREE-SPLIT-ROOT on the facing page."
+   "text": "The B-TREE-INSERT procedure uses B-TREE-SPLIT-CHILD to guarantee that the recursion never descends to a full node. If the root is full, B-TREE-INSERT splits it by calling the procedure B-TREE-SPLIT-ROOT on the facing page."
   },
   {
    "type": "body",
@@ -1305,7 +1305,7 @@
    "section_title": "18.2 Basic operations on B-trees",
    "printed_page": 512,
    "pdf_page": 533,
-   "text": "18.2-5 Since leaf nodes require no pointers to children, t hey could conceivably use a different (larger) t value than internal nodes for the same disk block size. Show how to modify the procedures for creating and inserting into a B-tree to handle this variation."
+   "text": "18.2-5 Since leaf nodes require no pointers to children, they could conceivably use a different (larger) t value than internal nodes for the same disk block size. Show how to modify the procedures for creating and inserting into a B-tree to handle this variation."
   },
   {
    "type": "exercise",
@@ -1350,7 +1350,7 @@
    "section_title": "18.3 Deleting a key from a B-tree",
    "printed_page": 513,
    "pdf_page": 534,
-   "text": "Deletion from a B-tree is analogous to insertion but a little more complicated, because you can delete a key from any node—not just a leaf—and when you delete a key from an internal node, you must rearrange the node’s children. As in in- sertion, you must guard against deletion producing a tree whose structure violates the B-tree properties. Just as a node should not get too big due to insertion, a node must not get too small during deletion (except that the root is allowed to have fewer than the minimum number t − 1 of keys). And just as a simple insertion algorithm might have to back up if a node on the path to wher e the key is to be inserted is full, a simple approach to deletion might have to back up if a node (other than the root) along the path to where the key is to be deleted has the minimum number of keys."
+   "text": "Deletion from a B-tree is analogous to insertion but a little more complicated, because you can delete a key from any node—not just a leaf—and when you delete a key from an internal node, you must rearrange the node’s children. As in in- sertion, you must guard against deletion producing a tree whose structure violates the B-tree properties. Just as a node should not get too big due to insertion, a node must not get too small during deletion (except that the root is allowed to have fewer than the minimum number t − 1 of keys). And just as a simple insertion algorithm might have to back up if a node on the path to where the key is to be inserted is full, a simple approach to deletion might have to back up if a node (other than the root) along the path to where the key is to be deleted has the minimum number of keys."
   },
   {
    "type": "body",
@@ -1377,7 +1377,7 @@
    "section_title": "18.3 Deleting a key from a B-tree",
    "printed_page": 513,
    "pdf_page": 534,
-   "text": "B-TREE-DELETE combines the search for key k with the deletion process. Why do we combine search and deletion in B-TREE-DELETE? Just as B-TREE-INSERT prevents any node from becoming overfull (having mo re than 2t − 1 keys) while making a single pass down the tree, B-TREE-DELETE prevents any node from becoming underfull (having fewer than t − 1 keys) while also making a single pass down the tree, searching for and ultimately deleting the key."
+   "text": "B-TREE-DELETE combines the search for key k with the deletion process. Why do we combine search and deletion in B-TREE-DELETE? Just as B-TREE-INSERT prevents any node from becoming overfull (having more than 2t − 1 keys) while making a single pass down the tree, B-TREE-DELETE prevents any node from becoming underfull (having fewer than t − 1 keys) while also making a single pass down the tree, searching for and ultimately deleting the key."
   },
   {
    "type": "body",
@@ -1386,7 +1386,7 @@
    "section_title": "18.3 Deleting a key from a B-tree",
    "printed_page": 513,
    "pdf_page": 534,
-   "text": "To prevent any node from becoming underfull, the design of B- TREE-DELETE guarantees that whenever it calls itself recursively on a node x , the number of keys in x is at least the minimum degree t at the time of the call. (Although the root may have fewer than t keys and a recursive call may be made from the root, no recursive call is made on the root.) This condition requires one more key tha n the minimum required by the usual B-tree conditions, and so a key might have to be moved from x into one of its child nodes (still leaving x with at least the minimum t − 1 keys) before a recursive call is made on that child, thus allowing deletion to occur in one downward pass without having to traverse back up the tree."
+   "text": "To prevent any node from becoming underfull, the design of B- TREE-DELETE guarantees that whenever it calls itself recursively on a node x , the number of keys in x is at least the minimum degree t at the time of the call. (Although the root may have fewer than t keys and a recursive call may be made from the root, no recursive call is made on the root.) This condition requires one more key than the minimum required by the usual B-tree conditions, and so a key might have to be moved from x into one of its child nodes (still leaving x with at least the minimum t − 1 keys) before a recursive call is made on that child, thus allowing deletion to occur in one downward pass without having to traverse back up the tree."
   },
   {
    "type": "body",
@@ -1656,7 +1656,7 @@
    "section_title": "18.3 Deleting a key from a B-tree",
    "printed_page": 515,
    "pdf_page": 536,
-   "text": "Continue searching down the tree while ensuring tha t each node visited has at least t keys. To do so, determine the root x:c i of the appropriate subtree that must contain k, if k is in the tree at all. If x:c i has only t − 1 keys, execute case 3a or 3b as necessary to guarantee descending to a node containing at least t keys. Then finish by recursing on the appropriate child of x ."
+   "text": "Continue searching down the tree while ensuring that each node visited has at least t keys. To do so, determine the root x:c i of the appropriate subtree that must contain k, if k is in the tree at all. If x:c i has only t − 1 keys, execute case 3a or 3b as necessary to guarantee descending to a node containing at least t keys. Then finish by recursing on the appropriate child of x ."
   },
   {
    "type": "body",
@@ -1737,7 +1737,7 @@
    "section_title": "18.3 Deleting a key from a B-tree",
    "printed_page": 517,
    "pdf_page": 538,
-   "text": "Consider implementing a stack in a computer that ha s a relatively small amount of fast primary memory and a relatively large amount of slower disk storage. The operations PUSH and POP work on single-word values. The stack can grow to be much larger than can fit in memory, and thus most of it must be stored on disk."
+   "text": "Consider implementing a stack in a computer that has a relatively small amount of fast primary memory and a relatively large amount of slower disk storage. The operations PUSH and POP work on single-word values. The stack can grow to be much larger than can fit in memory, and thus most of it must be stored on disk."
   },
   {
    "type": "body",
@@ -1755,7 +1755,7 @@
    "section_title": "18.3 Deleting a key from a B-tree",
    "printed_page": 517,
    "pdf_page": 538,
-   "text": "Maintain in memory a stack pointer, which is the di sk address of the top element on the stack. Indexing block numbers and word offsets within blocks from 0, if the pointer has value p, the top element is the (p mod m)th word on ⌊lock bp/m⌋ of the disk, where m is the number of words per block."
+   "text": "Maintain in memory a stack pointer, which is the disk address of the top element on the stack. Indexing block numbers and word offsets within blocks from 0, if the pointer has value p, the top element is the (p mod m)th word on ⌊lock bp/m⌋ of the disk, where m is the number of words per block."
   },
   {
    "type": "body",
@@ -1773,7 +1773,7 @@
    "section_title": "18.3 Deleting a key from a B-tree",
    "printed_page": 517,
    "pdf_page": 538,
-   "text": "Read in the appropriate block from disk, save the t op of the stack, decrement the stack pointer, and return the saved value. You need not write back the block, since it was not modified, and the word in the block that contained the popped value is ignored."
+   "text": "Read in the appropriate block from disk, save the top of the stack, decrement the stack pointer, and return the saved value. You need not write back the block, since it was not modified, and the word in the block that contained the popped value is ignored."
   },
   {
    "type": "body",
