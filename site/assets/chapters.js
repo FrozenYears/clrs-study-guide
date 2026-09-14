@@ -10,9 +10,11 @@
  * ========================================================================== */
 
 import ch02 from '../chapters/ch02-getting-started/chapter.js';
+import ch3 from '../chapters/ch03-characterizing-running-times/chapter.js';
 
 const CHAPTERS = new Map([
   ['2', ch02],
+  ['3', ch3],
 ]);
 
 /**
