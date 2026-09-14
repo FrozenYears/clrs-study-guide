@@ -37,6 +37,14 @@
    `random-access machine` 在语料 `randomaccessma- chine` 上永远匹配不上。
 8. **关卡里内嵌的 C 代码块必须与 `c/*.c` 逐字节一致**，改一份就同步另一份
    （闸门会查；此前 s01/s03 都漂移过）。
+9. **写一关的标准流程**（详见 `docs/关卡编写手册.md`）：
+   ① `python tools/05_new_level.py <章> <节> --register` 生成骨架（引述/伪代码/习题会自动
+   逐字填好并自检）；② 填掉所有 `【TODO …】`；③ `node tools/dump_levels.mjs &&
+   python tools/04_verify_level.py` 直到 0 ERROR、0 TODO。
+10. **`chapter.js` 只 import 已建好的关卡文件**——它被 `site/assets/chapters.js` 静态 import，
+   引入不存在的文件会让整个站点加载失败。JS 注释是 `//`，不是 `#`。
+11. **改语料解析规则时，审计必须在 `data/pages.jsonl`（未修复原文）上做**。修复后的文本里
+   伪影已经消失，拿它当依据会得出完全错误的结论（这一条真的白跑过一轮）。
 
 ## 环境坑（本机）
 
