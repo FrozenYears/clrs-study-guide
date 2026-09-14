@@ -32,14 +32,27 @@ CASES = [
     ("#/ch02/s01/s07", ["polyline", "growth-legend", "代价表"], [NOT_PENDING]),
     ("#/ch02/s01/s08", ["要证的不变量", "第一步", "终止"], [NOT_PENDING]),
     ("#/ch02/s01/s09", ["2.1-1", "2.1-5", "原书习题", "检验一下"], [NOT_PENDING]),
+    # ---- 2.3 归并排序（九段式）----
+    ("#/ch02/s02/s01", ["为什么学这一关", "递归式", "lg n"], [NOT_PENDING]),
+    ("#/ch02/s02/s02", ["两叠牌", "正面朝上"], [NOT_PENDING]),
+    ("#/ch02/s02/s03", ["divide-and-conquer", 'data-kind="source"', "Figure 2.4"], [NOT_PENDING]),
+    ("#/ch02/s02/s04", ["MERGE(A, p, q, r)", "MERGE-SORT(A, p, r)", "n_L = q − p + 1", "变量表"], [NOT_PENDING]),
+    ("#/ch02/s02/s05", ["viz-stage", "viz-array", "viz-tree", "帧 0"], [NOT_PENDING]),
+    ("#/ch02/s02/s06", ["merge_sort.c", "int q = (p + r) / 2", "伪代码 ↔ C 对应表"], [NOT_PENDING]),
+    ("#/ch02/s02/s07", ["2T(n/2)", "growth-legend", "递归树", "lg n + 1"], [NOT_PENDING]),
+    ("#/ch02/s02/s08", ["要证的不变量", "第一步", "终止", "习题 2.3-3"], [NOT_PENDING]),
+    ("#/ch02/s02/s09", ["2.3-1", "2.3-3", "2-1", "原书习题"], [NOT_PENDING]),
     # 不带阶段号：应落到第一个阶段
     ("#/ch02/s01", ["为什么学这一关"], [NOT_PENDING]),
+    ("#/ch02/s02", ["为什么学这一关"], [NOT_PENDING]),
     ("#/ch99/s01/s01", [NOT_PENDING], []),
     ("#/nonsense", ["404"], []),
     # 功能验证页：动画管线 + 测验交互 + 进度持久化（不只是「能渲染」，而是「真能跑」）
     ("_dev/dbg-func.html", ["FUNC_ALL_OK"], []),
     # 逐阶段渲染自检页
     ("_dev/dbg-stages.html", ["ALL_STAGES_OK"], []),
+    # 树引擎逐帧自检页（2.3 的 Figure 2.4 / 2.5 两组序列）
+    ("_dev/dbg-tree.html", ["TREE_ALL_OK"], []),
 ]
 
 
