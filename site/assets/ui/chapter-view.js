@@ -49,20 +49,38 @@ export function renderChapter(chapter, route) {
 
   /* ---------------- 章节头 ---------------- */
   const levelIdx = chapter.levels.indexOf(level);
+  const stagesDone = stages.filter((s) =>
+    store.isStageDone(chapter.ch, level.key, s.type)).length;
   const header = h('header', { class: 'lv-header' },
     h('nav', { class: 'lv-crumbs' },
       h('a', { href: '#/' }, '学习地图'),
       ' / ',
       chapter.chSpan || ('第 ' + chapter.ch + ' 章')
     ),
-    h('h1', { class: 'lv-title' }, level.title),
-    level.titleEn ? h('p', { class: 'lv-subtitle' }, level.titleEn) : null,
+    // 编号 + 标题：编号用展示衬线，像教科书的节号
+    h('div', { class: 'lv-heading' },
+      h('span', { class: 'lv-heading__no' }, level.section),
+      h('div', { class: 'lv-heading__text' },
+        h('h1', { class: 'lv-title' }, level.title),
+        level.titleEn ? h('p', { class: 'lv-subtitle' }, level.titleEn) : null
+      )
+    ),
     h('div', { class: 'lv-meta' },
       level.source && level.source.printed
         ? pageRef(level.source.printed)
         : null,
       h('span', null, '关卡 ' + (levelIdx + 1) + ' / ' + chapter.levels.length),
-      h('span', null, '本关共 ' + stages.length + ' 个阶段')
+      // 九段进度：一格一段，已过的填色。这是「闯关」在页面上最直接的可视化。
+      h('span', {
+        class: 'ticks',
+        'aria-label': '本关共 ' + stages.length + ' 段，已完成 ' + stagesDone + ' 段',
+      },
+        stages.map((s) =>
+          store.isStageDone(chapter.ch, level.key, s.type)
+            ? h('i', { dataset: { on: '1' } })
+            : h('i'))
+      ),
+      h('span', null, '已过 ' + stagesDone + ' / ' + stages.length + ' 段')
     )
   );
 
@@ -74,7 +92,7 @@ export function renderChapter(chapter, route) {
       const allDone = total > 0 && doneCount === total;
       return h('li', null,
         h('a', {
-          class: 'rail-item',
+          class: 'rail-item' + (allDone ? ' is-done' : (doneCount ? ' is-partial' : '')),
           href: router.buildUrl(chapter.ch, l.key, 1),
           'aria-current': l === level ? 'true' : 'false',
         },
@@ -93,7 +111,8 @@ export function renderChapter(chapter, route) {
       const done = store.isStageDone(chapter.ch, level.key, s.type);
       return h('li', null,
         h('a', {
-          class: 'rail-item',
+          class: 'rail-item' + (done ? ' is-done' : '')
+            + (s === stage ? ' is-current' : ''),
           href: router.buildUrl(chapter.ch, level.key, i + 1),
           'aria-current': s === stage ? 'true' : 'false',
         },

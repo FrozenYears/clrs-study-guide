@@ -3,7 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>算法导论 · 闯关式学习地图</title>
+    <title>算法导论 · 闯关式学习站</title>
+    <meta
+      name="description"
+      content="把 CLRS《算法导论》第 4 版拆成 149 个可交互关卡的闯关式学习站：原文逐字对照、动画可单步、伪代码与 C 双轨。"
+    />
     <!-- 设计令牌 + 版式 + 组件（运行时 Agent 拥有） -->
     <link rel="stylesheet" href="./assets/theme.css" />
     <link rel="stylesheet" href="./assets/layout.css" />
@@ -13,24 +17,25 @@
   <body>
     <div class="app">
       <header class="app-header">
-        <a class="brand" href="#/">CLRS · 闯关地图</a>
+        <a class="brand" href="#/">算法导论 · 闯关式学习站</a>
         <span class="spacer"></span>
-        <button id="theme-toggle" class="btn btn--sm" type="button" aria-label="切换主题">
+        <span class="header-progress" id="header-progress" aria-live="polite"></span>
+        <button id="theme-toggle" class="btn btn--ghost btn--sm" type="button" aria-label="切换主题">
           主题：自动
         </button>
       </header>
 
       <main class="app-main" id="main">
-        <!-- 由脚本渲染：学习地图 或 章节占位视图 -->
+        <!-- 由脚本渲染：学习地图（书的目录）或 关卡视图 -->
       </main>
 
       <footer class="app-footer">
-        基于《Introduction to Algorithms》（CLRS，第 4 版）· 闯关式交互学习站 · 进度保存在本地
+        基于《Introduction to Algorithms》（CLRS 第 4 版）的闯关式交互学习站。进度只保存在本机浏览器。
       </footer>
     </div>
 
     <script type="module">
-      import { h, $, $$ } from "./assets/core/dom.js";
+      import { h, $ } from "./assets/core/dom.js";
       import * as store from "./assets/core/store.js";
       import * as router from "./assets/core/router.js";
       import * as katex from "./assets/core/katex.js";
@@ -38,71 +43,158 @@
       import { renderChapter } from "./assets/ui/chapter-view.js";
 
       /* ----------------------------------------------------------------------
-       * 章节结构（硬编码自 data/structure.json，不 fetch —— file:// 下 CORS 会拦截）。
-       * 结构：8 部分 / 35 章（1–35 + 附录 A–D）/ 共 149 节。
+       * 九段式关卡：每关固定 9 个阶段（见 docs/开发规范.md 4.2）。
+       * 进度层的分母就是它。
+       * -------------------------------------------------------------------- */
+      const STAGE_COUNT = 9;
+
+      /* ----------------------------------------------------------------------
+       * 全书结构（硬编码自 data/structure.json，不 fetch —— file:// 下 CORS 会拦截）。
+       * 8 部分 / 35 章 + 附录 A–D / 149 节。
+       * zh 是通行中文译名，只用于目录导航；英文 title 是原书章名。
        * -------------------------------------------------------------------- */
       const STRUCTURE = [
-        { title: "Part I Foundations", chapters: [
-          { n: 1, title: "The Role of Algorithms in Computing", count: 2 },
-          { n: 2, title: "Getting Started", count: 3 },
-          { n: 3, title: "Characterizing Running Times", count: 3 },
-          { n: 4, title: "Divide-and-Conquer", count: 7 },
-          { n: 5, title: "Probabilistic Analysis and Randomized Algorithms", count: 4 },
+        { no: "I", title: "Part I Foundations", zh: "基础", chapters: [
+          { n: 1, title: "The Role of Algorithms in Computing", zh: "算法在计算中的作用", count: 2 },
+          { n: 2, title: "Getting Started", zh: "算法基础", count: 3 },
+          { n: 3, title: "Characterizing Running Times", zh: "刻画运行时间", count: 3 },
+          { n: 4, title: "Divide-and-Conquer", zh: "分治策略", count: 7 },
+          { n: 5, title: "Probabilistic Analysis and Randomized Algorithms", zh: "概率分析与随机化算法", count: 4 },
         ]},
-        { title: "Part II Sorting and Order Statistics", chapters: [
-          { n: 6, title: "Heapsort", count: 5 },
-          { n: 7, title: "Quicksort", count: 4 },
-          { n: 8, title: "Sorting in Linear Time", count: 4 },
-          { n: 9, title: "Medians and Order Statistics", count: 3 },
+        { no: "II", title: "Part II Sorting and Order Statistics", zh: "排序与顺序统计", chapters: [
+          { n: 6, title: "Heapsort", zh: "堆排序", count: 5 },
+          { n: 7, title: "Quicksort", zh: "快速排序", count: 4 },
+          { n: 8, title: "Sorting in Linear Time", zh: "线性时间排序", count: 4 },
+          { n: 9, title: "Medians and Order Statistics", zh: "中位数与顺序统计量", count: 3 },
         ]},
-        { title: "Part III Data Structures", chapters: [
-          { n: 10, title: "Elementary Data Structures", count: 3 },
-          { n: 11, title: "Hash Tables", count: 5 },
-          { n: 12, title: "Binary Search Trees", count: 3 },
-          { n: 13, title: "Red-Black Trees", count: 4 },
+        { no: "III", title: "Part III Data Structures", zh: "数据结构", chapters: [
+          { n: 10, title: "Elementary Data Structures", zh: "基本数据结构", count: 3 },
+          { n: 11, title: "Hash Tables", zh: "散列表", count: 5 },
+          { n: 12, title: "Binary Search Trees", zh: "二叉搜索树", count: 3 },
+          { n: 13, title: "Red-Black Trees", zh: "红黑树", count: 4 },
         ]},
-        { title: "Part IV Advanced Design and Analysis Techniques", chapters: [
-          { n: 14, title: "Dynamic Programming", count: 5 },
-          { n: 15, title: "Greedy Algorithms", count: 4 },
-          { n: 16, title: "Amortized Analysis", count: 4 },
+        { no: "IV", title: "Part IV Advanced Design and Analysis Techniques", zh: "高级设计与分析技术", chapters: [
+          { n: 14, title: "Dynamic Programming", zh: "动态规划", count: 5 },
+          { n: 15, title: "Greedy Algorithms", zh: "贪心算法", count: 4 },
+          { n: 16, title: "Amortized Analysis", zh: "摊还分析", count: 4 },
         ]},
-        { title: "Part V Advanced Data Structures", chapters: [
-          { n: 17, title: "Augmenting Data Structures", count: 3 },
-          { n: 18, title: "B-Trees", count: 3 },
-          { n: 19, title: "Data Structures for Disjoint Sets", count: 4 },
+        { no: "V", title: "Part V Advanced Data Structures", zh: "高级数据结构", chapters: [
+          { n: 17, title: "Augmenting Data Structures", zh: "数据结构的扩张", count: 3 },
+          { n: 18, title: "B-Trees", zh: "B 树", count: 3 },
+          { n: 19, title: "Data Structures for Disjoint Sets", zh: "不相交集合的数据结构", count: 4 },
         ]},
-        { title: "Part VI Graph Algorithms", chapters: [
-          { n: 20, title: "Elementary Graph Algorithms", count: 5 },
-          { n: 21, title: "Minimum Spanning Trees", count: 2 },
-          { n: 22, title: "Single-Source Shortest Paths", count: 5 },
-          { n: 23, title: "All-Pairs Shortest Paths", count: 3 },
-          { n: 24, title: "Maximum Flow", count: 3 },
-          { n: 25, title: "Matchings in Bipartite Graphs", count: 3 },
+        { no: "VI", title: "Part VI Graph Algorithms", zh: "图算法", chapters: [
+          { n: 20, title: "Elementary Graph Algorithms", zh: "基本的图算法", count: 5 },
+          { n: 21, title: "Minimum Spanning Trees", zh: "最小生成树", count: 2 },
+          { n: 22, title: "Single-Source Shortest Paths", zh: "单源最短路径", count: 5 },
+          { n: 23, title: "All-Pairs Shortest Paths", zh: "所有结点对的最短路径", count: 3 },
+          { n: 24, title: "Maximum Flow", zh: "最大流", count: 3 },
+          { n: 25, title: "Matchings in Bipartite Graphs", zh: "二分图中的匹配", count: 3 },
         ]},
-        { title: "Part VII Selected Topics", chapters: [
-          { n: 26, title: "Parallel Algorithms", count: 3 },
-          { n: 27, title: "Online Algorithms", count: 3 },
-          { n: 28, title: "Matrix Operations", count: 3 },
-          { n: 29, title: "Linear Programming", count: 3 },
-          { n: 30, title: "Polynomials and the FFT", count: 3 },
-          { n: 31, title: "Number-Theoretic Algorithms", count: 8 },
-          { n: 32, title: "String Matching", count: 5 },
-          { n: 33, title: "Machine-Learning Algorithms", count: 3 },
-          { n: 34, title: "NP-Completeness", count: 5 },
-          { n: 35, title: "Approximation Algorithms", count: 5 },
-        ]},
-        { title: "Part VIII Appendix: Mathematical Background", chapters: [
-          { n: "A", title: "Summations", count: 2 },
-          { n: "B", title: "Sets, Etc.", count: 5 },
-          { n: "C", title: "Counting and Probability", count: 5 },
-          { n: "D", title: "Matrices", count: 2 },
+        { no: "VII", title: "Part VII Selected Topics", zh: "专题选讲", chapters: [
+          { n: 26, title: "Parallel Algorithms", zh: "并行算法", count: 3 },
+          { n: 27, title: "Online Algorithms", zh: "在线算法", count: 3 },
+          { n: 28, title: "Matrix Operations", zh: "矩阵运算", count: 3 },
+          { n: 29, title: "Linear Programming", zh: "线性规划", count: 3 },
+          { n: 30, title: "Polynomials and the FFT", zh: "多项式与 FFT", count: 3 },
+          { n: 31, title: "Number-Theoretic Algorithms", zh: "数论算法", count: 8 },
+          { n: 32, title: "String Matching", zh: "字符串匹配", count: 5 },
+          { n: 33, title: "Machine-Learning Algorithms", zh: "机器学习算法", count: 3 },
+          { n: 34, title: "NP-Completeness", zh: "NP 完全性", count: 5 },
+          { n: 35, title: "Approximation Algorithms", zh: "近似算法", count: 5 },
         ]},
       ];
 
-      const TOTAL_LEVELS = STRUCTURE.reduce(
-        (acc, p) => acc + p.chapters.reduce((a, c) => a + c.count, 0),
-        0
-      );
+      /* 附录单独放：它的版式与正文部分不同（见 layout.css ④） */
+      const APPENDICES = [
+        { n: "A", title: "Summations", zh: "求和", count: 2 },
+        { n: "B", title: "Sets, Etc.", zh: "集合等", count: 5 },
+        { n: "C", title: "Counting and Probability", zh: "计数与概率", count: 5 },
+        { n: "D", title: "Matrices", zh: "矩阵", count: 2 },
+      ];
+
+      const TOTAL_LEVELS =
+        STRUCTURE.reduce((acc, p) => acc + p.chapters.reduce((a, c) => a + c.count, 0), 0) +
+        APPENDICES.reduce((a, c) => a + c.count, 0);
+      const TOTAL_CHAPTERS =
+        STRUCTURE.reduce((acc, p) => acc + p.chapters.length, 0) + APPENDICES.length;
+
+      /* ======================================================================
+       * 进度层：全部读自本机存档（store），没有记录就是 0。
+       * 只统计「已经建好关卡文件」的章 —— 没建的章不假装有进度。
+       * ==================================================================== */
+      function builtLevels(n) {
+        const mod = getChapter(n);
+        return mod && Array.isArray(mod.levels) ? mod.levels : [];
+      }
+
+      function levelStages(n, key) {
+        return store.getStageSet(n, key).size;
+      }
+
+      /** 一章的进度：已完成关数 / 已开始未完成关数 / 已过阶段数 */
+      function chapterProgress(ch) {
+        const built = builtLevels(ch.n);
+        let done = 0, started = 0, stages = 0;
+        built.forEach((lv) => {
+          const s = levelStages(ch.n, lv.key);
+          stages += s;
+          if (store.chapterDone(ch.n, lv.key)) done += 1;
+          else if (s > 0) started += 1;
+        });
+        return { built: built.length, done, started, stages, capacity: built.length * STAGE_COUNT };
+      }
+
+      function allChapters() {
+        return STRUCTURE.reduce((a, p) => a.concat(p.chapters), []).concat(APPENDICES);
+      }
+
+      function globalProgress() {
+        let done = 0, stages = 0, capacity = 0;
+        allChapters().forEach((ch) => {
+          const pr = chapterProgress(ch);
+          done += pr.done;
+          stages += pr.stages;
+          capacity += pr.capacity;
+        });
+        return { done, stages, capacity };
+      }
+
+      /** 下一步该学哪一关：第一个「已建但没做完」的关卡 */
+      function nextUp() {
+        for (const ch of allChapters()) {
+          for (const lv of builtLevels(ch.n)) {
+            if (!store.chapterDone(ch.n, lv.key)) {
+              return { ch, lv, stages: levelStages(ch.n, lv.key) };
+            }
+          }
+        }
+        return null;
+      }
+
+      /** 每关一格的进度刻度（无背景轨道，不是进度条） */
+      function ticks(ch) {
+        const built = builtLevels(ch.n);
+        const cells = [];
+        for (let i = 0; i < ch.count; i++) {
+          const lv = built[i];
+          let mark = null;
+          if (lv) {
+            if (store.chapterDone(ch.n, lv.key)) mark = { dataset: { on: "1" } };
+            else if (levelStages(ch.n, lv.key) > 0) mark = { dataset: { part: "1" } };
+          }
+          cells.push(h("i", mark));
+        }
+        return h("span", { class: "ticks", "aria-hidden": "true" }, cells);
+      }
+
+      /** 给读屏用的进度说明 */
+      function progressText(ch, pr) {
+        if (!pr.built) return "尚未建好关卡";
+        if (pr.done === pr.built) return `已建 ${pr.built} 关，全部完成`;
+        if (pr.done || pr.started) return `已建 ${pr.built} 关，完成 ${pr.done} 关，进行中 ${pr.started} 关`;
+        return `已建 ${pr.built} 关，尚未开始`;
+      }
 
       /* ---------------- 主题切换 ---------------- */
       const THEME_ORDER = ["auto", "light", "dark"];
@@ -122,44 +214,175 @@
       store.applyTheme();
       refreshThemeLabel();
 
-      /* ---------------- 渲染：学习地图 ---------------- */
-      function renderMap() {
-        const intro = h("section", { class: "stack" },
-          h("h1", { class: "card__title", style: { fontSize: "var(--fs-2xl)" } },
-            "《算法导论》第 4 版 · 闯关式学习站"),
-          h("p", { class: "card__meta" },
-            "面向「有 C 基础、无算法基础」的同学。全书拆成 ",
-            String(TOTAL_LEVELS), " 个可交互关卡，每关九段式递进。"),
-          h("p", { class: "card__meta" },
-            katex.renderInline("\\Theta(n\\lg n)"), " 不是终点，而是起点。"
+      /* ---------------- 顶栏的全局进度 ---------------- */
+      function refreshHeaderProgress() {
+        const g = globalProgress();
+        const el = $("#header-progress");
+        if (!el) return;
+        if (!g.capacity) {
+          el.textContent = "";
+          return;
+        }
+        el.textContent = `已完成 ${g.done} 关 / 已建 ${g.capacity / STAGE_COUNT} 关`;
+      }
+
+      /* ---------------- 渲染：报头 ---------------- */
+      function renderMasthead() {
+        const g = globalProgress();
+        return h("header", { class: "masthead" },
+          h("div", null,
+            h("div", { class: "masthead__eyebrow" },
+              "Introduction to Algorithms · Fourth Edition"),
+            h("h1", { class: "masthead__title" },
+              "《算法导论》", h("em", null, "闯关式学习站")),
+            h("p", { class: "masthead__lede" },
+              "写给有 C 基础、没有算法基础的同学。全书按 ",
+              String(TOTAL_LEVELS),
+              " 个关卡组织，每关九个阶段递进：从直觉到原文，再到伪代码、动画、C 实现与正确性证明。像 ",
+              katex.renderInline("\\Theta(n\\lg n)"),
+              " 这样的结论，都能自己推一遍。")
+          ),
+          h("div", { class: "masthead__stats" },
+            h("div", { class: "stat" },
+              h("div", { class: "stat__num" }, String(TOTAL_LEVELS)),
+              h("div", { class: "stat__label" }, "关卡")),
+            h("div", { class: "stat" },
+              h("div", { class: "stat__num" }, String(TOTAL_CHAPTERS)),
+              h("div", { class: "stat__label" }, "章 · 含附录")),
+            h("div", { class: "stat" },
+              h("div", { class: "stat__num" }, String(g.done)),
+              h("div", { class: "stat__label" }, "已完成"))
           )
         );
+      }
 
-        const parts = STRUCTURE.map((part) => {
-          const levels = part.chapters.reduce((a, c) => a + c.count, 0);
-          const head = h("div", { class: "map-part__head" },
-            h("h2", { class: "map-part__title" }, part.title),
-            h("span", { class: "map-part__meta" },
-              `${part.chapters.length} 章 · ${levels} 关`)
+      /* ---------------- 渲染：续读条 ---------------- */
+      function renderResume() {
+        const nx = nextUp();
+        if (!nx) {
+          const built = allChapters().filter((ch) => builtLevels(ch.n).length);
+          return h("section", { class: "resume" },
+            h("span", { class: "resume__no" }, "✓"),
+            h("div", null,
+              h("h2", { class: "resume__title" }, "已建好的关卡都做完了"),
+              h("p", { class: "resume__meta" },
+                "继续学习需要新章节的关卡文件。目前已完成 ",
+                String(built.length), " 章的关卡；下一章可以按 ",
+                h("span", { class: "mono" }, "docs/关卡编写手册.md"),
+                " 里的三步流程开工。")),
+            null
           );
-          const cards = part.chapters.map((ch) => {
-            const range = typeof ch.n === "number"
-              ? `第 ${ch.n} 章`
-              : `附录 ${ch.n}`;
-            return h("a", {
-              class: "card card--link",
-              href: router.buildUrl(ch.n, "s01"),
-            },
-              h("div", { class: "card__title" }, range),
-              h("div", { class: "card__meta" }, ch.title),
-              h("div", { class: "card__meta" }, `${ch.count} 个关卡`)
-            );
-          });
-          return h("section", { class: "map-part" }, head,
-            h("div", { class: "grid grid--chapters" }, cards));
-        });
+        }
+        const ch = nx.ch;
+        const label = typeof ch.n === "number" ? `第 ${ch.n} 章` : `附录 ${ch.n}`;
+        return h("section", { class: "resume" },
+          h("span", { class: "resume__no" }, nx.lv.section),
+          h("div", null,
+            h("h2", { class: "resume__title" },
+              nx.lv.title || nx.lv.shortTitle || ch.zh),
+            h("p", { class: "resume__meta" },
+              label, " ", ch.zh, " · 已过 ", String(nx.stages), " / ", String(STAGE_COUNT), " 个阶段")),
+          h("a", { class: "btn btn--primary", href: router.buildUrl(ch.n, nx.lv.key) },
+            nx.stages === 0 ? "从这里开始" : "继续这一关")
+        );
+      }
 
-        return h("div", { class: "stack" }, intro, ...parts);
+      /* ---------------- 渲染：目录里的一个章条目 ---------------- */
+      function renderChapterRow(ch, currentN) {
+        const pr = chapterProgress(ch);
+        const built = pr.built > 0;
+        const isCurrent = built && String(ch.n) === String(currentN);
+        const no = typeof ch.n === "number" ? `第 ${ch.n} 章` : `附录 ${ch.n}`;
+        const meta = h("span", { class: "toc__meta" },
+          h("span", null, `${ch.count} 关`),
+          built ? ticks(ch) : h("span", { class: "pending-tag" }, "待建")
+        );
+        const title = h("span", { class: "toc__title" },
+          ch.zh,
+          h("span", { class: "toc__title-en" }, ch.title)
+        );
+        if (!built) {
+          return h("div", {
+            class: "toc__row toc__row--pending",
+            title: "这一章的关卡文件还没写",
+          },
+            h("span", { class: "toc__no" }, no), title, meta);
+        }
+        return h("a", {
+          class: "toc__row" + (isCurrent ? " toc__row--current" : ""),
+          href: router.buildUrl(ch.n, "s01"),
+          "aria-current": isCurrent ? "true" : null,
+          "aria-label": `${no} ${ch.zh}，${progressText(ch, pr)}`,
+        },
+          h("span", { class: "toc__no" }, no), title, meta);
+      }
+
+      /* ---------------- 渲染：正文的 Part 目录 ---------------- */
+      function renderToc() {
+        const nx = nextUp();
+        const currentN = nx ? nx.ch.n : null;
+        return h("nav", { class: "toc", "aria-label": "全书目录" },
+          ...STRUCTURE.map((part) => {
+            const levels = part.chapters.reduce((a, c) => a + c.count, 0);
+            const builtCount = part.chapters.filter((ch) => builtLevels(ch.n).length).length;
+            const doneCount = part.chapters.reduce((a, ch) => a + chapterProgress(ch).done, 0);
+            return h("section", { class: "toc__part" },
+              h("div", { class: "toc__part-head" },
+                h("span", { class: "toc__part-no" }, part.no),
+                h("h2", { class: "toc__part-name" },
+                  part.title,
+                  h("span", { class: "toc__part-zh" },
+                    part.zh, " · ", String(part.chapters.length), " 章 ",
+                    String(levels), " 关")
+                ),
+                h("span", { class: "toc__part-meta" },
+                  builtCount
+                    ? `已建 ${builtCount} 章，完成 ${doneCount} 关`
+                    : "关卡待建")
+              ),
+              h("div", { class: "toc__list" },
+                part.chapters.map((ch) => renderChapterRow(ch, currentN)))
+            );
+          })
+        );
+      }
+
+      /* ---------------- 渲染：附录（换一种版式） ---------------- */
+      function renderAppendix() {
+        return h("section", { class: "appendix" },
+          h("h2", { class: "toc__part-name" }, "附录 · Appendix: Mathematical Background",
+            h("span", { class: "toc__part-zh" }, "数学基础 · 4 篇，需要时随手查")),
+          h("div", { class: "appendix__list" },
+            ...APPENDICES.map((ch) => {
+              const pr = chapterProgress(ch);
+              const built = pr.built > 0;
+              const body = [
+                h("span", { class: "appendix__letter" }, ch.n),
+                h("span", { class: "appendix__name" }, ch.zh,
+                  h("span", { class: "toc__title-en" }, ch.title)),
+                h("span", { class: "appendix__meta" },
+                  built ? `${ch.count} 关` : "待建"),
+              ];
+              return built
+                ? h("a", {
+                    class: "appendix__item",
+                    href: router.buildUrl(ch.n, "s01"),
+                    "aria-label": `附录 ${ch.n} ${ch.zh}，${progressText(ch, pr)}`,
+                  }, ...body)
+                : h("div", { class: "appendix__item appendix__item--pending" }, ...body);
+            })
+          )
+        );
+      }
+
+      /* ---------------- 渲染：学习地图 ---------------- */
+      function renderMap() {
+        return h("div", null,
+          renderMasthead(),
+          renderResume(),
+          renderToc(),
+          renderAppendix()
+        );
       }
 
       /* ---------------- 渲染：章节尚未建设时的占位 ---------------- */
@@ -167,15 +390,20 @@
         const label = route.isAppendix
           ? `附录 ${String(route.ch).toUpperCase()}`
           : `第 ${route.chNum} 章`;
-        return h("div", { class: "stack" },
-          h("div", { class: "card" },
-            h("h1", { class: "card__title" }, label + " · 内容建设中"),
-            h("p", { class: "card__meta" },
-              "该章的关卡文件还没写。已经建好的章节：第 2 章（2.1 插入排序）。"),
-            h("p", { class: "card__meta" }, "当前路由：", route.raw || "#/"),
+        const found = allChapters().find(
+          (c) => String(c.n).toUpperCase() === String(route.isAppendix ? route.ch : route.chNum).toUpperCase()
+        );
+        return h("div", { class: "pending" },
+          h("div", { class: "pending__eyebrow" }, "Not yet written"),
+          h("h1", { class: "pending__title" }, label, found ? ` ${found.zh}` : ""),
+          found ? h("p", { class: "pending__en" }, found.title) : null,
+          h("p", { class: "pending__note" },
+            "该章的关卡文件还没写。已经建好的章节：第 2 章（2.1 / 2.2 / 2.3），第 3 章 3.1 骨架。"),
+          h("p", { class: "pending__route" }, "当前路由：", route.raw || "#/"),
+          h("div", { class: "pending__actions" },
             h("a", { class: "btn btn--primary", href: "#/ch02/s01/s01" },
               "去看已完成的关卡：2.1 插入排序"),
-            h("a", { class: "btn", href: "#/" }, "← 回到学习地图")
+            h("a", { class: "btn btn--ghost", href: "#/" }, "回到目录")
           )
         );
       }
@@ -183,6 +411,11 @@
       /* ---------------- 路由驱动渲染 ---------------- */
       const main = $("#main");
       let currentView = null; // 持有上一个视图，用于清理定时器与监听
+
+      function renderHome() {
+        main.appendChild(renderMap());
+        refreshHeaderProgress();
+      }
 
       router.onChange((route) => {
         if (currentView && currentView.destroy) {
@@ -192,7 +425,7 @@
         main.replaceChildren();
 
         if (route.kind === "home") {
-          main.appendChild(renderMap());
+          renderHome();
           window.scrollTo(0, 0);
           return;
         }
@@ -205,13 +438,25 @@
           } else {
             main.appendChild(renderPending(route));
           }
+          refreshHeaderProgress();
           window.scrollTo(0, 0);
           return;
         }
 
         main.appendChild(router.view404());
+        refreshHeaderProgress();
       });
       router.start();
+
+      /* 进度变化（做完某一段、测验得分）时刷新顶栏与目录上的读数 */
+      store.subscribe(() => {
+        if (router.parse().kind === "home") {
+          main.replaceChildren();
+          renderHome();
+        } else {
+          refreshHeaderProgress();
+        }
+      });
     </script>
   </body>
 </html>

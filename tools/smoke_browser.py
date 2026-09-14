@@ -19,7 +19,9 @@ BASE = f"http://127.0.0.1:{PORT}/index.html"
 # (路由, 必须出现的关键片段, 不允许出现的片段)
 NOT_PENDING = "该章的关卡文件还没写"
 CASES = [
-    ("#/", ["闯关式学习站", "card--link", "Part I Foundations"], ["页面走丢了"]),
+    # 首页 = 书的目录 + 进度层（2026-09 编辑部风改版：卡片宫格 -> 目录条目）
+    ("#/", ["闯关式学习站", "toc__row", "Part I Foundations", "待建", "从这里开始"],
+     ["页面走丢了", "card--link"]),
     # 阶段顺序：s01=map s02=intuition s03=source s04=pseudocode
     #           s05=visualize s06=code s07=analyze s08=prove s09=drill
     # 注意：每个阶段用的是关卡文件里的**自定义标题**，不是类型名。
