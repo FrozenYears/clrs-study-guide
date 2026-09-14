@@ -1,0 +1,3042 @@
+{
+ "chapter": 35,
+ "chapter_title": "35 Approximation Algorithms",
+ "part": "Part VII Selected Topics",
+ "source": {
+  "printed": [
+   1104,
+   null
+  ],
+  "pdf": [
+   1125,
+   1161
+  ]
+ },
+ "sections": [
+  "35.1 The vertex-cover problem",
+  "35.2 The traveling-salesperson problem",
+  "35.3 The set-covering problem",
+  "35.4 Randomization and linear programming",
+  "35.5 The subset-sum problem"
+ ],
+ "sections_found": [
+  "35.1 The vertex-cover problem",
+  "35.2 The traveling-salesperson problem",
+  "35.3 The set-covering problem",
+  "35.4 Randomization and linear programming",
+  "35.5 The subset-sum problem"
+ ],
+ "blocks": [
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.1",
+   "section_title": "35.1 The vertex-cover problem",
+   "printed_page": 1106,
+   "pdf_page": 1127,
+   "text": "Chapter outline"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.1",
+   "section_title": "35.1 The vertex-cover problem",
+   "printed_page": 1106,
+   "pdf_page": 1127,
+   "text": "The first four sections of this chapter present some examples of polynomial-time approximation algorithms for NP-complete problems, and the fifth section gives a fully polynomial-time approximation scheme. We begin in Section 35.1 with a study of the vertex-cover problem, an NP-complete minimization problem that has an approximation algorithm with an approximation ratio of 2. Section 35.2 looks at a version of the traveling-salesperson problem in which the cost function satisfies the triangle inequality and presents an approximati on algorithm with an approximation ratio of 2. The section also shows that without the triangle inequality, for any constant Ω ≥ 1, a Ω-approximation algorithm cannot exist unless PDNP."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.1",
+   "section_title": "35.1 The vertex-cover problem",
+   "printed_page": 1106,
+   "pdf_page": 1127,
+   "text": "Section 35.3 applies a greedy method as an effective approximation algorithm for the set-covering problem, obtaining a covering whose cost is at worst a logarithmic factor larger than the optimal cost. Section 35.4 uses randomization and linear programming to develop two more approximation algorithms. The section first defines the optimization version of 3-CNF satisfiability and gives a simple randomized algorithm that produces a solution with an expected approximation ratio of 8/7."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.1",
+   "section_title": "35.1 The vertex-cover problem",
+   "printed_page": 1106,
+   "pdf_page": 1127,
+   "text": "Then Section 35.4 examines a weighted variant of the vertex-cover problem and exhibits how to use linear programming to develop a 2-approximation algorithm."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.1",
+   "section_title": "35.1 The vertex-cover problem",
+   "printed_page": 1106,
+   "pdf_page": 1127,
+   "text": "Finally, Section 35.5 presents a fully polynomial-time approximation scheme for the subset-sum problem."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.1",
+   "section_title": "35.1 The vertex-cover problem",
+   "printed_page": 1106,
+   "pdf_page": 1127,
+   "text": "Section 34.5.2 defined the vertex-cover problem and proved it NP-complete. Recall that a vertex cover of an undirected graph G = (V;E) is a subset V 0 ⊆ V such that if (u;v) is an edge of G, then either u 2 V 0 or v 2 V 0 (or both). The size of a vertex cover is the number of vertices in it."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.1",
+   "section_title": "35.1 The vertex-cover problem",
+   "printed_page": 1106,
+   "pdf_page": 1127,
+   "text": "The vertex-cover problem is to find a vertex cover of minimum size in a given undirected graph. We call such a vertex cover an optimal vertex cover. This problem is the optimization version of an NP-complete decision problem."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.1",
+   "section_title": "35.1 The vertex-cover problem",
+   "printed_page": 1106,
+   "pdf_page": 1127,
+   "text": "Even though nobody knows how to find an optimal vertex cover in a graph G in polynomial time, there is an efficient algorithm to find a vertex cover that is nearoptimal. The approximation algorithm APPROX-VERTEX-COVER on the facing page takes as input an undirected graph G and returns a vertex cover whose size is guaranteed to be no more than twice the size of an optimal vertex cover."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.1",
+   "section_title": "35.1 The vertex-cover problem",
+   "printed_page": 1106,
+   "pdf_page": 1127,
+   "text": "Figure 35.1 illustrates how APPROX-VERTEX-COVER operates on an example graph. The variable C contains the vertex cover being constructed. Line 1 initializes C to the empty set. Line 2 sets E 0 to be a copy of the edge set G: E of the graph. The while loop of lines 336 repeatedly picks an edge (u;v) from E 0 , adds"
+  },
+  {
+   "type": "pseudocode",
+   "chapter": 35,
+   "section": "35.1",
+   "section_title": "35.1 The vertex-cover problem",
+   "printed_page": 1107,
+   "pdf_page": 1128,
+   "algo_name": "APPROX-VERTEX-COVER",
+   "signature": "APPROX-VERTEX-COVER",
+   "lines": [
+    {
+     "n": 1,
+     "code": "+ = ;"
+    },
+    {
+     "n": 2,
+     "code": "E 0 = G: E"
+    },
+    {
+     "n": 3,
+     "code": "while E 0 ≠ ;"
+    },
+    {
+     "n": 4,
+     "code": "let (u;v)  be an arbitrary edge of E 0"
+    },
+    {
+     "n": 5,
+     "code": "+ = C [ fu;v g"
+    },
+    {
+     "n": 6,
+     "code": "remove from E 0 edge (u;v)  and every edge incident on either u or v"
+    },
+    {
+     "n": 7,
+     "code": "return C its endpoints u and v into C , and deletes all edges in E 0 that u or v covers. Finally, line 7 returns the vertex cover C . The running time of this algorithm is O(V + E),"
+    }
+   ],
+   "text": "1 + = ;\n2 E 0 = G: E\n3 while E 0 ≠ ;\n4 let (u;v)  be an arbitrary edge of E 0\n5 + = C [ fu;v g\n6 remove from E 0 edge (u;v)  and every edge incident on either u or v\n7 return C its endpoints u and v into C , and deletes all edges in E 0 that u or v covers. Finally, line 7 returns the vertex cover C . The running time of this algorithm is O(V + E),"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.1",
+   "section_title": "35.1 The vertex-cover problem",
+   "printed_page": 1107,
+   "pdf_page": 1128,
+   "text": "APPROX-VERTEX-COVER (G) its endpoints u and v into C , and deletes all edges in E 0 that u or v covers. Finally, line 7 returns the vertex cover C . The running time of this algorithm is O(V + E), using adjacency lists to represent E 0 ."
+  },
+  {
+   "type": "theorem",
+   "chapter": 35,
+   "section": "35.1",
+   "section_title": "35.1 The vertex-cover problem",
+   "printed_page": 1107,
+   "pdf_page": 1128,
+   "text": "Theorem 35.1"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.1",
+   "section_title": "35.1 The vertex-cover problem",
+   "printed_page": 1107,
+   "pdf_page": 1128,
+   "text": "APPROX-VERTEX-COVER is a polynomial-time 2-approximation algorithm."
+  },
+  {
+   "type": "proof",
+   "chapter": 35,
+   "section": "35.1",
+   "section_title": "35.1 The vertex-cover problem",
+   "printed_page": 1107,
+   "pdf_page": 1128,
+   "text": "Proof We have already shown that APPROX-VERTEX-COVER runs in polynomial time."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.1",
+   "section_title": "35.1 The vertex-cover problem",
+   "printed_page": 1107,
+   "pdf_page": 1128,
+   "text": "The set C of vertices that is returned by APPROX-VERTEX-COVER is a vertex cover, since the algorithm loops until every edge in G: E has been covered by some vertex in C ."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.1",
+   "section_title": "35.1 The vertex-cover problem",
+   "printed_page": 1107,
+   "pdf_page": 1128,
+   "text": "To see that APPROX-VERTEX-COVER returns a vertex cover that is at most twice the size of an optimal cover, let A denote the set of edges that line 4 of APPROX- VERTEX-COVER picked. In order to cover the edges in A, any vertex cover—in particular, an optimal cover C − 4must include at least one endpoint of each edge in A. No two edges in A share an endpoint, since once an edge is picked in line 4, all other edges that are incident on its endpoints are deleted from E 0 in line 6. Thus, no two edges in A are covered by the same vertex from C − , meaning that for every vertex in C − , there is at most one edge in A, giving the lower bound jC − j ≥ |A| (35.2) on the size of an optimal vertex cover. Each execut ion of line 4 picks an edge for which neither of its endpoints is already in C , yielding an upper bound (an exact upper bound, in fact) on the size of the vertex cover returned:"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.1",
+   "section_title": "35.1 The vertex-cover problem",
+   "printed_page": 1107,
+   "pdf_page": 1128,
+   "text": "|C| = 2 |A| : (35.3)"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.1",
+   "section_title": "35.1 The vertex-cover problem",
+   "printed_page": 1107,
+   "pdf_page": 1128,
+   "text": "Combining equations (35.2) and (35.3) yields"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.1",
+   "section_title": "35.1 The vertex-cover problem",
+   "printed_page": 1107,
+   "pdf_page": 1128,
+   "text": "|C| = 2 |A|"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.1",
+   "section_title": "35.1 The vertex-cover problem",
+   "printed_page": 1107,
+   "pdf_page": 1128,
+   "text": "≤ 2 jC − j ; thereby proving the theorem. b c d a e f g"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.1",
+   "section_title": "35.1 The vertex-cover problem",
+   "printed_page": 1108,
+   "pdf_page": 1129,
+   "text": "(a) b c d a e f g"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.1",
+   "section_title": "35.1 The vertex-cover problem",
+   "printed_page": 1108,
+   "pdf_page": 1129,
+   "text": "(b) b c d a e f g"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.1",
+   "section_title": "35.1 The vertex-cover problem",
+   "printed_page": 1108,
+   "pdf_page": 1129,
+   "text": "(c) b c d a e f g"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.1",
+   "section_title": "35.1 The vertex-cover problem",
+   "printed_page": 1108,
+   "pdf_page": 1129,
+   "text": "(d) b c d a e f g"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.1",
+   "section_title": "35.1 The vertex-cover problem",
+   "printed_page": 1108,
+   "pdf_page": 1129,
+   "text": "(e) b c d a e f g"
+  },
+  {
+   "type": "figure-caption",
+   "chapter": 35,
+   "section": "35.1",
+   "section_title": "35.1 The vertex-cover problem",
+   "printed_page": 1108,
+   "pdf_page": 1129,
+   "text": "Figure 35.1 The operation of APPROX-VERTEX-COVER . (a) The input graph G, which has 7 vertices and 8 edges. (b) The highlighted edge (b;c) is the first edge chosen by APPROX-VERTEX- COVER . Vertices b and c, in blue, are added to the set C containing the vertex cover being created."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.1",
+   "section_title": "35.1 The vertex-cover problem",
+   "printed_page": 1108,
+   "pdf_page": 1129,
+   "text": "Dashed edges (a;b) , (c;e) , and (c;d) are removed since they are now covered by some vert ex in C . (c) Edge (e;f) is chosen, and vertices e and f are added to C . (d) Edge (d;g) is chosen, and vertices d and g are added to C . (e) The set C , which is the vertex cover produced by APPROX-VERTEX-COVER , contains the six vertices b;c;d;e;f;g . (f) The optimal vertex cover for this problem contains only three vertices: b, d , and e."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.1",
+   "section_title": "35.1 The vertex-cover problem",
+   "printed_page": 1108,
+   "pdf_page": 1129,
+   "text": "Let us reflect on this proof. At first, you might wonder how you can possibly prove that the size of the vertex cover returned by APPROX-VERTEX-COVER is at most twice the size of an optimal vertex cover, when you don’t even know the size of an optimal vertex cover. Instead of requiring that you know the exact size of an optimal vertex cover, you find a lower bound on the size. As Exercise 35.1-2 asks you to show, the set A of edges that line 4 of APPROX-VERTEX-COVER selects is actually a maximal matching in the graph G. (A maximal matching is a matching to which no edges can be added and still have a matching.) The size of a maximal matching is, as we argued in the proof of Theorem 35.1, a lower bound on the size of an optimal vertex cover. The algorithm returns a vertex cover whose size is at most twice the size of the maximal matching A. The approximation ratio comes from relating the size of the solution returned to the lower bound. We will use this methodology in later sections as well."
+  },
+  {
+   "type": "exercise",
+   "chapter": 35,
+   "section": "35.1",
+   "section_title": "35.1 The vertex-cover problem",
+   "printed_page": 1109,
+   "pdf_page": 1130,
+   "text": "35.1-1 Give an example of a graph for which APPROX-VERTEX-COVER always yields a suboptimal solution."
+  },
+  {
+   "type": "exercise",
+   "chapter": 35,
+   "section": "35.1",
+   "section_title": "35.1 The vertex-cover problem",
+   "printed_page": 1109,
+   "pdf_page": 1130,
+   "text": "35.1-2 Prove that the set of edges picked in line 4 of APPROX-VERTEX-COVER forms a maximal matching in the graph G."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1109,
+   "pdf_page": 1130,
+   "text": "? 35.1-3"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1109,
+   "pdf_page": 1130,
+   "text": "Consider the following heuristic to solve the vertex-cover problem. Repeatedly select a vertex of highest degree, and remove all o f its incident edges. Give an example to show that this heuristic does not provid e an approximation ratio of 2."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1109,
+   "pdf_page": 1130,
+   "text": "(Hint: Try a bipartite graph with vertices of uniform degree on the left and vertices of varying degree on the right.)"
+  },
+  {
+   "type": "exercise",
+   "chapter": 35,
+   "section": "35.1",
+   "section_title": "35.1 The vertex-cover problem",
+   "printed_page": 1109,
+   "pdf_page": 1130,
+   "text": "35.1-4 Give an efficient greedy algorithm that finds an optimal vertex cover for a tree in linear time."
+  },
+  {
+   "type": "exercise",
+   "chapter": 35,
+   "section": "35.1",
+   "section_title": "35.1 The vertex-cover problem",
+   "printed_page": 1109,
+   "pdf_page": 1130,
+   "text": "35.1-5 The proof of Theorem 34.12 on page 1084 illustrates that the vertex-cover problem and the NP-complete clique problem are complementary in the sense that an optimal vertex cover is the complement of a maximum-size clique in the complement graph. Does this relationship imply that there is a polynomial-time approximation algorithm with a constant approximation ratio for the clique problem? Justify your answer."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1109,
+   "pdf_page": 1130,
+   "text": "The input to the traveling-salesperson problem, introduced in Section 34.5.4, is a complete undirected graph G = (V;E) that has a nonnegative integer cost c(u;v) associated with each edge (u;v) 2 E. The goal is to find a hamiltonian cycle (a tour) of G with minimum cost. As an extension of our notation, let c(A) denote the total cost of the edges in the subset A ⊆ E: c(A) ="
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1109,
+   "pdf_page": 1130,
+   "text": "(u;v)2A c(u;v):"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1110,
+   "pdf_page": 1131,
+   "text": "In many practical situations, the least costly way to go from a place u to a place w is to go directly, with no intermediate steps. Put another way, cutting out an inter- mediate stop never increases the cost. Such a cost function c satisfies the triangle inequality: for all vertices u;v;w 2 V , c(u;w) ≤ c(u;v) + c(v;w):"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1110,
+   "pdf_page": 1131,
+   "text": "The triangle inequality seems as though it should n aturally hold, and it is automatically satisfied in several applications. For example, if the vertices of the graph are points in the plane and the cost of trave ling between two vertices is the ordinary euclidean distance between them, then the triangle inequality is satisfied."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1110,
+   "pdf_page": 1131,
+   "text": "Furthermore, many cost functions other than euclidean distance satisfy the triangle inequality."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1110,
+   "pdf_page": 1131,
+   "text": "As Exercise 35.2-2 shows, the traveling-salesperson problem is NP-complete even if you require the cost function to satisfy th e triangle inequality. Thus, you should not expect to find a polynomial-time algorithm for solving this problem ex- actly. Your time would be better spent looking for good approximation algorithms."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1110,
+   "pdf_page": 1131,
+   "text": "In Section 35.2.1, we examine a 2-approximation algorithm for the travelingsalesperson problem with the triangle inequality. I n Section 35.2.2, we show that without the triangle inequality, a polynomial-time approximation algorithm with a constant approximation ratio does not exist unless PDNP."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1110,
+   "pdf_page": 1131,
+   "text": "35.2.1 The traveling-salesperson problem with the triangle inequality"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1110,
+   "pdf_page": 1131,
+   "text": "Applying the methodology of the previous section, s tart by computing a structure"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1110,
+   "pdf_page": 1131,
+   "text": "4a minimum spanning tree—whose weight gives a lower bound on the length of an optimal traveling-salesperson tour. Then use the minimum spanning tree to create a tour whose cost is no more than twice that of the minimum spanning tree’s weight, as long as the cost function satisfies the triangle inequality. The procedure APPROX-TSP-TOUR on the next page implements this approach, calling the minimum-spanning-tree algorithm MST-PRIM on page 596 as a subroutine. The parameter G is a complete undirected graph, and the cost functi on c satisfies the triangle inequality."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1110,
+   "pdf_page": 1131,
+   "text": "Recall from Section 12.1 that a preorder tree walk recursively visits every vertex in the tree, listing a vertex when it is first encountered, before visiting any of its children."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1110,
+   "pdf_page": 1131,
+   "text": "Figure 35.2 illustrates the operation of APPROX-TSP-TOUR. Part (a) of the figure shows a complete undirected graph, and part (b) shows the minimum spanning tree T grown from root vertex a by MST-PRIM. Part (c) shows how a preorder walk of T visits the vertices, and part (d) displays the corresponding tour, which is the tour returned by APPROX-TSP-TOUR. Part (e) displays an optimal tour, which is about 23% shorter."
+  },
+  {
+   "type": "pseudocode",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1111,
+   "pdf_page": 1132,
+   "algo_name": "APPROX-TSP-TOUR",
+   "signature": "APPROX-TSP-TOUR",
+   "lines": [
+    {
+     "n": 1,
+     "code": "select a vertex r 2 G: V to be a \"root\" vertex"
+    },
+    {
+     "n": 2,
+     "code": "compute a minimum spanning tree T for G from root r using MST-PRIM(G;c;r)"
+    },
+    {
+     "n": 3,
+     "code": "let H be a list of vertices, ordered according to when they are first visited in a preorder tree walk of T"
+    },
+    {
+     "n": 4,
+     "code": "return the hamiltonian cycle H"
+    }
+   ],
+   "text": "1 select a vertex r 2 G: V to be a \"root\" vertex\n2 compute a minimum spanning tree T for G from root r using MST-PRIM(G;c;r)\n3 let H be a list of vertices, ordered according to when they are first visited in a preorder tree walk of T\n4 return the hamiltonian cycle H"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1111,
+   "pdf_page": 1132,
+   "text": "(a) a d b f e g c h"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1111,
+   "pdf_page": 1132,
+   "text": "(b) a d b f e g c h"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1111,
+   "pdf_page": 1132,
+   "text": "(c) a d e c h"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1111,
+   "pdf_page": 1132,
+   "text": "(d) a d b f e g c h"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1111,
+   "pdf_page": 1132,
+   "text": "(e) b f g e h c a b f g d"
+  },
+  {
+   "type": "figure-caption",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1111,
+   "pdf_page": 1132,
+   "text": "Figure 35.2 The operation of APPROX-TSP-TOUR . (a) A complete undirected graph. Vertices lie on intersections of integer grid lines. For example, f is one unit to the right and two units up from h."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1111,
+   "pdf_page": 1132,
+   "text": "The cost function between two points is the ordinar y euclidean distance. (b) A minimum spanning tree T of the complete graph, as computed by MST-PRIM . Vertex a is the root vertex. Only edges in the minimum spanning tree are shown. The vertices happen to be labeled in such a way that they are added to the main tree by MST-PRIM in alphabetical order. (c) A walk of T , starting at a. A full walk of the tree visits the vertices in the or der a;b;c;b;h;b;a;d;e;f;e;g;e;d;a . A preorder walk of T lists a vertex just when it is first encountered, as indicated by the dot next to each vertex, yielding the ordering a;b;c;h;d;e;f;g . (d) A tour obtained by visiting the vertices in the ord er given by the preorder walk, which is the tour H returned by APPROX-TSP-TOUR. Its total cost is approximately 19:074. (e) An optimal tour H − for the original complete graph. Its total cost is approximately 14:715."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1111,
+   "pdf_page": 1132,
+   "text": "APPROX-TSP-TOUR(G;c)"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1112,
+   "pdf_page": 1133,
+   "text": "By Exercise 21.2-2, even with a simple implementation of MST-PRIM, the running time of APPROX-TSP-TOUR is Θ(V 2 ). We now show that if the cost function for an instance of the traveling-salesperson problem satisfies the triangle inequality, then APPROX-TSP-TOUR returns a tour whose cost is at most twice the cost of an optimal tour."
+  },
+  {
+   "type": "theorem",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1112,
+   "pdf_page": 1133,
+   "text": "Theorem 35.2"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1112,
+   "pdf_page": 1133,
+   "text": "When the triangle inequality holds, APPROX-TSP-TOUR is a polynomial-time"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1112,
+   "pdf_page": 1133,
+   "text": "2-approximation algorithm for the traveling-salesperson problem."
+  },
+  {
+   "type": "proof",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1112,
+   "pdf_page": 1133,
+   "text": "Proof We have already seen that APPROX-TSP-TOUR runs in polynomial time."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1112,
+   "pdf_page": 1133,
+   "text": "Let H − denote an optimal tour for the given set of vertice s. Deleting any edge from a tour yields a spanning tree, and each edge c ost is nonnegative. Therefore, the weight of the minimum spanning tree T computed in line 2 of APPROX-TSP- TOUR provides a lower bound on the cost of an optimal tour: c(T) ≤ c.H − /: (35.4)"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1112,
+   "pdf_page": 1133,
+   "text": "A full walk of T lists the vertices when they are first visited and also whenever they are returned to after a visit to a subtree. Let’s call this full walk W . The full walk of our example gives the order a;b;c;b;h;b;a;d;e;f;e;g;e;d;a:"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1112,
+   "pdf_page": 1133,
+   "text": "Since the full walk traverses every edge of T exactly twice, by extending the definition of the cost c in the natural manner to handle multisets of edges, we have c(W) = 2c(T): (35.5)"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1112,
+   "pdf_page": 1133,
+   "text": "Inequality (35.4) and equation (35.5) imply that c(W) ≤ 2c.H − /; (35.6) and so the cost of W is within a factor of 2 of the cost of an optimal tour."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1112,
+   "pdf_page": 1133,
+   "text": "Of course, the full walk W is not a tour, since it visits some vertices more t han once. By the triangle inequality, however, deleting a visit to any vertex from W does not increase the cost. (When a vertex v is deleted from W between visits to u and w, the resulting ordering specifies going directly from u to w.) Repeatedly apply this operation on each visit to a vertex after the first time it’s visited in W , so that W is left with only the first visit to each vertex. In our example, this process leaves the ordering a;b;c;h;d;e;f;g:"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1112,
+   "pdf_page": 1133,
+   "text": "This ordering is the same as that obtained by a preorder walk of the tree T . Let H be the cycle corresponding to this preorder walk. It is a hamiltonian cycle, since every vertex is visited exactly once, and in fact it is the cycle computed by APPROX- TSP-TOUR. Since H is obtained by deleting vertices from the full walk W , we have c(H) ≤ c(W): (35.7)"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1113,
+   "pdf_page": 1134,
+   "text": "Combining inequalities (35.6) and (35.7) gives c(H) ≤ 2c.H − /, which completes the proof."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1113,
+   "pdf_page": 1134,
+   "text": "Despite the small approximation ratio provided by Theorem 35.2, APPROX- TSP-TOUR is usually not the best practical choice for this problem. There are other approximation algorithms that typically perform much better in practice. (See the references at the end of this chapter.)"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1113,
+   "pdf_page": 1134,
+   "text": "35.2.2 The general traveling-salesperson problem"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1113,
+   "pdf_page": 1134,
+   "text": "When the cost function c does not satisfy the triangle inequality, there is no way to find good approximate tours in polynomial time unless PDNP."
+  },
+  {
+   "type": "theorem",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1113,
+   "pdf_page": 1134,
+   "text": "Theorem 35.3"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1113,
+   "pdf_page": 1134,
+   "text": "If P ≠ NP, then for any constant Ω ≥ 1, there is no polynomial-time approximation algorithm with approximation ratio Ω for the general traveling-salesperson problem."
+  },
+  {
+   "type": "proof",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1113,
+   "pdf_page": 1134,
+   "text": "Proof The proof is by contradiction. Suppose to the contrary that for some number Ω ≥ 1, there is a polynomial-time approximation algorithm A with approximation ratio Ω. Without loss of generality, assume that Ω is an integer, by rounding it up if necessary. We will show how to use A to solve instances of the hamiltoniancycle problem (defined in Section 34.2) in polynomial time. Since Theorem 34.13 on page 1085 says that the hamiltonian-cycle problem is NP-complete, Theorem 34.4 on page 1063 implies that if it has a polynomial-time algorithm, then"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1113,
+   "pdf_page": 1134,
+   "text": "Let G = (V;E) be an instance of the hamiltonian-cycle problem. We will show how to determine efficiently whether G contains a hamiltonian cycle by making use of the hypothesized approximation algorithm A. Convert G into an instance of the traveling-salesperson problem as follows. Let G 0 = (V;E 0 ) be the complete graph on V , that is, E 0 = f(u;v) W u;v 2 V and u ≠ vg :"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1113,
+   "pdf_page": 1134,
+   "text": "Assign an integer cost to each edge in E 0 as follows: c(u;v) ="
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1113,
+   "pdf_page": 1134,
+   "text": "1 if (u;v) 2 E; Ω |V| + 1 otherwise :"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1114,
+   "pdf_page": 1135,
+   "text": "Given a representation of G, it takes time polynomial in |V| and |E| to create representations of G 0 and c ."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1114,
+   "pdf_page": 1135,
+   "text": "Now consider the traveling-salesperson problem (G 0 ;c) . If the original graph G has a hamiltonian cycle H , then the cost function c assigns to each edge of H a cost of 1, and so (G 0 ;c) contains a tour of cost |V|. On the other hand, if G does not contain a hamiltonian cycle, then any tour of G 0 must use some edge not in E."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1114,
+   "pdf_page": 1135,
+   "text": "But any tour that uses an edge not in E has a cost of at least"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1114,
+   "pdf_page": 1135,
+   "text": "(Ω |V| + 1) C .|V| − 1/ = Ω |V| C |V|"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1114,
+   "pdf_page": 1135,
+   "text": "> Ω |V| :"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1114,
+   "pdf_page": 1135,
+   "text": "Because edges not in G are so costly, there is a gap of at least Ω |V| between the cost of a tour that is a hamiltonian cycle in G (cost |V|) and the cost of any other tour"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1114,
+   "pdf_page": 1135,
+   "text": "(cost at least Ω |V| C |V|). Therefore, the cost of a tour that is not a hami ltonian cycle in G is at least a factor of Ω C 1 greater than the cost of a tour that is a hamiltonian cycle in G."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1114,
+   "pdf_page": 1135,
+   "text": "What happens upon applying the approximation algori thm A to the travelingsalesperson problem (G 0 ;c)? Because A is guaranteed to return a tour of cost no more than Ω times the cost of an optimal tour, if G contains a hamiltonian cycle, then A must return it. If G has no hamiltonian cycle, then A returns a tour of cost more than Ω |V|. Therefore, using A solves the hamiltonian-cycle problem in polynomial time."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1114,
+   "pdf_page": 1135,
+   "text": "The proof of Theorem 35.3 serves as an example of a general technique to prove that no good approximation algorithm exists for a p articular problem. Given an"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1114,
+   "pdf_page": 1135,
+   "text": "NP-hard decision problem X , produce in polynomial time a minimization problem Y such that \"yes\" instances of X correspond to instances of Y with value at most k (for some k), but that \"no\" instances of X correspond to instances of Y with value greater than Ωk. This technique shows that, unless PDNP, there is no polynomial-time Ω-approximation algorithm for problem Y ."
+  },
+  {
+   "type": "exercise",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1114,
+   "pdf_page": 1135,
+   "text": "35.2-1 Let G = (V;E) be a complete undirected graph containing at least 3 vertices, and let c be a cost function that satisfies the triangle inequality. Prove that c(u;v) ≥ 0 for all u;v 2 V ."
+  },
+  {
+   "type": "exercise",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1114,
+   "pdf_page": 1135,
+   "text": "35.2-2 Show how in polynomial time to transform one instan ce of the t raveling-salesperson problem into another instance whose cost function satisfies the triangle in- equality. The two instances must have the same set of optimal tours. Explain why"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.3",
+   "section_title": "35.3 The set-covering problem",
+   "printed_page": 1115,
+   "pdf_page": 1136,
+   "text": "such a polynomial-time transformation does not contradict Theorem 35.3, assuming that P ≠ NP."
+  },
+  {
+   "type": "exercise",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1115,
+   "pdf_page": 1136,
+   "text": "35.2-3 Consider the following closest-point heuristic for building an approximate traveling-salesperson tour whose cost function satisfies the triangle inequality. Begin with a trivial cycle consisting of a single arbitra rily chosen vertex. At each step, identify the vertex u that is not on the cycle but whose distance to any vertex on the cycle is minimum. Suppose that the vertex on the cycle that is nearest u is vertex v."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.3",
+   "section_title": "35.3 The set-covering problem",
+   "printed_page": 1115,
+   "pdf_page": 1136,
+   "text": "Extend the cycle to include u by inserting u just after v. Repeat until all vertices are on the cycle. Prove that this heuristic returns a tour whose total cost is not more than twice the cost of an optimal tour."
+  },
+  {
+   "type": "exercise",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1115,
+   "pdf_page": 1136,
+   "text": "35.2-4 A solution to the bottleneck traveling-salesperson problem is the hamiltonian cycle that minimizes the cost of the most costly edge in the cycle. Assuming that the cost function satisfies the triangle inequality, show that there exists a polynomialtime approximation algorithm with approximation ratio 3 for this problem. ( Hint:"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.3",
+   "section_title": "35.3 The set-covering problem",
+   "printed_page": 1115,
+   "pdf_page": 1136,
+   "text": "Show recursively how to visit all the nodes in a bo ttleneck spanning tree, as discussed in Problem 21-4 on page 601, exactly once by taking a full walk of the tree and skipping nodes, but without skipping more than two consecutive intermediate nodes. Show that the costliest edge in a bottle neck spanning tree has a cost bounded from above by the cost of the costliest edg e in a bottleneck hamiltonian cycle.)"
+  },
+  {
+   "type": "exercise",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1115,
+   "pdf_page": 1136,
+   "text": "35.2-5 Suppose that the vertices for an instance of the traveling-salesperson problem are points in the plane and that the cost c(u;v) is the euclidean distance between points u and v. Show that an optimal tour never crosses itself."
+  },
+  {
+   "type": "exercise",
+   "chapter": 35,
+   "section": "35.2",
+   "section_title": "35.2 The traveling-salesperson problem",
+   "printed_page": 1115,
+   "pdf_page": 1136,
+   "text": "35.2-6 Adapt the proof of Theorem 35.3 to show that for any constant c ≥ 0, there is no polynomial-time approximation algorithm with approximation ratio |V| c for the general traveling-salesperson problem."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.3",
+   "section_title": "35.3 The set-covering problem",
+   "printed_page": 1115,
+   "pdf_page": 1136,
+   "text": "The set-covering problem is an optimization problem that models many problems that require resources to be allocated. Its corresp onding decision problem generalizes the NP-complete vertex-cover problem and is therefore also NP-hard. The approximation algorithm developed to handle the vertex-cover problem doesn’t apply here, however. Instead, this section investigates a simple greedy heuristic with a logarithmic approximation ratio. That is, as the size of the instance gets larger, the size of the approximate solution may grow, rela tive to the size of an optimal solution. Because the logarithm function grows rath er slowly, however, this approximation algorithm may nonetheless give useful results."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.3",
+   "section_title": "35.3 The set-covering problem",
+   "printed_page": 1116,
+   "pdf_page": 1137,
+   "text": "An instance (X; F ) of the set-covering problem consists of a finite set X and a family F of subsets of X , such that every element of X belongs to at least one subset in F :"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.3",
+   "section_title": "35.3 The set-covering problem",
+   "printed_page": 1116,
+   "pdf_page": 1137,
+   "text": "We say that a subfamily C ⊆ F covers a set of elements U if"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.3",
+   "section_title": "35.3 The set-covering problem",
+   "printed_page": 1116,
+   "pdf_page": 1137,
+   "text": "The problem is to find a minimum-size subfamily C ⊆ F whose members cover all of X :"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.3",
+   "section_title": "35.3 The set-covering problem",
+   "printed_page": 1116,
+   "pdf_page": 1137,
+   "text": "Figure 35.3 illustrates the set-covering problem. The size of C is the number of sets it contains, rather than the number of individ ual elements in these sets, since every subfamily C that covers X must contain all |X| individual elements. In"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.3",
+   "section_title": "35.3 The set-covering problem",
+   "printed_page": 1116,
+   "pdf_page": 1137,
+   "text": "Figure 35.3, the minimum set cover has size 3."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.3",
+   "section_title": "35.3 The set-covering problem",
+   "printed_page": 1116,
+   "pdf_page": 1137,
+   "text": "The set-covering problem abstracts many commonly arising combinatorial problems. As a simple example, suppose that X represents a set of skills that are needed to solve a problem and that you have a given set of people available to work on the problem. You wish to form a committee, containing as few people as possible, such that for every requisite skill in X , at least one member of the committee has that skill. The decision version of the set-covering problem asks whether a covering ex- ists with size at most k, where k is an additional parameter specified in the problem instance. The decision version of the problem is NP-complete, as Exercise 35.3-2 asks you to show."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.3",
+   "section_title": "35.3 The set-covering problem",
+   "printed_page": 1116,
+   "pdf_page": 1137,
+   "text": "A greedy approximation algorithm"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.3",
+   "section_title": "35.3 The set-covering problem",
+   "printed_page": 1116,
+   "pdf_page": 1137,
+   "text": "The greedy method in the procedure GREEDY-SET-COVER on the facing page works by picking, at each stage, the set S that covers the greatest number of re- maining elements that are uncovered. In the example of Figure 35.3, GREEDY- SET-COVER adds to C , in order, the sets S 1 , S 4 , and S 5 , followed by either S 3 or S 6 ."
+  },
+  {
+   "type": "pseudocode",
+   "chapter": 35,
+   "section": "35.3",
+   "section_title": "35.3 The set-covering problem",
+   "printed_page": 1117,
+   "pdf_page": 1138,
+   "algo_name": "GREEDY-SET-COVER",
+   "signature": "GREEDY-SET-COVER",
+   "lines": [
+    {
+     "n": 1,
+     "code": "U 0 = X"
+    },
+    {
+     "n": 2,
+     "code": "+ = ;"
+    },
+    {
+     "n": 3,
+     "code": "i = 0"
+    },
+    {
+     "n": 4,
+     "code": "while U i ≠ ;"
+    },
+    {
+     "n": 5,
+     "code": "select S 2 F that maximizes jS \\ U i j"
+    },
+    {
+     "n": 6,
+     "code": "U i C1 = U i − S"
+    },
+    {
+     "n": 7,
+     "code": "+ = C [ fS g"
+    },
+    {
+     "n": 8,
+     "code": "i = i + 1"
+    },
+    {
+     "n": 9,
+     "code": "return C"
+    }
+   ],
+   "text": "1 U 0 = X\n2 + = ;\n3 i = 0\n4 while U i ≠ ;\n5 select S 2 F that maximizes jS \\ U i j\n6 U i C1 = U i − S\n7 + = C [ fS g\n8 i = i + 1\n9 return C"
+  },
+  {
+   "type": "figure-caption",
+   "chapter": 35,
+   "section": "35.3",
+   "section_title": "35.3 The set-covering problem",
+   "printed_page": 1117,
+   "pdf_page": 1138,
+   "text": "Figure 35.3 An instance (X; F ) of the set-covering problem, where X consists of the 12 tan points and F = fS 1 ;S 2 ;S 3 ;S 4 ;S 5 ;S 6 g. Each set S i 2 F is outlined in blue. A minimum-size set cover is C = fS 3 ;S 4 ;S 5 g, with size 3. The greedy algorithm produces a cover of size 4 by selecting either the sets S 1 , S 4 , S 5 , and S 3 or the sets S 1 , S 4 , S 5 , and S 6 , in order."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.3",
+   "section_title": "35.3 The set-covering problem",
+   "printed_page": 1117,
+   "pdf_page": 1138,
+   "text": "GREEDY-SET-COVER (X; F )"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.3",
+   "section_title": "35.3 The set-covering problem",
+   "printed_page": 1117,
+   "pdf_page": 1138,
+   "text": "The greedy algorithm works as follows. At the start of each iteration, U i is a subset of X containing the remaining uncovered elements, with t he initial sub- set U 0 containing all the elements in X . The set C contains the subfamily being constructed. Line 5 is the greedy decision-making step, choosing a subset S that covers as many uncovered elements as possible (brea king ties arbitrarily). After"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.3",
+   "section_title": "35.3 The set-covering problem",
+   "printed_page": 1117,
+   "pdf_page": 1138,
+   "text": "S is selected, line 6 updates the set of remaining uncovered elements, denoting it by U i C1 , and line 7 places S into C . When the algorithm terminates, C is a subfamily of F that covers X ."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.3",
+   "section_title": "35.3 The set-covering problem",
+   "printed_page": 1117,
+   "pdf_page": 1138,
+   "text": "Analysis We now show that the greedy algorithm returns a set cover that is not too much larger than an optimal set cover."
+  },
+  {
+   "type": "theorem",
+   "chapter": 35,
+   "section": "35.3",
+   "section_title": "35.3 The set-covering problem",
+   "printed_page": 1118,
+   "pdf_page": 1139,
+   "text": "Theorem 35.4"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.3",
+   "section_title": "35.3 The set-covering problem",
+   "printed_page": 1118,
+   "pdf_page": 1139,
+   "text": "The procedure GREEDY-SET-COVER run on a set X and family of subsets F is a polynomial-time O(lg X)-approximation algorithm."
+  },
+  {
+   "type": "proof",
+   "chapter": 35,
+   "section": "35.3",
+   "section_title": "35.3 The set-covering problem",
+   "printed_page": 1118,
+   "pdf_page": 1139,
+   "text": "Proof Let’s first show that the algorithm runs in time that is polynomial in |X| and |F|. The number of iterations of the loop in lines 437 is bounded above by min f|X| ; |F|g = O(|X| C |F|). The loop body can be implemented to run in O(|X|•|F|) time. Thus the algorithm runs in O(|X|•|F|• .|X|C|F|)/ time, which is polynomial in the input size. (Exercise 35.3-3 asks for a linear-time algorithm.)"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.3",
+   "section_title": "35.3 The set-covering problem",
+   "printed_page": 1118,
+   "pdf_page": 1139,
+   "text": "To prove the approximation bound, let C − be an optimal set cover for the original instance (X; F ), and let k = jC − j. Since C − is also a set cover of each subset U i of X constructed by the algorithm, we know that any subset U i constructed by the algorithm can be covered by k sets. Therefore, if (U i ; F ) is an instance of the set-covering problem, its optimal set cover has size at most k."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.3",
+   "section_title": "35.3 The set-covering problem",
+   "printed_page": 1118,
+   "pdf_page": 1139,
+   "text": "If an optimal set cover for an instance (U i ; F ) has size at most k, at least one of the sets in C covers at least jU i j =k new elements. Thus, line 5 of GREEDY- SET-COVER, which chooses a set with the maximum number of un covered elements, must choose a set in which the number of new ly covered elements is at least jU i j =k . These elements are removed when constructing U i C1 , giving jU i C1 j ≤ j U i j − jU i j =k"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.3",
+   "section_title": "35.3 The set-covering problem",
+   "printed_page": 1118,
+   "pdf_page": 1139,
+   "text": "D jU i j .1 − 1/k/: (35.8)"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.3",
+   "section_title": "35.3 The set-covering problem",
+   "printed_page": 1118,
+   "pdf_page": 1139,
+   "text": "Iterating inequality (35.8) gives jU 0 j = |X| ; jU 1 j ≤ j U 0 j .1 − 1/k/; jU 2 j ≤ j U 1 j .1 − 1/k/ = |U| .1 − 1/k/ 2 ; and in general jU i j ≤ jU 0 j .1 − 1/k/ i = |X| .1 − 1/k/ i : (35.9)"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.3",
+   "section_title": "35.3 The set-covering problem",
+   "printed_page": 1118,
+   "pdf_page": 1139,
+   "text": "The algorithm stops when U i = ; , which means that jU i j < 1. Thus an upper bound on the number of iterations of the algorithm is the smallest value of i for which jU i j <1 ."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.3",
+   "section_title": "35.3 The set-covering problem",
+   "printed_page": 1118,
+   "pdf_page": 1139,
+   "text": "Since 1 + x ≤ e x for all real x (see inequality (3.14) on page 66), by letting x = −1/k , we have 1 − 1/k ≤ e −1/k , so that .1 − 1/k/ k ≤ (e −1/k ) k = 1/e."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.3",
+   "section_title": "35.3 The set-covering problem",
+   "printed_page": 1118,
+   "pdf_page": 1139,
+   "text": "Denoting the number i of iterations by ck for some nonnegative integer c , we want c such that |X| .1 − 1/k/ ck ≤ |X| e −c <1: (35.10)"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.3",
+   "section_title": "35.3 The set-covering problem",
+   "printed_page": 1118,
+   "pdf_page": 1139,
+   "text": "Multiplying both sides by e c and then taking the natural logarithm of both sides gives c ≥ ln |X|, so we can choose for c any integer that is at least ln |X|. We"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1119,
+   "pdf_page": 1140,
+   "text": "choose c = dln |X|e. Since i = ck is an upper bound on the number of iterations, which equals the size of C , and k = j C − j, we have |C| ≤ i = ck = c jC − j = jC − j dln |X|e, and the theorem follows."
+  },
+  {
+   "type": "exercise",
+   "chapter": 35,
+   "section": "35.3",
+   "section_title": "35.3 The set-covering problem",
+   "printed_page": 1119,
+   "pdf_page": 1140,
+   "text": "35.3-1 Consider each of the following words as a set of le tters: farid; dash; drain; heard; lost ; nose ; shun; slate; snare; threadg. Show which set cover"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1119,
+   "pdf_page": 1140,
+   "text": "GREEDY-SET-COVER produces when you break ties in favor of the word that appears first in the dictionary."
+  },
+  {
+   "type": "exercise",
+   "chapter": 35,
+   "section": "35.3",
+   "section_title": "35.3 The set-covering problem",
+   "printed_page": 1119,
+   "pdf_page": 1140,
+   "text": "35.3-2 Show that the decision version of the set-covering problem is NP-complete by reducing the vertex-cover problem to it."
+  },
+  {
+   "type": "exercise",
+   "chapter": 35,
+   "section": "35.3",
+   "section_title": "35.3 The set-covering problem",
+   "printed_page": 1119,
+   "pdf_page": 1140,
+   "text": "35.3-3 Show how to implement GREEDY-SET-COVER to run in O"
+  },
+  {
+   "type": "exercise",
+   "chapter": 35,
+   "section": "35.3",
+   "section_title": "35.3 The set-covering problem",
+   "printed_page": 1119,
+   "pdf_page": 1140,
+   "text": "35.3-4 The proof of Theorem 35.4 says that when GREEDY-SET-COVER, run on the in- stance (X; F ), returns the subfamily C , then |C| ≤ j C − j dln X e. Show that the following weaker bound is trivially true:"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1119,
+   "pdf_page": 1140,
+   "text": "|C| ≤ jC − j max f|S| W S 2 F g :"
+  },
+  {
+   "type": "exercise",
+   "chapter": 35,
+   "section": "35.3",
+   "section_title": "35.3 The set-covering problem",
+   "printed_page": 1119,
+   "pdf_page": 1140,
+   "text": "35.3-5 GREEDY-SET-COVER can return a number of different solutions, dependi ng on how it breaks ties in line 5. Give a procedure BAD-SET-COVER-INSTANCE (n) that returns an n-element instance of the set-covering problem for which, depending on how line 5 breaks ties, GREEDY-SET-COVER can return a number of different solutions that is exponential in n."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1119,
+   "pdf_page": 1140,
+   "text": "This section studies two useful techniques for designing approximation algorithms: randomization and linear programming. It starts wit h a simple randomized algorithm for an optimization version of 3-CNF satisfiability, and then it shows how to design an approximation algorithm for a weighted version of the vertex-cover problem based on linear programming. This section o nly scratches the surface of these two powerful techniques. The chapter notes give references for further study of these areas."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1120,
+   "pdf_page": 1141,
+   "text": "A randomized approximation algorithm for MAX-3-CNF satisfiability"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1120,
+   "pdf_page": 1141,
+   "text": "Just as some randomized algorithms compute exact solutions, some randomized algorithms compute approximate solutions. We say th at a randomized algorithm for a problem has an approximation ratio of Ω(n) if, for any input of size n, the expected cost C of the solution produced by the randomized algorithm is within a factor of Ω(n) of the cost C − of an optimal solution: max ï C"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1120,
+   "pdf_page": 1141,
+   "text": "C − ; C −"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1120,
+   "pdf_page": 1141,
+   "text": "≤ Ω(n) : (35.11)"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1120,
+   "pdf_page": 1141,
+   "text": "We call a randomized algorithm that achieves an app roximation ratio of Ω(n) a randomized −.n/-approximation algorithm. In other words, a randomized approximation algorithm is like a deterministic approximation algorithm, except that the approximation ratio is for an expected cost."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1120,
+   "pdf_page": 1141,
+   "text": "A particular instance of 3-CNF satisfiability, as defined in Section 34.4, may or may not be satisfiable. In order to be satisfiable, there must exist an assignment of the variables so that every clause evaluates to 1. If an instance is not satisfiable, you might instead want to know how \"close\" to satisfiable it is, that is, find an assignment of the variables that satisfies as many clauses as possible. We call the resulting maximization problem MAX-3-CNF satisfiability. The input to MAX-3-CNF satisfiability is the same as for 3-CNF satisfiability, and the goal is to return an assignment of the variables that maximizes the number of clauses evaluating to 1. You might be surprised that randomly setting each varia ble to 1 with probability 1/2 and to 0 with probability 1/2 yields a randomized 8/7-approximation algorithm, but we’re about to see why. Recall that the definition of 3-CNF satisfiability from Section 34.4 requires each clause to consist of exactly three distinct literals. We now further assume that no clause contains both a variable and its negation. Exercise 35.4-1 asks you to remove this last assumption."
+  },
+  {
+   "type": "theorem",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1120,
+   "pdf_page": 1141,
+   "text": "Theorem 35.5"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1120,
+   "pdf_page": 1141,
+   "text": "Given an instance of MAX-3-CNF satisfiability with n variables x 1 ;x 2 ;:::;x n and m clauses, the randomized algorithm that independently sets each variable to 1 with probability 1/2 and to 0 with probability 1/2 is a randomized 8/7-approximation algorithm."
+  },
+  {
+   "type": "proof",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1120,
+   "pdf_page": 1141,
+   "text": "Proof Suppose that each variable is independently set to 1 with probability 1/2 and to 0 with probability 1/2. Define, for i = 1;2;:::;m , the indicator random variable"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1121,
+   "pdf_page": 1142,
+   "text": "Y i = I fclause i is satisfiedg ; so that Y i = 1 as long as at least one of the literals in the i th clause is set to 1."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1121,
+   "pdf_page": 1142,
+   "text": "Since no literal appears more than once in the same clause, and since we assume that no variable and its negation appear in the same clause, the settings of the three literals in each clause are independent. A clause i s not satisfied only if all three of its literals are set to 0, and so Pr fclause i is not satisfiedg = .1/2/ 3 = 1/8."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1121,
+   "pdf_page": 1142,
+   "text": "Thus, we have Pr fclause i is satisfiedg = 1 − 1/8 = 7/8, and Lemma 5.1 on page 130 gives E [Y i ] = 7/8. Let Y be the number of satisfied clauses overall, so that Y = Y 1 + Y 2 + • • • + Y m . Then, we have"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1121,
+   "pdf_page": 1142,
+   "text": "E [Y ] = E"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1121,
+   "pdf_page": 1142,
+   "text": "\" m X i D1"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1121,
+   "pdf_page": 1142,
+   "text": "D m X i D1"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1121,
+   "pdf_page": 1142,
+   "text": "E [Y i ] (by linearity of expectation)"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1121,
+   "pdf_page": 1142,
+   "text": "D m X i D1"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1121,
+   "pdf_page": 1142,
+   "text": "Since m is an upper bound on the number of satisfied clauses, the approximation ratio is at most m=.7m/8/ = 8/7."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1121,
+   "pdf_page": 1142,
+   "text": "Approximating weighted vertex cover using linear programming"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1121,
+   "pdf_page": 1142,
+   "text": "The minimum-weight vertex-cover problem takes as input an undirected graph"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1121,
+   "pdf_page": 1142,
+   "text": "G = (V;E) in which each vertex v 2 V has an associated positive weight w(v)."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1121,
+   "pdf_page": 1142,
+   "text": "The weight w(V 0 ) of a vertex cover V 0 ⊆ V is the sum of the weights of its vertices: w(V 0 ) = P v2V 0 w(v). The goal is to find a vertex cover of minimum weight."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1121,
+   "pdf_page": 1142,
+   "text": "The approximation algorithm for unweighted vertex c over from Section 35.1 won’t work here, because the solution it returns could be far from optimal for the weighted problem. Instead, we’ll first compute a lower bound on the weight of the minimum-weight vertex cover, by using a linear program. Then we’ll \"round\" this solution and use it to obtain a vertex cover."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1121,
+   "pdf_page": 1142,
+   "text": "Start by associating a variable x(v) with each vertex v 2 V , and require that x(v) equals either 0 or 1 for each v 2 V . The vertex cover includes v if and only if x(v) = 1. Then the constraint that for any edge (u;v) , at least one of u and v must belong to the vertex cover can be expressed as x(u) + x(v) ≥ 1. This view gives rise to the following 0-1 integer program for finding a minimum-weight vertex cover: minimize"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1122,
+   "pdf_page": 1143,
+   "text": "X v2V w(v)x(v) (35.12) subject to x(u) + x(v) ≥ 1 for each (u;v) 2 E (35.13) x(v) 2 f0;1 g for each v 2 V : (35.14)"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1122,
+   "pdf_page": 1143,
+   "text": "In the special case in which all the weights w(v) equal 1, this formulation is the optimization version of the NP-hard vertex-cover problem. Let’s remove the constraint that x(v) 2 f0;1 g and replace it by 0 ≤ x(v) ≤ 1, resulting in the following linear program: minimize"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1122,
+   "pdf_page": 1143,
+   "text": "X v2V w(v)x(v) (35.15) subject to x(u) + x(v) ≥ 1 for each (u;v) 2 E (35.16) x(v) ≤ 1 for each v 2 V (35.17) x(v) ≥ 0 for each v 2 V : (35.18)"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1122,
+   "pdf_page": 1143,
+   "text": "We refer to this linear program as the linear-programming relaxation. Any feasible solution to the 0-1 integer program in lines (35.12)3(35.14) is also a feasible solution to its linear-programming relaxation in lines (35.15)3(35.18). Therefore, the value of an optimal solution to the linear-programming relaxation provides a lower bound on the value of an optimal solution to the 0-1 integer program, and hence a lower bound on the optimal weight in the minimum-weight vertex-cover problem."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1122,
+   "pdf_page": 1143,
+   "text": "The procedure APPROX-MIN-WEIGHT-VC on the facing page starts with a solution to the linear-programming relaxation and uses it to construct an approximate solution to the minimum-weight vertex-cover problem. The procedure works as follows. Line 1 initializes the vertex cover to be empty. Line 2 formulates the linear-programming relaxation in lines (35.15)3(35.18) and then solves this linear program. An optimal solution gives each vertex v an associated value N x(v), where"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1122,
+   "pdf_page": 1143,
+   "text": "0 ≤ N x(v) ≤ 1. The procedure uses this value to guide the choice of which vertices to add to the vertex cover C in lines 335: the vertex cover C includes vertex v if and only if N x(v) ≥ 1/2. In effect, the procedure \"rounds\" each fractional variable in the solution to the linear-programming relaxation to either 0 or 1 in order to obtain a solution to the 0-1 integer program in lines (35.12)3(35.14). Finally, line 6 returns the vertex cover C ."
+  },
+  {
+   "type": "theorem",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1122,
+   "pdf_page": 1143,
+   "text": "Theorem 35.6"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1122,
+   "pdf_page": 1143,
+   "text": "Algorithm APPROX-MIN-WEIGHT-VC is a polynomial-time 2-approximation algorithm for the minimum-weight vertex-cover problem."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1122,
+   "pdf_page": 1143,
+   "text": "X v2V w(v) N x(v)"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1122,
+   "pdf_page": 1143,
+   "text": "X v2V W N x(v) ≥ 1/2 w(v) N x(v)"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1122,
+   "pdf_page": 1143,
+   "text": "X v2V W N x(v) ≥ 1/2 w(v) • 1"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1122,
+   "pdf_page": 1143,
+   "text": "X v2C w(v) • 1"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1122,
+   "pdf_page": 1143,
+   "text": "X v2C w(v)"
+  },
+  {
+   "type": "pseudocode",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1123,
+   "pdf_page": 1144,
+   "algo_name": "APPROX-MIN-WEIGHT-VC",
+   "signature": "APPROX-MIN-WEIGHT-VC",
+   "lines": [
+    {
+     "n": 1,
+     "code": "+ = ;"
+    },
+    {
+     "n": 2,
+     "code": "compute N x, an optimal solution to the linear-programming relaxation in lines (35.15)3(35.18)"
+    },
+    {
+     "n": 3,
+     "code": "for each vertex v 2 V"
+    },
+    {
+     "n": 4,
+     "code": "if N x(v) ≥ 1/2"
+    },
+    {
+     "n": 5,
+     "code": "+ = C [ fvg"
+    },
+    {
+     "n": 6,
+     "code": "return C"
+    }
+   ],
+   "text": "1 + = ;\n2 compute N x, an optimal solution to the linear-programming relaxation in lines (35.15)3(35.18)\n3 for each vertex v 2 V\n4 if N x(v) ≥ 1/2\n5 + = C [ fvg\n6 return C"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1123,
+   "pdf_page": 1144,
+   "text": "APPROX-MIN-WEIGHT-VC (G;w)"
+  },
+  {
+   "type": "proof",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1123,
+   "pdf_page": 1144,
+   "text": "Proof Because there is a polynomial-time algorithm to solve the linear program in line 2, and because the for loop of lines 335 runs in polynomial time, APPROX- MIN-WEIGHT-VC is a polynomial-time algorithm."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1123,
+   "pdf_page": 1144,
+   "text": "It remains to show that APPROX-MIN-WEIGHT-VC is a 2-approximation algorithm. Let C − be an optimal solution to the minimum-weight vertex-cover problem, and let ´ − be the value of an optimal solution to the linear-programming relaxation in lines (35.15)3(35.18). Since an optimal vertex cover is a feasible solution to the linear-programming relaxation, ´ − must be a lower bound on w.C − /, that is, ´ − ≤ w.C − /: (35.19)"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1123,
+   "pdf_page": 1144,
+   "text": "Next, we claim that rounding the fractional values of the variables N x(v) in lines 335 produces a set C that is a vertex cover and satisfies w(C) ≤ 2´ − . To see that C is a vertex cover, consider any edge (u;v) 2 E. By constraint (35.16), we know that x(u) + x(v) ≥ 1, which implies that at least one of N x(u) and N x(v) is at least 1/2."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1123,
+   "pdf_page": 1144,
+   "text": "Therefore, at least one of u and v is included in the vertex cover, and so every edge is covered."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1123,
+   "pdf_page": 1144,
+   "text": "Now we consider the weight of the cover. We have"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1123,
+   "pdf_page": 1144,
+   "text": "2 w(C): (35.20)"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1124,
+   "pdf_page": 1145,
+   "text": "Combining inequalities (35.19) and (35.20) gives w(C) ≤ 2´ − ≤ 2w.C − /; and hence APPROX-MIN-WEIGHT-VC is a 2-approximation algorithm."
+  },
+  {
+   "type": "exercise",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1124,
+   "pdf_page": 1145,
+   "text": "35.4-1 Show that even if a clause is allowed to contain bo th a variable and its negation, randomly setting each variable to 1 with probability 1/2 and to 0 with probability 1/2 still yields a randomized 8/7-approximation algorithm."
+  },
+  {
+   "type": "exercise",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1124,
+   "pdf_page": 1145,
+   "text": "35.4-2 The MAX-CNF satisfiability problem is like the MAX-3-CNF satisfiability problem, except that it does not restrict each clause to have exactly three literals. Give a randomized 2-approximation algorithm for the MAX-CNF satisfiability problem."
+  },
+  {
+   "type": "exercise",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1124,
+   "pdf_page": 1145,
+   "text": "35.4-3 In the MAX-CUT problem, the input is an unweighted undirected graph G ="
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1124,
+   "pdf_page": 1145,
+   "text": "(V;E). We define a cut (S;V − S) as in Chapter 21 and the weight of a cut as the number of edges crossing the cut. The goal is to find a cut of maximum weight. Suppose that each vertex v is randomly and independently placed into S with probability 1/2 and into V − S with probability 1/2. Show that this algorithm is a randomized 2-approximation algorithm."
+  },
+  {
+   "type": "exercise",
+   "chapter": 35,
+   "section": "35.4",
+   "section_title": "35.4 Randomization and linear programming",
+   "printed_page": 1124,
+   "pdf_page": 1145,
+   "text": "35.4-4 Show that the constraints in line (35.17) are redundant in the sense that removing them from the linear-programming relaxation in lines (35.15)3(35.18) yields a linear program for which any optimal solution x must satisfy x(v) ≤ 1 for each v 2 V ."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1124,
+   "pdf_page": 1145,
+   "text": "Recall from Section 34.5.5 that an instance of the subset-sum problem is given by a pair (S;t) , where S is a set fx 1 ;x 2 ;:::;x n g of positive integers and t is a positive integer. This decision problem asks whether there exists a subset of S that adds up exactly to the target value t . As we saw in Section 34.5.5, this problem is NP-complete."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1124,
+   "pdf_page": 1145,
+   "text": "The optimization problem associated with this decis ion problem arises in practical applications. The optimization problem seeks a subset of fx 1 ;x 2 ;:::;x n g whose sum is as large as possible but not larger th an t . For example, consider a truck that can carry no more than t pounds, which is to be loaded with up to n different boxes, the i th of which weighs x i pounds. How heavy a load can the truck take without exceeding the t -pound weight limit?"
+  },
+  {
+   "type": "pseudocode",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1125,
+   "pdf_page": 1146,
+   "algo_name": "EXACT-SUBSET-SUM",
+   "signature": "EXACT-SUBSET-SUM",
+   "lines": [
+    {
+     "n": 1,
+     "code": "L 0 = h0i"
+    },
+    {
+     "n": 2,
+     "code": "for i = 1 to n"
+    },
+    {
+     "n": 3,
+     "code": "L i DMERGE-LISTS (L i −1 ;L  i −1 + x i )"
+    },
+    {
+     "n": 4,
+     "code": "remove from L i every element that is greater than t"
+    },
+    {
+     "n": 5,
+     "code": "return the largest element in L n"
+    }
+   ],
+   "text": "1 L 0 = h0i\n2 for i = 1 to n\n3 L i DMERGE-LISTS (L i −1 ;L  i −1 + x i )\n4 remove from L i every element that is greater than t\n5 return the largest element in L n"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1125,
+   "pdf_page": 1146,
+   "text": "We start this section with an exponential-time algorithm to compute the optimal value for this optimization problem. Then we show h ow to modify the algorithm so that it becomes a fully polynomial-time approximation scheme. (Recall that a fully polynomial-time approximation scheme has a running time that is polynomial in 1=Ω as well as in the size of the input.)"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1125,
+   "pdf_page": 1146,
+   "text": "An exponential-time exact algorithm"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1125,
+   "pdf_page": 1146,
+   "text": "Suppose that you compute, for each subset S 0 of S , the sum of the elements in S 0 , and then you select, among the subsets whose sum does not exceed t , the one whose sum is closest to t . This algorithm returns the optimal solution, but it might take exponential time. To implement this algorithm, you can use an iterative procedure that, in iteration i , computes the sums of all subsets of fx 1 ;x 2 ;:::;x i g, using as a starting point the sums of all subsets of fx 1 ;x 2 ;:::;x i −1 g. In doing so, you would realize that once a particular subset S 0 has a sum exceeding t , there is no reason to maintain it, since no superset of S 0 can be an optimal solution. Let’s see how to implement this strategy."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1125,
+   "pdf_page": 1146,
+   "text": "The procedure EXACT-SUBSET-SUM takes an input set S = fx 1 ;x 2 ;:::;x n g, the size n = |S|, and a target value t . This procedure iteratively computes L i , the list of sums of all subsets of fx 1 ;:::;x i g that do not exceed t , and then it returns the maximum value in L n ."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1125,
+   "pdf_page": 1146,
+   "text": "If L is a list of positive integers and x is another positive integer, then let L + x denote the list of integers derived from L by increasing each element of L by x ."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1125,
+   "pdf_page": 1146,
+   "text": "For example, if L = h1;2;3;5;9 i, then L + 2 = h3;4;5;7;11 i. This notation extends to sets, so that S + x = fs + x W s 2 S g :"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1125,
+   "pdf_page": 1146,
+   "text": "EXACT-SUBSET-SUM(S;n;t)"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1125,
+   "pdf_page": 1146,
+   "text": "EXACT-SUBSET-SUM invokes an auxiliary procedure MERGE-LISTS (L;L 0 ), which returns the sorted list that is the merge of its two sorted input lists L and L 0 , with duplicate values removed. Like the MERGE procedure we used in merge sort on page 36, MERGE-LISTS runs in O(|L| C jL 0 j) time. We omit the pseudocode for MERGE-LISTS ."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1126,
+   "pdf_page": 1147,
+   "text": "To see how EXACT-SUBSET-SUM works, let P i denote the set of values obtained by selecting each (possibly empty) subset of fx 1 ;x 2 ;:::;x i g and summing its members. For example, if S = f1;4;5 g, then"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1126,
+   "pdf_page": 1147,
+   "text": "P 1 = f0;1 g ; P 2 = f0;1;4;5 g ; P 3 = f0;1;4;5;6;9;10 g :"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1126,
+   "pdf_page": 1147,
+   "text": "Given the identity"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1126,
+   "pdf_page": 1147,
+   "text": "P i = P i −1 [ (P i −1 + x i ); (35.21) you can prove by induction on i (see Exercise 35.5-1) that the list L i is a sorted list containing every element of P i whose value is not more than t . Since the length of L i can be as much as 2 i , EXACT-SUBSET-SUM is an exponential-time algorithm in general, although it is a polynomial-time algorithm in the special cases in which t is polynomial in |S| or all the numbers in S are bounded by a polynomial in |S|."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1126,
+   "pdf_page": 1147,
+   "text": "A fully polynomial-time approximation scheme"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1126,
+   "pdf_page": 1147,
+   "text": "The key to devising a fully polynomial-time approximation scheme for the subsetsum problem is to \"trim\" each list L i after it is created. Here’s the idea behind trimming: if two values in L are close to each other, then since the goal is jus t an approximate solution, there is no need to maintain both of them explicitly. More precisely, use a trimming parameter i such that 0 < i < 1. When trimming a list L by i , remove as many elements from L as possible, in such a way that if L 0 is the result of trimming L, then for every element y that was removed from L, some element ´ still in L 0 approximates y . For ´ to approximate y , it must be no greater than y and also within a factor of 1 + i of y , so that y"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1126,
+   "pdf_page": 1147,
+   "text": "1 + i ≤ ´ ≤ y: (35.22)"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1126,
+   "pdf_page": 1147,
+   "text": "You can think of such a ´ as \"representing\" y in the new list L 0 . Each removed element y is represented by a remaining element ´ satisfying inequality (35.22)."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1126,
+   "pdf_page": 1147,
+   "text": "For example, suppose that i = 0:1 and L = h10;11;12;15;20;21;22;23;24;29 i :"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1126,
+   "pdf_page": 1147,
+   "text": "Then trimming L results in L 0 = h10;12;15;20;23;29 i ; where the deleted value 11 is represented by 10, the deleted values 21 and 22 are represented by 20, and the deleted value 24 is represented by 23. Because every element of the trimmed version of the list is also an element of the original version of the list, trimming can dramatically decrease the number of elements kept while keeping a close (and slightly smaller) representative value in the list for each deleted element."
+  },
+  {
+   "type": "pseudocode",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1127,
+   "pdf_page": 1148,
+   "algo_name": "TRIM",
+   "signature": "TRIM",
+   "lines": [
+    {
+     "n": 1,
+     "code": "let m be the length of L"
+    },
+    {
+     "n": 2,
+     "code": "L 0 = hy 1 i"
+    },
+    {
+     "n": 3,
+     "code": "last = y 1"
+    },
+    {
+     "n": 4,
+     "code": "for i = 2 to m"
+    },
+    {
+     "n": 5,
+     "code": "if y i > last • .1 + i/ / / y i ≥ last because L is sorted"
+    },
+    {
+     "n": 6,
+     "code": "append y i onto the end of L 0"
+    },
+    {
+     "n": 7,
+     "code": "last = y i"
+    },
+    {
+     "n": 8,
+     "code": "return L 0"
+    }
+   ],
+   "text": "1 let m be the length of L\n2 L 0 = hy 1 i\n3 last = y 1\n4 for i = 2 to m\n5 if y i > last • .1 + i/ / / y i ≥ last because L is sorted\n6 append y i onto the end of L 0\n7 last = y i\n8 return L 0"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1127,
+   "pdf_page": 1148,
+   "text": "The procedure TRIM trims list L = hy 1 ;y 2 ;:::;y m i in Θ(m) time, given L and the trimming parameter i . It assumes that L is sorted into monotonically increasing order. The output of the procedure is a trimmed, so rted list. The procedure scans the elements of L in monotonically increasing order. A number is appe nded onto the returned list L 0 only if it is the first element of L or if it cannot be represented by the most recent number placed into L 0 ."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1127,
+   "pdf_page": 1148,
+   "text": "TRIM(L;i)"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1127,
+   "pdf_page": 1148,
+   "text": "Given the procedure TRIM, the procedure APPROX-SUBSET-SUM on the following page implements the approximation scheme. This procedure takes as input a set S = fx 1 ;x 2 ;:::;x n g of n integers (in arbitrary order), the size n = |S|, the target integer t , and an approximation parameter Ω , where"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1127,
+   "pdf_page": 1148,
+   "text": "0<Ω<1: (35.23)"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1127,
+   "pdf_page": 1148,
+   "text": "It returns a value ´ − whose value is within a factor of 1 + Ω of the optimal solution."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1127,
+   "pdf_page": 1148,
+   "text": "The APPROX-SUBSET-SUM procedure works as follows. Line 1 initializes the list L 0 to be the list containing just the element 0. The for loop in lines 235 computes L i as a sorted list containing a suitably trimmed vers ion of the set P i , with all elements larger than t removed. Since the procedure creates L i from L i −1 , it must ensure that the repeated trimming doesn’t introduce too much compounded inaccuracy. That’s why instead of the trimming parameter being Ω in the call to TRIM, it has the smaller value Ω=2n. We’ll soon see that APPROX-SUBSET-SUM returns a correct approximation if one exists."
+  },
+  {
+   "type": "pseudocode",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1128,
+   "pdf_page": 1149,
+   "algo_name": "APPROX-SUBSET-SUM",
+   "signature": "APPROX-SUBSET-SUM",
+   "lines": [
+    {
+     "n": 1,
+     "code": "L 0 = h0i"
+    },
+    {
+     "n": 2,
+     "code": "for i = 1 to n"
+    },
+    {
+     "n": 3,
+     "code": "L i DMERGE-LISTS (L i −1 ;L  i −1 + x i )"
+    },
+    {
+     "n": 4,
+     "code": "L i DTRIM(L i ;Ω=2n)"
+    },
+    {
+     "n": 5,
+     "code": "remove from L i every element that is greater than t"
+    },
+    {
+     "n": 6,
+     "code": "let ´ − be the largest value in L n"
+    },
+    {
+     "n": 7,
+     "code": "return ´ −"
+    }
+   ],
+   "text": "1 L 0 = h0i\n2 for i = 1 to n\n3 L i DMERGE-LISTS (L i −1 ;L  i −1 + x i )\n4 L i DTRIM(L i ;Ω=2n)\n5 remove from L i every element that is greater than t\n6 let ´ − be the largest value in L n\n7 return ´ −"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1128,
+   "pdf_page": 1149,
+   "text": "APPROX-SUBSET-SUM (S;n;t;Ω)"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1128,
+   "pdf_page": 1149,
+   "text": "As an example, suppose that APPROX-SUBSET-SUM is given"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1128,
+   "pdf_page": 1149,
+   "text": "S = h104;102;201;101 i with t = 308 and Ω = 0:40. The trimming parameter i is Ω=2n = 0:40/8 = 0:05."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1128,
+   "pdf_page": 1149,
+   "text": "The procedure computes the following values on the indicated lines: line 1: L 0 = h0i ; line 3: L 1 = h0;104 i ; line 4: L 1 = h0;104 i ; line 5: L 1 = h0;104 i ; line 3: L 2 = h0;102;104;206 i ; line 4: L 2 = h0;102;206 i ; line 5: L 2 = h0;102;206 i ; line 3: L 3 = h0;102;201;206;303;407 i ; line 4: L 3 = h0;102;201;303;407 i ; line 5: L 3 = h0;102;201;303 i ; line 3: L 4 = h0;101;102;201;203;302;303;404 i ; line 4: L 4 = h0;101;201;302;404 i ; line 5: L 4 = h0;101;201;302 i :"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1128,
+   "pdf_page": 1149,
+   "text": "The procedure returns ´ − = 302 as its answer, which is well within Ω = 40% of the optimal answer 307 = 104 + 102 + 101. In fact, it is within 2%."
+  },
+  {
+   "type": "theorem",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1128,
+   "pdf_page": 1149,
+   "text": "Theorem 35.7"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1128,
+   "pdf_page": 1149,
+   "text": "APPROX-SUBSET-SUM is a fully polynomial-time approximation scheme for the subset-sum problem."
+  },
+  {
+   "type": "proof",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1129,
+   "pdf_page": 1150,
+   "text": "Proof The operations of trimming L i in line 4 and removing from L i every element that is greater than t maintain the property that every element of L i is also a member of P i . Therefore, the value ´ − returned in line 7 is indeed the sum of some subset of S , that is, ´ − 2 P n . Let y − 2 P n denote an optimal solution to the subsetsum problem, so that it is the greatest value in P n that is less than or equal to t ."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1129,
+   "pdf_page": 1150,
+   "text": "Because line 5 ensures that ´ − ≤ t , we know that ´ − ≤ y − . By inequality (35.1), we need to show that y − =´ − ≤ 1 + Ω . We must also show that the running time of this algorithm is polynomial in both 1=Ω and the size of the input."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1129,
+   "pdf_page": 1150,
+   "text": "As Exercise 35.5-2 asks you to show, for every element y in P i that is at most t , there exists an element ´ 2 L i such that y"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1129,
+   "pdf_page": 1150,
+   "text": ".1 + Ω=2n/ i ≤ ´ ≤ y: (35.24)"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1129,
+   "pdf_page": 1150,
+   "text": "Inequality (35.24) must hold for y − 2 P n , and therefore there exists an element"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1129,
+   "pdf_page": 1150,
+   "text": "´ 2 L n such that y −"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1129,
+   "pdf_page": 1150,
+   "text": ".1 + Ω=2n/ n ≤ ´ ≤ y − ; and thus y −"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1129,
+   "pdf_page": 1150,
+   "text": ": (35.25)"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1129,
+   "pdf_page": 1150,
+   "text": "Since there exists an element ´ 2 L n fulfilling inequality (35.25), the inequality must hold for ´ − , which is the largest value in L n , which is to say y −"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1129,
+   "pdf_page": 1150,
+   "text": ": (35.26)"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1129,
+   "pdf_page": 1150,
+   "text": "Now we show that y − =´ − ≤ 1CΩ . We do so by showing that .1CΩ=2n/ n ≤ 1CΩ ."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1129,
+   "pdf_page": 1150,
+   "text": "First, inequality (35.23), 0<Ω<1 , implies that (Ω=2) 2 ≤ Ω=2 : (35.27)"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1129,
+   "pdf_page": 1150,
+   "text": "Next, from equation (3.16) on page 66, we have lim n!1 .1 + Ω=2n/ n = e •=2 ."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1129,
+   "pdf_page": 1150,
+   "text": "Exercise 35.5-3 asks you to show that d dn"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1129,
+   "pdf_page": 1150,
+   "text": ">0: (35.28)"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1129,
+   "pdf_page": 1150,
+   "text": "Therefore, the function .1 + Ω=2n/ n increases with n as it approaches its limit of e •=2 , and we have"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1129,
+   "pdf_page": 1150,
+   "text": "≤ 1 + Ω=2 + (Ω=2) 2 (by inequality (3.15) on page 66)"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1129,
+   "pdf_page": 1150,
+   "text": "≤ 1 + Ω (by inequality (35.27)) . (35.29)"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1130,
+   "pdf_page": 1151,
+   "text": "Combining inequalities (35.26) and (35.29) completes the analysis of the approximation ratio."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1130,
+   "pdf_page": 1151,
+   "text": "To show that APPROX-SUBSET-SUM is a fully polynomial-time approximation scheme, we derive a bound on the length of L i . After trimming, successive elements ´ and ´ 0 of L i must have the relationship ´ 0 =´>1 CΩ=2n. That is, they must"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1130,
+   "pdf_page": 1151,
+   "text": "differ by a factor of at least 1 + Ω=2n. Each list, therefore, contains the value 0, possibly the value 1, and up to blog 1C•=2n t c additional values. The number of elements in each list L i is at most log 1C•=2n t + 2 = ln t ln(1 + Ω=2n) + 2"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1130,
+   "pdf_page": 1151,
+   "text": "≤ 2n(1 + Ω=2n) ln t"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1130,
+   "pdf_page": 1151,
+   "text": "Ω C 2 (by inequality (3.23) on page 67)"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1130,
+   "pdf_page": 1151,
+   "text": "< 3n ln t"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1130,
+   "pdf_page": 1151,
+   "text": "Ω C 2 (by inequality (35.23), 0<Ω<1 ) ."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1130,
+   "pdf_page": 1151,
+   "text": "This bound is polynomial in the size of the input—which is the number of bits lg t needed to represent t plus the number of bits needed to represent the set S , which in turn is polynomial in n—and in 1=Ω . Since the running time of APPROX-SUBSET- SUM is polynomial in the lengths of the lists L i , we conclude that APPROX- SUBSET-SUM is a fully polynomial-time approximation scheme."
+  },
+  {
+   "type": "exercise",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1130,
+   "pdf_page": 1151,
+   "text": "35.5-1 Prove equation (35.21). Then show that after executing line 4 of EXACT-SUBSET- SUM, L i is a sorted list containing every element of P i whose value is not more than t ."
+  },
+  {
+   "type": "exercise",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1130,
+   "pdf_page": 1151,
+   "text": "35.5-2 Using induction on i , prove inequality (35.24)."
+  },
+  {
+   "type": "exercise",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1130,
+   "pdf_page": 1151,
+   "text": "35.5-3 Prove inequality (35.28)."
+  },
+  {
+   "type": "exercise",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1130,
+   "pdf_page": 1151,
+   "text": "35.5-4 How can you modify the approximation scheme present ed in this section to find a good approximation to the smallest value not less than t that is a sum of some subset of the given input list?"
+  },
+  {
+   "type": "exercise",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1130,
+   "pdf_page": 1151,
+   "text": "35.5-5 Modify the APPROX-SUBSET-SUM procedure to also return the subset of S that sums to the value ´ − ."
+  },
+  {
+   "type": "problem",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1131,
+   "pdf_page": 1152,
+   "text": "35-1 Bin packing"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1131,
+   "pdf_page": 1152,
+   "text": "You are given a set of n objects, where the size s i of the i th object satisfies"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1131,
+   "pdf_page": 1152,
+   "text": "0<s i <1 . Your goal is to pack all the objects into the minimum number of unitsize bins. Each bin can hold any subset of the obje cts whose total size does not exceed 1. a. Prove that the problem of determining the minimum number of bins required is NP-hard. (Hint: Reduce from the subset-sum problem.)"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1131,
+   "pdf_page": 1152,
+   "text": "The first-fit heuristic takes each object in turn and places it into the first bin that can accommodate it, as follows. It maintains an ord ered list of bins. Let b denote the number of bins in the list, where b increases over the course of the algorithm, and let hB 1 ;:::;B b i be the list of bins. Initially b = 0 and the list is empty."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1131,
+   "pdf_page": 1152,
+   "text": "The algorithm takes each object i in turn and places it in the lowest-numbered bin that can still accommodate it. If no bin can ac commodate object i , then b is incremented and a new bin B b is opened, containing object i . Let S = P n i D1 s i . b. Argue that the optimal number of bins required is at least dS e. c. Argue that the first-fit heuristic leaves at most one bin at most half full. d. Prove that the number of bins used by the first-fit heuristic never exceeds d2S e. e. Prove an approximation ratio of 2 for the first-fit heuristic. f. Give an efficient implementation of the first-fit heuristic, and analyze its running time."
+  },
+  {
+   "type": "problem",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1131,
+   "pdf_page": 1152,
+   "text": "35-2 Approximating the size of a maximum clique"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1131,
+   "pdf_page": 1152,
+   "text": "Let G = (V;E) be an undirected graph. For any k ≥ 1, define G (k) to be the undirected graph (V (k) ;E (k) ), where V (k) is the set of all ordered k-tuples of vertices from V and E (k) is defined so that (v 1 ;v 2 ;:::;v k ) is adjacent to (w 1 ;w 2 ;:::;w k ) if and only if for i = 1;2;:::;k , either vertex v i is adjacent to w i in G, or else v i = w i . a. Prove that the size of the maximum clique in G (k) is equal to the kth power of the size of the maximum clique in G. b. Argue that if there is an approximation algorithm t hat has a constant approximation ratio for finding a maximum-size clique, then there is a polynomial-time approximation scheme for the problem."
+  },
+  {
+   "type": "problem",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1132,
+   "pdf_page": 1153,
+   "text": "35-3 Weighted set-covering problem"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1132,
+   "pdf_page": 1153,
+   "text": "Suppose that sets have weights in the set-covering problem, so that each set S i in the family F has an associated weight w i . The weight of a cover C is P"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1132,
+   "pdf_page": 1153,
+   "text": "S i 2C w i ."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1132,
+   "pdf_page": 1153,
+   "text": "The goal is wish to determine a minimum-weight cover. (Section 35.3 handles the case in which w i = 1 for all i .)"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1132,
+   "pdf_page": 1153,
+   "text": "Show how to generalize the greedy set-covering heuristic in a natural manner to provide an approximate solution for any instance of the weighted set-covering problem. Letting d be the maximum size of any set S i , show that your heuristic has an approximation ratio of H(d) = P d i D1 1/i ."
+  },
+  {
+   "type": "problem",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1132,
+   "pdf_page": 1153,
+   "text": "35-4 Maximum matching"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1132,
+   "pdf_page": 1153,
+   "text": "Recall that for an undirected graph G, a matching is a set of edges such that no two edges in the set are incident on the same verte x. Section 2 5.1 showed how to find a maximum matching in a bipartite graph, that is, a matching such that no other matching in G contains more edges. This problem examines matching s in undirected graphs that are not required to be bipartite. a. Show that a maximal matching need not be a maximum matching by exhibiting an undirected graph G and a maximal matching M in G that is not a maximum matching. (Hint: You can find such a graph with only four vertices.) b. Consider a connected, undirected graph G = (V;E). Give an O(E)-time greedy algorithm to find a maximal matching in G."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1132,
+   "pdf_page": 1153,
+   "text": "This problem concentrates on a polynomial-time approximation algorithm for maximum matching. Whereas the fastest known algorithm for maximum matching takes superlinear (but polynomial) time, the approximation algorithm here will run in linear time. You will show that the linear-time greedy algorithm for maximal matching in part (b) is a 2-approximation algorithm for maximum matching. c. Show that the size of a maximum matching in G is a lower bound on the size of any vertex cover for G. d. Consider a maximal matching M in G = (V;E) . Let T = fv 2 V W some edge in M is incident on vg. What can you say about the subgraph of G induced by the vertices of G that are not in T ? e. Conclude from part (d) that 2 |M| is the size of a vertex cover for G. f. Using parts (c) and (e), prove that the greedy algorithm in part (b) is a 2-approximation algorithm for maximum matching."
+  },
+  {
+   "type": "problem",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1133,
+   "pdf_page": 1154,
+   "text": "35-5 Parallel machine scheduling"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1133,
+   "pdf_page": 1154,
+   "text": "In the parallel-machine-scheduling problem, the input has two parts: n jobs, J 1 ;J 2 ;:::;J n , where each job J k has an associated nonnegative processing time of √k , and m identical machines, M 1 ;M 2 ;:::;M m . Any job can run on any machine. A schedule specifies, for each job J k , the machine on which it runs and the time period during which it runs. Each job J k must run on some machine M i for √k consecutive time units, and during that time period no other job may run on M i ."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1133,
+   "pdf_page": 1154,
+   "text": "Let C k denote the completion time of job J k , that is, the time at which job J k completes processing. Given a schedule, define C max = max fC j W 1 ≤ j ≤ ng to be the makespan of the schedule. The goal is to find a schedule whose makespan is minimum."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1133,
+   "pdf_page": 1154,
+   "text": "For example, consider an input with two machines M 1 and M 2 , and four jobs"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1133,
+   "pdf_page": 1154,
+   "text": "J 1 , J 2 , J 3 , and J 4 with √1 = 2, √2 = 12, √3 = 4, and √4 = 5. Then one possible schedule runs, on machine M 1 , job J 1 followed by job J 2 , and on machine M 2 , job J 4 followed by job J 3 . For this schedule, C 1 = 2, C 2 = 14, C 3 = 9, C 4 = 5, and C max = 14. An optimal schedule runs job J 2 on machine M 1 and jobs J 1 , J 3 , and J 4 on machine M 2 . For this schedule, we have C 1 = 2, C 2 = 12, C 3 = 6, and C 4 = 11, and so C max = 12."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1133,
+   "pdf_page": 1154,
+   "text": "Given the input to a parallel-machine-scheduling problem, let C − max denote the makespan of an optimal schedule. a. Show that the optimal makespan is at least as large as the greatest processing time, that is, C − max ≥ max fp k W 1 ≤ k ≤ ng : b. Show that the optimal makespan is at least as large as the average machine load, that is, C − max ≥ 1 m n X kD1"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1133,
+   "pdf_page": 1154,
+   "text": "Consider the following greedy algorithm for paralle l machine scheduling: whenever a machine is idle, schedule any job that has not yet been scheduled. c. Write pseudocode to implement this greedy algorithm . What is the running time of your algorithm? d. For the schedule returned by the greedy algorithm, show that C max ≤ 1 m n X kD1"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1133,
+   "pdf_page": 1154,
+   "text": "√k C max fp k W 1 ≤ k ≤ ng :"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1133,
+   "pdf_page": 1154,
+   "text": "Conclude that this algorithm is a polynomial-time 2-approximation algorithm."
+  },
+  {
+   "type": "problem",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1134,
+   "pdf_page": 1155,
+   "text": "35-6 Approximating a maximum spanning tree"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1134,
+   "pdf_page": 1155,
+   "text": "Let G = (V;E) be an undirected graph with distinct edge weights w(u;v) on each edge (u;v) 2 E. For each vertex v 2 V , denote by max.v/ the maximum-weight edge incident on that vertex. Let S G = fmax(v) W v 2 V g be the set of maximumweight edges incident on each vertex, and let T G be the maximum-weight spanning tree of G, that is, the spanning tree of maximum total weigh t. For any subset of edges E 0 ⊆ E, define w(E 0 ) = P"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1134,
+   "pdf_page": 1155,
+   "text": "(u;v)2E 0 w(u;v) . a. Give an example of a graph with at least 4 vertices for which S G = T G . b. Give an example of a graph with at least 4 vertices for which S G ≠ T G . c. Prove that S G ⊆ T G for any graph G. d. Prove that w(S G ) ≥ w(T G )/2 for any graph G. e. Give an O(V + E)-time algorithm to compute a 2-approximation to the maximum spanning tree."
+  },
+  {
+   "type": "problem",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1134,
+   "pdf_page": 1155,
+   "text": "35-7 An approximation algorithm for the 0-1 knapsack problem"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1134,
+   "pdf_page": 1155,
+   "text": "Recall the knapsack problem from Section 15.2. The input includes n items, where the i th item is worth v i dollars and weighs w i pounds. The input also includes the capacity of a knapsack, which is W pounds. Here, we add the further assumptions that each weight w i is at most W and that the items are indexed in monotonically decreasing order of their values: v 1 ≥ v 2 ≥ • • • ≥ v n ."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1134,
+   "pdf_page": 1155,
+   "text": "In the 0-1 knapsack problem, the goal is to find a subset of the items whose total weight is at most W and whose total value is maximum. The fractional kn apsack problem is like the 0-1 knapsack problem, except that a fraction of each item may be put into the knapsack, rather than either all or none of each item. If a fraction x i of item i goes into the knapsack, where 0 ≤ x i ≤ 1, it contributes x i w i to the weight of the knapsack and adds value x i v i . The goal of this problem is to develop a polynomial-time 2-approximation algorithm for the 0-1 knapsack problem."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1134,
+   "pdf_page": 1155,
+   "text": "In order to design a polynomial-time algorithm, let’s consider restricted in- stances of the 0-1 knapsack problem. Given an instance I of the knapsack problem, form restricted instances I j , for j = 1;2;:::;n , by removing items 1;2;:::;j − 1 and requiring the solution to include item j (all of item j in both the fractional and 0-1 knapsack problems). No items are removed in instance I 1 . For instance I j , let P j denote an optimal solution to the 0-1 problem and Q j denote an optimal solution to the fractional problem. a. Argue that an optimal solution to instance I of the 0-1 knapsack problem is one of fP 1 ;P 2 ;:::;P n g."
+  },
+  {
+   "type": "chapter-notes",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1135,
+   "pdf_page": 1156,
+   "text": "Notes for Chapter 35 1135 b. Prove that to find an optimal solution Q j to the fractional problem for in- stance I j , you can include item j and then use the greedy algorithm in which each step takes as much as possible of the unchosen item with the maximum value per pound v i =w i in the set fj + 1;j + 2;:::;n g. c. Prove that there is always an optimal solution Q j to the fractional problem for instance I j that includes at most one item fractionally. That i s, for all items except possibly one, either all of the item or none of the item goes into the knapsack. d. Given an optimal solution Q j to the fractional problem for instance I j , form solution R j from Q j by deleting any fractional items from Q j . Let v(S) denote the total value of items taken in a solution S . Prove that v(R j ) ≥ v(Q j )/2 ≥ v(P j )/2. e. Give a polynomial-time algorithm that returns a maximum-value solution from the set fR 1 ;R 2 ;:::;R n g, and prove that your algorithm is a polynomial-time"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1135,
+   "pdf_page": 1156,
+   "text": "2-approximation algorithm for the 0-1 knapsack problem."
+  },
+  {
+   "type": "chapter-notes",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1135,
+   "pdf_page": 1156,
+   "text": "Chapter notes"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1135,
+   "pdf_page": 1156,
+   "text": "Although methods that do not necessarily compute ex act solutions have been known for thousands of years (for example, methods to approximate the value of Ω ), the notion of an approximation algorithm is much more recent. Hochbaum"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1135,
+   "pdf_page": 1156,
+   "text": "[221] credits Garey, Graham, and Ullman [175] and Johnson [236] with formalizing the concept of a polynomial-time approximation algorithm. The first such algorithm is often credited to Graham [197]."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1135,
+   "pdf_page": 1156,
+   "text": "Since this early work, thousands of approximation a lgorithms have been designed for a wide range of problems, and there is a wealth of literature on this field."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1135,
+   "pdf_page": 1156,
+   "text": "Texts by Ausiello et al. [29], Hochbaum [221], Vazirani [446], and Williamson and Shmoys [459] deal exclusively with approximation algorithms, as do surveys by Shmoys [409] and Klein and Young [256]. Several other texts, such as Garey and Johnson [176] and Papadimitriou and Steiglitz [353], have significant coverage of approximation algorithms as well. Books edited by Lawler, Lenstra, Rinnooy Kan, and Shmoys [277] and by Gutin and Punnen [204] provide extensive treatments of approximation algorithms and heuristics for the traveling-salesperson problem."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1135,
+   "pdf_page": 1156,
+   "text": "Papadimitriou and Steiglitz attribute the algorithm APPROX-VERTEX-COVER to F. Gavril and M. Yannakakis. The vertex-cover problem has been studied extensively (Hochbaum [221] lists 16 different approximation algorithms for this problem), but all the approximation ratios are at least 2 − o(1)."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1136,
+   "pdf_page": 1157,
+   "text": "The algorithm APPROX-TSP-TOUR appears in a paper by Rosenkrantz, Stearns, and Lewis [384]. Christofides improved on this algorithm and gave a 3/2-approximation algorithm for the traveling-salesperson problem with the triangle inequality."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1136,
+   "pdf_page": 1157,
+   "text": "Arora [23] and Mitchell [330] have shown that if the points lie in the euclidean plane, there is a polynomial-time approximation scheme. Theorem 35.3 is due to Sahni and Gonzalez [392]."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1136,
+   "pdf_page": 1157,
+   "text": "The algorithm APPROX-SUBSET-SUM and its analysis are loosely modeled after related approximation algorithms for the knapsack a nd subset-sum problems by Ibarra and Kim [234]."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1136,
+   "pdf_page": 1157,
+   "text": "Problem 35-7 is a combinatorial version of a more general result on approximating knapsack-type integer programs by Bienstock and McClosky [55]."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1136,
+   "pdf_page": 1157,
+   "text": "The randomized algorithm for MAX-3-CNF satisfiability is implicit in the work of Johnson [236]. The weighted vertex-cover algorithm is by Hochbaum [220]."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1136,
+   "pdf_page": 1157,
+   "text": "Section 35.4 only touches on the power of randomization and linear programming in the design of approximation algorithms. A combination of these two ideas yields a technique called \"randomized rounding,\" which for mulates a problem as an in- teger linear program, solves the linear-programming relaxation, and interprets the variables in the solution as probabilities. These p robabilities then help guide the solution of the original problem. This technique was first used by Raghavan and Thompson [374], and it has had many subsequent uses. (See Motwani, Naor, and Raghavan [335] for a survey.) Several other notable ideas in the field of approximation algorithms include the primal-dual method (see Goemans and Williamson"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1136,
+   "pdf_page": 1157,
+   "text": "[184] for a survey), finding sparse cuts for use in divide-and-conquer algorithms"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1136,
+   "pdf_page": 1157,
+   "text": "[288], and the use of semidefinite programming [183]."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1136,
+   "pdf_page": 1157,
+   "text": "As mentioned in the chapter notes for Chapter 34, results in probabilistically checkable proofs have led to lower bounds on the ap proximability of many problems, including several in this chapter. In additio n to the references there, the chapter by Arora and Lund [26] contains a good description of the relationship between probabilistically checkable proofs and the hardness of approximating various problems."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1138,
+   "pdf_page": 1159,
+   "text": "Part VIII Appendix: Mathematical Background"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1139,
+   "pdf_page": 1160,
+   "text": "Introduction"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1139,
+   "pdf_page": 1160,
+   "text": "When you analyze algorithms, you often need to draw upon a body of mathematical tools. Some of these tools are as simple as high-school algebra, but others may be new to you. In Part I, we saw how to manipulate asy mptotic notations and solve recurrences. This appendix comprises a compendium of several other concepts and methods used in analyzing algorithms. As noted in t he introduction to Part I, you may have seen much of the material in this appendix before having read this book, although some of the specific notational conventions appearing here might differ from those you have seen elsewhere. Hence, you shou ld treat this appendix as reference material. As in the rest of this book, however, we have included exercises and problems, in order for you to improve your skills in these areas."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1139,
+   "pdf_page": 1160,
+   "text": "Appendix A offers methods for evaluating and boundi ng summations, which occur frequently in the analysis of algorithms. Man y of the formulas here appear in any calculus text, but you will find it convenient to have these methods compiled in one place."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1139,
+   "pdf_page": 1160,
+   "text": "Appendix B contains basic definitions and notations for sets, relations, functions, graphs, and trees. It also gives some basic properties of these mathematical objects."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1139,
+   "pdf_page": 1160,
+   "text": "Appendix C begins with elementary principles of counting: permutations, combinations, and the like. The remainder contains definitions and properties of basic probability. Most of the algorithms in this book re quire no probability for their analysis, and thus you can easily omit the latter s ections of the chapter on a first reading, even without skimming them. Later, when yo u encounter a probabilistic analysis that you want to understand better, you will find Appendix C well organized for reference purposes."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1139,
+   "pdf_page": 1160,
+   "text": "Appendix = defines matrices, their operations, and some of their basic properties. You have probably seen most of this materia l already if you have taken a course in linear algebra. But you might find it helpful to have one place to look for notations and definitions."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1140,
+   "pdf_page": 1161,
+   "text": "A Summations"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1140,
+   "pdf_page": 1161,
+   "text": "When an algorithm contains an iterative control con struct such as a while or for loop, you can express its running time as the sum of the times spent on each execution of the body of the loop. For example, Section 2.2 argued that the i th iteration of insertion sort took time proportional to i in the worst case. Adding up the time spent on each iteration produced the summation (or series) P n i D2 i . Evaluating this summation resulted in a bound of Θ(n 2 ) on the worst-case running time of the algorithm. This example illustrates why you should know how to manipulate and bound summations."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1140,
+   "pdf_page": 1161,
+   "text": "Section A.1 lists several basic formulas involving summations. Section A.2 offers useful techniques for bounding summations. The formulas in Section A.1 appear without proof, though proofs for some of the m appear in Section A.2 to illustrate the methods of that section. You can find most of the other proofs in any calculus text."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1140,
+   "pdf_page": 1161,
+   "text": "A.1 Summation formulas and properties"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1140,
+   "pdf_page": 1161,
+   "text": "Given a sequence a 1 ;a 2 ;:::;a n of numbers, where n is a nonnegative integer, the finite sum a 1 + a 2 + • • • + a n can be expressed as P n kD1 a k . If n = 0, the value of the summation is defined to be 0. The value of a finite series is always well defined, and the order in which its terms are added does not matter."
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1140,
+   "pdf_page": 1161,
+   "text": "Given an infinite sequence a 1 ;a 2 ;::: of numbers, we can write their infinite sum a 1 + a 2 + • • • as P 1 kD1 a k , which means lim n!1"
+  },
+  {
+   "type": "body",
+   "chapter": 35,
+   "section": "35.5",
+   "section_title": "35.5 The subset-sum problem",
+   "printed_page": 1140,
+   "pdf_page": 1161,
+   "text": "P n kD1 a k . If the limit does not exist, the series diverges, and otherwise, it converges. The terms of a convergent series cannot always be added in any order. You can, however, rearrange the terms of an absolutely convergent series, that is, a series P 1 kD1 a k for which the series P 1 kD1 ja k j also converges."
+  }
+ ]
+}

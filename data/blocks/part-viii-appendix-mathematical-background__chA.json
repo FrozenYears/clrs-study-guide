@@ -1,0 +1,1717 @@
+{
+ "chapter": "A",
+ "chapter_title": "A Summations",
+ "part": "Part VIII Appendix: Mathematical Background",
+ "source": {
+  "printed": [
+   1140,
+   null
+  ],
+  "pdf": [
+   1161,
+   1174
+  ]
+ },
+ "sections": [
+  "A.1 Summation formulas and properties",
+  "A.2 Bounding summations"
+ ],
+ "sections_found": [
+  "A.1 Summation formulas and properties",
+  "A.2 Bounding summations"
+ ],
+ "blocks": [
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1140,
+   "pdf_page": 1161,
+   "text": "A Summations"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1140,
+   "pdf_page": 1161,
+   "text": "When an algorithm contains an iterative control con struct such as a while or for loop, you can express its running time as the sum of the times spent on each execution of the body of the loop. For example, Section 2.2 argued that the i th iteration of insertion sort took time proportional to i in the worst case. Adding up the time spent on each iteration produced the summation (or series) P n i D2 i . Evaluating this summation resulted in a bound of Θ(n 2 ) on the worst-case running time of the algorithm. This example illustrates why you should know how to manipulate and bound summations."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1140,
+   "pdf_page": 1161,
+   "text": "Section A.1 lists several basic formulas involving summations. Section A.2 offers useful techniques for bounding summations. The formulas in Section A.1 appear without proof, though proofs for some of the m appear in Section A.2 to illustrate the methods of that section. You can find most of the other proofs in any calculus text."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1140,
+   "pdf_page": 1161,
+   "text": "A.1 Summation formulas and properties"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1140,
+   "pdf_page": 1161,
+   "text": "Given a sequence a 1 ;a 2 ;:::;a n of numbers, where n is a nonnegative integer, the finite sum a 1 + a 2 + • • • + a n can be expressed as P n kD1 a k . If n = 0, the value of the summation is defined to be 0. The value of a finite series is always well defined, and the order in which its terms are added does not matter."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1140,
+   "pdf_page": 1161,
+   "text": "Given an infinite sequence a 1 ;a 2 ;::: of numbers, we can write their infinite sum a 1 + a 2 + • • • as P 1 kD1 a k , which means lim n!1"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1140,
+   "pdf_page": 1161,
+   "text": "P n kD1 a k . If the limit does not exist, the series diverges, and otherwise, it converges. The terms of a convergent series cannot always be added in any order. You can, however, rearrange the terms of an absolutely convergent series, that is, a series P 1 kD1 a k for which the series P 1 kD1 ja k j also converges."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1141,
+   "pdf_page": 1162,
+   "text": "A.1 Summation formulas and properties 1141"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1141,
+   "pdf_page": 1162,
+   "text": "Linearity"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1141,
+   "pdf_page": 1162,
+   "text": "For any real number c and any finite sequences a 1 ;a 2 ;:::;a n and b 1 ;b 2 ;:::;b n , n X kD1"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1141,
+   "pdf_page": 1162,
+   "text": ".ca k + b k / = c n X kD1 a k C n X kD1 b k :"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1141,
+   "pdf_page": 1162,
+   "text": "The linearity property also applies to infinite convergent series."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1141,
+   "pdf_page": 1162,
+   "text": "The linearity property applies to summations incorporating asymptotic notation."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1141,
+   "pdf_page": 1162,
+   "text": "For example, n X kD1"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1141,
+   "pdf_page": 1162,
+   "text": "Θ(f(k)) = Θ"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1141,
+   "pdf_page": 1162,
+   "text": "• n X kD1 f(k)"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1141,
+   "pdf_page": 1162,
+   "text": "In this equation, the Θ-notation on the left-hand side applies to the variable k, but on the right-hand side, it applies to n. Such manipulations also apply to infinite convergent series."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1141,
+   "pdf_page": 1162,
+   "text": "Arithmetic series"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1141,
+   "pdf_page": 1162,
+   "text": "The summation n X kD1 k = 1 + 2 + • • • + n; is an arithmetic series and has the value n X kD1 k = n(n + 1)"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1141,
+   "pdf_page": 1162,
+   "text": "D Θ(n 2 ): (A.2)"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1141,
+   "pdf_page": 1162,
+   "text": "A general arithmetic series includes an additive constant a ≥ 0 and a constant coefficient b>0 in each term, but has the same total asymptotically: n X kD1"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1141,
+   "pdf_page": 1162,
+   "text": "(a C bk) = Θ(n 2 ): (A.3)"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1141,
+   "pdf_page": 1162,
+   "text": "Sums of squares and cubes"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1141,
+   "pdf_page": 1162,
+   "text": "The following formulas apply to summations of squares and cubes: n X kD0 k 2 = n(n + 1).2n + 1/"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1141,
+   "pdf_page": 1162,
+   "text": "6 ; (A.4) n X kD0 k 3 = n 2 (n + 1) 2"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1141,
+   "pdf_page": 1162,
+   "text": "4 : (A.5)"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1142,
+   "pdf_page": 1163,
+   "text": "1142 Appendix A Summations"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1142,
+   "pdf_page": 1163,
+   "text": "Geometric series"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1142,
+   "pdf_page": 1163,
+   "text": "For real x ≠ 1, the summation n X kD0 x k = 1 + x + x 2 + • • • + x n is a geometric series and has the value n X kD0 x k = x nC1 − 1 x − 1 : (A.6)"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1142,
+   "pdf_page": 1163,
+   "text": "The infinite decreasing geometric series occurs when the summation is infinite and |x| <1 :"
+  },
+  {
+   "type": "footnote",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1142,
+   "pdf_page": 1163,
+   "text": "1 X kD0 x k = 1"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1142,
+   "pdf_page": 1163,
+   "text": "1 − x : (A.7)"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1142,
+   "pdf_page": 1163,
+   "text": "If we assume that 0 0 = 1, these formulas apply even when x = 0."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1142,
+   "pdf_page": 1163,
+   "text": "Harmonic series"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1142,
+   "pdf_page": 1163,
+   "text": "For positive integers n, the nth harmonic number is H n = 1 + 1"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1142,
+   "pdf_page": 1163,
+   "text": "4 + • • • + 1 n"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1142,
+   "pdf_page": 1163,
+   "text": "D n X kD1 k (A.8)"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1142,
+   "pdf_page": 1163,
+   "text": "D ln n + O(1): (A.9)"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1142,
+   "pdf_page": 1163,
+   "text": "Inequalities (A.20) and (A.21) on page 1150 provide the stronger bounds ln(n + 1) ≤ H n ≤ ln n + 1: (A.10)"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1142,
+   "pdf_page": 1163,
+   "text": "Integrating and differentiating series"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1142,
+   "pdf_page": 1163,
+   "text": "Integrating or differentiating the formulas above y ields additional formulas. For example, differentiating both sides of the infinite geometric series (A.7) and multiplying by x gives"
+  },
+  {
+   "type": "footnote",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1142,
+   "pdf_page": 1163,
+   "text": "1 X kD0 kx k = x"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1142,
+   "pdf_page": 1163,
+   "text": ".1 − x/ 2 (A.11) for |x| <1 ."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1142,
+   "pdf_page": 1163,
+   "text": "D n X kD1 lg a k :"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1143,
+   "pdf_page": 1164,
+   "text": "A.1 Summation formulas and properties 1143"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1143,
+   "pdf_page": 1164,
+   "text": "Telescoping series"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1143,
+   "pdf_page": 1164,
+   "text": "For any sequence a 0 ;a 1 ;:::;a n , n X kD1"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1143,
+   "pdf_page": 1164,
+   "text": "(a k − a k−1 ) = a n − a 0 ; (A.12) since each of the terms a 1 ;a 2 ;:::;a n−1 is added in exactly once and subtracted out exactly once. We say that the sum telescopes. Similarly, n−1 X kD0"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1143,
+   "pdf_page": 1164,
+   "text": "(a k − a kC1 ) = a 0 − a n :"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1143,
+   "pdf_page": 1164,
+   "text": "As an example of a telescoping sum, consider the series n−1 X kD1 k(k + 1) :"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1143,
+   "pdf_page": 1164,
+   "text": "Rewriting each term as k(k + 1) = 1 k − 1 k + 1 ; gives n−1 X kD1 k(k + 1) = n−1 X kD1"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1143,
+   "pdf_page": 1164,
+   "text": "[ 1 k − 1 k + 1"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1143,
+   "pdf_page": 1164,
+   "text": "D 1 − 1 n :"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1143,
+   "pdf_page": 1164,
+   "text": "Reindexing summations"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1143,
+   "pdf_page": 1164,
+   "text": "A series can sometimes be simplified by changing its index, often reversing the order of summation. Consider the series P n kD0 a n−k . Because the terms in this summation are a n ;a n−1 ;:::;a 0 , we can reverse the order of indices by letting j = n − k and rewrite this summation as n X kD0 a n−k = n X j D0 a j : (A.13)"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1143,
+   "pdf_page": 1164,
+   "text": "Generally, if the summation index appears in the body of the sum with a minus sign, it’s worth thinking about reindexing."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1143,
+   "pdf_page": 1164,
+   "text": "As an example, consider the summation"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1144,
+   "pdf_page": 1165,
+   "text": "1144 Appendix A Summations n X kD1 n − k + 1 :"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1144,
+   "pdf_page": 1165,
+   "text": "The index k appears with a negative sign in 1=.n − k + 1/. And indeed, we can simplify this summation, this time setting j = n − k + 1, yielding n X kD1 n − k + 1 = n X j D1 j ; (A.14) which is just the harmonic series (A.8)."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1144,
+   "pdf_page": 1165,
+   "text": "Products"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1144,
+   "pdf_page": 1165,
+   "text": "The finite product a 1 a 2 • • • a n can be expressed as n Y kD1 a k :"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1144,
+   "pdf_page": 1165,
+   "text": "If n = 0, the value of the product is defined to be 1. You can convert a formula with a product to a formula with a summation by using the identity lg"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1144,
+   "pdf_page": 1165,
+   "text": "• n Y kD1 a k"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1144,
+   "pdf_page": 1165,
+   "text": "Prove that P n kD1 O(f k (i)) = O ã P n kD1 f k (i) ä by using the linearity property of summations."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1144,
+   "pdf_page": 1165,
+   "text": "Find a simple formula for P n kD1 .2k − 1)."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1144,
+   "pdf_page": 1165,
+   "text": "Interpret the decimal number 111,111,111 in light of equation (A.6)."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1144,
+   "pdf_page": 1165,
+   "text": "Evaluate the infinite series 1 − 1"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1144,
+   "pdf_page": 1165,
+   "text": "16 − • • •."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1144,
+   "pdf_page": 1165,
+   "text": "Let c ≥ 0 be a constant. Show that P n kD1 k c = Θ(n cC1 )."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.1",
+   "section_title": "A.1 Summation formulas and properties",
+   "printed_page": 1144,
+   "pdf_page": 1165,
+   "text": "Show that P 1 kD0 k 2 x k = x(1 + x)=.1 − x) 3 for |x| <1 ."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1145,
+   "pdf_page": 1166,
+   "text": "A.2 Bounding summations 1145"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1145,
+   "pdf_page": 1166,
+   "text": "Prove that P n kD1 p k lg k = Θ(n 3/2 lg 1/2 n). (Hint: Show the asymptotic upper and lower bounds separately.)"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1145,
+   "pdf_page": 1166,
+   "text": "Show that P n kD1 1=.2k − 1) = ln. √n/ C O(1) by manipulating the harmonic series."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1145,
+   "pdf_page": 1166,
+   "text": "Show that P 1 kD0 (k − 1)/2 k = 0."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1145,
+   "pdf_page": 1166,
+   "text": "? A(1-10"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1145,
+   "pdf_page": 1166,
+   "text": "Evaluate the sum P 1 kD1 .2k + 1)x 2k for |x| <1 ."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1145,
+   "pdf_page": 1166,
+   "text": "? A(1-11"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1145,
+   "pdf_page": 1166,
+   "text": "Evaluate the product Q n kD2 .1 − 1/k 2 )."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1145,
+   "pdf_page": 1166,
+   "text": "A.2 Bounding summations"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1145,
+   "pdf_page": 1166,
+   "text": "You can choose from several techniques to bound the summations that describe the running times of algorithms. Here are some of the most frequently used methods."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1145,
+   "pdf_page": 1166,
+   "text": "Mathematical induction"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1145,
+   "pdf_page": 1166,
+   "text": "The most basic way to evaluate a series is to use m athematical induction. As an example, let’s prove that the arithmetic series P n kD1 k evaluates to n(n + 1)/2. For n = 1, we have that n(n + 1)/2 = 1 • 2/2 = 1, which equals P 1 kD1 k. With the inductive assumption that it holds for n, we prove that it holds for n + 1. We have nC1 X kD1 k = n X kD1 k C (n + 1)"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1145,
+   "pdf_page": 1166,
+   "text": "D n(n + 1)"
+  },
+  {
+   "type": "footnote",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1145,
+   "pdf_page": 1166,
+   "text": "2 C (n + 1)"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1145,
+   "pdf_page": 1166,
+   "text": "D n 2 + n + 2n + 2"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1145,
+   "pdf_page": 1166,
+   "text": "D (n + 1).n + 2/"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1145,
+   "pdf_page": 1166,
+   "text": "You don’t always need to guess the exact value of a summation in order to use mathematical induction. Instead, you can use induction to prove an upper or lower"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1145,
+   "pdf_page": 1166,
+   "text": "Show that P n kD1 1/k 2 is bounded above by a constant."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1146,
+   "pdf_page": 1167,
+   "text": "1146 Appendix A Summations bound on a summation. As an example, let’s prove the asymptotic upper bound P n kD0 3 k = O(3 n ). More specifically, we’ll prove that P n kD0 3 k ≤ c3 n for some constant c . For the initial condition n = 0, we have P 0 kD0 3 k = 1 ≤ c • 1 as long as c ≥ 1. Assuming that the bound holds for n, we prove that it holds for n + 1."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1146,
+   "pdf_page": 1167,
+   "text": "We have nC1 X kD0"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1146,
+   "pdf_page": 1167,
+   "text": "3 k = n X kD0"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1146,
+   "pdf_page": 1167,
+   "text": "3 k + 3 nC1"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1146,
+   "pdf_page": 1167,
+   "text": "≤ c3 n + 3 nC1 (by the inductive hypothesis)"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1146,
+   "pdf_page": 1167,
+   "text": "] c3 nC1"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1146,
+   "pdf_page": 1167,
+   "text": "≤ c3 nC1 as long as .1/3 + 1/c/ ≤ 1 or, equivalently, c ≥ 3/2. Thus, P n kD0 3 k = O(3 n ), as we wished to show."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1146,
+   "pdf_page": 1167,
+   "text": "You need to take care when using asymptotic notatio n to prove bounds by in- duction. Consider the following fallacious proof th at P n kD1 k = O(n). Certainly, P 1 kD1 k = O(1). Assuming that the bound holds for n, we now prove it for n + 1: nC1 X kD1 k = n X kD1 k C (n + 1)"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1146,
+   "pdf_page": 1167,
+   "text": "D O(n) C (n + 1) Ń wrong!"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1146,
+   "pdf_page": 1167,
+   "text": "D O(n + 1):"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1146,
+   "pdf_page": 1167,
+   "text": "The bug in the argument is that the \"constant\" hidden by the \"big-oh\" grows with n and thus is not constant. We have not shown that the same constant works for all n."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1146,
+   "pdf_page": 1167,
+   "text": "Bounding the terms"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1146,
+   "pdf_page": 1167,
+   "text": "You can sometimes obtain a good upper bound on a series by bounding each term of the series, and it often suffices to use the largest term to bound the others. For example, a quick upper bound on the arithmetic series (A.1) is n X kD1 k ≤ n X kD1 n"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1146,
+   "pdf_page": 1167,
+   "text": "In general, for a series P n kD1 a k , if we let a max = max fa k W 1 ≤ k ≤ ng, then n X kD1 a k ≤ n • a max :"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1146,
+   "pdf_page": 1167,
+   "text": "D blg nc X i D0"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1146,
+   "pdf_page": 1167,
+   "text": "D blg nc X i D0"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1147,
+   "pdf_page": 1168,
+   "text": "A.2 Bounding summations 1147"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1147,
+   "pdf_page": 1168,
+   "text": "The technique of bounding each term in a series by the largest term is a weak method when the series can in fact be bounded by a geometric series. Given the series P n kD0 a k , suppose that a kC1/a k ≤ r for all k ≥ 0, where 0 < r < 1 is a constant. You can bound the sum by an infinite decreasing geometric series, since a k ≤ a 0 r k , and thus n X kD0 a k ≤"
+  },
+  {
+   "type": "footnote",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1147,
+   "pdf_page": 1168,
+   "text": "1 X kD0 a 0 r k"
+  },
+  {
+   "type": "footnote",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1147,
+   "pdf_page": 1168,
+   "text": "1 X kD0 r k (A.15)"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1147,
+   "pdf_page": 1168,
+   "text": "1 − r : (A.16)"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1147,
+   "pdf_page": 1168,
+   "text": "You can apply this method to bound the summation P 1 kD1 (k/3 k ). In order to start the summation at k = 0, rewrite it as P 1 kD0 ..k C1/=3 kC1 /. The first term (a 0 ) is 1/3, and the ratio (r ) of consecutive terms is (k + 2)/3 kC2"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1147,
+   "pdf_page": 1168,
+   "text": "(k + 1)/3 kC1 = 1"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1147,
+   "pdf_page": 1168,
+   "text": "3 • k + 2 k + 1"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1147,
+   "pdf_page": 1168,
+   "text": "≤ 2 for all k ≥ 0. Thus, we have"
+  },
+  {
+   "type": "footnote",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1147,
+   "pdf_page": 1168,
+   "text": "1 X kD1 k"
+  },
+  {
+   "type": "footnote",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1147,
+   "pdf_page": 1168,
+   "text": "1 X kD0 k + 1"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1147,
+   "pdf_page": 1168,
+   "text": "A common bug in applying this method is to show tha t the ratio o f consecutive terms is less than 1 and then to assume that the summation is bounded by a geometric series. An example is the infinite harmonic series, which diverges since"
+  },
+  {
+   "type": "footnote",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1147,
+   "pdf_page": 1168,
+   "text": "1 X kD1 k = lim n!1 n X kD1 k"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1147,
+   "pdf_page": 1168,
+   "text": "D lim n!1"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1147,
+   "pdf_page": 1168,
+   "text": "The ratio of the (k C1)st and kth terms in this series is k=.k C1/<1 , but the series is not bounded by a decreasing geometric series. To bound a series by a geometric"
+  },
+  {
+   "type": "footnote",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1147,
+   "pdf_page": 1168,
+   "text": "1 X kD3 k 2"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1148,
+   "pdf_page": 1169,
+   "text": "1148 Appendix A Summations series, you need to show that there is an r <1, which is a constant, such that the ratio of all pairs of consecutive terms never exceeds r . In the harmonic series, no such r exists because the ratio becomes arbitrarily close to 1."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1148,
+   "pdf_page": 1169,
+   "text": "Splitting summations"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1148,
+   "pdf_page": 1169,
+   "text": "One way to obtain bounds on a difficult summation is to express the series as the sum of two or more series by partitioning the range of the index and then to bound each of the resulting series. For example, let’s find a lower bound on the arithmetic series P n kD1 k, which we have already seen has an upper bound of n 2 . You might attempt to bound each term in the summation by the smallest term, but since that term is 1, you would get a lower bound of n for the summation—far off from the upper bound of n 2 ."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1148,
+   "pdf_page": 1169,
+   "text": "You can obtain a better lower bound by first splitting the summation. Assume for convenience that n is even, so that n X kD1 k = n/2 X kD1 k C n X kDn/2C1 k"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1148,
+   "pdf_page": 1169,
+   "text": "≥ n/2 X kD1"
+  },
+  {
+   "type": "footnote",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1148,
+   "pdf_page": 1169,
+   "text": "0 C n X kDn/2C1 n"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1148,
+   "pdf_page": 1169,
+   "text": "D Ω(n 2 ); which is an asymptotically tight bound, since P n kD1 k = O(n 2 )."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1148,
+   "pdf_page": 1169,
+   "text": "For a summation arising from the analysis of an alg orithm, you can sometimes split the summation and ignore a constant number of the initial terms. Generally, this technique applies when each term a k in a summation P n kD0 a k is independent of n. Then for any constant k 0 >0 , you can write n X kD0 a k = k 0 −1 X kD0 a k C n X kDk 0 a k"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1148,
+   "pdf_page": 1169,
+   "text": "D Θ(1) C n X kDk 0 a k ; since the initial terms of the summation are all co nstant and there are a constant number of them. You can then use other methods to b ound P n kDk 0 a k . This technique applies to infinite summations as well. For example, let’s find an asymptotic upper bound on P 1 kD0 k 2/2 k . The ratio of consecutive terms is A.2 Bounding summations 1149"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1149,
+   "pdf_page": 1170,
+   "text": "(k + 1) 2/2 kC1 k 2/2 k = (k + 1) 2"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1149,
+   "pdf_page": 1170,
+   "text": "≤ 8/9 if k ≥ 3. Thus, you can split the summation into 1 X kD0 k 2"
+  },
+  {
+   "type": "footnote",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1149,
+   "pdf_page": 1170,
+   "text": "2 X kD0 k 2"
+  },
+  {
+   "type": "footnote",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1149,
+   "pdf_page": 1170,
+   "text": "2 X kD0 k 2"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1149,
+   "pdf_page": 1170,
+   "text": "(k + 3) 2"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1149,
+   "pdf_page": 1170,
+   "text": "2 kC3 (by reindexing)"
+  },
+  {
+   "type": "footnote",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1149,
+   "pdf_page": 1170,
+   "text": "2 X kD0 k 2"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1149,
+   "pdf_page": 1170,
+   "text": "(by inequality (A(15))"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1149,
+   "pdf_page": 1170,
+   "text": "D .0 + 1/2 + 1) + 9/8"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1149,
+   "pdf_page": 1170,
+   "text": "1 − 8/9 (by equation (A.16))"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1149,
+   "pdf_page": 1170,
+   "text": "The technique of splitting summations can help determine asymptotic bounds in much more difficult situations. For example, here is one way to obtain a bound of O(lg n) on the harmonic series (A.9):"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1149,
+   "pdf_page": 1170,
+   "text": "H n = n X kD1 k :"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1149,
+   "pdf_page": 1170,
+   "text": "The idea is to split the range 1 to n into blg nc + 1 pieces and upper-bound the contribution of each piece by 1. For i = 0;1;:::; blg nc, the i th piece consists of the terms starting at 1/2 i and going up to but not including 1/2 i C1 . The last piece might contain terms not in the original harmonic series, giving n X kD1 k ≤ blg nc X i D0"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1149,
+   "pdf_page": 1170,
+   "text": "2 i −1 X j D0"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1149,
+   "pdf_page": 1170,
+   "text": "≤ blg nc X i D0"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1149,
+   "pdf_page": 1170,
+   "text": "2 i −1 X j D0"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1149,
+   "pdf_page": 1170,
+   "text": "≤ lg n + 1: (A.17)"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1150,
+   "pdf_page": 1171,
+   "text": "1150 Appendix A Summations"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1150,
+   "pdf_page": 1171,
+   "text": "Approximation by integrals"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1150,
+   "pdf_page": 1171,
+   "text": "When a summation has the form P n kDm f(k) , where f(k) is a monotonically in- creasing function, you can approximate it by integrals:"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1150,
+   "pdf_page": 1171,
+   "text": "Z n m−1 f(x)dx ≤ n X kDm f(k) ≤"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1150,
+   "pdf_page": 1171,
+   "text": "Z nC1 m f(x)dx: (A.18)"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1150,
+   "pdf_page": 1171,
+   "text": "Figure A.1 justifies this approximation. The summation is represented as the area of the rectangles in the figure, and the integral is the blue region under the curve."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1150,
+   "pdf_page": 1171,
+   "text": "When f(k) is a monotonically decreasing function, you can use a similar method to provide the bounds"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1150,
+   "pdf_page": 1171,
+   "text": "Z nC1 m f(x)dx ≤ n X kDm f(k) ≤"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1150,
+   "pdf_page": 1171,
+   "text": "Z n m−1 f(x)dx: (A.19)"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1150,
+   "pdf_page": 1171,
+   "text": "The integral approximation (A.19) can be used to prove the tight bounds in in- equality (A.10) for the nth harmonic number. The lower bound is n X kD1 k ≥"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1150,
+   "pdf_page": 1171,
+   "text": "Z nC1 dx x"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1150,
+   "pdf_page": 1171,
+   "text": "D ln(n + 1); (A.20)"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1150,
+   "pdf_page": 1171,
+   "text": "For the upper bound, the integral approximation gives n X kD1 k = n X kD2 k + 1"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1150,
+   "pdf_page": 1171,
+   "text": "Z n dx x + 1"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1150,
+   "pdf_page": 1171,
+   "text": "D ln n + 1: (A.21)"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1150,
+   "pdf_page": 1171,
+   "text": "Find an asymptotic upper bound on the summation blg nc X kD0"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1150,
+   "pdf_page": 1171,
+   "text": "˙ n/2 k ⌋"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1151,
+   "pdf_page": 1172,
+   "text": "A.2 Bounding summations 1151 n+1 n31 n–2 m+2 m m 31 f (m) f (m+1) f (m+2) f (n–2) f (n31) f (n) f (x) x … … n"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1151,
+   "pdf_page": 1172,
+   "text": "(a) m+1 n+1 n31 n–2 m+2 m m 31 f (m) f (m+1) f (m+2) f (n–2) f (n31) f (n) f (x) x … … n"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1151,
+   "pdf_page": 1172,
+   "text": "Figure A.1 Approximation of P n kDm f(k) by integrals. The area of each rectangle is shown within the rectangle, and the total rectangle area represents the value of the summation. The integral is represented by the blue area under the curve. Co mparing areas in (a) gives the lower bound R n m−1 f(x)dx ≤ P n kDm f(k) . Shifting the rectangles one unit to the right giv es the upper bound P n kDm f(k) ≤"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1151,
+   "pdf_page": 1172,
+   "text": "R nC1 m f(x)dx in (b)."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1152,
+   "pdf_page": 1173,
+   "text": "1152 Appendix A Summations"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1152,
+   "pdf_page": 1173,
+   "text": "Show that the nth harmonic number is Ω(lg n) by splitting the summation."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1152,
+   "pdf_page": 1173,
+   "text": "Approximate P n kD1 k 3 with an integral."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1152,
+   "pdf_page": 1173,
+   "text": "Why can’t you use the integral approximation (A.19) directly on P n kD1 1/k to obtain an upper bound on the nth harmonic number?"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1152,
+   "pdf_page": 1173,
+   "text": "A-1 Bounding summations"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1152,
+   "pdf_page": 1173,
+   "text": "Give asymptotically tight bounds on the following summations. Assume that r ≥ 0 and s ≥ 0 are constants. a. n X kD1 k r . b. n X kD1 lg s k. c. n X kD1 k r lg s k."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1152,
+   "pdf_page": 1173,
+   "text": "Appendix notes"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1152,
+   "pdf_page": 1173,
+   "text": "Knuth [259] provides an excellent reference for the material presented here. You can find basic properties of series in any good calculus book, such as Apostol [19] or Thomas et al. [433]."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1153,
+   "pdf_page": 1174,
+   "text": "B Sets, Etc."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1153,
+   "pdf_page": 1174,
+   "text": "Many chapters of this book touch on the elements of discrete mathematics. This appendix reviews the notations, definitions, and elementary properties of sets, re- lations, functions, graphs, and trees. If you are already well versed in this material, you can probably just skim this chapter."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1153,
+   "pdf_page": 1174,
+   "text": "B.1 Sets"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1153,
+   "pdf_page": 1174,
+   "text": "A set is a collection of distinguishable objects, called its members or elements. If an object x is a member of a set S , we write x 2 S (read \"x is a member of S \" or, more briefly, \"x belongs to S \"). If x is not a member of S , we write x … S ."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1153,
+   "pdf_page": 1174,
+   "text": "To describe a set explicitly, write its members as a list inside braces. For example, to define a set S to contain precisely the numbers 1, 2, and 3, write S = f1;2;3 g."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1153,
+   "pdf_page": 1174,
+   "text": "Since 2 belongs to the set S , we can write 2 2 S , and since 4 is not a member, we can write 4 … S . A set cannot contain the same object more than on ce, 1 and its elements are not ordered. Two sets A and B are equal, written A = B , if they contain the same elements. For example, f1;2;3;1 g = f1;2;3 g = f3;2;1 g."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1153,
+   "pdf_page": 1174,
+   "text": "We adopt special notations for frequently encountered sets:"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1153,
+   "pdf_page": 1174,
+   "text": "• ; denotes the empty set, that is, the set containing no members."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1153,
+   "pdf_page": 1174,
+   "text": "• Z denotes the set of integers, that is, the set f:::; −2; −1;0;1;2;::: g."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1153,
+   "pdf_page": 1174,
+   "text": "• R denotes the set of real numbers."
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1153,
+   "pdf_page": 1174,
+   "text": "• N denotes the set of natural numbers, that is, the set f0;1;2;::: g. 2"
+  },
+  {
+   "type": "body",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1153,
+   "pdf_page": 1174,
+   "text": "1 A variation of a set, which can contain the same object more than once, is called a multiset."
+  },
+  {
+   "type": "footnote",
+   "chapter": "A",
+   "section": "A.2",
+   "section_title": "A.2 Bounding summations",
+   "printed_page": 1153,
+   "pdf_page": 1174,
+   "text": "2 Some authors start the natural numbers with 1 instead of 0. The modern trend seems to be to start with 0."
+  }
+ ]
+}

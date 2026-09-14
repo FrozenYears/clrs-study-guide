@@ -1,0 +1,3185 @@
+{
+ "chapter": 22,
+ "chapter_title": "22 Single-Source Shortest Paths",
+ "part": "Part VI Graph Algorithms",
+ "source": {
+  "printed": [
+   604,
+   null
+  ],
+  "pdf": [
+   625,
+   667
+  ]
+ },
+ "sections": [
+  "22.1 The Bellman-Ford algorithm",
+  "22.2 Single-source shortest paths in directed acyclic graphs",
+  "22.3 Dijkstra’s algorithm",
+  "22.4 Difference constraints and shortest paths",
+  "22.5 Proofs of shortest-paths properties"
+ ],
+ "sections_found": [
+  "22.1 The Bellman-Ford algorithm",
+  "22.2 Single-source shortest paths in directed acyclic graphs",
+  "22.3 Dijkstra’s algorithm",
+  "22.4 Difference constraints and shortest paths",
+  "22.5 Proofs of shortest-paths properties"
+ ],
+ "blocks": [
+  {
+   "type": "pseudocode",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 612,
+   "pdf_page": 633,
+   "algo_name": "BELLMAN-FORD",
+   "signature": "BELLMAN-FORD",
+   "lines": [
+    {
+     "n": 1,
+     "code": "INITIALIZE-SINGLE-SOURCE  (G;s)"
+    },
+    {
+     "n": 2,
+     "code": "for i = 1 to jG: V j − 1"
+    },
+    {
+     "n": 3,
+     "code": "for each edge (u;v)  2 G: E"
+    },
+    {
+     "n": 4,
+     "code": "RELAX(u;v;w)"
+    },
+    {
+     "n": 5,
+     "code": "for each edge (u;v)  2 G: E"
+    },
+    {
+     "n": 6,
+     "code": "if v: d >u:  d + w(u;v)"
+    },
+    {
+     "n": 7,
+     "code": "return FALSE"
+    },
+    {
+     "n": 8,
+     "code": "return TRUE"
+    }
+   ],
+   "text": "1 INITIALIZE-SINGLE-SOURCE  (G;s)\n2 for i = 1 to jG: V j − 1\n3 for each edge (u;v)  2 G: E\n4 RELAX(u;v;w)\n5 for each edge (u;v)  2 G: E\n6 if v: d >u:  d + w(u;v)\n7 return FALSE\n8 return TRUE"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 612,
+   "pdf_page": 633,
+   "text": "All algorithms in this chapter assume that the dire cted graph G is stored in the adjacency-list representation. Additionally, stored with each edge is its weight, so that as each algorithm traverses an adjacency list, it can find edge weights in O(1) time per edge."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 612,
+   "pdf_page": 633,
+   "text": "The Bellman-Ford algorithm solves the single-source shortest-paths problem in the general case in which edge weights may be negative. Given a weighted, directed graph G = (V;E) with source vertex s and weight function w W E ! R, the Bellman-Ford algorithm returns a boolean value indicating whether there is a negative-weight cycle that is reachable from the source. If there is such a cycle, the algorithm indicates that no solution exists. If the re is no such cycle, the algorithm produces the shortest paths and their weights."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 612,
+   "pdf_page": 633,
+   "text": "The procedure BELLMAN-FORD relaxes edges, progressively decreasing an estimate v: d on the weight of a shortest path from the source s to each vertex v 2 V until it achieves the actual shortest-path weight i(s;v) . The algorithm returns TRUE if and only if the graph contains no negative-weight cycles that are reachable from the source."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 612,
+   "pdf_page": 633,
+   "text": "BELLMAN-FORD (G;w;s)"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 612,
+   "pdf_page": 633,
+   "text": "Figure 22.4 shows the execution of the Bellman-Ford algorithm on a graph with 5 vertices. After initializing the d and Ω values of all vertices in line 1, the algorithm makes |V| − 1 passes over the edges of the graph. Each pass is one iteration of the for loop of lines 234 and consists of relaxing each edge of the graph once. Figures 22.4(b)3(e) show the state of the algorithm after each of the four passes over the edges. After making |V| − 1 passes, lines 538 check for a negative-weight cycle and return the appropriate boolean value. (We9ll see a little later why this check works.)"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 613,
+   "pdf_page": 634,
+   "text": "(a) (b) (c)"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 613,
+   "pdf_page": 634,
+   "text": "(e) t x s y z"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 613,
+   "pdf_page": 634,
+   "text": "7 8 t x s y z"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 613,
+   "pdf_page": 634,
+   "text": "7 8 t x s y z"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 613,
+   "pdf_page": 634,
+   "text": "7 8 t x s y z"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 613,
+   "pdf_page": 634,
+   "text": "7 8 t x s y z"
+  },
+  {
+   "type": "figure-caption",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 613,
+   "pdf_page": 634,
+   "text": "Figure 22.4 The execution of the Bellman-Ford algorithm. The source is vertex s . The d values appear within the vertices, and blue edges i ndicate predecessor values: if edge (u;v) is blue, then v: Ω = u. In this particular example, each pass relaxes the edges in the order"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 613,
+   "pdf_page": 634,
+   "text": "(t;x);.t;y/;.t;´/;.x;t/;.y;x/;.y;´/;.´;x/;.´;s/;.s; t/;.s;y/ . (a) The situation just before the first pass over the edges. (b)–(e) The situation after each successive pass over the e dges. Vertices whose shortest-path estimates and predecessors have changed due to a pass are highlighted in orange."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 613,
+   "pdf_page": 634,
+   "text": "The d and Ω values in part (e) are the final values. The Bellman-Ford algorithm returns TRUE in this example."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 613,
+   "pdf_page": 634,
+   "text": "The Bellman-Ford algorithm runs in O(V 2 C VE) time when the graph is represented by adjacency lists, since the initialization in line 1 takes Θ(V) time, each of the |V| − 1 passes over the edges in lines 234 takes Θ(V + E) time (examining |V| adjacency lists to find the |E| edges), and the for loop of lines 537 takes"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 613,
+   "pdf_page": 634,
+   "text": "O(V + E) time. Fewer than |V| − 1 passes over the edges sometimes suffice (see"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 613,
+   "pdf_page": 634,
+   "text": "Exercise 22.1-3), which is why we say O(V 2 C VE) time, rather than Θ(V 2 C VE) time. In the frequent case where |E| = Ω(V ) , we can express this running time as O(VE). Exercise 22.1-5 asks you to make the Bellman-Ford algorithm run in O(VE) time even when |E| = o(V) ."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 613,
+   "pdf_page": 634,
+   "text": "To prove the correctness of the Bellman-Ford algorithm, we start by showing that if there are no negative-weight cycles, the algorithm computes correct shortest-path weights for all vertices reachable from the source."
+  },
+  {
+   "type": "lemma",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 614,
+   "pdf_page": 635,
+   "text": "Lemma 22.2"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 614,
+   "pdf_page": 635,
+   "text": "Let G = (V;E) be a weighted, directed graph with source vertex s and weight function w W E ! R, and assume that G contains no negative-weight cycles that are reachable from s . Then, after the |V| − 1 iterations of the for loop of lines 234 of BELLMAN-FORD, v: d = i(s;v) for all vertices v that are reachable from s ."
+  },
+  {
+   "type": "proof",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 614,
+   "pdf_page": 635,
+   "text": "Proof We prove the lemma by appealing to the path-relaxation property. Consider any vertex v that is reachable from s , and let √D hv 0 ;v 1 ;:::;v k i, where v 0 = s and v k = v, be any shortest path from s to v. Because shortest paths are simple, p has at most |V| − 1 edges, and so k ≤ |V| − 1. Each of the |V| − 1 iterations of the for loop of lines 234 relaxes all |E| edges. Among the edges relaxed in the i th iteration, for i = 1;2;:::;k , is (v i −1 ;v i ). By the path-relaxation property, therefore, v: d = v k : d = i(s;v k ) = i(s;v) ."
+  },
+  {
+   "type": "corollary",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 614,
+   "pdf_page": 635,
+   "text": "Corollary 22.3"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 614,
+   "pdf_page": 635,
+   "text": "Let G = (V;E) be a weighted, directed graph with source vertex s and weight function w W E ! R. Then, for each vertex v 2 V , there is a path from s to v if and only if BELLMAN-FORD terminates with v: d < 1 when it is run on G."
+  },
+  {
+   "type": "proof",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 614,
+   "pdf_page": 635,
+   "text": "Proof The proof is left as Exercise 22.1-2."
+  },
+  {
+   "type": "theorem",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 614,
+   "pdf_page": 635,
+   "text": "Theorem 22.4 (Correctness of the Bellman-Ford algorithm)"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 614,
+   "pdf_page": 635,
+   "text": "Let BELLMAN-FORD be run on a weighted, directed graph G = (V;E) with source vertex s and weight function w W E ! R. If G contains no negative-weight cycles that are reachable from s , then the algorithm returns TRUE , v: d = i(s;v) for all vertices v 2 V , and the predecessor subgraph G − is a shortest-paths tree rooted at s . If G does contain a negative-weight cycle reachable from s , then the algorithm returns FALSE ."
+  },
+  {
+   "type": "proof",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 614,
+   "pdf_page": 635,
+   "text": "Proof Suppose that graph G contains no negative-weight cycles that are reachable from the source s . We first prove the claim that at termination, v: d = i(s;v) for all vertices v 2 V . If vertex v is reachable from s , then Lemma 22.2 proves this claim. If v is not reachable from s , then the claim follows from the no-path property. Thus, the claim is proven. The predecessor-subgraph property, along with the claim, implies that G − is a shortest-paths tree. Now we use the claim to show that BELLMAN-FORD returns TRUE . At termination, for all edges (u;v) 2 E we have v: d = i(s;v)"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 614,
+   "pdf_page": 635,
+   "text": "≤ i(s;u) + w(u;v) (by the triangle inequality)"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 614,
+   "pdf_page": 635,
+   "text": "D u: d + w(u;v); and so none of the tests in line 6 causes BELLMAN-FORD to return FALSE. Therefore, it returns TRUE ."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 615,
+   "pdf_page": 636,
+   "text": "Now, suppose that graph G contains a negative-weight cycle reachable from the source s . Let this cycle be c = hv 0 ;v 1 ;:::;v k i, where v 0 = v k , in which case we have k X i D1 w(v i −1 ;v i )<0: (22.1)"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 615,
+   "pdf_page": 636,
+   "text": "Assume for the purpose of contradiction that the Bellman-Ford algorithm returns"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 615,
+   "pdf_page": 636,
+   "text": "TRUE. Thus, v i : d ≤ v i −1 : d + w(v i −1 ;v i ) for i = 1;2;:::;k . Summing the inequalities around cycle c gives k X i D1 v i : d ≤ k X i D1"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 615,
+   "pdf_page": 636,
+   "text": "(v i −1 : d + w(v i −1 ;v i ))"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 615,
+   "pdf_page": 636,
+   "text": "D k X i D1 v i −1 : d C k X i D1 w(v i −1 ;v i ):"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 615,
+   "pdf_page": 636,
+   "text": "Since v 0 = v k , each vertex in c appears exactly once in each of the summations P k i D1 v i : d and P k i D1 v i −1 : d, and so k X i D1 v i : d = k X i D1 v i −1 : d :"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 615,
+   "pdf_page": 636,
+   "text": "Moreover, by Corollary 22.3, v i : d is finite for i = 1;2;:::;k . Thus, 0 ≤ k X i D1 w(v i −1 ;v i ); which contradicts inequality (22.1). We conclude that the Bellman-Ford algorithm returns TRUE if graph G contains no negative-weight cycles reachable from the source, and FALSE otherwise."
+  },
+  {
+   "type": "exercise",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 615,
+   "pdf_page": 636,
+   "text": "22.1-1 Run the Bellman-Ford algorithm on the directed graph of Figure 22.4, using vertex ´ as the source. In each pass, relax edges in the same order as in the figure, and show the d and Ω values after each pass. Now, change the weight of e dge .´;x/ to 4 and run the algorithm again, using s as the source."
+  },
+  {
+   "type": "exercise",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 615,
+   "pdf_page": 636,
+   "text": "22.1-2 Prove Corollary 22.3."
+  },
+  {
+   "type": "exercise",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 616,
+   "pdf_page": 637,
+   "text": "22.1-3 Given a weighted, directed graph G = (V;E) with no negative-weight cycles, let m be the maximum over all vertices v 2 V of the minimum number of edges in a shortest path from the source s to v. (Here, the shortest path is by weight, not the number of edges.) Suggest a simple change to the Bellman-Ford algorithm that allows it to terminate in m + 1 passes, even if m is not known in advance."
+  },
+  {
+   "type": "exercise",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 616,
+   "pdf_page": 637,
+   "text": "22.1-4 Modify the Bellman-Ford algorithm so that it sets v: d to −1 for all vertices v for which there is a negative-weight cycle on some path from the source to v."
+  },
+  {
+   "type": "exercise",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 616,
+   "pdf_page": 637,
+   "text": "22.1-5 Suppose that the graph given as input to the Bellman-Ford algorithm is represented with a list of |E| edges, where each edge indicates the vertices it leaves and enters, along with its weight. Argue that the Bellman-Ford algorithm runs in O(VE) time without the constraint that |E| = Ω(V ) . Modify the Bellman-Ford algorithm so that it runs in O(VE) time in all cases when the input graph is represent ed with adjacency lists."
+  },
+  {
+   "type": "exercise",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 616,
+   "pdf_page": 637,
+   "text": "22.1-6 Let G = (V;E) be a weighted, directed graph with weight function w W E ! R."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.2",
+   "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
+   "printed_page": 616,
+   "pdf_page": 637,
+   "text": "Give an O(VE)-time algorithm to find, for all vertices v 2 V , the value i − (v) = min fi(u;v) W u 2 V g."
+  },
+  {
+   "type": "exercise",
+   "chapter": 22,
+   "section": "22.1",
+   "section_title": "22.1 The Bellman-Ford algorithm",
+   "printed_page": 616,
+   "pdf_page": 637,
+   "text": "22.1-7 Suppose that a weighted, directed graph G = (V;E) contains a negative-weight cycle. Give an efficient algorithm to list the vertices of one such cycle. Prove that your algorithm is correct."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.2",
+   "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
+   "printed_page": 616,
+   "pdf_page": 637,
+   "text": "In this section, we introduce one further restricti on on weighted, directed graphs: they are acyclic. That is, we are concerned with we ighted dags. Shortest paths are always well defined in a dag, since even if there are negative-weight edges, no negative-weight cycles can exist. We9ll see that if the edges of a weighted dag G = (V;E) are relaxed according to a topological sort of its vertices, it takes only Θ(V + E) time to compute shortest paths from a single source."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.2",
+   "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
+   "printed_page": 616,
+   "pdf_page": 637,
+   "text": "The algorithm starts by topologically sorting the d ag (see Section 20.4) to impose a linear ordering on the vertices. If the dag contains a path from vertex u to vertex v, then u precedes v in the topological sort. The DAG-SHORTEST-PATHS procedure makes just one pass over the vertices in the topologically sorted order."
+  },
+  {
+   "type": "pseudocode",
+   "chapter": 22,
+   "section": "22.2",
+   "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
+   "printed_page": 617,
+   "pdf_page": 638,
+   "algo_name": "DAG-SHORTEST-PATHS",
+   "signature": "DAG-SHORTEST-PATHS",
+   "lines": [
+    {
+     "n": 1,
+     "code": "topologically sort the vertices of G"
+    },
+    {
+     "n": 2,
+     "code": "INITIALIZE-SINGLE-SOURCE  (G;s)"
+    },
+    {
+     "n": 3,
+     "code": "for each vertex u 2 G: V , taken in topologically sorted order"
+    },
+    {
+     "n": 4,
+     "code": "for each vertex v in G: Adj[u]"
+    },
+    {
+     "n": 5,
+     "code": "RELAX(u;v;w)"
+    }
+   ],
+   "text": "1 topologically sort the vertices of G\n2 INITIALIZE-SINGLE-SOURCE  (G;s)\n3 for each vertex u 2 G: V , taken in topologically sorted order\n4 for each vertex v in G: Adj[u]\n5 RELAX(u;v;w)"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.2",
+   "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
+   "printed_page": 617,
+   "pdf_page": 638,
+   "text": "As it processes each vertex, it relaxes each edge that leaves the vertex. Figure 22.5 shows the execution of this algorithm."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.2",
+   "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
+   "printed_page": 617,
+   "pdf_page": 638,
+   "text": "DAG-SHORTEST-PATHS (G;w;s)"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.2",
+   "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
+   "printed_page": 617,
+   "pdf_page": 638,
+   "text": "Let9s analyze the running time of this algorithm. As shown in Section 20.4, the topological sort of line 1 takes Θ(V + E) time. The call of INITIALIZE-SINGLE- SOURCE in line 2 takes Θ(V) time. The for loop of lines 335 makes one iteration per vertex. Altogether, the for loop of lines 435 relaxes each edge exactly once."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.2",
+   "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
+   "printed_page": 617,
+   "pdf_page": 638,
+   "text": "(We have used an aggregate analysis here.) Because each iteration of the inner for loop takes Θ(1) time, the total running time is Θ(V + E), which is linear in the size of an adjacency-list representation of the graph."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.2",
+   "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
+   "printed_page": 617,
+   "pdf_page": 638,
+   "text": "The following theorem shows that the DAG-SHORTEST-PATHS procedure correctly computes the shortest paths."
+  },
+  {
+   "type": "theorem",
+   "chapter": 22,
+   "section": "22.2",
+   "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
+   "printed_page": 617,
+   "pdf_page": 638,
+   "text": "Theorem 22.5"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.2",
+   "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
+   "printed_page": 617,
+   "pdf_page": 638,
+   "text": "If a weighted, directed graph G = (V;E) has source vertex s and no cycles, then at the termination of the DAG-SHORTEST-PATHS procedure, v: d = i(s;v) for all vertices v 2 V , and the predecessor subgraph G − is a shortest-paths tree."
+  },
+  {
+   "type": "proof",
+   "chapter": 22,
+   "section": "22.2",
+   "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
+   "printed_page": 617,
+   "pdf_page": 638,
+   "text": "Proof We first show that v: d = i(s;v) for all vertices v 2 V at termination."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.2",
+   "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
+   "printed_page": 617,
+   "pdf_page": 638,
+   "text": "If v is not reachable from s , then v: d = i(s;v) = 1 by the no-path property."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.2",
+   "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
+   "printed_page": 617,
+   "pdf_page": 638,
+   "text": "Now, suppose that v is reachable from s , so that there is a shortest path √D hv 0 ;v 1 ;:::;v k i, where v 0 = s and v k = v. Because DAG-SHORTEST-PATHS processes the vertices in topologically sorted order, it relaxes the edges on p in the order (v 0 ;v 1 );.v 1 ;v 2 /;:::;.v k−1 ;v k /. The path-relaxation property implies that v i : d = i(s;v i ) at termination for i = 0;1;:::;k . Finally, by the predecessorsubgraph property, G − is a shortest-paths tree."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.2",
+   "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
+   "printed_page": 617,
+   "pdf_page": 638,
+   "text": "A useful application of this algorithm arises in de termining critical paths in PERT chart 2 analysis. A job consists of several tasks. Each tas k takes a certain 2 \"PERT\" is an acronym for \"program evaluation and review technique.\""
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.2",
+   "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
+   "printed_page": 618,
+   "pdf_page": 639,
+   "text": "2 ∞ ∞ 0 5"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.2",
+   "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
+   "printed_page": 618,
+   "pdf_page": 639,
+   "text": "∞ ∞ ∞ 7 31 32"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.2",
+   "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
+   "printed_page": 618,
+   "pdf_page": 639,
+   "text": "(a) x t s r y z"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.2",
+   "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
+   "printed_page": 618,
+   "pdf_page": 639,
+   "text": "(c) x t s r y z"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.2",
+   "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
+   "printed_page": 618,
+   "pdf_page": 639,
+   "text": "(e) x t s r y z"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.2",
+   "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
+   "printed_page": 618,
+   "pdf_page": 639,
+   "text": "(g) x t s r y z"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.2",
+   "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
+   "printed_page": 618,
+   "pdf_page": 639,
+   "text": "(b) x t s r y z"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.2",
+   "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
+   "printed_page": 618,
+   "pdf_page": 639,
+   "text": "(d) x t s r y z"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.2",
+   "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
+   "printed_page": 618,
+   "pdf_page": 639,
+   "text": "(f) x t s r y z"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.2",
+   "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
+   "printed_page": 618,
+   "pdf_page": 639,
+   "text": "∞ ∞ 0 ∞ ∞ ∞"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.2",
+   "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
+   "printed_page": 618,
+   "pdf_page": 639,
+   "text": "2 5 7 31 32 ∞ ∞ ∞ 2 6 0 ∞ 0 6 6 4 2"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.2",
+   "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
+   "printed_page": 618,
+   "pdf_page": 639,
+   "text": "2 5 7 31 –2 ∞ 0 2 6 5 4 2 5 7 31 –2"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.2",
+   "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
+   "printed_page": 618,
+   "pdf_page": 639,
+   "text": "∞ 0 2 6 5 3"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.2",
+   "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
+   "printed_page": 618,
+   "pdf_page": 639,
+   "text": "∞ 0 2 6 5 3"
+  },
+  {
+   "type": "figure-caption",
+   "chapter": 22,
+   "section": "22.2",
+   "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
+   "printed_page": 618,
+   "pdf_page": 639,
+   "text": "Figure 22.5 The execution of the algorithm for shortest paths i n a directed acyclic graph. The vertices are topologically sorted from left to righ t. The source vertex is s . The d values appear within the vertices, and blue edges indicate the Ω values. (a) The situation before the first iteration of the for loop of lines 335. (b)–(g) The situation after each iteration of the for loop of lines 335."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.2",
+   "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
+   "printed_page": 618,
+   "pdf_page": 639,
+   "text": "Blue vertices have had their outgoing edges relaxed. The vertex highlighted in orange was used as u in that iteration. Each edge highlighted in orange caused a d value to change when it was relaxed in that iteration. The values shown in part (g) are the final values. amount of time, and some tasks must be completed be fore others can be started."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.2",
+   "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
+   "printed_page": 618,
+   "pdf_page": 639,
+   "text": "For example, if the job is to build a house, then the foundation must be completed before starting to frame the exterior walls, which must be completed before starting on the roof. Some tasks require more than one other task to be completed before they can be started: before the drywall can be inst alled over the wall framing, both the electrical system and plumbing must be installed. A dag models the tasks and dependencies. Edges represent tasks, with the w eight of an edge indicating the time required to perform the task. Vertices rep resent \"milestones,\" which are achieved when all the tasks represented by the edges entering the vertex have been completed. If edge (u;v) enters vertex v and edge (v;x) leaves v, then task (u;v) must be completed before task (v;x) is started. A path through this dag represents a sequence of tasks that must be performed in a particular order. A critical path is a longest path through the dag, corresponding to the longest time to perform any sequence of tasks. Thus, the weight of a critical path provides a lower bound on the total time to perform all the tasks, even if as many tasks as possible are performed simultaneously. You can find a critical path by either"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.2",
+   "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
+   "printed_page": 619,
+   "pdf_page": 640,
+   "text": "• negating the edge weights and running DAG-SHORTEST-PATHS, or • running DAG-SHORTEST-PATHS, but replacing \" 1\" by \" −1\" in line 2 of INITIALIZE-SINGLE-SOURCE and <>= by <<= in the RELAX procedure."
+  },
+  {
+   "type": "exercise",
+   "chapter": 22,
+   "section": "22.2",
+   "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
+   "printed_page": 619,
+   "pdf_page": 640,
+   "text": "22.2-1 Show the result of running DAG-SHORTEST-PATHS on the directed acyclic graph of Figure 22.5, using vertex r as the source."
+  },
+  {
+   "type": "exercise",
+   "chapter": 22,
+   "section": "22.2",
+   "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
+   "printed_page": 619,
+   "pdf_page": 640,
+   "text": "22.2-2 Suppose that you change line 3 of DAG-SHORTEST-PATHS to read"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.2",
+   "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
+   "printed_page": 619,
+   "pdf_page": 640,
+   "text": "3 for the first |V| − 1 vertices, taken in topologically sorted order"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.2",
+   "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
+   "printed_page": 619,
+   "pdf_page": 640,
+   "text": "Show that the procedure remains correct."
+  },
+  {
+   "type": "exercise",
+   "chapter": 22,
+   "section": "22.2",
+   "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
+   "printed_page": 619,
+   "pdf_page": 640,
+   "text": "22.2-3 An alternative way to represent a PERT chart looks more like the dag of Figure 20.7 on page 574. Vertices represent tasks and edges represent sequencing constraints, that is, edge (u;v) indicates that task u must be performed before task v. Vertices, not edges, have weights. Modify the DAG-SHORTEST-PATHS procedure so that it finds a longest path in a directed acyclic graph with weighted vertices in linear time."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.2",
+   "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
+   "printed_page": 619,
+   "pdf_page": 640,
+   "text": "? 22.2-4"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.2",
+   "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
+   "printed_page": 619,
+   "pdf_page": 640,
+   "text": "Give an efficient algorithm to count the total number of paths in a directed acyclic graph. The count should include all paths between all pairs of vertices and all paths with 0 edges. Analyze your algorithm."
+  },
+  {
+   "type": "pseudocode",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 620,
+   "pdf_page": 641,
+   "algo_name": "DIJKSTRA",
+   "signature": "DIJKSTRA",
+   "lines": [
+    {
+     "n": 1,
+     "code": "INITIALIZE-SINGLE-SOURCE  (G;s)"
+    },
+    {
+     "n": 2,
+     "code": "S = ;"
+    },
+    {
+     "n": 3,
+     "code": "Q = ;"
+    },
+    {
+     "n": 4,
+     "code": "for each vertex u 2 G: V"
+    },
+    {
+     "n": 5,
+     "code": "INSERT(Q;u)"
+    },
+    {
+     "n": 6,
+     "code": "while Q ≠ ;"
+    },
+    {
+     "n": 7,
+     "code": "u DEXTRACT-MIN (Q)"
+    },
+    {
+     "n": 8,
+     "code": "S = S [ fug"
+    },
+    {
+     "n": 9,
+     "code": "for each vertex v in G: Adj[u]"
+    },
+    {
+     "n": 10,
+     "code": "RELAX(u;v;w)"
+    },
+    {
+     "n": 11,
+     "code": "if the call of RELAX decreased v: d"
+    },
+    {
+     "n": 12,
+     "code": "DECREASE-KEY (Q;v;v:  d)"
+    }
+   ],
+   "text": "1 INITIALIZE-SINGLE-SOURCE  (G;s)\n2 S = ;\n3 Q = ;\n4 for each vertex u 2 G: V\n5 INSERT(Q;u)\n6 while Q ≠ ;\n7 u DEXTRACT-MIN (Q)\n8 S = S [ fug\n9 for each vertex v in G: Adj[u]\n10 RELAX(u;v;w)\n11 if the call of RELAX decreased v: d\n12 DECREASE-KEY (Q;v;v:  d)"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 620,
+   "pdf_page": 641,
+   "text": "Dijkstra9s algorithm solves the single-source shortest-paths problem on a weighted, directed graph G = (V;E) , but it requires nonnegative weights on all edges: w(u;v) ≥ 0 for each edge (u;v) 2 E. As we shall see, with a good implementation, the running time of Dijkstra9s algorithm is lower than that of the Bellman-Ford algorithm."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 620,
+   "pdf_page": 641,
+   "text": "You can think of Dijkstra9s algorithm as generalizing breadth-first search to weighted graphs. A wave emanates from the source, and the first time that a wave arrives at a vertex, a new wave emanates from that vertex. Whereas breadth-first search operates as if each wave takes unit time to traverse an edge, in a weighted graph, the time for a wave to traverse an edge is g iven by the edge9s weight. Because a shortest path in a weighted graph might not have the fewest edges, a simple, first-in, first-out queue won9t suffice for choosing the next vertex from which to send out a wave."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 620,
+   "pdf_page": 641,
+   "text": "Instead, Dijkstra9s algorithm maintains a set S of vertices whose final shortestpath weights from the source s have already been determined. The algorithm re- peatedly selects the vertex u 2 V − S with the minimum shortest-path estimate, adds u into S , and relaxes all edges leaving u. The procedure DIJKSTRA replaces the first-in, first-out queue of breadth-first search by a min-priority queue Q of vertices, keyed by their d values."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 620,
+   "pdf_page": 641,
+   "text": "DIJKSTRA (G;w;s)"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 620,
+   "pdf_page": 641,
+   "text": "Dijkstra9s algorithm relaxes edges as shown in Figure 22.6. Line 1 initializes the d and ] values in the usual way, and line 2 initializes the set S to the empty set."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 620,
+   "pdf_page": 641,
+   "text": "The algorithm maintains the invariant that Q = V − S at the start of each iteration"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 621,
+   "pdf_page": 642,
+   "text": "6 4 3 2 9 s t x y z"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 621,
+   "pdf_page": 642,
+   "text": "6 4 3 2 9 s t x y z"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 621,
+   "pdf_page": 642,
+   "text": "6 4 3 2 9 s t x y z"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 621,
+   "pdf_page": 642,
+   "text": "6 4 3 2 9 s t x y z"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 621,
+   "pdf_page": 642,
+   "text": "6 4 3 2 9 s t x y z"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 621,
+   "pdf_page": 642,
+   "text": "6 4 3 2 9 s t x y z"
+  },
+  {
+   "type": "figure-caption",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 621,
+   "pdf_page": 642,
+   "text": "Figure 22.6 The execution of Dijkstra9s algorithm. The source s is the leftmost vertex. The shortest-path estimates appear within the vertices, and blue edges indicate predecessor values. Blue vertices belong to the set S , and tan vertices are in the min-priority queue Q = V − S . (a) The situation just before the first iteration of the while loop of lines 6312. (b)–(f) The situation after each successive iteration of the while loop. In each part, the vertex highlighted in orang e was chosen as vertex u in line 7, and each edge highlighted in orange caused a d value and a predecessor to change when the edge was relaxed. The d values and predecessors shown in part (f) are the final values. of the while loop of lines 6312. Lines 335 initialize the min-priority queue Q to contain all the vertices in V . Since S = ; at that time, the invariant is true upon first reaching line 6. Each time through the while loop of lines 6312, line 7 extracts a vertex u from Q = V − S and line 8 adds it to set S , thereby maintaining the invariant. (The first time through this loop, u = s .) Vertex u, therefore, has the smallest shortest-path estimate of any vertex in V − S . Then, lines 9312 relax each edge (u;v) leaving u, thus updating the estimate v: d and the predecessor v:Ω if the shortest path to v found so far improves by going through u. Whenever a relaxation step changes the d and Ω values, the call to DECREASE-KEY in line 12 updates the min-priority queue. The algorithm never inserts vertices into Q after the for loop of lines 435, and each vertex is extracted from Q and added to S exactly once, so that the while loop of lines 6312 iterates exactly |V| times."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 621,
+   "pdf_page": 642,
+   "text": "Because Dijkstra9s algorithm always chooses the \"lightest\" or \"closest\" vertex in V − S to add to set S , you can think of it as using a greedy strategy. Chapter 15 explains greedy strategies in detail, but you need not have read that chapter to understand Dijkstra9s algorithm. Greedy strategies do not always yield optimal"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 622,
+   "pdf_page": 643,
+   "text": "S u y s x"
+  },
+  {
+   "type": "figure-caption",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 622,
+   "pdf_page": 643,
+   "text": "Figure 22.7 The proof of Theorem 22.6. Vertex u is selected to be added into set S in line 7 of DIJKSTRA . Vertex y is the first vertex on a shortest path from the source s to vertex u that is not in set S , and x 2 S is y9s predecessor on that shortest path. The subpath from y to u may or may not re-enter set S . results in general, but as the following theorem and its corollary show, Dijkstra9s algorithm does indeed compute shortest paths. The key is to show that u: d = i(s;u) each time it adds a vertex u to set S ."
+  },
+  {
+   "type": "theorem",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 622,
+   "pdf_page": 643,
+   "text": "Theorem 22.6 (Correctness of Dijkstra’s algorithm)"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 622,
+   "pdf_page": 643,
+   "text": "Dijkstra9s algorithm, run on a weighted, directed graph G = (V;E) with nonnegative weight function w and source vertex s , terminates with u: d = i(s;u) for all vertices u 2 V ."
+  },
+  {
+   "type": "proof",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 622,
+   "pdf_page": 643,
+   "text": "Proof We will show that at the start of each iteration of the while loop of lines"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 622,
+   "pdf_page": 643,
+   "text": "6312, we have v: d = i(s;v) for all v 2 S . The algorithm terminates when S = V , so that v: d = i(s;v) for all v 2 V ."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 622,
+   "pdf_page": 643,
+   "text": "The proof is by induction on the number of iteratio ns of the while loop, which equals |S| at the start of each iteration. There are two bases : for |S| = 0, so that S = ; and the claim is trivially true, and for |S| = 1, so that S = fs g and s: d = i(s;s) = 0."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 622,
+   "pdf_page": 643,
+   "text": "For the inductive step, the inductive hypothesis is that v: d = i(s;v) for all v 2 S . The algorithm extracts vertex u from V − S . Because the algorithm adds u into S , we need to show that u: d = i(s;u) at that time. If there is no path from s to u, then we are done, by the no-path property. If there is a path from s to u, then, as Figure 22.7 shows, let y be the first vertex on a shortest path from s to u that is not in S , and let x 2 S be the predecessor of y on that shortest path. (We could have y = u or x = s .) Because y appears no later than u on the shortest path and all edge weights are nonnegative, we have i(s;y) ≤ i(s;u) . Because the call of EXTRACT-MIN in line 7 returned u as having the minimum d value in V − S , we also have u: d ≤ y: d, and the upper-bound property gives i(s;u) ≤ u: d."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 622,
+   "pdf_page": 643,
+   "text": "Since x 2 S , the inductive hypothesis implies that x: d = i(s;x) . During the iteration of the while loop that added x into S , edge (x;y) was relaxed. By the convergence property, y: d received the value of i(s;y) at that time. Thus, we have i(s;y) ≤ i(s;u) ≤ u: d ≤ y: d and y: d = i(s;y); so that i(s;y) = i(s;u) = u: d = y: d :"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 623,
+   "pdf_page": 644,
+   "text": "Hence, u: d = i(s;u), and by the upper-bound property, this value never changes again."
+  },
+  {
+   "type": "corollary",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 623,
+   "pdf_page": 644,
+   "text": "Corollary 22.7"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 623,
+   "pdf_page": 644,
+   "text": "After Dijkstra9s algorithm is run on a weighted, directed graph G = (V;E) with nonnegative weight function w and source vertex s , the predecessor subgraph G − is a shortest-paths tree rooted at s ."
+  },
+  {
+   "type": "proof",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 623,
+   "pdf_page": 644,
+   "text": "Proof Immediate from Theorem 22.6 and the predecessor-subgraph property."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 623,
+   "pdf_page": 644,
+   "text": "Analysis How fast is Dijkstra9s algorithm? It maintains the min-priority queue Q by calling three priority-queue operations: INSERT (in line 5), EXTRACT-MIN (in line 7), and DECREASE-KEY (in line 12). The algorithm calls both INSERT and EXTRACT- MIN once per vertex. Because each vertex u 2 V is added to set S exactly once, each edge in the adjacency list Adj[u] is examined in the for loop of lines 9312 exactly once during the course of the algorithm. Since the total number of edges in all the adjacency lists is |E|, this for loop iterates a total of |E| times, and thus the algorithm calls DECREASE-KEY at most |E| times overall. (Observe once again that we are using aggregate analysis.)"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 623,
+   "pdf_page": 644,
+   "text": "Just as in Prim9s algorithm, the running time of Dijkstra9s algorithm depends on the specific implementation of the min-priority queue Q. A simple implementation takes advantage of the vertices being numbered 1 to |V|: simply store v: d in the vth entry of an array. Each INSERT and DECREASE-KEY operation takes O(1) time, and each EXTRACT-MIN operation takes O(V) time (since it has to search through the entire array), for a total time of O(V 2 + E) = O(V 2 )."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 623,
+   "pdf_page": 644,
+   "text": "If the graph is sufficiently sparse—in particular, E = o(V 2 = lg V)4you can improve the running time by implementing the min-priority queue with a binary min-heap that includes a way to map between vertices and their corresponding heap elements. Each EXTRACT-MIN operation then takes O(lg V) time. As before, there are |V| such operations. The time to build the binary min-heap is O(V) ."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 623,
+   "pdf_page": 644,
+   "text": "(As noted in Section 21.2, you don9t even need to call BUILD-MIN-HEAP.) Each"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 623,
+   "pdf_page": 644,
+   "text": "DECREASE-KEY operation takes O(lg V) time, and there are still at most |E| such operations. The total running time is therefor e O..V + E/ lg V/ , which is O(E lg V) in the typical case that |E| = Ω(V ) . This running time improves upon the straightforward O(V 2 )-time implementation if E = o(V 2 = lg V) ."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 624,
+   "pdf_page": 645,
+   "text": "By implementing the min-priority queue with a Fibonacci heap (see page 478), you can improve the running time to O(V lg V + E). The amortized cost of each of the |V| EXTRACT-MIN operations is O(lg V) , and each DECREASE-KEY call, of which there are at most |E|, takes only O(1) amortized time. Historically, the development of Fibonacci heaps was motivated by the observation that Dijkstra9s algorithm typically makes many more DECREASE-KEY calls than EXTRACT-MIN calls, so that any method of reducing the amortized time of each DECREASE-KEY operation to o(lg V) without increasing the amortized time of EXTRACT-MIN would yield an asymptotically faster implementation than with binary heaps."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 624,
+   "pdf_page": 645,
+   "text": "Dijkstra9s algorithm resembles both breadth-first search (see Section 20.2) and Prim9s algorithm for computing minimum spanning trees (see Section 21.2). It is like breadth-first search in that set S corresponds to the set of black vertices in a breadth-first search. Just as vertices in S have their final shortest-path weights, so do black vertices in a breadth-first search have their correct breadth-first distances."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 624,
+   "pdf_page": 645,
+   "text": "Dijkstra9s algorithm is like Prim9s algorithm in that both algorithms use a minpriority queue to find the \"lightest\" vertex outside a given set (the set S in Dijkstra9s algorithm and the tree being grown in Prim9s algorithm), add this vertex into the set, and adjust the weights of the remaining vertices outside the set accordingly."
+  },
+  {
+   "type": "exercise",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 624,
+   "pdf_page": 645,
+   "text": "22.3-1 Run Dijkstra9s algorithm on the directed graph of Figure 22.2, first using vertex s as the source and then using vertex ´ as the source. In the style of Figure 22.6, show the d and Ω values and the vertices in set S after each iteration of the while loop."
+  },
+  {
+   "type": "exercise",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 624,
+   "pdf_page": 645,
+   "text": "22.3-2 Give a simple example of a directed graph with negative-weight edges for which"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 624,
+   "pdf_page": 645,
+   "text": "Dijkstra9s algorithm produces an incorrect answer. Why doesn9t the proof of Theorem 22.6 go through when negative-weight edges are allowed?"
+  },
+  {
+   "type": "exercise",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 624,
+   "pdf_page": 645,
+   "text": "22.3-3 Suppose that you change line 6 of Dijkstra9s algorithm to read"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 624,
+   "pdf_page": 645,
+   "text": "6 while |Q| >1"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 624,
+   "pdf_page": 645,
+   "text": "This change causes the while loop to execute |V| − 1 times instead of |V| times. Is this proposed algorithm correct?"
+  },
+  {
+   "type": "exercise",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 625,
+   "pdf_page": 646,
+   "text": "22.3-4 Modify the DIJKSTRA procedure so that the priority queue Q is more like the queue in the BFS procedure in that it contains only vertices that have been reached from source s so far: Q ⊆ V − S and v 2 Q implies v: d ≠ 1."
+  },
+  {
+   "type": "exercise",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 625,
+   "pdf_page": 646,
+   "text": "22.3-5 Professor Gaedel has written a program that he claims implements Dijkstra9s algorithm. The program produces v: d and v:Ω for each vertex v 2 V . Give an"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 625,
+   "pdf_page": 646,
+   "text": "O(V + E)-time algorithm to check the output of the professor9s program. It should determine whether the d and Ω attributes match those of some shortest-paths tree."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 625,
+   "pdf_page": 646,
+   "text": "You may assume that all edge weights are nonnegative."
+  },
+  {
+   "type": "exercise",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 625,
+   "pdf_page": 646,
+   "text": "22.3-6 Professor Newman thinks that he has worked out a si mpler proof of correctness for Dijkstra9s algorithm. He claims that Dijkstra9s algorithm relaxes the edges of every shortest path in the graph in the order in which they appear on the path, and therefore the path-relaxation property applies to every vertex reachable from the source. Show that the professor is mistaken by cons tructing a directed graph for which Dijkstra9s algorithm relaxes the edges of a shortest path out of order."
+  },
+  {
+   "type": "exercise",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 625,
+   "pdf_page": 646,
+   "text": "22.3-7 Consider a directed graph G = (V;E) on which each edge (u;v) 2 E has an associated value r(u;v) , which is a real number in the range 0 ≤ r(u;v) ≤ 1 that represents the reliability of a communication chann el from vertex u to vertex v."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 625,
+   "pdf_page": 646,
+   "text": "Interpret r(u;v) as the probability that the channel from u to v will not fail, and assume that these probabilities are independent. Give an efficient algorithm to find the most reliable path between two given vertices."
+  },
+  {
+   "type": "exercise",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 625,
+   "pdf_page": 646,
+   "text": "22.3-8 Let G = (V;E) be a weighted, directed graph with positive weight function w W E ! f1;2;:::;W g for some positive integer W , and assume that no two vertices have the same shortest-path weights from source vertex s . Now define an unweighted, directed graph G 0 = (V [ V 0 ;E 0 ) by replacing each edge (u;v) 2 E with w(u;v) unit-weight edges in series. How many vertices does G 0 have? Now suppose that you run a breadth-first search on G 0 . Show that the order in which the breadth-first search of G 0 colors vertices in V black is the same as the order in which Dijkstra9s algorithm extracts the vertices of V from the priority queue when it runs on G."
+  },
+  {
+   "type": "exercise",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 625,
+   "pdf_page": 646,
+   "text": "22.3-9 Let G = (V;E) be a weighted, directed graph with nonnegative weig ht function w W E ! f0;1;:::;W g for some nonnegative integer W . Modify Dijkstra9s algo-"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 626,
+   "pdf_page": 647,
+   "text": "rithm to compute the shortest paths from a given so urce vertex s in O(WV + E) time."
+  },
+  {
+   "type": "exercise",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 626,
+   "pdf_page": 647,
+   "text": "22.3-10 Modify your algorithm from Exercise 22.3-9 to run in O..V + E/ lg W/ time."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 626,
+   "pdf_page": 647,
+   "text": "(Hint: How many distinct shortest-path estimates can V − S contain at any point in time?)"
+  },
+  {
+   "type": "exercise",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 626,
+   "pdf_page": 647,
+   "text": "22.3-11 Suppose that you are given a weighted, directed graph G = (V;E) in which edges that leave the source vertex s may have negative weights, all other edge weights are nonnegative, and there are no negative-weight cycles. Argue that Dijkstra9s algorithm correctly finds shortest paths from s in this graph."
+  },
+  {
+   "type": "exercise",
+   "chapter": 22,
+   "section": "22.3",
+   "section_title": "22.3 Dijkstra’s algorithm",
+   "printed_page": 626,
+   "pdf_page": 647,
+   "text": "22.3-12 Suppose that you have a weighted directed graph G = (V;E) in which all edge weights are positive real values in the range [C; 2C ] for some positive constant C ."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 626,
+   "pdf_page": 647,
+   "text": "Modify Dijkstra9s algorithm so that it runs in O(V + E) time."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 626,
+   "pdf_page": 647,
+   "text": "Chapter 29 studies the general linear-programming problem, showing how to optimize a linear function subject to a set of linear inequalities. This section in- vestigates a special case of linear programming tha t reduces to finding shortest paths from a single source. The Bellman-Ford algorithm then solves the resulting single-source shortest-paths problem, thereby also solving the linear-programming problem."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 626,
+   "pdf_page": 647,
+   "text": "Linear programming"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 626,
+   "pdf_page": 647,
+   "text": "In the general linear-programming problem, the input is an m × n matrix A, an m-vector b, and an n-vector c . The goal is to find a vector x of n elements that maximizes the objective function P n i D1 c i x i subject to the m constraints given by Ax ≤ b."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 626,
+   "pdf_page": 647,
+   "text": "The most popular method for solving linear programs is the simplex algorithm, which Section 29.1 discusses. Although the simplex algorithm does not always run in time polynomial in the size of its input, there are other linear-programming algorithms that do run in polynomial time. We offer here two reasons to understand the setup of linear-programming problems. First, if you know that you can cast a given problem as a polynomial-sized linear-programming problem, then you immediately have a polynomial-time algorithm to solve the problem. Second, faster algorithms exist for many special cases of linear p rogramming. For example, the single-pair shortest-path problem (Exercise 22.4-4) and the maximum-flow problem (Exercise 24.1-5) are special cases of linear programming."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 627,
+   "pdf_page": 648,
+   "text": "Sometimes the objective function does not matter: it9s enough just to find any feasible solution, that is, any vector x that satisfies Ax ≤ b, or to determine that no feasible solution exists. This section focuses on one such feasibility problem."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 627,
+   "pdf_page": 648,
+   "text": "Systems of difference constraints"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 627,
+   "pdf_page": 648,
+   "text": "In a system of difference constraints, each row of the linear-programming matrix A contains one 1 and one −1, and all other entries of A are 0. Thus, the constraints given by Ax ≤ b are a set of m difference constraints involving n unknowns, in which each constraint is a simple linear inequality of the form x j − x i ≤ b k ; where 1 ≤ i;j ≤ n, i ≠ j , and 1 ≤ k ≤ m."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 627,
+   "pdf_page": 648,
+   "text": "For example, consider the problem of finding a 5-vector x = (x i ) that satisfies"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 627,
+   "pdf_page": 648,
+   "text": "1 −1 0 0 0"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 627,
+   "pdf_page": 648,
+   "text": "1 0 0 0 −1"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 627,
+   "pdf_page": 648,
+   "text": "0 1 0 0 −1"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 627,
+   "pdf_page": 648,
+   "text": "−1 0 1 0 0"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 627,
+   "pdf_page": 648,
+   "text": "−1 0 0 1 0"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 627,
+   "pdf_page": 648,
+   "text": "0 0 −1 1 0"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 627,
+   "pdf_page": 648,
+   "text": "0 0 −1 0 1"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 627,
+   "pdf_page": 648,
+   "text": "0 0 0 −1 1"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 627,
+   "pdf_page": 648,
+   "text": "ˇ x 1 x 2 x 3 x 4 x 5"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 627,
+   "pdf_page": 648,
+   "text": "This problem is equivalent to finding values for the unknowns x 1 ;x 2 ;x 3 ;x 4 ;x 5 , satisfying the following 8 difference constraints: x 1 − x 2 ≤ 0 , (22.2) x 1 − x 5 ≤ −1 , (22.3) x 2 − x 5 ≤ 1 , (22.4) x 3 − x 1 ≤ 5 , (22.5) x 4 − x 1 ≤ 4 , (22.6) x 4 − x 3 ≤ −1 , (22.7) x 5 − x 3 ≤ −3 , (22.8) x 5 − x 4 ≤ −3 . (22.9)"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 627,
+   "pdf_page": 648,
+   "text": "One solution to this problem is x = .−5; −3;0; −1; −4/, which you can verify directly by checking each inequality. In fact, this problem has more than one solution."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 628,
+   "pdf_page": 649,
+   "text": "Another is x 0 = .0;2;5;4;1/ . These two solutions are related: each component of x 0 is 5 larger than the corresponding component of x . This fact is not mere coincidence."
+  },
+  {
+   "type": "lemma",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 628,
+   "pdf_page": 649,
+   "text": "Lemma 22.8"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 628,
+   "pdf_page": 649,
+   "text": "Let x = (x 1 ;x 2 ;:::;x n ) be a solution to a system Ax ≤ b of difference constraints, and let d be any constant. Then x + d = (x 1 + d;x 2 + d;:::;x n + d) is a solution to Ax ≤ b as well."
+  },
+  {
+   "type": "proof",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 628,
+   "pdf_page": 649,
+   "text": "Proof For each x i and x j , we have (x j + d) − (x i + d) = x j − x i . Thus, if x satisfies Ax ≤ b, so does x + d ."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 628,
+   "pdf_page": 649,
+   "text": "Systems of difference constraints occur in various applications. For example, the unknowns x i might be times at which events are to occur. Each c onstraint states that at least a certain amount of time, or at most a certain amount of time, must elapse between two events. Perhaps the events are jobs to be performed during the assembly of a product. If the manufacturer applies an adhesive that takes 2 hours to set at time x 1 and has to wait until it sets to install a part at time x 2 , then there is a constraint that x 2 ≥ x 1 + 2 or, equivalently, that x 1 − x 2 ≤ −2. Alternatively, the manufacturer might require the part to be installed after the adhesive has been applied but no later than the time that the adhesiv e has set halfway. In this case, there is a pair of constraints x 2 ≥ x 1 and x 2 ≤ x 1 + 1 or, equivalently, x 1 − x 2 ≤ 0 and x 2 − x 1 ≤ 1."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 628,
+   "pdf_page": 649,
+   "text": "If all the constraints have nonnegative numbers on the right-hand side—that is, if b i ≥ 0 for i = 1;2;:::;m 4then finding a feasible solution is trivial: just set all the unknowns x i equal to each other. Then all the differences are 0, and every constraint is satisfied. The problem of finding a feasible solution to a system of difference constraints is interesting only if at least one constraint has b i <0 ."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 628,
+   "pdf_page": 649,
+   "text": "Constraint graphs"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 628,
+   "pdf_page": 649,
+   "text": "We can interpret systems of difference constraints from a graph-theoretic point of view. For a system Ax ≤ b of difference constraints, let9s view the m × n linear-programming matrix A as the transpose of an incidence matrix (see Exercise 20.1-7) for a graph with n vertices and m edges. Each vertex v i in the graph, for i = 1;2;:::;n , corresponds to one of the n unknown variables x i . Each directed edge in the graph corresponds to one of the m inequalities involving two unknowns."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 628,
+   "pdf_page": 649,
+   "text": "More formally, given a system Ax ≤ b of difference constraints, the corresponding constraint graph is a weighted, directed graph G = (V;E) , where"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 629,
+   "pdf_page": 650,
+   "text": "0 31 v 5 v 0 v 1 v 2 v 3 v 4"
+  },
+  {
+   "type": "figure-caption",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 629,
+   "pdf_page": 650,
+   "text": "Figure 22.8 The constraint graph corresponding to the system (2 2.2)–(22.9) of difference constraints. The value of i(v 0 ;v i ) appears in each vertex v i . One feasible solution to the system is x = .−5; −3;0; −1; −4/."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 629,
+   "pdf_page": 650,
+   "text": "V = fv 0 ;v 1 ;:::;v n g and E = f(v i ;v j ) W x j − x i ≤ b k is a constraint g"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 629,
+   "pdf_page": 650,
+   "text": "[ f(v 0 ;v 1 );.v 0 ;v 2 /;.v 0 ;v 3 /;:::;.v 0 ;v n /g :"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 629,
+   "pdf_page": 650,
+   "text": "The constraint graph includes the additional vertex v 0 , as we shall see shortly, to guarantee that the graph has some vertex that can r each all other vertices. Thus, the vertex set V consists of a vertex v i for each unknown x i , plus an additional vertex v 0 . The edge set E contains an edge for each difference constraint, pl us an edge (v 0 ;v i ) for each unknown x i . If x j − x i ≤ b k is a difference constraint, then the weight of edge (v i ;v j ) is w(v i ;v j ) = b k . The weight of each edge leaving v 0 is 0. Figure 22.8 shows the constraint graph for the system (22.2)–(22.9) of difference constraints."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 629,
+   "pdf_page": 650,
+   "text": "The following theorem shows how to solve a system of difference constraints by finding shortest-path weights in the corresponding constraint graph."
+  },
+  {
+   "type": "theorem",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 629,
+   "pdf_page": 650,
+   "text": "Theorem 22.9"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 629,
+   "pdf_page": 650,
+   "text": "Given a system Ax ≤ b of difference constraints, let G = (V;E) be the corresponding constraint graph. If G contains no negative-weight cycles, then x = .i(v 0 ;v 1 );i(v 0 ;v 2 );i(v 0 ;v 3 );:::;i(v 0 ;v n )/ (22.10) is a feasible solution for the system. If G contains a negative-weight cycle, then there is no feasible solution for the system."
+  },
+  {
+   "type": "proof",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 630,
+   "pdf_page": 651,
+   "text": "Proof We first show that if the constraint graph contains no negative-weight cycles, then equation (22.10) gives a feasible solution. Consider any edge"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 630,
+   "pdf_page": 651,
+   "text": "(v i ;v j ) 2 E. The triangle inequality implies that i(v 0 ;v j ) ≤ i(v 0 ;v i ) + w(v i ;v j ), which is equivalent to i(v 0 ;v j )−i(v 0 ;v i ) ≤ w(v i ;v j ). Thus, letting x i = i(v 0 ;v i ) and x j = i(v 0 ;v j ) satisfies the difference constraint x j − x i ≤ w(v i ;v j ) that corresponds to edge (v i ;v j )."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 630,
+   "pdf_page": 651,
+   "text": "Now we show that if the constraint graph contains a negative-weight cycle, then the system of difference constraints has no feasible solution. Without loss of generality, let the negative-weight cycle be c = hv 1 ;v 2 ;:::;v k i, where v 1 = v k ."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 630,
+   "pdf_page": 651,
+   "text": "(The vertex v 0 cannot be on cycle c , because it has no entering edges.) Cycle c corresponds to the following difference constraints: x 2 − x 1 ≤ w(v 1 ;v 2 ); x 3 − x 2 ≤ w(v 2 ;v 3 ); : : : x k−1 − x k−2 ≤ w(v k−2 ;v k−1 ); x k − x k−1 ≤ w(v k−1 ;v k ):"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 630,
+   "pdf_page": 651,
+   "text": "We9ll assume that x has a solution satisfying each of these k inequalities and then derive a contradiction. The solution must also sati sfy the inequality that results from summing the k inequalities together. In summing the left-hand sides, each unknown x i is added in once and subtracted out once (remember that v 1 = v k implies x 1 = x k ), so that the left-hand side sums to 0. The right-hand side sums to the weight w(c) of the cycle, giving 0 ≤ w(c). But since c is a negative-weight cycle, w(c)<0 , and we obtain the contradiction that 0 ≤ w(c)<0 ."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 630,
+   "pdf_page": 651,
+   "text": "Solving systems of difference constraints"
+  },
+  {
+   "type": "theorem",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 630,
+   "pdf_page": 651,
+   "text": "Theorem 22.9 suggests how to use the Bellman-Ford algorithm to solve a system of difference constraints. Because the constraint graph contains edges from the source vertex v 0 to all other vertices, any negative-weight cycle in the constraint graph is reachable from v 0 . If the Bellman-Ford algorithm returns TRUE, then the shortestpath weights give a feasible solution to the system. In Figure 22.8, for example, the shortest-path weights provide the feasible solution x = .−5; −3;0; −1; −4/, and by Lemma 22.8, x = (d − 5;d − 3;d;d − 1;d − 4) is also a feasible solution for any constant d . If the Bellman-Ford algorithm returns FALSE , there is no feasible solution to the system of difference constraints."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 630,
+   "pdf_page": 651,
+   "text": "A system of difference constraints with m constraints on n unknowns produces a graph with n + 1 vertices and n + m edges. Thus, the Bellman-Ford algorithm provides a way to solve the system in O..n + 1/.n + m// = O(n 2 C nm) time."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 631,
+   "pdf_page": 652,
+   "text": "Exercise 22.4-5 asks you to modify the algorithm to run in O(nm) time, even if m is much less than n."
+  },
+  {
+   "type": "exercise",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 631,
+   "pdf_page": 652,
+   "text": "22.4-1 Find a feasible solution or determine that no feasible solution exists for the following system of difference constraints: x 1 − x 2 ≤ 1 , x 1 − x 4 ≤ −4 , x 2 − x 3 ≤ 2 , x 2 − x 5 ≤ 7 , x 2 − x 6 ≤ 5 , x 3 − x 6 ≤ 10 , x 4 − x 2 ≤ 2 , x 5 − x 1 ≤ −1 , x 5 − x 4 ≤ 3 , x 6 − x 3 ≤ −8 ."
+  },
+  {
+   "type": "exercise",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 631,
+   "pdf_page": 652,
+   "text": "22.4-2 Find a feasible solution or determine that no feasible solution exists for the following system of difference constraints: x 1 − x 2 ≤ 4 , x 1 − x 5 ≤ 5 , x 2 − x 4 ≤ −6 , x 3 − x 2 ≤ 1 , x 4 − x 1 ≤ 3 , x 4 − x 3 ≤ 5 , x 4 − x 5 ≤ 10 , x 5 − x 3 ≤ −4 , x 5 − x 4 ≤ −8 ."
+  },
+  {
+   "type": "exercise",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 631,
+   "pdf_page": 652,
+   "text": "22.4-3 Can any shortest-path weight from the new vertex v 0 in a constraint graph be positive? Explain."
+  },
+  {
+   "type": "exercise",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 631,
+   "pdf_page": 652,
+   "text": "22.4-4 Express the single-pair shortest-path problem as a linear program."
+  },
+  {
+   "type": "exercise",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 632,
+   "pdf_page": 653,
+   "text": "22.4-5 Show how to modify the Bellman-Ford algorithm slightly so that when using it to solve a system of difference constraints with m inequalities on n unknowns, the running time is O(nm)."
+  },
+  {
+   "type": "exercise",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 632,
+   "pdf_page": 653,
+   "text": "22.4-6 Consider adding equality constraints of the form x i = x j + b k to a system of difference constraints. Show how to solve this variety of constraint system."
+  },
+  {
+   "type": "exercise",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 632,
+   "pdf_page": 653,
+   "text": "22.4-7 Show how to solve a system of difference constraints by a Bellman-Ford-like algorithm that runs on a constraint graph without the extra vertex v 0 ."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 632,
+   "pdf_page": 653,
+   "text": "? 22.4-8"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 632,
+   "pdf_page": 653,
+   "text": "Let Ax ≤ b be a system of m difference constraints in n unknowns. Show that the Bellman-Ford algorithm, when run on the corresponding constraint graph, maximizes P n i D1 x i subject to Ax ≤ b and x i ≤ 0 for all x i ."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 632,
+   "pdf_page": 653,
+   "text": "? 22.4-9"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 632,
+   "pdf_page": 653,
+   "text": "Show that the Bellman-Ford algorithm, when run on the constraint graph for a system Ax ≤ b of difference constraints, minimizes the quantity (max fx i g−min fx i g) subject to Ax ≤ b. Explain how this fact might come in handy if the algorithm is used to schedule construction jobs."
+  },
+  {
+   "type": "exercise",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 632,
+   "pdf_page": 653,
+   "text": "22.4-10 Suppose that every row in the matrix A of a linear program Ax ≤ b corresponds to a difference constraint, a single-variable constraint of the form x i ≤ b k , or a singlevariable constraint of the form −x i ≤ b k . Show how to adapt the Bellman-Ford algorithm to solve this variety of constraint system."
+  },
+  {
+   "type": "exercise",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 632,
+   "pdf_page": 653,
+   "text": "22.4-11 Give an efficient algorithm to solve a system Ax ≤ b of difference constraints when all of the elements of b are real-valued and all of the unknowns x i must be integers."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 632,
+   "pdf_page": 653,
+   "text": "? 22.4-12"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.4",
+   "section_title": "22.4 Difference constraints and shortest paths",
+   "printed_page": 632,
+   "pdf_page": 653,
+   "text": "Give an efficient algorithm to solve a system Ax ≤ b of difference constraints when all of the elements of b are real-valued and a specified subset of some, but not necessarily all, of the unknowns x i must be integers."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 633,
+   "pdf_page": 654,
+   "text": "Throughout this chapter, our correctness arguments have relied on the triangle inequality, upper-bound property, no-path property, convergence property, pathrelaxation property, and predecessor-subgraph property. We stated these properties without proof on page 611. In this section, we prove them."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 633,
+   "pdf_page": 654,
+   "text": "The triangle inequality"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 633,
+   "pdf_page": 654,
+   "text": "In studying breadth-first search (Section 20.2), we proved as Lemma 20.1 a simple property of shortest distances in unweighted gr aphs. The triangle inequality generalizes the property to weighted graphs."
+  },
+  {
+   "type": "lemma",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 633,
+   "pdf_page": 654,
+   "text": "Lemma 22.10 (Triangle inequality)"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 633,
+   "pdf_page": 654,
+   "text": "Let G = (V;E) be a weighted, directed graph with weight function w W E ! R and source vertex s . Then, for all edges (u;v) 2 E, i(s;v) ≤ i(s;u) + w(u;v):"
+  },
+  {
+   "type": "proof",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 633,
+   "pdf_page": 654,
+   "text": "Proof Suppose that p is a shortest path from source s to vertex v. Then p has no more weight than any other path from s to v. Specifically, path p has no more weight than the particular path that takes a shortest path from source s to vertex u and then takes edge (u;v) ."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 633,
+   "pdf_page": 654,
+   "text": "Exercise 22.5-3 asks you to handle the case in which there is no shortest path from s to v."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 633,
+   "pdf_page": 654,
+   "text": "Effects of relaxation on shortest-path estimates"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 633,
+   "pdf_page": 654,
+   "text": "The next group of lemmas describes how shortest-path estimates are affected by executing a sequence of relaxation steps on the edges of a weighted, directed graph that has been initialized by INITIALIZE-SINGLE-SOURCE ."
+  },
+  {
+   "type": "lemma",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 633,
+   "pdf_page": 654,
+   "text": "Lemma 22.11 (Upper-bound property)"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 633,
+   "pdf_page": 654,
+   "text": "Let G = (V;E) be a weighted, directed graph with weight function w W E ! R."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 633,
+   "pdf_page": 654,
+   "text": "Let s 2 V be the source vertex, and let the graph be initiali zed by INITIALIZE-SINGLE-SOURCE(G;s) . Then, v: d ≥ i(s;v) for all v 2 V , and this invariant is maintained over any sequence of relaxation steps on the edges of G. Moreover, once v: d achieves its lower bound i(s;v) , it never changes."
+  },
+  {
+   "type": "proof",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 633,
+   "pdf_page": 654,
+   "text": "Proof We prove the invariant v: d ≥ i(s;v) for all vertices v 2 V by induction over the number of relaxation steps."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 634,
+   "pdf_page": 655,
+   "text": "For the base case, v: d ≥ i(s;v) holds after initialization, since if v: d = 1, then v: d ≥ i(s;v) for all v 2 V − fs g, and since s: d = 0 ≥ i(s;s) . (Note that i(s;s) = −1 if s is on a negative-weight cycle and that i(s;s) = 0 otherwise.)"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 634,
+   "pdf_page": 655,
+   "text": "For the inductive step, consider the relaxation of an edge (u;v) . By the inductive hypothesis, x: d ≥ i(s;x) for all x 2 V prior to the relaxation. The only d value that may change is v: d. If it changes, we have v: d = u: d + w(u;v)"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 634,
+   "pdf_page": 655,
+   "text": "≥ i(s;u) + w(u;v) (by the inductive hypothesis)"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 634,
+   "pdf_page": 655,
+   "text": "≥ i(s;v) (by the triangle inequality) , and so the invariant is maintained."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 634,
+   "pdf_page": 655,
+   "text": "The value of v: d never changes once v: d = i(s;v) because, having achieved its lower bound, v: d cannot decrease since we have just shown that v: d ≥ i(s;v) , and it cannot increase because relaxation steps do not increase d values."
+  },
+  {
+   "type": "corollary",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 634,
+   "pdf_page": 655,
+   "text": "Corollary 22.12 (No-path property)"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 634,
+   "pdf_page": 655,
+   "text": "Suppose that in a weighted, directed graph G = (V;E) with weight function w W E ! R, no path connects a source vertex s 2 V to a given vertex v 2 V ."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 634,
+   "pdf_page": 655,
+   "text": "Then, after the graph is initialized by INITIALIZE-SINGLE-SOURCE (G;s) , we have v: d = i(s;v) = 1 , and this equation is maintained as an invariant o ver any sequence of relaxation steps on the edges of G."
+  },
+  {
+   "type": "proof",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 634,
+   "pdf_page": 655,
+   "text": "Proof By the upper-bound property, we always have 1 = i(s;v) ≤ v: d, and thus v: d = 1 = i(s;v) ."
+  },
+  {
+   "type": "lemma",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 634,
+   "pdf_page": 655,
+   "text": "Lemma 22.13"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 634,
+   "pdf_page": 655,
+   "text": "Let G = (V;E) be a weighted, directed graph with weight function w W E ! R, and let (u;v) 2 E. Then, immediately after edge (u;v) is relaxed by a call of RELAX(u;v;w) , we have v: d ≤ u: d + w(u;v) ."
+  },
+  {
+   "type": "proof",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 634,
+   "pdf_page": 655,
+   "text": "Proof If, just prior to relaxing edge (u;v) , we have v: d > u: d + w(u;v) , then v: d = u: d + w(u;v) afterward. If, instead, v: d ≤ u: d + w(u;v) just before the relaxation, then neither u: d nor v: d changes, and so v: d ≤ u: d + w(u;v) afterward."
+  },
+  {
+   "type": "lemma",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 634,
+   "pdf_page": 655,
+   "text": "Lemma 22.14 (Convergence property)"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 634,
+   "pdf_page": 655,
+   "text": "Let G = (V;E) be a weighted, directed graph with weight function w W E ! R, let s 2 V be a source vertex, and let s → u ! v be a shortest path in G for some vertices u;v 2 V . Suppose that G is initialized by INITIALIZE-SINGLE- SOURCE(G;s) and then a sequence of relaxation steps that includ es the call"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 634,
+   "pdf_page": 655,
+   "text": "Let G = (V;E) be a weighted, directed graph with weight function w W E ! R, and let s 2 V be a source vertex. Consider any shortest path √D hv 0 ;v 1 ;:::;v k i from s = v 0 to v k . If G is initialized by INITIALIZE-SINGLE-SOURCE (G;s) and then a sequence of relaxation steps occurs that includes, in order, relaxing the edges"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 634,
+   "pdf_page": 655,
+   "text": "Let G = (V;E) be a weighted, directed graph with weight function w W E ! R, let s 2 V be a source vertex, and assume that G contains no negative-weight cycles that are reachable from s . Then, after the graph is initialized by INITIALIZE-SINGLE-SOURCE(G;s) , the predecessor subgraph G − forms a rooted tree with root s , and any sequence of relaxation steps on edges of G maintains this property as an invariant."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 634,
+   "pdf_page": 655,
+   "text": "Let G = (V;E) be a weighted, directed graph with weight function w W E ! R, let s 2 V be a source vertex, and assume that G contains no negative-weight cycles that are reachable from s . Then, after a call to INITIALIZE-SINGLE-SOURCE (G;s) followed by any sequence of relaxation steps on edg es of G that produces v: d = i(s;v) for all v 2 V , the predecessor subgraph G − is a shortest-paths tree rooted at s ."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 635,
+   "pdf_page": 656,
+   "text": "RELAX(u;v;w) is executed on the edges of G. If u: d = i(s;u) at any time prior to the call, then v: d = i(s;v) at all times after the call."
+  },
+  {
+   "type": "proof",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 635,
+   "pdf_page": 656,
+   "text": "Proof By the upper-bound property, if u: d = i(s;u) at some point prior to relaxing edge (u;v) , then this equation holds thereafter. In particula r, after edge (u;v) is relaxed, we have v: d ≤ u: d + w(u;v) (by Lemma 22.13)"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 635,
+   "pdf_page": 656,
+   "text": "D i(s;u) + w(u;v)"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 635,
+   "pdf_page": 656,
+   "text": "D i(s;v) (by Lemma 22.1 on page 606) ."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 635,
+   "pdf_page": 656,
+   "text": "The upper-bound property gives v: d ≥ i(s;v) , from which we conclude that v: d = i(s;v) , and this equation is maintained thereafter."
+  },
+  {
+   "type": "lemma",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 635,
+   "pdf_page": 656,
+   "text": "Lemma 22.15 (Path-relaxation property)"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 635,
+   "pdf_page": 656,
+   "text": "(v 0 ;v 1 );.v 1 ;v 2 /;:::;.v k−1 ;v k /, then v k : d = i(s;v k ) after these relaxations and at all times afterward. This property holds no matt er what other edge relaxations occur, including relaxations that are intermixed with relaxations of the edges of p."
+  },
+  {
+   "type": "proof",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 635,
+   "pdf_page": 656,
+   "text": "Proof We show by induction that after the i th edge of path p is relaxed, we have v i : d = i(s;v i ). For the base case, i = 0, and before any edges of p have been relaxed, we have from the initialization that v 0 : d = s: d = 0 = i(s;s) . By the upper-bound property, the value of s: d never changes after initialization."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 635,
+   "pdf_page": 656,
+   "text": "For the inductive step, assume that v i −1 : d = i(s;v i −1 ). What happens when edge (v i −1 ;v i ) is relaxed? By the convergence property, after this relaxation, we have v i : d = i(s;v i ), and this equation is maintained at all times thereafter."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 635,
+   "pdf_page": 656,
+   "text": "Relaxation and shortest-paths trees"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 635,
+   "pdf_page": 656,
+   "text": "We now show that once a sequence of relaxations has caused the shortest-path estimates to converge to shortest-path weights, the predecessor subgraph G − induced by the resulting Ω values is a shortest-paths tree for G. We start with the following lemma, which shows that the predecessor subgraph always forms a rooted tree whose root is the source."
+  },
+  {
+   "type": "lemma",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 635,
+   "pdf_page": 656,
+   "text": "Lemma 22.16"
+  },
+  {
+   "type": "proof",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 636,
+   "pdf_page": 657,
+   "text": "Proof Initially, the only vertex in G − is the source vertex, and the lemma is trivially true. Consider a predecessor subgraph G − that arises after a sequence of relaxation steps. We first prove that G − is acyclic. Suppose for the sake of contradiction that some relaxation step creates a cycle in the graph G − . Let the cycle be c = hv 0 ;v 1 ;:::;v k i, where v k = v 0 . Then, v i :Ω = v i −1 for i = 1;2;:::;k and, without loss of generality, assume that relaxing ed ge (v k−1 ;v k ) created the cycle in G − ."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 636,
+   "pdf_page": 657,
+   "text": "We claim that all vertices on cycle c are reachable from the source vertex s ."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 636,
+   "pdf_page": 657,
+   "text": "Why? Each vertex on c has a non-NIL predecessor, and so each vertex on c was assigned a finite shortest-path estimate when it was assigned its non-NIL Ω value. By the upper-bound property, each vertex on cycle c has a finite shortest-path weight, which means that it is reachable from s ."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 636,
+   "pdf_page": 657,
+   "text": "We9ll examine the shortest-path estimates on cycle c immediately before the call"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 636,
+   "pdf_page": 657,
+   "text": "RELAX(v k−1 ;v k ;w) and show that c is a negative-weight cycle, thereby contradicting the assumption that G contains no negative-weight cycles that are reachable from the source. Just before the call, we have v i :Ω = v i −1 for i = 1;2;:::;k − 1."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 636,
+   "pdf_page": 657,
+   "text": "Thus, for i = 1;2;:::;k − 1, the last update to v i : d was by the assignment v i : d = v i −1 : dCw(v i −1 ;v i ). If v i −1 : d changed since then, it decreased. Therefore, just before the call RELAX(v k−1 ;v k ;w) , we have v i : d ≥ v i −1 : d + w(v i −1 ;v i ) for all i = 1;2;:::;k − 1: (22.11)"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 636,
+   "pdf_page": 657,
+   "text": "Because v k :Ω is changed by the call RELAX(v k−1 ;v k ;w) , immediately beforehand we also have the strict inequality v k : d >v k−1 : d + w(v k−1 ;v k ):"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 636,
+   "pdf_page": 657,
+   "text": "Summing this strict inequality with the k − 1 inequalities (22.11), we obtain the sum of the shortest-path estimates around cycle c : k X i D1 v i : d > k X i D1"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 636,
+   "pdf_page": 657,
+   "text": "(v i −1 : d + w(v i −1 ;v i ))"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 636,
+   "pdf_page": 657,
+   "text": "D k X i D1 v i −1 : d C k X i D1 w(v i −1 ;v i ):"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 636,
+   "pdf_page": 657,
+   "text": "But k X i D1 v i : d = k X i D1 v i −1 : d ; s u x y z v"
+  },
+  {
+   "type": "figure-caption",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 637,
+   "pdf_page": 658,
+   "text": "Figure 22.9 Showing that a simple path in G − from source vertex s to vertex v is unique. If G − contains two paths √1 (s → u → x ! ´ → v) and √2 (s → u → y ! ´ → v), where x ≠ y, then"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 637,
+   "pdf_page": 658,
+   "text": "´: Ω = x and ´: Ω = y, a contradiction. since each vertex in the cycle c appears exactly once in each summation. This equation implies"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 637,
+   "pdf_page": 658,
+   "text": "0> k X i D1 w(v i −1 ;v i ):"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 637,
+   "pdf_page": 658,
+   "text": "Thus, the sum of weights around the cycle c is negative, which provides the desired contradiction."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 637,
+   "pdf_page": 658,
+   "text": "We have now proven that G − is a directed, acyclic graph. To show that it forms a rooted tree with root s , it suffices (see Exercise B.5-2 on page 1175) to prove that for each vertex v 2 V − , there is a unique simple path from s to v in G − ."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 637,
+   "pdf_page": 658,
+   "text": "The vertices in V − are those with non-NIL Ω values, plus s . Exercise 22.5-6 asks you to prove that a path from s exists to each vertex in V − ."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 637,
+   "pdf_page": 658,
+   "text": "To complete the proof of the lemma, we now show that for any vertex v 2 V − , the graph G − contains at most one simple path from s to v. Suppose otherwise. That is, suppose that, as Figure 22.9 illustrates, G − contains two simple paths from s to some vertex v: √1 , which we decompose into s → u → x ! ´ → v, and √2 , which we decompose into s → u → y ! ´ → v, where x ≠ y (though u could be s and ´ could be v). But then, ´:Ω = x and ´:Ω = y , which implies the contradiction that x = y . We conclude that G − contains a unique simple path from s to v, and thus G − forms a rooted tree with root s ."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 637,
+   "pdf_page": 658,
+   "text": "We can now show that if all vertices have been assigned their true shortest-path weights after a sequence of relaxation steps, then the predecessor subgraph G − is a shortest-paths tree."
+  },
+  {
+   "type": "lemma",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 637,
+   "pdf_page": 658,
+   "text": "Lemma 22.17 (Predecessor-subgraph property)"
+  },
+  {
+   "type": "proof",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 638,
+   "pdf_page": 659,
+   "text": "Proof We must prove that the three properties of shortest-paths trees given on page 608 hold for G − . To show the first property, we must show that V − is the set of vertices reachable from s . By definition, a shortest-path weight i(s;v) is finite if and only if v is reachable from s , and thus the vertices that are reachable from s are exactly those with finite d values. But a vertex v 2 V − fs g has been assigned a finite value for v: d if and only if v:Ω ≠ NIL, since both assignments occur in RELAX . Thus, the vertices in V − are exactly those reachable from s ."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 638,
+   "pdf_page": 659,
+   "text": "The second property, that G − forms a rooted tree with root s , follows directly from Lemma 22.16."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 638,
+   "pdf_page": 659,
+   "text": "It remains, therefore, to prove the last property o f shortest-paths trees: for each vertex v 2 V − , the unique simple path s p"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 638,
+   "pdf_page": 659,
+   "text": "→ v in G − is a shortest path from s to v in G. Let √D hv 0 ;v 1 ;:::;v k i, where v 0 = s and v k = v. Consider an edge (v i −1 ;v i ) in path p. Because this edge belongs to G − , the last relaxation that changed v i : d must have been of this edge. After that relaxation, we had v i : d = v i −1 : d C (v i −1 ;v i ). Subsequently, an edge entering v i −1 could have been relaxed, causing v i −1 : d to decrease further, but without changing v i : d. Therefore, we have v i : d ≥ v i −1 : d + w(v i −1 ;v i ). Thus, for i = 1;2;:::;k , we have both v i : d = i(s;v i ) and v i : d ≥ v i −1 : d + w(v i −1 ;v i ), which together imply w(v i −1 ;v i ) ≤ i(s;v i ) − i(s;v i −1 ). Summing the weights along path p yields w(p) = k X i D1 w(v i −1 ;v i )"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 638,
+   "pdf_page": 659,
+   "text": "≤ k X i D1"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 638,
+   "pdf_page": 659,
+   "text": "(i(s;v i ) − i(s;v i −1 ))"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 638,
+   "pdf_page": 659,
+   "text": "D i(s;v k ) − i(s;v 0 ) (because the sum telescopes)"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 638,
+   "pdf_page": 659,
+   "text": "D i(s;v k ) (because i(s;v 0 ) = i(s;s) = 0) ."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 638,
+   "pdf_page": 659,
+   "text": "Thus, we have w(p) ≤ i(s;v k ). Since i(s;v k ) is a lower bound on the weight of any path from s to v k , we conclude that w(p) = i(s;v k ), and p is a shortest path from s to v = v k ."
+  },
+  {
+   "type": "exercise",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 638,
+   "pdf_page": 659,
+   "text": "22.5-1 Give two shortest-paths trees for the directed graph of Figure 22.2 on page 609 other than the two shown."
+  },
+  {
+   "type": "exercise",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 638,
+   "pdf_page": 659,
+   "text": "22.5-2 Give an example of a weighted, directed graph G = (V;E) with weight function w W E ! R and source vertex s such that G satisfies the following property: For every edge (u;v) 2 E, there is a shortest-paths tree rooted at s that contains (u;v) and another shortest-paths tree rooted at s that does not contain (u;v) ."
+  },
+  {
+   "type": "exercise",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 639,
+   "pdf_page": 660,
+   "text": "22.5-3 Modify the proof of Lemma 22.10 to handle cases in which shortest-path weights are 1 or −1."
+  },
+  {
+   "type": "exercise",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 639,
+   "pdf_page": 660,
+   "text": "22.5-4 Let G = (V;E) be a weighted, directed graph with source vertex s , and let G be initialized by INITIALIZE-SINGLE-SOURCE (G;s) . Prove that if a sequence of relaxation steps sets s:Ω to a non-NIL value, then G contains a negative-weight cycle."
+  },
+  {
+   "type": "exercise",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 639,
+   "pdf_page": 660,
+   "text": "22.5-5 Let G = (V;E) be a weighted, directed graph with no negative-weight edges. Let s 2 V be the source vertex, and suppose that v:Ω is allowed to be the predecessor of v on any shortest path to v from source s if v 2 V − fs g is reachable from s , and NIL otherwise. Give an example of such a graph G and an assignment of Ω values that produces a cycle in G − . (By Lemma 22.16, such an assignment cannot be produced by a sequence of relaxation steps.)"
+  },
+  {
+   "type": "exercise",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 639,
+   "pdf_page": 660,
+   "text": "22.5-6 Let G = (V;E) be a weighted, directed graph with weight function w W E ! R and no negative-weight cycles. Let s 2 V be the source vertex, and let G be initialized by INITIALIZE-SINGLE-SOURCE (G;s) . Use induction to prove that for every vertex v 2 V − , there exists a path from s to v in G − and that this property is maintained as an invariant over any sequence of relaxations."
+  },
+  {
+   "type": "exercise",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 639,
+   "pdf_page": 660,
+   "text": "22.5-7 Let G = (V;E) be a weighted, directed graph that contains no negative-weight cycles. Let s 2 V be the source vertex, and let G be initialized by INITIALIZE-SINGLE-SOURCE(G;s) . Prove that there exists a sequence of |V| − 1 relaxation steps that produces v: d = i(s;v) for all v 2 V ."
+  },
+  {
+   "type": "exercise",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 639,
+   "pdf_page": 660,
+   "text": "22.5-8 Let G be an arbitrary weighted, directed graph with a negative-weight cycle reachable from the source vertex s . Show how to construct an infinite sequence of relaxations of the edges of G such that every relaxation causes a shortest-path estimate to change."
+  },
+  {
+   "type": "problem",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 640,
+   "pdf_page": 661,
+   "text": "22-1 Y en’s improvement to Bellman-Ford"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 640,
+   "pdf_page": 661,
+   "text": "The Bellman-Ford algorithm does not specify the order in which to relax edges in each pass. Consider the following method for dec iding upon the order. Before the first pass, assign an arbitrary linear order v 1 ;v 2 ;:::;v |V| to the vertices of the input graph G = (V;E) . Then partition the edge set E into E f [ E b , where"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 640,
+   "pdf_page": 661,
+   "text": "E f = f(v i ;v j ) 2 E : i <j g and E b = f(v i ;v j ) 2 E W i >j g. (Assume that G contains no self-loops, so that every edge belongs to either E f or E b .) Define"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 640,
+   "pdf_page": 661,
+   "text": "G f = (V;E f ) and G b = (V;E b ). a. Prove that G f is acyclic with topological sort hv 1 ;v 2 ;:::;v |V| i and that G b is acyclic with topological sort hv |V| ;v |V|−1 ;:::;v 1 i."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 640,
+   "pdf_page": 661,
+   "text": "Suppose that each pass of the Bellman-Ford algorithm relaxes edges in the following way. First, visit each vertex in the order v 1 ;v 2 ;:::;v |V| , relaxing edges of E f that leave the vertex. Then visit each vertex in the order v |V| ;v |V|−1 ;:::;v 1 , relaxing edges of E b that leave the vertex. b. Prove that with this scheme, if G contains no negative-weight cycles that are reachable from the source vertex s , then after only ⌈|V| /2⌉ passes over the edges, v: d = i(s;v) for all vertices v 2 V . c. Does this scheme improve the asymptotic running tim e of the B ellman-Ford algorithm?"
+  },
+  {
+   "type": "problem",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 640,
+   "pdf_page": 661,
+   "text": "22-2 Nesting boxes"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 640,
+   "pdf_page": 661,
+   "text": "A d -dimensional box with dimensions (x 1 ;x 2 ;:::;x d ) nests within another box with dimensions (y 1 ;y 2 ;:::;y d ) if there exists a permutation ] on f1;2;:::;d g such that x −.1/ <y 1 , x −.2/ <y 2 , . . . , x −.d / <y d . a. Argue that the nesting relation is transitive. b. Describe an efficient method to determine whether one d -dimensional box nests inside another. c. You are given a set of nd -dimensional boxes fB 1 ;B 2 ;:::;B n g. Give an efficient algorithm to find the longest sequence hB i 1 ;B i 2 ;:::;B i k i of boxes such that B i j nests within B i j C1 for j = 1;2;:::;k − 1. Express the running time of your algorithm in terms of n and d ."
+  },
+  {
+   "type": "problem",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 641,
+   "pdf_page": 662,
+   "text": "22-3 Arbitrage"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 641,
+   "pdf_page": 662,
+   "text": "Arbitrage is the use of discrepancies in currency exchange ra tes to transform one unit of a currency into more than one unit of the s ame currency. For example, suppose that one U.S. dollar buys 64 Indian rupees, one Indian rupee buys 1:8"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 641,
+   "pdf_page": 662,
+   "text": "Japanese yen, and one Japanese yen buys 0:009 U.S. dollars. Then, by converting currencies, a trader can start with 1 U.S. dollar and buy 64 × 1:8 × 0:009 = 1:0368"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 641,
+   "pdf_page": 662,
+   "text": "U.S. dollars, thus turning a profit of 3:68%."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 641,
+   "pdf_page": 662,
+   "text": "Suppose that you are given n currencies c 1 ;c 2 ;:::;c n and an n × n table R of exchange rates, such that 1 unit of currency c i buys R[i; j ] units of currency c j . a. Give an efficient algorithm to determine whether there exists a sequence of currencies hc i 1 ;c i 2 ;:::;c i k i such that R[i 1 ;i 2 ] • R[i 2 ;i 3 ] • • • R[i k−1 ;i k ] • R[i k ;i 1 ] > 1 :"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 641,
+   "pdf_page": 662,
+   "text": "Analyze the running time of your algorithm. b. Give an efficient algorithm to print out such a sequence if one exists. Analyze the running time of your algorithm."
+  },
+  {
+   "type": "problem",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 641,
+   "pdf_page": 662,
+   "text": "22-4 Gabow’s scaling algorithm for single-source shortest paths"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 641,
+   "pdf_page": 662,
+   "text": "A scaling algorithm solves a problem by initially considering only the highestorder bit of each relevant input value, such as an edge weight, assuming that these values are nonnegative integers. The algorithm then refines the initial solution by looking at the two highest-order bits. It progressively looks at more and more high-order bits, refining the solution each time, until it has examined all bits and computed the correct solution."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 641,
+   "pdf_page": 662,
+   "text": "This problem examines an algorithm for computing th e shortest paths from a single source by scaling edge weights. The input is a directed graph G = (V;E) with nonnegative integer edge weights w. Let W = max fw(u;v) W (u;v) 2 Eg be the maximum weight of any edge. In this problem, you will develop an algorithm that runs in O(E lg W) time. Assume that all vertices are reachable from the source."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 641,
+   "pdf_page": 662,
+   "text": "The scaling algorithm uncovers the bits in the binary representation of the edge weights one at a time, from the most significant bit to the least significant bit."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 641,
+   "pdf_page": 662,
+   "text": "Specifically, let k = d lg(W + 1)e be the number of bits in the binary representation of W , and for i = 1;2;:::;k , let w i (u;v) ="
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 641,
+   "pdf_page": 662,
+   "text": "⊂ w(u;v)/2 k−i ˘ . That is, w i (u;v) is the \"scaled-down\" version of w(u;v) given by the i most significant bits of w(u;v) . (Thus, w k (u;v) = w(u;v) for all (u;v) 2 E.) For example, if k = 5 and w(u;v) = 25, which has the binary representation h11001i, then w 3 (u;v) = h110i = 6. Also with k = 5, if w(u;v) = h00100i = 4, then w 4 (u;v) = h0010i = 2. Define i i (u;v) as the shortest-path weight from vertex u to vertex v using weight function w i , so that i k (u;v) = i(u;v) for all u;v 2 V ."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 642,
+   "pdf_page": 663,
+   "text": "For a given source vertex s , the scaling algorithm first computes the shortest-path weights i 1 (s;v) for all v 2 V , then computes i 2 (s;v) for all v 2 V , and so on, until it computes i k (s;v) for all v 2 V . Assume throughout that |E| ≥ |V| − 1. You will show how to compute i i from i i −1 in O(E) time, so that the entire algorithm takes O(kE) = O(E lg W) time. a. Suppose that for all vertices v 2 V , we have i(s;v) ≤ |E|. Show how to compute i(s;v) for all v 2 V in O(E) time. b. Show how to compute i 1 (s;v) for all v 2 V in O(E) time."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 642,
+   "pdf_page": 663,
+   "text": "Now focus on computing i i from i i −1 . c. Prove that for i = 2;3;:::;k , either w i (u;v) = 2w i −1 (u;v) or w i (u;v) ="
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 642,
+   "pdf_page": 663,
+   "text": "2w i −1 (u;v) + 1. Then prove that 2i i −1 (s;v) ≤ i i (s;v) ≤ 2i i −1 (s;v) C |V| − 1 for all v 2 V . d. Define, for i = 2;3;:::;k and all (u;v) 2 E, y w i (u;v) = w i (u;v) + 2i i −1 (s;u) − 2i i −1 (s;v):"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 642,
+   "pdf_page": 663,
+   "text": "Prove that for i = 2;3;:::;k and all u;v 2 V , the \"reweighted\" value y w i (u;v) of edge (u;v) is a nonnegative integer. e. Now define y i i (s;v) as the shortest-path weight from s to v using the weight function y w i . Prove that for i = 2;3;:::;k and all v 2 V , i i (s;v) = y i i (s;v) + 2i i −1 (s;v) and that y i i (s;v) ≤ |E|. f. Show how to compute i i (s;v) from i i −1 (s;v) for all v 2 V in O(E) time."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 642,
+   "pdf_page": 663,
+   "text": "Conclude that you can compute i(s;v) for all v 2 V in O(E lg W) time."
+  },
+  {
+   "type": "problem",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 642,
+   "pdf_page": 663,
+   "text": "22-5 Karp’s minimum mean-weight cycle algorithm"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 642,
+   "pdf_page": 663,
+   "text": "Let G = (V;E) be a directed graph with weight function w W E ! R, and let n = |V|. We define the mean weight of a cycle c = he 1 ;e 2 ;:::;e k i of edges in E to be"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 643,
+   "pdf_page": 664,
+   "text": "Ω(c) = 1 k k X i D1 w(e i ):"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 643,
+   "pdf_page": 664,
+   "text": "Let Ω − = min fΩ(c) W c is a directed cycle in Gg. We call a cycle c for which"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 643,
+   "pdf_page": 664,
+   "text": "Ω(c) = Ω − a minimum mean-weight cycle. This problem investigates an efficient algorithm for computing Ω − ."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 643,
+   "pdf_page": 664,
+   "text": "Assume without loss of generality that every vertex v 2 V is reachable from a source vertex s 2 V . Let i(s;v) be the weight of a shortest path from s to v, and let i k (s;v) be the weight of a shortest path from s to v consisting of exactly k edges."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 643,
+   "pdf_page": 664,
+   "text": "If there is no path from s to v with exactly k edges, then i k (s;v) = 1. a. Show that if Ω − = 0, then G contains no negative-weight cycles and i(s;v) = min fi k (s;v) W 0 ≤ k ≤ n − 1g for all vertices v 2 V . b. Show that if Ω − = 0, then max ï i n (s;v) − i k (s;v) n − k W 0 ≤ k ≤ n − 1 ð"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 643,
+   "pdf_page": 664,
+   "text": "≥ 0 for all vertices v 2 V . (Hint: Use both properties from part (a).) c. Let c be a 0-weight cycle, and let u and v be any two vertices on c . Suppose that Ω − = 0 and that the weight of the simple path from u to v along the cycle is x . Prove that i(s;v) = i(s;u) + x . (Hint: The weight of the simple path from v to u along the cycle is −x .) d. Show that if Ω − = 0, then on each minimum mean-weight cycle there exists a vertex v such that max ï i n (s;v) − i k (s;v) n − k W 0 ≤ k ≤ n − 1 ð"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 643,
+   "pdf_page": 664,
+   "text": "(Hint: Show how to extend a shortest path to any vertex on a minimum meanweight cycle along the cycle to make a shortest pat h to the next vertex on the cycle.) e. Show that if Ω − = 0, then the minimum value of max ï i n (s;v) − i k (s;v) n − k W 0 ≤ k ≤ n − 1 ð"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 643,
+   "pdf_page": 664,
+   "text": "; taken over all vertices v 2 V , equals 0. f. Show that if you add a constant t to the weight of each edge of G, then Ω − increases by t . Use this fact to show that Ω − equals the minimum value of max ï i n (s;v) − i k (s;v) n − k W 0 ≤ k ≤ n − 1 ð"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 643,
+   "pdf_page": 664,
+   "text": "; taken over all vertices v 2 V . g. Give an O(VE)-time algorithm to compute Ω − ."
+  },
+  {
+   "type": "problem",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 644,
+   "pdf_page": 665,
+   "text": "22-6 Bitonic shortest paths"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 644,
+   "pdf_page": 665,
+   "text": "A sequence is bitonic if it monotonically increases and then monotonically decreases, or if by a circular shift it monotonically increases and then monotonically decreases. For example the sequences h1;4;6;8;3; −2i, h9;2; −4; −10; −5i , and h1;2;3;4 i are bitonic, but h1;3;12;4;2;10 i is not bitonic. (See Problem 14-3 on page 407 for the bitonic euclidean traveling-salesperson problem.)"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 644,
+   "pdf_page": 665,
+   "text": "Suppose that you are given a directed graph G = (V;E) with weight function w W E ! R, where all edge weights are unique, and you wish to find single-source shortest paths from a source vertex s . You are given one additional piece of information: for each vertex v 2 V , the weights of the edges along any shortest path from s to v form a bitonic sequence."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 644,
+   "pdf_page": 665,
+   "text": "Give the most efficient algorithm you can to solve this problem, and analyze its running time."
+  },
+  {
+   "type": "chapter-notes",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 644,
+   "pdf_page": 665,
+   "text": "Chapter notes"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 644,
+   "pdf_page": 665,
+   "text": "The shortest-path problem has a long history that is nicely desribed in an article by Schrijver [400]. He credits the general idea of repeatedly executing edge relaxations to Ford [148]. Dijkstra9s algorithm [116] appeared in 1959, but it contained no mention of a priority queue. The Bellman-Ford algorithm is based on separate algorithms by Bellman [45] and Ford [149]. The same algorithm is also attributed to Moore [334]. Bellman describes the relation of shortest paths to difference constraints. Lawler [276] describes the linear-time algorithm for shortest paths in a dag, which he considers part of the folklore."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 644,
+   "pdf_page": 665,
+   "text": "When edge weights are relatively small nonnegative integers, more efficient algorithms result from using min-priority queues that require integer keys and rely on the sequence of values returned by the EXTRACT-MIN calls in Dijkstra9s algorithm monotonically increasing over time. Ahuja, Mehlhorn, Orlin, and Tarjan [8] give an algorithm that runs in O(E + V p lg W) time on graphs with nonnegative edge weights, where W is the largest weight of any edge in the Notes for Chapter 22 645 graph. The best bounds are by Thorup [436], who gives an algorithm that runs in O(E lg lg V) time, and by Raman [375], who gives an algorithm that runs in O ã"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 645,
+   "pdf_page": 666,
+   "text": "E + V min ˚"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 645,
+   "pdf_page": 666,
+   "text": "(lg V) 1/3C• ;. lg W/ 1/4C• }ä time. These two algorithms use an amount of space that depends on the word size of th e underlying machine. Although the amount of space used can be unbounded in the size of the input, it can be reduced to be linear in the size of the input using randomized hashing."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 645,
+   "pdf_page": 666,
+   "text": "For undirected graphs with integer weights, Thorup [435] gives an algorithm that runs in O(V + E) time for single-source shortest paths. In contrast to the algorithms mentioned in the previous paragraph, the sequence of values returned by EXTRACT-MIN calls does not monotonically increase over time, an d so this algorithm is not an implementation of Dijkstra9s algorithm. Pettie and Ramachandran [357] remove the restriction of integer weights on undirected graphs. Their algorithm entails a preprocessing phase, followed b y queries for specific source vertices. Preprocessing takes O(MST (V;E) C min fV lg V;V lg lg r g) time, where"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 645,
+   "pdf_page": 666,
+   "text": "MST (V;E) is the time to compute a minimum spanning tree and r is the ratio of the maximum edge weight to the minimum edge weig ht. After preprocessing, each query takes O(E lg y ˛.E;V)/ time, where y ˛.E;V/ is the inverse of Ackermann9s function. (See the chapter notes for Chapter 19 for a brief discussion of Ackermann9s function and its inverse.)"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 645,
+   "pdf_page": 666,
+   "text": "For graphs with negative edge weights, an algorithm due to Gabow and Tarjan [167] runs in O. p"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 645,
+   "pdf_page": 666,
+   "text": "VE lg(VW)/ time, and one by Goldberg [186] runs in O. p"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 645,
+   "pdf_page": 666,
+   "text": "VE lg W/ time, where W = max fjw(u;v) j W (u;v) 2 Eg. There has also been some progress based on methods that use contin uous optimization and electrical flows. Cohen et al. [98] give such an algorithm, which is randomized and runs in e O(E 10/7 lg W) expected time (see Problem 3-6 on page 73 for the defintion of e O-notation). There is also a pseudopolyomial-time algorithm based on fast matrix multiplication. Sankowski [394] and Yuster and Zwick [465] designed an algorithm for shortest paths that runs in e O.WV ! / time, where two n × n matrices can be multiplied in O.n ! / time, giving a faster algorithm than the previously mentioned algorithms for small values of W on dense graphs."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 645,
+   "pdf_page": 666,
+   "text": "Cherkassky, Goldberg, and Radzik [89] conducted extensive experiments comparing various shortest-path algorithms. Shortest-path algorithms are widely used in real-time navigation and route-planning applications. Typically based on Dijkstra9s algorithm, these algorithms use many clever ideas to be able to compute shortest paths on networks with many millions of vertices and edges in fractions of a second. Bast et al. [36] survey many of these developments."
+  },
+  {
+   "type": "footnote",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 646,
+   "pdf_page": 667,
+   "text": "23 All-Pairs Shortest Paths"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 646,
+   "pdf_page": 667,
+   "text": "In this chapter, we turn to the problem of finding shortest paths between all pairs of vertices in a graph. A classic application of this problem occurs in computing a table of distances between all pairs of cities for a road atlas. Classic perhaps, but not a true application of finding shortest paths between all pairs of vertices. After all, a road map modeled as a graph has one vertex f or every road intersection and one edge wherever a road connects intersections. A table of intercity distances in an atlas might include distances for 100 cities, but the United States has approximately"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 646,
+   "pdf_page": 667,
+   "text": "300,000 signal-controlled intersections 1 and many more uncontrolled intersections."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 646,
+   "pdf_page": 667,
+   "text": "A legitimate application of all-pairs shortest paths is to determine the diameter of a network: the longest of all shortest paths. If a directed graph models a communication network, with the weight of an edge indi cating the time required for a message to traverse a communication link, then th e diameter gives the longest possible transit time for a message in the network."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 646,
+   "pdf_page": 667,
+   "text": "As in Chapter 22, the input is a weighted, directed graph G = (V;E) with a weight function w W E ! R that maps edges to real-valued weights. Now the goal is to find, for every pair of vertices u;v 2 V , a shortest (least-weight) path from u to v, where the weight of a path is the sum of the weig hts of its constituent edges."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 646,
+   "pdf_page": 667,
+   "text": "For the all-pairs problem, the output typically takes a tabular form in which the entry in u9s row and v9s column is the weight of a shortest path from u to v."
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 646,
+   "pdf_page": 667,
+   "text": "You can solve an all-pairs shortest-paths problem by running a single-source shortest-paths algorithm |V| times, once with each vertex as the source. If all edge weights are nonnegative, you can use Dijkstra9s algorithm. If you implement the min-priority queue with a linear array, the running time is O(V 3 C VE) which is O(V 3 ). The binary min-heap implementation of the min-priority queue"
+  },
+  {
+   "type": "body",
+   "chapter": 22,
+   "section": "22.5",
+   "section_title": "22.5 Proofs of shortest-paths properties",
+   "printed_page": 646,
+   "pdf_page": 667,
+   "text": "1 According to a report cited by U.S. Department of Transportation Federal Highway Administration, <a reasonable 8rule of thumb9 is one signalized intersection per 1,000 population.="
+  }
+ ]
+}

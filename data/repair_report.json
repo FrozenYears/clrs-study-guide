@@ -85,13 +85,13 @@
       "glyph": "U+E002",
       "codepoint": "U+E002",
       "replacement": "−",
-      "rationale": "U+E002 minus sign − (n−1, −c6); mostly minus, see report residual note"
+      "rationale": "U+E002 minus sign − (n−1, a_{n−1}, Σ_{i=0}^{n−1}); ~7% are tall display parens, see hotspots"
     },
     {
       "glyph": "U+E003",
       "codepoint": "U+E003",
-      "replacement": "+",
-      "rationale": "U+E003 plus sign + (i+1, A[j+1]); math font '+' slot"
+      "replacement": "−",
+      "rationale": "U+E003 minus sign − (i−1, q−p+1)"
     },
     {
       "glyph": "U+E004",
@@ -205,14 +205,14 @@
       "rationale": "Measured: ASCII '=' is NEVER equals here ('D' is). Between alnum it is division (n=2 -> n/2, 1=100 -> 1/100)."
     },
     {
-      "rule": "BRACKET_RANGE_RE",
-      "target": "W",
-      "rationale": "Only ' W ' inside [..] is the range '..'; real W (We/What) and 'such that' W are untouched."
+      "rule": "C_PLUS_RE",
+      "target": "C",
+      "rationale": "C is the math font's '+' slot (n C 1, A[j C 1], c 1 C c 2). Requires a 1-3 char token on the left and a single letter / <=4-digit number on the right, plus an English-word denylist, so prose like 'a C program' / 'Appendix C Counting' is untouched."
     },
     {
-      "rule": "BRACKET_PLUS_RE",
-      "target": "C",
-      "rationale": "Only ' C ' inside [..] is '+'; C is otherwise the letter C (Computer/Cormen)."
+      "rule": "BRACKET_SLICE_RE",
+      "target": "W",
+      "rationale": "Only ' W ' inside [..] is the slice colon ':'. Measured: every non-bracket W in the book is the ordinary letter (We/What/Warning). The 4th edition uses A[p : q]."
     },
     {
       "rule": "BAR_PAIR_RE",
@@ -232,9 +232,17 @@
     {
       "rule": "repair_d_assignment",
       "target": "D",
-      "rationale": " D  with a leading line number is the assignment arrow ←; elsewhere it is = (e.g. n = 0). 'Data' etc. safe (no trailing space)."
+      "rationale": "' D ' is ALWAYS '='. The 4th edition sets assignment with a plain '=', so there is no pseudocode/prose split. Verified on the rendered pages 18/19."
+    },
+    {
+      "rule": "NORM_PAIR_RE",
+      "target": "U+E011",
+      "rationale": "A pair of U+E011 glyphs is one norm bar '‖' (Ch33 potential-function proof, printed page 1029). Verified against the rendered page image."
     }
   ],
+  "known_ambiguities": {
+    "U+E002 tall display parens": "E002 is minus 93% of the time; the remaining ~81 occurrences are opened display parentheses (glyph height 3.7x the run size, closed by U+00CD) and come out as '−'. They sit in display equations on ~40 pages; read those from the rendered page image."
+  },
   "before_counts": [
     {
       "glyph": "û",
@@ -700,18 +708,17 @@
     "—": 298,
     "–": 343,
     "≤": 1242,
-    "←": 808,
-    "−": 1233,
-    "√": 456,
+    "−": 4694,
+    "√": 418,
     "¨": 21,
     "♥": 38,
     "≠": 231,
     "≥": 551,
+    "⌊": 124,
+    "⌋": 116,
     "…": 159,
-    "⌈": 53,
-    "⌉": 53,
-    "⌊": 121,
-    "⌋": 113,
+    "⌈": 55,
+    "⌉": 55,
     "ã": 115,
     "ä": 113,
     "ˆ": 185,
@@ -764,13 +771,19 @@
     "❂": 33,
     "“": 1,
     "¿": 27,
-    "U+E011": 76,
+    "‖": 38,
     "∩": 2,
     "˜": 3,
     "ø": 2,
     "¸": 2
   },
   "remaining_glyphs": [
+    {
+      "glyph": "−",
+      "codepoint": "U+2212",
+      "count": 4694,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
     {
       "glyph": "’",
       "codepoint": "U+2019",
@@ -796,22 +809,10 @@
       "note": "U+2264 already-correct less-or-equal (not the broken Sinhala slot)."
     },
     {
-      "glyph": "−",
-      "codepoint": "U+2212",
-      "count": 1233,
-      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
-    },
-    {
       "glyph": "Θ",
       "codepoint": "U+0398",
       "count": 1074,
       "note": "U+0398 already-correct Theta (a few pages had a valid ToUnicode)."
-    },
-    {
-      "glyph": "←",
-      "codepoint": "U+2190",
-      "count": 808,
-      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
     },
     {
       "glyph": "´",
@@ -828,7 +829,7 @@
     {
       "glyph": "√",
       "codepoint": "U+221A",
-      "count": 456,
+      "count": 418,
       "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
     },
     {
@@ -888,19 +889,19 @@
     {
       "glyph": "⌊",
       "codepoint": "U+230A",
-      "count": 121,
+      "count": 124,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "⌋",
+      "codepoint": "U+230B",
+      "count": 116,
       "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
     },
     {
       "glyph": "ã",
       "codepoint": "U+00E3",
       "count": 115,
-      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
-    },
-    {
-      "glyph": "⌋",
-      "codepoint": "U+230B",
-      "count": 113,
       "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
     },
     {
@@ -913,12 +914,6 @@
       "glyph": "⊆",
       "codepoint": "U+2286",
       "count": 104,
-      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
-    },
-    {
-      "glyph": "U+E011",
-      "codepoint": "U+E011",
-      "count": 76,
       "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
     },
     {
@@ -948,13 +943,13 @@
     {
       "glyph": "⌈",
       "codepoint": "U+2308",
-      "count": 53,
+      "count": 55,
       "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
     },
     {
       "glyph": "⌉",
       "codepoint": "U+2309",
-      "count": 53,
+      "count": 55,
       "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
     },
     {
@@ -972,6 +967,12 @@
     {
       "glyph": "♥",
       "codepoint": "U+2665",
+      "count": 38,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "‖",
+      "codepoint": "U+2016",
       "count": 38,
       "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
     },

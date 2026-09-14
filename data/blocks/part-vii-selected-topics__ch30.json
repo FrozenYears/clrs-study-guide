@@ -1,0 +1,2963 @@
+{
+ "chapter": 30,
+ "chapter_title": "30 Polynomials and the FFT",
+ "part": "Part VII Selected Topics",
+ "source": {
+  "printed": [
+   877,
+   null
+  ],
+  "pdf": [
+   898,
+   924
+  ]
+ },
+ "sections": [
+  "30.1 Representing polynomials",
+  "30.2 The DFT and FFT",
+  "30.3 FFT circuits"
+ ],
+ "sections_found": [
+  "30.1 Representing polynomials",
+  "30.2 The DFT and FFT",
+  "30.3 FFT circuits"
+ ],
+ "blocks": [
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 879,
+   "pdf_page": 900,
+   "text": "Chapter outline"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 879,
+   "pdf_page": 900,
+   "text": "Section 30.1 presents two ways to represent polynomials: the coefficient representation and the point-value representation. The straightforward method for multiplying polynomials of degree n—equations (30.1) and (30.2)4takes Θ(n 2 ) time with polynomials represented in coefficient form, but only Θ(n) time with point-value form. Converting between the two representations, h owever, reduces the time to multiply polynomials to just Θ(n lg n). To see why this approach works, you must first understand complex roots of unity, which Section 30.2 covers. Section 30.2 then uses the FFT and its inverse to perform the co nversions. Because the FFT is used so often in signal processing, it is often implemented as a circuit in hardware, and Section 30.3 illustrates the structure of such circuits."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 879,
+   "pdf_page": 900,
+   "text": "This chapter relies on complex numbers, and within this chapter the symbol i denotes p"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 879,
+   "pdf_page": 900,
+   "text": "−1 exclusively."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 879,
+   "pdf_page": 900,
+   "text": "The coefficient and point-value representations of polynomials are in a sense equivalent: a polynomial in point-value form has a unique counterpart in coefficient form. This section introduces the two representatio ns and shows how to combine them in order to multiply two degree-bound n polynomials in Θ(n lg n) time."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 879,
+   "pdf_page": 900,
+   "text": "Coefficient representation"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 879,
+   "pdf_page": 900,
+   "text": "A coefficient representation of a polynomial A(x) = P n−1 j D0 a |x| of degreebound n is a vector of coefficients a = (a 0 ;a 1 ;:::;a n−1 ). Matrix equations in this chapter generally treat vectors as column vectors."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 879,
+   "pdf_page": 900,
+   "text": "The coefficient representation is convenient for certain operations on polynomials. For example, the operation of evaluating the polynomial A(x) at a given"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 879,
+   "pdf_page": 900,
+   "text": "point x 0 consists of computing the value of A(x 0 ). To evaluate a polynomial in Θ(n) time, use Horner’s rule:"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 879,
+   "pdf_page": 900,
+   "text": "A(x 0 ) = a 0 + x 0"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 879,
+   "pdf_page": 900,
+   "text": "[ a 1 + x 0"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 879,
+   "pdf_page": 900,
+   "text": "− a 2 + • • • + x 0 ã a n−2 + x 0 (a n−1 ) ä • • •"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 879,
+   "pdf_page": 900,
+   "text": "Similarly, adding two polynomials represented by the coefficient vectors a ="
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 879,
+   "pdf_page": 900,
+   "text": "(a 0 ;a 1 ;:::;a n−1 ) and b = (b 0 ;b 1 ;:::;b n−1 ) takes Θ(n) time: just produce the co- efficient vector c = (c 0 ;c 1 ;:::;c n−1 ), where c j = a j + b j for j = 0;1;:::;n − 1."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 879,
+   "pdf_page": 900,
+   "text": "Now, consider multiplying two degree-bound n polynomials A(x) and B(x) represented in coefficient form. The method described by equations (30.1) and (30.2) takes Θ(n 2 ) time, since it multiplies each coefficient in the vector a by each co- efficient in the vector b. The operation of multiplying polynomials in coefficient form seems to be considerably more difficult than that of evaluating a polynomial or adding two polynomials. The resulting coefficient vector c , given by equation (30.2), is also called the convolution of the input vectors a and b, denoted c = a ˝ b. Since multiplying polynomials and computing convolutions are fundamental computational problems of considerable practical importance, this chapter concentrates on efficient algorithms for them."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 880,
+   "pdf_page": 901,
+   "text": "Point-value representation"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 880,
+   "pdf_page": 901,
+   "text": "A point-value representation of a polynomial A(x) of degree-bound n is a set of n point-value pairs f(x 0 ;y 0 );.x 1 ;y 1 /;:::;.x n−1 ;y n−1 /g such that all of the x k are distinct and y k = A(x k ) (30.3) for k = 0;1;:::;n − 1. A polynomial has many different point-value representations, since any set of n distinct points x 0 ;x 1 ;:::;x n−1 can serve as a basis for the representation."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 880,
+   "pdf_page": 901,
+   "text": "Computing a point-value representation for a polynomial given in coefficient form is in principle straightforward, since all you have to do is select n distinct points x 0 ;x 1 ;:::;x n−1 and then evaluate A(x k ) for k = 0;1;:::;n − 1. With"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 880,
+   "pdf_page": 901,
+   "text": "Horner’s method, evaluating a polynomial at n points takes Θ(n 2 ) time. We’ll see later that if you choose the points x k cleverly, you can accelerate this computation to run in Θ(n lg n) time."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 880,
+   "pdf_page": 901,
+   "text": "The inverse of evaluation—determining the coefficient form of a polynomial from a point-value representation—is interpolation. The following theorem shows that interpolation is well defined when the desired interpolating polynomial must have a degree-bound equal to the given number of point-value pairs."
+  },
+  {
+   "type": "theorem",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 880,
+   "pdf_page": 901,
+   "text": "Theorem 30.1 (Uniqueness of an interpolating polynomial)"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 880,
+   "pdf_page": 901,
+   "text": "For any set f(x 0 ;y 0 );.x 1 ;y 1 /;:::;.x n−1 ;y n−1 /g of n point-value pairs such that all the x k values are distinct, there is a unique polynomial A(x) of degree-bound n"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 880,
+   "pdf_page": 901,
+   "text": "such that y k = A(x k ) for k = 0;1;:::;n − 1."
+  },
+  {
+   "type": "proof",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 880,
+   "pdf_page": 901,
+   "text": "Proof The proof relies on the existence of the inverse of a certain matrix. Equation (30.3) is equivalent to the matrix equation"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 881,
+   "pdf_page": 902,
+   "text": "˙ 1 x 0 x 2"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 881,
+   "pdf_page": 902,
+   "text": "0 • • • x n−1"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 881,
+   "pdf_page": 902,
+   "text": "1 x 1 x 2"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 881,
+   "pdf_page": 902,
+   "text": "1 • • • x n−1"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 881,
+   "pdf_page": 902,
+   "text": ": : : : : : : : : : : : : : :"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 881,
+   "pdf_page": 902,
+   "text": "1 x n−1 x 2 n−1 • • • x n−1 n−1"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 881,
+   "pdf_page": 902,
+   "text": "×˙ a 0 a 1"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 881,
+   "pdf_page": 902,
+   "text": ": : : a n−1"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 881,
+   "pdf_page": 902,
+   "text": "˙ y 0 y 1"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 881,
+   "pdf_page": 902,
+   "text": ": : : y n−1"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 881,
+   "pdf_page": 902,
+   "text": ": (30.4)"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 881,
+   "pdf_page": 902,
+   "text": "The matrix on the left is denoted V(x 0 ;x 1 ;:::;x n−1 ) and is known as a V andermonde matrix. By Problem D-1 on page 1223, this matrix has determinant"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 881,
+   "pdf_page": 902,
+   "text": "0≤j <k≤n−1"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 881,
+   "pdf_page": 902,
+   "text": "(x k − x j ); and therefore, by Theorem D.5 on page 1221, it is invertible (that is, nonsingular) if the x k are distinct. To solve for the coefficients a j uniquely given the point-value representation, use the inverse of the Vandermonde matrix: a = V(x 0 ;x 1 ;:::;x n−1 ) −1 y:"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 881,
+   "pdf_page": 902,
+   "text": "The proof of Theorem 30.1 describes an algorithm for interpolation based on solving the set (30.4) of linear equations. Section 28.1 shows how to solve these equations in O(n 3 ) time."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 881,
+   "pdf_page": 902,
+   "text": "A faster algorithm for n-point interpolation is based on Lagrange’s formula:"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 881,
+   "pdf_page": 902,
+   "text": "A(x) = n−1 X kD0 y k"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 881,
+   "pdf_page": 902,
+   "text": "(x − x j )"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 881,
+   "pdf_page": 902,
+   "text": "(x k − x j )"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 881,
+   "pdf_page": 902,
+   "text": ": (30.5)"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 881,
+   "pdf_page": 902,
+   "text": "You might want to verify that the right-hand side of equation (30.5) is a polynomial of degree-bound n that satisfies A(x k ) = y k for all k. Exercise 30.1-5 asks you how to compute the coefficients of A using Lagrange’s formula in Θ(n 2 ) time."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 881,
+   "pdf_page": 902,
+   "text": "Thus, n-point evaluation and interpolation are well-defined inverse operations that transform between the coefficient representation of a polynomial and a pointvalue representation. 1 The algorithms described above for these problems t ake"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 881,
+   "pdf_page": 902,
+   "text": "Θ(n 2 ) time."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 881,
+   "pdf_page": 902,
+   "text": "The point-value representation is quite convenient for many operations on polynomials. For addition, if C(x) = A(x) + B(x), then C(x k ) = A(x k ) + B(x k ) for any point x k . More precisely, given point-value representations for A, f(x 0 ;y 0 );.x 1 ;y 1 /;:::;.x n−1 ;y n−1 /g ; 1 Interpolation is a notoriously tricky problem from the point of view of numerical stability. Although the approaches described here are mathematically correct, small differences in the inputs or round-off errors during computation can cause large differences in the result. and for B , f(x 0 ;y 0"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 882,
+   "pdf_page": 903,
+   "text": "0 );.x 1 ;y 0"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 882,
+   "pdf_page": 903,
+   "text": "1 /;:::;.x n−1 ;y 0 n−1 /g ; where A and B are evaluated at the same n points, then a point-value representation for C is f(x 0 ;y 0 + y 0"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 882,
+   "pdf_page": 903,
+   "text": "0 );.x 1 ;y 1 + y 0"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 882,
+   "pdf_page": 903,
+   "text": "1 /;:::;.x n−1 ;y n−1 + y 0 n−1 /g :"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 882,
+   "pdf_page": 903,
+   "text": "Thus the time to add two polynomials of degree-bound n in point-value form is Θ(n)."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 882,
+   "pdf_page": 903,
+   "text": "Similarly, the point-value representation is convenient for multiplying polynomials. If C(x) = A(x)B(x) , then C(x k ) = A(x k )B(x k ) for any point x k , and to obtain a point-value representation for C , just pointwise multiply a point-value representation for A by a point-value representation for B . Polynomial multiplication differs from polynomial addition in one key aspect, however: degree(C) = degree(A) C degree(B), so that if A and B have degree-bound n, then C has degree-bound 2n. A standard point-value representation for A and B consists of n point-value pairs for each polynomial. Multiplying these together gives n pointvalue pairs, but 2n pairs are necessary to interpolate a unique polynom ial C of degree-bound 2n. (See Exercise 30.1-4.) Instead, begin with \"extended\" pointvalue representations for A and for B consisting of 2n point-value pairs each."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 882,
+   "pdf_page": 903,
+   "text": "Given an extended point-value representation for A, f(x 0 ;y 0 );.x 1 ;y 1 /;:::;.x 2n−1 ;y 2n−1 /g ; and a corresponding extended point-value representation for B , f(x 0 ;y 0"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 882,
+   "pdf_page": 903,
+   "text": "0 );.x 1 ;y 0"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 882,
+   "pdf_page": 903,
+   "text": "1 /;:::;.x 2n−1 ;y 0"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 882,
+   "pdf_page": 903,
+   "text": "2n−1 /g ; then a point-value representation for C is f(x 0 ;y 0 y 0"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 882,
+   "pdf_page": 903,
+   "text": "0 );.x 1 ;y 1 y 0"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 882,
+   "pdf_page": 903,
+   "text": "1 /;:::;.x 2n−1 ;y 2n−1 y 0"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 882,
+   "pdf_page": 903,
+   "text": "2n−1 /g :"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 882,
+   "pdf_page": 903,
+   "text": "Given two input polynomials in extended point-value form, multiplying them to obtain the point-value form of the result takes just Θ(n) time, much less than the Θ(n 2 ) time required to multiply polynomials in coefficient form."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 882,
+   "pdf_page": 903,
+   "text": "Finally, let’s consider how to evaluate a polynomial given in point-value form at a new point. For this problem, the simplest approac h known is to first convert the polynomial to coefficient form and then evaluate it at the new point."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 882,
+   "pdf_page": 903,
+   "text": "Fast multiplication of polynomials in coefficient form"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 882,
+   "pdf_page": 903,
+   "text": "Can the linear-time multiplication method for polynomials in point-value form expedite polynomial multiplication in coefficient form? The answer hinges on a 0 ;a 1 ;:::;a n−1 b 0 ;b 1 ;:::;b n−1 c 0 ;c 1 ;:::;c 2n−2"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 883,
+   "pdf_page": 904,
+   "text": "Ordinary multiplication"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 883,
+   "pdf_page": 904,
+   "text": "Time Θ(n 2 )"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 883,
+   "pdf_page": 904,
+   "text": "Evaluation"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 883,
+   "pdf_page": 904,
+   "text": "Time Θ(n lg n) Time Θ(n lg n)"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 883,
+   "pdf_page": 904,
+   "text": "Interpolation"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 883,
+   "pdf_page": 904,
+   "text": "Pointwise multiplication"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 883,
+   "pdf_page": 904,
+   "text": "Time Θ(n)"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 883,
+   "pdf_page": 904,
+   "text": "2n /;B.! 0"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 883,
+   "pdf_page": 904,
+   "text": "2n /;B.! 1"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 883,
+   "pdf_page": 904,
+   "text": "A.! 2n−1"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 883,
+   "pdf_page": 904,
+   "text": "2n /;B.! 2n−1"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 883,
+   "pdf_page": 904,
+   "text": ": : : : : :"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 883,
+   "pdf_page": 904,
+   "text": "C.! 2n−1"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 883,
+   "pdf_page": 904,
+   "text": "Coefficient"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 883,
+   "pdf_page": 904,
+   "text": "Point-value representations representations"
+  },
+  {
+   "type": "figure-caption",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 883,
+   "pdf_page": 904,
+   "text": "Figure 30.1 A graphical outline of an efficient polynomial-multiplication process. Representations on the top are in coefficient form, and those on the bottom are in point-value form. The arrows from left to right correspond to the multiplication operation. The ! 2n terms are complex .2n/th roots of unity. whether it is possible convert a polynomial quickly from coefficient form to pointvalue form (evaluate) and vice versa (interpolate)."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 883,
+   "pdf_page": 904,
+   "text": "Any points can serve as evaluation points, but cert ain evaluation points allow conversion between representations in only Θ(n lg n) time. As we’ll see in Section 30.2, if \"complex roots of unity\" are the evaluation points, then the discrete Fourier transform (or DFT) evaluates and the inverse DFT interpolates. Section 30.2 shows how the FFT accomplishes the DFT and inverse DFT operations in Θ(n lg n) time."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 883,
+   "pdf_page": 904,
+   "text": "Figure 30.1 shows this strategy graphically. One minor detail concerns degreebounds. The product of two polynomials of degree-bound n is a polynomial of degree-bound 2n. Before evaluating the input polynomials A and B , therefore, first double their degree-bounds to 2n by adding n high-order coefficients of 0."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 883,
+   "pdf_page": 904,
+   "text": "Because the vectors have 2n elements, use \"complex .2n/th roots of unity,\" which are denoted by the ! 2n terms in Figure 30.1."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 883,
+   "pdf_page": 904,
+   "text": "The following procedure takes advantage of the FFT to multiply two polynomials A(x) and B(x) of degree-bound n in Θ(n lg n)-time, where the input and output representations are in coefficient form. The procedure assumes that n is an exact power of 2, so if it isn’t, just add high-order zero coefficients."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 883,
+   "pdf_page": 904,
+   "text": "1. Double degree-bound: Create coefficient representations of A(x) and B(x) as degree-bound 2n polynomials by adding n high-order zero coefficients to each."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 884,
+   "pdf_page": 905,
+   "text": "2. Evaluate: Compute point-value representations of A(x) and B(x) of length 2n by applying the FFT of order 2n on each polynomial. These representations contain the values of the two polynomials at the .2n/th roots of unity."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 884,
+   "pdf_page": 905,
+   "text": "3. Pointwise multiply: Compute a point-value representation for the polynomial"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 884,
+   "pdf_page": 905,
+   "text": "C(x) = A(x)B(x) by multiplying these values together pointwise. This repre-"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 884,
+   "pdf_page": 905,
+   "text": "sentation contains the value of C(x) at each .2n/th root of unity."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 884,
+   "pdf_page": 905,
+   "text": "4. Interpolate: Create the coefficient representation of the polynomial C(x) by applying the FFT on 2n point-value pairs to compute the inverse DFT."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 884,
+   "pdf_page": 905,
+   "text": "Steps (1) and (3) take Θ(n) time, and steps (2) and (4) take Θ(n lg n) time. Thus, once we show how to use the FFT, we will have proven the following."
+  },
+  {
+   "type": "theorem",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 884,
+   "pdf_page": 905,
+   "text": "Theorem 30.2"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 884,
+   "pdf_page": 905,
+   "text": "Two polynomials of degree-bound n with both the input and output representations in coefficient form can be multiplied in Θ(n lg n) time."
+  },
+  {
+   "type": "exercise",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 884,
+   "pdf_page": 905,
+   "text": "30.1-1 Multiply the polynomials A(x) = 7x 3 − x 2 + x − 10 and B(x) = 8x 3 − 6x + 3 using equations (30.1) and (30.2)."
+  },
+  {
+   "type": "exercise",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 884,
+   "pdf_page": 905,
+   "text": "30.1-2 Another way to evaluate a polynomial A(x) of degree-bound n at a given point x 0"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 884,
+   "pdf_page": 905,
+   "text": "is to divide A(x) by the polynomial (x − x 0 ), obtaining a quotient polynomial q(x) of degree-bound n − 1 and a remainder r , such that A(x) = q(x).x − x 0 / C r:"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 884,
+   "pdf_page": 905,
+   "text": "Then we have A(x 0 ) = r . Show how to compute the remainder r and the coefficients of q(x) from x 0 and the coefficients of A in Θ(n) time."
+  },
+  {
+   "type": "exercise",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 884,
+   "pdf_page": 905,
+   "text": "30.1-3 Given a polynomial A(x) = P n−1 j D0 a |x| , define A rev (x) = P n−1 j D0 a n−1−|x| . Show how to derive a point-value representation for A rev (x) from a point-value representation for A(x), assuming that none of the points is 0."
+  },
+  {
+   "type": "exercise",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 884,
+   "pdf_page": 905,
+   "text": "30.1-4 Prove that n distinct point-value pairs are necessary to uniquely specify a polynomial of degree-bound n, that is, if fewer than n distinct point-value pairs are given, they fail to specify a unique polynomial of degree-bound n. (Hint: Using Theorem 30.1, what can you say about a set of n − 1 point-value pairs to which you add one more arbitrarily chosen point-value pair?)"
+  },
+  {
+   "type": "exercise",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 885,
+   "pdf_page": 906,
+   "text": "30.1-5 Show how to use equation (30.5) to interpolate in Θ(n 2 ) time. (Hint: First compute the coefficient representation of the polynomial Q j (x − x j ) and then divide by (x − x k ) as necessary for the numerator of each term (see Exercise 30.1-2). You can compute each of the n denominators in O(n) time.)"
+  },
+  {
+   "type": "exercise",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 885,
+   "pdf_page": 906,
+   "text": "30.1-6 Explain what is wrong with the \"obvious\" approach t o polynomial division using a point-value representation: dividing the corresponding y values. Discuss separately the case in which the division comes out exa ctly and the case in which it doesn’t."
+  },
+  {
+   "type": "exercise",
+   "chapter": 30,
+   "section": "30.1",
+   "section_title": "30.1 Representing polynomials",
+   "printed_page": 885,
+   "pdf_page": 906,
+   "text": "30.1-7 Consider two sets A and B , each having n integers in the range from 0 to 10n. The"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 885,
+   "pdf_page": 906,
+   "text": "Cartesian sum of A and B is defined by C = fx + y W x 2 A and y 2 B g :"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 885,
+   "pdf_page": 906,
+   "text": "The integers in C lie in the range from 0 to 20n. Show how, in O(n lg n) time, to find the elements of C and the number of times each element of C is realized as a sum of elements in A and B . (Hint: Represent A and B as polynomials of degree at most 10n.)"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 885,
+   "pdf_page": 906,
+   "text": "In Section 30.1, we claimed that by computing the DFT and its inverse by using the FFT, it is possible to evaluate and interpolate a degree n polynomial at the complex roots of unity in Θ(n lg n) time. This section defines complex roots of unity, studies their properties, defines the DFT, and then shows how the FFT computes the DFT and its inverse in Θ(n lg n) time."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 885,
+   "pdf_page": 906,
+   "text": "Complex roots of unity"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 885,
+   "pdf_page": 906,
+   "text": "A complex nth root of unity is a complex number ! such that ! n = 1:"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 885,
+   "pdf_page": 906,
+   "text": "There are exactly n complex nth roots of unity: e 2− i k/n for k = 0;1;:::;n − 1. To interpret this formula, use the definition of the exponential of a complex number: e i u = cos(u) + i sin(u):"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 885,
+   "pdf_page": 906,
+   "text": "Figure 30.2 shows that the n complex roots of unity are equally spaced around the circle of unit radius centered at the origin of the complex plane. The value"
+  },
+  {
+   "type": "figure-caption",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 886,
+   "pdf_page": 907,
+   "text": "Figure 30.2 The values of ! 0"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 886,
+   "pdf_page": 907,
+   "text": "8 ;:::;! 7"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 886,
+   "pdf_page": 907,
+   "text": "8 in the complex plane, where ! 8 = e 2− i/8 is the principal 8th root of unity."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 886,
+   "pdf_page": 907,
+   "text": "! n = e 2− i/n (30.6) is the principal nth root of unity. 2 All other complex nth roots of unity are powers of ! n ."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 886,
+   "pdf_page": 907,
+   "text": "The n complex nth roots of unity, ! 0 n ;! 1 n ;:::;! n−1 n ; form a group under multiplication (see Section 31.3). This group has the same structure as the additive group (Z n ; C) modulo n, since ! n n = ! 0 n = 1 implies that ! j n ! k n = ! j Ck n = ! (j Ck) mod n n . Similarly, ! −1 n = ! n−1 n . The following lemmas furnish some essential properties of the complex nth roots of unity."
+  },
+  {
+   "type": "lemma",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 886,
+   "pdf_page": 907,
+   "text": "Lemma 30.3 (Cancellation lemma)"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 886,
+   "pdf_page": 907,
+   "text": "For any integers n>0 , k ≥ 0, and d >0, ! d k d n = ! k n : (30.7)"
+  },
+  {
+   "type": "proof",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 886,
+   "pdf_page": 907,
+   "text": "Proof The lemma follows directly from equation (30.6), since"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 886,
+   "pdf_page": 907,
+   "text": "! d k d n = ã e 2− i/d n ä d k"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 886,
+   "pdf_page": 907,
+   "text": "D ã e 2− i/n ä k"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 886,
+   "pdf_page": 907,
+   "text": "D ! k n :"
+  },
+  {
+   "type": "footnote",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 886,
+   "pdf_page": 907,
+   "text": "2 Many other authors define ! n differently: ! n = e −2− i/n . This alternative definition tends to be used for signal-processing applications. The underlying mathematics is substantially the same with either definition of ! n ."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 886,
+   "pdf_page": 907,
+   "text": "D n−1 X j D0 a j ! kj n : (30.8)"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 886,
+   "pdf_page": 907,
+   "text": "D n−1 X j D0"
+  },
+  {
+   "type": "corollary",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 887,
+   "pdf_page": 908,
+   "text": "Corollary 30.4"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 887,
+   "pdf_page": 908,
+   "text": "For any even integer n>0 , ! n/2 n = ! 2 = −1:"
+  },
+  {
+   "type": "proof",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 887,
+   "pdf_page": 908,
+   "text": "Proof The proof is left as Exercise 30.2-1."
+  },
+  {
+   "type": "lemma",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 887,
+   "pdf_page": 908,
+   "text": "Lemma 30.5 (Halving lemma)"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 887,
+   "pdf_page": 908,
+   "text": "If n>0 is even, then the squares of the n complex nth roots of unity are the n/2 complex (n/2)th roots of unity."
+  },
+  {
+   "type": "proof",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 887,
+   "pdf_page": 908,
+   "text": "Proof By the cancellation lemma, .! k n / 2 = ! k n/2 for any nonnegative integer k."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 887,
+   "pdf_page": 908,
+   "text": "Squaring all of the complex nth roots of unity produces each (n/2)th root of unity exactly twice, since"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 887,
+   "pdf_page": 908,
+   "text": ".! kCn/2 n / 2 = ! 2kCn n"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 887,
+   "pdf_page": 908,
+   "text": "D ! 2k n ! n n"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 887,
+   "pdf_page": 908,
+   "text": "D ! 2k n"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 887,
+   "pdf_page": 908,
+   "text": "D .! k n / 2 :"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 887,
+   "pdf_page": 908,
+   "text": "Thus ! k n and ! kCn/2 n have the same square. We could also have used Corollary 30.4 to prove this property, since ! n/2 n = −1 implies ! kCn/2 n = ! k n ! n/2 n = −! k n , and thus .! kCn/2 n / 2 = .−! k n / 2 = .! k n / 2 ."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 887,
+   "pdf_page": 908,
+   "text": "As we’ll see, the halving lemma is essential to the divide-and-conquer approach for converting between coefficient and point-value representations of polynomials, since it guarantees that the recursive subproblems are only half as large."
+  },
+  {
+   "type": "lemma",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 887,
+   "pdf_page": 908,
+   "text": "Lemma 30.6 (Summation lemma)"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 887,
+   "pdf_page": 908,
+   "text": "For any integer n ≥ 1 and nonzero integer k not divisible by n, n−1 X j D0 ã"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 887,
+   "pdf_page": 908,
+   "text": "! k n ä j"
+  },
+  {
+   "type": "proof",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 887,
+   "pdf_page": 908,
+   "text": "Proof Equation (A.6) on page 1142 applies to complex values as well as to reals, giving n−1 X j D0 ã"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 887,
+   "pdf_page": 908,
+   "text": "! k n ä j"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 887,
+   "pdf_page": 908,
+   "text": "D .! k n / n − 1"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 887,
+   "pdf_page": 908,
+   "text": "! k n − 1"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 887,
+   "pdf_page": 908,
+   "text": "! k n − 1"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 887,
+   "pdf_page": 908,
+   "text": "! k n − 1"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 888,
+   "pdf_page": 909,
+   "text": "D .! n n / k − 1"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 888,
+   "pdf_page": 909,
+   "text": "D .1/ k − 1"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 888,
+   "pdf_page": 909,
+   "text": "To see that the denominator is not 0, note that ! k n = 1 only when k is divisible by n, which the lemma statement prohibits."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 888,
+   "pdf_page": 909,
+   "text": "Recall the goal of evaluating a polynomial"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 888,
+   "pdf_page": 909,
+   "text": "A(x) = n−1 X j D0 a |x| of degree-bound n at ! 0 n ;! 1 n ;! 2 n ;:::;! n−1 n (that is, at the n complex nth roots of unity). 3 The polynomial A is given in coefficient form: a = (a 0 ;a 1 ;:::;a n−1 )."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 888,
+   "pdf_page": 909,
+   "text": "Let us define the results y k , for k = 0;1;:::;n − 1, by y k = A.! k n /"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 888,
+   "pdf_page": 909,
+   "text": "The vector y = (y 0 ;y 1 ;:::;y n−1 ) is the discrete Fourier transform (DFT) of the coefficient vector a = (a 0 ;a 1 ;:::;a n−1 ). We also write y DDFT n (a)."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 888,
+   "pdf_page": 909,
+   "text": "The fast Fourier transform (FFT) takes advantage of the special properties of the complex roots of unity to compute DFT n (a) in Θ(n lg n) time, as opposed to the Θ(n 2 ) time of the straightforward method. Assume througho ut that n is an exact power of 2. Although strategies for dealing with sizes that a re not exact powers of 2 are known, they are beyond the scope of this book."
+  },
+  {
+   "type": "footnote",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 888,
+   "pdf_page": 909,
+   "text": "3 The length n is actually what Section 30.1 referred to as 2n, since the degree-bound of the given polynomials doubles prior to evaluation. In the con text of polynomial multiplication, therefore, we are actually working with complex .2n/th roots of unity."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 889,
+   "pdf_page": 910,
+   "text": "The FFT method employs a divide-and-conquer strategy, using the even-indexed and odd-indexed coefficients of A(x) separately to define the two new polynomials"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 889,
+   "pdf_page": 910,
+   "text": "A even (x) and A odd (x) of degree-bound n/2:"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 889,
+   "pdf_page": 910,
+   "text": "A even (x) = a 0 + a 2 x + a 4 x 2 + • • • + a n−2 x n/2−1 ; A odd (x) = a 1 + a 3 x + a 5 x 2 + • • • + a n−1 x n/2−1 :"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 889,
+   "pdf_page": 910,
+   "text": "Note that A even contains all the even-indexed coefficients of A (the binary representation of the index ends in 0) and A odd contains all the odd-indexed coefficients"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 889,
+   "pdf_page": 910,
+   "text": "(the binary representation of the index ends in 1). It follows that A(x) = A even (x 2 ) C xA odd (x 2 ); (30.9)"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 889,
+   "pdf_page": 910,
+   "text": "so that the problem of evaluating A(x) at ! 0 n ;! 1 n ;:::;! n−1 n reduces to 1. evaluating the degree-bound n/2 polynomials A even (x) and A odd (x) at the points"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 889,
+   "pdf_page": 910,
+   "text": ".! 0 n / 2 ;.! 1 n / 2 ;:::;.! n−1 n / 2 ; (30.10) and then"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 889,
+   "pdf_page": 910,
+   "text": "2. combining the results according to equation (30.9)."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 889,
+   "pdf_page": 910,
+   "text": "By the halving lemma, the list of values (30.10) consists not of n distinct values but only of the n/2 complex (n/2)th roots of unity, with each root occurring exactly twice. Therefore, the FFT recursively evaluates the polynomials A even and A odd of degree-bound n/2 at the n/2 complex (n/2)th roots of unity. These subproblems have exactly the same form as the original problem, but are half the size, dividing an n-element DFT n computation into two n/2-element DFT n/2 computations. This decomposition is the basis for the FFT procedure on the next page, which computes the DFT of an n-element vector a = (a 0 ;a 1 ;:::;a n−1 ), where n is an exact power of 2."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 889,
+   "pdf_page": 910,
+   "text": "The FFT procedure works as follows. Lines 132 represent the base case of the recursion. The DFT of 1 element is the element itself, since in this case y 0 = a 0 ! 0"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 889,
+   "pdf_page": 910,
+   "text": "D a 0 • 1"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 889,
+   "pdf_page": 910,
+   "text": "Lines 536 define the coefficient vectors for the polynomials A even and A odd . Lines"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 889,
+   "pdf_page": 910,
+   "text": "3, 4, and 12 guarantee that ! is updated properly so that whenever lines 10311 are executed, ! = ! k n . (Keeping a running value of ! from iteration to iteration saves"
+  },
+  {
+   "type": "pseudocode",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 890,
+   "pdf_page": 911,
+   "algo_name": "FFT",
+   "signature": "FFT",
+   "lines": [
+    {
+     "n": 1,
+     "code": "if n = = 1"
+    },
+    {
+     "n": 2,
+     "code": "return a / / DFT of 1 element is the element itself"
+    },
+    {
+     "n": 3,
+     "code": "! n = e 2− i/n"
+    },
+    {
+     "n": 4,
+     "code": "! = 1"
+    },
+    {
+     "n": 5,
+     "code": "a even = (a 0 ;a  2 ;:::;a  n−2 )"
+    },
+    {
+     "n": 6,
+     "code": "a odd = (a 1 ;a  3 ;:::;a  n−1 )"
+    },
+    {
+     "n": 7,
+     "code": "y even DFFT(a even ;n/2)"
+    },
+    {
+     "n": 8,
+     "code": "y odd DFFT(a odd ;n/2)"
+    },
+    {
+     "n": 9,
+     "code": "for k = 0 to n/2 − 1 / / at this point, ! = ! k n"
+    },
+    {
+     "n": 10,
+     "code": "y k = y even k C !y  odd k"
+    },
+    {
+     "n": 11,
+     "code": "y kC(n/2) = y even k − !y  odd k"
+    },
+    {
+     "n": 12,
+     "code": "! = !!  n"
+    },
+    {
+     "n": 13,
+     "code": "return y time over computing ! k n from scratch each time through the for loop. 4 ) Lines 738"
+    }
+   ],
+   "text": "1 if n = = 1\n2 return a / / DFT of 1 element is the element itself\n3 ! n = e 2− i/n\n4 ! = 1\n5 a even = (a 0 ;a  2 ;:::;a  n−2 )\n6 a odd = (a 1 ;a  3 ;:::;a  n−1 )\n7 y even DFFT(a even ;n/2)\n8 y odd DFFT(a odd ;n/2)\n9 for k = 0 to n/2 − 1 / / at this point, ! = ! k n\n10 y k = y even k C !y  odd k\n11 y kC(n/2) = y even k − !y  odd k\n12 ! = !!  n\n13 return y time over computing ! k n from scratch each time through the for loop. 4 ) Lines 738"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 890,
+   "pdf_page": 911,
+   "text": "FFT(a;n) time over computing ! k n from scratch each time through the for loop. 4 ) Lines 738 perform the recursive DFT n/2 computations, setting, for k = 0;1;:::;n/2 − 1, y even k = A even .! k n/2 /; y odd k = A odd .! k n/2 /; or, since ! k n/2 = ! 2k n by the cancellation lemma, y even k = A even .! 2k n /; y odd k = A odd .! 2k n /:"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 890,
+   "pdf_page": 911,
+   "text": "Lines 10311 combine the results of the recursive DFT n/2 calculations. For the first n/2 results y 0 ;y 1 ;:::;y n/2−1 , line 10 yields y k = y even k C ! k n y odd k"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 890,
+   "pdf_page": 911,
+   "text": "D A even .! 2k n / C ! k n A odd .! 2k n /"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 890,
+   "pdf_page": 911,
+   "text": "D A.! k n / (by equation (30.9)) ."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 890,
+   "pdf_page": 911,
+   "text": "For y n/2 ;y n/2C1 ;:::;y n−1 , letting k = 0;1;:::;n/2 − 1, line 11 yields"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 890,
+   "pdf_page": 911,
+   "text": "4 The downside of iteratively updating ! is that round-off errors can accumulate, especially for larger input sizes. Several techniques to limit the magnit ude of FFT round-off errors have been proposed, but are beyond the scope of this book. If several FFTs are going to be run on inputs of the same size, then it might be worthwhile to directly precompute a table of all n/2 values of ! k n . y kC(n/2) = y even k − ! k n y odd k"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 890,
+   "pdf_page": 911,
+   "text": "D A even .! 2k n / C ! kC(n/2) n A odd .! 2k n /"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 891,
+   "pdf_page": 912,
+   "text": "D y even k C ! kC(n/2) n y odd k (since ! kC(n/2) n = −! k n )"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 891,
+   "pdf_page": 912,
+   "text": "D A even .! 2kCn n / C ! kC(n/2) n A odd .! 2kCn n / (since ! 2kCn n = ! 2k n )"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 891,
+   "pdf_page": 912,
+   "text": "D A.! kC(n/2) n / (by equation (30.9)) ."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 891,
+   "pdf_page": 912,
+   "text": "Thus the vector y returned by FFT is indeed the DFT of the input vector a."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 891,
+   "pdf_page": 912,
+   "text": "Lines 10 and 11 multiply each value y odd k by ! k n , for k = 0;1;:::;n/2 − 1."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 891,
+   "pdf_page": 912,
+   "text": "Line 10 adds this product to y even k , and line 11 subtracts it. Because each factor ! k n appears in both its positive and negative forms, we call the factors ! k n twiddle factors."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 891,
+   "pdf_page": 912,
+   "text": "To determine the running time of the procedure FFT, note that exclusive of the recursive calls, each invocation takes Θ(n) time, where n is the length of the input vector. The recurrence for the running time is therefore"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 891,
+   "pdf_page": 912,
+   "text": "T(n) = 2T(n/2) + Θ(n)"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 891,
+   "pdf_page": 912,
+   "text": "D Θ(n lg n); by case 2 of the master theorem (Theorem 4.1). Thus the FFT can evaluate a polynomial of degree-bound n at the complex nth roots of unity in Θ(n lg n) time."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 891,
+   "pdf_page": 912,
+   "text": "Interpolation at the complex roots of unity"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 891,
+   "pdf_page": 912,
+   "text": "The polynomial multiplication scheme entails converting from coefficient form to point-value form by evaluating the polynomial at the complex roots of unity, pointwise multiplying, and finally converting from point-value form back to coefficient form by interpolating. We’ve just seen how to evaluate, so now we’ll see how to interpolate the complex roots of unity by a polynomial. To interpolate, we’ll write the DFT as a matrix equation and then look at the form of the matrix inverse."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 891,
+   "pdf_page": 912,
+   "text": "From equation (30.4), we can write the DFT as the matrix product y = V n a, where V n is a Vandermonde matrix containing the appropriate powers of ! n : ä y 0 y 1 y 2 y 3"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 891,
+   "pdf_page": 912,
+   "text": ": : : y n−1 å"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 891,
+   "pdf_page": 912,
+   "text": "1 1 1 1 • • • 1"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 891,
+   "pdf_page": 912,
+   "text": "1 ! n ! 2 n ! 3 n • • • ! n−1 n"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 891,
+   "pdf_page": 912,
+   "text": "1 ! 2 n ! 4 n ! 6 n • • • ! 2.n−1/ n"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 891,
+   "pdf_page": 912,
+   "text": "1 ! 3 n ! 6 n ! 9 n • • • ! 3.n−1/ n"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 891,
+   "pdf_page": 912,
+   "text": ": : : : : : : : : : : : : : : : : :"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 891,
+   "pdf_page": 912,
+   "text": "1 ! n−1 n ! 2.n−1/ n ! 3.n−1/ n • • • ! (n−1).n−1/ n åä a 0 a 1 a 2 a 3"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 891,
+   "pdf_page": 912,
+   "text": ": : : a n−1 å"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 891,
+   "pdf_page": 912,
+   "text": "The (k;j) entry of V n is ! kj n , for j;k = 0;1;:::;n − 1. The exponents of the entries of V n form a multiplication table for factors 0 to n − 1."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 892,
+   "pdf_page": 913,
+   "text": "For the inverse operation, which we write as a DDFT −1 n (y), multiply y by the matrix V −1 n , the inverse of V n ."
+  },
+  {
+   "type": "theorem",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 892,
+   "pdf_page": 913,
+   "text": "Theorem 30.7"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 892,
+   "pdf_page": 913,
+   "text": "For j;k = 0;1;:::;n − 1, the (j;k) entry of V −1 n is ! −j k n =n."
+  },
+  {
+   "type": "proof",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 892,
+   "pdf_page": 913,
+   "text": "Proof We show that V −1 n V n = I n , the n × n identity matrix. Consider the (k;k 0 ) entry of V −1 n V n :"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 892,
+   "pdf_page": 913,
+   "text": "[V −1 n V n ] kk 0 = n−1 X j D0"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 892,
+   "pdf_page": 913,
+   "text": ".! −j k n =n/.! j k 0 n /"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 892,
+   "pdf_page": 913,
+   "text": "! j(k 0 −k) n =n:"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 892,
+   "pdf_page": 913,
+   "text": "This summation equals 1 if k 0 = k, and it is 0 otherwise by the summation lemma (Lemma 30.6). Note that in order for the summation lemma to apply, k 0 − k must not be divisible by n. Indeed, it is not, since −.n − 1/ ≤ k 0 − k ≤ n − 1."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 892,
+   "pdf_page": 913,
+   "text": "With the inverse matrix V −1 n defined, DFT −1 n (y) is given by a j = n−1 X kD0 y k"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 892,
+   "pdf_page": 913,
+   "text": "! −j k n"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 892,
+   "pdf_page": 913,
+   "text": "D 1 n n−1 X kD0 y k ! −kj n (30.11) for j = 0;1;:::;n − 1. By comparing equations (30.8) and (30.11), you can see that if you modify the FFT algorithm to switch the roles of a and y , replace ! n by ! −1 n , and divide each element of the result by n, you get the inverse DFT (see"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 892,
+   "pdf_page": 913,
+   "text": "Exercise 30.2-4). Thus, DFT −1 n is computable in Θ(n lg n) time as well."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 892,
+   "pdf_page": 913,
+   "text": "Thus, the FFT and the inverse FFT provide a way to transform a polynomial of degree-bound n back and forth between its coefficient representation and a pointvalue representation in only Θ(n lg n) time. In the context of polynomial multi- plication, we have shown the following about the co nvolution a ˝ b of vectors a and b:"
+  },
+  {
+   "type": "theorem",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 892,
+   "pdf_page": 913,
+   "text": "Theorem 30.8 (Convolution theorem)"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 892,
+   "pdf_page": 913,
+   "text": "For any two vectors a and b of length n, where n is an exact power of 2, a ˝ b DDFT −1"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 892,
+   "pdf_page": 913,
+   "text": "2n .DFT 2n (a) • DFT 2n (b)/; where the vectors a and b are padded with 0s to length 2n and • denotes the componentwise product of two 2n-element vectors."
+  },
+  {
+   "type": "exercise",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 893,
+   "pdf_page": 914,
+   "text": "30.2-1 Prove Corollary 30.4."
+  },
+  {
+   "type": "exercise",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 893,
+   "pdf_page": 914,
+   "text": "30.2-2 Compute the DFT of the vector .0;1;2;3/ ."
+  },
+  {
+   "type": "exercise",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 893,
+   "pdf_page": 914,
+   "text": "30.2-3 Do Exercise 30.1-1 by using the Θ(n lg n)-time scheme."
+  },
+  {
+   "type": "exercise",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 893,
+   "pdf_page": 914,
+   "text": "30.2-4 Write pseudocode to compute DFT −1 n in Θ(n lg n) time."
+  },
+  {
+   "type": "exercise",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 893,
+   "pdf_page": 914,
+   "text": "30.2-5 Describe the generalization of the FFT procedure to the case in which n is an exact power of 3. Give a recurrence for the running time, and solve the recurrence."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 893,
+   "pdf_page": 914,
+   "text": "? 30.2-6"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 893,
+   "pdf_page": 914,
+   "text": "Instead of performing an n-element FFT over the field of complex numbers (where n is an exact power of 2), let’s use the ring Z m of integers modulo m, where m = 2 t n/2 + 1 and t is an arbitrary positive integer. We can use ! = 2 t instead of ! n as a principal nth root of unity, modulo m. Prove that the DFT and the inverse"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 893,
+   "pdf_page": 914,
+   "text": "DFT are well defined in this system."
+  },
+  {
+   "type": "exercise",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 893,
+   "pdf_page": 914,
+   "text": "30.2-7 Given a list of values ´ 0 ;´ 1 ;:::;´ n−1 (possibly with repetitions), show how to find the coefficients of a polynomial P(x) of degree-bound n + 1 that has zeros only at ´ 0 ;´ 1 ;:::;´ n−1 (possibly with repetitions). Your procedure should run in O(n lg 2 n) time. (Hint: The polynomial P(x) has a zero at ´ j if and only if P(x) is a multiple of (x − ´ j ).)"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 893,
+   "pdf_page": 914,
+   "text": "? 30.2-8"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 893,
+   "pdf_page": 914,
+   "text": "The chirp transform of a vector a = (a 0 ;a 1 ;:::;a n−1 ) is the vector y ="
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 893,
+   "pdf_page": 914,
+   "text": "(y 0 ;y 1 ;:::;y n−1 ), where y k = P n−1 j D0 a j ´ kj and ´ is any complex number. The"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 893,
+   "pdf_page": 914,
+   "text": "DFT is therefore a special case of the chirp transform, obtained by taking ´ = ! n ."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 893,
+   "pdf_page": 914,
+   "text": "Show how to evaluate the chirp transform for any complex number ´ in O(n lg n) time. (Hint: Use the equation y k = ´ k 2/2 n−1 X j D0"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 893,
+   "pdf_page": 914,
+   "text": "− a j ´ j 2/2"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 893,
+   "pdf_page": 914,
+   "text": "´ −.k−j / 2/2"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.2",
+   "section_title": "30.2 The DFT and FFT",
+   "printed_page": 893,
+   "pdf_page": 914,
+   "text": "] to view the chirp transform as a convolution.)"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 894,
+   "pdf_page": 915,
+   "text": "Many of the FFT’s applications in signal processing require the utmost speed, and so the FFT is often implemented as a circuit in har dware. The FFT’s divide-andconquer structure enables the circuit to have a parallel structure so that the depth of the circuit—the maximum number of computational elements between any output and any input that can reach it—is Θ(lg n). Moreover, the structure of the FFT circuit has several interesting mathematical proper ties, which we won’t go into here."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 894,
+   "pdf_page": 915,
+   "text": "Butterfly operations"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 894,
+   "pdf_page": 915,
+   "text": "Notice that the for loop of lines 9312 of the FFT procedure computes the value"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 894,
+   "pdf_page": 915,
+   "text": "! k n y odd k twice per iteration: once in line 10 and once in line 11. A good optimizing compiler produces code that evaluates this common subexpression just once, storing its value into a temporary variable, so that lines 10311 are treated like the three lines t = !y odd k y k = y even k + t y kC(n/2) = y even k − t"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 894,
+   "pdf_page": 915,
+   "text": "This operation, multiplying the twiddle factor ! = ! k n by y odd k , storing the product into the temporary variable t , and adding and subtracting t from y even k , is known as a butterfly operation. Figure 30.3 shows it as a circuit, and you can see how it vaguely resembles the shape of a butterfly. (Although less colorfully, it could have been called a \"bowtie\" operation.)"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 894,
+   "pdf_page": 915,
+   "text": "(a) (b) y even k y even k y odd k y odd k"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 894,
+   "pdf_page": 915,
+   "text": "! k n ! k n y even k C ! k n y odd k y even k C ! k n y odd k y even k − ! k n y odd k y even k − ! k n y odd k"
+  },
+  {
+   "type": "figure-caption",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 894,
+   "pdf_page": 915,
+   "text": "Figure 30.3 A circuit for a butterfly operation. (a) The two input values enter from the left, the twiddle factor ! k n is multiplied by y odd k , and the sum and difference are output on the righ t. (b) A simplified drawing of a butterfly operation, which we’ll use when drawing the parallel FFT circuit."
+  },
+  {
+   "type": "figure-caption",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 895,
+   "pdf_page": 916,
+   "text": "Figure 30.4 The schema for the conquer and combine steps of an n-input, n-output FFT circuit, FFT n , shown for n = 8. Inputs enter from the left, and outputs exit from the right. The input values first go through two FFT n/2 circuits, and then n/2 butterfly circuits combine the results. Only the top and bottom wires entering a butterfly interact with it: wires that pass through the middle of a butterfly do not affect that butterfly, nor are their values changed by that butterfly."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 895,
+   "pdf_page": 916,
+   "text": "Recursive circuit structure"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 895,
+   "pdf_page": 916,
+   "text": "The FFT procedure follows the divide-and-conquer strategy that we first saw in Section 2.3.1:"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 895,
+   "pdf_page": 916,
+   "text": "Divide the n-element input vector into its n/2 even-indexed and n/2 odd-indexed elements."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 895,
+   "pdf_page": 916,
+   "text": "Conquer by recursively computing the DFTs of the two subpro blems, each of size n/2."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 895,
+   "pdf_page": 916,
+   "text": "Combine by performing n/2 butterfly operations. These butterfly operations work with twiddle factors ! 0 n ;! 1 n ;:::;! n/2−1 n ."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 895,
+   "pdf_page": 916,
+   "text": "The circuit schema in Figure 30.4 follows the conquer and combine steps of this pattern for an FFT circuit with n inputs and n outputs, denoted by FFT n . Each line is a wire that carries a value. Inputs enter from t he left, one per wire, and outputs exit from the right. The conquer step runs the inputs through two FFT n/2 circuits, which are also constructed recursively. The values produced by the two FFT n/2 circuits feed into n/2 butterfly circuits, with twiddle factors ! 0 n ;! 1 n ;:::;! n/2 n − 1, (a 0 ,a 1 ,a 2 ,a 3 ,a 4 ,a 5 ,a 6 ,a 7 )"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 896,
+   "pdf_page": 917,
+   "text": "(a 0 ,a 2 ,a 4 ,a 6 )"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 896,
+   "pdf_page": 917,
+   "text": "(a 0 ,a 4 ) ( a 2 ,a 6 )"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 896,
+   "pdf_page": 917,
+   "text": "(a 0 ) ( a 4 ) ( a 2 ) ( a 6 )"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 896,
+   "pdf_page": 917,
+   "text": "(a 1 ,a 3 ,a 5 ,a 7 )"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 896,
+   "pdf_page": 917,
+   "text": "(a 1 ,a 5 )"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 896,
+   "pdf_page": 917,
+   "text": "(a 1 ) ( a 5 )"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 896,
+   "pdf_page": 917,
+   "text": "(a 3 ,a 7 )"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 896,
+   "pdf_page": 917,
+   "text": "(a 3 ) ( a 7 )"
+  },
+  {
+   "type": "figure-caption",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 896,
+   "pdf_page": 917,
+   "text": "Figure 30.5 The tree of input vectors to the recursive calls of the FFT procedure. The initial invocation is for n = 8. to combine the results. The base case of the recurs ion occurs when n = 1, where the sole output value equals the sole input value. An FFT 1 circuit, therefore, does nothing, and so the smallest nontrivial FFT circuit is FFT 2 , a single butterfly operation whose twiddle factor is ! 0"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 896,
+   "pdf_page": 917,
+   "text": "Permuting the inputs"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 896,
+   "pdf_page": 917,
+   "text": "How does the divide step enter into the circuit design? Let’s examine how input vectors to the various recursive calls of the FFT p rocedure relate to the original input vector, so that the circuit can emulate the divide step at the start for all levels of recursion. Figure 30.5 arranges the input vectors to the recursive calls in an invocation of FFT in a tree structure, where the in itial call is for n = 8. The tree has one node for each call of the procedure, labele d by the elements of the initial call as they appear in the corresponding input vector. Each FFT invocation makes two recursive calls, unless it has received a 1-element vector. The first call appears in the left child, and the second call appears in the right child."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 896,
+   "pdf_page": 917,
+   "text": "Looking at the tree, observe that if you arrange the elements of the initial vector a into the order in which they appear in the leaves, you can trace the execution of the FFT procedure, but bottom up instead of top down. F irst, take the elements in pairs, compute the DFT of each pair using one butterfly operation, and replace the pair with its DFT. The vector then holds n/2 two-element DFTs. Next, take these n/2 DFTs in pairs and compute the DFT of the four vecto r elements they come from by executing two butterfly operations, replacing two two-element DFTs with one four-element DFT. The vector then holds n/4 four-element DFTs. Continue in this manner until the vector holds two (n/2)-element DFTs, which n/2 butterfly operations combine into the final n-element DFT. In other words, you can start with the elements of the initial vector a, but rearranged as in the leaves of Figure 30.5, and then feed them directly into a circuit that follows the schema in Figure 30.4."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 897,
+   "pdf_page": 918,
+   "text": "Let’s think about the permutation that rearranges the input vector. The order in which the leaves appear in Figure 30.5 is a bit-reversal permutation. That is, letting rev(k) be the lg n-bit integer formed by reversing the bits of the binary representation of k, then vector element a k moves to position rev (k). In"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 897,
+   "pdf_page": 918,
+   "text": "Figure 30.5, for example, the leaves appear in the order 0;4;2;6;1;5;3;7 . This sequence in binary is 000;100;010;110;001;101;011;111 , and you can obtain it by reversing the bits of each number in the sequ ence 0;1;2;3;4;6;7 or, in binary, 000;001;010;011;100;101;110;111 . To see in general that the input vector should be rearranged by a bit-reversal permutation, note that at the top level of the tree, indices whose low-order bit is 0 go into the left subtree and indices whose low-order bit is 1 go into the right subtree. Stripping off the low-order bit at each level, continue this process down the tree, until y ou get the order given by the bit-reversal permutation at the leaves."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 897,
+   "pdf_page": 918,
+   "text": "The full FFT circuit"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 897,
+   "pdf_page": 918,
+   "text": "Figure 30.6 depicts the entire circuit for n = 8. The circuit begins with a bitreversal permutation of the inputs, followed by lg n stages, each stage consisting of n/2 butterflies executed in parallel. Assuming that each butterfly circuit has constant depth, the full circuit has depth Θ(lg n). The butterfly operations at each level of recursion in the FFT procedure are indepen dent, and so the circuit performs them in parallel. The figure shows wires running from left to right, carrying values through the lg n stages. For s = 1;2;:::; lg n, stage s consists of n/2 s groups of butterflies, with 2 s−1 butterflies per group. The twiddle factors in stage s are ! 0 m ;! 1 m ;:::;! m/2−1 m , where m = 2 s ."
+  },
+  {
+   "type": "exercise",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 897,
+   "pdf_page": 918,
+   "text": "30.3-1 Show the values on the wires for each butterfly input and output in the FFT circuit of Figure 30.6, given the input vector .0;2;3; −1;4;5;7;9/ ."
+  },
+  {
+   "type": "exercise",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 897,
+   "pdf_page": 918,
+   "text": "30.3-2 Consider an FFT n circuit, such as in Figure 30.6, with wires 0;1;:::;n − 1 (wire j has output y j ) and stages numbered as in the figure. Stage s , for s = 1;2:::; lg n, consists of n/2 s groups of butterflies. Which two wires are inputs and outputs for the j th butterfly circuit in the gth group in stage s ?"
+  },
+  {
+   "type": "exercise",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 897,
+   "pdf_page": 918,
+   "text": "30.3-3 Consider a b-bit integer k in the range 0 ≤ k < 2 b . Treating k as a b-element vector over f0;1 g, describe a b × b matrix M such that the matrix-vector product"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 897,
+   "pdf_page": 918,
+   "text": "Mk is the binary representation of rev(k). a 0 a 1 a 2 a 3 a 4 a 5 a 6 a 7 y 0 y 1 y 2 y 3 y 4 y 5 y 6 y 7 stage s = 1 stage s = 2 stage s = 3"
+  },
+  {
+   "type": "figure-caption",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 898,
+   "pdf_page": 919,
+   "text": "Figure 30.6 A full circuit that computes the FFT in parallel, h ere shown for n = 8 inputs. It has lg n stages, and each stage comprises n/2 butterflies that can operate in parallel. As in Figure 30.4, only the top and bottom wires entering a butterfly interact with it. For example, the top butterfly in stage 2 has inputs and outputs only on wires 0 and 2 (the wires with outputs y 0 and y 2 , respectively)."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 898,
+   "pdf_page": 919,
+   "text": "This circuit has depth Θ(lg n) and performs Θ(n lg n) butterfly operations altogether."
+  },
+  {
+   "type": "exercise",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 898,
+   "pdf_page": 919,
+   "text": "30.3-4 Write pseudocode for the procedure BIT-REVERSE-PERMUTATION (a;n) , which performs the bit-reversal permutation on a vector a of length n in-place. Assume that you may call the procedure BIT-REVERSE-OF (k;b) , which returns an integer that is the b-bit reversal of the nonnegative integer k, where 0 ≤ k<2 b ."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 898,
+   "pdf_page": 919,
+   "text": "? 30.3-5"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 898,
+   "pdf_page": 919,
+   "text": "Suppose that the adders within the butterfly operations of a given FFT circuit sometimes fail in such a manner that they always produc e a 0 output, independent of their inputs. In addition, suppose that exactly one adder has failed, but you don’t know which one. Describe how you can identify the f ailed adder by supplying inputs to the overall FFT circuit and observing the outputs. How efficient is your method?"
+  },
+  {
+   "type": "problem",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 899,
+   "pdf_page": 920,
+   "text": "30-1 Divide-and-conquer multiplication a. Show how to multiply two linear polynomials ax + b and cx + d using only three multiplications. (Hint: One of the multiplications is (a + b) • (c + d).) b. Give two divide-and-conquer algorithms for multiplying two polynomials of degree-bound n in Θ(n lg 3 ) time. The first algorithm should divide the input polynomial coefficients into a high half and a low half, and the second algorithm should divide them according to whether their index is odd or even. c. Show how to multiply two n-bit integers in O(n lg 3 ) steps, where each step operates on at most a constant number of 1-bit values."
+  },
+  {
+   "type": "problem",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 899,
+   "pdf_page": 920,
+   "text": "30-2 Multidimensional fast Fourier transform"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 899,
+   "pdf_page": 920,
+   "text": "The 1-dimensional discrete Fourier transform defined by equation (30.8) generalizes to d dimensions. The input is a d -dimensional array A = (a j 1 ;j 2 ;:::;j d ) whose dimensions are n 1 ;n 2 ;:::;n d , where n 1 n 2 • • • n d = n. The d -dimensional discrete"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 899,
+   "pdf_page": 920,
+   "text": "Fourier transform is defined by the equation y k 1 ;k 2 ;:::;k d = n 1 −1 X j 1 D0 n 2 −1 X j 2 D0"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 899,
+   "pdf_page": 920,
+   "text": "• • • n d −1 X j d D0 a j 1 ;j 2 ;:::;j d ! j 1 k 1 n 1 ! j 2 k 2 n 2 • • • ! j d k d n d for 0 ≤ k 1 <n 1 , 0 ≤ k 2 <n 2 , . . . , 0 ≤ k d <n d . a. Show how to produce a d -dimensional DFT by computing 1-dimensional DFTs on each dimension in turn. That is, first compute n/n 1 separate 1-dimensional"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 899,
+   "pdf_page": 920,
+   "text": "DFTs along dimension 1. Then, using the result of the DFTs along dimension 1 as the input, compute n/n 2 separate 1-dimensional DFTs along dimension 2. Using this result as the input, compute n/n 3 separate 1-dimensional"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 899,
+   "pdf_page": 920,
+   "text": "DFTs along dimension 3, and so on, through dimension d . b. Show that the ordering of dimensions does not matte r, so that if you compute the 1-dimensional DFTs in any order of the d dimensions, you compute the d -dimensional DFT. c. Show that if you compute each 1-dimensional DFT by computing the fast"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 899,
+   "pdf_page": 920,
+   "text": "Fourier transform, the total time to compute a d -dimensional DFT is O(n lg n), independent of d ."
+  },
+  {
+   "type": "problem",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 900,
+   "pdf_page": 921,
+   "text": "30-3 Evaluating all derivatives of a polynomial at a point"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 900,
+   "pdf_page": 921,
+   "text": "Given a polynomial A(x) of degree-bound n, we define its t th derivative by A (t ) (x) ="
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 900,
+   "pdf_page": 921,
+   "text": "A(x) if t = 0; d dx A (t −1) (x) if 1 ≤ t ≤ n − 1; 0 if t ≥ n:"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 900,
+   "pdf_page": 921,
+   "text": "In this problem, you will show how to determine A (t ) (x 0 ) for t = 0;1;:::;n − 1, given the coefficient representation (a 0 ;a 1 ;:::;a n−1 ) of A(x) and a point x 0 . a. Given coefficients b 0 ;b 1 ;:::;b n−1 such that A(x) = n−1 X j D0 b j (x − x 0 ) j ; show how to compute A (t ) (x 0 ), for t = 0;1;:::;n − 1, in O(n) time."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 900,
+   "pdf_page": 921,
+   "text": "b. Explain how to find b 0 ;b 1 ;:::;b n−1 in O(n lg n) time, given A(x 0 C ! k n ) for k = 0;1;:::;n − 1. c. Prove that A(x 0 C ! k n ) = n−1 X r D0"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 900,
+   "pdf_page": 921,
+   "text": "! kr n r! n−1 X j D0 f(j)g(r − j)"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 900,
+   "pdf_page": 921,
+   "text": "; where f(j) = a j • j! and g(l) ="
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 900,
+   "pdf_page": 921,
+   "text": "0 =.−l/! if −.n − 1/ ≤ l ≤ 0; 0 if 1 ≤ l ≤ n − 1: d. Explain how to evaluate A(x 0 C ! k"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 900,
+   "pdf_page": 921,
+   "text": "n ) for k = 0;1;:::;n − 1 in O(n lg n)"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 900,
+   "pdf_page": 921,
+   "text": "time. Conclude that you can evaluate all nontrivial derivatives of A(x) at x 0 in"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 900,
+   "pdf_page": 921,
+   "text": "O(n lg n) time."
+  },
+  {
+   "type": "problem",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 900,
+   "pdf_page": 921,
+   "text": "30-4 Polynomial evaluation at multiple points"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 900,
+   "pdf_page": 921,
+   "text": "Problem 2-3 showed how to evaluate a polynomial of degree-bound n at a single point in O(n) time using Horner’s rule. This chapter described how to evaluate"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 900,
+   "pdf_page": 921,
+   "text": "such a polynomial at all n complex roots of unity in O(n lg n) time using the FFT."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 900,
+   "pdf_page": 921,
+   "text": "Now, you will show how to evaluate a polynomial of degree-bound n at n arbitrary points in O(n lg 2 n) time."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 901,
+   "pdf_page": 922,
+   "text": "To do so, assume that you can compute the polynomial remainder when one such polynomial is divided by another in O(n lg n) time. For example, the remainder of 3x 3 + x 2 − 3x + 1 when divided by x 2 + x + 2 is .3x 3 + x 2 − 3x + 1/ mod (x 2 + x + 2) = −7x + 5:"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 901,
+   "pdf_page": 922,
+   "text": "Given the coefficient representation of a polynomial A(x) = P n−1 kD0 a k x k and n points x 0 ;x 1 ;:::;x n−1 , your goal is to compute the n values A(x 0 );A(x 1 );:::;"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 901,
+   "pdf_page": 922,
+   "text": "A(x n−1 ). For 0 ≤ i ≤ j ≤ n − 1, define the polynomials P ij (x) = Q j kDi (x − x k ) and Q ij (x) = A(x) mod P ij (x). Note that Q ij (x) has degree at most j − i ."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 901,
+   "pdf_page": 922,
+   "text": "a. Prove that A(x) mod .x − ´/ = A.´/ for any point ´."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 901,
+   "pdf_page": 922,
+   "text": "b. Prove that Q kk (x) = A(x k ) and that Q 0;n−1 (x) = A(x). c. Prove that for i ≤ k ≤ j , we have both Q i k (x) = Q ij (x) mod P i k (x) and Q kj (x) = Q ij (x) mod P kj (x). d. Give an O(n lg 2 n)-time algorithm to evaluate A(x 0 );A(x 1 );:::;A(x n−1 )."
+  },
+  {
+   "type": "problem",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 901,
+   "pdf_page": 922,
+   "text": "30-5 FFT using modular arithmetic"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 901,
+   "pdf_page": 922,
+   "text": "As defined, the discrete Fourier transform requires computation with complex numbers, which can result in a loss of precision due to round-off errors. For some problems, the answer is known to contain only integ ers, and a variant of the FFT based on modular arithmetic can guarantee that the answer is calculated exactly."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 901,
+   "pdf_page": 922,
+   "text": "An example of such a problem is that of multiplying two polynomials with integer coefficients. Exercise 30.2-6 gives one approach, using a modulus of length Ω(n) bits to handle a DFT on n points. This problem explores another approach that uses a modulus of the more reasonable length O(lg n), but it requires that you understand the material of Chapter 31. Let n be an exact power of 2. a. You wish to search for the smallest k such that √D kn + 1 is prime. Give a simple heuristic argument why you might expect k to be approximately ln n."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 901,
+   "pdf_page": 922,
+   "text": "(The value of k might be much larger or smaller, but you can reasonably expect to examine O(lg n) candidate values of k on average.) How does the expected length of p compare to the length of n?"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 901,
+   "pdf_page": 922,
+   "text": "Let g be a generator of Z − p , and let w = g k mod p. b. Argue that the DFT and the inverse DFT are well-defined inverse operations modulo p, where w is used as a principal nth root of unity. c. Show how to make the FFT and its inverse work modul o p in O(n lg n) time,"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 901,
+   "pdf_page": 922,
+   "text": "where operations on words of O(lg n) bits take unit time. Assume that the algorithm is given p and w. d. Compute the DFT modulo √D 17 of the vector .0;5;3;7;7;2;1;6/ . (Hint:"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 902,
+   "pdf_page": 923,
+   "text": "Verify and use the fact that g = 3 is a generator of Z −"
+  },
+  {
+   "type": "chapter-notes",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 902,
+   "pdf_page": 923,
+   "text": "Chapter notes"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 902,
+   "pdf_page": 923,
+   "text": "Van Loan’s book [442] provides an outstanding treatment of the fast Fourier transform. Press, Teukolsky, Vetterling, and Flannery [365, 366] offer a good description of the fast Fourier transform and its applications. For an excellent introduction to signal processing, a popular FFT application are a, see the texts by Oppenheim and Schafer [347] and Oppenheim and Willsky [348]. The Oppenheim and Schafer book also shows how to handle cases in which n is not an exact power of 2."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 902,
+   "pdf_page": 923,
+   "text": "Fourier analysis is not limited to 1-dimensional data. It is widely used in image processing to analyze data in two or more dimension s. The boo ks by Gonzalez and Woods [194] and Pratt [363] discuss multidimensional Fourier transforms and their use in image processing, and books by Tolimie ri, An, and Lu [439] and Van"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 902,
+   "pdf_page": 923,
+   "text": "Loan [442] discuss the mathematics of multidimensional fast Fourier transforms."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 902,
+   "pdf_page": 923,
+   "text": "Cooley and Tukey [101] are widely credited with devising the FFT in the 1960s."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 902,
+   "pdf_page": 923,
+   "text": "The FFT had in fact been discovered many times previously, but its importance was not fully realized before the advent of modern digi tal computers. Although Press, Teukolsky, Vetterling, and Flannery attribute the o rigins of the method to Runge and K¨ onig in 1924, an article by Heideman, Johnson, and Burrus [211] traces the history of the FFT as far back as C. F. Gauss in 1805."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 902,
+   "pdf_page": 923,
+   "text": "Frigo and Johnson [161] developed a fast and flexible implementation of the FFT, called FFTW (\"fastest Fourier transform in the West\"). FFTW is designed for situations requiring multiple DFT computations on the same problem size. Before actually computing the DFTs, FFTW executes a \"plann er,\" which, by a series of trial runs, determines how best to decompose the FF T computation for the given problem size on the host machine. FFTW adapts to us e the hardware cache efficiently, and once subproblems are small enough, FFTW solves them with optimized, straight-line code. Moreover, FFTW has the advantage of taking Θ(n lg n) time for any problem size n, even when n is a large prime."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 902,
+   "pdf_page": 923,
+   "text": "Although the standard Fourier transform assumes that the input represents points that are uniformly spaced in the time domain, other techniques can approximate the FFT on \"nonequispaced\" data. The article by Ware [449] provides an overview."
+  },
+  {
+   "type": "footnote",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 903,
+   "pdf_page": 924,
+   "text": "31 Number-Theoretic Algorithms"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 903,
+   "pdf_page": 924,
+   "text": "Number theory was once viewed as a beautiful but la rgely useless subject in pure mathematics. Today number-theoretic algorithms are used widely, due in large part to the invention of cryptographic schemes based on large prime numbers. These schemes are feasible because we can find large primes quickly , and they are secure because we do not know how to factor the product of large primes (or solve related problems, such as computing discrete logarithms) efficiently. This chapter presents some of the number theory and related algorithms that underlie such applications."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 903,
+   "pdf_page": 924,
+   "text": "We start in Section 31.1 by introducing basic concepts of number theory, such as divisibility, modular equivalence, and unique prime factorization. Section 31.2 studies one of the world’s oldest algorithms: Euclid’s algorithm for computing the greatest common divisor of two integers, and Section 31.3 reviews concepts of modular arithmetic. Section 31.4 then explores the set of multiples of a given number a, modulo n, and shows how to find all solutions to the equation ax = b"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 903,
+   "pdf_page": 924,
+   "text": "(mod n) by using Euclid’s algorithm. The Chinese remainder theorem is presented in Section 31.5. Section 31.6 considers powers of a given number a, modulo n, and presents a repeated-squaring algorithm for efficiently computing a b mod n, given a, b, and n. This operation is at the heart of efficient primality testing and of much modern cryptography, such as the RSA public-key cryptosystem described in Section 31.7. We wrap up in Section 31.8, which examines a randomized primality test. This test finds large primes efficiently, an essential step in creating keys for the RSA cryptosystem."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 903,
+   "pdf_page": 924,
+   "text": "Size of inputs and cost of arithmetic computations"
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 903,
+   "pdf_page": 924,
+   "text": "Because we’ll be working with large integers, we need to adjust how to think about the size of an input and about the cost of elementary arithmetic operations."
+  },
+  {
+   "type": "body",
+   "chapter": 30,
+   "section": "30.3",
+   "section_title": "30.3 FFT circuits",
+   "printed_page": 903,
+   "pdf_page": 924,
+   "text": "In this chapter, a \"large input\" typically means an input containing <large in- tegers= rather than an input containing \"many integ ers\" (as for sorting). Thus, the size of an input depends on the number of bits required to represent that in- put, not just the number of integers in the input. An algorithm with integer in-"
+  }
+ ]
+}

@@ -1,0 +1,2470 @@
+{
+ "chapter": "B",
+ "chapter_title": "B Sets, Etc.",
+ "part": "Part VIII Appendix: Mathematical Background",
+ "source": {
+  "printed": [
+   1153,
+   null
+  ],
+  "pdf": [
+   1174,
+   1199
+  ]
+ },
+ "sections": [
+  "B.1 Sets",
+  "B.2 Relations",
+  "B.3 Functions",
+  "B.4 Graphs",
+  "B.5 Trees"
+ ],
+ "sections_found": [
+  "B.1 Sets",
+  "B.2 Relations",
+  "B.3 Functions",
+  "B.4 Graphs",
+  "B.5 Trees"
+ ],
+ "blocks": [
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1153,
+   "pdf_page": 1174,
+   "text": "B Sets, Etc."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1153,
+   "pdf_page": 1174,
+   "text": "Many chapters of this book touch on the elements of discrete mathematics. This appendix reviews the notations, definitions, and elementary properties of sets, re- lations, functions, graphs, and trees. If you are already well versed in this material, you can probably just skim this chapter."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1153,
+   "pdf_page": 1174,
+   "text": "B.1 Sets"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1153,
+   "pdf_page": 1174,
+   "text": "A set is a collection of distinguishable objects, called its members or elements. If an object x is a member of a set S , we write x 2 S (read \"x is a member of S \" or, more briefly, \"x belongs to S \"). If x is not a member of S , we write x … S ."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1153,
+   "pdf_page": 1174,
+   "text": "To describe a set explicitly, write its members as a list inside braces. For example, to define a set S to contain precisely the numbers 1, 2, and 3, write S = f1;2;3 g."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1153,
+   "pdf_page": 1174,
+   "text": "Since 2 belongs to the set S , we can write 2 2 S , and since 4 is not a member, we can write 4 … S . A set cannot contain the same object more than on ce, 1 and its elements are not ordered. Two sets A and B are equal, written A = B , if they contain the same elements. For example, f1;2;3;1 g = f1;2;3 g = f3;2;1 g."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1153,
+   "pdf_page": 1174,
+   "text": "We adopt special notations for frequently encountered sets:"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1153,
+   "pdf_page": 1174,
+   "text": "• ; denotes the empty set, that is, the set containing no members."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1153,
+   "pdf_page": 1174,
+   "text": "• Z denotes the set of integers, that is, the set f:::; −2; −1;0;1;2;::: g."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1153,
+   "pdf_page": 1174,
+   "text": "• R denotes the set of real numbers."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1153,
+   "pdf_page": 1174,
+   "text": "• N denotes the set of natural numbers, that is, the set f0;1;2;::: g. 2"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1153,
+   "pdf_page": 1174,
+   "text": "1 A variation of a set, which can contain the same object more than once, is called a multiset."
+  },
+  {
+   "type": "footnote",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1153,
+   "pdf_page": 1174,
+   "text": "2 Some authors start the natural numbers with 1 instead of 0. The modern trend seems to be to start with 0."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1154,
+   "pdf_page": 1175,
+   "text": "1154 Appendix B Sets, Etc."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1154,
+   "pdf_page": 1175,
+   "text": "If all the elements of a set A are contained in a set B , that is, if x 2 A implies x 2 B , then we write A ⊆ B and say that A is a subset of B . A set A is a proper subset of set B , written A ⊂ B , if A ⊆ B but A ≠ B . (Some authors use the symbol \"⊂\" to denote the ordinary subset relation, rather th an the proper-subset relation.) Every set is a subset of itself: A ⊆ A for any set A. For two sets A and B , we have A = B if and only if A ⊆ B and B ⊆ A. The subset relation is transitive (see page 1159): for any three sets A, B , and C , if A ⊆ B and B ⊆ C , then A ⊆ C . The proper-subset relation is transitive as well. The empty set is a subset of all sets: for any set A, we have ; ⊆ A."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1154,
+   "pdf_page": 1175,
+   "text": "Sets can be specified in terms of other sets. Given a set A, a set B ⊆ A can be defined by stating a property that distinguishes the elements of B . For example, one way to define the set of even integers is fx W x 2 Z and x/2 is an integerg. The colon in this notation is read \"such that.\" (Some authors use a vertical bar in place of the colon.)"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1154,
+   "pdf_page": 1175,
+   "text": "Given two sets A and B , set operations define new sets:"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1154,
+   "pdf_page": 1175,
+   "text": "• The intersection of sets A and B is the set"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1154,
+   "pdf_page": 1175,
+   "text": "A \\ B = fx W x 2 A and x 2 B g :"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1154,
+   "pdf_page": 1175,
+   "text": "• The union of sets A and B is the set"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1154,
+   "pdf_page": 1175,
+   "text": "A [ B = fx W x 2 A or x 2 B g :"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1154,
+   "pdf_page": 1175,
+   "text": "• The difference between two sets A and B is the set"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1154,
+   "pdf_page": 1175,
+   "text": "A − B = fx W x 2 A and x … B g :"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1154,
+   "pdf_page": 1175,
+   "text": "Set operations obey the following laws:"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1154,
+   "pdf_page": 1175,
+   "text": "Empty set laws:"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1154,
+   "pdf_page": 1175,
+   "text": "A \\ ; = ; ; A [ ; = A:"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1154,
+   "pdf_page": 1175,
+   "text": "Idempotency laws:"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1154,
+   "pdf_page": 1175,
+   "text": "A \\ A = A; A [ A = A:"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1154,
+   "pdf_page": 1175,
+   "text": "Commutative laws:"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1154,
+   "pdf_page": 1175,
+   "text": "A \\ B = B \\ A; A [ B = B [ A:"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1155,
+   "pdf_page": 1176,
+   "text": "B.1 Sets 1155"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1155,
+   "pdf_page": 1176,
+   "text": "A A A A A"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1155,
+   "pdf_page": 1176,
+   "text": "B B B B B"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1155,
+   "pdf_page": 1176,
+   "text": "(B \\ C) ["
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1155,
+   "pdf_page": 1176,
+   "text": "A − (B \\ C) (A − B) (A − C)"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1155,
+   "pdf_page": 1176,
+   "text": "C + C + C"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1155,
+   "pdf_page": 1176,
+   "text": "Figure B.1 A Venn diagram illustrating the first of DeMorgan’s laws (B.2). Each of the sets A, B, and C is represented as a circle."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1155,
+   "pdf_page": 1176,
+   "text": "Associative laws:"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1155,
+   "pdf_page": 1176,
+   "text": "A \\ (B \\ C) = (A \\ B) \\ C ; A [ (B [ C) = (A [ B) [ C :"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1155,
+   "pdf_page": 1176,
+   "text": "Distributive laws:"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1155,
+   "pdf_page": 1176,
+   "text": "A \\ (B [ C) = (A \\ B) [ (A \\ C); A [ (B \\ C) = (A [ B) \\ (A [ C): (B.1)"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1155,
+   "pdf_page": 1176,
+   "text": "Absorption laws:"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1155,
+   "pdf_page": 1176,
+   "text": "A \\ (A [ B) = A; A [ (A \\ B) = A:"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1155,
+   "pdf_page": 1176,
+   "text": "DeMorgan’s laws:"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1155,
+   "pdf_page": 1176,
+   "text": "A − (B \\ C) = (A − B) [ (A − C); A − (B [ C) = (A − B) \\ (A − C): (B.2)"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1155,
+   "pdf_page": 1176,
+   "text": "Figure B.1 illustrates the first of DeMorgan’s laws, using a V enn diagram: a graphical picture in which sets are represented as regions of the plane."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1155,
+   "pdf_page": 1176,
+   "text": "Often, all the sets under consideration are subsets of some larger set U called the universe. For example, when considering various sets made u p only of integers, the set Z of integers is an appropriate universe. Given a universe U , we define the complement of a set A as A = U − A = fx W x 2 U and x … Ag. For any set A ⊆ U , we have the following laws:"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1155,
+   "pdf_page": 1176,
+   "text": "A = A; A \\ A = ; ; A [ A = U :"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1156,
+   "pdf_page": 1177,
+   "text": "1156 Appendix B Sets, Etc."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1156,
+   "pdf_page": 1177,
+   "text": "An equivalent way to express DeMorgan’s laws (B.2) uses set complements. For any two sets B;C ⊆ U , we have"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1156,
+   "pdf_page": 1177,
+   "text": "B \\ C = B [ C ; B [ C = B \\ C :"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1156,
+   "pdf_page": 1177,
+   "text": "Two sets A and B are disjoint if they have no elements in common, that is, if"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1156,
+   "pdf_page": 1177,
+   "text": "A \\ B = ;. A collection of sets S 1 ;S 2 ;::: , either finite or infinite, is a set of sets, in which each member is a set S i . A collection S = fS i g of nonempty sets forms a partition of a set S if"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1156,
+   "pdf_page": 1177,
+   "text": "• the sets are pairwise disjoint, that is, S i ;S j 2 S and i ≠ j imply S i \\ S j = ;, and • their union is S , that is, S ="
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1156,
+   "pdf_page": 1177,
+   "text": "In other words, S forms a partition of S if each element of S appears in exactly one set S i 2 S ."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1156,
+   "pdf_page": 1177,
+   "text": "The number of elements in a set is the cardinality (or size) of the set, denoted |S|."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1156,
+   "pdf_page": 1177,
+   "text": "Two sets have the same cardinality if their element s can be put into a one-to-one correspondence. The cardinality of the empty set is j;j = 0. If the cardinality of a set is a natural number, the set is finite, and otherwise, it is infinite. An infinite set that can be put into a one-to-one correspondence with the natural numbers N is countably infinite, and otherwise, it is uncountable. For example, the integers Z are countable, but the reals R are uncountable."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1156,
+   "pdf_page": 1177,
+   "text": "For any two finite sets A and B , we have the identity jA [ B j = |A| C |B| − jA \\ B j ; (B.3) from which we can conclude that jA [ B j ≤ |A| C |B| :"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1156,
+   "pdf_page": 1177,
+   "text": "If A and B are disjoint, then jA \\ B j = 0 and thus jA [ B j = |A| C |B|. If"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1156,
+   "pdf_page": 1177,
+   "text": "A ⊆ B , then |A| ≤ |B|."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1156,
+   "pdf_page": 1177,
+   "text": "A finite set of n elements is sometimes called an n-set. A 1-set is called a singleton. A subset of k elements of a set is sometimes called a k-subset."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1156,
+   "pdf_page": 1177,
+   "text": "We denote the set of all subsets of a set S , including the empty set and S itself, by 2 S , called the power set of S . For example, 2 fa;bg = f;; fag ; fbg ; fa;b gg. The power set of a finite set S has cardinality 2 |S| (see Exercise B.1-5)."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1156,
+   "pdf_page": 1177,
+   "text": "We sometimes care about setlike structures in which the elements are ordered."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1156,
+   "pdf_page": 1177,
+   "text": "An ordered pair of two elements a and b is denoted (a;b) and is defined formally"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1157,
+   "pdf_page": 1178,
+   "text": "B.1 Sets 1157 as the set (a;b) = fa; fa;b gg. Thus, the ordered pair (a;b) is not the same as the ordered pair (b;a) ."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1157,
+   "pdf_page": 1178,
+   "text": "The Cartesian product of two sets A and B , denoted A × B , is the set of all ordered pairs such that the first element of the pair is an element of A and the second is an element of B . More formally, A × B = f(a;b) W a 2 A and b 2 B g :"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1157,
+   "pdf_page": 1178,
+   "text": "For example, fa;b g×fa;b;c g = f(a;a);.a;b/;.a;c/;.b;a/;.b;b/;.b;c/ g. When"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1157,
+   "pdf_page": 1178,
+   "text": "A and B are finite sets, the cardinality of their Cartesian product is jA × B j = |A| • |B| : (B.4)"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1157,
+   "pdf_page": 1178,
+   "text": "The Cartesian product of n sets A 1 ;A 2 ;:::;A n is the set of n-tuples"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1157,
+   "pdf_page": 1178,
+   "text": "A 1 × A 2 × • • • × A n = f(a 1 ;a 2 ;:::;a n ) W a i 2 A i for i = 1;2;:::;n g ; whose cardinality is jA 1 × A 2 × • • • × A n j = jA 1 j • jA 2 j • • • jA n j if all sets A i are finite. We denote an n-fold Cartesian product over a single set A by the set"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1157,
+   "pdf_page": 1178,
+   "text": "A n = A × A × • • • × A › n times"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1157,
+   "pdf_page": 1178,
+   "text": "; whose cardinality is jA n j = |A| n if A is finite. We can also view an n-tuple as a finite sequence of length n (see page 1162)."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1157,
+   "pdf_page": 1178,
+   "text": "Intervals are continuous sets of real numbers. We d enote them with parentheses and/or brackets. Given real numbers a and b, the closed interval [a; b] is the set fx 2 R W a ≤ x ≤ bg of reals between a and b, including both a and b."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1157,
+   "pdf_page": 1178,
+   "text": "(If a > b, this definition implies that [a; b] = ; .) The open interval (a;b) = fx 2 R W a<x<b g omits both of the endpoints from the set. There are two half- open intervals [a;b/ = fx 2 R : a ≤ x<b g and .a; b] = fx 2 R W a<x ≤ bg, each of which excludes one endpoint."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1157,
+   "pdf_page": 1178,
+   "text": "Intervals can also be defined on the integers by replacing R in the these definitions by Z. Whether the interval is defined over the reals or integers can usually be inferred from context."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.1",
+   "section_title": "B.1 Sets",
+   "printed_page": 1157,
+   "pdf_page": 1178,
+   "text": "Draw Venn diagrams that illustrate the first of the distributive laws (B.1)."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.2",
+   "section_title": "B.2 Relations",
+   "printed_page": 1158,
+   "pdf_page": 1179,
+   "text": "1158 Appendix B Sets, Etc."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.2",
+   "section_title": "B.2 Relations",
+   "printed_page": 1158,
+   "pdf_page": 1179,
+   "text": "Prove the generalization of DeMorgan’s laws to any finite collection of sets:"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.2",
+   "section_title": "B.2 Relations",
+   "printed_page": 1158,
+   "pdf_page": 1179,
+   "text": "A 1 \\ A 2 \\ • • • \\ A n = A 1 [ A 2 [ • • • [ A n ; A 1 [ A 2 [ • • • [ A n = A 1 \\ A 2 \\ • • • \\ A n :"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.2",
+   "section_title": "B.2 Relations",
+   "printed_page": 1158,
+   "pdf_page": 1179,
+   "text": "Prove the generalization of equation (B.3), which is called the principle of inclusion and exclusion: jA 1 [ A 2 [ • • • [ A n j = jA 1 |C|A 2 j + • • • C jA n j"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.2",
+   "section_title": "B.2 Relations",
+   "printed_page": 1158,
+   "pdf_page": 1179,
+   "text": "− jA 1 \\ A 2 j − jA 1 \\ A 3 j − • • • (all pairs)"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.2",
+   "section_title": "B.2 Relations",
+   "printed_page": 1158,
+   "pdf_page": 1179,
+   "text": "C jA 1 \\ A 2 \\ A 3 j + • • • (all triples)"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.2",
+   "section_title": "B.2 Relations",
+   "printed_page": 1158,
+   "pdf_page": 1179,
+   "text": "C .−1/ n−1 jA 1 \\ A 2 \\ • • • \\ A n j :"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.2",
+   "section_title": "B.2 Relations",
+   "printed_page": 1158,
+   "pdf_page": 1179,
+   "text": "Show that the set of odd natural numbers is countable."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.2",
+   "section_title": "B.2 Relations",
+   "printed_page": 1158,
+   "pdf_page": 1179,
+   "text": "Show that for any finite set S , the power set 2 S has 2 |S| elements (that is, there are 2 |S| distinct subsets of S )."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.2",
+   "section_title": "B.2 Relations",
+   "printed_page": 1158,
+   "pdf_page": 1179,
+   "text": "Give an inductive definition for an n-tuple by extending the set-theoretic definition for an ordered pair."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.2",
+   "section_title": "B.2 Relations",
+   "printed_page": 1158,
+   "pdf_page": 1179,
+   "text": "B.2 Relations"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.2",
+   "section_title": "B.2 Relations",
+   "printed_page": 1158,
+   "pdf_page": 1179,
+   "text": "A binary relation R on two sets A and B is a subset of the Cartesian product A×B ."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.2",
+   "section_title": "B.2 Relations",
+   "printed_page": 1158,
+   "pdf_page": 1179,
+   "text": "If (a;b) 2 R, we sometimes write aRb . When we say that R is a binary relation on a set A, we mean that R is a subset of A × A. For example, the \"less than\" relation on the natural numbers is the set f(a;b) W a;b 2 N and a<b g. An n-ary relation on sets A 1 ;A 2 ;:::;A n is a subset of A 1 × A 2 × • • • × A n ."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.2",
+   "section_title": "B.2 Relations",
+   "printed_page": 1158,
+   "pdf_page": 1179,
+   "text": "A binary relation R ⊆ A × A is reflexive if aRa B.2 Relations 1159 for all a 2 A. For example, \" D\" and \"≤\" are reflexive relations on N, but <<= is not. The relation R is symmetric if aRb implies bRa for all a;b 2 A. For example, \" D\" is symmetric, but <<= and \"≤\" are not. The relation R is transitive if aRb and bRc imply aRc for all a;b;c 2 A. For example, the relations <\",\" \"≤,\" and \"D\" are transitive, but the relation R = f(a;b) W a;b 2 N and a = b − 1g is not, since 3R4 and 4R5 do not imply 3R5 ."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.2",
+   "section_title": "B.2 Relations",
+   "printed_page": 1159,
+   "pdf_page": 1180,
+   "text": "A relation that is reflexive, symmetric, and transitive is an equivalence relation."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.2",
+   "section_title": "B.2 Relations",
+   "printed_page": 1159,
+   "pdf_page": 1180,
+   "text": "For example, \"D\" is an equivalence relation on the natural numbers, but <<= is not."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.2",
+   "section_title": "B.2 Relations",
+   "printed_page": 1159,
+   "pdf_page": 1180,
+   "text": "If R is an equivalence relation on a set A, then for a 2 A, the equivalence class of a is the set [a] = fb 2 A W aRb g, that is, the set of all elements equivalent to a."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.2",
+   "section_title": "B.2 Relations",
+   "printed_page": 1159,
+   "pdf_page": 1180,
+   "text": "For example, if we define R = f(a;b) W a;b 2 N and a + b is an even numberg, then R is an equivalence relation, since a + a is even (reflexive), a + b is even implies b + a is even (symmetric), and a + b is even and b + c is even imply a + c is even (transitive). The equivalence class of 4 is [4] = f0;2;4;6;::: g, and the equivalence class of 3 is [3] = f1;3;5;7;::: g. A basic theorem of equivalence classes is the following."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.2",
+   "section_title": "B.2 Relations",
+   "printed_page": 1159,
+   "pdf_page": 1180,
+   "text": "Theorem B.1 (An equivalence relation is the same as a partition)"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.2",
+   "section_title": "B.2 Relations",
+   "printed_page": 1159,
+   "pdf_page": 1180,
+   "text": "The equivalence classes of any equivalence relation R on a set A form a partition of A, and any partition of A determines an equivalence relation on A for which the sets in the partition are the equivalence classes."
+  },
+  {
+   "type": "proof",
+   "chapter": "B",
+   "section": "B.2",
+   "section_title": "B.2 Relations",
+   "printed_page": 1159,
+   "pdf_page": 1180,
+   "text": "Proof For the first part of the proof, we must show that the equivalence classes of R are nonempty, pairwise-disjoint sets whose union is A. Because R is reflexive, a 2 [a], and so the equivalence classes are nonempty. More over, since every element a 2 A belongs to the equivalence class [a], the union of the equivalence classes is A. It remains to show that the equivalence classes a re pairwise disjoint, that is, if two equivalence classes [a] and [b] have an element c in common, then they are in fact the same set. Suppose that aRc and bRc . Symmetry gives that cRb and, by transitivity, aRb . Thus, we have xRa for any arbitrary element x 2 [a] and, by transitivity, xRb , and thus [a] ⊆ [b]. Similarly, [b] ⊆ [a], and thus [a] = [b]."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.2",
+   "section_title": "B.2 Relations",
+   "printed_page": 1159,
+   "pdf_page": 1180,
+   "text": "For the second part of the proof, let A = fA i g be a partition of A, and define R = f(a;b) W there exists i such that a 2 A i and b 2 A i g. We claim that R is an equivalence relation on A. Reflexivity holds, since a 2 A i implies aRa ."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.2",
+   "section_title": "B.2 Relations",
+   "printed_page": 1159,
+   "pdf_page": 1180,
+   "text": "Symmetry holds, because if aRb , then a and b belong to the same set A i , and 1160 Appendix B Sets, Etc. hence bRa . If aRb and bRc , then all three elements are in the same set A i , and thus aRc and transitivity holds. To see that the sets in the partition are the equivalence classes of R, observe that if a 2 A i , then x 2 [a] implies x 2 A i , and x 2 A i implies x 2 [a]."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.2",
+   "section_title": "B.2 Relations",
+   "printed_page": 1160,
+   "pdf_page": 1181,
+   "text": "A binary relation R on a set A is antisymmetric if aRb and bRa imply a = b:"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.2",
+   "section_title": "B.2 Relations",
+   "printed_page": 1160,
+   "pdf_page": 1181,
+   "text": "For example, the \"≤\" relation on the natural numbers is antisymmetric, since a ≤ b and b ≤ a imply a = b. A relation that is reflexive, antisymmetric, and transitive is a partial order, and we call a set on which a partial order is defined a partially ordered set. For example, the relation <is a ⌈escendant of/ is a partial order on th⌉ set of all people (if we view individuals as being their own descendants)."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.2",
+   "section_title": "B.2 Relations",
+   "printed_page": 1160,
+   "pdf_page": 1181,
+   "text": "In a partially ordered set A, there may be no single \"maximum\" element a such that bRa for all b 2 A. Instead, the set may contain several maximal elements a such that for no b 2 A, where b ≠ a, is it the case that aRb . For example, a collection of different-sized boxes may contain several maximal boxes that don’t fit inside any other box, yet it has no single \"maximum\" box into which any other box will fit. 3"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.2",
+   "section_title": "B.2 Relations",
+   "printed_page": 1160,
+   "pdf_page": 1181,
+   "text": "A relation R on a set A is a total relation if for all a;b 2 A, we have aRb or bRa (or both), that is, if every pairing of elements of A is related by R. A partial order that is also a total relation is a total order or linear order. For example, the relation \"≤\" is a total order on the natural numbers, but the <is a descendant of= relation is not a total order on the set of all people, since there are individuals neither of whom is descended from the other. A total relation that is transitive, but not necessarily either symmetric or antisymmetric, is a total preorder."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.2",
+   "section_title": "B.2 Relations",
+   "printed_page": 1160,
+   "pdf_page": 1181,
+   "text": "Prove that the subset relation \" ⊆\" on all subsets of Z is a partial order but not a total order."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.2",
+   "section_title": "B.2 Relations",
+   "printed_page": 1160,
+   "pdf_page": 1181,
+   "text": "Show that for any positive integer n, the relation \"equivalent modulo n\" is an equivalence relation on the integers. (We say that a = b (mod n) if there exists an integer q such that a − b = qn.) Into what equivalence classes does this relation partition the integers?"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.2",
+   "section_title": "B.2 Relations",
+   "printed_page": 1160,
+   "pdf_page": 1181,
+   "text": "3 To be precise, in order for the \"fit inside\" relation to be a partial order, we need to view a box as fitting inside itself."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.3",
+   "section_title": "B.3 Functions",
+   "printed_page": 1161,
+   "pdf_page": 1182,
+   "text": "B.3 Functions 1161"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.3",
+   "section_title": "B.3 Functions",
+   "printed_page": 1161,
+   "pdf_page": 1182,
+   "text": "Give examples of relations that are a. reflexive and symmetric but not transitive, b. reflexive and transitive but not symmetric, c. symmetric and transitive but not reflexive."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.3",
+   "section_title": "B.3 Functions",
+   "printed_page": 1161,
+   "pdf_page": 1182,
+   "text": "Let S be a finite set, and let R be an equivalence relation on S × S . Show that if in addition R is antisymmetric, then the equivalence classes of S with respect to R are singletons."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.3",
+   "section_title": "B.3 Functions",
+   "printed_page": 1161,
+   "pdf_page": 1182,
+   "text": "Professor Narcissus claims that if a relation R is symmetric and transitive, then it is also reflexive. He offers the following proof. By symmetry, aRb implies bRa ."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.3",
+   "section_title": "B.3 Functions",
+   "printed_page": 1161,
+   "pdf_page": 1182,
+   "text": "Transitivity, therefore, implies aRa . Is the professor correct?"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.3",
+   "section_title": "B.3 Functions",
+   "printed_page": 1161,
+   "pdf_page": 1182,
+   "text": "B.3 Functions"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.3",
+   "section_title": "B.3 Functions",
+   "printed_page": 1161,
+   "pdf_page": 1182,
+   "text": "Given two sets A and B , a function f is a binary relation on A and B such that for all a 2 A, there exists precisely one b 2 B such that (a;b) 2 f . The set A is called the domain of f , and the set B is called the codomain of f . We sometimes write f W A ! B , and if (a;b) 2 f , we write b = f(a) , since the choice of a uniquely determines b."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.3",
+   "section_title": "B.3 Functions",
+   "printed_page": 1161,
+   "pdf_page": 1182,
+   "text": "Intuitively, the function f assigns an element of B to each element of A. No element of A is assigned two different elements of B , but the same element of B can be assigned to two different elements of A. For example, the binary relation f = f(a;b) W a;b 2 N and b = a mod 2g is a function f W N ! f0;1 g, since for each natural number a, there is exactly one value b in f0;1 g such that b = a mod 2. For this example, 0 = f(0) , 1 = f(1) , 0 = f(2) , 1 = f(3) , etc. In contrast, the binary relation g = f(a;b) W a;b 2 N and a + b is eveng is not a function, since .1;3/ and .1;5/ are both in g, and thus for the choice a = 1, there is not precisely one b such that (a;b) 2 g."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.3",
+   "section_title": "B.3 Functions",
+   "printed_page": 1161,
+   "pdf_page": 1182,
+   "text": "Given a function f W A ! B , if b = f(a) , we say that a is the argument of f and that b is the value of f at a. We can define a function by stating its value for 1162 Appendix B Sets, Etc. every element of its domain. For example, we might define f(n) = 2n for n 2 N, which means f = f(n;2n) W n 2 Ng. Two functions f and g are equal if they have the same domain and codomain and if f(a) = g(a) for all a in the domain."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.3",
+   "section_title": "B.3 Functions",
+   "printed_page": 1162,
+   "pdf_page": 1183,
+   "text": "A finite sequence of length n is a function f whose domain is the set of n integers f0;1;:::;n − 1g. We often denote a finite sequence by listing its values in angle brackets: hf(0);f(1);:::;f(n − 1)i. An infinite sequence is a function whose domain is the set N of natural numbers. For example, the Fibonacci sequ ence, defined by recurrence (3.31), is the infinite sequence h0;1;1;2;3;5;8;13;21;::: i."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.3",
+   "section_title": "B.3 Functions",
+   "printed_page": 1162,
+   "pdf_page": 1183,
+   "text": "When the domain of a function f is a Cartesian product, we often omit the extra parentheses surrounding the argument of f . For example, if we have a function f W A 1 ×A 2 ×• • •×A n ! B , we write b = f(a 1 ;a 2 ;:::;a n ) instead of writing b = f..a 1 ;a 2 ;:::;a n //. We also call each a i an argument to the function f , though technically f has just a single argument, which is the n-tuple (a 1 ;a 2 ;:::;a n )."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.3",
+   "section_title": "B.3 Functions",
+   "printed_page": 1162,
+   "pdf_page": 1183,
+   "text": "If f W A ! B is a function and b = f(a) , then we sometimes say that b is the image of a under f . The image of a set A 0 ⊆ A under f is defined by f(A 0 ) = fb 2 B W b = f(a) for some a 2 A 0 g :"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.3",
+   "section_title": "B.3 Functions",
+   "printed_page": 1162,
+   "pdf_page": 1183,
+   "text": "The range of f is the image of its domain, that is, f(A) . For example, the range of the function f W N ! N defined by f(n) = 2n is f. N/ = fm W m = 2n for some n 2 Ng, in other words, the set of nonnegative even integers."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.3",
+   "section_title": "B.3 Functions",
+   "printed_page": 1162,
+   "pdf_page": 1183,
+   "text": "A function is a surjection if its range is its codomain. For example, the function f(n) = ⌊n/2⌋ is a surjective function from N to N, since every element in N appears as the value of f for some argument. In contrast, the function f(n) = 2n is not a surjective function from N to N, since no argument to f can produce any odd natural number as a value. The function f(n) = 2n is, however, a surjective function from the natural numbers to the even numbers. A surjection f W A ! B is sometimes described as mapping A onto B . When we say that f is onto, we mean that it is surjective."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.3",
+   "section_title": "B.3 Functions",
+   "printed_page": 1162,
+   "pdf_page": 1183,
+   "text": "A function f W A ! B is an injection if distinct arguments to f produce distinct values, that is, if a ≠ a 0 implies f(a) ≠ f(a 0 ). For example, the function f(n) = 2n is an injective function from N to N, since each even number b is the image under f of at most one element of the domain, namely b/2. The function f(n) = ⌊n/2⌋ is not injective, since the value 1 is produced by two arguments: f(2) = 1 and f(3) = 1. An injection is sometimes called a one-to-one function."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.3",
+   "section_title": "B.3 Functions",
+   "printed_page": 1162,
+   "pdf_page": 1183,
+   "text": "A function f W A ! B is a bijection if it is injective and surjective. For example, the function f(n) = .−1/ n ⌈n/2⌉ is a bijection from N to Z:"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.3",
+   "section_title": "B.3 Functions",
+   "printed_page": 1163,
+   "pdf_page": 1184,
+   "text": "B.3 Functions 1163"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.3",
+   "section_title": "B.3 Functions",
+   "printed_page": 1163,
+   "pdf_page": 1184,
+   "text": "0 ! 0; 1 ! − 1; 2 ! 1; 3 ! − 2; 4 ! 2; : : :"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.3",
+   "section_title": "B.3 Functions",
+   "printed_page": 1163,
+   "pdf_page": 1184,
+   "text": "The function is injective, since no element of Z is the image of more than one element of N. It is surjective, since every element of Z appears as the image of some element of N. Hence, the function is bijective. A bijection is sometimes called a one-to-one correspondence, since it pairs elements in the domain and codomain. A bijection from a set A to itself is sometimes called a permutation."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.3",
+   "section_title": "B.3 Functions",
+   "printed_page": 1163,
+   "pdf_page": 1184,
+   "text": "When a function f is bijective, we define its inverse f −1 as f −1 (b) = a if and only if f(a) = b:"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.3",
+   "section_title": "B.3 Functions",
+   "printed_page": 1163,
+   "pdf_page": 1184,
+   "text": "For example, the inverse of the function f(n) = .−1/ n ⌈n/2⌉ is f −1 (m) ="
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.3",
+   "section_title": "B.3 Functions",
+   "printed_page": 1163,
+   "pdf_page": 1184,
+   "text": "2m if m ≥ 0; −2m − 1 if m<0:"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.3",
+   "section_title": "B.3 Functions",
+   "printed_page": 1163,
+   "pdf_page": 1184,
+   "text": "Let A and B be finite sets, and let f W A ! B be a function. Show the following: a. If f is injective, then |A| ≤ |B|. b. If f is surjective, then |A| ≥ |B|."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.3",
+   "section_title": "B.3 Functions",
+   "printed_page": 1163,
+   "pdf_page": 1184,
+   "text": "Is the function f(x) = x + 1 bijective when the domain and the codomain are the set N? Is it bijective when the domain and the codomain are the set Z?"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.3",
+   "section_title": "B.3 Functions",
+   "printed_page": 1163,
+   "pdf_page": 1184,
+   "text": "Give a natural definition for the inverse of a binary relation such that if a relation is in fact a bijective function, its relational inverse is its functional inverse."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.3",
+   "section_title": "B.3 Functions",
+   "printed_page": 1163,
+   "pdf_page": 1184,
+   "text": "Give a bijection from Z to Z × Z."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1164,
+   "pdf_page": 1185,
+   "text": "1164 Appendix B Sets, Etc."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1164,
+   "pdf_page": 1185,
+   "text": "B.4 Graphs"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1164,
+   "pdf_page": 1185,
+   "text": "This section presents two kinds of graphs: directed and undirected. Certain definitions in the literature differ from those given here, but for the most part, the differences are slight. Section 20.1 shows how to represent graphs in computer memory."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1164,
+   "pdf_page": 1185,
+   "text": "A directed graph (or digraph) G is a pair (V;E) , where V is a finite set and E is a binary relation on V . The set V is called the vertex set of G, and its elements are called vertices (singular: vertex). The set E is called the edge set of G, and its elements are called edges. Figure B.2(a) is a pictorial representation of a directed graph on the vertex set f1;2;3;4;5;6 g . Vertices are represented by circles in the figure, and edges are represented by arrows. Self-loops—edges from a vertex to itself—are possible."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1164,
+   "pdf_page": 1185,
+   "text": "In an undirected graph G = (V;E) , the edge set E consists of unordered pairs of vertices, rather than ordered pairs. That is, an edge is a set fu;v g, where u;v 2 V and u ≠ v. By convention, we use the notation (u;v) for an edge, rather than the set notation fu;v g, and we consider (u;v) and (v;u) to be the same edge."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1164,
+   "pdf_page": 1185,
+   "text": "In an undirected graph, self-loops are forbidden, so that every edge consists of two distinct vertices. Figure B.2(b) shows an undir ected graph on the vertex set f1;2;3;4;5;6 g ."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1164,
+   "pdf_page": 1185,
+   "text": "Many definitions for directed and undirected graphs are the same, although certain terms have slightly different meanings in the two contexts. If (u;v) is an edge in a directed graph G = (V;E) , we say that (u;v) is incident from or leaves vertex u and is incident to or enters vertex v. For example, the edges leaving vertex 2"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1164,
+   "pdf_page": 1185,
+   "text": "Figure B.2 Directed and undirected graphs. (a) A directed graph G = (V;E) , where V = f1;2;3;4;5;6 g and E = f(1;2);.2;2/;.2;4/;.2;5/;.4;1/;.4;5/;.5;4/;.6;3/ g. The edge .2;2/ is a self-loop. (b) An undirected graph G = (V;E) , where V = f1;2;3;4;5;6 g and E = f(1;2);.1;5/;.2;5/;.3;6/ g. The vertex 4 is isolated. (c) The subgraph of the graph in part (a) induced by the vertex set f1;2;3;6 g."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1165,
+   "pdf_page": 1186,
+   "text": "B(4 Graphs 1165 in Figure B(2(a) are .2;2) , .2;4) , and .2;5/ . The edges entering vertex 2 are .1;2/ and .2;2/ . If (u;v) is an edge in an undirected graph G = (V;E) , we say that (u;v) is incident on vertices u and v. In Figure B(2(b), the edges incident on vertex 2 are .1;2) and .2;5/ ."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1165,
+   "pdf_page": 1186,
+   "text": "If (u;v) is an edge in a graph G = (V;E) , we say that vertex v is adjacent to vertex u. When the graph is undirected, the adjacency relat ion is symmetric."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1165,
+   "pdf_page": 1186,
+   "text": "When the graph is directed, the adjacency relation is not necessarily symmetric. If v is adjacent to u in a directed graph, we can write u ! v. In parts (a) and (b) of Figure B(2, vertex 2 is adjacent to vertex 1, since the edge .1;2) belongs to both graphs. Vertex 1 is not adjacent to vertex 2 in Figure B(2(a), since the edge .2;1) is absent."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1165,
+   "pdf_page": 1186,
+   "text": "The degree of a vertex in an undirected graph is the number of edges incident on it. For example, vertex 2 in Figure B.2(b) has degree 2. A vertex whose degree is 0, such as vertex 4 in Figure B.2(b), is isolated. In a directed graph, the out-degree of a vertex is the number of edges leaving it, and the in-degree of a vertex is the number of edges entering it. The degree of a vertex in a directed graph is its in- degree plus its out-degree. Vertex 2 in Figure B.2(a) has in-degree 2, out-degree 3, and degree 5."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1165,
+   "pdf_page": 1186,
+   "text": "A path of length k from a vertex u to a vertex u 0 in a graph G = (V;E) is a sequence hv 0 ;v 1 ;v 2 ;:::;v k i of vertices such that u = v 0 , u 0 = v k , and (v i −1 ;v i ) 2 E for i = 1;2;:::;k . The length of the path is the number of edges in the path, which is 1 less than the number of vertices in the path. The path contains the vertices v 0 ;v 1 ;:::;v k and the edges (v 0 ;v 1 );.v 1 ;v 2 /;:::;.v k−1 ;v k /. (There is always a 0-length path from u to u.) If there is a path p from u to u 0 , we say that u 0 is reachable from u via p, which we can write as u p"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1165,
+   "pdf_page": 1186,
+   "text": "→ u 0 . A path is simple 4 if all vertices in the path are distinct. In Figure B.2(a), the path h1;2;5;4 i is a simple path of length 3. The path h2;5;4;5 i is not simple. A subpath of path"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1165,
+   "pdf_page": 1186,
+   "text": "√D hv 0 ;v 1 ;:::;v k i is a contiguous subsequence of its vertices. That i s, for any"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1165,
+   "pdf_page": 1186,
+   "text": "0 ≤ i ≤ j ≤ k, the subsequence of vertices hv i ;v i C1 ;:::;v j i is a subpath of p."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1165,
+   "pdf_page": 1186,
+   "text": "In a directed graph, a path hv 0 ;v 1 ;:::;v k i forms a cycle if v 0 = v k and the path contains at least one edge. The cycle is simple if, in addition, v 1 ;v 2 ;:::;v k are distinct. A cycle consisting of k vertices has length k. A self-loop is a cycle of length 1. Two paths hv 0 ;v 1 ;v 2 ;:::;v k−1 ;v 0 i and hv 0"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1165,
+   "pdf_page": 1186,
+   "text": "2 ;:::;v 0 k−1 ;v 0"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1165,
+   "pdf_page": 1186,
+   "text": "0 i form the same cycle if there exists an integer j such that v 0 i = v (i Cj ) mod k for i = 0;1;:::;k −1. In Figure B.2(a), the path h1;2;4;1 i forms the same cycle as the paths h2;4;1;2 i and h4;1;2;4 i. This cycle is simple, but the cycle h1;2;4;5;4;1 i is not. The cycle h2;2 i formed by the edge .2;2/ is a self-loop. A directed graph"
+  },
+  {
+   "type": "footnote",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1165,
+   "pdf_page": 1186,
+   "text": "4 Some authors refer to what we call a path as a \"wal k\" and to what we call a simple path as just a \"path.\""
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1166,
+   "pdf_page": 1187,
+   "text": "1166 Appendix B Sets, Etc. with no self-loops is simple. In an undirected graph, a path hv 0 ;v 1 ;:::;v k i forms a cycle if k>0 , v 0 = v k , and all edges on the path are distinct. The cycle is simple if v 1 ;v 2 ;:::;v k are distinct. For example, in Figure B.2(b), the pa th h1;2;5;1 i is a simple cycle. A graph with no simple cycles is acyclic."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1166,
+   "pdf_page": 1187,
+   "text": "An undirected graph is connected if every vertex is reachable from all other vertices. The connected components of an undirected graph are the equivalence classes of vertices under the \"is reachable from\" r elation. The graph shown in Figure B.2(b) has three connected components: f1;2;5 g, f3;6 g, and f—g. Every vertex in the connected component f1;2;5 g is reachable from every other vertex in f1;2;5 g. An undirected graph is connected if it has exactly one connected component. The edges of a connected component are those that are incident on only the vertices of the component. In other words, edge (u;v) is an edge of a connected component only if both u and v are vertices of the component."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1166,
+   "pdf_page": 1187,
+   "text": "A directed graph is strongly connected if every two vertices are reachable from each other. The strongly connected components of a directed graph are the equivalence classes of vertices under the \"are mutually reachable\" relation. A directed graph is strongly connected if it has only one strongly connected component. The graph in Figure B.2(a) has three strongly connected components: f1;2;4;5 g, f3g, and f6g. All pairs of vertices in f1;2;4;5 g are mutually reachable. The vertices f3;6 g do not form a strongly connected component, since v ertex 6 cannot be reached from vertex 3."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1166,
+   "pdf_page": 1187,
+   "text": "Two graphs G = (V;E) and G 0 = (V 0 ;E 0 ) are isomorphic if there exists a bijection f W V ! V 0 such that (u;v) 2 E if and only if (f(u);f(v)) 2 E 0 ."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1166,
+   "pdf_page": 1187,
+   "text": "In other words, G and G 0 are isomorphic if the vertices of G can be relabeled to be vertices of G 0 , maintaining the corresponding edges in G and G 0 . Figure B.3(a) shows a pair of isomorphic graphs G and G 0 with respective vertex sets V = f1;2;3;4;5;6 g and V 0 = fu;v;w;x;y;´ g. The mapping from V to V 0 given by f(1) = u;f(2) = v;f(3) = w;f(4) = x;f(5) = y;f(6) = ´ provides the required bijective function. The graph s in Figure B.3(b) are not isomorphic. Although both graphs have 5 vertices and 7 edges, the top graph has a vertex of degree 4 and the bottom graph does not."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1166,
+   "pdf_page": 1187,
+   "text": "We say that a graph G 0 = (V 0 ;E 0 ) is a subgraph of G = (V;E) if V 0 ⊆ V and E 0 ⊆ E. Given a set V 0 ⊆ V , the subgraph of G induced by V 0 is the graph G 0 = (V 0 ;E 0 ), where"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1166,
+   "pdf_page": 1187,
+   "text": "E 0 = f(u;v) 2 E W u;v 2 V 0 g :"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1166,
+   "pdf_page": 1187,
+   "text": "The subgraph induced by the vertex set f1;2;3;6 g in Figure B.2(a) appears in Figure B(2(c) and has the edge set f(1;2);.2;2);.6;3/ g ."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1166,
+   "pdf_page": 1187,
+   "text": "Given an undirected graph G = (V;E) , the directed version of G is the directed graph G 0 = (V;E 0 ), where (u;v) 2 E 0 if and only if (u;v) 2 E. That is, each undirected edge (u;v) in G turns into two directed edges, (u;v) and (v;u) , in the B.4 Graphs 1167"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1167,
+   "pdf_page": 1188,
+   "text": "4 5 u w x y z"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1167,
+   "pdf_page": 1188,
+   "text": "1 2 u w x y"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1167,
+   "pdf_page": 1188,
+   "text": "Figure B.3 (a) A pair of isomorphic graphs. The vertices of the to p graph are mapped to the vertices of the bottom graph by f(1) = u;f(2) = v;f(3) = w;f(4) = x;f(5) = y;f(6) = ´."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1167,
+   "pdf_page": 1188,
+   "text": "(b) Two graphs that are not isomorphic. The top graph has a vertex of degree 4, and the bottom graph does not. directed version. Given a directed graph G = (V;E) , the undirected version of G is the undirected graph G 0 = (V;E 0 ), where (u;v) 2 E 0 if and only if u ≠ v and E contains at least one of the edges (u;v) and (v;u) . That is, the undirected version contains the edges of G \"with their directions removed\" and with self-loops eliminated. (Since (u;v) and (v;u) are the same edge in an undirected graph, the undirected version of a directed graph contains it only once, even if the directed graph contains both edges (u;v) and (v;u) .) In a directed graph G = (V;E) , a neighbor of a vertex u is any vertex that is adjacent to u in the undirected version of G. That is, v is a neighbor of u if u ≠ v and either (u;v) 2 E or (v;u) 2 E. In an undirected graph, u and v are neighbors if they are adjacent."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1167,
+   "pdf_page": 1188,
+   "text": "Several kinds of graphs have special names. A complete graph is an undirected graph in which every pair of vertices is adjacent. An undirected graph G = (V;E) is bipartite if V can be partitioned into two sets V 1 and V 2 such that (u;v) 2 E implies either u 2 V 1 and v 2 V 2 or u 2 V 2 and v 2 V 1 . That is, all edges go between the two sets V 1 and V 2 . An acyclic, undirected graph is a forest, and a connected, acyclic, undirected graph is a (free) tree (see Section B.5). We often take the first letters of \"directed acyclic graph\" and call such a graph a dag."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1167,
+   "pdf_page": 1188,
+   "text": "There are two variants of graphs that you may occasionally encounter. A multi- graph is like an undirected graph, but it can have both multiple edges between vertices (such as two distinct edges (u;v) and (u;v)) and self-loops. A hypergraph is like an undirected graph, but each hyperedge, rather than connecting two vertices, 1168 Appendix B Sets, Etc. connects an arbitrary subset of vertices. Many algo rithms written for ordinary directed and undirected graphs can be adapted to run on these graphlike structures."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1168,
+   "pdf_page": 1189,
+   "text": "The contraction of an undirected graph G = (V;E) by an edge e = (u;v) is a graph G 0 = (V 0 ;E 0 ), where V 0 = V − fu;v g [ fx g and x is a new vertex."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1168,
+   "pdf_page": 1189,
+   "text": "The set of edges E 0 is formed from E by deleting the edge (u;v) and, for each vertex w adjacent to u or v, deleting whichever of (u;w) and (v;w) belongs to E and adding the new edge (x;w) . In effect, u and v are \"contracted\" into a single vertex."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1168,
+   "pdf_page": 1189,
+   "text": "Attendees of a faculty party shake hands to greet e ach other, with every pair of professors shaking hands one time. Each professor remembers the number of times he or she shook hands. At the end of the party, the department head asks the professors for their totals and adds them all up. S how that the result is even by proving the handshaking lemma: if G = (V;E) is an undirected graph, then"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1168,
+   "pdf_page": 1189,
+   "text": "X v2V degree(v) = 2 |E| :"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1168,
+   "pdf_page": 1189,
+   "text": "Show that if a directed or undirected graph contain s a path between two vertices u and v, then it contains a simple path between u and v. Show that if a directed graph contains a cycle, then it contains a simple cycle."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1168,
+   "pdf_page": 1189,
+   "text": "Show that any connected, undirected graph G = (V;E) satisfies |E| ≥ |V| − 1."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1168,
+   "pdf_page": 1189,
+   "text": "Verify that in an undirected graph, the \"is reachab le from\" relation is an equivalence relation on the vertices of the graph. Which of the three properties of an equivalence relation hold in general for the \"is re achable from\" relation on the vertices of a directed graph?"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1168,
+   "pdf_page": 1189,
+   "text": "What is the undirected version of the directed graph in Figure B.2(a)? What is the directed version of the undirected graph in Figure B.2(b)?"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.4",
+   "section_title": "B.4 Graphs",
+   "printed_page": 1168,
+   "pdf_page": 1189,
+   "text": "Show how a bipartite graph can represent a hypergraph by letting incidence in the hypergraph correspond to adjacency in the bipartite graph. ( Hint: Let one set of"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1169,
+   "pdf_page": 1190,
+   "text": "B.5 Trees 1169 vertices in the bipartite graph correspond to vertices of the hypergraph, and let the other set of vertices of the bipartite graph correspond to hyperedges.)"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1169,
+   "pdf_page": 1190,
+   "text": "B.5 Trees"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1169,
+   "pdf_page": 1190,
+   "text": "As with graphs, there are many related, but slightly different, notions of trees. This section presents definitions and mathematical properties of several kinds of trees."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1169,
+   "pdf_page": 1190,
+   "text": "Sections 10.3 and 20.1 describe how to represent trees in computer memory."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1169,
+   "pdf_page": 1190,
+   "text": "B.5.1 Free trees"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1169,
+   "pdf_page": 1190,
+   "text": "As defined in Section B.4, a free tree is a connected, acyclic, undirected graph. We often omit the adjective \"free\" when we say that a graph is a tree. If an undirected graph is acyclic but possibly disconnected, it is a forest. Many algorithms that work for trees also work for forests. Figure B.4(a) shows a free tree, and Figure B.4(b) shows a forest. The forest in Figure B.4(b) is not a tree because it is not connected."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1169,
+   "pdf_page": 1190,
+   "text": "The graph in Figure B.4(c) is connected but neither a tree nor a forest, because it contains a cycle."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1169,
+   "pdf_page": 1190,
+   "text": "The following theorem captures many important facts about free trees."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1169,
+   "pdf_page": 1190,
+   "text": "Theorem B.2 (Properties of free trees)"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1169,
+   "pdf_page": 1190,
+   "text": "Let G = (V;E) be an undirected graph. The following statements are equivalent."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1169,
+   "pdf_page": 1190,
+   "text": "1. G is a free tree."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1169,
+   "pdf_page": 1190,
+   "text": "2. Any two vertices in G are connected by a unique simple path."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1169,
+   "pdf_page": 1190,
+   "text": "3. G is connected, but if any edge is removed from E, the resulting graph is disconnected."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1169,
+   "pdf_page": 1190,
+   "text": "(a) (b) (c)"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1169,
+   "pdf_page": 1190,
+   "text": "Figure B.4 (a) A free tree. (b) A forest. (c) A graph that contains a cycle and is therefore neit her a tree nor a forest."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1170,
+   "pdf_page": 1191,
+   "text": "1170 Appendix B Sets, Etc. u w z x y pʹ pʹʹ v"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1170,
+   "pdf_page": 1191,
+   "text": "Figure B.5 A step in the proof of Theorem B.2: if (1) G is a free tree, then (2) any two vertices in G are connected by a unique simple path. Assume for t he sake of contradiction that vertices u and v are connected by two distinct simple paths. These paths first diverge at vertex w, and they first reconverge at vertex ´. The path √0 concatenated with the reverse of the path p 00 forms a cycle, which yields the contradiction."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1170,
+   "pdf_page": 1191,
+   "text": "4. G is connected, and |E| = |V| − 1."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1170,
+   "pdf_page": 1191,
+   "text": "5. G is acyclic, and |E| = |V| − 1."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1170,
+   "pdf_page": 1191,
+   "text": "6. G is acyclic, but if any edge is added to E, the resulting graph contains a cycle."
+  },
+  {
+   "type": "proof",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1170,
+   "pdf_page": 1191,
+   "text": "Proof (1) ) (2): Since a tree is connected, any two vertices in G are connected by at least one simple path. Suppose for the sake o f contradiction that vertices u and v are connected by two distinct simple paths as shown in Figure B.5. Let w be the vertex at which the paths first diverge. That is, if we call the paths √1 and √2 , then w is the first vertex on both √1 and √2 whose successor on √1 is x and whose successor on √2 is y , where x ≠ y . Let ´ be the first vertex at which the paths reconverge, that is, ´ is the first vertex following w on √1 that is also on √2 . Let √0 = w ! x → ´ be the subpath of √1 from w through x to ´, so that √1 = u → w"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1170,
+   "pdf_page": 1191,
+   "text": "→ ´ → v, and let p 00 = w ! y → ´ be the subpath of √2 from w through y to ´, so that √2 = u → w p 00"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1170,
+   "pdf_page": 1191,
+   "text": "→ ´ → v. Paths √0 and p 00 share no vertices except their endpoints. Then, as Figure B.5 shows, the path obtained by concatenating √0 and the reverse of p 00 is a cycle, which contradicts our assumption that G is a tree. Thus, if G is a tree, there can be at most one simple path between two vertices."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1170,
+   "pdf_page": 1191,
+   "text": "(2) ) (3): If any two vertices in G are connected by a unique simple path, then"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1170,
+   "pdf_page": 1191,
+   "text": "G is connected. Let (u;v) be any edge in E. This edge is a path from u to v, and so it must be the unique path from u to v. If (u;v) were to be removed from G, there would be no path from u to v, and G would be disconnected."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1170,
+   "pdf_page": 1191,
+   "text": "(3) ) (4): By assumption, the graph G is connected, so Exercise B.4-3 gives that |E| ≥ |V| − 1. We prove |E| ≤ |V| − 1 by induction on |V|. The base cases are when |V| = 1 or |V| = 2, and in either case, |E| = |V| − 1. For the inductive step, suppose that |V| ≥ 3 for graph G and that any graph G 0 = (V 0 ;E 0 ), where"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1171,
+   "pdf_page": 1192,
+   "text": "B.5 Trees 1171 jV 0 j < |V|, that satisfies (3) also satisfies jE 0 j ≤ jV 0 j − 1. Removing an arbitrary edge from G separates the graph into k ≥ 2 connected components (actually k = 2). Each component satisfies (3), or else G would not satisfy (3). Consider each connected component V i , with edge set E i , as a separate free tree. Then, because each connected component has fewer than |V| vertices, the inductive hypothesis implies that jE i j ≤ jV i j − 1. Thus, the number of edges in all k connected components combined is at most |V| − k ≤ |V| − 2. Adding in the removed edge yields |E| ≤ |V| − 1."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1171,
+   "pdf_page": 1192,
+   "text": "(4) ) (5): Suppose that G is connected and that |E| = |V| − 1. We must show that G is acyclic. Suppose that G has a cycle containing k vertices v 1 ;v 2 ;:::;v k , and without loss of generality assume that this cycle is simple. Let G k = (V k ;E k ) be the subgraph of G consisting of the cycle, so that jV k j = jE k j = k. If k< |V|, then because G is connected, there must be a vertex v kC1 2 V − V k that is adjacent to some vertex v i 2 V k . Define G kC1 = (V kC1 ;E kC1 ) to be the subgraph of G with V kC1 = V k [ fv kC1 g and E kC1 = E k [ f(v i ;v kC1 )g. Note that jV kC1 j = jE kC1 j = k + 1. If k + 1 < |V|, then continue, defining G kC2 in the same manner, and so forth, until we obtain G n = (V n ;E n ), where n = |V|, V n = V , and jE n j = jV n j = |V|. Since G n is a subgraph of G, we have E n ⊆ E, and hence"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1171,
+   "pdf_page": 1192,
+   "text": "|E| ≥ jE n j = jV n j = |V|, which contradicts the assumption that |E| = |V| − 1."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1171,
+   "pdf_page": 1192,
+   "text": "Thus, G is acyclic."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1171,
+   "pdf_page": 1192,
+   "text": "(5) ) (6): Suppose that G is acyclic and that |E| = |V| − 1. Let k be the number of connected components of G. Each connected component is a free tree by definition, and since (1) implies (5), the sum of all edges in all connected components of G is |V| − k. Consequently, k must equal 1, and G is in fact a tree."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1171,
+   "pdf_page": 1192,
+   "text": "Since (1) implies (2), any two vertices in G are connected by a unique simple path."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1171,
+   "pdf_page": 1192,
+   "text": "Thus, adding any edge to G creates a cycle."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1171,
+   "pdf_page": 1192,
+   "text": "(6) ) (1): Suppose that G is acyclic but that adding any edge to E creates a cycle. We must show that G is connected. Let u and v be arbitrary vertices in G."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1171,
+   "pdf_page": 1192,
+   "text": "If u and v are not already adjacent, adding the edge (u;v) creates a cycle in which all edges but (u;v) belong to G. Thus, the cycle minus edge (u;v) must contain a path from u to v, and since u and v were chosen arbitrarily, G is connected."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1171,
+   "pdf_page": 1192,
+   "text": "B.5.2 Rooted and ordered trees"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1171,
+   "pdf_page": 1192,
+   "text": "A rooted tree is a free tree in which one of the vertices is dist inguished from the others. We call the distinguished vertex the root of the tree. We often refer to a 1172 Appendix B Sets, Etc."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1172,
+   "pdf_page": 1193,
+   "text": "11 2 height = 4 depth 0 depth 1 depth 2 depth 3 depth 4"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1172,
+   "pdf_page": 1193,
+   "text": "Figure B.6 Rooted and ordered trees. (a) A rooted tree with height 4. The tree is drawn in a standard way: the root (node 7) is at the top, its children (nodes with depth 1) are beneath it, their children (nodes with depth 2) are beneath them, and so forth. If the tree is or dered, the relative leftto-right order of the children of a node matters; otherwise, it doesn’t. (b) Another rooted tree. As a rooted tree, it is identical to the tree in (a), but as an ordered tree it is different, since the children of node 3 appear in a different order. vertex of a rooted tree as a node 5 of the tree. Figure B.6(a) shows a rooted tree on a set of 12 nodes with root 7."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1172,
+   "pdf_page": 1193,
+   "text": "Consider a node x in a rooted tree T with root r . We call any node y on the unique simple path from r to x an ancestor of x . If y is an ancestor of x , then x is a descendant of y . (Every node is both an ancestor and a descendant of itself.) If y is an ancestor of x and x ≠ y , then y is a proper ancestor of x and x is a proper descendant of y . The subtree rooted at x is the tree induced by descendants of x , rooted at x . For example, the subtree rooted at node 8 in Figure B.6(a) contains nodes 8, 6, 5, and 9."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1172,
+   "pdf_page": 1193,
+   "text": "If the last edge on the simple path from the root r of a tree T to a node x is (y;x) , then y is the parent of x , and x is a child of y . The root is the only node in T with no parent. If two nodes have the same parent, they are siblings. A node with no children is a leaf or external node. A nonleaf node is an internal node."
+  },
+  {
+   "type": "footnote",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1172,
+   "pdf_page": 1193,
+   "text": "5 The term \"node\" is often used in the graph theory literature as a synonym for \"vertex.\" We reserve the term \"node\" to mean a vertex of a rooted tree."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1173,
+   "pdf_page": 1194,
+   "text": "B.5 Trees 1173"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1173,
+   "pdf_page": 1194,
+   "text": "The number of children of a node x in a rooted tree T is the degree of x . 6 The length of the simple path from the root r to a node x is the depth of x in T . A level of a tree consists of all nodes at the same depth. The height of a node in a tree is the number of edges on the longest simple downward path from the node to a leaf, and the height of a tree is the height of its root. The height of a tree is also equal to the largest depth of any node in the tree."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1173,
+   "pdf_page": 1194,
+   "text": "An ordered tree is a rooted tree in which the children of each node are ordered."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1173,
+   "pdf_page": 1194,
+   "text": "That is, if a node has k children, then there is a first child, a second child, and so on, up to and including a kth child. The two trees in Figure B.6 are different when considered to be ordered trees, but the same when c onsidered to be just rooted trees."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1173,
+   "pdf_page": 1194,
+   "text": "B.5.3 Binary and positional trees"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1173,
+   "pdf_page": 1194,
+   "text": "We define binary trees recursively. A binary tree T is a structure defined on a finite set of nodes that either"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1173,
+   "pdf_page": 1194,
+   "text": "• contains no nodes, or • is composed of three disjoint sets of nodes: a root node, a binary tree called its left subtree, and a binary tree called its right subtree."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1173,
+   "pdf_page": 1194,
+   "text": "The binary tree that contains no nodes is called th e empty tree or null tree, sometimes denoted NIL. If the left subtree is nonempty, its root is called the left child of the root of the entire tree. Likewise, the root of a nonnull right subtree is the right child of the root of the entire tree. If a subtree is the null tree NIL, we say that the child is absent or missing. Figure B.7(a) shows a binary tree."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1173,
+   "pdf_page": 1194,
+   "text": "A binary tree is not simply an ordered tree in whic h each node has degree at most 2. For example, in a binary tree, if a node has just one child, the position of the child—whether it is the left child or the right child—matters. In an ordered tree, there is no distinguishing a sole child as being either left or right. Figure B.7(b) shows a binary tree that differs from the tree in Figure B.7(a) because of the position of one node. Considered as ordered tre es, however, the two trees are identical."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1173,
+   "pdf_page": 1194,
+   "text": "One way to represent the positioning information in a binary tree is by the inter- nal nodes of an ordered tree, as shown in Figure B.7(c). The idea is to replace each missing child in the binary tree with a node having no children. These leaf nodes"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1173,
+   "pdf_page": 1194,
+   "text": "6 The degree of a node depends on whether we consider T to be a rooted tree or a free tree. The degree of a vertex in a free tree is, as in any und irected graph, the number of adjacent vertices. In a rooted tree, however, the degree is the number of children—the parent of a node does not count toward its degree."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1174,
+   "pdf_page": 1195,
+   "text": "1174 Appendix B Sets, Etc."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1174,
+   "pdf_page": 1195,
+   "text": "Figure B.7 Binary trees. (a) A binary tree drawn in a standard way. The left chi ld of a node is drawn beneath the node and to the left. The right child is drawn beneath and to the right. (b) A binary tree different from the one in (a). In (a), the lef t child of node 7 is 5 and the right child is absent."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1174,
+   "pdf_page": 1195,
+   "text": "In (b), the left child of node 7 is absent and the right child is 5. As ordered trees, these trees are the same, but as binary trees, they are distinct. (c) The binary tree in (a) represented by the internal nodes of a full binary tree: an ordered tree in whi ch each internal node has degree 2. The leaves in the tree are shown as squares. are drawn as squares in the figure. The tree that results is a full binary tree: each node is either a leaf or has degree exactly 2. No nodes have degree 1. Consequently, the order of the children of a node preserves the position information."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1174,
+   "pdf_page": 1195,
+   "text": "The positioning information that distinguishes bina ry trees from ordered trees extends to trees with more than two children per no de. In a positional tree, the children of a node are labeled with distinct positi ve integers. The i th child of a node is absent if no child is labeled with integer i . A k-ary tree is a positional tree in which for every node, all children with labels greater than k are missing. Thus, a binary tree is a k-ary tree with k = 2."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1174,
+   "pdf_page": 1195,
+   "text": "A complete k-ary tree is a k-ary tree in which all leaves have the same depth and all internal nodes have degree k. Figure B.8 shows a complete binary tree of height 3. How many leaves does a complete k-ary tree of height h have? The root has k children at depth 1, each of which has k children at depth 2, etc. Thus, the number of nodes at depth d is k d . In a complete k-ary tree with height h, the leaves are at depth h, so that there are k h leaves. Consequently, the height of a complete k-ary tree with n leaves is log k n. A complete k-ary tree of height h has 1 + k + k 2 + • • • + k h−1 = h−1 X d D0 k d"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1174,
+   "pdf_page": 1195,
+   "text": "D k h − 1 k − 1 (by equation (A.6) on page 1142) internal nodes. Thus, a complete binary tree has 2 h − 1 internal nodes."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1175,
+   "pdf_page": 1196,
+   "text": "B.5 Trees 1175 height = 3 depth 0 depth 1 depth 2 depth 3"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1175,
+   "pdf_page": 1196,
+   "text": "Figure B.8 A complete binary tree of height 3 with 8 leaves and 7 internal nodes."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1175,
+   "pdf_page": 1196,
+   "text": "Draw all the free trees composed of the three verti ces x , y , and ´. Draw all the rooted trees with nodes x , y , and ´ with x as the root. Draw all the ordered trees with nodes x , y , and ´ with x as the root. Draw all the binary trees with nodes x , y , and ´ with x as the root."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1175,
+   "pdf_page": 1196,
+   "text": "Let G = (V;E) be a directed acyclic graph in which there is a ver tex v 0 2 V such that there exists a unique path from v 0 to every vertex v 2 V . Prove that the undirected version of G forms a tree."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1175,
+   "pdf_page": 1196,
+   "text": "Show by induction that the number of degree-2 nodes in any nonempty binary tree is one less than the number of leaves. Conclude tha t the number of internal nodes in a full binary tree is one less than the number of leaves."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1175,
+   "pdf_page": 1196,
+   "text": "Prove that for any integer k ≥ 1, there is a full binary tree with k leaves."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1175,
+   "pdf_page": 1196,
+   "text": "Use induction to show that a nonempty binary tree w ith n nodes has height at least blg nc."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1175,
+   "pdf_page": 1196,
+   "text": "The internal path length of a full binary tree is the sum, taken over all in ternal nodes of the tree, of the depth of each node. Likewise, the external path length is the sum, taken over all leaves of the tree, of the depth of each leaf. Consider a full binary tree with n internal nodes, internal path length i , and external path length e."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1175,
+   "pdf_page": 1196,
+   "text": "Prove that e = i + 2n."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1176,
+   "pdf_page": 1197,
+   "text": "1176 Appendix B Sets, Etc."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1176,
+   "pdf_page": 1197,
+   "text": "Associate a \"weight\" w(x) = 2 −d with each leaf x of depth d in a binary tree T , and let L be the set of leaves of T . Prove the Kraft inequality: P x2L w(x) ≤ 1."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1176,
+   "pdf_page": 1197,
+   "text": "Show that if L ≥ 2, then every binary tree with L leaves contains a subtree having between L/3 and 2L/3 leaves, inclusive."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1176,
+   "pdf_page": 1197,
+   "text": "B-1 Graph coloring"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1176,
+   "pdf_page": 1197,
+   "text": "A k-coloring of undirected graph G = (V;E) is a function c W V ! f1;2;:::;k g such that c(u) ≠ c(v) for every edge (u;v) 2 E. In other words, the numbers"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1176,
+   "pdf_page": 1197,
+   "text": "1;2;:::;k represent the k colors, and adjacent vertices must have different colors. a. Show that any tree is 2-colorable. b. Show that the following are equivalent:"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1176,
+   "pdf_page": 1197,
+   "text": "1. G is bipartite."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1176,
+   "pdf_page": 1197,
+   "text": "2. G is 2-colorable."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1176,
+   "pdf_page": 1197,
+   "text": "3. G has no cycles of odd length. c. Let d be the maximum degree of any vertex in a graph G. Prove that G can be colored with d + 1 colors. d. Show that if G has O(|V|) edges, then G can be colored with O. p"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1176,
+   "pdf_page": 1197,
+   "text": "|V|/ colors."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1176,
+   "pdf_page": 1197,
+   "text": "B-2 Friendly graphs"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1176,
+   "pdf_page": 1197,
+   "text": "Reword each of the following statements as a theore m about undirected graphs, and then prove it. Assume that friendship is symmetric but not reflexive. a. Any group of at least two people contains at least two people with the same number of friends in the group. b. Every group of six people contains either at least three mutual friends or at least three mutual strangers. c. Any group of people can be partitioned into two sub groups such that at least half the friends of each person belong to the subgr oup of which that person is not a member."
+  },
+  {
+   "type": "chapter-notes",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1177,
+   "pdf_page": 1198,
+   "text": "Notes for Appendix B 1177 d. If everyone in a group is the friend of at least half the people in the group, then the group can be seated around a table in such a wa y that everyone is seated between two friends."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1177,
+   "pdf_page": 1198,
+   "text": "B-3 Bisecting trees"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1177,
+   "pdf_page": 1198,
+   "text": "Many divide-and-conquer algorithms that operate on graphs require that the graph be bisected into two nearly equal-sized subgraphs, which are induced by a partition of the vertices. This problem investigates bisections of trees formed by removing a small number of edges. We require that whenever two vertices end up in the same subtree after removing edges, then they must belong to the same partition. a. Show that the vertices of any n-vertex binary tree can be partitioned into two sets A and B , such that |A| ≤ 3n/4 and |B| ≤ 3n/4, by removing a single edge. b. Show that the constant 3/4 in part (a) is optimal in the worst case by giving an example of a simple binary tree whose most evenly balanced partition upon removal of a single edge has |A| = 3n/4. c. Show that by removing at most O(lg n) edges, we can partition the vertices of any n-vertex ⌊inary tree into two sets A and B such that |A| = bn/2⌋ and |B| = ⌈n/2⌉."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1177,
+   "pdf_page": 1198,
+   "text": "Appendix notes"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1177,
+   "pdf_page": 1198,
+   "text": "G. Boole pioneered the development of symbolic logic, and he introduced many of the basic set notations in a book published in 1854. Modern set theory was created by G. Cantor during the period 187431895. Cantor focused primarily on sets of infinite cardinality. The term \"function\" is attributed to G. W. Leibniz, who used it to refer to several kinds of mathematical formulas. His limited definition has been generalized many times. Graph theory originated in 1736, when L. Euler proved that it was impossible to cross each of the seven bridges in the city of K¨ onigsberg exactly once and return to the starting point."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1177,
+   "pdf_page": 1198,
+   "text": "The book by Harary [208] provides a useful compendium of many definitions and results from graph theory."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1178,
+   "pdf_page": 1199,
+   "text": "C Counting and Probability"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1178,
+   "pdf_page": 1199,
+   "text": "This appendix reviews elementary combinatorics and probability theory. If you have a good background in these areas, you may want to skim the beginning of this appendix lightly and concentrate on the later sections. Most of this book’s chapters do not require probability, but for some chapters it is essential."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1178,
+   "pdf_page": 1199,
+   "text": "Section C.1 reviews elementary results in counting theory, including standard formulas for counting permutations and combinations. The axioms of probability and basic facts concerning probability distribution s form Section C.2. Random variables are introduced in Section C.3, along with the properties of expectation and variance. Section C.4 investigates the geometric and binomial distributions that arise from studying Bernoulli trials. The stud y of the binomial distribution continues in Section C.5, an advanced discussion of the \"tails\" of the distribution."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1178,
+   "pdf_page": 1199,
+   "text": "C.1 Counting"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1178,
+   "pdf_page": 1199,
+   "text": "Counting theory tries to answer the question \"How many?\" without actually enumerating all the choices. For example, you might as k, <How many different n-bit numbers are there?= or \"How many orderings of n distinct elements are there?\""
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1178,
+   "pdf_page": 1199,
+   "text": "This section reviews the elements of counting theor y. Since some of the material assumes a basic understanding of sets, you might wi sh to start by reviewing the material in Section B.1."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1178,
+   "pdf_page": 1199,
+   "text": "Rules of sum and product"
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1178,
+   "pdf_page": 1199,
+   "text": "We can sometimes express a set of items that we wish to count as a union of disjoint sets or as a Cartesian product of sets."
+  },
+  {
+   "type": "body",
+   "chapter": "B",
+   "section": "B.5",
+   "section_title": "B.5 Trees",
+   "printed_page": 1178,
+   "pdf_page": 1199,
+   "text": "The rule of sum says that the number of ways to choose one element from one of two disjoint sets is the sum of the cardinalities of the sets. T hat is, if A and B are two finite sets with no members in common, then jA [ B j = |A| C |B|, which"
+  }
+ ]
+}

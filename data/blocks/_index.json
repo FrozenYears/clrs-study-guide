@@ -1,0 +1,716 @@
+{
+ "chapters": {
+  "part-i-foundations__ch01.json": {
+   "chapter": 1,
+   "chapter_title": "1 The Role of Algorithms in Computing",
+   "blocks": 101,
+   "by_type": {
+    "footnote": 2,
+    "body": 88,
+    "exercise": 9,
+    "problem": 1,
+    "chapter-notes": 1
+   },
+   "sections": 2,
+   "sections_found": 2
+  },
+  "part-i-foundations__ch02.json": {
+   "chapter": 2,
+   "chapter_title": "2 Getting Started",
+   "blocks": 332,
+   "by_type": {
+    "footnote": 10,
+    "body": 288,
+    "pseudocode": 7,
+    "figure-caption": 5,
+    "exercise": 17,
+    "problem": 4,
+    "chapter-notes": 1
+   },
+   "sections": 3,
+   "sections_found": 3
+  },
+  "part-i-foundations__ch03.json": {
+   "chapter": 3,
+   "chapter_title": "3 Characterizing Running Times",
+   "blocks": 299,
+   "by_type": {
+    "body": 265,
+    "pseudocode": 1,
+    "example": 1,
+    "figure-caption": 2,
+    "exercise": 17,
+    "theorem": 1,
+    "footnote": 3,
+    "problem": 7,
+    "chapter-notes": 2
+   },
+   "sections": 3,
+   "sections_found": 3
+  },
+  "part-i-foundations__ch04.json": {
+   "chapter": 4,
+   "chapter_title": "4 Divide-and-Conquer",
+   "blocks": 644,
+   "by_type": {
+    "body": 582,
+    "pseudocode": 2,
+    "footnote": 14,
+    "exercise": 26,
+    "figure-caption": 3,
+    "theorem": 3,
+    "lemma": 3,
+    "proof": 3,
+    "problem": 7,
+    "chapter-notes": 1
+   },
+   "sections": 7,
+   "sections_found": 7
+  },
+  "part-i-foundations__ch05.json": {
+   "chapter": 5,
+   "chapter_title": "5 Probabilistic Analysis and Randomized Algorithms",
+   "blocks": 413,
+   "by_type": {
+    "footnote": 4,
+    "body": 374,
+    "pseudocode": 8,
+    "exercise": 15,
+    "lemma": 5,
+    "proof": 4,
+    "problem": 2,
+    "chapter-notes": 1
+   },
+   "sections": 4,
+   "sections_found": 4
+  },
+  "part-ii-sorting-and-order-statistics__ch06.json": {
+   "chapter": 6,
+   "chapter_title": "6 Heapsort",
+   "blocks": 192,
+   "by_type": {
+    "footnote": 3,
+    "body": 138,
+    "figure-caption": 5,
+    "exercise": 34,
+    "pseudocode": 8,
+    "problem": 3,
+    "chapter-notes": 1
+   },
+   "sections": 5,
+   "sections_found": 5
+  },
+  "part-ii-sorting-and-order-statistics__ch07.json": {
+   "chapter": 7,
+   "chapter_title": "7 Quicksort",
+   "blocks": 217,
+   "by_type": {
+    "pseudocode": 7,
+    "body": 172,
+    "figure-caption": 4,
+    "exercise": 17,
+    "lemma": 3,
+    "proof": 4,
+    "theorem": 1,
+    "problem": 7,
+    "chapter-notes": 1,
+    "footnote": 1
+   },
+   "sections": 4,
+   "sections_found": 4
+  },
+  "part-ii-sorting-and-order-statistics__ch08.json": {
+   "chapter": 8,
+   "chapter_title": "8 Sorting in Linear Time",
+   "blocks": 224,
+   "by_type": {
+    "footnote": 3,
+    "body": 173,
+    "figure-caption": 5,
+    "theorem": 1,
+    "proof": 4,
+    "corollary": 1,
+    "exercise": 20,
+    "pseudocode": 6,
+    "lemma": 2,
+    "problem": 7,
+    "chapter-notes": 2
+   },
+   "sections": 4,
+   "sections_found": 4
+  },
+  "part-ii-sorting-and-order-statistics__ch09.json": {
+   "chapter": 9,
+   "chapter_title": "9 Medians and Order Statistics",
+   "blocks": 234,
+   "by_type": {
+    "pseudocode": 5,
+    "body": 193,
+    "exercise": 16,
+    "figure-caption": 4,
+    "lemma": 1,
+    "proof": 3,
+    "theorem": 2,
+    "footnote": 2,
+    "problem": 6,
+    "chapter-notes": 2
+   },
+   "sections": 3,
+   "sections_found": 3
+  },
+  "part-iii-data-structures__ch10.json": {
+   "chapter": 10,
+   "chapter_title": "10 Elementary Data Structures",
+   "blocks": 211,
+   "by_type": {
+    "footnote": 4,
+    "body": 165,
+    "figure-caption": 6,
+    "pseudocode": 14,
+    "exercise": 17,
+    "problem": 3,
+    "chapter-notes": 2
+   },
+   "sections": 3,
+   "sections_found": 3
+  },
+  "part-iii-data-structures__ch11.json": {
+   "chapter": 11,
+   "chapter_title": "11 Hash Tables",
+   "blocks": 403,
+   "by_type": {
+    "body": 350,
+    "exercise": 17,
+    "figure-caption": 5,
+    "theorem": 8,
+    "proof": 7,
+    "footnote": 5,
+    "corollary": 2,
+    "pseudocode": 4,
+    "problem": 4,
+    "chapter-notes": 1
+   },
+   "sections": 5,
+   "sections_found": 5
+  },
+  "part-iii-data-structures__ch12.json": {
+   "chapter": 12,
+   "chapter_title": "12 Binary Search Trees",
+   "blocks": 163,
+   "by_type": {
+    "footnote": 3,
+    "body": 116,
+    "figure-caption": 5,
+    "pseudocode": 9,
+    "theorem": 3,
+    "proof": 1,
+    "exercise": 21,
+    "problem": 4,
+    "chapter-notes": 1
+   },
+   "sections": 3,
+   "sections_found": 3
+  },
+  "part-iii-data-structures__ch13.json": {
+   "chapter": 13,
+   "chapter_title": "13 Red-Black Trees",
+   "blocks": 287,
+   "by_type": {
+    "footnote": 6,
+    "body": 235,
+    "lemma": 1,
+    "proof": 1,
+    "figure-caption": 7,
+    "exercise": 26,
+    "pseudocode": 6,
+    "problem": 3,
+    "chapter-notes": 2
+   },
+   "sections": 4,
+   "sections_found": 4
+  },
+  "part-iv-advanced-design-and-analysis-techniques__ch14.json": {
+   "chapter": 14,
+   "chapter_title": "14 Dynamic Programming",
+   "blocks": 503,
+   "by_type": {
+    "body": 432,
+    "figure-caption": 12,
+    "pseudocode": 15,
+    "exercise": 25,
+    "theorem": 2,
+    "proof": 1,
+    "footnote": 2,
+    "problem": 12,
+    "chapter-notes": 2
+   },
+   "sections": 5,
+   "sections_found": 5
+  },
+  "part-iv-advanced-design-and-analysis-techniques__ch15.json": {
+   "chapter": 15,
+   "chapter_title": "15 Greedy Algorithms",
+   "blocks": 280,
+   "by_type": {
+    "body": 231,
+    "figure-caption": 7,
+    "footnote": 1,
+    "theorem": 3,
+    "proof": 5,
+    "pseudocode": 3,
+    "exercise": 23,
+    "lemma": 3,
+    "problem": 2,
+    "chapter-notes": 2
+   },
+   "sections": 4,
+   "sections_found": 4
+  },
+  "part-iv-advanced-design-and-analysis-techniques__ch16.json": {
+   "chapter": 16,
+   "chapter_title": "16 Amortized Analysis",
+   "blocks": 304,
+   "by_type": {
+    "body": 270,
+    "pseudocode": 3,
+    "figure-caption": 6,
+    "footnote": 3,
+    "exercise": 16,
+    "problem": 4,
+    "chapter-notes": 2
+   },
+   "sections": 4,
+   "sections_found": 4
+  },
+  "part-v-advanced-data-structures__ch17.json": {
+   "chapter": 17,
+   "chapter_title": "17 Augmenting Data Structures",
+   "blocks": 166,
+   "by_type": {
+    "footnote": 2,
+    "body": 133,
+    "figure-caption": 5,
+    "pseudocode": 4,
+    "exercise": 15,
+    "theorem": 2,
+    "proof": 2,
+    "problem": 2,
+    "chapter-notes": 1
+   },
+   "sections": 3,
+   "sections_found": 3
+  },
+  "part-v-advanced-data-structures__ch18.json": {
+   "chapter": 18,
+   "chapter_title": "18 B-Trees",
+   "blocks": 182,
+   "by_type": {
+    "body": 150,
+    "figure-caption": 6,
+    "theorem": 1,
+    "proof": 1,
+    "exercise": 13,
+    "pseudocode": 6,
+    "problem": 2,
+    "chapter-notes": 2,
+    "footnote": 1
+   },
+   "sections": 3,
+   "sections_found": 3
+  },
+  "part-v-advanced-data-structures__ch19.json": {
+   "chapter": 19,
+   "chapter_title": "19 Data Structures for Disjoint Sets",
+   "blocks": 327,
+   "by_type": {
+    "footnote": 8,
+    "body": 258,
+    "pseudocode": 8,
+    "exercise": 19,
+    "figure-caption": 3,
+    "theorem": 2,
+    "proof": 12,
+    "lemma": 11,
+    "corollary": 2,
+    "problem": 3,
+    "chapter-notes": 1
+   },
+   "sections": 4,
+   "sections_found": 4
+  },
+  "part-vi-graph-algorithms__ch20.json": {
+   "chapter": 20,
+   "chapter_title": "20 Elementary Graph Algorithms",
+   "blocks": 343,
+   "by_type": {
+    "footnote": 4,
+    "body": 246,
+    "figure-caption": 8,
+    "exercise": 40,
+    "pseudocode": 6,
+    "lemma": 7,
+    "proof": 16,
+    "corollary": 4,
+    "theorem": 6,
+    "problem": 5,
+    "chapter-notes": 1
+   },
+   "sections": 5,
+   "sections_found": 5
+  },
+  "part-vi-graph-algorithms__ch21.json": {
+   "chapter": 21,
+   "chapter_title": "21 Minimum Spanning Trees",
+   "blocks": 168,
+   "by_type": {
+    "body": 128,
+    "figure-caption": 5,
+    "pseudocode": 7,
+    "theorem": 2,
+    "proof": 2,
+    "corollary": 1,
+    "exercise": 16,
+    "problem": 4,
+    "chapter-notes": 2,
+    "footnote": 1
+   },
+   "sections": 2,
+   "sections_found": 2
+  },
+  "part-vi-graph-algorithms__ch22.json": {
+   "chapter": 22,
+   "chapter_title": "22 Single-Source Shortest Paths",
+   "blocks": 338,
+   "by_type": {
+    "pseudocode": 3,
+    "body": 249,
+    "figure-caption": 6,
+    "lemma": 9,
+    "proof": 16,
+    "corollary": 3,
+    "theorem": 5,
+    "exercise": 39,
+    "problem": 6,
+    "chapter-notes": 1,
+    "footnote": 1
+   },
+   "sections": 5,
+   "sections_found": 5
+  },
+  "part-vi-graph-algorithms__ch23.json": {
+   "chapter": 23,
+   "chapter_title": "23 All-Pairs Shortest Paths",
+   "blocks": 327,
+   "by_type": {
+    "pseudocode": 7,
+    "body": 279,
+    "figure-caption": 6,
+    "exercise": 25,
+    "footnote": 4,
+    "lemma": 1,
+    "proof": 1,
+    "problem": 2,
+    "chapter-notes": 2
+   },
+   "sections": 3,
+   "sections_found": 3
+  },
+  "part-vi-graph-algorithms__ch24.json": {
+   "chapter": 24,
+   "chapter_title": "24 Maximum Flow",
+   "blocks": 396,
+   "by_type": {
+    "body": 332,
+    "figure-caption": 6,
+    "exercise": 23,
+    "pseudocode": 3,
+    "lemma": 5,
+    "proof": 10,
+    "corollary": 4,
+    "theorem": 3,
+    "problem": 7,
+    "chapter-notes": 2,
+    "footnote": 1
+   },
+   "sections": 3,
+   "sections_found": 3
+  },
+  "part-vi-graph-algorithms__ch25.json": {
+   "chapter": 25,
+   "chapter_title": "25 Matchings in Bipartite Graphs",
+   "blocks": 520,
+   "by_type": {
+    "body": 444,
+    "figure-caption": 8,
+    "lemma": 7,
+    "proof": 14,
+    "corollary": 6,
+    "pseudocode": 5,
+    "theorem": 4,
+    "exercise": 17,
+    "footnote": 8,
+    "problem": 5,
+    "chapter-notes": 2
+   },
+   "sections": 3,
+   "sections_found": 3
+  },
+  "part-vii-selected-topics__ch26.json": {
+   "chapter": 26,
+   "chapter_title": "26 Parallel Algorithms",
+   "blocks": 406,
+   "by_type": {
+    "body": 340,
+    "pseudocode": 25,
+    "figure-caption": 6,
+    "footnote": 2,
+    "theorem": 1,
+    "proof": 3,
+    "corollary": 2,
+    "exercise": 19,
+    "problem": 6,
+    "chapter-notes": 2
+   },
+   "sections": 3,
+   "sections_found": 3
+  },
+  "part-vii-selected-topics__ch27.json": {
+   "chapter": 27,
+   "chapter_title": "27 Online Algorithms",
+   "blocks": 298,
+   "by_type": {
+    "body": 263,
+    "exercise": 12,
+    "figure-caption": 1,
+    "theorem": 5,
+    "proof": 5,
+    "pseudocode": 3,
+    "lemma": 2,
+    "footnote": 3,
+    "problem": 2,
+    "chapter-notes": 2
+   },
+   "sections": 3,
+   "sections_found": 3
+  },
+  "part-vii-selected-topics__ch28.json": {
+   "chapter": 28,
+   "chapter_title": "28 Matrix Operations",
+   "blocks": 448,
+   "by_type": {
+    "footnote": 13,
+    "body": 393,
+    "pseudocode": 4,
+    "figure-caption": 4,
+    "exercise": 18,
+    "theorem": 2,
+    "proof": 6,
+    "lemma": 3,
+    "corollary": 1,
+    "problem": 2,
+    "chapter-notes": 2
+   },
+   "sections": 3,
+   "sections_found": 3
+  },
+  "part-vii-selected-topics__ch29.json": {
+   "chapter": 29,
+   "chapter_title": "29 Linear Programming",
+   "blocks": 239,
+   "by_type": {
+    "body": 199,
+    "exercise": 23,
+    "lemma": 3,
+    "proof": 3,
+    "corollary": 1,
+    "theorem": 2,
+    "problem": 5,
+    "chapter-notes": 2,
+    "footnote": 1
+   },
+   "sections": 3,
+   "sections_found": 3
+  },
+  "part-vii-selected-topics__ch30.json": {
+   "chapter": 30,
+   "chapter_title": "30 Polynomials and the FFT",
+   "blocks": 320,
+   "by_type": {
+    "body": 273,
+    "theorem": 4,
+    "proof": 6,
+    "figure-caption": 6,
+    "exercise": 17,
+    "lemma": 3,
+    "footnote": 3,
+    "corollary": 1,
+    "pseudocode": 1,
+    "problem": 5,
+    "chapter-notes": 1
+   },
+   "sections": 3,
+   "sections_found": 3
+  },
+  "part-vii-selected-topics__ch31.json": {
+   "chapter": 31,
+   "chapter_title": "31 Number-Theoretic Algorithms",
+   "blocks": 683,
+   "by_type": {
+    "body": 548,
+    "theorem": 28,
+    "proof": 26,
+    "corollary": 15,
+    "exercise": 43,
+    "pseudocode": 7,
+    "lemma": 2,
+    "figure-caption": 7,
+    "problem": 4,
+    "chapter-notes": 2,
+    "footnote": 1
+   },
+   "sections": 8,
+   "sections_found": 8
+  },
+  "part-vii-selected-topics__ch32.json": {
+   "chapter": 32,
+   "chapter_title": "32 String Matching",
+   "blocks": 487,
+   "by_type": {
+    "pseudocode": 10,
+    "body": 421,
+    "figure-caption": 11,
+    "exercise": 24,
+    "footnote": 3,
+    "lemma": 5,
+    "proof": 7,
+    "theorem": 1,
+    "corollary": 1,
+    "problem": 3,
+    "chapter-notes": 1
+   },
+   "sections": 5,
+   "sections_found": 5
+  },
+  "part-vii-selected-topics__ch33.json": {
+   "chapter": 33,
+   "chapter_title": "33 Machine-Learning Algorithms",
+   "blocks": 463,
+   "by_type": {
+    "body": 409,
+    "figure-caption": 6,
+    "theorem": 6,
+    "proof": 7,
+    "exercise": 15,
+    "lemma": 5,
+    "pseudocode": 3,
+    "footnote": 5,
+    "corollary": 1,
+    "problem": 4,
+    "chapter-notes": 2
+   },
+   "sections": 3,
+   "sections_found": 3
+  },
+  "part-vii-selected-topics__ch34.json": {
+   "chapter": 34,
+   "chapter_title": "34 NP-Completeness",
+   "blocks": 571,
+   "by_type": {
+    "body": 471,
+    "footnote": 3,
+    "lemma": 5,
+    "proof": 15,
+    "theorem": 10,
+    "exercise": 41,
+    "figure-caption": 19,
+    "pseudocode": 2,
+    "problem": 4,
+    "chapter-notes": 1
+   },
+   "sections": 5,
+   "sections_found": 5
+  },
+  "part-vii-selected-topics__ch35.json": {
+   "chapter": 35,
+   "chapter_title": "35 Approximation Algorithms",
+   "blocks": 311,
+   "by_type": {
+    "body": 254,
+    "pseudocode": 7,
+    "theorem": 7,
+    "proof": 7,
+    "figure-caption": 3,
+    "exercise": 24,
+    "problem": 7,
+    "chapter-notes": 2
+   },
+   "sections": 5,
+   "sections_found": 5
+  },
+  "part-viii-appendix-mathematical-background__chA.json": {
+   "chapter": "A",
+   "chapter_title": "A Summations",
+   "blocks": 188,
+   "by_type": {
+    "body": 174,
+    "footnote": 14
+   },
+   "sections": 2,
+   "sections_found": 2
+  },
+  "part-viii-appendix-mathematical-background__chB.json": {
+   "chapter": "B",
+   "chapter_title": "B Sets, Etc.",
+   "blocks": 271,
+   "by_type": {
+    "body": 265,
+    "footnote": 3,
+    "proof": 2,
+    "chapter-notes": 1
+   },
+   "sections": 5,
+   "sections_found": 5
+  },
+  "part-viii-appendix-mathematical-background__chC.json": {
+   "chapter": "C",
+   "chapter_title": "C Counting and Probability",
+   "blocks": 544,
+   "by_type": {
+    "body": 530,
+    "footnote": 7,
+    "proof": 6,
+    "chapter-notes": 1
+   },
+   "sections": 5,
+   "sections_found": 5
+  },
+  "part-viii-appendix-mathematical-background__chD.json": {
+   "chapter": "D",
+   "chapter_title": "D Matrices",
+   "blocks": 1466,
+   "by_type": {
+    "body": 1453,
+    "proof": 1,
+    "problem": 12
+   },
+   "sections": 2,
+   "sections_found": 2
+  }
+ },
+ "totals_by_type": {
+  "footnote": 154,
+  "body": 12284,
+  "exercise": 759,
+  "problem": 166,
+  "chapter-notes": 57,
+  "pseudocode": 209,
+  "figure-caption": 192,
+  "example": 1,
+  "theorem": 115,
+  "lemma": 86,
+  "proof": 201,
+  "corollary": 45
+ },
+ "total_blocks": 14269,
+ "missing_sections": []
+}

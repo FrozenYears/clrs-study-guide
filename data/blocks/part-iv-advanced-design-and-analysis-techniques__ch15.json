@@ -1,0 +1,2657 @@
+{
+ "chapter": 15,
+ "chapter_title": "15 Greedy Algorithms",
+ "part": "Part IV Advanced Design and Analysis Techniques",
+ "source": {
+  "printed": [
+   417,
+   null
+  ],
+  "pdf": [
+   438,
+   469
+  ]
+ },
+ "sections": [
+  "15.1 An activity-selection problem",
+  "15.2 Elements of the greedy strategy",
+  "15.3 Huffman codes",
+  "15.4 Offline caching"
+ ],
+ "sections_found": [
+  "15.1 An activity-selection problem",
+  "15.2 Elements of the greedy strategy",
+  "15.3 Huffman codes",
+  "15.4 Offline caching"
+ ],
+ "blocks": [
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 418,
+   "pdf_page": 439,
+   "text": "Our first example is the problem of scheduling several competing activities that re- quire exclusive use of a common resource, with a goal of selecting a maximum-size set of mutually compatible activities. Imagine that you are in charge of scheduling a conference room. You are presented with a set S = fa 1 ;a 2 ;:::;a n g of n proposed activities that wish to reserve the conference room, and the r oom can serve only one activity at a time. Each activity a i has a start time s i and a finish time f i , where 0 ≤ s i <f i < 1. If selected, activity a i takes place during the half-open time interval [s i ;f i /. Activities a i and a j are compatible if the intervals [s i ;f i / and [s j ;f j / do not overlap. That is, a i and a j are compatible if s i ≥ f j or s j ≥ f i ."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 418,
+   "pdf_page": 439,
+   "text": "(Assume that if your staff needs time to change over the room from one activity to the next, the changeover time is built into the int ervals.) In the activity-selection problem, your goal is to select a maximum-size subset of mutually compatible activities. Assume that the activities are sorted in monotonically increasing order of finish time: f 1 ≤ f 2 ≤ f 3 ≤ • • • ≤ f n−1 ≤ f n : (15.1)"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 418,
+   "pdf_page": 439,
+   "text": "(We’ll see later the advantage that this assumption provides.) For example, consider the set of activities in Figure 15.1. The subset fa 3 ;a 9 ;a 11 g consists of mutually compatible activities. It is not a maximum sub set, however, since the subset fa 1 ;a 4 ;a 8 ;a 11 g is larger. In fact, fa 1 ;a 4 ;a 8 ;a 11 g is a largest subset of mutually compatible activities, and another largest subset is fa 2 ;a 4 ;a 9 ;a 11 g."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 418,
+   "pdf_page": 439,
+   "text": "We’ll see how to solve this problem, proceeding in several steps. First we’ll explore a dynamic-programming solution, in which you consider several choices when determining which subproblems to use in an opt imal solution. We’ll then observe that you need to consider only one choice—the greedy choice—and that when you make the greedy choice, only one subproblem remains. Based on these observations, we’ll develop a recursive greedy algorithm to solve the activityselection problem. Finally, we’ll complete the process of developing a greedy solution by converting the recursive algorithm to a n iterative one. Although the steps we go through in this section are slightly more involved than is typical when developing a greedy algorithm, they illustrate the relationship between greedy algorithms and dynamic programming. i 1 2 3 4 5 6 7 8 9 10 11 s i 1 3 0 5 3 5 6 7 8 2 12 f i 4 5 6 7 9 9 10 11 12 14 16"
+  },
+  {
+   "type": "figure-caption",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 418,
+   "pdf_page": 439,
+   "text": "Figure 15.1 A set fa 1 ;a 2 ;:::;a 11 g of activities. Activity a i has start time s i and finish time f i ."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 419,
+   "pdf_page": 440,
+   "text": "The optimal substructure of the activity-selection problem"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 419,
+   "pdf_page": 440,
+   "text": "Let’s verify that the activity-selection problem exhibits optimal substructure. Denote by S ij the set of activities that start after activity a i finishes and that finish before activity a j starts. Suppose that you want to find a maximum set of mutually compatible activities in S ij , and suppose further that such a maximum set is A ij , which includes some activity a k . By including a k in an optimal solution, you are left with two subproblems: finding mutually compatible activities in the set S ik"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 419,
+   "pdf_page": 440,
+   "text": "(activities that start after activity a i finishes and that finish before activity a k starts) and finding mutually compatible activities in the set S kj (activities that start after activity a k finishes and that finish before activity a j starts). Let A ik = A ij \\ S ik and A kj = A ij \\ S kj , so that A ik contains the activities in A ij that finish before a k starts and A kj contains the activities in A ij that start after a k finishes. Thus, we have A ij = A ik [ fa k g [ A kj , and so the maximum-size set A ij of mutually compatible activities in S ij consists of jA ij j = jA ik |C|A kj j + 1 activities."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 419,
+   "pdf_page": 440,
+   "text": "The usual cut-and-paste argument shows that an optimal solution A ij must also include optimal solutions to the two subproblems fo r S ik and S kj . If you could find a set A 0 kj of mutually compatible activities in S kj where jA 0 kj j > jA kj j, then you could use A 0 kj , rather than A kj , in a solution to the subproblem for S ij . You would have constructed a set of jA ik |C|A 0 kj j + 1 > jA ik |C|A kj j + 1 = jA ij j mutually compatible activities, which contradicts t he assumption that A ij is an optimal solution. A symmetric argument applies to the activities in S ik ."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 419,
+   "pdf_page": 440,
+   "text": "This way of characterizing optimal substructure suggests that you can solve the activity-selection problem by dynamic programming. Let’s denote the size of an optimal solution for the set S ij by c[i;j] . Then, the dynamic-programming approach gives the recurrence c[i;j] = c[i;k] + c[k;j] + 1:"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 419,
+   "pdf_page": 440,
+   "text": "Of course, if you do not know that an optimal solution for the set S ij includes activity a k , you must examine all activities in S ij to find which one to choose, so that c[i;j] ="
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 419,
+   "pdf_page": 440,
+   "text": "0 if S ij = ; ; max fc[i;k] + c[k;j] + 1 W a k 2 S ij g if S ij ≠ ; : (15.2)"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 419,
+   "pdf_page": 440,
+   "text": "You can then develop a recursive algorithm and memo ize it, or you can work bottom-up and fill in table entries as you go along. But you would be overlooking another important characteristic of the activity-selection problem that you can use to great advantage."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 420,
+   "pdf_page": 441,
+   "text": "Making the greedy choice"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 420,
+   "pdf_page": 441,
+   "text": "What if you could choose an activity to add to an optimal solution without having to first solve all the subproblems? That could save you from having to consider all the choices inherent in recurrence (15.2). In fact, for the activity-selection problem, you need to consider only one choice: the greedy choice."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 420,
+   "pdf_page": 441,
+   "text": "What is the greedy choice for the activity-selection problem? Intuition suggests that you should choose an activity that leaves the resource available for as many other activities as possible. Of the activities you end up choosing, one of them must be the first one to finish. Intuition says, therefore, choose the activity in S with the earliest finish time, since that leaves the resource available for as many of the activities that follow it as possible. (If m ore than one activity in S has the earliest finish time, then choose any such activity.) In other words, since the activities are sorted in monotonically increasing o rder by finish time, the greedy choice is activity a 1 . Choosing the first activity to finish is not the only way to think of making a greedy choice for this problem. Exercise 15.1-3 asks you to explore other possibilities."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 420,
+   "pdf_page": 441,
+   "text": "Once you make the greedy choice, you have only one remaining subproblem to solve: finding activities that start after a 1 finishes. Why don’t you have to consider activities that finish before a 1 starts? Because s 1 < f 1 , and because f 1 is the earliest finish time of any activity, no activity can have a finish time less than or equal to s 1 . Thus, all activities that are compatible with act ivity a 1 must start after a 1 finishes."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 420,
+   "pdf_page": 441,
+   "text": "Furthermore, we have already established that the activity-selection problem ex- hibits optimal substructure. Let S k = fa i 2 S W s i ≥ f k g be the set of activities that start after activity a k finishes. If you make the greedy choice of activity a 1 , then"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 420,
+   "pdf_page": 441,
+   "text": "S 1 remains as the only subproblem to solve. 1 Optimal substructure says that if a 1 belongs to an optimal solution, then an optimal sol ution to the original problem consists of activity a 1 and all the activities in an optimal solution to the subproblem S 1 ."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 420,
+   "pdf_page": 441,
+   "text": "One big question remains: Is this intuition correct? Is the greedy choice—in which you choose the first activity to finish—always part of some optimal solution?"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 420,
+   "pdf_page": 441,
+   "text": "The following theorem shows that it is."
+  },
+  {
+   "type": "footnote",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 420,
+   "pdf_page": 441,
+   "text": "1 We sometimes refer to the sets S k as subproblems rather than as just sets of activities. The context will make it clear whether we are referring to S k as a set of activities or as a subproblem whose input is that set."
+  },
+  {
+   "type": "theorem",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 421,
+   "pdf_page": 442,
+   "text": "Theorem 15.1"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 421,
+   "pdf_page": 442,
+   "text": "Consider any nonempty subproblem S k , and let a m be an activity in S k with the earliest finish time. Then a m is included in some maximum-size subset of mutually compatible activities of S k ."
+  },
+  {
+   "type": "proof",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 421,
+   "pdf_page": 442,
+   "text": "Proof Let A k be a maximum-size subset of mutually compatible activities in S k , and let a j be the activity in A k with the earliest finish time. If a j = a m , we are done, since we have shown that a m belongs to some maximum-size subset of mutually compatible activities of S k . If a j ≠ a m , let the set A 0 k = (A k − fa j g) [ fa m g be A k but substituting a m for a j . The activities in A 0 k are compatible, which follows because the activities in A k are compatible, a j is the first activity in A k to finish, and f m ≤ f j . Since jA 0 k j = jA k j, we conclude that A 0 k is a maximum-size subset of mutually compatible activities of S k , and it includes a m ."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 421,
+   "pdf_page": 442,
+   "text": "Although you might be able to solve the activity-selection problem with dynamic programming, Theorem 15.1 says that you don’t need to. Instead, you can repeatedly choose the activity that finishes first, keep only the activities compatible with this activity, and repeat until no activities remai n. Moreover, because you always choose the activity with the earliest finish time, the finish times of the activities that you choose must strictly increase. You can consider each activity just once overall, in monotonically increasing order of finish times."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 421,
+   "pdf_page": 442,
+   "text": "An algorithm to solve the activity-selection problem does not need to work bottom-up, like a table-based dynamic-programming algorithm. Instead, it can work top-down, choosing an activity to put into the optimal solution that it constructs and then solving the subproblem of choosing activities from those that are compatible with those already chosen. Greedy algorithms typically have this topdown design: make a choice and then solve a subproblem, rather than the bottomup technique of solving subproblems before making a choice."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 421,
+   "pdf_page": 442,
+   "text": "A recursive greedy algorithm"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 421,
+   "pdf_page": 442,
+   "text": "Now that you know you can bypass the dynamic-programming approach and in- stead use a top-down, greedy algorithm, let’s see a straightforward, recursive procedure to solve the activity-selection problem. The procedure RECURSIVE-ACTIVITY-SELECTOR on the following page takes the start and finish times of the activities, represented as arrays s and f , 2 the index k that defines the subproblem S k it is to solve, and the size n of the original problem. It returns a maximum- 2 Because the pseudocode takes s and f as arrays, it indexes into them with square bracket s rather than with subscripts. size set of mutually compatible activities in S k . The procedure assumes that the n input activities are already ordered by monotonically increasing finish time, according to equation (15.1). If not, you can first sort them into this order in O(n lg n) time, breaking ties arbitrarily. In order to start, add the fictitious activity a 0 with f 0 = 0, so that subproblem S 0 is the entire set of activities S . The initial call, which solves the entire problem, is RECURSIVE-ACTIVITY-SELECTOR (s;f;0;n) ."
+  },
+  {
+   "type": "pseudocode",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 422,
+   "pdf_page": 443,
+   "algo_name": "RECURSIVE-ACTIVITY-SELECTOR",
+   "signature": "RECURSIVE-ACTIVITY-SELECTOR",
+   "lines": [
+    {
+     "n": 1,
+     "code": "m = k + 1"
+    },
+    {
+     "n": 2,
+     "code": "while m ≤ n and s[m]<f[k]  / / find the first activity in S k to finish"
+    },
+    {
+     "n": 3,
+     "code": "m = m + 1"
+    },
+    {
+     "n": 4,
+     "code": "if m ≤ n"
+    },
+    {
+     "n": 5,
+     "code": "return fa m g [ RECURSIVE-ACTIVITY-SELECTOR  (s;f;m;n)"
+    },
+    {
+     "n": 6,
+     "code": "else return ;"
+    }
+   ],
+   "text": "1 m = k + 1\n2 while m ≤ n and s[m]<f[k]  / / find the first activity in S k to finish\n3 m = m + 1\n4 if m ≤ n\n5 return fa m g [ RECURSIVE-ACTIVITY-SELECTOR  (s;f;m;n)\n6 else return ;"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 422,
+   "pdf_page": 443,
+   "text": "RECURSIVE-ACTIVITY-SELECTOR (s;f;k;n)"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 422,
+   "pdf_page": 443,
+   "text": "Figure 15.2 shows how the algorithm operates on the activities in Figure 15.1."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 422,
+   "pdf_page": 443,
+   "text": "In a given recursive call RECURSIVE-ACTIVITY-SELECTOR (s;f;k;n) , the while loop of lines 233 looks for the first activity in S k to finish. The loop examines a kC1 ;a kC2 ;:::;a n , until it finds the first activity a m that is compatible with a k , which means that s m ≥ f k . If the loop terminates because it finds such an activity, line 5 returns the union of fa m g and the maximum-size subset of S m returned by the recursive call RECURSIVE-ACTIVITY-SELECTOR (s;f;m;n) . Alternatively, the loop may terminate because m > n, in which case the procedure has examined all activities in S k without finding one that is compatible with a k . In this case, S k = ;, and so line 6 returns ;."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 422,
+   "pdf_page": 443,
+   "text": "Assuming that the activities have already been sorted by finish times, the running time of the call RECURSIVE-ACTIVITY-SELECTOR (s;f;0;n) is Θ(n). To see why, observe that over all recursive calls, eac h activity is examined exactly once in the while loop test of line 2. In particular, activity a i is examined in the last call made in which k<i ."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 422,
+   "pdf_page": 443,
+   "text": "An iterative greedy algorithm"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 422,
+   "pdf_page": 443,
+   "text": "The recursive procedure can be converted to an iterative one because the procedure"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 422,
+   "pdf_page": 443,
+   "text": "RECURSIVE-ACTIVITY-SELECTOR is almost \"tail recursive\" (see Problem 7-5): it ends with a recursive call to itself followed by a union operation. It is usually a straightforward task to transform a tail-recursive procedure to an iterative form."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 422,
+   "pdf_page": 443,
+   "text": "In fact, some compilers for certain programming languages perform this task automatically."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 423,
+   "pdf_page": 444,
+   "text": "0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 time"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 423,
+   "pdf_page": 444,
+   "text": "11 12 16"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 423,
+   "pdf_page": 444,
+   "text": "1 1 4 i s i f i a 1 a 2 a 1 a 3 a 1 a 4 a 1 a 4 a 5 a 1 a 4 a 6 a 1 a 4 a 7 a 1 a 4 a 8 a 1 a 4 a 8 a 9 a 1 a 4 a 8 a 10 a 1 a 4 a 8 a 11 a 1 a 4 a 8 a 11"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 423,
+   "pdf_page": 444,
+   "text": "0 – 0 a 1 a 0 a 0"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 423,
+   "pdf_page": 444,
+   "text": "RECURSIVE-ACTIVITY-SELECTOR(s, f, 0, 11)"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 423,
+   "pdf_page": 444,
+   "text": "RECURSIVE-ACTIVITY-SELECTOR(s, f, 1, 11)"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 423,
+   "pdf_page": 444,
+   "text": "RECURSIVE-ACTIVITY-SELECTOR(s, f, 4, 11)"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 423,
+   "pdf_page": 444,
+   "text": "RECURSIVE-ACTIVITY-SELECTOR(s, f, 8, 11) m = 1 m = 4 m = 8 m = 11"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 423,
+   "pdf_page": 444,
+   "text": "RECURSIVE-ACTIVITY-SELECTOR(s, f, 11, 11)"
+  },
+  {
+   "type": "figure-caption",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 423,
+   "pdf_page": 444,
+   "text": "Figure 15.2 The operation of RECURSIVE-ACTIVITY-SELECTOR on the 11 activities from Figure 15.1. Activities considered in each recursive call appear between horizontal lines. The fictitious activity a 0 finishes at time 0, and the initial call RECURSIVE-ACTIVITY-SELECTOR(s;f;0;11) , selects activity a 1 . In each recursive call, the activities that have already been selected are blue, and the activity shown in tan is being considered. If the starting time of an activity occurs before the finish time of the most recently added activity (the arrow between them points left), it is re- jected. Otherwise (the arrow points directly up or to the right), it is selected. The last recursive call, RECURSIVE-ACTIVITY-SELECTOR(s;f;11;11) , returns ;. The resulting set of selected activities is fa 1 ;a 4 ;a 8 ;a 11 g."
+  },
+  {
+   "type": "pseudocode",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 424,
+   "pdf_page": 445,
+   "algo_name": "GREEDY-ACTIVITY-SELECTOR",
+   "signature": "GREEDY-ACTIVITY-SELECTOR",
+   "lines": [
+    {
+     "n": 1,
+     "code": "A = fa 1 g"
+    },
+    {
+     "n": 2,
+     "code": "k = 1"
+    },
+    {
+     "n": 3,
+     "code": "for m = 2 to n"
+    },
+    {
+     "n": 4,
+     "code": "if s[m] ≥ f[k]  / / is a m in S k ?"
+    },
+    {
+     "n": 5,
+     "code": "A = A [ fa m g / / yes, so choose it"
+    },
+    {
+     "n": 6,
+     "code": "k = m / / and continue from there"
+    },
+    {
+     "n": 7,
+     "code": "return A"
+    }
+   ],
+   "text": "1 A = fa 1 g\n2 k = 1\n3 for m = 2 to n\n4 if s[m] ≥ f[k]  / / is a m in S k ?\n5 A = A [ fa m g / / yes, so choose it\n6 k = m / / and continue from there\n7 return A"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 424,
+   "pdf_page": 445,
+   "text": "The procedure GREEDY-ACTIVITY-SELECTOR is an iterative version of the procedure RECURSIVE-ACTIVITY-SELECTOR. It, too, assumes that the input activities are ordered by monotonically increasing finish time. It collects selected activities into a set A and returns this set when it is done."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 424,
+   "pdf_page": 445,
+   "text": "GREEDY-ACTIVITY-SELECTOR (s;f;n)"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 424,
+   "pdf_page": 445,
+   "text": "The procedure works as follows. The variable k indexes the most recent addition to A, corresponding to the activity a k in the recursive version. Since the procedure considers the activities in order of monotonically increasing finish time, f k is always the maximum finish time of any activity in A. That is, f k = max ff i W a i 2 Ag : (15.3)"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 424,
+   "pdf_page": 445,
+   "text": "Lines 132 select activity a 1 , initialize A to contain just this activity, and initialize k to index this activity. The for loop of lines 336 finds the earliest activity in S k to finish. The loop considers each activity a m in turn and adds a m to A if it is compatible with all previously selected activities. Such an activity is the earliest in S k to finish. To see whether activity a m is compatible with every activity currently in A, it suffices by equation (15.3) to check (in line 4) that its start time s m is not earlier than the finish time f k of the activity most recently added to A. If activity a m is compatible, then lines 536 add activity a m to A and set k to m. The set A returned by the call GREEDY-ACTIVITY-SELECTOR (s;f) is precisely the set returned by the initial call RECURSIVE-ACTIVITY-SELECTOR (s;f;0;n) ."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 424,
+   "pdf_page": 445,
+   "text": "Like the recursive version, GREEDY-ACTIVITY-SELECTOR schedules a set of n activities in Θ(n) time, assuming that the activities were already sorted initially by their finish times."
+  },
+  {
+   "type": "exercise",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 424,
+   "pdf_page": 445,
+   "text": "15.1-1 Give a dynamic-programming algorithm for the activity-selection problem, based on recurrence (15.2). Have your algorithm compute the sizes c[i;j] as defined above and also produce the maximum-size subset of mutually compatible activities."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 425,
+   "pdf_page": 446,
+   "text": "Assume that the inputs have been sorted as in equation (15.1). Compare the running time of your solution to the running time of GREEDY-ACTIVITY-SELECTOR ."
+  },
+  {
+   "type": "exercise",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 425,
+   "pdf_page": 446,
+   "text": "15.1-2 Suppose that instead of always selecting the first activity to finish, you instead select the last activity to start that is compatible with all previously selected activities. Describe how this approach is a greedy algori thm, and prove that it yields an optimal solution."
+  },
+  {
+   "type": "exercise",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 425,
+   "pdf_page": 446,
+   "text": "15.1-3 Not just any greedy approach to the activity-selection problem produces a maximum-size set of mutually compatible activities. Give an example to show that the approach of selecting the activity of least dur ation from among those that are compatible with previously selected activities does not work. Do the same for the approaches of always selecting the compatible activity that overlaps the fewest other remaining activities and always selecting the compatible remaining activity with the earliest start time."
+  },
+  {
+   "type": "exercise",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 425,
+   "pdf_page": 446,
+   "text": "15.1-4 You are given a set of activities to schedule among a large number of lecture halls, where any activity can take place in any lecture hall. You wish to schedule all the activities using as few lecture halls as possible. Give an efficient greedy algorithm to determine which activity should use which lecture hall."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 425,
+   "pdf_page": 446,
+   "text": "(This problem is also known as the interval-graph coloring problem. It is modeled by an interval graph whose vertices are the gi ven activities and whose edges connect incompatible activities. The smallest numbe r of colors required to color every vertex so that no two adjacent vertices have the same color corresponds to finding the fewest lecture halls needed to schedule all of the given activities.)"
+  },
+  {
+   "type": "exercise",
+   "chapter": 15,
+   "section": "15.1",
+   "section_title": "15.1 An activity-selection problem",
+   "printed_page": 425,
+   "pdf_page": 446,
+   "text": "15.1-5 Consider a modification to the activity-selection problem in which each activity a i has, in addition to a start and finish time, a value v i . The objective is no longer to maximize the number of activities scheduled, but instead to maximize the total value of the activities scheduled. That is, the goal is to choose a set A of compatible activities such that P a k 2A v k is maximized. Give a polynomial-time algorithm for this problem."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 426,
+   "pdf_page": 447,
+   "text": "A greedy algorithm obtains an optimal solution to a problem by making a sequence of choices. At each decision point, the algorithm makes the choice that seems best at the moment. This heuristic strategy does not always produce an optimal solution, but as in the activity-selection problem, sometimes it does. This section discusses some of the general properties of greedy methods."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 426,
+   "pdf_page": 447,
+   "text": "The process that we followed in Section 15.1 to develop a greedy algorithm was a bit more involved than is typical. It consisted of the following steps:"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 426,
+   "pdf_page": 447,
+   "text": "1. Determine the optimal substructure of the problem."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 426,
+   "pdf_page": 447,
+   "text": "2. Develop a recursive solution. (For the activity-selection problem, we formulated recurrence (15.2), but bypassed developing a recursive algorithm based solely on this recurrence.)"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 426,
+   "pdf_page": 447,
+   "text": "3. Show that if you make the greedy choice, then only one subproblem remains."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 426,
+   "pdf_page": 447,
+   "text": "4. Prove that it is always safe to make the greedy choice. (Steps 3 and 4 can occur in either order.)"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 426,
+   "pdf_page": 447,
+   "text": "5. Develop a recursive algorithm that implements the greedy strategy."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 426,
+   "pdf_page": 447,
+   "text": "6. Convert the recursive algorithm to an iterative algorithm."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 426,
+   "pdf_page": 447,
+   "text": "These steps highlighted in great detail the dynamic-programming underpinnings of a greedy algorithm. For example, the first cut at the activity-selection problem defined the subproblems S ij , where both i and j varied. We then found that if you always make the greedy choice, you can restrict the subproblems to be of the form S k ."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 426,
+   "pdf_page": 447,
+   "text": "An alternative approach is to fashion optimal substructure with a greedy choice in mind, so that the choice leaves just one subprob lem to solve. In the activityselection problem, start by dropping the second subscript and defining subproblems of the form S k . Then prove that a greedy choice (the first activity a m to finish in S k ), combined with an optimal solution to the remaini ng set S m of compatible activities, yields an optimal solution to S k . More generally, you can design greedy algorithms according to the following sequence of steps:"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 426,
+   "pdf_page": 447,
+   "text": "1. Cast the optimization problem as one in which you make a choice and are left with one subproblem to solve."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 426,
+   "pdf_page": 447,
+   "text": "2. Prove that there is always an optimal solution to the original problem that makes the greedy choice, so that the greedy choice is always safe."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 426,
+   "pdf_page": 447,
+   "text": "3. Demonstrate optimal substructure by showing that, having made the greedy choice, what remains is a subproblem with the property that if you combine an optimal solution to the subproblem with the greedy choice you have made, you arrive at an optimal solution to the original problem."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 427,
+   "pdf_page": 448,
+   "text": "Later sections of this chapter will use this more d irect process. Nevertheless, beneath every greedy algorithm, there is almost always a more cumbersome dynamicprogramming solution."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 427,
+   "pdf_page": 448,
+   "text": "How can you tell whether a greedy algorithm will solve a particular optimization problem? No way works all the time, but the greedy-choice property and optimal substructure are the two key ingredients. If you ca n demonstrate that the problem has these properties, then you are well on the way to developing a greedy algorithm for it."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 427,
+   "pdf_page": 448,
+   "text": "Greedy-choice property"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 427,
+   "pdf_page": 448,
+   "text": "The first key ingredient is the greedy-choice property: you can assemble a globally optimal solution by making locally optimal (greedy) choices. In other words, when you are considering which choice to make, you make the choice that looks best in the current problem, without considering results from subproblems."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 427,
+   "pdf_page": 448,
+   "text": "Here is where greedy algorithms differ from dynamic programming. In dynamic programming, you make a choice at each step, but th e choice usually depends on the solutions to subproblems. Consequently, you typically solve dynamicprogramming problems in a bottom-up manner, progressing from smaller sub- problems to larger subproblems. (Alternatively, you can solve them top down, but memoizing. Of course, even though the code works top down, you still must solve the subproblems before making a choice.) In a greedy algorithm, you make whatever choice seems best at the moment and then solve the subproblem that re- mains. The choice made by a greedy algorithm may depend on choices so far, but it cannot depend on any future choices or on the solutions to subproblems. Thus, unlike dynamic programming, which solves the subproblems before making the first choice, a greedy algorithm makes its first choice before solving any subproblems."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 427,
+   "pdf_page": 448,
+   "text": "A dynamic-programming algorithm proceeds bottom up, whereas a greedy strategy usually progresses top down, making one greedy choice after another, reducing each given problem instance to a smaller one."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 427,
+   "pdf_page": 448,
+   "text": "Of course, you need to prove that a greedy choice at each step yields a globally optimal solution. Typically, as in the case of Theorem 15.1, the proof examines a globally optimal solution to some subproblem. It then shows how to modify the solution to substitute the greedy choice for some other choice, resulting in one similar, but smaller, subproblem."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 427,
+   "pdf_page": 448,
+   "text": "You can usually make the greedy choice more efficiently than when you have to consider a wider set of choices. For example, in the activity-selection problem, assuming that the activities were already sorted in monotonically increasing order by finish times, each activity needed to be examined just once. By preprocessing the input or by using an appropriate data structure (often a priority queue), you often can make greedy choices quickly, thus yielding an efficient algorithm."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 428,
+   "pdf_page": 449,
+   "text": "Optimal substructure"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 428,
+   "pdf_page": 449,
+   "text": "As we saw in Chapter 14, a problem exhibits optimal substructure if an optimal solution to the problem contains within it optimal solutions to subproblems. This property is a key ingredient of assessing whether d ynamic programming applies, and it’s also essential for greedy algorithms. As an example of optimal substructure, recall how Section 15.1 demonstrated that if an optimal solution to subproblem S ij includes an activity a k , then it must also contain optimal solutions to th e subproblems S ik and S kj . Given this optimal substructure, we argued that if you know which activity to use as a k , you can construct an optimal solution to S ij by selecting a k along with all activities in optimal solutions to t he subproblems S ik and S kj . This observation of optimal substructure gave rise to the recurrence (15.2) that describes the value of an optimal solution."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 428,
+   "pdf_page": 449,
+   "text": "You will usually use a more direct approach regarding optimal substructure when applying it to greedy algorithms. As mentioned abov e, you have the luxury of assuming that you arrived at a subproblem by having made the greedy choice in the original problem. All you really need to do is argue that an optimal solution to the subproblem, combined with the greedy choice already made, yields an optimal solution to the original problem. This scheme impli citly uses induction on the subproblems to prove that making the greedy choice at every step produces an optimal solution."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 428,
+   "pdf_page": 449,
+   "text": "Greedy versus dynamic programming"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 428,
+   "pdf_page": 449,
+   "text": "Because both the greedy and dynamic-programming strategies exploit optimal sub- structure, you might be tempted to generate a dynamic-programming solution to a problem when a greedy solution suffices or, conversely, you might mistakenly think that a greedy solution works when in fact a dynamic-programming solution is required. To illustrate the subtle differences b etween the two techniques, let’s investigate two variants of a classical optimization problem."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 428,
+   "pdf_page": 449,
+   "text": "The 0-1 knapsack problem is the following. A thief robbing a store wants to take the most valuable load that can be carried in a knapsack capable of carrying at most W pounds of loot. The thief can choose to take any su bset of n items in the store. The i th item is worth v i dollars and weighs w i pounds, where v i and w i are integers. Which items should the thief take? (We call this the 0-1 knapsack problem because for each item, the thief must either take it or leave it behind. The thief cannot take a fractional amount of an item or take an item more than once.)"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 429,
+   "pdf_page": 450,
+   "text": "In the fractional knapsack problem, the setup is the same, but the thief can take fractions of items, rather than having to make a binary (0-1) choice for each item."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 429,
+   "pdf_page": 450,
+   "text": "You can think of an item in the 0-1 knapsack problem as being like a gold ingot and an item in the fractional knapsack problem as more like gold dust."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 429,
+   "pdf_page": 450,
+   "text": "Both knapsack problems exhibit the optimal-substructure property. For the 0-1 problem, if the most valuable load weighing at most W pounds includes item j , then the remaining load must be the most valuable load weighing at most W − w j pounds that the thief can take from the n − 1 original items excluding item j . For the comparable fractional problem, if if the most v aluable load weighing at most"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 429,
+   "pdf_page": 450,
+   "text": "W pounds includes weight w of item j , then the remaining load must be the most valuable load weighing at most W − w pounds that the thief can take from the n − 1 original items plus w j − w pounds of item j ."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 429,
+   "pdf_page": 450,
+   "text": "Although the problems are similar, a greedy strateg y works to solve the fractional knapsack problem, but not the 0-1 problem. To solve the fractional problem, first compute the value per pound v i =w i for each item. Obeying a greedy strategy, the thief begins by taking as much as possible of t he item with the greatest value per pound. If the supply of that item is exhausted and the thief can still carry more, then the thief takes as much as possible of the item with the next greatest value per pound, and so forth, until reaching the weight limit W . Thus, by sorting the items by value per pound, the greedy algorithm runs in O(n lg n) time. You are asked to prove that the fractional knapsack problem has t he greedy-choice property in Exercise 15.2-1."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 429,
+   "pdf_page": 450,
+   "text": "To see that this greedy strategy does not work for the 0-1 knapsack problem, consider the problem instance illustrated in Figure 15.3(a). This example has three items and a knapsack that can hold 50 pounds. Item 1 weighs 10 pounds and is worth $60. Item 2 weighs 20 pounds and is worth $100. Item 3 weighs 30 pounds and is worth $120. Thus, the value per pound of item 1 is $6 per pound, which is greater than the value per pound of either item 2 ($5 per pound) or item 3 ($4 per pound). The greedy strategy, therefore, would take item 1 first. As you can see from the case analysis in Figure 15.3(b), however, the optimal solution takes items"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 429,
+   "pdf_page": 450,
+   "text": "2 and 3, leaving item 1 behind. The two possible solutions that take item 1 are both suboptimal."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 429,
+   "pdf_page": 450,
+   "text": "For the comparable fractional problem, however, the greedy strategy, which takes item 1 first, does yield an optimal solution, as shown in Figure 15.3(c). Taking item 1 doesn’t work in the 0-1 problem, because the thief is unable to fill the knapsack to capacity, and the empty space lowers the effective value per pound of the load. In the 0-1 problem, when you consider whether to include an item in the knapsack, you must compare the solution to the subproblem that includes the item with the solution to the subproblem that excludes the item before you can make the choice. The problem formulated in this way gives ri se to many overlapping sub- $60 item 1 20"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 430,
+   "pdf_page": 451,
+   "text": "$100 item 2"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 430,
+   "pdf_page": 451,
+   "text": "$120 item 3 knapsack"
+  },
+  {
+   "type": "figure-caption",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 430,
+   "pdf_page": 451,
+   "text": "Figure 15.3 An example showing that the greedy strategy does no t work for the 0-1 knapsack problem. (a) The thief must select a subset of the three items s hown whose weight must not exceed"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 430,
+   "pdf_page": 451,
+   "text": "50 pounds. (b) The optimal subset includes items 2 and 3. Any solution with item 1 is suboptimal, even though item 1 has the greatest value per pound. (c) For the fractional knapsack problem, taking the items in order of greatest value per pound yields an optimal solution. problems—a hallmark of dynamic programming, and indeed, as Exercise 15.2-2 asks you to show, you can use dynamic programming to solve the 0-1 problem."
+  },
+  {
+   "type": "exercise",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 430,
+   "pdf_page": 451,
+   "text": "15.2-1 Prove that the fractional knapsack problem has the greedy-choice property."
+  },
+  {
+   "type": "exercise",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 430,
+   "pdf_page": 451,
+   "text": "15.2-2 Give a dynamic-programming solution to the 0-1 knapsack problem that runs in O(nW) time, where n is the number of items and W is the maximum weight of items that the thief can put in the knapsack."
+  },
+  {
+   "type": "exercise",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 430,
+   "pdf_page": 451,
+   "text": "15.2-3 Suppose that in a 0-1 knapsack problem, the order of the items when sorted by increasing weight is the same as their order when sorted by decreasing value. Give an efficient algorithm to find an optimal solution to this variant of the knapsack problem, and argue that your algorithm is correct."
+  },
+  {
+   "type": "exercise",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 430,
+   "pdf_page": 451,
+   "text": "15.2-4 Professor Gekko has always dreamed of inline skating across North Dakota. The professor plans to cross the state on highway U.S. 2, which runs from Grand Forks, on the eastern border with Minnesota, to Williston, near the western border with Montana. The professor can carry two liters of water and can skate m miles before"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 431,
+   "pdf_page": 452,
+   "text": "running out of water. (Because North Dakota is relatively flat, the professor does not have to worry about drinking water at a greater rate on uphill sections than on flat or downhill sections.) The professor will start in Grand Forks with two full liters of water. The professor has an official North Dakota state map, which shows all the places along U.S. 2 to refill water and the distances between these locations."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 431,
+   "pdf_page": 452,
+   "text": "The professor’s goal is to minimize the number of water stops along the route across the state. Give an efficient method by which the professor can determine which water stops to make. Prove that your strategy yields an optimal solution, and give its running time."
+  },
+  {
+   "type": "exercise",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 431,
+   "pdf_page": 452,
+   "text": "15.2-5 Describe an efficient algorithm that, given a set fx 1 ;x 2 ;:::;x n g of points on the real line, determines the smallest set of unit-length closed intervals that contains all of the given points. Argue that your algorithm is correct."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 431,
+   "pdf_page": 452,
+   "text": "? 15.2-6"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 431,
+   "pdf_page": 452,
+   "text": "Show how to solve the fractional knapsack problem in O(n) time."
+  },
+  {
+   "type": "exercise",
+   "chapter": 15,
+   "section": "15.2",
+   "section_title": "15.2 Elements of the greedy strategy",
+   "printed_page": 431,
+   "pdf_page": 452,
+   "text": "15.2-7 You are given two sets A and B , each containing n positive integers. You can choose to reorder each set however you like. After reordering, let a i be the i th element of set A, and let b i be the i th element of set B . You then receive a payoff of Q n i D1 a i b i . Give an algorithm that maximizes your payoff. Prove that your algorithm maximizes the payoff, and state its runni ng time, omitting the time for reordering the sets."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 431,
+   "pdf_page": 452,
+   "text": "Huffman codes compress data well: savings of 20% to 90% are typical, depending on the characteristics of the data being compressed. The data arrive as a sequence of characters. Huffman’s greedy algorithm uses a table giving how often each character occurs (its frequency) to build up an opt imal way of representing each character as a binary string."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 431,
+   "pdf_page": 452,
+   "text": "Suppose that you have a 100,000-character data file that you wish to store compactly and you know that the 6 distinct characters in the file occur with the frequencies given by Figure 15.4. The character a occurs 45,000 times, the character b occurs 13,000 times, and so on."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 431,
+   "pdf_page": 452,
+   "text": "You have many options for how to represent such a file of information. Here, we consider the problem of designing a binary character code (or code for short) a b c d e f"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 432,
+   "pdf_page": 453,
+   "text": "Frequency (in thousands) 45 13 12 16 9 5"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 432,
+   "pdf_page": 453,
+   "text": "Fixed-length codeword 000 001 010 011 100 101"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 432,
+   "pdf_page": 453,
+   "text": "Variable-length codeword 0 101 100 111 1101 1100"
+  },
+  {
+   "type": "figure-caption",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 432,
+   "pdf_page": 453,
+   "text": "Figure 15.4 A character-coding problem. A data file of 100,000 characters contains only the characters a–f, with the frequencies indicated. With each charact er represented by a 3-bit codeword, encoding the file requires 300,000 bits. With the variable-length code shown, the encoding requires only 224,000 bits. in which each character is represented by a unique binary string, which we call a codeword. If you use a fixed-length code, you need dlg ne bits to represent n ≥ 2 characters. For 6 characters, therefore, you need 3 bits: a = 000, b = 001, c = 010, d = 011, e = 100, and f = 101. This method requires 300,000 bits to encode the entire file. Can you do better?"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 432,
+   "pdf_page": 453,
+   "text": "A variable-length code can do considerably better than a fixed-length code. The idea is simple: give frequent characters short codewords and infrequent characters long codewords. Figure 15.4 shows such a code. Here, the 1-bit string 0 represents a, and the 4-bit string 1100 represents f. This code requires"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 432,
+   "pdf_page": 453,
+   "text": ".45 • 1 + 13 • 3 + 12 • 3 + 16 • 3 + 9 • 4 + 5 • 4/ • 1,000 = 224,000 bits to represent the file, a savings of approximately 25%. In fact, this is an optimal character code for this file, as we shall see."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 432,
+   "pdf_page": 453,
+   "text": "Prefix-free codes"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 432,
+   "pdf_page": 453,
+   "text": "We consider here only codes in which no codeword is also a prefix of some other codeword. Such codes are called prefix-free codes. Although we won’t prove it here, a prefix-free code can always achieve the optimal data compression among any character code, and so we suffer no loss of generality by restricting our attention to prefix-free codes."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 432,
+   "pdf_page": 453,
+   "text": "Encoding is always simple for any binary character code: just concatenate the codewords representing each character of the file. For example, with the variablelength prefix-free code of Figure 15.4, the 4-character file face has the encoding"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 432,
+   "pdf_page": 453,
+   "text": "1100 • 0 • 100 • 1101 = 110001001101, where \"•\" denotes concatenation."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 432,
+   "pdf_page": 453,
+   "text": "Prefix-free codes are desirable because they simplify decoding. Since no codeword is a prefix of any other, the codeword that begins an encoded file is unambiguous. You can simply identify the initial codeword, translate it back to the original character, and repeat the decoding process on the r emainder of the encoded file."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 432,
+   "pdf_page": 453,
+   "text": "In our example, the string 100011001101 parses uniquely as 100 • 0 • 1100 • 1101, which decodes to cafe. a:45 b:13 c:12 d:16 e:9 f:5"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 433,
+   "pdf_page": 454,
+   "text": "58 28 14"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 433,
+   "pdf_page": 454,
+   "text": "0 1 0 1 0 1"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 433,
+   "pdf_page": 454,
+   "text": "0 1 e:9 f:5"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 433,
+   "pdf_page": 454,
+   "text": "0 1 c:12 b:13"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 433,
+   "pdf_page": 454,
+   "text": "0 1 d:16"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 433,
+   "pdf_page": 454,
+   "text": "0 1 a:45"
+  },
+  {
+   "type": "figure-caption",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 433,
+   "pdf_page": 454,
+   "text": "Figure 15.5 Trees corresponding to the coding schemes in Figure 15.4. Each leaf is labeled with a character and its frequency of occurrence. Each internal node is labeled with the sum of the frequencies of the leaves in its subtree. All frequencies are in thousands. (a) The tree corresponding to the fixed-length code a = 000, b = 001, c = 010, d = 011, e = 100, f = 101. (b) The tree corresponding to the optimal prefix-free code a = 0, b = 101, c = 100, d = 111, e = 1101, f = 1100."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 433,
+   "pdf_page": 454,
+   "text": "The decoding process needs a convenient representation for the prefix-free code so that you can easily pick off the initial codewor d. A binary tree whose leaves are the given characters provides one such represen tation. Interpret the binary codeword for a character as the simple path from the root to that character, where 0 means \"go to the left child\" and 1 means \"go to the right child.\" Figure 15.5 shows the trees for the two codes of our example. Note th at these are not binary search trees, since the leaves need not appear in sorted o rder and internal nodes do not contain character keys."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 433,
+   "pdf_page": 454,
+   "text": "An optimal code for a file is always represented by a full binary tree, in which every nonleaf node has two children (see Exercise 15.3-2). The fixed-length code in our example is not optimal since its tree, shown in Figure 15.5(a), is not a full binary tree: it contains codewords beginning with 10, but none beginning with 11."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 433,
+   "pdf_page": 454,
+   "text": "Since we can now restrict our attention to full binary trees, we can say that if C is the alphabet from which the characters are drawn and all character frequencies are positive, then the tree for an optimal prefix-free code has exactly |C| leaves, one for each letter of the alphabet, and exactly |C| − 1 internal nodes (see Exercise B.5-3 on page 1175)."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 433,
+   "pdf_page": 454,
+   "text": "Given a tree T corresponding to a prefix-free code, we can compute the number of bits required to encode a file. For each character c in the alphabet C , let the attribute c: freq denote the frequency of c in the file and let d T (c) denote the depth of c ’s leaf in the tree. Note that d T (c) is also the length of the codeword for character c . The number of bits required to encode a file is thus"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 433,
+   "pdf_page": 454,
+   "text": "0 1 c:12 b:13"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 433,
+   "pdf_page": 454,
+   "text": "0 1 d:16"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 433,
+   "pdf_page": 454,
+   "text": "0 1 a:45"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 433,
+   "pdf_page": 454,
+   "text": "0 1 e:9 f:5"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 433,
+   "pdf_page": 454,
+   "text": "0 1 c:12 b:13"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 433,
+   "pdf_page": 454,
+   "text": "0 1 d:16"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 433,
+   "pdf_page": 454,
+   "text": "0 1 a:45 e:9 f:5"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 433,
+   "pdf_page": 454,
+   "text": "0 1 c:12 b:13"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 433,
+   "pdf_page": 454,
+   "text": "0 1 d:16"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 433,
+   "pdf_page": 454,
+   "text": "0 1 a:45 e:9 f:5"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 433,
+   "pdf_page": 454,
+   "text": "0 1 c:12 b:13"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 433,
+   "pdf_page": 454,
+   "text": "0 1 d:16 a:45 e:9 f:5"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 433,
+   "pdf_page": 454,
+   "text": "0 1 c:12 b:13 d:16 a:45 e:9 f:5 c:12 b:13 d:16 a:45 (a)"
+  },
+  {
+   "type": "pseudocode",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 434,
+   "pdf_page": 455,
+   "algo_name": "HUFFMAN",
+   "signature": "HUFFMAN",
+   "lines": [
+    {
+     "n": 1,
+     "code": "n = |C|"
+    },
+    {
+     "n": 2,
+     "code": "Q = C"
+    },
+    {
+     "n": 3,
+     "code": "for i = 1 to n − 1"
+    },
+    {
+     "n": 4,
+     "code": "allocate a new node ´"
+    },
+    {
+     "n": 5,
+     "code": "x DEXTRACT-MIN (Q)"
+    },
+    {
+     "n": 6,
+     "code": "y DEXTRACT-MIN (Q)"
+    },
+    {
+     "n": 7,
+     "code": "´: left = x"
+    },
+    {
+     "n": 8,
+     "code": "´: right = y"
+    },
+    {
+     "n": 9,
+     "code": "´: freq = x: freq C y: freq"
+    },
+    {
+     "n": 10,
+     "code": "INSERT(Q;´/"
+    },
+    {
+     "n": 11,
+     "code": "return EXTRACT-MIN.Q) / / the root of the tree is the only node left"
+    }
+   ],
+   "text": "1 n = |C|\n2 Q = C\n3 for i = 1 to n − 1\n4 allocate a new node ´\n5 x DEXTRACT-MIN (Q)\n6 y DEXTRACT-MIN (Q)\n7 ´: left = x\n8 ´: right = y\n9 ´: freq = x: freq C y: freq\n10 INSERT(Q;´/\n11 return EXTRACT-MIN.Q) / / the root of the tree is the only node left"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 434,
+   "pdf_page": 455,
+   "text": "X c2C c: freq • d T (c); (15.4) which we define as the cost of the tree T ."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 434,
+   "pdf_page": 455,
+   "text": "Constructing a Huffman code"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 434,
+   "pdf_page": 455,
+   "text": "Huffman invented a greedy algorithm that constructs an optimal prefix-free code, called a Huffman code in his honor. In line with our observations in Section 15.2, its proof of correctness relies on the greedy-choice property and optimal substructure. Rather than demonstrating that these properti es hold and then developing pseudocode, we present the pseudocode first. Doing so will help clarify how the algorithm makes greedy choices."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 434,
+   "pdf_page": 455,
+   "text": "The procedure HUFFMAN assumes that C is a set of n characters and that each character c 2 C is an object with an attribute c: freq giving its frequency. The algorithm builds the tree T corresponding to an optimal code in a bottom-up manner. It begins with a set of |C| leaves and performs a sequence of |C| − 1 \"merging\" operations to create the final tree. The algorithm uses a min-priority queue Q, keyed on the freq attribute, to identify the two least-frequent objects to merge together."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 434,
+   "pdf_page": 455,
+   "text": "The result of merging two objects is a new object w hose frequency is the sum of the frequencies of the two objects that were merged."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 434,
+   "pdf_page": 455,
+   "text": "HUFFMAN(C)"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 434,
+   "pdf_page": 455,
+   "text": "For our example, Huffman’s algorithm proceeds as shown in Figure 15.6. Since the alphabet contains 6 letters, the initial queue size is n = 6, and 5 merge steps build the tree. The final tree represents the optimal prefix-free code. The codeword for a letter is the sequence of edge labels on the simple path from the root to the letter. e:9 f:5"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 434,
+   "pdf_page": 455,
+   "text": "X c2C c: freq • d T (c) −"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 434,
+   "pdf_page": 455,
+   "text": "X c2C c: freq • d T 0 (c)"
+  },
+  {
+   "type": "figure-caption",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 435,
+   "pdf_page": 456,
+   "text": "Figure 15.6 The steps of Huffman’s algorithm for the frequencies given in Figure 15.4. Each part shows the contents of the queue sorted into increas ing order by frequency. Each step merges the two trees with the lowest frequencies. Leaves are s hown as rectangles containing a character and its frequency. Internal nodes are shown as circles containing the sum of the frequencies of their children. An edge connecting an internal node with its children is labeled 0 if it is an edge to a left child and 1 if it is an edge to a right child. The codeword for a letter is the sequence of labels on the edges connecting the root to the leaf for that lett er. (a) The initial set of n = 6 nodes, one for each letter. (b)–(e) Intermediate stages. (f) The final tree."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 435,
+   "pdf_page": 456,
+   "text": "The HUFFMAN procedure works as follows. Line 2 initializes the min-priority queue Q with the characters in C . The for loop in lines 3310 repeatedly extracts the two nodes x and y of lowest frequency from the queue and replaces the m in the queue with a new node ´ representing their merger. The frequency of ´ is computed as the sum of the frequencies of x and y in line 9. The node ´ has x as its left child and y as its right child. (This order is arbitrary. Switc hing the left and right child of any node yields a different code of the same cost.) After n − 1 mergers, line 11 returns the one node left in the queue, which is the root of the code tree."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 436,
+   "pdf_page": 457,
+   "text": "The algorithm produces the same result without the variables x and y , assigning the values returned by the EXTRACT-MIN calls directly to ´: left and ´: right in lines 7 and 8, and changing line 9 to ´: freq = ´: left : freq C ´: right : freq. We’ll use the node names x and y in the proof of correctness, however, so we leave them in."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 436,
+   "pdf_page": 457,
+   "text": "The running time of Huffman’s algorithm depends on how the min-priority queue Q is implemented. Let’s assume that it’s implemented as a binary min-heap"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 436,
+   "pdf_page": 457,
+   "text": "(see Chapter 6). For a set C of n characters, the BUILD-MIN-HEAP procedure discussed in Section 6.3 can initialize Q in line 2 in O(n) time. The for loop in lines"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 436,
+   "pdf_page": 457,
+   "text": "3310 executes exactly n − 1 times, and since each heap operation runs in O(lg n)"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 436,
+   "pdf_page": 457,
+   "text": "time, the loop contributes O(n lg n) to the running time. Thus, the total running"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 436,
+   "pdf_page": 457,
+   "text": "time of HUFFMAN on a set of n characters is O(n lg n)."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 436,
+   "pdf_page": 457,
+   "text": "Correctness of Huffman’s algorithm"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 436,
+   "pdf_page": 457,
+   "text": "To prove that the greedy algorithm HUFFMAN is correct, we’ll show that the problem of determining an optimal prefix-free code exhibits the greedy-choice and optimal-substructure properties. The next lemma shows that the greedy-choice property holds."
+  },
+  {
+   "type": "lemma",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 436,
+   "pdf_page": 457,
+   "text": "Lemma 15.2 (Optimal prefix-free codes have the greedy-choice property)"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 436,
+   "pdf_page": 457,
+   "text": "Let C be an alphabet in which each character c 2 C has frequency c: freq. Let x and y be two characters in C having the lowest frequencies. Then there exists an optimal prefix-free code for C in which the codewords for x and y have the same length and differ only in the last bit."
+  },
+  {
+   "type": "proof",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 436,
+   "pdf_page": 457,
+   "text": "Proof The idea of the proof is to take the tree T representing an arbitrary optimal prefix-free code and modify it to make a tree representing another optimal prefixfree code such that the characters x and y appear as sibling leaves of maximum depth in the new tree. In such a tree, the codeword s for x and y have the same length and differ only in the last bit."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 436,
+   "pdf_page": 457,
+   "text": "Let a and b be any two characters that are sibling leaves of ma ximum depth in T . Without loss of generality, assume that a: freq ≤ b: freq and x: freq ≤ y: freq."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 436,
+   "pdf_page": 457,
+   "text": "Since x: freq and y: freq are the two lowest leaf frequencies, in order, and a: freq and b: freq are two arbitrary frequencies, in order, we have x: freq ≤ a: freq and y: freq ≤ b: freq."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 436,
+   "pdf_page": 457,
+   "text": "In the remainder of the proof, it is possible that we could have x: freq = a: freq or y: freq = b: freq, but x: freq = b: freq implies that a: freq = b: freq = x: freq = y: freq (see Exercise 15.3-1), and the lemma would be trivially true. Therefore, assume that x: freq ≠ b: freq, which means that x ≠ b."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 436,
+   "pdf_page": 457,
+   "text": "As Figure 15.7 shows, imagine exchanging the positions in T of a and x to produce a tree T 0 , and then exchanging the positions in T 0 of b and y to produce a x y a b x y a b x y a b"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 437,
+   "pdf_page": 458,
+   "text": "T T 0 T 00"
+  },
+  {
+   "type": "figure-caption",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 437,
+   "pdf_page": 458,
+   "text": "Figure 15.7 An illustration of the key step in the proof of Lemma 15.2. In the optimal tree T , leaves a and b are two siblings of maximum depth. Leaves x and y are the two characters with the lowest frequencies. They appear in arbitrary positions in T . Assuming that x ≠ b, swapping leaves a and x produces tree T 0 , and then swapping leaves b and y produces tree T 00 . Since each swap does not increase the cost, the resulting tree T 00 is also an optimal tree. tree T 00 in which x and y are sibling leaves of maximum depth. (Note that if x = b but y ≠ a, then tree T 00 does not have x and y as sibling leaves of maximum depth."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 437,
+   "pdf_page": 458,
+   "text": "Because we assume that x ≠ b, this situation cannot occur.) By equation (15.4), the difference in cost between T and T 0 is B(T) − B(T 0 )"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 437,
+   "pdf_page": 458,
+   "text": "D x: freq • d T (x) + a: freq • d T (a) − x: freq • d T 0 (x) − a: freq • d T 0 (a)"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 437,
+   "pdf_page": 458,
+   "text": "D x: freq • d T (x) + a: freq • d T (a) − x: freq • d T (a) − a: freq • d T (x)"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 437,
+   "pdf_page": 458,
+   "text": "D (a: freq − x: freq).d T (a) − d T (x)/"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 437,
+   "pdf_page": 458,
+   "text": "≥ 0; because both a: freq − x: freq and d T (a) − d T (x) are nonnegative. More specifically, a: freq − x: freq is nonnegative because x is a minimum-frequency leaf, and d T (a) − d T (x) is nonnegative because a is a leaf of maximum depth in T . Similarly, exchanging y and b does not increase the cost, and so B(T 0 ) − B(T 00 ) is nonnegative. Therefore, B(T 00 ) ≤ B(T 0 ) ≤ B(T) , and since T is optimal, we have B(T) ≤ B(T 00 ), which implies B(T 00 ) = B(T) . Thus, T 00 is an optimal tree in which x and y appear as sibling leaves of maximum depth, from which the lemma follows."
+  },
+  {
+   "type": "lemma",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 437,
+   "pdf_page": 458,
+   "text": "Lemma 15.2 implies that the process of building up an optimal tree by mergers can, without loss of generality, begin with the gre edy choice of merging together those two characters of lowest frequency. Why is th is a greedy choice? We can view the cost of a single merger as being the sum of the frequencies of the two items being merged. Exercise 15.3-4 shows that the total cost of the tree constructed equals the sum of the costs of its mergers. Of all possible mergers at each step, HUFFMAN chooses the one that incurs the least cost."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 438,
+   "pdf_page": 459,
+   "text": "The next lemma shows that the problem of constructi ng optimal prefix-free codes has the optimal-substructure property."
+  },
+  {
+   "type": "lemma",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 438,
+   "pdf_page": 459,
+   "text": "Lemma 15.3 (Optimal prefix-free codes have the optimal-substructure property)"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 438,
+   "pdf_page": 459,
+   "text": "Let C be a given alphabet with frequency c: freq defined for each character c 2 C ."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 438,
+   "pdf_page": 459,
+   "text": "Let x and y be two characters in C with minimum frequency. Let C 0 be the alphabet C with the characters x and y removed and a new character ´ added, so that C 0 = (C − fx;y g) [ f´g. Define freq for all characters in C 0 with the same values as in C , along with ´: freq = x: freq C y: freq. Let T 0 be any tree representing an optimal prefix-free code for alphabet C 0 . Then the tree T , obtained from T 0 by replacing the leaf node for ´ with an internal node having x and y as children, represents an optimal prefix-free code for the alphabet C ."
+  },
+  {
+   "type": "proof",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 438,
+   "pdf_page": 459,
+   "text": "Proof We first show how to express the cost B(T) of tree T in terms of the cost B(T 0 ) of tree T 0 , by considering the component costs in equation (15.4)."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 438,
+   "pdf_page": 459,
+   "text": "For each character c 2 C − fx;y g, we have that d T (c) = d T 0 (c), and hence c: freq • d T (c) = c: freq • d T 0 (c). Since d T (x) = d T (y) = d T 0 .´/ C 1, we have x: freq • d T (x) + y: freq • d T (y) = (x: freq C y: freq).d T 0 .´/ C 1/"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 438,
+   "pdf_page": 459,
+   "text": "D ´: freq • d T 0 .´/ C (x: freq C y: freq); from which we conclude that B(T) = B(T 0 ) + x: freq C y: freq or, equivalently, B(T 0 ) = B(T) − x: freq − y: freq :"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 438,
+   "pdf_page": 459,
+   "text": "We now prove the lemma by contradiction. Suppose th at T does not represent an optimal prefix-free code for C . Then there exists an optimal tree T 00 such that B(T 00 )<B(T) . Without loss of generality (by Lemma 15.2), T 00 has x and y as siblings. Let T 000 be the tree T 00 with the common parent of x and y replaced by a leaf ´ with frequency ´: freq = x: freq C y: freq. Then"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 438,
+   "pdf_page": 459,
+   "text": "B(T 000 ) = B(T 00 ) − x: freq − y: freq"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 438,
+   "pdf_page": 459,
+   "text": "< B(T) − x: freq − y: freq"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 438,
+   "pdf_page": 459,
+   "text": "D B(T 0 ); yielding a contradiction to the assumption that T 0 represents an optimal prefix-free code for C 0 . Thus, T must represent an optimal prefix-free code for the alphabet C ."
+  },
+  {
+   "type": "theorem",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 438,
+   "pdf_page": 459,
+   "text": "Theorem 15.4"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 438,
+   "pdf_page": 459,
+   "text": "Procedure HUFFMAN produces an optimal prefix-free code."
+  },
+  {
+   "type": "proof",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 439,
+   "pdf_page": 460,
+   "text": "Proof Immediate from Lemmas 15.2 and 15.3."
+  },
+  {
+   "type": "exercise",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 439,
+   "pdf_page": 460,
+   "text": "15.3-1 Explain why, in the proof of Lemma 15.2, if x: freq = b: freq, then we must have a: freq = b: freq = x: freq = y: freq."
+  },
+  {
+   "type": "exercise",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 439,
+   "pdf_page": 460,
+   "text": "15.3-2 Prove that a non-full binary tree cannot correspond to an optimal prefix-free code."
+  },
+  {
+   "type": "exercise",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 439,
+   "pdf_page": 460,
+   "text": "15.3-3 What is an optimal Huffman code for the following s et of frequencies, based on the first 8 Fibonacci numbers? a:1 b:1 c:2 d:3 e:5 f:8 g:13 h:21"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 439,
+   "pdf_page": 460,
+   "text": "Can you generalize your answer to find the optimal code when the frequencies are the first n Fibonacci numbers?"
+  },
+  {
+   "type": "exercise",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 439,
+   "pdf_page": 460,
+   "text": "15.3-4 Prove that the total cost B(T) of a full binary tree T for a code equals the sum, over all internal nodes, of the combined frequencies of the two children of the node."
+  },
+  {
+   "type": "exercise",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 439,
+   "pdf_page": 460,
+   "text": "15.3-5 Given an optimal prefix-free code on a set C of n characters, you wish to transmit the code itself using as few bits as possible. Show how to represent any optimal prefix-free code on C using only 2n − 1 + n dlg ne bits. (Hint: Use 2n − 1 bits to specify the structure of the tree, as discovered by a walk of the tree.)"
+  },
+  {
+   "type": "exercise",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 439,
+   "pdf_page": 460,
+   "text": "15.3-6 Generalize Huffman’s algorithm to ternary codewords (i.e., codewords using the symbols 0, 1, and 2), and prove that it yields optimal ternary codes."
+  },
+  {
+   "type": "exercise",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 439,
+   "pdf_page": 460,
+   "text": "15.3-7 A data file contains a sequence of 8-bit characters such that all 256 characters are about equally common: the maximum character frequen cy is less than twice the minimum character frequency. Prove that Huffman coding in this case is no more efficient than using an ordinary 8-bit fixed-length code."
+  },
+  {
+   "type": "exercise",
+   "chapter": 15,
+   "section": "15.3",
+   "section_title": "15.3 Huffman codes",
+   "printed_page": 439,
+   "pdf_page": 460,
+   "text": "15.3-8 Show that no lossless (invertible) compression scheme can guarantee that for every input file, the corresponding output file is shorter. (Hint: Compare the number of possible files with the number of possible encoded files.)"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 440,
+   "pdf_page": 461,
+   "text": "Computer systems can decrease the time to access da ta by storing a subset of the main memory in the cache: a small but faster memory. A cache organizes data into cache blocks typically comprising 32, 64, or 128 bytes. You can also think of main memory as a cache for disk-resident data in a virtual-memory system. Here, the blocks are called pages, and 4096 bytes is a typical size."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 440,
+   "pdf_page": 461,
+   "text": "As a computer program executes, it makes a sequence of memory requests. Say that there are n memory requests, to data in blocks b 1 ;b 2 ;:::;b n , in that order. The blocks in the access sequence might not be distinct, and indeed, any given block is usually accessed multiple times. For example, a program that accesses four distinct blocks p;q;r;s might make a sequence of requests to blocks s;q;s;q;q;s;p;p;r; s;s;q;p;r;q . The cache can hold up to some fixed number k of cache blocks. It starts out empty before the first request. Each request causes at most one block to enter the cache and at most one block to be evicted from the cache. Upon a request for block b i , any one of three scenarios may occur:"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 440,
+   "pdf_page": 461,
+   "text": "1. Block b i is already in the cache, due to a previous request for the same block."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 440,
+   "pdf_page": 461,
+   "text": "The cache remains unchanged. This situation is known as a cache hit."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 440,
+   "pdf_page": 461,
+   "text": "2. Block b i is not in the cache at that time, but the cache con tains fewer than k blocks. In this case, block b i is placed into the cache, so that the cache contains one more block than it did before the request."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 440,
+   "pdf_page": 461,
+   "text": "3. Block b i is not in the cache at that time and the cache is f ull: it contains k blocks. Block b i is placed into the cache, but before that happens, some other block in the cache must be evicted from the cache in order to make room."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 440,
+   "pdf_page": 461,
+   "text": "The latter two situations, in which the requested block is not already in the cache, are called cache misses. The goal is to minimize the number of cache misse s or, equivalently, to maximize the number of cache hits, over the entire sequence of n requests. A cache miss that occurs while the cache holds fewer than k blocks4 that is, as the cache is first being filled up—is known as a compulsory miss, since no prior decision could have kept the requested block in the cache. When a cache miss occurs and the cache is full, ideally the choice of which block to evict should allow for the smallest possible number of cache misses over the entire sequence of future requests."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 440,
+   "pdf_page": 461,
+   "text": "Typically, caching is an online problem. That is, t he computer has to decide which blocks to keep in the cache without knowing t he future requests. Here, however, let’s consider the offline version of this problem, in which the computer knows in advance the entire sequence of n requests and the cache size k, with a goal of minimizing the total number of cache misses."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 441,
+   "pdf_page": 462,
+   "text": "To solve this offline problem, you can use a greedy strategy called furthest-in- future, which chooses to evict the block in the cache who se next access in the re- quest sequence comes furthest in the future. Intuitively, this strategy makes sense: if you’re not going to need something for a while, why keep it around? We’ll show that the furthest-in-future strategy is indeed optimal by showing that the offline caching problem exhibits optimal substructure and t hat furthest-in-future has the greedy-choice property."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 441,
+   "pdf_page": 462,
+   "text": "Now, you might be thinking that since the computer usually doesn’t know the sequence of requests in advance, there is no point in studying the offline problem."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 441,
+   "pdf_page": 462,
+   "text": "Actually, there is. In some situations, you do know the sequence of requests in advance. For example, if you view the main memory a s the cache and the full set of data as residing on disk (or a solid-state drive), there are algorithms that plan out the entire set of reads and writes in advance. Furthermore, we can use the number of cache misses produced by an optimal algorithm as a baseline for comparing how well online algorithms perform. We’ll do just that in Section 27.3."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 441,
+   "pdf_page": 462,
+   "text": "Offline caching can even model real-world problems. For example, consider a scenario where you know in advance a fixed schedule of n events at known locations. Events may occur at a location multiple times, not necessarily consecutively."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 441,
+   "pdf_page": 462,
+   "text": "You are managing a group of k agents, you need to ensure that you have one agent at each location when an event occurs, and you want to minimize the number of times that agents have to move. Here, the agents are like the blocks, the events are like the requests, and moving an agent is akin to a cache miss."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 441,
+   "pdf_page": 462,
+   "text": "Optimal substructure of offline caching"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 441,
+   "pdf_page": 462,
+   "text": "To show that the offline problem exhibits optimal substructure, let’s define the subproblem (C;i) as processing requests for blocks b i ;b i C1 ;:::;b n with cache configuration C at the time that the request for block b i occurs, that is, C is a subset of the set of blocks such that |C| ≤ k. A solution to subproblem (C;i) is a sequence of decisions that specifies which block to evict (if any) upon each request for blocks b i ;b i C1 ;:::;b n . An optimal solution to subproblem (C;i) minimizes the number of cache misses."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 441,
+   "pdf_page": 462,
+   "text": "Consider an optimal solution S to subproblem (C;i) , and let C 0 be the contents of the cache after processing the request for block b i in solution S . Let S 0 be the subsolution of S for the resulting subproblem (C 0 ;i + 1). If the request for b i results in a cache hit, then the cache remains unch anged, so that C 0 = C . If the request for block b i results in a cache miss, then the contents of the cache change, so that C 0 ≠ C . We claim that in either case, S 0 is an optimal solution to subproblem (C 0 ;i + 1). Why? If S 0 is not an optimal solution to subproblem (C 0 ;i + 1), then there exists another solution S 00 to subproblem (C 0 ;i + 1) that makes fewer cache misses than S 0 . Combining S 00 with the decision of S at the request for block b i yields another solution that makes fewer cache misses than S , which contradicts the assumption that S is an optimal solution to subproblem (C;i) ."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 442,
+   "pdf_page": 463,
+   "text": "To quantify a recursive solution, we need a little more notation. Let R C;i be the set of all cache configurations that can immediately follow configuration C after processing a request for block b i . If the request results in a cache hit, then the cache remains unchanged, so that R C;i = fC g. If the request for b i results in a cache miss, then there are two possibilities. If the cache is not full (|C| <k ), then the cache is filling up and the only choice is to insert b i into the cache, so that R C;i = fC [ fb i gg. If the cache is full ( |C| = k) upon a cache miss, then R C;i contains k potential configurations: one for each candidate block in C that could be evicted and replaced by block b i . In this case, R C;i = f(C − fx g) [ fb i g W x 2 + g."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 442,
+   "pdf_page": 463,
+   "text": "For example, if C = fp;q;r g, k = 3, and block s is requested, then R C;i = ffp;q;s g ; fp;r;s g ; fq;r;s gg."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 442,
+   "pdf_page": 463,
+   "text": "Let miss(C;i) denote the minimum number of cache misses in a solu tion for subproblem (C;i) . Here is a recurrence for miss(C;i) : miss(C;i) ="
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 442,
+   "pdf_page": 463,
+   "text": "0 if i = n and b n 2 C ; 1 if i = n and b n 62 C ; miss(C;i + 1) if i <n and b i 2 C ; 1 C min fmiss(C 0 ;i + 1) W + 0 2 R C;i g if i <n and b i 62 C :"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 442,
+   "pdf_page": 463,
+   "text": "Greedy-choice property"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 442,
+   "pdf_page": 463,
+   "text": "To prove that the furthest-in-future strategy yields an optimal solution, we need to show that optimal offline caching exhibits the greedy-choice property. Combined with the optimal-substructure property, the greedy-choice property will prove that furthest-in-future produces the minimum possible number of cache misses."
+  },
+  {
+   "type": "theorem",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 442,
+   "pdf_page": 463,
+   "text": "Theorem 15.5 (Optimal offline caching has the greedy-choice property)"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 442,
+   "pdf_page": 463,
+   "text": "Consider a subproblem (C;i) when the cache C contains k blocks, so that it is full, and a cache miss occurs. When block b i is requested, let ´ = b m be the block in C whose next access is furthest in the future. (If so me block in the cache will never again be referenced, then consider any such b lock to be block ´, and add a dummy request for block ´ = b m = b nC1 .) Then evicting block ´ upon a request for block b i is included in some optimal solution for the subproblem (C;i) ."
+  },
+  {
+   "type": "proof",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 442,
+   "pdf_page": 463,
+   "text": "Proof Let S be an optimal solution to subproblem (C;i) . If S evicts block ´ upon the request for block b i , then we are done, since we have shown that some optimal solution includes evicting ´."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 442,
+   "pdf_page": 463,
+   "text": "So now suppose that optimal solution S evicts some other block x when block b i is requested. We’ll construct another solution S 0 to subproblem (C;i) which, upon the request for b i , evicts block ´ instead of x and induces no more cache misses than S does, so that S 0 is also optimal. Because different solutions may yi eld different cache configurations, denote by C S;j the configuration of the cache under solution S just before the request for some block b j , and likewise for solution S 0 and C S 0 ;j . We’ll show how to construct S 0 with the following properties:"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 443,
+   "pdf_page": 464,
+   "text": "1. For j = i + 1;:::;m , let = j = + S;j \\ C S 0 ;j . Then, jD j j ≥ k − 1, so that the cache configurations C S;j and C S 0 ;j differ by at most one block. If they differ, then C S;j = D j [ f´g and C S 0 ;j = D j [ fy g for some block y ≠ ´."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 443,
+   "pdf_page": 464,
+   "text": "2. For each request of blocks b i ;:::;b m−1 , if solution S has a cache hit, then solution S 0 also has a cache hit."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 443,
+   "pdf_page": 464,
+   "text": "3. For all j >m, the cache configurations C S;j and C S 0 ;j are identical."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 443,
+   "pdf_page": 464,
+   "text": "4. Over the sequence of requests for blocks b i ;:::;b m , the number of cache misses produced by solution S 0 is at most the number of cache misses produced by solution S ."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 443,
+   "pdf_page": 464,
+   "text": "We’ll prove inductively that these properties hold for each request."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 443,
+   "pdf_page": 464,
+   "text": "1. We proceed by induction on j , for j = i + 1;:::;m . For the base case, the initial caches C S;i and C S 0 ;i are identical. Upon the request for block b i , solution S evicts x and solution S 0 evicts ´. Thus, cache configurations C S;i C1 and C S 0 ;i C1 differ by just one block, C S;i C1 = D i C1 [ f´g, C S 0 ;i C1 = D i C1 [ fx g, and x ≠ ´."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 443,
+   "pdf_page": 464,
+   "text": "The inductive step defines how solution S 0 behaves upon a request for block b j for i + 1 ≤ j ≤ m − 1. The inductive hypothesis is that property 1 holds when b j is requested. Because ´ = b m is the block in C S;i whose next reference is furthest in the future, we know that b j ≠ ´. We consider several scenarios:"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 443,
+   "pdf_page": 464,
+   "text": "• If C S;j = + S 0 ;j (so that jD j j = k), then solution S 0 makes the same decision upon the request for b j as S makes, so that C S;j C1 = + S 0 ;j C1 ."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 443,
+   "pdf_page": 464,
+   "text": "• If jD j j = k − 1 and b j 2 = j , then both caches already contain block b j , and both solutions S and S 0 have cache hits. Therefore, C S;j C1 = + S;j and C S 0 ;j C1 = + S 0 ;j ."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 443,
+   "pdf_page": 464,
+   "text": "• If jD j j = k − 1 and b j … = j , then because C S;j = D j [ f´g and b j ≠ ´, solution S has a cache miss. It evicts either block ´ or some block w 2 = j ."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 443,
+   "pdf_page": 464,
+   "text": "B If solution S evicts block ´, then C S;j C1 = D j [ fb j g. There are two cases, depending on whether b j = y :"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 443,
+   "pdf_page": 464,
+   "text": "˘ If b j = y , then solution S 0 has a cache hit, so that C S 0 ;j C1 ="
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 443,
+   "pdf_page": 464,
+   "text": "C S 0 ;j = D j [ fb j g. Thus, C S;j C1 = + S 0 ;j C1 ."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 443,
+   "pdf_page": 464,
+   "text": "˘ If b j ≠ y , then solution S 0 has a cache miss. It evicts block y , so that C S 0 ;j C1 = D j [ fb j g, and again C S;j C1 = + S 0 ;j C1 ."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 443,
+   "pdf_page": 464,
+   "text": "˘ If b j = y , then solution S 0 has a cache hit, so that C S 0 ;j C1 ="
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 444,
+   "pdf_page": 465,
+   "text": "B If solution S evicts some block w 2 = j , then C S;j C1 = (D j − fwg) [ fb j ;´ g. Once again, there are two cases, depending on whether b j = y :"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 444,
+   "pdf_page": 465,
+   "text": "C S 0 ;j = D j [ fb j g. Since w 2 = j and w was not evicted by solution S 0 , we have w 2 + S 0 ;j C1 . Therefore, w … = j C1 and b j 2 = j C1 , so that = j C1 = (D j − fwg) [ fb j g. Thus, C S;j C1 = D j C1 [ f´g, C S 0 ;j C1 = D j C1 [ fwg, and because w ≠ ´, property 1 holds when block b j C1 is requested. (In other words, block w replaces block y in property 1.)"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 444,
+   "pdf_page": 465,
+   "text": "˘ If b j ≠ y , then solution S 0 has a cache miss. It evicts block w, so that C S 0 ;j C1 = (D j − fwg) [ fb j ;y g. Therefore, we have that D j C1 = (D j − fwg) [ fb j g and so C S;j C1 = D j C1 [ f´g and C S 0 ;j C1 = D j C1 [ fy g."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 444,
+   "pdf_page": 465,
+   "text": "2. In the above discussion about maintaining property 1, solution S may have a cache hit in only the first two cases, and solution S 0 has a cache hit in these cases if and only if S does."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 444,
+   "pdf_page": 465,
+   "text": "3. If C S;m = + S 0 ;m , then solution S 0 makes the same decision upon the request for block ´ = b m as S makes, so that C S;mC1 = + S 0 ;mC1 . If C S;m ≠ C S 0 ;m , then by property 1, C S;m = D m [f´g and C S 0 ;m = D m [fy g, where y ≠ ´. In this case, solution S has a cache hit, so that C S;mC1 = + S;m = D m [ f´g. Solution S 0 evicts block y and brings in block ´, so that C S 0 ;mC1 = D m [ f´g = + S;mC1 ."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 444,
+   "pdf_page": 465,
+   "text": "Thus, regardless of whether or not C S;m = + S 0 ;m , we have C S;mC1 = + S 0 ;mC1 , and starting with the request for block b mC1 , solution S 0 simply makes the same decisions as S ."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 444,
+   "pdf_page": 465,
+   "text": "4. By property 2, upon the requests for blocks b i ;:::;b m−1 , whenever solution S has a cache hit, so does S 0 . Only the request for block b m = ´ remains to be considered. If S has a cache miss upon the request for b m , then regardless of whether S 0 has a cache hit or a cache miss, we are done: S 0 has at most the same number of cache misses as S ."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 444,
+   "pdf_page": 465,
+   "text": "So now suppose that S has a cache hit and S 0 has a cache miss upon the re- quest for b m . We’ll show that there exists a request for at least one of blocks b i C1 ;:::;b m−1 in which the request results in a cache miss for S and a cache hit for S 0 , thereby compensating for what happens upon the re quest for block b m ."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 444,
+   "pdf_page": 465,
+   "text": "The proof is by contradiction. Assume that no request for blocks b i C1 ;:::;b m−1 results in a cache miss for S and a cache hit for S 0 ."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 444,
+   "pdf_page": 465,
+   "text": "We start by observing that once the caches C S;j and C S 0 j are equal for some j > i , they remain equal thereafter. Observe also that if b m 2 + S;m and b m … C S 0 ;m , then C S;m ≠ C S 0 ;m . Therefore, solution S cannot have evicted block ´ upon the requests for blocks b i ;:::;b m−1 , for if it had, then these two cache configurations would be equal. The remaining possibility is that upon each of these requests, we had C S;j = D j [ f´g, C S 0 ;j = D j [ fy g for some block y ≠ ´, and solution S evicted some block w 2 = j . Moreover, since none of these requests resulted in a cache miss for S and a cache hit for S 0 , the case of b j = y never occurred. That is, for every request of blocks b i C1 ;:::;b m−1 , the requested block b j was never the block y 2 + S 0 ;j − C S;j . In these cases, after processing the request, we had C S 0 ;j C1 = D j C1 [ fy g: the difference between the two caches did not change. Now, let’s go back to the request for block b i , where afterward, we had C S 0 ;i C1 = D i C1 [ fx g. Because every succeeding request until requesting block b m did not change the difference between the caches, we had C S 0 ;j = D j [ fx g for j = i + 1;:::;m ."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 445,
+   "pdf_page": 466,
+   "text": "By definition, block ´ = b m is requested after block x . That means at least one of blocks b i C1 ;:::;b m−1 is block x . But for j = i + 1;:::;m , we have x 2 + S 0 ;j and x … C S;j , so that at least one of these requests had a cach e hit for S 0 and a cache miss for S , a contradiction. We conclude that if solution S has a cache hit and solution S 0 has a cache miss upon the request for block b m , then some earlier request had the opposite result, and so solution S 0 produces no more cache misses than solution S . Since S is assumed to be optimal, S 0 is optimal as well."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 445,
+   "pdf_page": 466,
+   "text": "Along with the optimal-substructure property, Theorem 15.5 tells us that the furthest-in-future strategy yields the minimum number of cache misses."
+  },
+  {
+   "type": "exercise",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 445,
+   "pdf_page": 466,
+   "text": "15.4-1 Write pseudocode for a cache manager that uses the furthest-in-future strategy. It should take as input a set C of blocks in the cache, the number of blocks k that the cache can hold, a sequence b 1 ;b 2 ;:::;b n of requested blocks, and the index i into the sequence for the block b i being requested. For each request, it should print out whether a cache hit or cache miss occurs, and for e ach cache miss, it should also print out which block, if any, is evicted."
+  },
+  {
+   "type": "exercise",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 445,
+   "pdf_page": 466,
+   "text": "15.4-2 Real cache managers do not know the future requests , and so they often use the past to decide which block to evict. The least-recently-used, or LRU, strategy evicts the block that, of all blocks currently in t he cache, was the least recently requested. (You can think of LRU as \"furthest-in-past.\") Give an example of a request sequence in which the LRU strategy is not o ptimal, by showing that it induces more cache misses than the furthest-in-future strategy does on the same request sequence."
+  },
+  {
+   "type": "exercise",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 446,
+   "pdf_page": 467,
+   "text": "15.4-3 Professor Croesus suggests that in the proof of Theorem 15.5, the last clause in property 1 can change to C S 0 ;j = D j [ fx g or, equivalently, require the block y given in property 1 to always be the block x evicted by solution S upon the request for block b i . Show where the proof breaks down with this requirement."
+  },
+  {
+   "type": "exercise",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 446,
+   "pdf_page": 467,
+   "text": "15.4-4 This section has assumed that at most one block is placed into the cache whenever a block is requested. You can imagine, however, a strategy in which multiple blocks may enter the cache upon a single request. Show that for every solution that allows multiple blocks to enter the cache upon each request, there is another solution that brings in only one block upon each request and is at least as good."
+  },
+  {
+   "type": "problem",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 446,
+   "pdf_page": 467,
+   "text": "15-1 Coin changing"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 446,
+   "pdf_page": 467,
+   "text": "Consider the problem of making change for n cents using the smallest number of coins. Assume that each coin’s value is an integer. a. Describe a greedy algorithm to make change consisti ng of quarters, dimes, nickels, and pennies. Prove that your algorithm yields an optimal solution. b. Suppose that the available coins are in denominations that are powers of c : the denominations are c 0 ;c 1 ;:::;c k for some integers c>1 and k ≥ 1. Show that the greedy algorithm always yields an optimal solution. c. Give a set of coin denominations for which the greedy algorithm does not yield an optimal solution. Your set should include a penny so that there is a solution for every value of n. d. Give an O(nk)-time algorithm that makes change for any set of k different coin denominations using the smallest number of coi ns, assuming that one of the coins is a penny."
+  },
+  {
+   "type": "problem",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 446,
+   "pdf_page": 467,
+   "text": "15-2 Scheduling to minimize average completion time"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 446,
+   "pdf_page": 467,
+   "text": "You are given a set S = fa 1 ;a 2 ;:::;a n g of tasks, where task a i requires √i units of processing time to complete. Let C i be the completion time of task a i , that is, the time at which task a i completes processing. Your goal is to minimize the average completion time, that is, to minimize .1/n/ P n i D1 + i . For example, suppose that there are two tasks a 1 and a 2 with √1 = 3 and √2 = 5, and consider the schedule"
+  },
+  {
+   "type": "chapter-notes",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 447,
+   "pdf_page": 468,
+   "text": "Notes for Chapter 15 447 in which a 2 runs first, followed by a 1 . Then we have C 2 = 5, C 1 = 8, and the average completion time is .5 + 8/=2 = 6:5. If task a 1 runs first, however, then we have C 1 = 3, C 2 = 8, and the average completion time is .3 + 8/=2 = 5:5. a. Give an algorithm that schedules the tasks so as to minimize the average completion time. Each task must run nonpreemptively, that is, once task a i starts, it must run continuously for √i units of time until it is done. Prove that your algorithm minimizes the average completion time, and analyze the running time of your algorithm. b. Suppose now that the tasks are not all available at once. That is, each task cannot start until its release time b i . Suppose also that tasks may be preempted, so that a task can be suspended and restarted at a later time. For example, a task a i with processing time √i = 6 and release time b i = 1 might start running at time 1 and be preempted at time 4. It might then resume at time 10 but be preempted at time 11, and it might finally resume at time 13 and complete at time 15. Task a i has run for a total of 6 time units, but its running time has been divided into three pieces. Give an algorithm that schedules the tasks so as to minimize the average completion time in this new scenario. Prove that your algorithm minimizes the average completion time, and analyze the running time of your algorithm."
+  },
+  {
+   "type": "chapter-notes",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 447,
+   "pdf_page": 468,
+   "text": "Chapter notes"
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 447,
+   "pdf_page": 468,
+   "text": "Much more material on greedy algorithms can be foun d in Lawler [276] and Papadimitriou and Steiglitz [353]. The greedy algorithm first appeared in the combinatorial optimization literature in a 1971 article by Edmonds [131]."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 447,
+   "pdf_page": 468,
+   "text": "The proof of correctness of the greedy algorithm for the activity-selection problem is based on that of Gavril [179]."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 447,
+   "pdf_page": 468,
+   "text": "Huffman codes were invented in 1952 [233]. Lelewer and Hirschberg [294] surveys data-compression techniques known as of 1987."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 447,
+   "pdf_page": 468,
+   "text": "The furthest-in-future strategy was proposed by Belady [41], who suggested it for virtual-memory systems. Alternative proofs that furthest-in-future is optimal appear in articles by Lee et al. [284] and Van Roy [443]."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 448,
+   "pdf_page": 469,
+   "text": "16 Amortized Analysis Imagine that you join Buff’s Gym. Buff charges a membership fee of $60 per month, plus $3 for every time you use the gym. Because you are dis ciplined, you visit Buff’s Gym every day during the month of November. On top of the $60 monthly charge for November, you pay another 3 × $30 = $90 that month."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 448,
+   "pdf_page": 469,
+   "text": "Although you can think of your fees as a flat fee of $60 and another $90 in daily fees, you can think about it in another way. All to gether, you pay $150 over 30 days, or an average of $5 per day. When you look at your fees in this way, you are amortizing the monthly fee over the 30 days of the month, spreading it out at $ 2 per day."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 448,
+   "pdf_page": 469,
+   "text": "You can do the same thing when you analyze running times. In an amortized analysis, you average the time required to perform a sequence of data-structure operations over all the operations performed. With amortized analysis, you show that if you average over a sequence of operations, then the average cost of an operation is small, even though a single operation within the sequence might be expensive. Amortized analysis differs from average-case analysis in that probability is not involved. An amortized analysis guarantees the average performance of each operation in the worst case."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 448,
+   "pdf_page": 469,
+   "text": "The first three sections of this chapter cover the three most common techniques used in amortized analysis. Section 16.1 starts with aggregate analysis, in which you determine an upper bound T(n) on the total cost of a sequence of n operations."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 448,
+   "pdf_page": 469,
+   "text": "The average cost per operation is then T(n)/n . You take the average cost as the amortized cost of each operation, so that all opera tions have the same amortized cost."
+  },
+  {
+   "type": "body",
+   "chapter": 15,
+   "section": "15.4",
+   "section_title": "15.4 Offline caching",
+   "printed_page": 448,
+   "pdf_page": 469,
+   "text": "Section 16.2 covers the accounting method, in which you determine an amortized cost of each operation. When there is more th an one type of operation, each type of operation may have a different amortized co st. The accounting method overcharges some operations early in the sequence, storing the overcharge as <pre-"
+  }
+ ]
+}

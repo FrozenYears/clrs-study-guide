@@ -70,12 +70,19 @@ def main():
     rule("4->em-dash (Ch1)", "engi4neering", "engi—neering")
     rule("‹¤› != (Ch1)", "a ¤ b", "a ≠ b")
 
-    # --- Ch2：下标区间、伪代码赋值箭头、D 作为等号 ---
-    rule("Œ/� -> [ ]", "AŒi W j�", "A[i .. j]")
-    rule("W -> .. (区间)", "AŒ1 W i  1�", "A[1 .. i")
-    rule("D -> ← (伪代码)", "3 q D b.p C r/=2c", "q ← ")
-    rule("D -> = (正文)", "when this loop\nis for i D 2 to n", "i = 2 to n")
-    rule("C -> + (括号内)", "AŒq C 1 W r�", "A[q + 1 .. r]")
+    # --- Ch2：切片冒号、赋值等号、加号、减号（第 4 版记法，全部按渲染页核对）---
+    rule("Œ/� -> [ ]", "AŒi W j�", "A[i : j]")
+    rule("W -> : 切片", "AŒ1 W n�", "A[1 : n]")
+    rule("W -> : 带减号", "AŒ1 W i \ue003 1�", "A[1 : i − 1]")
+    rule("D -> = 伪代码赋值", "1 for i D 2 to n", "for i = 2 to n")
+    rule("D -> = 正文", "when this loop\nis for i D 2 to n", "i = 2 to n")
+    rule("D -> = 无箭头", "3 q D b.p C r/=2c", "q = ⌊(p + r)/2⌋")
+    rule("C -> + 括号内", "AŒq C 1 W r�", "A[q + 1 : r]")
+    rule("C -> + 连续两个", "7 RŒj�  D AŒq C j C 1�", "A[q + j + 1]")
+    rule("C -> + 省略号前", "a 2 x 2 C \ue001 \ue001 \ue001 C a n x n", "x 2 + • • • + a n x n")
+    rule("E003 -> −", "7 j D j \ue003 1", "j = j − 1")
+    rule("E002 -> − 上标", "coefficient n\ue0021 of", "n−1 of")
+    rule("伪代码全行", "1 n L D q \ue003 p C 1", "n L = q − p + 1")
 
     # --- Ch2/3：点号-斜杠括号对（含嵌套）---
     rule("( ) 单层", "f.n/  D 0", "f(n)")
@@ -91,7 +98,7 @@ def main():
     # --- Ch4：递归式、取整 ---
     rule("d..e -> ⌈⌉", "containing dn=2e elements", "⌈n/2⌉")
     rule("b..c -> ⌊⌋", "bn=2c elements", "⌊n/2⌋")
-    rule("取整含括号", "3 q D b.p C r/=2c", "⌊(p C r)/2⌋")
+    rule("取整含括号", "3 q D b.p C r/=2c", "⌊(p + r)/2⌋")
 
     # --- Ch20/22：图论 ---
     rule("j -> | (势)", "jEj <3 jV j", "|E|")
@@ -112,6 +119,11 @@ def main():
     rule("小型大写：A VL", "such as A VL trees", "such as AVL trees")
     rule("小型大写：F IB-HEAP", "the F IB-HEAP-EXTRACT-MIN step", "FIB-HEAP-EXTRACT-MIN")
     rule("小型大写后接括号", "M ERGE.A;p;q;r/", "MERGE(A;p;q;r)")
+    rule("过程名连字符（同行）", "the I NSERTION -SORT procedure", "INSERTION-SORT")
+    rule("过程名连字符（跨行）", "procedure M AX-HEAP-I NCREASE -\nKEY", "MAX-HEAP-INCREASE-KEY")
+    keep("单字母算术不被粘连", "if A - B then the result is C - D")
+    rule("范数双竖线", "ˆ.t/ D \ue011 \ue011 x .t/", "= ‖ x (t)")
+    rule("单竖线仍走 j 规则", "the graph has jV j vertices", "|V| vertices")
 
     # --- 数学函数名紧跟空格后的点号 ---
     rule("(mod p)", "we compute .mod p/ and", "we compute (mod p) and")
@@ -147,6 +159,12 @@ def main():
     keep("行末连字符", "the well-known traveling-salesperson problem")
     keep("C 作为字母", "written in C, C++, Java, and Python")
     keep("斜杠注释", "1 if p >= r / / zero or one element?")
+    # 加号规则的误伤面（实测 2099 处命中里唯一的英文形态）
+    keep("a C program", "index using Windex, a C program that we wrote")
+    keep("Appendix C Counting", "See Appendix C Counting and Sorting.")
+    keep("clause C j", "every clause C j must be satisfied")
+    keep("array C after", "the array C after every operation")
+    keep("size C 1", "the table size C 1 is a power")
 
     # 这些是 **已知残余**，断言它们「不被误改」，用来锁定当前行为
     keep("残余：= 作等号在正文", "when this loop is for i 2 to n")
@@ -177,25 +195,46 @@ def main():
     #           Ch20(p561)、Ch31(p906)、Ch34(p1121)、附录A(p1141)
     real_cases = [
         (14, "finding", "Ch1 fi 连字 + 项目符号"),
-        (22, "i = 2 to n", "Ch2 D->= 正文"),
-        (23, "A[i .. j]", "Ch2 区间记号"),
-        (36, "MERGE(A;p;q;r)", "Ch2 MERGE 签名（含 ; 作分隔）"),
+        (19, "for i = 2 to n", "Ch2 伪代码第 1 行（= 赋值）"),
+        (19, "A[1 : i − 1]", "Ch2 注释里的切片冒号"),
+        (19, "j = j − 1", "Ch2 伪代码第 7 行（减号）"),
+        (19, "A[j + 1] = key", "Ch2 伪代码第 8 行（加号）"),
+        (23, "A[i : j]", "Ch2 切片冒号"),
+        (36, "A[q + j + 1]", "Ch2 MERGE 第 7 行"),
+        (36, "n L = q − p + 1", "Ch2 MERGE 第 1 行"),
+        (39, "q = ⌊(p + r)/2⌋", "Ch2 MERGE-SORT 第 3 行"),
+        (30, "c 2 (n − 1)", "Ch2 空格式括号 c2(n-1)"),
         (54, "O(g(n))", "Ch3 O-notation 嵌套括号"),
         (54, "Θ(g(n))", "Ch3 Θ-notation 嵌套括号"),
         (55, "Ω(g(n))", "Ch3 Ω-notation 嵌套括号"),
         (67, '"lg n"', "Ch3 双引号包住的记号"),
         (18, "INSERTION-SORT", "Ch2 小型大写名称已合并"),
-        (30, "←", "Ch2 代价表中的赋值箭头"),
+        (20, "INSERTION-SORT(A;n)", "Ch2 Figure 2.2 图注里的过程名（连字符已接回）"),
+        (176, "MAX-HEAP-INCREASE-KEY", "Ch6 三段式名称（跨行连字符已接回）"),
+        (30, "T(n)  = c 1 n + c 2 (n − 1)", "Ch2 最好情况代价公式"),
     ]
     for pg, want, why in real_cases:
         t = fixed_pages.get(pg, "")
         check(want in t, "[真实语料 p%d] %s：应含 %r" % (pg, why, want))
+
+    # 第 4 版不再用赋值箭头：全书不应残留
+    n_arrow = sum(t.count("←") for t in fixed_pages.values())
+    check(n_arrow == 0, "全书不应残留赋值箭头 ←（实际 %d 处）" % n_arrow)
+
+    # 切片必须用冒号，不应残留 3 版的 '..'
+    n_dots = sum(len(re.findall(r"\[[^\[\]]* \.\. [^\[\]]*\]", t)) for t in fixed_pages.values())
+    check(n_dots == 0, "不应残留 '..' 切片（实际 %d 处）" % n_dots)
 
     # 小型大写伪影在成品里应当基本消失（小于原书的 1%）
     residual_sc = 0
     for t in fixed_pages.values():
         residual_sc += len(re.findall(r"\b[A-Z] [A-Z]{2,}[A-Z-]*", t))
     check(residual_sc < 30, "小型大写伪影残余 = %d（应 < 30）" % residual_sc)
+
+    # 过程名里的连字符不应再与前半截分开（"INSERTION -SORT"）
+    n_name_gap = sum(len(re.findall(r"INSERTION -SORT|MERGE -SORT|MERGE -", t))
+                     for t in fixed_pages.values())
+    check(n_name_gap == 0, "过程名中的连字符前不留空格（实际 %d 处）" % n_name_gap)
 
     # 页眉剔除是 03_segment 的活，但这里先确认页眉文本确实存在（供它剔除）
     check("Chapter 2 Getting Started" in fixed_pages.get(22, "") or True,

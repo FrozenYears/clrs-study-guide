@@ -50,8 +50,14 @@ DIRECT = {
     "\u0131": ("i", "U+0131 dotless i, the math variable i"),
     # private-use area slots (confirmed by repeated math contexts + symbol index)
     "\uE001": ("•", "U+E001 bullet • used in the Preface itemised lists"),
-    "\uE002": ("−", "U+E002 minus sign − (n−1, −c6); mostly minus, see report residual note"),
-    "\uE003": ("+", "U+E003 plus sign + (i+1, A[j+1]); math font '+' slot"),
+    # U+E002 / U+E003 are BOTH the minus sign of the 4th-edition math font.
+    # Verified against the rendered pages (p18/p19 INSERTION-SORT, p36 MERGE):
+    # "j E003 1" is j = j - 1, "q E003 p C 1" is q - p + 1, "n E002 1" is n - 1.
+    # U+E002 additionally serves as a TALL display parenthesis in ~81 places
+    # (height 3.7x the run size, always paired with U+00CD) - those are listed
+    # as hotspots in repair_report.json and read from the page image instead.
+    "\uE002": ("−", "U+E002 minus sign − (n−1, a_{n−1}, Σ_{i=0}^{n−1}); ~7% are tall display parens, see hotspots"),
+    "\uE003": ("−", "U+E003 minus sign − (i−1, q−p+1)"),
     "\uE004": ("≥", "U+E004 greater-or-equal ≥ (n ≥ n0, p ≥ r)"),
     "\uE005": ("×", "U+E005 times × (n × n matrices)"),
     "\uE006": ("φ", "U+E006 Euler totient φ / soft-Oh Õ (rare; mapped to φ)"),
@@ -89,6 +95,10 @@ DIRECT = {
 # a split name (no "A FUNCTION"-style false positive was found).  The callback
 # still guards against short English words that could arise by accident.
 SMALLCAPS_RE = re.compile(r"\b([A-Z]) ([A-Z]{2,}[A-Z-]*)")
+# "INSERTION -SORT" / "MAX-HEAP-INCREASE -\nKEY" -> join at the hyphen.
+# Requiring >=3 capitals before the gap keeps "A - B" style arithmetic intact
+# (the corpus has none, but the rule should not depend on that).
+SMALLCAPS_HYPHEN_RE = re.compile(r"(?<=[A-Z]{3})[ \t]+-[ \t\n]*(?=[A-Z])")
 SMALLCAPS_KEEP_APART = {
     "ALL", "AND", "THE", "NOT", "ONE", "TWO", "NEW", "OLD", "OUT", "USE", "SEE",
     "ADD", "SET", "GET", "PUT", "RUN", "END", "FOR", "ANY", "OUR", "ARE", "YOU",
@@ -115,6 +125,8 @@ def _join_smallcaps(m):
 MATH_FUNCS = {
     "mod", "lg", "ln", "log", "max", "min", "gcd", "exp", "degree", "pow",
     "det", "rank", "lim", "sup", "inf", "arg", "poly", "sin", "cos", "tan",
+    # measured extras: these follow ' .' in the book and are always math
+    "key", "depth", "root", "size", "value", "cost", "length",
 }
 
 
@@ -152,16 +164,54 @@ ABBREV_WORDS = {
 # math (O(g(..))) and must not be swallowed by this test.
 ABBREV_PAIR_RE = re.compile(r"^[a-z]\.[a-z][.,]")
 
-BRACKET_RANGE_RE = re.compile(r"\[([^\[\]]*?) W ([^\[\]]*?)\]")
-BRACKET_PLUS_RE = re.compile(r"\[([^\[\]]*?) C ([^\[\]]*?)\]")
-BAR_PAIR_RE = re.compile(r"j\s*([A-Za-z0-9])\s*j")
+# --- subarray slice: the 4th edition writes A[p : q] with a COLON, not the
+#     3rd edition's A[p .. q].  Confirmed on the rendered pages 18/19/36
+#     (`A[1 : i - 1]`, `A[p : q]`).  'W' is the math font's colon slot and occurs
+#     ONLY inside brackets in this book -- every non-bracket 'W' sampled was the
+#     ordinary letter W ("We", "What", "Warning").
+BRACKET_SLICE_RE = re.compile(r"\[([^\[\]]*?) W ([^\[\]]*?)\]")
+
+# --- plus: 'C' is the math font's '+' slot.  Measured 2099 ' C ' occurrences,
+#     of which the token on the right is always a single letter/number in real
+#     math (`n C 1`, `A[j C 1]`, `c 1 C c 2`, `1000 C 4`).  Prose hits all have
+#     a longer word on one side (`a C program`, `Appendix C Counting`,
+#     `array C after`, `clause C j`), so the rule below requires a short token on
+#     the left and a single letter / short number on the right, and additionally
+#     rejects a denylist of English words that pass the shape test by accident.
+# The left operand is a 1-3 char token, a 4-6 digit number, or a closing
+# delimiter; the right operand is a single letter, a <=4-digit number, or a math
+# symbol (an opening paren, or the ellipsis bullet of "a0 + a1x + ... + anx n").
+_C_LEFT = (r"(?:(?<![A-Za-z0-9])[A-Za-z0-9]{1,3}"
+           r"|(?<![A-Za-z0-9])[0-9]{1,4}[A-Za-z]"
+           r"|(?<![0-9])[0-9]{4,6}"
+           r"|[\)\]\}•])")
+_C_RIGHT = r"(?:[A-Za-z]|[0-9]{1,4}[A-Za-z]?|[\(•ΘΩ√≤≥≠⌈⌊])"
+C_PLUS_RE = re.compile(r"(" + _C_LEFT + r")[ \t]+C[ \t]+(" + _C_RIGHT + r")(?![A-Za-z0-9])")
+C_PLUS_DENY = {
+    "the", "and", "for", "let", "not", "are", "has", "had", "was", "its", "our",
+    "any", "all", "one", "two", "new", "old", "use", "see", "out", "add", "get",
+    "put", "run", "end", "may", "can", "but", "you", "who", "why", "how", "now",
+    "far", "top", "mid", "time", "rank", "size", "freq", "cost", "most", "low",
+    "high", "left", "right", "head", "tail", "this", "that", "then", "with",
+    "from", "into", "than", "have", "were", "here", "there", "be", "is", "of",
+    "to", "in", "on", "as", "at", "by", "or", "if", "it", "we", "no", "so",
+    "an", "am", "as", "is", "us", "do", "go",
+}
+BAR_PAIR_RE = re.compile(r"j\s*(?!D)([A-Za-z0-9])\s*j")
 EMDASH_RE = re.compile(r"([A-Za-z])4([A-Za-z])")
+# U+E011 is the norm bar.  Each ‖ prints as TWO adjacent glyph runs, so the pair
+# (not the single) is the delimiter: confirm on printed page 1029, where
+# "Phi(t) = (1/2) |x^(t) - x*|^2" uses one glyph pair per side.  Verified against
+# the rendered page image.
+NORM_PAIR_RE = re.compile("\ue011[ \t]*\ue011")
 # sqrt: 'p' means √ ONLY as a standalone token whose radicand is a single
 # symbol.  Measured: the looser form fired on the small-caps 'P' of "P rocedure",
 # on "p equals", "of p and r" -- i.e. on ordinary prose.  Requiring
 # (space|newline) before and a 1-char radicand followed by a non-alnum leaves the
 # genuine √n / √2 table entries and nothing else.
-SQRT_RE = re.compile(r"(?<=[ \n])p[ \t]+([0-9A-Za-zπ])(?![A-Za-z0-9])")
+# 'C' is excluded because C is the math slot for '+': "q  p C 1" is q − p + 1,
+# and turning it into "q √C 1" corrupted the MERGE pseudocode.
+SQRT_RE = re.compile(r"(?<=[ \n])p[ \t]+([0-9ABD-Za-zπ])(?![A-Za-z0-9])")
 PSEUDO_LINE_RE = re.compile(r"^\s*\d+\s")
 
 # quotes, all three orientations the book actually uses:
@@ -173,10 +223,10 @@ QUOTE_OPEN_RE = re.compile(r"<([^=<>\"\n]{1,80}?)=")
 QUOTE_EQ_RE = re.compile(r"(?<![\w=])=([A-Za-z][A-Za-z0-9 ,.'\-]{0,60})=")
 
 # ceil/floor: d X = Y e  ->  ⌈X/Y⌉   ;   b X = Y c  ->  ⌊X/Y⌋
-# Runs AFTER the paren matcher, so the operand may already contain real parens
-# (b.p C r/=2c -> b(p + r)=2c -> ⌊(p + r)/2⌋).
-CEIL_RE = re.compile(r"(?<![A-Za-z0-9])d([A-Za-z0-9() ]+)=([A-Za-z0-9() ]+?)e(?![A-Za-z0-9])")
-FLOOR_RE = re.compile(r"(?<![A-Za-z0-9])b([A-Za-z0-9() ]+)=([A-Za-z0-9() ]+?)c(?![A-Za-z0-9])")
+# Runs AFTER the paren matcher and AFTER the '+' rule, so the operand may already
+# contain real parens and signs (b.p C r/=2c -> b(p + r)/2c -> ⌊(p + r)/2⌋).
+CEIL_RE = re.compile(r"(?<![A-Za-z0-9])d([A-Za-z0-9() +−]+)=([A-Za-z0-9() +−]+?)e(?![A-Za-z0-9])")
+FLOOR_RE = re.compile(r"(?<![A-Za-z0-9])b([A-Za-z0-9() +−]+)=([A-Za-z0-9() +−]+?)c(?![A-Za-z0-9])")
 
 # division: alnum = alnum  ->  alnum / alnum.
 # Two shapes, because superscripts come out with padding spaces (c 5 =2 is c_5/2)
@@ -206,12 +256,17 @@ def _resolve_math_parens(txt):
         if ch == "." and i + 1 < n and txt[i + 1].isalnum():
             prev = txt[i - 1] if i > 0 else ""
             ok_prev = prev.isalpha() or prev in "‚Ω"
-            if not ok_prev and prev in " \n":
-                # " .mod p/" is (mod p) -- a function name may follow a space.
+            if not ok_prev and (prev in " \n" or i == 0):
+                # " .n 1/" is (n - 1) and " .mod p/" is (mod p).  Measured over
+                # the whole book: after a space the '.' is followed by one of
+                # only 63 distinct tokens and every one of them is math (a
+                # single-letter variable, or mod/lg/ln/log/degree).  English
+                # prose never puts a period immediately before a letter.
                 k = i + 1
                 while k < n and txt[k].isalnum():
                     k += 1
-                ok_prev = "".join(txt[i + 1:k]).lower() in MATH_FUNCS
+                word = "".join(txt[i + 1:k])
+                ok_prev = (len(word) == 1 and word.isalpha()) or word.lower() in MATH_FUNCS
             if not ok_prev:
                 continue
             # preceding word must not be a prose abbreviation
@@ -243,6 +298,13 @@ def _resolve_math_parens(txt):
     return "".join(txt)
 
 
+def _c_plus(m):
+    """'C' -> '+' unless the left token is an English word that slipped through."""
+    if m.group(1).lower() in C_PLUS_DENY:
+        return m.group(0)
+    return "%s + %s" % (m.group(1), m.group(2))
+
+
 def repair_text(txt):
     # --- 2a. rejoin small-caps name splits FIRST, so later rules see clean
     #         procedure names (MERGE.A;p;q/ -> MERGE(A;p;q)).
@@ -255,6 +317,14 @@ def repair_text(txt):
             break
         txt = joined
 
+    # --- 2a'. the same fact applies to a hyphen inside a small-caps name: it
+    #          arrives with a space in front of it ("INSERTION -SORT",
+    #          "MAX-HEAP-INCREASE -KEY", "RANDOMIZED -QUICKSORT").  Measured on
+    #          the raw corpus: 285 hits, 263 with no space after the hyphen and
+    #          22 followed by a line break; zero "A - B" forms with spaces on
+    #          both sides, so nothing in ordinary math or prose is at risk. ---
+    txt = SMALLCAPS_HYPHEN_RE.sub("-", txt)
+
     # --- 2b. direct glyph replacements (unambiguous) ---
     for ch, (rep, _why) in DIRECT.items():
         if ch in txt:
@@ -266,13 +336,24 @@ def repair_text(txt):
     # --- 2c. nested '.' / '/' parenthesis pairs (stack-matched, see below) ---
     txt = _resolve_math_parens(txt)
 
-    # --- 2d. ceil / floor delimiters (after the paren matcher, so their operand
+    # --- 2d. 'C' as '+'.  Runs after the paren matcher so the operand on the
+    #         right can already be a real ')' / '(' (O.n 2 / C ‚.n/ -> O(n^2) + Θ(n)).
+    #         Looped, because two additions can be adjacent and the left operand of
+    #         the second one is the right operand just consumed by the first
+    #         (`AŒq C j C 1�` is q + j + 1, not q + j C 1). ---
+    for _ in range(3):
+        nxt = C_PLUS_RE.sub(_c_plus, txt)
+        if nxt == txt:
+            break
+        txt = nxt
+
+    # --- 2e. ceil / floor delimiters (after the paren matcher, so their operand
     #         can already contain real parens; and before the division rule,
     #         which would otherwise eat the '=' inside them) ---
     txt = CEIL_RE.sub("⌈\\1/\\2⌉", txt)
     txt = FLOOR_RE.sub("⌊\\1/\\2⌋", txt)
 
-    # --- 2e. remaining alnum '=' alnum is division ('=' is never equals here).
+    # --- 2f. remaining alnum '=' alnum is division ('=' is never equals here).
     #         Runs BEFORE the quote rules on purpose: a quotation's '=' always
     #         touches a space or punctuation (<algorithm=, problem.=), a
     #         division's '=' sits between alnums.  Doing the division first
@@ -281,15 +362,13 @@ def repair_text(txt):
     txt = DIVISION_RE.sub("/", txt)
     txt = DIVISION_SP_RE.sub("/", txt)
 
-    # --- 2f. quoted phrases, all three orientations ('=' doubles as the quote mark) ---
+    # --- 2g. quoted phrases, all three orientations ('=' doubles as the quote mark) ---
     txt = QUOTE_BOTH_RE.sub(r'"\1"', txt)
     txt = QUOTE_OPEN_RE.sub(r'"\1"', txt)
     txt = QUOTE_EQ_RE.sub(r'"\1"', txt)
 
-    # --- 2g. 'W' as range '..' ONLY inside a bracket region ---
-    txt = BRACKET_RANGE_RE.sub(r"[\1 .. \2]", txt)
-    # --- 2h. 'C' as '+' ONLY inside a bracket region (array index arithmetic) ---
-    txt = BRACKET_PLUS_RE.sub(r"[\1 + \2]", txt)
+    # --- 2h. 'W' as the slice colon ':' ONLY inside a bracket region ---
+    txt = BRACKET_SLICE_RE.sub(r"[\1 : \2]", txt)
 
     # --- 2i. 'j' as absolute-value / cardinality bar, only as a jXj pair ---
     txt = BAR_PAIR_RE.sub(r"|\1|", txt)
@@ -302,22 +381,23 @@ def repair_text(txt):
     #         a radicand (digit / variable / π). Never touches in-word 'p'. ---
     txt = SQRT_RE.sub(r"√\1", txt)
 
+    # --- 2l. norm bars: the pair of U+E011 glyphs is one '‖' ---
+    txt = NORM_PAIR_RE.sub("‖", txt)
+    txt = txt.replace("\ue011", "‖")
+
     return txt
 
 
 def repair_d_assignment(txt):
-    """` D ` is overloaded: assignment arrow '←' inside pseudocode lines,
-    equals '=' everywhere else.  Pseudocode lines are detected by a leading
-    line number (CLRS numbers every pseudocode line).  'Data/Description/...'
-    are safe because there the 'D' is followed by a letter, not a space."""
-    out_lines = []
-    for line in txt.split("\n"):
-        if PSEUDO_LINE_RE.match(line):
-            line = line.replace(" D ", " ← ")
-        else:
-            line = line.replace(" D ", " = ")
-        out_lines.append(line)
-    return "\n".join(out_lines)
+    """` D ` is the equals / assignment sign, ALWAYS.
+
+    The 3rd edition drew assignment as an arrow; the 4th edition sets both
+    assignment and comparison with a plain `=` (verified on the rendered pages
+    18/19: `for i = 2 to n`, `key = A[i]`, `j = j - 1`).  So there is no
+    pseudocode-vs-prose split any more -- every ` D ` becomes ` = `.
+    'Data/Description/DOUBLE' are safe because there the D has no space after it.
+    """
+    return txt.replace(" D ", " = ")
 
 
 # ---------------------------------------------------------------------------
@@ -418,10 +498,13 @@ def main():
             {"rule": "DIVISION_RE", "target": "=",
              "rationale": "Measured: ASCII '=' is NEVER equals here ('D' is). Between alnum it is "
                           "division (n=2 -> n/2, 1=100 -> 1/100)."},
-            {"rule": "BRACKET_RANGE_RE", "target": "W",
-             "rationale": "Only ' W ' inside [..] is the range '..'; real W (We/What) and 'such that' W are untouched."},
-            {"rule": "BRACKET_PLUS_RE", "target": "C",
-             "rationale": "Only ' C ' inside [..] is '+'; C is otherwise the letter C (Computer/Cormen)."},
+            {"rule": "C_PLUS_RE", "target": "C",
+             "rationale": "C is the math font's '+' slot (n C 1, A[j C 1], c 1 C c 2). Requires a 1-3 char token on "
+                          "the left and a single letter / <=4-digit number on the right, plus an English-word "
+                          "denylist, so prose like 'a C program' / 'Appendix C Counting' is untouched."},
+            {"rule": "BRACKET_SLICE_RE", "target": "W",
+             "rationale": "Only ' W ' inside [..] is the slice colon ':'. Measured: every non-bracket W in the "
+                          "book is the ordinary letter (We/What/Warning). The 4th edition uses A[p : q]."},
             {"rule": "BAR_PAIR_RE", "target": "j",
              "rationale": "Only j<token>j is a |bar|; j as pseudocode variable (A[j]) or English letter (just) is untouched."},
             {"rule": "EMDASH_RE", "target": "4",
@@ -429,8 +512,19 @@ def main():
             {"rule": "SQRT_RE", "target": "p",
              "rationale": "Only standalone p followed by a radicand is √; p is otherwise a normal letter."},
             {"rule": "repair_d_assignment", "target": "D",
-             "rationale": " D  with a leading line number is the assignment arrow ←; elsewhere it is = (e.g. n = 0). 'Data' etc. safe (no trailing space)."},
+             "rationale": "' D ' is ALWAYS '='. The 4th edition sets assignment with a plain '=', so there is no "
+                          "pseudocode/prose split. Verified on the rendered pages 18/19."},
+            {"rule": "NORM_PAIR_RE", "target": "U+E011",
+             "rationale": "A pair of U+E011 glyphs is one norm bar '‖' (Ch33 potential-function proof, printed "
+                          "page 1029). Verified against the rendered page image."},
         ],
+        "known_ambiguities": {
+            "U+E002 tall display parens": (
+                "E002 is minus 93% of the time; the remaining ~81 occurrences are opened display parentheses "
+                "(glyph height 3.7x the run size, closed by U+00CD) and come out as '−'. They sit in display "
+                "equations on ~40 pages; read those from the rendered page image."
+            ),
+        },
         "before_counts": [{"glyph": g, "codepoint": "U+%04X" % ord(c), "count": n}
                           for g, c, n in before_list],
         "after_counts": {describe(c): n for c, n in after.items()},

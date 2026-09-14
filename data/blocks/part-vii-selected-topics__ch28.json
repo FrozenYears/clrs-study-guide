@@ -1,0 +1,4223 @@
+{
+ "chapter": 28,
+ "chapter_title": "28 Matrix Operations",
+ "part": "Part VII Selected Topics",
+ "source": {
+  "printed": [
+   819,
+   null
+  ],
+  "pdf": [
+   840,
+   871
+  ]
+ },
+ "sections": [
+  "28.1 Solving systems of linear equations",
+  "28.2 Inverting matrices",
+  "28.3 Symmetric positive-definite matrices and least-squares approximation"
+ ],
+ "sections_found": [
+  "28.1 Solving systems of linear equations",
+  "28.2 Inverting matrices",
+  "28.3 Symmetric positive-definite matrices and least-squares approximation"
+ ],
+ "blocks": [
+  {
+   "type": "footnote",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 819,
+   "pdf_page": 840,
+   "text": "28 Matrix Operations"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 819,
+   "pdf_page": 840,
+   "text": "Because operations on matrices lie at the heart of scientific computing, efficient algorithms for working with matrices have many practical applications. This chapter focuses on how to multiply matrices and solve sets of simultaneous linear equations. Appendix = reviews the basics of matrices."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 819,
+   "pdf_page": 840,
+   "text": "Section 28.1 shows how to solve a set of linear equations using LUP decompositions. Then, Section 28.2 explores the close relationship between multiplying and inverting matrices. Finally, Section 28.3 discusses the important class of symmetric positive-definite matrices and shows how to use them to find a least-squares solution to an overdetermined set of linear equations."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 819,
+   "pdf_page": 840,
+   "text": "One important issue that arises in practice is numerical stability. Because actual computers have limits to how precisely they can represent floating-point numbers, round-off errors in numerical computations may become amplified over the course of a computation, leading to incorrect results. Suc h computations are called numerically unstable. Although we’ll briefly consider numerical stability on occasion, we won’t focus on it in this chapter. We refer you to the excellent book by Higham [216] for a thorough discussion of stability issues."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 819,
+   "pdf_page": 840,
+   "text": "Numerous applications need to solve sets of simultaneous linear equations. A linear system can be cast as a matrix equation in which each matrix or vector element belongs to a field, typically the real numbers R. This section discusses how to solve a system of linear equations using a method called LUP decomposition."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 819,
+   "pdf_page": 840,
+   "text": "The process starts with a set of linear equations in n unknowns x 1 ;x 2 ;:::;x n : a 11 x 1 + a 12 x 2 + • • • + a 1n x n = b 1 ; a 21 x 1 + a 22 x 2 + • • • + a 2n x n = b 2 ; : : : a n1 x 1 + a n2 x 2 + • • • + a nn x n = b n :"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 820,
+   "pdf_page": 841,
+   "text": "A solution to the equations (28.1) is a set of values for x 1 ;x 2 ;:::;x n that satisfy all of the equations simultaneously. In this section, we treat only the case in which there are exactly n equations in n unknowns."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 820,
+   "pdf_page": 841,
+   "text": "Next, rewrite equations (28.1) as the matrix-vector equation"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 820,
+   "pdf_page": 841,
+   "text": "⌊ a 11 a 12 • • • a 1n a 21 a 22 • • • a 2n"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 820,
+   "pdf_page": 841,
+   "text": ": : : : : : : : : : : : a n1 a n2 • • • a nn"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 820,
+   "pdf_page": 841,
+   "text": "×⌊ x 1 x 2"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 820,
+   "pdf_page": 841,
+   "text": ": : : x n"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 820,
+   "pdf_page": 841,
+   "text": "⌊ b 1 b 2"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 820,
+   "pdf_page": 841,
+   "text": ": : : b n"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 820,
+   "pdf_page": 841,
+   "text": "× or, equivalently, letting A = (a ij ), x = (x i ), and b = (b i ), as Ax = b: (28.2)"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 820,
+   "pdf_page": 841,
+   "text": "If A is nonsingular, it possesses an inverse A −1 , and x = A −1 b (28.3) is the solution vector. We can prove that x is the unique solution to equation (28.2) as follows. If there are two solutions, x and x 0 , then Ax = Ax 0 = b and, letting I denote an identity matrix, x = Ix"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 820,
+   "pdf_page": 841,
+   "text": "D (A −1 A)x"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 820,
+   "pdf_page": 841,
+   "text": "D A −1 .Ax/"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 820,
+   "pdf_page": 841,
+   "text": "D A −1 .Ax 0 /"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 820,
+   "pdf_page": 841,
+   "text": "D (A −1 A)x 0"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 820,
+   "pdf_page": 841,
+   "text": "This section focuses on the case in which A is nonsingular or, equivalently (by Theorem D.1 on page 1220), the rank of A equals the number n of unknowns."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 820,
+   "pdf_page": 841,
+   "text": "There are other possibilities, however, which merit a brief discussion. If the number of equations is less than the number n of unknowns—or, more generally, if the rank of A is less than n—then the system is underdetermined. An underdetermined system typically has infinitely many solutions, although it may have no solutions at all if the equations are inconsistent. If the nu mber of equations ex- ceeds the number n of unknowns, the system is overdetermined, and there may not exist any solutions. Section 28.3 addresses the important problem of finding good approximate solutions to overdetermined systems of linear equations."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 820,
+   "pdf_page": 841,
+   "text": "⌊ a 11 a 12 • • • a 1n a 21 a 22 • • • a 2n"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 820,
+   "pdf_page": 841,
+   "text": ": : : : : : : : : : : : a n1 a n2 • • • a nn"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 820,
+   "pdf_page": 841,
+   "text": "D ã ä by using an LUP decomposition."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 821,
+   "pdf_page": 842,
+   "text": "Let’s return to the problem of solving the system Ax = b of n equations in n unknowns. One option is to compute A −1 and then, using equation (28.3), multiply b by A −1 , yielding x = A −1 b. This approach suffers in practice from numerical instability. Fortunately, another approach—LUP decomposition—is numerically stable and has the further advantage of being faster in practice."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 821,
+   "pdf_page": 842,
+   "text": "Overview of LUP decomposition"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 821,
+   "pdf_page": 842,
+   "text": "The idea behind LUP decomposition is to find three n × n matrices L, U , and P such that PA DLU ; (28.4) where"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 821,
+   "pdf_page": 842,
+   "text": "• L is a unit lower-triangular matrix, • U is an upper-triangular matrix, and • P is a permutation matrix."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 821,
+   "pdf_page": 842,
+   "text": "We call matrices L, U , and P satisfying equation (28.4) an LUP decomposition of the matrix A. We’ll show that every nonsingular matrix A possesses such a decomposition."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 821,
+   "pdf_page": 842,
+   "text": "Computing an LUP decomposition for the matrix A has the advantage that linear systems can be efficiently solved when they are triangular, as is the case for both matrices L and U . If you have an LUP decomposition for A, you can solve equation (28.2), Ax = b, by solving only triangular linear systems, as follows. Multiply both sides of Ax = b by P , yielding the equivalent equation PAx = Pb. By Exercise D.1-4 on page 1219, multiplying both sides by a permutation matrix amounts to permuting the equations (28.1). By the decomposition (28.4), substituting LU for PA gives"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 821,
+   "pdf_page": 842,
+   "text": "LUx = Pb:"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 821,
+   "pdf_page": 842,
+   "text": "You can now solve this equation by solving two triangular linear systems. Define y = Ux , where x is the desired solution vector. First, solve the lower-triangular system"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 821,
+   "pdf_page": 842,
+   "text": "Ly = Pb (28.5) for the unknown vector y by a method called \"forward substitution.\" Having solved for y , solve the upper-triangular system"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 822,
+   "pdf_page": 843,
+   "text": "Ux = y (28.6) for the unknown x by a method called \"back substitution.\" Why does this process solve Ax = b? Because the permutation matrix P is invertible (see Exercise D.2-3 on page 1223), multiplying both sides of equation (28.4) by P −1 gives"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 822,
+   "pdf_page": 843,
+   "text": "P −1 PA = P −1 LU , so that A = P −1 LU : (28.7)"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 822,
+   "pdf_page": 843,
+   "text": "Hence, the vector x that satisfies Ux = y is the solution to Ax = b:"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 822,
+   "pdf_page": 843,
+   "text": "Ax = P −1 LUx (by equation (28.7))"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 822,
+   "pdf_page": 843,
+   "text": "D P −1 Ly (by equation (28.6))"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 822,
+   "pdf_page": 843,
+   "text": "D P −1 Pb (by equation (28.5))"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 822,
+   "pdf_page": 843,
+   "text": "The next step is to show how forward and back substitution work and then attack the problem of computing the LUP decomposition itself."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 822,
+   "pdf_page": 843,
+   "text": "Forward and back substitution"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 822,
+   "pdf_page": 843,
+   "text": "Forward substitution can solve the lower-triangular system (28.5) in Θ(n 2 ) time, given L, P , and b. An array Ω[1 : n] provides a more compact format to represent the permutation P than an n × n matrix that is mostly 0s. For i = 1;2;:::;n , the entry Ω[i ] indicates that P i;−[i Ł = 1 and P ij = 0 for j ≠ ][i ]. Thus, PA has a −[i Ł;j in row i and column j , and Pb has b −[i Ł as its i th element. Since L is unit lower-triangular, the matrix equation Ly = Pb is equivalent to the n equations y 1 = b −[1Ł ; l 21 y 1 + y 2 = b −[2Ł ; l 31 y 1 + l 32 y 2 + y 3 = b −[3Ł ; : : : l n1 y 1 + l n2 y 2 + l n3 y 3 + • • • + y n = b −[nŁ :"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 822,
+   "pdf_page": 843,
+   "text": "The first equation gives y 1 = b −[1Ł directly. Knowing the value of y 1 , you can substitute it into the second equation, yielding y 2 = b −[2Ł − l 21 y 1 :"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 822,
+   "pdf_page": 843,
+   "text": "Next, you can substitute both y 1 and y 2 into the third equation, obtaining y 3 = b −[3Ł − (l 31 y 1 + l 32 y 2 ):"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 822,
+   "pdf_page": 843,
+   "text": "In general, you substitute y 1 ;y 2 ;:::;y i −1 \"forward\" into the i th equation to solve for y i : y i = b −[i Ł − i −1 X j D1 l i|y| :"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 823,
+   "pdf_page": 844,
+   "text": "Once you’ve solved for y , you can solve for x in equation (28.6) using back substitution, which is similar to forward substitution. This time, you solve the nth equation first and work backward to the first equation. Like forward substitution, this process runs in Θ(n 2 ) time. Since U is upper-triangular, the matrix equation"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 823,
+   "pdf_page": 844,
+   "text": "Ux = y is equivalent to the n equations u 11 x 1 + u 12 x 2 + • • • + u 1;n−2 x n−2 + u 1;n−1 x n−1 + u 1n x n = y 1 ; u 22 x 2 + • • • + u 2;n−2 x n−2 + u 2;n−1 x n−1 + u 2n x n = y 2 ; : : : u n−2;n−2 x n−2 + u n−2;n−1 x n−1 + u n−2;n x n = y n−2 ; u n−1;n−1 x n−1 + u n−1;n x n = y n−1 ; u n;n x n = y n :"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 823,
+   "pdf_page": 844,
+   "text": "Thus, you can solve for x n ;x n−1 ;:::;x 1 successively as follows: x n = y n =u n;n ; x n−1 = (y n−1 − u n−1;n x n )/u n−1;n−1 ; x n−2 = (y n−2 − (u n−2;n−1 x n−1 + u n−2;n x n ))/u n−2;n−2 ; : : : or, in general, x i ="
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 823,
+   "pdf_page": 844,
+   "text": "• y i − n X j Di C1 u i|x|"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 823,
+   "pdf_page": 844,
+   "text": "=u i i :"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 823,
+   "pdf_page": 844,
+   "text": "Given P , L, U , and b, the procedure LUP-SOLVE on the next page solves for x by combining forward and back substitution. The per mutation matrix P is represented by the array ] . The procedure first solves for y using forward substitution in lines 233, and then it solves for x using backward substitution in lines 435. Since the summation within each of the for loops includes an implicit loop, the running time is Θ(n 2 )."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 823,
+   "pdf_page": 844,
+   "text": "As an example of these methods, consider the system of linear equations defined by Ax = b, where"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 823,
+   "pdf_page": 844,
+   "text": "5 6 3 ä and b = ã ä"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 823,
+   "pdf_page": 844,
+   "text": "; LUP-SOLVE (L; U; Ω; b; n) ã y i − P n j Di C1 u i|x| ä"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 823,
+   "pdf_page": 844,
+   "text": "; obtaining y = ã"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 823,
+   "pdf_page": 844,
+   "text": "; thereby obtaining the desired answer x = ã"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 823,
+   "pdf_page": 844,
+   "text": "; as shown by A ="
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 823,
+   "pdf_page": 844,
+   "text": "; where v = (a 21 ;a 31 ;:::;a n1 ), except that a 11 replaces a k1 ; w T = (a k2 ;a k3 ; :::;a k n ) T ; and A 0 is an (n − 1) × (n − 1) matrix. Since a k1 ≠ 0, the analog to equation (28.9) guarantees no division by 0:"
+  },
+  {
+   "type": "pseudocode",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 824,
+   "pdf_page": 845,
+   "algo_name": "LUP-SOLVE",
+   "signature": "LUP-SOLVE",
+   "lines": [
+    {
+     "n": 1,
+     "code": "let x and y be new vectors of length n"
+    },
+    {
+     "n": 2,
+     "code": "for i = 1 to n"
+    },
+    {
+     "n": 3,
+     "code": "y i = b −[i Ł − P i −1 j D1 l i|y|"
+    },
+    {
+     "n": 4,
+     "code": "for i = n downto 1"
+    },
+    {
+     "n": 5,
+     "code": "x i = ã y i − P n"
+    }
+   ],
+   "text": "1 let x and y be new vectors of length n\n2 for i = 1 to n\n3 y i = b −[i Ł − P i −1 j D1 l i|y|\n4 for i = n downto 1\n5 x i = ã y i − P n"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 824,
+   "pdf_page": 845,
+   "text": "6 return x and we want to solve for the unknown x . The LUP decomposition is L = ã"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 824,
+   "pdf_page": 845,
+   "text": "0:6 0:5 1 ä"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 824,
+   "pdf_page": 845,
+   "text": "0 0:8 −0:6"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 824,
+   "pdf_page": 845,
+   "text": "0 0 2:5 ä"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 824,
+   "pdf_page": 845,
+   "text": "; and P = ã"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 824,
+   "pdf_page": 845,
+   "text": "(You might want to verify that PA DLU .) Using forward substitution, solve"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 824,
+   "pdf_page": 845,
+   "text": "Ly = Pb for y : ã"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 824,
+   "pdf_page": 845,
+   "text": "0:6 0:5 1 äã y 1 y 2 y 3 ä"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 824,
+   "pdf_page": 845,
+   "text": "1:5 ä by computing first y 1 , then y 2 , and finally y 3 . Then, using back substitution, solve"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 824,
+   "pdf_page": 845,
+   "text": "Ux = y for x : ã"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 824,
+   "pdf_page": 845,
+   "text": "0 0:8 −0:6"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 824,
+   "pdf_page": 845,
+   "text": "0 0 2:5 äã x 1 x 2 x 3 ä"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 824,
+   "pdf_page": 845,
+   "text": "0:6 ä by computing first x 3 , then x 2 , and finally x 1 ."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 824,
+   "pdf_page": 845,
+   "text": "Computing an LU decomposition"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 824,
+   "pdf_page": 845,
+   "text": "Given an LUP decomposition for a nonsingular matrix A, you can use forward and back substitution to solve the system Ax = b of linear equations. Now let’s see how to efficiently compute an LUP decomposition for A. We start with the simpler case in which A is an n × n nonsingular matrix and P is absent (or, equivalently, P = I n , the n × n identity matrix), so that ADLU . We call the two matrices L and U an LU decomposition of A."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 825,
+   "pdf_page": 846,
+   "text": "To create an LU decomposition, we’ll use a process known as Gaussian elimination. Start by subtracting multiples of the first equation from the other equations in order to remove the first variable from those equations. Then subtract multiples of the second equation from the third and subsequent equations so that now the first and second variables are removed from them. Continu e this process until the system that remains has an upper-triangular form—this is the matrix U . The matrix L comprises the row multipliers that cause variables to be eliminated."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 825,
+   "pdf_page": 846,
+   "text": "To implement this strategy, let’s start with a recursive formulation. The input is an n × n nonsingular matrix A. If n = 1, then nothing needs to be done: just choose L = I 1 and U = A. For n>1 , break A into four parts:"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 825,
+   "pdf_page": 846,
+   "text": "] a 11 w T v A 0"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 825,
+   "pdf_page": 846,
+   "text": "; (28.8) where v = (a 21 ;a 31 ;:::;a n1 ) is a column (n−1)-vector, w T = (a 12 ;a 13 ;:::;a 1n ) T is a row (n − 1)-vector, and A 0 is an (n − 1) × (n − 1) matrix. Then, using matrix algebra (verify the equations by simply multiplying through), factor A as A ="
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 825,
+   "pdf_page": 846,
+   "text": "] a 11 w T v A 0"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 825,
+   "pdf_page": 846,
+   "text": "] 1 0 v/a 11 I n−1"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 825,
+   "pdf_page": 846,
+   "text": "Ð] a 11 w T"
+  },
+  {
+   "type": "footnote",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 825,
+   "pdf_page": 846,
+   "text": "0 A 0 − vw T =a 11"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 825,
+   "pdf_page": 846,
+   "text": ": (28.9)"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 825,
+   "pdf_page": 846,
+   "text": "The 0s in the first and second matrices of equation (28.9) are row and column"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 825,
+   "pdf_page": 846,
+   "text": "(n − 1)-vectors, respectively. The term vw T =a 11 is an (n − 1) × (n − 1) matrix formed by taking the outer product of v and w and dividing each element of the result by a 11 . Thus it conforms in size to the matrix A 0 from which it is subtracted."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 825,
+   "pdf_page": 846,
+   "text": "The resulting (n − 1) × (n − 1) matrix"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 825,
+   "pdf_page": 846,
+   "text": "A 0 − vw T =a 11 (28.10) is called the Schur complement of A with respect to a 11 ."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 825,
+   "pdf_page": 846,
+   "text": "We claim that if A is nonsingular, then the Schur complement is nonsin gular, too. Why? Suppose that the Schur complement, which is (n − 1) × (n − 1), is singular. Then by Theorem D.1, it has row rank strictly less than n − 1. Because the bottom n − 1 entries in the first column of the matrix"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 825,
+   "pdf_page": 846,
+   "text": "] a 11 w T"
+  },
+  {
+   "type": "footnote",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 825,
+   "pdf_page": 846,
+   "text": "0 A 0 − vw T =a 11"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 825,
+   "pdf_page": 846,
+   "text": "Ð are all 0, the bottom n − 1 rows of this matrix must have row rank strictly les s than n − 1. The row rank of the entire matrix, therefore, is strictly less than n."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 825,
+   "pdf_page": 846,
+   "text": "] 1 0 v/a 11 L 0"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 825,
+   "pdf_page": 846,
+   "text": "Ð and U ="
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 825,
+   "pdf_page": 846,
+   "text": "] a 11 w T"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 825,
+   "pdf_page": 846,
+   "text": "] 1 0 v/a 11 I n−1"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 825,
+   "pdf_page": 846,
+   "text": "Ð] a 11 w T"
+  },
+  {
+   "type": "footnote",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 825,
+   "pdf_page": 846,
+   "text": "0 A 0 − vw T =a 11"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 825,
+   "pdf_page": 846,
+   "text": "] 1 0 v/a 11 I n−1"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 825,
+   "pdf_page": 846,
+   "text": "Ð] a 11 w T"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 825,
+   "pdf_page": 846,
+   "text": "] a 11 w T v vw T =a 11 + L 0 U 0"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 825,
+   "pdf_page": 846,
+   "text": "] 1 0 v/a 11 L 0"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 825,
+   "pdf_page": 846,
+   "text": "Ð] a 11 w T"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 825,
+   "pdf_page": 846,
+   "text": "] 1 0 v/a k1 I n−1"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 826,
+   "pdf_page": 847,
+   "text": "Applying Exercise D.2-8 on page 1223 to equation (28.9), A has rank strictly less than n, and from Theorem D.1, we derive the contradiction that A is singular."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 826,
+   "pdf_page": 847,
+   "text": "Because the Schur complement is nonsingular, it, too, has an LU decomposition, which we can find recursively. Let’s say that A 0 − vw T =a 11 = L 0 U 0 ; where L 0 is unit lower-triangular and U 0 is upper-triangular. The LU decomposition of A is then ADLU , with L ="
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 826,
+   "pdf_page": 847,
+   "text": "(by equation (28.9))"
+  },
+  {
+   "type": "footnote",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 826,
+   "pdf_page": 847,
+   "text": "0 L 0 U 0"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 826,
+   "pdf_page": 847,
+   "text": "Because L 0 is unit lower-triangular, so is L, and because U 0 is upper-triangular, so is U ."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 826,
+   "pdf_page": 847,
+   "text": "Of course, if a 11 = 0, this method doesn’t work, because it divides by 0. It also doesn’t work if the upper leftmost entry of the Schur complement A 0 − vw T =a 11 is 0, since the next step of the recursion will divide by it. The denominators in each step of LU decomposition are called pivots, and they occupy the diagonal elements of the matrix U . The permutation matrix P included in LUP decomposition provides a way to avoid dividing by 0, as we’ll see below. Using permutations to avoid division by 0 (or by small numbers, which can contribute to numerical instability), is called pivoting."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 826,
+   "pdf_page": 847,
+   "text": "An important class of matrices for which LU decomposition always works correctly is the class of symmetric positive-definite matrices. Such matrices require no pivoting to avoid dividing by 0 in the recursive strategy outlined above. We will prove this result, as well as several others, in Section 28.3."
+  },
+  {
+   "type": "footnote",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 826,
+   "pdf_page": 847,
+   "text": "0 L 0 U 0"
+  },
+  {
+   "type": "pseudocode",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 827,
+   "pdf_page": 848,
+   "algo_name": "LU-DECOMPOSITION",
+   "signature": "LU-DECOMPOSITION",
+   "lines": [
+    {
+     "n": 1,
+     "code": "let L and U be new n × n matrices"
+    },
+    {
+     "n": 2,
+     "code": "initialize U with 0s below the diagonal"
+    },
+    {
+     "n": 3,
+     "code": "initialize L with 1s on the diagonal and 0s above the diagonal"
+    },
+    {
+     "n": 4,
+     "code": "for k = 1 to n"
+    },
+    {
+     "n": 5,
+     "code": "u kk = a kk"
+    },
+    {
+     "n": 6,
+     "code": "for i = k + 1 to n"
+    },
+    {
+     "n": 7,
+     "code": "l i k = a i k =a kk / / a i k holds v i"
+    },
+    {
+     "n": 8,
+     "code": "u ki = a ki / / a ki holds w i"
+    },
+    {
+     "n": 9,
+     "code": "for i = k + 1 to n / / compute the Schur complement . . ."
+    },
+    {
+     "n": 10,
+     "code": "for j = k + 1 to n"
+    },
+    {
+     "n": 11,
+     "code": "a ij = a ij − l i k u kj / / . . . and store it back into A"
+    },
+    {
+     "n": 12,
+     "code": "return L and U"
+    }
+   ],
+   "text": "1 let L and U be new n × n matrices\n2 initialize U with 0s below the diagonal\n3 initialize L with 1s on the diagonal and 0s above the diagonal\n4 for k = 1 to n\n5 u kk = a kk\n6 for i = k + 1 to n\n7 l i k = a i k =a kk / / a i k holds v i\n8 u ki = a ki / / a ki holds w i\n9 for i = k + 1 to n / / compute the Schur complement . . .\n10 for j = k + 1 to n\n11 a ij = a ij − l i k u kj / / . . . and store it back into A\n12 return L and U"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 827,
+   "pdf_page": 848,
+   "text": "The pseudocode in the procedure LU-DECOMPOSITION follows the recursive strategy, except that an iteration loop replaces the recursion. (This transformation is a standard optimization for a \"tail-recursive\" procedure—one whose last operation is a recursive call to itself. See Problem 7-5 on page 202.) The procedure initializes the matrix U with 0s below the diagonal and matrix L with 1s on its diagonal and 0s above the diagonal. Each iteration works on a squ are submatrix, using its upper leftmost element as the pivot to compute the v and w vectors and the Schur complement, which becomes the square submatrix worked on by the next iteration."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 827,
+   "pdf_page": 848,
+   "text": "LU-DECOMPOSITION (A;n)"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 827,
+   "pdf_page": 848,
+   "text": "Each recursive step in the description above takes place in one iteration of the outer for loop of lines 4311. Within this loop, line 5 determines the pivot to be u kk = a kk . The for loop in lines 638 (which does not execute when k = n) uses the v and w vectors to update L and U . Line 7 determines the below-diagonal elements of L, storing v i =a kk in l i k , and line 8 computes the above-diagonal elements of U , storing w i in u ki . Finally, lines 9311 compute the elements of the Schur complement and store them back into the matri x A. (There is no need to divide by a kk in line 11 because that already happened when line 7 computed l i k .)"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 827,
+   "pdf_page": 848,
+   "text": "Because line 11 is triply nested, LU-DECOMPOSITION runs in Θ(n 3 ) time."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 827,
+   "pdf_page": 848,
+   "text": "Figure 28.1 illustrates the operation of LU-DECOMPOSITION . It shows a standard optimization of the procedure that stores the significant elements of L and U in place in the matrix A. Each element a ij corresponds to either l ij (if i > j ) or u ij (if i ≤ j ), so that the matrix A holds both L and U when the procedure terminates. To obtain the pseudocode for this optim ization from the pseudocode for the LU-DECOMPOSITION procedure, just replace each reference to l or u by a."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 827,
+   "pdf_page": 848,
+   "text": "You can verify that this transformation preserves correctness."
+  },
+  {
+   "type": "pseudocode",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 828,
+   "pdf_page": 849,
+   "algo_name": "D",
+   "signature": "D",
+   "lines": [
+    {
+     "n": 1,
+     "code": "4 1 0"
+    },
+    {
+     "n": 2,
+     "code": "1 7 1"
+    }
+   ],
+   "text": "1 4 1 0\n2 1 7 1"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 828,
+   "pdf_page": 849,
+   "text": "6 13 5 19"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 828,
+   "pdf_page": 849,
+   "text": "2 19 10 23"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 828,
+   "pdf_page": 849,
+   "text": "4 10 11 31"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 828,
+   "pdf_page": 849,
+   "text": "1 16 9 18"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 828,
+   "pdf_page": 849,
+   "text": "2 4 9 21"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 828,
+   "pdf_page": 849,
+   "text": "2 1 7 17"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 828,
+   "pdf_page": 849,
+   "text": "6 13 5 19"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 828,
+   "pdf_page": 849,
+   "text": "2 19 10 23"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 828,
+   "pdf_page": 849,
+   "text": "4 10 11 31"
+  },
+  {
+   "type": "figure-caption",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 828,
+   "pdf_page": 849,
+   "text": "Figure 28.1 The operation of LU-DECOMPOSITION . (a) The matrix A. (b) The result of the first iteration of the outer for loop of lines 4311. The element a 11 = 2 highlighted in blue is the pivot, the tan column is v/a 11 , and the tan row is w T . The elements of U computed thus far are above the horizontal line, and the elements of L are to the left of the vertical line. The Schur com plement matrix A 0 − vw T =a 11 occupies the lower right. (c) The result of the next iteration of the outer for loop, on the Schur complement matrix from part (b). The element a 22 = 4 highlighted in blue is the pivot, and the tan column and row are v/a 22 and w T (in the partitioning of the Schur complement), respectively. Lines divide the matrix into the elem ents of U computed so far (above), the elements of L computed so far (left), and the new Schur complement (lower right). (d) After the next iteration, the matrix A is factored. The element 3 in the new Schur complement becomes part of U when the recursion terminates.) (e) The factorization ADLU ."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 828,
+   "pdf_page": 849,
+   "text": "Computing an LUP decomposition"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 828,
+   "pdf_page": 849,
+   "text": "If the diagonal of the matrix given to LU-DECOMPOSITION contains any 0s, then the procedure will attempt to divide by 0, which would cause disaster. Even if the diagonal contains no 0s, but does have numbers with small absolute values , dividing by such numbers can cause numerical instab ilities. Therefore, LUP decomposition pivots on entries with the largest absolute values that it can find."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 828,
+   "pdf_page": 849,
+   "text": "In LUP decomposition, the input is an n × n nonsingular matrix A, with a goal of finding a permutation matrix P , a unit lower-triangular matrix L, and an uppertriangular matrix U such that PA DLU . Before partitioning the matrix A, as LU decomposition does, LUP decomposition moves a nonzero element, say a k1 , from somewhere in the first column to the .1;1/ position of the matrix. For the greatest numerical stability, LUP decomposition chooses the element in the first column with the greatest absolute value as a k1 . (The first column cannot contain only 0s, for then A would be singular, because its determinant would be 0, by Theorems"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 828,
+   "pdf_page": 849,
+   "text": "D.4 and D.5 on page 1221.) In order to preserve the set of equations, LUP decomposition exchanges row 1 with row k, which is equivalent to multiplying A by a permutation matrix Q on the left (Exercise D.1-4 on page 1219). Thus, the analog to equation (28.8) expresses QA as QA ="
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 829,
+   "pdf_page": 850,
+   "text": "] a k1 w T v A 0"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 829,
+   "pdf_page": 850,
+   "text": "] a k1 w T v A 0"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 829,
+   "pdf_page": 850,
+   "text": "Ð] a k1 w T"
+  },
+  {
+   "type": "footnote",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 829,
+   "pdf_page": 850,
+   "text": "0 A 0 − vw T =a k1"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 829,
+   "pdf_page": 850,
+   "text": "Just as in LU decomposition, if A is nonsingular, then the Schur complement"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 829,
+   "pdf_page": 850,
+   "text": "A 0 − vw T =a k1 is nonsingular, too. Therefore, you can recursively find an LUP decomposition for it, with unit lower-triangular matrix L 0 , upper-triangular matrix U 0 , and permutation matrix P 0 , such that P 0 (A 0 − vw T =a k1 ) = L 0 U 0 :"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 829,
+   "pdf_page": 850,
+   "text": "Q; which is a permutation matrix, since it is the prod uct of two permutation matrices"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 829,
+   "pdf_page": 850,
+   "text": "(Exercise D.1-4 on page 1219). This definition of P gives"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 829,
+   "pdf_page": 850,
+   "text": "Ð] 1 0 v/a k1 I n−1"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 829,
+   "pdf_page": 850,
+   "text": "Ð] a k1 w T"
+  },
+  {
+   "type": "footnote",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 829,
+   "pdf_page": 850,
+   "text": "0 A 0 − vw T =a k1"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 829,
+   "pdf_page": 850,
+   "text": "P 0 v/a k1 P 0"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 829,
+   "pdf_page": 850,
+   "text": "Ð] a k1 w T"
+  },
+  {
+   "type": "footnote",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 829,
+   "pdf_page": 850,
+   "text": "0 A 0 − vw T =a k1"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 829,
+   "pdf_page": 850,
+   "text": "P 0 v/a k1 I n−1"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 829,
+   "pdf_page": 850,
+   "text": "Ð] a k1 w T"
+  },
+  {
+   "type": "footnote",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 829,
+   "pdf_page": 850,
+   "text": "0 P 0 (A 0 − vw T =a k1 )"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 829,
+   "pdf_page": 850,
+   "text": "P 0 v/a k1 I n−1"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 829,
+   "pdf_page": 850,
+   "text": "Ð] a k1 w T"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 829,
+   "pdf_page": 850,
+   "text": "P 0 v/a k1 L 0"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 829,
+   "pdf_page": 850,
+   "text": "Ð] a k1 w T"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 829,
+   "pdf_page": 850,
+   "text": "DLU ; which yields the LUP decomposition. Because L 0 is unit lower-triangular, so is L, and because U 0 is upper-triangular, so is U ."
+  },
+  {
+   "type": "pseudocode",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 830,
+   "pdf_page": 851,
+   "algo_name": "LUP-DECOMPOSITION",
+   "signature": "LUP-DECOMPOSITION",
+   "lines": [
+    {
+     "n": 1,
+     "code": "let Ω[1 : n] be a new array"
+    },
+    {
+     "n": 2,
+     "code": "for i = 1 to n"
+    },
+    {
+     "n": 3,
+     "code": "Ω[i ] = i / / initialize Ω to the identity permutation"
+    },
+    {
+     "n": 4,
+     "code": "for k = 1 to n"
+    },
+    {
+     "n": 5,
+     "code": "√D 0"
+    },
+    {
+     "n": 6,
+     "code": "for i = k to n / / find largest absolute value in column k"
+    },
+    {
+     "n": 7,
+     "code": "if ja i k j >p"
+    },
+    {
+     "n": 8,
+     "code": "√D ja i k j"
+    },
+    {
+     "n": 9,
+     "code": "k 0 = i / / row number of the largest found so far"
+    },
+    {
+     "n": 10,
+     "code": "if p = = 0"
+    },
+    {
+     "n": 11,
+     "code": "error \"singular matrix\""
+    },
+    {
+     "n": 12,
+     "code": "exchange Ω[k ] with Ω[k 0 ]"
+    },
+    {
+     "n": 13,
+     "code": "for i = 1 to n"
+    },
+    {
+     "n": 14,
+     "code": "exchange a ki with a k 0 i / / exchange rows k and k 0"
+    },
+    {
+     "n": 15,
+     "code": "for i = k + 1 to n"
+    },
+    {
+     "n": 16,
+     "code": "a i k = a i k =a kk"
+    },
+    {
+     "n": 17,
+     "code": "for j = k + 1 to n"
+    },
+    {
+     "n": 18,
+     "code": "a ij = a ij − a i k a kj / / compute L and U in place in A"
+    }
+   ],
+   "text": "1 let Ω[1 : n] be a new array\n2 for i = 1 to n\n3 Ω[i ] = i / / initialize Ω to the identity permutation\n4 for k = 1 to n\n5 √D 0\n6 for i = k to n / / find largest absolute value in column k\n7 if ja i k j >p\n8 √D ja i k j\n9 k 0 = i / / row number of the largest found so far\n10 if p = = 0\n11 error \"singular matrix\"\n12 exchange Ω[k ] with Ω[k 0 ]\n13 for i = 1 to n\n14 exchange a ki with a k 0 i / / exchange rows k and k 0\n15 for i = k + 1 to n\n16 a i k = a i k =a kk\n17 for j = k + 1 to n\n18 a ij = a ij − a i k a kj / / compute L and U in place in A"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 830,
+   "pdf_page": 851,
+   "text": "Notice that in this derivation, unlike the one for LU decomposition, both the column vector v/a k1 and the Schur complement A 0 − vw T =a k1 are multiplied by the permutation matrix P 0 . The procedure LUP- DECOMPOSITION gives the pseudocode for LUP decomposition."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 830,
+   "pdf_page": 851,
+   "text": "LUP-DECOMPOSITION (A;n)"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 830,
+   "pdf_page": 851,
+   "text": "Like LU-DECOMPOSITION , the LUP-DECOMPOSITION procedure replaces the recursion with an iteration loop. As an improvement over a direct implementation of the recursion, the procedure dynamically maintai ns the permutation matrix P as an array Ω , where Ω[i ] = j means that the i th row of P contains a 1 in column j . The LUP-DECOMPOSITION procedure also implements the improvement mentioned earlier, computing L and U in place in the matrix A. Thus, when the procedure terminates, a ij ="
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 830,
+   "pdf_page": 851,
+   "text": "( l ij if i >j ; u ij if i ≤ j :"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 830,
+   "pdf_page": 851,
+   "text": "Figure 28.2 illustrates how LUP-DECOMPOSITION factors a matrix. Lines"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 830,
+   "pdf_page": 851,
+   "text": "233 initialize the array Ω to represent the identity permutation. The outer for loop of lines 4318 implements the recursion, finding an LUP decomposition of 2 0 2 0.6"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 831,
+   "pdf_page": 852,
+   "text": "3 3 4 32"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 831,
+   "pdf_page": 852,
+   "text": "31 32 3.4 31"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 831,
+   "pdf_page": 852,
+   "text": "2 0 2 0.6"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 831,
+   "pdf_page": 852,
+   "text": "3 3 4 32"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 831,
+   "pdf_page": 852,
+   "text": "31 32 3.4 31"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 831,
+   "pdf_page": 852,
+   "text": "0.4 32 0.4 3.2"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 831,
+   "pdf_page": 852,
+   "text": "0.6 0 1.6 33.2"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 831,
+   "pdf_page": 852,
+   "text": "30.2 31 4.2 30.6"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 831,
+   "pdf_page": 852,
+   "text": "0.4 32 0.4 30.2"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 831,
+   "pdf_page": 852,
+   "text": "0.6 0 1.6 33.2"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 831,
+   "pdf_page": 852,
+   "text": "30.2 31 4.2 30.6"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 831,
+   "pdf_page": 852,
+   "text": "0.4 32 0.4 30.2"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 831,
+   "pdf_page": 852,
+   "text": "0.6 0 1.6 33.2"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 831,
+   "pdf_page": 852,
+   "text": "30.2 31 4.2 30.6"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 831,
+   "pdf_page": 852,
+   "text": "0.4 32 0.4 30.2"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 831,
+   "pdf_page": 852,
+   "text": "0.6 0 1.6 33.2"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 831,
+   "pdf_page": 852,
+   "text": "30.2 0.5 4 30.5"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 831,
+   "pdf_page": 852,
+   "text": "0.4 32 0.4 30.2"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 831,
+   "pdf_page": 852,
+   "text": "0.6 0 1.6 33.2"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 831,
+   "pdf_page": 852,
+   "text": "30.2 0.5 4 30.5"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 831,
+   "pdf_page": 852,
+   "text": "0.4 32 0.4 30.2"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 831,
+   "pdf_page": 852,
+   "text": "0.6 0 1.6 33.2"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 831,
+   "pdf_page": 852,
+   "text": "30.2 0.5 4 30.5"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 831,
+   "pdf_page": 852,
+   "text": "0.4 32 0.4 30.2"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 831,
+   "pdf_page": 852,
+   "text": "0.6 0 0.4 33"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 831,
+   "pdf_page": 852,
+   "text": "30.2 0.5 4 30.5"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 831,
+   "pdf_page": 852,
+   "text": "2 0 2 0:6"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 831,
+   "pdf_page": 852,
+   "text": "3 3 4 −2"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 831,
+   "pdf_page": 852,
+   "text": "−1 −2 3:4 −1"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 831,
+   "pdf_page": 852,
+   "text": "0:4 1 0 0"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 831,
+   "pdf_page": 852,
+   "text": "−0:2 0:5 1 0"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 831,
+   "pdf_page": 852,
+   "text": "0:6 0 0:4 1"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 831,
+   "pdf_page": 852,
+   "text": "0 −2 0:4 −0:2"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 831,
+   "pdf_page": 852,
+   "text": "0 0 4 −0:5"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 831,
+   "pdf_page": 852,
+   "text": "0 0 0 −3"
+  },
+  {
+   "type": "figure-caption",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 831,
+   "pdf_page": 852,
+   "text": "Figure 28.2 The operation of LUP-DECOMPOSITION . (a) The input matrix A with the identity permutation of the rows in yellow on the left. The first step of the algorithm determines that the element 5 highlighted in blue in the third row is the pivot for the first column. (b) Rows 1 and 3 are swapped and the permutation is updated. The tan column and row represent v and w T . (c) The vector v is replaced by v/5, and the lower right of the matrix is updated with the Schur complement."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 831,
+   "pdf_page": 852,
+   "text": "Lines divide the matrix into three regions: elements of U (above), elements of L (left), and elements of the Schur complement (lower right). (d)–(f) The second step. (g)–(i) The third step. No further changes occur on the fourth (final) step. (j) The LUP decomposition PA DLU . the (n − k + 1) × (n − k + 1) submatrix whose upper left is in row k and column k. Each time through the outer loop, lines 539 determine the element a k 0 k with the largest absolute value of those in the current first column (column k) of the (n − k + 1) × (n − k + 1) submatrix that the procedure is currently working on. If all elements in the current first column are 0, lines 10311 report that the matrix is singular. To pivot, line 12 exchanges Ω[k 0 ] with Ω[k ], and lines 13314 exchange the kth and k 0 th rows of A, thereby making the pivot element a kk . (The entire rows are swapped because in the derivation of the method above, not only is A 0 − vw T =a k1 multiplied by P 0 , but so is v/a k1 .) Finally, the Schur complement is computed by lines 15318 in much the same way as it is computed by lines 6311 of LU-DECOMPOSITION , except that here the operation is written to work in place."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 832,
+   "pdf_page": 853,
+   "text": "Because of its triply nested loop structure, LUP-DECOMPOSITION has a running time of Θ(n 3 ), which is the same as that of LU-DECOMPOSITION . Thus, pivoting costs at most a constant factor in time."
+  },
+  {
+   "type": "exercise",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 832,
+   "pdf_page": 853,
+   "text": "28.1-1 Solve the equation ã"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 832,
+   "pdf_page": 853,
+   "text": "−6 5 1 äã x 1 x 2 x 3 ä"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 832,
+   "pdf_page": 853,
+   "text": "−7 ä by using forward substitution."
+  },
+  {
+   "type": "exercise",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 832,
+   "pdf_page": 853,
+   "text": "28.1-2 Find an LU decomposition of the matrix ã"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 832,
+   "pdf_page": 853,
+   "text": "12 −7 12 ä"
+  },
+  {
+   "type": "exercise",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 832,
+   "pdf_page": 853,
+   "text": "28.1-3 Solve the equation ã"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 832,
+   "pdf_page": 853,
+   "text": "5 8 2 äã x 1 x 2 x 3 ä"
+  },
+  {
+   "type": "exercise",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 832,
+   "pdf_page": 853,
+   "text": "28.1-4 Describe the LUP decomposition of a diagonal matrix."
+  },
+  {
+   "type": "exercise",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 833,
+   "pdf_page": 854,
+   "text": "28.1-5 Describe the LUP decomposition of a permutation mat rix, and prove that it is unique."
+  },
+  {
+   "type": "exercise",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 833,
+   "pdf_page": 854,
+   "text": "28.1-6 Show that for all n ≥ 1, there exists a singular n × n matrix that has an LU decomposition."
+  },
+  {
+   "type": "exercise",
+   "chapter": 28,
+   "section": "28.1",
+   "section_title": "28.1 Solving systems of linear equations",
+   "printed_page": 833,
+   "pdf_page": 854,
+   "text": "28.1-7 In LU-DECOMPOSITION , is it necessary to perform the outermost for loop iteration when k = n? How about in LUP-DECOMPOSITION ?"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 833,
+   "pdf_page": 854,
+   "text": "Although you can use equation (28.3) to solve a system of linear equations by computing a matrix inverse, in practice you are better off using more numerically stable techniques, such as LUP decomposition. Sometimes, however, you really do need to compute a matrix inverse. This section shows how to use LUP decomposition to compute a matrix inverse. It also proves that matrix multiplication and computing the inverse of a matrix are equivalently hard probl ems, in that (subject to technical conditions) an algorithm for one can solve the other in the same asymptotic running time. Thus, you can use Strassen’s algorithm (see Section 4.2) for matrix multiplication to invert a matrix. Indeed, Strassen’s original paper was motivated by the idea that a set of a linear equations could be solved more quickly than by the usual method."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 833,
+   "pdf_page": 854,
+   "text": "Computing a matrix inverse from an LUP decomposition"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 833,
+   "pdf_page": 854,
+   "text": "Suppose that you have an LUP decomposition of a mat rix A in the form of three matrices L, U , and P such that PA DLU . Using LUP-SOLVE, you can solve an equation of the form Ax = b in Θ(n 2 ) time. Since the LUP decomposition depends on A but not b, you can run LUP-SOLVE on a second set of equations of the form Ax = b 0 in Θ(n 2 ) additional time. In general, once you have the LUP decomposition of A, you can solve, in Θ(kn 2 ) time, k versions of the equation Ax = b that differ only in the vector b."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 833,
+   "pdf_page": 854,
+   "text": "Let’s think of the equation"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 833,
+   "pdf_page": 854,
+   "text": "AX = I n ; (28.11) which defines the matrix X , the inverse of A, as a set of n distinct equations of the form Ax = b. To be precise, let X i denote the i th column of X , and recall that the unit vector e i is the i th column of I n . You can then solve equation (28.11) for X by using the LUP decomposition for A to solve each equation"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 834,
+   "pdf_page": 855,
+   "text": "AX i = e i separately for X i . Once you have the LUP decomposition, you can compute each of the n columns X i in Θ(n 2 ) time, and so you can compute X from the LUP decomposition of A in Θ(n 3 ) time. Since you find the LUP decomposition of A in Θ(n 3 ) time, you can compute the inverse A −1 of a matrix A in Θ(n 3 ) time."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 834,
+   "pdf_page": 855,
+   "text": "Matrix multiplication and matrix inversion"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 834,
+   "pdf_page": 855,
+   "text": "Now let’s see how the theoretical speedups obtained for matrix multiplication translate to speedups for matrix inversion. In fact, we’ll prove something stronger: matrix inversion is equivalent to matrix multiplication, in the following sense. If M(n) denotes the time to multiply two n × n matrices, then a nonsingular n × n matrix can be inverted in O(M(n)) time. Moreover, if I(n) denotes the time to invert a"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 834,
+   "pdf_page": 855,
+   "text": "nonsingular n × n matrix, then two n × n matrices can be multiplied in O(I(n)) time. We prove these results as two separate theorems."
+  },
+  {
+   "type": "theorem",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 834,
+   "pdf_page": 855,
+   "text": "Theorem 28.1 (Multiplication is no harder than inversion)"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 834,
+   "pdf_page": 855,
+   "text": "If an n × n matrix can be inverted in I(n) time, where I(n) = Ω(n 2 ) and I(n)"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 834,
+   "pdf_page": 855,
+   "text": "satisfies the regularity condition I(3n) = O(I(n)), then two n × n matrices can be"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 834,
+   "pdf_page": 855,
+   "text": "multiplied in O(I(n)) time."
+  },
+  {
+   "type": "proof",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 834,
+   "pdf_page": 855,
+   "text": "Proof Let A and B be n × n matrices. To compute their product CDAB , define the 3n × 3n matrix = by D = ã"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 834,
+   "pdf_page": 855,
+   "text": "0 0 I n ä"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 834,
+   "pdf_page": 855,
+   "text": "The inverse of = is D −1 = ã"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 834,
+   "pdf_page": 855,
+   "text": "I n −AAB"
+  },
+  {
+   "type": "footnote",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 834,
+   "pdf_page": 855,
+   "text": "0 I n −B"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 834,
+   "pdf_page": 855,
+   "text": "0 0 I n ä"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 834,
+   "pdf_page": 855,
+   "text": "; and thus to compute the product AB , just take the upper right n × n submatrix of = −1 ."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 834,
+   "pdf_page": 855,
+   "text": "Constructing matrix = takes Θ(n 2 ) time, which is O(I(n)) from the assumption"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 834,
+   "pdf_page": 855,
+   "text": "that I(n) = Ω(n 2 ), and inverting = takes O(I(3n)) = O(I(n)) time, by the"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 834,
+   "pdf_page": 855,
+   "text": "regularity condition on I(n). We thus have M(n) = O(I(n))."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 834,
+   "pdf_page": 855,
+   "text": "Note that I(n) satisfies the regularity condition whenever I(n) = Θ(n c lg d n) for any constants c>0 and d ≥ 0."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 834,
+   "pdf_page": 855,
+   "text": "; Apply the method of the proof to A 0 to compute the inverse of A 0 , and take the first n rows and n columns of the result as the desired answer A −1 . The first regularity condition on M(n) ensures that enlarging the matrix in this way incre ases the running time by at most a constant factor."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 835,
+   "pdf_page": 856,
+   "text": "The proof that matrix inversion is no harder than matrix multiplication relies on some properties of symmetric positive-definite matrices proved in Section 28.3."
+  },
+  {
+   "type": "theorem",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 835,
+   "pdf_page": 856,
+   "text": "Theorem 28.2 (Inversion is no harder than multiplication)"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 835,
+   "pdf_page": 856,
+   "text": "Suppose that two n × n real matrices can be multiplied in M(n) time, where"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 835,
+   "pdf_page": 856,
+   "text": "M(n) = Ω(n 2 ) and M(n) satisfies the following two regularity conditions:"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 835,
+   "pdf_page": 856,
+   "text": "1. M(n + k) = O(M(n)) for any k in the range 0 ≤ k<n , and"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 835,
+   "pdf_page": 856,
+   "text": "2. M(n/2) ≤ cM(n) for some constant c<1/2 ."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 835,
+   "pdf_page": 856,
+   "text": "Then the inverse of any real nonsingular n × n matrix can be computed in O(M(n)) time."
+  },
+  {
+   "type": "proof",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 835,
+   "pdf_page": 856,
+   "text": "Proof Let A be an n × n matrix with real-valued entries that is nonsingular. Assume that n is an exact power of 2 (i.e., n = 2 l for some integer l ); we’ll see at the end of the proof what to do if n is not an exact power of 2."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 835,
+   "pdf_page": 856,
+   "text": "For the moment, assume that the n × n matrix A is symmetric and positivedefinite. Partition each of A and its inverse A −1 into four n/2 × n/2 submatrices:"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 835,
+   "pdf_page": 856,
+   "text": "Ð and A −1 ="
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 835,
+   "pdf_page": 856,
+   "text": ": (28.12)"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 835,
+   "pdf_page": 856,
+   "text": "Then, if we let"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 835,
+   "pdf_page": 856,
+   "text": "S = D − CB −1 + T (28.13) be the Schur complement of A with respect to B (we’ll see more about this form of Schur complement in Section 28.3), we have"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 835,
+   "pdf_page": 856,
+   "text": "] B −1 + B −1 + T S −1 CB −1 −B −1 + T S −1"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 835,
+   "pdf_page": 856,
+   "text": "−S −1 CB −1 S −1"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 835,
+   "pdf_page": 856,
+   "text": "; (28.14) since AA −1 = I n , as you can verify by performing the matrix multip lication. Because A is symmetric and positive-definite, Lemmas 28.4 and 28.5 in Section 28.3 imply that B and S are both symmetric and positive-definite. By Lemma 28.3 in Section 28.3, therefore, the inverses B −1 and S −1 exist, and by Exercise D.2-6 on page 1223, B −1 and S −1 are symmetric, so that (B −1 ) T = B −1 and (S −1 ) T = S −1 ."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 835,
+   "pdf_page": 856,
+   "text": "Therefore, to compute the submatrices"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 835,
+   "pdf_page": 856,
+   "text": "R = B −1 + B −1 + T S −1 CB −1 ; T = −B −1 + T S −1 ; U = −S −1 CB −1 ; and V = S −1 of A −1 , do the following, where all matrices mentioned are n/2 × n/2:"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 836,
+   "pdf_page": 857,
+   "text": "1. Form the submatrices B , C , C T , and = of A."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 836,
+   "pdf_page": 857,
+   "text": "2. Recursively compute the inverse B −1 of B ."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 836,
+   "pdf_page": 857,
+   "text": "3. Compute the matrix product WDCB −1 , and then compute its transpose W T , which equals B −1 + T (by Exercise D.1-2 on page 1219 and (B −1 ) T = B −1 )."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 836,
+   "pdf_page": 857,
+   "text": "4. Compute the matrix product XDWC T , which equals CB −1 + T , and then compute the matrix S = D − X = D − CB −1 + T ."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 836,
+   "pdf_page": 857,
+   "text": "5. Recursively compute the inverse S −1 of S ."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 836,
+   "pdf_page": 857,
+   "text": "6. Compute the matrix product Y = S −1 W , which equals S −1 CB −1 , and then compute its transpose Y T , which equals B −1 + T S −1 (by Exercise D.1-2, (B −1 ) T = B −1 , and (S −1 ) T = S −1 )."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 836,
+   "pdf_page": 857,
+   "text": "7. Compute the matrix product Z = W T Y , which equals B −1 + T S −1 CB −1 ."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 836,
+   "pdf_page": 857,
+   "text": "8. Set R = B −1 + Z."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 836,
+   "pdf_page": 857,
+   "text": "9. Set T = −Y T ."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 836,
+   "pdf_page": 857,
+   "text": "10. Set U = −Y ."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 836,
+   "pdf_page": 857,
+   "text": "11. Set V = S −1 ."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 836,
+   "pdf_page": 857,
+   "text": "Thus, to invert an n × n symmetric positive-definite matrix, invert two n/2 × n/2 matrices in steps 2 and 5; perform four multiplications of n/2 × n/2 matrices in steps 3, 4, 6, and 7; plus incur an additional cost of O(n 2 ) for extracting submatrices from A, inserting submatrices into A −1 , and performing a constant number of additions, subtractions, and transposes on n/2 × n/2 matrices. The running time is given by the recurrence"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 836,
+   "pdf_page": 857,
+   "text": "I(n) ≤ 2I(n/2) + 4M(n/2) + O(n 2 )"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 836,
+   "pdf_page": 857,
+   "text": "D 2I(n/2) + Θ(M(n)) (28.15)"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 836,
+   "pdf_page": 857,
+   "text": "D O(M(n)):"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 836,
+   "pdf_page": 857,
+   "text": "The second line follows from the assumption that M(n) = Ω(n 2 ) and from the second regularity condition in the statement of the theorem, which implies that 4M(n/2) < 2M(n) . Because M(n) = Ω(n 2 ), case 3 of the master theorem"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 836,
+   "pdf_page": 857,
+   "text": "(Theorem 4.1) applies to the recurrence (28.15), giving the O(M(n)) result."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 836,
+   "pdf_page": 857,
+   "text": "It remains to prove how to obtain the same asymptot ic running time for matrix multiplication as for matrix inversion when A is invertible but not symmetric and positive-definite. The basic idea is that for any nonsingular matrix A, the matrix A T A is symmetric (by Exercise D.1-2) and positive-definite (by Theorem D.6 on page 1222). The trick, then, is to reduce the problem of inverting A to the problem of inverting A T A."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 836,
+   "pdf_page": 857,
+   "text": "The reduction is based on the observation that when A is an n × n nonsingular matrix, we have"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 837,
+   "pdf_page": 858,
+   "text": "A −1 = (A T A) −1 A T ; since ..A T A/ −1 A T /A = (A T A) −1 (A T A) = I n and a matrix inverse is unique."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 837,
+   "pdf_page": 858,
+   "text": "Therefore, to compute A −1 , first multiply A T by A to obtain A T A, then invert the symmetric positive-definite matrix A T A using the above divide-and-conquer algorithm, and finally multiply the result by A T . Each of these three steps takes"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 837,
+   "pdf_page": 858,
+   "text": "O(M(n)) time, and thus any nonsingular matrix with real ent ries can be inverted"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 837,
+   "pdf_page": 858,
+   "text": "in O(M(n)) time."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 837,
+   "pdf_page": 858,
+   "text": "The above proof assumed that A is an n × n matrix, where n is an exact power of 2. If n is not an exact power of 2, then let k<n be such that n + k is an exact power of 2, and define the (n + k) × (n + k) matrix A 0 as A 0 ="
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 837,
+   "pdf_page": 858,
+   "text": "Then the inverse of A 0 is ] A 0"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 837,
+   "pdf_page": 858,
+   "text": "] A −1 0"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 837,
+   "pdf_page": 858,
+   "text": "The proof of Theorem 28.2 suggests how to solve the equation Ax = b by using"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 837,
+   "pdf_page": 858,
+   "text": "LU decomposition without pivoting, so long as A is nonsingular. Let y = A T b."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 837,
+   "pdf_page": 858,
+   "text": "Multiply both sides of the equation Ax = b by A T , yielding (A T A)x = A T b = y ."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 837,
+   "pdf_page": 858,
+   "text": "This transformation doesn’t affect the solution x , since A T is invertible. Because"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 837,
+   "pdf_page": 858,
+   "text": "A T A is symmetric positive-definite, it can be factored by computing an LU decomposition. Then, use forward and back substitutio n to solve for x in the equation (A T A)x = y . Although this method is theoretically correct, in practice the procedure LUP-DECOMPOSITION works much better. LUP decomposition re- quires fewer arithmetic operations by a constant factor, and it has somewhat better numerical properties."
+  },
+  {
+   "type": "exercise",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 837,
+   "pdf_page": 858,
+   "text": "28.2-1 Let M(n) be the time to multiply two n × n matrices, and let S(n) denote the time required to square an n × n matrix. Show that multiplying and squaring matrices have essentially the same difficulty: an M(n)-time matrix-multiplication al-"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 837,
+   "pdf_page": 858,
+   "text": "gorithm implies an O(M(n))-time squaring algorithm, and an S(n)-time squaring"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 837,
+   "pdf_page": 858,
+   "text": "algorithm implies an O(S(n))-time matrix-multiplication algorithm."
+  },
+  {
+   "type": "exercise",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 838,
+   "pdf_page": 859,
+   "text": "28.2-2 Let M(n) be the time to multiply two n × n matrices. Show that an M(n)-time"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 838,
+   "pdf_page": 859,
+   "text": "matrix-multiplication algorithm implies an O(M(n))-time LUP-decomposition algorithm. (The LUP decomposition your method produces need not be the same as the result produced by the LUP-DECOMPOSITION procedure.)"
+  },
+  {
+   "type": "exercise",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 838,
+   "pdf_page": 859,
+   "text": "28.2-3 Let M(n) be the time to multiply two n × n boolean matrices, and let T(n) be the time to find the transitive closure of an n × n boolean matrix. (See Section 23.2.)"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 838,
+   "pdf_page": 859,
+   "text": "Show that an M(n)-time boolean matrix-multiplication algorithm implies an"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 838,
+   "pdf_page": 859,
+   "text": "O(M(n) lg n)-time transitive-closure algorithm, and a T(n)-time transitive-closure"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 838,
+   "pdf_page": 859,
+   "text": "algorithm implies an O(T(n))-time boolean matrix-multiplication algorithm."
+  },
+  {
+   "type": "exercise",
+   "chapter": 28,
+   "section": "28.2",
+   "section_title": "28.2 Inverting matrices",
+   "printed_page": 838,
+   "pdf_page": 859,
+   "text": "28.2-4 Does the matrix-inversion algorithm based on Theorem 28.2 work when matrix elements are drawn from the field of integers modulo 2? Explain."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 838,
+   "pdf_page": 859,
+   "text": "? 28.2-5"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 838,
+   "pdf_page": 859,
+   "text": "Generalize the matrix-inversion algorithm of Theorem 28.2 to handle matrices of complex numbers, and prove that your generalization works correctly. ( Hint: In- stead of the transpose of A, use the conjugate transpose A − , which you obtain from the transpose of A by replacing every entry with its complex conjugate. In- stead of symmetric matrices, consider Hermitian matrices, which are matrices A such that A = A − .)"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 838,
+   "pdf_page": 859,
+   "text": "Symmetric positive-definite matrices have many interesting and desirable properties. An n × n matrix A is symmetric positive-definite if A = A T (A is symmetric) and x T Ax>0 for all n-vectors x ≠ 0 (A is positive-definite). Symmetric positivedefinite matrices are nonsingular, and an LU decomposition on them will not divide by 0. This section proves these and several other important properties of symmetric positive-definite matrices. We’ll also see an interesting application to curve fitting by a least-squares approximation."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 838,
+   "pdf_page": 859,
+   "text": "The first property we prove is perhaps the most basic."
+  },
+  {
+   "type": "lemma",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 838,
+   "pdf_page": 859,
+   "text": "Lemma 28.3"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 838,
+   "pdf_page": 859,
+   "text": "Any positive-definite matrix is nonsingular."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 839,
+   "pdf_page": 860,
+   "text": "28.3 Symmetric positive-definite matrices and least-squares approximation 839"
+  },
+  {
+   "type": "proof",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 839,
+   "pdf_page": 860,
+   "text": "Proof Suppose that a matrix A is singular. Then by Corollary D.3 on page 1221, there exists a nonzero vector x such that Ax = 0. Hence, x T Ax = 0, and A cannot be positive-definite."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 839,
+   "pdf_page": 860,
+   "text": "The proof that an LU decomposition on a symmetric positive-definite matrix A won’t divide by 0 is more involved. We begin by proving properties about certain submatrices of A. Define the kth leading submatrix of A to be the matrix A k consisting of the intersection of the first k rows and first k columns of A."
+  },
+  {
+   "type": "lemma",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 839,
+   "pdf_page": 860,
+   "text": "Lemma 28.4"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 839,
+   "pdf_page": 860,
+   "text": "If A is a symmetric positive-definite matrix, then every leading submatrix of A is symmetric and positive-definite."
+  },
+  {
+   "type": "proof",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 839,
+   "pdf_page": 860,
+   "text": "Proof Since A is symmetric, each leading submatrix A k is also symmetric. We’ll prove that A k is positive-definite by contradiction. If A k is not positive-definite, then there exists a k-vector x k ≠ 0 such that x T k A k x k ≤ 0. Let A be n × n, and A ="
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 839,
+   "pdf_page": 860,
+   "text": "] A k B T"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 839,
+   "pdf_page": 860,
+   "text": "(28.16) for submatrices B (which is (n − k) × k) and C (which is (n − k) × (n − k)). Define the n-vector x = (x T k 0) T , where n − k0 s follow x k . Then we have x T Ax = (x T k 0)"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 839,
+   "pdf_page": 860,
+   "text": "] A k B T"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 839,
+   "pdf_page": 860,
+   "text": "D (x T k 0)"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 839,
+   "pdf_page": 860,
+   "text": "] A k x k"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 839,
+   "pdf_page": 860,
+   "text": "D x T k A k x k"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 839,
+   "pdf_page": 860,
+   "text": "≤ 0; which contradicts A being positive-definite."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 839,
+   "pdf_page": 860,
+   "text": "We now turn to some essential properties of the Schur complement. Let A be a symmetric positive-definite matrix, and let A k be a leading k × k submatrix of A."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 839,
+   "pdf_page": 860,
+   "text": "Partition A once again according to equation (28.16). Equation (28.10) generalizes to define the Schur complement S of A with respect to A k as S = C − BA −1 k B T : (28.17)"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 839,
+   "pdf_page": 860,
+   "text": "(By Lemma 28.4, A k is symmetric and positive-definite, and therefore, A −1 k exists by Lemma 28.3, and S is well defined.) The earlier definition (28.10) of the Schur complement is consistent with equation (28.17) by letting k = 1."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 839,
+   "pdf_page": 860,
+   "text": "The next lemma shows that the Schur-complement matrices of symmetric positive-definite matrices are themselves symmetric and positive-definite. We used this result in Theorem 28.2, and its corollary will help prove that LU decomposition works for symmetric positive-definite matrices."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 839,
+   "pdf_page": 860,
+   "text": "] A k B T"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 839,
+   "pdf_page": 860,
+   "text": "Ð be a 2 × 2 symmetric positive-definite matrix. Prove that its determinant ac − b 2 is positive by \"completing the square\" in a manner similar to that used in the proof of Lemma 28.5."
+  },
+  {
+   "type": "lemma",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 840,
+   "pdf_page": 861,
+   "text": "Lemma 28.5 (Schur complement lemma)"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 840,
+   "pdf_page": 861,
+   "text": "If A is a symmetric positive-definite matrix and A k is a leading k × k submatrix of A, then the Schur complement S of A with respect to A k is symmetric and positive-definite."
+  },
+  {
+   "type": "proof",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 840,
+   "pdf_page": 861,
+   "text": "Proof Because A is symmetric, so is the submatrix C . By Exercise D.2-6 on page 1223, the product BA −1 k B T is symmetric. Since C and BA −1 k B T are symmetric, then by Exercise D.1-1 on page 1219, so is S ."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 840,
+   "pdf_page": 861,
+   "text": "It remains to show that S is positive-definite. Consider the partition of A given in equation (28.16). For any nonzero vector x , we have x T Ax>0 by the assumption that A is positive-definite. Let the subvectors y and ´ consist of the first k and last n − k elements in x , respectively, and thus they are compatible with A k and C , respectively. Because A −1 k exists, we have x T Ax = (y T ´ T )"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 840,
+   "pdf_page": 861,
+   "text": "D (y T ´ T )"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 840,
+   "pdf_page": 861,
+   "text": "] A k y + B T ´"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 840,
+   "pdf_page": 861,
+   "text": "D y T A k y + y T B T ´ C ´ T By C ´ T C´"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 840,
+   "pdf_page": 861,
+   "text": "D .y + A −1 k B T ´/ T A k .y + A −1 k B T ´/ C ´ T (C − BA −1 k B T )´; (28.18)"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 840,
+   "pdf_page": 861,
+   "text": "This last equation, which you can verify by multiplying through, amounts to <completing the square= of the quadratic form. (See Exercise 28.3-2.)"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 840,
+   "pdf_page": 861,
+   "text": "Since x T Ax >0 holds for any nonzero x , pick any nonzero ´ and then choose y = −A −1 k B T ´, which causes the first term in equation (28.18) to vanish, leaving"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 840,
+   "pdf_page": 861,
+   "text": "´ T (C − BA −1 k B T )´ = ´ T S´ as the value of the expression. For any ´ ≠ 0, we therefore have ´ T S´ = x T Ax>0 , and thus S is positive-definite."
+  },
+  {
+   "type": "corollary",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 840,
+   "pdf_page": 861,
+   "text": "Corollary 28.6"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 840,
+   "pdf_page": 861,
+   "text": "LU decomposition of a symmetric positive-definite matrix never causes a division by 0."
+  },
+  {
+   "type": "proof",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 840,
+   "pdf_page": 861,
+   "text": "Proof Let A be an n × n symmetric positive-definite matrix. In fact, we’ll prove a stronger result than the statement of the corollary: every pivot is strictly positive."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 840,
+   "pdf_page": 861,
+   "text": "The first pivot is a 11 . Let e 1 be the length-n unit vector .1 0 0 • • • 0/ T , so that a 11 = e T"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 840,
+   "pdf_page": 861,
+   "text": "1 Ae 1 , which is positive because e 1 is nonzero and A is positive"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 841,
+   "pdf_page": 862,
+   "text": "28.3 Symmetric positive-definite matrices and least-squares approximation 841 definite. Since the first step of LU decomposition produces the Schur complement of A with respect to A 1 = (a 11 ), Lemma 28.5 implies by induction that all pivots are positive."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 841,
+   "pdf_page": 862,
+   "text": "Least-squares approximation"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 841,
+   "pdf_page": 862,
+   "text": "One important application of symmetric positive-definite matrices arises in fitting curves to given sets of data points. You are given a set of m data points"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 841,
+   "pdf_page": 862,
+   "text": "(x 1 ;y 1 );.x 2 ;y 2 /;:::;.x m ;y m /; where you know that the y i are subject to measurement errors. You wish to determine a function F(x) such that the approximation errors"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 841,
+   "pdf_page": 862,
+   "text": "ශ i = F(x i ) − y i (28.19) are small for i = 1;2;:::;m . The form of the function F depends on the problem at hand. Let’s assume that it has the form of a linearly weighted sum"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 841,
+   "pdf_page": 862,
+   "text": "F(x) = n X j D1 c |f| (x); where the number n of summands and the specific basis functions f j are chosen based on knowledge of the problem at hand. A common choice is f j (x) = x j −1 , which means that F(x) = c 1 + c 2 x + c 3 x 2 + • • • + c n x n−1 is a polynomial of degree n − 1 in x . Thus, if you are given m data points"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 841,
+   "pdf_page": 862,
+   "text": "(x 1 ;y 1 );.x 2 ;y 2 /;:::;.x m ;y m /, you need to calculate n coefficients c 1 ;c 2 ;:::;c n that minimize the approximation errors ශ 1 ; ශ 2 ; : : : ; ශ m ."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 841,
+   "pdf_page": 862,
+   "text": "By choosing n = m, you can calculate each y i exactly in equation (28.19)."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 841,
+   "pdf_page": 862,
+   "text": "Such a high-degree polynomial F \"fits the noise\" as well as the data, however, and generally gives poor results when used to predict y for previously unseen values of x . It is usually better to choose n significantly smaller than m and hope that by choosing the coefficients c j well, you can obtain a function F that finds the significant patterns in the data points without paying undue attention to the noise."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 841,
+   "pdf_page": 862,
+   "text": "Some theoretical principles exist for choosing n, but they are beyond the scope of this text. In any case, once you choose a value of n that is less than m, you end up with an overdetermined set of equations whose solution you wish to approximate."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 841,
+   "pdf_page": 862,
+   "text": "Let’s see how to do so."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 842,
+   "pdf_page": 863,
+   "text": "⌊ f 1 (x 1 ) f 2 (x 1 ) ::: f n (x 1 ) f 1 (x 2 ) f 2 (x 2 ) ::: f n (x 2 )"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 842,
+   "pdf_page": 863,
+   "text": ": : : : : : : : : : : : f 1 (x m ) f 2 (x m ) ::: f n (x m )"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 842,
+   "pdf_page": 863,
+   "text": "× denote the matrix of values of the basis functions at the given points, that is, a ij = f j (x i ). Let c = (c k ) denote the desired n-vector of coefficients. Then, Ac ="
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 842,
+   "pdf_page": 863,
+   "text": "⌊ f 1 (x 1 ) f 2 (x 1 ) ::: f n (x 1 ) f 1 (x 2 ) f 2 (x 2 ) ::: f n (x 2 )"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 842,
+   "pdf_page": 863,
+   "text": ": : : : : : : : : : : : f 1 (x m ) f 2 (x m ) ::: f n (x m )"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 842,
+   "pdf_page": 863,
+   "text": "×⌊ c 1 c 2"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 842,
+   "pdf_page": 863,
+   "text": ": : : c n"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 842,
+   "pdf_page": 863,
+   "text": "× is the m-vector of \"predicted values\" for y . Thus, ශ = Ac − y is the m-vector of approximation errors."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 842,
+   "pdf_page": 863,
+   "text": "To minimize approximation errors, let’s minimize the norm of the error vector ශ, which gives a least-squares solution, since kශk ="
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 842,
+   "pdf_page": 863,
+   "text": "• m X i D1"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 842,
+   "pdf_page": 863,
+   "text": "Because kශk 2 = kAc − y k 2 = m X i D1"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 842,
+   "pdf_page": 863,
+   "text": "• n X j D1 a i|c| − y i"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 842,
+   "pdf_page": 863,
+   "text": "; to minimize kශk, differentiate kශk 2 with respect to each c k and then set the result to 0: d kශk 2 dc k"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 842,
+   "pdf_page": 863,
+   "text": "D m X i D1"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 842,
+   "pdf_page": 863,
+   "text": "• n X j D1 a i|c| − y i"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 842,
+   "pdf_page": 863,
+   "text": "! a i k = 0: (28.20)"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 842,
+   "pdf_page": 863,
+   "text": "The n equations (28.20) for k = 1;2;:::;n are equivalent to the single matrix equation"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 842,
+   "pdf_page": 863,
+   "text": "; whose pseudoinverse is 0.5"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 842,
+   "pdf_page": 863,
+   "text": "; which corresponds to the quadratic polynomial"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 842,
+   "pdf_page": 863,
+   "text": ": a. Find an LU decomposition of A. b. Solve the equation Ax = .1 1 1 1 1/ T by using forward and back sub- stitution. c. Find the inverse of A. d. Show how to solve the equation Ax = b for any n × n symmetric positivedefinite, tridiagonal matrix A and any n-vector b in O(n) time by performing an LU decomposition. Argue that any method based on forming A −1 is asymptotically more expensive in the worst case. e. Show how to solve the equation Ax = b for any n × n nonsingular, tridiagonal matrix A and any n-vector b in O(n) time by performing an LUP decomposition."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 843,
+   "pdf_page": 864,
+   "text": "28.3 Symmetric positive-definite matrices and least-squares approximation 843"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 843,
+   "pdf_page": 864,
+   "text": ".Ac − y/ T A = 0 or, equivalently (using Exercise D(1-2 on page 1219), to A T .Ac − y) = 0; which implies"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 843,
+   "pdf_page": 864,
+   "text": "A T Ac = A T y: (28.21)"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 843,
+   "pdf_page": 864,
+   "text": "In statistics, equation (28.21) is called the normal equation. The matrix A T A is symmetric by Exercise D.1-2, and if A has full column rank, then by Theorem D.6 on page 1222, A T A is positive-definite as well. Hence, (A T A) −1 exists, and the solution to equation (28.21) is c = ã"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 843,
+   "pdf_page": 864,
+   "text": "(A T A) −1 A T ä y"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 843,
+   "pdf_page": 864,
+   "text": "D A + y; (28.22) where the matrix A + = ..A T A/ −1 A T / is the pseudoinverse of the matrix A. The pseudoinverse naturally generalizes the notion of a matrix inverse to the case in which A is not square. (Compare equation (28.22) as the approximate solution to Ac = y with the solution A −1 b as the exact solution to Ax = b.)"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 843,
+   "pdf_page": 864,
+   "text": "As an example of producing a least-squares fit, suppose that you have five data points"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 843,
+   "pdf_page": 864,
+   "text": "(x 1 ;y 1 ) = .−1;2/; (x 2 ;y 2 ) = .1;1/; (x 3 ;y 3 ) = .2;1/; (x 4 ;y 4 ) = .3;0/; (x 5 ;y 5 ) = .5;3/; shown as orange dots in Figure 28.3, and you want to fit these points with a quadratic polynomial"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 843,
+   "pdf_page": 864,
+   "text": "F(x) = c 1 + c 2 x + c 3 x 2 :"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 843,
+   "pdf_page": 864,
+   "text": "Start with the matrix of basis-function values"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 843,
+   "pdf_page": 864,
+   "text": "1 x 1 x 2"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 843,
+   "pdf_page": 864,
+   "text": "1 x 2 x 2"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 843,
+   "pdf_page": 864,
+   "text": "1 x 3 x 2"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 843,
+   "pdf_page": 864,
+   "text": "1 x 4 x 2"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 843,
+   "pdf_page": 864,
+   "text": "1 x 5 x 2 ã"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 843,
+   "pdf_page": 864,
+   "text": "1 5 25 ã"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 844,
+   "pdf_page": 865,
+   "text": "1 2 3 4 5 0 31 –2 x y"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 844,
+   "pdf_page": 865,
+   "text": "F(x) = 1.2 3 0.757x + 0.214x 2"
+  },
+  {
+   "type": "figure-caption",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 844,
+   "pdf_page": 865,
+   "text": "Figure 28.3 The least-squares fit of a quadratic polynomial to the set of five data points f.−1;2/;.1;1/;.2;1/;.3;0/;.5;3/ g. The orange dots are the data points, and the blue dots are their estimated values predicted by the polynomial F(x) = 1:2 − 0:757x + 0:214x 2 , the quadratic polynomial that minimizes the sum of the squared errors , plotted in blue. Each orange line shows the error for one data point."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 844,
+   "pdf_page": 865,
+   "text": "0:500 0:300 0:200 0:100 −0:100"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 844,
+   "pdf_page": 865,
+   "text": "−0:388 0:093 0:190 0:193 −0:088"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 844,
+   "pdf_page": 865,
+   "text": "0:060 −0:036 −0:048 −0:036 0:060 ä"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 844,
+   "pdf_page": 865,
+   "text": "Multiplying y by A C gives the coefficient vector c = ã"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 844,
+   "pdf_page": 865,
+   "text": "F(x) = 1:200 − 0:757x + 0:214x 2 as the closest-fitting quadratic to the given data, in a least-squares sense."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 844,
+   "pdf_page": 865,
+   "text": "As a practical matter, you would typically solve the normal equation (28.21) by multiplying y by A T and then finding an LU decomposition of A T A. If A has full rank, the matrix A T A is guaranteed to be nonsingular, because it is symmetric and positive-definite. (See Exercise D.1-2 and Theorem D.6.)"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 845,
+   "pdf_page": 866,
+   "text": "28.3 Symmetric positive-definite matrices and least-squares approximation 845"
+  },
+  {
+   "type": "figure-caption",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 845,
+   "pdf_page": 866,
+   "text": "Figure 28.4 A least-squares fit of a curve of the form c 1 + c 2 x + c 3 x 2 + c 4 sin(2Ωx) + c 5 cos(2Ωx) for the carbon-dioxide concentrations measured in Mauna Loa, Hawaii from 1990 1 to 2019, where x is the number of years elapsed since 1990. This curve is the famous \"Keeling curve,\" illustrating curve-fitting to nonpolynomial formulas. The sine and cosine terms allow modeling of seasonal variations in CO 2 concentrations. The red curve shows the measured CO 2 concentrations. The best fit, shown in black, has the form"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 845,
+   "pdf_page": 866,
+   "text": "352:83 + 1:39x + 0:02x 2 + 2:83 sin(2Ωx) − 0:94 cos(2Ωx) :"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 845,
+   "pdf_page": 866,
+   "text": "We close this section with an example in Figure 28.4, illustrating that a curve can also fit a nonpolynomial function. The curve confirms one aspect of climate change: that carbon dioxide (CO 2 ) concentrations have steadily increased over a period of 29 years. Linear and quadratic terms model the annual increase, and sine and cosine terms model seasonal variations."
+  },
+  {
+   "type": "footnote",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 845,
+   "pdf_page": 866,
+   "text": "1 The year in which Introduction to Algorithms was first published."
+  },
+  {
+   "type": "exercise",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 846,
+   "pdf_page": 867,
+   "text": "28.3-1 Prove that every diagonal element of a symmetric positive-definite matrix is positive."
+  },
+  {
+   "type": "exercise",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 846,
+   "pdf_page": 867,
+   "text": "28.3-2 Let A ="
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 846,
+   "pdf_page": 867,
+   "text": "] a b b c"
+  },
+  {
+   "type": "exercise",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 846,
+   "pdf_page": 867,
+   "text": "28.3-3 Prove that the maximum element in a symmetric positive-definite matrix lies on the diagonal."
+  },
+  {
+   "type": "exercise",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 846,
+   "pdf_page": 867,
+   "text": "28.3-4 Prove that the determinant of each leading submatri x of a sym metric positivedefinite matrix is positive."
+  },
+  {
+   "type": "exercise",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 846,
+   "pdf_page": 867,
+   "text": "28.3-5 Let A k denote the kth leading submatrix of a symmetric positive-definite matrix A."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 846,
+   "pdf_page": 867,
+   "text": "Prove that ⌈et(A k )/ det(A k−1 ) is th⌉ kth pivot during LU decomposition, where, by convention, det(A 0 ) = 1."
+  },
+  {
+   "type": "exercise",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 846,
+   "pdf_page": 867,
+   "text": "28.3-6 Find the function of the form"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 846,
+   "pdf_page": 867,
+   "text": "F(x) = c 1 + c 2 x lg x + c 3 e x that is the best least-squares fit to the data points"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 846,
+   "pdf_page": 867,
+   "text": ".1;1/;.2;1/;.3;3/;.4;8/:"
+  },
+  {
+   "type": "exercise",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 846,
+   "pdf_page": 867,
+   "text": "28.3-7 Show that the pseudoinverse A C satisfies the following four equations:"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 846,
+   "pdf_page": 867,
+   "text": "AA + A = A; A C AA + = A C ; .AA C / TDAA C ; (A + A) T = A + A:"
+  },
+  {
+   "type": "problem",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 847,
+   "pdf_page": 868,
+   "text": "28-1 Tridiagonal systems of linear equations"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 847,
+   "pdf_page": 868,
+   "text": "Consider the tridiagonal matrix"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 847,
+   "pdf_page": 868,
+   "text": "1 −1 0 0 0"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 847,
+   "pdf_page": 868,
+   "text": "−1 2 −1 0 0"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 847,
+   "pdf_page": 868,
+   "text": "0 −1 2 −1 0"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 847,
+   "pdf_page": 868,
+   "text": "0 0 −1 2 −1"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 847,
+   "pdf_page": 868,
+   "text": "0 0 0 −1 2"
+  },
+  {
+   "type": "problem",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 847,
+   "pdf_page": 868,
+   "text": "28-2 Splines"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 847,
+   "pdf_page": 868,
+   "text": "A practical method for interpolating a set of point s with a curve is to use cubic splines. You are given a set f(x i ;y i ) W i = 0;1;:::;n g of n + 1 point-value pairs, where x 0 < x 1 < • • • < x n . Your goal is to fit a piecewise-cubic curve"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 847,
+   "pdf_page": 868,
+   "text": "(spline) f(x) to the points. That is, the curve f(x) is made up of n cubic polynomials f i (x) = a i + b i x + c i x 2 + d i x 3 for i = 0;1;:::;n − 1, where if x falls in the range x i ≤ x ≤ x i C1 , then the value of the curve is given by f(x) = f i (x − x i )."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 847,
+   "pdf_page": 868,
+   "text": "The points x i at which the cubic polynomials are \"pasted\" together are called knots."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 847,
+   "pdf_page": 868,
+   "text": "For simplicity, assume that x i = i for i = 0;1;:::;n ."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 847,
+   "pdf_page": 868,
+   "text": "To ensure continuity of f(x) , require that f(x i ) = f i .0/ = y i ; f(x i C1 ) = f i .1/ = y i C1 for i = 0;1;:::;n − 1. To ensure that f(x) is sufficiently smooth, also require the first derivative to be continuous at each knot: f 0 (x i C1 ) = f 0 i .1/ = f 0 i C1 .0/ for i = 0;1;:::;n − 2. a. Suppose that for i = 0;1;:::;n , in addition to the point-value pairs f(x i ;y i )g, you are also given the first derivative = i = f 0 (x i ) at each knot. Express each coefficient a i , b i , c i , and d i in terms of the values y i , y i C1 , = i , and = i C1 ."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 848,
+   "pdf_page": 869,
+   "text": "(Remember that x i = i .) How quickly can you compute the 4n coefficients from the point-value pairs and first derivatives?"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 848,
+   "pdf_page": 869,
+   "text": "The question remains of how to choose the first derivatives of f(x) at the knots."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 848,
+   "pdf_page": 869,
+   "text": "One method is to require the second derivatives to be continuous at the knots: f 00 (x i C1 ) = f 00 i .1/ = f 00 i C1 .0/ for i = 0;1;:::;n −2. At the first and last knots, assume that f 00 (x 0 ) = f 00"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 848,
+   "pdf_page": 869,
+   "text": "0 .0/ = 0 and f 00 (x n ) = f 00 n−1 .1/ = 0. These assumptions make f(x) a natural cubic spline. b. Use the continuity constraints on the second deriva tive to show that for i ="
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 848,
+   "pdf_page": 869,
+   "text": "1;2;:::;n − 1, D i −1 + 4D i + = i C1 = 3.y i C1 − y i −1 /: (28.23) c. Show that 2D 0 + = 1 = 3.y 1 − y 0 /; (28.24)"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 848,
+   "pdf_page": 869,
+   "text": "D n−1 + 2D n = 3.y n − y n−1 /: (28.25) d. Rewrite equations (28.23)3(28.25) as a matrix equation involving the vector D = (D 0 = 1 = 2 • • • = n ) T of unknowns. What attributes does the matrix in your equation have? e. Argue that a natural cubic spline can interpolate a set of n + 1 point-value pairs in O(n) time (see Problem 28-1). f. Show how to determine a natural cubic spline that i nterpolates a set of n + 1 points (x i ;y i ) satisfying x 0 <x 1 < • • • <x n , even when x i is not necessarily equal to i . What matrix equation must your method solve, and how quickly does your algorithm run?"
+  },
+  {
+   "type": "chapter-notes",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 848,
+   "pdf_page": 869,
+   "text": "Chapter notes"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 848,
+   "pdf_page": 869,
+   "text": "Many excellent texts describe numerical and scientific computation in much greater detail than we have room for here. The following ar e especially readable: George"
+  },
+  {
+   "type": "chapter-notes",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 849,
+   "pdf_page": 870,
+   "text": "Notes for Chapter 28 849 and Liu [180], Golub and VanLoan [192], Press, Teukolsky, Vetterling, and Flannery [365, 366], and Strang [422, 423]."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 849,
+   "pdf_page": 870,
+   "text": "Golub and Van Loan [192] discuss numerical stability. They show why det(A) is not necessarily a good indicator of the stability of a matrix A, proposing instead to use kAk 1 kA −1 k 1 , where kAk 1 = max"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 849,
+   "pdf_page": 870,
+   "text": "˚P n j D1 ja ij j W 1 ≤ i ≤ n"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 849,
+   "pdf_page": 870,
+   "text": ". They also address the question of how to compute this value without actually computing A −1 ."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 849,
+   "pdf_page": 870,
+   "text": "Gaussian elimination, upon which the LU and LUP decompositions are based, was the first systematic method for solving linear systems of equations. It was also one of the earliest numerical algorithms. Although it was known earlier, its discovery is commonly attributed to C. F. Gauss (177731855). In his famous paper"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 849,
+   "pdf_page": 870,
+   "text": "[424], Strassen showed that an n × n matrix can be inverted in O(n lg 7 ) time. Winograd [460] originally proved that matrix multiplication is no harder than matrix inversion, and the converse is due to Aho, Hopcroft, and Ullman [5]."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 849,
+   "pdf_page": 870,
+   "text": "Another important matrix decomposition is the singular value decomposition, or SVD. The SVD factors an m × n matrix A into A = Q 1 †Q T"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 849,
+   "pdf_page": 870,
+   "text": "2 , where † is an m × n matrix with nonzero values only on the diagonal, Q 1 is m × m with mutually orthonormal columns, and Q 2 is n × n, also with mutually orthonormal columns."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 849,
+   "pdf_page": 870,
+   "text": "Two vectors are orthonormal if their inner product is 0 and each vector has a norm of 1. The books by Strang [422, 423] and Golub and Van Loan [192] contain good treatments of the SVD."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 849,
+   "pdf_page": 870,
+   "text": "Strang [423] has an excellent presentation of symmetric positive-definite matrices and of linear algebra in general."
+  },
+  {
+   "type": "footnote",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 850,
+   "pdf_page": 871,
+   "text": "29 Linear Programming"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 850,
+   "pdf_page": 871,
+   "text": "Many problems take the form of maximizing or minimi zing an objective, given limited resources and competing constraints. If you can specify the objective as a linear function of certain variables, and if you can specify the constraints on resources as equalities or inequalities on those va riables, then you have a linearprogramming problem. Linear programs arise in a variety of practical applications. We begin by studying an application in electoral politics."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 850,
+   "pdf_page": 871,
+   "text": "A political problem"
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 850,
+   "pdf_page": 871,
+   "text": "Suppose that you are a politician trying to win an election. Your district has three different types of areas—urban, suburban, and rural. These areas have, respectively, 100,000, 200,000, and 50,000 registered voters. Although not all the registered voters actually go to the polls, you decide that to govern effectively, you would like at least half the registered voters in e ach of the three regions to vote for you. You are honorable and would never consider supporting policies you don’t believe in. You realize, however, that certain issues may be more effective in winning votes in certain places. Your primary issues are preparing for a zombie apocalypse, equipping sharks with lasers, building highways for flying cars, and allowing dolphins to vote."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 850,
+   "pdf_page": 871,
+   "text": "According to your campaign staff’s research, you can estimate how many votes you win or lose from each population segment by spending $1,000 on advertising on each issue. This information appears in the tabl e of Figure 29.1. In this table, each entry indicates the number of thousands of eit her urban, suburban, or rural voters who would be won over by spending $1,000 on advertising in support of a particular issue. Negative entries denote votes tha t would be lost. Your task is to figure out the minimum amount of money that you need to spend in order to win 50,000 urban votes, 100,000 suburban votes, and 25,000 rural votes."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 850,
+   "pdf_page": 871,
+   "text": "You could, by trial and error, devise a strategy th at wins the required number of votes, but the strategy you come up with might n ot be the least expensive one."
+  },
+  {
+   "type": "body",
+   "chapter": 28,
+   "section": "28.3",
+   "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
+   "printed_page": 850,
+   "pdf_page": 871,
+   "text": "For example, you could devote $20,000 of advertisin g to preparing for a zombie"
+  }
+ ]
+}

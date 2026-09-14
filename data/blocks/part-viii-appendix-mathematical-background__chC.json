@@ -1,0 +1,4927 @@
+{
+ "chapter": "C",
+ "chapter_title": "C Counting and Probability",
+ "part": "Part VIII Appendix: Mathematical Background",
+ "source": {
+  "printed": [
+   1178,
+   null
+  ],
+  "pdf": [
+   1199,
+   1235
+  ]
+ },
+ "sections": [
+  "C.1 Counting",
+  "C.2 Probability",
+  "C.3 Discrete random variables",
+  "C.4 The geometric and binomial distributions",
+  "C.5 The tails of the binomial distribution"
+ ],
+ "sections_found": [
+  "C.1 Counting",
+  "C.2 Probability",
+  "C.3 Discrete random variables",
+  "C.4 The geometric and binomial distributions",
+  "C.5 The tails of the binomial distribution"
+ ],
+ "blocks": [
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1178,
+   "pdf_page": 1199,
+   "text": "C Counting and Probability"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1178,
+   "pdf_page": 1199,
+   "text": "This appendix reviews elementary combinatorics and probability theory. If you have a good background in these areas, you may want to skim the beginning of this appendix lightly and concentrate on the later sections. Most of this book’s chapters do not require probability, but for some chapters it is essential."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1178,
+   "pdf_page": 1199,
+   "text": "Section C.1 reviews elementary results in counting theory, including standard formulas for counting permutations and combinations. The axioms of probability and basic facts concerning probability distribution s form Section C.2. Random variables are introduced in Section C.3, along with the properties of expectation and variance. Section C.4 investigates the geometric and binomial distributions that arise from studying Bernoulli trials. The stud y of the binomial distribution continues in Section C.5, an advanced discussion of the \"tails\" of the distribution."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1178,
+   "pdf_page": 1199,
+   "text": "C.1 Counting"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1178,
+   "pdf_page": 1199,
+   "text": "Counting theory tries to answer the question \"How many?\" without actually enumerating all the choices. For example, you might as k, <How many different n-bit numbers are there?= or \"How many orderings of n distinct elements are there?\""
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1178,
+   "pdf_page": 1199,
+   "text": "This section reviews the elements of counting theor y. Since some of the material assumes a basic understanding of sets, you might wi sh to start by reviewing the material in Section B.1."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1178,
+   "pdf_page": 1199,
+   "text": "Rules of sum and product"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1178,
+   "pdf_page": 1199,
+   "text": "We can sometimes express a set of items that we wish to count as a union of disjoint sets or as a Cartesian product of sets."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1178,
+   "pdf_page": 1199,
+   "text": "The rule of sum says that the number of ways to choose one element from one of two disjoint sets is the sum of the cardinalities of the sets. T hat is, if A and B are two finite sets with no members in common, then jA [ B j = |A| C |B|, which"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1179,
+   "pdf_page": 1200,
+   "text": "C.1 Counting 1179 follows from equation (B.3) on page 1156. For example, if each position on a car’s license plate is a letter or a digit, then the number of possibilities for each position is 26 + 10 = 36, since there are 26 choices if it is a letter and 10 choices if it is a digit."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1179,
+   "pdf_page": 1200,
+   "text": "The rule of product says that the number of ways to choose an ordered p air is the number of ways to choose the first element times the number of ways to choose the second element. That is, if A and B are two finite sets, then jA × B j = |A|•|B|, which is simply equation (B.4) on page 1157. For example, if an ice-cream parlor offers 28 flavors of ice cream and four toppings, the number of possible sundaes with one scoop of ice cream and one topping is 28 • 4 = 112."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1179,
+   "pdf_page": 1200,
+   "text": "A string over a finite set S is a sequence of elements of S . For example, there are eight binary strings of length 3:"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1179,
+   "pdf_page": 1200,
+   "text": "000;001;010;011;100;101;110;111:"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1179,
+   "pdf_page": 1200,
+   "text": "(Here we use the shorthand of omitting the angle br ackets when denoting a sequence.) We sometimes call a string of length k a k-string. A substring s 0 of a string s is an ordered sequence of consecutive elements of s . A k-substring of a string is a substring of length k. For example, 010 is a 3-substring of 01101001"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1179,
+   "pdf_page": 1200,
+   "text": "(the 3-substring that begins in position 4), but 111 is not a substring of 01101001."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1179,
+   "pdf_page": 1200,
+   "text": "We can view a k-string over a set S as an element of the Cartesian product S k of k-tuples, which means that there are |S| k strings of length k. For example, the number of binary k-strings is 2 k . Intuitively, to construct a k-string over an n-set, there are n ways to pick the first element; for each of these choices, there are n ways to pick the second element; and so forth k times. This construction leads to the k-fold product n • n • • • n ˜ n times"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1179,
+   "pdf_page": 1200,
+   "text": "D n k as the number of k-strings."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1179,
+   "pdf_page": 1200,
+   "text": "Permutations"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1179,
+   "pdf_page": 1200,
+   "text": "A permutation of a finite set S is an ordered sequence of all the elements of S , with each element appearing exactly once. For examp le, if S = fa;b;c g, then S has 6 permutations: abc;acb;bac;bca;cab;cba:"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1179,
+   "pdf_page": 1200,
+   "text": "(Again, we use the shorthand of omitting the angle brackets when denoting a sequence.) There are n! permutations of a set of n elements, since there are n ways to choose the first element of the sequence, n − 1 ways for the second element, n − 2 ways for the third, and so on."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1180,
+   "pdf_page": 1201,
+   "text": "1180 Appendix C Counting and Probability"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1180,
+   "pdf_page": 1201,
+   "text": "A k-permutation of S is an ordered sequence of k elements of S , with no element appearing more than once in the sequence. (Thus, an ordinary permutation is an n-permutation of an n-set.) Here are the 2-permutations of the set fa;b;c;d g: ab;ac;ad;ba;bc;bd;ca;cb;cd;da;db;dc:"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1180,
+   "pdf_page": 1201,
+   "text": "The number of k-permutations of an n-set is n(n − 1).n − 2/ • • • (n − k + 1) = n!"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1180,
+   "pdf_page": 1201,
+   "text": "(n − k)! ; (C.1) since there are n ways to choose the first element, n − 1 ways to choose the second element, and so on, until k elements are chosen, with the last element chosen from the remaining n − k + 1 elements. For the above example, with n = 4 and k = 2, the formula (C.1) evaluates to 4!=2! = 12, matching the number of 2-permutations listed."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1180,
+   "pdf_page": 1201,
+   "text": "Combinations"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1180,
+   "pdf_page": 1201,
+   "text": "A k-combination of an n-set S is simply a k-subset of S . For example, the 4-set fa;b;c;d g has six 2-combinations: ab;ac;ad;bc;bd;cd :"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1180,
+   "pdf_page": 1201,
+   "text": "(Here we use the shorthand of omitting the braces a round each subset.) To construct a k-combination of an n-set, choose k distinct (different) elements from the n-set. The order of selecting the elements does not matter."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1180,
+   "pdf_page": 1201,
+   "text": "We can express the number of k-combinations of an n-set in terms of the number of k-permutations of an n-set. Every k-combination has exactly k! permutations of its elements, each of which is a distinct k-permutation of the n-set. Thus the number of k-combinations of an n-set is the number of k-permutations divided by k!. From equation (C(1), this quantity is n! k!.n − k)! : (C.2)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1180,
+   "pdf_page": 1201,
+   "text": "For k = 0, this formula tells us that the number of ways to choose 0 elements from an n-set is 1 (not 0), since 0! = 1."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1180,
+   "pdf_page": 1201,
+   "text": "Binomial coefficients"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1180,
+   "pdf_page": 1201,
+   "text": "The notation ã n k ä"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1180,
+   "pdf_page": 1201,
+   "text": "(read \"n choose k\") denotes the number of k-combinations of an n-set. Equation (C(2) gives"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1180,
+   "pdf_page": 1201,
+   "text": "D n! k!.n − k)! :"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1180,
+   "pdf_page": 1201,
+   "text": "• n n − k"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1180,
+   "pdf_page": 1201,
+   "text": "! x k y n−k ; (C.4) where n 2 N and x;y 2 R. The right-hand side of equation (C.4) is called the binomial expansion of the left-hand side. A special case of the binomial theorem occurs when x = y = 1:"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1180,
+   "pdf_page": 1201,
+   "text": "• n − 1 k − 1"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1180,
+   "pdf_page": 1201,
+   "text": "• n − 1 k"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1180,
+   "pdf_page": 1201,
+   "text": "! for 0 ≤ k<n ."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1180,
+   "pdf_page": 1201,
+   "text": "• n − 1 k"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1180,
+   "pdf_page": 1201,
+   "text": "• n − 1 k − 1"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1181,
+   "pdf_page": 1202,
+   "text": "C.1 Counting 1181"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1181,
+   "pdf_page": 1202,
+   "text": "This formula is symmetric in k and n − k: • n k"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1181,
+   "pdf_page": 1202,
+   "text": "These numbers are also known as binomial coefficients, due to their appearance in the binomial theorem:"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1181,
+   "pdf_page": 1202,
+   "text": "(x + y) n = n X kD0"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1181,
+   "pdf_page": 1202,
+   "text": "2 n = n X kD0"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1181,
+   "pdf_page": 1202,
+   "text": "This formula corresponds to counting the 2 n binary n-strings by the number of 1s they contain: ã n k ä binary n-strings contain exactly k1 s, since there are ã n k ä ways to choose k out of the n positions in which to place the 1s."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1181,
+   "pdf_page": 1202,
+   "text": "Many identities involve binomial coefficients. The exercises at the end of this section give you the opportunity to prove a few."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1181,
+   "pdf_page": 1202,
+   "text": "Binomial bounds"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1181,
+   "pdf_page": 1202,
+   "text": "You sometimes need to bound the size of a binomial coefficient. For 1 ≤ k ≤ n, we have the lower bound • n k"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1181,
+   "pdf_page": 1202,
+   "text": "D n(n − 1) • • • (n − k + 1) k(k − 1) • • • 1"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1181,
+   "pdf_page": 1202,
+   "text": "] [ n − 1 k − 1"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1181,
+   "pdf_page": 1202,
+   "text": "[ n − k + 1"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1181,
+   "pdf_page": 1202,
+   "text": "Taking advantage of the inequality k! ≥ (k/e) k derived from Stirling’s approximation (3.25) on page 67, we obtain the upper bounds • n k"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1181,
+   "pdf_page": 1202,
+   "text": "D n(n − 1) • • • (n − k + 1) k(k − 1) • • • 1"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1181,
+   "pdf_page": 1202,
+   "text": "≤ n k k!"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1182,
+   "pdf_page": 1203,
+   "text": "1182 Appendix C Counting and Probability"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1182,
+   "pdf_page": 1203,
+   "text": "For all integers k such that 0 ≤ k ≤ n, you can use induction (see Exercise C.1-12) to prove the bound"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1182,
+   "pdf_page": 1203,
+   "text": "≤ n n k k (n − k) n−k ; (C.7) where for convenience we assume that 0 0 = 1. For k = Ωn, where 0 ≤ Ω ≤ 1, we can rewrite this bound as • n"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1182,
+   "pdf_page": 1203,
+   "text": ".Ωn/ æn ..1 − Ω/n/ .1−æ/n"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1182,
+   "pdf_page": 1203,
+   "text": "] 1−æ ! n"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1182,
+   "pdf_page": 1203,
+   "text": "D 2 n H(æ) ; where"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1182,
+   "pdf_page": 1203,
+   "text": "H(Ω) = −Ω lg Ω − .1 − Ω/ lg(1 − Ω) (C.8) is the (binary) entropy function and where, for convenience, we assume that 0 lg 0 = 0, so that H(0) = H(1) = 0."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1182,
+   "pdf_page": 1203,
+   "text": "How many k-substrings does an n-string have? (Consider identical k-substrings at different positions to be different.) How many substrings does an n-string have in total?"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1182,
+   "pdf_page": 1203,
+   "text": "An n-input, m-output boolean function is a function from f0;1 g n to f0;1 g m . How many n-input, 1-output boolean functions are there? How many n-input, m-output boolean functions are there?"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1182,
+   "pdf_page": 1203,
+   "text": "In how many ways can n professors sit around a circular conference table? Consider two seatings to be the same if one can be rotated to form the other."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1182,
+   "pdf_page": 1203,
+   "text": "In how many ways is it possible to choose three dis tinct numbers from the set f1;2;:::;99 g so that their sum is even?"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1183,
+   "pdf_page": 1204,
+   "text": "C.1 Counting 1183"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1183,
+   "pdf_page": 1204,
+   "text": "Prove the identity"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1183,
+   "pdf_page": 1204,
+   "text": "(C.9) for 0<k ≤ n."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1183,
+   "pdf_page": 1204,
+   "text": "Prove the identity"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1183,
+   "pdf_page": 1204,
+   "text": "D n n − k"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1183,
+   "pdf_page": 1204,
+   "text": "To choose k objects from n, you can make one of the objects distinguished and consider whether the distinguished object is chosen . Use this approach to prove that • n k"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1183,
+   "pdf_page": 1204,
+   "text": "Using the result of Exercise C.1-7, make a table for n = 0;1;:::;6 and 0 ≤ k ≤ n of the binomial coefficients ã n k ä with ã 0 ä at the top, ã 1 ä and ã 1 ä on the next line, then ã 2 ä"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1183,
+   "pdf_page": 1204,
+   "text": ", and ã 2 ä"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1183,
+   "pdf_page": 1204,
+   "text": ", and so forth. Such a table of binomial coefficients is called"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1183,
+   "pdf_page": 1204,
+   "text": "Pascal’s triangle."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1183,
+   "pdf_page": 1204,
+   "text": "Prove that n X i D1 i ="
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.1",
+   "section_title": "C.1 Counting",
+   "printed_page": 1183,
+   "pdf_page": 1204,
+   "text": "Show that for any integers n ≥ 0 and 0 ≤ k ≤ n, the expression ã n k ä achieves its maximum value when k = ⌊n/2⌋ or k = ⌈n/2⌉."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1184,
+   "pdf_page": 1205,
+   "text": "1184 Appendix C Counting and Probability"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1184,
+   "pdf_page": 1205,
+   "text": "? C.1-11"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1184,
+   "pdf_page": 1205,
+   "text": "Argue that for any integers n ≥ 0, j ≥ 0, k ≥ 0, and j + k ≤ n, • n j + k"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1184,
+   "pdf_page": 1205,
+   "text": "!• n − j k"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1184,
+   "pdf_page": 1205,
+   "text": ": (C.10)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1184,
+   "pdf_page": 1205,
+   "text": "Provide both an algebraic proof and an argument based on a method for choosing j + k items out of n. Give an example in which equality does not hold."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1184,
+   "pdf_page": 1205,
+   "text": "? C.1-12"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1184,
+   "pdf_page": 1205,
+   "text": "Use induction on all integers k such that 0 ≤ k ≤ n/2 to prove inequality (C.7), and use equation (C.3) to extend it to all integers k such that 0 ≤ k ≤ n."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1184,
+   "pdf_page": 1205,
+   "text": "? C.1-13"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1184,
+   "pdf_page": 1205,
+   "text": "Use Stirling’s approximation to prove that •"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1184,
+   "pdf_page": 1205,
+   "text": "D 2 2n p Ω n .1 + O(1/n)/: (C.11)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1184,
+   "pdf_page": 1205,
+   "text": "? C.1-14"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1184,
+   "pdf_page": 1205,
+   "text": "By differentiating the entropy function H(Ω), show that it achieves its maximum value at Ω = 1/2. What is H(1/2)?"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1184,
+   "pdf_page": 1205,
+   "text": "? C.1-15"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1184,
+   "pdf_page": 1205,
+   "text": "Show that for any integer n ≥ 0, n X kD0"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1184,
+   "pdf_page": 1205,
+   "text": "! k = n2 n−1 : (C.12)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1184,
+   "pdf_page": 1205,
+   "text": "? C.1-16"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1184,
+   "pdf_page": 1205,
+   "text": "Inequality (C.5) provides a lower bound on the binomial coefficient ã n k ä"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1184,
+   "pdf_page": 1205,
+   "text": ". For small values of k, a stronger bound holds. Prove that • n k"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1184,
+   "pdf_page": 1205,
+   "text": "4k! (C.13) for k ≤ √n."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1184,
+   "pdf_page": 1205,
+   "text": "C.2 Probability"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1184,
+   "pdf_page": 1205,
+   "text": "Probability is an essential tool for the design and analysis of probabilistic and randomized algorithms. This section reviews basic probability theory."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1185,
+   "pdf_page": 1206,
+   "text": "C.2 Probability 1185"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1185,
+   "pdf_page": 1206,
+   "text": "We define probability in terms of a sample space S , which is a set whose elements are called outcomes or elementary events. Think of each outcome as a possible result of an experiment. For the experiment of flipping two distinguishable coins, with each individual flip resulting in a head (H) or a tail ( T), you can view the sample space S as consisting of the set of all possible 2-strings over fH; Tg:"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1185,
+   "pdf_page": 1206,
+   "text": "S = f HH; HT; TH; TTg :"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1185,
+   "pdf_page": 1206,
+   "text": "An event is a subset 1 of the sample space S . For example, in the experiment of flipping two coins, the event of obtaining one head and one tail is fHT; THg. The event S is called the certain event, and the event ; is called the null event. We say that two events A and B are mutually exclusive if A \\ B = ;. An outcome s also defines the event fs g, which we sometimes write as just s . By definition, all outcomes are mutually exclusive."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1185,
+   "pdf_page": 1206,
+   "text": "Axioms of probability"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1185,
+   "pdf_page": 1206,
+   "text": "A probability distribution Pr fg on a sample space S is a mapping from events of S to real numbers satisfying the following probability axioms:"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1185,
+   "pdf_page": 1206,
+   "text": "1. Pr fAg ≥ 0 for any event A."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1185,
+   "pdf_page": 1206,
+   "text": "2. Pr fS g = 1."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1185,
+   "pdf_page": 1206,
+   "text": "3. Pr fA [ B g = Pr fAg C Pr fB g for any two mutually exclusive events A and B ."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1185,
+   "pdf_page": 1206,
+   "text": "More generally, for any sequence of events A 1 ;A 2 ;::: (finite or countably infinite) that are pairwise mutually exclusive, Pr ï [ i"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1185,
+   "pdf_page": 1206,
+   "text": "Pr fA i g :"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1185,
+   "pdf_page": 1206,
+   "text": "We call Pr fAg the probability of the event A. Axiom 2 is simply a normalization requirement: there is really nothing fundamental about choosing 1 as the probability of the certain event, except that it is natural and convenient."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1185,
+   "pdf_page": 1206,
+   "text": "Several results follow immediately from these axioms and basic set theory (see"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1185,
+   "pdf_page": 1206,
+   "text": "Section B.1). The null event ; has probability Pr f;g = 0. If A ⊆ B , then"
+  },
+  {
+   "type": "footnote",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1185,
+   "pdf_page": 1206,
+   "text": "1 For a general probability distribution, there may be some subsets of the sample space S that are not considered to be events. This situation usually arises when the sample space is uncountably infinite."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1185,
+   "pdf_page": 1206,
+   "text": "The main requirement for what subsets are events is that the set of events of a sample space must be closed under the operations of taking the comple ment of an event, forming the union of a finite or countable number of events, and taking the intersection of a finite or countable number of events."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1185,
+   "pdf_page": 1206,
+   "text": "Most of the probability distributions we see in this book are over finite or countable sample spaces, and we generally consider all subsets of a sample s pace to be events. A notable exception is the continuous uniform probability distribution, which we’ll see shortly."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1186,
+   "pdf_page": 1207,
+   "text": "1186 Appendix C Counting and Probability"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1186,
+   "pdf_page": 1207,
+   "text": "Pr fAg ≤ Pr fB g. Using A to denote the event S − A (the complement of A), we have Pr"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1186,
+   "pdf_page": 1207,
+   "text": "D 1 − Pr fAg. For any two events A and B , Pr fA [ B g = Pr fAg C Pr fB g − Pr fA \\ B g (C.14)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1186,
+   "pdf_page": 1207,
+   "text": "≤ Pr fAg C Pr fB g : (C.15)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1186,
+   "pdf_page": 1207,
+   "text": "In our coin-flipping example, suppose that each of the four outcomes has probability 1/4. Then the probability of getting at least one head is Pr fHH; HT; THg = Pr fHHg C Pr fHTg C Pr fTHg"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1186,
+   "pdf_page": 1207,
+   "text": "Another way to obtain the same result is to observe that since the probability of getting strictly less than one head is Pr fTTg = 1/4, the probability of getting at least one head is 1 − 1/4 = 3/4."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1186,
+   "pdf_page": 1207,
+   "text": "Discrete probability distributions"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1186,
+   "pdf_page": 1207,
+   "text": "A probability distribution is discrete if it is defined over a finite or countably infinite sample space. Let S be the sample space. Then for any event A, Pr fAg ="
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1186,
+   "pdf_page": 1207,
+   "text": "Pr fs g ; since outcomes, specifically those in A, are mutually exclusive. If S is finite and every outcome s 2 S has probability Pr fs g = 1= |S|, then we have the uniform probability distribution on S . In such a case the experiment is often described as \"picking an element of S at random.\""
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1186,
+   "pdf_page": 1207,
+   "text": "As an example, consider the process of flipping a fair coin, one for which the probability of obtaining a head is the same as the probability of obtaining a tail, that is, 1/2. Flipping the coin n times gives the uniform probability distribution defined on the sample space S = f H; Tg n , a set of size 2 n . We can represent each outcome in S as a string of length n over fH; Tg, with each string occurring with probability 1/2 n . The event A = f exactly k heads and exactly n − k tails occurg is a subset of S of size |A| = ã n k ä"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1186,
+   "pdf_page": 1207,
+   "text": ", since ã n k ä strings of length n over fH; Tg contain exactly k H’s. The probability of event A is thus Pr fAg = ã n k ä"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1186,
+   "pdf_page": 1207,
+   "text": "Continuous uniform probability distribution"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1186,
+   "pdf_page": 1207,
+   "text": "The continuous uniform probability distribution is an example of a probability distribution in which not all subsets of the sample sp ace are considered to be events."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1186,
+   "pdf_page": 1207,
+   "text": "The continuous uniform probability distribution is defined over a closed inter- val [a; b] of the reals, where a < b. The intuition is that each point in the in- terval [a; b] should be \"equally likely.\" Because there are an un countable number"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1187,
+   "pdf_page": 1208,
+   "text": "C.2 Probability 1187 of points, however, if all points had the same finite, positive probability, axioms 2 and 3 would not be simultaneously satisfied. For this reason, we’d like to associate a probability only with some of the subsets of S in such a way that the axioms are satisfied for these events."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1187,
+   "pdf_page": 1208,
+   "text": "For any closed interval [c; d ], where a ≤ c ≤ d ≤ b, the continuous uniform probability distribution defines the probability of the event [c; d ] to be"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1187,
+   "pdf_page": 1208,
+   "text": "Pr f[c; d ]g = d − c b − a :"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1187,
+   "pdf_page": 1208,
+   "text": "Letting c = d gives that the probability of a single point is 0. Removing the endpoints [c; c] and [d; d ] of an interval [c; d ] results in the open interval (c;d) . Since"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1187,
+   "pdf_page": 1208,
+   "text": "[c; d ] = [c; c] [ (c;d) [ [d; d ], axiom 3 gives Pr f[c; d ]g = Pr f(c;d) g. Generally, the set of events for the continuous uniform probab ility distribution contains any subset of the sample space [a; b] that can be obtained by a finite or countable union of open and closed intervals, as well as certain more complicated sets."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1187,
+   "pdf_page": 1208,
+   "text": "Conditional probability and independence"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1187,
+   "pdf_page": 1208,
+   "text": "Sometimes you have some prior partial knowledge about the outcome of an experiment. For example, suppose that a friend has flipped two fair coins and has told you that at least one of the coins showed a head. W hat is the probability that both coins are heads? The information given eliminates the possibility of two tails. The three remaining outcomes are equally likely, and so you infer that each occurs with probability 1/3. Since only one of these outcomes shows two heads, the answer is 1/3."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1187,
+   "pdf_page": 1208,
+   "text": "Conditional probability formalizes the notion of having prior partial knowledge of the outcome of an experiment. The conditional probability of an event A given that another event B occurs is defined to be"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1187,
+   "pdf_page": 1208,
+   "text": "Pr fA j B g = Pr fA \\ B g"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1187,
+   "pdf_page": 1208,
+   "text": "Pr fB g (C.16) whenever Pr fB g ≠ 0. (Read \"Pr fA j B g\" as \"the probability of A given B .\")"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1187,
+   "pdf_page": 1208,
+   "text": "The idea behind equation (C.16) is that since we are given that event B occurs, the event that A also occurs is A \\ B . That is, A \\ B is the set of outcomes in which both A and B occur. Because the outcome is one of the elementary events in B , we normalize the probabilities of all the elementary events in B by dividing them by Pr fB g, so that they sum to 1. The conditional probability of A given B is, therefore, the ratio of the probability of event A \\ B to the probability of event B ."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1187,
+   "pdf_page": 1208,
+   "text": "In the example above, A is the event that both coins are heads, and B is the event that at least one coin is a head. Thus, Pr fA j B g = .1/4/=.3/4/ = 1/3."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1188,
+   "pdf_page": 1209,
+   "text": "1188 Appendix C Counting and Probability"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1188,
+   "pdf_page": 1209,
+   "text": "Two events are independent if"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1188,
+   "pdf_page": 1209,
+   "text": "Pr fA \\ B g = Pr fAg Pr fB g ; (C.17) which is equivalent, if Pr fB g ≠ 0, to the condition"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1188,
+   "pdf_page": 1209,
+   "text": "Pr fA j B g = Pr fAg :"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1188,
+   "pdf_page": 1209,
+   "text": "For example, suppose that you flip two fair coins and that the outcomes are independent. Then the probability of two heads is .1/2/.1/2/ = 1/4. Now suppose that one event is that the first coin comes up heads and the other event is that the coins come up differently. Each of these events occ urs with probability 1/2, and the probability that both events occur is 1/4. Thus, according to the definition of independence, the events are independent—even though you might think that both events depend on the first coin. Finally, suppose that the coins are welded together so that they both fall heads or both fall tails and that the two possibilities are equally likely. Then the probability that each coin comes up heads is 1/2, but the probability that they both come up heads is 1/2 ≠ .1/2/.1/2/. Consequently, the event that one comes up heads and the event that the other comes up heads are not independent."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1188,
+   "pdf_page": 1209,
+   "text": "A collection A 1 ;A 2 ;:::;A n of events is said to be pairwise independent if"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1188,
+   "pdf_page": 1209,
+   "text": "Pr fA i \\ A j g = Pr fA i g Pr fA j g for all 1 ≤ i < j ≤ n. We say that the events of the collection are (mutually) independent if every k-subset A i 1 ;A i 2 ;:::;A i k of the collection, where 2 ≤ k ≤ n and 1 ≤ i 1 <i 2 < • • • <i k ≤ n, satisfies"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1188,
+   "pdf_page": 1209,
+   "text": "Pr fA i 1 \\ A i 2 \\ • • • \\ A i k g = Pr fA i 1 g Pr fA i 2 g • • • Pr fA i k g :"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1188,
+   "pdf_page": 1209,
+   "text": "For example, suppose that you flip two fair coins. Let A 1 be the event that the first coin is heads, let A 2 be the event that the second coin is heads, and let A 3 be the event that the two coins are different. Then, Pr fA 1 g = 1/2 , Pr fA 2 g = 1/2 , Pr fA 3 g = 1/2 , Pr fA 1 \\ A 2 g = 1/4 , Pr fA 1 \\ A 3 g = 1/4 , Pr fA 2 \\ A 3 g = 1/4 , Pr fA 1 \\ A 2 \\ A 3 g = 0 ."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1188,
+   "pdf_page": 1209,
+   "text": "Since for 1 ≤ i < j ≤ 3, we have Pr fA i \\ A j g = Pr fA i g Pr fA j g = 1/4, the events A 1 , A 2 , and A 3 are pairwise independent. The events are not mutually independent, however, because Pr fA 1 \\ A 2 \\ A 3 g = 0 and Pr fA 1 g Pr fA 2 g Pr fA 3 g ="
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1188,
+   "pdf_page": 1209,
+   "text": "1/8 ≠ 0."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1189,
+   "pdf_page": 1210,
+   "text": "C.2 Probability 1189"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1189,
+   "pdf_page": 1210,
+   "text": "Bayes’s theorem"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1189,
+   "pdf_page": 1210,
+   "text": "From the definition (C.16) of conditional probability and the commutative law"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1189,
+   "pdf_page": 1210,
+   "text": "A \\ B = B \\ A, it follows that for two events A and B , each with nonzero probability, Pr fA \\ B g = Pr fB g Pr fA j B g (C.18)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1189,
+   "pdf_page": 1210,
+   "text": "D Pr fAg Pr fB j Ag :"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1189,
+   "pdf_page": 1210,
+   "text": "Solving for Pr fA j B g, we obtain Pr fA j B g = Pr fAg Pr fB j Ag"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1189,
+   "pdf_page": 1210,
+   "text": "Pr fB g ; (C.19) which is known as Bayes’s theorem. The denominator Pr fB g is a normalizing constant, which we can reformulate as follows. Sinc e B = (B \\ A) [ (B \\ A), and since B \\ A and B \\ A are mutually exclusive events, Pr fB g = Pr fB \\ Ag C Pr"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1189,
+   "pdf_page": 1210,
+   "text": "D Pr fAg Pr fB j Ag C Pr"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1189,
+   "pdf_page": 1210,
+   "text": "Substituting into equation (C.19) produces an equivalent form of Bayes’s theorem:"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1189,
+   "pdf_page": 1210,
+   "text": "Pr fA j B g = Pr fAg Pr fB j Ag"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1189,
+   "pdf_page": 1210,
+   "text": "Pr fAg Pr fB j Ag C Pr"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1189,
+   "pdf_page": 1210,
+   "text": "} : (C.20)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1189,
+   "pdf_page": 1210,
+   "text": "Bayes’s theorem can simplify the computing of conditional probabilities. For example, suppose that you have a fair coin and a biased coin that always comes up heads. Run an experiment consisting of three indepe ndent events: choose one of the two coins at random, flip that coin once, and then flip it again. Suppose that the coin you have chosen comes up heads both times. Wha t is the probability that it’s the biased coin?"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1189,
+   "pdf_page": 1210,
+   "text": "Bayes’s theorem solves this problem. Let A be the event that you choose the biased coin, and let B be the event that the chosen coin comes up heads both times."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1189,
+   "pdf_page": 1210,
+   "text": "We wish to determine Pr fA j B g, knowing that Pr fAg = 1/2, Pr fB j Ag = 1, Pr"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1189,
+   "pdf_page": 1210,
+   "text": "D 1/2, and Pr"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1189,
+   "pdf_page": 1210,
+   "text": "D 1/4. Thus we have"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1189,
+   "pdf_page": 1210,
+   "text": "Pr fA j B g = .1/2/ • 1"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1189,
+   "pdf_page": 1210,
+   "text": ".1/2/ • 1 C .1/2/ • .1/4/"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1190,
+   "pdf_page": 1211,
+   "text": "1190 Appendix C Counting and Probability"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1190,
+   "pdf_page": 1211,
+   "text": "Professor Rosencrantz flips a fair coin twice. Professor Guildenstern flips a fair coin once. What is the probability that Professor Rosencrantz obtains strictly more heads than Professor Guildenstern?"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1190,
+   "pdf_page": 1211,
+   "text": "Prove Boole’s inequality: For any finite or countably infinite sequence of events"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1190,
+   "pdf_page": 1211,
+   "text": "A 1 ;A 2 ;::: , Pr fA 1 [ A 2 [ • • •g ≤ Pr fA 1 g C Pr fA 2 g + • • • : (C.21)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1190,
+   "pdf_page": 1211,
+   "text": "You shuffle a deck of 10 cards, each bearing a distinct number from 1 to 10, in order to mix the cards thoroughly. You then remove three cards, one at a time, from the deck. What is the probability that the thr ee cards you select are in sorted"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1190,
+   "pdf_page": 1211,
+   "text": "(increasing) order?"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1190,
+   "pdf_page": 1211,
+   "text": "Prove that Pr fA j B g C Pr"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1190,
+   "pdf_page": 1211,
+   "text": "Prove that for any collection of events A 1 ;A 2 ;:::;A n , Pr fA 1 \\ A 2 \\ • • • \\ A n g = Pr fA 1 g • Pr fA 2 j A 1 g • Pr fA 3 j A 1 \\ A 2 g • • •"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1190,
+   "pdf_page": 1211,
+   "text": "Pr fA n j A 1 \\ A 2 \\ • • • \\ A n−1 g : (C.22)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1190,
+   "pdf_page": 1211,
+   "text": "Show how to construct a set of n events that are pairwise independent but such that no subset of k>2 of them is mutually independent."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1190,
+   "pdf_page": 1211,
+   "text": "Two events A and B are conditionally independent, given C , if"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1190,
+   "pdf_page": 1211,
+   "text": "Pr fA \\ B j + g = Pr fA j + g • Pr fB j + g :"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1190,
+   "pdf_page": 1211,
+   "text": "Give a simple but nontrivial example of two events that are not independent but are conditionally independent given a third event."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.2",
+   "section_title": "C.2 Probability",
+   "printed_page": 1190,
+   "pdf_page": 1211,
+   "text": "Professor Gore teaches a music class on rhythm in which three students—Jeff, Tim, and Carmine—are in danger of failing. Professor Gore tells the three that one of"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1191,
+   "pdf_page": 1212,
+   "text": "C.3 Discrete random variables 1191 them will pass the course and the other two will fail. Carmine asks Professor Gore privately which of Jeff and Tim will fail, arguing that since he already knows at least one of them will fail, the professor won’t be revealing any information about"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1191,
+   "pdf_page": 1212,
+   "text": "Carmine’s outcome. In a breach of privacy law, Professor Gore tells Carmine that Jeff will fail. Carmine feels somewhat relieved now, figuring that either he or Tim will pass, so that his probability of passing is no w 1/2. Is Carmine correct, or is his chance of passing still 1/3? Explain."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1191,
+   "pdf_page": 1212,
+   "text": "C.3 Discrete random variables"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1191,
+   "pdf_page": 1212,
+   "text": "A (discrete) random variable X is a function from a finite or countably infinite sample space S to the real numbers. It associates a real number with each possible outcome of an experiment, which allows us to work w ith the probability distribution induced on the resulting set of numbers. Ran dom variables can also be defined for uncountably infinite sample spaces, but they raise technical issues that are unnecessary to address for our purposes. Therefore we’ll assume that random variables are discrete."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1191,
+   "pdf_page": 1212,
+   "text": "For a random variable X and a real number x , we define the event X = x to be fs 2 S W X(s) = x g, and thus"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1191,
+   "pdf_page": 1212,
+   "text": "Pr fX = x g ="
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1191,
+   "pdf_page": 1212,
+   "text": "X s2S WX(s)Dx"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1191,
+   "pdf_page": 1212,
+   "text": "Pr fs g :"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1191,
+   "pdf_page": 1212,
+   "text": "The function f(x) = Pr fX = x g is the probability density function of the random variable X . From the probability axioms, Pr fX = x g ≥ 0 and P x Pr fX = x g = 1."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1191,
+   "pdf_page": 1212,
+   "text": "As an example, consider the experiment of rolling a pair of ordinary, 6-sided dice. There are 36 possible outcomes in the sample space. Assume that the probability distribution is uniform, so that each o utcome s 2 S is equally likely:"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1191,
+   "pdf_page": 1212,
+   "text": "Pr fs g = 1/36. Define the random variable X to be the maximum of the two values showing on the dice. We have Pr fX = 3g = 5/36, since X assigns a value of 3 to 5 of the 36 possible outcomes, namely, .1;3/ , .2;3/ , .3;3/ , .3;2/ , and .3;1/ ."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1191,
+   "pdf_page": 1212,
+   "text": "We can define several random variables on the same sample space. If X and Y are random variables, the function f(x;y) = Pr fX = x and Y = y g is the joint probability density function of X and Y . For a fixed value y , 1192 Appendix C Counting and Probability"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1191,
+   "pdf_page": 1212,
+   "text": "X x x • Pr fX = x g ; (C.23) which is well defined if the sum is finite or converges absolutely. Sometimes the expectation of X is denoted by Ω X or, when the random variable is apparent from context, simply by Ω."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1191,
+   "pdf_page": 1212,
+   "text": "X x g(x) • Pr fX = x g :"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1191,
+   "pdf_page": 1212,
+   "text": "X y xy • Pr fX = x and Y = y g"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1191,
+   "pdf_page": 1212,
+   "text": "X y xy • Pr fX = x g Pr fY = y g (by independence of X and Y )"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1192,
+   "pdf_page": 1213,
+   "text": "Pr fY = y g ="
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1192,
+   "pdf_page": 1213,
+   "text": "Pr fX = x and Y = y g ; and similarly, for a fixed value x , Pr fX = x g ="
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1192,
+   "pdf_page": 1213,
+   "text": "Pr fX = x and Y = y g :"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1192,
+   "pdf_page": 1213,
+   "text": "Using the definition (C.16) of conditional probability on page 1187, we have"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1192,
+   "pdf_page": 1213,
+   "text": "Pr fX = x j Y = y g = Pr fX = x and Y = y g"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1192,
+   "pdf_page": 1213,
+   "text": "Pr fY = y g :"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1192,
+   "pdf_page": 1213,
+   "text": "We define two random variables X and Y to be independent if for all x and y , the events X = x and Y = y are independent or, equivalently, if for all x and y , we have Pr fX = x and Y = y g = Pr fX = x g Pr fY = y g."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1192,
+   "pdf_page": 1213,
+   "text": "Given a set of random variables defined over the same sample space, we can define new random variables as sums, products, or other functions of the original variables."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1192,
+   "pdf_page": 1213,
+   "text": "Expected value of a random variable"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1192,
+   "pdf_page": 1213,
+   "text": "The simplest, and often the most useful, summary of the distribution of a random variable is the \"average\" of the values it takes on. The expected value (or, synonymously, expectation or mean) of a discrete random variable X is E [X ] ="
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1192,
+   "pdf_page": 1213,
+   "text": "Consider a game in which you flip two fair coins. You earn $3 for each head but lose $2 for each tail. The expected value of the random var iable X representing your earnings is E [X ] = 6 • Pr f2 H’sg + 1 • Pr f1 H,1 Tg − 4 • Pr f2 T’sg"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1192,
+   "pdf_page": 1213,
+   "text": "D 6 • .1/4/ C 1 • .1/2/ − 4 • .1/4/"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1192,
+   "pdf_page": 1213,
+   "text": "Linearity of expectation says that the expectation of the sum of two random variables is the sum of their expectations, that is, E [X + Y ] = E [X ] + E [Y ] ; (C.24)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1192,
+   "pdf_page": 1213,
+   "text": "E [X ] ="
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1193,
+   "pdf_page": 1214,
+   "text": "C.3 Discrete random variables 1193 whenever E [X ] and E [Y ] are defined. Linearity of expectation applies to a broad range of situations, holding even when X and Y are not independent. It also ex- tends to finite and absolutely convergent summations of expectations. Linearity of expectation is the key property that enables us to perform probabilistic analyses by using indicator random variables (see Section 5.2)."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1193,
+   "pdf_page": 1214,
+   "text": "If X is any random variable, any function g(x) defines a new random variable g(X) . If the expectation of g(X) is defined, then"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1193,
+   "pdf_page": 1214,
+   "text": "E [g(X )] ="
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1193,
+   "pdf_page": 1214,
+   "text": "Letting g(x) = ax , we have for any constant a, E [aX ] = aE [X ] : (C.25)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1193,
+   "pdf_page": 1214,
+   "text": "Consequently, expectations are linear: for any two random variables X and Y and any constant a, E [aX + Y ] = aE [X ] + E [Y ] : (C.26)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1193,
+   "pdf_page": 1214,
+   "text": "When two random variables X and Y are independent and each has a defined expectation, E [X Y ] ="
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1193,
+   "pdf_page": 1214,
+   "text": "• X x x • Pr fX = x g"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1193,
+   "pdf_page": 1214,
+   "text": "! • X y y • Pr fY = y g"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1193,
+   "pdf_page": 1214,
+   "text": "D E [X ] E [Y ] (by equation (C.23)) ."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1193,
+   "pdf_page": 1214,
+   "text": "In general, when n random variables X 1 ;X 2 ;:::;X n are mutually independent, E [X 1 X 2 • • • X n ] = E [X 1 ] E [X 2 ] • • • E [X n ] : (C.27)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1193,
+   "pdf_page": 1214,
+   "text": "When a random variable X takes on values from the set of natural numbers"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1193,
+   "pdf_page": 1214,
+   "text": "N = f0;1;2;::: g, we have a nice formula for its expectation:"
+  },
+  {
+   "type": "footnote",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1193,
+   "pdf_page": 1214,
+   "text": "1 X i D0 i • Pr fX = i g"
+  },
+  {
+   "type": "footnote",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1193,
+   "pdf_page": 1214,
+   "text": "1 X i D0 i • .Pr fX ≥ i g − Pr fX ≥ i + 1g/"
+  },
+  {
+   "type": "footnote",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1193,
+   "pdf_page": 1214,
+   "text": "1 X i D1"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1193,
+   "pdf_page": 1214,
+   "text": "Pr fX ≥ i g ; (C.28)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1193,
+   "pdf_page": 1214,
+   "text": "D n X i D1"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1194,
+   "pdf_page": 1215,
+   "text": "1194 Appendix C Counting and Probability since each term Pr fX ≥ i g is added in i times and subtracted out i − 1 times"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1194,
+   "pdf_page": 1215,
+   "text": "(except Pr fX ≥ 0g, which is added in 0 times and not subtracted out at all)."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1194,
+   "pdf_page": 1215,
+   "text": "A function f(x) is convex if f .Ωx C .1 − Ω/y/ ≤ Ωf (x) C .1 − Ω/f (y) (C.29) for all x and y and for all 0 ≤ Ω ≤ 1. Jensen’s inequality says that when a convex function f(x) is applied to a random variable X , E [f (X )] ≥ f. E [X ]/ ; (C.30) provided that the expectations exist and are finite."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1194,
+   "pdf_page": 1215,
+   "text": "Variance and standard deviation"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1194,
+   "pdf_page": 1215,
+   "text": "The expected value of a random variable does not ex press how \"spread out\" the variable’s values are. For example, consider random variables X and Y for which"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1194,
+   "pdf_page": 1215,
+   "text": "Pr fX = 1/4g = Pr fX = 3/4g = 1/2 and Pr fY = 0g = Pr fY = 1g = 1/2."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1194,
+   "pdf_page": 1215,
+   "text": "Then both E [X ] and E [Y ] are 1/2, yet the actual values taken on by Y are further from the mean than the actual values taken on by X ."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1194,
+   "pdf_page": 1215,
+   "text": "The notion of variance mathematically expresses how far from the mean a random variable’s values are likely to be. The variance of a random variable X with mean E [X ] is Var [X ] = E í"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1194,
+   "pdf_page": 1215,
+   "text": "(X − E [X ]) 2 î"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1194,
+   "pdf_page": 1215,
+   "text": "D E í X 2 − 2X E [X ] + E 2 [X ] î"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1194,
+   "pdf_page": 1215,
+   "text": "D E [X 2 ] − 2E [X E [X ]] + E 2 [X ]"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1194,
+   "pdf_page": 1215,
+   "text": "D E [X 2 ] − 2E 2 [X ] + E 2 [X ]"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1194,
+   "pdf_page": 1215,
+   "text": "D E [X 2 ] − E 2 [X ] : (C.31)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1194,
+   "pdf_page": 1215,
+   "text": "To justify the equation E [E 2 [X ]] = E 2 [X ], note that because E [X ] is a real number and not a random variable, so is E 2 [X ]. The equation E [X E [X ]] = E 2 [X ] follows from equation (C.25), with a = E [X ]. Rewriting equation (C.31) yields an expression for the expectation of the square of a random variable:"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1194,
+   "pdf_page": 1215,
+   "text": "E [X 2 ] = Var [X ] + E 2 [X ] : (C.32)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1194,
+   "pdf_page": 1215,
+   "text": "The variance of a random variable X and the variance of aX are related (see"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1194,
+   "pdf_page": 1215,
+   "text": "Exercise C.3-10):"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1194,
+   "pdf_page": 1215,
+   "text": "Var [aX ] = a 2 Var [X ] :"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1194,
+   "pdf_page": 1215,
+   "text": "When X and Y are independent random variables, Var [X + Y ] = Var [X ] C Var [Y ] :"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1195,
+   "pdf_page": 1216,
+   "text": "C.3 Discrete random variables 1195"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1195,
+   "pdf_page": 1216,
+   "text": "In general, if n random variables X 1 ;X 2 ;:::;X n are pairwise independent, then"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1195,
+   "pdf_page": 1216,
+   "text": "\" n X i D1"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1195,
+   "pdf_page": 1216,
+   "text": "Var [X i ] : (C.33)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1195,
+   "pdf_page": 1216,
+   "text": "The standard deviation of a random variable X is the nonnegative square root of the variance of X . The standard deviation of a random variable X is sometimes denoted Ω X or simply Ω when the random variable X is understood from context."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1195,
+   "pdf_page": 1216,
+   "text": "With this notation, the variance of X is denoted Ω 2 ."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1195,
+   "pdf_page": 1216,
+   "text": "You roll two ordinary, 6-sided dice. What is the expectation of the sum of the two values showing? What is the expectation of the maximum of the two values showing?"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1195,
+   "pdf_page": 1216,
+   "text": "An array A[1 : n] contains n distinct numbers that are randomly ordered, with each permutation of the n numbers being equally likely. What is the expectation of the index of the maximum element in the array? What is the expectation of the index of the minimum element in the array?"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1195,
+   "pdf_page": 1216,
+   "text": "A carnival game consists of three dice in a cage. A player can bet a dollar on any of the numbers 1 through 6. The cage is shaken, and the payoff is as follows. If the player’s number doesn’t appear on any of the dice, the player loses the dollar. Otherwise, if the player’s number appears on exactly k of the three dice, for k = 1;2;3 , the player keeps the dollar and wins k more dollars. What is the expected gain from playing the carnival game once?"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1195,
+   "pdf_page": 1216,
+   "text": "Argue that if X and Y are nonnegative random variables, then"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1195,
+   "pdf_page": 1216,
+   "text": "E [max fX;Y g] ≤ E [X ] + E [Y ] :"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.3",
+   "section_title": "C.3 Discrete random variables",
+   "printed_page": 1195,
+   "pdf_page": 1216,
+   "text": "Let X and Y be independent random variables. Prove that f(X) and g(Y) are independent for any choice of functions f and g."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1196,
+   "pdf_page": 1217,
+   "text": "1196 Appendix C Counting and Probability"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1196,
+   "pdf_page": 1217,
+   "text": "Let X be a nonnegative random variable, and suppose that E [X ] is well defined."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1196,
+   "pdf_page": 1217,
+   "text": "Prove Markov’s inequality:"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1196,
+   "pdf_page": 1217,
+   "text": "Pr fX ≥ t g ≤ E [X ] =t (C.34) for all t >0."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1196,
+   "pdf_page": 1217,
+   "text": "Let S be a sample space, and let X and X 0 be random variables such that X(s) ≥ X 0 (s) for all s 2 S . Prove that for any real constant t , Pr fX ≥ t g ≥ Pr fX 0 ≥ t g :"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1196,
+   "pdf_page": 1217,
+   "text": "Which is larger: the expectation of the square of a random variable, or the square of its expectation?"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1196,
+   "pdf_page": 1217,
+   "text": "Show that for any random variable X that takes on only the values 0 and 1, we have"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1196,
+   "pdf_page": 1217,
+   "text": "Var [X ] = E [X ] E [1 − X ]."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1196,
+   "pdf_page": 1217,
+   "text": "Prove that Var [aX ] = a 2 Var [X ] from the definition (C.31) of variance."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1196,
+   "pdf_page": 1217,
+   "text": "C.4 The geometric and binomial distributions"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1196,
+   "pdf_page": 1217,
+   "text": "A Bernoulli trial is an experiment with only two possible outcomes: success, which occurs with probability p, and failure, which occurs with probability q = 1 − p. A coin flip serves as an example where, depending on your point of view, heads equates to success and tails to failure . When we speak of Bernoulli trials collectively, we mean that the trials are mutually independent and, unless we specifically say otherwise, that each has the same probability p for success. Two important distributions arise from Bernoulli trials : the geometric distribution and the binomial distribution."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1196,
+   "pdf_page": 1217,
+   "text": "The geometric distribution"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1196,
+   "pdf_page": 1217,
+   "text": "Consider a sequence of Bernoulli trials, each with a probability p of success and a probability q = 1 − p of failure. How many trials occur before a success? Define the random variable X to be the number of trials needed to obtain a success. Then"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1196,
+   "pdf_page": 1217,
+   "text": "X has values in the range f1;2;::: g, and for k ≥ 1, C.4 The geometric and binomial distributions 1197"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1197,
+   "pdf_page": 1218,
+   "text": "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1197,
+   "pdf_page": 1218,
+   "text": "] k−1 [ 1"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1197,
+   "pdf_page": 1218,
+   "text": "Figure C.1 A geometric distribution with probability √D 1/3 of success and a probability q = 1 − p of failure. The expectation of the distribution is 1/p = 3."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1197,
+   "pdf_page": 1218,
+   "text": "Pr fX = kg = q k−1 p; (C.35) since k − 1 failures occur before the first success. A probability distribution satisfying equation (C.35) is said to be a geometric distribution. Figure C.1 illustrates such a distribution."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1197,
+   "pdf_page": 1218,
+   "text": "Assuming that q <1, we can calculate the expectation of a geometric distribution:"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1197,
+   "pdf_page": 1218,
+   "text": "E [X ] ="
+  },
+  {
+   "type": "footnote",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1197,
+   "pdf_page": 1218,
+   "text": "1 X kD1 kq k−1 p"
+  },
+  {
+   "type": "footnote",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1197,
+   "pdf_page": 1218,
+   "text": "1 X kD0 kq k"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1197,
+   "pdf_page": 1218,
+   "text": "D p q • q"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1197,
+   "pdf_page": 1218,
+   "text": ".1 − q/ 2 (by equation (A.11) on page 1142)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1197,
+   "pdf_page": 1218,
+   "text": "D p q • q"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1197,
+   "pdf_page": 1218,
+   "text": "D 1/p : (C.36)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1197,
+   "pdf_page": 1218,
+   "text": "0.25 k 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 b (k; 15, 1/3)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1197,
+   "pdf_page": 1218,
+   "text": "E [X ] = n X kD0 k • Pr fX = kg"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1198,
+   "pdf_page": 1219,
+   "text": "1198 Appendix C Counting and Probability"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1198,
+   "pdf_page": 1219,
+   "text": "Thus, on average, it takes 1/p trials before a success occurs, an intuitive result. As"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1198,
+   "pdf_page": 1219,
+   "text": "Exercise C.4-3 asks you to show, the variance is Var [X ] = q/p 2 : (C.37)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1198,
+   "pdf_page": 1219,
+   "text": "As an example, suppose that you repeatedly roll two dice until you obtain either a seven or an eleven. Of the 36 possible outcomes, 6 yield a seven and 2 yield an eleven. Thus, the probability of success is √D 8/36 = 2/9, and you’d have to roll 1/p = 9/2 = 4:5 times on average to obtain a seven or eleven."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1198,
+   "pdf_page": 1219,
+   "text": "The binomial distribution"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1198,
+   "pdf_page": 1219,
+   "text": "How many successes occur during n Bernoulli trials, where a success occurs with probability p and a failure with probability q = 1 − p? Define the random variable X to be the number of successes in n trials. Then X has values in the range f0;1;:::;n g, and for k = 0;1;:::;n , Pr fX = kg ="
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1198,
+   "pdf_page": 1219,
+   "text": "√k q n−k ; (C.38) since there are ã n k ä ways to pick which k of the n trials are successes, and the probability that each occurs is √k q n−k . A probability distribution satisfying equation (C.38) is said to be a binomial distribution. For convenience, we define the family of binomial distributions using the notation b(kI n;p) ="
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1198,
+   "pdf_page": 1219,
+   "text": "√k .1 − p/ n−k : (C.39)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1198,
+   "pdf_page": 1219,
+   "text": "Figure C.2 illustrates a binomial distribution. The name \"binomial\" comes from the right-hand side of equation (C.38) being the kth term of the expansion of (p + q) n ."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1198,
+   "pdf_page": 1219,
+   "text": "Consequently, since p + q = 1, equation (C.4) on page 1181 gives n X kD0 b(kI n;p) = 1; (C.40) as axiom 2 of the probability axioms requires."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1198,
+   "pdf_page": 1219,
+   "text": "We can compute the expectation of a random variable having a binomial distribution from equations (C.9) and (C.40). Let X be a random variable that follows the binomial distribution b(kI n;p) , and let q = 1 − p. The definition of expectation gives"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1198,
+   "pdf_page": 1219,
+   "text": "• n − 1 k − 1"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1198,
+   "pdf_page": 1219,
+   "text": "• n − 1 k"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1199,
+   "pdf_page": 1220,
+   "text": "C.4 The geometric and binomial distributions 1199"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1199,
+   "pdf_page": 1220,
+   "text": "Figure C.2 The binomial distribution b(kI 15;1/3) resulting from n = 15 Bernoulli trials, each with probability √D 1/3 of success. The expectation of the distribution is np = 5."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1199,
+   "pdf_page": 1220,
+   "text": "D n X kD0 k • b(kI n;p)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1199,
+   "pdf_page": 1220,
+   "text": "D n X kD1 k"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1199,
+   "pdf_page": 1220,
+   "text": "√k q n−k"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1199,
+   "pdf_page": 1220,
+   "text": "D np n X kD1"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1199,
+   "pdf_page": 1220,
+   "text": "√k−1 q n−k (by equation (C.9) on page 1183)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1199,
+   "pdf_page": 1220,
+   "text": "D np n−1 X kD0"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1199,
+   "pdf_page": 1220,
+   "text": "√k q (n−1)−k"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1199,
+   "pdf_page": 1220,
+   "text": "D np n−1 X kD0 b(kI n − 1;p)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1199,
+   "pdf_page": 1220,
+   "text": "D np (by equation (C.40)) . (C.41)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1199,
+   "pdf_page": 1220,
+   "text": "Linearity of expectation produces the same result with substantially less algebra."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1199,
+   "pdf_page": 1220,
+   "text": "Let X i be the random variable describing the number of suc cesses in the i th trial."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1199,
+   "pdf_page": 1220,
+   "text": "Then E [X i ] = p • 1 + q • 0 = p, and the expected number of successes for n trials is 1200 Appendix C Counting and Probability"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1199,
+   "pdf_page": 1220,
+   "text": "D n X i D1"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1199,
+   "pdf_page": 1220,
+   "text": "D n X i D1 p"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1199,
+   "pdf_page": 1220,
+   "text": "D n X i D1"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1199,
+   "pdf_page": 1220,
+   "text": "D n X i D1 pq"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1199,
+   "pdf_page": 1220,
+   "text": "√k q n−k ã n k−1 ä"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1199,
+   "pdf_page": 1220,
+   "text": "√k q n−k"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1200,
+   "pdf_page": 1221,
+   "text": "E [X ] = E"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1200,
+   "pdf_page": 1221,
+   "text": "\" n X i D1"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1200,
+   "pdf_page": 1221,
+   "text": "E [X i ] (by equation (C.24) on page 1192)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1200,
+   "pdf_page": 1221,
+   "text": "D np : (C.42)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1200,
+   "pdf_page": 1221,
+   "text": "We can use the same approach to calculate the varia nce of the distribution. By equation (C.31), Var [X i ] = E [X 2 i ] − E 2 [X i ]. Since X i takes on only the values 0 and 1, we have X 2 i = X i , which implies E [X 2 i ] = E [X i ] = p. Hence, Var [X i ] = p − √2 = p(1 − p) = pq: (C.43)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1200,
+   "pdf_page": 1221,
+   "text": "To compute the variance of X , we take advantage of the independence of the n trials. By equation (C.33), we have"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1200,
+   "pdf_page": 1221,
+   "text": "Var [X ] = Var"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1200,
+   "pdf_page": 1221,
+   "text": "\" n X i D1"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1200,
+   "pdf_page": 1221,
+   "text": "Var [X i ]"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1200,
+   "pdf_page": 1221,
+   "text": "D npq: (C.44)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1200,
+   "pdf_page": 1221,
+   "text": "As Figure C.2 shows, the binomial distribution b(kI n;p) increases with k until it reaches the mean np, and then it decreases. To prove that the distribution always behaves in this manner, examine the ratio of successive terms: b(kI n;p) b(k − 1I n;p) = ã n k ä"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1200,
+   "pdf_page": 1221,
+   "text": "√k−1 q n−kC1"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1200,
+   "pdf_page": 1221,
+   "text": "D n!.k − 1/!.n − k + 1/!p k!.n − k/!n!q"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1200,
+   "pdf_page": 1221,
+   "text": "D (n − k + 1)p kq (C.45)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1200,
+   "pdf_page": 1221,
+   "text": "D 1 C (n − k + 1)p − kq kq"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1200,
+   "pdf_page": 1221,
+   "text": "D 1 C (n − k + 1)p − k(1 − p) kq"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1201,
+   "pdf_page": 1222,
+   "text": "C.4 The geometric and binomial distributions 1201"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1201,
+   "pdf_page": 1222,
+   "text": "D 1 C (n + 1)p − k kq :"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1201,
+   "pdf_page": 1222,
+   "text": "This ratio is greater than 1 precisely when (n + 1)p − k is positive. Consequently, b(kI n;p) > b(k − 1I n;p) for k < (n + 1)p (the distribution increases), and b(kI n;p) < b(k − 1I n;p) for k > (n + 1)p (the distribution decreases). If"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1201,
+   "pdf_page": 1222,
+   "text": "(n + 1)p is an integer, then for k = (n + 1)p, the ratio b(kI n;p)/b(k − 1I n;p) equals 1, so that b(kI n;p) = b(k − 1I n;p) . In this case, the distribution has two maxima: at k = .nC1/p and at k −1 = .nC1/p−1 = np−q. Otherwise, it attains a maximum at the unique integer k that lies in the range np − q<k<.n + 1/p."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1201,
+   "pdf_page": 1222,
+   "text": "The following lemma provides an upper bound on the binomial distribution."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1201,
+   "pdf_page": 1222,
+   "text": "Lemma C.1"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1201,
+   "pdf_page": 1222,
+   "text": "Let n ≥ 0, let 0<p<1 , let q = 1 − p, and let 0 ≤ k ≤ n. Then b(kI n;p) ≤"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1201,
+   "pdf_page": 1222,
+   "text": "] k − nq n − k"
+  },
+  {
+   "type": "proof",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1201,
+   "pdf_page": 1222,
+   "text": "Proof We have b(kI n;p) ="
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1201,
+   "pdf_page": 1222,
+   "text": "] k − n n − k"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1201,
+   "pdf_page": 1222,
+   "text": "√k q n−k (by inequality (C.7) on page 1182)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1201,
+   "pdf_page": 1222,
+   "text": "] k − nq n − k"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1201,
+   "pdf_page": 1222,
+   "text": "Verify axiom 2 of the probability axioms for the geometric distribution."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1201,
+   "pdf_page": 1222,
+   "text": "How many times on average do you need to flip six fair coins before obtaining three heads and three tails?"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1201,
+   "pdf_page": 1222,
+   "text": "Show that the variance of the geometric distributio n is q/p 2 . ( Hint: Use Exercise A.1-6 on page 1144.)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1201,
+   "pdf_page": 1222,
+   "text": "Show that b(kI n;p) = b(n − kI n;q) , where q = 1 − p."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1202,
+   "pdf_page": 1223,
+   "text": "1202 Appendix C Counting and Probability"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1202,
+   "pdf_page": 1223,
+   "text": "Show that the value of the maximum of the binomial distribution b(kI n;p) is approximately 1= √2Ω npq , where q = 1 − p."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1202,
+   "pdf_page": 1223,
+   "text": "Show that the probability of no successes in n Bernoulli trials, each with probability"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1202,
+   "pdf_page": 1223,
+   "text": "√D 1/n of success, is approximately 1/e. Show that the probability of exactly one success is also approximately 1/e."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1202,
+   "pdf_page": 1223,
+   "text": "Professor Rosencrantz flips a fair coin n times, and so does Professor Guildenstern."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1202,
+   "pdf_page": 1223,
+   "text": "Show that the probability that they get the same number of heads is ã 2n n ä"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1202,
+   "pdf_page": 1223,
+   "text": "=4 n . (Hint:"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1202,
+   "pdf_page": 1223,
+   "text": "For Professor Rosencrantz, call a head a success, a nd for Professor Guildenstern, call a tail a success.) Use your argument to verify the identity n X kD0"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1202,
+   "pdf_page": 1223,
+   "text": "Show that for 0 ≤ k ≤ n, b(kI n;1/2) ≤ 2 n H(k/n) −n ;"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1202,
+   "pdf_page": 1223,
+   "text": "where H(x) is the entropy function (C.8) on page 1182."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1202,
+   "pdf_page": 1223,
+   "text": "Consider n Bernoulli trials, where for i = 1;2;:::;n , the i th trial has probability √i of success, and let X be the random variable denoting the total number of successes. Let p ≥ √i for all i = 1;2;:::;n . Prove that for 1 ≤ k ≤ n, Pr fX <kg ≥ k−1 X i D0 b(i I n;p):"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1202,
+   "pdf_page": 1223,
+   "text": "? C.4-10"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1202,
+   "pdf_page": 1223,
+   "text": "Let X be the random variable for the total number of succ esses in a set A of n"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1202,
+   "pdf_page": 1223,
+   "text": "Bernoulli trials, where the i th trial has a probability √i of success, and let X 0 be the random variable for the total number of succ esses in a second set A 0 of n"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1202,
+   "pdf_page": 1223,
+   "text": "Bernoulli trials, where the i th trial has a probability √0 i ≥ √i of success. Prove that for 0 ≤ k ≤ n, Pr fX 0 ≥ kg ≥ Pr fX ≥ kg :"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.4",
+   "section_title": "C.4 The geometric and binomial distributions",
+   "printed_page": 1202,
+   "pdf_page": 1223,
+   "text": "(Hint: Show how to obtain the Bernoulli trials in A 0 by an experiment involving the trials of A, and use the result of Exercise C.3-7.)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1203,
+   "pdf_page": 1224,
+   "text": "C.5 The tails of the binomial distribution 1203"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1203,
+   "pdf_page": 1224,
+   "text": "? C.5 The tails of the binomial distribution"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1203,
+   "pdf_page": 1224,
+   "text": "The probability of having at least, or at most, k successes in n Bernoulli trials, each with probability p of success, is often of more interest than the probability of having exactly k successes. In this section, we investigate the tails of the binomial distribution: the two regions of the distribution b(kI n;p) that are far from the mean np. We’ll prove several important bounds on (the sum of all terms in) a tail."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1203,
+   "pdf_page": 1224,
+   "text": "We first provide a bound on the right tail of the distribution b(kI n;p). To determine bounds on the left tail, simply invert the roles of successes and failures."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1203,
+   "pdf_page": 1224,
+   "text": "Theorem C.2"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1203,
+   "pdf_page": 1224,
+   "text": "Consider a sequence of n Bernoulli trials, where success occurs with probability p."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1203,
+   "pdf_page": 1224,
+   "text": "Let X be the random variable denoting the total number of successes. Then for 0 ≤ k ≤ n, the probability of at least k successes is Pr fX ≥ kg = n X i Dk b(i I n;p)"
+  },
+  {
+   "type": "proof",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1203,
+   "pdf_page": 1224,
+   "text": "Proof For S ⊆ f1;2;:::;n g, let A S denote the event that the i th trial is a success for every i 2 S . Since Pr fA S g = √k , where |S| = k, we have"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1203,
+   "pdf_page": 1224,
+   "text": "Pr fX ≥ kg = Pr fthere exists S ⊆ f1;2;:::;n g W |S| = k and A S g"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1203,
+   "pdf_page": 1224,
+   "text": "D Pr ï ["
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1203,
+   "pdf_page": 1224,
+   "text": "S ⊆f1;2;:::;ngW|S|Dk"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1203,
+   "pdf_page": 1224,
+   "text": "S ⊆f1;2;:::;ngW|S|Dk"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1203,
+   "pdf_page": 1224,
+   "text": "Pr fA S g (by inequality (C.21) on page 1190)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1203,
+   "pdf_page": 1224,
+   "text": "The following corollary restates the theorem for th e left tail of the binomial distribution. In general, we’ll leave it to you to adapt the proofs from one tail to the other."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1203,
+   "pdf_page": 1224,
+   "text": "Corollary C.3"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1203,
+   "pdf_page": 1224,
+   "text": "Consider a sequence of n Bernoulli trials, where success occurs with probability p. If X is the random variable denoting the total number of successes, then for 0 ≤ k ≤ n, the probability of at most k successes is 1204 Appendix C Counting and Probability"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1203,
+   "pdf_page": 1224,
+   "text": "• n n − k"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1203,
+   "pdf_page": 1224,
+   "text": "Consider a sequence of n Bernoulli trials, where success occurs with probability p."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1203,
+   "pdf_page": 1224,
+   "text": "Let X be the random variable denoting the total number of successes. Then for np<k<n , the probability of more than k successes is Pr fX >kg = n X i DkC1 b(i I n;p)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1203,
+   "pdf_page": 1224,
+   "text": "D n X i D1"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1203,
+   "pdf_page": 1224,
+   "text": "D n Y i D1"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1203,
+   "pdf_page": 1224,
+   "text": "D n Y i D1"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1203,
+   "pdf_page": 1224,
+   "text": "≤ n Y i D1 exp.p i e ˛ /"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1203,
+   "pdf_page": 1224,
+   "text": "! a i <.a + 1) n k na − k(a + 1) b(kI n;a=.a + 1)/ for all a>0 and all k such that 0<k\"na\".a + 1/."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1204,
+   "pdf_page": 1225,
+   "text": "Pr fX ≤ kg = k X i D0 b(i I n;p)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1204,
+   "pdf_page": 1225,
+   "text": ".1 − p/ n−k"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1204,
+   "pdf_page": 1225,
+   "text": ".1 − p/ n−k :"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1204,
+   "pdf_page": 1225,
+   "text": "Our next bound concerns the left tail of the binomial distribution. Its corollary shows that, far from the mean, the left tail diminishes exponentially."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1204,
+   "pdf_page": 1225,
+   "text": "Theorem C.4"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1204,
+   "pdf_page": 1225,
+   "text": "Consider a sequence of n Bernoulli trials, where success occurs with probability p and failure with probability q = 1 − p. Let X be the random variable denoting the total number of successes. Then for 0 < k < np , the probability of fewer than k successes is Pr fX <kg = k−1 X i D0 b(i I n;p)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1204,
+   "pdf_page": 1225,
+   "text": "< kq np − k b(kI n;p):"
+  },
+  {
+   "type": "proof",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1204,
+   "pdf_page": 1225,
+   "text": "Proof We bound the series P k−1 i D0 b(i I n;p) by a geometric series using the technique from Section A.2, page 1147. For i = 1;2;:::;k , equation (C.45) gives b(i − 1I n;p) b(i I n;p) = iq"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1204,
+   "pdf_page": 1225,
+   "text": "(n − i + 1)p"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1204,
+   "pdf_page": 1225,
+   "text": "(n − i)p"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1204,
+   "pdf_page": 1225,
+   "text": "(n − k)p :"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1204,
+   "pdf_page": 1225,
+   "text": "If we let x = kq"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1204,
+   "pdf_page": 1225,
+   "text": "(n − k)p"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1204,
+   "pdf_page": 1225,
+   "text": "(n − np)p"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1204,
+   "pdf_page": 1225,
+   "text": "D kq nqp"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1204,
+   "pdf_page": 1225,
+   "text": "D kq np − kp − kq b(kI n;p)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1204,
+   "pdf_page": 1225,
+   "text": "D kq np − k b(kI n;p):"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1204,
+   "pdf_page": 1225,
+   "text": "Consider a sequence of n Bernoulli trials, where success occurs with probability p and failure with probability q = 1 − p. Then for 0<k ≤ np/2, the probability of fewer than k successes is less than half the probability of fewe r than k + 1 successes."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1204,
+   "pdf_page": 1225,
+   "text": "Pr fX <kg = k−1 X i D0 b(i I n;p)<b(k I n;p):"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1204,
+   "pdf_page": 1225,
+   "text": "Consider a sequence of n Bernoulli trials, where success occurs with probability p and failure with probability q = 1 − p. Then for .np + n/=2 < k < n , the probability of more than k successes is less than half the probability of more than k − 1 successes."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1205,
+   "pdf_page": 1226,
+   "text": "C.5 The tails of the binomial distribution 1205"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1205,
+   "pdf_page": 1226,
+   "text": "< 1; it follows that b(i − 1I n;p)<xb(i I n;p) for 0<i ≤ k. Iteratively applying this inequality k − i times gives b(i I n;p)<x k−i b(kI n;p) for 0 ≤ i <k, and hence k−1 X i D0 b(i I n;p) < k−1 X i D0 x k−i b(kI n;p)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1205,
+   "pdf_page": 1226,
+   "text": "< b(k I n;p)"
+  },
+  {
+   "type": "footnote",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1205,
+   "pdf_page": 1226,
+   "text": "1 X i D1 x i"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1205,
+   "pdf_page": 1226,
+   "text": "1 − x b(kI n;p)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1205,
+   "pdf_page": 1226,
+   "text": "D kq=..n − k/p/"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1205,
+   "pdf_page": 1226,
+   "text": "..n − k/p − kq/=..n − k/p/ b(kI n;p)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1205,
+   "pdf_page": 1226,
+   "text": "Corollary C.5"
+  },
+  {
+   "type": "proof",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1205,
+   "pdf_page": 1226,
+   "text": "Proof Because k ≤ np/2, we have kq np − k ≤ .np/2/q np − .np/2/"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1205,
+   "pdf_page": 1226,
+   "text": "D .np/2/q np/2"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1205,
+   "pdf_page": 1226,
+   "text": "≤ 1; (C.46) since q ≤ 1. Letting X be the random variable denoting the number of successes, Theorem C.4 and inequality (C.46) imply that the probability of fewer than k successes is 1206 Appendix C Counting and Probability"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1206,
+   "pdf_page": 1227,
+   "text": "Thus we have"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1206,
+   "pdf_page": 1227,
+   "text": "Pr fX <kg"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1206,
+   "pdf_page": 1227,
+   "text": "Pr fX <k + 1g ="
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1206,
+   "pdf_page": 1227,
+   "text": "P k−1 i D0 b(i I n;p)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1206,
+   "pdf_page": 1227,
+   "text": "P k i D0 b(i I n;p)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1206,
+   "pdf_page": 1227,
+   "text": "P k−1 i D0 b(i I n;p)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1206,
+   "pdf_page": 1227,
+   "text": "P k−1 i D0 b(i I n;p) + b(kI n;p)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1206,
+   "pdf_page": 1227,
+   "text": "< 1/2 ; since P k−1 i D0 b(i I n;p)<b(k I n;p) ."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1206,
+   "pdf_page": 1227,
+   "text": "Bounds on the right tail follow similarly. Exercise C.5-2 asks you to prove them."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1206,
+   "pdf_page": 1227,
+   "text": "Corollary C.6"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1206,
+   "pdf_page": 1227,
+   "text": "< (n − k)p k − np b(kI n;p):"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1206,
+   "pdf_page": 1227,
+   "text": "Corollary C.7"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1206,
+   "pdf_page": 1227,
+   "text": "The next theorem considers n Bernoulli trials, each with a probability √i of success, for i = 1;2;:::;n . As the subsequent corollary shows, we can use the theorem to provide a bound on the right tail of the binomial distribution by setting"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1206,
+   "pdf_page": 1227,
+   "text": "√i = p for each trial."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1206,
+   "pdf_page": 1227,
+   "text": "Theorem C.8"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1206,
+   "pdf_page": 1227,
+   "text": "Consider a sequence of n Bernoulli trials, where in the i th trial, for i = 1;2;:::;n , success occurs with probability √i and failure occurs with probability q i = 1 − √i ."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1206,
+   "pdf_page": 1227,
+   "text": "Let X be the random variable describing the total number of successes, and let"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1206,
+   "pdf_page": 1227,
+   "text": "Ω = E [X ]. Then for r > Ω , C.5 The tails of the binomial distribution 1207"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1206,
+   "pdf_page": 1227,
+   "text": "Consider a sequence of n Bernoulli trials, where in the i th trial, for i = 1;2;:::;n , success occurs with probability √i and failure occurs with probability q i = 1 − √i ."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1206,
+   "pdf_page": 1227,
+   "text": "Let X be the random variable describing the total number of successes, and let"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1207,
+   "pdf_page": 1228,
+   "text": "Pr fX − Ω ≥ r g ≤"
+  },
+  {
+   "type": "proof",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1207,
+   "pdf_page": 1228,
+   "text": "Proof Since for any ˛>0 , the function e ˛x strictly increases in x , Pr fX − Ω ≥ r g = Pr"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1207,
+   "pdf_page": 1228,
+   "text": "˚ e ˛.X −ç/ ≥ e ˛r }"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1207,
+   "pdf_page": 1228,
+   "text": "; (C.47) where we will determine ˛ later. Using Markov’s inequality (C(34), we obtain Pr"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1207,
+   "pdf_page": 1228,
+   "text": "˚ e ˛.X −ç) ≥ e ˛r }"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1207,
+   "pdf_page": 1228,
+   "text": "≤ E í e ˛.X −ç/ î e −˛r : (C.48)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1207,
+   "pdf_page": 1228,
+   "text": "The bulk of the proof consists of bounding E í e ˛.X −ç/ î and substituting a suitable value for ˛ in inequality (C(48). First, we evaluate E í e ˛.X −ç) î . Using the technique of indicator random variables (see Section 5.2), let X i = I f the i th"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1207,
+   "pdf_page": 1228,
+   "text": "Bernoulli trial is a success g for i = 1;2;:::;n . That is, X i is the random variable that is 1 if the i th Bernoulli trial is a success and 0 if it is a failure. Thus, we have"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1207,
+   "pdf_page": 1228,
+   "text": "X = n X i D1"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1207,
+   "pdf_page": 1228,
+   "text": "X i ; and by linearity of expectation, Ω = E [X ] = E"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1207,
+   "pdf_page": 1228,
+   "text": "\" n X i D1"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1207,
+   "pdf_page": 1228,
+   "text": "E [X i ] = n X i D1"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1207,
+   "pdf_page": 1228,
+   "text": "√i ; which implies"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1207,
+   "pdf_page": 1228,
+   "text": "X − Ω = n X i D1"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1207,
+   "pdf_page": 1228,
+   "text": "(X i − √i ):"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1207,
+   "pdf_page": 1228,
+   "text": "To evaluate E í e ˛.X −ç/ î"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1207,
+   "pdf_page": 1228,
+   "text": ", we substitute for X − Ω, obtaining"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1207,
+   "pdf_page": 1228,
+   "text": "E í e ˛.X −ç/ î"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1207,
+   "pdf_page": 1228,
+   "text": "D E í e ˛ P n i D1 (X i −p i ) î"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1207,
+   "pdf_page": 1228,
+   "text": "\" n Y i D1 e ˛.X i −p i /"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1207,
+   "pdf_page": 1228,
+   "text": "E í e ˛.X i −p i / î"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1207,
+   "pdf_page": 1228,
+   "text": "; which follows from equation (C.27), since the mutual independence of the random variables X i implies the mutual independence of the random varia bles e ˛.X i −p i /"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1207,
+   "pdf_page": 1228,
+   "text": "(see Exercise C.3-5). By the definition of expectation, 1208 Appendix C Counting and Probability"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1207,
+   "pdf_page": 1228,
+   "text": "E í e ˛.X i −p i / î"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1207,
+   "pdf_page": 1228,
+   "text": "E í e ˛.X i −p i / î"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1207,
+   "pdf_page": 1228,
+   "text": "] r for r >n − Ω. Similarly, use Corollary C.9 to show that Pr fnp − X ≥ r g ≤"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1207,
+   "pdf_page": 1228,
+   "text": "] r for r >n − np."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1208,
+   "pdf_page": 1229,
+   "text": "D e ˛.1−p i / √i + e ˛.0−p i / q i"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1208,
+   "pdf_page": 1229,
+   "text": "D √i e ˛q i + q i e −˛p i"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1208,
+   "pdf_page": 1229,
+   "text": "≤ √i e ˛ C 1 (C.49)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1208,
+   "pdf_page": 1229,
+   "text": "≤ exp.p i e ˛ /; where exp(x) denotes the exponential function: exp(x) = e x . (Inequality (C.49) follows from the inequalities ˛ >0, q i ≤ 1, e ˛q i ≤ e ˛ , and e −˛p i ≤ 1. The last line follows from inequality (3.14) on page 66.) Consequently, E í e ˛.X −ç/ î"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1208,
+   "pdf_page": 1229,
+   "text": "• n X i D1"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1208,
+   "pdf_page": 1229,
+   "text": "D exp.Ωe ˛ /; (C.50) since Ω = P n i D1 √i . Therefore, from equation (C.47) and inequalities (C.48) and (C.50), it follows that Pr fX − Ω ≥ r g ≤ exp(Ωe ˛ − ˛r): (C.51)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1208,
+   "pdf_page": 1229,
+   "text": "Choosing ˛ = ln(r=Ω) (see Exercise C.5-7), we obtain"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1208,
+   "pdf_page": 1229,
+   "text": "Pr fX − Ω ≥ r g ≤ exp(Ωe ln(r=ç) − r ln(r=Ω))"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1208,
+   "pdf_page": 1229,
+   "text": "D exp(r − r ln(r=Ω))"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1208,
+   "pdf_page": 1229,
+   "text": "When applied to Bernoulli trials in which each tria l has the same probability of success, Theorem C.8 yields the following corollary bounding the right tail of a binomial distribution."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1208,
+   "pdf_page": 1229,
+   "text": "Corollary C.9"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1208,
+   "pdf_page": 1229,
+   "text": "Consider a sequence of n Bernoulli trials, where in each trial success occur s with probability p and failure occurs with probability q = 1 − p. Then for r > np , C.5 The tails of the binomial distribution 1209"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1209,
+   "pdf_page": 1230,
+   "text": "Pr fX − np ≥ r g = n X kDdnpCr e b(kI n;p)"
+  },
+  {
+   "type": "proof",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1209,
+   "pdf_page": 1230,
+   "text": "Proof By equation (C.41), we have Ω = E [X ] = np."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1209,
+   "pdf_page": 1230,
+   "text": "Which is more likely: getting exactly n heads in 2n flips of a fair coin, or n heads in n flips of a fair coin?"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1209,
+   "pdf_page": 1230,
+   "text": "Prove Corollaries C.6 and C.7."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1209,
+   "pdf_page": 1230,
+   "text": "Show that k−1 X i D0"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1209,
+   "pdf_page": 1230,
+   "text": "Prove that if 0<k<np , where 0<p<1 and q = 1 − p, then k−1 X i D0"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1209,
+   "pdf_page": 1230,
+   "text": "√i q n−i < kq np − k"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1209,
+   "pdf_page": 1230,
+   "text": "] k − nq n − k"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1209,
+   "pdf_page": 1230,
+   "text": "Use Theorem C.8 to show that Pr fΩ − X ≥ r g ≤"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1209,
+   "pdf_page": 1230,
+   "text": "[ (n − ])e r"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1210,
+   "pdf_page": 1231,
+   "text": "1210 Appendix C Counting and Probability"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1210,
+   "pdf_page": 1231,
+   "text": "Ω = E [X ]. Show that for r ≥ 0, Pr fX − Ω ≥ r g ≤ e −r 2/2n :"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1210,
+   "pdf_page": 1231,
+   "text": "(Hint: Prove that √i e ˛q i + q i e −˛p i ≤ e ˛ 2/2 . Then follow the outline of the proof of Theorem C.8, using this inequality in place of inequality (C.49).)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1210,
+   "pdf_page": 1231,
+   "text": "Show that choosing ˛ = ln(r=Ω) minimizes the right-hand side of inequality (C.51)."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1210,
+   "pdf_page": 1231,
+   "text": "C-1 The Monty Hall problem"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1210,
+   "pdf_page": 1231,
+   "text": "Imagine that you are a contestant in the 1960s game show Let’s Make a Deal , hosted by emcee Monty Hall. A valuable prize is hidden behind one of three doors and comparatively worthless prizes behind the other two doors. You will win the valuable prize, typically an automobile or other expensive product, if you select the correct door. After you have picked one door, but before the door has been opened, Monty, who knows which door hides the automobile, d irects his assistant Carol"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1210,
+   "pdf_page": 1231,
+   "text": "Merrill to open one of the other doors, revealing a goat (not a valuable prize). He asks whether you would like to stick with your curr ent choice or to switch to the other closed door. What should you do to maximize y our chances of winning the automobile and not the other goat?"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1210,
+   "pdf_page": 1231,
+   "text": "The answer to this question—stick or switch?4has been heavily debated, in part because the problem setup is ambiguous. We’ll explore different subtle assumptions. a. Suppose that your first pick is random, with probability 1/3 of choosing the right door. Moreover, you know that Monty always gives every contestant (and will give you) the opportunity to switch. Prove tha t it is better to switch than stick. What is your probability of winning the automobile?"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1210,
+   "pdf_page": 1231,
+   "text": "This answer is the one typically given, even though the original statement of the problem rarely mentions the assumption that Monty always offers the contestant the opportunity to switch. But, as the remainder of this problem will elucidate, your best strategy may be different if this unstate d assumption does not hold. In"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1211,
+   "pdf_page": 1232,
+   "text": "Problems for Appendix C 1211 fact, in the real game show, after a contestant pic ked a door, Monty sometimes simply asked Carol to open the door that the contestant had chosen."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1211,
+   "pdf_page": 1232,
+   "text": "Let’s model the interactions between you and Monty as a probabilistic experiment, where you both employ randomized strategies. Specifically, after you pick a door, Monty offers you the opportunity to switch with probability p right if you picked the right door and with probability p wrong if you picked the wrong door."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1211,
+   "pdf_page": 1232,
+   "text": "Given the opportunity to switch, you randomly choose to switch with probability p switch . For example, if Monty always offers you the opportunity to switch, then his strategy is given by p right = p wrong = 1. If you always switch, then your strategy is given by p switch = 1."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1211,
+   "pdf_page": 1232,
+   "text": "The game can now be viewed as an experiment consisting of five steps:"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1211,
+   "pdf_page": 1232,
+   "text": "1. You pick a door at random, choosing the automobile (right) with probability"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1211,
+   "pdf_page": 1232,
+   "text": "1/3 or a goat (wrong) with probability 2/3."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1211,
+   "pdf_page": 1232,
+   "text": "2. Carol opens one of the two closed doors, reveali ng a goat."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1211,
+   "pdf_page": 1232,
+   "text": "3. Monty offers you the opportunity to switch with probability p right if your choice is right and with probability p wrong if your choice is wrong."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1211,
+   "pdf_page": 1232,
+   "text": "4. If Monty makes you an offer in step 3, you switch with probability p switch ."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1211,
+   "pdf_page": 1232,
+   "text": "5. Carol opens the door you’ve chosen, revealing either an automobile (you win) or a goat (you lose)."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1211,
+   "pdf_page": 1232,
+   "text": "Let’s now analyze this game and understand how the choices of p right , p wrong , and p switch influence the probability of winning. b. What are the six outcomes in the sample space for this game? Which outcomes correspond to you winning the automobile? What are the probabilities in terms of p right , p wrong , and p switch of each outcome? Organize your answers into a table. c. Use the results of your table (or other means) to p rove that the probability of winning the automobile is 3 .2p wrong p switch − p right p switch C 1/:"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1211,
+   "pdf_page": 1232,
+   "text": "Suppose that Monty knows the probability p switch that you switch, and his goal is to minimize your chance of winning. d. If p switch > 0 (you switch with a positive probability), what is Monty’s best strategy, that is, his best choice for p right and p wrong ? e. If p switch = 0 (you always stick), argue that all of Monty’s possible strategies are optimal for him."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1212,
+   "pdf_page": 1233,
+   "text": "1212 Appendix C Counting and Probability"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1212,
+   "pdf_page": 1233,
+   "text": "Suppose that now Monty’s strategy is fixed, with particular values for p right and p wrong . f. If you know p right and p wrong , what is your best strategy for choosing your probability p switch of switching as a function of p right and p wrong ? g. If you don’t know p right and p wrong , what choice of p switch maximizes the minimum probability of winning over all the choices of p right and p wrong ?"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1212,
+   "pdf_page": 1233,
+   "text": "Let’s return to the original problem as stated, where Monty has given you the option of switching, but you have no knowledge of Monty’s possible motivations or strategies. h. Argue that the conditional probability of winning t he automobile given that Monty offers you the opportunity to switch is p right − p right p switch C 2p wrong p switch p right C 2p wrong"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1212,
+   "pdf_page": 1233,
+   "text": ": (C.52)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1212,
+   "pdf_page": 1233,
+   "text": "Explain why p right C 2p wrong ≠ 0. i. What is the value of expression (C.52) when p switch = 1/2? Show that choosing p switch <1/2 or p switch >1/2 allows Monty to select values for p right and p wrong that yield a lower value for expression (C.52) than choosing p switch = 1/2. j. Suppose that you don’t know Monty’s strategy. Explain why choosing to switch with probability 1/2 is a good strategy for the original problem as stated. Summarize what you have learned overall from this problem."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1212,
+   "pdf_page": 1233,
+   "text": "C-2 Balls and bins"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1212,
+   "pdf_page": 1233,
+   "text": "This problem investigates the effect of various assumptions on the number of ways of placing n balls into b distinct bins. a. Suppose that the n balls are distinct and that their order within a bi n does not matter. Argue that the number of ways of placing the balls in the bins is b n . b. Suppose that the balls are distinct and that the ba lls in each bin are ordered."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1212,
+   "pdf_page": 1233,
+   "text": "Prove that there are exactly (b + n − 1)!=.b − 1/! ways to place the balls in the bins. ( Hint: Consider the number of ways of arranging n distinct balls and b − 1 indistinguishable sticks in a row.) c. Suppose that the balls are identical, and hence their order within a bin does not matter. Show that the number of ways of placing the balls in the bins is ã bCn−1 n ä"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1212,
+   "pdf_page": 1233,
+   "text": "(Hint: Of the arrangements in part (b), how many are repeated if the balls are made identical?)"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1212,
+   "pdf_page": 1233,
+   "text": ". e. Suppose that the balls are identical and that no bin may be left empty. Assuming that n ≥ b, show that the number of ways of placing the balls is ã n−1 b−1 ä ."
+  },
+  {
+   "type": "chapter-notes",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1213,
+   "pdf_page": 1234,
+   "text": "Notes for Appendix C 1213 d. Suppose that the balls are identical and that no bin may contain more than one ball, so that n ≤ b. Show that the number of ways of placing the balls is ã b n ä"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1213,
+   "pdf_page": 1234,
+   "text": "Appendix notes"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1213,
+   "pdf_page": 1234,
+   "text": "The first general methods for solving probability problems were discussed in a famous correspondence between B. Pascal and P. de Fermat, which began in 1654, and in a book by C. Huygens in 1657. Rigorous probability theory began with the work of J. Bernoulli in 1713 and A. De Moivre in 1730. Further developments of the theory were provided by P.-S. Laplace, S.-D. Poisson, and C. F. Gauss."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1213,
+   "pdf_page": 1234,
+   "text": "Sums of random variables were originally studied by P. L. Chebyshev and A. A."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1213,
+   "pdf_page": 1234,
+   "text": "Markov. A. N. Kolmogorov axiomatized probability theory in 1933. Chernoff [91] and Hoeffding [222] provided bounds on the tails of distributions. Seminal work in random combinatorial structures was done by P. Erd˝ os."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1213,
+   "pdf_page": 1234,
+   "text": "Knuth [259] and Liu [302] are good references for elementary combinatorics and counting. Standard textbooks such as Billingsley [56], Chung [93], Drake [125], Feller [139], and Rozanov [390] offer comprehensive introductions to probability."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1214,
+   "pdf_page": 1235,
+   "text": "D Matrices"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1214,
+   "pdf_page": 1235,
+   "text": "Matrices arise in numerous applications, including, but by no means limited to, scientific computing. If you have seen matrices before, much of the material in this appendix will be familiar to you, but some of it might be new. Section D.1 covers basic matrix definitions and operations, and Section D.2 presents some basic matrix properties."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1214,
+   "pdf_page": 1235,
+   "text": "D.1 Matrices and matrix operations"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1214,
+   "pdf_page": 1235,
+   "text": "This section reviews some basic concepts of matrix theory and some fundamental properties of matrices."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1214,
+   "pdf_page": 1235,
+   "text": "Matrices and vectors"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1214,
+   "pdf_page": 1235,
+   "text": "A matrix is a rectangular array of numbers. For example, A ="
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1214,
+   "pdf_page": 1235,
+   "text": "[ a 11 a 12 a 13 a 21 a 22 a 23"
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1214,
+   "pdf_page": 1235,
+   "text": "(D.1) is a 2 × 3 matrix A = (a ij ), where for i = 1;2 and j = 1;2;3 , the element of the matrix in row i and column j is denoted by a ij . By convention, uppercase letters denote matrices and corresponding subscripted lowercase letters denote their elements. We denote the set of all m × n matrices with real-valued entries by R m×n and, in general, the set of m × n matrices with entries drawn from a set S by S m×n ."
+  },
+  {
+   "type": "body",
+   "chapter": "C",
+   "section": "C.5",
+   "section_title": "C.5 The tails of the binomial distribution",
+   "printed_page": 1214,
+   "pdf_page": 1235,
+   "text": "The transpose of a matrix A is the matrix A T obtained by exchanging the rows and columns of A. For the matrix A of equation (D.1),"
+  }
+ ]
+}

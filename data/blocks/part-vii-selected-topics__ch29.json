@@ -1,0 +1,2178 @@
+{
+ "chapter": 29,
+ "chapter_title": "29 Linear Programming",
+ "part": "Part VII Selected Topics",
+ "source": {
+  "printed": [
+   850,
+   null
+  ],
+  "pdf": [
+   871,
+   898
+  ]
+ },
+ "sections": [
+  "29.1 Linear programming formulations and algorithms",
+  "29.2 Formulating problems as linear programs",
+  "29.3 Duality"
+ ],
+ "sections_found": [
+  "29.1 Linear programming formulations and algorithms",
+  "29.2 Formulating problems as linear programs",
+  "29.3 Duality"
+ ],
+ "blocks": [
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 853,
+   "pdf_page": 874,
+   "text": "linear. In Section 29.2, we will see several other examples of modeling via linear programs. Section 29.3 discusses duality, an important concept in linear programming and other optimization algorithms."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 853,
+   "pdf_page": 874,
+   "text": "Linear programs take a particular form, which we wi ll examine in this section."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 853,
+   "pdf_page": 874,
+   "text": "Multiple algorithms have been developed to solve li near programs. Some run in polynomial time, some do not, but they are all too complicated to show here. In- stead, we will give an example that demonstrates so me ideas behind the simplex algorithm, which is currently the most commonly deployed solution method."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 853,
+   "pdf_page": 874,
+   "text": "General linear programs"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 853,
+   "pdf_page": 874,
+   "text": "In the general linear-programming problem, we wish to optimize a linear function subject to a set of linear inequalities. Given a set of real numbers a 1 ;a 2 ;:::;a n and a set of variables x 1 ;x 2 ;:::;x n , we define a linear function f on those variables by f(x 1 ;x 2 ;:::;x n ) = a 1 x 1 + a 2 x 2 + • • • + a n x n = n X j D1 a |x| :"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 853,
+   "pdf_page": 874,
+   "text": "If b is a real number and f is a linear function, then the equation f(x 1 ;x 2 ;:::;x n ) = b is a linear equality and the inequalities f(x 1 ;x 2 ;:::;x n ) ≤ b and f(x 1 ;x 2 ;:::;x n ) ≥ b are linear inequalities. We use the general term linear constraints to denote either linear equalities or linear inequalities. Linear pr ogramming does not allow strict inequalities. Formally, a linear-programming problem is the problem of either minimizing or maximizing a linear function subject to a finite set of linear constraints. If minimizing, we call the linear program a minimization linear program, and if maximizing, we call the linear program a maximization linear program."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 853,
+   "pdf_page": 874,
+   "text": "In order to discuss linear-programming algorithms and properties, it will be helpful to use a standard notation for the input. B y convention, a maximization linear program takes as input n real numbers c 1 ;c 2 ;:::;c n ; m real numbers b 1 ;b 2 ;:::;b m ; and mn real numbers a ij for i = 1;2;:::;m and j = 1;2;:::;n ."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 854,
+   "pdf_page": 875,
+   "text": "The goal is to find n real numbers x 1 ;x 2 ;:::;x n that maximize n X j D1 c |x| (29.11) subject to n X j D1 a i|x| ≤ b i for i = 1;2;:::;m (29.12) x j ≥ 0 for j = 1;2;:::;n : (29.13)"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 854,
+   "pdf_page": 875,
+   "text": "We call expression (29.11) the objective function and the n + m inequalities in lines (29.12) and (29.13) the constraints. The n constraints in line (29.13) are the nonnegativity constraints. It can sometimes be more convenient to express a linear program in a more compact form. If we create an m × n matrix A = (a ij ), an m-vector b = (b i ), an n-vector c = (c j ), and an n-vector x = (x j ), then we can rewrite the linear program defined in (29.11)3(29.13) as maximize c T x (29.14) subject to Ax ≤ b (29.15) x ≥ 0 : (29.16)"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 854,
+   "pdf_page": 875,
+   "text": "In line (29.14), c T x is the inner product of two n-vectors. In inequality (29.15), Ax is the m-vector that is the product of an m × n matrix and an n-vector, and in in- equality (29.16), x ≥ 0 means that each entry of the vector x must be nonnegative."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 854,
+   "pdf_page": 875,
+   "text": "We call this representation the standard form for a linear program, and we adopt the convention that A, b, and c always have the dimensions given above."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 854,
+   "pdf_page": 875,
+   "text": "The standard form above may not naturally correspond to real-life situations you are trying to model. For example, you might have equality constraints or variables that can take on negative values. Exercises 29.1-6 and 29.1-7 ask you to show how to convert any linear program into this standard form."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 854,
+   "pdf_page": 875,
+   "text": "We now introduce terminology to describe solutions to linear programs. We denote a particular setting of the values in a vari able, say x , by putting a bar over the variable name: N x. If N x satisfies all the constraints, then it is a feasible solution, but if it fails to satisfy at least one constraint, then it is an infeasible solution. We say that a solution N x has objective value c T N x. A feasible solution N x whose objective value is maximum over all feasible solutions is an optimal solution, and we call its objective value c T N x the optimal objective value. If a linear program has no feasible solutions, we say that the linear program is infeasible, and otherwise, it is feasible. The set of points that satisfy all the constraint s is the feasible region."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 854,
+   "pdf_page": 875,
+   "text": "If a linear program has some feasible solutions but does not have a finite optimal objective value, then the feasible region is unbounded and so is the linear program."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 854,
+   "pdf_page": 875,
+   "text": "Exercise 29.1-5 asks you to show that a linear program can have a finite optimal objective value even if the feasible region is unbounded."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 855,
+   "pdf_page": 876,
+   "text": "One of the reasons for the power and popularity of linear programming is that linear programs can, in general, be solved efficiently. There are two classes of algorithms, known as ellipsoid algorithms and interior-point algorithms, that solve linear programs in polynomial time. In addition, th e simplex algorithm is widely used. Although it does not run in polynomial time i n the worst case, it tends to perform well in practice."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 855,
+   "pdf_page": 876,
+   "text": "We will not give a detailed algorithm for linear programming, but will discuss a few important ideas. First, we will give an example of using a geometric procedure to solve a two-variable linear program. Although this example does not immediately generalize to an efficient algorithm for larger problems, it introduces some important concepts for linear programming and for optimization in general."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 855,
+   "pdf_page": 876,
+   "text": "A two-variable linear program"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 855,
+   "pdf_page": 876,
+   "text": "Let us first consider the following linear program with two variables: maximize x 1 + x 2 (29.17) subject to 4x 1 − x 2 ≤ 8 (29.18)"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 855,
+   "pdf_page": 876,
+   "text": "2x 1 + x 2 ≤ 10 (29.19)"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 855,
+   "pdf_page": 876,
+   "text": "5x 1 − 2x 2 ≥ −2 (29.20) x 1 ;x 2 ≥ 0 : (29.21)"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 855,
+   "pdf_page": 876,
+   "text": "Figure 29.2(a) graphs the constraints in the (x 1 ;x 2 )-Cartesian coordinate system."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 855,
+   "pdf_page": 876,
+   "text": "The feasible region in the two-dimensional space (highlighted in blue in the figure) is convex. 1 Conceptually, you could evaluate the objective function x 1 + x 2 at each point in the feasible region, and then identif y a point that has the maximum objective value as an optimal solution. For this ex ample (and for most linear programs), however, the feasible region contains an infinite number of points, and so to solve this linear program, you need an efficient way to find a point that achieves the maximum objective value without explicitly eval uating the objective function at every point in the feasible region."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 855,
+   "pdf_page": 876,
+   "text": "In two dimensions, you can optimize via a graphical procedure. The set of points for which x 1 + x 2 = ´, for any ´, is a line with a slope of −1. Plotting x 1 + x 2 = 0 produces the line with slope −1 through the origin, as in Figure 29.2(b). The intersection of this line and the feasible region i s the set of feasible solutions that have an objective value of 0. In this case, that intersection of the line with the feasible region is the single point .0;0/ . More generally, for any value ´, the 1 An intuitive definition of a convex region is that it fulfills the requirement that for any two points in the region, all points on a line segment between them are also in the region. x 1 + x 2 = 0"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 856,
+   "pdf_page": 877,
+   "text": "4x 1 – x 2 f 8"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 856,
+   "pdf_page": 877,
+   "text": "2x 1 + x 2 f 10 x 2 x 1 x 2 g 0 x 1 g 0"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 856,
+   "pdf_page": 877,
+   "text": "5x 1 – 2 x 2 g –2"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 856,
+   "pdf_page": 877,
+   "text": "(a) x 2 x 1"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 856,
+   "pdf_page": 877,
+   "text": "(b) x 1 + x 2 = 4 x 1 + x 2 = 8"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 856,
+   "pdf_page": 877,
+   "text": "Figure 29.2 (a) The linear program given in (29.18)3(29.21). Each constraint is represented by a line and a direction. The intersection of the const raints, which is the feasible region, is highlighte d in blue. (b) The red lines show, respectively, the points for which the objective value is 0, 4, and 8."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 856,
+   "pdf_page": 877,
+   "text": "The optimal solution to the linear program is x 1 = 2 and x 2 = 6 with objective value 8. intersection of the line x 1 + x 2 = ´ and the feasible region is the set of feasible solutions that have objective value ´. Figure 29.2(b) shows the lines x 1 + x 2 = 0, x 1 + x 2 = 4, and x 1 + x 2 = 8. Because the feasible region in Figure 29.2 is bounded, there must be some maximum value ´ for which the intersection of the line x 1 + x 2 = ´ and the feasible region is nonempty. Any point in t he feasible region that maximizes x 1 + x 2 is an optimal solution to the linear program, which in this case is the vertex of the feasible region at x 1 = 2 and x 2 = 6, with objective value 8."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 856,
+   "pdf_page": 877,
+   "text": "It is no accident that an optimal solution to the linear program occurs at a vertex of the feasible region. The maximum value of ´ for which the line x 1 + x 2 = ´ intersects the feasible region must be on the bound ary of the feasible region, and thus the intersection of this line with the boundary of the feasible region is either a single vertex or a line segment. If the intersectio n is a single vertex, then there is just one optimal solution, and it is that vertex. If the intersection is a line segment, every point on that line segment must have the same objective value. In particular, both endpoints of the line segment are optimal solutions. Since each endpoint of a line segment is a vertex, there is an optimal solution at a vertex in this case as well."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 856,
+   "pdf_page": 877,
+   "text": "Although you cannot easily graph linear programs with more than two variables, the same intuition holds. If you have three variabl es, then each constraint corresponds to a half-space in three-dimensional space. The intersection of these half- spaces forms the feasible region. The set of points for which the objective function obtains a given value ´ is now a plane (assuming no degenerate conditions). If all coefficients of the objective function are nonnegative, and if the origin is a feasible solution to the linear program, then as you move this plane away from the origin, in a direction normal to the objective function, you find points of increasing objective value. (If the origin is not feasible or if some coefficients in the objective function are negative, the intuitive picture becomes slightly more complicated.) As in two dimensions, because the feasible region is convex, the set of points that achieve the optimal objective value must include a vertex o f the feasible region. Similarly, if you have n variables, each constraint defines a half-space in n-dimensional space. We call the feasible region formed by the in tersection of these half-spaces a simplex. The objective function is now a hyperplane and, b ecause of convexity, an optimal solution still occurs at a vertex of the simplex. Any algorithm for linear programming must also identify linear programs that have no solutions, as well as linear programs that have no finite optimal solution."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 857,
+   "pdf_page": 878,
+   "text": "The simplex algorithm takes as input a linear program and returns an opti mal solution. It starts at some vertex of the simplex a nd performs a sequence of iterations. In each iteration, it moves along an edge of the simplex from a current vertex to a neighboring vertex whose objective value is no smaller than that of the current vertex (and usually is larger.) The simplex algorit hm terminates when it reaches a local maximum, which is a vertex from which all n eighboring vertices have a smaller objective value. Because the feasible regio n is convex and the objective function is linear, this local optimum is actually a global optimum. In Section 29.3, we’ll see an important concept called \"duality,\" which we’ll use to prove that the solution returned by the simplex algorithm is indeed optimal."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 857,
+   "pdf_page": 878,
+   "text": "The simplex algorithm, when implemented carefully, often solves general linear programs quickly in practice. With some careful ly contrived inputs, however, the simplex algorithm can require exponential time. The first polynomial-time algorithm for linear programming was the ellipsoid algorithm, which runs slowly in practice. A second class of polynomial-time algorithms are known as interiorpoint methods. In contrast to the simplex algorithm, which moves along the exterior of the feasible region and maintains a feasibl e solution that is a vertex of the simplex at each iteration, these algorithms move through the interior of the feasible region. The intermediate solutions, while feasible, are not necessarily vertices of the simplex, but the final solution is a vertex. For large inputs, interior-point algorithms can run as fast as, and sometimes faster tha n, the simplex algorithm. The chapter notes point you to more information about these algorithms."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 857,
+   "pdf_page": 878,
+   "text": "If you add to a linear program the additional requi rement that all variables take on integer values, you have an integer linear program. Exercise 34.5-3 on page 1098 asks you to show that just finding a feasible solution to this problem is NP-hard. Since no polynomial-time algorithms are known for any NP-hard problems, there is no known polynomial-time algorithm for integer linear programming."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 858,
+   "pdf_page": 879,
+   "text": "In contrast, a general linear-programming problem can be solved in polynomial time."
+  },
+  {
+   "type": "exercise",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 858,
+   "pdf_page": 879,
+   "text": "29.1-1 Consider the linear program minimize −2x 1 + 3x 2 subject to x 1 + x 2 = 7 x 1 − 2x 2 ≤ 4 x 1 ≥ 0 :"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 858,
+   "pdf_page": 879,
+   "text": "Give three feasible solutions to this linear program. What is the objective value of each one?"
+  },
+  {
+   "type": "exercise",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 858,
+   "pdf_page": 879,
+   "text": "29.1-2 Consider the following linear program, which has a nonpositivity constraint: minimize 2x 1 + 7x 2 + x 3 subject to x 1 − x 3 = 7"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 858,
+   "pdf_page": 879,
+   "text": "3x 1 + x 2 ≥ 24 x 2 ≥ 0 x 3 ≤ 0 :"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 858,
+   "pdf_page": 879,
+   "text": "Give three feasible solutions to this linear program. What is the objective value of each one?"
+  },
+  {
+   "type": "exercise",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 858,
+   "pdf_page": 879,
+   "text": "29.1-3 Show that the following linear program is infeasible: maximize 3x 1 − 2x 2 subject to x 1 + x 2 ≤ 2"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 858,
+   "pdf_page": 879,
+   "text": "−2x 1 − 2x 2 ≤ −10 x 1 ;x 2 ≥ 0 :"
+  },
+  {
+   "type": "exercise",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 859,
+   "pdf_page": 880,
+   "text": "29.1-4 Show that the following linear program is unbounded: maximize x 1 − x 2 subject to −2x 1 + x 2 ≤ −1"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 859,
+   "pdf_page": 880,
+   "text": "−x 1 − 2x 2 ≤ −2 x 1 ;x 2 ≥ 0 :"
+  },
+  {
+   "type": "exercise",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 859,
+   "pdf_page": 880,
+   "text": "29.1-5 Give an example of a linear program for which the feasible region is not bounded, but the optimal objective value is finite."
+  },
+  {
+   "type": "exercise",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 859,
+   "pdf_page": 880,
+   "text": "29.1-6 Sometimes, in a linear program, you need to convert constraints from one form to another. a. Show how to convert an equality constraint into an equivalent set of inequalities."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 859,
+   "pdf_page": 880,
+   "text": "That is, given a constraint P n j D1 a i|x| = b i , give a set of inequalities that will be satisfied if and only if P n j D1 a i|x| = b i , b. Show how to convert an inequality constraint P n j D1 a i|x| ≤ b i into an equality constraint and a nonnegativity constraint. You will need to introduce an additional variable s , and use the constraint that s ≥ 0."
+  },
+  {
+   "type": "exercise",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 859,
+   "pdf_page": 880,
+   "text": "29.1-7 Explain how to convert a minimization linear program to an equivalent maximization linear program, and argue that your new linear program is equivalent to the original one."
+  },
+  {
+   "type": "exercise",
+   "chapter": 29,
+   "section": "29.1",
+   "section_title": "29.1 Linear programming formulations and algorithms",
+   "printed_page": 859,
+   "pdf_page": 880,
+   "text": "29.1-8 In the political problem at the beginning of this chapter, there are feasible solutions that correspond to winning more voters than there a ctually are in the district. For example, you can set x 2 to 200, x 3 to 200, and x 1 = x 4 = 0. That solution is feasible, yet it seems to say that you will win 400,000 suburban voters, even though there are only 200,000 actual suburban voter s. What constraints can you add to the linear program to ensure that you never seem to win more voters than there actually are? Even if you don’t add these constraints, argue that the optimal solution to this linear program can never win more voters than there actually are in the district."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 860,
+   "pdf_page": 881,
+   "text": "Linear programming has many applications. Any textbook on operations research is filled with examples of linear programming, and linear programming has become a standard tool taught to students in most business schools. The election scenario is one typical example. Here are two more examples:"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 860,
+   "pdf_page": 881,
+   "text": "• An airline wishes to schedule its flight crews. The Federal Aviation Administration imposes several constraints, such as limiting the number of consecutive hours that each crew member can work and insisting that a particular crew work only on one model of aircraft during each month. The airline wants to schedule crews on all of its flights using as few crew members as possible."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 860,
+   "pdf_page": 881,
+   "text": "• An oil company wants to decide where to drill for oil. Siting a drill at a particular location has an associated cost and, based on geological surveys, an expected payoff of some number of barrels of oil. The company has a limited budget for locating new drills and wants to maximize the amoun t of oil it expects to find, given this budget."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 860,
+   "pdf_page": 881,
+   "text": "Linear programs also model and solve graph and comb inatorial problems, such as those appearing in this book. We have already se en a special case of linear programming used to solve systems of difference con straints in Section 22.4. In this section, we’ll study how to formulate several graph and network-flow problems as linear programs. Section 35.4 uses linear programming as a tool to find an approximate solution to another graph problem."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 860,
+   "pdf_page": 881,
+   "text": "Perhaps the most important aspect of linear program ming is to be able to recognize when you can formulate a problem as a linear program. Once you cast a problem as a polynomial-sized linear program, you can solve it in polynomial time by the ellipsoid algorithm or interior-point methods. Several linear-programming software packages can solve problems efficiently, so that once the problem is in the form of a linear program, such a package can solve it."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 860,
+   "pdf_page": 881,
+   "text": "We’ll look at several concrete examples of linear-programming problems. We start with two problems that we have already studie d: the single-source shortestpaths problem from Chapter 22 and the maximum-flow problem from Chapter 24."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 860,
+   "pdf_page": 881,
+   "text": "We then describe the minimum-cost-flow problem. (Although the minimum-costflow problem has a polynomial-time algorithm that is not based on linear programming, we won’t describe the algorithm.) Finally, we describe the multicommodityflow problem, for which the only known polynomial-time algorithm is based on linear programming."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 860,
+   "pdf_page": 881,
+   "text": "When we solved graph problems in Part VI, we used a ttribute notation, such as v: d and (u;v): f . Linear programs typically use subscripted variabl es rather than objects with attached attributes, however. Therefore, when we express variables in linear programs, we indicate vertices and edges thr ough subscripts. For example, we denote the shortest-path weight for vertex v not by v: d but by d v , and we denote the flow from vertex u to vertex v not by (u;v): f but by f uv . For quantities that are given as inputs to problems, such as edge weights or capacities, we continue to use notations such as w(u;v) and c(u;v) ."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 861,
+   "pdf_page": 882,
+   "text": "Shortest paths"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 861,
+   "pdf_page": 882,
+   "text": "We can formulate the single-source shortest-paths problem as a linear program."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 861,
+   "pdf_page": 882,
+   "text": "We’ll focus on how to formulate the single-pair shortest-path problem, leaving the extension to the more general single-source shortest-paths problem as Exercise 29.2-2."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 861,
+   "pdf_page": 882,
+   "text": "In the single-pair shortest-path problem, the input is a weighted, directed graph"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 861,
+   "pdf_page": 882,
+   "text": "G = (V;E) , with weight function w W E ! R mapping edges to real-valued weights, a source vertex s , and destination vertex t . The goal is to compute the value d t , which is the weight of a shortest path from s to t . To express this problem as a linear program, you need to determine a se t of variables and constraints that define when you have a shortest path from s to t . The triangle inequality"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 861,
+   "pdf_page": 882,
+   "text": "(Lemma 22.10 on page 633) gives d v ≤ d u + w(u;v) for each edge (u;v) 2 E."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 861,
+   "pdf_page": 882,
+   "text": "The source vertex initially receives a value d s = 0, which never changes. Thus the following linear program expresses the shortest-path weight from s to t : maximize d t (29.22) subject to d v ≤ d u + w(u;v) for each edge (u;v) 2 E (29.23) d s = 0 : (29.24)"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 861,
+   "pdf_page": 882,
+   "text": "You might be surprised that this linear program max imizes an objective function when it is supposed to compute shortest paths. Mini mizing the objective function would be a mistake, because when all the edge weigh ts are nonnegative, setting"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 861,
+   "pdf_page": 882,
+   "text": "N d v = 0 for all v 2 V (recall that a bar over a variable name denotes a specific setting of the variable’s value) would yield an optimal solution to the linear program without solving the shortest-paths problem. Maximizing is the right thing to do because an optimal solution to the shortest-paths problem sets each N d v to min ˚ N d u + w(u;v) W u 2 V and (u;v) 2 E"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 861,
+   "pdf_page": 882,
+   "text": ", so that N d v is the largest value that is less than or equal to all of the values in the set ˚ N d u + w(u;v) } . Therefore, it makes sense to maximize d v for all vertices v on a shortest path from s to t subject to these constraints, and maximizing d t achieves this goal."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 861,
+   "pdf_page": 882,
+   "text": "This linear program has |V| variables d v , one for each vertex v 2 V . It also has |E| + 1 constraints: one for each edge, plus the additional constraint that the source vertex’s shortest-path weight always has the value 0."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 862,
+   "pdf_page": 883,
+   "text": "Maximum flow"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 862,
+   "pdf_page": 883,
+   "text": "Next, let’s express the maximum-flow problem as a linear program. Recall that the input is a directed graph G = (V;E) in which each edge (u;v) 2 E has a nonnegative capacity c(u;v) ≥ 0, and two distinguished vertices: a source s and a sink t . As defined in Section 24.1, a flow is a nonnegative real-valued function f W V × V ! R that satisfies the capacity constraint and flow conservation. A maximum flow is a flow that satisfies these constraints and maximizes the flow value, which is the total flow coming out of the source minus the total flow into the source. A flow, therefore, satisfies linear constraints, and the value of a flow is a linear function. Recalling also that we assume that c(u;v) = 0 if (u;v) … E and that there are no antiparallel edges, the maximum-flow problem can be expressed as a linear program: maximize"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 862,
+   "pdf_page": 883,
+   "text": "X v2V f sv −"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 862,
+   "pdf_page": 883,
+   "text": "X v2V f vs (29.25) subject to f uv ≤ c(u;v) for each u;v 2 V (29.26) X v2V f vu ="
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 862,
+   "pdf_page": 883,
+   "text": "X v2V f uv for each u 2 V − fs;t g (29.27) f uv ≥ 0 for each u;v 2 V : (29.28)"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 862,
+   "pdf_page": 883,
+   "text": "This linear program has |V| 2 variables, corresponding to the flow between each pair of vertices, and it has 2 |V| 2 C |V| − 2 constraints."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 862,
+   "pdf_page": 883,
+   "text": "It is usually more efficient to solve a smaller-sized linear program. The linear program in (29.25)3(29.28) has, for ease of notation, a flow and capacity of 0 for each pair of vertices u;v with (u;v) … E. It is more efficient to rewrite the linear program so that it has O(V + E) constraints. Exercise 29.2-4 asks you to do so."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 862,
+   "pdf_page": 883,
+   "text": "Minimum-cost flow"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 862,
+   "pdf_page": 883,
+   "text": "In this section, we have used linear programming to solve problems for which we already knew efficient algorithms. In fact, an efficient algorithm designed specifically for a problem, such as Dijkstra’s algorithm for the single-source shortestpaths problem, will often be more efficient than linear programming, both in theory and in practice."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 862,
+   "pdf_page": 883,
+   "text": "The real power of linear programming comes from the ability to solve new problems. Recall the problem faced by the politician in the beginning of this chapter."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 862,
+   "pdf_page": 883,
+   "text": "The problem of obtaining a sufficient number of votes, while not spending too much money, is not solved by any of the algorithms that we have studied in this book, yet it can be solved by linear programming. B ooks abound with such realworld problems that linear programming can solve. L inear programming is also s x t y"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 862,
+   "pdf_page": 883,
+   "text": "X v2V f uv = 0 for each u 2 V − fs;t g"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 862,
+   "pdf_page": 883,
+   "text": "X v2V f sv −"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 862,
+   "pdf_page": 883,
+   "text": "X v2V f vs = d f uv ≥ 0 for each u;v 2 V : (29.30)"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 862,
+   "pdf_page": 883,
+   "text": "X v2V f i uv −"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 862,
+   "pdf_page": 883,
+   "text": "X v2V f ivu = 0 for each i = 1;2;:::;k and for each u 2 V − fs i ;t i g"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 862,
+   "pdf_page": 883,
+   "text": "X v2V f i;s i ;v −"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 862,
+   "pdf_page": 883,
+   "text": "X v2V f i;v;s i = d i for each i = 1;2;:::;k f i uv ≥ 0 for each u;v 2 V and for each i = 1;2;:::;k :"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 863,
+   "pdf_page": 884,
+   "text": "(a) c = 1 a = 3 c = 5 a = 2 c = 4 a = 1 c = 2 a = 7 c = 2 a = 5 s x t y"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 863,
+   "pdf_page": 884,
+   "text": "1/1 a = 3"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 863,
+   "pdf_page": 884,
+   "text": "2/5 a = 2"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 863,
+   "pdf_page": 884,
+   "text": "3/4 a = 1"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 863,
+   "pdf_page": 884,
+   "text": "1/2 a = 7"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 863,
+   "pdf_page": 884,
+   "text": "2/2 a = 5"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 863,
+   "pdf_page": 884,
+   "text": "Figure 29.3 (a) An example of a minimum-cost-flow problem. Capacities are denoted by c and costs by a. Vertex s is the source, and vertex t is the sink. The goal is to send 4 units of flow from s to t . (b) A solution to the minimum-cost flow problem in which 4 units of flow are sent from s to t ."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 863,
+   "pdf_page": 884,
+   "text": "For each edge, the flow and capacity are written as flow/capacity. particularly useful for solving variants of problems for which we may not already know of an efficient algorithm."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 863,
+   "pdf_page": 884,
+   "text": "Consider, for example, the following generalization of the maximum-flow problem. Suppose that, in addition to a capacity c(u;v) for each edge (u;v) , you are given a real-valued cost a(u;v). As in the maximum-flow problem, assume that c(u;v) = 0 if (u;v) … E and that there are no antiparallel edges. If you se nd f uv units of flow over edge (u;v) , you incur a cost of a(u;v) • f uv . You are also given a flow demand d . You wish to send d units of flow from s to t while minimizing the total cost P"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 863,
+   "pdf_page": 884,
+   "text": "(u;v)2E a(u;v) • f uv incurred by the flow. This problem is known as the minimum-cost-flow problem."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 863,
+   "pdf_page": 884,
+   "text": "Figure 29.3(a) shows an example of the minimum-cost-flow problem, with a goal of sending 4 units of flow from s to t while incurring the minimum total cost. Any particular legal flow, that is, a function f satisfying constraints (29.26)3(29.28), incurs a total cost of P"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 863,
+   "pdf_page": 884,
+   "text": "(u;v)2E a(u;v) • f uv . What is the particular 4-unit flow that minimizes this cost? Figure 29.3(b) shows an optimal solution, with total cost P"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 863,
+   "pdf_page": 884,
+   "text": "(u;v)2E a(u;v) • f uv = .2 • 2/ C .5 • 2/ C .3 • 1/ C .7 • 1/ C .1 • 3/ = 27:"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 863,
+   "pdf_page": 884,
+   "text": "There are polynomial-time algorithms specifically designed for the minimumcost-flow problem, but they are beyond the scope of this book. The minimum-costflow problem can be expressed as a linear program, however. The linear program looks similar to the one for the maximum-flow problem with the additional constraint that the value of the flow must be exactly d units, and with the new objective function of minimizing the cost: minimize"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 864,
+   "pdf_page": 885,
+   "text": "(u;v)2E a(u;v) • f uv (29.29) subject to f uv ≤ c(u;v) for each u;v 2 V X v2V f vu −"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 864,
+   "pdf_page": 885,
+   "text": "Multicommodity flow"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 864,
+   "pdf_page": 885,
+   "text": "As a final example, let’s consider another flow problem. Suppose that the Lucky"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 864,
+   "pdf_page": 885,
+   "text": "Puck company from Section 24.1 decides to diversify its product line and ship not only hockey pucks, but also hockey sticks and h ockey helmets. Each piece of equipment is manufactured in its own factory, has i ts own warehouse, and must be shipped, each day, from factory to warehouse. Th e sticks are manufactured in Vancouver and are needed in Saskatoon, and the h elmets are manufactured in Edmonton and must be shipped to Regina. The capacit y of the shipping network does not change, however, and the different items, or commodities, must share the same network."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 864,
+   "pdf_page": 885,
+   "text": "This example is an instance of a multicommodity-flow problem. The input to this problem is once again a directed graph G = (V;E) in which each edge (u;v) 2 E has a nonnegative capacity c(u;v) ≥ 0. As in the maximum-flow problem, implicitly assume that c(u;v) = 0 for (u;v) … E and that the graph has no antiparallel edges. In addition, there are k different commodities, K 1 ;K 2 ;:::;K k , with commodity i specified by the triple K i = (s i ;t i ;d i ). Here, vertex s i is the source of commodity i , vertex t i is the sink of commodity i , and d i is the demand for commodity i , which is the desired flow value for the commodity from s i to t i . We define a flow for commodity i , denoted by f i , (so that f i uv is the flow of commodity i from vertex u to vertex v) to be a real-valued function that satisfies the flow-conservation and capacity constraints. We define f uv , the aggregate flow, to be the sum of the various commodity flows, so that f uv = P k i D1 f i uv . The aggregate flow on edge (u;v) must be no more than the capacity of edge (u;v) . This problem has no objective function: the question is to determine whether such a flow exists. Thus the linear program for this problem has a \"null\" objective function: minimize 0 subject to k X i D1 f i uv ≤ c(u;v) for each u;v 2 V"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 865,
+   "pdf_page": 886,
+   "text": "The only known polynomial-time algorithm for this problem expresses it as a linear program and then solves it with a polynomial-time linear-programming algorithm."
+  },
+  {
+   "type": "exercise",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 865,
+   "pdf_page": 886,
+   "text": "29.2-1 Write out explicitly the linear program corresponding to finding the shortest path from vertex s to vertex x in Figure 22.2(a) on page 609."
+  },
+  {
+   "type": "exercise",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 865,
+   "pdf_page": 886,
+   "text": "29.2-2 Given a graph G, write a linear program for the single-source shortest-paths problem. The solution should have the property that d v is the shortest-path weight from the source vertex s to v for each vertex v 2 V ."
+  },
+  {
+   "type": "exercise",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 865,
+   "pdf_page": 886,
+   "text": "29.2-3 Write out explicitly the linear program corresponding to finding the maximum flow in Figure 24.1(a)."
+  },
+  {
+   "type": "exercise",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 865,
+   "pdf_page": 886,
+   "text": "29.2-4 Rewrite the linear program for maximum flow (29.25)3(29.28) so that it uses only"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 865,
+   "pdf_page": 886,
+   "text": "O(V + E) constraints."
+  },
+  {
+   "type": "exercise",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 865,
+   "pdf_page": 886,
+   "text": "29.2-5 Write a linear program that, given a bipartite graph G = (V;E), solves the maximum-bipartite-matching problem."
+  },
+  {
+   "type": "exercise",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 865,
+   "pdf_page": 886,
+   "text": "29.2-6 There can be more than one way to model a particular problem as a linear program."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 865,
+   "pdf_page": 886,
+   "text": "This exercise gives an alternative formulation for the maximum-flow problem. Let"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 865,
+   "pdf_page": 886,
+   "text": "P = fP 1 ;P 2 ;:::;P √g be the set of all possible directed simple paths from source s"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 866,
+   "pdf_page": 887,
+   "text": "to sink t . Using decision variables x 1 ;:::;x p , where x i is the amount of flow on path i , formulate a linear program for the maximum-flow problem. What is an upper bound on p, the number of directed simple paths from s to t ?"
+  },
+  {
+   "type": "exercise",
+   "chapter": 29,
+   "section": "29.2",
+   "section_title": "29.2 Formulating problems as linear programs",
+   "printed_page": 866,
+   "pdf_page": 887,
+   "text": "29.2-7 In the minimum-cost multicommodity-flow problem, the input is a directed graph"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 866,
+   "pdf_page": 887,
+   "text": "G = (V;E) in which each edge (u;v) 2 E has a nonnegative capacity c(u;v) ≥ 0 and a cost a(u;v). As in the multicommodity-flow problem, there are k different commodities, K 1 ;K 2 ;:::;K k , with commodity i specified by the triple"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 866,
+   "pdf_page": 887,
+   "text": "K i = (s i ;t i ;d i ). We define the flow f i for commodity i and the aggregate flow f uv on edge (u;v) as in the multicommodity-flow problem. A feasible flow is one in which the aggregate flow on each edge (u;v) is no more than the capacity of edge (u;v). The cost of a flow is P u;v2V a(u;v) • f uv , and the goal is to find the feasible flow of minimum cost. Express this problem as a linear program."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 866,
+   "pdf_page": 887,
+   "text": "We will now introduce a powerful concept called linear-programming duality. In general, given a maximization problem, duality allo ws you to formulate a related minimization problem that has the same objective va lue. The idea of duality is actually more general than linear programming, but we restrict our attention to linear programming in this section."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 866,
+   "pdf_page": 887,
+   "text": "Duality enables us to prove that a solution is indeed optimal. We saw an example of duality in Chapter 24 with Theorem 24.6, the max-flow min-cut theorem."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 866,
+   "pdf_page": 887,
+   "text": "Suppose that, given an instance of a maximum-flow problem, you find a flow f with value |f|. How do you know whether f is a maximum flow? By the maxflow min-cut theorem, if you can find a cut whose value is also |f|, then you have verified that f is indeed a maximum flow. This relationship provides an example of duality: given a maximization problem, define a related minimization problem such that the two problems have the same optimal objective values."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 866,
+   "pdf_page": 887,
+   "text": "Given a linear program in standard form in which the objective is to maximize, let’s see how to formulate a dual linear program in which the objective is to minimize and whose optimal value is identical to that of the original linear program."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 866,
+   "pdf_page": 887,
+   "text": "When referring to dual linear programs, we call the original linear program the primal."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 866,
+   "pdf_page": 887,
+   "text": "Given the primal linear program maximize n X j D1 c |x| (29.31) subject to n X j D1 a i|x| ≤ b i for i = 1;2;:::;m (29.32) x j ≥ 0 for j = 1;2;:::;n ; (29.33) its dual is minimize m X i D1 b i y i (29.34) subject to m X i D1 a ij y i ≥ c j for j = 1;2;:::;n (29.35) y i ≥ 0 for i = 1;2;:::;m : (29.36)"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 867,
+   "pdf_page": 888,
+   "text": "Mechanically, to form the dual, change the maximiza tion to a minimization, exchange the roles of coefficients on the right-hand sides and in the objective function, and replace each ≤ by ≥. Each of the m constraints in the primal corresponds to a variable y i in the dual. Likewise, each of the n constraints in the dual corresponds to a variable x j in the primal. For example, consider the following primal linear program: maximize 3x 1 + x 2 + 4x 3 (29.37) subject to x 1 + x 2 + 3x 3 ≤ 30 (29.38)"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 867,
+   "pdf_page": 888,
+   "text": "2x 1 + 2x 2 + 5x 3 ≤ 24 (29.39)"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 867,
+   "pdf_page": 888,
+   "text": "4x 1 + x 2 + 2x 3 ≤ 36 (29.40) x 1 ;x 2 ;x 3 ≥ 0 : (29.41)"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 867,
+   "pdf_page": 888,
+   "text": "Its dual is minimize 30y 1 + 24y 2 + 36y 3 (29.42) subject to y 1 + 2y 2 + 4y 3 ≥ 3 (29.43) y 1 + 2y 2 + y 3 ≥ 1 (29.44)"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 867,
+   "pdf_page": 888,
+   "text": "3y 1 + 5y 2 + 2y 3 ≥ 4 (29.45) y 1 ;y 2 ;y 3 ≥ 0 : (29.46)"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 867,
+   "pdf_page": 888,
+   "text": "Although forming the dual can be considered a mechanical operation, there is an intuitive explanation. Consider the primal maximization problem (29.37)3(29.41)."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 867,
+   "pdf_page": 888,
+   "text": "Each constraint gives an upper bound on the objective function. In addition, if you take one or more constraints and add together nonnegative multiples of them, you get a valid constraint. For example, you can add constraints (29.38) and (29.39) to obtain the constraint 3x 1 + 3x 2 + 8x 3 ≤ 54. Any feasible solution to the primal must satisfy this new constraint, but there is some thing else interesting about it."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 868,
+   "pdf_page": 889,
+   "text": "Comparing this new constraint to the objective func tion (29.37), you can see that for each variable, the corresponding coefficient is at least as large as the coefficient in the objective function. Thus, since the variable s x 1 , x 2 and x 3 are nonnegative, we have that 3x 1 + x 2 + 4x 3 ≤ 3x 1 + 3x 2 + 8x 3 ≤ 54; and so the solution value to the primal is at most 54. In other words, adding these two constraints together has generated an upper bound on the objective value."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 868,
+   "pdf_page": 889,
+   "text": "In general, for any nonnegative multipliers y 1 , y 2 , and y 3 , you can generate a constraint y 1 (x 1 Cx 2 C3x 3 )Cy 2 .2x 1 C2x 2 C5x 3 /Cy 3 .4x 1 Cx 2 C2x 3 / ≤ 30y 1 C24y 2 C36y 3 from the primal constraints or, by distributing and regrouping, (y 1 C2y 2 C—y 3 )x 1 C(y 1 C2y 2 Cy 3 )x 2 C(3y 1 C5y 2 C2y 3 )x 3 ≤ 30y 1 C24y 2 C36y 3 :"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 868,
+   "pdf_page": 889,
+   "text": "Now, as long as this constraint has coefficients of x 1 , x 2 , and x 3 that are at least their objective-function coefficients, it is a valid upper bound. That is, as long as y 1 + 2y 2 + 4y 3 ≥ 3; y 1 + 2y 2 + y 3 ≥ 1; 3y 1 + 5y 2 + 2y 3 ≥ 4; you have a valid upper bound of 30y 1 C24y 2 C36y 3 . The multipliers y 1 , y 2 , and y 3 must be nonnegative, because otherwise you cannot c ombine the inequalities. Of course, you would like the upper bound to be as small as possible, and so you want to choose y to minimize 30y 1 + 24y 2 + 36y 3 . Observe that we have just described the dual linear program as the problem of finding the smallest possible upper bound on the primal."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 868,
+   "pdf_page": 889,
+   "text": "We’ll formalize this idea and show in Theorem 29.4 that, if the linear program and its dual are feasible and bounded, then the opt imal value of the dual linear program is always equal to the optimal value of the primal linear program. We begin by demonstrating weak duality, which states that any feasible solution to the primal linear program has a value no greater than t hat of any feasible solution to the dual linear program."
+  },
+  {
+   "type": "lemma",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 868,
+   "pdf_page": 889,
+   "text": "Lemma 29.1 (Weak linear-programming duality)"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 868,
+   "pdf_page": 889,
+   "text": "Let N x be any feasible solution to the primal linear program in (29.31)3(29.33), and let N y be any feasible solution to its dual linear program in (29.34)3(29.36). Then n X j D1 c j N x j ≤ m X i D1 b i N y i :"
+  },
+  {
+   "type": "proof",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 869,
+   "pdf_page": 890,
+   "text": "Proof We have n X j D1 c j N x j ≤ n X j D1"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 869,
+   "pdf_page": 890,
+   "text": "• m X i D1 a ij N y i"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 869,
+   "pdf_page": 890,
+   "text": "N x j (by inequalities (29.35))"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 869,
+   "pdf_page": 890,
+   "text": "D m X i D1"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 869,
+   "pdf_page": 890,
+   "text": "• n X j D1 a ij N x j"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 869,
+   "pdf_page": 890,
+   "text": "≤ m X i D1 b i N y i (by inequalities (29.32)) ."
+  },
+  {
+   "type": "corollary",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 869,
+   "pdf_page": 890,
+   "text": "Corollary 29.2"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 869,
+   "pdf_page": 890,
+   "text": "Let N x be a feasible solution to the primal linear program in (29.31)3(29.33), and let"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 869,
+   "pdf_page": 890,
+   "text": "N y be a feasible solution to its dual linear program in (29.34)3(29.36). If n X j D1 c j N x j = m X i D1 b i N y i ; then N x and N y are optimal solutions to the primal and dual linear programs, respectively."
+  },
+  {
+   "type": "proof",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 869,
+   "pdf_page": 890,
+   "text": "Proof By Lemma 29.1, the objective value of a feasible solution to the primal cannot exceed that of a feasible solution to the dual. The primal linear program is a maximization problem and the dual is a minimization problem. Thus, if feasible solutions N x and N y have the same objective value, neither can be improved."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 869,
+   "pdf_page": 890,
+   "text": "We now show that, at optimality, the primal and dual objective values are indeed equal. To prove linear programming duality, we will require one lemma from linear algebra, known as Farkas’s lemma, the proof of which Problem 29-4 asks you to provide. Farkas’s lemma can take several forms, each of which is about when a set of linear equalities has a solution. In stating the lemma, we use m + 1 as a dimension because it matches our use below."
+  },
+  {
+   "type": "lemma",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 869,
+   "pdf_page": 890,
+   "text": "Lemma 29.3 (Farkas’s lemma)"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 869,
+   "pdf_page": 890,
+   "text": "Given M 2 R .mC1/×n and g 2 R mC1 , exactly one of the following statements is true:"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 869,
+   "pdf_page": 890,
+   "text": "1. There exists v 2 R n such that Mv ≤ g, 2. There exists w 2 R mC1 such that w ≥ 0;w T M = 0 (an n-vector of all zeros), and w T g<0 ."
+  },
+  {
+   "type": "theorem",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 870,
+   "pdf_page": 891,
+   "text": "Theorem 29.4 (Linear-programming duality)"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 870,
+   "pdf_page": 891,
+   "text": "Given the primal linear program in (29.31)3(29.33) and its corresponding dual in (29.34)3(29.36), if both are feasible and bounded, then for optimal solutions x − and y − , we have c T x − = b T y − ."
+  },
+  {
+   "type": "proof",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 870,
+   "pdf_page": 891,
+   "text": "Proof Let Ω = b T y − be the optimal value of the dual linear program giv en in (29.34)3(29.36). Consider an augmented set of primal constraints in which we add a constraint to (29.31)3(29.33) that the objective value is at least Ω. We write out this augmented primal as Ax ≤ b; (29.47) c T x ≥ Ω : (29.48)"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 870,
+   "pdf_page": 891,
+   "text": "We can multiply (29.48) through by −1 and rewrite (29.47)3(29.48) as ] A"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 870,
+   "pdf_page": 891,
+   "text": ": (29.49)"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 870,
+   "pdf_page": 891,
+   "text": "Here, ] A"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 870,
+   "pdf_page": 891,
+   "text": "Ð denotes an .mC1/×n matrix, x is an n-vector, and ] b"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 870,
+   "pdf_page": 891,
+   "text": "Ð denotes an (m + 1)-vector."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 870,
+   "pdf_page": 891,
+   "text": "We claim that if there is a feasible solution N x to the augmented primal, then the theorem is proved. To establish this claim, observe that N x is also a feasible solution to the original primal and that it has objective value at least Ω. We can then apply"
+  },
+  {
+   "type": "lemma",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 870,
+   "pdf_page": 891,
+   "text": "Lemma 29.1, which states that the objective value of the primal is at most Ω, to complete the proof of the theorem."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 870,
+   "pdf_page": 891,
+   "text": "It therefore remains to show that the augmented pri mal has a feasible solution."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 870,
+   "pdf_page": 891,
+   "text": "Suppose, for the purpose of contradiction, that the augmented primal is infeasible, which means that there is no v 2 R n such that ] A"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 870,
+   "pdf_page": 891,
+   "text": ". We can apply Farkas’s lemma, Lemma 29.3, to inequalty (29.49) with M ="
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 870,
+   "pdf_page": 891,
+   "text": "Ð and g ="
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 870,
+   "pdf_page": 891,
+   "text": "Because the augmented primal is infeasible, condition 1 of Farkas’s lemma does not hold. Therefore, condition 2 must apply, so tha t there must exist a w 2 R mC1 such that w ≥ 0, w T M = 0, and w T g<0 . Let’s write w as w ="
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 870,
+   "pdf_page": 891,
+   "text": "Ð for some"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 870,
+   "pdf_page": 891,
+   "text": "N y 2 R m and Ω 2 R, where N y ≥ 0 and Ω ≥ 0. Substituting for w, M , and g in condition 2 gives"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 870,
+   "pdf_page": 891,
+   "text": "D 0 and ] N y"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 871,
+   "pdf_page": 892,
+   "text": "Unpacking the matrix notation gives"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 871,
+   "pdf_page": 892,
+   "text": "N y T A − Ωc T = 0 and N y T b − ΩΩ<0: (29.50)"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 871,
+   "pdf_page": 892,
+   "text": "We now show that the requirements in (29.50) contradict the assumption that Ω is the optimal solution value for the dual linear program. We consider two cases."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 871,
+   "pdf_page": 892,
+   "text": "The first case is when Ω = 0. In this case, (29.50) simplifies to N y T A = 0 and N y T b<0: (29.51)"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 871,
+   "pdf_page": 892,
+   "text": "We’ll now construct a dual feasible solution y 0 with an objective value smaller than b T y − . Set y 0 = y − C Ω N y , for any Ω > 0 . Since y 0 T"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 871,
+   "pdf_page": 892,
+   "text": "A = (y − C Ω N y) T A"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 871,
+   "pdf_page": 892,
+   "text": "D y −T A + Ω N y T A"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 871,
+   "pdf_page": 892,
+   "text": "D y −T A (by (29.51))"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 871,
+   "pdf_page": 892,
+   "text": "≥ c T (because y − is feasible) , y 0 is feasible. Now consider the objective value b T y 0 = b T (y − C Ω N y)"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 871,
+   "pdf_page": 892,
+   "text": "D b T y − C Ωb T N y"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 871,
+   "pdf_page": 892,
+   "text": "< b T y − ; where the last inequality follows because Ω > 0 and, by (29.51), N y T b = b T N y <0"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 871,
+   "pdf_page": 892,
+   "text": "(since both N y T b and b T N y are the inner product of b and N y ), and so their product is negative. Thus we have a feasible dual solution of value less than Ω, which contradicts Ω being the optimal objective value."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 871,
+   "pdf_page": 892,
+   "text": "We now consider the second case, where Ω > 0. In this case, we can take (29.50) and divide through by Ω to obtain . N y T =Ω/A − (Ω=Ω)c T = 0 and . N y T =Ω/b − (Ω=Ω)Ω<0: (29.52)"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 871,
+   "pdf_page": 892,
+   "text": "Now set y 0 = N y=Ω in (29.52), giving y 0 T"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 871,
+   "pdf_page": 892,
+   "text": "A = c T and y 0 T b<Ω:"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 871,
+   "pdf_page": 892,
+   "text": "Thus, y 0 is a feasible dual solution with objective value st rictly less than Ω, a contradiction. We conclude that the augmented primal has a feasible solution, and the theorem is proved."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 871,
+   "pdf_page": 892,
+   "text": "Fundamental theorem of linear programming"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 871,
+   "pdf_page": 892,
+   "text": "We conclude this chapter by stating the fundamental theorem of linear programming, which extends Theorem 29.4 to the cases when the linear program may be either feasible or unbounded. Exercise 29.3-8 asks you to provide the proof."
+  },
+  {
+   "type": "theorem",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 872,
+   "pdf_page": 893,
+   "text": "Theorem 29.5 (Fundamental theorem of linear programming)"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 872,
+   "pdf_page": 893,
+   "text": "Any linear program, given in standard form, either"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 872,
+   "pdf_page": 893,
+   "text": "1. has an optimal solution with a finite objective value, 2. is infeasible, or 3. is unbounded."
+  },
+  {
+   "type": "exercise",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 872,
+   "pdf_page": 893,
+   "text": "29.3-1 Formulate the dual of the linear program given in lines (29.6)3(29.10) on page 852."
+  },
+  {
+   "type": "exercise",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 872,
+   "pdf_page": 893,
+   "text": "29.3-2 You have a linear program that is not in standard form. You could produce the dual by first converting it to standard form, and then taking the dual. It would be more convenient, however, to produce the dual directly. Explain how to directly take the dual of an arbitrary linear program."
+  },
+  {
+   "type": "exercise",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 872,
+   "pdf_page": 893,
+   "text": "29.3-3 Write down the dual of the maximum-flow linear program, as given in lines"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 872,
+   "pdf_page": 893,
+   "text": "(29.25)3(29.28) on page 862. Explain how to interpret this formulation as a minimum-cut problem."
+  },
+  {
+   "type": "exercise",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 872,
+   "pdf_page": 893,
+   "text": "29.3-4 Write down the dual of the minimum-cost-flow linear program, as given in lines"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 872,
+   "pdf_page": 893,
+   "text": "(29.29)3(29.30) on page 864. Explain how to interpret this problem in terms of graphs and flows."
+  },
+  {
+   "type": "exercise",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 872,
+   "pdf_page": 893,
+   "text": "29.3-5 Show that the dual of the dual of a linear program is the primal linear program."
+  },
+  {
+   "type": "exercise",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 872,
+   "pdf_page": 893,
+   "text": "29.3-6 Which result from Chapter 24 can be interpreted as weak duality for the maximumflow problem?"
+  },
+  {
+   "type": "exercise",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 872,
+   "pdf_page": 893,
+   "text": "29.3-7 Consider the following 1-variable primal linear program: maximize tx subject to rx ≤ s x ≥ 0 ; where r , s , and t are arbitrary real numbers. State for which values of r , s , and t you can assert that 1. Both the primal linear program and its dual have optimal solutions with finite objective values."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 873,
+   "pdf_page": 894,
+   "text": "2. The primal is feasible, but the dual is infeasib le."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 873,
+   "pdf_page": 894,
+   "text": "3. The dual is feasible, but the primal is infeasible."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 873,
+   "pdf_page": 894,
+   "text": "4. Neither the primal nor the dual is feasible."
+  },
+  {
+   "type": "exercise",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 873,
+   "pdf_page": 894,
+   "text": "29.3-8 Prove the fundamental theorem of linear programming, Theorem 29.5."
+  },
+  {
+   "type": "problem",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 873,
+   "pdf_page": 894,
+   "text": "29-1 Linear-inequality feasibility"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 873,
+   "pdf_page": 894,
+   "text": "Given a set of m linear inequalities on n variables x 1 ;x 2 ;:::;x n , the linearinequality feasibility problem asks whether there is a setting of the variables th at simultaneously satisfies each of the inequalities. a. Given an algorithm for the linear-programming problem, show how to use it to solve a linear-inequality feasibility problem. The number of variables and constraints that you use in the linear-programming problem should be polynomial in n and m. b. Given an algorithm for the linear-inequality feasibility problem, show how to use it to solve a linear-programming problem. The number of variables and linear inequalities that you use in the linear-inequality feasibility problem should be polynomial in n and m, the number of variables and constraints in the linear program."
+  },
+  {
+   "type": "problem",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 873,
+   "pdf_page": 894,
+   "text": "29-2 Complementary slackness"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 873,
+   "pdf_page": 894,
+   "text": "Complementary slackness describes a relationship between the values of prim al variables and dual constraints and between the valu es of dual variables and primal constraints. Let N x be a feasible solution to the primal linear program given in (29.31)3(29.33), and let N y be a feasible solution to the dual linear program given in (29.34)3(29.36). Complementary slackness states that the following conditions are necessary and sufficient for N x and N y to be optimal: m X i D1 a ij N y i = c j or N x j = 0 for j = 1;2;:::;n and n X j D1 a ij N x j = b i or N y i = 0 for i = 1;2;:::;m: a. Verify that complementary slackness holds for the l inear program in lines"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 874,
+   "pdf_page": 895,
+   "text": "(29.37)3(29.41). b. Prove that complementary slackness holds for any pr imal linear program and its corresponding dual. c. Prove that a feasible solution N x to a primal linear program given in lines"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 874,
+   "pdf_page": 895,
+   "text": "(29.31)3(29.33) is optimal if and only if there exist values N y = . N y 1 ; N y 2 ;:::; N y m / such that 1. N y is a feasible solution to the dual linear program given in (29.34)3(29.36), 2. P m i D1 a ij N y i = c j for all j such that N x j >0 , and 3. N y i = 0 for all i such that P n j D1 a ij N x j <b i ."
+  },
+  {
+   "type": "problem",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 874,
+   "pdf_page": 895,
+   "text": "29-3 Integer linear programming"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 874,
+   "pdf_page": 895,
+   "text": "An integer linear-programming problem is a linear-programming problem with the additional constraint that the variables x must take on integer values. Exercise 34.5-3 on page 1098 shows that just determining whether an integer linear program has a feasible solution is NP-hard, which means that there is no known polynomial-time algorithm for this problem. a. Show that weak duality (Lemma 29.1) holds for an integer linear program. b. Show that duality (Theorem 29.4) does not always hold for an integer linear program. c. Given a primal linear program in standard form, let P be the optimal objective value for the primal linear program, = be the optimal objective value for its dual, IP be the optimal objective value for the integer vers ion of the primal"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 874,
+   "pdf_page": 895,
+   "text": "(that is, the primal with the added constraint that the variables take on integer values), and ID be the optimal objective value for the integer version of the dual."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 874,
+   "pdf_page": 895,
+   "text": "Assuming that both the primal integer program and the dual integer program are feasible and bounded, show that IP ≤ P = D ≤ ID :"
+  },
+  {
+   "type": "chapter-notes",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 875,
+   "pdf_page": 896,
+   "text": "Notes for Chapter 29 875"
+  },
+  {
+   "type": "problem",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 875,
+   "pdf_page": 896,
+   "text": "29-4 Farkas’s lemma Prove Farkas’s lemma, Lemma 29.3."
+  },
+  {
+   "type": "problem",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 875,
+   "pdf_page": 896,
+   "text": "29-5 Minimum-cost circulation"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 875,
+   "pdf_page": 896,
+   "text": "This problem considers a variant of the minimum-cost-flow problem from Section 29.2 in which there is no demand, source, or s ink. Instead, the input, as before, contains a flow network, capacity constraints c(u;v) , and edge costs a(u;v) ."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 875,
+   "pdf_page": 896,
+   "text": "A flow is feasible if it satisfies the capacity constraint on every edge and flow conservation at every vertex. The goal is to find, among all feasible flows, the one of minimum cost. We call this problem the minimum-cost-circulation problem. a. Formulate the minimum-cost-circulation problem as a linear program. b. Suppose that for all edges (u;v) 2 E, we have a(u;v) > 0 . What does an optimal solution to the minimum-cost-circulation problem look like? c. Formulate the maximum-flow problem as a minimum-cost-circulation problem linear program. That is, given a maximum-flow problem instance G = (V;E) with source s , sink t and edge capacities c , create a minimum-cost-circulation problem by giving a (possibly different) network G 0 = (V 0 ;E 0 ) with edge capacities c 0 and edge costs a 0 such that you can derive a solution to the maximumflow problem from a solution to the minimum-cost-circulation problem. d. Formulate the single-source shortest-path problem as a minimum-cost-circulation problem linear program."
+  },
+  {
+   "type": "chapter-notes",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 875,
+   "pdf_page": 896,
+   "text": "Chapter notes"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 875,
+   "pdf_page": 896,
+   "text": "This chapter only begins to study the wide field of linear programming. A number of books are devoted exclusively to linear prog ramming, including those by Chv´ atal [94], Gass [178], Karloff [246], Schrijver [398], and Vanderbei [444]."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 875,
+   "pdf_page": 896,
+   "text": "Many other books give a good coverage of linear pro gramming, including those by Papadimitriou and Steiglitz [353] and Ahuja, Magnanti, and Orlin [7]. The coverage in this chapter draws on the approach taken by Chv´ atal."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 875,
+   "pdf_page": 896,
+   "text": "The simplex algorithm for linear programming was in vented by G. Dantzig in 1947. Shortly after, researchers discovered how to formulate a number of problems in a variety of fields as linear programs and solve them with the simplex algorithm. As a result, applications of linear prog ramming flourished, along with several algorithms. Variants of the simplex algorit hm remain the most popular methods for solving linear-programming problems. This history appears in a number of places, including the notes in [94] and [246]."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 876,
+   "pdf_page": 897,
+   "text": "The ellipsoid algorithm was the first polynomial-time algorithm for linear programming and is due to L. G. Khachian in 1979. It was based on earlier work by N. Z. Shor, D. B. Judin, and A. S. Nemirovskii. Gr¨ otschel, Lov´ asz, and Schrijver"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 876,
+   "pdf_page": 897,
+   "text": "[201] describe how to use the ellipsoid algorithm to solve a variety of problems in combinatorial optimization. To date, the ellipsoid algorithm does not appear to be competitive with the simplex algorithm in practice."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 876,
+   "pdf_page": 897,
+   "text": "Karmarkar’s paper [247] includes a description of the first interior-point algorithm. Many subsequent researchers designed interior-point algorithms. Good surveys appear in the article of Goldfarb and Todd [189] and the book by Ye [463]."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 876,
+   "pdf_page": 897,
+   "text": "Analysis of the simplex algorithm remains an active area of research. V. Klee and G. J. Minty constructed an example on which the simplex algorithm runs through 2 n − 1 iterations. The simplex algorithm usually performs well in practice, and many researchers have tried to give theoretical justification for this empirical observation. A line of research begun by K. H. Borgwardt, and carried on by many others, shows that under certain probabilistic assu mptions on the input, the simplex algorithm converges in expected polynomial time. Spielman and Teng [421] made progress in this area, introducing the \"smoothed analysis of algorithms\" and applying it to the simplex algorithm."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 876,
+   "pdf_page": 897,
+   "text": "The simplex algorithm is known to run efficiently in certain special cases. Particularly noteworthy is the network-simplex algorithm, which is the simplex algorithm, specialized to network-flow problems. For certain network problems, including the shortest-paths, maximum-flow, and minimum-cost-flow problems, variants of the network-simplex algorithm run in polynomial time. See, for example, the article by Orlin [349] and the citations therein."
+  },
+  {
+   "type": "footnote",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 877,
+   "pdf_page": 898,
+   "text": "30 Polynomials and the FFT"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 877,
+   "pdf_page": 898,
+   "text": "The straightforward method of adding two polynomial s of degree n takes Θ(n) time, but the straightforward method of multiplying them takes Θ(n 2 ) time. This chapter will show how the fast Fourier transform, o r FFT, can reduce the time to multiply polynomials to Θ(n lg n)."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 877,
+   "pdf_page": 898,
+   "text": "The most common use for Fourier transforms, and hen ce the FFT, is in signal processing. A signal is given in the time domain: as a function mapping time to amplitude. Fourier analysis expresses the signal as a weighted sum of phaseshifted sinusoids of varying frequencies. The weigh ts and phases associated with the frequencies characterize the signal in the frequency domain. Among the many everyday applications of FFT’s are compression techniques used to encode digital video and audio information, including MP3 files. Many fine books delve into the rich area of signal processing, and the chapter notes reference a few of them."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 877,
+   "pdf_page": 898,
+   "text": "Polynomials"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 877,
+   "pdf_page": 898,
+   "text": "A polynomial in the variable x over an algebraic field F represents a function A(x) as a formal sum:"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 877,
+   "pdf_page": 898,
+   "text": "A(x) = n−1 X j D0 a |x| :"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 877,
+   "pdf_page": 898,
+   "text": "The values a 0 ;a 1 ;:::;a n−1 are the coefficients of the polynomial. The coefficients and x are drawn from a field F , typically the set C of complex numbers. A polynomial A(x) has degree k if its highest nonzero coefficient is a k , in which case we say that degree(A) = k. Any integer strictly greater than the degree of a polynomial is a degree-bound of that polynomial. Therefore, the degree of a poly nomial of degree-bound n may be any integer between 0 and n − 1, inclusive."
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 877,
+   "pdf_page": 898,
+   "text": "A variety of operations extend to polynomials. For polynomial addition, if A(x)"
+  },
+  {
+   "type": "body",
+   "chapter": 29,
+   "section": "29.3",
+   "section_title": "29.3 Duality",
+   "printed_page": 877,
+   "pdf_page": 898,
+   "text": "and B(x) are polynomials of degree-bound n, their sum is a polynomial C(x) , also"
+  }
+ ]
+}

@@ -1,0 +1,2754 @@
+{
+ "chapter": 3,
+ "chapter_title": "3 Characterizing Running Times",
+ "part": "Part I Foundations",
+ "source": {
+  "printed": [
+   49,
+   null
+  ],
+  "pdf": [
+   70,
+   97
+  ]
+ },
+ "sections": [
+  "3.1 O-notation, Ω-notation, and Θ-notation",
+  "3.2 Asymptotic notation: formal definitions",
+  "3.3 Standard notations and common functions"
+ ],
+ "sections_found": [
+  "3.1 O-notation, Ω-notation, and Θ-notation",
+  "3.2 Asymptotic notation: formal definitions",
+  "3.3 Standard notations and common functions"
+ ],
+ "blocks": [
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.1",
+   "section_title": "3.1 O-notation, Ω-notation, and Θ-notation",
+   "printed_page": 50,
+   "pdf_page": 71,
+   "text": "When we analyzed the worst-case running time of insertion sort in Chapter 2, we started with the complicated expression"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.1",
+   "section_title": "3.1 O-notation, Ω-notation, and Θ-notation",
+   "printed_page": 50,
+   "pdf_page": 71,
+   "text": "− c 1 + c 2 + c 4 + c 5"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.1",
+   "section_title": "3.1 O-notation, Ω-notation, and Θ-notation",
+   "printed_page": 50,
+   "pdf_page": 71,
+   "text": "− (c 2 + c 4 + c 5 + c 8 ):"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.1",
+   "section_title": "3.1 O-notation, Ω-notation, and Θ-notation",
+   "printed_page": 50,
+   "pdf_page": 71,
+   "text": "We then discarded the lower-order terms (c 1 + c 2 + c 4 + c 5/2 − c 6/2 − c 7/2 + c 8 )n and c 2 + c 4 + c 5 + c 8 , and we also ignored the coefficient c 5/2 + c 6/2 + c 7/2 of n 2 . That left just the factor n 2 , which we put into Θ-notation as Θ(n 2 ). We use this style to characterize running times of alg orithms: discard the lower-order terms and the coefficient of the leading term, and use a notation that focuses on the rate of growth of the running time."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.1",
+   "section_title": "3.1 O-notation, Ω-notation, and Θ-notation",
+   "printed_page": 50,
+   "pdf_page": 71,
+   "text": "Θ-notation is not the only such \"asymptotic notation.\" In this section, we’ll see other forms of asymptotic notation as well. We start with intuitive looks at these notations, revisiting insertion sort to see how we can apply them. In the next section, we’ll see the formal definitions of our asymptotic notations, along with conventions for using them."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.1",
+   "section_title": "3.1 O-notation, Ω-notation, and Θ-notation",
+   "printed_page": 50,
+   "pdf_page": 71,
+   "text": "Before we get into specifics, bear in mind that the asymptotic notations we’ll see are designed so that they characterize functions in general. It so happens that the functions we are most interested in denote the runn ing times of algorithms. But asymptotic notation can apply to functions that cha racterize some other aspect of algorithms (the amount of space they use, for examp le), or even to functions that have nothing whatsoever to do with algorithms."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.1",
+   "section_title": "3.1 O-notation, Ω-notation, and Θ-notation",
+   "printed_page": 50,
+   "pdf_page": 71,
+   "text": "O-notation"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.1",
+   "section_title": "3.1 O-notation, Ω-notation, and Θ-notation",
+   "printed_page": 50,
+   "pdf_page": 71,
+   "text": "O-notation characterizes an upper bound on the asymptotic behavior of a function."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.1",
+   "section_title": "3.1 O-notation, Ω-notation, and Θ-notation",
+   "printed_page": 50,
+   "pdf_page": 71,
+   "text": "In other words, it says that a function grows no faster than a certain rate, based on the highest-order term. Consider, for example, the function 7n 3 + 100n 2 − 20n + 6."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.1",
+   "section_title": "3.1 O-notation, Ω-notation, and Θ-notation",
+   "printed_page": 50,
+   "pdf_page": 71,
+   "text": "Its highest-order term is 7n 3 , and so we say that this function’s rate of growth is n 3 ."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.1",
+   "section_title": "3.1 O-notation, Ω-notation, and Θ-notation",
+   "printed_page": 50,
+   "pdf_page": 71,
+   "text": "Because this function grows no faster than n 3 , we can write that it is O(n 3 ). You might be surprised that we can also write that the function 7n 3 + 100n 2 − 20n + 6 is O(n 4 ). Why? Because the function grows more slowly than n 4 , we are correct in saying that it grows no faster. As you might hav e guessed, this function is also"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.1",
+   "section_title": "3.1 O-notation, Ω-notation, and Θ-notation",
+   "printed_page": 50,
+   "pdf_page": 71,
+   "text": "O(n 5 ), O(n 6 ), and so on. More generally, it is O(n c ) for any constant c ≥ 3."
+  },
+  {
+   "type": "pseudocode",
+   "chapter": 3,
+   "section": "3.1",
+   "section_title": "3.1 O-notation, Ω-notation, and Θ-notation",
+   "printed_page": 51,
+   "pdf_page": 72,
+   "algo_name": "INSERTION-SORT",
+   "signature": "INSERTION-SORT",
+   "lines": [
+    {
+     "n": 1,
+     "code": "for i = 2 to n"
+    },
+    {
+     "n": 2,
+     "code": "key = A[i]"
+    },
+    {
+     "n": 3,
+     "code": "/ / Insert A[i] into the sorted subarray A[1 : i − 1]."
+    },
+    {
+     "n": 4,
+     "code": "j = i − 1"
+    },
+    {
+     "n": 5,
+     "code": "while j >0 and A[j]>  key"
+    },
+    {
+     "n": 6,
+     "code": "A[j + 1] = A[j]"
+    },
+    {
+     "n": 7,
+     "code": "j = j − 1"
+    },
+    {
+     "n": 8,
+     "code": "A[j + 1] = key"
+    }
+   ],
+   "text": "1 for i = 2 to n\n2 key = A[i]\n3 / / Insert A[i] into the sorted subarray A[1 : i − 1].\n4 j = i − 1\n5 while j >0 and A[j]>  key\n6 A[j + 1] = A[j]\n7 j = j − 1\n8 A[j + 1] = key"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.1",
+   "section_title": "3.1 O-notation, Ω-notation, and Θ-notation",
+   "printed_page": 51,
+   "pdf_page": 72,
+   "text": "•-notation"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.1",
+   "section_title": "3.1 O-notation, Ω-notation, and Θ-notation",
+   "printed_page": 51,
+   "pdf_page": 72,
+   "text": "Ω-notation characterizes a lower bound on the asymptotic behavior of a function."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.1",
+   "section_title": "3.1 O-notation, Ω-notation, and Θ-notation",
+   "printed_page": 51,
+   "pdf_page": 72,
+   "text": "In other words, it says that a function grows at least as fast as a certain rate, based"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.1",
+   "section_title": "3.1 O-notation, Ω-notation, and Θ-notation",
+   "printed_page": 51,
+   "pdf_page": 72,
+   "text": "4as in O-notation—on the highest-order term. Because the highest-order term in the function 7n 3 + 100n 2 − 20n + 6 grows at least as fast as n 3 , this function is Ω(n 3 ). This function is also Ω(n 2 ) and Ω(n). More generally, it is Ω(n c ) for any constant c ≤ 3."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.1",
+   "section_title": "3.1 O-notation, Ω-notation, and Θ-notation",
+   "printed_page": 51,
+   "pdf_page": 72,
+   "text": "Θ-notation"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.1",
+   "section_title": "3.1 O-notation, Ω-notation, and Θ-notation",
+   "printed_page": 51,
+   "pdf_page": 72,
+   "text": "Θ-notation characterizes a tight bound on the asymptotic behavior of a function. It says that a function grows precisely at a certain rate, based—once again—on the highest-order term. Put another way, Θ-notation characterizes the rate of growth of the function to within a constant factor from above and to within a constant factor from below. These two constant factors need not be equal."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.1",
+   "section_title": "3.1 O-notation, Ω-notation, and Θ-notation",
+   "printed_page": 51,
+   "pdf_page": 72,
+   "text": "If you can show that a function is both O(f(n)) and Ω(f (n)) for some function f(n) , then you have shown that the function is Θ(f(n)) . (The next section states this fact as a theorem.) For example, since the function 7n 3 C100n 2 −20nC6 is both O(n 3 ) and Ω(n 3 ), it is also Θ(n 3 )."
+  },
+  {
+   "type": "example",
+   "chapter": 3,
+   "section": "3.1",
+   "section_title": "3.1 O-notation, Ω-notation, and Θ-notation",
+   "printed_page": 51,
+   "pdf_page": 72,
+   "text": "Example: Insertion sort"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.1",
+   "section_title": "3.1 O-notation, Ω-notation, and Θ-notation",
+   "printed_page": 51,
+   "pdf_page": 72,
+   "text": "Let’s revisit insertion sort and see how to work with asymptotic notation to characterize its Θ(n 2 ) worst-case running time without evaluating summations as we did in Chapter 2. Here is the INSERTION-SORT procedure once again:"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.1",
+   "section_title": "3.1 O-notation, Ω-notation, and Θ-notation",
+   "printed_page": 51,
+   "pdf_page": 72,
+   "text": "INSERTION-SORT (A;n)"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.1",
+   "section_title": "3.1 O-notation, Ω-notation, and Θ-notation",
+   "printed_page": 51,
+   "pdf_page": 72,
+   "text": "What can we observe about how the pseudocode operates? The procedure has nested loops. The outer loop is a for loop that runs n − 1 times, regardless of the values being sorted. The inner loop is a while loop, but the number of iterations it makes depends on the values being sorted. The lo op variable j starts at i − 1 each of the n/3 largest values moves through each of these n/3 positions to somewhere in these n/3 positions"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.1",
+   "section_title": "3.1 O-notation, Ω-notation, and Θ-notation",
+   "printed_page": 52,
+   "pdf_page": 73,
+   "text": "A[1 : n/3] A[n/3 + 1 : 2n/3] A[2n/3 + 1 : n]"
+  },
+  {
+   "type": "figure-caption",
+   "chapter": 3,
+   "section": "3.1",
+   "section_title": "3.1 O-notation, Ω-notation, and Θ-notation",
+   "printed_page": 52,
+   "pdf_page": 73,
+   "text": "Figure 3.1 The Ω(n 2 ) lower bound for insertion sort. If the first n/3 positions contain the n/3 largest values, each of these values must move through each of the middle n/3 positions, one position at a time, to end up somewhere in the last n/3 positions. Since each of n/3 values moves through at least each of n/3 positions, the time taken in this case is at least proportional to (n/3).n/3/ = n 2/9, or Ω(n 2 ). and decreases by 1 in each iteration until either it reaches 0 or A[j] ≤ key. For a given value of i , the while loop might iterate 0 times, i − 1 times, or anywhere in between. The body of the while loop (lines 637) takes constant time per iteration of the while loop."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.1",
+   "section_title": "3.1 O-notation, Ω-notation, and Θ-notation",
+   "printed_page": 52,
+   "pdf_page": 73,
+   "text": "These observations suffice to deduce an O(n 2 ) running time for any case of INSERTION-SORT, giving us a blanket statement that covers all inp uts. The ru n- ning time is dominated by the inner loop. Because e ach of the n − 1 iterations of the outer loop causes the inner loop to iterate at most i − 1 times, and because i is at most n, the total number of iterations of the inner loop is at most (n − 1).n − 1/, which is less than n 2 . Since each iteration of the inner loop takes cons tant time, the total time spent in the inner loop is at most a constant times n 2 , or O(n 2 )."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.1",
+   "section_title": "3.1 O-notation, Ω-notation, and Θ-notation",
+   "printed_page": 52,
+   "pdf_page": 73,
+   "text": "With a little creativity, we can also see that the worst-case running time of INSERTION-SORT is Ω(n 2 ). By saying that the worst-case running time of an algorithm is Ω(n 2 ), we mean that for every input size n above a certain threshold, there is at least one input of size n for which the algorithm takes at least cn 2 time, for some positive constant c . It does not necessarily mean that the algorithm takes at least cn 2 time for all inputs."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.1",
+   "section_title": "3.1 O-notation, Ω-notation, and Θ-notation",
+   "printed_page": 52,
+   "pdf_page": 73,
+   "text": "Let’s now see why the worst-case running time of INSERTION-SORT is Ω(n 2 )."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.1",
+   "section_title": "3.1 O-notation, Ω-notation, and Θ-notation",
+   "printed_page": 52,
+   "pdf_page": 73,
+   "text": "For a value to end up to the right of where it star ted, it must have been moved in line 6. In fact, for a value to end up k positions to the right of where it started, line 6 must have executed k times. As Figure 3.1 shows, let’s assume that n is a multiple of 3 so that we can divide the array A into groups of n/3 positions."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.1",
+   "section_title": "3.1 O-notation, Ω-notation, and Θ-notation",
+   "printed_page": 52,
+   "pdf_page": 73,
+   "text": "Suppose that in the input to INSERTION-SORT, the n/3 largest values occupy the first n/3 array positions A[1 : n/3]. (It does not matter what relative order they have within the first n/3 positions.) Once the array has been sorted, each of these n/3 values ends up somewhere in the last n/3 positions A[2n/3 + 1 : n]. For that to happen, each of these n/3 values must pass through each of the middle n/3 positions A[n/3 + 1 : 2n/3]. Each of these n/3 values passes through these middle"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 53,
+   "pdf_page": 74,
+   "text": "n/3 positions one position at a time, by at least n/3 executions of line 6. Because at least n/3 values have to pass through at least n/3 positions, the time taken by INSERTION-SORT in the worst case is at least proportional to (n/3).n/3/ = n 2/9, which is Ω(n 2 )."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 53,
+   "pdf_page": 74,
+   "text": "Because we have shown that INSERTION-SORT runs in O(n 2 ) time in all cases and that there is an input that makes it take Ω(n 2 ) time, we can conclude that the worst-case running time of INSERTION-SORT is Θ(n 2 ). It does not matter that the constant factors for upper and lower bounds mig ht differ. What matters is that we have characterized the worst-case running time to within constant factors"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 53,
+   "pdf_page": 74,
+   "text": "(discounting lower-order terms). This argument does not show that INSERTION- SORT runs in Θ(n 2 ) time in all cases. Indeed, we saw in Chapter 2 that the bestcase running time is Θ(n)."
+  },
+  {
+   "type": "exercise",
+   "chapter": 3,
+   "section": "3.1",
+   "section_title": "3.1 O-notation, Ω-notation, and Θ-notation",
+   "printed_page": 53,
+   "pdf_page": 74,
+   "text": "3.1-1 Modify the lower-bound argument for insertion sort to handle input sizes that are not necessarily a multiple of 3."
+  },
+  {
+   "type": "exercise",
+   "chapter": 3,
+   "section": "3.1",
+   "section_title": "3.1 O-notation, Ω-notation, and Θ-notation",
+   "printed_page": 53,
+   "pdf_page": 74,
+   "text": "3.1-2 Using reasoning similar to what we used for inserti on sort, analyze the running time of the selection sort algorithm from Exercise 2.2-2."
+  },
+  {
+   "type": "exercise",
+   "chapter": 3,
+   "section": "3.1",
+   "section_title": "3.1 O-notation, Ω-notation, and Θ-notation",
+   "printed_page": 53,
+   "pdf_page": 74,
+   "text": "3.1-3 Suppose that ˛ is a fraction in the range 0 < ˛ < 1. Show how to generalize the lower-bound argument for insertion sort to consider an input in which the ˛n largest values start in the first ˛n positions. What additional restriction do you need to put on ˛? What value of ˛ maximizes the number of times that the ˛n largest values must pass through each of the middle .1 − 2˛/n array positions?"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 53,
+   "pdf_page": 74,
+   "text": "Having seen asymptotic notation informally, let’s get more formal. The notations we use to describe the asymptotic running time of a n algorithm are defined in terms of functions whose domains are typically the set N of natural numbers or the set R of real numbers. Such notations are convenient for describing a runningtime function T(n). This section defines the basic asymptotic notations and also introduces some common \"proper\" notational abuses."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 54,
+   "pdf_page": 75,
+   "text": "(a) (b) (c) n n n n 0 n 0 n 0 f(n) = Θ(g(n)) f(n) = O(g(n)) f(n) = Ω(g(n)) f(n) f(n) f(n) cg(n) cg(n) c 1 g(n) c 2 g(n)"
+  },
+  {
+   "type": "figure-caption",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 54,
+   "pdf_page": 75,
+   "text": "Figure 3.2 Graphic examples of the O, Ω, and Θ notations. In each part, the value of n 0 shown is the minimum possible value, but any greater valu e also works. (a) O-notation gives an upper bound for a function to within a constant factor. W e write f(n) = O(g(n)) if there are positive constants n 0 and c such that at and to the right of n 0 , the value of f(n) always lies on or below cg(n). (b) Ω-notation gives a lower bound for a function to within a constant factor. We write f(n) = Ω(g(n)) if there are positive constants n 0 and c such that at and to the right of n 0 , the value of f(n) always lies on or above cg(n). (c) Θ-notation bounds a function to within constant factors."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 54,
+   "pdf_page": 75,
+   "text": "We write f(n) = Θ(g(n)) if there exist positive constants n 0 , c 1 , and c 2 such that at and to the right of n 0 , the value of f(n) always lies between c 1 g(n) and c 2 g(n) inclusive."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 54,
+   "pdf_page": 75,
+   "text": "O-notation"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 54,
+   "pdf_page": 75,
+   "text": "As we saw in Section 3.1, O-notation describes an asymptotic upper bound. We use O-notation to give an upper bound on a function, to within a constant factor."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 54,
+   "pdf_page": 75,
+   "text": "Here is the formal definition of O-notation. For a given function g(n), we denote by O(g(n)) (pronounced \"big-oh of g of n\" or sometimes just \"oh of g of n\") the set of functions"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 54,
+   "pdf_page": 75,
+   "text": "O(g(n)) = ff(n) W there exist positive constants c and n 0 such that 0 ≤ f(n) ≤ cg(n) for all n ≥ n 0 g : 1"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 54,
+   "pdf_page": 75,
+   "text": "A function f(n) belongs to the set O(g(n)) if there exists a positive constant c such that f(n) ≤ cg(n) for sufficiently large n. Figure 3.2(a) shows the intuition behind"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 54,
+   "pdf_page": 75,
+   "text": "O-notation. For all values n at and to the right of n 0 , the value of the function f(n) is on or below cg(n)."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 54,
+   "pdf_page": 75,
+   "text": "The definition of O(g(n)) requires that every function f(n) in the set O(g(n)) be asymptotically nonnegative: f(n) must be nonnegative whenever n is sufficiently large. (An asymptotically positive function is one that is positive for all"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 54,
+   "pdf_page": 75,
+   "text": "1 Within set notation, a colon means \"such that.\" sufficiently large n.) Consequently, the function g(n) itself must be asymptotically nonnegative, or else the set O(g(n)) is empty. We therefore assume that every function used within O-notation is asymptotically nonnegative. This assumption holds for the other asymptotic notations defined in this chapter as well."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 55,
+   "pdf_page": 76,
+   "text": "You might be surprised that we define O-notation in terms of sets. Indeed, you might expect that we would write \" f(n) 2 O(g(n))\" to indicate that f(n) be-"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 55,
+   "pdf_page": 76,
+   "text": "longs to the set O(g(n)). Instead, we usually write \" f(n) = O(g(n))\" and say"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 55,
+   "pdf_page": 76,
+   "text": "\"f(n) is big-oh of g(n)\" to express the same notion. Although it may seem confusing at first to abuse equality in this way, we’ll see later in this section that doing so has its advantages."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 55,
+   "pdf_page": 76,
+   "text": "Let’s explore an example of how to use the formal definition of O-notation to justify our practice of discarding lower-order terms and ignoring the constant coefficient of the highest-order term. We’ll show that 4n 2 C100n C500 = O(n 2 ), even though the lower-order terms have much larger coefficients than the leading term."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 55,
+   "pdf_page": 76,
+   "text": "We need to find positive constants c and n 0 such that 4n 2 + 100n + 500 ≤ cn 2 for all n ≥ n 0 . Dividing both sides by n 2 gives 4 + 100/n + 500/n 2 ≤ c . This inequality is satisfied for many choices of c and n 0 . For example, if we choose n 0 = 1, then this inequality holds for c = 604. If we choose n 0 = 10, then c = 19 works, and choosing n 0 = 100 allows us to use c = 5:05."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 55,
+   "pdf_page": 76,
+   "text": "We can also use the formal definition of O-notation to show that the function n 3 − 100n 2 does not belong to the set O(n 2 ), even though the coefficient of n 2"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 55,
+   "pdf_page": 76,
+   "text": "is a large negative number. If we had n 3 − 100n 2 = O(n 2 ), then there would be positive constants c and n 0 such that n 3 − 100n 2 ≤ cn 2 for all n ≥ n 0 . Again, we divide both sides by n 2 , giving n − 100 ≤ c . Regardless of what value we choose for the constant c , this inequality does not hold for any value of n>c + 100."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 55,
+   "pdf_page": 76,
+   "text": "•-notation"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 55,
+   "pdf_page": 76,
+   "text": "Just as O-notation provides an asymptotic upper bound on a function, Ω-notation provides an asymptotic lower bound. For a given function g(n), we denote by Ω(g(n)) (pronounced \"big-omega of g of n\" or sometimes just <omega of g of n=) the set of functions"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 55,
+   "pdf_page": 76,
+   "text": "Ω(g(n)) = ff(n) W there exist positive constants c and n 0 such that 0 ≤ cg(n) ≤ f(n) for all n ≥ n 0 g :"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 55,
+   "pdf_page": 76,
+   "text": "Figure 3.2(b) shows the intuition behind Ω-notation. For all values n at or to the right of n 0 , the value of f(n) is on or above cg(n)."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 55,
+   "pdf_page": 76,
+   "text": "We’ve already shown that 4n 2 + 100n + 500 = O(n 2 ). Now let’s show that 4n 2 + 100n + 500 = Ω(n 2 ). We need to find positive constants c and n 0 such that 4n 2 + 100n + 500 ≥ cn 2 for all n ≥ n 0 . As before, we divide both sides by n 2 , giving 4 + 100/n + 500/n 2 ≥ c . This inequality holds when n 0 is any positive integer and c = 4."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 56,
+   "pdf_page": 77,
+   "text": "What if we had subtracted the lower-order terms from the 4n 2 term instead of adding them? What if we had a small coefficient for the n 2 term? The function would still be Ω(n 2 ). For example, let’s show that n 2/100 − 100n − 500 = Ω(n 2 )."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 56,
+   "pdf_page": 77,
+   "text": "Dividing by n 2 gives 1/100 − 100/n − 500/n 2 ≥ c . We can choose any value for n 0 that is at least 10,005 and find a positive value for c . For example, when n 0 = 10,005, we can choose c = 2:49 × 10 −9 . Yes, that’s a tiny value for c , but it is positive. If we select a larger value for n 0 , we can also increase c . For example, if n 0 = 100,000, then we can choose c = 0:0089. The higher the value of n 0 , the closer to the coefficient 1/100 we can choose c ."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 56,
+   "pdf_page": 77,
+   "text": "Θ-notation"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 56,
+   "pdf_page": 77,
+   "text": "We use Θ-notation for asymptotically tight bounds. For a given function g(n), we denote by Θ(g(n)) (\"theta of g of n\") the set of functions"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 56,
+   "pdf_page": 77,
+   "text": "Θ(g(n)) = ff(n) W there exist positive constants c 1 , c 2 , and n 0 such that 0 ≤ c 1 g(n) ≤ f(n) ≤ c 2 g(n) for all n ≥ n 0 g :"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 56,
+   "pdf_page": 77,
+   "text": "Figure 3.2(c) shows the intuition behind Θ-notation. For all values of n at and to the right of n 0 , the value of f(n) lies at or above c 1 g(n) and at or below c 2 g(n). In other words, for all n ≥ n 0 , the function f(n) is equal to g(n) to within constant factors."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 56,
+   "pdf_page": 77,
+   "text": "The definitions of O-, Ω-, and Θ-notations lead to the following theorem, whose proof we leave as Exercise 3.2-4."
+  },
+  {
+   "type": "theorem",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 56,
+   "pdf_page": 77,
+   "text": "Theorem 3.1"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 56,
+   "pdf_page": 77,
+   "text": "For any two functions f(n) and g(n), we have f(n) = Θ(g(n)) if and only if f(n) = O(g(n)) and f(n) = Ω(g(n))."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 56,
+   "pdf_page": 77,
+   "text": "We typically apply Theorem 3.1 to prove asymptotically tight bounds from asymptotic upper and lower bounds."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 56,
+   "pdf_page": 77,
+   "text": "Asymptotic notation and running times"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 56,
+   "pdf_page": 77,
+   "text": "When you use asymptotic notation to characterize an algorithm’s running time, make sure that the asymptotic notation you use is a s precise as possible without overstating which running time it applies to. Here are some examples of using asymptotic notation properly and improperly to characterize running times."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 56,
+   "pdf_page": 77,
+   "text": "Let’s start with insertion sort. We can correctly say that insertion sort’s worstcase running time is O(n 2 ), Ω(n 2 ), and—due to Theorem 3.14Θ(n 2 ). Although all three ways to characterize the worst-case running times are correct, the Θ(n 2 ) bound is the most precise and hence the most preferred. We can also correctly say that insertion sort’s best-case running time is O(n), Ω(n), and Θ(n), again with Θ(n) the most precise and therefore the most preferred."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 57,
+   "pdf_page": 78,
+   "text": "Here is what we cannot correctly say: insertion sort’s running time is Θ(n 2 )."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 57,
+   "pdf_page": 78,
+   "text": "That is an overstatement because by omitting \"worst-case\" from the statement, we’re left with a blanket statement covering all cases. The error here is that insertion sort does not run in Θ(n 2 ) time in all cases since, as we’ve seen, it runs in Θ(n) time in the best case. We can correctly say that insertion sort’s running time is O(n 2 ), however, because in all cases, its running time g rows no faster than n 2 ."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 57,
+   "pdf_page": 78,
+   "text": "When we say O(n 2 ) instead of Θ(n 2 ), there is no problem in having cases whose running time grows more slowly than n 2 . Likewise, we cannot correctly say that insertion sort’s running time is Θ(n), but we can say that its running time is Ω(n)."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 57,
+   "pdf_page": 78,
+   "text": "How about merge sort? Since merge sort runs in Θ(n lg n) time in all cases, we can just say that its running time is Θ(n lg n) without specifying worst-case, best-case, or any other case."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 57,
+   "pdf_page": 78,
+   "text": "People occasionally conflate O-notation with Θ-notation by mistakenly using"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 57,
+   "pdf_page": 78,
+   "text": "O-notation to indicate an asymptotically tight bound. They say things like <an"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 57,
+   "pdf_page": 78,
+   "text": "O(n lg n)-time algorithm runs faster than an O(n 2 )-time algorithm.= Maybe it does, maybe it doesn’t. Since O-notation denotes only an asymptotic upper bound, that so-called O(n 2 )-time algorithm might actually run in Θ(n) time. You should be careful to choose the appropriate asymptotic not ation. If you want to indicate an asymptotically tight bound, use Θ-notation."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 57,
+   "pdf_page": 78,
+   "text": "We typically use asymptotic notation to provide the simplest and most precise bounds possible. For example, if an algorithm has a running time of 3n 2 + 20n in all cases, we use asymptotic notation to write t hat its running time is Θ(n 2 )."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 57,
+   "pdf_page": 78,
+   "text": "Strictly speaking, we are also correct in writing t hat the running time is O(n 3 ) or Θ(3n 2 + 20n). Neither of these expressions is as useful as writ ing Θ(n 2 ) in this case, however: O(n 3 ) is less precise than Θ(n 2 ) if the running time is 3n 2 + 20n, and Θ(3n 2 + 20n) introduces complexity that obscures the order of gr owth. By writing the simplest and most precise bound, such a s Θ(n 2 ), we can categorize and compare different algorithms. Throughout the bo ok, you will see asymptotic running times that are almost always based on polynomials and logarithms: functions such as n, n lg 2 n, n 2 lg n, or n 1/2 . You will also see some other functions, such as exponentials, lg lg n, and lg − n (see Section 3.3). It is usually fairly easy to compare the rates of growth of these functions. Problem 3-3 gives you good practice."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 58,
+   "pdf_page": 79,
+   "text": "Asymptotic notation in equations and inequalities"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 58,
+   "pdf_page": 79,
+   "text": "Although we formally define asymptotic notation in terms of sets, we use the equal sign (D) instead of the set membership sign (2) within formulas. For example, we wrote that 4n 2 + 100n + 500 = O(n 2 ). We might also write 2n 2 + 3n + 1 ="
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 58,
+   "pdf_page": 79,
+   "text": "2n 2 + Θ(n). How do we interpret such formulas?"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 58,
+   "pdf_page": 79,
+   "text": "When the asymptotic notation stands alone (that is, not within a larger formula) on the right-hand side of an equation (or inequality), as in 4n 2 + 100n + 500 ="
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 58,
+   "pdf_page": 79,
+   "text": "O(n 2 ), the equal sign means set membership: 4n 2 + 100n + 500 2 O(n 2 ). In general, however, when asymptotic notation appears in a formula, we interpret it as standing for some anonymous function that we do not care to name. For example, the formula 2n 2 + 3n + 1 = 2n 2 + Θ(n) means that 2n 2 + 3n + 1 = 2n 2 + f(n) , where f(n) 2 Θ(n). In this case, we let f(n) = 3n + 1, which indeed belongs to Θ(n)."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 58,
+   "pdf_page": 79,
+   "text": "Using asymptotic notation in this manner can help e liminate inessential detail and clutter in an equation. For example, in Chapter 2 we expressed the worst-case running time of merge sort as the recurrence"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 58,
+   "pdf_page": 79,
+   "text": "T(n) = 2T(n/2) + Θ(n):"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 58,
+   "pdf_page": 79,
+   "text": "If we are interested only in the asymptotic behavio r of T(n) , there is no point in specifying all the lower-order terms exactly, because they are all understood to be included in the anonymous function denoted by the term Θ(n)."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 58,
+   "pdf_page": 79,
+   "text": "The number of anonymous functions in an expression is understood to be equal to the number of times the asymptotic notation appe ars. For e xample, in the ex- pression n X i D1"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 58,
+   "pdf_page": 79,
+   "text": "O(i); there is only a single anonymous function (a function of i ). This expression is thus not the same as O(1) + O(2) + • • • + O(n), which doesn’t really have a clean interpretation."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 58,
+   "pdf_page": 79,
+   "text": "In some cases, asymptotic notation appears on the left-hand side of an equation, as in 2n 2 + Θ(n) = Θ(n 2 ):"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 58,
+   "pdf_page": 79,
+   "text": "Interpret such equations using the following rule: No matter how the anonymous functions are chosen on the left of the equal sign, there is a way to choose the anonymous functions on the right of the equal sign to make the equation valid."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 58,
+   "pdf_page": 79,
+   "text": "Thus, our example means that for any function f(n) 2 Θ(n), there is some function g(n) 2 Θ(n 2 ) such that 2n 2 Cf.n/ = g(n) for all n. In other words, the right-hand side of an equation provides a coarser level of detail than the left-hand side."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 59,
+   "pdf_page": 80,
+   "text": "We can chain together a number of such relationships, as in 2n 2 + 3n + 1 = 2n 2 + Θ(n)"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 59,
+   "pdf_page": 80,
+   "text": "D Θ(n 2 ):"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 59,
+   "pdf_page": 80,
+   "text": "By the rules above, interpret each equation separately. The first equation says that there is some function f(n) 2 Θ(n) such that 2n 2 C3n C1 = 2n 2 + f(n) for all n."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 59,
+   "pdf_page": 80,
+   "text": "The second equation says that for any function g(n) 2 Θ(n) (such as the f(n) just mentioned), there is some function h(n) 2 Θ(n 2 ) such that 2n 2 + g(n) = h(n) for all n. This interpretation implies that 2n 2 + 3n + 1 = Θ(n 2 ), which is what the chaining of equations intuitively says."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 59,
+   "pdf_page": 80,
+   "text": "Proper abuses of asymptotic notation"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 59,
+   "pdf_page": 80,
+   "text": "Besides the abuse of equality to mean set membershi p, which we now see has a precise mathematical interpretation, another abuse of asymptotic notation occurs when the variable tending toward 1 must be inferred from context. For example, when we say O(g(n)), we can assume that we’re interested in the growth of g(n)"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 59,
+   "pdf_page": 80,
+   "text": "as n grows, and if we say O(g(m)) we’re talking about the growth of g(m) as m grows. The free variable in the expression indicates what variable is going to 1."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 59,
+   "pdf_page": 80,
+   "text": "The most common situation requiring contextual know ledge of which variable tends to 1 occurs when the function inside the asymptotic nota tion is a constant, as in the expression O(1). We cannot infer from the expression which variabl e is going to 1, because no variable appears there. The context must disambiguate. For example, if the equation using asymptotic notation is f(n) = O(1), it’s apparent that the variable we’re interested in is n. Knowing from context that the variable of interest is n, however, allows us to make perfect sense of the e xpression by using the formal definition of O-notation: the expression f(n) = O(1) means that the function f(n) is bounded from above by a constant as n goes to 1. Technically, it might be less ambiguous if we explicitly indicated the variable tending to 1 in the asymptotic notation itself, but that would clutter the notation. Instead, we simply ensure that the context makes it clear which variable (or variables) tend to 1."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 59,
+   "pdf_page": 80,
+   "text": "When the function inside the asymptotic notation is bounded by a positive constant, as in T(n) = O(1), we often abuse asymptotic notation in yet another way,"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 59,
+   "pdf_page": 80,
+   "text": "especially when stating recurrences. We may write s omething like T(n) = O(1) for n < 3. According to the formal definition of O-notation, this statement is meaningless, because the definition only says that T(n) is bounded above by a"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 59,
+   "pdf_page": 80,
+   "text": "positive constant c for n ≥ n 0 for some n 0 > 0. The value of T(n) for n < n 0"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 59,
+   "pdf_page": 80,
+   "text": "need not be so bounded. Thus, in the example T(n) = O(1) for n<3 , we cannot"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 59,
+   "pdf_page": 80,
+   "text": "infer any constraint on T(n) when n<3 , because it might be that n 0 >3 ."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 59,
+   "pdf_page": 80,
+   "text": "What is conventionally meant when we say T(n) = O(1) for n<3 is that there"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 59,
+   "pdf_page": 80,
+   "text": "exists a positive constant c such that T(n) ≤ c for n<3 . This convention saves us the trouble of naming the bounding constant, all owing it to remain anonymous while we focus on more important variables in an an alysis. Similar abuses occur with the other asymptotic notations. For example, T(n) = Θ(1) for n<3 means"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 60,
+   "pdf_page": 81,
+   "text": "that T(n) is bounded above and below by positive constants when n<3 ."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 60,
+   "pdf_page": 81,
+   "text": "Occasionally, the function describing an algorithm’s running time may not be defined for certain input sizes, for example, when an algorithm assumes that the input size is an exact power of 2. We still use asymptotic notation to describe the growth of the running time, understanding that any constraints apply only when the function is defined. For example, suppose that f(n) is defined only on a subset of the natural or nonnegative real numbers. Then f(n) = O(g(n)) means that the"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 60,
+   "pdf_page": 81,
+   "text": "bound 0 ≤ T(n) ≤ cg(n) in the definition of O-notation holds for all n ≥ n 0 over the domain of f(n) , that is, where f(n) is defined. This abuse is rarely pointed out, since what is meant is generally clear from context."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 60,
+   "pdf_page": 81,
+   "text": "In mathematics, it’s okay—and often desirable—to abuse a notation, as long as we don’t misuse it. If we understand precisely what is meant by the abuse and don’t draw incorrect conclusions, it can simplify our mathematical language, contribute to our higher-level understanding, and help us focus on what really matters. o-notation"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 60,
+   "pdf_page": 81,
+   "text": "The asymptotic upper bound provided by O-notation may or may not be asymptotically tight. The bound 2n 2 = O(n 2 ) is asymptotically tight, but the bound"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 60,
+   "pdf_page": 81,
+   "text": "2n = O(n 2 ) is not. We use o-notation to denote an upper bound that is not asymptotically tight. We formally define o.g(n)/ (\"little-oh of g of n\") as the set o.g(n)/ = ff(n) W for any positive constant c>0 , there exists a constant n 0 >0 such that 0 ≤ f(n)<cg(n) for all n ≥ n 0 g :"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 60,
+   "pdf_page": 81,
+   "text": "For example, 2n = o(n 2 ), but 2n 2 ≠ o(n 2 )."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 60,
+   "pdf_page": 81,
+   "text": "The definitions of O-notation and o-notation are similar. The main difference is that in f(n) = O(g(n)), the bound 0 ≤ f(n) ≤ cg(n) holds for some constant c>0 , but in f(n) = o.g(n)/, the bound 0 ≤ f(n) < cg(n) holds for all constants c>0 . Intuitively, in o-notation, the function f(n) becomes insignificant relative to g(n) as n gets large: lim n!1 f(n) g(n) = 0:"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 60,
+   "pdf_page": 81,
+   "text": "Some authors use this limit as a definition of the o-notation, but the definition in this book also restricts the anonymous functions to be asymptotically nonnegative."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 61,
+   "pdf_page": 82,
+   "text": "!-notation"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 61,
+   "pdf_page": 82,
+   "text": "By analogy, !-notation is to Ω-notation as o-notation is to O-notation. We use"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 61,
+   "pdf_page": 82,
+   "text": "!-notation to denote a lower bound that is not asymptotically tight. One way to define it is by f(n) 2 !.g(n)/ if and only if g(n) 2 o.f(n)/:"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 61,
+   "pdf_page": 82,
+   "text": "Formally, however, we define !.g(n)/ (\"little-omega of g of n\") as the set"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 61,
+   "pdf_page": 82,
+   "text": "!.g(n)/ = ff(n) W for any positive constant c>0 , there exists a constant n 0 >0 such that 0 ≤ cg(n)<f(n) for all n ≥ n 0 g :"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 61,
+   "pdf_page": 82,
+   "text": "Where the definition of o-notation says that f(n) < cg(n) , the definition of !-notation says the opposite: that cg(n) < f(n) . For examples of !-notation, we have n 2/2 = !.n/, but n 2/2 ≠ !.n 2 /. The relation f(n) = !.g(n)/ implies that lim n!1 f(n) g(n) = 1 ; if the limit exists. That is, f(n) becomes arbitrarily large relative to g(n) as n gets large."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 61,
+   "pdf_page": 82,
+   "text": "Comparing functions"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 61,
+   "pdf_page": 82,
+   "text": "Many of the relational properties of real numbers apply to asymptotic comparisons as well. For the following, assume that f(n) and g(n) are asymptotically positive."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 61,
+   "pdf_page": 82,
+   "text": "Transitivity: f(n) = Θ(g(n)) and g(n) = Θ(h(n)) imply f(n) = Θ(h(n)); f(n) = O(g(n)) and g(n) = O(h(n)) imply f(n) = O(h(n)); f(n) = Ω(g(n)) and g(n) = Ω(h(n)) imply f(n) = Ω(h(n)) ; f(n) = o.g(n)/ and g(n) = o.h(n)/ imply f(n) = o.h(n)/; f(n) = !.g(n)/ and g(n) = !.h(n)/ imply f(n) = !.h(n)/:"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 61,
+   "pdf_page": 82,
+   "text": "Reflexivity: f(n) = Θ(f(n)); f(n) = O(f(n)); f(n) = Ω(f (n)) :"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 61,
+   "pdf_page": 82,
+   "text": "Symmetry: f(n) = Θ(g(n)) if and only if g(n) = Θ(f(n)):"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 62,
+   "pdf_page": 83,
+   "text": "Transpose symmetry: f(n) = O(g(n)) if and only if g(n) = Ω(f (n)) ; f(n) = o.g(n)/ if and only if g(n) = !.f(n)/:"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 62,
+   "pdf_page": 83,
+   "text": "Because these properties hold for asymptotic notations, we can draw an analogy between the asymptotic comparison of two functions f and g and the comparison of two real numbers a and b: f(n) = O(g(n)) is like a ≤ b; f(n) = Ω(g(n)) is like a ≥ b; f(n) = Θ(g(n)) is like a = b; f(n) = o.g(n)/ is like a<b; f(n) = !.g(n)/ is like a>b:"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 62,
+   "pdf_page": 83,
+   "text": "We say that f(n) is asymptotically smaller than g(n) if f(n) = o.g(n)/, and f(n) is asymptotically larger than g(n) if f(n) = !.g(n)/."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 62,
+   "pdf_page": 83,
+   "text": "One property of real numbers, however, does not carry over to asymptotic notation:"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 62,
+   "pdf_page": 83,
+   "text": "Trichotomy: For any two real numbers a and b, exactly one of the following must hold: a<b , a = b, or a>b ."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 62,
+   "pdf_page": 83,
+   "text": "Although any two real numbers can be compared, not all functions are asymptotically comparable. That is, for two functions f(n) and g(n), it may be the case that neither f(n) = O(g(n)) nor f(n) = Ω(g(n)) holds. For example, we cannot compare the functions n and n 1Csin n using asymptotic notation, since the value of the exponent in n 1Csin n oscillates between 0 and 2, taking on all values in between."
+  },
+  {
+   "type": "exercise",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 62,
+   "pdf_page": 83,
+   "text": "3.2-1 Let f(n) and g(n) be asymptotically nonnegative functions. Using the basic definition of Θ-notation, prove that max ff(n);g(n) g = Θ(f(n) + g(n))."
+  },
+  {
+   "type": "exercise",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 62,
+   "pdf_page": 83,
+   "text": "3.2-2 Explain why the statement, \"The running time of algorithm A is at least O(n 2 ),\" is meaningless."
+  },
+  {
+   "type": "exercise",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 62,
+   "pdf_page": 83,
+   "text": "3.2-3 Is 2 nC1 = O(2 n )? Is 2 2n = O(2 n )?"
+  },
+  {
+   "type": "exercise",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 62,
+   "pdf_page": 83,
+   "text": "3.2-4 Prove Theorem 3.1."
+  },
+  {
+   "type": "exercise",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 63,
+   "pdf_page": 84,
+   "text": "3.2-5 Prove that the running time of an algorithm is Θ(g(n)) if and only if its worst-case running time is O(g(n)) and its best-case running time is Ω(g(n))."
+  },
+  {
+   "type": "exercise",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 63,
+   "pdf_page": 84,
+   "text": "3.2-6 Prove that o.g(n)/ \\ !.g(n)/ is the empty set."
+  },
+  {
+   "type": "exercise",
+   "chapter": 3,
+   "section": "3.2",
+   "section_title": "3.2 Asymptotic notation: formal definitions",
+   "printed_page": 63,
+   "pdf_page": 84,
+   "text": "3.2-7 We can extend our notation to the case of two param eters n and m that can go to 1 independently at different rates. For a given funct ion g(n;m) , we denote by O(g(n;m)) the set of functions"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 63,
+   "pdf_page": 84,
+   "text": "O(g(n;m)) = ff(n;m) W there exist positive constants c , n 0 , and m 0 such that 0 ≤ f(n;m) ≤ cg(n;m) for all n ≥ n 0 or m ≥ m 0 g :"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 63,
+   "pdf_page": 84,
+   "text": "Give corresponding definitions for Ω(g(n; m)) and Θ(g(n;m)) ."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 63,
+   "pdf_page": 84,
+   "text": "This section reviews some standard mathematical functions and notations and ex- plores the relationships among them. It also illust rates the use of the asymptotic notations."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 63,
+   "pdf_page": 84,
+   "text": "Monotonicity"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 63,
+   "pdf_page": 84,
+   "text": "A function f(n) is monotonically increasing if m ≤ n implies f(m) ≤ f(n) ."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 63,
+   "pdf_page": 84,
+   "text": "Similarly, it is monotonically decreasing if m ≤ n implies f(m) ≥ f(n). A function f(n) is strictly increasing if m < n implies f(m) < f(n) and strictly decreasing if m<n implies f(m)>f(n) ."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 63,
+   "pdf_page": 84,
+   "text": "Floors and ceilings"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 63,
+   "pdf_page": 84,
+   "text": "For any real number x , we denote the greatest integer less than or equal to x by bx c"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 63,
+   "pdf_page": 84,
+   "text": "(read \"the floor of x \") and the least integer greater than or equal to x by dx e (read"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 63,
+   "pdf_page": 84,
+   "text": "\"the ceiling of x \"). The floor function is monotonically increasing, as is the ceiling function."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 63,
+   "pdf_page": 84,
+   "text": "Floors and ceilings obey the following properties. For any integer n, we have bnc = n = dne : (3.1)"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 63,
+   "pdf_page": 84,
+   "text": "For all real x , we have x − 1 < bx c ≤ x ≤ dx e < x + 1: (3.2)"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 64,
+   "pdf_page": 85,
+   "text": "We also have"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 64,
+   "pdf_page": 85,
+   "text": "− bx c = d−x e ; (3.3) or equivalently, − dx e = b−x c : (3.4)"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 64,
+   "pdf_page": 85,
+   "text": "For any real number x ≥ 0 and integers a;b>0 , we have å ⌈x/a⌉ b æ"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 64,
+   "pdf_page": 85,
+   "text": "D å x ab æ"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 64,
+   "pdf_page": 85,
+   "text": "; (3.5) ç ⌊x/a⌋ b è"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 64,
+   "pdf_page": 85,
+   "text": "D ç x ab è"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 64,
+   "pdf_page": 85,
+   "text": "; (3.6) å a b æ"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 64,
+   "pdf_page": 85,
+   "text": "≤ a C (b − 1) b ; (3.7) ç a b è"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 64,
+   "pdf_page": 85,
+   "text": "≥ a − (b − 1) b : (3.8)"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 64,
+   "pdf_page": 85,
+   "text": "For any integer n and real number x , we have bn + x c = n C bx c ; (3.9) dn + x e = n C dx e : (3.10)"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 64,
+   "pdf_page": 85,
+   "text": "Modular arithmetic"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 64,
+   "pdf_page": 85,
+   "text": "For any integer a and any positive integer n, the value a mod n is the remainder"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 64,
+   "pdf_page": 85,
+   "text": "(or residue) of the quotient a/n: a mod n = a − n ⌊a/n⌋ : (3.11)"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 64,
+   "pdf_page": 85,
+   "text": "It follows that 0 ≤ a mod n<n; (3.12) even when a is negative."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 64,
+   "pdf_page": 85,
+   "text": "Given a well-defined notion of the remainder of one integer when divided by another, it is convenient to provide special notation to indicate equality of remainders."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 64,
+   "pdf_page": 85,
+   "text": "If (a mod n) = (b mod n), we write a = b (mod n) and say that a is equivalent to b, modulo n. In other words, a = b (mod n) if a and b have the same remainder when divided by n. Equivalently, a = b (mod n) if and only if n is a divisor of b − a. We write a ≠ b (mod n) if a is not equivalent to b, modulo n."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 65,
+   "pdf_page": 86,
+   "text": "Polynomials"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 65,
+   "pdf_page": 86,
+   "text": "Given a nonnegative integer d , a polynomial in n of degree d is a function p(n) of the form p(n) = d X i D0 a i n i ; where the constants a 0 ;a 1 ;:::;a d are the coefficients of the polynomial and a d ≠ 0. A polynomial is asymptotically positive if and on ly if a d > 0. For an asymptotically positive polynomial p(n) of degree d , we have p(n) = Θ(n d ). For any real constant a ≥ 0, the function n a is monotonically increasing, and for any real constant a ≤ 0, the function n a is monotonically decreasing. We say that a function f(n) is polynomially bounded if f(n) = O(n k ) for some constant k."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 65,
+   "pdf_page": 86,
+   "text": "Exponentials"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 65,
+   "pdf_page": 86,
+   "text": "For all real a>0 , m, and n, we have the following identities: a 0 = 1; a 1 = a; a −1 = 1/a ; (a m ) n = a mn ; (a m ) n = (a n ) m ; a m a n = a mCn :"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 65,
+   "pdf_page": 86,
+   "text": "For all n and a ≥ 1, the function a n is monotonically increasing in n. When convenient, we assume that 0 0 = 1."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 65,
+   "pdf_page": 86,
+   "text": "We can relate the rates of growth of polynomials an d exponentials by the following fact. For all real constants a>1 and b, we have lim n!1 n b a n = 0; from which we can conclude that n b = o(a n ): (3.13)"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 65,
+   "pdf_page": 86,
+   "text": "Thus, any exponential function with a base strictly greater than 1 grows faster than any polynomial function."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 65,
+   "pdf_page": 86,
+   "text": "Using e to denote 2:71828::: , the base of the natural-logarithm function, we have for all real x , e x = 1 + x + x 2"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 65,
+   "pdf_page": 86,
+   "text": "2! C x 3"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 65,
+   "pdf_page": 86,
+   "text": "3! C • • • ="
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 65,
+   "pdf_page": 86,
+   "text": "1 X i D0 x i i! ; where \"!\" denotes the factorial function defined later in this section. For all real x , we have the inequality"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 66,
+   "pdf_page": 87,
+   "text": "1 + x ≤ e x ; (3.14) where equality holds only when x = 0. When |x| ≤ 1, we have the approximation"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 66,
+   "pdf_page": 87,
+   "text": "1 + x ≤ e x ≤ 1 + x + x 2 : (3.15)"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 66,
+   "pdf_page": 87,
+   "text": "When x ! 0, the approximation of e x by 1 + x is quite good: e x = 1 + x + Θ(x 2 ):"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 66,
+   "pdf_page": 87,
+   "text": "(In this equation, the asymptotic notation is used to describe the limiting behavior as x ! 0 rather than as x ! 1.) We have for all x , lim n!1"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 66,
+   "pdf_page": 87,
+   "text": "D e x : (3.16)"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 66,
+   "pdf_page": 87,
+   "text": "Logarithms"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 66,
+   "pdf_page": 87,
+   "text": "We use the following notations: lg n = log 2 n (binary logarithm) , ln n = log e n (natural logarithm) , lg k n = (lg n) k (exponentiation) , lg lg n = lg(lg n) (composition) ."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 66,
+   "pdf_page": 87,
+   "text": "We adopt the following notational convention: in th e absence of parentheses, a logarithm function applies only to the next term in the formula, so that lg n + 1 means (lg n) + 1 and not lg(n + 1)."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 66,
+   "pdf_page": 87,
+   "text": "For any constant b > 1, the function log b n is undefined if n ≤ 0, strictly increasing if n>0 , negative if 0<n<1 , positive if n>1 , and 0 if n = 1. For all real a>0 , b>0 , c>0 , and n, we have a = b log b a ; (3.17) log c .ab/ = log c a C log c b; (3.18) log b a n = n log b a; log b a = log c a log c b ; (3.19) log b .1/a/ = − log b a; (3.20) log b a = 1 log a b ; a log b c = c log b a ; (3.21) where, in each equation above, logarithm bases are not 1."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 66,
+   "pdf_page": 87,
+   "text": "] n e ˛ n (3.29) where"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 67,
+   "pdf_page": 88,
+   "text": "By equation (3.19), changing the base of a logarithm from one constant to another changes the value of the logarithm by only a constant factor. Consequently, we often use the notation \"lg n\" when we don’t care about constant factors, such as in O-notation. Computer scientists find 2 to be the most natural base for logarithms because so many algorithms and data structures involve splitting a problem into two parts."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 67,
+   "pdf_page": 88,
+   "text": "There is a simple series expansion for ln(1 + x) when |x| <1 : ln(1 + x) = x − x 2"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 67,
+   "pdf_page": 88,
+   "text": "5 − • • • : (3.22)"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 67,
+   "pdf_page": 88,
+   "text": "We also have the following inequalities for x> −1: x"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 67,
+   "pdf_page": 88,
+   "text": "1 + x ≤ ln(1 + x) ≤ x; (3.23) where equality holds only for x = 0."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 67,
+   "pdf_page": 88,
+   "text": "We say that a function f(n) is polylogarithmically bounded if f(n) = O(lg k n) for some constant k. We can relate the growth of polynomials and polylogarithms by substituting lg n for n and 2 a for a in equation (3.13). For all real constants a>0 and b, we have lg b n = o(n a ): (3.24)"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 67,
+   "pdf_page": 88,
+   "text": "Thus, any positive polynomial function grows faster than any polylogarithmic function."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 67,
+   "pdf_page": 88,
+   "text": "Factorials"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 67,
+   "pdf_page": 88,
+   "text": "The notation n! (read \"n factorial\") is defined for integers n ≥ 0 as n! ="
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 67,
+   "pdf_page": 88,
+   "text": "1 if n = 0; n • (n − 1)! if n>0:"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 67,
+   "pdf_page": 88,
+   "text": "Thus, n! = 1 • 2 • 3 • • • n."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 67,
+   "pdf_page": 88,
+   "text": "A weak upper bound on the factorial function is n! ≤ n n , since each of the n terms in the factorial product is at most n. Stirling’s approximation, n! = p"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 67,
+   "pdf_page": 88,
+   "text": "; (3.25) where e is the base of the natural logarithm, gives us a ti ghter upper bound, and a lower bound as well. Exercise 3.3-4 asks you to prove the three facts n! = o(n n ); (3.26) n! = !.2 n /; (3.27) lg.n!/ = Θ(n lg n); (3.28) where Stirling’s approximation is helpful in proving equation (3.28). The following equation also holds for all n ≥ 1: n! = p"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 67,
+   "pdf_page": 88,
+   "text": "( n if i = 0; f(f (i −1) (n)) if i >0: (3.30)"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 68,
+   "pdf_page": 89,
+   "text": "12n + 1 <˛ n < 1"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 68,
+   "pdf_page": 89,
+   "text": "Functional iteration"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 68,
+   "pdf_page": 89,
+   "text": "We use the notation f (i ) (n) to denote the function f(n) iteratively applied i times to an initial value of n. Formally, let f(n) be a function over the reals. For non- negative integers i , we recursively define f (i ) (n) ="
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 68,
+   "pdf_page": 89,
+   "text": "For example, if f(n) = 2n, then f (i ) (n) = 2 i n."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 68,
+   "pdf_page": 89,
+   "text": "The iterated logarithm function"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 68,
+   "pdf_page": 89,
+   "text": "We use the notation lg − n (read \"log star of n\") to denote the iterated logarithm, defined as follows. Let lg (i ) n be as defined above, with f(n) = lg n. Because the logarithm of a nonpositive number is undefined, lg (i ) n is defined only if lg (i −1) n>0 ."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 68,
+   "pdf_page": 89,
+   "text": "Be sure to distinguish lg (i ) n (the logarithm function applied i times in succession, starting with argument n) from lg i n (the logarithm of n raised to the i th power)."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 68,
+   "pdf_page": 89,
+   "text": "Then we define the iterated logarithm function as lg − n = min ˚ i ≥ 0 W lg (i ) n ≤ 1"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 68,
+   "pdf_page": 89,
+   "text": "The iterated logarithm is a very slowly growing function: lg − 2 = 1; lg − 4 = 2; lg − 16 = 3; lg − 65536 = 4; lg − .2 65536 / = 5:"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 68,
+   "pdf_page": 89,
+   "text": "Since the number of atoms in the observable universe is estimated to be about 10 80 , which is much less than 2 65536 = 10 65536= lg 10 − 10 19;728 , we rarely encounter an input size n for which lg − n>5 ."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 69,
+   "pdf_page": 90,
+   "text": "Fibonacci numbers"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 69,
+   "pdf_page": 90,
+   "text": "We define the Fibonacci numbers F i , for i ≥ 0, as follows:"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 69,
+   "pdf_page": 90,
+   "text": "0 if i = 0; 1 if i = 1; F i −1 + F i −2 if i ≥ 2:"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 69,
+   "pdf_page": 90,
+   "text": "Thus, after the first two, each Fibonacci number is the sum of the two previous ones, yielding the sequence"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 69,
+   "pdf_page": 90,
+   "text": "0; 1; 1; 2; 3; 5; 8; 13; 21; 34; 55; ::: :"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 69,
+   "pdf_page": 90,
+   "text": "Fibonacci numbers are related to the golden ratio Ω and its conjugate y Ω , which are the two roots of the equation x 2 = x + 1:"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 69,
+   "pdf_page": 90,
+   "text": "As Exercise 3.3-7 asks you to prove, the golden ratio is given by Ω = 1 C p"
+  },
+  {
+   "type": "footnote",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 69,
+   "pdf_page": 90,
+   "text": "2 (3.32)"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 69,
+   "pdf_page": 90,
+   "text": "D 1:61803::: ; and its conjugate, by y Ω = 1 − p"
+  },
+  {
+   "type": "footnote",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 69,
+   "pdf_page": 90,
+   "text": "2 (3.33)"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 69,
+   "pdf_page": 90,
+   "text": "D −:61803::: :"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 69,
+   "pdf_page": 90,
+   "text": "Specifically, we have"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 69,
+   "pdf_page": 90,
+   "text": "F i = Ω i − y Ω i p"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 69,
+   "pdf_page": 90,
+   "text": "; which can be proved by induction (Exercise 3.3-8). Since"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 69,
+   "pdf_page": 90,
+   "text": "ˇ ˇ <1 , we have"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 69,
+   "pdf_page": 90,
+   "text": "ˇ ˇ y Ω i ˇ ˇ p"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 69,
+   "pdf_page": 90,
+   "text": "2 ; which implies that F i = ç Ω i p"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 69,
+   "pdf_page": 90,
+   "text": "; (3.34) which is to say that the i th Fibonacci number F i is equal to Ω i = p"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 69,
+   "pdf_page": 90,
+   "text": "5 rounded to the nearest integer. Thus, Fibonacci numbers grow exponentially."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 69,
+   "pdf_page": 90,
+   "text": "; assuming that both sums converge."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 69,
+   "pdf_page": 90,
+   "text": "; which need not be well defined in all cases. In other words, the quantity f − c (n) is the minimum number of iterated applications of the function f required to reduce its argument down to c or less."
+  },
+  {
+   "type": "exercise",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 70,
+   "pdf_page": 91,
+   "text": "3.3-1 Show that if f(n) and g(n) are monotonically increasing functions, then so are the functions f(n) + g(n) and f.g(n)/ , and if f(n) and g(n) are in addition nonnegative, then f(n) • g(n) is monotonically increasing."
+  },
+  {
+   "type": "exercise",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 70,
+   "pdf_page": 91,
+   "text": "3.3-2 Prove that b˛ncCd.1 − ˛/ne = n for any integer n and real number ˛ in the range"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 70,
+   "pdf_page": 91,
+   "text": "0 ≤ ˛ ≤ 1."
+  },
+  {
+   "type": "exercise",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 70,
+   "pdf_page": 91,
+   "text": "3.3-3 Use equation (3.14) or other means to show that (n + o(n)) k = Θ(n k ) for any real constant k. Conclude that dne k = Θ(n k ) and bnc k = Θ(n k )."
+  },
+  {
+   "type": "exercise",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 70,
+   "pdf_page": 91,
+   "text": "3.3-4 Prove the following: a. Equation (3.21). b. Equations (3.26)3(3.28). c. lg(Θ(n)) = Θ(lg n)."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 70,
+   "pdf_page": 91,
+   "text": "Is the function dlg ne! polynomially bounded? Is the function dlg lg ne! polynomially bounded?"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 70,
+   "pdf_page": 91,
+   "text": "Which is asymptotically larger: lg(lg − n) or lg − (lg n)?"
+  },
+  {
+   "type": "exercise",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 70,
+   "pdf_page": 91,
+   "text": "3.3-7 Show that the golden ratio Ω and its conjugate y Ω both satisfy the equation x 2 = x + 1."
+  },
+  {
+   "type": "exercise",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 70,
+   "pdf_page": 91,
+   "text": "3.3-8 Prove by induction that the i th Fibonacci number satisfies the equation"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 70,
+   "pdf_page": 91,
+   "text": "F i = (Ω i − y Ω i )= p"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 70,
+   "pdf_page": 91,
+   "text": "5; where Ω is the golden ratio and y Ω is its conjugate."
+  },
+  {
+   "type": "exercise",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 70,
+   "pdf_page": 91,
+   "text": "3.3-9 Show that k lg k = Θ(n) implies k = Θ(n= lg n)."
+  },
+  {
+   "type": "problem",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 71,
+   "pdf_page": 92,
+   "text": "3-1 Asymptotic behavior of polynomials"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 71,
+   "pdf_page": 92,
+   "text": "Let p(n) = d X i D0 a i n i ; where a d > 0, be a degree-d polynomial in n, and let k be a constant. Use the definitions of the asymptotic notations to prove the following properties. a. If k ≥ d , then p(n) = O(n k ). b. If k ≤ d , then p(n) = Ω(n k ). c. If k = d , then p(n) = Θ(n k ). d. If k>d , then p(n) = o(n k ). e. If k<d , then p(n) = !.n k /."
+  },
+  {
+   "type": "problem",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 71,
+   "pdf_page": 92,
+   "text": "3-2 Relative asymptotic growths"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 71,
+   "pdf_page": 92,
+   "text": "Indicate, for each pair of expressions (A;B) in the table below whether A is O, o, Ω, !, or Θ of B . Assume that k ≥ 1, Ω > 0 , and c >1 are constants. Write your answer in the form of the table with \"yes\" or \"no\" written in each box."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 71,
+   "pdf_page": 92,
+   "text": "A B O o Ω ! Θ a. lg k n n • b. n k c n c. √n n sin n d. 2 n 2 n/2 e. n lg c c lg n f. lg.n!/ lg(n n )"
+  },
+  {
+   "type": "problem",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 71,
+   "pdf_page": 92,
+   "text": "3-3 Ordering by asymptotic growth rates a. Rank the following functions by order of growth. That is, find an arrangement g 1 ;g 2 ;:::;g 30 of the functions satisfying g 1 = Ω(g 2 ), g 2 = Ω(g 3 ), . . . , g 29 = Ω(g 30 ). Partition your list into equivalence classes such that functions f(n) and g(n) belong to the same class if and only if f(n) = Θ(g(n)). lg(lg − n) 2 lg − n . p"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 72,
+   "pdf_page": 93,
+   "text": "2/ lg n n 2 n! (lg n)!"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 72,
+   "pdf_page": 93,
+   "text": ".3/2/ n n 3 lg 2 n lg.n!/ 2 2 n n 1= lg n ln ln n lg − n n • 2 n n lg lg n ln n 1"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 72,
+   "pdf_page": 93,
+   "text": "2 lg n (lg n) lg n e n 4 lg n (n + 1)! p lg n lg − (lg n) 2"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 72,
+   "pdf_page": 93,
+   "text": "√2 lg n n 2 n n lg n 2 2 nC1 b. Give an example of a single nonnegative function f(n) such that for all functions g i (n) in part (a), f(n) is neither O(g i (n)) nor Ω(g i (n))."
+  },
+  {
+   "type": "problem",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 72,
+   "pdf_page": 93,
+   "text": "3-4 Asymptotic notation properties"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 72,
+   "pdf_page": 93,
+   "text": "Let f(n) and g(n) be asymptotically positive functions. Prove or disprove each of the following conjectures. a. f(n) = O(g(n)) implies g(n) = O(f(n)) . b. f(n) + g(n) = Θ(min ff(n);g(n) g). c. f(n) = O(g(n)) implies lg f(n) = O(lg g(n)), where lg g(n) ≥ 1 and f(n) ≥ 1 for all sufficiently large n. d. f(n) = O(g(n)) implies 2 f (n) = O ã"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 72,
+   "pdf_page": 93,
+   "text": "2 g(n) ä"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 72,
+   "pdf_page": 93,
+   "text": ". e. f(n) = O..f(n)/ 2 /. f. f(n) = O(g(n)) implies g(n) = Ω(f (n)) . g. f(n) = Θ(f(n/2)) . h. f(n) + o.f(n)/ = Θ(f(n)) ."
+  },
+  {
+   "type": "problem",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 72,
+   "pdf_page": 93,
+   "text": "3-5 Manipulating asymptotic notation"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 72,
+   "pdf_page": 93,
+   "text": "Let f(n) and g(n) be asymptotically positive functions. Prove the following identities: a. Θ(Θ(f(n))) = Θ(f(n)) . b. Θ(f(n)) + O(f(n)) = Θ(f(n)) . c. Θ(f(n)) + Θ(g(n)) = Θ(f(n) + g(n)). d. Θ(f(n)) • Θ(g(n)) = Θ(f(n) • g(n)). e. Argue that for any real constants a 1 ;b 1 > 0 and integer constants k 1 ;k 2 , the following asymptotic bound holds:"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 73,
+   "pdf_page": 94,
+   "text": "(a 1 n) k 1 lg k 2 (a 2 n) = Θ(n k 1 lg k 2 n):"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 73,
+   "pdf_page": 94,
+   "text": "? f. Prove that for S ⊆ Z, we have"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 73,
+   "pdf_page": 94,
+   "text": "Θ(f(k)) = Θ"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 73,
+   "pdf_page": 94,
+   "text": "• X k2S f(k)"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 73,
+   "pdf_page": 94,
+   "text": "? g. Show that for S ⊆ Z, the following asymptotic bound does not necessari ly hold, even assuming that both products converge, by giving a counterexample:"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 73,
+   "pdf_page": 94,
+   "text": "Θ(f(k)) = Θ"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 73,
+   "pdf_page": 94,
+   "text": "• Y k2S f(k)"
+  },
+  {
+   "type": "problem",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 73,
+   "pdf_page": 94,
+   "text": "3-6 Variations on O and ˝"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 73,
+   "pdf_page": 94,
+   "text": "Some authors define Ω-notation in a slightly different way than this textbook does."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 73,
+   "pdf_page": 94,
+   "text": "We’ll use the nomenclature"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 73,
+   "pdf_page": 94,
+   "text": "Ω (read \"omega infinity\") for this alternative definition. We say that f(n) ="
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 73,
+   "pdf_page": 94,
+   "text": "Ω(g(n)) if there exists a positive constant c such that f(n) ≥ cg(n) ≥ 0 for infinitely many integers n. a. Show that for any two asymptotically nonnegative functions f(n) and g(n), we have f(n) = O(g(n)) or f(n) ="
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 73,
+   "pdf_page": 94,
+   "text": "Ω(g(n)) (or both). b. Show that there exist two asymptotically nonnegative functions f(n) and g(n) for which neither f(n) = O(g(n)) nor f(n) = Ω(g(n)) holds. c. Describe the potential advantages and disadvantages of using"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 73,
+   "pdf_page": 94,
+   "text": "Ω-notation in- stead of Ω-notation to characterize the running times of programs."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 73,
+   "pdf_page": 94,
+   "text": "Some authors also define O in a slightly different manner. We’ll use O 0 for the alternative definition: f(n) = O 0 (g(n)) if and only if jf(n) j = O(g(n)). d. What happens to each direction of the \"if and only if\" in Theor em 3.1 on page 56 if we substitute O 0 for O but still use Ω?"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 73,
+   "pdf_page": 94,
+   "text": "Some authors define e O (read \"soft-oh\") to mean O with logarithmic factors ignored: e O(g(n)) = ff(n) W there exist positive constants c , k, and n 0 such that 0 ≤ f(n) ≤ cg(n) lg k (n) for all n ≥ n 0 g : e. Define e Ω and e Θ in a similar manner. Prove the corresponding analog to Theorem 3.1."
+  },
+  {
+   "type": "problem",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 74,
+   "pdf_page": 95,
+   "text": "3-7 Iterated functions"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 74,
+   "pdf_page": 95,
+   "text": "We can apply the iteration operator − used in the lg − function to any monotonically increasing function f(n) over the reals. For a given constant c 2 R, we define the iterated function f − c by f − c (n) = min ˚ i ≥ 0 W f (i ) (n) ≤ c"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 74,
+   "pdf_page": 95,
+   "text": "For each of the functions f(n) and constants c in the table below, give as tight a bound as possible on f − c (n). If there is no i such that f (i ) (n) ≤ c , write <undefined= as your answer. f(n) c f − c (n) a. n − 1 0 b. lg n 1 c. n/2 1 d. n/2 2 e. √n 2 f. √n 1 g. n 1/3 2"
+  },
+  {
+   "type": "chapter-notes",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 74,
+   "pdf_page": 95,
+   "text": "Chapter notes"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 74,
+   "pdf_page": 95,
+   "text": "Knuth [259] traces the origin of the O-notation to a number-theory text by P. Bachmann in 1892. The o-notation was invented by E. Landau in 1909 for his discussion of the distribution of prime numbers. The ] and Θ notations were advocated by Knuth [265] to correct the popular, but technically sloppy, practice in the literature of using O-notation for both upper and lower bounds. As noted earlier in this chapter, many people continue to use the O-notation where the Θ-notation is more technically precise. The soft-oh notation e O in Problem 3-6 was introduced"
+  },
+  {
+   "type": "chapter-notes",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 75,
+   "pdf_page": 96,
+   "text": "Notes for Chapter 3 75 by Babai, Luks, and Seress [31], although it was originally written as Oφ. Some authors now define e O(g(n)) as ignoring factors that are logarithmic in g(n), rather than in n. With this definition, we can say that n2 n = e O(2 n ), but with the definition in Problem 3-6, this statement is not true. Further discussion of the history and development of asymptotic notations appears in works by Knuth [259, 265] and Brassard and Bratley [70]."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 75,
+   "pdf_page": 96,
+   "text": "Not all authors define the asymptotic notations in the same way, although the various definitions agree in most common situations. Some of the alternative definitions encompass functions that are not asymptoti cally nonnegative, as long as their absolute values are appropriately bounded."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 75,
+   "pdf_page": 96,
+   "text": "Equation (3.29) is due to Robbins [381]. Other properties of elementary mathematical functions can be found in any good mathema tical reference, such as Abramowitz and Stegun [1] or Zwillinger [468], or in a calculus book, such as Apostol [19] or Thomas et al. [433]. Knuth [259] and Graham, Knuth, and Patashnik [199] contain a wealth of material on discrete mathematics as used in computer science."
+  },
+  {
+   "type": "footnote",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 76,
+   "pdf_page": 97,
+   "text": "4 Divide-and-Conquer"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 76,
+   "pdf_page": 97,
+   "text": "The divide-and-conquer method is a powerful strategy for designing asymptotically efficient algorithms. We saw an example of divide-and-conquer in Section 2.3.1 when learning about merge sort. In this chapter, we’ll explore applications of the divide-and-conquer method and acquire valuable mathematical tools that you can use to solve the recurrences that arise when analyz ing divide-and-conquer algorithms."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 76,
+   "pdf_page": 97,
+   "text": "Recall that for divide-and-conquer, you solve a given problem (instance) recursively. If the problem is small enough—the base case—you just solve it directly without recursing. Otherwise—the recursive case—you perform three characteristic steps:"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 76,
+   "pdf_page": 97,
+   "text": "Divide the problem into one or more subproblems that are smaller instances of the same problem."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 76,
+   "pdf_page": 97,
+   "text": "Conquer the subproblems by solving them recursively."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 76,
+   "pdf_page": 97,
+   "text": "Combine the subproblem solutions to form a solution to the original problem."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 76,
+   "pdf_page": 97,
+   "text": "A divide-and-conquer algorithm breaks down a large problem into smaller sub- problems, which themselves may be broken down into even smaller subproblems, and so forth. The recursion bottoms out when it reaches a base case and the sub- problem is small enough to solve directly without further recursing."
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 76,
+   "pdf_page": 97,
+   "text": "Recurrences"
+  },
+  {
+   "type": "body",
+   "chapter": 3,
+   "section": "3.3",
+   "section_title": "3.3 Standard notations and common functions",
+   "printed_page": 76,
+   "pdf_page": 97,
+   "text": "To analyze recursive divide-and-conquer algorithms, we’ll need some mathematical tools. A recurrence is an equation that describes a function in terms o f its value on other, typically smaller, arguments. Recur rences go hand in hand with the divide-and-conquer method because they give us a natural way to characterize the running times of recursive algorithms mathemati cally. You saw an example of a recurrence in Section 2.3.2 when we analyzed the worst-case running time of merge sort."
+  }
+ ]
+}

@@ -1,0 +1,1967 @@
+{
+ "chapter": 6,
+ "chapter_title": "6 Heapsort",
+ "part": "Part II Sorting and Order Statistics",
+ "source": {
+  "printed": [
+   161,
+   null
+  ],
+  "pdf": [
+   182,
+   203
+  ]
+ },
+ "sections": [
+  "6.1 Heaps",
+  "6.2 Maintaining the heap property",
+  "6.3 Building a heap",
+  "6.4 The heapsort algorithm",
+  "6.5 Priority queues"
+ ],
+ "sections_found": [
+  "6.1 Heaps",
+  "6.2 Maintaining the heap property",
+  "6.3 Building a heap",
+  "6.4 The heapsort algorithm",
+  "6.5 Priority queues"
+ ],
+ "blocks": [
+  {
+   "type": "footnote",
+   "chapter": 6,
+   "section": "6.1",
+   "section_title": "6.1 Heaps",
+   "printed_page": 161,
+   "pdf_page": 182,
+   "text": "6 Heapsort"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.1",
+   "section_title": "6.1 Heaps",
+   "printed_page": 161,
+   "pdf_page": 182,
+   "text": "This chapter introduces another sorting algorithm: heapsort. Like merge sort, but unlike insertion sort, heapsort’s running time is O(n lg n). Like insertion sort, but unlike merge sort, heapsort sorts in place: only a constant number of array elements are stored outside the input array at any time. Thu s, heapsort combines the better attributes of the two sorting algorithms we have already discussed."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.1",
+   "section_title": "6.1 Heaps",
+   "printed_page": 161,
+   "pdf_page": 182,
+   "text": "Heapsort also introduces another algorithm design technique: using a data structure, in this case one we call a \"heap,\" to manage information. Not only is the heap data structure useful for heapsort, but it also makes an efficient priority queue. The heap data structure will reappear in algorithms in later chapters."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.1",
+   "section_title": "6.1 Heaps",
+   "printed_page": 161,
+   "pdf_page": 182,
+   "text": "The term \"heap\" was originally coined in the context of heapsort, but it has since come to refer to \"garbage-collected storage,\" such as the programming languages"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.1",
+   "section_title": "6.1 Heaps",
+   "printed_page": 161,
+   "pdf_page": 182,
+   "text": "Java and Python provide. Please don’t be confused. The heap data structure is not garbage-collected storage. This book is consistent in using the term \"heap\" to refer to the data structure, not the storage class."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.1",
+   "section_title": "6.1 Heaps",
+   "printed_page": 161,
+   "pdf_page": 182,
+   "text": "The (binary) heap data structure is an array object that we can view as a nearly complete binary tree (see Section B.5.3), as shown in Figure 6.1. Each node of the tree corresponds to an element of the array. Th e tree is completely filled on all levels except possibly the lowest, which is filled from the left up to a point."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.1",
+   "section_title": "6.1 Heaps",
+   "printed_page": 161,
+   "pdf_page": 182,
+   "text": "An array A[1 : n] that represents a heap is an object with an attribu te A: heap-size, which represents how many elements in the heap are stored within array A. That is, although A[1 : n] may contain numbers, only the elements in A[1 : A: heap-size], where 0 ≤ A: heap-size ≤ n, are valid elements of the heap. If A: heap-size = 0, then the heap is empty. The root of the tree is A[1], and given the index i of a node, (a)"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.1",
+   "section_title": "6.1 Heaps",
+   "printed_page": 162,
+   "pdf_page": 183,
+   "text": "16 14 10 8 7 9 3 2 4 1"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.1",
+   "section_title": "6.1 Heaps",
+   "printed_page": 162,
+   "pdf_page": 183,
+   "text": "1 2 3 4 5 6 7 8 9 10"
+  },
+  {
+   "type": "figure-caption",
+   "chapter": 6,
+   "section": "6.1",
+   "section_title": "6.1 Heaps",
+   "printed_page": 162,
+   "pdf_page": 183,
+   "text": "Figure 6.1 A max-heap viewed as (a) a binary tree and (b) an array. The number within the circle at each node in the tree is the value stored at that node. The number above a node is the corresponding index in the array. Above and below the array are l ines showing parent-child relationships, with parents always to the left of their children. The t ree has height 3, and the node at index 4 (with value 8) has height 1. there’s a simple way to compute the indices of its parent, left child, and right child with the one-line procedures PARENT , LEFT, and RIGHT ."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.1",
+   "section_title": "6.1 Heaps",
+   "printed_page": 162,
+   "pdf_page": 183,
+   "text": "PARENT(i)"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.1",
+   "section_title": "6.1 Heaps",
+   "printed_page": 162,
+   "pdf_page": 183,
+   "text": "1 return ⌊i/2⌋"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.1",
+   "section_title": "6.1 Heaps",
+   "printed_page": 162,
+   "pdf_page": 183,
+   "text": "1 return 2i"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.1",
+   "section_title": "6.1 Heaps",
+   "printed_page": 162,
+   "pdf_page": 183,
+   "text": "RIGHT(i)"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.1",
+   "section_title": "6.1 Heaps",
+   "printed_page": 162,
+   "pdf_page": 183,
+   "text": "1 return 2i + 1"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.1",
+   "section_title": "6.1 Heaps",
+   "printed_page": 162,
+   "pdf_page": 183,
+   "text": "On most computers, the LEFT procedure can compute 2i in one instruction by simply shifting the binary representation of i left by one bit position. Similarly, the RIGHT procedure can quickly compute 2i + 1 by shifting the binary representation of i left by one bit position and then adding 1. The PARENT procedure can compute"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.1",
+   "section_title": "6.1 Heaps",
+   "printed_page": 162,
+   "pdf_page": 183,
+   "text": "⌊i/2⌋ by shifting i right one bit position. Good implementations of heapsort often implement these procedures as macros or inline procedures."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.1",
+   "section_title": "6.1 Heaps",
+   "printed_page": 162,
+   "pdf_page": 183,
+   "text": "There are two kinds of binary heaps: max-heaps and min-heaps. In both kinds, the values in the nodes satisfy a heap property, the specifics of which depend on the kind of heap. In a max-heap, the max-heap property is that for every node i other than the root, A[PARENT(i)] ≥ A[i]; that is, the value of a node is at most the value o f its parent. Thus, the largest element in a max-heap is stored at the root, and the subtree rooted at a node contains values no larger than that contained at the node itself. A min-heap is organized in the opposite way: the min-heap property is that for every node i other than the root, A[PARENT(i)] ≤ A[i]:"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.1",
+   "section_title": "6.1 Heaps",
+   "printed_page": 163,
+   "pdf_page": 184,
+   "text": "The smallest element in a min-heap is at the root."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.1",
+   "section_title": "6.1 Heaps",
+   "printed_page": 163,
+   "pdf_page": 184,
+   "text": "The heapsort algorithm uses max-heaps. Min-heaps commonly implement priority queues, which we discuss in Section 6.5. We’ll be precise in specifying whether we need a max-heap or a min-heap for any particular application, and when properties apply to either max-heaps or min-heaps, we just use the term \"heap.\""
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.1",
+   "section_title": "6.1 Heaps",
+   "printed_page": 163,
+   "pdf_page": 184,
+   "text": "Viewing a heap as a tree, we define the height of a node in a heap to be the number of edges on the longest simple downward path from the node to a leaf, and we define the height of the heap to be the height of its root. Since a heap of n elements is based on a complete binary tree, its height is Θ(lg n) (see Exercise 6.1-2)."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.1",
+   "section_title": "6.1 Heaps",
+   "printed_page": 163,
+   "pdf_page": 184,
+   "text": "As we’ll see, the basic operations on heaps run in time at most proportional to the height of the tree and thus take O(lg n) time. The remainder of this chapter presents some basic procedures and shows how they are used i n a sorting algorithm and a priority-queue data structure."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.1",
+   "section_title": "6.1 Heaps",
+   "printed_page": 163,
+   "pdf_page": 184,
+   "text": "• The MAX-HEAPIFY procedure, which runs in O(lg n) time, is the key to maintaining the max-heap property."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.1",
+   "section_title": "6.1 Heaps",
+   "printed_page": 163,
+   "pdf_page": 184,
+   "text": "• The BUILD-MAX-HEAP procedure, which runs in linear time, produces a maxheap from an unordered input array."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.1",
+   "section_title": "6.1 Heaps",
+   "printed_page": 163,
+   "pdf_page": 184,
+   "text": "• The HEAPSORT procedure, which runs in O(n lg n) time, sorts an array in place."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.1",
+   "section_title": "6.1 Heaps",
+   "printed_page": 163,
+   "pdf_page": 184,
+   "text": "• The procedures MAX-HEAP-INSERT , MAX-HEAP-EXTRACT-MAX, MAX- HEAP-INCREASE-KEY, and MAX-HEAP-MAXIMUM allow the heap data structure to implement a priority queue. They run i n O(lg n) time plus the time for mapping between objects being inserted int o the priority queue and indices in the heap."
+  },
+  {
+   "type": "exercise",
+   "chapter": 6,
+   "section": "6.1",
+   "section_title": "6.1 Heaps",
+   "printed_page": 163,
+   "pdf_page": 184,
+   "text": "6.1-1 What are the minimum and maximum numbers of elements in a heap of height h?"
+  },
+  {
+   "type": "exercise",
+   "chapter": 6,
+   "section": "6.1",
+   "section_title": "6.1 Heaps",
+   "printed_page": 163,
+   "pdf_page": 184,
+   "text": "6.1-2 Show that an n-element heap has height blg nc."
+  },
+  {
+   "type": "exercise",
+   "chapter": 6,
+   "section": "6.1",
+   "section_title": "6.1 Heaps",
+   "printed_page": 164,
+   "pdf_page": 185,
+   "text": "6.1-3 Show that in any subtree of a max-heap, the root of the subtree contains the largest value occurring anywhere in that subtree."
+  },
+  {
+   "type": "exercise",
+   "chapter": 6,
+   "section": "6.1",
+   "section_title": "6.1 Heaps",
+   "printed_page": 164,
+   "pdf_page": 185,
+   "text": "6.1-4 Where in a max-heap might the smallest element reside, assuming that all elements are distinct?"
+  },
+  {
+   "type": "exercise",
+   "chapter": 6,
+   "section": "6.1",
+   "section_title": "6.1 Heaps",
+   "printed_page": 164,
+   "pdf_page": 185,
+   "text": "6.1-5 At which levels in a max-heap might the kth largest element reside, for 2 ≤ k ≤"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.2",
+   "section_title": "6.2 Maintaining the heap property",
+   "printed_page": 164,
+   "pdf_page": 185,
+   "text": "⌊n/2⌋, assuming that all elements are distinct?"
+  },
+  {
+   "type": "exercise",
+   "chapter": 6,
+   "section": "6.1",
+   "section_title": "6.1 Heaps",
+   "printed_page": 164,
+   "pdf_page": 185,
+   "text": "6.1-6 Is an array that is in sorted order a min-heap?"
+  },
+  {
+   "type": "exercise",
+   "chapter": 6,
+   "section": "6.1",
+   "section_title": "6.1 Heaps",
+   "printed_page": 164,
+   "pdf_page": 185,
+   "text": "6.1-7 Is the array with values h33;19;20;15;13;10;2;13;16;12 i a max-heap?"
+  },
+  {
+   "type": "exercise",
+   "chapter": 6,
+   "section": "6.1",
+   "section_title": "6.1 Heaps",
+   "printed_page": 164,
+   "pdf_page": 185,
+   "text": "6.1-8 Show that, with the array representation for storin g an n-element heap, the leaves are the nodes indexed ⌊y bn/2⌋ + 1; ⌊n/2⌋ + 2;:::;n ."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.2",
+   "section_title": "6.2 Maintaining the heap property",
+   "printed_page": 164,
+   "pdf_page": 185,
+   "text": "The procedure MAX-HEAPIFY on the facing page maintains the max-heap property. Its inputs are an array A with the heap-size attribute and an index i into the array. When it is called, MAX-HEAPIFY assumes that the binary trees rooted at"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.2",
+   "section_title": "6.2 Maintaining the heap property",
+   "printed_page": 164,
+   "pdf_page": 185,
+   "text": "LEFT(i) and RIGHT(i) are max-heaps, but that A[i] might be smaller than its children, thus violating the max-heap property. MAX-HEAPIFY lets the value at A[i]"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.2",
+   "section_title": "6.2 Maintaining the heap property",
+   "printed_page": 164,
+   "pdf_page": 185,
+   "text": "<float ⌈own/ in th⌉ max-heap so that the subtree rooted at index i obeys the maxheap property."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.2",
+   "section_title": "6.2 Maintaining the heap property",
+   "printed_page": 164,
+   "pdf_page": 185,
+   "text": "Figure 6.2 illustrates the action of MAX-HEAPIFY . Each step determines the largest of the elements A[i], A[LEFT(i)], and A[RIGHT(i)] and stores the index of the largest element in largest . If A[i] is largest, then the subtree rooted at node i is already a max-heap and nothing else needs to be done. Otherwise, one of the two children contains the largest element. Positions i and largest swap their contents, which causes node i and its children to satisfy the max-heap property. The node in- dexed by largest , however, just had its value decreased, and thus the subtree rooted at largest might violate the max-heap property. Consequently, MAX-HEAPIFY calls itself recursively on that subtree."
+  },
+  {
+   "type": "pseudocode",
+   "chapter": 6,
+   "section": "6.2",
+   "section_title": "6.2 Maintaining the heap property",
+   "printed_page": 165,
+   "pdf_page": 186,
+   "algo_name": "MAX-HEAPIFY",
+   "signature": "MAX-HEAPIFY",
+   "lines": [
+    {
+     "n": 1,
+     "code": "l DLEFT(i)"
+    },
+    {
+     "n": 2,
+     "code": "r DRIGHT(i)"
+    },
+    {
+     "n": 3,
+     "code": "if l ≤ A: heap-size and A[l]>A[i]"
+    },
+    {
+     "n": 4,
+     "code": "largest = l"
+    },
+    {
+     "n": 5,
+     "code": "else largest = i"
+    },
+    {
+     "n": 6,
+     "code": "if r ≤ A: heap-size and A[r]>A[ largest ]"
+    },
+    {
+     "n": 7,
+     "code": "largest = r"
+    },
+    {
+     "n": 8,
+     "code": "if largest ≠ i"
+    },
+    {
+     "n": 9,
+     "code": "exchange A[i] with A[largest ]"
+    },
+    {
+     "n": 10,
+     "code": "MAX-HEAPIFY (A; largest )"
+    }
+   ],
+   "text": "1 l DLEFT(i)\n2 r DRIGHT(i)\n3 if l ≤ A: heap-size and A[l]>A[i]\n4 largest = l\n5 else largest = i\n6 if r ≤ A: heap-size and A[r]>A[ largest ]\n7 largest = r\n8 if largest ≠ i\n9 exchange A[i] with A[largest ]\n10 MAX-HEAPIFY (A; largest )"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.2",
+   "section_title": "6.2 Maintaining the heap property",
+   "printed_page": 165,
+   "pdf_page": 186,
+   "text": "9 10 i i i"
+  },
+  {
+   "type": "figure-caption",
+   "chapter": 6,
+   "section": "6.2",
+   "section_title": "6.2 Maintaining the heap property",
+   "printed_page": 165,
+   "pdf_page": 186,
+   "text": "Figure 6.2 The action of MAX-HEAPIFY(A;2) , where A: heap-size = 10. The node that potentially violates the max-heap property is shown in blue. (a) The initial configuration, with A[2] at node i = 2 violating the max-heap property since it is not larger than both children. The max-heap property is restored for node 2 in (b) by exchanging A[2] with A[4], which destroys the max-heap property for node 4. The recursive call MAX-HEAPIFY(A;4) now has i = 4. After A[4] and A[9] are swapped, as shown in (c), node 4 is fixed up, and the recursive call MAX-HEAPIFY(A;9) yields no further change to the data structure."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.2",
+   "section_title": "6.2 Maintaining the heap property",
+   "printed_page": 165,
+   "pdf_page": 186,
+   "text": "MAX-HEAPIFY (A;i)"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.2",
+   "section_title": "6.2 Maintaining the heap property",
+   "printed_page": 166,
+   "pdf_page": 187,
+   "text": "To analyze MAX-HEAPIFY , let T(n) be the worst-case running time that the procedure takes on a subtree of size at most n. For a tree rooted at a given node i , the running time is the Θ(1) time to fix up the relationships among the elements"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.2",
+   "section_title": "6.2 Maintaining the heap property",
+   "printed_page": 166,
+   "pdf_page": 187,
+   "text": "A[i], A[LEFT(i)], and A[RIGHT(i)], plus the time to run MAX-HEAPIFY on a subtree rooted at one of the children of node i (assuming that the recursive call occurs). The children’s subtrees each have size at most 2n/3 (see Exercise 6.2-2), and therefore we can describe the running time of MAX-HEAPIFY by the recurrence"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.2",
+   "section_title": "6.2 Maintaining the heap property",
+   "printed_page": 166,
+   "pdf_page": 187,
+   "text": "T(n) ≤ T(2n/3) + Θ(1): (6.1)"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.2",
+   "section_title": "6.2 Maintaining the heap property",
+   "printed_page": 166,
+   "pdf_page": 187,
+   "text": "The solution to this recurrence, by case 2 of the m aster theorem (Theorem 4.1 on page 102), is T(n) = O(lg n). Alternatively, we can characterize the running time"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.2",
+   "section_title": "6.2 Maintaining the heap property",
+   "printed_page": 166,
+   "pdf_page": 187,
+   "text": "of MAX-HEAPIFY on a node of height h as O(h)."
+  },
+  {
+   "type": "exercise",
+   "chapter": 6,
+   "section": "6.2",
+   "section_title": "6.2 Maintaining the heap property",
+   "printed_page": 166,
+   "pdf_page": 187,
+   "text": "6.2-1 Using Figure 6.2 as a model, illustrate the operation of MAX-HEAPIFY (A;3) on the array A = h27;17;3;16;13;10;1;5;7;12;4;8;9;0 i."
+  },
+  {
+   "type": "exercise",
+   "chapter": 6,
+   "section": "6.2",
+   "section_title": "6.2 Maintaining the heap property",
+   "printed_page": 166,
+   "pdf_page": 187,
+   "text": "6.2-2 Show that each child of the root of an n-node heap is the root of a subtree containing at most 2n/3 nodes. What is the smallest constant ˛ such that each subtree has at most ˛n nodes? How does that affect the recurrence (6.1) and its solution?"
+  },
+  {
+   "type": "exercise",
+   "chapter": 6,
+   "section": "6.2",
+   "section_title": "6.2 Maintaining the heap property",
+   "printed_page": 166,
+   "pdf_page": 187,
+   "text": "6.2-3 Starting with the procedure MAX-HEAPIFY , write pseudocode for the procedure"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.2",
+   "section_title": "6.2 Maintaining the heap property",
+   "printed_page": 166,
+   "pdf_page": 187,
+   "text": "MIN-HEAPIFY (A;i), which performs the corresponding manipulation on a minheap. How does the running time of MIN-HEAPIFY compare with that of MAX- HEAPIFY?"
+  },
+  {
+   "type": "exercise",
+   "chapter": 6,
+   "section": "6.2",
+   "section_title": "6.2 Maintaining the heap property",
+   "printed_page": 166,
+   "pdf_page": 187,
+   "text": "6.2-4 What is the effect of calling MAX-HEAPIFY (A;i) when the element A[i] is larger than its children?"
+  },
+  {
+   "type": "exercise",
+   "chapter": 6,
+   "section": "6.2",
+   "section_title": "6.2 Maintaining the heap property",
+   "printed_page": 166,
+   "pdf_page": 187,
+   "text": "6.2-5 What is the effect of calling MAX-HEAPIFY (A;i) for i >A: heap-size/2?"
+  },
+  {
+   "type": "exercise",
+   "chapter": 6,
+   "section": "6.2",
+   "section_title": "6.2 Maintaining the heap property",
+   "printed_page": 166,
+   "pdf_page": 187,
+   "text": "6.2-6 The code for MAX-HEAPIFY is quite efficient in terms of constant factors, except possibly for the recursive call in line 10, for which some compilers might produce inefficient code. Write an efficient MAX-HEAPIFY that uses an iterative control construct (a loop) instead of recursion."
+  },
+  {
+   "type": "pseudocode",
+   "chapter": 6,
+   "section": "6.3",
+   "section_title": "6.3 Building a heap",
+   "printed_page": 167,
+   "pdf_page": 188,
+   "algo_name": "BUILD-MAX-HEAP",
+   "signature": "BUILD-MAX-HEAP",
+   "lines": [
+    {
+     "n": 1,
+     "code": "A: heap-size = n"
+    },
+    {
+     "n": 2,
+     "code": "for i = ⌊n/2⌋ downto 1"
+    },
+    {
+     "n": 3,
+     "code": "MAX-HEAPIFY (A;i)"
+    }
+   ],
+   "text": "1 A: heap-size = n\n2 for i = ⌊n/2⌋ downto 1\n3 MAX-HEAPIFY (A;i)"
+  },
+  {
+   "type": "exercise",
+   "chapter": 6,
+   "section": "6.2",
+   "section_title": "6.2 Maintaining the heap property",
+   "printed_page": 167,
+   "pdf_page": 188,
+   "text": "6.2-7 Show that the worst-case running time of MAX-HEAPIFY on a heap of size n is Ω(lg n). (Hint: For a heap with n nodes, give node values that cause MAX- HEAPIFY to be called recursively at every node on a simple path from the root down to a leaf.)"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.3",
+   "section_title": "6.3 Building a heap",
+   "printed_page": 167,
+   "pdf_page": 188,
+   "text": "The procedure BUILD-MAX-HEAP converts an array A[1 : n] into a max-heap by calling MAX-HEAPIFY in a bottom-up manner. Exercise 6.1-8 says that the elements in the subarray A[⌊n/2⌋ + 1 : n] are all leaves of the tree, and so each is a 1-element heap to begin with. BUILD-MAX-HEAP goes through the remaining nodes of the tree and runs MAX-HEAPIFY on each one. Figure 6.3 shows an example of the action of BUILD-MAX-HEAP."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.3",
+   "section_title": "6.3 Building a heap",
+   "printed_page": 167,
+   "pdf_page": 188,
+   "text": "BUILD-MAX-HEAP (A;n)"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.3",
+   "section_title": "6.3 Building a heap",
+   "printed_page": 167,
+   "pdf_page": 188,
+   "text": "To show why BUILD-MAX-HEAP works correctly, we use the following loop invariant:"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.3",
+   "section_title": "6.3 Building a heap",
+   "printed_page": 167,
+   "pdf_page": 188,
+   "text": "At the start of each iteration of the for loop of lines 233, each node i + 1; i + 2;:::;n is the root of a max-heap."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.3",
+   "section_title": "6.3 Building a heap",
+   "printed_page": 167,
+   "pdf_page": 188,
+   "text": "We need to show that this invariant is true prior to the first loop iteration, that each iteration of the loop maintains the invariant, that the loop terminates, and that the invariant provides a useful property to show correctness when the loop terminates."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.3",
+   "section_title": "6.3 Building a heap",
+   "printed_page": 167,
+   "pdf_page": 188,
+   "text": "Initialization: Prior to the first iteration of the loop, i = ⌊n/2⌋. Each node"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.3",
+   "section_title": "6.3 Building a heap",
+   "printed_page": 167,
+   "pdf_page": 188,
+   "text": "⌊n/2⌋ + 1; ⌊n/2⌋ + 2;:::;n is a leaf and is thus the root of a trivial max-heap."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.3",
+   "section_title": "6.3 Building a heap",
+   "printed_page": 167,
+   "pdf_page": 188,
+   "text": "Maintenance: To see that each iteration maintains the loop invar iant, observe that the children of node i are numbered higher than i . By the loop invariant, therefore, they are both roots of max-heaps. This is precisely the condition required for the call MAX-HEAPIFY (A;i) to make node i a max-heap root."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.3",
+   "section_title": "6.3 Building a heap",
+   "printed_page": 167,
+   "pdf_page": 188,
+   "text": "Moreover, the MAX-HEAPIFY call preserves the property that nodes i + 1; i + 2;:::;n are all roots of max-heaps. Decrementing i in the for loop update reestablishes the loop invariant for the next iteration."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.3",
+   "section_title": "6.3 Building a heap",
+   "printed_page": 168,
+   "pdf_page": 189,
+   "text": "4 1 2 3 16 9 10 14 8 7"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.3",
+   "section_title": "6.3 Building a heap",
+   "printed_page": 168,
+   "pdf_page": 189,
+   "text": "A i i i i i"
+  },
+  {
+   "type": "figure-caption",
+   "chapter": 6,
+   "section": "6.3",
+   "section_title": "6.3 Building a heap",
+   "printed_page": 168,
+   "pdf_page": 189,
+   "text": "Figure 6.3 The operation of BUILD-MAX-HEAP , showing the data structure before the call to MAX-HEAPIFY in line 3 of BUILD-MAX-HEAP . The node indexed by i in each iteration is shown in blue. (a) A 10-element input array A and the binary tree it represents. The loop index i refers to node 5 before the call MAX-HEAPIFY(A;i) . (b) The data structure that results. The loop in- dex i for the next iteration refers to node 4. (c)–(e) Subsequent iterations of the for loop in BUILD-MAX-HEAP. Observe that whenever MAX-HEAPIFY is called on a node, the two subtrees of that node are both max-heaps. (f) The max-heap after BUILD-MAX-HEAP finishes."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.3",
+   "section_title": "6.3 Building a heap",
+   "printed_page": 169,
+   "pdf_page": 190,
+   "text": "Termination: The loop makes exactly ⌊n/2⌋ iterations, and so it terminates. At termination, i = 0. By the loop invariant, each node 1;2;:::;n is the root of a max-heap. In particular, node 1 is."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.3",
+   "section_title": "6.3 Building a heap",
+   "printed_page": 169,
+   "pdf_page": 190,
+   "text": "We can compute a simple upper bound on the running time of BUILD-MAX- HEAP as follows. Each call to MAX-HEAPIFY costs O(lg n) time, and BUILD-"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.3",
+   "section_title": "6.3 Building a heap",
+   "printed_page": 169,
+   "pdf_page": 190,
+   "text": "MAX-HEAP makes O(n) such calls. Thus, the running time is O(n lg n). This upper bound, though correct, is not as tight as it can be."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.3",
+   "section_title": "6.3 Building a heap",
+   "printed_page": 169,
+   "pdf_page": 190,
+   "text": "We can derive a tighter asymptotic bound by observing that the time for MAX- HEAPIFY to run at a node varies with the height of the node in the tree, and that the heights of most nodes are small. Our tighter analysis relies on the properties that an n-element heap has height blg nc (see Exercise 6.1-2) and at most"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.3",
+   "section_title": "6.3 Building a heap",
+   "printed_page": 169,
+   "pdf_page": 190,
+   "text": "⌊ n/2 hC1 ⌋ nodes of any height h (see Exercise 6.3-4)."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.3",
+   "section_title": "6.3 Building a heap",
+   "printed_page": 169,
+   "pdf_page": 190,
+   "text": "The time required by MAX-HEAPIFY when called on a node of height h is O(h). Letting c be the constant implicit in the asymptotic notation , we can express the total cost of BUILD-MAX-HEAP as being bounded from above by P blg nc hD0"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.3",
+   "section_title": "6.3 Building a heap",
+   "printed_page": 169,
+   "pdf_page": 190,
+   "text": "⌊ n/2 hC1 ⌋ ch. As Exercise 6.3-2 shows, we have ⌊ n/2 hC1 ⌋ ≥ 1/2 for 0 ≤ h ≤ blg nc. Since dx e ≤ 2x for any x ≥ 1/2, we have"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.3",
+   "section_title": "6.3 Building a heap",
+   "printed_page": 169,
+   "pdf_page": 190,
+   "text": "⌊ n/2 hC1 ⌋"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.3",
+   "section_title": "6.3 Building a heap",
+   "printed_page": 169,
+   "pdf_page": 190,
+   "text": "≤ n/2 h . We thus obtain blg nc X hD0 å n"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.3",
+   "section_title": "6.3 Building a heap",
+   "printed_page": 169,
+   "pdf_page": 190,
+   "text": "2 hC1 æ ch"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.3",
+   "section_title": "6.3 Building a heap",
+   "printed_page": 169,
+   "pdf_page": 190,
+   "text": "≤ blg nc X hD0 n"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.3",
+   "section_title": "6.3 Building a heap",
+   "printed_page": 169,
+   "pdf_page": 190,
+   "text": "D cn blg nc X hD0 h"
+  },
+  {
+   "type": "footnote",
+   "chapter": 6,
+   "section": "6.3",
+   "section_title": "6.3 Building a heap",
+   "printed_page": 169,
+   "pdf_page": 190,
+   "text": "1 X hD0 h"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.3",
+   "section_title": "6.3 Building a heap",
+   "printed_page": 169,
+   "pdf_page": 190,
+   "text": "≤ cn • 1/2"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.3",
+   "section_title": "6.3 Building a heap",
+   "printed_page": 169,
+   "pdf_page": 190,
+   "text": ".1 − 1/2/ 2 (by equation (A.11) on page 1142 with x = 1/2)"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.3",
+   "section_title": "6.3 Building a heap",
+   "printed_page": 169,
+   "pdf_page": 190,
+   "text": "Hence, we can build a max-heap from an unordered array in linear time."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.3",
+   "section_title": "6.3 Building a heap",
+   "printed_page": 169,
+   "pdf_page": 190,
+   "text": "To build a min-heap, use the procedure BUILD-MIN-HEAP, which is the same as BUILD-MAX-HEAP but with the call to MAX-HEAPIFY in line 3 replaced by a call to MIN-HEAPIFY (see Exercise 6.2-3). BUILD-MIN-HEAP produces a min-heap from an unordered linear array in linear time."
+  },
+  {
+   "type": "pseudocode",
+   "chapter": 6,
+   "section": "6.4",
+   "section_title": "6.4 The heapsort algorithm",
+   "printed_page": 170,
+   "pdf_page": 191,
+   "algo_name": "HEAPSORT",
+   "signature": "HEAPSORT",
+   "lines": [
+    {
+     "n": 1,
+     "code": "BUILD-MAX-HEAP (A;n)"
+    },
+    {
+     "n": 2,
+     "code": "for i = n downto 2"
+    },
+    {
+     "n": 3,
+     "code": "exchange A[1] with A[i]"
+    },
+    {
+     "n": 4,
+     "code": "A: heap-size = A: heap-size − 1"
+    },
+    {
+     "n": 5,
+     "code": "MAX-HEAPIFY (A;1)"
+    }
+   ],
+   "text": "1 BUILD-MAX-HEAP (A;n)\n2 for i = n downto 2\n3 exchange A[1] with A[i]\n4 A: heap-size = A: heap-size − 1\n5 MAX-HEAPIFY (A;1)"
+  },
+  {
+   "type": "exercise",
+   "chapter": 6,
+   "section": "6.3",
+   "section_title": "6.3 Building a heap",
+   "printed_page": 170,
+   "pdf_page": 191,
+   "text": "6.3-1 Using Figure 6.3 as a model, illustrate the operation of BUILD-MAX-HEAP on the array A = h5;3;17;10;84;19;6;22;9 i."
+  },
+  {
+   "type": "exercise",
+   "chapter": 6,
+   "section": "6.3",
+   "section_title": "6.3 Building a heap",
+   "printed_page": 170,
+   "pdf_page": 191,
+   "text": "6.3-2 Show that ⌊ n/2 hC1 ⌋"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.4",
+   "section_title": "6.4 The heapsort algorithm",
+   "printed_page": 170,
+   "pdf_page": 191,
+   "text": "≥ 1/2 for 0 ≤ h ≤ blg nc."
+  },
+  {
+   "type": "exercise",
+   "chapter": 6,
+   "section": "6.3",
+   "section_title": "6.3 Building a heap",
+   "printed_page": 170,
+   "pdf_page": 191,
+   "text": "6.3-3 Why does the loop index i in line 2 of BUILD-MAX-HEAP decrease from ⌊n/2⌋ to 1 rather than increase from 1 to ⌊n/2⌋?"
+  },
+  {
+   "type": "exercise",
+   "chapter": 6,
+   "section": "6.3",
+   "section_title": "6.3 Building a heap",
+   "printed_page": 170,
+   "pdf_page": 191,
+   "text": "6.3-4 Show that there are at most"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.4",
+   "section_title": "6.4 The heapsort algorithm",
+   "printed_page": 170,
+   "pdf_page": 191,
+   "text": "⌊ n/2 hC1 ⌋ nodes of height h in any n-element heap."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.4",
+   "section_title": "6.4 The heapsort algorithm",
+   "printed_page": 170,
+   "pdf_page": 191,
+   "text": "The heapsort algorithm, given by the procedure HEAPSORT , starts by calling the BUILD-MAX-HEAP procedure to build a max-heap on the input array A[1 : n]."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.4",
+   "section_title": "6.4 The heapsort algorithm",
+   "printed_page": 170,
+   "pdf_page": 191,
+   "text": "Since the maximum element of the array is stored at the root A[1], HEAPSORT can place it into its correct final position by exchanging it with A[n]. If the procedure then discards node n from the heap—and it can do so by simply decrementing"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.4",
+   "section_title": "6.4 The heapsort algorithm",
+   "printed_page": 170,
+   "pdf_page": 191,
+   "text": "A: heap-size—the children of the root remain max-heaps, but the new root element might violate the max-heap property. To restore the max-heap property, the procedure just calls MAX-HEAPIFY (A;1), which leaves a max-heap in A[1 : n − 1]."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.4",
+   "section_title": "6.4 The heapsort algorithm",
+   "printed_page": 170,
+   "pdf_page": 191,
+   "text": "The HEAPSORT procedure then repeats this process for the max-heap of size n − 1 down to a heap of size 2. (See Exercise 6.4-2 for a precise loop invariant.)"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.4",
+   "section_title": "6.4 The heapsort algorithm",
+   "printed_page": 170,
+   "pdf_page": 191,
+   "text": "HEAPSORT (A;n)"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.4",
+   "section_title": "6.4 The heapsort algorithm",
+   "printed_page": 170,
+   "pdf_page": 191,
+   "text": "Figure 6.4 shows an example of the operation of HEAPSORT after line 1 has built the initial max-heap. The figure shows the max-heap before the first iteration of the for loop of lines 235 and after each iteration."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.4",
+   "section_title": "6.4 The heapsort algorithm",
+   "printed_page": 171,
+   "pdf_page": 192,
+   "text": "(a) (b) (c)"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.4",
+   "section_title": "6.4 The heapsort algorithm",
+   "printed_page": 171,
+   "pdf_page": 192,
+   "text": "(d) (e) (f)"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.4",
+   "section_title": "6.4 The heapsort algorithm",
+   "printed_page": 171,
+   "pdf_page": 192,
+   "text": "(g) (h) (i)"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.4",
+   "section_title": "6.4 The heapsort algorithm",
+   "printed_page": 171,
+   "pdf_page": 192,
+   "text": "1 2 3 4 7 8 9 10 14 16"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.4",
+   "section_title": "6.4 The heapsort algorithm",
+   "printed_page": 171,
+   "pdf_page": 192,
+   "text": "16 14 10"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.4",
+   "section_title": "6.4 The heapsort algorithm",
+   "printed_page": 171,
+   "pdf_page": 192,
+   "text": "10 14 16"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.4",
+   "section_title": "6.4 The heapsort algorithm",
+   "printed_page": 171,
+   "pdf_page": 192,
+   "text": "10 14 16"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.4",
+   "section_title": "6.4 The heapsort algorithm",
+   "printed_page": 171,
+   "pdf_page": 192,
+   "text": "16 14 10"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.4",
+   "section_title": "6.4 The heapsort algorithm",
+   "printed_page": 171,
+   "pdf_page": 192,
+   "text": "10 14 16"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.4",
+   "section_title": "6.4 The heapsort algorithm",
+   "printed_page": 171,
+   "pdf_page": 192,
+   "text": "16 14 10"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.4",
+   "section_title": "6.4 The heapsort algorithm",
+   "printed_page": 171,
+   "pdf_page": 192,
+   "text": "A i i i i i i i i i"
+  },
+  {
+   "type": "figure-caption",
+   "chapter": 6,
+   "section": "6.4",
+   "section_title": "6.4 The heapsort algorithm",
+   "printed_page": 171,
+   "pdf_page": 192,
+   "text": "Figure 6.4 The operation of HEAPSORT . (a) The max-heap data structure just after BUILD-MAX- HEAP has built it in line 1. (b)–(j) The max-heap just after each call of MAX-HEAPIFY in line 5, showing the value of i at that time. Only blue nodes remain in the heap. Tan nodes contain the largest values in the array, in sorted order. (k) The resulting sorted array A."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 172,
+   "pdf_page": 193,
+   "text": "The HEAPSORT procedure takes O(n lg n) time, since the call to BUILD-MAX-"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 172,
+   "pdf_page": 193,
+   "text": "HEAP takes O(n) time and each of the n − 1 calls to MAX-HEAPIFY takes O(lg n) time."
+  },
+  {
+   "type": "exercise",
+   "chapter": 6,
+   "section": "6.4",
+   "section_title": "6.4 The heapsort algorithm",
+   "printed_page": 172,
+   "pdf_page": 193,
+   "text": "6.4-1 Using Figure 6.4 as a model, illustrate the operation of HEAPSORT on the array"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 172,
+   "pdf_page": 193,
+   "text": "A = h5;13;2;25;7;17;20;8;4 i."
+  },
+  {
+   "type": "exercise",
+   "chapter": 6,
+   "section": "6.4",
+   "section_title": "6.4 The heapsort algorithm",
+   "printed_page": 172,
+   "pdf_page": 193,
+   "text": "6.4-2 Argue the correctness of HEAPSORT using the following loop invariant:"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 172,
+   "pdf_page": 193,
+   "text": "At the start of each iteration of the for loop of lines 235, the subarray A[1 : i] is a max-heap containing the i smallest elements of A[1 : n], and the subarray A[i + 1 : n] contains the n − i largest elements of A[1 : n], sorted."
+  },
+  {
+   "type": "exercise",
+   "chapter": 6,
+   "section": "6.4",
+   "section_title": "6.4 The heapsort algorithm",
+   "printed_page": 172,
+   "pdf_page": 193,
+   "text": "6.4-3 What is the running time of HEAPSORT on an array A of length n that is already sorted in increasing order? How about if the array is already sorted in decreasing order?"
+  },
+  {
+   "type": "exercise",
+   "chapter": 6,
+   "section": "6.4",
+   "section_title": "6.4 The heapsort algorithm",
+   "printed_page": 172,
+   "pdf_page": 193,
+   "text": "6.4-4 Show that the worst-case running time of HEAPSORT is Ω(n lg n)."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 172,
+   "pdf_page": 193,
+   "text": "Show that when all the elements of A are distinct, the best-case running time of HEAPSORT is Ω(n lg n)."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 172,
+   "pdf_page": 193,
+   "text": "In Chapter 8, we will see that any comparison-based sorting algorithm requires"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 172,
+   "pdf_page": 193,
+   "text": "Ω(n lg n) comparisons and hence Ω(n lg n) time. Therefore, heapsort is asymptotically optimal among comparison-based sorting algorithms. Yet, a good implementation of quicksort, presented in Chapter 7, usually beats it in practice. Nevertheless, the heap data structure itself has many uses. In this section, we present one of the most popular applications of a heap: as an efficient priority queue. As with heaps, priority queues come in two forms: max-priority queues and min-priority queues. We’ll focus here on how to implement max-priority queues, which are in turn based on max-heaps. Exercise 6.5-3 asks you to write the procedures for min-priority queues."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 173,
+   "pdf_page": 194,
+   "text": "A priority queue is a data structure for maintaining a set S of elements, each with an associated value called a key. A max-priority queue supports the following operations:"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 173,
+   "pdf_page": 194,
+   "text": "INSERT(S;x;k) inserts the element x with key k into the set S , which is equivalent to the operation S = S [ fx g."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 173,
+   "pdf_page": 194,
+   "text": "MAXIMUM(S) returns the element of S with the largest key."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 173,
+   "pdf_page": 194,
+   "text": "EXTRACT-MAX.S/ removes and returns the element of S with the largest key."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 173,
+   "pdf_page": 194,
+   "text": "INCREASE-KEY (S;x;k) increases the value of element x ’s key to the new value k, which is assumed to be at least as large as x ’s current key value."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 173,
+   "pdf_page": 194,
+   "text": "Among their other applications, you can use max-priority queues to schedule jobs on a computer shared among multiple users. The max-priority queue keeps track of the jobs to be performed and their relativ e priorities. When a job is finished or interrupted, the scheduler selects the highest-priority job from among those pending by calling EXTRACT-MAX. The scheduler can add a new job to the queue at any time by calling INSERT ."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 173,
+   "pdf_page": 194,
+   "text": "Alternatively, a min-priority queue supports the operations INSERT , MINIMUM , EXTRACT-MIN, and DECREASE-KEY. A min-priority queue can be used in an event-driven simulator. The items in the queue are events to be simulated, each with an associated time of occurrence that serves a s its key. The events must be simulated in order of their time of occurrence, bec ause the simulation of an event can cause other events to be simulated in the future. The simulation program calls"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 173,
+   "pdf_page": 194,
+   "text": "EXTRACT-MIN at each step to choose the next event to simulate. As new events are produced, the simulator inserts them into the min-priority queue by calling INSERT ."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 173,
+   "pdf_page": 194,
+   "text": "We’ll see other uses for min-priority queues, highlighting the DECREASE-KEY operation, in Chapters 21 and 22."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 173,
+   "pdf_page": 194,
+   "text": "When you use a heap to implement a priority queue w ithin a given application, elements of the priority queue correspond to object s in the application. Each object contains a key. If the priority queue is imple mented by a heap, you need to determine which application object corresponds to a given heap element, and vice versa. Because the heap elements are stored in an a rray, you need a way to map application objects to and from array indices."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 173,
+   "pdf_page": 194,
+   "text": "One way to map between application objects and heap elements uses handles, which are additional information stored in the objects and heap elements that give enough information to perform the mapping. Handles are often implemented to be opaque to the surrounding code, thereby maintaining an abstraction barrier between the application and the priority queue. For e xample, the handle within an application object might contain the corresponding index into the heap array. But since only the code for the priority queue accesses this index, the index is entirely hidden from the application code. Because heap elements change locations within the array during heap operations, an actual impleme ntation of the priority queue, upon relocating a heap element, must also update th e array indices in the corresponding handles. Conversely, each element in the h eap might contain a pointer to the corresponding application object, but the he ap element knows this pointer as only an opaque handle and the application maps t his handle to an application object. Typically, the worst-case overhead for maintaining handles is O(1) per access."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 174,
+   "pdf_page": 195,
+   "text": "As an alternative to incorporating handles in appli cation objects, you can store within the priority queue a mapping from application objects to array indices in the heap. The advantage of doing so is that the mapping is contained entirely within the priority queue, so that the application objects need no further embellishment."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 174,
+   "pdf_page": 195,
+   "text": "The disadvantage lies in the additional cost of est ablishing and maintaining the mapping. One option for the mapping is a hash table (see Chapter 11). 1 The added expected time for a hash table to map an object to an array index is just O(1), though the worst-case time can be as bad as Θ(n)."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 174,
+   "pdf_page": 195,
+   "text": "Let’s see how to implement the operations of a max-priority queue using a maxheap. In the previous sections, we treated the arra y elements as the keys to be sorted, implicitly assuming that any satellite data moved with the corresponding keys. When a heap implements a priority queue, we i nstead treat each array element as a pointer to an object in the priority queue, so that the object is analogous to the satellite data when sorting. We further assu me that each such object has an attribute key, which determines where in the heap the object bel ongs. For a heap implemented by an array A, we refer to A[i]: key."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 174,
+   "pdf_page": 195,
+   "text": "The procedure MAX-HEAP-MAXIMUM on the facing page implements the MAXIMUM operation in Θ(1) time, and MAX-HEAP-EXTRACT-MAX implements the operation EXTRACT-MAX. MAX-HEAP-EXTRACT-MAX is similar to the for loop body (lines 335) of the HEAPSORT procedure. We implicitly assume that MAX-HEAPIFY compares priority-queue objects based on their key attributes. We also assume that when MAX-HEAPIFY exchanges elements in the array, it is ex- changing pointers and also that it updates the mapp ing between objects and array indices. The running time of MAX-HEAP-EXTRACT-MAX is O(lg n), since"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 174,
+   "pdf_page": 195,
+   "text": "it performs only a constant amount of work on top o f the O(lg n) time for MAX-HEAPIFY , plus whatever overhead is incurred within MAX-HEAPIFY for mapping priority-queue objects to array indices."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 174,
+   "pdf_page": 195,
+   "text": "The procedure MAX-HEAP-INCREASE-KEY on page 176 implements the INCREASE-KEY operation. It first verifies that the new key k will not cause the key in the object x to decrease, and if there is no problem, it gives x the new key value. The procedure then finds the index i in the array corresponding to object x , 1 In Python, dictionaries are implemented with hash tables."
+  },
+  {
+   "type": "pseudocode",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 175,
+   "pdf_page": 196,
+   "algo_name": "MAX-HEAP-MAXIMUM",
+   "signature": "MAX-HEAP-MAXIMUM",
+   "lines": [
+    {
+     "n": 1,
+     "code": "if A: heap-size <1"
+    },
+    {
+     "n": 2,
+     "code": "error \"heap underflow\""
+    },
+    {
+     "n": 3,
+     "code": "return A[1]"
+    }
+   ],
+   "text": "1 if A: heap-size <1\n2 error \"heap underflow\"\n3 return A[1]"
+  },
+  {
+   "type": "pseudocode",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 175,
+   "pdf_page": 196,
+   "algo_name": "MAX-HEAP-EXTRACT-MAX",
+   "signature": "MAX-HEAP-EXTRACT-MAX",
+   "lines": [
+    {
+     "n": 1,
+     "code": "max DMAX-HEAP-MAXIMUM(A)"
+    },
+    {
+     "n": 2,
+     "code": "A[1] = A[A: heap-size]"
+    },
+    {
+     "n": 3,
+     "code": "A: heap-size = A: heap-size − 1"
+    },
+    {
+     "n": 4,
+     "code": "MAX-HEAPIFY (A;1)"
+    },
+    {
+     "n": 5,
+     "code": "return max so that A[i] is x . Because increasing the key of A[i] might violate the max-heap property, the procedure then, in a manner reminisce nt of the insertion loop (lines"
+    }
+   ],
+   "text": "1 max DMAX-HEAP-MAXIMUM(A)\n2 A[1] = A[A: heap-size]\n3 A: heap-size = A: heap-size − 1\n4 MAX-HEAPIFY (A;1)\n5 return max so that A[i] is x . Because increasing the key of A[i] might violate the max-heap property, the procedure then, in a manner reminisce nt of the insertion loop (lines"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 175,
+   "pdf_page": 196,
+   "text": "MAX-HEAP-MAXIMUM(A)"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 175,
+   "pdf_page": 196,
+   "text": "MAX-HEAP-EXTRACT-MAX (A) so that A[i] is x . Because increasing the key of A[i] might violate the max-heap property, the procedure then, in a manner reminisce nt of the insertion loop (lines"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 175,
+   "pdf_page": 196,
+   "text": "537) of INSERTION-SORT on page 19, traverses a simple path from this node toward the root to find a proper place for the newly increased key . As MAX-HEAP- INCREASE-KEY traverses this path, it repeatedly compares an element’s key to that of its parent, exchanging pointers and continuing if the element’s key is larger, and terminating if the element’s key is smaller, since the max-heap property now holds. (See Exercise 6.5-7 for a precise loop invariant.) Like MAX-HEAPIFY when used in a priority queue, MAX-HEAP-INCREASE-KEY updates the information that maps objects to array indices when array eleme nts are exchanged. Figure 6.5 shows an example of a MAX-HEAP-INCREASE-KEY operation. In addition to the overhead for mapping priority queue objects to array indices, the running time of MAX-HEAP-INCREASE-KEY on an n-element heap is O(lg n), since the path"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 175,
+   "pdf_page": 196,
+   "text": "traced from the node updated in line 3 to the root has length O(lg n)."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 175,
+   "pdf_page": 196,
+   "text": "The procedure MAX-HEAP-INSERT on the next page implements the INSERT operation. It takes as inputs the array A implementing the max-heap, the new object x to be inserted into the max-heap, and the size n of array A. The procedure first verifies that the array has room for the new element. It then expands the max-heap by adding to the tree a new leaf whose key is −1. Then it calls MAX- HEAP-INCREASE-KEY to set the key of this new element to its correct v alue and maintain the max-heap property. The running time of MAX-HEAP-INSERT on an n-element heap is O(lg n) plus the overhead for mapping priority queue objects to indices."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 175,
+   "pdf_page": 196,
+   "text": "In summary, a heap can support any priority-queue operation on a set of size n in O(lg n) time, plus the overhead for mapping priority queue objects to array indices."
+  },
+  {
+   "type": "pseudocode",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 176,
+   "pdf_page": 197,
+   "algo_name": "MAX-HEAP-INCREASE-KEY",
+   "signature": "MAX-HEAP-INCREASE-KEY",
+   "lines": [
+    {
+     "n": 1,
+     "code": "if k<x:  key"
+    },
+    {
+     "n": 2,
+     "code": "error \"new key is smaller than current key\""
+    },
+    {
+     "n": 3,
+     "code": "x: key = k"
+    },
+    {
+     "n": 4,
+     "code": "find the index i in array A where object x occurs"
+    },
+    {
+     "n": 5,
+     "code": "while i >1 and A[PARENT(i)]: key <A[i]:  key"
+    },
+    {
+     "n": 6,
+     "code": "exchange A[i] with A[PARENT(i)], updating the information that maps priority queue objects to array indices"
+    },
+    {
+     "n": 7,
+     "code": "i DPARENT(i)"
+    }
+   ],
+   "text": "1 if k<x:  key\n2 error \"new key is smaller than current key\"\n3 x: key = k\n4 find the index i in array A where object x occurs\n5 while i >1 and A[PARENT(i)]: key <A[i]:  key\n6 exchange A[i] with A[PARENT(i)], updating the information that maps priority queue objects to array indices\n7 i DPARENT(i)"
+  },
+  {
+   "type": "pseudocode",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 176,
+   "pdf_page": 197,
+   "algo_name": "MAX-HEAP-INSERT",
+   "signature": "MAX-HEAP-INSERT",
+   "lines": [
+    {
+     "n": 1,
+     "code": "if A: heap-size == n"
+    },
+    {
+     "n": 2,
+     "code": "error \"heap overflow\""
+    },
+    {
+     "n": 3,
+     "code": "A: heap-size = A: heap-size C 1"
+    },
+    {
+     "n": 4,
+     "code": "k = x: key"
+    },
+    {
+     "n": 5,
+     "code": "x: key = −1"
+    },
+    {
+     "n": 6,
+     "code": "A[A: heap-size] = x"
+    },
+    {
+     "n": 7,
+     "code": "map x to index heap-size in the array"
+    },
+    {
+     "n": 8,
+     "code": "MAX-HEAP-INCREASE-KEY (A;x;k)"
+    }
+   ],
+   "text": "1 if A: heap-size == n\n2 error \"heap overflow\"\n3 A: heap-size = A: heap-size C 1\n4 k = x: key\n5 x: key = −1\n6 A[A: heap-size] = x\n7 map x to index heap-size in the array\n8 MAX-HEAP-INCREASE-KEY (A;x;k)"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 176,
+   "pdf_page": 197,
+   "text": "MAX-HEAP-INCREASE-KEY (A;x;k)"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 176,
+   "pdf_page": 197,
+   "text": "MAX-HEAP-INSERT (A;x;n)"
+  },
+  {
+   "type": "exercise",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 176,
+   "pdf_page": 197,
+   "text": "6.5-1 Suppose that the objects in a max-priority queue are just keys. Illustrate the operation of MAX-HEAP-EXTRACT-MAX on the heap A = h15;13;9;5;12;8;7;4;0; 6;2;1 i."
+  },
+  {
+   "type": "exercise",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 176,
+   "pdf_page": 197,
+   "text": "6.5-2 Suppose that the objects in a max-priority queue are just keys. Illustrate the operation of MAX-HEAP-INSERT (A;10) on the heap A = h15;13;9;5;12;8;7;4;0;6; 2;1 i."
+  },
+  {
+   "type": "exercise",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 176,
+   "pdf_page": 197,
+   "text": "6.5-3 Write pseudocode to implement a min-priority queue with a min-heap by writing the procedures MIN-HEAP-MINIMUM , MIN-HEAP-EXTRACT-MIN, MIN-HEAP- DECREASE-KEY, and MIN-HEAP-INSERT ."
+  },
+  {
+   "type": "exercise",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 176,
+   "pdf_page": 197,
+   "text": "6.5-4 Write pseudocode for the procedure MAX-HEAP-DECREASE-KEY (A;x;k) in a max-heap. What is the running time of your procedure?"
+  },
+  {
+   "type": "figure-caption",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 177,
+   "pdf_page": 198,
+   "text": "Figure 6.5 The operation of MAX-HEAP-INCREASE-KEY. Only the key of each element in the priority queue is shown. The node indexed by i in each iteration is shown in blue. (a) The max-heap of Figure 6.4(a) with i indexing the node whose key is about to be increase d. (b) This node has its key increased to 15. (c) After one iteration of the while loop of lines 537, the node and its parent have exchanged keys, and the index i moves up to the parent. (d) The max-heap after one more iteration of the while loop. At this point, A[PARENT(i)] ≥ A[i]. The max-heap property now holds and the procedure terminates."
+  },
+  {
+   "type": "exercise",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 177,
+   "pdf_page": 198,
+   "text": "6.5-5 Why does MAX-HEAP-INSERT bother setting the key of the inserted object to −1 in line 5 given that line 8 will set the object’s key to the desired value?"
+  },
+  {
+   "type": "exercise",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 177,
+   "pdf_page": 198,
+   "text": "6.5-6 Professor Uriah suggests replacing the while loop of lines 537 in MAX-HEAP- INCREASE-KEY by a call to MAX-HEAPIFY. Explain the flaw in the professor’s idea."
+  },
+  {
+   "type": "exercise",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 177,
+   "pdf_page": 198,
+   "text": "6.5-7 Argue the correctness of MAX-HEAP-INCREASE-KEY using the following loop invariant:"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 178,
+   "pdf_page": 199,
+   "text": "At the start of each iteration of the while loop of lines 537: a. If both nodes PARENT(i) and LEFT(i) exist, then A[PARENT(i)]: key ≥"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 178,
+   "pdf_page": 199,
+   "text": "A[LEFT(i)]: key. b. If both nodes PARENT(i) and RIGHT(i) exist, then A[PARENT(i)]: key ≥"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 178,
+   "pdf_page": 199,
+   "text": "A[RIGHT(i)]: key. c. The subarray A[1 : A: heap-size] satisfies the max-heap property, except that there may be one violation, which is that A[i]: key may be greater than A[PARENT(i)]: key."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 178,
+   "pdf_page": 199,
+   "text": "You may assume that the subarray A[1 : A: heap-size] satisfies the max-heap property at the time MAX-HEAP-INCREASE-KEY is called."
+  },
+  {
+   "type": "exercise",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 178,
+   "pdf_page": 199,
+   "text": "6.5-8 Each exchange operation on line 6 of MAX-HEAP-INCREASE-KEY typically re- quires three assignments, not counting the updating of the mapping from objects to array indices. Show how to use the idea of the i nner loop of INSERTION-SORT to reduce the three assignments to just one assignment."
+  },
+  {
+   "type": "exercise",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 178,
+   "pdf_page": 199,
+   "text": "6.5-9 Show how to implement a first-in, first-out queue with a priority queue. Show how to implement a stack with a priority queue. (Queues and stacks are defined in Section 10.1.3.)"
+  },
+  {
+   "type": "exercise",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 178,
+   "pdf_page": 199,
+   "text": "6.5-10 The operation MAX-HEAP-DELETE (A;x) deletes the object x from max-heap A."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 178,
+   "pdf_page": 199,
+   "text": "Give an implementation of MAX-HEAP-DELETE for an n-element max-heap that runs in O(lg n) time plus the overhead for mapping priority queue objects to array indices."
+  },
+  {
+   "type": "exercise",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 178,
+   "pdf_page": 199,
+   "text": "6.5-11 Give an O(n lg k)-time algorithm to merge k sorted lists into one sorted list, where n is the total number of elements in all the input li sts. ( Hint: Use a minheap for k-way merging.)"
+  },
+  {
+   "type": "problem",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 178,
+   "pdf_page": 199,
+   "text": "6-1 Building a heap using insertion"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 178,
+   "pdf_page": 199,
+   "text": "One way to build a heap is by repeatedly calling MAX-HEAP-INSERT to insert the elements into the heap. Consider the procedure BUILD-MAX-HEAP 0 on the facing page. It assumes that the objects being inserted are just the heap elements."
+  },
+  {
+   "type": "pseudocode",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 179,
+   "pdf_page": 200,
+   "algo_name": "BUILD-MAX-HEAP",
+   "signature": "BUILD-MAX-HEAP",
+   "lines": [
+    {
+     "n": 1,
+     "code": "A: heap-size = 1"
+    },
+    {
+     "n": 2,
+     "code": "for i = 2 to n"
+    },
+    {
+     "n": 3,
+     "code": "MAX-HEAP-INSERT (A;A[i];n) a. Do the procedures BUILD-MAX-HEAP and BUILD-MAX-HEAP 0 always create the same heap when run on the same input array? Prove that they do, or provide"
+    }
+   ],
+   "text": "1 A: heap-size = 1\n2 for i = 2 to n\n3 MAX-HEAP-INSERT (A;A[i];n) a. Do the procedures BUILD-MAX-HEAP and BUILD-MAX-HEAP 0 always create the same heap when run on the same input array? Prove that they do, or provide"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 179,
+   "pdf_page": 200,
+   "text": "BUILD-MAX-HEAP 0 (A;n) a. Do the procedures BUILD-MAX-HEAP and BUILD-MAX-HEAP 0 always create the same heap when run on the same input array? Prove that they do, or provide a counterexample. b. Show that in the worst case, BUILD-MAX-HEAP 0 requires Θ(n lg n) time to build an n-element heap."
+  },
+  {
+   "type": "problem",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 179,
+   "pdf_page": 200,
+   "text": "6-2 Analysis of d -ary heaps"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 179,
+   "pdf_page": 200,
+   "text": "A d -ary heap is like a binary heap, but (with one possible exception) nonleaf nodes have d children instead of two children. In all parts of t his problem, assume that the time to maintain the mapping between objects an d heap elements is O(1) per operation. a. Describe how to represent a d -ary heap in an array. b. Using Θ-notation, express the height of a d -ary heap of n elements in terms of n and d . c. Give an efficient implementation of EXTRACT-MAX in a d -ary max-heap. Analyze its running time in terms of d and n. d. Give an efficient implementation of INCREASE-KEY in a d -ary max-heap. Analyze its running time in terms of d and n. e. Give an efficient implementation of INSERT in a d -ary max-heap. Analyze its running time in terms of d and n."
+  },
+  {
+   "type": "problem",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 179,
+   "pdf_page": 200,
+   "text": "6-3 Young tableaus"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 179,
+   "pdf_page": 200,
+   "text": "An m × n Young tableau is an m × n matrix such that the entries of each row are in sorted order from left to right and the entries of each column are in sorted order from top to bottom. Some of the entries of a Young tableau may be 1, which we treat as nonexistent elements. Thus, a Young tableau can be used to hold r ≤ mn finite numbers. a. Draw a 4 × 4 Young tableau containing the elements f9;16;3;2;4;8;5;14;12 g . b. Argue that an m × n Young tableau Y is empty if Y[1;1] = 1. Argue that Y is full (contains mn elements) if Y[m;n]< 1. c. Give an algorithm to implement EXTRACT-MIN on a nonempty m × n Young tableau that runs in O(m + n) time. Your algorithm should use a recursive subroutine that solves an m × n problem by recursively solving either an (m − 1) × n or an m × (n − 1) subproblem. ( Hint: Think about MAX- HEAPIFY .) Explain why your implementation of EXTRACT-MIN runs in O(m + n) time. d. Show how to insert a new element into a nonfull m × n Young tableau in O(m + n) time. e. Using no other sorting method as a subroutine, show how to use an n × n Young tableau to sort n 2 numbers in O(n 3 ) time."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 180,
+   "pdf_page": 201,
+   "text": "f. Give an O(m + n)-time algorithm to determine whether a given number is stored in a given m × n Young tableau."
+  },
+  {
+   "type": "chapter-notes",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 180,
+   "pdf_page": 201,
+   "text": "Chapter notes"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 180,
+   "pdf_page": 201,
+   "text": "The heapsort algorithm was invented by Williams [456], who also described how to implement a priority queue with a heap. The BUILD-MAX-HEAP procedure was suggested by Floyd [145]. Schaffer and Sedgewick [395] showed that in the best case, the number of times elements move in the heap during heapsort is approximately (n/2) lg n and that the average number of moves is approximately n lg n."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 180,
+   "pdf_page": 201,
+   "text": "We use min-heaps to implement min-priority queues in Chapters 15, 21, and 22."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 180,
+   "pdf_page": 201,
+   "text": "Other, more complicated, data structures give better time bounds for certain minpriority queue operations. Fredman and Tarjan [156] developed Fibonacci heaps, which support INSERT and DECREASE-KEY in O(1) amortized time (see Chapter 16). That is, the average worst-case running time for these operations is O(1)."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 180,
+   "pdf_page": 201,
+   "text": "Brodal, Lagogiannis, and Tarjan [73] subsequently devised strict Fibonacci heaps, which make these time bounds the actual running tim es. If the keys are unique and drawn from the set f0;1;:::;n − 1g of nonnegative integers, van Emde Boas trees [440, 441] support the operations INSERT , DELETE , SEARCH , MINIMUM , MAXIMUM , PREDECESSOR , and SUCCESSOR in O(lg lg n) time."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 180,
+   "pdf_page": 201,
+   "text": "If the data are b-bit integers, and the computer memory consists of addressable b-bit words, Fredman and Willard [157] showed how to implement MINIMUM in O(1) time and INSERT and EXTRACT-MIN in O. p lg n/ time. Thorup [436] has Notes for Chapter 6 181 improved the O. p lg n/ bound to O(lg lg n) time by using randomized hashing, requiring only linear space."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 181,
+   "pdf_page": 202,
+   "text": "An important special case of priority queues occurs when the sequence of EXTRACT-MIN operations is monotone, that is, the values returned by successive EXTRACT-MIN operations are monotonically increasing over time. This case arises in several important applications, such as = ijkstra’s single-source shortestpaths algorithm, which we discuss in Chapter 22, an d in discrete-event simulation. For Dijkstra’s algorithm it is particularly important that the DECREASE-KEY operation be implemented efficiently. For the monotone case, if the data are in- tegers in the range 1;2;:::;C , Ahuja, Mehlhorn, Orlin, and Tarjan [8] describe how to implement EXTRACT-MIN and INSERT in O(lg C) amortized time (Chapter 16 presents amortized analysis) and DECREASE-KEY in O(1) time, using a data structure called a radix heap. The O(lg C) bound can be improved to O. p lg C/ using Fibonacci heaps in conjunction with radix hea ps. Cher kassky, Goldberg, and Silverstein [90] further improved the bound to O(lg 1/3C• C) expected time by combining the multilevel bucketing structure of Den ardo and Fox [112] with the heap of Thorup mentioned earlier. Raman [375] further improved these results to obtain a bound of O ã min ˚ lg 1/4C• C; lg 1/3C• n"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 181,
+   "pdf_page": 202,
+   "text": ", for any fixed ] > 0 ."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 181,
+   "pdf_page": 202,
+   "text": "Many other variants of heaps have been proposed. Brodal [72] surveys some of these developments."
+  },
+  {
+   "type": "footnote",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 182,
+   "pdf_page": 203,
+   "text": "7 Quicksort"
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 182,
+   "pdf_page": 203,
+   "text": "The quicksort algorithm has a worst-case running time of Θ(n 2 ) on an input array of n numbers. Despite this slow worst-case running time, quicksort is often the best practical choice for sorting because it is rem arkably efficient on average: its expected running time is Θ(n lg n) when all numbers are distinct, and the constant factors hidden in the Θ(n lg n) notation are small. Unlike merge sort, it also has the advantage of sorting in place (see page 158), and it works well even in virtualmemory environments."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 182,
+   "pdf_page": 203,
+   "text": "Our study of quicksort is broken into four sections. Section 7.1 describes the algorithm and an important subroutine used by quicksort for partitioning. Because the behavior of quicksort is complex, we’ll start with an intuitive discussion of its performance in Section 7.2 and analyze it precisely at the end of the chapter."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 182,
+   "pdf_page": 203,
+   "text": "Section 7.3 presents a randomized version of quicksort. When all elements are distinct, 1 this randomized algorithm has a good expected running time and no particular input elicits its worst-case behavior. (See Problem 7-2 for the case in which elements may be equal.) Section 7.4 analyzes the randomized algorithm, showing that it runs in Θ(n 2 ) time in the worst case and, assuming distinct eleme nts, in expected O(n lg n) time."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 182,
+   "pdf_page": 203,
+   "text": "1 You can enforce the assumption that the values in a n array A are distinct at the cost of Θ(n) additional space and only constant overhead in running time by converting each input value A[i] to an ordered pair (A[i];i) with (A[i];i)<.A[j];j/ if A[i] < A[j] or if A[i] = A[j] and i < j ."
+  },
+  {
+   "type": "body",
+   "chapter": 6,
+   "section": "6.5",
+   "section_title": "6.5 Priority queues",
+   "printed_page": 182,
+   "pdf_page": 203,
+   "text": "There are also more practical variants of quicksort that work well when elements are not distinct."
+  }
+ ]
+}
