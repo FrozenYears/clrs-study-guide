@@ -14,7 +14,7 @@ const STATES = {
   sorted:   { fill: '--viz-done',     border: '--bd-0', w: 1.5, hatch: null,        label: '✓' },
   compare:  { fill: '--viz-compare',  border: '--bd-0', w: 2,   hatch: 'diag',      label: '比较' },
   active:   { fill: '--viz-active',   border: '--fg-1', w: 4,   hatch: null,        label: '当前' },
-  move:     { fill: '--viz-active',   border: '--bd-0', w: 2,   hatch: 'cross',     label: '移动' },
+  move:     { fill: '--viz-move',     border: '--bd-0', w: 2,   hatch: 'cross',     label: '移动' },
   pivot:    { fill: '--viz-mark',     border: '--bd-0', w: 2,   hatch: null,        label: '轴' },
   visited:  { fill: '--viz-mark',     border: '--bd-1', w: 1,   hatch: null,        label: '已访问' },
   frontier: { fill: '--viz-compare',  border: '--bd-0', w: 1.5, hatch: null,        label: '待处理' },

@@ -85,13 +85,16 @@
  * 下游可视化 agent 只引用这些变量名，不自行定义。
  * 每个状态都建议再叠加形状/纹理/文字标签（由可视化层负责）。
  *
- * 明度阶梯（明色下由浅到深）：idle < compare < result < done < active < mark < violation
+ * 明度阶梯（明色下由浅到深）：idle < compare < move < result < done < active < mark < violation
+ * 「搬移」与「当前操作」同属紫系：只差一档明度，再叠加交叉斜纹与文字标签，共三通道区分。
+ * 刻意不为它引入第 8 个色相 —— 色相越多，整块色板在色盲与灰阶下的可分辨性越差。
  * 灰阶下仍能靠这层阶梯区分，色相只作第二重线索。
  */
 :root {
   --viz-idle: #9a927f;      /* 未处理 · 中性暖灰 */
   --viz-compare: #c98a2b;   /* 比较中 · 琥珀 */
   --viz-active: #6b4ea8;    /* 当前操作 · 紫（最深，视线焦点） */
+  --viz-move: #9a63c9;      /* 搬移中 · 同色相的另一档明度（比 active 亮，靠明度+斜纹+文字区分） */
   --viz-done: #2f6fa8;      /* 已确定 · 蓝 */
   --viz-result: #1f8a8f;    /* 结果/路径 · 青 */
   --viz-mark: #55503f;      /* 已访问标记 · 深岩 */
@@ -196,6 +199,7 @@
   --viz-idle: #77726a;
   --viz-compare: #dda44e;
   --viz-active: #a58ce0;
+  --viz-move: #c9a6f0;
   --viz-done: #6fa6d8;
   --viz-result: #46c0c6;
   --viz-mark: #a09a8c;
@@ -236,6 +240,7 @@
     --viz-idle: #77726a;
     --viz-compare: #dda44e;
     --viz-active: #a58ce0;
+  --viz-move: #c9a6f0;
     --viz-done: #6fa6d8;
     --viz-result: #46c0c6;
     --viz-mark: #a09a8c;

@@ -1,5 +1,5 @@
 appId: wbapp_j8m3C3j20jdfo23DvxsSS2
-name: CLRS 算法闯关
+name: Introduction to Algorithms-site
 localDir: E:\Projects\Mid\Introduction to Algorithms\site
 appType: web
 entryHtml: index.html
