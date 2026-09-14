@@ -1,7 +1,13 @@
 /* =============================================================================
  * layout.css — 页面骨架与版式（运行时 Agent 拥有）
  * 约定：只使用 theme.css 的令牌，不出现硬编码颜色/字号/圆角。
- * 响应式断点：≤860px 折叠为单栏；≤420px 为窄屏（375px 不横向滚动/不重叠）。
+ *
+ * 编辑部风的版式骨架由三件事决定：
+ *   1) 留白节奏比装饰重要：页首尾用 --sp-9/--sp-8，版块之间 --sp-7；
+ *   2) 分组靠**发丝线 + 罗马数字/序号**，不靠卡片边框；
+ *   3) 首页是书的**目录**（Part → 章 → 关），不是宫格导航。
+ *
+ * 响应式断点：≤980px 关卡页折叠为单栏；≤560px 为窄屏（375px 不横向滚动/不重叠）。
  * ========================================================================== */
 
 *,
@@ -21,6 +27,7 @@ body {
 }
 
 body {
+  /* 界面声音 = 黑体；正文段落由各自的块决定用衬线 */
   font-family: var(--font-sans);
   font-size: var(--fs-md);
   line-height: var(--lh-base);
@@ -28,6 +35,20 @@ body {
   background: var(--bg-0);
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  /* 中文标点更紧、西文更松，避免全角标点把行拉稀 */
+  text-rendering: optimizeLegibility;
+}
+
+/* 中文正文的通用段距与两端对齐细节：中文不用 justify（会拉出空洞） */
+p {
+  margin: 0 0 var(--sp-4);
+}
+p:last-child {
+  margin-bottom: 0;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--accent) 22%, transparent);
 }
 
 /* ---------- 应用骨架 ---------- */
@@ -46,18 +67,23 @@ body {
   display: flex;
   align-items: center;
   gap: var(--sp-3);
-  padding: 0 var(--sp-4);
-  background: var(--bg-1);
+  padding: 0 var(--sp-5);
+  background: color-mix(in srgb, var(--bg-0) 88%, transparent);
+  backdrop-filter: saturate(140%) blur(8px);
   border-bottom: var(--bd-w) solid var(--bd-0);
 }
 
 .app-header .brand {
-  font-family: var(--font-serif);
-  font-size: var(--fs-lg);
+  font-family: var(--font-display);
+  font-size: var(--fs-md);
   font-weight: 700;
+  letter-spacing: 0.01em;
   color: var(--fg-0);
   text-decoration: none;
   white-space: nowrap;
+}
+.app-header .brand:hover {
+  color: var(--accent);
 }
 
 .app-header .spacer {
@@ -69,15 +95,15 @@ body {
   width: 100%;
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: var(--sp-5) var(--sp-4);
+  padding: var(--sp-7) var(--sp-5) var(--sp-8);
 }
 
 .app-footer {
   border-top: var(--bd-w) solid var(--bd-0);
-  background: var(--bg-1);
   color: var(--fg-2);
-  font-size: var(--fs-sm);
-  padding: var(--sp-4);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.02em;
+  padding: var(--sp-5);
   text-align: center;
 }
 
@@ -86,7 +112,7 @@ body {
   width: 100%;
   max-width: var(--maxw);
   margin-inline: auto;
-  padding-inline: var(--sp-4);
+  padding-inline: var(--sp-5);
 }
 
 .stack {
@@ -107,19 +133,418 @@ body {
   gap: var(--sp-4);
 }
 
-.grid--parts {
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+.grid--chapters {
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
 }
 
-.grid--chapters {
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+/* =============================================================================
+ * 首页 = 书的目录
+ * 版式家族（刻意做出差异，避免整页同一种排法）：
+ *   ① 报头 masthead   ② 续读条 resume   ③ Part 目录 toc
+ *   ④ 附录条 appendix ⑤ 版权页脚 colophon
+ * ========================================================================== */
+
+/* ---------- ① 报头 ---------- */
+.masthead {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: var(--sp-6);
+  padding-bottom: var(--sp-6);
+  border-bottom: 2px solid var(--fg-0);
+}
+
+.masthead__eyebrow {
+  font-size: var(--fs-xs);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--fg-2);
+  margin-bottom: var(--sp-3);
+}
+
+.masthead__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-3xl);
+  line-height: var(--lh-tight);
+  font-weight: 700;
+  margin: 0 0 var(--sp-3);
+  letter-spacing: -0.01em;
+}
+
+.masthead__title em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.masthead__lede {
+  font-family: var(--font-serif);
+  font-size: var(--fs-lg);
+  line-height: var(--lh-read);
+  color: var(--fg-1);
+  max-width: var(--measure);
+  margin: 0;
+}
+
+/* 报头右侧的统计：像书的版权页数据，用等宽数字对齐 */
+.masthead__stats {
+  display: flex;
+  gap: var(--sp-5);
+  padding-bottom: var(--sp-1);
+}
+
+.stat {
+  text-align: right;
+}
+
+.stat__num {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat__label {
+  font-size: var(--fs-xs);
+  letter-spacing: 0.1em;
+  color: var(--fg-2);
+  text-transform: uppercase;
+}
+
+/* ---------- ② 续读条 ---------- */
+.resume {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--sp-5);
+  padding: var(--sp-5);
+  margin-top: var(--sp-7);
+  background: var(--bg-1);
+  border: var(--bd-w) solid var(--bd-0);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+}
+
+.resume__no {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--fg-2);
+  min-width: 2.4em;
+}
+
+.resume__title {
+  font-family: var(--font-sans);
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  margin: 0 0 var(--sp-1);
+}
+
+.resume__meta {
+  font-size: var(--fs-sm);
+  color: var(--fg-1);
+  margin: 0;
+}
+
+/* ---------- ③ Part 目录 ---------- */
+.toc {
+  margin-top: var(--sp-9);
+}
+
+.toc__part {
+  margin-bottom: var(--sp-7);
+}
+
+.toc__part-head {
+  display: grid;
+  grid-template-columns: 3.2rem minmax(0, 1fr) auto;
+  gap: var(--sp-4);
+  align-items: baseline;
+  padding-bottom: var(--sp-2);
+  border-bottom: 2px solid var(--fg-0);
+}
+
+/* 右侧的建/完成读数：像书页边的页码，不抢标题 */
+.toc__part-meta {
+  font-size: var(--fs-xs);
+  letter-spacing: 0.04em;
+  color: var(--fg-2);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.toc__part-no {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.toc__part-name {
+  font-family: var(--font-sans);
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  margin: 0;
+}
+
+.toc__part-zh {
+  display: block;
+  font-weight: 400;
+  font-size: var(--fs-sm);
+  letter-spacing: 0.02em;
+  color: var(--fg-2);
+  margin-top: 0.15em;
+}
+
+/* 章条目：一条一行，底部发丝线兼作目录的引导线 */
+.toc__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.toc__row {
+  display: grid;
+  grid-template-columns: 4.6rem minmax(0, 1fr) auto;
+  gap: var(--sp-4);
+  align-items: baseline;
+  padding: var(--sp-2) var(--sp-2);
+  border-bottom: var(--bd-w) solid var(--bd-0);
+  text-decoration: none;
+  color: inherit;
+  border-radius: var(--radius-sm);
+  transition: background var(--dur) var(--ease);
+}
+
+.toc__row:hover,
+.toc__row:focus-visible {
+  background: var(--bg-1);
+  outline: none;
+}
+
+/* 你正在学的这一章：一条书签式的左竖条，并把章号染成强调色 */
+.toc__row--current {
+  background: var(--bg-1);
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+.toc__row--current .toc__no {
+  color: var(--accent);
+  font-weight: 700;
+}
+.toc__row--current .toc__title {
+  font-weight: 700;
+}
+
+.toc__no {
+  font-family: var(--font-display);
+  font-size: var(--fs-md);
+  font-variant-numeric: tabular-nums;
+  color: var(--fg-2);
+  white-space: nowrap;
+}
+
+.toc__title {
+  font-size: var(--fs-md);
+  line-height: 1.45;
+  /* 长英文名在窄屏允许换行 */
+  overflow-wrap: anywhere;
+}
+
+/* 英文章名与中文同行，用间隔而非换行 —— 目录要能一眼扫完 */
+.toc__title-en {
+  font-family: var(--font-serif);
+  font-size: var(--fs-sm);
+  font-style: italic;
+  color: var(--fg-2);
+  margin-left: var(--sp-3);
+  white-space: nowrap;
+}
+
+.toc__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  font-size: var(--fs-xs);
+  color: var(--fg-2);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* 未建的章：不假装可用，但也不做成刺眼的禁用态 */
+.toc__row--pending {
+  color: var(--fg-2);
+  cursor: default;
+  border-bottom-style: dashed;
+}
+.toc__row--pending .toc__title {
+  color: var(--fg-1);
+}
+.toc__row--pending:hover {
+  background: transparent;
+}
+
+/* 进度刻度：每关一格，完成的填色，没有背景轨道（不做进度条） */
+.ticks {
+  display: inline-flex;
+  gap: 3px;
+  align-items: center;
+}
+
+/* 每格都画出来（含空态）：读起来是「待填的格子」，而不是一条被截断的线 */
+.ticks i {
+  width: 7px;
+  height: 7px;
+  border-radius: 1px;
+  border: var(--bd-w) solid var(--bd-1);
+  background: transparent;
+}
+
+.ticks i[data-on="1"] {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.ticks i[data-part="1"] {
+  background: color-mix(in srgb, var(--accent) 40%, transparent);
+  border-color: var(--accent);
+}
+
+/* ---------- ④ 附录条（换一种版式，避免整页一种排法） ---------- */
+.appendix {
+  margin-top: var(--sp-7);
+  padding-top: var(--sp-5);
+  border-top: 2px solid var(--fg-0);
+}
+
+.appendix__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--sp-2) var(--sp-5);
+  list-style: none;
+  margin: var(--sp-4) 0 0;
+  padding: 0;
+}
+
+.appendix__item {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-3);
+  padding: var(--sp-2) 0;
+  text-decoration: none;
+  color: inherit;
+}
+
+.appendix__item:hover .appendix__name {
+  color: var(--accent);
+}
+
+.appendix__letter {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--accent);
+  min-width: 1.6em;
+}
+
+.appendix__name {
+  font-size: var(--fs-sm);
+}
+
+.appendix__meta {
+  font-size: var(--fs-xs);
+  color: var(--fg-2);
+  margin-left: auto;
+}
+
+/* ---------- ⑤ 版块标题（首页与关卡页共用的小标题） ---------- */
+.section-label {
+  font-size: var(--fs-xs);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--fg-2);
+  margin: 0 0 var(--sp-4);
+}
+
+/* ---------- 顶栏右侧的全局进度读数 ---------- */
+.header-progress {
+  font-size: var(--fs-xs);
+  letter-spacing: 0.04em;
+  color: var(--fg-2);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* ---------- 「待建」标记：真实语义状态，不是一个装饰圆点 ---------- */
+.pending-tag {
+  font-size: var(--fs-xs);
+  letter-spacing: 0.08em;
+  color: var(--fg-2);
+  border: var(--bd-w) solid var(--bd-0);
+  border-radius: var(--radius-sm);
+  padding: 0 var(--sp-2);
+  line-height: 1.5;
+}
+
+.appendix__item--pending {
+  color: var(--fg-2);
+  cursor: default;
+}
+.appendix__item--pending .appendix__letter {
+  color: var(--fg-2);
+}
+
+/* ---------- 空状态：章还没写（路由可达，但内容不存在） ---------- */
+.pending {
+  max-width: var(--measure);
+}
+
+.pending__eyebrow {
+  font-size: var(--fs-xs);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--fg-2);
+  margin-bottom: var(--sp-3);
+}
+
+.pending__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  line-height: var(--lh-tight);
+  margin: 0 0 var(--sp-1);
+}
+
+.pending__en {
+  font-family: var(--font-serif);
+  font-size: var(--fs-lg);
+  color: var(--fg-1);
+  margin: 0 0 var(--sp-5);
+}
+
+.pending__note {
+  color: var(--fg-1);
+  line-height: var(--lh-read);
+  padding-left: var(--sp-4);
+  border-left: 2px solid var(--bd-1);
+}
+
+.pending__route {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--fg-2);
+}
+
+.pending__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+  margin-top: var(--sp-6);
 }
 
 /* ---------- 关卡页：两栏布局（左讲解 / 右可视化） ---------- */
 .layout-level {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: var(--sp-5);
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: var(--sp-6);
   align-items: start;
 }
 
@@ -128,56 +553,94 @@ body {
   min-width: 0; /* 防止内容把网格撑出横向滚动 */
 }
 
-/* 窄屏折叠为单栏 */
-@media (max-width: 860px) {
+@media (max-width: 980px) {
   .layout-level {
     grid-template-columns: minmax(0, 1fr);
-    gap: var(--sp-4);
+    gap: var(--sp-5);
   }
-}
-
-/* ---------- 学习地图（首页星图/网格） ---------- */
-.map-part {
-  margin-bottom: var(--sp-5);
-}
-
-.map-part__head {
-  display: flex;
-  align-items: baseline;
-  gap: var(--sp-3);
-  margin-bottom: var(--sp-3);
-}
-
-.map-part__title {
-  font-family: var(--font-serif);
-  font-size: var(--fs-xl);
-  margin: 0;
-}
-
-.map-part__meta {
-  font-size: var(--fs-sm);
-  color: var(--fg-2);
 }
 
 /* ---------- 404 / 占位视图 ---------- */
 .view-empty {
   text-align: center;
-  padding: var(--sp-6) var(--sp-4);
+  padding: var(--sp-8) var(--sp-4);
   color: var(--fg-1);
 }
 
-/* ---------- 窄屏微调（375px 不重叠） ---------- */
-@media (max-width: 420px) {
+/* ---------- 中等屏：报头与续读条收窄 ---------- */
+@media (max-width: 760px) {
   .app-main {
-    padding: var(--sp-4) var(--sp-3);
+    padding: var(--sp-6) var(--sp-4) var(--sp-7);
   }
+  .masthead {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-5);
+    align-items: start;
+  }
+  .masthead__title {
+    font-size: var(--fs-2xl);
+  }
+  .masthead__stats {
+    gap: var(--sp-5);
+  }
+  .stat {
+    text-align: left;
+  }
+  .resume {
+    grid-template-columns: auto minmax(0, 1fr);
+    row-gap: var(--sp-3);
+  }
+  .resume > .btn {
+    grid-column: 2;
+    justify-self: start;
+  }
+  .toc__row {
+    grid-template-columns: 3.6rem minmax(0, 1fr);
+  }
+  .toc__meta {
+    grid-column: 2;
+  }
+}
+
+/* ---------- 窄屏微调（375px 不重叠） ---------- */
+@media (max-width: 560px) {
   .app-header {
     padding: 0 var(--sp-3);
     gap: var(--sp-2);
   }
-  .grid--parts,
-  .grid--chapters {
+  .app-main {
+    padding: var(--sp-5) var(--sp-3) var(--sp-6);
+  }
+  .grid--chapters,
+  .appendix__list {
     grid-template-columns: minmax(0, 1fr);
+  }
+  .masthead__title {
+    font-size: var(--fs-xl);
+  }
+  .stat__num {
+    font-size: var(--fs-xl);
+  }
+  .toc__part-head {
+    grid-template-columns: 2.4rem minmax(0, 1fr);
+    gap: var(--sp-2);
+  }
+  .toc__part-meta {
+    grid-column: 2;
+    white-space: normal;
+  }
+  .toc__row {
+    grid-template-columns: 3.2rem minmax(0, 1fr);
+    padding: var(--sp-3) var(--sp-1);
+  }
+  /* 窄屏放不下「中文 + 长英文同行」：英文改到下一行并允许换行。
+     注意 body 上有 overflow-x:hidden，nowrap 的长标题会被静默裁掉，
+     横向溢出检测发现不了 —— 只能靠这条规则解决。 */
+  .toc__title-en {
+    display: block;
+    white-space: normal;
+    margin-left: 0;
+    margin-top: 0.15em;
   }
 }
 

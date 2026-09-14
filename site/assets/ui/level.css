@@ -9,10 +9,39 @@
 .lv-header {
   display: flex;
   flex-direction: column;
-  gap: var(--sp-2);
-  padding-bottom: var(--sp-4);
-  border-bottom: var(--bd-w) solid var(--bd-0);
-  margin-bottom: var(--sp-4);
+  gap: var(--sp-3);
+  padding-bottom: var(--sp-5);
+  border-bottom: 2px solid var(--fg-0);
+  margin-bottom: var(--sp-6);
+}
+
+/* 编号 + 标题：像教科书的节号，编号是展示衬线，标题是黑体 */
+.lv-heading {
+  display: grid;
+  grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+  gap: var(--sp-5);
+  align-items: baseline;
+}
+.lv-heading__no {
+  font-family: var(--font-display);
+  font-size: var(--fs-4xl);
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+.lv-heading__text {
+  min-width: 0;
+}
+@media (max-width: 700px) {
+  .lv-heading {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-2);
+  }
+  .lv-heading__no {
+    font-size: var(--fs-3xl);
+  }
 }
 
 .lv-crumbs {
@@ -24,26 +53,30 @@
 }
 
 .lv-title {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: var(--fs-2xl);
+  font-weight: 700;
+  letter-spacing: -0.01em;
   margin: 0;
-  line-height: 1.25;
+  line-height: var(--lh-tight);
 }
 .lv-subtitle {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: var(--fs-lg);
-  color: var(--fg-1);
-  margin: 0;
+  font-size: var(--fs-md);
+  color: var(--fg-2);
+  margin: var(--sp-1) 0 0;
 }
 
 .lv-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--sp-2);
+  gap: var(--sp-3);
   align-items: center;
-  font-size: var(--fs-sm);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.02em;
   color: var(--fg-2);
+  font-variant-numeric: tabular-nums;
 }
 
 /* ---------- 关卡与阶段导航 ---------- */
@@ -74,10 +107,12 @@
 
 .rail-group__title {
   font-size: var(--fs-xs);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--fg-2);
   margin: 0 0 var(--sp-2);
+  padding-bottom: var(--sp-1);
+  border-bottom: var(--bd-w) solid var(--bd-0);
 }
 
 .rail-list {
@@ -89,41 +124,62 @@
   gap: 2px;
 }
 
+/* 侧栏 = 进度轨：每条前面一条竖线，完成的染强调色，当前加书签条 */
 .rail-item {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   gap: var(--sp-2);
   padding: var(--sp-2) var(--sp-3);
   border-radius: var(--radius-sm);
-  border: var(--bd-w) solid transparent;
+  border-left: 2px solid var(--bd-0);
   color: var(--fg-1);
   text-decoration: none;
   font-size: var(--fs-sm);
-  line-height: 1.35;
+  line-height: 1.4;
 }
 .rail-item:hover {
   background: var(--bg-2);
+  border-left-color: var(--bd-1);
 }
 .rail-item:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 1px;
 }
+/* 已完成 */
+.rail-item.is-done {
+  border-left-color: var(--c-ok);
+}
+.rail-item.is-done .rail-no {
+  color: var(--c-ok);
+}
+/* 进行中 */
+.rail-item.is-partial {
+  border-left-color: var(--c-warn);
+}
+/* 当前所在 */
 .rail-item[aria-current="true"] {
-  background: var(--bg-2);
-  border-color: var(--accent);
+  background: var(--bg-1);
+  border-left-color: var(--accent);
+  border-left-width: 3px;
   color: var(--fg-0);
-  font-weight: 500;
+  font-weight: 600;
+}
+.rail-item[aria-current="true"] .rail-no {
+  color: var(--accent);
+  font-weight: 700;
 }
 .rail-item .rail-no {
-  flex: 0 0 1.5rem;
-  font-family: var(--font-mono);
-  font-size: var(--fs-xs);
+  flex: 0 0 1.4rem;
+  font-family: var(--font-display);
+  font-size: var(--fs-sm);
+  font-variant-numeric: tabular-nums;
   color: var(--fg-2);
 }
 .rail-item .rail-mark {
   flex: 0 0 auto;
   margin-left: auto;
   font-size: var(--fs-xs);
+  font-variant-numeric: tabular-nums;
   color: var(--c-ok);
 }
 
@@ -135,19 +191,22 @@
   flex-wrap: wrap;
   margin-bottom: var(--sp-3);
 }
+/* 阶段号：像书里的节号，不是胶囊徽章 */
 .stage-no {
-  font-family: var(--font-mono);
-  font-size: var(--fs-sm);
-  color: var(--accent-fg);
-  background: var(--accent);
-  border-radius: var(--radius-pill);
-  padding: 0 var(--sp-2);
-  line-height: 1.6;
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  padding-right: var(--sp-3);
+  border-right: var(--bd-w) solid var(--bd-0);
 }
 .stage-name {
   font-family: var(--font-sans);
   font-size: var(--fs-xl);
-  font-weight: 500;
+  font-weight: 700;
+  letter-spacing: -0.01em;
   margin: 0;
 }
 .stage-en {
@@ -176,7 +235,7 @@
 
 /* ---------- 原文 / 讲解 ---------- */
 .src-block {
-  margin-bottom: var(--sp-3);
+  margin-bottom: var(--sp-5);
 }
 .src-block__head {
   display: flex;
@@ -185,21 +244,23 @@
   margin-bottom: var(--sp-1);
 }
 .src-block__kind {
+  font-family: var(--font-sans);
   font-size: var(--fs-xs);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  letter-spacing: 0.14em;
   color: var(--fg-2);
 }
 .src-block__en {
   margin: 0 0 var(--sp-2);
-  line-height: 1.7;
+  line-height: 1.75;
 }
 .src-block__en + .src-block__zh {
   margin-top: var(--sp-2);
 }
+/* 中文讲解用正文基准字号 + 长文行高（这里曾把讲解压到 15px，是整页最挤的地方） */
 .src-block__zh {
   margin: 0;
-  font-size: var(--fs-sm);
+  font-size: var(--fs-md);
+  line-height: var(--lh-read);
 }
 
 .term-list {
@@ -223,7 +284,7 @@
   border-left: 2px solid var(--accent);
   padding: var(--sp-1) var(--sp-2);
   /* 与 .pc-line 的代码列（2.5rem）对齐 */
-  margin: 0 var(--sp-3) var(--sp-1) calc(2.5rem + var(--sp-3));
+  margin: 0 var(--sp-5) var(--sp-1) calc(2.75rem + var(--sp-3));
   white-space: pre-wrap;
 }
 .pc-line.is-open {
@@ -244,18 +305,21 @@
 .kv caption {
   text-align: left;
   font-size: var(--fs-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   color: var(--fg-2);
-  padding-bottom: var(--sp-1);
+  padding-bottom: var(--sp-2);
 }
 .kv th,
 .kv td {
   border-bottom: var(--bd-w) solid var(--bd-0);
-  padding: var(--sp-2) var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
   text-align: left;
   vertical-align: top;
+  line-height: var(--lh-base);
 }
 .kv th {
-  font-weight: 500;
+  font-weight: 600;
   color: var(--fg-1);
   white-space: nowrap;
 }
@@ -276,8 +340,8 @@
 .viz-stage {
   background: var(--bg-1);
   border: var(--bd-w) solid var(--bd-0);
-  border-radius: var(--radius-md);
-  padding: var(--sp-3);
+  border-radius: var(--radius-sm);
+  padding: var(--sp-4);
   min-height: 16rem;
 }
 .viz-stage:focus-visible {
@@ -346,7 +410,7 @@
 }
 .growth svg {
   border: var(--bd-w) solid var(--bd-0);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   background: var(--bg-1);
 }
 .growth-legend {

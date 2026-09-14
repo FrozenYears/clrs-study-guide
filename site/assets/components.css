@@ -1,35 +1,53 @@
 /* =============================================================================
  * components.css — 组件样式（运行时 Agent 拥有）
  * 仅用 theme.css 令牌。包含：卡片 / 按钮 / 代码块 / 伪代码表 /
- * 术语卡 / 测验 / 进度条 / 徽章，以及「原文衬线 vs 讲解无衬线」视觉惯例。
+ * 术语卡 / 测验 / 进度 / 徽章，以及「原文衬线 vs 讲解无衬线」视觉惯例。
+ *
+ * 编辑部风的三条组件原则：
+ *   1) 立体感来自发丝线与底色差，不来自阴影与漂浮（圆角收到 2–6px）；
+ *   2) 分组靠「上/下一条线 + 留白」，不靠给每块套一个框；
+ *   3) 一个强调色（墨蓝）走到底，状态色只做点缀且低饱和。
  * ========================================================================== */
 
 /* ---------- 核心视觉惯例：原文 vs 讲解 ----------
  * 英文原文段落用 --font-serif（像书一样），讲解补充用 --font-sans。
  * 配合 data-kind="source" / data-kind="note" 两种底色，一眼可分（红线 R3）。
+ * 原文与讲解只差一层底色，靠**冷暖色相**而非明度分开，长时间阅读不刺眼。
  */
 [data-kind="source"] {
   font-family: var(--font-serif);
+  font-size: var(--fs-md);
+  line-height: 1.75;
   background: var(--c-source);
   color: var(--fg-0);
+  /* 原文 = 贴进页面的一页纸：四边发丝线 + 左侧稍重的书脊线 */
+  border: var(--bd-w) solid color-mix(in srgb, var(--bd-0) 75%, var(--c-source));
   border-left: 3px solid var(--bd-1);
   border-radius: var(--radius-sm);
-  padding: var(--sp-3) var(--sp-4);
+  padding: var(--sp-4) var(--sp-4) var(--sp-4) var(--sp-5);
+}
+
+/* 原文里的西文用引号时是弯引号，斜体保持衬线的斜体 */
+[data-kind="source"] em,
+[data-kind="source"] i {
+  font-style: italic;
 }
 
 [data-kind="note"] {
   font-family: var(--font-sans);
+  font-size: var(--fs-md);
+  line-height: var(--lh-read);
   background: var(--c-note);
   color: var(--fg-0);
   border-left: 3px solid var(--accent);
   border-radius: var(--radius-sm);
-  padding: var(--sp-3) var(--sp-4);
+  padding: var(--sp-4) var(--sp-4) var(--sp-4) var(--sp-5);
 }
 
 /* 一段话内部：原文（serif）与讲解（sans）并排对照 */
 .prose-pair {
   display: grid;
-  gap: var(--sp-2);
+  gap: var(--sp-3);
 }
 @media (min-width: 720px) {
   .prose-pair {
@@ -41,40 +59,42 @@
   display: inline-block;
   font-size: var(--fs-xs);
   font-family: var(--font-sans);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--fg-2);
   margin-bottom: var(--sp-1);
 }
 
-/* ---------- 卡片 ---------- */
+/* ---------- 卡片 = 版块面板 ----------
+ * 注意：这里的 .card 是内容容器（stages.js 用它包住每个阶段），
+ * 不是「漂浮的卡片」。所以：发丝线 + 纸底，无阴影、无大圆角。
+ */
 .card {
   background: var(--bg-1);
   border: var(--bd-w) solid var(--bd-0);
-  border-radius: var(--radius-lg);
-  padding: var(--sp-4);
-  box-shadow: var(--shadow-1);
+  border-radius: var(--radius-sm);
+  padding: var(--sp-5);
 }
 
 .card--link {
   display: block;
   text-decoration: none;
   color: inherit;
-  transition: box-shadow var(--dur) var(--ease),
-    transform var(--dur) var(--ease), border-color var(--dur) var(--ease);
+  transition: border-color var(--dur) var(--ease), background var(--dur) var(--ease);
 }
 .card--link:hover,
 .card--link:focus-visible {
-  box-shadow: var(--shadow-2);
-  transform: translateY(-2px);
   border-color: var(--bd-1);
+  background: var(--bg-2);
   outline: none;
 }
 
 .card__title {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: var(--fs-lg);
-  margin: 0 0 var(--sp-1);
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  margin: 0 0 var(--sp-2);
 }
 .card__meta {
   font-size: var(--fs-sm);
@@ -91,89 +111,115 @@
   font-size: var(--fs-sm);
   line-height: 1.2;
   padding: var(--sp-2) var(--sp-4);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   border: var(--bd-w) solid var(--bd-1);
   background: var(--bg-1);
   color: var(--fg-0);
   cursor: pointer;
   transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease),
-    opacity var(--dur) var(--ease);
+    color var(--dur) var(--ease);
 }
 .btn:hover {
   border-color: var(--accent);
+  color: var(--accent);
 }
 .btn:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 .btn:disabled {
-  opacity: 0.5;
+  opacity: 0.45;
   cursor: not-allowed;
 }
 .btn--primary {
   background: var(--accent);
   color: var(--accent-fg);
-  border-color: transparent;
+  border-color: var(--accent);
+  font-weight: 600;
+}
+.btn--primary:hover {
+  /* 主按钮的 hover 用加深而不是加亮，暗色下也成立 */
+  background: color-mix(in srgb, var(--accent) 86%, var(--fg-0));
+  color: var(--accent-fg);
+  border-color: color-mix(in srgb, var(--accent) 86%, var(--fg-0));
 }
 .btn--ghost {
   background: transparent;
   border-color: transparent;
   color: var(--fg-1);
 }
+.btn--ghost:hover {
+  background: var(--bg-2);
+  color: var(--fg-0);
+  border-color: transparent;
+}
 .btn--sm {
   padding: var(--sp-1) var(--sp-3);
   font-size: var(--fs-xs);
 }
 
-/* ---------- 代码块 / 伪代码 ---------- */
+/* ---------- 代码块 / 伪代码 ----------
+ * 代码是这本书的主角之一，所以给它「清单」的待遇：
+ * 行号独立成栏、栏间一条发丝线、行高放松到 1.7。
+ */
 .code {
   font-family: var(--font-mono);
   font-size: var(--fs-sm);
+  line-height: 1.7;
   background: var(--bg-2);
   color: var(--fg-0);
   border: var(--bd-w) solid var(--bd-0);
-  border-radius: var(--radius-md);
-  padding: var(--sp-3);
+  border-radius: var(--radius-sm);
+  padding: var(--sp-4);
   overflow-x: auto;
   white-space: pre;
+  tab-size: 4;
 }
 
 .code-block {
-  margin: var(--sp-3) 0;
+  margin: var(--sp-4) 0;
 }
 
 /* 伪代码表：逐行、带行号、可高亮某行 */
 .pseudocode {
   font-family: var(--font-mono);
   font-size: var(--fs-sm);
+  line-height: 1.7;
   background: var(--bg-2);
   border: var(--bd-w) solid var(--bd-0);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   padding: var(--sp-2) 0;
-  margin: var(--sp-3) 0;
+  margin: var(--sp-4) 0;
   counter-reset: pc;
   overflow-x: auto;
 }
 .pc-line {
   display: grid;
-  grid-template-columns: 2.5rem 1fr;
+  grid-template-columns: 2.75rem 1fr;
   align-items: baseline;
-  padding: var(--sp-1) var(--sp-3);
+  padding: var(--sp-1) var(--sp-5) var(--sp-1) var(--sp-2);
   white-space: pre;
 }
 .pc-line .pc-no {
   color: var(--fg-2);
   text-align: right;
   padding-right: var(--sp-3);
+  border-right: var(--bd-w) solid var(--bd-0);
+  margin-right: var(--sp-3);
   user-select: none;
+  font-variant-numeric: tabular-nums;
 }
 .pc-line .pc-code {
   color: var(--fg-0);
 }
-/* 高亮当前执行的伪代码行 */
+/* 高亮当前执行的伪代码行：左侧竖条 + 纸底，不靠加粗 */
 .pc-line.is-active {
   background: var(--bg-1);
   box-shadow: inset 3px 0 0 var(--viz-active);
+}
+.pc-line.is-active .pc-no {
+  color: var(--viz-active);
+  font-weight: 700;
 }
 .pc-line.is-done .pc-code {
   color: var(--fg-2);
@@ -184,7 +230,7 @@
   display: inline-flex;
   align-items: baseline;
   gap: var(--sp-2);
-  background: var(--bg-2);
+  background: transparent;
   border: var(--bd-w) solid var(--bd-0);
   border-radius: var(--radius-sm);
   padding: var(--sp-1) var(--sp-2);
@@ -202,13 +248,16 @@
 /* ---------- 测验题 ---------- */
 .quiz {
   border: var(--bd-w) solid var(--bd-0);
-  border-radius: var(--radius-md);
-  padding: var(--sp-4);
+  border-left: 3px solid var(--bd-1);
+  border-radius: var(--radius-sm);
+  padding: var(--sp-4) var(--sp-5);
   background: var(--bg-1);
-  margin: var(--sp-3) 0;
+  margin: var(--sp-4) 0;
 }
 .quiz__q {
+  font-family: var(--font-sans);
   font-weight: 600;
+  line-height: var(--lh-base);
   margin-bottom: var(--sp-3);
 }
 .quiz__options {
@@ -223,43 +272,56 @@
   border: var(--bd-w) solid var(--bd-0);
   border-radius: var(--radius-sm);
   cursor: pointer;
-  background: var(--bg-2);
+  background: transparent;
+  color: var(--fg-0);
+  font-family: var(--font-sans);
+  font-size: var(--fs-sm);
+  text-align: left;
+  transition: border-color var(--dur) var(--ease), background var(--dur) var(--ease);
 }
 .quiz__opt:hover {
   border-color: var(--accent);
+  background: var(--bg-2);
 }
 .quiz__opt.is-correct {
   border-color: var(--c-ok);
-  background: color-mix(in srgb, var(--c-ok) 14%, var(--bg-1));
+  background: color-mix(in srgb, var(--c-ok) 12%, var(--bg-1));
 }
 .quiz__opt.is-wrong {
   border-color: var(--c-err);
-  background: color-mix(in srgb, var(--c-err) 14%, var(--bg-1));
+  background: color-mix(in srgb, var(--c-err) 10%, var(--bg-1));
 }
 .quiz__why {
   margin-top: var(--sp-3);
+  padding-left: var(--sp-3);
+  border-left: 2px solid var(--bd-0);
   font-size: var(--fs-sm);
+  line-height: var(--lh-read);
   color: var(--fg-1);
 }
 .quiz__why[data-ok="1"] {
-  color: var(--c-ok);
+  border-left-color: var(--c-ok);
 }
 
-/* ---------- 进度条 ---------- */
+/* ---------- 进度 ----------
+ * 不做「有背景轨道的填充进度条」（那是仪表盘语言）。
+ * 需要表达 n / m 时用 .ticks（见 layout.css）；这个类保留给需要连续进度的场合，
+ * 只画填充部分，不画轨道。
+ */
 .progress {
   position: relative;
-  height: 0.5rem;
+  height: 2px;
   width: 100%;
-  background: var(--bg-2);
-  border: var(--bd-w) solid var(--bd-0);
-  border-radius: var(--radius-pill);
+  background: var(--bd-0);
+  border: 0;
+  border-radius: 0;
   overflow: hidden;
 }
 .progress__fill {
   height: 100%;
   width: 0%;
   background: var(--accent);
-  border-radius: var(--radius-pill);
+  border-radius: 0;
   transition: width var(--dur) var(--ease);
 }
 
@@ -270,15 +332,16 @@
   gap: var(--sp-1);
   font-size: var(--fs-xs);
   font-family: var(--font-sans);
-  padding: var(--sp-1) var(--sp-2);
-  border-radius: var(--radius-pill);
-  border: var(--bd-w) solid var(--bd-1);
-  background: var(--bg-2);
+  font-variant-numeric: tabular-nums;
+  padding: 0 var(--sp-2);
+  border-radius: var(--radius-sm);
+  border: var(--bd-w) solid var(--bd-0);
+  background: transparent;
   color: var(--fg-1);
 }
 .badge--done {
-  background: color-mix(in srgb, var(--c-ok) 18%, var(--bg-1));
-  border-color: var(--c-ok);
+  background: color-mix(in srgb, var(--c-ok) 12%, transparent);
+  border-color: color-mix(in srgb, var(--c-ok) 45%, var(--bd-0));
   color: var(--c-ok);
 }
 .badge--locked {
@@ -287,39 +350,58 @@
 
 /* ---------- 提示框（callout） ---------- */
 .callout {
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   border: var(--bd-w) solid var(--bd-0);
+  border-left-width: 3px;
   padding: var(--sp-3) var(--sp-4);
-  margin: var(--sp-3) 0;
+  margin: var(--sp-4) 0;
   font-size: var(--fs-sm);
+  line-height: var(--lh-read);
 }
 .callout--ok {
-  border-color: var(--c-ok);
-  background: color-mix(in srgb, var(--c-ok) 10%, var(--bg-1));
+  border-left-color: var(--c-ok);
+  background: color-mix(in srgb, var(--c-ok) 8%, var(--bg-1));
 }
 .callout--warn {
-  border-color: var(--c-warn);
-  background: color-mix(in srgb, var(--c-warn) 12%, var(--bg-1));
+  border-left-color: var(--c-warn);
+  background: color-mix(in srgb, var(--c-warn) 10%, var(--bg-1));
 }
 .callout--err {
-  border-color: var(--c-err);
-  background: color-mix(in srgb, var(--c-err) 10%, var(--bg-1));
+  border-left-color: var(--c-err);
+  background: color-mix(in srgb, var(--c-err) 8%, var(--bg-1));
+}
+
+/* ---------- 等宽小工具 ---------- */
+.mono {
+  font-family: var(--font-mono);
+  font-size: 0.95em;
+  background: var(--bg-2);
+  border: var(--bd-w) solid var(--bd-0);
+  border-radius: var(--radius-sm);
+  padding: 0 0.25em;
 }
 
 /* ---------- 数学公式（katex 极简渲染输出；真 KaTeX 可覆盖） ---------- */
 .katex-inline {
   font-family: var(--font-serif);
   font-style: normal;
+  font-variant-numeric: tabular-nums;
+  /* 行内公式不能被折行（Θ(n lg n) 被拆成两行是最刺眼的排版事故） */
+  white-space: nowrap;
 }
+/* 独立公式按印刷惯例：上下各一条发丝线，不加底色框 */
 .katex-block {
   display: block;
   text-align: center;
   font-family: var(--font-serif);
-  background: var(--bg-2);
-  border: var(--bd-w) solid var(--bd-0);
-  border-radius: var(--radius-md);
-  padding: var(--sp-3);
-  margin: var(--sp-3) 0;
+  font-size: var(--fs-lg);
+  background: transparent;
+  border: 0;
+  border-top: var(--bd-w) solid var(--bd-0);
+  border-bottom: var(--bd-w) solid var(--bd-0);
+  border-radius: 0;
+  padding: var(--sp-4) var(--sp-2);
+  margin: var(--sp-5) 0;
   overflow-x: auto;
 }
 .frac {

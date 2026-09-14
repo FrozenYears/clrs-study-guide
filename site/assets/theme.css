@@ -3,8 +3,16 @@
  * 契约来源：docs/开发规范.md 第七章（7.1 语义色 / 7.2 可视化色 / 7.3 字体）
  *
  * 红线 R5：全站只允许使用本文件定义的令牌，禁止硬编码颜色/字号/圆角。
- * 因此除 7.1–7.3 要求的令牌外，本文件也补充了字号/圆角/阴影/间距令牌，
- * 供组件层（components.css）与所有下游 agent 使用。
+ *
+ * 视觉方向：**教科书编辑部风**（editorial / print）
+ *   —— 这是一本要陪着读者读下去的书，不是产品官网。所以：
+ *     1) 三种声音分工明确：书页（衬线）/ 讲义与界面（黑体）/ 代码（等宽）；
+ *        开发规范第六章那条「英文原文衬线、讲解无衬线」的惯例就是它的第一层。
+ *     2) 色彩走「纸 + 墨」：暖调纸白 + 近黑墨字 + 单一墨蓝强调色。
+ *        不用纯黑（#000），不用高饱和，不用渐变。
+ *     3) 立体感来自**发丝线与留白**，不来自阴影与圆角。圆角收到 2–6px。
+ *     4) 没有网络字体（零依赖红线），字体栈全部落在系统已装字体上：
+ *        思源宋体 / 思源黑体 / Palatino / Georgia / Cascadia Code。
  *
  * 主题策略：
  *   - 默认（:root，无 data-theme 属性）= 明色。
@@ -13,93 +21,123 @@
  *     JS（store.setThemePref）只写 'light' | 'dark' | 'auto'；'auto' 即移除属性。
  * ========================================================================== */
 
-/* ---------- 7.3 字体栈 ---------- */
+/* ---------- 7.3 字体栈 ----------
+ * 顺序有讲究：拉丁字形取前面的西文字体，中文字形自动落到后面的中文字体。
+ * 每个栈都给足跨平台回退（macOS 的 Songti SC / PingFang，Android 的 Noto）。
+ */
 :root {
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei",
-    "PingFang SC", "Hiragino Sans GB", "Source Han Sans SC", "Noto Sans CJK SC",
-    sans-serif;
-  --font-serif: Charter, "Iowan Old Style", Georgia, Cambria, "Songti SC",
-    "Source Han Serif SC", "Noto Serif CJK SC", serif;
+  /* 界面与讲义：黑体。标签、按钮、导航、小标题、表格头 */
+  --font-sans: "Source Han Sans CN", "Noto Sans SC", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", system-ui, sans-serif;
+
+  /* 书页：衬线。英文原文引述 + 书页感的正文 */
+  --font-serif: "Palatino Linotype", Palatino, "Book Antiqua", Georgia, Cambria,
+    "Songti SC", "Source Han Serif SC", "Noto Serif SC", STSong, SimSun, serif;
+
+  /* 展示：书的身份。书名、章节号、Part 编号 */
+  --font-display: "Palatino Linotype", Palatino, "Book Antiqua", Georgia,
+    "Songti SC", "Source Han Serif SC", "Noto Serif SC", STSong, SimSun, serif;
+
+  /* 代码与伪代码 */
   --font-mono: "Cascadia Code", "JetBrains Mono", "Fira Code", Consolas,
     "SFMono-Regular", "DejaVu Sans Mono", monospace;
 }
 
-/* ---------- 7.1 语义色（明色默认） ---------- */
+/* ---------- 7.1 语义色（明色 = 纸） ---------- */
 :root {
-  /* 背景层级：页面底 / 卡片 / 内嵌块 */
-  --bg-0: #f5f6f8;
-  --bg-1: #ffffff;
-  --bg-2: #eef1f5;
+  /* 背景层级：页面纸底 / 卡片与书页 / 内嵌块 */
+  --bg-0: #f1eee6;
+  --bg-1: #fbf9f4;
+  --bg-2: #e8e4d9;
 
-  /* 前景层级：主文本 / 次要 / 弱提示 */
-  --fg-0: #161b22;
-  --fg-1: #4a5562;
-  --fg-2: #8a94a3;
+  /* 前景层级：墨字 / 次级 / 弱提示 */
+  --fg-0: #1c1a17;
+  --fg-1: #4c4740;
+  --fg-2: #867f72;
 
-  /* 边框：常规 / 强调 */
-  --bd-0: #d9dee6;
-  --bd-1: #b6bfcc;
+  /* 边框：发丝线 / 强调线 */
+  --bd-0: #dcd6c8;
+  --bd-1: #c3bba9;
 
-  /* 原文 vs 讲解底色（核心视觉惯例，配合 data-kind） */
-  --c-source: #f3efe6; /* 书页米色，像翻开的原文 */
-  --c-note: #eaf2fb;   /* 冷蓝底，讲解补充 */
+  /* 原文 vs 讲解底色（核心视觉惯例，配合 data-kind）
+   * 原文 = 书页暖色；讲解 = 冷墨洗色。冷暖对比是它们最主要的区分手段，
+   * 因为两者只差一层底色，靠色相而非明度来分开，长时间阅读不刺眼。 */
+  --c-source: #f7f2e5;
+  --c-note: #e9eff5;
 
-  /* 状态色：正确 / 提示 / 错误 */
-  --c-ok: #1f9d57;
-  --c-warn: #c9821a;
-  --c-err: #d23b3b;
+  /* 状态色：正确 / 提示 / 错误（都往低饱和压，避免跳出纸墨体系） */
+  --c-ok: #2c6b4a;
+  --c-warn: #8a5a12;
+  --c-err: #a3352c;
 
-  /* 品牌强调（链接、主按钮） */
-  --accent: #2f7ff0;
-  --accent-fg: #ffffff;
+  /* 强调色：墨蓝。全站只有一个强调色。 */
+  --accent: #1d4e79;
+  --accent-fg: #fbf9f4;
 
   /* 可视化上的文字颜色（绘制标签/数字时用） */
-  --viz-fg: #ffffff;
-  --viz-track: #e4e8ee; /* 柱/条轨道背景 */
-  --viz-grid: #cfd6df;  /* 网格线 */
+  --viz-fg: #fbf9f4;
+  --viz-track: #e2ded3; /* 柱/条轨道背景 */
+  --viz-grid: #c9c3b4;  /* 网格线 */
 }
 
 /* ---------- 7.2 可视化专用色（色盲友好，灰阶也可分） ----------
  * 设计要点：不使用「纯红/纯绿」配对；各状态同时给足色相与明度差异。
  * 下游可视化 agent 只引用这些变量名，不自行定义。
  * 每个状态都建议再叠加形状/纹理/文字标签（由可视化层负责）。
+ *
+ * 明度阶梯（明色下由浅到深）：idle < compare < result < done < active < mark < violation
+ * 灰阶下仍能靠这层阶梯区分，色相只作第二重线索。
  */
 :root {
-  --viz-idle: #98a2b3;      /* 未处理 · 中性灰 */
-  --viz-compare: #e0922f;   /* 比较中 · 琥珀 */
-  --viz-active: #7c5cfc;    /* 当前操作 · 紫 */
-  --viz-done: #2f7ff0;      /* 已确定 · 蓝 */
-  --viz-result: #14b8c4;    /* 结果/路径 · 青 */
-  --viz-mark: #475569;      /* 已访问标记 · 深岩灰 */
-  --viz-violation: #e23b3b; /* 违反不变量 · 红 */
+  --viz-idle: #9a927f;      /* 未处理 · 中性暖灰 */
+  --viz-compare: #c98a2b;   /* 比较中 · 琥珀 */
+  --viz-active: #6b4ea8;    /* 当前操作 · 紫（最深，视线焦点） */
+  --viz-done: #2f6fa8;      /* 已确定 · 蓝 */
+  --viz-result: #1f8a8f;    /* 结果/路径 · 青 */
+  --viz-mark: #55503f;      /* 已访问标记 · 深岩 */
+  --viz-violation: #b33a2f; /* 违反不变量 · 砖红 */
 }
 
-/* ---------- 排版：字号刻度（禁止硬编码 px 字号） ---------- */
+/* ---------- 排版：字号刻度（禁止硬编码 px 字号） ----------
+ * 正文基准抬到 17px：中文在 16px 以下长读会挤，这是整站观感的第一根支柱。
+ * 中文行高给到 1.85（--lh-read），界面行高 1.6（--lh-base）。
+ */
 :root {
-  --fs-xs: 0.75rem;
-  --fs-sm: 0.875rem;
-  --fs-md: 1rem;
-  --fs-lg: 1.125rem;
-  --fs-xl: 1.375rem;
-  --fs-2xl: 1.75rem;
-  --fs-3xl: 2.25rem;
-  --lh-tight: 1.25;
-  --lh-base: 1.65;
+  --fs-xs: 0.8125rem;  /* 13px · 标签、页码锚点 */
+  --fs-sm: 0.9375rem;  /* 15px · 界面、次要信息 */
+  --fs-md: 1.0625rem;  /* 17px · 正文基准 */
+  --fs-lg: 1.1875rem;  /* 19px · 引导句、原文引述 */
+  --fs-xl: 1.5rem;     /* 24px · 小节标题 */
+  --fs-2xl: 2rem;      /* 32px · 章标题 */
+  --fs-3xl: 2.75rem;   /* 44px · 关卡标题 / 书名 */
+  --fs-4xl: 3.5rem;    /* 56px · 章节号、Part 编号等展示字 */
+
+  --lh-tight: 1.2;  /* 大字标题 */
+  --lh-base: 1.6;   /* 界面与列表 */
+  --lh-read: 1.85;  /* 中文长文正文 */
+
+  /* 正文行宽上限：中文约 34em 换行最舒服；超过就该分栏或加边距 */
+  --measure: 34em;
 }
 
-/* ---------- 形状：圆角（禁止硬编码 px 圆角） ---------- */
+/* ---------- 形状：圆角（禁止硬编码 px 圆角） ----------
+ * 印刷物没有 12px 大圆角。收到 2/4/6，pill 只留给状态胶囊。
+ */
 :root {
-  --radius-sm: 0.25rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
   --radius-pill: 999px;
   --bd-w: 1px;
 }
 
-/* ---------- 阴影 ---------- */
+/* ---------- 阴影 ----------
+ * 编辑部风不用漂浮阴影，改用「纸层差 + 发丝线」。阴影只用于真正浮起的层
+ * （下拉、模态），且极浅。
+ */
 :root {
-  --shadow-1: 0 1px 2px rgba(16, 27, 34, 0.08), 0 1px 3px rgba(16, 27, 34, 0.06);
-  --shadow-2: 0 4px 12px rgba(16, 27, 34, 0.12), 0 2px 4px rgba(16, 27, 34, 0.08);
+  --shadow-1: 0 1px 0 rgba(28, 26, 23, 0.04);
+  --shadow-2: 0 2px 10px rgba(28, 26, 23, 0.07), 0 1px 0 rgba(28, 26, 23, 0.04);
 }
 
 /* ---------- 间距 / 布局 ---------- */
@@ -110,94 +148,101 @@
   --sp-4: 1rem;
   --sp-5: 1.5rem;
   --sp-6: 2rem;
-  --maxw: 1140px;
-  --header-h: 3.25rem;
-  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --sp-7: 3rem;   /* 版块之间 */
+  --sp-8: 4.5rem; /* 大版块之间 */
+  --sp-9: 7rem;   /* 页首尾留白 */
+  --maxw: 1180px;
+  --maxw-read: 46rem; /* 纯阅读页的内容宽（比 --measure 宽，含边注） */
+  --header-h: 3.5rem;
+  --ease: cubic-bezier(0.2, 0.6, 0.2, 1);
   --dur: 160ms;
   --z-header: 50;
   --z-modal: 100;
 }
 
 /* =============================================================================
- * 暗色主题
+ * 暗色主题（夜读：纸墨反转，不是简单反相）
+ *   - 不用纯黑底，用带一点暖调的炭墨色，纸感仍在
+ *   - 文字用暖白而非纯白，避免暗底上刺眼的光晕
+ *   - 强调色提亮到能在深底上达到 AA
  * ========================================================================== */
 [data-theme="dark"] {
-  --bg-0: #0e131b;
-  --bg-1: #161d27;
-  --bg-2: #1f2834;
+  --bg-0: #17171a;
+  --bg-1: #1e1e22;
+  --bg-2: #27272c;
 
-  --fg-0: #e8edf4;
-  --fg-1: #aab4c2;
-  --fg-2: #6f7c8d;
+  --fg-0: #eae6dd;
+  --fg-1: #b5afa3;
+  --fg-2: #7d786d;
 
-  --bd-0: #2a3340;
-  --bd-1: #3a4655;
+  --bd-0: #33333a;
+  --bd-1: #45454e;
 
-  --c-source: #241f15; /* 暗色下仍是偏暖的书页感 */
-  --c-note: #142133;
+  --c-source: #262118; /* 暗色下仍是偏暖的书页感 */
+  --c-note: #1b2430;
 
-  --c-ok: #4cd08a;
-  --c-warn: #e6a94b;
-  --c-err: #ff6b6b;
+  --c-ok: #63c08d;
+  --c-warn: #d9a54e;
+  --c-err: #e8746a;
 
-  --accent: #5aa0ff;
-  --accent-fg: #06101f;
+  --accent: #86b4dc;
+  --accent-fg: #14161a;
 
-  --viz-fg: #0d1117;
-  --viz-track: #28313d;
-  --viz-grid: #38424f;
+  --viz-fg: #14161a;
+  --viz-track: #2c2c33;
+  --viz-grid: #3d3d45;
 
   /* 暗色下整体提亮，保证在深色底上可分辨 */
-  --viz-idle: #5b6675;
-  --viz-compare: #f3ad4e;
-  --viz-active: #a78bfa;
-  --viz-done: #5aa0ff;
-  --viz-result: #2fd4e0;
-  --viz-mark: #94a3b8;
-  --viz-violation: #ff6b6b;
+  --viz-idle: #77726a;
+  --viz-compare: #dda44e;
+  --viz-active: #a58ce0;
+  --viz-done: #6fa6d8;
+  --viz-result: #46c0c6;
+  --viz-mark: #a09a8c;
+  --viz-violation: #e8746a;
 
-  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.5), 0 1px 3px rgba(0, 0, 0, 0.4);
-  --shadow-2: 0 4px 12px rgba(0, 0, 0, 0.55), 0 2px 4px rgba(0, 0, 0, 0.4);
+  --shadow-1: 0 1px 0 rgba(0, 0, 0, 0.4);
+  --shadow-2: 0 2px 12px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(0, 0, 0, 0.35);
 }
 
 /* 未显式选择主题时，跟随系统偏好（auto = 无 data-theme 属性） */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]):not([data-theme="dark"]) {
-    --bg-0: #0e131b;
-    --bg-1: #161d27;
-    --bg-2: #1f2834;
+    --bg-0: #17171a;
+    --bg-1: #1e1e22;
+    --bg-2: #27272c;
 
-    --fg-0: #e8edf4;
-    --fg-1: #aab4c2;
-    --fg-2: #6f7c8d;
+    --fg-0: #eae6dd;
+    --fg-1: #b5afa3;
+    --fg-2: #7d786d;
 
-    --bd-0: #2a3340;
-    --bd-1: #3a4655;
+    --bd-0: #33333a;
+    --bd-1: #45454e;
 
-    --c-source: #241f15;
-    --c-note: #142133;
+    --c-source: #262118;
+    --c-note: #1b2430;
 
-    --c-ok: #4cd08a;
-    --c-warn: #e6a94b;
-    --c-err: #ff6b6b;
+    --c-ok: #63c08d;
+    --c-warn: #d9a54e;
+    --c-err: #e8746a;
 
-    --accent: #5aa0ff;
-    --accent-fg: #06101f;
+    --accent: #86b4dc;
+    --accent-fg: #14161a;
 
-    --viz-fg: #0d1117;
-    --viz-track: #28313d;
-    --viz-grid: #38424f;
+    --viz-fg: #14161a;
+    --viz-track: #2c2c33;
+    --viz-grid: #3d3d45;
 
-    --viz-idle: #5b6675;
-    --viz-compare: #f3ad4e;
-    --viz-active: #a78bfa;
-    --viz-done: #5aa0ff;
-    --viz-result: #2fd4e0;
-    --viz-mark: #94a3b8;
-    --viz-violation: #ff6b6b;
+    --viz-idle: #77726a;
+    --viz-compare: #dda44e;
+    --viz-active: #a58ce0;
+    --viz-done: #6fa6d8;
+    --viz-result: #46c0c6;
+    --viz-mark: #a09a8c;
+    --viz-violation: #e8746a;
 
-    --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.5), 0 1px 3px rgba(0, 0, 0, 0.4);
-    --shadow-2: 0 4px 12px rgba(0, 0, 0, 0.55), 0 2px 4px rgba(0, 0, 0, 0.4);
+    --shadow-1: 0 1px 0 rgba(0, 0, 0, 0.4);
+    --shadow-2: 0 2px 12px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(0, 0, 0, 0.35);
   }
 }
 
