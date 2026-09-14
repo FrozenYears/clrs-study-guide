@@ -323,6 +323,19 @@
   color: var(--fg-1);
   white-space: nowrap;
 }
+
+/* 结论一览：左列是「什么时候成立」（中文长句，要能换行），
+ * 右列是公式 + 页码出处（右对齐，读起来像参考表的右栏）。
+ * 通用 .kv 的 th 是 nowrap（变量名短），这里必须放开，否则长句会把公式挤到折行。 */
+.kv--claims th {
+  white-space: normal;
+  width: 46%;
+  font-weight: 500;
+}
+.kv--claims td {
+  text-align: right;
+  white-space: normal;
+}
 .kv td.mono {
   font-family: var(--font-mono);
 }

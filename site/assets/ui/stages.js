@@ -110,8 +110,9 @@ function cell(v) {
   return typeof v === 'string' ? katex.renderMixed(v) : v;
 }
 
-function kvTable(caption, rows) {
-  return h('table', { class: 'kv' },
+function kvTable(caption, rows, opts) {
+  // opts.cls 用来给不同用法的表挂不同的排版类（见 level.css 的 .kv--claims）
+  return h('table', { class: 'kv' + (opts && opts.cls ? ' ' + opts.cls : '') },
     caption ? h('caption', caption) : null,
     h('tbody', rows.map((r) =>
       h('tr', null,
@@ -755,7 +756,8 @@ function rAnalyze(stage) {
             ? h('span', { class: 'drill-badge' }, ' · 本站补充推导')
             : null
         ),
-      ])
+      ]),
+      { cls: 'kv--claims' }
     ));
   }
 
