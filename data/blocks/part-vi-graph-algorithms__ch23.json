@@ -1013,7 +1013,7 @@
    "section_title": "23.1 Shortest paths and matrix multiplication",
    "printed_page": 655,
    "pdf_page": 676,
-   "text": "23.1-7 Suppose that you also want to compute the vertices on shortest paths in the algorithms of this section. Show how to compute the pre decessor matrix … from the completed matrix L of shortest-path weights in O(n 3 ) time."
+   "text": "23.1-7 Suppose that you also want to compute the vertices on shortest paths in the algorithms of this section. Show how to compute the predecessor matrix … from the completed matrix L of shortest-path weights in O(n 3 ) time."
   },
   {
    "type": "exercise",
@@ -1218,7 +1218,7 @@
    "section_title": "23.2 The Floyd-Warshall algorithm",
    "printed_page": 657,
    "pdf_page": 678,
-   "text": "Because for any path, all intermediate vertices bel ong to the set f1,2,…,n g, the matrix = (n) = ã d (n) ij ä gives the final answer: d (n) ij = i(i,j) for all i,j 2 V ."
+   "text": "Because for any path, all intermediate vertices belong to the set f1,2,…,n g, the matrix = (n) = ã d (n) ij ä gives the final answer: d (n) ij = i(i,j) for all i,j 2 V ."
   },
   {
    "type": "body",
@@ -1977,7 +1977,7 @@
    "section_title": "23.2 The Floyd-Warshall algorithm",
    "printed_page": 659,
    "pdf_page": 680,
-   "text": "There is another, similar way to compute the transi tive closure of G in Θ(n 3 ) time, which can save time and space in practice. Th is method substitutes the logical operations _ (logical OR) and ^ (logical AND) for the arithmetic operations min and C in the Floyd-Warshall algorithm. For i,j,k = 1,2,…,n , define t (k) ij to be 1 if there exists a path in graph G from vertex i to vertex j with all intermediate vertices in the set f1,2,…,k g, and 0 otherwise. To construct the transitive closure G − = .V,E − /, put edge (i,j) into E − if and only if t (n) ij = 1. A recursive definition of t (k) ij , analogous to recurrence (23.6), is 1 2"
+   "text": "There is another, similar way to compute the transitive closure of G in Θ(n 3 ) time, which can save time and space in practice. Th is method substitutes the logical operations _ (logical OR) and ^ (logical AND) for the arithmetic operations min and C in the Floyd-Warshall algorithm. For i,j,k = 1,2,…,n , define t (k) ij to be 1 if there exists a path in graph G from vertex i to vertex j with all intermediate vertices in the set f1,2,…,k g, and 0 otherwise. To construct the transitive closure G − = .V,E − /, put edge (i,j) into E − if and only if t (n) ij = 1. A recursive definition of t (k) ij , analogous to recurrence (23.6), is 1 2"
   },
   {
    "type": "body",
@@ -2320,7 +2320,7 @@
    "section_title": "23.2 The Floyd-Warshall algorithm",
    "printed_page": 661,
    "pdf_page": 682,
-   "text": "23.2-4 As it appears on page 657, the Floyd-Warshall algorithm requires Θ(n 3 ) space, since it creates d (k) ij for i,j,k = 1,2,…,n . Show that the procedure FLOYD- WARSHALL 0 , which simply drops all the superscripts, is corre ct, and thus only"
+   "text": "23.2-4 As it appears on page 657, the Floyd-Warshall algorithm requires Θ(n 3 ) space, since it creates d (k) ij for i,j,k = 1,2,…,n . Show that the procedure FLOYD- WARSHALL 0 , which simply drops all the superscripts, is correct, and thus only"
   },
   {
    "type": "body",
@@ -2410,7 +2410,7 @@
    "section_title": "23.2 The Floyd-Warshall algorithm",
    "printed_page": 662,
    "pdf_page": 683,
-   "text": "23.2-9 Suppose that it takes f. |V| ; |E|/ time to compute the transitive closure of a directed acyclic graph, where f is a monotonically increasing function of both |V| and |E|. Show that the time to compute the transitive clos ure G − = .V,E − / of a general directed graph G = (V,E) is then f. |V| ; |E|/ C O.V + E − /."
+   "text": "23.2-9 Suppose that it takes f. |V| ; |E|/ time to compute the transitive closure of a directed acyclic graph, where f is a monotonically increasing function of both |V| and |E|. Show that the time to compute the transitive closure G − = .V,E − / of a general directed graph G = (V,E) is then f. |V| ; |E|/ C O.V + E − /."
   },
   {
    "type": "body",
@@ -2968,7 +2968,7 @@
    "section_title": "23.3 Johnson’s algorithm for sparse graphs",
    "printed_page": 668,
    "pdf_page": 689,
-   "text": "Ω -dense graphs without using as complicated a data structure. a. What are the asymptotic running times for the opera tions INSERT , EXTRACT- MIN, and DECREASE-KEY, as a function of d and the number n of elements in a d -ary min-heap? What are these running times if you choose d = Θ.n ˛ / for some constant 0<˛ ≤ 1? Compare these running times to the amortized costs of these operations for a Fibonacci heap. b. Show how to compute shortest paths from a single source on an Ω -dense directed graph G = (V,E) with no negative-weight edges in O(E) time. (Hint: Pick d as a function of Ω .) c. Show how to solve the all-pairs shortest-paths problem on an Ω -dense directed graph G = (V,E) with no negative-weight edges in O(VE) time. d. Show how to solve the all-pairs shortest-paths problem in O(VE) time on an"
+   "text": "Ω -dense graphs without using as complicated a data structure. a. What are the asymptotic running times for the operations INSERT , EXTRACT- MIN, and DECREASE-KEY, as a function of d and the number n of elements in a d -ary min-heap? What are these running times if you choose d = Θ.n ˛ / for some constant 0<˛ ≤ 1? Compare these running times to the amortized costs of these operations for a Fibonacci heap. b. Show how to compute shortest paths from a single source on an Ω -dense directed graph G = (V,E) with no negative-weight edges in O(E) time. (Hint: Pick d as a function of Ω .) c. Show how to solve the all-pairs shortest-paths problem on an Ω -dense directed graph G = (V,E) with no negative-weight edges in O(VE) time. d. Show how to solve the all-pairs shortest-paths problem in O(VE) time on an"
   },
   {
    "type": "body",
@@ -3049,7 +3049,7 @@
    "section_title": "23.3 Johnson’s algorithm for sparse graphs",
    "printed_page": 669,
    "pdf_page": 690,
-   "text": "Baswana, Hariharan, and Sen [37] examined decremental algorithms, which allow a sequence of intermixed edge deletions and queries, for maintaining all-pairs shortest paths and transitive-closure information. When a path exists, their randomized transitive-closure algorithm can fail to report it with probability 1/n c for an arbitrary c > 0. The query times are O(1) with high probability. For transitive closure, the amortized time for each upd ate is O(V 4/3 lg 1/3 V) . By comparison, Problem 23-1, in which edges are inserted, asks for an incremental algorithm. For all-pairs shortest paths, the update times depend on the queries."
+   "text": "Baswana, Hariharan, and Sen [37] examined decremental algorithms, which allow a sequence of intermixed edge deletions and queries, for maintaining all-pairs shortest paths and transitive-closure information. When a path exists, their randomized transitive-closure algorithm can fail to report it with probability 1/n c for an arbitrary c > 0. The query times are O(1) with high probability. For transitive closure, the amortized time for each update is O(V 4/3 lg 1/3 V) . By comparison, Problem 23-1, in which edges are inserted, asks for an incremental algorithm. For all-pairs shortest paths, the update times depend on the queries."
   },
   {
    "type": "body",
@@ -3103,7 +3103,7 @@
    "section_title": "23.3 Johnson’s algorithm for sparse graphs",
    "printed_page": 670,
    "pdf_page": 691,
-   "text": "Just as you can model a road map as a directed graph in order to find the shortest path from one point to another, you can also interp ret a directed graph as a <flow network= and use it to answer questions about material flows. Imagine a material coursing through a system from a source, where the material is produced, to a sink, where it is consumed. The source produces t he material at some steady rate, and the sink consumes the material at the same rate. The \"flow\" of the material at any point in the system is intuitively the rate at which the material moves."
+   "text": "Just as you can model a road map as a directed graph in order to find the shortest path from one point to another, you can also interpret a directed graph as a <flow network= and use it to answer questions about material flows. Imagine a material coursing through a system from a source, where the material is produced, to a sink, where it is consumed. The source produces t he material at some steady rate, and the sink consumes the material at the same rate. The \"flow\" of the material at any point in the system is intuitively the rate at which the material moves."
   },
   {
    "type": "body",
@@ -3121,7 +3121,7 @@
    "section_title": "23.3 Johnson’s algorithm for sparse graphs",
    "printed_page": 670,
    "pdf_page": 691,
-   "text": "You can think of each directed edge in a flow network as a conduit for the material. Each conduit has a stated capacity, given as a maximum rate at which the material can flow through the conduit, such as 200 gallons of liquid per hour through a pipe or 20 amperes of electrical current through a wire. Verti ces are conduit junctions, and other than the source and sink, material flows through the vertices without collecting in them. In other words, the rate at which material enters a vertex must equal the rate at which it leaves the vert ex. We call t his property <flow conservation,= and it is equivalent to Kirchhoff9s current law when the material is electrical current."
+   "text": "You can think of each directed edge in a flow network as a conduit for the material. Each conduit has a stated capacity, given as a maximum rate at which the material can flow through the conduit, such as 200 gallons of liquid per hour through a pipe or 20 amperes of electrical current through a wire. Verti ces are conduit junctions, and other than the source and sink, material flows through the vertices without collecting in them. In other words, the rate at which material enters a vertex must equal the rate at which it leaves the vertex. We call t his property <flow conservation,= and it is equivalent to Kirchhoff9s current law when the material is electrical current."
   },
   {
    "type": "body",

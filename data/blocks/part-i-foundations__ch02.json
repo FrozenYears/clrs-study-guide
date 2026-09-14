@@ -138,7 +138,7 @@
    "section_title": "2.1 Insertion sort",
    "printed_page": 18,
    "pdf_page": 39,
-   "text": "(Apologies if we’ve omitted your favorite programming language. We can’t list them all.) If you have been introduced to any of these languages, you should have little trouble understanding algorithms \"coded\" in pseudocode. What separates pseudocode from real code is that in pseudocode, we employ whatever expressive method is most clear and concise to specify a given algorithm. Sometimes the clearest method is English, so do not be surpri sed if you come across an English phrase or sentence embedded within a section that looks more like real code."
+   "text": "(Apologies if we’ve omitted your favorite programming language. We can’t list them all.) If you have been introduced to any of these languages, you should have little trouble understanding algorithms \"coded\" in pseudocode. What separates pseudocode from real code is that in pseudocode, we employ whatever expressive method is most clear and concise to specify a given algorithm. Sometimes the clearest method is English, so do not be surprised if you come across an English phrase or sentence embedded within a section that looks more like real code."
   },
   {
    "type": "body",
@@ -165,7 +165,7 @@
    "section_title": "2.1 Insertion sort",
    "printed_page": 18,
    "pdf_page": 39,
-   "text": "The pseudocode for insertion sort is given as the procedure INSERTION-SORT on the facing page. It takes two parameters: an arr ay A containing the values to be sorted and the number n of values of sort. The values occupy positions A[1] through A[n] of the array, which we denote by A[1 : n]. When the INSERTION- SORT procedure is finished, array A[1 : n] contains the original values, but in sorted order."
+   "text": "The pseudocode for insertion sort is given as the procedure INSERTION-SORT on the facing page. It takes two parameters: an array A containing the values to be sorted and the number n of values of sort. The values occupy positions A[1] through A[n] of the array, which we denote by A[1 : n]. When the INSERTION- SORT procedure is finished, array A[1 : n] contains the original values, but in sorted order."
   },
   {
    "type": "body",
@@ -480,7 +480,7 @@
    "section_title": "2.1 Insertion sort",
    "printed_page": 21,
    "pdf_page": 42,
-   "text": "Initialization: We start by showing that the loop invariant holds before the first loop iteration, when i = 2. 2 The subarray A[1 : i − 1] consists of just the single element A[1], which is in fact the original element in A[1]. Moreover, this subarray is sorted (after all, how could a sub array with just one value not be sorted?), which shows that the loop invariant holds prior to the first iteration of the loop."
+   "text": "Initialization: We start by showing that the loop invariant holds before the first loop iteration, when i = 2. 2 The subarray A[1 : i − 1] consists of just the single element A[1], which is in fact the original element in A[1]. Moreover, this subarray is sorted (after all, how could a subarray with just one value not be sorted?), which shows that the loop invariant holds prior to the first iteration of the loop."
   },
   {
    "type": "body",
@@ -507,7 +507,7 @@
    "section_title": "2.1 Insertion sort",
    "printed_page": 21,
    "pdf_page": 42,
-   "text": "Termination: Finally, we examine loop termination. The loop vari able i starts at 2 and increases by 1 in each iteration. Once i ’s value exceeds n in line 1, the loop terminates. That is, the loop terminates once i equals n + 1. Substituting n + 1 for i in the wording of the loop invariant yields that the subarray A[1 : n] consists of the elements originally in A[1 : n], but in sorted order. Hence, the algorithm is correct."
+   "text": "Termination: Finally, we examine loop termination. The loop variable i starts at 2 and increases by 1 in each iteration. Once i ’s value exceeds n in line 1, the loop terminates. That is, the loop terminates once i equals n + 1. Substituting n + 1 for i in the wording of the loop invariant yields that the subarray A[1 : n] consists of the elements originally in A[1 : n], but in sorted order. Hence, the algorithm is correct."
   },
   {
    "type": "body",
@@ -516,7 +516,7 @@
    "section_title": "2.1 Insertion sort",
    "printed_page": 21,
    "pdf_page": 42,
-   "text": "This method of loop invariants is used to show corr ectness in various places throughout this book."
+   "text": "This method of loop invariants is used to show correctness in various places throughout this book."
   },
   {
    "type": "body",
@@ -588,7 +588,7 @@
    "section_title": "2.1 Insertion sort",
    "printed_page": 22,
    "pdf_page": 43,
-   "text": "Although many programming languages enforce 0-origin indexing for arrays (0 is the smallest valid index), we choose whichever i ndexing scheme is clearest for human readers to understand. Because people usu ally start counting at 1, not 0, most—but not all—of the arrays in this book use 1-origin indexing. To be"
+   "text": "Although many programming languages enforce 0-origin indexing for arrays (0 is the smallest valid index), we choose whichever i ndexing scheme is clearest for human readers to understand. Because people usually start counting at 1, not 0, most—but not all—of the arrays in this book use 1-origin indexing. To be"
   },
   {
    "type": "body",
@@ -651,7 +651,7 @@
    "section_title": "2.1 Insertion sort",
    "printed_page": 23,
    "pdf_page": 44,
-   "text": "The notation \":\" denotes a subarray. Thus, A[i : j] indicates the subarray of A consisting of the elements A[i],A[i + 1],…,A[j] . 7 We also use this notation to indicate the bounds of an array, as we did earli er when discussing the array"
+   "text": "The notation \":\" denotes a subarray. Thus, A[i : j] indicates the subarray of A consisting of the elements A[i],A[i + 1],…,A[j] . 7 We also use this notation to indicate the bounds of an array, as we did earlier when discussing the array"
   },
   {
    "type": "body",
@@ -705,7 +705,7 @@
    "section_title": "2.1 Insertion sort",
    "printed_page": 23,
    "pdf_page": 44,
-   "text": "• We pass parameters to a procedure by value: the called procedure receives its own copy of the parameters, and if it assigns a value to a parameter, the change is not seen by the calling procedure. When objects are pas sed, the pointer to the data representing the object is copied, but the object’s attributes are not. For example, if x is a parameter of a called procedure, the assignment x = y within 7 If you’re used to programming in Python, bear in mind that in this book, the subarray A[i : j] includes the element A[j] . In Python, the last element of A[i : j] is A[j − 1]. Python allows negative indices, which count from the back end of the list. This book does not use negative array indices. the called procedure is not visible to the calling procedure. The assignment x: f = 3, however, is visible if the calling procedure has a pointer to the same object as x . Similarly, arrays are passed by pointer, so that a pointer to the array is passed, rather than the entire array, and changes to individual array elements are visible to the calling procedure. Again, most c ontemporary programming languages work this way."
+   "text": "• We pass parameters to a procedure by value: the called procedure receives its own copy of the parameters, and if it assigns a value to a parameter, the change is not seen by the calling procedure. When objects are passed, the pointer to the data representing the object is copied, but the object’s attributes are not. For example, if x is a parameter of a called procedure, the assignment x = y within 7 If you’re used to programming in Python, bear in mind that in this book, the subarray A[i : j] includes the element A[j] . In Python, the last element of A[i : j] is A[j − 1]. Python allows negative indices, which count from the back end of the list. This book does not use negative array indices. the called procedure is not visible to the calling procedure. The assignment x: f = 3, however, is visible if the calling procedure has a pointer to the same object as x . Similarly, arrays are passed by pointer, so that a pointer to the array is passed, rather than the entire array, and changes to individual array elements are visible to the calling procedure. Again, most c ontemporary programming languages work this way."
   },
   {
    "type": "body",
@@ -750,7 +750,7 @@
    "section_title": "2.1 Insertion sort",
    "printed_page": 24,
    "pdf_page": 45,
-   "text": "2.1-1 Using Figure 2.2 as a model, illustrate the operati on of INSERTION-SORT on an array initially containing the sequence ⟨31,41,59,26,41,58⟩."
+   "text": "2.1-1 Using Figure 2.2 as a model, illustrate the operation of INSERTION-SORT on an array initially containing the sequence ⟨31,41,59,26,41,58⟩."
   },
   {
    "type": "exercise",
@@ -869,7 +869,7 @@
    "section_title": "2.2 Analyzing algorithms",
    "printed_page": 25,
    "pdf_page": 46,
-   "text": "Analyzing an algorithm has come to mean predicting the resour ces that the algorithm requires. You might consider resources such a s memory, communication bandwidth, or energy consumption. Most often, howev er, you’ll want to measure computational time. If you analyze several candidat e algorithms for a problem, you can identify the most efficient one. There might be more than just one viable candidate, but you can often rule out several inferior algorithms in the process."
+   "text": "Analyzing an algorithm has come to mean predicting the resources that the algorithm requires. You might consider resources such a s memory, communication bandwidth, or energy consumption. Most often, however, you’ll want to measure computational time. If you analyze several candidat e algorithms for a problem, you can identify the most efficient one. There might be more than just one viable candidate, but you can often rule out several inferior algorithms in the process."
   },
   {
    "type": "body",
@@ -878,7 +878,7 @@
    "section_title": "2.2 Analyzing algorithms",
    "printed_page": 26,
    "pdf_page": 47,
-   "text": "Before you can analyze an algorithm, you need a mod el of the technology that it runs on, including the resources of that technol ogy and a way to express their costs. Most of this book assumes a generic one-processor, random-access machine (RAM) model of computation as the implementation technolo gy, with the understanding that algorithms are implemented as computer programs. In the RAM model, instructions execute one after another, with no concurrent operations. The"
+   "text": "Before you can analyze an algorithm, you need a model of the technology that it runs on, including the resources of that technology and a way to express their costs. Most of this book assumes a generic one-processor, random-access machine (RAM) model of computation as the implementation technology, with the understanding that algorithms are implemented as computer programs. In the RAM model, instructions execute one after another, with no concurrent operations. The"
   },
   {
    "type": "body",
@@ -905,7 +905,7 @@
    "section_title": "2.2 Analyzing algorithms",
    "printed_page": 26,
    "pdf_page": 47,
-   "text": "For example, what if a RAM had an instruction that sorts? Then you could sort in just one step. Such a RAM would be unrealistic, since such instructions do not appear in real computers. Our guide, therefore, is how real computers are designed. The RAM model contains instructions commonly found in real computers: arithmetic (such as add, subtract, multiply, divide , remainder, floor, ceiling), data movement (load, store, copy), and control (conditio nal and unconditional branch, subroutine call and return)."
+   "text": "For example, what if a RAM had an instruction that sorts? Then you could sort in just one step. Such a RAM would be unrealistic, since such instructions do not appear in real computers. Our guide, therefore, is how real computers are designed. The RAM model contains instructions commonly found in real computers: arithmetic (such as add, subtract, multiply, divide , remainder, floor, ceiling), data movement (load, store, copy), and control (conditional and unconditional branch, subroutine call and return)."
   },
   {
    "type": "body",
@@ -923,7 +923,7 @@
    "section_title": "2.2 Analyzing algorithms",
    "printed_page": 26,
    "pdf_page": 47,
-   "text": "9 We assume that each element of a given array occupi es the same number of bytes and that the elements of a given array are stored in contiguous memory locations. For example, if array A[1 : n] starts at memory address 1000 and each element occupies four bytes, then element A[i] is at address"
+   "text": "9 We assume that each element of a given array occupies the same number of bytes and that the elements of a given array are stored in contiguous memory locations. For example, if array A[1 : n] starts at memory address 1000 and each element occupies four bytes, then element A[i] is at address"
   },
   {
    "type": "body",
@@ -941,7 +941,7 @@
    "section_title": "2.2 Analyzing algorithms",
    "printed_page": 27,
    "pdf_page": 48,
-   "text": "Real computers contain instructions not listed above, and such instructions represent a gray area in the RAM model. For example, i s exponentiation a constanttime instruction? In the general case, no: to compute x n when x and n are general integers typically takes time logarithmic in n (see equation (31.34) on page 934), and you must worry about whether the result fits into a computer word. If n is an exact power of 2, however, exponentiation can usually be viewed as a constant-time operation. Many computers have a \"shift left\" instr uction, which in constant time shifts the bits of an integer by n positions to the left. In most computers, shifting the bits of an integer by 1 position to the left is equivalent to multiplying b y 2, so that shifting the bits by n positions to the left is equivalent to multiplying by 2 n ."
+   "text": "Real computers contain instructions not listed above, and such instructions represent a gray area in the RAM model. For example, i s exponentiation a constanttime instruction? In the general case, no: to compute x n when x and n are general integers typically takes time logarithmic in n (see equation (31.34) on page 934), and you must worry about whether the result fits into a computer word. If n is an exact power of 2, however, exponentiation can usually be viewed as a constant-time operation. Many computers have a \"shift left\" instruction, which in constant time shifts the bits of an integer by n positions to the left. In most computers, shifting the bits of an integer by 1 position to the left is equivalent to multiplying b y 2, so that shifting the bits by n positions to the left is equivalent to multiplying by 2 n ."
   },
   {
    "type": "body",
@@ -959,7 +959,7 @@
    "section_title": "2.2 Analyzing algorithms",
    "printed_page": 27,
    "pdf_page": 48,
-   "text": "The RAM model does not account for the memory hiera rchy that is common in contemporary computers. It models neither caches nor virtual memory. Several other computational models attempt to account for memory-hierarchy effects, which are sometimes significant in real programs on real machines. Section 11.5 and a handful of problems in this book examine memory-hierarchy effects, but for the most part, the analyses in this book do not consider them. Models that include the memory hierarchy are quite a bit more complex t han the RAM model, and so they can be difficult to work with. Moreover, RAM-model analyses are usually excellent predictors of performance on actual machines."
+   "text": "The RAM model does not account for the memory hierarchy that is common in contemporary computers. It models neither caches nor virtual memory. Several other computational models attempt to account for memory-hierarchy effects, which are sometimes significant in real programs on real machines. Section 11.5 and a handful of problems in this book examine memory-hierarchy effects, but for the most part, the analyses in this book do not consider them. Models that include the memory hierarchy are quite a bit more complex t han the RAM model, and so they can be difficult to work with. Moreover, RAM-model analyses are usually excellent predictors of performance on actual machines."
   },
   {
    "type": "body",
@@ -1031,7 +1031,7 @@
    "section_title": "2.2 Analyzing algorithms",
    "printed_page": 29,
    "pdf_page": 50,
-   "text": "The running time of an algorithm on a particular input is the number of in- structions and data accesses executed. How we accou nt for these costs should be independent of any particular computer, but within the framework of the RAM model. For the moment, let us adopt the following v iew. A constant amount of time is required to execute each line of our pseudocode. One line might take more or less time than another line, but we’ll assume that each execution of the kth line takes c k time, where c k is a constant. This viewpoint is in keeping with th e RAM model, and it also reflects how the pseudocode would be implemented on most actual computers. 10"
+   "text": "The running time of an algorithm on a particular input is the number of in- structions and data accesses executed. How we account for these costs should be independent of any particular computer, but within the framework of the RAM model. For the moment, let us adopt the following v iew. A constant amount of time is required to execute each line of our pseudocode. One line might take more or less time than another line, but we’ll assume that each execution of the kth line takes c k time, where c k is a constant. This viewpoint is in keeping with th e RAM model, and it also reflects how the pseudocode would be implemented on most actual computers. 10"
   },
   {
    "type": "body",
@@ -1076,7 +1076,7 @@
    "section_title": "2.2 Analyzing algorithms",
    "printed_page": 29,
    "pdf_page": 50,
-   "text": "10 There are some subtleties here. Computational steps that we specify in English are often variants of a procedure that requires more than just a const ant amount of time. For example, in the RADIX- SORT procedure on page 213, one line reads \"use a stable sort to sort array A on digit i ,\" which, as we shall see, takes more than a constant amount of time. Also, although a statement that calls a subroutine takes only constant time, the subroutine itself, once invoked, may take more. That is, we separate the process of calling the subroutine—passing parameters to it, etc.4from the process of executing the subroutine."
+   "text": "10 There are some subtleties here. Computational steps that we specify in English are often variants of a procedure that requires more than just a constant amount of time. For example, in the RADIX- SORT procedure on page 213, one line reads \"use a stable sort to sort array A on digit i ,\" which, as we shall see, takes more than a constant amount of time. Also, although a statement that calls a subroutine takes only constant time, the subroutine itself, once invoked, may take more. That is, we separate the process of calling the subroutine—passing parameters to it, etc.4from the process of executing the subroutine."
   },
   {
    "type": "footnote",
@@ -1532,7 +1532,7 @@
    "section_title": "2.2 Analyzing algorithms",
    "printed_page": 33,
    "pdf_page": 54,
-   "text": "2.2-2 Consider sorting n numbers stored in array A[1 : n] by first finding the smallest element of A[1 : n] and exchanging it with the element in A[1]. Then find the smallest element of A[2 : n], and exchange it with A[2]. Then find the smallest element of A[3 : n], and exchange it with A[3]. Continue in this manner for the first n − 1 elements of A. Write pseudocode for this algorithm, which is kno wn as selection sort. What loop invariant does this algorithm maintain? Why does it need to run for only the first n − 1 elements, rather than for all n elements? Give the worst-case running time of selection sort in Θ-notation. Is the best-case running time any better?"
+   "text": "2.2-2 Consider sorting n numbers stored in array A[1 : n] by first finding the smallest element of A[1 : n] and exchanging it with the element in A[1]. Then find the smallest element of A[2 : n], and exchange it with A[2]. Then find the smallest element of A[3 : n], and exchange it with A[3]. Continue in this manner for the first n − 1 elements of A. Write pseudocode for this algorithm, which is known as selection sort. What loop invariant does this algorithm maintain? Why does it need to run for only the first n − 1 elements, rather than for all n elements? Give the worst-case running time of selection sort in Θ-notation. Is the best-case running time any better?"
   },
   {
    "type": "exercise",
@@ -1712,7 +1712,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 35,
    "pdf_page": 56,
-   "text": "Let’s think about how long it takes to merge two sorted piles of cards. Each basic step takes constant time, since you are comparing just the two top cards. If the two sorted piles that you start with each have n/2 cards, then the number of basic steps is at least n/2 (since in whichever pile was emptied, every card wa s found to be smaller than some card from the other pile) and at most n (actually, at most n − 1, since after n − 1 basic steps, one of the piles must be empty). With each basic step taking constant time and the total number of basic steps being between n/2 and n, we can say that merging takes time roughly proporti onal to n. That is, merging takes Θ(n) time."
+   "text": "Let’s think about how long it takes to merge two sorted piles of cards. Each basic step takes constant time, since you are comparing just the two top cards. If the two sorted piles that you start with each have n/2 cards, then the number of basic steps is at least n/2 (since in whichever pile was emptied, every card wa s found to be smaller than some card from the other pile) and at most n (actually, at most n − 1, since after n − 1 basic steps, one of the piles must be empty). With each basic step taking constant time and the total number of basic steps being between n/2 and n, we can say that merging takes time roughly proportional to n. That is, merging takes Θ(n) time."
   },
   {
    "type": "body",
@@ -1721,7 +1721,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 35,
    "pdf_page": 56,
-   "text": "In detail, the MERGE procedure works as follows. It copies the two subar rays"
+   "text": "In detail, the MERGE procedure works as follows. It copies the two subarrays"
   },
   {
    "type": "body",
@@ -2157,7 +2157,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 38,
    "pdf_page": 59,
-   "text": "To see that the MERGE procedure runs in Θ(n) time, where n = r − p + 1, 13 observe that each of lines 1–3 and 8–10 takes constant time, and the for loops of lines 4–7 take Θ(n L + n R ) = Θ(n) time. 14 To account for the three while loops of lines 12–18, 20–23, and 24–27, observe that each iteration of these loops copies exactly one value from L or R back into A and that every value is copied back into A exactly once. Therefore, these three loops together make a total of n iterations. Since each iteration of each of the thr ee loops takes constant time, the total time spent in these three loops is Θ(n)."
+   "text": "To see that the MERGE procedure runs in Θ(n) time, where n = r − p + 1, 13 observe that each of lines 1–3 and 8–10 takes constant time, and the for loops of lines 4–7 take Θ(n L + n R ) = Θ(n) time. 14 To account for the three while loops of lines 12–18, 20–23, and 24–27, observe that each iteration of these loops copies exactly one value from L or R back into A and that every value is copied back into A exactly once. Therefore, these three loops together make a total of n iterations. Since each iteration of each of the three loops takes constant time, the total time spent in these three loops is Θ(n)."
   },
   {
    "type": "body",
@@ -2252,7 +2252,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 39,
    "pdf_page": 60,
-   "text": "MERGE-SORT(A,p,r) rays to form sorted subarrays of length 2, merges those to form sorted subarrays of length 4, and merges those to form the final sorted subarray of length 8. If n is not an exact power of 2, then some divide steps create subarrays whose len gths differ by 1. (For example, when dividing a subarray of length 7, one subarray has length 4 and the other has length 3.) Regardless of the lengths of the two subarrays being merged, the time to merge a total of n items is Θ(n)."
+   "text": "MERGE-SORT(A,p,r) rays to form sorted subarrays of length 2, merges those to form sorted subarrays of length 4, and merges those to form the final sorted subarray of length 8. If n is not an exact power of 2, then some divide steps create subarrays whose lengths differ by 1. (For example, when dividing a subarray of length 7, one subarray has length 4 and the other has length 3.) Regardless of the lengths of the two subarrays being merged, the time to merge a total of n items is Θ(n)."
   },
   {
    "type": "body",
@@ -2594,7 +2594,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 41,
    "pdf_page": 62,
-   "text": "Divide: The divide step just computes the middle of the sub array, which takes constant time. Thus, D(n) = Θ(1)."
+   "text": "Divide: The divide step just computes the middle of the subarray, which takes constant time. Thus, D(n) = Θ(1)."
   },
   {
    "type": "body",
@@ -2702,7 +2702,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 42,
    "pdf_page": 63,
-   "text": "expanding T(n/2) . The cost for dividing and combining at each of th e two nodes at the second level of recursion is c 2 n/2. Continue to expand each node in the tree by breaking it into its constituent parts as determ ined by the recurrence, until the problem sizes get down to 1, each with a cost of c 1 . Part (d) shows the resulting recursion tree."
+   "text": "expanding T(n/2) . The cost for dividing and combining at each of th e two nodes at the second level of recursion is c 2 n/2. Continue to expand each node in the tree by breaking it into its constituent parts as determined by the recurrence, until the problem sizes get down to 1, each with a cost of c 1 . Part (d) shows the resulting recursion tree."
   },
   {
    "type": "body",
@@ -2909,7 +2909,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 44,
    "pdf_page": 65,
-   "text": "2.3-6 Referring back to the searching problem (see Exercise 2.1-4), observe that if the subarray being searched is already sorted, the sear ching algorithm can check the midpoint of the subarray against v and eliminate half of the subarray from further consideration. The binary search algorithm repeats this procedure, halving the size of the remaining portion of the subarray each time. Write pseudocode, either iterative or recursive, for binary search. Argue that the worst-case running time of binary search is Θ(lg n)."
+   "text": "2.3-6 Referring back to the searching problem (see Exercise 2.1-4), observe that if the subarray being searched is already sorted, the searching algorithm can check the midpoint of the subarray against v and eliminate half of the subarray from further consideration. The binary search algorithm repeats this procedure, halving the size of the remaining portion of the subarray each time. Write pseudocode, either iterative or recursive, for binary search. Argue that the worst-case running time of binary search is Θ(lg n)."
   },
   {
    "type": "exercise",
@@ -3028,7 +3028,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 46,
    "pdf_page": 67,
-   "text": "The next two parts prove inequality (2.5). b. State precisely a loop invariant for the for loop in lines 2–4, and prove that this loop invariant holds. Your proof should use the str ucture of the loop-invariant proof presented in this chapter. c. Using the termination condition of the loop invaria nt proved in part (b), state a loop invariant for the for loop in lines 1–4 that allows you to prove inequality (2.5). Your proof should use the structure of the loop-invariant proof pre- sented in this chapter. d. What is the worst-case running time of BUBBLESORT ? How does it compare with the running time of INSERTION-SORT?"
+   "text": "The next two parts prove inequality (2.5). b. State precisely a loop invariant for the for loop in lines 2–4, and prove that this loop invariant holds. Your proof should use the structure of the loop-invariant proof presented in this chapter. c. Using the termination condition of the loop invariant proved in part (b), state a loop invariant for the for loop in lines 1–4 that allows you to prove inequality (2.5). Your proof should use the structure of the loop-invariant proof pre- sented in this chapter. d. What is the worst-case running time of BUBBLESORT ? How does it compare with the running time of INSERTION-SORT?"
   },
   {
    "type": "problem",
@@ -3201,7 +3201,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 48,
    "pdf_page": 69,
-   "text": "In 1968, Knuth published the first of three volumes with the general title The Art of Computer Programming [259, 260, 261]. The first volume ushered in the modern study of computer algorithms with a focus on the an alysis of running time. The full series remains an engaging and worthwhile refe rence for many of the topics presented here. According to Knuth, the word \"algorithm\" is derived from the name \"al-Khowˆ arizmˆ i,\" a ninth-century Persian mathematician."
+   "text": "In 1968, Knuth published the first of three volumes with the general title The Art of Computer Programming [259, 260, 261]. The first volume ushered in the modern study of computer algorithms with a focus on the an alysis of running time. The full series remains an engaging and worthwhile reference for many of the topics presented here. According to Knuth, the word \"algorithm\" is derived from the name \"al-Khowˆ arizmˆ i,\" a ninth-century Persian mathematician."
   },
   {
    "type": "body",
@@ -3273,7 +3273,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 49,
    "pdf_page": 70,
-   "text": "When we look at input sizes large enough to make re levant only the order of growth of the running time, we are studying the asymptotic efficiency of algorithms. That is, we are concerned with how the runn ing time of an algorithm increases with the size of the input in the limit, as the size of the input increases without bound. Usually, an algorithm that is asympt otically more efficient is the best choice for all but very small inputs."
+   "text": "When we look at input sizes large enough to make re levant only the order of growth of the running time, we are studying the asymptotic efficiency of algorithms. That is, we are concerned with how the running time of an algorithm increases with the size of the input in the limit, as the size of the input increases without bound. Usually, an algorithm that is asymptotically more efficient is the best choice for all but very small inputs."
   },
   {
    "type": "body",
@@ -3282,7 +3282,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 49,
    "pdf_page": 70,
-   "text": "This chapter gives several standard methods for simplifying the asymptotic analysis of algorithms. The next section presents informally the three most commonly used types of \"asymptotic notation,\" of which we ha ve already seen an example in Θ-notation. It also shows one way to use these asymptotic notations to reason about the worst-case running time of insertion sort. Then we look at asymptotic notations more formally and present several notational con ventions used throughout this book. The last section reviews the behavio r of functions that commonly arise when analyzing algorithms."
+   "text": "This chapter gives several standard methods for simplifying the asymptotic analysis of algorithms. The next section presents informally the three most commonly used types of \"asymptotic notation,\" of which we ha ve already seen an example in Θ-notation. It also shows one way to use these asymptotic notations to reason about the worst-case running time of insertion sort. Then we look at asymptotic notations more formally and present several notational conventions used throughout this book. The last section reviews the behavio r of functions that commonly arise when analyzing algorithms."
   }
  ]
 }

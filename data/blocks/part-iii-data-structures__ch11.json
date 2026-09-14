@@ -34,7 +34,7 @@
    "section_title": "11.1 Direct-address tables",
    "printed_page": 273,
    "pdf_page": 294,
-   "text": "Direct addressing is a simple technique that works well when the universe U of keys is reasonably small. Suppose that an application needs a dynamic set in which each element has a distinct key drawn from the univ erse U = f0,1,…,m − 1g, where m is not too large."
+   "text": "Direct addressing is a simple technique that works well when the universe U of keys is reasonably small. Suppose that an application needs a dynamic set in which each element has a distinct key drawn from the universe U = f0,1,…,m − 1g, where m is not too large."
   },
   {
    "type": "body",
@@ -61,7 +61,7 @@
    "section_title": "11.1 Direct-address tables",
    "printed_page": 273,
    "pdf_page": 294,
-   "text": "For some applications, the direct-address table itself can hold the elements in the dynamic set. That is, rather than storing an element’s key and satellite data in an object external to the direct-address table, with a pointer from a slot in the table to the object, save space by storing the object dir ectly in the slot. To indicate an empty slot, use a special key. Then again, why stor e the key of the object at all?"
+   "text": "For some applications, the direct-address table itself can hold the elements in the dynamic set. That is, rather than storing an element’s key and satellite data in an object external to the direct-address table, with a pointer from a slot in the table to the object, save space by storing the object directly in the slot. To indicate an empty slot, use a special key. Then again, why stor e the key of the object at all?"
   },
   {
    "type": "body",
@@ -106,7 +106,7 @@
    "section_title": "11.1 Direct-address tables",
    "printed_page": 273,
    "pdf_page": 294,
-   "text": "U = f0,1,…,9 g corresponds to an index into the table. The set K = f2,3,5,8 g of actual keys determines the slots in the table that contain poin ters to elements. The other slots, in blue, contain NIL ."
+   "text": "U = f0,1,…,9 g corresponds to an index into the table. The set K = f2,3,5,8 g of actual keys determines the slots in the table that contain pointers to elements. The other slots, in blue, contain NIL ."
   },
   {
    "type": "body",
@@ -232,7 +232,7 @@
    "section_title": "11.1 Direct-address tables",
    "printed_page": 274,
    "pdf_page": 295,
-   "text": "O(1) time. (Hint: Use an additional array, treated somewhat like a stack whose size is the number of keys actually stored in the dictio nary, to help determine whether a given entry in the huge array is valid or not.)"
+   "text": "O(1) time. (Hint: Use an additional array, treated somewhat like a stack whose size is the number of keys actually stored in the dictionary, to help determine whether a given entry in the huge array is valid or not.)"
   },
   {
    "type": "body",
@@ -376,7 +376,7 @@
    "section_title": "11.2 Hash tables",
    "printed_page": 276,
    "pdf_page": 297,
-   "text": "Such a function is also often called a random oracle [43]. When hash tables are implemented with an independent uniform hash functi on, we say we are using independent uniform hashing."
+   "text": "Such a function is also often called a random oracle [43]. When hash tables are implemented with an independent uniform hash function, we say we are using independent uniform hashing."
   },
   {
    "type": "body",
@@ -385,7 +385,7 @@
    "section_title": "11.2 Hash tables",
    "printed_page": 276,
    "pdf_page": 297,
-   "text": "Independent uniform hashing is an ideal theoretical abstraction, but it is not something that can reasonably be implemented in pra ctice. N onetheless, we’ll analyze the efficiency of hashing under the assumption of independent uniform hashing and then present ways of achieving useful practical approximations to this ideal."
+   "text": "Independent uniform hashing is an ideal theoretical abstraction, but it is not something that can reasonably be implemented in practice. N onetheless, we’ll analyze the efficiency of hashing under the assumption of independent uniform hashing and then present ways of achieving useful practical approximations to this ideal."
   },
   {
    "type": "body",
@@ -430,7 +430,7 @@
    "section_title": "11.2 Hash tables",
    "printed_page": 277,
    "pdf_page": 298,
-   "text": "At a high level, you can think of hashing with chai ning as a nonrecursive form of divide-and-conquer: the input set of n elements is divided randomly into m subsets, each of approximate size n/m. A hash function determines which subset an element belongs to. Each subset is managed independently as a list."
+   "text": "At a high level, you can think of hashing with chaining as a nonrecursive form of divide-and-conquer: the input set of n elements is divided randomly into m subsets, each of approximate size n/m. A hash function determines which subset an element belongs to. Each subset is managed independently as a list."
   },
   {
    "type": "body",
@@ -592,7 +592,7 @@
    "section_title": "11.2 Hash tables",
    "printed_page": 278,
    "pdf_page": 299,
-   "text": "(meaning with respect to the distribution of keys t o be hashed and with respect to the choice of hash function, if this choice is rand omized). Section 11.3 discusses these issues, but for now we assume that any given element is equally likely to hash into any of the m slots. That is, the hash function is uniform. We further assume that where a given element hashes to is independent of where any other elements hash to. In other words, we assume that we are using independent uniform hashing."
+   "text": "(meaning with respect to the distribution of keys t o be hashed and with respect to the choice of hash function, if this choice is randomized). Section 11.3 discusses these issues, but for now we assume that any given element is equally likely to hash into any of the m slots. That is, the hash function is uniform. We further assume that where a given element hashes to is independent of where any other elements hash to. In other words, we assume that we are using independent uniform hashing."
   },
   {
    "type": "body",
@@ -664,7 +664,7 @@
    "section_title": "11.2 Hash tables",
    "printed_page": 279,
    "pdf_page": 300,
-   "text": "The situation for a successful search is slightly different. An unsuccessful search is equally likely to go to any slot of the hash tab le. A successful search, however, cannot go to an empty slot, since it is for an elem ent that is present in one of the linked lists. We assume that the element searched f or is equally likely to be any one of the elements in the table, so the longer the list, the more likely that the search is for one of its elements. Even so, the exp ected search time still turns out to be Θ.1 C ˛/."
+   "text": "The situation for a successful search is slightly different. An unsuccessful search is equally likely to go to any slot of the hash table. A successful search, however, cannot go to an empty slot, since it is for an element that is present in one of the linked lists. We assume that the element searched f or is equally likely to be any one of the elements in the table, so the longer the list, the more likely that the search is for one of its elements. Even so, the expected search time still turns out to be Θ.1 C ˛/."
   },
   {
    "type": "theorem",
@@ -898,7 +898,7 @@
    "section_title": "11.2 Hash tables",
    "printed_page": 281,
    "pdf_page": 302,
-   "text": "Thus, the total time required for a successful sear ch (including the time for computing the hash function) is Θ(2 C ˛=2 − ˛=2n) = Θ.1 C ˛/."
+   "text": "Thus, the total time required for a successful search (including the time for computing the hash function) is Θ(2 C ˛=2 − ˛=2n) = Θ.1 C ˛/."
   },
   {
    "type": "body",
@@ -988,7 +988,7 @@
    "section_title": "11.2 Hash tables",
    "printed_page": 282,
    "pdf_page": 303,
-   "text": "11.2-6 You have stored n keys in a hash table of size m, with collisions resolved by chaining, and you know the length of each chain, includi ng the length L of the longest chain. Describe a procedure that selects a key unif ormly at random from among the keys in the hash table and returns it in expected time O(L • .1 + 1=˛/)."
+   "text": "11.2-6 You have stored n keys in a hash table of size m, with collisions resolved by chaining, and you know the length of each chain, including the length L of the longest chain. Describe a procedure that selects a key uniformly at random from among the keys in the hash table and returns it in expected time O(L • .1 + 1=˛/)."
   },
   {
    "type": "body",
@@ -997,7 +997,7 @@
    "section_title": "11.3 Hash functions",
    "printed_page": 282,
    "pdf_page": 303,
-   "text": "For hashing to work well, it needs a good hash func tion. Along with being efficiently computable, what properties does a good hash function have? How do you design good hash functions?"
+   "text": "For hashing to work well, it needs a good hash function. Along with being efficiently computable, what properties does a good hash function have? How do you design good hash functions?"
   },
   {
    "type": "body",
@@ -1015,7 +1015,7 @@
    "section_title": "11.3 Hash functions",
    "printed_page": 282,
    "pdf_page": 303,
-   "text": "We then see that provably good average-case performance for any data can be obtained by designing a suitable family of hash functions and choosing a hash function at random from this family at runtime, indepen dent of the data to be hashed."
+   "text": "We then see that provably good average-case performance for any data can be obtained by designing a suitable family of hash functions and choosing a hash function at random from this family at runtime, independent of the data to be hashed."
   },
   {
    "type": "body",
@@ -1078,7 +1078,7 @@
    "section_title": "11.3 Hash functions",
    "printed_page": 283,
    "pdf_page": 304,
-   "text": "Random hashing, described in Section 11.3.2, picks the hash function to be used at random from a suitable family of hashing functio ns. This approach removes any need to know anything about the probability dis tribution of the input keys, as the randomization necessary for good average-case behavior then comes from the (known) random process used to pick the hash functi on from the family of hash functions, rather than from the (unknown) process u sed to create the input keys."
+   "text": "Random hashing, described in Section 11.3.2, picks the hash function to be used at random from a suitable family of hashing functions. This approach removes any need to know anything about the probability distribution of the input keys, as the randomization necessary for good average-case behavior then comes from the (known) random process used to pick the hash function from the family of hash functions, rather than from the (unknown) process u sed to create the input keys."
   },
   {
    "type": "body",
@@ -1123,7 +1123,7 @@
    "section_title": "11.3 Hash functions",
    "printed_page": 284,
    "pdf_page": 305,
-   "text": "• A short vector of nonnegative integers, each of bou nded size. For example, each element might be an 8-bit byte, in which case the vector is often called a (byte) string. The vector might be of variable length."
+   "text": "• A short vector of nonnegative integers, each of bounded size. For example, each element might be an 8-bit byte, in which case the vector is often called a (byte) string. The vector might be of variable length."
   },
   {
    "type": "body",
@@ -1186,7 +1186,7 @@
    "section_title": "11.3 Hash functions",
    "printed_page": 284,
    "pdf_page": 305,
-   "text": "The division method may work well when m is a prime not too close to an exact power of 2. There is no guarantee that this method provides g ood average-case performance, however, and it may complicate applica tions since it constrains the size of the hash tables to be prime."
+   "text": "The division method may work well when m is a prime not too close to an exact power of 2. There is no guarantee that this method provides g ood average-case performance, however, and it may complicate applications since it constrains the size of the hash tables to be prime."
   },
   {
    "type": "body",
@@ -1303,7 +1303,7 @@
    "section_title": "11.3 Hash functions",
    "printed_page": 286,
    "pdf_page": 307,
-   "text": "To use random hashing, at the beginning of program execution you select the hash function at random from a suitable family of f unctions. As in the case of quicksort, randomization guarantees that no single input always evokes worst-case behavior. Because you randomly select the hash func tion, the algorithm can behave differently on each execution, even for the sa me set of keys to be hashed, guaranteeing good average-case performance."
+   "text": "To use random hashing, at the beginning of program execution you select the hash function at random from a suitable family of f unctions. As in the case of quicksort, randomization guarantees that no single input always evokes worst-case behavior. Because you randomly select the hash function, the algorithm can behave differently on each execution, even for the sa me set of keys to be hashed, guaranteeing good average-case performance."
   },
   {
    "type": "body",
@@ -1339,7 +1339,7 @@
    "section_title": "11.3 Hash functions",
    "printed_page": 287,
    "pdf_page": 308,
-   "text": "The following corollary to Theorem 11.2 on page 279 says that universal hashing provides the desired payoff: it becomes impossi ble for an adversary to pick a sequence of operations that forces the worst-case running time."
+   "text": "The following corollary to Theorem 11.2 on page 279 says that universal hashing provides the desired payoff: it becomes impossible for an adversary to pick a sequence of operations that forces the worst-case running time."
   },
   {
    "type": "corollary",
@@ -1384,7 +1384,7 @@
    "section_title": "11.3 Hash functions",
    "printed_page": 287,
    "pdf_page": 308,
-   "text": "There is a rich literature on the properties a fami ly H of hash functions can have, and how they relate to the efficiency of hashing. We summarize a few of the most interesting ones here."
+   "text": "There is a rich literature on the properties a family H of hash functions can have, and how they relate to the efficiency of hashing. We summarize a few of the most interesting ones here."
   },
   {
    "type": "body",
@@ -1735,7 +1735,7 @@
    "section_title": "11.3 Hash functions",
    "printed_page": 290,
    "pdf_page": 311,
-   "text": "That is, the probability that any two distinct keys collide is at most 2/m. In many practical situations, the speed of computing t he hash function more than compensates for the higher upper bound on the proba bility that two distinct keys collide when compared with a universal hash function."
+   "text": "That is, the probability that any two distinct keys collide is at most 2/m. In many practical situations, the speed of computing t he hash function more than compensates for the higher upper bound on the probability that two distinct keys collide when compared with a universal hash function."
   },
   {
    "type": "body",
@@ -1807,7 +1807,7 @@
    "section_title": "11.3 Hash functions",
    "printed_page": 291,
    "pdf_page": 312,
-   "text": "Some chip manufacturers include instructions in their CPU architectures to provide fast implementations of some cryptographic fun ctions. Of particular inter- est are instructions that efficiently implement rounds of the Advanced Encryption"
+   "text": "Some chip manufacturers include instructions in their CPU architectures to provide fast implementations of some cryptographic functions. Of particular inter- est are instructions that efficiently implement rounds of the Advanced Encryption"
   },
   {
    "type": "body",
@@ -1834,7 +1834,7 @@
    "section_title": "11.3 Hash functions",
    "printed_page": 291,
    "pdf_page": 312,
-   "text": "There are many ways to use a cryptographic hash fun ction as a hash function."
+   "text": "There are many ways to use a cryptographic hash function as a hash function."
   },
   {
    "type": "body",
@@ -1879,7 +1879,7 @@
    "section_title": "11.3 Hash functions",
    "printed_page": 292,
    "pdf_page": 313,
-   "text": "11.3-2 You hash a string of r characters into m slots by treating it as a radix-128 number and then using the division method. You can represe nt the number m as a 32-bit computer word, but the string of r characters, treated as a radix-128 number, takes many words. How can you apply the division method to compute the hash value of the character string without using more than a constant number of words of storage outside the string itself?"
+   "text": "11.3-2 You hash a string of r characters into m slots by treating it as a radix-128 number and then using the division method. You can represent the number m as a 32-bit computer word, but the string of r characters, treated as a radix-128 number, takes many words. How can you apply the division method to compute the hash value of the character string without using more than a constant number of words of storage outside the string itself?"
   },
   {
    "type": "exercise",
@@ -2225,7 +2225,7 @@
    "section_title": "11.4 Open addressing",
    "printed_page": 295,
    "pdf_page": 316,
-   "text": "Independent uniform permutation hashing generalizes the notion of independent uniform hashing defined earlier to a hash function that produces not just a single slot number, but a whole probe sequence. True indep endent uniform permutation hashing is difficult to implement, however, and in practice suitable approximations"
+   "text": "Independent uniform permutation hashing generalizes the notion of independent uniform hashing defined earlier to a hash function that produces not just a single slot number, but a whole probe sequence. True independent uniform permutation hashing is difficult to implement, however, and in practice suitable approximations"
   },
   {
    "type": "body",
@@ -2243,7 +2243,7 @@
    "section_title": "11.4 Open addressing",
    "printed_page": 295,
    "pdf_page": 316,
-   "text": "We’ll examine both double hashing and its special case, linear probing. These techniques guarantee that hh(k,0),h(k,1),…,h(k,m − 1)i is a permutation of h0,1,…,m − 1i for each key k. (Recall that the second parameter to the hash function h is the probe number.) Neither double hashing nor li near probing meets the assumption of independent uniform permutation h ashing, however. Double hashing cannot generate more than m 2 different probe sequences (instead of the m! that independent uniform permutation hashing requir es). Nonetheless, double hashing has a large number of possible probe sequences and, as you might expect, seems to give good results. Linear probing is even more restricted, capable of generating only m different probe sequences."
+   "text": "We’ll examine both double hashing and its special case, linear probing. These techniques guarantee that hh(k,0),h(k,1),…,h(k,m − 1)i is a permutation of h0,1,…,m − 1i for each key k. (Recall that the second parameter to the hash function h is the probe number.) Neither double hashing nor li near probing meets the assumption of independent uniform permutation h ashing, however. Double hashing cannot generate more than m 2 different probe sequences (instead of the m! that independent uniform permutation hashing requires). Nonetheless, double hashing has a large number of possible probe sequences and, as you might expect, seems to give good results. Linear probing is even more restricted, capable of generating only m different probe sequences."
   },
   {
    "type": "body",
@@ -2261,7 +2261,7 @@
    "section_title": "11.4 Open addressing",
    "printed_page": 295,
    "pdf_page": 316,
-   "text": "Double hashing offers one of the best methods avail able for open addressing because the permutations produced have many of the ch aracteristics of randomly chosen permutations. Double hashing uses a hash function of the form h(k,i) = (h 1 (k) C ih 2 (k)) mod m; where both h 1 and h 2 are auxiliary hash functions. The initial probe goes to position T[h 1 (k)], and successive probe positions are offset from previous positions by the amount h 2 (k), modulo m. Thus, the probe sequence here depends in two ways upon the key k, since the initial probe position h 1 (k), the step size h 2 (k), or both, may vary. Figure 11.5 gives an example of insertion by double hashing."
+   "text": "Double hashing offers one of the best methods available for open addressing because the permutations produced have many of the ch aracteristics of randomly chosen permutations. Double hashing uses a hash function of the form h(k,i) = (h 1 (k) C ih 2 (k)) mod m; where both h 1 and h 2 are auxiliary hash functions. The initial probe goes to position T[h 1 (k)], and successive probe positions are offset from previous positions by the amount h 2 (k), modulo m. Thus, the probe sequence here depends in two ways upon the key k, since the initial probe position h 1 (k), the step size h 2 (k), or both, may vary. Figure 11.5 gives an example of insertion by double hashing."
   },
   {
    "type": "body",
@@ -2756,7 +2756,7 @@
    "section_title": "11.4 Open addressing",
    "printed_page": 300,
    "pdf_page": 321,
-   "text": "11.4-1 Consider inserting the keys 10,22,31,4,15,28,17,88,59 into a hash table of length m = 11 using open addressing. Illustrate the result of ins erting these keys using linear probing with h(k,i) = (k + i) mod m and using double hashing with h 1 (k) = k and h 2 (k) = 1 C (k mod (m − 1))."
+   "text": "11.4-1 Consider inserting the keys 10,22,31,4,15,28,17,88,59 into a hash table of length m = 11 using open addressing. Illustrate the result of inserting these keys using linear probing with h(k,i) = (k + i) mod m and using double hashing with h 1 (k) = k and h 2 (k) = 1 C (k mod (m − 1))."
   },
   {
    "type": "exercise",
@@ -2891,7 +2891,7 @@
    "section_title": "11.5 Practical considerations",
    "printed_page": 302,
    "pdf_page": 323,
-   "text": "Section 11.5.1 discusses linear probing, which becomes the collision-resolution method of choice in the presence of a memory hierar chy. Section 11.5.2 suggests how to construct \"advanced\" hash functions based on cryptographic primitives, suitable for use on computers with hierarchical memory models."
+   "text": "Section 11.5.1 discusses linear probing, which becomes the collision-resolution method of choice in the presence of a memory hierarchy. Section 11.5.2 suggests how to construct \"advanced\" hash functions based on cryptographic primitives, suitable for use on computers with hierarchical memory models."
   },
   {
    "type": "body",
@@ -2918,7 +2918,7 @@
    "section_title": "11.5 Practical considerations",
    "printed_page": 302,
    "pdf_page": 323,
-   "text": "RAM model. But linear probing excels for hierarchic al memory models, because successive probes are usually to the same cache block of memory."
+   "text": "RAM model. But linear probing excels for hierarchical memory models, because successive probes are usually to the same cache block of memory."
   },
   {
    "type": "body",
@@ -2945,7 +2945,7 @@
    "section_title": "11.5 Practical considerations",
    "printed_page": 302,
    "pdf_page": 323,
-   "text": "The deletion procedure relies on an \"inverse\" function to the linear-probing hash function h(k,i) = (h 1 (k) + i) mod m, which maps a key k and a probe number i to a slot number in the hash table. The inverse fun ction g maps a key k and a slot number q, where 0 ≤ q<m , to the probe number that reaches slot q: g(k,q) = (q − h 1 (k)) mod m:"
+   "text": "The deletion procedure relies on an \"inverse\" function to the linear-probing hash function h(k,i) = (h 1 (k) + i) mod m, which maps a key k and a probe number i to a slot number in the hash table. The inverse function g maps a key k and a slot number q, where 0 ≤ q<m , to the probe number that reaches slot q: g(k,q) = (q − h 1 (k)) mod m:"
   },
   {
    "type": "body",
@@ -3074,7 +3074,7 @@
    "section_title": "11.5 Practical considerations",
    "printed_page": 303,
    "pdf_page": 324,
-   "text": "Linear probing is popular to implement, but it exhi bits a phenomenon known as primary clustering. Long runs of occupied slots build up, increasing the average search time. Clusters arise because an empty slot preceded by i full slots gets filled next with probability (i + 1)/m. Long runs of occupied slots tend to get longer, and the average search time increases."
+   "text": "Linear probing is popular to implement, but it exhibits a phenomenon known as primary clustering. Long runs of occupied slots build up, increasing the average search time. Clusters arise because an empty slot preceded by i full slots gets filled next with probability (i + 1)/m. Long runs of occupied slots tend to get longer, and the average search time increases."
   },
   {
    "type": "body",
@@ -3083,7 +3083,7 @@
    "section_title": "11.5 Practical considerations",
    "printed_page": 304,
    "pdf_page": 325,
-   "text": "In the standard RAM model, primary clustering is a problem, and general double hashing usually performs better than linear pro bing. By contrast, in a hierarchical memory model, primary clustering is a beneficial property, as elements are often stored together in the same cache block. Sear ching proceeds through one cache block before advancing to search the next cac he block. With linear probing, the running time for a key k of HASH-INSERT , HASH-SEARCH , or LINEAR- PROBING-HASH-DELETE is at most proportional to the distance from h 1 (k) to the next empty slot."
+   "text": "In the standard RAM model, primary clustering is a problem, and general double hashing usually performs better than linear pro bing. By contrast, in a hierarchical memory model, primary clustering is a beneficial property, as elements are often stored together in the same cache block. Sear ching proceeds through one cache block before advancing to search the next cache block. With linear probing, the running time for a key k of HASH-INSERT , HASH-SEARCH , or LINEAR- PROBING-HASH-DELETE is at most proportional to the distance from h 1 (k) to the next empty slot."
   },
   {
    "type": "body",
@@ -3173,7 +3173,7 @@
    "section_title": "11.5 Practical considerations",
    "printed_page": 304,
    "pdf_page": 325,
-   "text": "Instead, we present here a simple hash function bas ed only on addition, multi- plication, and swapping the halves of a word. This function can be implemented entirely within the fast registers, and on a machin e with a memory hierarchy, its latency is small compared with the time taken to ac cess a random slot of the hash table. It is related to the R + 6 encryption algorithm and can f or practical purposes be considered a \"random oracle.\""
+   "text": "Instead, we present here a simple hash function based only on addition, multi- plication, and swapping the halves of a word. This function can be implemented entirely within the fast registers, and on a machin e with a memory hierarchy, its latency is small compared with the time taken to ac cess a random slot of the hash table. It is related to the R + 6 encryption algorithm and can f or practical purposes be considered a \"random oracle.\""
   },
   {
    "type": "body",
@@ -3426,7 +3426,7 @@
    "section_title": "11.5 Practical considerations",
    "printed_page": 307,
    "pdf_page": 328,
-   "text": "Complete the argument that for any odd positive int eger a and any integer r ≥ 0, the function f (r) a is one-to-one. Use a proof by contradiction and make use of the fact that the function f a works modulo 2 w ."
+   "text": "Complete the argument that for any odd positive integer a and any integer r ≥ 0, the function f (r) a is one-to-one. Use a proof by contradiction and make use of the fact that the function f a works modulo 2 w ."
   },
   {
    "type": "body",
@@ -3768,7 +3768,7 @@
    "section_title": "11.5 Practical considerations",
    "printed_page": 310,
    "pdf_page": 331,
-   "text": "Fredman, Koml´ os, and Szemer´ edi [154] developed a perfect hashing scheme for static sets4\"perfect\" because all collisions are avoided. An extension of their method to dynamic sets, handling insertions and del etions in amortized expected time O(1), has been given by Dietzfelbinger et al. [114]."
+   "text": "Fredman, Koml´ os, and Szemer´ edi [154] developed a perfect hashing scheme for static sets4\"perfect\" because all collisions are avoided. An extension of their method to dynamic sets, handling insertions and deletions in amortized expected time O(1), has been given by Dietzfelbinger et al. [114]."
   },
   {
    "type": "body",
@@ -3822,7 +3822,7 @@
    "section_title": "11.5 Practical considerations",
    "printed_page": 312,
    "pdf_page": 333,
-   "text": "After presenting the basic properties of binary sea rch trees, the following sections show how to walk a binary search tree to print its values in sorted order, how to search for a value in a binary search tree, how to find the minimum or maximum element, how to find the predecessor or successor of an element, and how to insert into or delete from a binary search tree. The basic mathematical properties of trees appear in Appendix B."
+   "text": "After presenting the basic properties of binary search trees, the following sections show how to walk a binary search tree to print its values in sorted order, how to search for a value in a binary search tree, how to find the minimum or maximum element, how to find the predecessor or successor of an element, and how to insert into or delete from a binary search tree. The basic mathematical properties of trees appear in Appendix B."
   },
   {
    "type": "body",

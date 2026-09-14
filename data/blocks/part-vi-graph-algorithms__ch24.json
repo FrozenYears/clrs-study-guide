@@ -671,7 +671,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 678,
    "pdf_page": 699,
-   "text": "Edges carrying no flow, such as (v 3 ; v 2 ), are labeled only by their capacity, another conve ntion we follow throughout. (d) The residual network induced by the flow in (c)."
+   "text": "Edges carrying no flow, such as (v 3 ; v 2 ), are labeled only by their capacity, another convention we follow throughout. (d) The residual network induced by the flow in (c)."
   },
   {
    "type": "body",
@@ -680,7 +680,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 678,
    "pdf_page": 699,
-   "text": "That is, as promised above, each edge of the residu al network, or residual edge, can admit a flow that is greater than 0. Figure 24.4(a) repeats the flow network G and flow f of Figure 24.1(b), and Figure 24.4(b) shows the corresponding residual network G f . The edges in E f are either edges in E or their reversals, and thus jE f j ≤ 2 |E| :"
+   "text": "That is, as promised above, each edge of the residual network, or residual edge, can admit a flow that is greater than 0. Figure 24.4(a) repeats the flow network G and flow f of Figure 24.1(b), and Figure 24.4(b) shows the corresponding residual network G f . The edges in E f are either edges in E or their reversals, and thus jE f j ≤ 2 |E| :"
   },
   {
    "type": "body",
@@ -1607,7 +1607,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 681,
    "pdf_page": 702,
-   "text": "Given a flow network G = (V,E) and a flow f , an augmenting path p is a simple path from s to t in the residual network G f . By the definition of the residual network, the flow on an edge (u,v) of an augmenting path may increase by up to c f (u,v) without violating the capacity constraint on whiche ver of (u,v) and (v,u) belongs to the original flow network G."
+   "text": "Given a flow network G = (V,E) and a flow f , an augmenting path p is a simple path from s to t in the residual network G f . By the definition of the residual network, the flow on an edge (u,v) of an augmenting path may increase by up to c f (u,v) without violating the capacity constraint on whichever of (u,v) and (v,u) belongs to the original flow network G."
   },
   {
    "type": "body",
@@ -1877,7 +1877,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 684,
    "pdf_page": 705,
-   "text": "The two summations within the parentheses are actua lly the same, since for all vertices x,y 2 S , the term f(x,y) appears once in each summation. Hence, these summations cancel, yielding"
+   "text": "The two summations within the parentheses are actually the same, since for all vertices x,y 2 S , the term f(x,y) appears once in each summation. Hence, these summations cancel, yielding"
   },
   {
    "type": "body",
@@ -2331,7 +2331,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 688,
    "pdf_page": 709,
-   "text": "Figure 24.7 (a) A flow network for which FORD-FULKERSON can take Θ(E jf − j) time, where f − is a maximum flow, shown here with jf − j = 2,000,000. The blue path is an augmenting path with residual capacity 1. (b) The resulting residual network, with another augmen ting path whose residual capacity is 1. (c) The resulting residual network. polynomial time. Before proving this result, we obtain a simple bound for the case in which all capacities are integers and the algorithm finds any augmenting path."
+   "text": "Figure 24.7 (a) A flow network for which FORD-FULKERSON can take Θ(E jf − j) time, where f − is a maximum flow, shown here with jf − j = 2,000,000. The blue path is an augmenting path with residual capacity 1. (b) The resulting residual network, with another augmenting path whose residual capacity is 1. (c) The resulting residual network. polynomial time. Before proving this result, we obtain a simple bound for the case in which all capacities are integers and the algorithm finds any augmenting path."
   },
   {
    "type": "body",
@@ -2349,7 +2349,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 688,
    "pdf_page": 709,
-   "text": "A good implementation should perform the work done within the while loop efficiently. It should represent the flow network G = (V,E) with the right data structure and find an augmenting path by a linear-time algorithm. Let’s assume that the implementation keeps a data structure corr esponding to a directed graph"
+   "text": "A good implementation should perform the work done within the while loop efficiently. It should represent the flow network G = (V,E) with the right data structure and find an augmenting path by a linear-time algorithm. Let’s assume that the implementation keeps a data structure corresponding to a directed graph"
   },
   {
    "type": "body",
@@ -2394,7 +2394,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 689,
    "pdf_page": 710,
-   "text": "Figure 24.7(c) shows the resulting residual network. If the algorithm continues alternately choosing the augmenting paths s ! u ! v ! t and s ! v ! u ! t , it performs a total of 2,000,000 augmentations, increa sing the flow value by only 1 unit in each."
+   "text": "Figure 24.7(c) shows the resulting residual network. If the algorithm continues alternately choosing the augmenting paths s ! u ! v ! t and s ! v ! u ! t , it performs a total of 2,000,000 augmentations, increasing the flow value by only 1 unit in each."
   },
   {
    "type": "body",
@@ -2412,7 +2412,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 689,
    "pdf_page": 710,
-   "text": "In the example of Figure 24.7, the algorithm never chooses the augmenting path with the fewest edges. It should have. By using breadth-first search to find an augmenting path in the residual network, the algori thm runs in polynomial time, independent of the maximum flow value. We call the Ford-Fulkerson method so implemented the Edmonds-Karp algorithm."
+   "text": "In the example of Figure 24.7, the algorithm never chooses the augmenting path with the fewest edges. It should have. By using breadth-first search to find an augmenting path in the residual network, the algorithm runs in polynomial time, independent of the maximum flow value. We call the Ford-Fulkerson method so implemented the Edmonds-Karp algorithm."
   },
   {
    "type": "body",
@@ -2556,7 +2556,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 690,
    "pdf_page": 711,
-   "text": "Proof We say that an edge (u,v) in a residual network G f is critical on an augmenting path p if the residual capacity of p is the residual capacity of (u,v) , that is, if c f (p) = c f (u,v). After flow is augmented along an augmenting path, any critical edge on the path disappears from the resid ual network. Moreover, at least one edge on any augmenting path must be critical. We’ll show that each of the |E| edges can become critical at most |V| =2 times."
+   "text": "Proof We say that an edge (u,v) in a residual network G f is critical on an augmenting path p if the residual capacity of p is the residual capacity of (u,v) , that is, if c f (p) = c f (u,v). After flow is augmented along an augmenting path, any critical edge on the path disappears from the residual network. Moreover, at least one edge on any augmenting path must be critical. We’ll show that each of the |E| edges can become critical at most |V| =2 times."
   },
   {
    "type": "body",
@@ -3348,7 +3348,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 699,
    "pdf_page": 720,
-   "text": "The procedure MAX-FLOW-BY-SCALING appearing on the following page modifies the basic FORD-FULKERSON-METHOD procedure to compute a maximum flow in G. c. Argue that MAX-FLOW-BY-SCALING returns a maximum flow. d. Show that the capacity of a minimum cut of the resi dual network G f is less than 2K |E| each time line 4 executes. e. Argue that the inner while loop of lines 5–6 executes O(E) times for each value of K."
+   "text": "The procedure MAX-FLOW-BY-SCALING appearing on the following page modifies the basic FORD-FULKERSON-METHOD procedure to compute a maximum flow in G. c. Argue that MAX-FLOW-BY-SCALING returns a maximum flow. d. Show that the capacity of a minimum cut of the residual network G f is less than 2K |E| each time line 4 executes. e. Argue that the inner while loop of lines 5–6 executes O(E) times for each value of K."
   },
   {
    "type": "pseudocode",
@@ -3420,7 +3420,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 700,
    "pdf_page": 721,
-   "text": "The Edmonds-Karp algorithm implements the Ford-Fulkerson algorithm by always choosing a shortest augmenting path in the residual network. Suppose instead that the Ford-Fulkerson algorithm chooses a widest augmenting path: an augmenting path with the greatest residual capacity. Assume that G = (V,E) is a flow network with source s and sink t , that all capacities are integer, and that the largest capacity is C . In this problem, you will show that choosing a widest augmenting path results in at most |E| ln jf − j augmentations to find a maximum flow f − . a. Show how to adjust Dijkstra’s algorithm to find the widest augmenting path in the residual network. b. Show that a maximum flow in G can be formed by successive flow augmentations along at most |E| paths from s to t . c. Given a flow f , argue that the residual network G f has an augmenting path p with residual capacity c f (p) ≥ .jf − j − |f|/= |E|. d. Assuming that each augmenting path is a widest augm enting path, let f i be the flow after augmenting the flow by the i th augmenting path, where f 0 has f(u,v) = 0 for all edges (u,v) . Show that jf − j − jf i j ≤ jf − j .1 − 1= |E|/ i . e. Show that jf − j − jf i j < jf − j e −i/|E| . f. Conclude that after the flow is augmented at most |E| ln jf − j times, the flow is a maximum flow."
+   "text": "The Edmonds-Karp algorithm implements the Ford-Fulkerson algorithm by always choosing a shortest augmenting path in the residual network. Suppose instead that the Ford-Fulkerson algorithm chooses a widest augmenting path: an augmenting path with the greatest residual capacity. Assume that G = (V,E) is a flow network with source s and sink t , that all capacities are integer, and that the largest capacity is C . In this problem, you will show that choosing a widest augmenting path results in at most |E| ln jf − j augmentations to find a maximum flow f − . a. Show how to adjust Dijkstra’s algorithm to find the widest augmenting path in the residual network. b. Show that a maximum flow in G can be formed by successive flow augmentations along at most |E| paths from s to t . c. Given a flow f , argue that the residual network G f has an augmenting path p with residual capacity c f (p) ≥ .jf − j − |f|/= |E|. d. Assuming that each augmenting path is a widest augmenting path, let f i be the flow after augmenting the flow by the i th augmenting path, where f 0 has f(u,v) = 0 for all edges (u,v) . Show that jf − j − jf i j ≤ jf − j .1 − 1= |E|/ i . e. Show that jf − j − jf i j < jf − j e −i/|E| . f. Conclude that after the flow is augmented at most |E| ln jf − j times, the flow is a maximum flow."
   },
   {
    "type": "problem",
@@ -3492,7 +3492,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 702,
    "pdf_page": 723,
-   "text": "Consider the algorithm that repeatedly chooses an edge at random and contracts it until the multigraph has exactly two vertices, s ay u and v. At that point, the multigraph corresponds to a cut in the original gra ph, with vertex u representing all the nodes in one side of the original graph, an d v representing all the vertices on the other side. The number of edges given by c(u,v) corresponds exactly to the number of edges crossing the corresponding cut in the original graph. We call this algorithm the contraction algorithm. f. Suppose that the contraction algorithm terminates w ith a multigraph whose only vertices are u and v. Show that Pr fc(u,v) = Ω(G)g = Ω"
+   "text": "Consider the algorithm that repeatedly chooses an edge at random and contracts it until the multigraph has exactly two vertices, s ay u and v. At that point, the multigraph corresponds to a cut in the original graph, with vertex u representing all the nodes in one side of the original graph, an d v representing all the vertices on the other side. The number of edges given by c(u,v) corresponds exactly to the number of edges crossing the corresponding cut in the original graph. We call this algorithm the contraction algorithm. f. Suppose that the contraction algorithm terminates w ith a multigraph whose only vertices are u and v. Show that Pr fc(u,v) = Ω(G)g = Ω"
   },
   {
    "type": "body",
@@ -3609,7 +3609,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 703,
    "pdf_page": 724,
-   "text": "A different approach to maximum flows and related problems is to use techniques from continuous optimization including elect rical flows and interior-point methods. The first breakthrough in this line of work is due to Madry [308], who gave an e O(E 10/7 )-time algorithm for unit-capacity maximum flow and bipartite maximum matching. (See Problem 3-6 on page 73 for a definition of e O .) There has been a series of papers in this area for matchings, maximum flows, and minimumcost flows. The fastest algorithm to date in this line of work for maximum flow is due to Lee and Sidford [285], taking e O. p"
+   "text": "A different approach to maximum flows and related problems is to use techniques from continuous optimization including electrical flows and interior-point methods. The first breakthrough in this line of work is due to Madry [308], who gave an e O(E 10/7 )-time algorithm for unit-capacity maximum flow and bipartite maximum matching. (See Problem 3-6 on page 73 for a definition of e O .) There has been a series of papers in this area for matchings, maximum flows, and minimumcost flows. The fastest algorithm to date in this line of work for maximum flow is due to Lee and Sidford [285], taking e O. p"
   },
   {
    "type": "body",
@@ -3672,7 +3672,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 704,
    "pdf_page": 725,
-   "text": "Another application of matching is the U.S. Nationa l Resident Matching Program, in which medical students are matched to hosp itals where they will be stationed as medical residents. Each student ranks the hospitals by preference, and each hospital ranks the students. The goal is to as sign students to hospitals so that there is never a student and a hospital that both have regrets because the student was not assigned to the hospital, yet each ranked the o ther higher than who or where they were assigned. This scenario is perhaps the best-known real-world example of the \"stable-marriage problem,\" which Section 25.2 examines."
+   "text": "Another application of matching is the U.S. Nationa l Resident Matching Program, in which medical students are matched to hospitals where they will be stationed as medical residents. Each student ranks the hospitals by preference, and each hospital ranks the students. The goal is to as sign students to hospitals so that there is never a student and a hospital that both have regrets because the student was not assigned to the hospital, yet each ranked the o ther higher than who or where they were assigned. This scenario is perhaps the best-known real-world example of the \"stable-marriage problem,\" which Section 25.2 examines."
   },
   {
    "type": "body",
@@ -3681,7 +3681,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 704,
    "pdf_page": 725,
-   "text": "Yet another instance where matching comes into play occurs when workers must be assigned to tasks in order to maximize the overa ll effectiveness of the assignment. For each worker and each task, the worker has some quantified effectiveness"
+   "text": "Yet another instance where matching comes into play occurs when workers must be assigned to tasks in order to maximize the overall effectiveness of the assignment. For each worker and each task, the worker has some quantified effectiveness"
   }
  ]
 }

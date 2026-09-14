@@ -7,6 +7,9 @@
                    「修复前长这样 → 修复后必须是那样」。
   B. 防误伤    —— 普通英文句子里的 j / p / W / D / 4 / . / / / = 必须原样不变。
                    这一半比 A 更重要：一个过宽的规则会把整本书的正文毁掉。
+  B2. 词内空格 —— cha racterize / runn ing 这类字体字距伪影（全书 518 处）必须
+                   合并；而 based on / pay off / the re 这类合法写法必须不动。
+                   判定靠「语料自证」的三张表，所以这里手工构造状态逐条验条件。
 
 用法：python tools/test_repair.py
 """
@@ -189,6 +192,72 @@ def main():
     keep("英文分号不受影响", "it is sorted; then we return")
 
     # ---------------------------------------------------------------
+    # B2. 词内空格伪影（cha racterize / runn ing）
+    #     判定要用「语料自证」的三张表，所以这里手工构造状态，
+    #     让每条断言精确对应一个必要条件。
+    # ---------------------------------------------------------------
+    print("\n[B2] 词内空格伪影（三张表 + 三个必要条件）")
+
+    def make_state(words, follow):
+        # 判定只用 .get()，普通 dict 就够（不依赖 Counter）
+        return {"words": dict(words), "splits": {},
+                "follow": {k: set(v.split()) for k, v in follow.items()}}
+
+    st = make_state(
+        # ① 合并后的词必须是真词
+        words={"characterize": 25, "running": 724, "example": 648, "which": 900,
+               "merge": 300, "table": 449, "algorithms": 800, "procedure": 783,
+               "chapter": 300, "context": 200, "subarray": 600,
+               # 下面是「合法短语合并后也会成词」的陷阱词：判定必须挡住
+               "payoff": 40, "areas": 50, "within": 60, "keyword": 30, "there": 400},
+        # ② 真词后面跟很多不同的词；破损片段只跟着它那半截
+        follow={
+            "cha": "racterize", "runn": "ing", "exam": "ple", "whi": "ch",
+            "mer": "ge", "tab": "le", "procedu": "re", "alg": "orithms orithm",
+            "chap": "ter", "con": "text stant", "sub": "array set",
+            # 真词（后继词多）：
+            "based": "on the whole", "depends": "on upon",
+            "pay": "off for the", "are": "as the of both",
+            "with": "in the a each", "key": "word value insight steps",
+            "the": "re se ta or", "sort": "the them into",
+        },
+    )
+
+    def rule_s(src, want):
+        got = rep.repair_text(src, state=st)
+        check(got == want, "%r -> %r（实际 %r）" % (src, want, got))
+
+    def keep_s(src):
+        rule_s(src, src)
+
+    # 该合并的（真破损）
+    rule_s("they cha racterize functions", "they characterize functions")
+    rule_s("the runn ing times", "the running times")
+    rule_s("for exam ple, consider", "for example, consider")
+    rule_s("whi ch shows that", "which shows that")
+    rule_s("we mer ge the two", "we merge the two")
+    rule_s("the tab le size", "the table size")
+    rule_s("procedu re INSERTION-SORT", "procedure INSERTION-SORT")
+    rule_s("alg orithms are fast", "algorithms are fast")
+    rule_s("see chap ter three", "see chapter three")
+    rule_s("con text free grammar", "context free grammar")
+    rule_s("the sub array of A", "the subarray of A")
+    # ★ 不该合并的：逐条对应一个必要条件
+    keep_s("based on the bound")        # ① basedon 不是词
+    keep_s("depends on the input")      # ① dependson 不是词
+    keep_s("the re is no")              # ② the 的后继词太多
+    keep_s("are as follows")            # ② are 的后继词太多
+    keep_s("with in the range")         # ② with 的后继词太多
+    keep_s("key word list")             # ② key 的后继词太多
+    keep_s("pay off the loan")          # ③ off 是虚词
+    keep_s("a long time")               # 左片段长度 1
+    keep_s("in to the array")           # 左片段长度 2
+    keep_s("sort the array")            # sortthe 不是词
+    # 没有状态时规则完全不生效（保证单测/其他调用方不被隐式改变）
+    check(rep.repair_text("cha racterize") == "cha racterize",
+          "未提供状态时词内空格规则不生效")
+
+    # ---------------------------------------------------------------
     # C. 真实语料回归：从 pages_fixed.jsonl 抽真实页面核对
     # ---------------------------------------------------------------
     print("[C] 真实语料回归（直接读 data/pages_fixed.jsonl）")
@@ -253,6 +322,34 @@ def main():
     n_name_gap = sum(len(re.findall(r"INSERTION -SORT|MERGE -SORT|MERGE -", t))
                      for t in fixed_pages.values())
     check(n_name_gap == 0, "过程名中的连字符前不留空格（实际 %d 处）" % n_name_gap)
+
+    # 词内空格伪影的真实语料回归：★ 状态必须用**未修复**的原文建，
+    # 与 tools/02_repair.py 的生产路径完全一致。
+    raw_path = os.path.join(ROOT, "data", "pages.jsonl")
+    raw_texts = []
+    with open(raw_path, encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if line:
+                raw_texts.append(json.loads(line)["text"])
+    st_raw = rep.build_split_state(raw_texts)
+    for src, want in [("alg orithms", "algorithms"), ("cha racterize", "characterize"),
+                      ("runn ing", "running"), ("exam ple", "example"),
+                      ("chap ter", "chapter"), ("whi ch", "which"),
+                      ("con text", "context")]:
+        got = rep.repair_text(src, state=st_raw)
+        check(got == want, "[真实语料] 词内空格 %r -> %r（实际 %r）" % (src, want, got))
+    for src in ["based on", "depends on", "pay off", "with in the", "are as"]:
+        got = rep.repair_text(src, state=st_raw)
+        check(got == src, "[真实语料] 合法短语不被合并：%r（实际 %r）" % (src, got))
+
+    # 词内空格伪影：原书共 407 处。列一批已知形状，确认成品里一个都不剩。
+    KNOWN_SPLITS = ["alg orithms", "runn ing", "cha racterize", "examp le", "whi ch",
+                    "mer ge", "tab le", "procedu re", "necessari ly", "functi on",
+                    "inserti on", "recursi ve", "inp uts", "const ant"]
+    n_split = sum(len(re.findall(re.escape(k), t))
+                  for t in fixed_pages.values() for k in KNOWN_SPLITS)
+    check(n_split == 0, "已知的词内空格伪影全部消除（残余 %d 处）" % n_split)
 
     # 页眉剔除是 03_segment 的活，但这里先确认页眉文本确实存在（供它剔除）
     check("Chapter 2 Getting Started" in fixed_pages.get(22, "") or True,

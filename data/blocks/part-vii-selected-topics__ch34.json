@@ -61,7 +61,7 @@
    "section_title": "34.1 Polynomial time",
    "printed_page": 1048,
    "pdf_page": 1069,
-   "text": "2. For many reasonable models of computation, a pro blem that can be solved in polynomial time in one model can be solved in polyn omial time in another."
+   "text": "2. For many reasonable models of computation, a pro blem that can be solved in polynomial time in one model can be solved in polynomial time in another."
   },
   {
    "type": "body",
@@ -70,7 +70,7 @@
    "section_title": "34.1 Polynomial time",
    "printed_page": 1048,
    "pdf_page": 1069,
-   "text": "For example, the class of problems solvable in poly nomial time by the serial random-access machine used throughout most of this book is the same as the class of problems solvable in polynomial time on ab stract Turing machines. 2"
+   "text": "For example, the class of problems solvable in polynomial time by the serial random-access machine used throughout most of this book is the same as the class of problems solvable in polynomial time on ab stract Turing machines. 2"
   },
   {
    "type": "body",
@@ -79,7 +79,7 @@
    "section_title": "34.1 Polynomial time",
    "printed_page": 1048,
    "pdf_page": 1069,
-   "text": "It is also the same as the class of problems solvab le in polynomial time on a parallel computer when the number of processors grows polynomially with the input size."
+   "text": "It is also the same as the class of problems solvable in polynomial time on a parallel computer when the number of processors grows polynomially with the input size."
   },
   {
    "type": "body",
@@ -88,7 +88,7 @@
    "section_title": "34.1 Polynomial time",
    "printed_page": 1048,
    "pdf_page": 1069,
-   "text": "3. The class of polynomial-time solvable problems has nice closure properties, since polynomials are closed under addition, multip lication, and composition."
+   "text": "3. The class of polynomial-time solvable problems has nice closure properties, since polynomials are closed under addition, multiplication, and composition."
   },
   {
    "type": "body",
@@ -124,7 +124,7 @@
    "section_title": "34.1 Polynomial time",
    "printed_page": 1049,
    "pdf_page": 1070,
-   "text": "For example, an instance for SHORTEST-PATHis a triple consisting of a graph and two vertices. A solution is a sequence of verti ces in the graph, with perhaps the empty sequence denoting that no path exists. Th e problem SHORTEST-PATH itself is the relation that associates each instanc e of a graph and two vertices with a shortest path in the graph that connects the two vertices. Since shortest paths are not necessarily unique, a given problem instance may have more than one solution."
+   "text": "For example, an instance for SHORTEST-PATHis a triple consisting of a graph and two vertices. A solution is a sequence of vertices in the graph, with perhaps the empty sequence denoting that no path exists. Th e problem SHORTEST-PATH itself is the relation that associates each instanc e of a graph and two vertices with a shortest path in the graph that connects the two vertices. Since shortest paths are not necessarily unique, a given problem instance may have more than one solution."
   },
   {
    "type": "body",
@@ -133,7 +133,7 @@
    "section_title": "34.1 Polynomial time",
    "printed_page": 1049,
    "pdf_page": 1070,
-   "text": "This formulation of an abstract problem is more gen eral than necessary for our purposes. As we saw above, the theory of NP-completeness restricts attention to decision problems: those having a yes/no solution. In this case, we can view an abstract decision problem as a function that maps the instance set I to the solution set f0,1 g. For example, a decision problem related to SHORTEST-PATHis the problem PATH that we saw earlier. If i = ⟨G,u,v,k⟩ is an instance of PATH, then PATH(i) = 1 (yes) if G contains a path from u to v with at most k edges, and PATH(i) = 0 (no) otherwise. Many abstract problems are not deci sion problems, but rather optimization problems, which require some value to be minimized or maximized. As we saw above, however, you can usuall y recast an optimization problem as a decision problem that is no harder."
+   "text": "This formulation of an abstract problem is more general than necessary for our purposes. As we saw above, the theory of NP-completeness restricts attention to decision problems: those having a yes/no solution. In this case, we can view an abstract decision problem as a function that maps the instance set I to the solution set f0,1 g. For example, a decision problem related to SHORTEST-PATHis the problem PATH that we saw earlier. If i = ⟨G,u,v,k⟩ is an instance of PATH, then PATH(i) = 1 (yes) if G contains a path from u to v with at most k edges, and PATH(i) = 0 (no) otherwise. Many abstract problems are not decision problems, but rather optimization problems, which require some value to be minimized or maximized. As we saw above, however, you can usuall y recast an optimization problem as a decision problem that is no harder."
   },
   {
    "type": "body",
@@ -151,7 +151,7 @@
    "section_title": "34.1 Polynomial time",
    "printed_page": 1049,
    "pdf_page": 1070,
-   "text": "In order for a computer program to solve an abstract problem, its problem instances must appear in a way that the program understands. An encoding of a set S of abstract objects is a mapping e from S to the set of binary strings. 3 For example, we are all familiar with encoding the natural numbe rs N = f0,1,2,3,4,… g as the strings f0,1,10,11,100,… g. Using this encoding, e(17) = 10001. If you have looked at computer representations of keyboard characters, you probably have seen the ASCII code, where, for example, the encoding of A is 01000001. You can encode a compound object as a binary string by comb ining the representations of its constituent parts. Polygons, graphs, functions, ordered pairs, programs—all can be encoded as binary strings."
+   "text": "In order for a computer program to solve an abstract problem, its problem instances must appear in a way that the program understands. An encoding of a set S of abstract objects is a mapping e from S to the set of binary strings. 3 For example, we are all familiar with encoding the natural numbers N = f0,1,2,3,4,… g as the strings f0,1,10,11,100,… g. Using this encoding, e(17) = 10001. If you have looked at computer representations of keyboard characters, you probably have seen the ASCII code, where, for example, the encoding of A is 01000001. You can encode a compound object as a binary string by combining the representations of its constituent parts. Polygons, graphs, functions, ordered pairs, programs—all can be encoded as binary strings."
   },
   {
    "type": "body",
@@ -160,7 +160,7 @@
    "section_title": "34.1 Polynomial time",
    "printed_page": 1049,
    "pdf_page": 1070,
-   "text": "Thus, a computer algorithm that \"solves\" some abstract decision problem actually takes an encoding of a problem instance as inp ut. The size of an instance i is just the length of its string, which we denote b y |i|. We call a problem whose instance set is the set of binary strings a concrete problem. We say that an algorithm solves a concrete problem in O(T(n)) time if, when it is provided a problem"
+   "text": "Thus, a computer algorithm that \"solves\" some abstract decision problem actually takes an encoding of a problem instance as input. The size of an instance i is just the length of its string, which we denote b y |i|. We call a problem whose instance set is the set of binary strings a concrete problem. We say that an algorithm solves a concrete problem in O(T(n)) time if, when it is provided a problem"
   },
   {
    "type": "body",
@@ -205,7 +205,7 @@
    "section_title": "34.1 Polynomial time",
    "printed_page": 1050,
    "pdf_page": 1071,
-   "text": "to the concrete-problem instance e(i) 2 f0,1 g − is also Q(i). As a technicality, some binary strings might represent no meaningful abstract-problem instance. For convenience, assume that any such string maps arbit rarily to 0. Thus, the concrete problem produces the same solutions as the abstract problem on binary-string instances that represent the encodings of abstract-problem instances."
+   "text": "to the concrete-problem instance e(i) 2 f0,1 g − is also Q(i). As a technicality, some binary strings might represent no meaningful abstract-problem instance. For convenience, assume that any such string maps arbitrarily to 0. Thus, the concrete problem produces the same solutions as the abstract problem on binary-string instances that represent the encodings of abstract-problem instances."
   },
   {
    "type": "body",
@@ -214,7 +214,7 @@
    "section_title": "34.1 Polynomial time",
    "printed_page": 1050,
    "pdf_page": 1071,
-   "text": "We would like to extend the definition of polynomial-time solvability from concrete problems to abstract problems by using encodings as the bridge, ideally with the definition independent of any particular encoding. That is, the efficiency of solving a problem should not depend on how the prob lem is encoded. Unfortunately, it depends quite heavily on the encoding. F or example, suppose that the sole input to an algorithm is an integer k, and suppose that the running time of the algorithm is Θ(k). If the integer k is provided in unary—a string of k 1s—then the running time of the algorithm is O(n) on length-n inputs, which is polynomial time. If the input k is provided using the more natural binary representation, however, then the input length is n = b lg kc + 1, so the size of the unary encoding is exponential in the size of the binary encoding. With the binary representation, the running time of the algorithm is Θ(k) = Θ(2 n ), which is exponential in the size of the input. Thus, depending on the encoding, the algorithm runs in either polynomial or superpolynomial time."
+   "text": "We would like to extend the definition of polynomial-time solvability from concrete problems to abstract problems by using encodings as the bridge, ideally with the definition independent of any particular encoding. That is, the efficiency of solving a problem should not depend on how the problem is encoded. Unfortunately, it depends quite heavily on the encoding. F or example, suppose that the sole input to an algorithm is an integer k, and suppose that the running time of the algorithm is Θ(k). If the integer k is provided in unary—a string of k 1s—then the running time of the algorithm is O(n) on length-n inputs, which is polynomial time. If the input k is provided using the more natural binary representation, however, then the input length is n = b lg kc + 1, so the size of the unary encoding is exponential in the size of the binary encoding. With the binary representation, the running time of the algorithm is Θ(k) = Θ(2 n ), which is exponential in the size of the input. Thus, depending on the encoding, the algorithm runs in either polynomial or superpolynomial time."
   },
   {
    "type": "body",
@@ -223,7 +223,7 @@
    "section_title": "34.1 Polynomial time",
    "printed_page": 1050,
    "pdf_page": 1071,
-   "text": "The encoding of an abstract problem matters quite a bit to how we understand polynomial time. We cannot really talk about solving an abstract problem without first specifying an encoding. Nevertheless, in practice, if we rule out \"expensive\" encodings such as unary ones, the actual encoding o f a problem makes little difference to whether the problem can be solved in pol ynomial time. For example, representing integers in base 3 instead of binary has no effect on whether a problem is solvable in polynomial time, since we can convert an integer represented in base 3 to an integer represented in base 2 in polynomial time."
+   "text": "The encoding of an abstract problem matters quite a bit to how we understand polynomial time. We cannot really talk about solving an abstract problem without first specifying an encoding. Nevertheless, in practice, if we rule out \"expensive\" encodings such as unary ones, the actual encoding o f a problem makes little difference to whether the problem can be solved in polynomial time. For example, representing integers in base 3 instead of binary has no effect on whether a problem is solvable in polynomial time, since we can convert an integer represented in base 3 to an integer represented in base 2 in polynomial time."
   },
   {
    "type": "footnote",
@@ -232,7 +232,7 @@
    "section_title": "34.1 Polynomial time",
    "printed_page": 1050,
    "pdf_page": 1071,
-   "text": "4 We assume that the algorithm’s output is separate from its input. Because it takes at least one time step to produce each bit of the output and the algo rithm takes O(T(n)) time steps, the size of the"
+   "text": "4 We assume that the algorithm’s output is separate from its input. Because it takes at least one time step to produce each bit of the output and the algorithm takes O(T(n)) time steps, the size of the"
   },
   {
    "type": "body",
@@ -259,7 +259,7 @@
    "section_title": "34.1 Polynomial time",
    "printed_page": 1051,
    "pdf_page": 1072,
-   "text": "We say that a function f W f0,1 g − ! f0,1 g − is polynomial-time computable if there exists a polynomial-time algorithm A that, given any input x 2 f0,1 g − , produces as output f(x) . For some set I of problem instances, we say that two encodings e 1 and e 2 are polynomially related if there exist two polynomial-time computable functions f 12 and f 21 such that for any i 2 I , we have f 12 (e 1 (i)) = e 2 (i) and f 21 (e 2 (i)) = e 1 (i). 6 That is, a polynomial-time algorithm can compute the encoding e 2 (i) from the encoding e 1 (i), and vice versa. If two encodings e 1 and e 2 of an abstract problem are polynomially related, whether the problem is polynomialtime solvable or not is independent of which encodi ng we use, as the following lemma shows."
+   "text": "We say that a function f W f0,1 g − ! f0,1 g − is polynomial-time computable if there exists a polynomial-time algorithm A that, given any input x 2 f0,1 g − , produces as output f(x) . For some set I of problem instances, we say that two encodings e 1 and e 2 are polynomially related if there exist two polynomial-time computable functions f 12 and f 21 such that for any i 2 I , we have f 12 (e 1 (i)) = e 2 (i) and f 21 (e 2 (i)) = e 1 (i). 6 That is, a polynomial-time algorithm can compute the encoding e 2 (i) from the encoding e 1 (i), and vice versa. If two encodings e 1 and e 2 of an abstract problem are polynomially related, whether the problem is polynomialtime solvable or not is independent of which encoding we use, as the following lemma shows."
   },
   {
    "type": "lemma",
@@ -322,7 +322,7 @@
    "section_title": "34.1 Polynomial time",
    "printed_page": 1052,
    "pdf_page": 1073,
-   "text": "As long as the encoding implicitly used is polynomially related to this standard encoding, we can talk directly about abstract probl ems without reference to any particular encoding, knowing that the choice of encoding has no effect on whether the abstract problem is polynomial-time solvable. From now on, we will generally assume that all problem instances are binary string s encoded using the standard encoding, unless we explicitly specify the contrary. We’ll also typically neglect the distinction between abstract and concrete probl ems. You should watch out for problems that arise in practice, however, in wh ich a standard encoding is not obvious and the encoding does make a difference."
+   "text": "As long as the encoding implicitly used is polynomially related to this standard encoding, we can talk directly about abstract problems without reference to any particular encoding, knowing that the choice of encoding has no effect on whether the abstract problem is polynomial-time solvable. From now on, we will generally assume that all problem instances are binary string s encoded using the standard encoding, unless we explicitly specify the contrary. We’ll also typically neglect the distinction between abstract and concrete problems. You should watch out for problems that arise in practice, however, in wh ich a standard encoding is not obvious and the encoding does make a difference."
   },
   {
    "type": "body",
@@ -340,7 +340,7 @@
    "section_title": "34.1 Polynomial time",
    "printed_page": 1052,
    "pdf_page": 1073,
-   "text": "By focusing on decision problems, we can take advan tage of the machinery of formal-language theory. Let’s review some definitions from that theory. An alphabet † is a finite set of symbols. A language L over † is any set of strings made up of symbols from †. For example, if † = f0,1 g, the set L = f10; 11,101,111,1011,1101,10001,… g is the language of binary representations of prime numbers. We denote the empty string by \", the empty language by ,, and the language of all strings over † by † − . For example, if † = f0,1 g, then"
+   "text": "By focusing on decision problems, we can take advantage of the machinery of formal-language theory. Let’s review some definitions from that theory. An alphabet † is a finite set of symbols. A language L over † is any set of strings made up of symbols from †. For example, if † = f0,1 g, the set L = f10; 11,101,111,1011,1101,10001,… g is the language of binary representations of prime numbers. We denote the empty string by \", the empty language by ,, and the language of all strings over † by † − . For example, if † = f0,1 g, then"
   },
   {
    "type": "body",
@@ -484,7 +484,7 @@
    "section_title": "34.1 Polynomial time",
    "printed_page": 1053,
    "pdf_page": 1074,
-   "text": "As an example, the language PATH can be accepted in polynomial time. One polynomial-time accepting algorithm verifies that G encodes an undirected graph, verifies that u and v are vertices in G, uses breadth-first search to compute a path from u to v in G with the fewest edges, and then compares the number of edges on the path obtained with k. If G encodes an undirected graph and the path found from u to v has at most k edges, the algorithm outputs 1 and halts. Otherwise, the algorithm runs forever. This algorithm does not dec ide PATH, however, since it does not explicitly output 0 for instances in which a shortest path has more than k edges. A decision algorithm for PATH must explicitl y reject binary strings that do not belong to PATH. For a decision problem such as PATH, such a decision algorithm is straightforward to design: instead of running forever when there is not a path from u to v with at most k edges, it outputs 0 and halts. (It must also output 0 and halt if the input encoding is faulty.) For othe r problems, such as Turing’s Halting Problem, there exists an accepting algorithm, but no decision algorithm exists."
+   "text": "As an example, the language PATH can be accepted in polynomial time. One polynomial-time accepting algorithm verifies that G encodes an undirected graph, verifies that u and v are vertices in G, uses breadth-first search to compute a path from u to v in G with the fewest edges, and then compares the number of edges on the path obtained with k. If G encodes an undirected graph and the path found from u to v has at most k edges, the algorithm outputs 1 and halts. Otherwise, the algorithm runs forever. This algorithm does not decide PATH, however, since it does not explicitly output 0 for instances in which a shortest path has more than k edges. A decision algorithm for PATH must explicitl y reject binary strings that do not belong to PATH. For a decision problem such as PATH, such a decision algorithm is straightforward to design: instead of running forever when there is not a path from u to v with at most k edges, it outputs 0 and halts. (It must also output 0 and halt if the input encoding is faulty.) For othe r problems, such as Turing’s Halting Problem, there exists an accepting algorithm, but no decision algorithm exists."
   },
   {
    "type": "body",
@@ -547,7 +547,7 @@
    "section_title": "34.1 Polynomial time",
    "printed_page": 1054,
    "pdf_page": 1075,
-   "text": "Proof Because the class of languages decided by polynomial-time algorithms is a subset of the class of languages accepted by polynomial-time algorithms, we need only show that if L is accepted by a polynomial-time algorithm, it is decided by a polynomial-time algorithm. Let L be the language accepted by some polynomialtime algorithm A. We use a classic \"simulation\" argument to constru ct another polynomial-time algorithm A 0 that decides L. Because A accepts L in O(n k ) time for some constant k, there also exists a constant c such that A accepts L in at most cn k steps. For any input string x , the algorithm A 0 simulates cn k steps of A. After simulating cn k steps, algorithm A 0 inspects the behavior of A. If A has accepted x , then A 0 accepts x by outputting a 1. If A has not accepted x , then A 0 rejects x by outputting a 0. The overhead of A 0 simulating A does not increase the running time by more than a polynomial factor, and thus A 0 is a polynomial-time algorithm that decides L."
+   "text": "Proof Because the class of languages decided by polynomial-time algorithms is a subset of the class of languages accepted by polynomial-time algorithms, we need only show that if L is accepted by a polynomial-time algorithm, it is decided by a polynomial-time algorithm. Let L be the language accepted by some polynomialtime algorithm A. We use a classic \"simulation\" argument to construct another polynomial-time algorithm A 0 that decides L. Because A accepts L in O(n k ) time for some constant k, there also exists a constant c such that A accepts L in at most cn k steps. For any input string x , the algorithm A 0 simulates cn k steps of A. After simulating cn k steps, algorithm A 0 inspects the behavior of A. If A has accepted x , then A 0 accepts x by outputting a 1. If A has not accepted x , then A 0 rejects x by outputting a 0. The overhead of A 0 simulating A does not increase the running time by more than a polynomial factor, and thus A 0 is a polynomial-time algorithm that decides L."
   },
   {
    "type": "body",
@@ -673,7 +673,7 @@
    "section_title": "34.2 Polynomial-time verification",
    "printed_page": 1056,
    "pdf_page": 1077,
-   "text": "G = (V,E) is a simple cycle that contains each vertex in V . A graph that contains a hamiltonian cycle is said to be hamiltonian, and otherwise, it is nonhamiltonian. The name honors W. R. Hamilton, who described a m athematical game on the dodecahedron (Figure 34.2(a)) in which one player sticks five pins in any five consecutive vertices and the other player must comp lete the path to form a cycle containing all the vertices. 8 The dodecahedron is hamiltonian, and Figure 34.2(a) shows one hamiltonian cycle. Not all graphs are ham iltonian, however. For ex- ample, Figure 34.2(b) shows a bipartite graph with an odd number of vertices."
+   "text": "G = (V,E) is a simple cycle that contains each vertex in V . A graph that contains a hamiltonian cycle is said to be hamiltonian, and otherwise, it is nonhamiltonian. The name honors W. R. Hamilton, who described a m athematical game on the dodecahedron (Figure 34.2(a)) in which one player sticks five pins in any five consecutive vertices and the other player must complete the path to form a cycle containing all the vertices. 8 The dodecahedron is hamiltonian, and Figure 34.2(a) shows one hamiltonian cycle. Not all graphs are hamiltonian, however. For ex- ample, Figure 34.2(b) shows a bipartite graph with an odd number of vertices."
   },
   {
    "type": "body",
@@ -781,7 +781,7 @@
    "section_title": "34.2 Polynomial-time verification",
    "printed_page": 1058,
    "pdf_page": 1079,
-   "text": "Think of an algorithm A as verifying a language L if, for any string x 2 L, there exists a certificate y that A can use to prove that x 2 L. Moreover, for any string x … L, there must be no certificate proving that x 2 L. For example, in the hamiltonian-cycle problem, the certificate is the list of vertices in some hamiltonian cycle. If a graph is hamiltonian, the hamilt onian cycle itself offers enough information to verify that the graph is indeed hami ltonian. Conversely, if a graph is not hamiltonian, there can be no list of vertice s that fools the verification algorithm into believing that the graph is hamiltonian, since the verification algorithm carefully checks the so-called cycle to be sure."
+   "text": "Think of an algorithm A as verifying a language L if, for any string x 2 L, there exists a certificate y that A can use to prove that x 2 L. Moreover, for any string x … L, there must be no certificate proving that x 2 L. For example, in the hamiltonian-cycle problem, the certificate is the list of vertices in some hamiltonian cycle. If a graph is hamiltonian, the hamiltonian cycle itself offers enough information to verify that the graph is indeed hamiltonian. Conversely, if a graph is not hamiltonian, there can be no list of vertice s that fools the verification algorithm into believing that the graph is hamiltonian, since the verification algorithm carefully checks the so-called cycle to be sure."
   },
   {
    "type": "body",
@@ -871,7 +871,7 @@
    "section_title": "34.2 Polynomial-time verification",
    "printed_page": 1059,
    "pdf_page": 1080,
-   "text": "Figure 34.3 Four possibilities for relationships among complexi ty classes. In each diagram, one region enclosing another indicates a proper-subset relation. (a) PDNP = co-NP. Most researchers regard this possibility as the most unlikely. (b) If NP is closed under complement, then NP = co-NP, but it need not be the case that PDNP. (c) PDNP \\ co-NP, but NP is not closed under complement."
+   "text": "Figure 34.3 Four possibilities for relationships among complexity classes. In each diagram, one region enclosing another indicates a proper-subset relation. (a) PDNP = co-NP. Most researchers regard this possibility as the most unlikely. (b) If NP is closed under complement, then NP = co-NP, but it need not be the case that PDNP. (c) PDNP \\ co-NP, but NP is not closed under complement."
   },
   {
    "type": "body",
@@ -1078,7 +1078,7 @@
    "section_title": "34.3 NP-completeness and reducibility",
    "printed_page": 1061,
    "pdf_page": 1082,
-   "text": "One way that sometimes works for solving a problem is to recast it as a different problem. We call that strategy \"reducing\" one probl em to another. Think of a problem Q as being reducible to another problem Q 0 if any instance of Q can be recast as an instance of Q 0 , and the solution to the instance of Q 0 provides a solution to the instance of Q. For example, the problem of solving linear equati ons in an indeterminate x reduces to the problem of solving quadratic equations. Given a linear-equation instance ax + b = 0 (with solution x = −b/a), you can transform it to the quadratic equation ax 2 C bx + 0 = 0. This quadratic equation has the solutions x = .−b ˙ p b 2 − 4ac/=2a , where c = 0, so that p b 2 − 4ac = b. The"
+   "text": "One way that sometimes works for solving a problem is to recast it as a different problem. We call that strategy \"reducing\" one problem to another. Think of a problem Q as being reducible to another problem Q 0 if any instance of Q can be recast as an instance of Q 0 , and the solution to the instance of Q 0 provides a solution to the instance of Q. For example, the problem of solving linear equations in an indeterminate x reduces to the problem of solving quadratic equations. Given a linear-equation instance ax + b = 0 (with solution x = −b/a), you can transform it to the quadratic equation ax 2 C bx + 0 = 0. This quadratic equation has the solutions x = .−b ˙ p b 2 − 4ac/=2a , where c = 0, so that p b 2 − 4ac = b. The"
   },
   {
    "type": "body",
@@ -1393,7 +1393,7 @@
    "section_title": "34.3 NP-completeness and reducibility",
    "printed_page": 1065,
    "pdf_page": 1086,
-   "text": "Boolean combinational circuits are built from boole an combinational elements that are interconnected by wires. A boolean combinational element is any circuit element that has a constant number of boolean inputs and outputs and that performs a well-defined function. Boolean values are drawn from the set f0,1 g, where 0 represents FALSE and 1 represents TRUE ."
+   "text": "Boolean combinational circuits are built from boolean combinational elements that are interconnected by wires. A boolean combinational element is any circuit element that has a constant number of boolean inputs and outputs and that performs a well-defined function. Boolean values are drawn from the set f0,1 g, where 0 represents FALSE and 1 represents TRUE ."
   },
   {
    "type": "body",
@@ -1411,7 +1411,7 @@
    "section_title": "34.3 NP-completeness and reducibility",
    "printed_page": 1065,
    "pdf_page": 1086,
-   "text": "The operation of each gate, or of any boolean combinational element, is defined by a truth table, shown under each gate in Figure 34.7. A truth table gives the outputs of the combinational element for each possi ble setting of the inputs. For example, the truth table for the OR gate says that when the inputs are x = 0 and y = 1, the output value is ´ = 1. The symbol : denotes the NOT function, ^ denotes the AND function, and _ denotes the OR function. Thus, for example, 0 _ 1 = 1."
+   "text": "The operation of each gate, or of any boolean combinational element, is defined by a truth table, shown under each gate in Figure 34.7. A truth table gives the outputs of the combinational element for each possible setting of the inputs. For example, the truth table for the OR gate says that when the inputs are x = 0 and y = 1, the output value is ´ = 1. The symbol : denotes the NOT function, ^ denotes the AND function, and _ denotes the OR function. Thus, for example, 0 _ 1 = 1."
   },
   {
    "type": "body",
@@ -1447,7 +1447,7 @@
    "section_title": "34.3 NP-completeness and reducibility",
    "printed_page": 1066,
    "pdf_page": 1087,
-   "text": "Figure 34.8 Two instances of the circuit-satisfiability problem. (a) The assignment hx 1 = 1; x 2 = 1,x 3 = 0i to the inputs of this circuit causes the output of the circuit to be 1. The circuit is therefore satisfiable. (b) No assignment to the inputs of this circuit can cau se the output of the circuit to be 1. The circuit is therefore unsatisfiable. the individual wires, given the input hx 1 = 1,x 2 = 1,x 3 = 0i. Although a single wire may have no more than one combinational-element output connected to it, it can feed several element inputs. The number of elem ent inputs fed by a wire is called the fan-out of the wire. If no element output is connected to a wire, the wire is a circuit input, accepting input values from an external source. I f no element input is connected to a wire, the wire is a circuit output, providing the results of the circuit’s computation to the outside world. (An internal wire can also fan out to a circuit output.) For the purpose of defining the circuit-satisfiability problem, we limit the number of circuit outputs to 1, though in actual hardware design, a boolean combinational circuit may have multiple outputs."
+   "text": "Figure 34.8 Two instances of the circuit-satisfiability problem. (a) The assignment hx 1 = 1; x 2 = 1,x 3 = 0i to the inputs of this circuit causes the output of the circuit to be 1. The circuit is therefore satisfiable. (b) No assignment to the inputs of this circuit can cause the output of the circuit to be 1. The circuit is therefore unsatisfiable. the individual wires, given the input hx 1 = 1,x 2 = 1,x 3 = 0i. Although a single wire may have no more than one combinational-element output connected to it, it can feed several element inputs. The number of element inputs fed by a wire is called the fan-out of the wire. If no element output is connected to a wire, the wire is a circuit input, accepting input values from an external source. I f no element input is connected to a wire, the wire is a circuit output, providing the results of the circuit’s computation to the outside world. (An internal wire can also fan out to a circuit output.) For the purpose of defining the circuit-satisfiability problem, we limit the number of circuit outputs to 1, though in actual hardware design, a boolean combinational circuit may have multiple outputs."
   },
   {
    "type": "body",
@@ -1474,7 +1474,7 @@
    "section_title": "34.3 NP-completeness and reducibility",
    "printed_page": 1066,
    "pdf_page": 1087,
-   "text": "The circuit-satisfiability problem is, <Given a boolean combinational circuit composed of AND, OR, and NOT gates, is it satisfiable?= In order to pose this question formally, however, we must agree on a stan dard encoding for circuits."
+   "text": "The circuit-satisfiability problem is, <Given a boolean combinational circuit composed of AND, OR, and NOT gates, is it satisfiable?= In order to pose this question formally, however, we must agree on a standard encoding for circuits."
   },
   {
    "type": "body",
@@ -1591,7 +1591,7 @@
    "section_title": "34.3 NP-completeness and reducibility",
    "printed_page": 1068,
    "pdf_page": 1089,
-   "text": "A computer program is stored in the computer’s memory as a sequence of in- structions. A typical instruction encodes an operat ion to be performed, addresses of operands in memory, and an address where the res ult is to be stored. A special memory location, called the program counter, keeps track of which instruction is to be executed next. The program counter automat ically increments when each instruction is fetched, thereby causing the computer to execute instructions sequentially. Certain instructions can cause a value to b e written to the program counter, however, which alters the normal sequential execution and allows the computer to loop and perform conditional branches."
+   "text": "A computer program is stored in the computer’s memory as a sequence of in- structions. A typical instruction encodes an operation to be performed, addresses of operands in memory, and an address where the result is to be stored. A special memory location, called the program counter, keeps track of which instruction is to be executed next. The program counter automatically increments when each instruction is fetched, thereby causing the computer to execute instructions sequentially. Certain instructions can cause a value to b e written to the program counter, however, which alters the normal sequential execution and allows the computer to loop and perform conditional branches."
   },
   {
    "type": "body",
@@ -1717,7 +1717,7 @@
    "section_title": "34.3 NP-completeness and reducibility",
    "printed_page": 1069,
    "pdf_page": 1090,
-   "text": "Figure 34.9 The sequence of configurations produced by an algorithm A running on an input x and certificate y. Each configuration represents the state of the computer for one step of the computation and, besides A, x, and y, includes the program counter (PC), auxiliary mach ine state, and working storage. Except for the certificate y, the initial configuration c 0 is constant. A boolean combinational circuit M maps each configuration to the next configuration. The output is a distinguished bit in the working storage. certificate is O(n k ). (The running time of A is actually a polynomial in the total input size, which includes both an input string and a certificate, but since the length of the certificate is polynomial in the length n of the input string, the running time is polynomial in n.)"
+   "text": "Figure 34.9 The sequence of configurations produced by an algorithm A running on an input x and certificate y. Each configuration represents the state of the computer for one step of the computation and, besides A, x, and y, includes the program counter (PC), auxiliary machine state, and working storage. Except for the certificate y, the initial configuration c 0 is constant. A boolean combinational circuit M maps each configuration to the next configuration. The output is a distinguished bit in the working storage. certificate is O(n k ). (The running time of A is actually a polynomial in the total input size, which includes both an input string and a certificate, but since the length of the certificate is polynomial in the length n of the input string, the running time is polynomial in n.)"
   },
   {
    "type": "body",
@@ -1726,7 +1726,7 @@
    "section_title": "34.3 NP-completeness and reducibility",
    "printed_page": 1069,
    "pdf_page": 1090,
-   "text": "The basic idea of the proof is to represent the com putation of A as a sequence of configurations. As Figure 34.9 illustrates, consider each configuration as comprising a few parts: the program for A, the program counter and auxiliary machine state, the input x , the certificate y , and working storage. The combinational circuit M , which implements the computer hardware, maps each configuration c i to the next configuration c i + 1 , starting from the initial configuration c 0 . Algorithm A writes its output40 or 14to some designated location by the time it finishes executing. After A halts, the output value never changes. Thus, if the algorithm runs for at most T (n) steps, the output appears as one of the bits in c T (n) ."
+   "text": "The basic idea of the proof is to represent the computation of A as a sequence of configurations. As Figure 34.9 illustrates, consider each configuration as comprising a few parts: the program for A, the program counter and auxiliary machine state, the input x , the certificate y , and working storage. The combinational circuit M , which implements the computer hardware, maps each configuration c i to the next configuration c i + 1 , starting from the initial configuration c 0 . Algorithm A writes its output40 or 14to some designated location by the time it finishes executing. After A halts, the output value never changes. Thus, if the algorithm runs for at most T (n) steps, the output appears as one of the bits in c T (n) ."
   },
   {
    "type": "body",
@@ -1762,7 +1762,7 @@
    "section_title": "34.3 NP-completeness and reducibility",
    "printed_page": 1070,
    "pdf_page": 1091,
-   "text": "First, it wires the inputs to C 0 corresponding to the program for A, the initial program counter, the input x , and the initial state of memory directly to these known values. Thus, the only remaining inputs to the circ uit correspond to the certificate y . Second, it ignores all outputs from C 0 , except for the one bit of c T (n) corresponding to the output of A. This circuit C , so constructed, computes"
+   "text": "First, it wires the inputs to C 0 corresponding to the program for A, the initial program counter, the input x , and the initial state of memory directly to these known values. Thus, the only remaining inputs to the circuit correspond to the certificate y . Second, it ignores all outputs from C 0 , except for the one bit of c T (n) corresponding to the output of A. This circuit C , so constructed, computes"
   },
   {
    "type": "body",
@@ -1978,7 +1978,7 @@
    "section_title": "34.4 NP-completeness proofs",
    "printed_page": 1072,
    "pdf_page": 1093,
-   "text": "The following lemma provides a foundation for showi ng that a given language is NP-complete."
+   "text": "The following lemma provides a foundation for showing that a given language is NP-complete."
   },
   {
    "type": "lemma",
@@ -2221,7 +2221,7 @@
    "section_title": "34.4 NP-completeness proofs",
    "printed_page": 1074,
    "pdf_page": 1095,
-   "text": "To prove that SATis NP-hard, we show that CIRCUIT-SAT ≤ PSAT. In other words, we need to show how to reduce any instance o f circuit satisfiability to an instance of formula satisfiability in polynomial time. We can use induction to express any boolean combinational circuit as a bool ean formula. We simply look at the gate that produces the circuit output and in ductively express each of the x 6 x 3 x 4 x 7 x 10 x 9 x 8 x 5 x 2 x 1"
+   "text": "To prove that SATis NP-hard, we show that CIRCUIT-SAT ≤ PSAT. In other words, we need to show how to reduce any instance o f circuit satisfiability to an instance of formula satisfiability in polynomial time. We can use induction to express any boolean combinational circuit as a boolean formula. We simply look at the gate that produces the circuit output and in ductively express each of the x 6 x 3 x 4 x 7 x 10 x 9 x 8 x 5 x 2 x 1"
   },
   {
    "type": "figure-caption",
@@ -2599,7 +2599,7 @@
    "section_title": "34.4 NP-completeness proofs",
    "printed_page": 1078,
    "pdf_page": 1099,
-   "text": "The second step of the reduction converts each clau se Ω 0 i into conjunctive normal form. Construct a truth table for Ω 0 i by evaluating all possible assignments to its variables. Each row of the truth table consists of a possible assignment of the variables of the clause, together with the value of the clause under that assignment."
+   "text": "The second step of the reduction converts each clause Ω 0 i into conjunctive normal form. Construct a truth table for Ω 0 i by evaluating all possible assignments to its variables. Each row of the truth table consists of a possible assignment of the variables of the clause, together with the value of the clause under that assignment."
   },
   {
    "type": "body",
@@ -3281,7 +3281,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1084,
    "pdf_page": 1105,
-   "text": "The vertex-cover problem is to find a vertex cover of minimum size in a given graph. For this optimization problem, the correspon ding decision problem asks whether a graph has a vertex cover of a given size k. As a language, we define"
+   "text": "The vertex-cover problem is to find a vertex cover of minimum size in a given graph. For this optimization problem, the corresponding decision problem asks whether a graph has a vertex cover of a given size k. As a language, we define"
   },
   {
    "type": "body",
@@ -3353,7 +3353,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1085,
    "pdf_page": 1106,
-   "text": "The reduction algorithm takes as input an instance ⟨G,k⟩ of the clique problem and computes the complement G in polynomial time. The output of the reduction algorithm is the instance h G; |V| − ki of the vertex-cover problem. To complete the proof, we show that this transformation is inde ed a reduction: the graph G contains a clique of size k if and only if the graph G has a vertex cover of size"
+   "text": "The reduction algorithm takes as input an instance ⟨G,k⟩ of the clique problem and computes the complement G in polynomial time. The output of the reduction algorithm is the instance h G; |V| − ki of the vertex-cover problem. To complete the proof, we show that this transformation is indeed a reduction: the graph G contains a clique of size k if and only if the graph G has a vertex cover of size"
   },
   {
    "type": "body",
@@ -3659,7 +3659,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1087,
    "pdf_page": 1108,
-   "text": "(Figure 34.16(c)). No other paths through the gadget that visit all 12 vertices are possible. In particular, it is impossible to constr uct two vertex-disjoint paths, one of which connects [u; v; 1] to [v; u; 6] and the other of which connects [v; u; 1] to [u; v; 6], such that the union of the two paths contains all of the gadget’s vertices."
+   "text": "(Figure 34.16(c)). No other paths through the gadget that visit all 12 vertices are possible. In particular, it is impossible to construct two vertex-disjoint paths, one of which connects [u; v; 1] to [v; u; 6] and the other of which connects [v; u; 1] to [u; v; 6], such that the union of the two paths contains all of the gadget’s vertices."
   },
   {
    "type": "body",
@@ -3686,7 +3686,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1087,
    "pdf_page": 1108,
-   "text": "Figure 34.17 shows. First, for each vertex u 2 V , edges join pairs of gadgets in order to form a path containing all gadgets corr esponding to edges incident on u in G. We arbitrarily order the vertices adjacent to eac h vertex u 2 V as u .1/ ,u .2/ ,…,u (degree(u)) , where degree(u) is the number of vertices adjacent to u."
+   "text": "Figure 34.17 shows. First, for each vertex u 2 V , edges join pairs of gadgets in order to form a path containing all gadgets corresponding to edges incident on u in G. We arbitrarily order the vertices adjacent to eac h vertex u 2 V as u .1/ ,u .2/ ,…,u (degree(u)) , where degree(u) is the number of vertices adjacent to u."
   },
   {
    "type": "body",
@@ -3695,7 +3695,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1087,
    "pdf_page": 1108,
-   "text": "To create a path in G 0 through all the gadgets corresponding to edges inci dent on u, E 0 contains the edges f.[u,u (i ) ; 6]; [u; u (i + 1) ; 1]/ W 1 ≤ i ≤ degree(u) − 1g."
+   "text": "To create a path in G 0 through all the gadgets corresponding to edges incident on u, E 0 contains the edges f.[u,u (i ) ; 6]; [u; u (i + 1) ; 1]/ W 1 ≤ i ≤ degree(u) − 1g."
   },
   {
    "type": "body",
@@ -3731,7 +3731,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1087,
    "pdf_page": 1108,
-   "text": "[u,u (degree(u)) ; 6] of each of these paths to each of the selector vert ices. That is, E 0 includes the edges f(s j ,[u,u .1) ; 1]/ W u 2 V and 1 ≤ j ≤ kg"
+   "text": "[u,u (degree(u)) ; 6] of each of these paths to each of the selector vertices. That is, E 0 includes the edges f(s j ,[u,u .1) ; 1]/ W u 2 V and 1 ≤ j ≤ kg"
   },
   {
    "type": "body",
@@ -3785,7 +3785,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1088,
    "pdf_page": 1109,
-   "text": "≤ 12 |E| C |V| vertices. The edges of G 0 are those in the gadgets, those that go between gad gets, and those connecting selector vertices to gadgets. Each gadget contains 14 edges, totaling 14 |E| in all gadgets. For each vertex u 2 V , graph G 0 has degree(u) − 1 edges going between gadgets, so that summed over all vertices in V , X u2V"
+   "text": "≤ 12 |E| C |V| vertices. The edges of G 0 are those in the gadgets, those that go between gadgets, and those connecting selector vertices to gadgets. Each gadget contains 14 edges, totaling 14 |E| in all gadgets. For each vertex u 2 V , graph G 0 has degree(u) − 1 edges going between gadgets, so that summed over all vertices in V , X u2V"
   },
   {
    "type": "body",
@@ -3938,7 +3938,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1090,
    "pdf_page": 1111,
-   "text": "We first argue that the set V − is well defined, that is, for each selector vertex s j , exactly one of the incident edges in the hamilton ian cycle C is of the form"
+   "text": "We first argue that the set V − is well defined, that is, for each selector vertex s j , exactly one of the incident edges in the hamiltonian cycle C is of the form"
   },
   {
    "type": "body",
@@ -4037,7 +4037,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1091,
    "pdf_page": 1112,
-   "text": "Proof We first show that TSP 2 NP. Given an instance of the problem, the certificate is the sequence of n vertices in the tour. The verification algorithm checks that this sequence contains each vertex exac tly once, sums up the edge costs, and checks that the sum is at most k. This process can certainly be done in polynomial time."
+   "text": "Proof We first show that TSP 2 NP. Given an instance of the problem, the certificate is the sequence of n vertices in the tour. The verification algorithm checks that this sequence contains each vertex exactly once, sums up the edge costs, and checks that the sum is at most k. This process can certainly be done in polynomial time."
   },
   {
    "type": "body",
@@ -4751,7 +4751,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1097,
    "pdf_page": 1118,
-   "text": "Within graph problems, if you need to select a port ion of the graph, without regard to ordering, then the vertex-cover problem is often a good place to start. If ordering matters, then consider starting from the hamiltonian-cycle or hamiltonianpath problem (see Exercise 34.5-6)."
+   "text": "Within graph problems, if you need to select a portion of the graph, without regard to ordering, then the vertex-cover problem is often a good place to start. If ordering matters, then consider starting from the hamiltonian-cycle or hamiltonianpath problem (see Exercise 34.5-6)."
   },
   {
    "type": "body",
@@ -4796,7 +4796,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1097,
    "pdf_page": 1118,
-   "text": "The reduction from the vertex-cover problem to the hamiltonian-cycle problem uses the gadget shown in Figure 34.16. This gadget is a subgraph that is connected to other parts of the constructed graph in order to restrict the ways that a cycle can visit each vertex in the gadget once. More gene rally, a gadget is a component that enforces certain properties. Gadgets can be complicated, as in the reduction to the hamiltonian-cycle problem. Or they can be simple: in the reduction of 3-CNF satisfiability to the subset-sum problem, you can view the slack variables s j and s 0 j as gadgets enabling each clause-labeled digit position to achieve the target value of 4."
+   "text": "The reduction from the vertex-cover problem to the hamiltonian-cycle problem uses the gadget shown in Figure 34.16. This gadget is a subgraph that is connected to other parts of the constructed graph in order to restrict the ways that a cycle can visit each vertex in the gadget once. More generally, a gadget is a component that enforces certain properties. Gadgets can be complicated, as in the reduction to the hamiltonian-cycle problem. Or they can be simple: in the reduction of 3-CNF satisfiability to the subset-sum problem, you can view the slack variables s j and s 0 j as gadgets enabling each clause-labeled digit position to achieve the target value of 4."
   },
   {
    "type": "exercise",
@@ -4913,7 +4913,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1099,
    "pdf_page": 1120,
-   "text": "Although the independent-set decision problem is NP-complete, certain special cases are polynomial-time solvable. c. Give an efficient algorithm to solve the independent-set problem when each vertex in G has degree 2. Analyze the running time, and prove that your algorithm works correctly. d. Give an efficient algorithm to solve the independent-set problem when G is bipartite. Analyze the running time, and prove that your algorithm works correctly. (Hint: First prove that in a bipartite graph, the size of the maximimum independent set plus the size of the maximum matchi ng is equal to |V|. Then use a maximum-matching algorithm (see Section 25.1) as a first step in an algorithm to find an independent set.)"
+   "text": "Although the independent-set decision problem is NP-complete, certain special cases are polynomial-time solvable. c. Give an efficient algorithm to solve the independent-set problem when each vertex in G has degree 2. Analyze the running time, and prove that your algorithm works correctly. d. Give an efficient algorithm to solve the independent-set problem when G is bipartite. Analyze the running time, and prove that your algorithm works correctly. (Hint: First prove that in a bipartite graph, the size of the maximimum independent set plus the size of the maximum matching is equal to |V|. Then use a maximum-matching algorithm (see Section 25.1) as a first step in an algorithm to find an independent set.)"
   },
   {
    "type": "problem",
@@ -5120,7 +5120,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1103,
    "pdf_page": 1124,
-   "text": "Work in complexity theory has shed light on the com plexity of computing approximate solutions. This work gives a new definition of NP using <probabilistically checkable proofs.= This new definition implies that for problems such as clique, vertex cover, the traveling-salesperson problem with the triangle inequality, and many others, computing good approximate so lutions (see Chapter 35) is NP-hard and hence no easier than computing optimal solutions. An introduction to this area can be found in Arora’s thesis [21], a chapter by Arora and Lund in Hochbaum [221], a survey article by Arora [22], a book edited by Mayr, Pr¨ omel, and Steger [319], a survey article by Johnson [237], and a chapter in the textbook by Arora and Barak [24]."
+   "text": "Work in complexity theory has shed light on the complexity of computing approximate solutions. This work gives a new definition of NP using <probabilistically checkable proofs.= This new definition implies that for problems such as clique, vertex cover, the traveling-salesperson problem with the triangle inequality, and many others, computing good approximate so lutions (see Chapter 35) is NP-hard and hence no easier than computing optimal solutions. An introduction to this area can be found in Arora’s thesis [21], a chapter by Arora and Lund in Hochbaum [221], a survey article by Arora [22], a book edited by Mayr, Pr¨ omel, and Steger [319], a survey article by Johnson [237], and a chapter in the textbook by Arora and Barak [24]."
   },
   {
    "type": "footnote",
@@ -5138,7 +5138,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1104,
    "pdf_page": 1125,
-   "text": "Many problems of practical significance are NP-complete, yet they are too important to abandon merely because nobody knows how to find an optimal solution in polynomial time. Even if a problem is NP-complete, there may be hope. You have at least three options to get around NP-completeness. First, if the actual inputs are small, an algorithm with exponential running time m ight be fast enough. Second, you might be able to isolate important special case s that you can solve in polynomial time. Third, you can try to devise an approach to find a near-optimal solution in polynomial time (either in the worst case or the expected case). In practice, nearoptimality is often good enough. We call an algorit hm that returns near-optimal solutions an approximation algorithm. This chapter presents polynomial-time approximation algorithms for several NP-complete problems."
+   "text": "Many problems of practical significance are NP-complete, yet they are too important to abandon merely because nobody knows how to find an optimal solution in polynomial time. Even if a problem is NP-complete, there may be hope. You have at least three options to get around NP-completeness. First, if the actual inputs are small, an algorithm with exponential running time m ight be fast enough. Second, you might be able to isolate important special case s that you can solve in polynomial time. Third, you can try to devise an approach to find a near-optimal solution in polynomial time (either in the worst case or the expected case). In practice, nearoptimality is often good enough. We call an algorithm that returns near-optimal solutions an approximation algorithm. This chapter presents polynomial-time approximation algorithms for several NP-complete problems."
   },
   {
    "type": "body",
@@ -5192,7 +5192,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1104,
    "pdf_page": 1125,
-   "text": "If an algorithm achieves an approximation ratio of Ω(n), we call it a −.n/-approximation algorithm. The definitions of approximation ratio and Ω(n)-approximation algorithm apply to both minimization and maximizati on problems. For a maximization problem, 0 \" C ≤ C − , and the ratio C − \"C gives the factor by which"
+   "text": "If an algorithm achieves an approximation ratio of Ω(n), we call it a −.n/-approximation algorithm. The definitions of approximation ratio and Ω(n)-approximation algorithm apply to both minimization and maximization problems. For a maximization problem, 0 \" C ≤ C − , and the ratio C − \"C gives the factor by which"
   }
  ]
 }

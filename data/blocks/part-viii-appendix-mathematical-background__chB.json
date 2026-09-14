@@ -1069,7 +1069,7 @@
    "section_title": "B.3 Functions",
    "printed_page": 1162,
    "pdf_page": 1183,
-   "text": "A finite sequence of length n is a function f whose domain is the set of n integers f0,1,…,n − 1g. We often denote a finite sequence by listing its values in angle brackets: hf(0),f(1),…,f(n − 1)i. An infinite sequence is a function whose domain is the set N of natural numbers. For example, the Fibonacci sequ ence, defined by recurrence (3.31), is the infinite sequence ⟨0,1,1,2,3,5,8,13,21,…⟩."
+   "text": "A finite sequence of length n is a function f whose domain is the set of n integers f0,1,…,n − 1g. We often denote a finite sequence by listing its values in angle brackets: hf(0),f(1),…,f(n − 1)i. An infinite sequence is a function whose domain is the set N of natural numbers. For example, the Fibonacci sequence, defined by recurrence (3.31), is the infinite sequence ⟨0,1,1,2,3,5,8,13,21,…⟩."
   },
   {
    "type": "body",
@@ -1267,7 +1267,7 @@
    "section_title": "B.4 Graphs",
    "printed_page": 1164,
    "pdf_page": 1185,
-   "text": "In an undirected graph, self-loops are forbidden, so that every edge consists of two distinct vertices. Figure B.2(b) shows an undir ected graph on the vertex set f1,2,3,4,5,6 g ."
+   "text": "In an undirected graph, self-loops are forbidden, so that every edge consists of two distinct vertices. Figure B.2(b) shows an undirected graph on the vertex set f1,2,3,4,5,6 g ."
   },
   {
    "type": "body",
@@ -1303,7 +1303,7 @@
    "section_title": "B.4 Graphs",
    "printed_page": 1165,
    "pdf_page": 1186,
-   "text": "If (u,v) is an edge in a graph G = (V,E) , we say that vertex v is adjacent to vertex u. When the graph is undirected, the adjacency relat ion is symmetric."
+   "text": "If (u,v) is an edge in a graph G = (V,E) , we say that vertex v is adjacent to vertex u. When the graph is undirected, the adjacency relation is symmetric."
   },
   {
    "type": "body",
@@ -1528,7 +1528,7 @@
    "section_title": "B.4 Graphs",
    "printed_page": 1167,
    "pdf_page": 1188,
-   "text": "There are two variants of graphs that you may occasionally encounter. A multi- graph is like an undirected graph, but it can have both multiple edges between vertices (such as two distinct edges (u,v) and (u,v)) and self-loops. A hypergraph is like an undirected graph, but each hyperedge, rather than connecting two vertices, 1168 Appendix B Sets, Etc. connects an arbitrary subset of vertices. Many algo rithms written for ordinary directed and undirected graphs can be adapted to run on these graphlike structures."
+   "text": "There are two variants of graphs that you may occasionally encounter. A multi- graph is like an undirected graph, but it can have both multiple edges between vertices (such as two distinct edges (u,v) and (u,v)) and self-loops. A hypergraph is like an undirected graph, but each hyperedge, rather than connecting two vertices, 1168 Appendix B Sets, Etc. connects an arbitrary subset of vertices. Many algorithms written for ordinary directed and undirected graphs can be adapted to run on these graphlike structures."
   },
   {
    "type": "body",
@@ -1591,7 +1591,7 @@
    "section_title": "B.4 Graphs",
    "printed_page": 1168,
    "pdf_page": 1189,
-   "text": "Verify that in an undirected graph, the \"is reachab le from\" relation is an equivalence relation on the vertices of the graph. Which of the three properties of an equivalence relation hold in general for the \"is re achable from\" relation on the vertices of a directed graph?"
+   "text": "Verify that in an undirected graph, the \"is reachable from\" relation is an equivalence relation on the vertices of the graph. Which of the three properties of an equivalence relation hold in general for the \"is re achable from\" relation on the vertices of a directed graph?"
   },
   {
    "type": "body",
@@ -1744,7 +1744,7 @@
    "section_title": "B.5 Trees",
    "printed_page": 1169,
    "pdf_page": 1190,
-   "text": "Figure B.4 (a) A free tree. (b) A forest. (c) A graph that contains a cycle and is therefore neit her a tree nor a forest."
+   "text": "Figure B.4 (a) A free tree. (b) A forest. (c) A graph that contains a cycle and is therefore neither a tree nor a forest."
   },
   {
    "type": "body",
@@ -1942,7 +1942,7 @@
    "section_title": "B.5 Trees",
    "printed_page": 1171,
    "pdf_page": 1192,
-   "text": "A rooted tree is a free tree in which one of the vertices is dist inguished from the others. We call the distinguished vertex the root of the tree. We often refer to a 1172 Appendix B Sets, Etc."
+   "text": "A rooted tree is a free tree in which one of the vertices is distinguished from the others. We call the distinguished vertex the root of the tree. We often refer to a 1172 Appendix B Sets, Etc."
   },
   {
    "type": "body",
@@ -2068,7 +2068,7 @@
    "section_title": "B.5 Trees",
    "printed_page": 1173,
    "pdf_page": 1194,
-   "text": "A binary tree is not simply an ordered tree in whic h each node has degree at most 2. For example, in a binary tree, if a node has just one child, the position of the child—whether it is the left child or the right child—matters. In an ordered tree, there is no distinguishing a sole child as being either left or right. Figure B.7(b) shows a binary tree that differs from the tree in Figure B.7(a) because of the position of one node. Considered as ordered tre es, however, the two trees are identical."
+   "text": "A binary tree is not simply an ordered tree in whic h each node has degree at most 2. For example, in a binary tree, if a node has just one child, the position of the child—whether it is the left child or the right child—matters. In an ordered tree, there is no distinguishing a sole child as being either left or right. Figure B.7(b) shows a binary tree that differs from the tree in Figure B.7(a) because of the position of one node. Considered as ordered trees, however, the two trees are identical."
   },
   {
    "type": "body",
@@ -2086,7 +2086,7 @@
    "section_title": "B.5 Trees",
    "printed_page": 1173,
    "pdf_page": 1194,
-   "text": "6 The degree of a node depends on whether we consider T to be a rooted tree or a free tree. The degree of a vertex in a free tree is, as in any und irected graph, the number of adjacent vertices. In a rooted tree, however, the degree is the number of children—the parent of a node does not count toward its degree."
+   "text": "6 The degree of a node depends on whether we consider T to be a rooted tree or a free tree. The degree of a vertex in a free tree is, as in any undirected graph, the number of adjacent vertices. In a rooted tree, however, the degree is the number of children—the parent of a node does not count toward its degree."
   },
   {
    "type": "body",
@@ -2104,7 +2104,7 @@
    "section_title": "B.5 Trees",
    "printed_page": 1174,
    "pdf_page": 1195,
-   "text": "Figure B.7 Binary trees. (a) A binary tree drawn in a standard way. The left chi ld of a node is drawn beneath the node and to the left. The right child is drawn beneath and to the right. (b) A binary tree different from the one in (a). In (a), the lef t child of node 7 is 5 and the right child is absent."
+   "text": "Figure B.7 Binary trees. (a) A binary tree drawn in a standard way. The left child of a node is drawn beneath the node and to the left. The right child is drawn beneath and to the right. (b) A binary tree different from the one in (a). In (a), the lef t child of node 7 is 5 and the right child is absent."
   },
   {
    "type": "body",
@@ -2113,7 +2113,7 @@
    "section_title": "B.5 Trees",
    "printed_page": 1174,
    "pdf_page": 1195,
-   "text": "In (b), the left child of node 7 is absent and the right child is 5. As ordered trees, these trees are the same, but as binary trees, they are distinct. (c) The binary tree in (a) represented by the internal nodes of a full binary tree: an ordered tree in whi ch each internal node has degree 2. The leaves in the tree are shown as squares. are drawn as squares in the figure. The tree that results is a full binary tree: each node is either a leaf or has degree exactly 2. No nodes have degree 1. Consequently, the order of the children of a node preserves the position information."
+   "text": "In (b), the left child of node 7 is absent and the right child is 5. As ordered trees, these trees are the same, but as binary trees, they are distinct. (c) The binary tree in (a) represented by the internal nodes of a full binary tree: an ordered tree in which each internal node has degree 2. The leaves in the tree are shown as squares. are drawn as squares in the figure. The tree that results is a full binary tree: each node is either a leaf or has degree exactly 2. No nodes have degree 1. Consequently, the order of the children of a node preserves the position information."
   },
   {
    "type": "body",
@@ -2122,7 +2122,7 @@
    "section_title": "B.5 Trees",
    "printed_page": 1174,
    "pdf_page": 1195,
-   "text": "The positioning information that distinguishes bina ry trees from ordered trees extends to trees with more than two children per no de. In a positional tree, the children of a node are labeled with distinct positi ve integers. The i th child of a node is absent if no child is labeled with integer i . A k-ary tree is a positional tree in which for every node, all children with labels greater than k are missing. Thus, a binary tree is a k-ary tree with k = 2."
+   "text": "The positioning information that distinguishes binary trees from ordered trees extends to trees with more than two children per no de. In a positional tree, the children of a node are labeled with distinct positive integers. The i th child of a node is absent if no child is labeled with integer i . A k-ary tree is a positional tree in which for every node, all children with labels greater than k are missing. Thus, a binary tree is a k-ary tree with k = 2."
   },
   {
    "type": "body",
@@ -2167,7 +2167,7 @@
    "section_title": "B.5 Trees",
    "printed_page": 1175,
    "pdf_page": 1196,
-   "text": "Draw all the free trees composed of the three verti ces x , y , and ´. Draw all the rooted trees with nodes x , y , and ´ with x as the root. Draw all the ordered trees with nodes x , y , and ´ with x as the root. Draw all the binary trees with nodes x , y , and ´ with x as the root."
+   "text": "Draw all the free trees composed of the three vertices x , y , and ´. Draw all the rooted trees with nodes x , y , and ´ with x as the root. Draw all the ordered trees with nodes x , y , and ´ with x as the root. Draw all the binary trees with nodes x , y , and ´ with x as the root."
   },
   {
    "type": "body",
@@ -2176,7 +2176,7 @@
    "section_title": "B.5 Trees",
    "printed_page": 1175,
    "pdf_page": 1196,
-   "text": "Let G = (V,E) be a directed acyclic graph in which there is a ver tex v 0 2 V such that there exists a unique path from v 0 to every vertex v 2 V . Prove that the undirected version of G forms a tree."
+   "text": "Let G = (V,E) be a directed acyclic graph in which there is a vertex v 0 2 V such that there exists a unique path from v 0 to every vertex v 2 V . Prove that the undirected version of G forms a tree."
   },
   {
    "type": "body",
@@ -2329,7 +2329,7 @@
    "section_title": "B.5 Trees",
    "printed_page": 1176,
    "pdf_page": 1197,
-   "text": "Reword each of the following statements as a theore m about undirected graphs, and then prove it. Assume that friendship is symmetric but not reflexive. a. Any group of at least two people contains at least two people with the same number of friends in the group. b. Every group of six people contains either at least three mutual friends or at least three mutual strangers. c. Any group of people can be partitioned into two sub groups such that at least half the friends of each person belong to the subgr oup of which that person is not a member."
+   "text": "Reword each of the following statements as a theore m about undirected graphs, and then prove it. Assume that friendship is symmetric but not reflexive. a. Any group of at least two people contains at least two people with the same number of friends in the group. b. Every group of six people contains either at least three mutual friends or at least three mutual strangers. c. Any group of people can be partitioned into two subgroups such that at least half the friends of each person belong to the subgroup of which that person is not a member."
   },
   {
    "type": "chapter-notes",

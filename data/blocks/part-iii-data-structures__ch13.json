@@ -50,7 +50,7 @@
    "section_title": "13.1 Properties of red-black trees",
    "printed_page": 331,
    "pdf_page": 352,
-   "text": "A red-black tree is a binary search tree with one extra bit of stora ge per node: its color, which can be either RED or BLACK . By constraining the node colors on any simple path from the root to a leaf, red-black trees ensure that no such path is more than twice as long as any other, so that the t ree is approximately balanced."
+   "text": "A red-black tree is a binary search tree with one extra bit of storage per node: its color, which can be either RED or BLACK . By constraining the node colors on any simple path from the root to a leaf, red-black trees ensure that no such path is more than twice as long as any other, so that the t ree is approximately balanced."
   },
   {
    "type": "body",
@@ -302,7 +302,7 @@
    "section_title": "13.1 Properties of red-black trees",
    "printed_page": 334,
    "pdf_page": 355,
-   "text": "13.1-2 Draw the red-black tree that results after TREE-INSERT is called on the tree in Figure 13.1 with key 36. If the inserted node is colored red, is the resul ting tree a red-black tree? What if it is colored black?"
+   "text": "13.1-2 Draw the red-black tree that results after TREE-INSERT is called on the tree in Figure 13.1 with key 36. If the inserted node is colored red, is the resulting tree a red-black tree? What if it is colored black?"
   },
   {
    "type": "exercise",
@@ -1185,7 +1185,7 @@
    "section_title": "13.3 Insertion",
    "printed_page": 344,
    "pdf_page": 365,
-   "text": "If node ´ 0 is the root at the start of the next iteration, then case 1 corrected the lone violation of property 4 in this iteration. Since ´ 0 is red and it is the root, property 2 becomes the only one that is viola ted, and this violation is due to ´ 0 ."
+   "text": "If node ´ 0 is the root at the start of the next iteration, then case 1 corrected the lone violation of property 4 in this iteration. Since ´ 0 is red and it is the root, property 2 becomes the only one that is violated, and this violation is due to ´ 0 ."
   },
   {
    "type": "body",
@@ -1791,7 +1791,7 @@
    "section_title": "13.4 Deletion",
    "printed_page": 350,
    "pdf_page": 371,
-   "text": "The key idea is that in each case, the transformati on applied preserves the number of black nodes (including x ’s extra black) from (and including) the root of the subtree shown to the roots of each of the subtrees ˛; ˇ; : : : ; Ω . Thus, if property 5 holds prior to the transformation, it continues to hold afterward. For example, in Figure 13.7(a), which illustrates case 1, the number of black nodes from the root to the root of either subtree ˛ or ˇ is 3, both before and after the transformation."
+   "text": "The key idea is that in each case, the transformation applied preserves the number of black nodes (including x ’s extra black) from (and including) the root of the subtree shown to the roots of each of the subtrees ˛; ˇ; : : : ; Ω . Thus, if property 5 holds prior to the transformation, it continues to hold afterward. For example, in Figure 13.7(a), which illustrates case 1, the number of black nodes from the root to the root of either subtree ˛ or ˇ is 3, both before and after the transformation."
   },
   {
    "type": "body",
@@ -2240,7 +2240,7 @@
    "section_title": "13.4 Deletion",
    "printed_page": 352,
    "pdf_page": 373,
-   "text": "(a) Case 1 is transformed into case 2, 3, or 4 by exchanging the colors of nodes B and = and performing a left rotation. (b) In case 2, the extra black represented by the point er x moves up the tree by coloring node = red and setting x to point to node B. If case 2 is entered through case 1, the while loop terminates because the new node x is red-and-black, and therefore the value c of its color attribute is RED . (c) Case 3 is transformed to case 4 by exchanging the colors of nodes C and = and performing a right rotation. (d) Case 4 removes the extra black represented by x by changing some colors and performing a left rotation (without viol ating the red-black properties), and then the loop terminates."
+   "text": "(a) Case 1 is transformed into case 2, 3, or 4 by exchanging the colors of nodes B and = and performing a left rotation. (b) In case 2, the extra black represented by the point er x moves up the tree by coloring node = red and setting x to point to node B. If case 2 is entered through case 1, the while loop terminates because the new node x is red-and-black, and therefore the value c of its color attribute is RED . (c) Case 3 is transformed to case 4 by exchanging the colors of nodes C and = and performing a right rotation. (d) Case 4 removes the extra black represented by x by changing some colors and performing a left rotation (without violating the red-black properties), and then the loop terminates."
   },
   {
    "type": "body",
@@ -2456,7 +2456,7 @@
    "section_title": "13.4 Deletion",
    "printed_page": 354,
    "pdf_page": 375,
-   "text": "13.4-6 In each of the cases of Figure 13.7, give the count of black nodes from the root of the subtree shown to the roots of each of the subtr ees ˛; ˇ; : : : ; Ω , and verify that each count remains the same after the transformatio n. When a node has a color attribute c or c 0 , use the notation count(c) or count(c 0 ) symbolically in your count."
+   "text": "13.4-6 In each of the cases of Figure 13.7, give the count of black nodes from the root of the subtree shown to the roots of each of the subtrees ˛; ˇ; : : : ; Ω , and verify that each count remains the same after the transformatio n. When a node has a color attribute c or c 0 , use the notation count(c) or count(c 0 ) symbolically in your count."
   },
   {
    "type": "exercise",
@@ -2852,7 +2852,7 @@
    "section_title": "13.4 Deletion",
    "printed_page": 361,
    "pdf_page": 382,
-   "text": "The technique of amortized analysis applies to cert ain algorithms that perform a sequence of similar operations. Instead of boundi ng the cost of the sequence of operations by bounding the actual cost of each oper ation separately, an amortized analysis provides a worst-case bound on the actual cost of the entire sequence. One advantage of this approach is that although some op erations might be expensive, many others might be cheap. You can use amortized a nalysis when designing algorithms, since the design of an algorithm and th e analysis of its running time are often closely intertwined. Chapter 16 introduces three ways to perform an amortized analysis of an algorithm."
+   "text": "The technique of amortized analysis applies to certain algorithms that perform a sequence of similar operations. Instead of bounding the cost of the sequence of operations by bounding the actual cost of each operation separately, an amortized analysis provides a worst-case bound on the actual cost of the entire sequence. One advantage of this approach is that although some op erations might be expensive, many others might be cheap. You can use amortized a nalysis when designing algorithms, since the design of an algorithm and th e analysis of its running time are often closely intertwined. Chapter 16 introduces three ways to perform an amortized analysis of an algorithm."
   },
   {
    "type": "footnote",

@@ -49,7 +49,7 @@
    "section_title": "31.1 Elementary number-theoretic notions",
    "printed_page": 904,
    "pdf_page": 925,
-   "text": "Most of this book considers the elementary arithmet ic operations (multiplications, divisions, or computing remainders) as primitive operations that take one unit of time. Counting the number of such arithmetic operations that an algorithm performs provides a basis for making a reasonable esti mate of the algorithm’s actual running time on a computer. Elementary operations can be time-consuming, however, when their inputs are large. It thus becomes appropriate to measure how many bit operations a number-theoretic algorithm requires. In this model, multiplying two ˇ-bit integers by the ordinary method uses Θ(ˇ 2 ) bit operations. Similarly, dividing a ˇ-bit integer by a shorter integer or taking the remainder of a ˇ-bit integer when divided by a shorter integer requires Θ(ˇ 2 ) time by simple algorithms. (See"
+   "text": "Most of this book considers the elementary arithmetic operations (multiplications, divisions, or computing remainders) as primitive operations that take one unit of time. Counting the number of such arithmetic operations that an algorithm performs provides a basis for making a reasonable estimate of the algorithm’s actual running time on a computer. Elementary operations can be time-consuming, however, when their inputs are large. It thus becomes appropriate to measure how many bit operations a number-theoretic algorithm requires. In this model, multiplying two ˇ-bit integers by the ordinary method uses Θ(ˇ 2 ) bit operations. Similarly, dividing a ˇ-bit integer by a shorter integer or taking the remainder of a ˇ-bit integer when divided by a shorter integer requires Θ(ˇ 2 ) time by simple algorithms. (See"
   },
   {
    "type": "body",
@@ -445,7 +445,7 @@
    "section_title": "31.1 Elementary number-theoretic notions",
    "printed_page": 908,
    "pdf_page": 929,
-   "text": "Two integers a and b are relatively prime if their only common divisor is 1, that is, if gcd(a,b) = 1. For example, 8 and 15 are relatively prime, since the divisors of 8 are 1, 2, 4, and 8, and the divisors of 15 are 1, 3, 5, and 15. The following theorem states that if two integers are each relati vely prime to an integer p, then their product is relatively prime to p."
+   "text": "Two integers a and b are relatively prime if their only common divisor is 1, that is, if gcd(a,b) = 1. For example, 8 and 15 are relatively prime, since the divisors of 8 are 1, 2, 4, and 8, and the divisors of 15 are 1, 3, 5, and 15. The following theorem states that if two integers are each relatively prime to an integer p, then their product is relatively prime to p."
   },
   {
    "type": "theorem",
@@ -787,7 +787,7 @@
    "section_title": "31.1 Elementary number-theoretic notions",
    "printed_page": 910,
    "pdf_page": 931,
-   "text": "31.1-13 Give an efficient algorithm to convert a given ˇ-bit (binary) integer to a decimal representation. Argue that if multiplication or div ision of integers whose length is at most ˇ takes M(ˇ) time, where M(ˇ) = Ω(ˇ), then you can convert binary to decimal in O(M(ˇ) lg ˇ) time. (Hint: Use a divide-and-conquer approach, obtaining the top and bottom halves of the result with separate recursions.)"
+   "text": "31.1-13 Give an efficient algorithm to convert a given ˇ-bit (binary) integer to a decimal representation. Argue that if multiplication or division of integers whose length is at most ˇ takes M(ˇ) time, where M(ˇ) = Ω(ˇ), then you can convert binary to decimal in O(M(ˇ) lg ˇ) time. (Hint: Use a divide-and-conquer approach, obtaining the top and bottom halves of the result with separate recursions.)"
   },
   {
    "type": "exercise",
@@ -983,7 +983,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 912,
    "pdf_page": 933,
-   "text": "Euclid’s Elements (circa 300 B. C. E.) describes the following gcd algorithm, although its origin might be even earlier. The recurs ive procedure EUCLID implements Euclid’s algorithm, based directly on Theorem 31.9. The inputs a and b are arbitrary nonnegative integers."
+   "text": "Euclid’s Elements (circa 300 B. C. E.) describes the following gcd algorithm, although its origin might be even earlier. The recursive procedure EUCLID implements Euclid’s algorithm, based directly on Theorem 31.9. The inputs a and b are arbitrary nonnegative integers."
   },
   {
    "type": "body",
@@ -1109,7 +1109,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 913,
    "pdf_page": 934,
-   "text": "Assuming inductively that the lemma holds if the procedure makes k − 1 recursive calls, we shall prove that the lemma holds for k recursive calls. Since k >0, we have b > 0, and EUCLID(a,b) calls EUCLID(b,a mod b) recursively, which in turn makes k − 1 recursive calls. The inductive hypothesis then impl ies that b ≥ F k + 1 (thus proving part of the lemma), and a mod b ≥ F k . We have"
+   "text": "Assuming inductively that the lemma holds if the procedure makes k − 1 recursive calls, we shall prove that the lemma holds for k recursive calls. Since k >0, we have b > 0, and EUCLID(a,b) calls EUCLID(b,a mod b) recursively, which in turn makes k − 1 recursive calls. The inductive hypothesis then implies that b ≥ F k + 1 (thus proving part of the lemma), and a mod b ≥ F k . We have"
   },
   {
    "type": "body",
@@ -1277,7 +1277,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 914,
    "pdf_page": 935,
-   "text": "By rewriting Euclid’s algorithm, we can gain additional useful information. Specifically, let’s extend the algorithm to compute the integer coefficients x and y such that d = gcd(a,b) = ax C by; (31.16) where either or both of x and y may be zero or negative. These coefficients will prove useful later for computing modular multiplica tive inverses. The procedure"
+   "text": "By rewriting Euclid’s algorithm, we can gain additional useful information. Specifically, let’s extend the algorithm to compute the integer coefficients x and y such that d = gcd(a,b) = ax C by; (31.16) where either or both of x and y may be zero or negative. These coefficients will prove useful later for computing modular multiplicative inverses. The procedure"
   },
   {
    "type": "body",
@@ -1646,7 +1646,7 @@
    "section_title": "31.3 Modular arithmetic",
    "printed_page": 917,
    "pdf_page": 938,
-   "text": "To define a group on Z n , we need suitable binary operations, which we obta in by redefining the ordinary operations of addition and multiplication. We can define addition and multiplication operations for Z n , because the equivalence class of two integers uniquely determines the equivalence class of their sum or product. That is, if a = a 0 (mod n) and b = b 0 (mod n), then a + b = a 0 + b 0 (mod n); ab = a 0 b 0 (mod n):"
+   "text": "To define a group on Z n , we need suitable binary operations, which we obtain by redefining the ordinary operations of addition and multiplication. We can define addition and multiplication operations for Z n , because the equivalence class of two integers uniquely determines the equivalence class of their sum or product. That is, if a = a 0 (mod n) and b = b 0 (mod n), then a + b = a 0 + b 0 (mod n); ab = a 0 b 0 (mod n):"
   },
   {
    "type": "body",
@@ -2114,7 +2114,7 @@
    "section_title": "31.3 Modular arithmetic",
    "printed_page": 919,
    "pdf_page": 940,
-   "text": "When working with the groups (Z n ; C n ) and (Z − n ; • n ) in the remainder of this chapter, we follow the convenient practice of denot ing equivalence classes by their representative elements and denoting the oper ations C n and • n by the usual arithmetic notations C and • (or juxtaposition, so that ab = a • b) respectively."
+   "text": "When working with the groups (Z n ; C n ) and (Z − n ; • n ) in the remainder of this chapter, we follow the convenient practice of denoting equivalence classes by their representative elements and denoting the operations C n and • n by the usual arithmetic notations C and • (or juxtaposition, so that ab = a • b) respectively."
   },
   {
    "type": "body",
@@ -2294,7 +2294,7 @@
    "section_title": "31.3 Modular arithmetic",
    "printed_page": 921,
    "pdf_page": 942,
-   "text": "If (S; Ü) is a group, S 0 ⊆ S , and (S 0 ; Ü) is also a group, then (S 0 ; Ü) is a sub- group of (S; Ü). For example, the even integers form a subgroup of the integers under the operation of addition. The following theo rem, whose proof we leave as Exercise 31.3-3, provides a useful tool for recognizing subgroups."
+   "text": "If (S; Ü) is a group, S 0 ⊆ S , and (S 0 ; Ü) is also a group, then (S 0 ; Ü) is a sub- group of (S; Ü). For example, the even integers form a subgroup of the integers under the operation of addition. The following theorem, whose proof we leave as Exercise 31.3-3, provides a useful tool for recognizing subgroups."
   },
   {
    "type": "theorem",
@@ -2330,7 +2330,7 @@
    "section_title": "31.3 Modular arithmetic",
    "printed_page": 921,
    "pdf_page": 942,
-   "text": "The following theorem, whose proof is omitted, prov ides an extremely useful constraint on the size of a subgroup."
+   "text": "The following theorem, whose proof is omitted, provides an extremely useful constraint on the size of a subgroup."
   },
   {
    "type": "theorem",
@@ -3195,7 +3195,7 @@
    "section_title": "31.5 The Chinese remainder theorem",
    "printed_page": 928,
    "pdf_page": 949,
-   "text": "The Chinese remainder theorem has two major applica tions. L et the integer n be factored as n = n 1 n 2 • • • n k , where the factors n i are pairwise relatively prime. First, the Chinese remainder theorem is a de scriptive \"structure theorem\" that describes the structure of Z n as identical to that of the Cartesian product"
+   "text": "The Chinese remainder theorem has two major applications. L et the integer n be factored as n = n 1 n 2 • • • n k , where the factors n i are pairwise relatively prime. First, the Chinese remainder theorem is a de scriptive \"structure theorem\" that describes the structure of Z n as identical to that of the Cartesian product"
   },
   {
    "type": "body",
@@ -3312,7 +3312,7 @@
    "section_title": "31.5 The Chinese remainder theorem",
    "printed_page": 929,
    "pdf_page": 950,
-   "text": "D a i (mod n i ); which is what we wished to show: our method of comp uting a from the a i ’s produces a result a that satisfies the constraints a = a i (mod n i ) for i = 1,2,…,k ."
+   "text": "D a i (mod n i ); which is what we wished to show: our method of computing a from the a i ’s produces a result a that satisfies the constraints a = a i (mod n i ) for i = 1,2,…,k ."
   },
   {
    "type": "body",
@@ -3573,7 +3573,7 @@
    "section_title": "31.6 Powers of an element",
    "printed_page": 932,
    "pdf_page": 953,
-   "text": "Along with considering the multiples of a given ele ment a, modulo n, we often consider the sequence of powers of a, modulo n, where a 2 Z − n : a 0 ,a 1 ,a 2 ,a 3 ,…; modulo n. Indexing from 0, the 0th value in this sequence is a 0 mod n = 1, and the i th value is a i mod n. For example, the powers of 3 modulo 7 are i 0 1 2 3 4 5 6 7 8 9 10 11 • • •"
+   "text": "Along with considering the multiples of a given element a, modulo n, we often consider the sequence of powers of a, modulo n, where a 2 Z − n : a 0 ,a 1 ,a 2 ,a 3 ,…; modulo n. Indexing from 0, the 0th value in this sequence is a 0 mod n = 1, and the i th value is a i mod n. For example, the powers of 3 modulo 7 are i 0 1 2 3 4 5 6 7 8 9 10 11 • • •"
   },
   {
    "type": "body",
@@ -4028,7 +4028,7 @@
    "section_title": "31.6 Powers of an element",
    "printed_page": 935,
    "pdf_page": 956,
-   "text": "ˇ and 2ˇ − 1 recursive calls altogether, the total number of ari thmetic operations required is O(ˇ), and the total number of bit operations required is O(ˇ 3 )."
+   "text": "ˇ and 2ˇ − 1 recursive calls altogether, the total number of arithmetic operations required is O(ˇ), and the total number of bit operations required is O(ˇ 3 )."
   },
   {
    "type": "exercise",
@@ -4091,7 +4091,7 @@
    "section_title": "31.7 The RSA public-key cryptosystem",
    "printed_page": 936,
    "pdf_page": 957,
-   "text": "With a public-key cryptosystem, you can encrypt messages sent between two communicating parties so that an eavesdropper who overhears the encrypted messages will not be able to decode, or decrypt, them. A public-key cryptosystem also enables a party to append an unforgeable <⌈igital signature/ to th⌉ end of an electronic message. Such a signature is the electronic version of a handwritten signature on a paper document. It can be easily checked by anyone, forged by no one, yet loses its validity if any bit of the message is altered. It therefore provides authentication of both the identity of the signer and the con tents of the signed message. It is the perfect tool for electronically signed busin ess contracts, electronic checks, electronic purchase orders, and other electronic co mmunications that parties wish to authenticate."
+   "text": "With a public-key cryptosystem, you can encrypt messages sent between two communicating parties so that an eavesdropper who overhears the encrypted messages will not be able to decode, or decrypt, them. A public-key cryptosystem also enables a party to append an unforgeable <⌈igital signature/ to th⌉ end of an electronic message. Such a signature is the electronic version of a handwritten signature on a paper document. It can be easily checked by anyone, forged by no one, yet loses its validity if any bit of the message is altered. It therefore provides authentication of both the identity of the signer and the contents of the signed message. It is the perfect tool for electronically signed busin ess contracts, electronic checks, electronic purchase orders, and other electronic co mmunications that parties wish to authenticate."
   },
   {
    "type": "body",
@@ -4118,7 +4118,7 @@
    "section_title": "31.7 The RSA public-key cryptosystem",
    "printed_page": 936,
    "pdf_page": 957,
-   "text": "In a public-key cryptosystem, each participant has both a public key and a secret key. Each key is a piece of information. For example, in the RSA cryptosystem, each key consists of a pair of integers. The partic ipants \"Alice\" and \"Bob\" are traditionally used in cryptography examples. We den ote the public keys for Alice and Bob as P A and P B , respectively, and likewise the secret keys are S A for Alice and S B for Bob."
+   "text": "In a public-key cryptosystem, each participant has both a public key and a secret key. Each key is a piece of information. For example, in the RSA cryptosystem, each key consists of a pair of integers. The partic ipants \"Alice\" and \"Bob\" are traditionally used in cryptography examples. We denote the public keys for Alice and Bob as P A and P B , respectively, and likewise the secret keys are S A for Alice and S B for Bob."
   },
   {
    "type": "body",
@@ -4640,7 +4640,7 @@
    "section_title": "31.7 The RSA public-key cryptosystem",
    "printed_page": 941,
    "pdf_page": 962,
-   "text": "In order to achieve security with the RSA cryptosys tem, however, you should use integers that are quite long—more than 1000 bits—to resist possible advances in the art of factoring. In 2021, RSA moduli are commonly in the range of 2048 to 4096 bits. To create moduli of such sizes, you must find large primes efficiently."
+   "text": "In order to achieve security with the RSA cryptosystem, however, you should use integers that are quite long—more than 1000 bits—to resist possible advances in the art of factoring. In 2021, RSA moduli are commonly in the range of 2048 to 4096 bits. To create moduli of such sizes, you must find large primes efficiently."
   },
   {
    "type": "body",
@@ -4658,7 +4658,7 @@
    "section_title": "31.7 The RSA public-key cryptosystem",
    "printed_page": 941,
    "pdf_page": 962,
-   "text": "For efficiency, RSA is often used in a \"hybrid\" or \"key-management\" mode with fast cryptosystems that are not public-key cryptosystems. With such a symmetrickey system, the encryption and decryption keys are iden tical. If Alice wishes to send a long message M to Bob privately, she selects a random key K for the fast symmetric-key cryptosystem and encrypts M using K, obtaining ciphertext C , where C is as long as M , but K is quite short. Then she encrypts K using Bob’s public RSA key. Since K is short, computing P B (K) is fast (much faster than computing P B (M) ). She then transmits (C,P B (K)) to Bob, who decrypts P B (K) to obtain K and then uses K to decrypt C , obtaining M ."
+   "text": "For efficiency, RSA is often used in a \"hybrid\" or \"key-management\" mode with fast cryptosystems that are not public-key cryptosystems. With such a symmetrickey system, the encryption and decryption keys are identical. If Alice wishes to send a long message M to Bob privately, she selects a random key K for the fast symmetric-key cryptosystem and encrypts M using K, obtaining ciphertext C , where C is as long as M , but K is quite short. Then she encrypts K using Bob’s public RSA key. Since K is short, computing P B (K) is fast (much faster than computing P B (M) ). She then transmits (C,P B (K)) to Bob, who decrypts P B (K) to obtain K and then uses K to decrypt C , obtaining M ."
   },
   {
    "type": "body",
@@ -4784,7 +4784,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 943,
    "pdf_page": 964,
-   "text": "Fortunately, large primes are not too rare, so that it is feasible to test random integers of the appropriate size until you find one that is prime. The prime distribution function Ω(n) specifies the number of primes that are less than or equal to n. For example, Ω(10) = 4, since there are 4 prime numbers less than or equal to 10, namely, 2, 3, 5, and 7. The prime number theorem gives a useful approxima tion to Ω(n)."
+   "text": "Fortunately, large primes are not too rare, so that it is feasible to test random integers of the appropriate size until you find one that is prime. The prime distribution function Ω(n) specifies the number of primes that are less than or equal to n. For example, Ω(10) = 4, since there are 4 prime numbers less than or equal to 10, namely, 2, 3, 5, and 7. The prime number theorem gives a useful approximation to Ω(n)."
   },
   {
    "type": "theorem",
@@ -4883,7 +4883,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 944,
    "pdf_page": 965,
-   "text": "This section focuses on finding out whether a given number n is prime. If n is composite, we won’t worry about finding its prime factorization. Computing the prime factorization of a number is computationa lly expensive. You might be surprised that it turns out to be much easier to as certain whether a given number is prime than it is to determine the prime factoriz ation of the number if it is not prime."
+   "text": "This section focuses on finding out whether a given number n is prime. If n is composite, we won’t worry about finding its prime factorization. Computing the prime factorization of a number is computationa lly expensive. You might be surprised that it turns out to be much easier to as certain whether a given number is prime than it is to determine the prime factorization of the number if it is not prime."
   },
   {
    "type": "body",
@@ -4937,7 +4937,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 944,
    "pdf_page": 965,
-   "text": "Fermat’s theorem (Theorem 31.31 on page 932) implies that if n is prime, then n satisfies equation (31.39) for every a in Z C n . Thus, if there is any a 2 Z C n such that n does not satisfy equation (31.39), then n is certainly composite. Surprisingly, the converse almost holds, so that this criterion forms an almost perfe ct test for primality. Instead of trying every value of a 2 Z C n , test to see whether n satisfies equation (31.39) for just a = 2. If not, then declare n to be composite by returning"
+   "text": "Fermat’s theorem (Theorem 31.31 on page 932) implies that if n is prime, then n satisfies equation (31.39) for every a in Z C n . Thus, if there is any a 2 Z C n such that n does not satisfy equation (31.39), then n is certainly composite. Surprisingly, the converse almost holds, so that this criterion forms an almost perfect test for primality. Instead of trying every value of a 2 Z C n , test to see whether n satisfies equation (31.39) for just a = 2. If not, then declare n to be composite by returning"
   },
   {
    "type": "body",
@@ -4964,7 +4964,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 944,
    "pdf_page": 965,
-   "text": "How often does PSEUDOPRIME err? Surprisingly rarely. There are only 22 values of n less than 10,000 for which it errs, the first four of which are 341, 561, 645, PSEUDOPRIME (n) and 1105. We won’t prove it, but the probability that this program makes an error on a randomly chosen ˇ-bit number goes to 0 as ˇ approaches 1. Using more precise estimates due to Pomerance [361] of the number of base-2 pseudoprimes of a given size, a randomly chosen 512-bit number that is called prime by PSEU- DOPRIME has less than one chance in 10 20 of being a base-2 pseudoprime, and a randomly chosen 1024-bit number that is called prime has less than one chance in 10 41 of being a base-2 pseudoprime. Thus, if you are merely trying to find a large prime for some application, for all practical purpo ses you almost never go wrong by choosing large numbers at random until one of th em causes PSEUDOPRIME to return PRIME . But when the numbers being tested for primality a re not randomly chosen, you might need a better approach for testing primality. As we’ll see, a little more cleverness, and some randomization, will yield a primality-testing method that works well on all inputs."
+   "text": "How often does PSEUDOPRIME err? Surprisingly rarely. There are only 22 values of n less than 10,000 for which it errs, the first four of which are 341, 561, 645, PSEUDOPRIME (n) and 1105. We won’t prove it, but the probability that this program makes an error on a randomly chosen ˇ-bit number goes to 0 as ˇ approaches 1. Using more precise estimates due to Pomerance [361] of the number of base-2 pseudoprimes of a given size, a randomly chosen 512-bit number that is called prime by PSEU- DOPRIME has less than one chance in 10 20 of being a base-2 pseudoprime, and a randomly chosen 1024-bit number that is called prime has less than one chance in 10 41 of being a base-2 pseudoprime. Thus, if you are merely trying to find a large prime for some application, for all practical purposes you almost never go wrong by choosing large numbers at random until one of th em causes PSEUDOPRIME to return PRIME . But when the numbers being tested for primality a re not randomly chosen, you might need a better approach for testing primality. As we’ll see, a little more cleverness, and some randomization, will yield a primality-testing method that works well on all inputs."
   },
   {
    "type": "pseudocode",
@@ -5413,7 +5413,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 949,
    "pdf_page": 970,
-   "text": "If n is an odd composite number, then the number of witn esses to the compositeness of n is at least (n − 1)/2."
+   "text": "If n is an odd composite number, then the number of witnesses to the compositeness of n is at least (n − 1)/2."
   },
   {
    "type": "proof",
@@ -5701,7 +5701,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 951,
    "pdf_page": 972,
-   "text": "It remains to show that w 2 Z − n . We start by working separately modulo n 1 and modulo n 2 . Working modulo n 1 , since v 2 Z − n , we have that gcd(v,n) = 1. Also, we have gcd (v,n 1 ) = 1, since if v does not have any common divisors with n, then it certainly does not have any common diviso rs with n 1 . Since w = v (mod n 1 ), we see that gcd (w,n 1 ) = 1. Working modulo n 2 , we have w = 1 (mod n 2 ) implies gcd(w,n 2 ) = 1 by Exercise 31.2-3."
+   "text": "It remains to show that w 2 Z − n . We start by working separately modulo n 1 and modulo n 2 . Working modulo n 1 , since v 2 Z − n , we have that gcd(v,n) = 1. Also, we have gcd (v,n 1 ) = 1, since if v does not have any common divisors with n, then it certainly does not have any common divisors with n 1 . Since w = v (mod n 1 ), we see that gcd (w,n 1 ) = 1. Working modulo n 2 , we have w = 1 (mod n 2 ) implies gcd(w,n 2 ) = 1 by Exercise 31.2-3."
   },
   {
    "type": "body",
@@ -5737,7 +5737,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 951,
    "pdf_page": 972,
-   "text": "In either case, the number of witnesses to the comp ositeness of n is at least"
+   "text": "In either case, the number of witnesses to the compositeness of n is at least"
   },
   {
    "type": "body",
@@ -5926,7 +5926,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 952,
    "pdf_page": 973,
-   "text": "In fact, the situation is much better. If you are trying to find large primes by applying MILLER-RABIN to large randomly chosen odd integers, then choosing a small value of s (say 3) is unlikely to lead to erroneous results, though we won’t prove it here. The reason is that for a randomly ch osen odd composite integer n, the expected number of nonwitnesses to the composit eness of n is likely to be considerably smaller than (n − 1)/2."
+   "text": "In fact, the situation is much better. If you are trying to find large primes by applying MILLER-RABIN to large randomly chosen odd integers, then choosing a small value of s (say 3) is unlikely to lead to erroneous results, though we won’t prove it here. The reason is that for a randomly ch osen odd composite integer n, the expected number of nonwitnesses to the compositeness of n is likely to be considerably smaller than (n − 1)/2."
   },
   {
    "type": "body",
@@ -6034,7 +6034,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 953,
    "pdf_page": 974,
-   "text": "Most computers can perform the operations of subtra ction, testing the parity (odd or even) of a binary integer, and halving more quickly than computing remainders."
+   "text": "Most computers can perform the operations of subtraction, testing the parity (odd or even) of a binary integer, and halving more quickly than computing remainders."
   },
   {
    "type": "body",
@@ -6196,7 +6196,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 955,
    "pdf_page": 976,
-   "text": "The randomized primality-testing algorithm presented here is due to Miller [327] and Rabin [373] and is the fastest randomized primality-testing algorithm known, to within constant factors. The proof of Theorem 31.40 is a slight adaptation of one suggested by Bach [32]. A proof of a stronger result for MILLER-RABIN was given by Monier [332, 333]. For many years primality-testing was the classic example of a problem where randomization appeared t o be necessary to obtain an efficient (polynomial-time) algorithm. In 2002, however, Agrawal, Kayal, and Saxena [4] surprised everyone with their deterministic polynomial-time primalitytesting algorithm. Until then, the fastest determin istic primality testing algorithm known, due to Cohen and Lenstra [97], ran in (lg n) O(lg lg lg n) time on input n, which is just slightly superpolynomial. Nonetheless, for practical purposes, randomized primality-testing algorithms remain more efficient and are generally preferred."
+   "text": "The randomized primality-testing algorithm presented here is due to Miller [327] and Rabin [373] and is the fastest randomized primality-testing algorithm known, to within constant factors. The proof of Theorem 31.40 is a slight adaptation of one suggested by Bach [32]. A proof of a stronger result for MILLER-RABIN was given by Monier [332, 333]. For many years primality-testing was the classic example of a problem where randomization appeared t o be necessary to obtain an efficient (polynomial-time) algorithm. In 2002, however, Agrawal, Kayal, and Saxena [4] surprised everyone with their deterministic polynomial-time primalitytesting algorithm. Until then, the fastest deterministic primality testing algorithm known, due to Cohen and Lenstra [97], ran in (lg n) O(lg lg lg n) time on input n, which is just slightly superpolynomial. Nonetheless, for practical purposes, randomized primality-testing algorithms remain more efficient and are generally preferred."
   },
   {
    "type": "body",
@@ -6250,7 +6250,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 956,
    "pdf_page": 977,
-   "text": "The best algorithms for factoring large numbers have a running time that grows roughly exponentially with the cube root of the len gth of the number n to be factored. The general number-field sieve factoring algorithm (as developed by Buhler, Lenstra, and Pomerance [77] as an extension of the ideas in the number-field sieve factoring algorithm by Pollard [360] and Lenstra et al. [295] and refined by Coppersmith [102] and others) is perhaps the most efficient such algorithm in general for large inputs. Although it is difficult to give a rigorous analysis of this algorithm, under reasonable assumptions we can derive a running-time estimate of L(1/3,n) 1:902 + o(1) , where L.˛,n/ = e (ln n) ˛ (ln ln n) 1−˛"
+   "text": "The best algorithms for factoring large numbers have a running time that grows roughly exponentially with the cube root of the length of the number n to be factored. The general number-field sieve factoring algorithm (as developed by Buhler, Lenstra, and Pomerance [77] as an extension of the ideas in the number-field sieve factoring algorithm by Pollard [360] and Lenstra et al. [295] and refined by Coppersmith [102] and others) is perhaps the most efficient such algorithm in general for large inputs. Although it is difficult to give a rigorous analysis of this algorithm, under reasonable assumptions we can derive a running-time estimate of L(1/3,n) 1:902 + o(1) , where L.˛,n/ = e (ln n) ˛ (ln ln n) 1−˛"
   },
   {
    "type": "body",

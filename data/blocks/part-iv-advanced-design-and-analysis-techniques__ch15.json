@@ -41,7 +41,7 @@
    "section_title": "15.1 An activity-selection problem",
    "printed_page": 418,
    "pdf_page": 439,
-   "text": "(Assume that if your staff needs time to change over the room from one activity to the next, the changeover time is built into the int ervals.) In the activity-selection problem, your goal is to select a maximum-size subset of mutually compatible activities. Assume that the activities are sorted in monotonically increasing order of finish time: f 1 ≤ f 2 ≤ f 3 ≤ • • • ≤ f n−1 ≤ f n : (15.1)"
+   "text": "(Assume that if your staff needs time to change over the room from one activity to the next, the changeover time is built into the intervals.) In the activity-selection problem, your goal is to select a maximum-size subset of mutually compatible activities. Assume that the activities are sorted in monotonically increasing order of finish time: f 1 ≤ f 2 ≤ f 3 ≤ • • • ≤ f n−1 ≤ f n : (15.1)"
   },
   {
    "type": "body",
@@ -50,7 +50,7 @@
    "section_title": "15.1 An activity-selection problem",
    "printed_page": 418,
    "pdf_page": 439,
-   "text": "(We’ll see later the advantage that this assumption provides.) For example, consider the set of activities in Figure 15.1. The subset fa 3 ,a 9 ,a 11 g consists of mutually compatible activities. It is not a maximum sub set, however, since the subset fa 1 ,a 4 ,a 8 ,a 11 g is larger. In fact, fa 1 ,a 4 ,a 8 ,a 11 g is a largest subset of mutually compatible activities, and another largest subset is fa 2 ,a 4 ,a 9 ,a 11 g."
+   "text": "(We’ll see later the advantage that this assumption provides.) For example, consider the set of activities in Figure 15.1. The subset fa 3 ,a 9 ,a 11 g consists of mutually compatible activities. It is not a maximum subset, however, since the subset fa 1 ,a 4 ,a 8 ,a 11 g is larger. In fact, fa 1 ,a 4 ,a 8 ,a 11 g is a largest subset of mutually compatible activities, and another largest subset is fa 2 ,a 4 ,a 9 ,a 11 g."
   },
   {
    "type": "body",
@@ -59,7 +59,7 @@
    "section_title": "15.1 An activity-selection problem",
    "printed_page": 418,
    "pdf_page": 439,
-   "text": "We’ll see how to solve this problem, proceeding in several steps. First we’ll explore a dynamic-programming solution, in which you consider several choices when determining which subproblems to use in an opt imal solution. We’ll then observe that you need to consider only one choice—the greedy choice—and that when you make the greedy choice, only one subproblem remains. Based on these observations, we’ll develop a recursive greedy algorithm to solve the activityselection problem. Finally, we’ll complete the process of developing a greedy solution by converting the recursive algorithm to a n iterative one. Although the steps we go through in this section are slightly more involved than is typical when developing a greedy algorithm, they illustrate the relationship between greedy algorithms and dynamic programming. i 1 2 3 4 5 6 7 8 9 10 11 s i 1 3 0 5 3 5 6 7 8 2 12 f i 4 5 6 7 9 9 10 11 12 14 16"
+   "text": "We’ll see how to solve this problem, proceeding in several steps. First we’ll explore a dynamic-programming solution, in which you consider several choices when determining which subproblems to use in an optimal solution. We’ll then observe that you need to consider only one choice—the greedy choice—and that when you make the greedy choice, only one subproblem remains. Based on these observations, we’ll develop a recursive greedy algorithm to solve the activityselection problem. Finally, we’ll complete the process of developing a greedy solution by converting the recursive algorithm to a n iterative one. Although the steps we go through in this section are slightly more involved than is typical when developing a greedy algorithm, they illustrate the relationship between greedy algorithms and dynamic programming. i 1 2 3 4 5 6 7 8 9 10 11 s i 1 3 0 5 3 5 6 7 8 2 12 f i 4 5 6 7 9 9 10 11 12 14 16"
   },
   {
    "type": "figure-caption",
@@ -140,7 +140,7 @@
    "section_title": "15.1 An activity-selection problem",
    "printed_page": 419,
    "pdf_page": 440,
-   "text": "You can then develop a recursive algorithm and memo ize it, or you can work bottom-up and fill in table entries as you go along. But you would be overlooking another important characteristic of the activity-selection problem that you can use to great advantage."
+   "text": "You can then develop a recursive algorithm and memoize it, or you can work bottom-up and fill in table entries as you go along. But you would be overlooking another important characteristic of the activity-selection problem that you can use to great advantage."
   },
   {
    "type": "body",
@@ -194,7 +194,7 @@
    "section_title": "15.1 An activity-selection problem",
    "printed_page": 420,
    "pdf_page": 441,
-   "text": "S 1 remains as the only subproblem to solve. 1 Optimal substructure says that if a 1 belongs to an optimal solution, then an optimal sol ution to the original problem consists of activity a 1 and all the activities in an optimal solution to the subproblem S 1 ."
+   "text": "S 1 remains as the only subproblem to solve. 1 Optimal substructure says that if a 1 belongs to an optimal solution, then an optimal solution to the original problem consists of activity a 1 and all the activities in an optimal solution to the subproblem S 1 ."
   },
   {
    "type": "body",
@@ -596,7 +596,7 @@
    "section_title": "15.1 An activity-selection problem",
    "printed_page": 425,
    "pdf_page": 446,
-   "text": "15.1-2 Suppose that instead of always selecting the first activity to finish, you instead select the last activity to start that is compatible with all previously selected activities. Describe how this approach is a greedy algori thm, and prove that it yields an optimal solution."
+   "text": "15.1-2 Suppose that instead of always selecting the first activity to finish, you instead select the last activity to start that is compatible with all previously selected activities. Describe how this approach is a greedy algorithm, and prove that it yields an optimal solution."
   },
   {
    "type": "exercise",
@@ -722,7 +722,7 @@
    "section_title": "15.2 Elements of the greedy strategy",
    "printed_page": 426,
    "pdf_page": 447,
-   "text": "An alternative approach is to fashion optimal substructure with a greedy choice in mind, so that the choice leaves just one subprob lem to solve. In the activityselection problem, start by dropping the second subscript and defining subproblems of the form S k . Then prove that a greedy choice (the first activity a m to finish in S k ), combined with an optimal solution to the remaini ng set S m of compatible activities, yields an optimal solution to S k . More generally, you can design greedy algorithms according to the following sequence of steps:"
+   "text": "An alternative approach is to fashion optimal substructure with a greedy choice in mind, so that the choice leaves just one subproblem to solve. In the activityselection problem, start by dropping the second subscript and defining subproblems of the form S k . Then prove that a greedy choice (the first activity a m to finish in S k ), combined with an optimal solution to the remaining set S m of compatible activities, yields an optimal solution to S k . More generally, you can design greedy algorithms according to the following sequence of steps:"
   },
   {
    "type": "body",
@@ -848,7 +848,7 @@
    "section_title": "15.2 Elements of the greedy strategy",
    "printed_page": 428,
    "pdf_page": 449,
-   "text": "You will usually use a more direct approach regarding optimal substructure when applying it to greedy algorithms. As mentioned abov e, you have the luxury of assuming that you arrived at a subproblem by having made the greedy choice in the original problem. All you really need to do is argue that an optimal solution to the subproblem, combined with the greedy choice already made, yields an optimal solution to the original problem. This scheme impli citly uses induction on the subproblems to prove that making the greedy choice at every step produces an optimal solution."
+   "text": "You will usually use a more direct approach regarding optimal substructure when applying it to greedy algorithms. As mentioned abov e, you have the luxury of assuming that you arrived at a subproblem by having made the greedy choice in the original problem. All you really need to do is argue that an optimal solution to the subproblem, combined with the greedy choice already made, yields an optimal solution to the original problem. This scheme implicitly uses induction on the subproblems to prove that making the greedy choice at every step produces an optimal solution."
   },
   {
    "type": "body",
@@ -1073,7 +1073,7 @@
    "section_title": "15.2 Elements of the greedy strategy",
    "printed_page": 431,
    "pdf_page": 452,
-   "text": "15.2-7 You are given two sets A and B , each containing n positive integers. You can choose to reorder each set however you like. After reordering, let a i be the i th element of set A, and let b i be the i th element of set B . You then receive a payoff of Q n i D1 a i b i . Give an algorithm that maximizes your payoff. Prove that your algorithm maximizes the payoff, and state its runni ng time, omitting the time for reordering the sets."
+   "text": "15.2-7 You are given two sets A and B , each containing n positive integers. You can choose to reorder each set however you like. After reordering, let a i be the i th element of set A, and let b i be the i th element of set B . You then receive a payoff of Q n i D1 a i b i . Give an algorithm that maximizes your payoff. Prove that your algorithm maximizes the payoff, and state its running time, omitting the time for reordering the sets."
   },
   {
    "type": "body",
@@ -1082,7 +1082,7 @@
    "section_title": "15.3 Huffman codes",
    "printed_page": 431,
    "pdf_page": 452,
-   "text": "Huffman codes compress data well: savings of 20% to 90% are typical, depending on the characteristics of the data being compressed. The data arrive as a sequence of characters. Huffman’s greedy algorithm uses a table giving how often each character occurs (its frequency) to build up an opt imal way of representing each character as a binary string."
+   "text": "Huffman codes compress data well: savings of 20% to 90% are typical, depending on the characteristics of the data being compressed. The data arrive as a sequence of characters. Huffman’s greedy algorithm uses a table giving how often each character occurs (its frequency) to build up an optimal way of representing each character as a binary string."
   },
   {
    "type": "body",
@@ -1136,7 +1136,7 @@
    "section_title": "15.3 Huffman codes",
    "printed_page": 432,
    "pdf_page": 453,
-   "text": "Figure 15.4 A character-coding problem. A data file of 100,000 characters contains only the characters a–f, with the frequencies indicated. With each charact er represented by a 3-bit codeword, encoding the file requires 300,000 bits. With the variable-length code shown, the encoding requires only 224,000 bits. in which each character is represented by a unique binary string, which we call a codeword. If you use a fixed-length code, you need dlg ne bits to represent n ≥ 2 characters. For 6 characters, therefore, you need 3 bits: a = 000, b = 001, c = 010, d = 011, e = 100, and f = 101. This method requires 300,000 bits to encode the entire file. Can you do better?"
+   "text": "Figure 15.4 A character-coding problem. A data file of 100,000 characters contains only the characters a–f, with the frequencies indicated. With each character represented by a 3-bit codeword, encoding the file requires 300,000 bits. With the variable-length code shown, the encoding requires only 224,000 bits. in which each character is represented by a unique binary string, which we call a codeword. If you use a fixed-length code, you need dlg ne bits to represent n ≥ 2 characters. For 6 characters, therefore, you need 3 bits: a = 000, b = 001, c = 010, d = 011, e = 100, and f = 101. This method requires 300,000 bits to encode the entire file. Can you do better?"
   },
   {
    "type": "body",
@@ -1280,7 +1280,7 @@
    "section_title": "15.3 Huffman codes",
    "printed_page": 433,
    "pdf_page": 454,
-   "text": "The decoding process needs a convenient representation for the prefix-free code so that you can easily pick off the initial codewor d. A binary tree whose leaves are the given characters provides one such represen tation. Interpret the binary codeword for a character as the simple path from the root to that character, where 0 means \"go to the left child\" and 1 means \"go to the right child.\" Figure 15.5 shows the trees for the two codes of our example. Note th at these are not binary search trees, since the leaves need not appear in sorted o rder and internal nodes do not contain character keys."
+   "text": "The decoding process needs a convenient representation for the prefix-free code so that you can easily pick off the initial codewor d. A binary tree whose leaves are the given characters provides one such representation. Interpret the binary codeword for a character as the simple path from the root to that character, where 0 means \"go to the left child\" and 1 means \"go to the right child.\" Figure 15.5 shows the trees for the two codes of our example. Note th at these are not binary search trees, since the leaves need not appear in sorted o rder and internal nodes do not contain character keys."
   },
   {
    "type": "body",
@@ -1508,7 +1508,7 @@
    "section_title": "15.3 Huffman codes",
    "printed_page": 434,
    "pdf_page": 455,
-   "text": "Huffman invented a greedy algorithm that constructs an optimal prefix-free code, called a Huffman code in his honor. In line with our observations in Section 15.2, its proof of correctness relies on the greedy-choice property and optimal substructure. Rather than demonstrating that these properti es hold and then developing pseudocode, we present the pseudocode first. Doing so will help clarify how the algorithm makes greedy choices."
+   "text": "Huffman invented a greedy algorithm that constructs an optimal prefix-free code, called a Huffman code in his honor. In line with our observations in Section 15.2, its proof of correctness relies on the greedy-choice property and optimal substructure. Rather than demonstrating that these properties hold and then developing pseudocode, we present the pseudocode first. Doing so will help clarify how the algorithm makes greedy choices."
   },
   {
    "type": "body",
@@ -1571,7 +1571,7 @@
    "section_title": "15.3 Huffman codes",
    "printed_page": 435,
    "pdf_page": 456,
-   "text": "Figure 15.6 The steps of Huffman’s algorithm for the frequencies given in Figure 15.4. Each part shows the contents of the queue sorted into increas ing order by frequency. Each step merges the two trees with the lowest frequencies. Leaves are s hown as rectangles containing a character and its frequency. Internal nodes are shown as circles containing the sum of the frequencies of their children. An edge connecting an internal node with its children is labeled 0 if it is an edge to a left child and 1 if it is an edge to a right child. The codeword for a letter is the sequence of labels on the edges connecting the root to the leaf for that lett er. (a) The initial set of n = 6 nodes, one for each letter. (b)–(e) Intermediate stages. (f) The final tree."
+   "text": "Figure 15.6 The steps of Huffman’s algorithm for the frequencies given in Figure 15.4. Each part shows the contents of the queue sorted into increasing order by frequency. Each step merges the two trees with the lowest frequencies. Leaves are s hown as rectangles containing a character and its frequency. Internal nodes are shown as circles containing the sum of the frequencies of their children. An edge connecting an internal node with its children is labeled 0 if it is an edge to a left child and 1 if it is an edge to a right child. The codeword for a letter is the sequence of labels on the edges connecting the root to the leaf for that letter. (a) The initial set of n = 6 nodes, one for each letter. (b)–(e) Intermediate stages. (f) The final tree."
   },
   {
    "type": "body",
@@ -1787,7 +1787,7 @@
    "section_title": "15.3 Huffman codes",
    "printed_page": 437,
    "pdf_page": 458,
-   "text": "Lemma 15.2 implies that the process of building up an optimal tree by mergers can, without loss of generality, begin with the gre edy choice of merging together those two characters of lowest frequency. Why is th is a greedy choice? We can view the cost of a single merger as being the sum of the frequencies of the two items being merged. Exercise 15.3-4 shows that the total cost of the tree constructed equals the sum of the costs of its mergers. Of all possible mergers at each step, HUFFMAN chooses the one that incurs the least cost."
+   "text": "Lemma 15.2 implies that the process of building up an optimal tree by mergers can, without loss of generality, begin with the greedy choice of merging together those two characters of lowest frequency. Why is th is a greedy choice? We can view the cost of a single merger as being the sum of the frequencies of the two items being merged. Exercise 15.3-4 shows that the total cost of the tree constructed equals the sum of the costs of its mergers. Of all possible mergers at each step, HUFFMAN chooses the one that incurs the least cost."
   },
   {
    "type": "body",
@@ -1796,7 +1796,7 @@
    "section_title": "15.3 Huffman codes",
    "printed_page": 438,
    "pdf_page": 459,
-   "text": "The next lemma shows that the problem of constructi ng optimal prefix-free codes has the optimal-substructure property."
+   "text": "The next lemma shows that the problem of constructing optimal prefix-free codes has the optimal-substructure property."
   },
   {
    "type": "lemma",
@@ -1985,7 +1985,7 @@
    "section_title": "15.3 Huffman codes",
    "printed_page": 439,
    "pdf_page": 460,
-   "text": "15.3-7 A data file contains a sequence of 8-bit characters such that all 256 characters are about equally common: the maximum character frequen cy is less than twice the minimum character frequency. Prove that Huffman coding in this case is no more efficient than using an ordinary 8-bit fixed-length code."
+   "text": "15.3-7 A data file contains a sequence of 8-bit characters such that all 256 characters are about equally common: the maximum character frequency is less than twice the minimum character frequency. Prove that Huffman coding in this case is no more efficient than using an ordinary 8-bit fixed-length code."
   },
   {
    "type": "exercise",
@@ -2039,7 +2039,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 440,
    "pdf_page": 461,
-   "text": "2. Block b i is not in the cache at that time, but the cache con tains fewer than k blocks. In this case, block b i is placed into the cache, so that the cache contains one more block than it did before the request."
+   "text": "2. Block b i is not in the cache at that time, but the cache contains fewer than k blocks. In this case, block b i is placed into the cache, so that the cache contains one more block than it did before the request."
   },
   {
    "type": "body",
@@ -2138,7 +2138,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 441,
    "pdf_page": 462,
-   "text": "Consider an optimal solution S to subproblem (C,i) , and let C 0 be the contents of the cache after processing the request for block b i in solution S . Let S 0 be the subsolution of S for the resulting subproblem (C 0 ,i + 1). If the request for b i results in a cache hit, then the cache remains unch anged, so that C 0 = C . If the request for block b i results in a cache miss, then the contents of the cache change, so that C 0 ≠ C . We claim that in either case, S 0 is an optimal solution to subproblem (C 0 ,i + 1). Why? If S 0 is not an optimal solution to subproblem (C 0 ,i + 1), then there exists another solution S 00 to subproblem (C 0 ,i + 1) that makes fewer cache misses than S 0 . Combining S 00 with the decision of S at the request for block b i yields another solution that makes fewer cache misses than S , which contradicts the assumption that S is an optimal solution to subproblem (C,i) ."
+   "text": "Consider an optimal solution S to subproblem (C,i) , and let C 0 be the contents of the cache after processing the request for block b i in solution S . Let S 0 be the subsolution of S for the resulting subproblem (C 0 ,i + 1). If the request for b i results in a cache hit, then the cache remains unchanged, so that C 0 = C . If the request for block b i results in a cache miss, then the contents of the cache change, so that C 0 ≠ C . We claim that in either case, S 0 is an optimal solution to subproblem (C 0 ,i + 1). Why? If S 0 is not an optimal solution to subproblem (C 0 ,i + 1), then there exists another solution S 00 to subproblem (C 0 ,i + 1) that makes fewer cache misses than S 0 . Combining S 00 with the decision of S at the request for block b i yields another solution that makes fewer cache misses than S , which contradicts the assumption that S is an optimal solution to subproblem (C,i) ."
   },
   {
    "type": "body",
@@ -2165,7 +2165,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 442,
    "pdf_page": 463,
-   "text": "Let miss(C,i) denote the minimum number of cache misses in a solu tion for subproblem (C,i) . Here is a recurrence for miss(C,i) : miss(C,i) ="
+   "text": "Let miss(C,i) denote the minimum number of cache misses in a solution for subproblem (C,i) . Here is a recurrence for miss(C,i) : miss(C,i) ="
   },
   {
    "type": "body",
@@ -2525,7 +2525,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 446,
    "pdf_page": 467,
-   "text": "Consider the problem of making change for n cents using the smallest number of coins. Assume that each coin’s value is an integer. a. Describe a greedy algorithm to make change consisti ng of quarters, dimes, nickels, and pennies. Prove that your algorithm yields an optimal solution. b. Suppose that the available coins are in denominations that are powers of c : the denominations are c 0 ,c 1 ,…,c k for some integers c>1 and k ≥ 1. Show that the greedy algorithm always yields an optimal solution. c. Give a set of coin denominations for which the greedy algorithm does not yield an optimal solution. Your set should include a penny so that there is a solution for every value of n. d. Give an O(nk)-time algorithm that makes change for any set of k different coin denominations using the smallest number of coi ns, assuming that one of the coins is a penny."
+   "text": "Consider the problem of making change for n cents using the smallest number of coins. Assume that each coin’s value is an integer. a. Describe a greedy algorithm to make change consisting of quarters, dimes, nickels, and pennies. Prove that your algorithm yields an optimal solution. b. Suppose that the available coins are in denominations that are powers of c : the denominations are c 0 ,c 1 ,…,c k for some integers c>1 and k ≥ 1. Show that the greedy algorithm always yields an optimal solution. c. Give a set of coin denominations for which the greedy algorithm does not yield an optimal solution. Your set should include a penny so that there is a solution for every value of n. d. Give an O(nk)-time algorithm that makes change for any set of k different coin denominations using the smallest number of coins, assuming that one of the coins is a penny."
   },
   {
    "type": "problem",
@@ -2642,7 +2642,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 448,
    "pdf_page": 469,
-   "text": "The average cost per operation is then T(n)/n . You take the average cost as the amortized cost of each operation, so that all opera tions have the same amortized cost."
+   "text": "The average cost per operation is then T(n)/n . You take the average cost as the amortized cost of each operation, so that all operations have the same amortized cost."
   },
   {
    "type": "body",

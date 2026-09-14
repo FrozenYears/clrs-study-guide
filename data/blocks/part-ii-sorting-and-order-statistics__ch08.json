@@ -68,7 +68,7 @@
    "section_title": "8.1 Lower bounds for sorting",
    "printed_page": 205,
    "pdf_page": 226,
-   "text": "Sections 8.2, 8.3, and 8.4 examine three sorting algorithms—counting sort, radix sort, and bucket sort—that run in linear time on certain types of inputs. Of course, these algorithms use operations other than comparis ons to determine the sorted order. Consequently, the Ω(n lg n) lower bound does not apply to them."
+   "text": "Sections 8.2, 8.3, and 8.4 examine three sorting algorithms—counting sort, radix sort, and bucket sort—that run in linear time on certain types of inputs. Of course, these algorithms use operations other than comparisons to determine the sorted order. Consequently, the Ω(n lg n) lower bound does not apply to them."
   },
   {
    "type": "body",
@@ -77,7 +77,7 @@
    "section_title": "8.1 Lower bounds for sorting",
    "printed_page": 205,
    "pdf_page": 226,
-   "text": "A comparison sort uses only comparisons between ele ments to gain order information about an input sequence ⟨a 1 ,a 2 ,…,a n⟩. That is, given two elements a i and a j , it performs one of the tests a i <a j , a i ≤ a j , a i = a j , a i ≥ a j , or a i >a j to determine their relative order. It may not inspe ct the values of the elements or gain order information about them in any other way."
+   "text": "A comparison sort uses only comparisons between elements to gain order information about an input sequence ⟨a 1 ,a 2 ,…,a n⟩. That is, given two elements a i and a j , it performs one of the tests a i <a j , a i ≤ a j , a i = a j , a i ≥ a j , or a i >a j to determine their relative order. It may not inspe ct the values of the elements or gain order information about them in any other way."
   },
   {
    "type": "body",
@@ -86,7 +86,7 @@
    "section_title": "8.1 Lower bounds for sorting",
    "printed_page": 205,
    "pdf_page": 226,
-   "text": "Since we are proving a lower bound, we assume witho ut loss of generality in this section that all the input elements are distin ct. After all, a lower bound for distinct elements applies when elements may or may not be distinct. Consequently, ≤ >"
+   "text": "Since we are proving a lower bound, we assume without loss of generality in this section that all the input elements are distinct. After all, a lower bound for distinct elements applies when elements may or may not be distinct. Consequently, ≤ >"
   },
   {
    "type": "body",
@@ -176,7 +176,7 @@
    "section_title": "8.1 Lower bounds for sorting",
    "printed_page": 206,
    "pdf_page": 227,
-   "text": "We also annotate each leaf by a permutation hΩ(1); Ω(2); : : : ; Ω(n) i. (See Section C.1 for background on permutations.) Indices in the internal nodes and the leaves always refer to the original positions of the array elements at the start of the sorting algorithm. The execution of the comparison sorting algorithm corresponds to tracing a simple path from the root of the decis ion tree down to a leaf. Each internal node indicates a comparison a i ≤ a j . The left subtree then dictates sub- sequent comparisons once we know that a i ≤ a j , and the right subtree dictates subsequent comparisons when a i > a j . Arriving at a leaf, the sorting algorithm has established the ordering a −.1/ ≤ a −.2/ ≤ • • • ≤ a −.n/ . Because any correct sorting algorithm must be able to produce each permutation of its input, each of the n! permutations on n elements must appear as at least one of the leaves of the decision tree for a comparison sort to be correct. Furthermore, each of these leaves must be reachable from the root by a downward path corresponding to an actual execution of the comparison sort. (We call such leaves \"reachable.\") Thus, we consider only decision trees in which each permutation appears as a reachable leaf."
+   "text": "We also annotate each leaf by a permutation hΩ(1); Ω(2); : : : ; Ω(n) i. (See Section C.1 for background on permutations.) Indices in the internal nodes and the leaves always refer to the original positions of the array elements at the start of the sorting algorithm. The execution of the comparison sorting algorithm corresponds to tracing a simple path from the root of the decision tree down to a leaf. Each internal node indicates a comparison a i ≤ a j . The left subtree then dictates sub- sequent comparisons once we know that a i ≤ a j , and the right subtree dictates subsequent comparisons when a i > a j . Arriving at a leaf, the sorting algorithm has established the ordering a −.1/ ≤ a −.2/ ≤ • • • ≤ a −.n/ . Because any correct sorting algorithm must be able to produce each permutation of its input, each of the n! permutations on n elements must appear as at least one of the leaves of the decision tree for a comparison sort to be correct. Furthermore, each of these leaves must be reachable from the root by a downward path corresponding to an actual execution of the comparison sort. (We call such leaves \"reachable.\") Thus, we consider only decision trees in which each permutation appears as a reachable leaf."
   },
   {
    "type": "body",
@@ -479,7 +479,7 @@
    "section_title": "8.2 Counting sort",
    "printed_page": 209,
    "pdf_page": 230,
-   "text": "Counting sort can beat the lower bound of Ω(n lg n) proved in Section 8.1 because it is not a comparison sort. In fact, no comp arisons between input elements occur anywhere in the code. Instead, counting sort uses the actual values of the 2 5 3 0 2 3 0 3"
+   "text": "Counting sort can beat the lower bound of Ω(n lg n) proved in Section 8.1 because it is not a comparison sort. In fact, no comparisons between input elements occur anywhere in the code. Instead, counting sort uses the actual values of the 2 5 3 0 2 3 0 3"
   },
   {
    "type": "pseudocode",
@@ -752,7 +752,7 @@
    "section_title": "8.3 Radix sort",
    "printed_page": 212,
    "pdf_page": 233,
-   "text": "The remaining columns show the numbers after succes sive sorts on increasingly significant digit positions. Tan shading indicates the digit position sorted on to produce each list from the previous one. of 12 bins depending on which place has been punched. An operator can then gather the cards bin by bin, so that cards with the first place punched are on top of cards with the second place punched, and so on."
+   "text": "The remaining columns show the numbers after successive sorts on increasingly significant digit positions. Tan shading indicates the digit position sorted on to produce each list from the previous one. of 12 bins depending on which place has been punched. An operator can then gather the cards bin by bin, so that cards with the first place punched are on top of cards with the second place punched, and so on."
   },
   {
    "type": "body",
@@ -824,7 +824,7 @@
    "section_title": "8.3 Radix sort",
    "printed_page": 212,
    "pdf_page": 233,
-   "text": "For example, we might wish to sort dates by three keys: year, month, and day. We could run a sorting algorithm with a comparison fun ction that, given two dates, compares years, and if there is a tie, compares mon ths, and if another tie occurs, compares days. Alternatively, we could sort the inf ormation three times with a stable sort: first on day (the \"least significant\" part), next on month, and finally on year."
+   "text": "For example, we might wish to sort dates by three keys: year, month, and day. We could run a sorting algorithm with a comparison function that, given two dates, compares years, and if there is a tie, compares mon ths, and if another tie occurs, compares days. Alternatively, we could sort the information three times with a stable sort: first on day (the \"least significant\" part), next on month, and finally on year."
   },
   {
    "type": "pseudocode",
@@ -980,7 +980,7 @@
    "section_title": "8.3 Radix sort",
    "printed_page": 214,
    "pdf_page": 235,
-   "text": "Is radix sort preferable to a comparison-based sorting algorithm, such as quicksort? If b = O(lg n), as is often the case, and r − lg n, then radix sort’s running time is Θ(n), which appears to be better than quicksort’s expected running time of Θ(n lg n). The constant factors hidden in the Θ-notation differ, however. Although radix sort may make fewer passes than quicks ort over the n keys, each pass of radix sort may take significantly longer. Which sorting algorithm to prefer depends on the characteristics of the implementatio ns, of the underlying machine"
+   "text": "Is radix sort preferable to a comparison-based sorting algorithm, such as quicksort? If b = O(lg n), as is often the case, and r − lg n, then radix sort’s running time is Θ(n), which appears to be better than quicksort’s expected running time of Θ(n lg n). The constant factors hidden in the Θ-notation differ, however. Although radix sort may make fewer passes than quicksort over the n keys, each pass of radix sort may take significantly longer. Which sorting algorithm to prefer depends on the characteristics of the implementations, of the underlying machine"
   },
   {
    "type": "body",
@@ -989,7 +989,7 @@
    "section_title": "8.3 Radix sort",
    "printed_page": 214,
    "pdf_page": 235,
-   "text": "(e.g., quicksort often uses hardware caches more ef fectively than radix sort), and of the input data. Moreover, the version of radix sort that uses counting sort as the intermediate stable sort does not sort in place, wh ich many of the Θ(n lg n)-time comparison sorts do. Thus, when primary memory stor age is at a premium, an in-place algorithm such as quicksort could be the better choice."
+   "text": "(e.g., quicksort often uses hardware caches more ef fectively than radix sort), and of the input data. Moreover, the version of radix sort that uses counting sort as the intermediate stable sort does not sort in place, wh ich many of the Θ(n lg n)-time comparison sorts do. Thus, when primary memory storage is at a premium, an in-place algorithm such as quicksort could be the better choice."
   },
   {
    "type": "exercise",
@@ -1070,7 +1070,7 @@
    "section_title": "8.4 Bucket sort",
    "printed_page": 215,
    "pdf_page": 236,
-   "text": "Bucket sort assumes that the input is drawn from a uniform distribution and has an average-case running time of O(n). Like counting sort, bucket sort is fast because it assumes something about the input. Whereas counting sort assumes that the input consists of integers in a small range, bucket sort assumes that the input is generated by a random process that distributes elements unifo rmly and independently over the interval [0,1/. (See Section C.2 for a definition of a uniform distribution.)"
+   "text": "Bucket sort assumes that the input is drawn from a uniform distribution and has an average-case running time of O(n). Like counting sort, bucket sort is fast because it assumes something about the input. Whereas counting sort assumes that the input consists of integers in a small range, bucket sort assumes that the input is generated by a random process that distributes elements uniformly and independently over the interval [0,1/. (See Section C.2 for a definition of a uniform distribution.)"
   },
   {
    "type": "body",
@@ -1515,7 +1515,7 @@
    "section_title": "8.4 Bucket sort",
    "printed_page": 219,
    "pdf_page": 240,
-   "text": "In this problem, you will prove a probabilistic Ω(n lg n) lower bound on the running time of any deterministic or randomized compar ison sort on n distinct input elements. You’ll begin by examining a deterministic comparison sort A with decision tree T A . Assume that every permutation of A’s inputs is equally likely. a. Suppose that each leaf of T A is labeled with the probability that it is reached given a random input. Prove that exactly n! leaves are labeled 1/n! and that the rest are labeled 0. b. Let D(T) denote the external path length of a decision tree T 4the sum of the depths of all the leaves of T . Let T be a decision tree with k > 1 leaves, and let LT and RT be the left and right subtrees of T . Show that D(T) ="
+   "text": "In this problem, you will prove a probabilistic Ω(n lg n) lower bound on the running time of any deterministic or randomized comparison sort on n distinct input elements. You’ll begin by examining a deterministic comparison sort A with decision tree T A . Assume that every permutation of A’s inputs is equally likely. a. Suppose that each leaf of T A is labeled with the probability that it is reached given a random input. Prove that exactly n! leaves are labeled 1/n! and that the rest are labeled 0. b. Let D(T) denote the external path length of a decision tree T 4the sum of the depths of all the leaves of T . Let T be a decision tree with k > 1 leaves, and let LT and RT be the left and right subtrees of T . Show that D(T) ="
   },
   {
    "type": "body",
@@ -1587,7 +1587,7 @@
    "section_title": "8.4 Bucket sort",
    "printed_page": 220,
    "pdf_page": 241,
-   "text": "3. The algorithm sorts in place, using no more than a constant amount of storage space in addition to the original array. a. Give an algorithm that satisfies criteria 1 and 2 above. b. Give an algorithm that satisfies criteria 1 and 3 above. c. Give an algorithm that satisfies criteria 2 and 3 above. d. Can you use any of your sorting algorithms from par ts (a)–(c) as the sorting method used in line 2 of RADIX-SORT, so that RADIX-SORT sorts n records with b-bit keys in O(bn) time? Explain how or why not. e. Suppose that the n records have keys in the range from 1 to k. Show how to modify counting sort so that it sorts the records in place in O(n + k) time. You"
+   "text": "3. The algorithm sorts in place, using no more than a constant amount of storage space in addition to the original array. a. Give an algorithm that satisfies criteria 1 and 2 above. b. Give an algorithm that satisfies criteria 1 and 3 above. c. Give an algorithm that satisfies criteria 2 and 3 above. d. Can you use any of your sorting algorithms from parts (a)–(c) as the sorting method used in line 2 of RADIX-SORT, so that RADIX-SORT sorts n records with b-bit keys in O(bn) time? Explain how or why not. e. Suppose that the n records have keys in the range from 1 to k. Show how to modify counting sort so that it sorts the records in place in O(n + k) time. You"
   },
   {
    "type": "body",
@@ -1605,7 +1605,7 @@
    "section_title": "8.4 Bucket sort",
    "printed_page": 220,
    "pdf_page": 241,
-   "text": "8-3 Sorting variable-length items a. You are given an array of integers, where different integers may have different numbers of digits, but the total number of digits over all the integers in the array is n. Show how to sort the array in O(n) time. b. You are given an array of strings, where different strings may have different numbers of characters, but the total number of char acters over all the strings is n. Show how to sort the strings in O(n) time. (The desired order is the standard alphabetical order: for example, a < ab < b.)"
+   "text": "8-3 Sorting variable-length items a. You are given an array of integers, where different integers may have different numbers of digits, but the total number of digits over all the integers in the array is n. Show how to sort the array in O(n) time. b. You are given an array of strings, where different strings may have different numbers of characters, but the total number of characters over all the strings is n. Show how to sort the strings in O(n) time. (The desired order is the standard alphabetical order: for example, a < ab < b.)"
   },
   {
    "type": "problem",
@@ -1632,7 +1632,7 @@
    "section_title": "8.4 Bucket sort",
    "printed_page": 220,
    "pdf_page": 241,
-   "text": "Your task is to group the jugs into pairs of red and blue jugs that hold the same amount of water. To do so, you may perform the foll owing operation: pick a pair of jugs in which one is red and one is blue, fill the red jug with water, and then pour the water into the blue jug. This operation tells you whether the red jug or the blue jug can hold more water, or that they have the same volume. Assume that such a comparison takes one time unit. Your goal is to find an algorithm that makes a minimum number of comparisons to determine the grouping. Remember that you may not directly compare two red jugs or two blue jugs. a. Describe a deterministic algorithm that uses Θ(n 2 ) comparisons to group the jugs into pairs. b. Prove a lower bound of Ω(n lg n) for the number of comparisons that an algorithm solving this problem must make. c. Give a randomized algorithm whose expected number of comparisons is O(n lg n), and prove that this bound is correct. What is the worst-case number of comparisons for your algorithm?"
+   "text": "Your task is to group the jugs into pairs of red and blue jugs that hold the same amount of water. To do so, you may perform the following operation: pick a pair of jugs in which one is red and one is blue, fill the red jug with water, and then pour the water into the blue jug. This operation tells you whether the red jug or the blue jug can hold more water, or that they have the same volume. Assume that such a comparison takes one time unit. Your goal is to find an algorithm that makes a minimum number of comparisons to determine the grouping. Remember that you may not directly compare two red jugs or two blue jugs. a. Describe a deterministic algorithm that uses Θ(n 2 ) comparisons to group the jugs into pairs. b. Prove a lower bound of Ω(n lg n) for the number of comparisons that an algorithm solving this problem must make. c. Give a randomized algorithm whose expected number of comparisons is O(n lg n), and prove that this bound is correct. What is the worst-case number of comparisons for your algorithm?"
   },
   {
    "type": "problem",
@@ -1677,7 +1677,7 @@
    "section_title": "8.4 Bucket sort",
    "printed_page": 221,
    "pdf_page": 242,
-   "text": "We can also show a lower bound on the time to produ ce a k-sorted array, when k is a constant. e. Show how to sort a k-sorted array of length n in O(n lg k) time. (Hint: Use the solution to Exercise 6.5-11.) f. Show that when k is a constant, k-sorting an n-element array requires Ω(n lg n) time. (Hint: Use the solution to part (e) along with the lower bound on comparison sorts.)"
+   "text": "We can also show a lower bound on the time to produce a k-sorted array, when k is a constant. e. Show how to sort a k-sorted array of length n in O(n lg k) time. (Hint: Use the solution to Exercise 6.5-11.) f. Show that when k is a constant, k-sorting an n-element array requires Ω(n lg n) time. (Hint: Use the solution to part (e) along with the lower bound on comparison sorts.)"
   },
   {
    "type": "pseudocode",
@@ -1716,7 +1716,7 @@
    "section_title": "8.4 Bucket sort",
    "printed_page": 222,
    "pdf_page": 243,
-   "text": "The problem of merging two sorted lists arises freq uently. We have seen a procedure for it as the subroutine MERGE in Section 2.3.1. In this problem, you will prove a lower bound of 2n − 1 on the worst-case number of comparisons required to merge two sorted lists, each containing n items. First, you will show a lower bound of 2n − o(n) comparisons by using a decision tree. a. Given 2n numbers, compute the number of possible ways to div ide them into two sorted lists, each with n numbers. b. Using a decision tree and your answer to part (a), show that any algorithm that correctly merges two sorted lists must perform at least 2n − o(n) comparisons."
+   "text": "The problem of merging two sorted lists arises freq uently. We have seen a procedure for it as the subroutine MERGE in Section 2.3.1. In this problem, you will prove a lower bound of 2n − 1 on the worst-case number of comparisons required to merge two sorted lists, each containing n items. First, you will show a lower bound of 2n − o(n) comparisons by using a decision tree. a. Given 2n numbers, compute the number of possible ways to divide them into two sorted lists, each with n numbers. b. Using a decision tree and your answer to part (a), show that any algorithm that correctly merges two sorted lists must perform at least 2n − o(n) comparisons."
   },
   {
    "type": "body",
@@ -2110,7 +2110,7 @@
    "section_title": "8.4 Bucket sort",
    "printed_page": 226,
    "pdf_page": 247,
-   "text": "later improved to O(n p lg n) time by Andersson [17]. These algorithms require the use of multiplication and several precomputed constants. Andersson, Hagerup, Nilsson, and Raman [18] have shown how to sort n integers in O(n lg lg n) time without using multiplication, but their method requ ires storage that can be unbounded in terms of n. Using multiplicative hashing, we can reduce the s torage needed to O(n), but then the O(n lg lg n) worst-case bound on the running time becomes an expected-time bound. Generalizing the exponential search trees of Andersson [17], Thorup [434] gave an O(n(lg lg n) 2 )-time sorting algorithm that does not use multiplication or randomization, and it uses linear space. Combining these techniques with some new ideas, Han [207] improved the bound for sorting to O(n lg lg n lg lg lg n) time. Although these algorithms are important theor etical breakthroughs, they are all fairly complicated and at the present time seem unlikely to compete with existing sorting algorithms in practice."
+   "text": "later improved to O(n p lg n) time by Andersson [17]. These algorithms require the use of multiplication and several precomputed constants. Andersson, Hagerup, Nilsson, and Raman [18] have shown how to sort n integers in O(n lg lg n) time without using multiplication, but their method requires storage that can be unbounded in terms of n. Using multiplicative hashing, we can reduce the s torage needed to O(n), but then the O(n lg lg n) worst-case bound on the running time becomes an expected-time bound. Generalizing the exponential search trees of Andersson [17], Thorup [434] gave an O(n(lg lg n) 2 )-time sorting algorithm that does not use multiplication or randomization, and it uses linear space. Combining these techniques with some new ideas, Han [207] improved the bound for sorting to O(n lg lg n lg lg lg n) time. Although these algorithms are important theoretical breakthroughs, they are all fairly complicated and at the present time seem unlikely to compete with existing sorting algorithms in practice."
   },
   {
    "type": "body",

@@ -93,7 +93,7 @@
    "section_title": "18.1 Definition of B-trees",
    "printed_page": 501,
    "pdf_page": 522,
-   "text": "To keep things simple, let’s assume, as we have for binary search trees and redblack trees, that any satellite information associated with a key resides in the same node as the key. In practice, you might actually st ore with each key just a pointer to another disk block containing the satellite info rmation for that key. The pseudocode in this chapter implicitly assumes that the satellite information associated with a key, or the pointer to such satellite inform ation, travels with the key whenever the key is moved from node to node. A common variant on a B-tree, known as a B C -tree, stores all the satellite information in the leave s and stores only keys and child pointers in the internal nodes, thus maxi mizing the branching factor of the internal nodes."
+   "text": "To keep things simple, let’s assume, as we have for binary search trees and redblack trees, that any satellite information associated with a key resides in the same node as the key. In practice, you might actually st ore with each key just a pointer to another disk block containing the satellite information for that key. The pseudocode in this chapter implicitly assumes that the satellite information associated with a key, or the pointer to such satellite information, travels with the key whenever the key is moved from node to node. A common variant on a B-tree, known as a B C -tree, stores all the satellite information in the leave s and stores only keys and child pointers in the internal nodes, thus maximizing the branching factor of the internal nodes."
   },
   {
    "type": "body",
@@ -183,7 +183,7 @@
    "section_title": "18.1 Definition of B-trees",
    "printed_page": 502,
    "pdf_page": 523,
-   "text": "The number of disk accesses required for most opera tions on a B-tree is proportional to the height of the B-tree. The following theorem bounds the worst-case height of a B-tree."
+   "text": "The number of disk accesses required for most operations on a B-tree is proportional to the height of the B-tree. The following theorem bounds the worst-case height of a B-tree."
   },
   {
    "type": "body",
@@ -484,7 +484,7 @@
    "section_title": "18.2 Basic operations on B-trees",
    "printed_page": 505,
    "pdf_page": 526,
-   "text": "As in the TREE-SEARCH procedure for binary search trees, the nodes encountered during the recursion form a simple path downw ard from the root of the tree. The B-TREE-SEARCH procedure therefore accesses O(h) = O(log t n) disk blocks, where h is the height of the B-tree and n is the number of keys in the B-tree."
+   "text": "As in the TREE-SEARCH procedure for binary search trees, the nodes encountered during the recursion form a simple path downward from the root of the tree. The B-TREE-SEARCH procedure therefore accesses O(h) = O(log t n) disk blocks, where h is the height of the B-tree and n is the number of keys in the B-tree."
   },
   {
    "type": "body",
@@ -1314,7 +1314,7 @@
    "section_title": "18.2 Basic operations on B-trees",
    "printed_page": 512,
    "pdf_page": 533,
-   "text": "18.2-6 Suppose that you implement B-TREE-SEARCH to use binary search rather than linear search within each node. Show that this chan ge makes the required CPU time O(lg n), independent of how t might be chosen as a function of n."
+   "text": "18.2-6 Suppose that you implement B-TREE-SEARCH to use binary search rather than linear search within each node. Show that this change makes the required CPU time O(lg n), independent of how t might be chosen as a function of n."
   },
   {
    "type": "exercise",
@@ -1350,7 +1350,7 @@
    "section_title": "18.3 Deleting a key from a B-tree",
    "printed_page": 513,
    "pdf_page": 534,
-   "text": "Deletion from a B-tree is analogous to insertion but a little more complicated, because you can delete a key from any node—not just a leaf—and when you delete a key from an internal node, you must rearrange the node’s children. As in in- sertion, you must guard against deletion producing a tree whose structure violates the B-tree properties. Just as a node should not get too big due to insertion, a node must not get too small during deletion (except that the root is allowed to have fewer than the minimum number t − 1 of keys). And just as a simple insertion algorithm might have to back up if a node on the path to wher e the key is to be inserted is full, a simple approach to deletion might have to back up if a node (other than the root) along the path to where the key is to be dele ted has the minimum number of keys."
+   "text": "Deletion from a B-tree is analogous to insertion but a little more complicated, because you can delete a key from any node—not just a leaf—and when you delete a key from an internal node, you must rearrange the node’s children. As in in- sertion, you must guard against deletion producing a tree whose structure violates the B-tree properties. Just as a node should not get too big due to insertion, a node must not get too small during deletion (except that the root is allowed to have fewer than the minimum number t − 1 of keys). And just as a simple insertion algorithm might have to back up if a node on the path to wher e the key is to be inserted is full, a simple approach to deletion might have to back up if a node (other than the root) along the path to where the key is to be deleted has the minimum number of keys."
   },
   {
    "type": "body",
@@ -1395,7 +1395,7 @@
    "section_title": "18.3 Deleting a key from a B-tree",
    "printed_page": 513,
    "pdf_page": 534,
-   "text": "We describe how the procedure B-TREE-DELETE (T,k) deletes a key k from a B-tree T instead of presenting detailed pseudocode. We exami ne three cases, illustrated in Figure 18.8. The cases are for when the search arrives at a leaf, at an internal node containing key k, and at an internal node not containing key k. As mentioned above, in all three cases node x has at least t keys (with the possible exception of when x is the root). Cases 2 and 34when x is an internal node4 guarantee this property as the recursion descends through the B-tree."
+   "text": "We describe how the procedure B-TREE-DELETE (T,k) deletes a key k from a B-tree T instead of presenting detailed pseudocode. We examine three cases, illustrated in Figure 18.8. The cases are for when the search arrives at a leaf, at an internal node containing key k, and at an internal node not containing key k. As mentioned above, in all three cases node x has at least t keys (with the possible exception of when x is the root). Cases 2 and 34when x is an internal node4 guarantee this property as the recursion descends through the B-tree."
   },
   {
    "type": "body",
@@ -1701,7 +1701,7 @@
    "section_title": "18.3 Deleting a key from a B-tree",
    "printed_page": 516,
    "pdf_page": 537,
-   "text": "Although this procedure seems complicated, it invol ves only O(h) disk operations for a B-tree of height h, since only O(1) calls to DISK-READ and DISK- WRITE are made between recursive invocations of the proce dure. The CPU time required is O(th) = O(t log t n)."
+   "text": "Although this procedure seems complicated, it involves only O(h) disk operations for a B-tree of height h, since only O(1) calls to DISK-READ and DISK- WRITE are made between recursive invocations of the procedure. The CPU time required is O(th) = O(t log t n)."
   },
   {
    "type": "exercise",

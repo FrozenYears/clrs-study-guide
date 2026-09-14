@@ -37,7 +37,7 @@
    "section_title": "A.1 Summation formulas and properties",
    "printed_page": 1140,
    "pdf_page": 1161,
-   "text": "When an algorithm contains an iterative control con struct such as a while or for loop, you can express its running time as the sum of the times spent on each execution of the body of the loop. For example, Section 2.2 argued that the i th iteration of insertion sort took time proportional to i in the worst case. Adding up the time spent on each iteration produced the summation (or series) P n i D2 i . Evaluating this summation resulted in a bound of Θ(n 2 ) on the worst-case running time of the algorithm. This example illustrates why you should know how to manipulate and bound summations."
+   "text": "When an algorithm contains an iterative control construct such as a while or for loop, you can express its running time as the sum of the times spent on each execution of the body of the loop. For example, Section 2.2 argued that the i th iteration of insertion sort took time proportional to i in the worst case. Adding up the time spent on each iteration produced the summation (or series) P n i D2 i . Evaluating this summation resulted in a bound of Θ(n 2 ) on the worst-case running time of the algorithm. This example illustrates why you should know how to manipulate and bound summations."
   },
   {
    "type": "body",
@@ -1171,7 +1171,7 @@
    "section_title": "A.2 Bounding summations",
    "printed_page": 1148,
    "pdf_page": 1169,
-   "text": "For a summation arising from the analysis of an alg orithm, you can sometimes split the summation and ignore a constant number of the initial terms. Generally, this technique applies when each term a k in a summation P n kD0 a k is independent of n. Then for any constant k 0 >0 , you can write n X kD0 a k = k 0 −1 X kD0 a k C n X kDk 0 a k"
+   "text": "For a summation arising from the analysis of an algorithm, you can sometimes split the summation and ignore a constant number of the initial terms. Generally, this technique applies when each term a k in a summation P n kD0 a k is independent of n. Then for any constant k 0 >0 , you can write n X kD0 a k = k 0 −1 X kD0 a k C n X kDk 0 a k"
   },
   {
    "type": "body",
@@ -1513,7 +1513,7 @@
    "section_title": "A.2 Bounding summations",
    "printed_page": 1151,
    "pdf_page": 1172,
-   "text": "Figure A.1 Approximation of P n kDm f(k) by integrals. The area of each rectangle is shown within the rectangle, and the total rectangle area represents the value of the summation. The integral is represented by the blue area under the curve. Co mparing areas in (a) gives the lower bound R n m−1 f(x)dx ≤ P n kDm f(k) . Shifting the rectangles one unit to the right giv es the upper bound P n kDm f(k) ≤"
+   "text": "Figure A.1 Approximation of P n kDm f(k) by integrals. The area of each rectangle is shown within the rectangle, and the total rectangle area represents the value of the summation. The integral is represented by the blue area under the curve. Co mparing areas in (a) gives the lower bound R n m−1 f(x)dx ≤ P n kDm f(k) . Shifting the rectangles one unit to the right gives the upper bound P n kDm f(k) ≤"
   },
   {
    "type": "body",

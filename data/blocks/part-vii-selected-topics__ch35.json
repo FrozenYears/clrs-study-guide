@@ -43,7 +43,7 @@
    "section_title": "35.1 The vertex-cover problem",
    "printed_page": 1106,
    "pdf_page": 1127,
-   "text": "The first four sections of this chapter present some examples of polynomial-time approximation algorithms for NP-complete problems, and the fifth section gives a fully polynomial-time approximation scheme. We begin in Section 35.1 with a study of the vertex-cover problem, an NP-complete minimization problem that has an approximation algorithm with an approximation ratio of 2. Section 35.2 looks at a version of the traveling-salesperson problem in which the cost function satisfies the triangle inequality and presents an approximati on algorithm with an approximation ratio of 2. The section also shows that without the triangle inequality, for any constant Ω ≥ 1, a Ω-approximation algorithm cannot exist unless PDNP."
+   "text": "The first four sections of this chapter present some examples of polynomial-time approximation algorithms for NP-complete problems, and the fifth section gives a fully polynomial-time approximation scheme. We begin in Section 35.1 with a study of the vertex-cover problem, an NP-complete minimization problem that has an approximation algorithm with an approximation ratio of 2. Section 35.2 looks at a version of the traveling-salesperson problem in which the cost function satisfies the triangle inequality and presents an approximation algorithm with an approximation ratio of 2. The section also shows that without the triangle inequality, for any constant Ω ≥ 1, a Ω-approximation algorithm cannot exist unless PDNP."
   },
   {
    "type": "body",
@@ -201,7 +201,7 @@
    "section_title": "35.1 The vertex-cover problem",
    "printed_page": 1107,
    "pdf_page": 1128,
-   "text": "To see that APPROX-VERTEX-COVER returns a vertex cover that is at most twice the size of an optimal cover, let A denote the set of edges that line 4 of APPROX- VERTEX-COVER picked. In order to cover the edges in A, any vertex cover—in particular, an optimal cover C − 4must include at least one endpoint of each edge in A. No two edges in A share an endpoint, since once an edge is picked in line 4, all other edges that are incident on its endpoints are deleted from E 0 in line 6. Thus, no two edges in A are covered by the same vertex from C − , meaning that for every vertex in C − , there is at most one edge in A, giving the lower bound jC − j ≥ |A| (35.2) on the size of an optimal vertex cover. Each execut ion of line 4 picks an edge for which neither of its endpoints is already in C , yielding an upper bound (an exact upper bound, in fact) on the size of the vertex cover returned:"
+   "text": "To see that APPROX-VERTEX-COVER returns a vertex cover that is at most twice the size of an optimal cover, let A denote the set of edges that line 4 of APPROX- VERTEX-COVER picked. In order to cover the edges in A, any vertex cover—in particular, an optimal cover C − 4must include at least one endpoint of each edge in A. No two edges in A share an endpoint, since once an edge is picked in line 4, all other edges that are incident on its endpoints are deleted from E 0 in line 6. Thus, no two edges in A are covered by the same vertex from C − , meaning that for every vertex in C − , there is at most one edge in A, giving the lower bound jC − j ≥ |A| (35.2) on the size of an optimal vertex cover. Each execution of line 4 picks an edge for which neither of its endpoints is already in C , yielding an upper bound (an exact upper bound, in fact) on the size of the vertex cover returned:"
   },
   {
    "type": "body",
@@ -300,7 +300,7 @@
    "section_title": "35.1 The vertex-cover problem",
    "printed_page": 1108,
    "pdf_page": 1129,
-   "text": "Dashed edges (a,b) , (c,e) , and (c,d) are removed since they are now covered by some vert ex in C . (c) Edge (e,f) is chosen, and vertices e and f are added to C . (d) Edge (d,g) is chosen, and vertices d and g are added to C . (e) The set C , which is the vertex cover produced by APPROX-VERTEX-COVER , contains the six vertices b,c,d,e,f,g . (f) The optimal vertex cover for this problem contains only three vertices: b, d , and e."
+   "text": "Dashed edges (a,b) , (c,e) , and (c,d) are removed since they are now covered by some vertex in C . (c) Edge (e,f) is chosen, and vertices e and f are added to C . (d) Edge (d,g) is chosen, and vertices d and g are added to C . (e) The set C , which is the vertex cover produced by APPROX-VERTEX-COVER , contains the six vertices b,c,d,e,f,g . (f) The optimal vertex cover for this problem contains only three vertices: b, d , and e."
   },
   {
    "type": "body",
@@ -408,7 +408,7 @@
    "section_title": "35.2 The traveling-salesperson problem",
    "printed_page": 1110,
    "pdf_page": 1131,
-   "text": "The triangle inequality seems as though it should n aturally hold, and it is automatically satisfied in several applications. For example, if the vertices of the graph are points in the plane and the cost of trave ling between two vertices is the ordinary euclidean distance between them, then the triangle inequality is satisfied."
+   "text": "The triangle inequality seems as though it should n aturally hold, and it is automatically satisfied in several applications. For example, if the vertices of the graph are points in the plane and the cost of traveling between two vertices is the ordinary euclidean distance between them, then the triangle inequality is satisfied."
   },
   {
    "type": "body",
@@ -462,7 +462,7 @@
    "section_title": "35.2 The traveling-salesperson problem",
    "printed_page": 1110,
    "pdf_page": 1131,
-   "text": "4a minimum spanning tree—whose weight gives a lower bound on the length of an optimal traveling-salesperson tour. Then use the minimum spanning tree to create a tour whose cost is no more than twice that of the minimum spanning tree’s weight, as long as the cost function satisfies the triangle inequality. The procedure APPROX-TSP-TOUR on the next page implements this approach, calling the minimum-spanning-tree algorithm MST-PRIM on page 596 as a subroutine. The parameter G is a complete undirected graph, and the cost functi on c satisfies the triangle inequality."
+   "text": "4a minimum spanning tree—whose weight gives a lower bound on the length of an optimal traveling-salesperson tour. Then use the minimum spanning tree to create a tour whose cost is no more than twice that of the minimum spanning tree’s weight, as long as the cost function satisfies the triangle inequality. The procedure APPROX-TSP-TOUR on the next page implements this approach, calling the minimum-spanning-tree algorithm MST-PRIM on page 596 as a subroutine. The parameter G is a complete undirected graph, and the cost function c satisfies the triangle inequality."
   },
   {
    "type": "body",
@@ -833,7 +833,7 @@
    "section_title": "35.2 The traveling-salesperson problem",
    "printed_page": 1114,
    "pdf_page": 1135,
-   "text": "(cost at least Ω |V| C |V|). Therefore, the cost of a tour that is not a hami ltonian cycle in G is at least a factor of Ω C 1 greater than the cost of a tour that is a hamiltonian cycle in G."
+   "text": "(cost at least Ω |V| C |V|). Therefore, the cost of a tour that is not a hamiltonian cycle in G is at least a factor of Ω C 1 greater than the cost of a tour that is a hamiltonian cycle in G."
   },
   {
    "type": "body",
@@ -842,7 +842,7 @@
    "section_title": "35.2 The traveling-salesperson problem",
    "printed_page": 1114,
    "pdf_page": 1135,
-   "text": "What happens upon applying the approximation algori thm A to the travelingsalesperson problem (G 0 ,c)? Because A is guaranteed to return a tour of cost no more than Ω times the cost of an optimal tour, if G contains a hamiltonian cycle, then A must return it. If G has no hamiltonian cycle, then A returns a tour of cost more than Ω |V|. Therefore, using A solves the hamiltonian-cycle problem in polynomial time."
+   "text": "What happens upon applying the approximation algorithm A to the travelingsalesperson problem (G 0 ,c)? Because A is guaranteed to return a tour of cost no more than Ω times the cost of an optimal tour, if G contains a hamiltonian cycle, then A must return it. If G has no hamiltonian cycle, then A returns a tour of cost more than Ω |V|. Therefore, using A solves the hamiltonian-cycle problem in polynomial time."
   },
   {
    "type": "body",
@@ -878,7 +878,7 @@
    "section_title": "35.2 The traveling-salesperson problem",
    "printed_page": 1114,
    "pdf_page": 1135,
-   "text": "35.2-2 Show how in polynomial time to transform one instan ce of the t raveling-salesperson problem into another instance whose cost function satisfies the triangle in- equality. The two instances must have the same set of optimal tours. Explain why"
+   "text": "35.2-2 Show how in polynomial time to transform one instance of the t raveling-salesperson problem into another instance whose cost function satisfies the triangle in- equality. The two instances must have the same set of optimal tours. Explain why"
   },
   {
    "type": "body",
@@ -896,7 +896,7 @@
    "section_title": "35.2 The traveling-salesperson problem",
    "printed_page": 1115,
    "pdf_page": 1136,
-   "text": "35.2-3 Consider the following closest-point heuristic for building an approximate traveling-salesperson tour whose cost function satisfies the triangle inequality. Begin with a trivial cycle consisting of a single arbitra rily chosen vertex. At each step, identify the vertex u that is not on the cycle but whose distance to any vertex on the cycle is minimum. Suppose that the vertex on the cycle that is nearest u is vertex v."
+   "text": "35.2-3 Consider the following closest-point heuristic for building an approximate traveling-salesperson tour whose cost function satisfies the triangle inequality. Begin with a trivial cycle consisting of a single arbitrarily chosen vertex. At each step, identify the vertex u that is not on the cycle but whose distance to any vertex on the cycle is minimum. Suppose that the vertex on the cycle that is nearest u is vertex v."
   },
   {
    "type": "body",
@@ -923,7 +923,7 @@
    "section_title": "35.3 The set-covering problem",
    "printed_page": 1115,
    "pdf_page": 1136,
-   "text": "Show recursively how to visit all the nodes in a bo ttleneck spanning tree, as discussed in Problem 21-4 on page 601, exactly once by taking a full walk of the tree and skipping nodes, but without skipping more than two consecutive intermediate nodes. Show that the costliest edge in a bottle neck spanning tree has a cost bounded from above by the cost of the costliest edg e in a bottleneck hamiltonian cycle.)"
+   "text": "Show recursively how to visit all the nodes in a bo ttleneck spanning tree, as discussed in Problem 21-4 on page 601, exactly once by taking a full walk of the tree and skipping nodes, but without skipping more than two consecutive intermediate nodes. Show that the costliest edge in a bottleneck spanning tree has a cost bounded from above by the cost of the costliest edg e in a bottleneck hamiltonian cycle.)"
   },
   {
    "type": "exercise",
@@ -950,7 +950,7 @@
    "section_title": "35.3 The set-covering problem",
    "printed_page": 1115,
    "pdf_page": 1136,
-   "text": "The set-covering problem is an optimization problem that models many problems that require resources to be allocated. Its corresp onding decision problem generalizes the NP-complete vertex-cover problem and is therefore also NP-hard. The approximation algorithm developed to handle the vertex-cover problem doesn’t apply here, however. Instead, this section investigates a simple greedy heuristic with a logarithmic approximation ratio. That is, as the size of the instance gets larger, the size of the approximate solution may grow, rela tive to the size of an optimal solution. Because the logarithm function grows rath er slowly, however, this approximation algorithm may nonetheless give useful results."
+   "text": "The set-covering problem is an optimization problem that models many problems that require resources to be allocated. Its corresponding decision problem generalizes the NP-complete vertex-cover problem and is therefore also NP-hard. The approximation algorithm developed to handle the vertex-cover problem doesn’t apply here, however. Instead, this section investigates a simple greedy heuristic with a logarithmic approximation ratio. That is, as the size of the instance gets larger, the size of the approximate solution may grow, relative to the size of an optimal solution. Because the logarithm function grows rather slowly, however, this approximation algorithm may nonetheless give useful results."
   },
   {
    "type": "body",
@@ -986,7 +986,7 @@
    "section_title": "35.3 The set-covering problem",
    "printed_page": 1116,
    "pdf_page": 1137,
-   "text": "Figure 35.3 illustrates the set-covering problem. The size of C is the number of sets it contains, rather than the number of individ ual elements in these sets, since every subfamily C that covers X must contain all |X| individual elements. In"
+   "text": "Figure 35.3 illustrates the set-covering problem. The size of C is the number of sets it contains, rather than the number of individual elements in these sets, since every subfamily C that covers X must contain all |X| individual elements. In"
   },
   {
    "type": "body",
@@ -1098,7 +1098,7 @@
    "section_title": "35.3 The set-covering problem",
    "printed_page": 1117,
    "pdf_page": 1138,
-   "text": "The greedy algorithm works as follows. At the start of each iteration, U i is a subset of X containing the remaining uncovered elements, with t he initial sub- set U 0 containing all the elements in X . The set C contains the subfamily being constructed. Line 5 is the greedy decision-making step, choosing a subset S that covers as many uncovered elements as possible (brea king ties arbitrarily). After"
+   "text": "The greedy algorithm works as follows. At the start of each iteration, U i is a subset of X containing the remaining uncovered elements, with t he initial sub- set U 0 containing all the elements in X . The set C contains the subfamily being constructed. Line 5 is the greedy decision-making step, choosing a subset S that covers as many uncovered elements as possible (breaking ties arbitrarily). After"
   },
   {
    "type": "body",
@@ -1287,7 +1287,7 @@
    "section_title": "35.3 The set-covering problem",
    "printed_page": 1119,
    "pdf_page": 1140,
-   "text": "35.3-5 GREEDY-SET-COVER can return a number of different solutions, dependi ng on how it breaks ties in line 5. Give a procedure BAD-SET-COVER-INSTANCE (n) that returns an n-element instance of the set-covering problem for which, depending on how line 5 breaks ties, GREEDY-SET-COVER can return a number of different solutions that is exponential in n."
+   "text": "35.3-5 GREEDY-SET-COVER can return a number of different solutions, depending on how it breaks ties in line 5. Give a procedure BAD-SET-COVER-INSTANCE (n) that returns an n-element instance of the set-covering problem for which, depending on how line 5 breaks ties, GREEDY-SET-COVER can return a number of different solutions that is exponential in n."
   },
   {
    "type": "body",
@@ -1341,7 +1341,7 @@
    "section_title": "35.4 Randomization and linear programming",
    "printed_page": 1120,
    "pdf_page": 1141,
-   "text": "We call a randomized algorithm that achieves an app roximation ratio of Ω(n) a randomized −.n/-approximation algorithm. In other words, a randomized approximation algorithm is like a deterministic approximation algorithm, except that the approximation ratio is for an expected cost."
+   "text": "We call a randomized algorithm that achieves an approximation ratio of Ω(n) a randomized −.n/-approximation algorithm. In other words, a randomized approximation algorithm is like a deterministic approximation algorithm, except that the approximation ratio is for an expected cost."
   },
   {
    "type": "body",
@@ -1350,7 +1350,7 @@
    "section_title": "35.4 Randomization and linear programming",
    "printed_page": 1120,
    "pdf_page": 1141,
-   "text": "A particular instance of 3-CNF satisfiability, as defined in Section 34.4, may or may not be satisfiable. In order to be satisfiable, there must exist an assignment of the variables so that every clause evaluates to 1. If an instance is not satisfiable, you might instead want to know how \"close\" to satisfiable it is, that is, find an assignment of the variables that satisfies as many clauses as possible. We call the resulting maximization problem MAX-3-CNF satisfiability. The input to MAX-3-CNF satisfiability is the same as for 3-CNF satisfiability, and the goal is to return an assignment of the variables that maximizes the number of clauses evaluating to 1. You might be surprised that randomly setting each varia ble to 1 with probability 1/2 and to 0 with probability 1/2 yields a randomized 8/7-approximation algorithm, but we’re about to see why. Recall that the definition of 3-CNF satisfiability from Section 34.4 requires each clause to consist of exactly three distinct literals. We now further assume that no clause contains both a variable and its negation. Exercise 35.4-1 asks you to remove this last assumption."
+   "text": "A particular instance of 3-CNF satisfiability, as defined in Section 34.4, may or may not be satisfiable. In order to be satisfiable, there must exist an assignment of the variables so that every clause evaluates to 1. If an instance is not satisfiable, you might instead want to know how \"close\" to satisfiable it is, that is, find an assignment of the variables that satisfies as many clauses as possible. We call the resulting maximization problem MAX-3-CNF satisfiability. The input to MAX-3-CNF satisfiability is the same as for 3-CNF satisfiability, and the goal is to return an assignment of the variables that maximizes the number of clauses evaluating to 1. You might be surprised that randomly setting each variable to 1 with probability 1/2 and to 0 with probability 1/2 yields a randomized 8/7-approximation algorithm, but we’re about to see why. Recall that the definition of 3-CNF satisfiability from Section 34.4 requires each clause to consist of exactly three distinct literals. We now further assume that no clause contains both a variable and its negation. Exercise 35.4-1 asks you to remove this last assumption."
   },
   {
    "type": "theorem",
@@ -1801,7 +1801,7 @@
    "section_title": "35.5 The subset-sum problem",
    "printed_page": 1124,
    "pdf_page": 1145,
-   "text": "The optimization problem associated with this decis ion problem arises in practical applications. The optimization problem seeks a subset of fx 1 ,x 2 ,…,x n g whose sum is as large as possible but not larger th an t . For example, consider a truck that can carry no more than t pounds, which is to be loaded with up to n different boxes, the i th of which weighs x i pounds. How heavy a load can the truck take without exceeding the t -pound weight limit?"
+   "text": "The optimization problem associated with this decision problem arises in practical applications. The optimization problem seeks a subset of fx 1 ,x 2 ,…,x n g whose sum is as large as possible but not larger th an t . For example, consider a truck that can carry no more than t pounds, which is to be loaded with up to n different boxes, the i th of which weighs x i pounds. How heavy a load can the truck take without exceeding the t -pound weight limit?"
   },
   {
    "type": "pseudocode",
@@ -2095,7 +2095,7 @@
    "section_title": "35.5 The subset-sum problem",
    "printed_page": 1127,
    "pdf_page": 1148,
-   "text": "The APPROX-SUBSET-SUM procedure works as follows. Line 1 initializes the list L 0 to be the list containing just the element 0. The for loop in lines 2–5 computes L i as a sorted list containing a suitably trimmed vers ion of the set P i , with all elements larger than t removed. Since the procedure creates L i from L i −1 , it must ensure that the repeated trimming doesn’t introduce too much compounded inaccuracy. That’s why instead of the trimming parameter being Ω in the call to TRIM, it has the smaller value Ω=2n. We’ll soon see that APPROX-SUBSET-SUM returns a correct approximation if one exists."
+   "text": "The APPROX-SUBSET-SUM procedure works as follows. Line 1 initializes the list L 0 to be the list containing just the element 0. The for loop in lines 2–5 computes L i as a sorted list containing a suitably trimmed version of the set P i , with all elements larger than t removed. Since the procedure creates L i from L i −1 , it must ensure that the repeated trimming doesn’t introduce too much compounded inaccuracy. That’s why instead of the trimming parameter being Ω in the call to TRIM, it has the smaller value Ω=2n. We’ll soon see that APPROX-SUBSET-SUM returns a correct approximation if one exists."
   },
   {
    "type": "pseudocode",
@@ -2505,7 +2505,7 @@
    "section_title": "35.5 The subset-sum problem",
    "printed_page": 1131,
    "pdf_page": 1152,
-   "text": "0<s i <1 . Your goal is to pack all the objects into the minimum number of unitsize bins. Each bin can hold any subset of the obje cts whose total size does not exceed 1. a. Prove that the problem of determining the minimum number of bins required is NP-hard. (Hint: Reduce from the subset-sum problem.)"
+   "text": "0<s i <1 . Your goal is to pack all the objects into the minimum number of unitsize bins. Each bin can hold any subset of the objects whose total size does not exceed 1. a. Prove that the problem of determining the minimum number of bins required is NP-hard. (Hint: Reduce from the subset-sum problem.)"
   },
   {
    "type": "body",
@@ -2937,7 +2937,7 @@
    "section_title": "35.5 The subset-sum problem",
    "printed_page": 1139,
    "pdf_page": 1160,
-   "text": "When you analyze algorithms, you often need to draw upon a body of mathematical tools. Some of these tools are as simple as high-school algebra, but others may be new to you. In Part I, we saw how to manipulate asy mptotic notations and solve recurrences. This appendix comprises a compendium of several other concepts and methods used in analyzing algorithms. As noted in t he introduction to Part I, you may have seen much of the material in this appendix before having read this book, although some of the specific notational conventions appearing here might differ from those you have seen elsewhere. Hence, you shou ld treat this appendix as reference material. As in the rest of this book, however, we have included exercises and problems, in order for you to improve your skills in these areas."
+   "text": "When you analyze algorithms, you often need to draw upon a body of mathematical tools. Some of these tools are as simple as high-school algebra, but others may be new to you. In Part I, we saw how to manipulate asymptotic notations and solve recurrences. This appendix comprises a compendium of several other concepts and methods used in analyzing algorithms. As noted in t he introduction to Part I, you may have seen much of the material in this appendix before having read this book, although some of the specific notational conventions appearing here might differ from those you have seen elsewhere. Hence, you should treat this appendix as reference material. As in the rest of this book, however, we have included exercises and problems, in order for you to improve your skills in these areas."
   },
   {
    "type": "body",
@@ -2946,7 +2946,7 @@
    "section_title": "35.5 The subset-sum problem",
    "printed_page": 1139,
    "pdf_page": 1160,
-   "text": "Appendix A offers methods for evaluating and boundi ng summations, which occur frequently in the analysis of algorithms. Man y of the formulas here appear in any calculus text, but you will find it convenient to have these methods compiled in one place."
+   "text": "Appendix A offers methods for evaluating and bounding summations, which occur frequently in the analysis of algorithms. Man y of the formulas here appear in any calculus text, but you will find it convenient to have these methods compiled in one place."
   },
   {
    "type": "body",
@@ -2991,7 +2991,7 @@
    "section_title": "35.5 The subset-sum problem",
    "printed_page": 1140,
    "pdf_page": 1161,
-   "text": "When an algorithm contains an iterative control con struct such as a while or for loop, you can express its running time as the sum of the times spent on each execution of the body of the loop. For example, Section 2.2 argued that the i th iteration of insertion sort took time proportional to i in the worst case. Adding up the time spent on each iteration produced the summation (or series) P n i D2 i . Evaluating this summation resulted in a bound of Θ(n 2 ) on the worst-case running time of the algorithm. This example illustrates why you should know how to manipulate and bound summations."
+   "text": "When an algorithm contains an iterative control construct such as a while or for loop, you can express its running time as the sum of the times spent on each execution of the body of the loop. For example, Section 2.2 argued that the i th iteration of insertion sort took time proportional to i in the worst case. Adding up the time spent on each iteration produced the summation (or series) P n i D2 i . Evaluating this summation resulted in a bound of Θ(n 2 ) on the worst-case running time of the algorithm. This example illustrates why you should know how to manipulate and bound summations."
   },
   {
    "type": "body",

@@ -57,7 +57,7 @@
    "section_title": "12.1 What is a binary search tree?",
    "printed_page": 312,
    "pdf_page": 333,
-   "text": "After presenting the basic properties of binary sea rch trees, the following sections show how to walk a binary search tree to print its values in sorted order, how to search for a value in a binary search tree, how to find the minimum or maximum element, how to find the predecessor or successor of an element, and how to insert into or delete from a binary search tree. The basic mathematical properties of trees appear in Appendix B."
+   "text": "After presenting the basic properties of binary search trees, the following sections show how to walk a binary search tree to print its values in sorted order, how to search for a value in a binary search tree, how to find the minimum or maximum element, how to find the predecessor or successor of an element, and how to insert into or delete from a binary search tree. The basic mathematical properties of trees appear in Appendix B."
   },
   {
    "type": "body",
@@ -476,7 +476,7 @@
    "section_title": "12.2 Querying a binary search tree",
    "printed_page": 317,
    "pdf_page": 338,
-   "text": "Since the TREE-SEARCH procedure recurses on either the left subtree or th e right subtree, but not both, we can rewrite the alg orithm to \"unroll\" the recursion into a while loop. On most computers, the ITERATIVE-TREE-SEARCH procedure on the facing page is more efficient."
+   "text": "Since the TREE-SEARCH procedure recurses on either the left subtree or th e right subtree, but not both, we can rewrite the algorithm to \"unroll\" the recursion into a while loop. On most computers, the ITERATIVE-TREE-SEARCH procedure on the facing page is more efficient."
   },
   {
    "type": "body",
@@ -1359,7 +1359,7 @@
    "section_title": "12.3 Insertion and deletion",
    "printed_page": 326,
    "pdf_page": 347,
-   "text": "12.3-6 Suppose that instead of each node x keeping the attribute x: p, pointing to x ’s parent, it keeps x: succ, pointing to x ’s successor. Give pseudocode for TREE- SEARCH , TREE-INSERT , and TREE-DELETE on a binary search tree T using this representation. These procedures should operate in O(h) time, where h is the height of the tree T . You may assume that all keys in the binary search tree are distinct. ( Hint: You might wish to implement a subroutine that retur ns the parent of a node.)"
+   "text": "12.3-6 Suppose that instead of each node x keeping the attribute x: p, pointing to x ’s parent, it keeps x: succ, pointing to x ’s successor. Give pseudocode for TREE- SEARCH , TREE-INSERT , and TREE-DELETE on a binary search tree T using this representation. These procedures should operate in O(h) time, where h is the height of the tree T . You may assume that all keys in the binary search tree are distinct. ( Hint: You might wish to implement a subroutine that returns the parent of a node.)"
   },
   {
    "type": "exercise",
@@ -1368,7 +1368,7 @@
    "section_title": "12.3 Insertion and deletion",
    "printed_page": 326,
    "pdf_page": 347,
-   "text": "12.3-7 When node ´ in TREE-DELETE has two children, you can choose node y to be its predecessor rather than its successor. What oth er changes to TREE-DELETE are necessary if you do so? Some have argued that a fair strategy, giving equal priority to predecessor and successor, yields bette r empirical performance. How might TREE-DELETE be minimally changed to implement such a fair strategy?"
+   "text": "12.3-7 When node ´ in TREE-DELETE has two children, you can choose node y to be its predecessor rather than its successor. What other changes to TREE-DELETE are necessary if you do so? Some have argued that a fair strategy, giving equal priority to predecessor and successor, yields bette r empirical performance. How might TREE-DELETE be minimally changed to implement such a fair strategy?"
   },
   {
    "type": "problem",
@@ -1467,7 +1467,7 @@
    "section_title": "12.3 Insertion and deletion",
    "printed_page": 328,
    "pdf_page": 349,
-   "text": "A randomly built binary search tree on n keys is a binary search tree created by starting with an empty tree and inserting the keys in random order, where each of the n! permutations of the keys is equally likely. In this problem, you will prove that the average depth of a node in a randomly built binary search tree with n nodes is O(lg n). The technique reveals a surprising similarity bet ween the building of a binary search tree and the execution of RANDOMIZED-QUICKSORT from Section 7.3."
+   "text": "A randomly built binary search tree on n keys is a binary search tree created by starting with an empty tree and inserting the keys in random order, where each of the n! permutations of the keys is equally likely. In this problem, you will prove that the average depth of a node in a randomly built binary search tree with n nodes is O(lg n). The technique reveals a surprising similarity between the building of a binary search tree and the execution of RANDOMIZED-QUICKSORT from Section 7.3."
   },
   {
    "type": "body",
@@ -1638,7 +1638,7 @@
    "section_title": "12.3 Insertion and deletion",
    "printed_page": 330,
    "pdf_page": 351,
-   "text": "1 − 4x around x = 0. (If you wish, instead of using the Taylor expansi on, you may use the generalization of the binomial theorem, equation (C.4) on page 1181, to noninteger exponents n, where for any real number n and for any integer k, you can interpret ã n k ä to be n(n − 1) • • • (n − k + 1)/k! if k ≥ 0, and 0 otherwise.) d. Show that b n = 4 n p Ωn 3/2 .1 + O(1/n)/ :"
+   "text": "1 − 4x around x = 0. (If you wish, instead of using the Taylor expansion, you may use the generalization of the binomial theorem, equation (C.4) on page 1181, to noninteger exponents n, where for any real number n and for any integer k, you can interpret ã n k ä to be n(n − 1) • • • (n − k + 1)/k! if k ≥ 0, and 0 otherwise.) d. Show that b n = 4 n p Ωn 3/2 .1 + O(1/n)/ :"
   },
   {
    "type": "chapter-notes",
@@ -1665,7 +1665,7 @@
    "section_title": "12.3 Insertion and deletion",
    "printed_page": 330,
    "pdf_page": 351,
-   "text": "Many texts, including the first two editions of this book, describe a somewhat simpler method of deleting a node from a binary search tree when both of its children are present. Instead of replacing node ´ by its successor y , delete node y but copy its key and satellite data into node ´. The downside of this approach is that the node actually deleted might not be the node pas sed to the delete procedure. If other components of a program maintain pointers to nodes in the tree, they could mistakenly end up with \"stale\" pointers to nodes that have been deleted. Although the deletion method presented in this edition of this book is a bit more complicated, it guarantees that a call to delete node ´ deletes node ´ and only node ´."
+   "text": "Many texts, including the first two editions of this book, describe a somewhat simpler method of deleting a node from a binary search tree when both of its children are present. Instead of replacing node ´ by its successor y , delete node y but copy its key and satellite data into node ´. The downside of this approach is that the node actually deleted might not be the node passed to the delete procedure. If other components of a program maintain pointers to nodes in the tree, they could mistakenly end up with \"stale\" pointers to nodes that have been deleted. Although the deletion method presented in this edition of this book is a bit more complicated, it guarantees that a call to delete node ´ deletes node ´ and only node ´."
   },
   {
    "type": "body",
@@ -1674,7 +1674,7 @@
    "section_title": "12.3 Insertion and deletion",
    "printed_page": 330,
    "pdf_page": 351,
-   "text": "Section 14.5 will show how to construct an optimal binary search tree when you know the search frequencies before constructing the tree. That is, given the frequencies of searching for each key and the frequ encies of searching for values that fall between keys in the tree, a set of searches in the constructed binary search tree examines the minimum number of nodes."
+   "text": "Section 14.5 will show how to construct an optimal binary search tree when you know the search frequencies before constructing the tree. That is, given the frequencies of searching for each key and the frequencies of searching for values that fall between keys in the tree, a set of searches in the constructed binary search tree examines the minimum number of nodes."
   },
   {
    "type": "footnote",
@@ -1701,7 +1701,7 @@
    "section_title": "12.3 Insertion and deletion",
    "printed_page": 331,
    "pdf_page": 352,
-   "text": "A red-black tree is a binary search tree with one extra bit of stora ge per node: its color, which can be either RED or BLACK . By constraining the node colors on any simple path from the root to a leaf, red-black trees ensure that no such path is more than twice as long as any other, so that the t ree is approximately balanced."
+   "text": "A red-black tree is a binary search tree with one extra bit of storage per node: its color, which can be either RED or BLACK . By constraining the node colors on any simple path from the root to a leaf, red-black trees ensure that no such path is more than twice as long as any other, so that the t ree is approximately balanced."
   },
   {
    "type": "body",

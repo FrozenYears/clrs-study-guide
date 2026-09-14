@@ -57,7 +57,7 @@
    "section_title": "17.1 Dynamic order statistics",
    "printed_page": 480,
    "pdf_page": 501,
-   "text": "Chapter 9 introduced the notion of an order statist ic. Speci fically, the i th order statistic of a set of n elements, where i 2 f1,2,…,n g, is simply the element in the set with the i th smallest key. In Chapter 9, you saw how to determine any order statistic in O(n) time from an unordered set. This section shows how to modify red-black trees so that you can determine any order statistic for a dynamic set in O(lg n) time and also compute the rank of an element—its position in the linear"
+   "text": "Chapter 9 introduced the notion of an order statistic. Speci fically, the i th order statistic of a set of n elements, where i 2 f1,2,…,n g, is simply the element in the set with the i th smallest key. In Chapter 9, you saw how to determine any order statistic in O(n) time from an unordered set. This section shows how to modify red-black trees so that you can determine any order statistic for a dynamic set in O(lg n) time and also compute the rank of an element—its position in the linear"
   },
   {
    "type": "body",
@@ -461,7 +461,7 @@
    "section_title": "17.1 Dynamic order statistics",
    "printed_page": 484,
    "pdf_page": 505,
-   "text": "To maintain the subtree sizes in the first phase, simply increment x: size for each node x on the simple path traversed from the root down tow ard the leaves. The new node added gets a size of 1. Since there are O(lg n) nodes on the traversed"
+   "text": "To maintain the subtree sizes in the first phase, simply increment x: size for each node x on the simple path traversed from the root down toward the leaves. The new node added gets a size of 1. Since there are O(lg n) nodes on the traversed"
   },
   {
    "type": "body",
@@ -551,7 +551,7 @@
    "section_title": "17.1 Dynamic order statistics",
    "printed_page": 485,
    "pdf_page": 506,
-   "text": "Deletion from a red-black tree also consists of two phases: the first operates on the underlying search tree, and the second cause s at most three rotations and otherwise performs no structural changes. (See Section 13.4.) The first phase removes one node ´ from the tree and could move at most two other nodes within the tree (nodes y and x in Figure 12.4 on page 323). To update the subtree sizes, simply traverse a simple path from the lowest node that moves (starting from its original position within the tree) up to the root, decrementing the size attribute of each node on the path. Since this path has lengt h O(lg n) in an n-node redblack tree, the additional time spent maintaining size attributes in the first phase is O(lg n). For the O(1) rotations in the second phase of deletion, handle t hem in the same manner as for insertion. Thus, both ins ertion and deletion, including maintaining the size attributes, take O(lg n) time for an n-node order-statistic tree."
+   "text": "Deletion from a red-black tree also consists of two phases: the first operates on the underlying search tree, and the second cause s at most three rotations and otherwise performs no structural changes. (See Section 13.4.) The first phase removes one node ´ from the tree and could move at most two other nodes within the tree (nodes y and x in Figure 12.4 on page 323). To update the subtree sizes, simply traverse a simple path from the lowest node that moves (starting from its original position within the tree) up to the root, decrementing the size attribute of each node on the path. Since this path has lengt h O(lg n) in an n-node redblack tree, the additional time spent maintaining size attributes in the first phase is O(lg n). For the O(1) rotations in the second phase of deletion, handle t hem in the same manner as for insertion. Thus, both insertion and deletion, including maintaining the size attributes, take O(lg n) time for an n-node order-statistic tree."
   },
   {
    "type": "exercise",
@@ -713,7 +713,7 @@
    "section_title": "17.2 How to augment a data structure",
    "printed_page": 486,
    "pdf_page": 507,
-   "text": "As with any prescriptive design method, you’ll rarely be able to follow the steps precisely in the order given. Most design work cont ains an element of trial and error, and progress on all steps usually proceeds i n parallel. There is no point, for example, in determining additional information and developing new operations"
+   "text": "As with any prescriptive design method, you’ll rarely be able to follow the steps precisely in the order given. Most design work contains an element of trial and error, and progress on all steps usually proceeds i n parallel. There is no point, for example, in determining additional information and developing new operations"
   },
   {
    "type": "body",
@@ -839,7 +839,7 @@
    "section_title": "17.2 How to augment a data structure",
    "printed_page": 488,
    "pdf_page": 509,
-   "text": "Like insertion, deletion has two phases, as Section 13.4 discusses. In the first phase, changes to the tree occur when a node is del eted, and at most two other nodes could move within the tree. Propagating the u pdates to f caused by these changes costs at most O(lg n), since the changes modify the tree locally along a simple path from the lowest changed node to the root. Fixing up the red-black tree during the second phase requires at most three rotations, and each rotation requires at most O(lg n) time to propagate the updates to f . Thus, like insertion, the total"
+   "text": "Like insertion, deletion has two phases, as Section 13.4 discusses. In the first phase, changes to the tree occur when a node is deleted, and at most two other nodes could move within the tree. Propagating the u pdates to f caused by these changes costs at most O(lg n), since the changes modify the tree locally along a simple path from the lowest changed node to the root. Fixing up the red-black tree during the second phase requires at most three rotations, and each rotation requires at most O(lg n) time to propagate the updates to f . Thus, like insertion, the total"
   },
   {
    "type": "body",
@@ -866,7 +866,7 @@
    "section_title": "17.2 How to augment a data structure",
    "printed_page": 488,
    "pdf_page": 509,
-   "text": "On the other hand, when an update after a rotation requires a traversal all the way up to the root, it is important that insertion into and deletion from a red-black tree require a constant number of rotations. The chapter notes for Chapter 13 list other schemes for balancing search trees that do not boun d the number of rotations per insertion or deletion by a constant. If each operat ion might require Θ(lg n) rota-"
+   "text": "On the other hand, when an update after a rotation requires a traversal all the way up to the root, it is important that insertion into and deletion from a red-black tree require a constant number of rotations. The chapter notes for Chapter 13 list other schemes for balancing search trees that do not boun d the number of rotations per insertion or deletion by a constant. If each operation might require Θ(lg n) rota-"
   },
   {
    "type": "body",
@@ -884,7 +884,7 @@
    "section_title": "17.2 How to augment a data structure",
    "printed_page": 489,
    "pdf_page": 510,
-   "text": "17.2-1 Show, by adding pointers to the nodes, how to suppo rt each of t he dynamic-set queries MINIMUM , MAXIMUM , SUCCESSOR , and PREDECESSOR in O(1) worstcase time on an augmented order-statistic tree. The asymptotic performance of other operations on order-statistic trees should not be affected."
+   "text": "17.2-1 Show, by adding pointers to the nodes, how to support each of t he dynamic-set queries MINIMUM , MAXIMUM , SUCCESSOR , and PREDECESSOR in O(1) worstcase time on an augmented order-statistic tree. The asymptotic performance of other operations on order-statistic trees should not be affected."
   },
   {
    "type": "exercise",
@@ -1218,7 +1218,7 @@
    "section_title": "17.3 Interval trees",
    "printed_page": 492,
    "pdf_page": 513,
-   "text": "(No interval in the left subtree overlaps i .) Interval [15; 23] does not overlap i , and its left child is T: nil, so again the search goes right, the loop terminat es, and INTERVAL-SEARCH returns the sentinel T: nil."
+   "text": "(No interval in the left subtree overlaps i .) Interval [15; 23] does not overlap i , and its left child is T: nil, so again the search goes right, the loop terminates, and INTERVAL-SEARCH returns the sentinel T: nil."
   },
   {
    "type": "body",
@@ -1488,7 +1488,7 @@
    "section_title": "17.3 Interval trees",
    "printed_page": 495,
    "pdf_page": 516,
-   "text": "VLSI databases commonly represent an integrated cir cuit as a list of rectangles. Assume that each rectangle is rectilinearly o riented (sides parallel to the x - and y -axes), so that each rectangle is represented by four values: its minimum and maximum x - and y -coordinates. Give an O(n lg n)-time algorithm to decide whether a set of n rectangles so represented contains two rectangles t hat overlap."
+   "text": "VLSI databases commonly represent an integrated circuit as a list of rectangles. Assume that each rectangle is rectilinearly o riented (sides parallel to the x - and y -axes), so that each rectangle is represented by four values: its minimum and maximum x - and y -coordinates. Give an O(n lg n)-time algorithm to decide whether a set of n rectangles so represented contains two rectangles t hat overlap."
   },
   {
    "type": "body",

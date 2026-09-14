@@ -371,7 +371,7 @@
    "section_title": "7.1 Description of quicksort",
    "printed_page": 185,
    "pdf_page": 206,
-   "text": "Blue elements belong to the high side, with values greater than x. White elements have not yet been put into either side of the partition, and the yell ow element is the pivot x. (a) The initial array and variable settings. None of the elements have been p laced into either side of the partition. (b) The value 2 is \"swapped with itself\" and put into the low side. (c)–(d) The values 8 and 7 are placed into to high side. (e) The values 1 and 8 are swapped, and the low side grows. (f) The values 3 and 7 are swapped, and the low side grows. (g)–(h) The high side of the partition grows to include 5 and 6, and the loop terminates. (i) Line 7 swaps the pivot element so that it lies between the two sides of the partition, and line 8 returns the pivot’s new index."
+   "text": "Blue elements belong to the high side, with values greater than x. White elements have not yet been put into either side of the partition, and the yellow element is the pivot x. (a) The initial array and variable settings. None of the elements have been p laced into either side of the partition. (b) The value 2 is \"swapped with itself\" and put into the low side. (c)–(d) The values 8 and 7 are placed into to high side. (e) The values 1 and 8 are swapped, and the low side grows. (f) The values 3 and 7 are swapped, and the low side grows. (g)–(h) The high side of the partition grows to include 5 and 6, and the loop terminates. (i) Line 7 swaps the pivot element so that it lies between the two sides of the partition, and line 8 returns the pivot’s new index."
   },
   {
    "type": "body",
@@ -506,7 +506,7 @@
    "section_title": "7.2 Performance of quicksort",
    "printed_page": 187,
    "pdf_page": 208,
-   "text": "The running time of quicksort depends on how balanced each partitioning is, which in turn depends on which elements are used as pivot s. If the two sides of a partition are about the same size—the partitioning is balanced—then the algorithm runs asymptotically as fast as merge sort. If the partit ioning is unbalanced, however, it can run asymptotically as slowly as insertion sort. To allow you to gain some intuition before diving into a formal analysis, this section informally investigates how quicksort performs under the assumptions of balanced versus unbalanced partitioning."
+   "text": "The running time of quicksort depends on how balanced each partitioning is, which in turn depends on which elements are used as pivot s. If the two sides of a partition are about the same size—the partitioning is balanced—then the algorithm runs asymptotically as fast as merge sort. If the partitioning is unbalanced, however, it can run asymptotically as slowly as insertion sort. To allow you to gain some intuition before diving into a formal analysis, this section informally investigates how quicksort performs under the assumptions of balanced versus unbalanced partitioning."
   },
   {
    "type": "body",
@@ -551,7 +551,7 @@
    "section_title": "7.2 Performance of quicksort",
    "printed_page": 187,
    "pdf_page": 208,
-   "text": "Let us assume that this unbalanced partitioning ari ses in each recursive call. The partitioning costs Θ(n) time. Since the recursive call on an array of size 0 just returns without doing anything, T(0) = Θ(1), and the recurrence for the running time is T(n) = T(n − 1) + T(0) + Θ(n)"
+   "text": "Let us assume that this unbalanced partitioning arises in each recursive call. The partitioning costs Θ(n) time. Since the recursive call on an array of size 0 just returns without doing anything, T(0) = Θ(1), and the recurrence for the running time is T(n) = T(n − 1) + T(0) + Θ(n)"
   },
   {
    "type": "body",
@@ -659,7 +659,7 @@
    "section_title": "7.2 Performance of quicksort",
    "printed_page": 188,
    "pdf_page": 209,
-   "text": "Suppose, for example, that the partitioning algorit hm always produces a 9-to-1 proportional split, which at first blush seems quite unbalanced. We then obtain the recurrence"
+   "text": "Suppose, for example, that the partitioning algorithm always produces a 9-to-1 proportional split, which at first blush seems quite unbalanced. We then obtain the recurrence"
   },
   {
    "type": "body",
@@ -785,7 +785,7 @@
    "section_title": "7.2 Performance of quicksort",
    "printed_page": 190,
    "pdf_page": 211,
-   "text": "(b) A single level of a recursion tree that is well balanced. In both parts, the partitioning cost for the subproblems shown with blue shading is Θ(n). Yet the subproblems remaining to be solved in (a) , shown with tan shading, are no larger than the corr esponding subproblems remaining to be solved in (b)."
+   "text": "(b) A single level of a recursion tree that is well balanced. In both parts, the partitioning cost for the subproblems shown with blue shading is Θ(n). Yet the subproblems remaining to be solved in (a) , shown with tan shading, are no larger than the corresponding subproblems remaining to be solved in (b)."
   },
   {
    "type": "body",
@@ -839,7 +839,7 @@
    "section_title": "7.2 Performance of quicksort",
    "printed_page": 190,
    "pdf_page": 211,
-   "text": "Intuitively, the Θ(n − 1) cost of the bad split in Figure 7.5(a) can be absorbed into the Θ(n) cost of the good split, and the resulting split is good. Thus, the running time of quicksort, when levels alternate betwe en good and bad splits, is like the running time for good splits alone: still O(n lg n), but with a slightly larger constant hidden by the O-notation. We’ll analyze the expected running time of a randomized version of quicksort rigorously in Section 7.4.2."
+   "text": "Intuitively, the Θ(n − 1) cost of the bad split in Figure 7.5(a) can be absorbed into the Θ(n) cost of the good split, and the resulting split is good. Thus, the running time of quicksort, when levels alternate between good and bad splits, is like the running time for good splits alone: still O(n lg n), but with a slightly larger constant hidden by the O-notation. We’ll analyze the expected running time of a randomized version of quicksort rigorously in Section 7.4.2."
   },
   {
    "type": "exercise",
@@ -884,7 +884,7 @@
    "section_title": "7.2 Performance of quicksort",
    "printed_page": 191,
    "pdf_page": 212,
-   "text": "7.2-4 Banks often record transactions on an account in or der of the times of the transactions, but many people like to receive their bank statements with checks listed in order by check number. People usually write chec ks in order by check number, and merchants usually cash them with reasonabl e dispatch. The problem of converting time-of-transaction ordering to check-number ordering is therefore the problem of sorting almost-sorted input. Explain persuasively why the procedure"
+   "text": "7.2-4 Banks often record transactions on an account in or der of the times of the transactions, but many people like to receive their bank statements with checks listed in order by check number. People usually write checks in order by check number, and merchants usually cash them with reasonabl e dispatch. The problem of converting time-of-transaction ordering to check-number ordering is therefore the problem of sorting almost-sorted input. Explain persuasively why the procedure"
   },
   {
    "type": "body",
@@ -920,7 +920,7 @@
    "section_title": "7.3 A randomized version of quicksort",
    "printed_page": 191,
    "pdf_page": 212,
-   "text": "In exploring the average-case behavior of quicksort, we have assumed that all permutations of the input numbers are equally likely. This assumption does not always hold, however, as, for example, in the situati on laid out in the premise for Exercise 7.2-4. Section 5.3 showed that judicious randomization can sometimes be added to an algorithm to obtain good expected performance over all inputs. For quicksort, randomization yields a fast and practica l algorithm. Many software libraries provide a randomized version of quicksort as their algorithm of choice for sorting large data sets."
+   "text": "In exploring the average-case behavior of quicksort, we have assumed that all permutations of the input numbers are equally likely. This assumption does not always hold, however, as, for example, in the situation laid out in the premise for Exercise 7.2-4. Section 5.3 showed that judicious randomization can sometimes be added to an algorithm to obtain good expected performance over all inputs. For quicksort, randomization yields a fast and practica l algorithm. Many software libraries provide a randomized version of quicksort as their algorithm of choice for sorting large data sets."
   },
   {
    "type": "pseudocode",
@@ -983,7 +983,7 @@
    "section_title": "7.3 A randomized version of quicksort",
    "printed_page": 192,
    "pdf_page": 213,
-   "text": "In Section 5.3, the RANDOMIZED-HIRE-ASSISTANT procedure explicitly permutes its input and then runs the deterministic HIRE-ASSISTANT procedure. We could do the same for quicksort as well, but a diff erent randomization technique yields a simpler analysis. Instead of always using A[r] as the pivot, a randomized version randomly chooses the pivot from the subarray A[p : r], where each element in A[p : r] has an equal probability of being chosen. It then exchanges that element with A[r] before partitioning. Because the pivot is chosen randomly, we expect the split of the input array to be reasonably well balanced on average."
+   "text": "In Section 5.3, the RANDOMIZED-HIRE-ASSISTANT procedure explicitly permutes its input and then runs the deterministic HIRE-ASSISTANT procedure. We could do the same for quicksort as well, but a different randomization technique yields a simpler analysis. Instead of always using A[r] as the pivot, a randomized version randomly chooses the pivot from the subarray A[p : r], where each element in A[p : r] has an equal probability of being chosen. It then exchanges that element with A[r] before partitioning. Because the pivot is chosen randomly, we expect the split of the input array to be reasonably well balanced on average."
   },
   {
    "type": "body",
@@ -1226,7 +1226,7 @@
    "section_title": "7.4 Analysis of quicksort",
    "printed_page": 194,
    "pdf_page": 215,
-   "text": "The QUICKSORT and RANDOMIZED-QUICKSORT procedures differ only in how they select pivot elements. They are the same in al l other respects. We can therefore analyze RANDOMIZED-QUICKSORT by considering the QUICKSORT and PARTITION procedures, but with the assumption that pivot elem ents are selected randomly from the subarray passed to RANDOMIZED-PARTITION. Let’s start by relating the asymptotic running time of QUICKSORT to the number of times elements are compared (all in line 4 of PARTITION ), understanding that this analysis also applies to RANDOMIZED-QUICKSORT . Note that we are counting the number of times that array elements are compared, not comparisons of indices."
+   "text": "The QUICKSORT and RANDOMIZED-QUICKSORT procedures differ only in how they select pivot elements. They are the same in al l other respects. We can therefore analyze RANDOMIZED-QUICKSORT by considering the QUICKSORT and PARTITION procedures, but with the assumption that pivot elements are selected randomly from the subarray passed to RANDOMIZED-PARTITION. Let’s start by relating the asymptotic running time of QUICKSORT to the number of times elements are compared (all in line 4 of PARTITION ), understanding that this analysis also applies to RANDOMIZED-QUICKSORT . Note that we are counting the number of times that array elements are compared, not comparisons of indices."
   },
   {
    "type": "lemma",
@@ -1253,7 +1253,7 @@
    "section_title": "7.4 Analysis of quicksort",
    "printed_page": 195,
    "pdf_page": 216,
-   "text": "Proof The running time of QUICKSORT is dominated by the time spent in the PARTITION procedure. Each time PARTITION is called, it selects a pivot element, which is never included in any future recursi ve calls to QUICKSORT and PARTITION . Thus, there can be at most n calls to PARTITION over the entire ex- ecution of the quicksort algorithm. Each time QUICKSORT calls PARTITION , it also recursively calls itself twice, so there are at most 2n calls to the QUICKSORT procedure itself."
+   "text": "Proof The running time of QUICKSORT is dominated by the time spent in the PARTITION procedure. Each time PARTITION is called, it selects a pivot element, which is never included in any future recursive calls to QUICKSORT and PARTITION . Thus, there can be at most n calls to PARTITION over the entire ex- ecution of the quicksort algorithm. Each time QUICKSORT calls PARTITION , it also recursively calls itself twice, so there are at most 2n calls to the QUICKSORT procedure itself."
   },
   {
    "type": "body",
@@ -1640,7 +1640,7 @@
    "section_title": "7.4 Analysis of quicksort",
    "printed_page": 198,
    "pdf_page": 219,
-   "text": "7.4-5 Coarsening the recursion, as we did in Problem 2-1 for merge sort, is a common way to improve the running time of quicksort in pra ctice. We modify the base case of the recursion so that if the array has fewer than k elements, the subarray is sorted by insertion sort, rather than by continued recursive calls to quicksort. Argue that the randomized version of this sorting algorit hm runs in O(nk + n lg(n/k)) expected time. How should you pick k, both in theory and in practice?"
+   "text": "7.4-5 Coarsening the recursion, as we did in Problem 2-1 for merge sort, is a common way to improve the running time of quicksort in practice. We modify the base case of the recursion so that if the array has fewer than k elements, the subarray is sorted by insertion sort, rather than by continued recursive calls to quicksort. Argue that the randomized version of this sorting algorithm runs in O(nk + n lg(n/k)) expected time. How should you pick k, both in theory and in practice?"
   },
   {
    "type": "body",
@@ -1768,7 +1768,7 @@
    "section_title": "7.4 Analysis of quicksort",
    "printed_page": 200,
    "pdf_page": 221,
-   "text": "The PARTITION procedure in Section 7.1 separates the pivot value (originally in A[r]) from the two partitions it forms. The HOARE-PARTITION procedure, on the other hand, always places the pivot value (orig inally in A[p]) into one of the two partitions A[p : j] and A[j + 1 : r]. Since p ≤ j < r , neither partition is empty. f. Rewrite the QUICKSORT procedure to use HOARE-PARTITION ."
+   "text": "The PARTITION procedure in Section 7.1 separates the pivot value (originally in A[r]) from the two partitions it forms. The HOARE-PARTITION procedure, on the other hand, always places the pivot value (originally in A[p]) into one of the two partitions A[p : j] and A[j + 1 : r]. Since p ≤ j < r , neither partition is empty. f. Rewrite the QUICKSORT procedure to use HOARE-PARTITION ."
   },
   {
    "type": "problem",
@@ -1822,7 +1822,7 @@
    "section_title": "7.4 Analysis of quicksort",
    "printed_page": 200,
    "pdf_page": 221,
-   "text": "7-3 Alternative quicksort analysis An alternative analysis of the running time of rand omized quicksort focuses on the expected running time of each individual recurs ive call to RANDOMIZED-QUICKSORT , rather than on the number of comparisons performe d. As in the analysis of Section 7.4.2, assume that the values of the elements are distinct. a. Argue that, given an array of size n, the probability that any particular element is chosen as the pivot is 1/n. Use this probability to define indicator random variables X i = I fi th smallest element is chosen as the pivotg. What is E [X i ]? b. Let T(n) be a random variable denoting the running time of q uicksort on an array of size n. Argue that E [T(n)] = E"
+   "text": "7-3 Alternative quicksort analysis An alternative analysis of the running time of randomized quicksort focuses on the expected running time of each individual recursive call to RANDOMIZED-QUICKSORT , rather than on the number of comparisons performe d. As in the analysis of Section 7.4.2, assume that the values of the elements are distinct. a. Argue that, given an array of size n, the probability that any particular element is chosen as the pivot is 1/n. Use this probability to define indicator random variables X i = I fi th smallest element is chosen as the pivotg. What is E [X i ]? b. Let T(n) be a random variable denoting the running time of q uicksort on an array of size n. Argue that E [T(n)] = E"
   },
   {
    "type": "body",
@@ -2040,7 +2040,7 @@
    "section_title": "7.4 Analysis of quicksort",
    "printed_page": 202,
    "pdf_page": 223,
-   "text": "Compilers usually execute recursive procedures by using a stack that contains pertinent information, including the parameter values, for each recursive call. The information for the most recent call is at the top of the stack, and the information for the initial call is at the bottom. When a proce dure is called, its information is pushed onto the stack, and when it terminates, its informa tion is popped. Since we assume that array parameters are represented by pointers, the information for each procedure call on the stack requires O(1) stack space. The stack depth is the maximum amount of stack space used at any time during a computation. b. Describe a scenario in which TRE-QUICKSORT’s stack depth is Θ(n) on an n-element input array. c. Modify TRE-QUICKSORT so that the worst-case stack depth is Θ(lg n). Maintain the O(n lg n) expected running time of the algorithm."
+   "text": "Compilers usually execute recursive procedures by using a stack that contains pertinent information, including the parameter values, for each recursive call. The information for the most recent call is at the top of the stack, and the information for the initial call is at the bottom. When a procedure is called, its information is pushed onto the stack, and when it terminates, its information is popped. Since we assume that array parameters are represented by pointers, the information for each procedure call on the stack requires O(1) stack space. The stack depth is the maximum amount of stack space used at any time during a computation. b. Describe a scenario in which TRE-QUICKSORT’s stack depth is Θ(n) on an n-element input array. c. Modify TRE-QUICKSORT so that the worst-case stack depth is Θ(lg n). Maintain the O(n lg n) expected running time of the algorithm."
   },
   {
    "type": "problem",
@@ -2166,7 +2166,7 @@
    "section_title": "7.4 Analysis of quicksort",
    "printed_page": 205,
    "pdf_page": 226,
-   "text": "Sections 8.2, 8.3, and 8.4 examine three sorting algorithms—counting sort, radix sort, and bucket sort—that run in linear time on certain types of inputs. Of course, these algorithms use operations other than comparis ons to determine the sorted order. Consequently, the Ω(n lg n) lower bound does not apply to them."
+   "text": "Sections 8.2, 8.3, and 8.4 examine three sorting algorithms—counting sort, radix sort, and bucket sort—that run in linear time on certain types of inputs. Of course, these algorithms use operations other than comparisons to determine the sorted order. Consequently, the Ω(n lg n) lower bound does not apply to them."
   },
   {
    "type": "body",
@@ -2175,7 +2175,7 @@
    "section_title": "7.4 Analysis of quicksort",
    "printed_page": 205,
    "pdf_page": 226,
-   "text": "A comparison sort uses only comparisons between ele ments to gain order information about an input sequence ⟨a 1 ,a 2 ,…,a n⟩. That is, given two elements a i and a j , it performs one of the tests a i <a j , a i ≤ a j , a i = a j , a i ≥ a j , or a i >a j to determine their relative order. It may not inspe ct the values of the elements or gain order information about them in any other way."
+   "text": "A comparison sort uses only comparisons between elements to gain order information about an input sequence ⟨a 1 ,a 2 ,…,a n⟩. That is, given two elements a i and a j , it performs one of the tests a i <a j , a i ≤ a j , a i = a j , a i ≥ a j , or a i >a j to determine their relative order. It may not inspe ct the values of the elements or gain order information about them in any other way."
   },
   {
    "type": "body",
@@ -2184,7 +2184,7 @@
    "section_title": "7.4 Analysis of quicksort",
    "printed_page": 205,
    "pdf_page": 226,
-   "text": "Since we are proving a lower bound, we assume witho ut loss of generality in this section that all the input elements are distin ct. After all, a lower bound for distinct elements applies when elements may or may not be distinct. Consequently,"
+   "text": "Since we are proving a lower bound, we assume without loss of generality in this section that all the input elements are distinct. After all, a lower bound for distinct elements applies when elements may or may not be distinct. Consequently,"
   }
  ]
 }

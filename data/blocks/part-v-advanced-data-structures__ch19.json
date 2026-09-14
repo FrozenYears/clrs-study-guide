@@ -140,7 +140,7 @@
    "section_title": "19.1 Disjoint-set operations",
    "printed_page": 521,
    "pdf_page": 542,
-   "text": "The procedure CONNECTED-COMPONENTS on the following page uses the disjoint-set operations to compute the connected components of a graph. Once the CONNECTED-COMPONENTS procedure has preprocessed the graph, the procedure SAME-COMPONENT answers queries about whether two vertices belong to the same connected component. In pseudocode, we den ote the set of vertices of a graph G by G: V and the set of edges by G: E."
+   "text": "The procedure CONNECTED-COMPONENTS on the following page uses the disjoint-set operations to compute the connected components of a graph. Once the CONNECTED-COMPONENTS procedure has preprocessed the graph, the procedure SAME-COMPONENT answers queries about whether two vertices belong to the same connected component. In pseudocode, we denote the set of vertices of a graph G by G: V and the set of edges by G: E."
   },
   {
    "type": "body",
@@ -840,7 +840,7 @@
    "section_title": "19.2 Linked-list representation of disjoint sets",
    "printed_page": 527,
    "pdf_page": 548,
-   "text": "19.2-5 Professor Gompers suspects that it might be possible to keep just one pointer in each set object, rather than two (head and tail), while keeping the number of pointers in each list element at two. Show that the professor’s suspicion is well founded by describing how to represent each set by a linked list such that each operation has the same running time as the operations describ ed in this section. Describe also how the operations work. Your scheme should al low for the weighted-union heuristic, with the same effect as described in this section. ( Hint: Use the tail of a linked list as its set’s representative.)"
+   "text": "19.2-5 Professor Gompers suspects that it might be possible to keep just one pointer in each set object, rather than two (head and tail), while keeping the number of pointers in each list element at two. Show that the professor’s suspicion is well founded by describing how to represent each set by a linked list such that each operation has the same running time as the operations described in this section. Describe also how the operations work. Your scheme should al low for the weighted-union heuristic, with the same effect as described in this section. ( Hint: Use the tail of a linked list as its set’s representative.)"
   },
   {
    "type": "exercise",
@@ -858,7 +858,7 @@
    "section_title": "19.3 Disjoint-set forests",
    "printed_page": 527,
    "pdf_page": 548,
-   "text": "A faster implementation of disjoint sets represents sets by rooted trees, with each node containing one member and each tree representi ng one set. In a disjoint-set forest, illustrated in Figure 19.4(a), each member points only to its parent. The root of each tree contains the representative and is its own parent. As we’ll see, although the straightforward algorithms that use this repres entation are no faster than ones that use the linked-list representation, two heuristics4\"union by rank\" and <path compression/4yield an asymptotically optimal disjoint-set data structure."
+   "text": "A faster implementation of disjoint sets represents sets by rooted trees, with each node containing one member and each tree representing one set. In a disjoint-set forest, illustrated in Figure 19.4(a), each member points only to its parent. The root of each tree contains the representative and is its own parent. As we’ll see, although the straightforward algorithms that use this representation are no faster than ones that use the linked-list representation, two heuristics4\"union by rank\" and <path compression/4yield an asymptotically optimal disjoint-set data structure."
   },
   {
    "type": "body",
@@ -2530,7 +2530,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 539,
    "pdf_page": 560,
-   "text": "Consider such a node x . It has positive rank and is followed somewhere on the find path by nonroot node y such that level(y) = level(x) before the path compression occurs. We claim that the path compress ion decreases x ’s potential by at least 1. To prove this claim, let k = level(x) = level(y) and i = iter(x) before the path compression occurs. Just prior to the path compression caused by the FIND-SET, we have x: p: rank ≥ A (i ) k (x: rank) (by the definition (19.5) of iter(x)) , y: p: rank ≥ A k (y: rank) (by the definition (19.3) of level(y)) , y: rank ≥ x: p: rank (by Corollary 19.5 and because y follows x on the find path) ."
+   "text": "Consider such a node x . It has positive rank and is followed somewhere on the find path by nonroot node y such that level(y) = level(x) before the path compression occurs. We claim that the path compression decreases x ’s potential by at least 1. To prove this claim, let k = level(x) = level(y) and i = iter(x) before the path compression occurs. Just prior to the path compression caused by the FIND-SET, we have x: p: rank ≥ A (i ) k (x: rank) (by the definition (19.5) of iter(x)) , y: p: rank ≥ A k (y: rank) (by the definition (19.3) of level(y)) , y: rank ≥ x: p: rank (by Corollary 19.5 and because y follows x on the find path) ."
   },
   {
    "type": "body",
@@ -2692,7 +2692,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 541,
    "pdf_page": 562,
-   "text": "19.4-5 Professor Dante reasons that because node ranks inc rease strictly along a simple path to the root, node levels must monotonically in crease along the path. In other words, if x: rank > 0 and x: p is not a root, then level (x) ≤ level(x: p). Is the professor correct?"
+   "text": "19.4-5 Professor Dante reasons that because node ranks increase strictly along a simple path to the root, node levels must monotonically in crease along the path. In other words, if x: rank > 0 and x: p is not a root, then level (x) ≤ level(x: p). Is the professor correct?"
   },
   {
    "type": "exercise",
@@ -3065,7 +3065,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 547,
    "pdf_page": 568,
-   "text": "Chapter 20 shows how to represent a graph in a comp uter and then discusses algorithms based on searching a graph using either breadth-first search or depthfirst search. The chapter gives two applications of depth-first search: topologically sorting a directed acyclic graph and decomposing a directed graph into its strongly connected components."
+   "text": "Chapter 20 shows how to represent a graph in a computer and then discusses algorithms based on searching a graph using either breadth-first search or depthfirst search. The chapter gives two applications of depth-first search: topologically sorting a directed acyclic graph and decomposing a directed graph into its strongly connected components."
   },
   {
    "type": "body",
@@ -3164,7 +3164,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 549,
    "pdf_page": 570,
-   "text": "Searching a graph means systematically following th e edges of the graph so as to visit the vertices of the graph. A graph-searching algorithm can discover much about the structure of a graph. Many algorithms beg in by searching their input graph to obtain this structural information. Severa l other graph algorithms elaborate on basic graph searching. Techniques for searc hing a graph lie at the heart of the field of graph algorithms."
+   "text": "Searching a graph means systematically following th e edges of the graph so as to visit the vertices of the graph. A graph-searching algorithm can discover much about the structure of a graph. Many algorithms begin by searching their input graph to obtain this structural information. Severa l other graph algorithms elaborate on basic graph searching. Techniques for searching a graph lie at the heart of the field of graph algorithms."
   },
   {
    "type": "body",
@@ -3182,7 +3182,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 549,
    "pdf_page": 570,
-   "text": "You can choose between two standard ways to represe nt a graph G = (V,E) : as a collection of adjacency lists or as an adjacen cy matrix. Either way applies to both directed and undirected graphs. Because the adjacency-list representation provides a compact way to represent sparse graphs—those for which |E| is much less than |V| 2 4it is usually the method of choice. Most of the graph algorithms presented in this book assume that an input graph i s represented in adjacency-list form. You might prefer an adjacency-matrix representation, however, when the graph is dense4|E| is close to |V| 2 4or when you need to be able to tell quickly whether there is an edge connecting two given verti ces. For example, two of the"
+   "text": "You can choose between two standard ways to represent a graph G = (V,E) : as a collection of adjacency lists or as an adjacency matrix. Either way applies to both directed and undirected graphs. Because the adjacency-list representation provides a compact way to represent sparse graphs—those for which |E| is much less than |V| 2 4it is usually the method of choice. Most of the graph algorithms presented in this book assume that an input graph i s represented in adjacency-list form. You might prefer an adjacency-matrix representation, however, when the graph is dense4|E| is close to |V| 2 4or when you need to be able to tell quickly whether there is an edge connecting two given vertices. For example, two of the"
   }
  ]
 }

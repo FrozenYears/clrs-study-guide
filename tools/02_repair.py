@@ -23,7 +23,7 @@ Output:
 import json
 import os
 import re
-from collections import Counter
+from collections import Counter, defaultdict
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data")
@@ -420,7 +420,128 @@ def _angle(m):
     return "⟨" + body.strip() + "⟩"
 
 
-def repair_text(txt):
+# ---------------------------------------------------------------------------
+# 词内空格伪影：`cha racterize` / `runn ing` / `exam ple` / `alg orithms`
+#
+# 成因是字体的字距：某些字母对被抽成带间距的文本段，词中间多出一个空格。
+# 它**不是**断行造成的（同一行内就有）。
+#
+# 判定不依赖外部词典，用「语料自证 + 三个必要条件」。逐条都是被实测逼出来的：
+#
+#   ① words[a+b] >= 3  且  words[a+b] >= 3 * splits[(a,b)]
+#      合并后的词必须真是本书的词，而且要比「拆开写」常见得多。
+#      这一条就挡掉了 `based on`（basedon 不是词）。
+#   ② len(follow[a]) <= 3
+#      真词后面会跟很多不同的词（`the` 跟上百个词搭配），破损片段只会跟着它
+#      那半截（`cha` 只跟 `racterize`）。这一条挡掉了 `the re`（there）、
+#      `are as`（areas）、`key word`（keyword）、`with in`（within）。
+#   ③ 右片段不得是虚词（FUNCTION_WORDS），除非它在 SPLIT_WHITELIST 里
+#      挡掉 `pay off`（off 是虚词，pay off 本就是合法短语）、`speed up`、
+#      `fix up`；而 `chap ter`（ter 不是词）、`con text`（text 是实词）、
+#      `sub array`（array 是实词）照常合并。白名单里那 22 条是实测确认的
+#      真破损（functi on、inserti on、beg in、squ are …），右片段虽是虚词，
+#      但左片段确实不是词。
+#   ④ 左片段必须从词首开始（词边界）
+#      TOK 正则没有 lookbehind，会把词中间切开（`c hapter` -> `hap ter`），
+#      于是 `hapter` 被当成真词而误并。
+#
+# 判定必须**逐个空格**考察左右两侧的完整小写词，不能写成正则替换：正则会先把
+# 前一个词一起吃掉（`the runn ing` 里的 `the runn` 先命中且被拒，`runn ing`
+# 就再也轮不到）。
+#
+# 实测（在**未修复的原始语料**上）：命中 929 处 / 761 种形状，31 条关键
+# 用例（该合并的 16 条 + 不该动的 15 条）全部正确，无一是两个真词被误拼。
+# ★ 审计必须在 data/pages.jsonl（原文）上做：修复后的文本里伪影已消失，
+#   拿它当依据会得出完全错误的结论（这一条踩过）。
+# ---------------------------------------------------------------------------
+TOKEN_RE = re.compile(r"(?<![A-Za-z])([A-Za-z]{3,})(?![A-Za-z])")
+PAIR_RE = re.compile(r"(?<![A-Za-z])([a-z]{3,}) ([a-z]{2,10})(?![a-z])")
+_TWO_WORDS_RE = re.compile(r"([a-z]+) ([a-z]+)")
+
+# 右片段若是这些虚词，说明多半是「真词 + 虚词」的合法短语，不合并
+FUNCTION_WORDS = set("""
+a an the this that these those and or but not no so if then than when where while
+of to in on at by for with from into onto over under out up down off about as is are
+was were be been being it its he she they we you i do does did has have had can could
+will would shall should may might must one two all any each every other more most
+less least same
+""".split())
+
+# 右片段是虚词、但实测确认左片段不是词的真破损（逐条在原始语料里核对过）。
+# 其余“真词 + 虚词”的组合一律不合并，例如 pay off / speed up / fix up。
+SPLIT_WHITELIST = {
+    ("functi", "on"), ("inserti", "on"), ("beg", "in"), ("obta", "in"),
+    ("squ", "are"), ("cac", "he"), ("boole", "an"), ("somewh", "at"),
+    ("notati", "on"), ("operati", "on"), ("approximati", "on"), ("automat", "on"),
+    ("compositi", "on"), ("expansi", "on"), ("implementati", "on"),
+    ("maximizati", "on"), ("parenthesizati", "on"), ("reas", "on"),
+    ("restricti", "on"), ("situati", "on"), ("soluti", "on"), ("transformati", "on"),
+}
+
+_SPLIT_STATE = None
+
+
+def build_split_state(texts):
+    """从原始文本建三张表（语料自证）。
+
+    texts: 可迭代的字符串集合（本仓库传的是**未修复**的逐页文本，与生产一致）。
+    """
+    words = Counter()
+    splits = Counter()
+    follow = defaultdict(set)
+    for txt in texts:
+        for m in TOKEN_RE.finditer(txt):
+            words[m.group(1).lower()] += 1
+        for m in PAIR_RE.finditer(txt):
+            splits[(m.group(1), m.group(2))] += 1
+            follow[m.group(1)].add(m.group(2))
+    return {"words": words, "splits": splits, "follow": follow}
+
+
+def _join_split_words(txt, state):
+    """逐个空格考察；命中就合并，并把游标推过合并后的词。"""
+    if not state:
+        return txt
+    words = state["words"]
+    splits = state["splits"]
+    follow = state["follow"]
+    out = []
+    i = 0
+    while True:
+        m = _TWO_WORDS_RE.search(txt, i)
+        if not m:
+            out.append(txt[i:])
+            break
+        a, b = m.group(1), m.group(2)
+        # 词边界：左片段前面不能还是字母。TOK 正则没有 lookbehind，会把
+        # 词中间切开（`c hapter` -> `hap ter`），于是 `hapter` 这种不存在的
+        # 词被当成「合并后的真词」而误并。PAIR_RE 有 lookbehind，两边必须一致。
+        if m.start() > 0 and txt[m.start() - 1].isalpha():
+            # ★ 必须把跳过的片段写回输出，否则这段文本会被直接丢掉
+            out.append(txt[i:m.start() + len(a) + 1])
+            i = m.start() + len(a) + 1
+            continue
+        joined = a + b
+        w = words.get(joined, 0)
+        ok = (len(a) >= 3 and 2 <= len(b) <= 10
+              and (b not in FUNCTION_WORDS or (a, b) in SPLIT_WHITELIST)
+              and w >= 3 and w >= 3 * splits.get((a, b), 0)
+              and len(follow.get(a, ())) <= 3)
+        if ok:
+            out.append(txt[i:m.start()])
+            out.append(joined)
+            i = m.end()
+        else:
+            out.append(txt[i:m.start() + len(a) + 1])
+            i = m.start() + len(a) + 1
+    return "".join(out)
+
+
+def repair_text(txt, state=None):
+    # --- 2a0. 词内空格伪影（cha racterize -> characterize）。放在最前面，让后面
+    #          的规则看到完整的单词。state 为空时该规则不生效（单测可显式传入）。 ---
+    txt = _join_split_words(txt, _SPLIT_STATE if state is None else state)
+
     # --- 2a. rejoin small-caps name splits FIRST, so later rules see clean
     #         procedure names (MERGE.A;p;q/ -> MERGE(A;p;q)).
     #         Looped: a name can be split more than once and the first match
@@ -555,13 +676,21 @@ def main():
     before = Counter()
     after = Counter()
     n_pages = 0
-    with open(PAGES_IN, encoding="utf-8") as fin, \
-         open(PAGES_OUT, "w", encoding="utf-8") as fout:
+
+    # 词内空格规则需要全书的词频（语料自证），所以先全量读一遍建表。
+    # ★ 必须用**未修复**的原文建表：修复后的文本可能已经合并/改写过，
+    #   拿它当依据就不再是「自证」了。
+    global _SPLIT_STATE
+    all_recs = []
+    with open(PAGES_IN, encoding="utf-8") as fin:
         for line in fin:
             line = line.rstrip("\n")
-            if not line:
-                continue
-            rec = json.loads(line)
+            if line:
+                all_recs.append(json.loads(line))
+    _SPLIT_STATE = build_split_state(r["text"] for r in all_recs)
+
+    with open(PAGES_OUT, "w", encoding="utf-8") as fout:
+        for rec in all_recs:
             t0 = rec["text"]
             t1 = repair_text(t0)
             t1 = repair_d_assignment(t1)

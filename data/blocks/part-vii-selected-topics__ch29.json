@@ -138,7 +138,7 @@
    "section_title": "29.1 Linear programming formulations and algorithms",
    "printed_page": 854,
    "pdf_page": 875,
-   "text": "We now introduce terminology to describe solutions to linear programs. We denote a particular setting of the values in a vari able, say x , by putting a bar over the variable name: N x. If N x satisfies all the constraints, then it is a feasible solution, but if it fails to satisfy at least one constraint, then it is an infeasible solution. We say that a solution N x has objective value c T N x. A feasible solution N x whose objective value is maximum over all feasible solutions is an optimal solution, and we call its objective value c T N x the optimal objective value. If a linear program has no feasible solutions, we say that the linear program is infeasible, and otherwise, it is feasible. The set of points that satisfy all the constraint s is the feasible region."
+   "text": "We now introduce terminology to describe solutions to linear programs. We denote a particular setting of the values in a variable, say x , by putting a bar over the variable name: N x. If N x satisfies all the constraints, then it is a feasible solution, but if it fails to satisfy at least one constraint, then it is an infeasible solution. We say that a solution N x has objective value c T N x. A feasible solution N x whose objective value is maximum over all feasible solutions is an optimal solution, and we call its objective value c T N x the optimal objective value. If a linear program has no feasible solutions, we say that the linear program is infeasible, and otherwise, it is feasible. The set of points that satisfy all the constraint s is the feasible region."
   },
   {
    "type": "body",
@@ -228,7 +228,7 @@
    "section_title": "29.1 Linear programming formulations and algorithms",
    "printed_page": 855,
    "pdf_page": 876,
-   "text": "The feasible region in the two-dimensional space (highlighted in blue in the figure) is convex. 1 Conceptually, you could evaluate the objective function x 1 + x 2 at each point in the feasible region, and then identif y a point that has the maximum objective value as an optimal solution. For this ex ample (and for most linear programs), however, the feasible region contains an infinite number of points, and so to solve this linear program, you need an efficient way to find a point that achieves the maximum objective value without explicitly eval uating the objective function at every point in the feasible region."
+   "text": "The feasible region in the two-dimensional space (highlighted in blue in the figure) is convex. 1 Conceptually, you could evaluate the objective function x 1 + x 2 at each point in the feasible region, and then identif y a point that has the maximum objective value as an optimal solution. For this ex ample (and for most linear programs), however, the feasible region contains an infinite number of points, and so to solve this linear program, you need an efficient way to find a point that achieves the maximum objective value without explicitly evaluating the objective function at every point in the feasible region."
   },
   {
    "type": "body",
@@ -291,7 +291,7 @@
    "section_title": "29.1 Linear programming formulations and algorithms",
    "printed_page": 856,
    "pdf_page": 877,
-   "text": "Figure 29.2 (a) The linear program given in (29.18)3(29.21). Each constraint is represented by a line and a direction. The intersection of the const raints, which is the feasible region, is highlighte d in blue. (b) The red lines show, respectively, the points for which the objective value is 0, 4, and 8."
+   "text": "Figure 29.2 (a) The linear program given in (29.18)3(29.21). Each constraint is represented by a line and a direction. The intersection of the constraints, which is the feasible region, is highlighte d in blue. (b) The red lines show, respectively, the points for which the objective value is 0, 4, and 8."
   },
   {
    "type": "body",
@@ -318,7 +318,7 @@
    "section_title": "29.1 Linear programming formulations and algorithms",
    "printed_page": 856,
    "pdf_page": 877,
-   "text": "Although you cannot easily graph linear programs with more than two variables, the same intuition holds. If you have three variabl es, then each constraint corresponds to a half-space in three-dimensional space. The intersection of these half- spaces forms the feasible region. The set of points for which the objective function obtains a given value ´ is now a plane (assuming no degenerate conditions). If all coefficients of the objective function are nonnegative, and if the origin is a feasible solution to the linear program, then as you move this plane away from the origin, in a direction normal to the objective function, you find points of increasing objective value. (If the origin is not feasible or if some coefficients in the objective function are negative, the intuitive picture becomes slightly more complicated.) As in two dimensions, because the feasible region is convex, the set of points that achieve the optimal objective value must include a vertex o f the feasible region. Similarly, if you have n variables, each constraint defines a half-space in n-dimensional space. We call the feasible region formed by the in tersection of these half-spaces a simplex. The objective function is now a hyperplane and, b ecause of convexity, an optimal solution still occurs at a vertex of the simplex. Any algorithm for linear programming must also identify linear programs that have no solutions, as well as linear programs that have no finite optimal solution."
+   "text": "Although you cannot easily graph linear programs with more than two variables, the same intuition holds. If you have three variables, then each constraint corresponds to a half-space in three-dimensional space. The intersection of these half- spaces forms the feasible region. The set of points for which the objective function obtains a given value ´ is now a plane (assuming no degenerate conditions). If all coefficients of the objective function are nonnegative, and if the origin is a feasible solution to the linear program, then as you move this plane away from the origin, in a direction normal to the objective function, you find points of increasing objective value. (If the origin is not feasible or if some coefficients in the objective function are negative, the intuitive picture becomes slightly more complicated.) As in two dimensions, because the feasible region is convex, the set of points that achieve the optimal objective value must include a vertex o f the feasible region. Similarly, if you have n variables, each constraint defines a half-space in n-dimensional space. We call the feasible region formed by the in tersection of these half-spaces a simplex. The objective function is now a hyperplane and, b ecause of convexity, an optimal solution still occurs at a vertex of the simplex. Any algorithm for linear programming must also identify linear programs that have no solutions, as well as linear programs that have no finite optimal solution."
   },
   {
    "type": "body",
@@ -327,7 +327,7 @@
    "section_title": "29.1 Linear programming formulations and algorithms",
    "printed_page": 857,
    "pdf_page": 878,
-   "text": "The simplex algorithm takes as input a linear program and returns an opti mal solution. It starts at some vertex of the simplex a nd performs a sequence of iterations. In each iteration, it moves along an edge of the simplex from a current vertex to a neighboring vertex whose objective value is no smaller than that of the current vertex (and usually is larger.) The simplex algorit hm terminates when it reaches a local maximum, which is a vertex from which all n eighboring vertices have a smaller objective value. Because the feasible regio n is convex and the objective function is linear, this local optimum is actually a global optimum. In Section 29.3, we’ll see an important concept called \"duality,\" which we’ll use to prove that the solution returned by the simplex algorithm is indeed optimal."
+   "text": "The simplex algorithm takes as input a linear program and returns an optimal solution. It starts at some vertex of the simplex a nd performs a sequence of iterations. In each iteration, it moves along an edge of the simplex from a current vertex to a neighboring vertex whose objective value is no smaller than that of the current vertex (and usually is larger.) The simplex algorithm terminates when it reaches a local maximum, which is a vertex from which all n eighboring vertices have a smaller objective value. Because the feasible regio n is convex and the objective function is linear, this local optimum is actually a global optimum. In Section 29.3, we’ll see an important concept called \"duality,\" which we’ll use to prove that the solution returned by the simplex algorithm is indeed optimal."
   },
   {
    "type": "body",
@@ -345,7 +345,7 @@
    "section_title": "29.1 Linear programming formulations and algorithms",
    "printed_page": 857,
    "pdf_page": 878,
-   "text": "If you add to a linear program the additional requi rement that all variables take on integer values, you have an integer linear program. Exercise 34.5-3 on page 1098 asks you to show that just finding a feasible solution to this problem is NP-hard. Since no polynomial-time algorithms are known for any NP-hard problems, there is no known polynomial-time algorithm for integer linear programming."
+   "text": "If you add to a linear program the additional requirement that all variables take on integer values, you have an integer linear program. Exercise 34.5-3 on page 1098 asks you to show that just finding a feasible solution to this problem is NP-hard. Since no polynomial-time algorithms are known for any NP-hard problems, there is no known polynomial-time algorithm for integer linear programming."
   },
   {
    "type": "body",
@@ -516,7 +516,7 @@
    "section_title": "29.2 Formulating problems as linear programs",
    "printed_page": 860,
    "pdf_page": 881,
-   "text": "Linear programs also model and solve graph and comb inatorial problems, such as those appearing in this book. We have already se en a special case of linear programming used to solve systems of difference con straints in Section 22.4. In this section, we’ll study how to formulate several graph and network-flow problems as linear programs. Section 35.4 uses linear programming as a tool to find an approximate solution to another graph problem."
+   "text": "Linear programs also model and solve graph and combinatorial problems, such as those appearing in this book. We have already se en a special case of linear programming used to solve systems of difference constraints in Section 22.4. In this section, we’ll study how to formulate several graph and network-flow problems as linear programs. Section 35.4 uses linear programming as a tool to find an approximate solution to another graph problem."
   },
   {
    "type": "body",
@@ -552,7 +552,7 @@
    "section_title": "29.2 Formulating problems as linear programs",
    "printed_page": 860,
    "pdf_page": 881,
-   "text": "When we solved graph problems in Part VI, we used a ttribute notation, such as v: d and (u,v): f . Linear programs typically use subscripted variabl es rather than objects with attached attributes, however. Therefore, when we express variables in linear programs, we indicate vertices and edges thr ough subscripts. For example, we denote the shortest-path weight for vertex v not by v: d but by d v , and we denote the flow from vertex u to vertex v not by (u,v): f but by f uv . For quantities that are given as inputs to problems, such as edge weights or capacities, we continue to use notations such as w(u,v) and c(u,v) ."
+   "text": "When we solved graph problems in Part VI, we used a ttribute notation, such as v: d and (u,v): f . Linear programs typically use subscripted variables rather than objects with attached attributes, however. Therefore, when we express variables in linear programs, we indicate vertices and edges through subscripts. For example, we denote the shortest-path weight for vertex v not by v: d but by d v , and we denote the flow from vertex u to vertex v not by (u,v): f but by f uv . For quantities that are given as inputs to problems, such as edge weights or capacities, we continue to use notations such as w(u,v) and c(u,v) ."
   },
   {
    "type": "body",
@@ -624,7 +624,7 @@
    "section_title": "29.2 Formulating problems as linear programs",
    "printed_page": 861,
    "pdf_page": 882,
-   "text": "You might be surprised that this linear program max imizes an objective function when it is supposed to compute shortest paths. Mini mizing the objective function would be a mistake, because when all the edge weigh ts are nonnegative, setting"
+   "text": "You might be surprised that this linear program max imizes an objective function when it is supposed to compute shortest paths. Mini mizing the objective function would be a mistake, because when all the edge weights are nonnegative, setting"
   },
   {
    "type": "body",
@@ -1119,7 +1119,7 @@
    "section_title": "29.3 Duality",
    "printed_page": 866,
    "pdf_page": 887,
-   "text": "We will now introduce a powerful concept called linear-programming duality. In general, given a maximization problem, duality allo ws you to formulate a related minimization problem that has the same objective va lue. The idea of duality is actually more general than linear programming, but we restrict our attention to linear programming in this section."
+   "text": "We will now introduce a powerful concept called linear-programming duality. In general, given a maximization problem, duality allows you to formulate a related minimization problem that has the same objective va lue. The idea of duality is actually more general than linear programming, but we restrict our attention to linear programming in this section."
   },
   {
    "type": "body",
@@ -1173,7 +1173,7 @@
    "section_title": "29.3 Duality",
    "printed_page": 867,
    "pdf_page": 888,
-   "text": "Mechanically, to form the dual, change the maximiza tion to a minimization, exchange the roles of coefficients on the right-hand sides and in the objective function, and replace each ≤ by ≥. Each of the m constraints in the primal corresponds to a variable y i in the dual. Likewise, each of the n constraints in the dual corresponds to a variable x j in the primal. For example, consider the following primal linear program: maximize 3x 1 + x 2 + 4x 3 (29.37) subject to x 1 + x 2 + 3x 3 ≤ 30 (29.38)"
+   "text": "Mechanically, to form the dual, change the maximization to a minimization, exchange the roles of coefficients on the right-hand sides and in the objective function, and replace each ≤ by ≥. Each of the m constraints in the primal corresponds to a variable y i in the dual. Likewise, each of the n constraints in the dual corresponds to a variable x j in the primal. For example, consider the following primal linear program: maximize 3x 1 + x 2 + 4x 3 (29.37) subject to x 1 + x 2 + 3x 3 ≤ 30 (29.38)"
   },
   {
    "type": "body",
@@ -1236,7 +1236,7 @@
    "section_title": "29.3 Duality",
    "printed_page": 868,
    "pdf_page": 889,
-   "text": "Comparing this new constraint to the objective func tion (29.37), you can see that for each variable, the corresponding coefficient is at least as large as the coefficient in the objective function. Thus, since the variable s x 1 , x 2 and x 3 are nonnegative, we have that 3x 1 + x 2 + 4x 3 ≤ 3x 1 + 3x 2 + 8x 3 ≤ 54; and so the solution value to the primal is at most 54. In other words, adding these two constraints together has generated an upper bound on the objective value."
+   "text": "Comparing this new constraint to the objective function (29.37), you can see that for each variable, the corresponding coefficient is at least as large as the coefficient in the objective function. Thus, since the variable s x 1 , x 2 and x 3 are nonnegative, we have that 3x 1 + x 2 + 4x 3 ≤ 3x 1 + 3x 2 + 8x 3 ≤ 54; and so the solution value to the primal is at most 54. In other words, adding these two constraints together has generated an upper bound on the objective value."
   },
   {
    "type": "body",
@@ -1263,7 +1263,7 @@
    "section_title": "29.3 Duality",
    "printed_page": 868,
    "pdf_page": 889,
-   "text": "We’ll formalize this idea and show in Theorem 29.4 that, if the linear program and its dual are feasible and bounded, then the opt imal value of the dual linear program is always equal to the optimal value of the primal linear program. We begin by demonstrating weak duality, which states that any feasible solution to the primal linear program has a value no greater than t hat of any feasible solution to the dual linear program."
+   "text": "We’ll formalize this idea and show in Theorem 29.4 that, if the linear program and its dual are feasible and bounded, then the optimal value of the dual linear program is always equal to the optimal value of the primal linear program. We begin by demonstrating weak duality, which states that any feasible solution to the primal linear program has a value no greater than t hat of any feasible solution to the dual linear program."
   },
   {
    "type": "lemma",
@@ -1434,7 +1434,7 @@
    "section_title": "29.3 Duality",
    "printed_page": 870,
    "pdf_page": 891,
-   "text": "Proof Let Ω = b T y − be the optimal value of the dual linear program giv en in (29.34)3(29.36). Consider an augmented set of primal constraints in which we add a constraint to (29.31)3(29.33) that the objective value is at least Ω. We write out this augmented primal as Ax ≤ b; (29.47) c T x ≥ Ω : (29.48)"
+   "text": "Proof Let Ω = b T y − be the optimal value of the dual linear program given in (29.34)3(29.36). Consider an augmented set of primal constraints in which we add a constraint to (29.31)3(29.33) that the objective value is at least Ω. We write out this augmented primal as Ax ≤ b; (29.47) c T x ≥ Ω : (29.48)"
   },
   {
    "type": "body",
@@ -1506,7 +1506,7 @@
    "section_title": "29.3 Duality",
    "printed_page": 870,
    "pdf_page": 891,
-   "text": "It therefore remains to show that the augmented pri mal has a feasible solution."
+   "text": "It therefore remains to show that the augmented primal has a feasible solution."
   },
   {
    "type": "body",
@@ -1848,7 +1848,7 @@
    "section_title": "29.3 Duality",
    "printed_page": 873,
    "pdf_page": 894,
-   "text": "2. The primal is feasible, but the dual is infeasib le."
+   "text": "2. The primal is feasible, but the dual is infeasible."
   },
   {
    "type": "body",
@@ -1911,7 +1911,7 @@
    "section_title": "29.3 Duality",
    "printed_page": 873,
    "pdf_page": 894,
-   "text": "Complementary slackness describes a relationship between the values of prim al variables and dual constraints and between the valu es of dual variables and primal constraints. Let N x be a feasible solution to the primal linear program given in (29.31)3(29.33), and let N y be a feasible solution to the dual linear program given in (29.34)3(29.36). Complementary slackness states that the following conditions are necessary and sufficient for N x and N y to be optimal: m X i D1 a ij N y i = c j or N x j = 0 for j = 1,2,…,n and n X j D1 a ij N x j = b i or N y i = 0 for i = 1,2,…,m: a. Verify that complementary slackness holds for the l inear program in lines"
+   "text": "Complementary slackness describes a relationship between the values of primal variables and dual constraints and between the values of dual variables and primal constraints. Let N x be a feasible solution to the primal linear program given in (29.31)3(29.33), and let N y be a feasible solution to the dual linear program given in (29.34)3(29.36). Complementary slackness states that the following conditions are necessary and sufficient for N x and N y to be optimal: m X i D1 a ij N y i = c j or N x j = 0 for j = 1,2,…,n and n X j D1 a ij N x j = b i or N y i = 0 for i = 1,2,…,m: a. Verify that complementary slackness holds for the l inear program in lines"
   },
   {
    "type": "body",
@@ -1947,7 +1947,7 @@
    "section_title": "29.3 Duality",
    "printed_page": 874,
    "pdf_page": 895,
-   "text": "An integer linear-programming problem is a linear-programming problem with the additional constraint that the variables x must take on integer values. Exercise 34.5-3 on page 1098 shows that just determining whether an integer linear program has a feasible solution is NP-hard, which means that there is no known polynomial-time algorithm for this problem. a. Show that weak duality (Lemma 29.1) holds for an integer linear program. b. Show that duality (Theorem 29.4) does not always hold for an integer linear program. c. Given a primal linear program in standard form, let P be the optimal objective value for the primal linear program, = be the optimal objective value for its dual, IP be the optimal objective value for the integer vers ion of the primal"
+   "text": "An integer linear-programming problem is a linear-programming problem with the additional constraint that the variables x must take on integer values. Exercise 34.5-3 on page 1098 shows that just determining whether an integer linear program has a feasible solution is NP-hard, which means that there is no known polynomial-time algorithm for this problem. a. Show that weak duality (Lemma 29.1) holds for an integer linear program. b. Show that duality (Theorem 29.4) does not always hold for an integer linear program. c. Given a primal linear program in standard form, let P be the optimal objective value for the primal linear program, = be the optimal objective value for its dual, IP be the optimal objective value for the integer version of the primal"
   },
   {
    "type": "body",
@@ -2028,7 +2028,7 @@
    "section_title": "29.3 Duality",
    "printed_page": 875,
    "pdf_page": 896,
-   "text": "This chapter only begins to study the wide field of linear programming. A number of books are devoted exclusively to linear prog ramming, including those by Chv´ atal [94], Gass [178], Karloff [246], Schrijver [398], and Vanderbei [444]."
+   "text": "This chapter only begins to study the wide field of linear programming. A number of books are devoted exclusively to linear programming, including those by Chv´ atal [94], Gass [178], Karloff [246], Schrijver [398], and Vanderbei [444]."
   },
   {
    "type": "body",
@@ -2046,7 +2046,7 @@
    "section_title": "29.3 Duality",
    "printed_page": 875,
    "pdf_page": 896,
-   "text": "The simplex algorithm for linear programming was in vented by G. Dantzig in 1947. Shortly after, researchers discovered how to formulate a number of problems in a variety of fields as linear programs and solve them with the simplex algorithm. As a result, applications of linear prog ramming flourished, along with several algorithms. Variants of the simplex algorit hm remain the most popular methods for solving linear-programming problems. This history appears in a number of places, including the notes in [94] and [246]."
+   "text": "The simplex algorithm for linear programming was in vented by G. Dantzig in 1947. Shortly after, researchers discovered how to formulate a number of problems in a variety of fields as linear programs and solve them with the simplex algorithm. As a result, applications of linear programming flourished, along with several algorithms. Variants of the simplex algorithm remain the most popular methods for solving linear-programming problems. This history appears in a number of places, including the notes in [94] and [246]."
   },
   {
    "type": "body",
@@ -2082,7 +2082,7 @@
    "section_title": "29.3 Duality",
    "printed_page": 876,
    "pdf_page": 897,
-   "text": "Analysis of the simplex algorithm remains an active area of research. V. Klee and G. J. Minty constructed an example on which the simplex algorithm runs through 2 n − 1 iterations. The simplex algorithm usually performs well in practice, and many researchers have tried to give theoretical justification for this empirical observation. A line of research begun by K. H. Borgwardt, and carried on by many others, shows that under certain probabilistic assu mptions on the input, the simplex algorithm converges in expected polynomial time. Spielman and Teng [421] made progress in this area, introducing the \"smoothed analysis of algorithms\" and applying it to the simplex algorithm."
+   "text": "Analysis of the simplex algorithm remains an active area of research. V. Klee and G. J. Minty constructed an example on which the simplex algorithm runs through 2 n − 1 iterations. The simplex algorithm usually performs well in practice, and many researchers have tried to give theoretical justification for this empirical observation. A line of research begun by K. H. Borgwardt, and carried on by many others, shows that under certain probabilistic assumptions on the input, the simplex algorithm converges in expected polynomial time. Spielman and Teng [421] made progress in this area, introducing the \"smoothed analysis of algorithms\" and applying it to the simplex algorithm."
   },
   {
    "type": "body",
@@ -2118,7 +2118,7 @@
    "section_title": "29.3 Duality",
    "printed_page": 877,
    "pdf_page": 898,
-   "text": "The most common use for Fourier transforms, and hen ce the FFT, is in signal processing. A signal is given in the time domain: as a function mapping time to amplitude. Fourier analysis expresses the signal as a weighted sum of phaseshifted sinusoids of varying frequencies. The weigh ts and phases associated with the frequencies characterize the signal in the frequency domain. Among the many everyday applications of FFT’s are compression techniques used to encode digital video and audio information, including MP3 files. Many fine books delve into the rich area of signal processing, and the chapter notes reference a few of them."
+   "text": "The most common use for Fourier transforms, and hence the FFT, is in signal processing. A signal is given in the time domain: as a function mapping time to amplitude. Fourier analysis expresses the signal as a weighted sum of phaseshifted sinusoids of varying frequencies. The weights and phases associated with the frequencies characterize the signal in the frequency domain. Among the many everyday applications of FFT’s are compression techniques used to encode digital video and audio information, including MP3 files. Many fine books delve into the rich area of signal processing, and the chapter notes reference a few of them."
   },
   {
    "type": "body",
@@ -2154,7 +2154,7 @@
    "section_title": "29.3 Duality",
    "printed_page": 877,
    "pdf_page": 898,
-   "text": "The values a 0 ,a 1 ,…,a n−1 are the coefficients of the polynomial. The coefficients and x are drawn from a field F , typically the set C of complex numbers. A polynomial A(x) has degree k if its highest nonzero coefficient is a k , in which case we say that degree(A) = k. Any integer strictly greater than the degree of a polynomial is a degree-bound of that polynomial. Therefore, the degree of a poly nomial of degree-bound n may be any integer between 0 and n − 1, inclusive."
+   "text": "The values a 0 ,a 1 ,…,a n−1 are the coefficients of the polynomial. The coefficients and x are drawn from a field F , typically the set C of complex numbers. A polynomial A(x) has degree k if its highest nonzero coefficient is a k , in which case we say that degree(A) = k. Any integer strictly greater than the degree of a polynomial is a degree-bound of that polynomial. Therefore, the degree of a polynomial of degree-bound n may be any integer between 0 and n − 1, inclusive."
   },
   {
    "type": "body",

@@ -79,7 +79,7 @@
    "section_title": "22.1 The Bellman-Ford algorithm",
    "printed_page": 612,
    "pdf_page": 633,
-   "text": "All algorithms in this chapter assume that the dire cted graph G is stored in the adjacency-list representation. Additionally, stored with each edge is its weight, so that as each algorithm traverses an adjacency list, it can find edge weights in O(1) time per edge."
+   "text": "All algorithms in this chapter assume that the directed graph G is stored in the adjacency-list representation. Additionally, stored with each edge is its weight, so that as each algorithm traverses an adjacency list, it can find edge weights in O(1) time per edge."
   },
   {
    "type": "body",
@@ -475,7 +475,7 @@
    "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
    "printed_page": 616,
    "pdf_page": 637,
-   "text": "In this section, we introduce one further restricti on on weighted, directed graphs: they are acyclic. That is, we are concerned with we ighted dags. Shortest paths are always well defined in a dag, since even if there are negative-weight edges, no negative-weight cycles can exist. We9ll see that if the edges of a weighted dag G = (V,E) are relaxed according to a topological sort of its vertices, it takes only Θ(V + E) time to compute shortest paths from a single source."
+   "text": "In this section, we introduce one further restriction on weighted, directed graphs: they are acyclic. That is, we are concerned with we ighted dags. Shortest paths are always well defined in a dag, since even if there are negative-weight edges, no negative-weight cycles can exist. We9ll see that if the edges of a weighted dag G = (V,E) are relaxed according to a topological sort of its vertices, it takes only Θ(V + E) time to compute shortest paths from a single source."
   },
   {
    "type": "body",
@@ -778,7 +778,7 @@
    "section_title": "22.2 Single-source shortest paths in directed acyclic graphs",
    "printed_page": 618,
    "pdf_page": 639,
-   "text": "For example, if the job is to build a house, then the foundation must be completed before starting to frame the exterior walls, which must be completed before starting on the roof. Some tasks require more than one other task to be completed before they can be started: before the drywall can be inst alled over the wall framing, both the electrical system and plumbing must be installed. A dag models the tasks and dependencies. Edges represent tasks, with the w eight of an edge indicating the time required to perform the task. Vertices rep resent \"milestones,\" which are achieved when all the tasks represented by the edges entering the vertex have been completed. If edge (u,v) enters vertex v and edge (v,x) leaves v, then task (u,v) must be completed before task (v,x) is started. A path through this dag represents a sequence of tasks that must be performed in a particular order. A critical path is a longest path through the dag, corresponding to the longest time to perform any sequence of tasks. Thus, the weight of a critical path provides a lower bound on the total time to perform all the tasks, even if as many tasks as possible are performed simultaneously. You can find a critical path by either"
+   "text": "For example, if the job is to build a house, then the foundation must be completed before starting to frame the exterior walls, which must be completed before starting on the roof. Some tasks require more than one other task to be completed before they can be started: before the drywall can be inst alled over the wall framing, both the electrical system and plumbing must be installed. A dag models the tasks and dependencies. Edges represent tasks, with the w eight of an edge indicating the time required to perform the task. Vertices represent \"milestones,\" which are achieved when all the tasks represented by the edges entering the vertex have been completed. If edge (u,v) enters vertex v and edge (v,x) leaves v, then task (u,v) must be completed before task (v,x) is started. A path through this dag represents a sequence of tasks that must be performed in a particular order. A critical path is a longest path through the dag, corresponding to the longest time to perform any sequence of tasks. Thus, the weight of a critical path provides a lower bound on the total time to perform all the tasks, even if as many tasks as possible are performed simultaneously. You can find a critical path by either"
   },
   {
    "type": "body",
@@ -1100,7 +1100,7 @@
    "section_title": "22.3 Dijkstra’s algorithm",
    "printed_page": 622,
    "pdf_page": 643,
-   "text": "The proof is by induction on the number of iteratio ns of the while loop, which equals |S| at the start of each iteration. There are two bases : for |S| = 0, so that S = ; and the claim is trivially true, and for |S| = 1, so that S = fs g and s: d = i(s,s) = 0."
+   "text": "The proof is by induction on the number of iterations of the while loop, which equals |S| at the start of each iteration. There are two bases : for |S| = 0, so that S = ; and the claim is trivially true, and for |S| = 1, so that S = fs g and s: d = i(s,s) = 0."
   },
   {
    "type": "body",
@@ -1334,7 +1334,7 @@
    "section_title": "22.3 Dijkstra’s algorithm",
    "printed_page": 625,
    "pdf_page": 646,
-   "text": "22.3-7 Consider a directed graph G = (V,E) on which each edge (u,v) 2 E has an associated value r(u,v) , which is a real number in the range 0 ≤ r(u,v) ≤ 1 that represents the reliability of a communication chann el from vertex u to vertex v."
+   "text": "22.3-7 Consider a directed graph G = (V,E) on which each edge (u,v) 2 E has an associated value r(u,v) , which is a real number in the range 0 ≤ r(u,v) ≤ 1 that represents the reliability of a communication channel from vertex u to vertex v."
   },
   {
    "type": "body",
@@ -1361,7 +1361,7 @@
    "section_title": "22.3 Dijkstra’s algorithm",
    "printed_page": 625,
    "pdf_page": 646,
-   "text": "22.3-9 Let G = (V,E) be a weighted, directed graph with nonnegative weig ht function w W E ! f0,1,…,W g for some nonnegative integer W . Modify Dijkstra9s algo-"
+   "text": "22.3-9 Let G = (V,E) be a weighted, directed graph with nonnegative weight function w W E ! f0,1,…,W g for some nonnegative integer W . Modify Dijkstra9s algo-"
   },
   {
    "type": "body",
@@ -1784,7 +1784,7 @@
    "section_title": "22.4 Difference constraints and shortest paths",
    "printed_page": 630,
    "pdf_page": 651,
-   "text": "We9ll assume that x has a solution satisfying each of these k inequalities and then derive a contradiction. The solution must also sati sfy the inequality that results from summing the k inequalities together. In summing the left-hand sides, each unknown x i is added in once and subtracted out once (remember that v 1 = v k implies x 1 = x k ), so that the left-hand side sums to 0. The right-hand side sums to the weight w(c) of the cycle, giving 0 ≤ w(c). But since c is a negative-weight cycle, w(c)<0 , and we obtain the contradiction that 0 ≤ w(c)<0 ."
+   "text": "We9ll assume that x has a solution satisfying each of these k inequalities and then derive a contradiction. The solution must also satisfy the inequality that results from summing the k inequalities together. In summing the left-hand sides, each unknown x i is added in once and subtracted out once (remember that v 1 = v k implies x 1 = x k ), so that the left-hand side sums to 0. The right-hand side sums to the weight w(c) of the cycle, giving 0 ≤ w(c). But since c is a negative-weight cycle, w(c)<0 , and we obtain the contradiction that 0 ≤ w(c)<0 ."
   },
   {
    "type": "body",
@@ -2063,7 +2063,7 @@
    "section_title": "22.5 Proofs of shortest-paths properties",
    "printed_page": 633,
    "pdf_page": 654,
-   "text": "Let s 2 V be the source vertex, and let the graph be initiali zed by INITIALIZE-SINGLE-SOURCE(G,s) . Then, v: d ≥ i(s,v) for all v 2 V , and this invariant is maintained over any sequence of relaxation steps on the edges of G. Moreover, once v: d achieves its lower bound i(s,v) , it never changes."
+   "text": "Let s 2 V be the source vertex, and let the graph be initialized by INITIALIZE-SINGLE-SOURCE(G,s) . Then, v: d ≥ i(s,v) for all v 2 V , and this invariant is maintained over any sequence of relaxation steps on the edges of G. Moreover, once v: d achieves its lower bound i(s,v) , it never changes."
   },
   {
    "type": "proof",
@@ -2198,7 +2198,7 @@
    "section_title": "22.5 Proofs of shortest-paths properties",
    "printed_page": 634,
    "pdf_page": 655,
-   "text": "Let G = (V,E) be a weighted, directed graph with weight function w W E ! R, let s 2 V be a source vertex, and let s → u ! v be a shortest path in G for some vertices u,v 2 V . Suppose that G is initialized by INITIALIZE-SINGLE- SOURCE(G,s) and then a sequence of relaxation steps that includ es the call"
+   "text": "Let G = (V,E) be a weighted, directed graph with weight function w W E ! R, let s 2 V be a source vertex, and let s → u ! v be a shortest path in G for some vertices u,v 2 V . Suppose that G is initialized by INITIALIZE-SINGLE- SOURCE(G,s) and then a sequence of relaxation steps that includes the call"
   },
   {
    "type": "body",
@@ -2225,7 +2225,7 @@
    "section_title": "22.5 Proofs of shortest-paths properties",
    "printed_page": 634,
    "pdf_page": 655,
-   "text": "Let G = (V,E) be a weighted, directed graph with weight function w W E ! R, let s 2 V be a source vertex, and assume that G contains no negative-weight cycles that are reachable from s . Then, after a call to INITIALIZE-SINGLE-SOURCE (G,s) followed by any sequence of relaxation steps on edg es of G that produces v: d = i(s,v) for all v 2 V , the predecessor subgraph G − is a shortest-paths tree rooted at s ."
+   "text": "Let G = (V,E) be a weighted, directed graph with weight function w W E ! R, let s 2 V be a source vertex, and assume that G contains no negative-weight cycles that are reachable from s . Then, after a call to INITIALIZE-SINGLE-SOURCE (G,s) followed by any sequence of relaxation steps on edges of G that produces v: d = i(s,v) for all v 2 V , the predecessor subgraph G − is a shortest-paths tree rooted at s ."
   },
   {
    "type": "body",
@@ -2288,7 +2288,7 @@
    "section_title": "22.5 Proofs of shortest-paths properties",
    "printed_page": 635,
    "pdf_page": 656,
-   "text": "(v 0 ,v 1 ),.v 1 ,v 2 /,…,.v k−1 ,v k /, then v k : d = i(s,v k ) after these relaxations and at all times afterward. This property holds no matt er what other edge relaxations occur, including relaxations that are intermixed with relaxations of the edges of p."
+   "text": "(v 0 ,v 1 ),.v 1 ,v 2 /,…,.v k−1 ,v k /, then v k : d = i(s,v k ) after these relaxations and at all times afterward. This property holds no matter what other edge relaxations occur, including relaxations that are intermixed with relaxations of the edges of p."
   },
   {
    "type": "proof",
@@ -2684,7 +2684,7 @@
    "section_title": "22.5 Proofs of shortest-paths properties",
    "printed_page": 640,
    "pdf_page": 661,
-   "text": "The Bellman-Ford algorithm does not specify the order in which to relax edges in each pass. Consider the following method for dec iding upon the order. Before the first pass, assign an arbitrary linear order v 1 ,v 2 ,…,v |V| to the vertices of the input graph G = (V,E) . Then partition the edge set E into E f [ E b , where"
+   "text": "The Bellman-Ford algorithm does not specify the order in which to relax edges in each pass. Consider the following method for deciding upon the order. Before the first pass, assign an arbitrary linear order v 1 ,v 2 ,…,v |V| to the vertices of the input graph G = (V,E) . Then partition the edge set E into E f [ E b , where"
   },
   {
    "type": "body",
@@ -3080,7 +3080,7 @@
    "section_title": "22.5 Proofs of shortest-paths properties",
    "printed_page": 645,
    "pdf_page": 666,
-   "text": "MST (V,E) is the time to compute a minimum spanning tree and r is the ratio of the maximum edge weight to the minimum edge weig ht. After preprocessing, each query takes O(E lg y ˛.E,V)/ time, where y ˛.E,V/ is the inverse of Ackermann9s function. (See the chapter notes for Chapter 19 for a brief discussion of Ackermann9s function and its inverse.)"
+   "text": "MST (V,E) is the time to compute a minimum spanning tree and r is the ratio of the maximum edge weight to the minimum edge weight. After preprocessing, each query takes O(E lg y ˛.E,V)/ time, where y ˛.E,V/ is the inverse of Ackermann9s function. (See the chapter notes for Chapter 19 for a brief discussion of Ackermann9s function and its inverse.)"
   },
   {
    "type": "body",
@@ -3107,7 +3107,7 @@
    "section_title": "22.5 Proofs of shortest-paths properties",
    "printed_page": 645,
    "pdf_page": 666,
-   "text": "VE lg W/ time, where W = max fjw(u,v) j W (u,v) 2 Eg. There has also been some progress based on methods that use contin uous optimization and electrical flows. Cohen et al. [98] give such an algorithm, which is randomized and runs in e O(E 10/7 lg W) expected time (see Problem 3-6 on page 73 for the defintion of e O-notation). There is also a pseudopolyomial-time algorithm based on fast matrix multiplication. Sankowski [394] and Yuster and Zwick [465] designed an algorithm for shortest paths that runs in e O.WV ! / time, where two n × n matrices can be multiplied in O.n ! / time, giving a faster algorithm than the previously mentioned algorithms for small values of W on dense graphs."
+   "text": "VE lg W/ time, where W = max fjw(u,v) j W (u,v) 2 Eg. There has also been some progress based on methods that use continuous optimization and electrical flows. Cohen et al. [98] give such an algorithm, which is randomized and runs in e O(E 10/7 lg W) expected time (see Problem 3-6 on page 73 for the defintion of e O-notation). There is also a pseudopolyomial-time algorithm based on fast matrix multiplication. Sankowski [394] and Yuster and Zwick [465] designed an algorithm for shortest paths that runs in e O.WV ! / time, where two n × n matrices can be multiplied in O.n ! / time, giving a faster algorithm than the previously mentioned algorithms for small values of W on dense graphs."
   },
   {
    "type": "body",
@@ -3152,7 +3152,7 @@
    "section_title": "22.5 Proofs of shortest-paths properties",
    "printed_page": 646,
    "pdf_page": 667,
-   "text": "A legitimate application of all-pairs shortest paths is to determine the diameter of a network: the longest of all shortest paths. If a directed graph models a communication network, with the weight of an edge indi cating the time required for a message to traverse a communication link, then th e diameter gives the longest possible transit time for a message in the network."
+   "text": "A legitimate application of all-pairs shortest paths is to determine the diameter of a network: the longest of all shortest paths. If a directed graph models a communication network, with the weight of an edge indicating the time required for a message to traverse a communication link, then th e diameter gives the longest possible transit time for a message in the network."
   },
   {
    "type": "body",
@@ -3161,7 +3161,7 @@
    "section_title": "22.5 Proofs of shortest-paths properties",
    "printed_page": 646,
    "pdf_page": 667,
-   "text": "As in Chapter 22, the input is a weighted, directed graph G = (V,E) with a weight function w W E ! R that maps edges to real-valued weights. Now the goal is to find, for every pair of vertices u,v 2 V , a shortest (least-weight) path from u to v, where the weight of a path is the sum of the weig hts of its constituent edges."
+   "text": "As in Chapter 22, the input is a weighted, directed graph G = (V,E) with a weight function w W E ! R that maps edges to real-valued weights. Now the goal is to find, for every pair of vertices u,v 2 V , a shortest (least-weight) path from u to v, where the weight of a path is the sum of the weights of its constituent edges."
   },
   {
    "type": "body",

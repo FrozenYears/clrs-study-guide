@@ -196,7 +196,7 @@
    "section_title": "C.1 Counting",
    "printed_page": 1179,
    "pdf_page": 1200,
-   "text": "A permutation of a finite set S is an ordered sequence of all the elements of S , with each element appearing exactly once. For examp le, if S = fa,b,c g, then S has 6 permutations: abc,acb,bac,bca,cab,cba:"
+   "text": "A permutation of a finite set S is an ordered sequence of all the elements of S , with each element appearing exactly once. For example, if S = fa,b,c g, then S has 6 permutations: abc,acb,bac,bca,cab,cba:"
   },
   {
    "type": "body",
@@ -619,7 +619,7 @@
    "section_title": "C.1 Counting",
    "printed_page": 1182,
    "pdf_page": 1203,
-   "text": "In how many ways is it possible to choose three dis tinct numbers from the set f1,2,…,99 g so that their sum is even?"
+   "text": "In how many ways is it possible to choose three distinct numbers from the set f1,2,…,99 g so that their sum is even?"
   },
   {
    "type": "body",
@@ -1069,7 +1069,7 @@
    "section_title": "C.2 Probability",
    "printed_page": 1185,
    "pdf_page": 1206,
-   "text": "The main requirement for what subsets are events is that the set of events of a sample space must be closed under the operations of taking the comple ment of an event, forming the union of a finite or countable number of events, and taking the intersection of a finite or countable number of events."
+   "text": "The main requirement for what subsets are events is that the set of events of a sample space must be closed under the operations of taking the complement of an event, forming the union of a finite or countable number of events, and taking the intersection of a finite or countable number of events."
   },
   {
    "type": "body",
@@ -1249,7 +1249,7 @@
    "section_title": "C.2 Probability",
    "printed_page": 1187,
    "pdf_page": 1208,
-   "text": "[c; d ] = [c; c] [ (c,d) [ [d; d ], axiom 3 gives Pr f[c; d ]g = Pr f(c,d) g. Generally, the set of events for the continuous uniform probab ility distribution contains any subset of the sample space [a; b] that can be obtained by a finite or countable union of open and closed intervals, as well as certain more complicated sets."
+   "text": "[c; d ] = [c; c] [ (c,d) [ [d; d ], axiom 3 gives Pr f[c; d ]g = Pr f(c,d) g. Generally, the set of events for the continuous uniform probability distribution contains any subset of the sample space [a; b] that can be obtained by a finite or countable union of open and closed intervals, as well as certain more complicated sets."
   },
   {
    "type": "body",
@@ -1357,7 +1357,7 @@
    "section_title": "C.2 Probability",
    "printed_page": 1188,
    "pdf_page": 1209,
-   "text": "For example, suppose that you flip two fair coins and that the outcomes are independent. Then the probability of two heads is .1/2/.1/2/ = 1/4. Now suppose that one event is that the first coin comes up heads and the other event is that the coins come up differently. Each of these events occ urs with probability 1/2, and the probability that both events occur is 1/4. Thus, according to the definition of independence, the events are independent—even though you might think that both events depend on the first coin. Finally, suppose that the coins are welded together so that they both fall heads or both fall tails and that the two possibilities are equally likely. Then the probability that each coin comes up heads is 1/2, but the probability that they both come up heads is 1/2 ≠ .1/2/.1/2/. Consequently, the event that one comes up heads and the event that the other comes up heads are not independent."
+   "text": "For example, suppose that you flip two fair coins and that the outcomes are independent. Then the probability of two heads is .1/2/.1/2/ = 1/4. Now suppose that one event is that the first coin comes up heads and the other event is that the coins come up differently. Each of these events occurs with probability 1/2, and the probability that both events occur is 1/4. Thus, according to the definition of independence, the events are independent—even though you might think that both events depend on the first coin. Finally, suppose that the coins are welded together so that they both fall heads or both fall tails and that the two possibilities are equally likely. Then the probability that each coin comes up heads is 1/2, but the probability that they both come up heads is 1/2 ≠ .1/2/.1/2/. Consequently, the event that one comes up heads and the event that the other comes up heads are not independent."
   },
   {
    "type": "body",
@@ -1528,7 +1528,7 @@
    "section_title": "C.2 Probability",
    "printed_page": 1189,
    "pdf_page": 1210,
-   "text": "Bayes’s theorem can simplify the computing of conditional probabilities. For example, suppose that you have a fair coin and a biased coin that always comes up heads. Run an experiment consisting of three indepe ndent events: choose one of the two coins at random, flip that coin once, and then flip it again. Suppose that the coin you have chosen comes up heads both times. Wha t is the probability that it’s the biased coin?"
+   "text": "Bayes’s theorem can simplify the computing of conditional probabilities. For example, suppose that you have a fair coin and a biased coin that always comes up heads. Run an experiment consisting of three independent events: choose one of the two coins at random, flip that coin once, and then flip it again. Suppose that the coin you have chosen comes up heads both times. Wha t is the probability that it’s the biased coin?"
   },
   {
    "type": "body",
@@ -1627,7 +1627,7 @@
    "section_title": "C.2 Probability",
    "printed_page": 1190,
    "pdf_page": 1211,
-   "text": "You shuffle a deck of 10 cards, each bearing a distinct number from 1 to 10, in order to mix the cards thoroughly. You then remove three cards, one at a time, from the deck. What is the probability that the thr ee cards you select are in sorted"
+   "text": "You shuffle a deck of 10 cards, each bearing a distinct number from 1 to 10, in order to mix the cards thoroughly. You then remove three cards, one at a time, from the deck. What is the probability that the three cards you select are in sorted"
   },
   {
    "type": "body",
@@ -1951,7 +1951,7 @@
    "section_title": "C.3 Discrete random variables",
    "printed_page": 1192,
    "pdf_page": 1213,
-   "text": "Consider a game in which you flip two fair coins. You earn $3 for each head but lose $2 for each tail. The expected value of the random var iable X representing your earnings is E [X ] = 6 • Pr f2 H’sg + 1 • Pr f1 H,1 Tg − 4 • Pr f2 T’sg"
+   "text": "Consider a game in which you flip two fair coins. You earn $3 for each head but lose $2 for each tail. The expected value of the random variable X representing your earnings is E [X ] = 6 • Pr f2 H’sg + 1 • Pr f1 H,1 Tg − 4 • Pr f2 T’sg"
   },
   {
    "type": "body",
@@ -2896,7 +2896,7 @@
    "section_title": "C.4 The geometric and binomial distributions",
    "printed_page": 1199,
    "pdf_page": 1220,
-   "text": "Let X i be the random variable describing the number of suc cesses in the i th trial."
+   "text": "Let X i be the random variable describing the number of successes in the i th trial."
   },
   {
    "type": "body",
@@ -3004,7 +3004,7 @@
    "section_title": "C.4 The geometric and binomial distributions",
    "printed_page": 1200,
    "pdf_page": 1221,
-   "text": "We can use the same approach to calculate the varia nce of the distribution. By equation (C.31), Var [X i ] = E [X 2 i ] − E 2 [X i ]. Since X i takes on only the values 0 and 1, we have X 2 i = X i , which implies E [X 2 i ] = E [X i ] = p. Hence, Var [X i ] = p − √2 = p(1 − p) = pq: (C.43)"
+   "text": "We can use the same approach to calculate the variance of the distribution. By equation (C.31), Var [X i ] = E [X 2 i ] − E 2 [X i ]. Since X i takes on only the values 0 and 1, we have X 2 i = X i , which implies E [X 2 i ] = E [X i ] = p. Hence, Var [X i ] = p − √2 = p(1 − p) = pq: (C.43)"
   },
   {
    "type": "body",
@@ -3364,7 +3364,7 @@
    "section_title": "C.4 The geometric and binomial distributions",
    "printed_page": 1202,
    "pdf_page": 1223,
-   "text": "Let X be the random variable for the total number of succ esses in a set A of n"
+   "text": "Let X be the random variable for the total number of successes in a set A of n"
   },
   {
    "type": "body",
@@ -3373,7 +3373,7 @@
    "section_title": "C.4 The geometric and binomial distributions",
    "printed_page": 1202,
    "pdf_page": 1223,
-   "text": "Bernoulli trials, where the i th trial has a probability √i of success, and let X 0 be the random variable for the total number of succ esses in a second set A 0 of n"
+   "text": "Bernoulli trials, where the i th trial has a probability √i of success, and let X 0 be the random variable for the total number of successes in a second set A 0 of n"
   },
   {
    "type": "body",
@@ -4264,7 +4264,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1207,
    "pdf_page": 1228,
-   "text": "; which follows from equation (C.27), since the mutual independence of the random variables X i implies the mutual independence of the random varia bles e ˛.X i −p i /"
+   "text": "; which follows from equation (C.27), since the mutual independence of the random variables X i implies the mutual independence of the random variables e ˛.X i −p i /"
   },
   {
    "type": "body",
@@ -4570,7 +4570,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1210,
    "pdf_page": 1231,
-   "text": "Merrill to open one of the other doors, revealing a goat (not a valuable prize). He asks whether you would like to stick with your curr ent choice or to switch to the other closed door. What should you do to maximize y our chances of winning the automobile and not the other goat?"
+   "text": "Merrill to open one of the other doors, revealing a goat (not a valuable prize). He asks whether you would like to stick with your current choice or to switch to the other closed door. What should you do to maximize y our chances of winning the automobile and not the other goat?"
   },
   {
    "type": "body",
@@ -4597,7 +4597,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1211,
    "pdf_page": 1232,
-   "text": "Problems for Appendix C 1211 fact, in the real game show, after a contestant pic ked a door, Monty sometimes simply asked Carol to open the door that the contestant had chosen."
+   "text": "Problems for Appendix C 1211 fact, in the real game show, after a contestant picked a door, Monty sometimes simply asked Carol to open the door that the contestant had chosen."
   },
   {
    "type": "body",
@@ -4651,7 +4651,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1211,
    "pdf_page": 1232,
-   "text": "2. Carol opens one of the two closed doors, reveali ng a goat."
+   "text": "2. Carol opens one of the two closed doors, revealing a goat."
   },
   {
    "type": "body",

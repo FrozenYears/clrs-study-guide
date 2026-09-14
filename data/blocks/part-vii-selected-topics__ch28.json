@@ -846,7 +846,7 @@
    "section_title": "28.1 Solving systems of linear equations",
    "printed_page": 825,
    "pdf_page": 846,
-   "text": "We claim that if A is nonsingular, then the Schur complement is nonsin gular, too. Why? Suppose that the Schur complement, which is (n − 1) × (n − 1), is singular. Then by Theorem D.1, it has row rank strictly less than n − 1. Because the bottom n − 1 entries in the first column of the matrix"
+   "text": "We claim that if A is nonsingular, then the Schur complement is nonsingular, too. Why? Suppose that the Schur complement, which is (n − 1) × (n − 1), is singular. Then by Theorem D.1, it has row rank strictly less than n − 1. Because the bottom n − 1 entries in the first column of the matrix"
   },
   {
    "type": "body",
@@ -1123,7 +1123,7 @@
    "section_title": "28.1 Solving systems of linear equations",
    "printed_page": 827,
    "pdf_page": 848,
-   "text": "The pseudocode in the procedure LU-DECOMPOSITION follows the recursive strategy, except that an iteration loop replaces the recursion. (This transformation is a standard optimization for a \"tail-recursive\" procedure—one whose last operation is a recursive call to itself. See Problem 7-5 on page 202.) The procedure initializes the matrix U with 0s below the diagonal and matrix L with 1s on its diagonal and 0s above the diagonal. Each iteration works on a squ are submatrix, using its upper leftmost element as the pivot to compute the v and w vectors and the Schur complement, which becomes the square submatrix worked on by the next iteration."
+   "text": "The pseudocode in the procedure LU-DECOMPOSITION follows the recursive strategy, except that an iteration loop replaces the recursion. (This transformation is a standard optimization for a \"tail-recursive\" procedure—one whose last operation is a recursive call to itself. See Problem 7-5 on page 202.) The procedure initializes the matrix U with 0s below the diagonal and matrix L with 1s on its diagonal and 0s above the diagonal. Each iteration works on a square submatrix, using its upper leftmost element as the pivot to compute the v and w vectors and the Schur complement, which becomes the square submatrix worked on by the next iteration."
   },
   {
    "type": "body",
@@ -1159,7 +1159,7 @@
    "section_title": "28.1 Solving systems of linear equations",
    "printed_page": 827,
    "pdf_page": 848,
-   "text": "Figure 28.1 illustrates the operation of LU-DECOMPOSITION . It shows a standard optimization of the procedure that stores the significant elements of L and U in place in the matrix A. Each element a ij corresponds to either l ij (if i > j ) or u ij (if i ≤ j ), so that the matrix A holds both L and U when the procedure terminates. To obtain the pseudocode for this optim ization from the pseudocode for the LU-DECOMPOSITION procedure, just replace each reference to l or u by a."
+   "text": "Figure 28.1 illustrates the operation of LU-DECOMPOSITION . It shows a standard optimization of the procedure that stores the significant elements of L and U in place in the matrix A. Each element a ij corresponds to either l ij (if i > j ) or u ij (if i ≤ j ), so that the matrix A holds both L and U when the procedure terminates. To obtain the pseudocode for this optimization from the pseudocode for the LU-DECOMPOSITION procedure, just replace each reference to l or u by a."
   },
   {
    "type": "body",
@@ -1279,7 +1279,7 @@
    "section_title": "28.1 Solving systems of linear equations",
    "printed_page": 828,
    "pdf_page": 849,
-   "text": "Figure 28.1 The operation of LU-DECOMPOSITION . (a) The matrix A. (b) The result of the first iteration of the outer for loop of lines 4–11. The element a 11 = 2 highlighted in blue is the pivot, the tan column is v/a 11 , and the tan row is w T . The elements of U computed thus far are above the horizontal line, and the elements of L are to the left of the vertical line. The Schur com plement matrix A 0 − vw T =a 11 occupies the lower right. (c) The result of the next iteration of the outer for loop, on the Schur complement matrix from part (b). The element a 22 = 4 highlighted in blue is the pivot, and the tan column and row are v/a 22 and w T (in the partitioning of the Schur complement), respectively. Lines divide the matrix into the elem ents of U computed so far (above), the elements of L computed so far (left), and the new Schur complement (lower right). (d) After the next iteration, the matrix A is factored. The element 3 in the new Schur complement becomes part of U when the recursion terminates.) (e) The factorization ADLU ."
+   "text": "Figure 28.1 The operation of LU-DECOMPOSITION . (a) The matrix A. (b) The result of the first iteration of the outer for loop of lines 4–11. The element a 11 = 2 highlighted in blue is the pivot, the tan column is v/a 11 , and the tan row is w T . The elements of U computed thus far are above the horizontal line, and the elements of L are to the left of the vertical line. The Schur complement matrix A 0 − vw T =a 11 occupies the lower right. (c) The result of the next iteration of the outer for loop, on the Schur complement matrix from part (b). The element a 22 = 4 highlighted in blue is the pivot, and the tan column and row are v/a 22 and w T (in the partitioning of the Schur complement), respectively. Lines divide the matrix into the elements of U computed so far (above), the elements of L computed so far (left), and the new Schur complement (lower right). (d) After the next iteration, the matrix A is factored. The element 3 in the new Schur complement becomes part of U when the recursion terminates.) (e) The factorization ADLU ."
   },
   {
    "type": "body",
@@ -1378,7 +1378,7 @@
    "section_title": "28.1 Solving systems of linear equations",
    "printed_page": 829,
    "pdf_page": 850,
-   "text": "Q; which is a permutation matrix, since it is the prod uct of two permutation matrices"
+   "text": "Q; which is a permutation matrix, since it is the product of two permutation matrices"
   },
   {
    "type": "body",
@@ -1625,7 +1625,7 @@
    "section_title": "28.1 Solving systems of linear equations",
    "printed_page": 830,
    "pdf_page": 851,
-   "text": "Like LU-DECOMPOSITION , the LUP-DECOMPOSITION procedure replaces the recursion with an iteration loop. As an improvement over a direct implementation of the recursion, the procedure dynamically maintai ns the permutation matrix P as an array Ω , where Ω[i ] = j means that the i th row of P contains a 1 in column j . The LUP-DECOMPOSITION procedure also implements the improvement mentioned earlier, computing L and U in place in the matrix A. Thus, when the procedure terminates, a ij ="
+   "text": "Like LU-DECOMPOSITION , the LUP-DECOMPOSITION procedure replaces the recursion with an iteration loop. As an improvement over a direct implementation of the recursion, the procedure dynamically maintains the permutation matrix P as an array Ω , where Ω[i ] = j means that the i th row of P contains a 1 in column j . The LUP-DECOMPOSITION procedure also implements the improvement mentioned earlier, computing L and U in place in the matrix A. Thus, when the procedure terminates, a ij ="
   },
   {
    "type": "body",
@@ -2075,7 +2075,7 @@
    "section_title": "28.1 Solving systems of linear equations",
    "printed_page": 833,
    "pdf_page": 854,
-   "text": "28.1-5 Describe the LUP decomposition of a permutation mat rix, and prove that it is unique."
+   "text": "28.1-5 Describe the LUP decomposition of a permutation matrix, and prove that it is unique."
   },
   {
    "type": "exercise",
@@ -2102,7 +2102,7 @@
    "section_title": "28.2 Inverting matrices",
    "printed_page": 833,
    "pdf_page": 854,
-   "text": "Although you can use equation (28.3) to solve a system of linear equations by computing a matrix inverse, in practice you are better off using more numerically stable techniques, such as LUP decomposition. Sometimes, however, you really do need to compute a matrix inverse. This section shows how to use LUP decomposition to compute a matrix inverse. It also proves that matrix multiplication and computing the inverse of a matrix are equivalently hard probl ems, in that (subject to technical conditions) an algorithm for one can solve the other in the same asymptotic running time. Thus, you can use Strassen’s algorithm (see Section 4.2) for matrix multiplication to invert a matrix. Indeed, Strassen’s original paper was motivated by the idea that a set of a linear equations could be solved more quickly than by the usual method."
+   "text": "Although you can use equation (28.3) to solve a system of linear equations by computing a matrix inverse, in practice you are better off using more numerically stable techniques, such as LUP decomposition. Sometimes, however, you really do need to compute a matrix inverse. This section shows how to use LUP decomposition to compute a matrix inverse. It also proves that matrix multiplication and computing the inverse of a matrix are equivalently hard problems, in that (subject to technical conditions) an algorithm for one can solve the other in the same asymptotic running time. Thus, you can use Strassen’s algorithm (see Section 4.2) for matrix multiplication to invert a matrix. Indeed, Strassen’s original paper was motivated by the idea that a set of a linear equations could be solved more quickly than by the usual method."
   },
   {
    "type": "body",
@@ -2120,7 +2120,7 @@
    "section_title": "28.2 Inverting matrices",
    "printed_page": 833,
    "pdf_page": 854,
-   "text": "Suppose that you have an LUP decomposition of a mat rix A in the form of three matrices L, U , and P such that PA DLU . Using LUP-SOLVE, you can solve an equation of the form Ax = b in Θ(n 2 ) time. Since the LUP decomposition depends on A but not b, you can run LUP-SOLVE on a second set of equations of the form Ax = b 0 in Θ(n 2 ) additional time. In general, once you have the LUP decomposition of A, you can solve, in Θ(kn 2 ) time, k versions of the equation Ax = b that differ only in the vector b."
+   "text": "Suppose that you have an LUP decomposition of a matrix A in the form of three matrices L, U , and P such that PA DLU . Using LUP-SOLVE, you can solve an equation of the form Ax = b in Θ(n 2 ) time. Since the LUP decomposition depends on A but not b, you can run LUP-SOLVE on a second set of equations of the form Ax = b 0 in Θ(n 2 ) additional time. In general, once you have the LUP decomposition of A, you can solve, in Θ(kn 2 ) time, k versions of the equation Ax = b that differ only in the vector b."
   },
   {
    "type": "body",
@@ -2318,7 +2318,7 @@
    "section_title": "28.2 Inverting matrices",
    "printed_page": 834,
    "pdf_page": 855,
-   "text": "; Apply the method of the proof to A 0 to compute the inverse of A 0 , and take the first n rows and n columns of the result as the desired answer A −1 . The first regularity condition on M(n) ensures that enlarging the matrix in this way incre ases the running time by at most a constant factor."
+   "text": "; Apply the method of the proof to A 0 to compute the inverse of A 0 , and take the first n rows and n columns of the result as the desired answer A −1 . The first regularity condition on M(n) ensures that enlarging the matrix in this way increases the running time by at most a constant factor."
   },
   {
    "type": "body",
@@ -2462,7 +2462,7 @@
    "section_title": "28.2 Inverting matrices",
    "printed_page": 835,
    "pdf_page": 856,
-   "text": "; (28.14) since AA −1 = I n , as you can verify by performing the matrix multip lication. Because A is symmetric and positive-definite, Lemmas 28.4 and 28.5 in Section 28.3 imply that B and S are both symmetric and positive-definite. By Lemma 28.3 in Section 28.3, therefore, the inverses B −1 and S −1 exist, and by Exercise D.2-6 on page 1223, B −1 and S −1 are symmetric, so that (B −1 ) T = B −1 and (S −1 ) T = S −1 ."
+   "text": "; (28.14) since AA −1 = I n , as you can verify by performing the matrix multiplication. Because A is symmetric and positive-definite, Lemmas 28.4 and 28.5 in Section 28.3 imply that B and S are both symmetric and positive-definite. By Lemma 28.3 in Section 28.3, therefore, the inverses B −1 and S −1 exist, and by Exercise D.2-6 on page 1223, B −1 and S −1 are symmetric, so that (B −1 ) T = B −1 and (S −1 ) T = S −1 ."
   },
   {
    "type": "body",
@@ -2642,7 +2642,7 @@
    "section_title": "28.2 Inverting matrices",
    "printed_page": 836,
    "pdf_page": 857,
-   "text": "It remains to prove how to obtain the same asymptot ic running time for matrix multiplication as for matrix inversion when A is invertible but not symmetric and positive-definite. The basic idea is that for any nonsingular matrix A, the matrix A T A is symmetric (by Exercise D.1-2) and positive-definite (by Theorem D.6 on page 1222). The trick, then, is to reduce the problem of inverting A to the problem of inverting A T A."
+   "text": "It remains to prove how to obtain the same asymptotic running time for matrix multiplication as for matrix inversion when A is invertible but not symmetric and positive-definite. The basic idea is that for any nonsingular matrix A, the matrix A T A is symmetric (by Exercise D.1-2) and positive-definite (by Theorem D.6 on page 1222). The trick, then, is to reduce the problem of inverting A to the problem of inverting A T A."
   },
   {
    "type": "body",
@@ -3812,7 +3812,7 @@
    "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
    "printed_page": 846,
    "pdf_page": 867,
-   "text": "28.3-4 Prove that the determinant of each leading submatri x of a sym metric positivedefinite matrix is positive."
+   "text": "28.3-4 Prove that the determinant of each leading submatri x of a symmetric positivedefinite matrix is positive."
   },
   {
    "type": "exercise",
@@ -4028,7 +4028,7 @@
    "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
    "printed_page": 848,
    "pdf_page": 869,
-   "text": "0 .0/ = 0 and f 00 (x n ) = f 00 n−1 .1/ = 0. These assumptions make f(x) a natural cubic spline. b. Use the continuity constraints on the second deriva tive to show that for i ="
+   "text": "0 .0/ = 0 and f 00 (x n ) = f 00 n−1 .1/ = 0. These assumptions make f(x) a natural cubic spline. b. Use the continuity constraints on the second derivative to show that for i ="
   },
   {
    "type": "body",
@@ -4172,7 +4172,7 @@
    "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
    "printed_page": 850,
    "pdf_page": 871,
-   "text": "Many problems take the form of maximizing or minimi zing an objective, given limited resources and competing constraints. If you can specify the objective as a linear function of certain variables, and if you can specify the constraints on resources as equalities or inequalities on those va riables, then you have a linearprogramming problem. Linear programs arise in a variety of practical applications. We begin by studying an application in electoral politics."
+   "text": "Many problems take the form of maximizing or minimizing an objective, given limited resources and competing constraints. If you can specify the objective as a linear function of certain variables, and if you can specify the constraints on resources as equalities or inequalities on those va riables, then you have a linearprogramming problem. Linear programs arise in a variety of practical applications. We begin by studying an application in electoral politics."
   },
   {
    "type": "body",
@@ -4199,7 +4199,7 @@
    "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
    "printed_page": 850,
    "pdf_page": 871,
-   "text": "According to your campaign staff’s research, you can estimate how many votes you win or lose from each population segment by spending $1,000 on advertising on each issue. This information appears in the tabl e of Figure 29.1. In this table, each entry indicates the number of thousands of eit her urban, suburban, or rural voters who would be won over by spending $1,000 on advertising in support of a particular issue. Negative entries denote votes tha t would be lost. Your task is to figure out the minimum amount of money that you need to spend in order to win 50,000 urban votes, 100,000 suburban votes, and 25,000 rural votes."
+   "text": "According to your campaign staff’s research, you can estimate how many votes you win or lose from each population segment by spending $1,000 on advertising on each issue. This information appears in the tabl e of Figure 29.1. In this table, each entry indicates the number of thousands of either urban, suburban, or rural voters who would be won over by spending $1,000 on advertising in support of a particular issue. Negative entries denote votes tha t would be lost. Your task is to figure out the minimum amount of money that you need to spend in order to win 50,000 urban votes, 100,000 suburban votes, and 25,000 rural votes."
   },
   {
    "type": "body",

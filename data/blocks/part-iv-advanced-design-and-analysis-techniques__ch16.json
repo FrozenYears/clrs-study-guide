@@ -77,7 +77,7 @@
    "section_title": "16.1 Aggregate analysis",
    "printed_page": 449,
    "pdf_page": 470,
-   "text": "When you perform an amortized analysis, you often gain insight into a particular data structure, and this insight can help you optim ize the design. For example, Section 16.4 will use the potential method to analyze a dynamically expanding and contracting table."
+   "text": "When you perform an amortized analysis, you often gain insight into a particular data structure, and this insight can help you optimize the design. For example, Section 16.4 will use the potential method to analyze a dynamically expanding and contracting table."
   },
   {
    "type": "body",
@@ -104,7 +104,7 @@
    "section_title": "16.1 Aggregate analysis",
    "printed_page": 449,
    "pdf_page": 470,
-   "text": "per operation is therefore T(n)/n . This amortized cost applies to each operation, even when there are several types of operations in the sequence. The other two methods we shall study in this chapter, the account ing method and the potential method, may assign different amortized costs to different types of operations."
+   "text": "per operation is therefore T(n)/n . This amortized cost applies to each operation, even when there are several types of operations in the sequence. The other two methods we shall study in this chapter, the accounting method and the potential method, may assign different amortized costs to different types of operations."
   },
   {
    "type": "body",
@@ -201,7 +201,7 @@
    "section_title": "16.1 Aggregate analysis",
    "printed_page": 450,
    "pdf_page": 471,
-   "text": "Of course, the procedure assumes that k is positive, and otherwise, the MULTIPOP operation leaves the stack unchanged. In the pseudo code for MULTIPOP, the operation STAC K-EMPTY returns TRUE if there are no objects currently on the stack, and FALSE otherwise. Figure 16.1 shows an example of MULTIPOP ."
+   "text": "Of course, the procedure assumes that k is positive, and otherwise, the MULTIPOP operation leaves the stack unchanged. In the pseudocode for MULTIPOP, the operation STAC K-EMPTY returns TRUE if there are no objects currently on the stack, and FALSE otherwise. Figure 16.1 shows an example of MULTIPOP ."
   },
   {
    "type": "body",
@@ -670,7 +670,7 @@
    "section_title": "16.2 The accounting method",
    "printed_page": 453,
    "pdf_page": 474,
-   "text": "In the accounting method of amortized analysis, you assign differing charges to different operations, with some operations charged more or less than they actually cost. The amount that you charge an operation is its amortized cost. When an operation’s amortized cost exceeds its actual cost, you assign the difference to specific objects in the data structure as credit. Credit can help pay for later operations whose amortized cost is less than their actu al cost. Thus, you can view the amortized cost of an operation as being split between its actual cost and credit that is either deposited or used up. Different operation s may have different amortized costs. This method differs from aggregate analysis, in which all operations have the same amortized cost."
+   "text": "In the accounting method of amortized analysis, you assign differing charges to different operations, with some operations charged more or less than they actually cost. The amount that you charge an operation is its amortized cost. When an operation’s amortized cost exceeds its actual cost, you assign the difference to specific objects in the data structure as credit. Credit can help pay for later operations whose amortized cost is less than their actual cost. Thus, you can view the amortized cost of an operation as being split between its actual cost and credit that is either deposited or used up. Different operation s may have different amortized costs. This method differs from aggregate analysis, in which all operations have the same amortized cost."
   },
   {
    "type": "body",
@@ -688,7 +688,7 @@
    "section_title": "16.2 The accounting method",
    "printed_page": 454,
    "pdf_page": 475,
-   "text": "Let’s denote the actual cost of the i th operation by c i and the amortized cost of the i th operation by y c i . Then you need to have n X i D1 y c i ≥ n X i D1 c i (16.1) for all sequences of n operations. The total credit stored in the data str ucture is the difference between the total amortized cost and the total actual cost, or P n i D1 y c i − P n i D1 c i . By inequality (16.1), the total credit associated with the data structure must be nonnegative at all times. If you ever allowed the total credit to become negative (the result of undercharging early operations with the promise of repaying the account later on), then the total amor tized costs incurred at that time would be below the total actual costs incurred. In that case, for the sequence of operations up to that time, the total amortized cos t would not be an upper bound on the total actual cost. Thus, you must take care that the total credit in the data structure never becomes negative."
+   "text": "Let’s denote the actual cost of the i th operation by c i and the amortized cost of the i th operation by y c i . Then you need to have n X i D1 y c i ≥ n X i D1 c i (16.1) for all sequences of n operations. The total credit stored in the data structure is the difference between the total amortized cost and the total actual cost, or P n i D1 y c i − P n i D1 c i . By inequality (16.1), the total credit associated with the data structure must be nonnegative at all times. If you ever allowed the total credit to become negative (the result of undercharging early operations with the promise of repaying the account later on), then the total amortized costs incurred at that time would be below the total actual costs incurred. In that case, for the sequence of operations up to that time, the total amortized cos t would not be an upper bound on the total actual cost. Thus, you must take care that the total credit in the data structure never becomes negative."
   },
   {
    "type": "body",
@@ -733,7 +733,7 @@
    "section_title": "16.2 The accounting method",
    "printed_page": 454,
    "pdf_page": 475,
-   "text": "The amortized cost of MULTIPOP is a constant (0), whereas the actual cost is variable, and thus all three amortized costs are consta nt. In general, the amortized costs of the operations under consideration may dif fer from each other, and they may even differ asymptotically."
+   "text": "The amortized cost of MULTIPOP is a constant (0), whereas the actual cost is variable, and thus all three amortized costs are constant. In general, the amortized costs of the operations under consideration may differ from each other, and they may even differ asymptotically."
   },
   {
    "type": "body",
@@ -868,7 +868,7 @@
    "section_title": "16.3 The potential method",
    "printed_page": 456,
    "pdf_page": 477,
-   "text": "Instead of representing prepaid work as credit stor ed with specific objects in the data structure, the potential method of amortized analysis represents the prepaid work as \"potential energy,\" or just \"potential,\" wh ich can be released to pay for future operations. The potential applies to the data structure as a whole rather than to specific objects within the data structure."
+   "text": "Instead of representing prepaid work as credit stored with specific objects in the data structure, the potential method of amortized analysis represents the prepaid work as \"potential energy,\" or just \"potential,\" wh ich can be released to pay for future operations. The potential applies to the data structure as a whole rather than to specific objects within the data structure."
   },
   {
    "type": "body",
@@ -1327,7 +1327,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 460,
    "pdf_page": 481,
-   "text": "When you design an application that uses a table, y ou do not always know in advance how many items the table will hold. You mig ht allocate space for the table, only to find out later that it is not enough. The program must then reallocate the table with a larger size and copy all items stored in the original table over into the new, larger table. Similarly, if many items hav e been deleted from the table, it might be worthwhile to reallocate the table with a smaller size. This section studies this problem of dynamically expanding and contracting a table. Amortized analyses will show that the amortized cost of inser tion and deletion is only O(1), even though the actual cost of an operation is larg e when it triggers an expansion or a contraction. Moreover, you’ll see how to guarantee that the unused space in a dynamic table never exceeds a constant fraction of the total space."
+   "text": "When you design an application that uses a table, y ou do not always know in advance how many items the table will hold. You might allocate space for the table, only to find out later that it is not enough. The program must then reallocate the table with a larger size and copy all items stored in the original table over into the new, larger table. Similarly, if many items hav e been deleted from the table, it might be worthwhile to reallocate the table with a smaller size. This section studies this problem of dynamically expanding and contracting a table. Amortized analyses will show that the amortized cost of insertion and deletion is only O(1), even though the actual cost of an operation is larg e when it triggers an expansion or a contraction. Moreover, you’ll see how to guarantee that the unused space in a dynamic table never exceeds a constant fraction of the total space."
   },
   {
    "type": "body",
@@ -1372,7 +1372,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 461,
    "pdf_page": 482,
-   "text": "Let’s assume that storage for a table is allocated as an array of slots. A table fills up when all slots have been used or, equivalently, when its load factor is 1. 1 In some software environments, upon an attempt to insert an item into a full table, the only alternative is to abort with an error. The scenario in this se ction assumes, however, that the software environment, like many modern ones, provides a memorymanagement system that can allocate and free blocks of storage on request. Thus, upon inserting an item into a full table, the syste m can expand the table by allocating a new table with more slots than the old tab le had. Because the table must always reside in contiguous memory, the system must allocate a new array for the larger table and then copy items from the old table into the new table."
+   "text": "Let’s assume that storage for a table is allocated as an array of slots. A table fills up when all slots have been used or, equivalently, when its load factor is 1. 1 In some software environments, upon an attempt to insert an item into a full table, the only alternative is to abort with an error. The scenario in this se ction assumes, however, that the software environment, like many modern ones, provides a memorymanagement system that can allocate and free blocks of storage on request. Thus, upon inserting an item into a full table, the syste m can expand the table by allocating a new table with more slots than the old table had. Because the table must always reside in contiguous memory, the system must allocate a new array for the larger table and then copy items from the old table into the new table."
   },
   {
    "type": "body",
@@ -1627,7 +1627,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 463,
    "pdf_page": 484,
-   "text": "Now, let’s see how to use the potential method. We’ll use it again in Section 16.4.2 to design a TABLE-DELETE operation that has an O(1) amortized cost as well. Just as the accounting method had no stored credit immediately after an expansion—that is, when T: num = T: size/24let’s define the potential to be 0 when T: num = T: size/2. As elementary insertions occur, the potential nee ds to increase enough to pay for all the reinsertions tha t will happen when the table next expands. The table fills after another T: size/2 calls of TABLE-INSERT , when"
+   "text": "Now, let’s see how to use the potential method. We’ll use it again in Section 16.4.2 to design a TABLE-DELETE operation that has an O(1) amortized cost as well. Just as the accounting method had no stored credit immediately after an expansion—that is, when T: num = T: size/24let’s define the potential to be 0 when T: num = T: size/2. As elementary insertions occur, the potential needs to increase enough to pay for all the reinsertions tha t will happen when the table next expands. The table fills after another T: size/2 calls of TABLE-INSERT , when"
   },
   {
    "type": "body",
@@ -1654,7 +1654,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 464,
    "pdf_page": 485,
-   "text": "ˆ(T) = 2.T: num − T: size/2/ (16.4) equals 0 immediately after the table expands, when T: num = T: size/2, and it increases by 2 upon each insertion until the table fills. Once the table fills, that is, when T: num = T: size, the potential ˆ(T) equals T: size. The initial value of the potential is 0, and since the table is always at least half full, T: num ≥ T: size/2, which implies that ˆ(T) is always nonnegative. Thus, the sum of the amortiz ed costs of n TABLE-INSERT operations gives an upper bound on the sum of the actual costs."
+   "text": "ˆ(T) = 2.T: num − T: size/2/ (16.4) equals 0 immediately after the table expands, when T: num = T: size/2, and it increases by 2 upon each insertion until the table fills. Once the table fills, that is, when T: num = T: size, the potential ˆ(T) equals T: size. The initial value of the potential is 0, and since the table is always at least half full, T: num ≥ T: size/2, which implies that ˆ(T) is always nonnegative. Thus, the sum of the amortized costs of n TABLE-INSERT operations gives an upper bound on the sum of the actual costs."
   },
   {
    "type": "body",
@@ -1663,7 +1663,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 464,
    "pdf_page": 485,
-   "text": "To analyze the amortized costs of table operations, it is convenient to think in terms of the change in potential due to each operat ion. Letting ˆ i denote the potential after the i th operation, we can rewrite equation (16.2) as y c i = c i C ˆ i − ˆ i −1"
+   "text": "To analyze the amortized costs of table operations, it is convenient to think in terms of the change in potential due to each operation. Letting ˆ i denote the potential after the i th operation, we can rewrite equation (16.2) as y c i = c i C ˆ i − ˆ i −1"
   },
   {
    "type": "body",
@@ -1699,7 +1699,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 465,
    "pdf_page": 486,
-   "text": "Figure 16.4 The effect of a sequence of n TABLE-INSERT operations on the number num i of items in the table (the brown line), the number size i of slots in the table (the blue line), and the pote ntial"
+   "text": "Figure 16.4 The effect of a sequence of n TABLE-INSERT operations on the number num i of items in the table (the brown line), the number size i of slots in the table (the blue line), and the potential"
   },
   {
    "type": "body",
@@ -1789,7 +1789,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 466,
    "pdf_page": 487,
-   "text": "You might think that if you double the table size u pon inserting an item into a full table, then you should halve the size when del eting an item that would cause the table to become less than half full. This strategy does indeed guarantee that the load factor of the table never drops below 1/2. Unfortunately, it can also cause the amortized cost of an operation to be quite large. C onsider the following scenario."
+   "text": "You might think that if you double the table size u pon inserting an item into a full table, then you should halve the size when deleting an item that would cause the table to become less than half full. This strategy does indeed guarantee that the load factor of the table never drops below 1/2. Unfortunately, it can also cause the amortized cost of an operation to be quite large. C onsider the following scenario."
   },
   {
    "type": "body",
@@ -2266,7 +2266,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 470,
    "pdf_page": 491,
-   "text": "In summary, since the amortized cost of each operat ion is bounded above by a constant, the actual time for any sequence of n operations on a dynamic table is O(n)."
+   "text": "In summary, since the amortized cost of each operation is bounded above by a constant, the actual time for any sequence of n operations on a dynamic table is O(n)."
   },
   {
    "type": "exercise",
@@ -2284,7 +2284,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 470,
    "pdf_page": 491,
-   "text": "16.4-2 You wish to implement a dynamic, open-address hash table. Why might you consider the table to be full when its load factor rea ches some value ˛ that is strictly less than 1? Describe briefly how to make insertion into a dynamic, open-address hash table run in such a way that the expected valu e of the amortized cost per insertion is O(1). Why is the expected value of the actual cost per insertion not necessarily O(1) for all insertions?"
+   "text": "16.4-2 You wish to implement a dynamic, open-address hash table. Why might you consider the table to be full when its load factor reaches some value ˛ that is strictly less than 1? Describe briefly how to make insertion into a dynamic, open-address hash table run in such a way that the expected valu e of the amortized cost per insertion is O(1). Why is the expected value of the actual cost per insertion not necessarily O(1) for all insertions?"
   },
   {
    "type": "exercise",
@@ -2401,7 +2401,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 472,
    "pdf_page": 493,
-   "text": "0,1,…,k − 1, the length of array A i is 2 i . Each array is either full or empty, depending on whether n i = 1 or n i = 0, respectively. The total number of elements held in all k arrays is therefore P k−1 i D0 n i 2 i = n. Although each individual array is sorted, elements in different arrays bear no particular relationship to each other. a. Describe how to perform the SEARCH operation for this data structure. Analyze its worst-case running time. b. Describe how to perform the INSERT operation. Analyze its worst-case and amortized running times, assuming that the only ope rations are INSERT and SEARCH . c. Describe how to implement DELETE. Analyze its worst-case and amortized running times, assuming that there can be DELETE , INSERT , and SEARCH operations."
+   "text": "0,1,…,k − 1, the length of array A i is 2 i . Each array is either full or empty, depending on whether n i = 1 or n i = 0, respectively. The total number of elements held in all k arrays is therefore P k−1 i D0 n i 2 i = n. Although each individual array is sorted, elements in different arrays bear no particular relationship to each other. a. Describe how to perform the SEARCH operation for this data structure. Analyze its worst-case running time. b. Describe how to perform the INSERT operation. Analyze its worst-case and amortized running times, assuming that the only operations are INSERT and SEARCH . c. Describe how to implement DELETE. Analyze its worst-case and amortized running times, assuming that there can be DELETE , INSERT , and SEARCH operations."
   },
   {
    "type": "problem",
@@ -2419,7 +2419,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 472,
    "pdf_page": 493,
-   "text": "Consider an ordinary binary search tree augmented b y adding to each node x the attribute x: size, which gives the number of keys stored in the subt ree rooted at x ."
+   "text": "Consider an ordinary binary search tree augmented b y adding to each node x the attribute x: size, which gives the number of keys stored in the subtree rooted at x ."
   },
   {
    "type": "body",
@@ -2527,7 +2527,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 473,
    "pdf_page": 494,
-   "text": "X x2T w(x); Notes for Chapter 16 475 and let T 0 be the tree that results from applying any nontermi nating case of RB- INSERT-FIXUP or RB-DELETE-FIXUP to T . f. Show that ˆ(T 0 ) ≤ ˆ(T ) − 1 for all nonterminating cases of RB-I NSERT- FIXUP. Argue that the amortized number of structural modifications performed by any call of RB-I NSERT-FIXUP is O(1). g. Show that ˆ(T 0 ) ≤ ˆ(T ) − 1 for all nonterminating cases of RB-DELETE- FIXUP. Argue that the amortized number of structural modifications performed by any call of RB-DELETE-FIXUP is O(1). h. Complete the proof that in the worst case, any sequence of m RB-I NSERT and RB-DELETE operations performs O(m) structural modifications."
+   "text": "X x2T w(x); Notes for Chapter 16 475 and let T 0 be the tree that results from applying any nonterminating case of RB- INSERT-FIXUP or RB-DELETE-FIXUP to T . f. Show that ˆ(T 0 ) ≤ ˆ(T ) − 1 for all nonterminating cases of RB-I NSERT- FIXUP. Argue that the amortized number of structural modifications performed by any call of RB-I NSERT-FIXUP is O(1). g. Show that ˆ(T 0 ) ≤ ˆ(T ) − 1 for all nonterminating cases of RB-DELETE- FIXUP. Argue that the amortized number of structural modifications performed by any call of RB-DELETE-FIXUP is O(1). h. Complete the proof that in the worst case, any sequence of m RB-I NSERT and RB-DELETE operations performs O(m) structural modifications."
   },
   {
    "type": "body",
@@ -2770,7 +2770,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 478,
    "pdf_page": 499,
-   "text": "• Several data structures allow a faster implementati on of dictionary operations"
+   "text": "• Several data structures allow a faster implementation of dictionary operations"
   },
   {
    "type": "body",
@@ -2851,7 +2851,7 @@
    "section_title": "16.4 Dynamic tables",
    "printed_page": 480,
    "pdf_page": 501,
-   "text": "Chapter 9 introduced the notion of an order statist ic. Speci fically, the i th order statistic of a set of n elements, where i 2 f1,2,…,n g, is simply the element in the set with the i th smallest key. In Chapter 9, you saw how to determine any order statistic in O(n) time from an unordered set. This section shows how to modify red-black trees so that you can determine any order statistic for a dynamic set in O(lg n) time and also compute the rank of an element—its position in the linear"
+   "text": "Chapter 9 introduced the notion of an order statistic. Speci fically, the i th order statistic of a set of n elements, where i 2 f1,2,…,n g, is simply the element in the set with the i th smallest key. In Chapter 9, you saw how to determine any order statistic in O(n) time from an unordered set. This section shows how to modify red-black trees so that you can determine any order statistic for a dynamic set in O(lg n) time and also compute the rank of an element—its position in the linear"
   },
   {
    "type": "body",

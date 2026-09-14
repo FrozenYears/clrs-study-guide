@@ -108,7 +108,7 @@
    "section_title": "9.1 Minimum and maximum",
    "printed_page": 228,
    "pdf_page": 249,
-   "text": "Is this algorithm for minimum the best we can do? Yes, because it turns out that there’s a lower bound of n − 1 comparisons for the problem of determining the minimum. Think of any algorithm that determines the minimum as a tournament among the elements. Each comparison is a match in t he tournament in which the smaller of the two elements wins. Since every eleme nt except the winner must lose at least one match, we can conclude that n − 1 comparisons are necessary to determine the minimum. Hence the algorithm MINIMUM is optimal with respect to the number of comparisons performed."
+   "text": "Is this algorithm for minimum the best we can do? Yes, because it turns out that there’s a lower bound of n − 1 comparisons for the problem of determining the minimum. Think of any algorithm that determines the minimum as a tournament among the elements. Each comparison is a match in t he tournament in which the smaller of the two elements wins. Since every element except the winner must lose at least one match, we can conclude that n − 1 comparisons are necessary to determine the minimum. Hence the algorithm MINIMUM is optimal with respect to the number of comparisons performed."
   },
   {
    "type": "body",
@@ -144,7 +144,7 @@
    "section_title": "9.1 Minimum and maximum",
    "printed_page": 229,
    "pdf_page": 250,
-   "text": "Although 2n − 2 comparisons is asymptotically optimal, it is possible to improve the leading constant. We can find both the minimum and the maximum using at most 3 ⌊n/2⌋ comparisons. The trick is to maintain both the mini mum and maximum elements seen thus far. Rather than processing each element of the input by comparing it against the current minimum and maximu m, at a cost of 2 comparisons per element, process elements in pairs. Compa re pairs of elements from the input first with each other, and then compare the smaller with the current minimum and the larger to the current maximum, at a cos t of 3 comparisons for every"
+   "text": "Although 2n − 2 comparisons is asymptotically optimal, it is possible to improve the leading constant. We can find both the minimum and the maximum using at most 3 ⌊n/2⌋ comparisons. The trick is to maintain both the minimum and maximum elements seen thus far. Rather than processing each element of the input by comparing it against the current minimum and maximu m, at a cost of 2 comparisons per element, process elements in pairs. Compa re pairs of elements from the input first with each other, and then compare the smaller with the current minimum and the larger to the current maximum, at a cos t of 3 comparisons for every"
   },
   {
    "type": "body",
@@ -162,7 +162,7 @@
    "section_title": "9.1 Minimum and maximum",
    "printed_page": 229,
    "pdf_page": 250,
-   "text": "How you set up initial values for the current minim um and maximum depends on whether n is odd or even. If n is odd, set both the minimum and maximum to the value of the first element, and then process the rest of the elements in pairs."
+   "text": "How you set up initial values for the current minimum and maximum depends on whether n is odd or even. If n is odd, set both the minimum and maximum to the value of the first element, and then process the rest of the elements in pairs."
   },
   {
    "type": "body",
@@ -283,7 +283,7 @@
    "section_title": "9.2 Selection in expected linear time",
    "printed_page": 230,
    "pdf_page": 251,
-   "text": "The general selection problem—finding the i th order statistic for any value of i 4 appears more difficult than the simple problem of finding a minimum. Yet, surprisingly, the asymptotic running time for both pro blems is the same: Θ(n). This section presents a divide-and-conquer algorithm for the selection problem. The algorithm RANDOMIZED-SELECT is modeled after the quicksort algorithm of Chapter 7. Like quicksort it partitions the input array recursively. But unlike quicksort, which recursively processes both sides of the parti tion, RANDOMIZED-SELECT works on only one side of the partition. This diffe rence shows up in the analysis: whereas quicksort has an expected running time of Θ(n lg n), the expected running time of RANDOMIZED-SELECT is Θ(n), assuming that the elements are distinct."
+   "text": "The general selection problem—finding the i th order statistic for any value of i 4 appears more difficult than the simple problem of finding a minimum. Yet, surprisingly, the asymptotic running time for both pro blems is the same: Θ(n). This section presents a divide-and-conquer algorithm for the selection problem. The algorithm RANDOMIZED-SELECT is modeled after the quicksort algorithm of Chapter 7. Like quicksort it partitions the input array recursively. But unlike quicksort, which recursively processes both sides of the partition, RANDOMIZED-SELECT works on only one side of the partition. This difference shows up in the analysis: whereas quicksort has an expected running time of Θ(n lg n), the expected running time of RANDOMIZED-SELECT is Θ(n), assuming that the elements are distinct."
   },
   {
    "type": "body",
@@ -310,7 +310,7 @@
    "section_title": "9.2 Selection in expected linear time",
    "printed_page": 230,
    "pdf_page": 251,
-   "text": "Figure 9.1 illustrates how the RANDOMIZED-SELECT procedure works. Line 1 checks for the base case of the recursion, in which the subarray A[p : r] consists of just one element. In this case, i must equal 1, and line 2 simply returns A[p] as the i th smallest element. Otherwise, the call to RANDOMIZED-PARTITION in line 3 partitions the array A[p : r] into two (possibly empty) subarrays A[p : q − 1] and A[q + 1 : r] such that each element of A[p : q − 1] is less than or equal to A[q], which in turn is less than each element of A[q + 1 : r]. (Although our analysis assumes that the elements are distinct, the procedu re still yields the correct result even if equal elements are present.) As in quicksort, we’ll refer to A[q] as the pivot element. Line 4 computes the number k of elements in the subarray A[p : q], that is, 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15"
+   "text": "Figure 9.1 illustrates how the RANDOMIZED-SELECT procedure works. Line 1 checks for the base case of the recursion, in which the subarray A[p : r] consists of just one element. In this case, i must equal 1, and line 2 simply returns A[p] as the i th smallest element. Otherwise, the call to RANDOMIZED-PARTITION in line 3 partitions the array A[p : r] into two (possibly empty) subarrays A[p : q − 1] and A[q + 1 : r] such that each element of A[p : q − 1] is less than or equal to A[q], which in turn is less than each element of A[q + 1 : r]. (Although our analysis assumes that the elements are distinct, the procedure still yields the correct result even if equal elements are present.) As in quicksort, we’ll refer to A[q] as the pivot element. Line 4 computes the number k of elements in the subarray A[p : q], that is, 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15"
   },
   {
    "type": "body",
@@ -499,7 +499,7 @@
    "section_title": "9.2 Selection in expected linear time",
    "printed_page": 232,
    "pdf_page": 253,
-   "text": "Since the pivot is selected at random, the probabil ity that it falls into the middle half is about 1/2 each time. We can view the process of selecting the pivot as a Bernoulli trial (see Section C.4) with success equating to the pivot residing in the middle half. Thus the expected number of trials nee ded for success is given by a geometric distribution: just two trials on average (equation (C.36) on page 1197)."
+   "text": "Since the pivot is selected at random, the probability that it falls into the middle half is about 1/2 each time. We can view the process of selecting the pivot as a Bernoulli trial (see Section C.4) with success equating to the pivot residing in the middle half. Thus the expected number of trials needed for success is given by a geometric distribution: just two trials on average (equation (C.36) on page 1197)."
   },
   {
    "type": "body",
@@ -508,7 +508,7 @@
    "section_title": "9.2 Selection in expected linear time",
    "printed_page": 232,
    "pdf_page": 253,
-   "text": "In other words, we expect that half of the partitio nings reduce the number of elements still in play by at least 3/4 and that half of the partitionings do not help as much. Consequently, the expected number of partitio nings at most doubles from the case when the pivot always falls into the middl e half. The cost of each extra partitioning is less than the one that preceded it, so that the expected running time is still Θ(n)."
+   "text": "In other words, we expect that half of the partitionings reduce the number of elements still in play by at least 3/4 and that half of the partitionings do not help as much. Consequently, the expected number of partitionings at most doubles from the case when the pivot always falls into the middl e half. The cost of each extra partitioning is less than the one that preceded it, so that the expected running time is still Θ(n)."
   },
   {
    "type": "body",
@@ -571,7 +571,7 @@
    "section_title": "9.2 Selection in expected linear time",
    "printed_page": 233,
    "pdf_page": 254,
-   "text": "We discussed the \"middle half\" in the informal argu ment above. Let’s more pre- cisely define the middle half of an n-element subarray as all but the smallest"
+   "text": "We discussed the \"middle half\" in the informal argument above. Let’s more pre- cisely define the middle half of an n-element subarray as all but the smallest"
   },
   {
    "type": "body",
@@ -589,7 +589,7 @@
    "section_title": "9.2 Selection in expected linear time",
    "printed_page": 233,
    "pdf_page": 254,
-   "text": "Regardless of where the pivot falls, either all the elements greater than it or all the elements less than it, along with the pivot itself, will no longer be in play after partitioning. If the pivot falls into the middle ha lf, therefore, at least ⌈n/4⌉ − 1 elements less than the pivot or ⌈n/4⌉ − 1 elements greater than the pivot, plus the pivot, will no longer be in play after partitio ning. That is, at least ⌈n/4⌉ elements will no longer be in play. The number of elem ents remaining in play will be at most n − ⌈n/4⌉, which equals ⌊3n/4⌋ by Exercise 3.3-2 on page 70. Since"
+   "text": "Regardless of where the pivot falls, either all the elements greater than it or all the elements less than it, along with the pivot itself, will no longer be in play after partitioning. If the pivot falls into the middle ha lf, therefore, at least ⌈n/4⌉ − 1 elements less than the pivot or ⌈n/4⌉ − 1 elements greater than the pivot, plus the pivot, will no longer be in play after partitioning. That is, at least ⌈n/4⌉ elements will no longer be in play. The number of elements remaining in play will be at most n − ⌈n/4⌉, which equals ⌊3n/4⌋ by Exercise 3.3-2 on page 70. Since"
   },
   {
    "type": "body",
@@ -841,7 +841,7 @@
    "section_title": "9.2 Selection in expected linear time",
    "printed_page": 234,
    "pdf_page": 255,
-   "text": "By Lemma 9.1, the probability that a partitioning is helpful is at least 1/2. The probability is actually even higher, since a partit ioning is helpful even if the pivot does not fall into the middle half but the i th smallest element happens to lie in the smaller side of the partitioning. We’ll just use the lower bound of 1/2, however, and then equation (C.36) gives that E [X k ] ≤ 2 for k = 0,1,2,…,m − 1."
+   "text": "By Lemma 9.1, the probability that a partitioning is helpful is at least 1/2. The probability is actually even higher, since a partitioning is helpful even if the pivot does not fall into the middle half but the i th smallest element happens to lie in the smaller side of the partitioning. We’ll just use the lower bound of 1/2, however, and then equation (C.36) gives that E [X k ] ≤ 2 for k = 0,1,2,…,m − 1."
   },
   {
    "type": "body",
@@ -850,7 +850,7 @@
    "section_title": "9.2 Selection in expected linear time",
    "printed_page": 235,
    "pdf_page": 256,
-   "text": "Let’s derive an upper bound on how many comparisons are made altogether during partitioning, since the running time is dominat ed by the comparisons. Since we are calculating an upper bound, assume that the recursion goes all the way until only one element remains in play. The j th partitioning takes the set A (j −1) of elements in play, and it compares the randomly chos en pivot with all the other jA (j −1) j − 1 elements, so that the j th partitioning makes fewer than jA (j −1) j comparisons. The sets in the kth generation have sizes jA (h k ) j; jA (h k + 1) j,…; jA (h k + X k −1) j. Thus, the total number of comparisons during part itioning is less than m−1 X kD0 h k + X k −1 X j Dh k jA (j ) j ≤ m−1 X kD0 h k + X k −1 X j Dh k jA (h k ) j"
+   "text": "Let’s derive an upper bound on how many comparisons are made altogether during partitioning, since the running time is dominated by the comparisons. Since we are calculating an upper bound, assume that the recursion goes all the way until only one element remains in play. The j th partitioning takes the set A (j −1) of elements in play, and it compares the randomly chosen pivot with all the other jA (j −1) j − 1 elements, so that the j th partitioning makes fewer than jA (j −1) j comparisons. The sets in the kth generation have sizes jA (h k ) j; jA (h k + 1) j,…; jA (h k + X k −1) j. Thus, the total number of comparisons during part itioning is less than m−1 X kD0 h k + X k −1 X j Dh k jA (j ) j ≤ m−1 X kD0 h k + X k −1 X j Dh k jA (h k ) j"
   },
   {
    "type": "body",
@@ -895,7 +895,7 @@
    "section_title": "9.2 Selection in expected linear time",
    "printed_page": 235,
    "pdf_page": 256,
-   "text": "Since E [X k ] ≤ 2, we have that the expected total number of compari sons during partitioning is less than"
+   "text": "Since E [X k ] ≤ 2, we have that the expected total number of comparisons during partitioning is less than"
   },
   {
    "type": "body",
@@ -1175,7 +1175,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 237,
    "pdf_page": 258,
-   "text": "The pseudocode starts by executing the while loop in lines 1–10 to reduce the number r − p + 1 of elements in the subarray until it is divisible by 5. The while loop executes 0 to 4 times, each time rearranging the elements of A[p : r] so that A[p] contains the minimum element. If i = 1, which means that we actually want the minimum element, then the procedure simply retu rns it in line 7. Otherwise, SELECT eliminates the minimum from the subarray A[p : r] and iterates to find the (i − 1)st element in A[p + 1 : r]. Lines 9–10 do so by incrementing p and decrementing i . If the while loop completes all of its iterations without returning a x g"
+   "text": "The pseudocode starts by executing the while loop in lines 1–10 to reduce the number r − p + 1 of elements in the subarray until it is divisible by 5. The while loop executes 0 to 4 times, each time rearranging the elements of A[p : r] so that A[p] contains the minimum element. If i = 1, which means that we actually want the minimum element, then the procedure simply returns it in line 7. Otherwise, SELECT eliminates the minimum from the subarray A[p : r] and iterates to find the (i − 1)st element in A[p + 1 : r]. Lines 9–10 do so by incrementing p and decrementing i . If the while loop completes all of its iterations without returning a x g"
   },
   {
    "type": "body",
@@ -1202,7 +1202,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 238,
    "pdf_page": 259,
-   "text": "Arrows go from smaller elements to larger. The elem ents on the blue background are all known to be less than or equal to x and cannot fall into the high side of the partition around x. The elements on the yellow background are known to be greater than or equal to x and cannot fall into the low side of the partition around x. The pivot x belongs to both the blue and yellow regions and is shown on a green background. The elements on the white background could lie on either side of the partition. result, the procedure executes the core of the algorithm in lines 11–24, assured that the number r − p + 1 of elements in A[p : r] is evenly divisible by 5."
+   "text": "Arrows go from smaller elements to larger. The elements on the blue background are all known to be less than or equal to x and cannot fall into the high side of the partition around x. The elements on the yellow background are known to be greater than or equal to x and cannot fall into the low side of the partition around x. The pivot x belongs to both the blue and yellow regions and is shown on a green background. The elements on the white background could lie on either side of the partition. result, the procedure executes the core of the algorithm in lines 11–24, assured that the number r − p + 1 of elements in A[p : r] is evenly divisible by 5."
   },
   {
    "type": "body",
@@ -1337,7 +1337,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 240,
    "pdf_page": 261,
-   "text": "These two regions each contain at least 3g/2 elements. The number of group medians in the yellow region is ⌊g/2⌋ + 1, and for each group median, two additional elements are greater than it, making a tot al of 3.⌊g/2⌋ + 1/ ≥ 3g/2 elements. Similarly, the number of group medians in the blue region is ⌈g/2⌉, and for each group median, two additional elements are less than it, making a total of 3 ⌈g/2⌉ ≥ 3g/2."
+   "text": "These two regions each contain at least 3g/2 elements. The number of group medians in the yellow region is ⌊g/2⌋ + 1, and for each group median, two additional elements are greater than it, making a total of 3.⌊g/2⌋ + 1/ ≥ 3g/2 elements. Similarly, the number of group medians in the blue region is ⌈g/2⌉, and for each group median, two additional elements are less than it, making a total of 3 ⌈g/2⌉ ≥ 3g/2."
   },
   {
    "type": "body",
@@ -1436,7 +1436,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 241,
    "pdf_page": 262,
-   "text": "As in a comparison sort (see Section 8.1), SELECT and RANDOMIZED-SELECT determine information about the relative order of elements only by comparing elements. Recall from Chapter 8 that sorting requires Ω(n lg n) time in the comparison model, even on average (see Problem 8-1). The linear-time sorting algorithms in Chapter 8 make assumptions about the type of the input. In contrast, the lineartime selection algorithms in this chapter do not require any assumptions about the input’s type, only that the elements are distinct and can be pairwise compared according to a linear order. The algorithms in this c hapter are not subject to the Ω(n lg n) lower bound, because they manage to solve the selection problem without sorting all the elements. Thus, solving the sel ection problem by sorting and indexing, as presented in the introduction to this chapter, is asymptotically inefficient in the comparison model."
+   "text": "As in a comparison sort (see Section 8.1), SELECT and RANDOMIZED-SELECT determine information about the relative order of elements only by comparing elements. Recall from Chapter 8 that sorting requires Ω(n lg n) time in the comparison model, even on average (see Problem 8-1). The linear-time sorting algorithms in Chapter 8 make assumptions about the type of the input. In contrast, the lineartime selection algorithms in this chapter do not require any assumptions about the input’s type, only that the elements are distinct and can be pairwise compared according to a linear order. The algorithms in this c hapter are not subject to the Ω(n lg n) lower bound, because they manage to solve the selection problem without sorting all the elements. Thus, solving the selection problem by sorting and indexing, as presented in the introduction to this chapter, is asymptotically inefficient in the comparison model."
   },
   {
    "type": "exercise",
@@ -1774,7 +1774,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 245,
    "pdf_page": 266,
-   "text": "In this problem, you will use indicator random vari ables to a nalyze the procedure RANDOMIZED-SELECT in a manner akin to our analysis of RANDOMIZED-QUICKSORT in Section 7.4.2."
+   "text": "In this problem, you will use indicator random variables to a nalyze the procedure RANDOMIZED-SELECT in a manner akin to our analysis of RANDOMIZED-QUICKSORT in Section 7.4.2."
   },
   {
    "type": "body",
@@ -1801,7 +1801,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 245,
    "pdf_page": 266,
-   "text": "X ij k = I f ´ j is compared with ´ k sometime during the execution of the algorithm to find ´ i g : a. Give an exact expression for E [X ij k ]. (Hint: Your expression may have different values, depending on the values of i , j , and k.) b. Let X i denote the total number of comparisons between elem ents of array A when finding ´ i . Show that E [X i ] ≤ 2"
+   "text": "X ij k = I f ´ j is compared with ´ k sometime during the execution of the algorithm to find ´ i g : a. Give an exact expression for E [X ij k ]. (Hint: Your expression may have different values, depending on the values of i , j , and k.) b. Let X i denote the total number of comparisons between elements of array A when finding ´ i . Show that E [X i ] ≤ 2"
   },
   {
    "type": "body",
@@ -2376,7 +2376,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 251,
    "pdf_page": 272,
-   "text": "Unlike ordinary binary search trees, red-black trees are guaranteed to perform well: operations take O(lg n) time in the worst case. A red-black tree is a balanced search tree. Chapter 18 in Part V presents another kind of balanced search tree, called a B-tree. Although the mechanics of red-black trees are somewhat intricate, you can glean most of their properties from the chapter wit hout studying the mechanics in detail. Nevertheless, you probably will find walking through the code to be instructive."
+   "text": "Unlike ordinary binary search trees, red-black trees are guaranteed to perform well: operations take O(lg n) time in the worst case. A red-black tree is a balanced search tree. Chapter 18 in Part V presents another kind of balanced search tree, called a B-tree. Although the mechanics of red-black trees are somewhat intricate, you can glean most of their properties from the chapter without studying the mechanics in detail. Nevertheless, you probably will find walking through the code to be instructive."
   },
   {
    "type": "footnote",
@@ -2439,7 +2439,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 252,
    "pdf_page": 273,
-   "text": "Most programming languages require each element of a particular array to be the same size. If the elements of a given array mig ht occupy different numbers of bytes, then the above formulas fail to apply, si nce the element size b is not a constant. In such cases, the array elements are usu ally objects of varying sizes, and what actually appears in each array element is a pointer to the object. The number of bytes occupied by a pointer is typically the same, no matter what the pointer references, so that to access an object in an array, the above formulas give the address of the pointer to the object and then t he pointer must be followed to access the object itself."
+   "text": "Most programming languages require each element of a particular array to be the same size. If the elements of a given array might occupy different numbers of bytes, then the above formulas fail to apply, si nce the element size b is not a constant. In such cases, the array elements are usually objects of varying sizes, and what actually appears in each array element is a pointer to the object. The number of bytes occupied by a pointer is typically the same, no matter what the pointer references, so that to access an object in an array, the above formulas give the address of the pointer to the object and then t he pointer must be followed to access the object itself."
   }
  ]
 }

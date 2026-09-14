@@ -84,7 +84,7 @@
    "section_title": "10.1 Simple array-based data structures: arrays, matrices, stacks, queues",
    "printed_page": 252,
    "pdf_page": 273,
-   "text": "Most programming languages require each element of a particular array to be the same size. If the elements of a given array mig ht occupy different numbers of bytes, then the above formulas fail to apply, si nce the element size b is not a constant. In such cases, the array elements are usu ally objects of varying sizes, and what actually appears in each array element is a pointer to the object. The number of bytes occupied by a pointer is typically the same, no matter what the pointer references, so that to access an object in an array, the above formulas give the address of the pointer to the object and then t he pointer must be followed to access the object itself."
+   "text": "Most programming languages require each element of a particular array to be the same size. If the elements of a given array might occupy different numbers of bytes, then the above formulas fail to apply, si nce the element size b is not a constant. In such cases, the array elements are usually objects of varying sizes, and what actually appears in each array element is a pointer to the object. The number of bytes occupied by a pointer is typically the same, no matter what the pointer references, so that to access an object in an array, the above formulas give the address of the pointer to the object and then t he pointer must be followed to access the object itself."
   },
   {
    "type": "body",
@@ -138,7 +138,7 @@
    "section_title": "10.1 Simple array-based data structures: arrays, matrices, stacks, queues",
    "printed_page": 253,
    "pdf_page": 274,
-   "text": "We typically represent a matrix or two-dimensional array by one or more one- dimensional arrays. The two most common ways to sto re a matrix are row-major and column-major order. Let’s consider an m×n matrix—a matrix with m rows and n columns. In row-major order, the matrix is stored row by row, and in columnmajor order, the matrix is stored column by column. For exampl e, consider the 2 × 3 matrix"
+   "text": "We typically represent a matrix or two-dimensional array by one or more one- dimensional arrays. The two most common ways to store a matrix are row-major and column-major order. Let’s consider an m×n matrix—a matrix with m rows and n columns. In row-major order, the matrix is stored row by row, and in columnmajor order, the matrix is stored column by column. For exampl e, consider the 2 × 3 matrix"
   },
   {
    "type": "body",
@@ -246,7 +246,7 @@
    "section_title": "10.1 Simple array-based data structures: arrays, matrices, stacks, queues",
    "printed_page": 254,
    "pdf_page": 275,
-   "text": "Stacks and queues are dynamic sets in which the ele ment removed from the set by the DELETE operation is prespecified. In a stack, the element deleted from the set is the one most recently inserted: the stac k implements a last-in, first-out, or LIFO, policy. Similarly, in a queue, the element deleted is always the one that has been in the set for the longest time: the queue implements a first-in, first-out, or FIFO, policy. There are several efficient ways to implement stacks and queues on a computer. Here, you will see how to use an array with attributes to store them."
+   "text": "Stacks and queues are dynamic sets in which the element removed from the set by the DELETE operation is prespecified. In a stack, the element deleted from the set is the one most recently inserted: the stac k implements a last-in, first-out, or LIFO, policy. Similarly, in a queue, the element deleted is always the one that has been in the set for the longest time: the queue implements a first-in, first-out, or FIFO, policy. There are several efficient ways to implement stacks and queues on a computer. Here, you will see how to use an array with attributes to store them."
   },
   {
    "type": "body",
@@ -255,7 +255,7 @@
    "section_title": "10.1 Simple array-based data structures: arrays, matrices, stacks, queues",
    "printed_page": 254,
    "pdf_page": 275,
-   "text": "The INSERT operation on a stack is often called PUSH, and the DELETE operation, which does not take an element argument, is o ften called POP. These names are allusions to physical stacks, such as the spring-loaded stacks of plates used in cafeterias. The order in which plates are popped from the stack is the reverse of the order in which they were pushed onto the sta ck, since only the top plate is accessible."
+   "text": "The INSERT operation on a stack is often called PUSH, and the DELETE operation, which does not take an element argument, is o ften called POP. These names are allusions to physical stacks, such as the spring-loaded stacks of plates used in cafeterias. The order in which plates are popped from the stack is the reverse of the order in which they were pushed onto the stack, since only the top plate is accessible."
   },
   {
    "type": "body",
@@ -635,7 +635,7 @@
    "section_title": "10.1 Simple array-based data structures: arrays, matrices, stacks, queues",
    "printed_page": 256,
    "pdf_page": 277,
-   "text": "We call the INSERT operation on a queue ENQUEUE , and we call the DELETE operation DEQUEUE . Like the stack operation POP, DEQUEUE takes no element argument. The FIFO property of a queue causes it to operate like a line of customers waiting for service. The queue has a head and a tail. When an element is enqueued, it takes its place at the tail of the que ue, just as a newly arriving customer takes a place at the end of the line. The element dequeued is always the one at the head of the queue, like the customer at the head of the line, who has waited the longest."
+   "text": "We call the INSERT operation on a queue ENQUEUE , and we call the DELETE operation DEQUEUE . Like the stack operation POP, DEQUEUE takes no element argument. The FIFO property of a queue causes it to operate like a line of customers waiting for service. The queue has a head and a tail. When an element is enqueued, it takes its place at the tail of the queue, just as a newly arriving customer takes a place at the end of the line. The element dequeued is always the one at the head of the queue, like the customer at the head of the line, who has waited the longest."
   },
   {
    "type": "body",
@@ -859,7 +859,7 @@
    "section_title": "10.1 Simple array-based data structures: arrays, matrices, stacks, queues",
    "printed_page": 258,
    "pdf_page": 279,
-   "text": "10.1-6 Whereas a stack allows insertion and deletion of el ements at only one end, and a queue allows insertion at one end and deletion at t he other end, a deque (doubleended queue, pronounced like \"deck\") allows inserti on and deletion at both ends."
+   "text": "10.1-6 Whereas a stack allows insertion and deletion of el ements at only one end, and a queue allows insertion at one end and deletion at t he other end, a deque (doubleended queue, pronounced like \"deck\") allows insertion and deletion at both ends."
   },
   {
    "type": "body",
@@ -976,7 +976,7 @@
    "section_title": "10.2 Linked lists",
    "printed_page": 259,
    "pdf_page": 280,
-   "text": "A list may have one of several forms. It may be eit her singly linked or doubly linked, it may be sorted or not, and it may be circ ular or not. If a list is singly linked, each element has a next pointer but not a prev pointer. If a list is sorted, the linear order of the list corresponds to the linear order of keys stored in elements of the list. The minimum element is then the head o f the list, and the maximum element is the tail. If the list is unsorted, the elements can appear in any order. In a circular list, the prev pointer of the head of the list points to the tail, and the next pointer of the tail of the list points to the head. You can think of a circular list as a ring of elements. In the remainder of this section, we assume that the lists we are working with are unsorted and doubly linked."
+   "text": "A list may have one of several forms. It may be either singly linked or doubly linked, it may be sorted or not, and it may be circular or not. If a list is singly linked, each element has a next pointer but not a prev pointer. If a list is sorted, the linear order of the list corresponds to the linear order of keys stored in elements of the list. The minimum element is then the head o f the list, and the maximum element is the tail. If the list is unsorted, the elements can appear in any order. In a circular list, the prev pointer of the head of the list points to the tail, and the next pointer of the tail of the list points to the head. You can think of a circular list as a ring of elements. In the remainder of this section, we assume that the lists we are working with are unsorted and doubly linked."
   },
   {
    "type": "body",
@@ -1341,7 +1341,7 @@
    "section_title": "10.2 Linked lists",
    "printed_page": 262,
    "pdf_page": 283,
-   "text": "A sentinel is a dummy object that allows us to simplify bounda ry conditions."
+   "text": "A sentinel is a dummy object that allows us to simplify boundary conditions."
   },
   {
    "type": "body",
@@ -1474,7 +1474,7 @@
    "section_title": "10.2 Linked lists",
    "printed_page": 263,
    "pdf_page": 284,
-   "text": "Searching a circular, doubly linked list with a sen tinel has the same asymptotic running time as without a sentinel, but it is possible to decrease the constant factor."
+   "text": "Searching a circular, doubly linked list with a sentinel has the same asymptotic running time as without a sentinel, but it is possible to decrease the constant factor."
   },
   {
    "type": "body",
@@ -1555,7 +1555,7 @@
    "section_title": "10.2 Linked lists",
    "printed_page": 264,
    "pdf_page": 285,
-   "text": "10.2-5 Give a Θ(n)-time nonrecursive procedure that reverses a singly linked list of n elements. The procedure should use no more than con stant storage beyond that needed for the list itself."
+   "text": "10.2-5 Give a Θ(n)-time nonrecursive procedure that reverses a singly linked list of n elements. The procedure should use no more than constant storage beyond that needed for the list itself."
   },
   {
    "type": "body",
@@ -1735,7 +1735,7 @@
    "section_title": "10.3 Representing rooted trees",
    "printed_page": 267,
    "pdf_page": 288,
-   "text": "We sometimes represent rooted trees in other ways. In Chapter 6, for example, we represented a heap, which is based on a complete binary tree, by a single array along with an attribute giving the index of the last node in the heap. The trees that appear in Chapter 19 are traversed only toward the root, and so only the parent pointers are present: there are no pointers to chil dren. Many other schemes are possible. Which scheme is best depends on the application."
+   "text": "We sometimes represent rooted trees in other ways. In Chapter 6, for example, we represented a heap, which is based on a complete binary tree, by a single array along with an attribute giving the index of the last node in the heap. The trees that appear in Chapter 19 are traversed only toward the root, and so only the parent pointers are present: there are no pointers to children. Many other schemes are possible. Which scheme is best depends on the application."
   },
   {
    "type": "exercise",
@@ -2044,7 +2044,7 @@
    "section_title": "10.3 Representing rooted trees",
    "printed_page": 269,
    "pdf_page": 290,
-   "text": "We can represent a singly linked list with two arra ys, key and next . Given the index i of an element, its value is stored in key[i], and the index of its successor is given by next [i], where next [i] DNIL for the last element. We also need the index head of the first element in the list. An n-element list stored in this way is compact if it is stored only in positions 1 through n of the key and next arrays."
+   "text": "We can represent a singly linked list with two arrays, key and next . Given the index i of an element, its value is stored in key[i], and the index of its successor is given by next [i], where next [i] DNIL for the last element. We also need the index head of the first element in the list. An n-element list stored in this way is compact if it is stored only in positions 1 through n of the key and next arrays."
   },
   {
    "type": "body",
@@ -2168,7 +2168,7 @@
    "section_title": "10.3 Representing rooted trees",
    "printed_page": 270,
    "pdf_page": 291,
-   "text": "To compare the execution of the two algorithms, ass ume that the sequence of calls of RANDOM(1,n) yields the same sequence of integers for both algorithms. a. Argue that for any value of t , COMPACT-LIST-SEARCH (key; next ; head,n,k) and COMPACT-LIST-SEARCH 0 (key; next ; head,n,k,t) return the same result and that the number of iterations of the while loop of lines 2–8 in COMPACT-LIST-SEARCH is at most the total number of iterations of both the for and while loops in COMPACT-LIST-SEARCH 0 ."
+   "text": "To compare the execution of the two algorithms, assume that the sequence of calls of RANDOM(1,n) yields the same sequence of integers for both algorithms. a. Argue that for any value of t , COMPACT-LIST-SEARCH (key; next ; head,n,k) and COMPACT-LIST-SEARCH 0 (key; next ; head,n,k,t) return the same result and that the number of iterations of the while loop of lines 2–8 in COMPACT-LIST-SEARCH is at most the total number of iterations of both the for and while loops in COMPACT-LIST-SEARCH 0 ."
   },
   {
    "type": "body",
@@ -2258,7 +2258,7 @@
    "section_title": "10.3 Representing rooted trees",
    "printed_page": 272,
    "pdf_page": 293,
-   "text": "Many applications require a dynamic set that suppor ts only the dictionary operations INSERT , SEARCH , and DELETE . For example, a compiler that translates a programming language maintains a symbol table, in w hich the keys of elements are arbitrary character strings corresponding to identifiers in the language. A hash table is an effective data structure for implementing dictionaries. Although searching for an element in a hash table can take as long as searching for an element in a linked list4Θ(n) time in the worst case—in practice, hashing performs extremely well. Under reasonable assumptions, the average tim e to search for an element in a hash table is O(1). Indeed, the built-in dictionaries of Python are implemented with hash tables."
+   "text": "Many applications require a dynamic set that supports only the dictionary operations INSERT , SEARCH , and DELETE . For example, a compiler that translates a programming language maintains a symbol table, in w hich the keys of elements are arbitrary character strings corresponding to identifiers in the language. A hash table is an effective data structure for implementing dictionaries. Although searching for an element in a hash table can take as long as searching for an element in a linked list4Θ(n) time in the worst case—in practice, hashing performs extremely well. Under reasonable assumptions, the average tim e to search for an element in a hash table is O(1). Indeed, the built-in dictionaries of Python are implemented with hash tables."
   },
   {
    "type": "body",
@@ -2276,7 +2276,7 @@
    "section_title": "10.3 Representing rooted trees",
    "printed_page": 272,
    "pdf_page": 293,
-   "text": "When the number of keys actually stored is small re lative to the total number of possible keys, hash tables become an effective a lternative to directly addressing an array, since a hash table typically uses an array of size proportional to the number of keys actually stored. Instead of using the key as an array index directly, we compute the array index from the key. Section 11.2 presents the main ideas, focusing on \"chaining\" as a way to handle \"collisio ns,\" in which more than one key maps to the same array index. Section 11.3 describes how to compute array indices from keys using hash functions. We present and analyze several variations on the basic theme. Section 11.4 looks at \"open addressing,\" which is another way to deal with collisions. The bottom line is that ha shing is an extremely effective and practical technique: the basic dictionary operations require only O(1) time on the average. Section 11.5 discusses the hierarchical memory systems of modern computer systems have and illustrates how to design hash tables that work well in such systems."
+   "text": "When the number of keys actually stored is small re lative to the total number of possible keys, hash tables become an effective a lternative to directly addressing an array, since a hash table typically uses an array of size proportional to the number of keys actually stored. Instead of using the key as an array index directly, we compute the array index from the key. Section 11.2 presents the main ideas, focusing on \"chaining\" as a way to handle \"collisions,\" in which more than one key maps to the same array index. Section 11.3 describes how to compute array indices from keys using hash functions. We present and analyze several variations on the basic theme. Section 11.4 looks at \"open addressing,\" which is another way to deal with collisions. The bottom line is that ha shing is an extremely effective and practical technique: the basic dictionary operations require only O(1) time on the average. Section 11.5 discusses the hierarchical memory systems of modern computer systems have and illustrates how to design hash tables that work well in such systems."
   }
  ]
 }

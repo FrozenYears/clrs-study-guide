@@ -66,7 +66,7 @@
    "section_title": "30.1 Representing polynomials",
    "printed_page": 879,
    "pdf_page": 900,
-   "text": "The coefficient and point-value representations of polynomials are in a sense equivalent: a polynomial in point-value form has a unique counterpart in coefficient form. This section introduces the two representatio ns and shows how to combine them in order to multiply two degree-bound n polynomials in Θ(n lg n) time."
+   "text": "The coefficient and point-value representations of polynomials are in a sense equivalent: a polynomial in point-value form has a unique counterpart in coefficient form. This section introduces the two representations and shows how to combine them in order to multiply two degree-bound n polynomials in Θ(n lg n) time."
   },
   {
    "type": "body",
@@ -507,7 +507,7 @@
    "section_title": "30.1 Representing polynomials",
    "printed_page": 882,
    "pdf_page": 903,
-   "text": "Similarly, the point-value representation is convenient for multiplying polynomials. If C(x) = A(x)B(x) , then C(x k ) = A(x k )B(x k ) for any point x k , and to obtain a point-value representation for C , just pointwise multiply a point-value representation for A by a point-value representation for B . Polynomial multiplication differs from polynomial addition in one key aspect, however: degree(C) = degree(A) C degree(B), so that if A and B have degree-bound n, then C has degree-bound 2n. A standard point-value representation for A and B consists of n point-value pairs for each polynomial. Multiplying these together gives n pointvalue pairs, but 2n pairs are necessary to interpolate a unique polynom ial C of degree-bound 2n. (See Exercise 30.1-4.) Instead, begin with \"extended\" pointvalue representations for A and for B consisting of 2n point-value pairs each."
+   "text": "Similarly, the point-value representation is convenient for multiplying polynomials. If C(x) = A(x)B(x) , then C(x k ) = A(x k )B(x k ) for any point x k , and to obtain a point-value representation for C , just pointwise multiply a point-value representation for A by a point-value representation for B . Polynomial multiplication differs from polynomial addition in one key aspect, however: degree(C) = degree(A) C degree(B), so that if A and B have degree-bound n, then C has degree-bound 2n. A standard point-value representation for A and B consists of n point-value pairs for each polynomial. Multiplying these together gives n pointvalue pairs, but 2n pairs are necessary to interpolate a unique polynomial C of degree-bound 2n. (See Exercise 30.1-4.) Instead, begin with \"extended\" pointvalue representations for A and for B consisting of 2n point-value pairs each."
   },
   {
    "type": "body",
@@ -759,7 +759,7 @@
    "section_title": "30.1 Representing polynomials",
    "printed_page": 883,
    "pdf_page": 904,
-   "text": "Any points can serve as evaluation points, but cert ain evaluation points allow conversion between representations in only Θ(n lg n) time. As we’ll see in Section 30.2, if \"complex roots of unity\" are the evaluation points, then the discrete Fourier transform (or DFT) evaluates and the inverse DFT interpolates. Section 30.2 shows how the FFT accomplishes the DFT and inverse DFT operations in Θ(n lg n) time."
+   "text": "Any points can serve as evaluation points, but certain evaluation points allow conversion between representations in only Θ(n lg n) time. As we’ll see in Section 30.2, if \"complex roots of unity\" are the evaluation points, then the discrete Fourier transform (or DFT) evaluates and the inverse DFT interpolates. Section 30.2 shows how the FFT accomplishes the DFT and inverse DFT operations in Θ(n lg n) time."
   },
   {
    "type": "body",
@@ -939,7 +939,7 @@
    "section_title": "30.1 Representing polynomials",
    "printed_page": 885,
    "pdf_page": 906,
-   "text": "30.1-6 Explain what is wrong with the \"obvious\" approach t o polynomial division using a point-value representation: dividing the corresponding y values. Discuss separately the case in which the division comes out exa ctly and the case in which it doesn’t."
+   "text": "30.1-6 Explain what is wrong with the \"obvious\" approach t o polynomial division using a point-value representation: dividing the corresponding y values. Discuss separately the case in which the division comes out exactly and the case in which it doesn’t."
   },
   {
    "type": "exercise",
@@ -1407,7 +1407,7 @@
    "section_title": "30.2 The DFT and FFT",
    "printed_page": 888,
    "pdf_page": 909,
-   "text": "The fast Fourier transform (FFT) takes advantage of the special properties of the complex roots of unity to compute DFT n (a) in Θ(n lg n) time, as opposed to the Θ(n 2 ) time of the straightforward method. Assume througho ut that n is an exact power of 2. Although strategies for dealing with sizes that a re not exact powers of 2 are known, they are beyond the scope of this book."
+   "text": "The fast Fourier transform (FFT) takes advantage of the special properties of the complex roots of unity to compute DFT n (a) in Θ(n lg n) time, as opposed to the Θ(n 2 ) time of the straightforward method. Assume throughout that n is an exact power of 2. Although strategies for dealing with sizes that a re not exact powers of 2 are known, they are beyond the scope of this book."
   },
   {
    "type": "footnote",
@@ -1416,7 +1416,7 @@
    "section_title": "30.2 The DFT and FFT",
    "printed_page": 888,
    "pdf_page": 909,
-   "text": "3 The length n is actually what Section 30.1 referred to as 2n, since the degree-bound of the given polynomials doubles prior to evaluation. In the con text of polynomial multiplication, therefore, we are actually working with complex .2n/th roots of unity."
+   "text": "3 The length n is actually what Section 30.1 referred to as 2n, since the degree-bound of the given polynomials doubles prior to evaluation. In the context of polynomial multiplication, therefore, we are actually working with complex .2n/th roots of unity."
   },
   {
    "type": "body",
@@ -1652,7 +1652,7 @@
    "section_title": "30.2 The DFT and FFT",
    "printed_page": 890,
    "pdf_page": 911,
-   "text": "4 The downside of iteratively updating ! is that round-off errors can accumulate, especially for larger input sizes. Several techniques to limit the magnit ude of FFT round-off errors have been proposed, but are beyond the scope of this book. If several FFTs are going to be run on inputs of the same size, then it might be worthwhile to directly precompute a table of all n/2 values of ! k n . y kC(n/2) = y even k − ! k n y odd k"
+   "text": "4 The downside of iteratively updating ! is that round-off errors can accumulate, especially for larger input sizes. Several techniques to limit the magnitude of FFT round-off errors have been proposed, but are beyond the scope of this book. If several FFTs are going to be run on inputs of the same size, then it might be worthwhile to directly precompute a table of all n/2 values of ! k n . y kC(n/2) = y even k − ! k n y odd k"
   },
   {
    "type": "body",
@@ -2156,7 +2156,7 @@
    "section_title": "30.3 FFT circuits",
    "printed_page": 894,
    "pdf_page": 915,
-   "text": "Many of the FFT’s applications in signal processing require the utmost speed, and so the FFT is often implemented as a circuit in har dware. The FFT’s divide-andconquer structure enables the circuit to have a parallel structure so that the depth of the circuit—the maximum number of computational elements between any output and any input that can reach it—is Θ(lg n). Moreover, the structure of the FFT circuit has several interesting mathematical proper ties, which we won’t go into here."
+   "text": "Many of the FFT’s applications in signal processing require the utmost speed, and so the FFT is often implemented as a circuit in hardware. The FFT’s divide-andconquer structure enables the circuit to have a parallel structure so that the depth of the circuit—the maximum number of computational elements between any output and any input that can reach it—is Θ(lg n). Moreover, the structure of the FFT circuit has several interesting mathematical proper ties, which we won’t go into here."
   },
   {
    "type": "body",
@@ -2264,7 +2264,7 @@
    "section_title": "30.3 FFT circuits",
    "printed_page": 895,
    "pdf_page": 916,
-   "text": "Conquer by recursively computing the DFTs of the two subpro blems, each of size n/2."
+   "text": "Conquer by recursively computing the DFTs of the two subproblems, each of size n/2."
   },
   {
    "type": "body",
@@ -2363,7 +2363,7 @@
    "section_title": "30.3 FFT circuits",
    "printed_page": 896,
    "pdf_page": 917,
-   "text": "Figure 30.5 The tree of input vectors to the recursive calls of the FFT procedure. The initial invocation is for n = 8. to combine the results. The base case of the recurs ion occurs when n = 1, where the sole output value equals the sole input value. An FFT 1 circuit, therefore, does nothing, and so the smallest nontrivial FFT circuit is FFT 2 , a single butterfly operation whose twiddle factor is ! 0"
+   "text": "Figure 30.5 The tree of input vectors to the recursive calls of the FFT procedure. The initial invocation is for n = 8. to combine the results. The base case of the recursion occurs when n = 1, where the sole output value equals the sole input value. An FFT 1 circuit, therefore, does nothing, and so the smallest nontrivial FFT circuit is FFT 2 , a single butterfly operation whose twiddle factor is ! 0"
   },
   {
    "type": "body",
@@ -2408,7 +2408,7 @@
    "section_title": "30.3 FFT circuits",
    "printed_page": 897,
    "pdf_page": 918,
-   "text": "Figure 30.5, for example, the leaves appear in the order 0,4,2,6,1,5,3,7 . This sequence in binary is 000,100,010,110,001,101,011,111 , and you can obtain it by reversing the bits of each number in the sequ ence 0,1,2,3,4,6,7 or, in binary, 000,001,010,011,100,101,110,111 . To see in general that the input vector should be rearranged by a bit-reversal permutation, note that at the top level of the tree, indices whose low-order bit is 0 go into the left subtree and indices whose low-order bit is 1 go into the right subtree. Stripping off the low-order bit at each level, continue this process down the tree, until y ou get the order given by the bit-reversal permutation at the leaves."
+   "text": "Figure 30.5, for example, the leaves appear in the order 0,4,2,6,1,5,3,7 . This sequence in binary is 000,100,010,110,001,101,011,111 , and you can obtain it by reversing the bits of each number in the sequence 0,1,2,3,4,6,7 or, in binary, 000,001,010,011,100,101,110,111 . To see in general that the input vector should be rearranged by a bit-reversal permutation, note that at the top level of the tree, indices whose low-order bit is 0 go into the left subtree and indices whose low-order bit is 1 go into the right subtree. Stripping off the low-order bit at each level, continue this process down the tree, until y ou get the order given by the bit-reversal permutation at the leaves."
   },
   {
    "type": "body",
@@ -2426,7 +2426,7 @@
    "section_title": "30.3 FFT circuits",
    "printed_page": 897,
    "pdf_page": 918,
-   "text": "Figure 30.6 depicts the entire circuit for n = 8. The circuit begins with a bitreversal permutation of the inputs, followed by lg n stages, each stage consisting of n/2 butterflies executed in parallel. Assuming that each butterfly circuit has constant depth, the full circuit has depth Θ(lg n). The butterfly operations at each level of recursion in the FFT procedure are indepen dent, and so the circuit performs them in parallel. The figure shows wires running from left to right, carrying values through the lg n stages. For s = 1,2,…; lg n, stage s consists of n/2 s groups of butterflies, with 2 s−1 butterflies per group. The twiddle factors in stage s are ! 0 m ,! 1 m ,…,! m/2−1 m , where m = 2 s ."
+   "text": "Figure 30.6 depicts the entire circuit for n = 8. The circuit begins with a bitreversal permutation of the inputs, followed by lg n stages, each stage consisting of n/2 butterflies executed in parallel. Assuming that each butterfly circuit has constant depth, the full circuit has depth Θ(lg n). The butterfly operations at each level of recursion in the FFT procedure are independent, and so the circuit performs them in parallel. The figure shows wires running from left to right, carrying values through the lg n stages. For s = 1,2,…; lg n, stage s consists of n/2 s groups of butterflies, with 2 s−1 butterflies per group. The twiddle factors in stage s are ! 0 m ,! 1 m ,…,! m/2−1 m , where m = 2 s ."
   },
   {
    "type": "exercise",
@@ -2777,7 +2777,7 @@
    "section_title": "30.3 FFT circuits",
    "printed_page": 901,
    "pdf_page": 922,
-   "text": "As defined, the discrete Fourier transform requires computation with complex numbers, which can result in a loss of precision due to round-off errors. For some problems, the answer is known to contain only integ ers, and a variant of the FFT based on modular arithmetic can guarantee that the answer is calculated exactly."
+   "text": "As defined, the discrete Fourier transform requires computation with complex numbers, which can result in a loss of precision due to round-off errors. For some problems, the answer is known to contain only integers, and a variant of the FFT based on modular arithmetic can guarantee that the answer is calculated exactly."
   },
   {
    "type": "body",
@@ -2849,7 +2849,7 @@
    "section_title": "30.3 FFT circuits",
    "printed_page": 902,
    "pdf_page": 923,
-   "text": "Fourier analysis is not limited to 1-dimensional data. It is widely used in image processing to analyze data in two or more dimension s. The boo ks by Gonzalez and Woods [194] and Pratt [363] discuss multidimensional Fourier transforms and their use in image processing, and books by Tolimie ri, An, and Lu [439] and Van"
+   "text": "Fourier analysis is not limited to 1-dimensional data. It is widely used in image processing to analyze data in two or more dimension s. The books by Gonzalez and Woods [194] and Pratt [363] discuss multidimensional Fourier transforms and their use in image processing, and books by Tolimie ri, An, and Lu [439] and Van"
   },
   {
    "type": "body",
@@ -2876,7 +2876,7 @@
    "section_title": "30.3 FFT circuits",
    "printed_page": 902,
    "pdf_page": 923,
-   "text": "The FFT had in fact been discovered many times previously, but its importance was not fully realized before the advent of modern digi tal computers. Although Press, Teukolsky, Vetterling, and Flannery attribute the o rigins of the method to Runge and K¨ onig in 1924, an article by Heideman, Johnson, and Burrus [211] traces the history of the FFT as far back as C. F. Gauss in 1805."
+   "text": "The FFT had in fact been discovered many times previously, but its importance was not fully realized before the advent of modern digital computers. Although Press, Teukolsky, Vetterling, and Flannery attribute the o rigins of the method to Runge and K¨ onig in 1924, an article by Heideman, Johnson, and Burrus [211] traces the history of the FFT as far back as C. F. Gauss in 1805."
   },
   {
    "type": "body",
@@ -2957,7 +2957,7 @@
    "section_title": "30.3 FFT circuits",
    "printed_page": 903,
    "pdf_page": 924,
-   "text": "In this chapter, a \"large input\" typically means an input containing <large in- tegers= rather than an input containing \"many integ ers\" (as for sorting). Thus, the size of an input depends on the number of bits required to represent that in- put, not just the number of integers in the input. An algorithm with integer in-"
+   "text": "In this chapter, a \"large input\" typically means an input containing <large in- tegers= rather than an input containing \"many integers\" (as for sorting). Thus, the size of an input depends on the number of bits required to represent that in- put, not just the number of integers in the input. An algorithm with integer in-"
   }
  ]
 }

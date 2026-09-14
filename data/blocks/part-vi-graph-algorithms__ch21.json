@@ -951,7 +951,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 595,
    "pdf_page": 616,
-   "text": "Figure 21.5 The execution of Prim9s algorithm on the graph from Figure 21.1. The root vertex is a. Blue vertices and edges belong to the tree being grown, and tan vertices have yet to be added to the tree. At each step of the algorithm, the ver tices in the tree determine a cut of the graph, and a light edge crossing the cut is added to the tree. The edge and vertex added to the tree are highlighted in orange. In the second step (part (c)), for examp le, the algorithm has a choice of adding either edge (b,c) or edge (a,h) to the tree since both are light edges crossing the cut. a light edge that connects A to an isolated vertex—one on which no edge of A is incident. By Corollary 21.2, this rule adds only edges that are safe for A. Therefore, when the algorithm terminates, the edges in A form a minimum spanning tree."
+   "text": "Figure 21.5 The execution of Prim9s algorithm on the graph from Figure 21.1. The root vertex is a. Blue vertices and edges belong to the tree being grown, and tan vertices have yet to be added to the tree. At each step of the algorithm, the vertices in the tree determine a cut of the graph, and a light edge crossing the cut is added to the tree. The edge and vertex added to the tree are highlighted in orange. In the second step (part (c)), for example, the algorithm has a choice of adding either edge (b,c) or edge (a,h) to the tree since both are light edges crossing the cut. a light edge that connects A to an isolated vertex—one on which no edge of A is incident. By Corollary 21.2, this rule adds only edges that are safe for A. Therefore, when the algorithm terminates, the edges in A form a minimum spanning tree."
   },
   {
    "type": "pseudocode",
@@ -1074,7 +1074,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 597,
    "pdf_page": 618,
-   "text": "2. The vertices already placed into the minimum spa nning tree are those in V − Q."
+   "text": "2. The vertices already placed into the minimum spanning tree are those in V − Q."
   },
   {
    "type": "body",
@@ -1155,7 +1155,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 597,
    "pdf_page": 618,
-   "text": "Within the for loop, the test for membership in Q in line 11 can take constant time if you keep a bit for each vertex that indicat es whether it belongs to Q and update the bit when the vertex is removed from Q. Each call to DECREASE- KEY in line 14 takes O(lg V) time. Thus, the total time for Prim9s algorithm is O(V lg V + E lg V) = O(E lg V) , which is asymptotically the same as for our implementation of Kruskal9s algorithm."
+   "text": "Within the for loop, the test for membership in Q in line 11 can take constant time if you keep a bit for each vertex that indicates whether it belongs to Q and update the bit when the vertex is removed from Q. Each call to DECREASE- KEY in line 14 takes O(lg V) time. Thus, the total time for Prim9s algorithm is O(V lg V + E lg V) = O(E lg V) , which is asymptotically the same as for our implementation of Kruskal9s algorithm."
   },
   {
    "type": "body",
@@ -1164,7 +1164,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 597,
    "pdf_page": 618,
-   "text": "You can further improve the asymptotic running time of Prim9 s algorithm by implementing the min-priority queue with a Fibonacci heap (see page 478). If a Fibonacci heap holds |V| elements, an EXTRACT-MIN operation takes O(lg V) amortized time and each INSERT and DECREASE-KEY operation takes only O(1) amortized time. Therefore, by using a Fibonacci hea p to impl ement the minpriority queue Q, the running time of Prim9s algorithm improves to O(ECV lg V) ."
+   "text": "You can further improve the asymptotic running time of Prim9 s algorithm by implementing the min-priority queue with a Fibonacci heap (see page 478). If a Fibonacci heap holds |V| elements, an EXTRACT-MIN operation takes O(lg V) amortized time and each INSERT and DECREASE-KEY operation takes only O(1) amortized time. Therefore, by using a Fibonacci hea p to implement the minpriority queue Q, the running time of Prim9s algorithm improves to O(ECV lg V) ."
   },
   {
    "type": "exercise",
@@ -1200,7 +1200,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 598,
    "pdf_page": 619,
-   "text": "21.2-4 Suppose that all edge weights in a graph are intege rs in the range from 1 to |V|."
+   "text": "21.2-4 Suppose that all edge weights in a graph are integers in the range from 1 to |V|."
   },
   {
    "type": "body",
@@ -1218,7 +1218,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 598,
    "pdf_page": 619,
-   "text": "21.2-5 Suppose that all edge weights in a graph are intege rs in the range from 1 to |V|."
+   "text": "21.2-5 Suppose that all edge weights in a graph are integers in the range from 1 to |V|."
   },
   {
    "type": "body",
@@ -1236,7 +1236,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 598,
    "pdf_page": 619,
-   "text": "21.2-6 Professor Borden proposes a new divide-and-conquer algorithm for computing minimum spanning trees, which goes as follows. Given a graph G = (V,E) , partition the set V of vertices into two sets V 1 and V 2 such that jV 1 j and jV 2 j differ by at most 1. Let E 1 be the set of edges that are incident only on vertices in V 1 , and let E 2 be the set of edges that are incident only on vertices in V 2 . Recursively solve a minimum-spanning-tree problem on each of the two subgraphs G 1 = (V 1 ,E 1 ) and G 2 = (V 2 ,E 2 ). Finally, select the minimum-weight edge in E that crosses the cut (V 1 ,V 2 ), and use this edge to unite the resulting two mini mum spanning trees into a single spanning tree."
+   "text": "21.2-6 Professor Borden proposes a new divide-and-conquer algorithm for computing minimum spanning trees, which goes as follows. Given a graph G = (V,E) , partition the set V of vertices into two sets V 1 and V 2 such that jV 1 j and jV 2 j differ by at most 1. Let E 1 be the set of edges that are incident only on vertices in V 1 , and let E 2 be the set of edges that are incident only on vertices in V 2 . Recursively solve a minimum-spanning-tree problem on each of the two subgraphs G 1 = (V 1 ,E 1 ) and G 2 = (V 2 ,E 2 ). Finally, select the minimum-weight edge in E that crosses the cut (V 1 ,V 2 ), and use this edge to unite the resulting two minimum spanning trees into a single spanning tree."
   },
   {
    "type": "body",
@@ -1263,7 +1263,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 599,
    "pdf_page": 620,
-   "text": "Suppose that the edge weights in a graph are unifor mly distributed over the half- open interval [0,1/. Which algorithm, Kruskal9s or Prim9s, can you make run faster?"
+   "text": "Suppose that the edge weights in a graph are uniformly distributed over the half- open interval [0,1/. Which algorithm, Kruskal9s or Prim9s, can you make run faster?"
   },
   {
    "type": "body",
@@ -1299,7 +1299,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 599,
    "pdf_page": 620,
-   "text": "Let G = (V,E) be an undirected, connected graph whose weight func tion is w W E ! R, and suppose that |E| ≥ |V| and all edge weights are distinct."
+   "text": "Let G = (V,E) be an undirected, connected graph whose weight function is w W E ! R, and suppose that |E| ≥ |V| and all edge weights are distinct."
   },
   {
    "type": "body",
@@ -1317,7 +1317,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 599,
    "pdf_page": 620,
-   "text": "(u,v) 2 T and some edge (x,y) … T such that (T − f(u,v) g) [ f(x,y) g is a second-best minimum spanning tree of G. c. Now let T be any spanning tree of G and, for any two vertices u,v 2 V , let max[u; v] denote an edge of maximum weight on the unique simp le path between u and v in T . Describe an O(V 2 )-time algorithm that, given T , computes max[u; v] for all u,v 2 V . d. Give an efficient algorithm to compute the second-best minimum spanning tree of G."
+   "text": "(u,v) 2 T and some edge (x,y) … T such that (T − f(u,v) g) [ f(x,y) g is a second-best minimum spanning tree of G. c. Now let T be any spanning tree of G and, for any two vertices u,v 2 V , let max[u; v] denote an edge of maximum weight on the unique simple path between u and v in T . Describe an O(V 2 )-time algorithm that, given T , computes max[u; v] for all u,v 2 V . d. Give an efficient algorithm to compute the second-best minimum spanning tree of G."
   },
   {
    "type": "problem",
@@ -1344,7 +1344,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 600,
    "pdf_page": 621,
-   "text": "Then, contract all chosen edges (see Section B.4). Rather than contracting these edges one at a time, first identify sets of vertices that are united into the same new vertex. Then create the graph that would have resulted from contracting these edges one at a time, but do so by \"renaming\" edges according to the sets into which their endpoints were placed. Several edges from the origi nal graph might be renamed the same as each other. In such a case, only one ed ge results, and its weight is the minimum of the weights of the corresponding original edges."
+   "text": "Then, contract all chosen edges (see Section B.4). Rather than contracting these edges one at a time, first identify sets of vertices that are united into the same new vertex. Then create the graph that would have resulted from contracting these edges one at a time, but do so by \"renaming\" edges according to the sets into which their endpoints were placed. Several edges from the original graph might be renamed the same as each other. In such a case, only one ed ge results, and its weight is the minimum of the weights of the corresponding original edges."
   },
   {
    "type": "body",

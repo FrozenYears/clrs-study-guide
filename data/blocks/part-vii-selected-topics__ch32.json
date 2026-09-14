@@ -77,7 +77,7 @@
    "section_title": "32.1 The naive string-matching algorithm",
    "printed_page": 960,
    "pdf_page": 981,
-   "text": "Our pseudocode allows two equal-length strings to be compared for equality as a primitive operation. If the strings are compar ed from left to right and the comparison stops when a mismatch is discovered, we assume that the time taken by such a test is a linear function of the number of matching characters discovered."
+   "text": "Our pseudocode allows two equal-length strings to be compared for equality as a primitive operation. If the strings are compared from left to right and the comparison stops when a mismatch is discovered, we assume that the time taken by such a test is a linear function of the number of matching characters discovered."
   },
   {
    "type": "body",
@@ -113,7 +113,7 @@
    "section_title": "32.1 The naive string-matching algorithm",
    "printed_page": 960,
    "pdf_page": 981,
-   "text": "Figure 32.3 portrays the naive string-matching procedure as sliding a \"template\" containing the pattern over the text, noting for wh ich shifts all of the characters on the template equal the corresponding characters in the text. The for loop of lines 1–3 considers each possible shift explicitly. The test in line 2 determines whether the current shift is valid. This test implicitly loops to check corresponding character positions until all positions match succe ssfully or a mismatch is found."
+   "text": "Figure 32.3 portrays the naive string-matching procedure as sliding a \"template\" containing the pattern over the text, noting for wh ich shifts all of the characters on the template equal the corresponding characters in the text. The for loop of lines 1–3 considers each possible shift explicitly. The test in line 2 determines whether the current shift is valid. This test implicitly loops to check corresponding character positions until all positions match successfully or a mismatch is found."
   },
   {
    "type": "body",
@@ -482,7 +482,7 @@
    "section_title": "32.2 The Rabin-Karp algorithm",
    "printed_page": 963,
    "pdf_page": 984,
-   "text": "Fortunately, this problem can be solved, as Figure 32.4 shows: compute p and the t s values modulo a suitable modulus q. You can compute p modulo q in Θ(m) time and all the t s values modulo q in Θ(n − m + 1) time. With j†j = 10, if you choose the modulus q as a prime such that 10q just fits within one computer word, then you can perform all the necessary comput ations with single-precision arithmetic. In general, with a d -ary alphabet f0,1,…,d − 1g, choose q so that dq fits within a computer word and adjust the recurrence equation (32.1) to work modulo q, so that it becomes t s + 1 = ã d(t s − T[s + 1]h) + T[s + m + 1] ä mod q; (32.2)"
+   "text": "Fortunately, this problem can be solved, as Figure 32.4 shows: compute p and the t s values modulo a suitable modulus q. You can compute p modulo q in Θ(m) time and all the t s values modulo q in Θ(n − m + 1) time. With j†j = 10, if you choose the modulus q as a prime such that 10q just fits within one computer word, then you can perform all the necessary computations with single-precision arithmetic. In general, with a d -ary alphabet f0,1,…,d − 1g, choose q so that dq fits within a computer word and adjust the recurrence equation (32.1) to work modulo q, so that it becomes t s + 1 = ã d(t s − T[s + 1]h) + T[s + m + 1] ä mod q; (32.2)"
   },
   {
    "type": "body",
@@ -608,7 +608,7 @@
    "section_title": "32.2 The Rabin-Karp algorithm",
    "printed_page": 965,
    "pdf_page": 986,
-   "text": "The procedure RABIN-KARP-MATCHER on the next page makes these ideas precise. The inputs to the procedure are the text T , the pattern P , their lengths n and m, the radix d to use (which is typically taken to be j†j), and the prime q to use. The procedure works as follows. All charact ers are interpreted as radix-d digits. The subscripts on t are provided only for clarity: the procedure works correctly if all the subscripts are dropped. Line 1 initializes h to the value of the high-order digit position of an m-digit window. Lines 2–6 compute p as the value of P[1 : m] mod q and t 0 as the value of T[1 : m] mod q. The for loop of lines 7–12 iterates through all possible shifts s , maintaining the following invariant:"
+   "text": "The procedure RABIN-KARP-MATCHER on the next page makes these ideas precise. The inputs to the procedure are the text T , the pattern P , their lengths n and m, the radix d to use (which is typically taken to be j†j), and the prime q to use. The procedure works as follows. All characters are interpreted as radix-d digits. The subscripts on t are provided only for clarity: the procedure works correctly if all the subscripts are dropped. Line 1 initializes h to the value of the high-order digit position of an m-digit window. Lines 2–6 compute p as the value of P[1 : m] mod q and t 0 as the value of T[1 : m] mod q. The for loop of lines 7–12 iterates through all possible shifts s , maintaining the following invariant:"
   },
   {
    "type": "body",
@@ -662,7 +662,7 @@
    "section_title": "32.2 The Rabin-Karp algorithm",
    "printed_page": 965,
    "pdf_page": 986,
-   "text": "We can base a heuristic analysis on the assumption that reducing values modulo q acts like a random mapping from † − to Z q . The expected number of spurious hits is then O(n/q), because we can estimate the chance that an arbitr ary t s will be"
+   "text": "We can base a heuristic analysis on the assumption that reducing values modulo q acts like a random mapping from † − to Z q . The expected number of spurious hits is then O(n/q), because we can estimate the chance that an arbitrary t s will be"
   },
   {
    "type": "body",
@@ -849,7 +849,7 @@
    "section_title": "32.3 String matching with finite automata",
    "printed_page": 967,
    "pdf_page": 988,
-   "text": "32.3 String matching with finite automata Many string-matching algorithms build a finite automaton—a simple machine for processing information—that scans the text string T for all occurrences of the pattern P . This section presents a method for building such an automaton. These string-matching automata are efficient: they examine each text character exactly once, taking constant time per text character. The matc hing time used—after pre- processing the pattern to build the automaton—is therefore Θ(n). The time to build the automaton, however, can be large if † is large. Section 32.4 describes a clever way around this problem."
+   "text": "32.3 String matching with finite automata Many string-matching algorithms build a finite automaton—a simple machine for processing information—that scans the text string T for all occurrences of the pattern P . This section presents a method for building such an automaton. These string-matching automata are efficient: they examine each text character exactly once, taking constant time per text character. The matching time used—after pre- processing the pattern to build the automaton—is therefore Θ(n). The time to build the automaton, however, can be large if † is large. Section 32.4 describes a clever way around this problem."
   },
   {
    "type": "body",
@@ -1092,7 +1092,7 @@
    "section_title": "32.3 String matching with finite automata",
    "printed_page": 970,
    "pdf_page": 991,
-   "text": "As the automaton consumes characters of the text T , it is trying to build a match of the pattern P against the most recently seen characters of T . At any time, the state number q gives the length of the longest prefix of P that matches the most recently seen text characters. Whenever the automat on reaches state m, the m most recently seen text characters match the first m characters of P . Since P has length m, reaching state m means that the m most recently seen text characters match the entire pattern, so that the automaton has found a match."
+   "text": "As the automaton consumes characters of the text T , it is trying to build a match of the pattern P against the most recently seen characters of T . At any time, the state number q gives the length of the longest prefix of P that matches the most recently seen text characters. Whenever the automaton reaches state m, the m most recently seen text characters match the first m characters of P . Since P has length m, reaching state m means that the m most recently seen text characters match the entire pattern, so that the automaton has found a match."
   },
   {
    "type": "body",
@@ -1137,7 +1137,7 @@
    "section_title": "32.3 String matching with finite automata",
    "printed_page": 970,
    "pdf_page": 991,
-   "text": "There are two cases to consider, depending on wheth er the next character continues to match the pattern. In the first case, a = P[q + 1], so that the character a continues to match the pattern. In this case, becau se i(q,a) = q + 1, the transition continues to go along the \"spine\" of the automaton (the blue edges in Figure 32.6(a)). In the second case, a ≠ P[q + 1], so that a does not extend the match being built. In this case, we need to find the longest prefix of P that is also a suffix of T[ : i]a , which will have length at most q. The preprocessing step matches the pattern against itself when creating the string-matching automaton, so that the transition function can quickly identify the longest such smaller prefix of P ."
+   "text": "There are two cases to consider, depending on whether the next character continues to match the pattern. In the first case, a = P[q + 1], so that the character a continues to match the pattern. In this case, because i(q,a) = q + 1, the transition continues to go along the \"spine\" of the automaton (the blue edges in Figure 32.6(a)). In the second case, a ≠ P[q + 1], so that a does not extend the match being built. In this case, we need to find the longest prefix of P that is also a suffix of T[ : i]a , which will have length at most q. The preprocessing step matches the pattern against itself when creating the string-matching automaton, so that the transition function can quickly identify the longest such smaller prefix of P ."
   },
   {
    "type": "pseudocode",
@@ -1197,7 +1197,7 @@
    "section_title": "32.3 String matching with finite automata",
    "printed_page": 971,
    "pdf_page": 992,
-   "text": "To clarify the operation of a string-matching automaton, the simple and efficient procedure FINITE-AUTOMATON-MATCHER simulates the behavior of such an automaton (represented by its transition functio n i ) in finding occurrences of a pattern P of length m in an input text T[1 : n]. As for any string-matching automaton for a pattern of length m, the state set Q is f0,1,…,m g, the start state is 0, and the only accepting state is state m. From the simple loop structure of FINITE-AUTOMATON-MATCHER , you can see that its matching time on a text string of length n is Θ(n), assuming that each lookup of the transition funct ion i takes constant time. This matching time, however, d oes not include the preprocessing time required to compute the transition function. We address this problem later, after first proving that the procedure FINITE-AUTOMATON-MATCHER operates correctly."
+   "text": "To clarify the operation of a string-matching automaton, the simple and efficient procedure FINITE-AUTOMATON-MATCHER simulates the behavior of such an automaton (represented by its transition functio n i ) in finding occurrences of a pattern P of length m in an input text T[1 : n]. As for any string-matching automaton for a pattern of length m, the state set Q is f0,1,…,m g, the start state is 0, and the only accepting state is state m. From the simple loop structure of FINITE-AUTOMATON-MATCHER , you can see that its matching time on a text string of length n is Θ(n), assuming that each lookup of the transition function i takes constant time. This matching time, however, d oes not include the preprocessing time required to compute the transition function. We address this problem later, after first proving that the procedure FINITE-AUTOMATON-MATCHER operates correctly."
   },
   {
    "type": "body",
@@ -1341,7 +1341,7 @@
    "section_title": "32.3 String matching with finite automata",
    "printed_page": 973,
    "pdf_page": 994,
-   "text": "We are now ready to prove the main theorem characte rizing the behavior of a string-matching automaton on a given input text. As noted above, this theorem shows that the automaton is merely keeping track, a t each step, of the longest prefix of the pattern that is a suffix of what has been read so far . In other words, the automaton maintains the invariant (32.5)."
+   "text": "We are now ready to prove the main theorem characterizing the behavior of a string-matching automaton on a given input text. As noted above, this theorem shows that the automaton is merely keeping track, a t each step, of the longest prefix of the pattern that is a suffix of what has been read so far . In other words, the automaton maintains the invariant (32.5)."
   },
   {
    "type": "theorem",
@@ -1679,7 +1679,7 @@
    "section_title": "32.4 The Knuth-Morris-Pratt algorithm",
    "printed_page": 975,
    "pdf_page": 996,
-   "text": "For this example, q = 5 of the characters have matched successfully, but th e 6th pattern character fails to match the corresponding text character. The information that q characters have matched successfully determines the corresponding text characters. Because these q text characters match, certain shifts must be inval id."
+   "text": "For this example, q = 5 of the characters have matched successfully, but th e 6th pattern character fails to match the corresponding text character. The information that q characters have matched successfully determines the corresponding text characters. Because these q text characters match, certain shifts must be invalid."
   },
   {
    "type": "body",
@@ -1832,7 +1832,7 @@
    "section_title": "32.4 The Knuth-Morris-Pratt algorithm",
    "printed_page": 977,
    "pdf_page": 998,
-   "text": "The procedure KMP-MATCHER on the following page gives the Knuth-Morris- Pratt matching algorithm. The procedure follows fro m FINITE-AUTOMATON- MATCHER for the most part. To compute Ω , KMP-MATCHER calls the auxiliary procedure COMPUTE-PREFIX-FUNCTION . These two procedures have much in common, because both match a string against the pat tern P : KMP-MATCHER matches the text T against P , and COMPUTE-PREFIX-FUNCTION matches P against itself."
+   "text": "The procedure KMP-MATCHER on the following page gives the Knuth-Morris- Pratt matching algorithm. The procedure follows fro m FINITE-AUTOMATON- MATCHER for the most part. To compute Ω , KMP-MATCHER calls the auxiliary procedure COMPUTE-PREFIX-FUNCTION . These two procedures have much in common, because both match a string against the pattern P : KMP-MATCHER matches the text T against P , and COMPUTE-PREFIX-FUNCTION matches P against itself."
   },
   {
    "type": "body",
@@ -2415,7 +2415,7 @@
    "section_title": "32.4 The Knuth-Morris-Pratt algorithm",
    "printed_page": 982,
    "pdf_page": 1003,
-   "text": "Before formally proving that KMP-MATCHER correctly simulates FINITE- AUTOMATON-MATCHER, let’s take a moment to understand how the prefix function Ω replaces the i transition function. Recall that when a string-matching automaton is in state q and it scans a character a = T[i] , it moves to a new state i(q,a) . If a = P[q + 1], so that a continues to match the pattern, then the state number is incremented: i(q,a) = q + 1. Otherwise, a ≠ P[q + 1], so that a does not continue to match the pattern, and the sta te number does not increase:"
+   "text": "Before formally proving that KMP-MATCHER correctly simulates FINITE- AUTOMATON-MATCHER, let’s take a moment to understand how the prefix function Ω replaces the i transition function. Recall that when a string-matching automaton is in state q and it scans a character a = T[i] , it moves to a new state i(q,a) . If a = P[q + 1], so that a continues to match the pattern, then the state number is incremented: i(q,a) = q + 1. Otherwise, a ≠ P[q + 1], so that a does not continue to match the pattern, and the state number does not increase:"
   },
   {
    "type": "body",
@@ -2460,7 +2460,7 @@
    "section_title": "32.4 The Knuth-Morris-Pratt algorithm",
    "printed_page": 983,
    "pdf_page": 1004,
-   "text": "Now suppose that the next character scanned is inst ead b, so that the automaton should move to state i(5; b) = 4. The while loop in KMP-MATCHER exits after executing line 5 once, and the automaton arrives in state q 0 = Ω[5] = 3. Since"
+   "text": "Now suppose that the next character scanned is instead b, so that the automaton should move to state i(5; b) = 4. The while loop in KMP-MATCHER exits after executing line 5 once, and the automaton arrives in state q 0 = Ω[5] = 3. Since"
   },
   {
    "type": "body",
@@ -2496,7 +2496,7 @@
    "section_title": "32.4 The Knuth-Morris-Pratt algorithm",
    "printed_page": 983,
    "pdf_page": 1004,
-   "text": "We are now ready to formally prove the correctness of the Knuth-Morris-Pratt algorithm. By Theorem 32.4, we have that q = Ω(T[ : i]) after each time line 3 of FINITE-AUTOMATON-MATCHER executes. Therefore, it suffices to show that the same property holds with regard to the for loop in KMP-MATCHER . The proof proceeds by induction on the number of loop iterati ons. Initially, both procedures set q to 0 as they enter their respective for loops for the first time. Consider iteration i of the for loop in KMP-MATCHER . By the inductive hypothesis, the state number q equals Ω(T[ : i − 1]) at the start of the loop iteration. We need to show that when line 8 is reached, the new value of q is Ω(T[ : i]). (Again, we’ll handle line 10 separately.)"
+   "text": "We are now ready to formally prove the correctness of the Knuth-Morris-Pratt algorithm. By Theorem 32.4, we have that q = Ω(T[ : i]) after each time line 3 of FINITE-AUTOMATON-MATCHER executes. Therefore, it suffices to show that the same property holds with regard to the for loop in KMP-MATCHER . The proof proceeds by induction on the number of loop iterations. Initially, both procedures set q to 0 as they enter their respective for loops for the first time. Consider iteration i of the for loop in KMP-MATCHER . By the inductive hypothesis, the state number q equals Ω(T[ : i − 1]) at the start of the loop iteration. We need to show that when line 8 is reached, the new value of q is Ω(T[ : i]). (Again, we’ll handle line 10 separately.)"
   },
   {
    "type": "body",
@@ -2865,7 +2865,7 @@
    "section_title": "32.5 Suffix arrays",
    "printed_page": 986,
    "pdf_page": 1007,
-   "text": "comparison takes O(m) time), then you can find all occurrences of the pattern in the text by searching backward and forward from tha t spot until you find a suffix that does not start with the pattern (or you go bey ond the bounds of the suffix array). If the pattern occurs k times, then the time to find all k occurrences is O(m lg n C km)."
+   "text": "comparison takes O(m) time), then you can find all occurrences of the pattern in the text by searching backward and forward from tha t spot until you find a suffix that does not start with the pattern (or you go beyond the bounds of the suffix array). If the pattern occurs k times, then the time to find all k occurrences is O(m lg n C km)."
   },
   {
    "type": "body",
@@ -3090,7 +3090,7 @@
    "section_title": "32.5 Suffix arrays",
    "printed_page": 987,
    "pdf_page": 1008,
-   "text": "Where do these ranks come from? Initially, the substrings being considered are just single characters from the text. Assume that, as in many programming languages, there is a function, ord, that maps a chara cter to its underlying encoding, which is a positive integer. The ord function could be the ASCII or Unicode encodings or any other function that produces a relative ordering of the characters. For example if all the characters are known to be lower case letters, then ord(a) = 1, COMPUTE-SUFFIX-ARRAY (T,n)"
+   "text": "Where do these ranks come from? Initially, the substrings being considered are just single characters from the text. Assume that, as in many programming languages, there is a function, ord, that maps a character to its underlying encoding, which is a positive integer. The ord function could be the ASCII or Unicode encodings or any other function that produces a relative ordering of the characters. For example if all the characters are known to be lower case letters, then ord(a) = 1, COMPUTE-SUFFIX-ARRAY (T,n)"
   },
   {
    "type": "pseudocode",
@@ -3768,7 +3768,7 @@
    "section_title": "32.5 Suffix arrays",
    "printed_page": 991,
    "pdf_page": 1012,
-   "text": "Within an iteration of the while loop, the MAKE-RANKS procedure \"re-ranks\" the substrings that were sorted, either by line 8 before the first iteration or by line 18 in the previous iteration. MAKE-RANKS takes a substr-rank array, which has been sorted, and fills in an array rank[1 : n] so that rank[i] is the rank of the i th substring represented in the substr-rank array. Each rank is a positive integer, starting from 1, and going up to the number of unique substrings of length 2l . Substrings with equal values of left-rank and right-rank receive the same rank. Otherwise, a substring that is lexicographically smaller than another appe ars earlier in the substr-rank array, and it receives a smaller rank. Once the substrings of length 2l are re-ranked, line 18 sorts them by rank, preparing for the next iteration of the while loop."
+   "text": "Within an iteration of the while loop, the MAKE-RANKS procedure \"re-ranks\" the substrings that were sorted, either by line 8 before the first iteration or by line 18 in the previous iteration. MAKE-RANKS takes a substr-rank array, which has been sorted, and fills in an array rank[1 : n] so that rank[i] is the rank of the i th substring represented in the substr-rank array. Each rank is a positive integer, starting from 1, and going up to the number of unique substrings of length 2l . Substrings with equal values of left-rank and right-rank receive the same rank. Otherwise, a substring that is lexicographically smaller than another appears earlier in the substr-rank array, and it receives a smaller rank. Once the substrings of length 2l are re-ranked, line 18 sorts them by rank, preparing for the next iteration of the while loop."
   },
   {
    "type": "body",
@@ -4717,7 +4717,7 @@
    "section_title": "32.5 Suffix arrays",
    "printed_page": 1001,
    "pdf_page": 1022,
-   "text": "The BWT has applications in bioinformatics, and it can also be a step in text compression. That is because it tends to place iden tical characters together, as in the BWT of rutabaga, which places two of the instances of a together. When identical characters are placed together, or even nearby, additional means of compressing become available. Following the BWT, combi nations of move-to-front encoding, run-length encoding, and Huffman coding (see Section 15.3) can provide significant text compression. Compression ratios with the BWT tend improve as the text length increases. a. Given the suffix array for T 0 , show how to compute the BWT in Θ(n) time."
+   "text": "The BWT has applications in bioinformatics, and it can also be a step in text compression. That is because it tends to place identical characters together, as in the BWT of rutabaga, which places two of the instances of a together. When identical characters are placed together, or even nearby, additional means of compressing become available. Following the BWT, combinations of move-to-front encoding, run-length encoding, and Huffman coding (see Section 15.3) can provide significant text compression. Compression ratios with the BWT tend improve as the text length increases. a. Given the suffix array for T 0 , show how to compute the BWT in Θ(n) time."
   },
   {
    "type": "body",
@@ -4834,7 +4834,7 @@
    "section_title": "32.5 Suffix arrays",
    "printed_page": 1003,
    "pdf_page": 1024,
-   "text": "Machine learning is rich and fascinating, with stro ng ties to statistics and optimization. Technology today produces enormous amount s of data, providing myriad opportunities for machine-learning algorithms to formulate and test hypotheses about patterns within the data. These hypotheses ca n then be used to make pre- dictions about the characteristics or classifications in new data. Because machine learning is particularly good with challenging task s involving uncertainty, where observed data follows unknown rules, it has markedl y transformed fields such as medicine, advertising, and speech recognition."
+   "text": "Machine learning is rich and fascinating, with strong ties to statistics and optimization. Technology today produces enormous amount s of data, providing myriad opportunities for machine-learning algorithms to formulate and test hypotheses about patterns within the data. These hypotheses ca n then be used to make pre- dictions about the characteristics or classifications in new data. Because machine learning is particularly good with challenging task s involving uncertainty, where observed data follows unknown rules, it has markedl y transformed fields such as medicine, advertising, and speech recognition."
   },
   {
    "type": "body",
@@ -4843,7 +4843,7 @@
    "section_title": "32.5 Suffix arrays",
    "printed_page": 1003,
    "pdf_page": 1024,
-   "text": "This chapter presents three important machine-learning algorithms: k-means clustering, multiplicative weights, and gradient de scent. You can view each of these tasks as a learning problem, whereby an algor ithm uses the data collected so far to produce a hypothesis that describes the regularities learned and/or makes predictions about new data. The boundaries of machi ne learning are imprecise and evolving—some might say that the k-means clustering algorithm should be called \"data science\" and not \"machine learning,\" a nd gradient descent, though an immensely important algorithm for machine learni ng, also has a multitude of applications outside of machine learning (most notably for optimization problems)."
+   "text": "This chapter presents three important machine-learning algorithms: k-means clustering, multiplicative weights, and gradient de scent. You can view each of these tasks as a learning problem, whereby an algorithm uses the data collected so far to produce a hypothesis that describes the regularities learned and/or makes predictions about new data. The boundaries of machine learning are imprecise and evolving—some might say that the k-means clustering algorithm should be called \"data science\" and not \"machine learning,\" a nd gradient descent, though an immensely important algorithm for machine learning, also has a multitude of applications outside of machine learning (most notably for optimization problems)."
   },
   {
    "type": "body",

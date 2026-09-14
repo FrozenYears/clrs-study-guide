@@ -48,7 +48,7 @@
    "section_title": "33.1 Clustering",
    "printed_page": 1005,
    "pdf_page": 1026,
-   "text": "We study an effective multiplicative-weights prediction method that associates a positive real weight with each predictor and multiplicatively decreases the weights associated with predictors when they make poor pred ictions. The model in this section is online (see Chapter 27): at each step, we do not know anything about the future examples. In addition, we are able to make predictions even in the presence of adversarial experts, who are collaborating again st us, a situation that actually happens in game-playing settings."
+   "text": "We study an effective multiplicative-weights prediction method that associates a positive real weight with each predictor and multiplicatively decreases the weights associated with predictors when they make poor predictions. The model in this section is online (see Chapter 27): at each step, we do not know anything about the future examples. In addition, we are able to make predictions even in the presence of adversarial experts, who are collaborating again st us, a situation that actually happens in game-playing settings."
   },
   {
    "type": "body",
@@ -57,7 +57,7 @@
    "section_title": "33.1 Clustering",
    "printed_page": 1005,
    "pdf_page": 1026,
-   "text": "Finally, Section 33.3 introduces gradient descent, a powerful optimization technique used to find parameter settings in machine-learning models. Gradient descent also has many applications outside of machine learn ing. Intuitively, gradient descent finds the value that produces a local minimum for a function by <walking downhill.= In a learning application, a \"downhill s tep\" is a step that adjusts hypothesis parameters so that the hypothesis does bet ter on the given set of labeled examples."
+   "text": "Finally, Section 33.3 introduces gradient descent, a powerful optimization technique used to find parameter settings in machine-learning models. Gradient descent also has many applications outside of machine learning. Intuitively, gradient descent finds the value that produces a local minimum for a function by <walking downhill.= In a learning application, a \"downhill s tep\" is a step that adjusts hypothesis parameters so that the hypothesis does better on the given set of labeled examples."
   },
   {
    "type": "body",
@@ -120,7 +120,7 @@
    "section_title": "33.1 Clustering",
    "printed_page": 1006,
    "pdf_page": 1027,
-   "text": "Each example has a set of attributes in common with all other examples, though the attribute values may vary among examples. For examp le, the clustering problem shown in Figure 33.1 clusters n = 49 examples448 state capitals plus the District of Columbia—into k = 4 clusters. Each example has two attributes: the lati tude and longitude of the capital. In a given clustering problem, each example has d attributes, with an example x specified by a d -dimensional feature vector x = (x 1 ,x 2 ,…,x d ):"
+   "text": "Each example has a set of attributes in common with all other examples, though the attribute values may vary among examples. For example, the clustering problem shown in Figure 33.1 clusters n = 49 examples448 state capitals plus the District of Columbia—into k = 4 clusters. Each example has two attributes: the latitude and longitude of the capital. In a given clustering problem, each example has d attributes, with an example x specified by a d -dimensional feature vector x = (x 1 ,x 2 ,…,x d ):"
   },
   {
    "type": "body",
@@ -255,7 +255,7 @@
    "section_title": "33.1 Clustering",
    "printed_page": 1007,
    "pdf_page": 1028,
-   "text": "(g) Iteration 6: f = 1625:42. (h) Iteration 7: f = 1565:79. (i) Iteration 8: f = 1494:49. option is scaling so that the values for each attri bute have mean 0 and unit variance. Sometimes it makes sense to choose the same scaling rule for several related attributes (for example, if they are lengths measured to the same scale)."
+   "text": "(g) Iteration 6: f = 1625:42. (h) Iteration 7: f = 1565:79. (i) Iteration 8: f = 1494:49. option is scaling so that the values for each attribute have mean 0 and unit variance. Sometimes it makes sense to choose the same scaling rule for several related attributes (for example, if they are lengths measured to the same scale)."
   },
   {
    "type": "body",
@@ -264,7 +264,7 @@
    "section_title": "33.1 Clustering",
    "printed_page": 1008,
    "pdf_page": 1029,
-   "text": "Also, the choice of dissimilarity measure is somewh at arbitrary. The use of the sum of squared differences as in equation (33.1) is not required, but it is a conventional choice and mathematically convenient. For the example of Figure 33.1, you might use the actual distance between capitals rather than equation (33.1)."
+   "text": "Also, the choice of dissimilarity measure is somewhat arbitrary. The use of the sum of squared differences as in equation (33.1) is not required, but it is a conventional choice and mathematically convenient. For the example of Figure 33.1, you might use the actual distance between capitals rather than equation (33.1)."
   },
   {
    "type": "body",
@@ -750,7 +750,7 @@
    "section_title": "33.1 Clustering",
    "printed_page": 1011,
    "pdf_page": 1032,
-   "text": "3. Stop if no change: If step 2 did not change the assignments of any poi nts to clusters, then stop and return the clustering hS .1/ ,S .2/ ,…,S (k) i and the associated centers hc .1/ ; c .2/ ,…; c (k) i. Otherwise, go to step 4."
+   "text": "3. Stop if no change: If step 2 did not change the assignments of any points to clusters, then stop and return the clustering hS .1/ ,S .2/ ,…,S (k) i and the associated centers hc .1/ ; c .2/ ,…; c (k) i. Otherwise, go to step 4."
   },
   {
    "type": "body",
@@ -777,7 +777,7 @@
    "section_title": "33.1 Clustering",
    "printed_page": 1011,
    "pdf_page": 1032,
-   "text": "Lloyd’s procedure always terminates. By Theorem 33.1, recomputing the centers of each cluster as the cluster centroid cannot increase f(S,C) . Lloyd’s procedure ensures that a point is reassigned to a diff erent cluster only when such an operation strictly decreases f(S,C) . Thus each iteration of Lloyd’s procedure, except the last iteration, must strictly decrease f(S,C) . Since there are only a finite number of possible k-clusterings of S (at most k n ), the procedure must terminate. Furthermore, once one iteration of Lloyd’s procedure yields no decrease in f , further iterations would not change anything, and the procedure can stop at this locally optimum assignment of points to clusters."
+   "text": "Lloyd’s procedure always terminates. By Theorem 33.1, recomputing the centers of each cluster as the cluster centroid cannot increase f(S,C) . Lloyd’s procedure ensures that a point is reassigned to a different cluster only when such an operation strictly decreases f(S,C) . Thus each iteration of Lloyd’s procedure, except the last iteration, must strictly decrease f(S,C) . Since there are only a finite number of possible k-clusterings of S (at most k n ), the procedure must terminate. Furthermore, once one iteration of Lloyd’s procedure yields no decrease in f , further iterations would not change anything, and the procedure can stop at this locally optimum assignment of points to clusters."
   },
   {
    "type": "body",
@@ -795,7 +795,7 @@
    "section_title": "33.1 Clustering",
    "printed_page": 1012,
    "pdf_page": 1033,
-   "text": "The running time of Lloyd’s procedure is proportional to the number T of iterations. In one iteration, assigning points to clu sters based on the nearest-center rule requires O(dkn) time, and recomputing new centers for each cluster requires"
+   "text": "The running time of Lloyd’s procedure is proportional to the number T of iterations. In one iteration, assigning points to clusters based on the nearest-center rule requires O(dkn) time, and recomputing new centers for each cluster requires"
   },
   {
    "type": "body",
@@ -1074,7 +1074,7 @@
    "section_title": "33.2 Multiplicative-weights algorithms",
    "printed_page": 1015,
    "pdf_page": 1036,
-   "text": "For example, suppose that you are following the pri ce of a stock, and each day you decide whether to invest in it for just that day by buying it at the beginning of the day and selling it at the end of the day. If, on some day, you buy the stock and it goes up, then you made the correct decision, but if the stock goes down, then you made a mistake. Similarly, if on some day, you do n ot buy the stock and it goes down, then you made the correct decision, but if the stock goes up, then you made a mistake. Since you would like to make as few mist akes as possible, you use the advice of the experts to make your decisions."
+   "text": "For example, suppose that you are following the price of a stock, and each day you decide whether to invest in it for just that day by buying it at the beginning of the day and selling it at the end of the day. If, on some day, you buy the stock and it goes up, then you made the correct decision, but if the stock goes down, then you made a mistake. Similarly, if on some day, you do n ot buy the stock and it goes down, then you made the correct decision, but if the stock goes up, then you made a mistake. Since you would like to make as few mistakes as possible, you use the advice of the experts to make your decisions."
   },
   {
    "type": "body",
@@ -1155,7 +1155,7 @@
    "section_title": "33.2 Multiplicative-weights algorithms",
    "printed_page": 1017,
    "pdf_page": 1038,
-   "text": "You can substantially improve your prediction ability by not just tracking which experts have not made any mistakes, or have not made any mistakes recently, to a more nuanced evaluation of the quality of each expe rt. The key idea is to use the feedback you receive to update your evaluation of h ow much trust to put in each expert. As the experts make predictions, you observ e whether they were correct and decrease your confidence in the experts who make more mistakes. In this way, you can learn over time which experts are more reliable and which are less reliable, and weight their predictions accordlingly. The change in weights is accomplished via multiplication, hence the term \"multiplicative weights.\""
+   "text": "You can substantially improve your prediction ability by not just tracking which experts have not made any mistakes, or have not made any mistakes recently, to a more nuanced evaluation of the quality of each expert. The key idea is to use the feedback you receive to update your evaluation of h ow much trust to put in each expert. As the experts make predictions, you observ e whether they were correct and decrease your confidence in the experts who make more mistakes. In this way, you can learn over time which experts are more reliable and which are less reliable, and weight their predictions accordlingly. The change in weights is accomplished via multiplication, hence the term \"multiplicative weights.\""
   },
   {
    "type": "body",
@@ -1566,7 +1566,7 @@
    "section_title": "33.2 Multiplicative-weights algorithms",
    "printed_page": 1019,
    "pdf_page": 1040,
-   "text": "Because the function W is the sum of the weights and all weights are posit ive, its value exceeds any single weight. Therefore, using equation (33.6) we have, for any expert E i and for any iteration T 0 ≤ T , W(T 0 ) ≥ w (T 0 ) i = .1 − Ω/ m (T 0 ) i : (33.11)"
+   "text": "Because the function W is the sum of the weights and all weights are positive, its value exceeds any single weight. Therefore, using equation (33.6) we have, for any expert E i and for any iteration T 0 ≤ T , W(T 0 ) ≥ w (T 0 ) i = .1 − Ω/ m (T 0 ) i : (33.11)"
   },
   {
    "type": "body",
@@ -1845,7 +1845,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1022,
    "pdf_page": 1043,
-   "text": "In this section, we consider the problem of optimiz ing a continuous function and discuss one of the most popular methods to do s o: gradient descent. Gradient descent is a general method for finding a local minimum of a function f W R n ! R, where informally, a local minimum of a function f is a point x for which f. x/ ≤ f. x 0 / for all x 0 that are \"near\" x. When the function is convex, it can find a point near the global minimizer of f : an n-vector argument x = (x 1 ,x 2 ,…,x n ) such that f. x/ is minimum. For the intuitive idea behind gradient descent, imagine being in a landscape of h ills and valleys, and wanting to get to a low point as quickly as possible. You s urvey the terrain and choose to move in the direction that takes you downhill the fastest from your current position."
+   "text": "In this section, we consider the problem of optimizing a continuous function and discuss one of the most popular methods to do s o: gradient descent. Gradient descent is a general method for finding a local minimum of a function f W R n ! R, where informally, a local minimum of a function f is a point x for which f. x/ ≤ f. x 0 / for all x 0 that are \"near\" x. When the function is convex, it can find a point near the global minimizer of f : an n-vector argument x = (x 1 ,x 2 ,…,x n ) such that f. x/ is minimum. For the intuitive idea behind gradient descent, imagine being in a landscape of h ills and valleys, and wanting to get to a low point as quickly as possible. You s urvey the terrain and choose to move in the direction that takes you downhill the fastest from your current position."
   },
   {
    "type": "body",
@@ -1854,7 +1854,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1023,
    "pdf_page": 1044,
-   "text": "You move in that direction, but only for a short while, because as you proceed, the terrain changes and you might need to choose a diff erent direction. So you stop, reevaluate the possible directions and move another short distance in the steepest downhill direction, which might differ from the dir ection of your previous movement. You continue this process until you reach a point from which all directions lead up. Such a point is a local minimum."
+   "text": "You move in that direction, but only for a short while, because as you proceed, the terrain changes and you might need to choose a different direction. So you stop, reevaluate the possible directions and move another short distance in the steepest downhill direction, which might differ from the direction of your previous movement. You continue this process until you reach a point from which all directions lead up. Such a point is a local minimum."
   },
   {
    "type": "body",
@@ -1881,7 +1881,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1023,
    "pdf_page": 1044,
-   "text": "Analogous to the derivative of a function of a sing le variable, the gradient can be viewed as a direction in which the function value locally increases the fastest, and the rate of that increase. This view is informal; in order to make it formal we would have to define what local means and place certain conditions, such as continuity or existence of derivatives, on the function. Neverthe less, this view motivates the key step of gradient descent—move in the direction opposite to the gradient, by a distance influenced by the magnitude of the gradient."
+   "text": "Analogous to the derivative of a function of a single variable, the gradient can be viewed as a direction in which the function value locally increases the fastest, and the rate of that increase. This view is informal; in order to make it formal we would have to define what local means and place certain conditions, such as continuity or existence of derivatives, on the function. Neverthe less, this view motivates the key step of gradient descent—move in the direction opposite to the gradient, by a distance influenced by the magnitude of the gradient."
   },
   {
    "type": "body",
@@ -1890,7 +1890,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1023,
    "pdf_page": 1044,
-   "text": "The general procedure of gradient descent proceeds in steps. You start at some initial point x .0/ , which is an n-vector. At each step t , you compute the value of the gradient of f at point x (t) , that is, (r f). x (t) ), which is also an n-vector. You then move in the direction opposite to the gradient in each dimension at x (t) to arrive at the next point x (t + 1) , which again is an n-vector. Because you moved in a monotonically decreasing direction in each dim ension, you should have that f. x (t + 1) / ≤ f. x (t) /. Several details are needed to turn this idea into an actual algorithm. The two main details are that you need a n initial point and that you need to decide how far to move in the direction of the negative gradient. You also need to understand when to stop and what you can co nclude about the quality of the solution found. We will explore these issues fu rther in this section, for both constrained minimization, where there are additional constraints on the points, and unconstrained minimization, where there are none."
+   "text": "The general procedure of gradient descent proceeds in steps. You start at some initial point x .0/ , which is an n-vector. At each step t , you compute the value of the gradient of f at point x (t) , that is, (r f). x (t) ), which is also an n-vector. You then move in the direction opposite to the gradient in each dimension at x (t) to arrive at the next point x (t + 1) , which again is an n-vector. Because you moved in a monotonically decreasing direction in each dimension, you should have that f. x (t + 1) / ≤ f. x (t) /. Several details are needed to turn this idea into an actual algorithm. The two main details are that you need a n initial point and that you need to decide how far to move in the direction of the negative gradient. You also need to understand when to stop and what you can co nclude about the quality of the solution found. We will explore these issues fu rther in this section, for both constrained minimization, where there are additional constraints on the points, and unconstrained minimization, where there are none."
   },
   {
    "type": "body",
@@ -1926,7 +1926,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1024,
    "pdf_page": 1045,
-   "text": "We draw two observations from this simple example. First, gradient descent converges toward a local minimum, and not necessari ly a global minimum. Second, the speed at which it converges and how it behaves are related to properties of the function, to the initial point, and to the step size of the algorithm."
+   "text": "We draw two observations from this simple example. First, gradient descent converges toward a local minimum, and not necessarily a global minimum. Second, the speed at which it converges and how it behaves are related to properties of the function, to the initial point, and to the step size of the algorithm."
   },
   {
    "type": "body",
@@ -1990,7 +1990,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1025,
    "pdf_page": 1046,
-   "text": "Figure 33.4 depicts how gradient descent ideally runs on a convex 1-dimensional function. 1 We’ll define convexity more formally below, but the figure shows that each iteration moves in the direction opposite to t he gradient, with the distance moved being proportional to the magnitude of the gr adient. As the iterations proceed, the magnitude of the gradient decreases, and thus the distance moved along the horizontal axis decreases. After each iteration , the distance to the optimal point x − decreases. This ideal behavior is not guaranteed to occur in general, but the analysis in the remainder of this section forma lizes when this behavior occurs and quantifies the number of iterations needed. Gradient descent does not always work, however. We have already seen that if the function is not convex, gradient descent can converge to a local, rather than global , minimum. We have also seen that if the step size is too large, GRADIENT-DESCENT can overshoot the minimum and wind up farther away. (It is also possible to overshoot the minimum and wind up closer to the optimum.)"
+   "text": "Figure 33.4 depicts how gradient descent ideally runs on a convex 1-dimensional function. 1 We’ll define convexity more formally below, but the figure shows that each iteration moves in the direction opposite to t he gradient, with the distance moved being proportional to the magnitude of the gr adient. As the iterations proceed, the magnitude of the gradient decreases, and thus the distance moved along the horizontal axis decreases. After each iteration , the distance to the optimal point x − decreases. This ideal behavior is not guaranteed to occur in general, but the analysis in the remainder of this section formalizes when this behavior occurs and quantifies the number of iterations needed. Gradient descent does not always work, however. We have already seen that if the function is not convex, gradient descent can converge to a local, rather than global , minimum. We have also seen that if the step size is too large, GRADIENT-DESCENT can overshoot the minimum and wind up farther away. (It is also possible to overshoot the minimum and wind up closer to the optimum.)"
   },
   {
    "type": "body",
@@ -2080,7 +2080,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1026,
    "pdf_page": 1047,
-   "text": "Figure 33.4 An example of running gradient descent on a convex function f W R ! R, shown in blue. Beginning at point x .0/ , each iteration moves in the direction opposite to the gradient, and the distance moved is proportional to the magnitude of the gradient. Orange lines represent the negative of the gradient at each point, scaled by the step s ize Ω . As the iterations proceed, the magnitude of the gradient decreases, and the distance moved decr eases correspondingly. After each iteration, the distance to the optimal point x − decreases. x y x − f. x/ f. y /"
+   "text": "Figure 33.4 An example of running gradient descent on a convex function f W R ! R, shown in blue. Beginning at point x .0/ , each iteration moves in the direction opposite to the gradient, and the distance moved is proportional to the magnitude of the gradient. Orange lines represent the negative of the gradient at each point, scaled by the step s ize Ω . As the iterations proceed, the magnitude of the gradient decreases, and the distance moved decreases correspondingly. After each iteration, the distance to the optimal point x − decreases. x y x − f. x/ f. y /"
   },
   {
    "type": "body",
@@ -2314,7 +2314,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1028,
    "pdf_page": 1049,
-   "text": "We now prove this theorem. We do not give an absolu te bound on how much progress each iteration makes. Instead, we use a po tential function, as in Section 16.3. Here, we define a potential ˆ(t) after computing x (t) , such that ˆ(t) ≥ 0 for t = 0,…,T . We define the amortized progress in the iteration that computes x (t) as p(t) = f. x (t) / − f. x − / C ˆ(t + 1) − ˆ(t): (33.22)"
+   "text": "We now prove this theorem. We do not give an absolute bound on how much progress each iteration makes. Instead, we use a po tential function, as in Section 16.3. Here, we define a potential ˆ(t) after computing x (t) , such that ˆ(t) ≥ 0 for t = 0,…,T . We define the amortized progress in the iteration that computes x (t) as p(t) = f. x (t) / − f. x − / C ˆ(t + 1) − ˆ(t): (33.22)"
   },
   {
    "type": "body",
@@ -2530,7 +2530,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1029,
    "pdf_page": 1050,
-   "text": "2Ω ; (33.26) that is, the potential function is proportional to the square of the distance between the current point and the minimizer x − . With this potential function in hand, the next lemma provides a bound on the amortized progre ss made in any iteration of GRADIENT-DESCENT ."
+   "text": "2Ω ; (33.26) that is, the potential function is proportional to the square of the distance between the current point and the minimizer x − . With this potential function in hand, the next lemma provides a bound on the amortized progress made in any iteration of GRADIENT-DESCENT ."
   },
   {
    "type": "lemma",
@@ -3061,7 +3061,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1031,
    "pdf_page": 1052,
-   "text": "T = R 2 L 2 =Ω 2 . The number of iterations thus depends on the squa re of R and L"
+   "text": "T = R 2 L 2 =Ω 2 . The number of iterations thus depends on the square of R and L"
   },
   {
    "type": "body",
@@ -3088,7 +3088,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1031,
    "pdf_page": 1052,
-   "text": "The dominant computational step in each iteration o f the for loop of lines 2–4 is computing the gradient. The complexity of comput ing and evaluating a gradient varies widely, depending on the application a t hand. W e’ll discuss several applications later."
+   "text": "The dominant computational step in each iteration o f the for loop of lines 2–4 is computing the gradient. The complexity of computing and evaluating a gradient varies widely, depending on the application a t hand. W e’ll discuss several applications later."
   },
   {
    "type": "pseudocode",
@@ -3147,7 +3147,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1032,
    "pdf_page": 1053,
-   "text": "We can adapt gradient descent for constrained minimization to minimize a closed convex function f. x/, subject to the additional requirement that x 2 K, where K is a closed convex body. A body K ⊆ R n is convex if for all x; y 2 K, the convex combination Ωx C .1 − Ω/y 2 K for all 0 ≤ Ω ≤ 1. A closed convex body contains its limit points. Somewhat surprisingly, restricting to the constrained problem does not significantly increase the number of iterations of gradient descent. The idea is that you run the same algorithm, but in each iterat ion, check whether the current point x (t) is still within the convex body K. If it is not, just move to the closest point in K. Moving to the closest point is known as projection. We formally define the projection … K (x) of a point x in n dimensions onto a convex body K as the point y 2 K such that kx − y k = min fkx − zk W ´ 2 Kg. If we have x 2 K, then"
+   "text": "We can adapt gradient descent for constrained minimization to minimize a closed convex function f. x/, subject to the additional requirement that x 2 K, where K is a closed convex body. A body K ⊆ R n is convex if for all x; y 2 K, the convex combination Ωx C .1 − Ω/y 2 K for all 0 ≤ Ω ≤ 1. A closed convex body contains its limit points. Somewhat surprisingly, restricting to the constrained problem does not significantly increase the number of iterations of gradient descent. The idea is that you run the same algorithm, but in each iteration, check whether the current point x (t) is still within the convex body K. If it is not, just move to the closest point in K. Moving to the closest point is known as projection. We formally define the projection … K (x) of a point x in n dimensions onto a convex body K as the point y 2 K such that kx − y k = min fkx − zk W ´ 2 Kg. If we have x 2 K, then"
   },
   {
    "type": "body",
@@ -3291,7 +3291,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1033,
    "pdf_page": 1054,
-   "text": "We can now repeat the entire proof for the unconstr ained case and obtain the same bounds. Lemma 33.10 with a = x − , b = x (t + 1) , and b 0 = x 0 (t + 1) tells us that kx (t + 1) −x − k 2 ≤ kx 0 (t + 1) −x − k 2 . We can therefore derive an upper bound that matches inequality (33.31). We continue to define ˆ(t) as in equation (33.26), but noting that x (t + 1) , computed in line 5 of GRADIENT-DESCENT-CONSTRAINED , has a different meaning here from in inequality (33.31):"
+   "text": "We can now repeat the entire proof for the unconstrained case and obtain the same bounds. Lemma 33.10 with a = x − , b = x (t + 1) , and b 0 = x 0 (t + 1) tells us that kx (t + 1) −x − k 2 ≤ kx 0 (t + 1) −x − k 2 . We can therefore derive an upper bound that matches inequality (33.31). We continue to define ˆ(t) as in equation (33.26), but noting that x (t + 1) , computed in line 5 of GRADIENT-DESCENT-CONSTRAINED , has a different meaning here from in inequality (33.31):"
   },
   {
    "type": "body",
@@ -3345,7 +3345,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1034,
    "pdf_page": 1055,
-   "text": "With the same upper bound on the change in the pote ntial function as in equation (33.30), the entire proof of Lemma 33.9 can proceed as before. We can therefore conclude that the procedure GRADIENT- DESCENT- CONSTRAINED has the same asymptotic complexity as GRADIENT- DESCENT. We summarize this re- sult in the following theorem."
+   "text": "With the same upper bound on the change in the potential function as in equation (33.30), the entire proof of Lemma 33.9 can proceed as before. We can therefore conclude that the procedure GRADIENT- DESCENT- CONSTRAINED has the same asymptotic complexity as GRADIENT- DESCENT. We summarize this re- sult in the following theorem."
   },
   {
    "type": "theorem",
@@ -3714,7 +3714,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1036,
    "pdf_page": 1057,
-   "text": "When the function f is linear, the loss function defined in equation (33.33) is convex, because it is the sum of squares of linear functions, which are themselves convex. Therefore, we can apply gradient descent to compute a set of weights to approximately minimize the least-squares error. The concrete goal of learning is to be able to make predictions on new data. Informally, if the features are all reported in the same units and are from the same range (perh aps from being normalized), then the weights tend to have a natural interpretat ion because the features of the data that are better predictors of the label have a larger associated weight. For example, you would expect that, after normalization , the weight associated with the number of family members with heart disease would be larger than the weight associated with height."
+   "text": "When the function f is linear, the loss function defined in equation (33.33) is convex, because it is the sum of squares of linear functions, which are themselves convex. Therefore, we can apply gradient descent to compute a set of weights to approximately minimize the least-squares error. The concrete goal of learning is to be able to make predictions on new data. Informally, if the features are all reported in the same units and are from the same range (perhaps from being normalized), then the weights tend to have a natural interpretation because the features of the data that are better predictors of the label have a larger associated weight. For example, you would expect that, after normalization , the weight associated with the number of family members with heart disease would be larger than the weight associated with height."
   },
   {
    "type": "body",
@@ -3750,7 +3750,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1036,
    "pdf_page": 1057,
-   "text": "Section 33.1 briefly discussed regularization—the idea that a complicated hypothesis should be penalized in order to avoid overfitting the training data. Regularization often involves adding a term to the obj ective function, but it can also be achieved by adding a constraint. One way to regularize this example would be to explicitly limit the norm of the weights, adding a constraint that kw k ≤ B for some bound B>0 . (Recall again that the components of the vector w are the variables in the present application.) Adding this constraint controls the complexity of the model, as the number of values w j that can have large absolute value is now limited."
+   "text": "Section 33.1 briefly discussed regularization—the idea that a complicated hypothesis should be penalized in order to avoid overfitting the training data. Regularization often involves adding a term to the objective function, but it can also be achieved by adding a constraint. One way to regularize this example would be to explicitly limit the norm of the weights, adding a constraint that kw k ≤ B for some bound B>0 . (Recall again that the components of the vector w are the variables in the present application.) Adding this constraint controls the complexity of the model, as the number of values w j that can have large absolute value is now limited."
   },
   {
    "type": "body",
@@ -3867,7 +3867,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1038,
    "pdf_page": 1059,
-   "text": "33.3-6 Consider the function f defined in equation (33.32), and suppose that you have a bound kw k ≤ B , as is considered in the discussion on regularizat ion. Show that L = O(B) in this case."
+   "text": "33.3-6 Consider the function f defined in equation (33.32), and suppose that you have a bound kw k ≤ B , as is considered in the discussion on regularization. Show that L = O(B) in this case."
   },
   {
    "type": "exercise",
@@ -4173,7 +4173,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1041,
    "pdf_page": 1062,
-   "text": "Gradient descent is known to converge faster when functions obey stronger properties than general convexity. For example, a funct ion f is ˛-strongly convex if f. y / ≥ f. x/ C h(r f). x/,. y − x/i C ˛ ky − xk for all x; y 2 R n . In this case, GRADIENT-DESCENT can use a variable step size and return x (T ) . The step size at step t becomes ] t = 1=.˛.t + 1//, and the procedure returns a point such that f(x-avg) − f. x − / ≤ L 2 =.˛.T + 1//. This convergence is better than that of Theorem 33.8 because the number of iterations needed is linear, rather than quadratic, in the desired error parameter ] , and because the performance is independent of the initial point."
+   "text": "Gradient descent is known to converge faster when functions obey stronger properties than general convexity. For example, a function f is ˛-strongly convex if f. y / ≥ f. x/ C h(r f). x/,. y − x/i C ˛ ky − xk for all x; y 2 R n . In this case, GRADIENT-DESCENT can use a variable step size and return x (T ) . The step size at step t becomes ] t = 1=.˛.t + 1//, and the procedure returns a point such that f(x-avg) − f. x − / ≤ L 2 =.˛.T + 1//. This convergence is better than that of Theorem 33.8 because the number of iterations needed is linear, rather than quadratic, in the desired error parameter ] , and because the performance is independent of the initial point."
   },
   {
    "type": "body",
@@ -4218,7 +4218,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1042,
    "pdf_page": 1063,
-   "text": "\"Halting Problem,\" that cannot be solved by any com puter, no matter how long you’re willing to wait for an answer. 1 There are also problems that can be solved, but not in O(n k ) time for any constant k. Generally, we think of problems that are solvable by polynomial-time algorithms as being tractable, or \"easy,\" and problems that require superpolynomial time as being intractable, or \"hard.\""
+   "text": "\"Halting Problem,\" that cannot be solved by any computer, no matter how long you’re willing to wait for an answer. 1 There are also problems that can be solved, but not in O(n k ) time for any constant k. Generally, we think of problems that are solvable by polynomial-time algorithms as being tractable, or \"easy,\" and problems that require superpolynomial time as being intractable, or \"hard.\""
   },
   {
    "type": "body",
@@ -4227,7 +4227,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1042,
    "pdf_page": 1063,
-   "text": "The subject of this chapter, however, is an interes ting class of problems, called the \"NP-complete\" problems, whose status is unknown. No polynomial-time algorithm has yet been discovered for an NP-complete problem, nor has anyone yet been able to prove that no polynomial-time algorithm can exist for any one of them."
+   "text": "The subject of this chapter, however, is an interesting class of problems, called the \"NP-complete\" problems, whose status is unknown. No polynomial-time algorithm has yet been discovered for an NP-complete problem, nor has anyone yet been able to prove that no polynomial-time algorithm can exist for any one of them."
   },
   {
    "type": "body",
@@ -4263,7 +4263,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1042,
    "pdf_page": 1063,
-   "text": "1 For the Halting Problem and other unsolvable proble ms, there are proofs that no algorithm can exist that, for every input, eventually produces the correct answer. A procedure attempting to solve an unsolvable problem might always produce an answer but is sometimes incorrect, or all the answers it produces might be correct but for some inputs it never produces an answer."
+   "text": "1 For the Halting Problem and other unsolvable problems, there are proofs that no algorithm can exist that, for every input, eventually produces the correct answer. A procedure attempting to solve an unsolvable problem might always produce an answer but is sometimes incorrect, or all the answers it produces might be correct but for some inputs it never produces an answer."
   }
  ]
 }
