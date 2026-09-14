@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>_dev/shot.html — 主题截图辅助页</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        background: #fff;
+      }
+      iframe {
+        display: block;
+        border: 0;
+        width: 1280px;
+      }
+    </style>
+  </head>
+  <body>
+    <!--
+      用途：无头浏览器截图时强制指定主题。
+      站点默认跟随系统 prefers-color-scheme，headless 下拿不到明色，
+      而 [data-theme="light"] 可以覆盖媒体查询。这个页面用同源 iframe
+      载入 index.html，load 之后把 data-theme 打到 iframe 的根元素上。
+
+      用法：
+        /_dev/shot.html?t=light&r=%23/ch02/s01/s03&h=2400
+          t = light | dark        主题
+          r = 路由（# 要写成 %23）  默认 #/
+          h = iframe 高度           默认 2400
+    -->
+    <iframe id="f"></iframe>
+    <script>
+      const q = new URLSearchParams(location.search);
+      const theme = q.get("t") || "light";
+      const route = q.get("r") || "#/";
+      const h = q.get("h") || "2400";
+      const w = q.get("w") || "1280";
+      const f = document.getElementById("f");
+      f.style.height = h + "px";
+      // 宽度必须给 iframe 本身：iframe 的视口 = 它的 CSS 宽，
+      // 所以媒体查询按这个宽度生效（窗口宽度对它没有影响）。
+      f.style.width = w + "px";
+      f.src = "../index.html" + route;
+      f.addEventListener("load", () => {
+        try {
+          // 站点的 applyTheme() 在脚本里跑过，这里最后盖一次
+          const d = f.contentDocument;
+          d.documentElement.setAttribute("data-theme", theme);
+          // 顺带报一下横向溢出：开发规范要求 375px 下不横向滚动。
+          // 结果写进 title，用 --dump-dom 读。
+          const w = f.contentWindow;
+          const overflow = d.documentElement.scrollWidth - w.innerWidth;
+          document.title =
+            "shot theme=" + theme +
+            " overflow=" + overflow +
+            " scrollW=" + d.documentElement.scrollWidth +
+            " innerW=" + w.innerWidth;
+        } catch (e) {
+          document.title = "shot error: " + e.message;
+        }
+      });
+    </script>
+  </body>
+</html>
