@@ -149,7 +149,7 @@
    "section_title": "12.1 What is a binary search tree?",
    "printed_page": 314,
    "pdf_page": 335,
-   "text": "Because of the binary-search-tree property, you can print out all the keys in a binary search tree in sorted order by a simple recursive algorithm, called an inorder tree walk, given by the procedure INORDER-TREE-WALK. This algorithm is so named because it prints the key of the root of a subtree between printing the values in its left subtree and printing those in its right subtree. (Similarly, a preorder tree walk prints the root before the values in either subtree , and a postorder tree walk prints the root after the values in its subtrees.) To print all the elements in a binary search tree T , call INORDER-TREE-WALK (T: root ). For example, the inorder tree walk prints the keys in each of the two binary search trees from Figure 12.1 in the order 2;5;5;6;7;8 . The correctness of the algorithm follows by induction directly from the binary-search-tree property."
+   "text": "Because of the binary-search-tree property, you can print out all the keys in a binary search tree in sorted order by a simple recursive algorithm, called an inorder tree walk, given by the procedure INORDER-TREE-WALK. This algorithm is so named because it prints the key of the root of a subtree between printing the values in its left subtree and printing those in its right subtree. (Similarly, a preorder tree walk prints the root before the values in either subtree , and a postorder tree walk prints the root after the values in its subtrees.) To print all the elements in a binary search tree T , call INORDER-TREE-WALK (T: root ). For example, the inorder tree walk prints the keys in each of the two binary search trees from Figure 12.1 in the order 2,5,5,6,7,8 . The correctness of the algorithm follows by induction directly from the binary-search-tree property."
   },
   {
    "type": "body",
@@ -212,7 +212,7 @@
    "section_title": "12.1 What is a binary search tree?",
    "printed_page": 315,
    "pdf_page": 336,
-   "text": "For n > 0, suppose that INORDER-TREE-WALK is called on a node x whose left subtree has k nodes and whose right subtree has n − k − 1 nodes. The time to perform INORDER-TREE-WALK (x) is bounded by T(n) ≤ T(k) CT(n −k −1)Cd for some constant d > 0 that reflects an upper bound on the time to execute the body of INORDER-TREE-WALK (x), exclusive of the time spent in recursive calls."
+   "text": "For n > 0, suppose that INORDER-TREE-WALK is called on a node x whose left subtree has k nodes and whose right subtree has n − k − 1 nodes. The time to perform INORDER-TREE-WALK (x) is bounded by T(n) ≤ T(k) + T(n −k −1) + d for some constant d > 0 that reflects an upper bound on the time to execute the body of INORDER-TREE-WALK (x), exclusive of the time spent in recursive calls."
   },
   {
    "type": "body",
@@ -275,7 +275,7 @@
    "section_title": "12.1 What is a binary search tree?",
    "printed_page": 315,
    "pdf_page": 336,
-   "text": "12.1-1 For the set f1;4;5;10;16;17;21 g of keys, draw binary search trees of heights 2, 3, 4, 5, and 6."
+   "text": "12.1-1 For the set f1,4,5,10,16,17,21 g of keys, draw binary search trees of heights 2, 3, 4, 5, and 6."
   },
   {
    "type": "exercise",
@@ -337,14 +337,14 @@
     },
     {
      "n": 4,
-     "code": "return TREE-SEARCH(x: left;k)"
+     "code": "return TREE-SEARCH(x: left,k)"
     },
     {
      "n": 5,
-     "code": "else return TREE-SEARCH(x: right ;k)"
+     "code": "else return TREE-SEARCH(x: right ,k)"
     }
    ],
-   "text": "1 if x = = NIL or k == x: key\n2 return x\n3 if k<x:  key\n4 return TREE-SEARCH(x: left;k)\n5 else return TREE-SEARCH(x: right ;k)"
+   "text": "1 if x = = NIL or k == x: key\n2 return x\n3 if k<x:  key\n4 return TREE-SEARCH(x: left,k)\n5 else return TREE-SEARCH(x: right ,k)"
   },
   {
    "type": "pseudocode",
@@ -404,7 +404,7 @@
    "section_title": "12.2 Querying a binary search tree",
    "printed_page": 316,
    "pdf_page": 337,
-   "text": "To search for a node with a given key in a binary s earch tree, call the TREE- SEARCH procedure. Given a pointer x to the root of a subtree and a key k, TREE-SEARCH (x;k) returns a pointer to a node with key k if one exists in the subtree; otherwise, it returns NIL. To search for key k in the entire binary search tree T , call TREE-SEARCH (T: root ;k) ."
+   "text": "To search for a node with a given key in a binary s earch tree, call the TREE- SEARCH procedure. Given a pointer x to the root of a subtree and a key k, TREE-SEARCH (x,k) returns a pointer to a node with key k if one exists in the subtree; otherwise, it returns NIL. To search for key k in the entire binary search tree T , call TREE-SEARCH (T: root ,k) ."
   },
   {
    "type": "body",
@@ -413,7 +413,7 @@
    "section_title": "12.2 Querying a binary search tree",
    "printed_page": 316,
    "pdf_page": 337,
-   "text": "TREE-SEARCH (x;k)"
+   "text": "TREE-SEARCH (x,k)"
   },
   {
    "type": "body",
@@ -422,7 +422,7 @@
    "section_title": "12.2 Querying a binary search tree",
    "printed_page": 316,
    "pdf_page": 337,
-   "text": "ITERATIVE-TREE-SEARCH (x;k)"
+   "text": "ITERATIVE-TREE-SEARCH (x,k)"
   },
   {
    "type": "body",
@@ -670,7 +670,7 @@
    "section_title": "12.2 Querying a binary search tree",
    "printed_page": 319,
    "pdf_page": 340,
-   "text": "TREE-SUCCESSOR (x) left child is also an ancestor of x . In Figure 12.2(d), the successor of the node with key 13 is the node with key 15. To find y , go up the tree from x until you encounter either the root or a node that is the lef t child of its parent. Lines 438 of TREE-SUCCESSOR handle this case."
+   "text": "TREE-SUCCESSOR (x) left child is also an ancestor of x . In Figure 12.2(d), the successor of the node with key 13 is the node with key 15. To find y , go up the tree from x until you encounter either the root or a node that is the lef t child of its parent. Lines 4–8 of TREE-SUCCESSOR handle this case."
   },
   {
    "type": "body",
@@ -906,7 +906,7 @@
    "section_title": "12.3 Insertion and deletion",
    "printed_page": 321,
    "pdf_page": 342,
-   "text": "TREE-INSERT (T;´/"
+   "text": "TREE-INSERT (T,´/"
   },
   {
    "type": "body",
@@ -915,7 +915,7 @@
    "section_title": "12.3 Insertion and deletion",
    "printed_page": 321,
    "pdf_page": 342,
-   "text": "Figure 12.3 shows how TREE-INSERT works. Just like the procedures TREE- SEARCH and ITERATIVE-TREE-SEARCH , TREE-INSERT begins at the root of the tree and the pointer x traces a simple path downward looking for a NIL to replace with the input node ´. The procedure maintains the trailing pointer y as the parent of x . After initialization, the while loop in lines 337 causes these two pointers to move down the tree, going left or right dependin g on the comparison of ´: key with x: key, until x becomes NIL. This NIL occupies the position where node ´ will go. More precisely, this NIL is a left or right attribute of the node that will become"
+   "text": "Figure 12.3 shows how TREE-INSERT works. Just like the procedures TREE- SEARCH and ITERATIVE-TREE-SEARCH , TREE-INSERT begins at the root of the tree and the pointer x traces a simple path downward looking for a NIL to replace with the input node ´. The procedure maintains the trailing pointer y as the parent of x . After initialization, the while loop in lines 3–7 causes these two pointers to move down the tree, going left or right dependin g on the comparison of ´: key with x: key, until x becomes NIL. This NIL occupies the position where node ´ will go. More precisely, this NIL is a left or right attribute of the node that will become"
   },
   {
    "type": "body",
@@ -933,7 +933,7 @@
    "section_title": "12.3 Insertion and deletion",
    "printed_page": 322,
    "pdf_page": 343,
-   "text": "Figure 12.3 Inserting a node with key 13 into a binary search tree. The simple path from the root down to the position where the node is inserted is shown in blue. The new node and the link to its parent are highlighted in orange. trailing pointer y , because by the time it finds the NIL where ´ belongs, the search has proceeded one step beyond the node that needs to be changed. Lines 8313 set the pointers that cause ´ to be inserted."
+   "text": "Figure 12.3 Inserting a node with key 13 into a binary search tree. The simple path from the root down to the position where the node is inserted is shown in blue. The new node and the link to its parent are highlighted in orange. trailing pointer y , because by the time it finds the NIL where ´ belongs, the search has proceeded one step beyond the node that needs to be changed. Lines 8–13 set the pointers that cause ´ to be inserted."
   },
   {
    "type": "body",
@@ -1145,7 +1145,7 @@
    "section_title": "12.3 Insertion and deletion",
    "printed_page": 324,
    "pdf_page": 345,
-   "text": "TRANSPLANT (T;u;v)"
+   "text": "TRANSPLANT (T,u,v)"
   },
   {
    "type": "body",
@@ -1154,7 +1154,7 @@
    "section_title": "12.3 Insertion and deletion",
    "printed_page": 324,
    "pdf_page": 345,
-   "text": "Here is how TRANSPLANT works. Lines 132 handle the case in which u is the root of T . Otherwise, u is either a left child or a right child of its parent. Lines 334 take care of updating u: p: left if u is a left child, and line 5 updates u: p: right if u is a right child. Because v may be NIL, lines 637 update v: p only if v is non-NIL."
+   "text": "Here is how TRANSPLANT works. Lines 1–2 handle the case in which u is the root of T . Otherwise, u is either a left child or a right child of its parent. Lines 3–4 take care of updating u: p: left if u is a left child, and line 5 updates u: p: right if u is a right child. Because v may be NIL, lines 6–7 update v: p only if v is non-NIL."
   },
   {
    "type": "body",
@@ -1172,7 +1172,7 @@
    "section_title": "12.3 Insertion and deletion",
    "printed_page": 324,
    "pdf_page": 345,
-   "text": "The procedure TREE-DELETE on the facing page uses TRANSPLANT to delete node ´ from binary search tree T . It executes the four cases as follows. Lines 132 handle the case in which node ´ has no left child (Figure 12.4(a)), and lines 334 handle the case in which ´ has a left child but no right child (Figure 12.4(b)). Lines"
+   "text": "The procedure TREE-DELETE on the facing page uses TRANSPLANT to delete node ´ from binary search tree T . It executes the four cases as follows. Lines 1–2 handle the case in which node ´ has no left child (Figure 12.4(a)), and lines 3–4 handle the case in which ´ has a left child but no right child (Figure 12.4(b)). Lines"
   },
   {
    "type": "pseudocode",
@@ -1190,7 +1190,7 @@
     },
     {
      "n": 2,
-     "code": "TRANSPLANT (T;´;´:  right ) ) / replace ´ by its right child"
+     "code": "TRANSPLANT (T,´,´:  right ) ) / replace ´ by its right child"
     },
     {
      "n": 3,
@@ -1198,7 +1198,7 @@
     },
     {
      "n": 4,
-     "code": "TRANSPLANT (T;´;´:  left ) / / replace ´ by its left child"
+     "code": "TRANSPLANT (T,´,´:  left ) / / replace ´ by its left child"
     },
     {
      "n": 5,
@@ -1210,7 +1210,7 @@
     },
     {
      "n": 7,
-     "code": "TRANSPLANT (T;y;y:  right ) / / replace y by its right child"
+     "code": "TRANSPLANT (T,y,y:  right ) / / replace y by its right child"
     },
     {
      "n": 8,
@@ -1222,7 +1222,7 @@
     },
     {
      "n": 10,
-     "code": "TRANSPLANT (T;´;y)  / / replace ´ by its successor y"
+     "code": "TRANSPLANT (T,´,y)  / / replace ´ by its successor y"
     },
     {
      "n": 11,
@@ -1233,7 +1233,7 @@
      "code": "y: left: √D y / / which had no left child"
     }
    ],
-   "text": "1 if ´: left == NIL\n2 TRANSPLANT (T;´;´:  right ) ) / replace ´ by its right child\n3 elseif ´: right == NIL\n4 TRANSPLANT (T;´;´:  left ) / / replace ´ by its left child\n5 else y DTREE-MINIMUM.´: right / / / y is ´’s successor\n6 if y ≠ ´: right / / is y farther down the tree?\n7 TRANSPLANT (T;y;y:  right ) / / replace y by its right child\n8 y: right = ´: right / / ´’s right child becomes\n9 y: right : √D y / / y ’s right child\n10 TRANSPLANT (T;´;y)  / / replace ´ by its successor y\n11 y: left = ´: left / / and give ´’s left child to y,\n12 y: left: √D y / / which had no left child"
+   "text": "1 if ´: left == NIL\n2 TRANSPLANT (T,´,´:  right ) ) / replace ´ by its right child\n3 elseif ´: right == NIL\n4 TRANSPLANT (T,´,´:  left ) / / replace ´ by its left child\n5 else y DTREE-MINIMUM.´: right / / / y is ´’s successor\n6 if y ≠ ´: right / / is y farther down the tree?\n7 TRANSPLANT (T,y,y:  right ) / / replace y by its right child\n8 y: right = ´: right / / ´’s right child becomes\n9 y: right : √D y / / y ’s right child\n10 TRANSPLANT (T,´,y)  / / replace ´ by its successor y\n11 y: left = ´: left / / and give ´’s left child to y,\n12 y: left: √D y / / which had no left child"
   },
   {
    "type": "body",
@@ -1242,7 +1242,7 @@
    "section_title": "12.3 Insertion and deletion",
    "printed_page": 325,
    "pdf_page": 346,
-   "text": "5312 deal with the remaining two cases, in which ´ has two children. Line 5 finds node y , which is the successor of ´. Because ´ has a nonempty right subtree, its successor must be the node in that subtree with the smallest key; hence the call to TREE-MINIMUM.´: right /. As we noted before, y has no left child. The procedure needs to splice y out of its current location and replace ´ by y in the tree. If y is ´’s right child (Figure 12.4(c)), then lines 10312 replace ´ as a child of its parent by y and replace y ’s left child by ´’s left child. Node y retains its right child"
+   "text": "5312 deal with the remaining two cases, in which ´ has two children. Line 5 finds node y , which is the successor of ´. Because ´ has a nonempty right subtree, its successor must be the node in that subtree with the smallest key; hence the call to TREE-MINIMUM.´: right /. As we noted before, y has no left child. The procedure needs to splice y out of its current location and replace ´ by y in the tree. If y is ´’s right child (Figure 12.4(c)), then lines 10–12 replace ´ as a child of its parent by y and replace y ’s left child by ´’s left child. Node y retains its right child"
   },
   {
    "type": "body",
@@ -1251,7 +1251,7 @@
    "section_title": "12.3 Insertion and deletion",
    "printed_page": 325,
    "pdf_page": 346,
-   "text": "(x in Figure 12.4(c)), and so no change to y: right needs to occur. If y is not ´’s right child (Figure 12.4(d)), then two nodes have to move. Lines 739 replace y as a child of its parent by y ’s right child (x in Figure 12.4(c)) and make ´’s right child"
+   "text": "(x in Figure 12.4(c)), and so no change to y: right needs to occur. If y is not ´’s right child (Figure 12.4(d)), then two nodes have to move. Lines 7–9 replace y as a child of its parent by y ’s right child (x in Figure 12.4(c)) and make ´’s right child"
   },
   {
    "type": "body",
@@ -1260,7 +1260,7 @@
    "section_title": "12.3 Insertion and deletion",
    "printed_page": 325,
    "pdf_page": 346,
-   "text": "(r in the figure) become y ’s right child instead. Finally, lines 10312 replace ´ as a child of its parent by y and replace y ’s left child by ´’s left child."
+   "text": "(r in the figure) become y ’s right child instead. Finally, lines 10–12 replace ´ as a child of its parent by y and replace y ’s left child by ´’s left child."
   },
   {
    "type": "body",
@@ -1269,7 +1269,7 @@
    "section_title": "12.3 Insertion and deletion",
    "printed_page": 325,
    "pdf_page": 346,
-   "text": "TREE-DELETE (T;´/"
+   "text": "TREE-DELETE (T,´/"
   },
   {
    "type": "body",
@@ -1413,7 +1413,7 @@
    "section_title": "12.3 Insertion and deletion",
    "printed_page": 327,
    "pdf_page": 348,
-   "text": "Given two strings a = a 0 a 1 :::a p and b = b 0 b 1 :::b q , where each a i and each b j belongs to some ordered set of characters, we say that string a is lexicographically less than string b if either"
+   "text": "Given two strings a = a 0 a 1 …a p and b = b 0 b 1 …b q , where each a i and each b j belongs to some ordered set of characters, we say that string a is lexicographically less than string b if either"
   },
   {
    "type": "body",
@@ -1422,7 +1422,7 @@
    "section_title": "12.3 Insertion and deletion",
    "printed_page": 327,
    "pdf_page": 348,
-   "text": "1. there exists an integer j , where 0 ≤ j ≤ min fp;q g, such that a i = b i for all i = 0;1;:::;j − 1 and a j <b j , or 2. p<q and a i = b i for all i = 0;1;:::;p ."
+   "text": "1. there exists an integer j , where 0 ≤ j ≤ min fp,q g, such that a i = b i for all i = 0,1,…,j − 1 and a j <b j , or 2. p<q and a i = b i for all i = 0,1,…,p ."
   },
   {
    "type": "body",
@@ -1440,7 +1440,7 @@
    "section_title": "12.3 Insertion and deletion",
    "printed_page": 327,
    "pdf_page": 348,
-   "text": "The radix tree data structure shown in Figure 12.5 (also known as a trie) stores the bit strings 1011, 10, 011, 100, and 0. When searching for a key a = a 0 a 1 :::a p , go left at a node of depth i if a i = 0 and right if a i = 1. Let S be a set of distinct bit strings whose lengths sum to n. Show how to use a radix tree to sort S lexicographically in Θ(n) time. For the example in Figure 12.5, the output of the sort should be the sequence 0, 011, 10, 100, 1011."
+   "text": "The radix tree data structure shown in Figure 12.5 (also known as a trie) stores the bit strings 1011, 10, 011, 100, and 0. When searching for a key a = a 0 a 1 …a p , go left at a node of depth i if a i = 0 and right if a i = 1. Let S be a set of distinct bit strings whose lengths sum to n. Show how to use a radix tree to sort S lexicographically in Θ(n) time. For the example in Figure 12.5, the output of the sort should be the sequence 0, 011, 10, 100, 1011."
   },
   {
    "type": "figure-caption",
@@ -1476,7 +1476,7 @@
    "section_title": "12.3 Insertion and deletion",
    "printed_page": 328,
    "pdf_page": 349,
-   "text": "Denote the depth of any node x in tree T by d(x;T) . Then the total path length P(T) of a tree T is the sum, over all nodes x in T , of d(x;T) . a. Argue that the average depth of a node in T is n"
+   "text": "Denote the depth of any node x in tree T by d(x,T) . Then the total path length P(T) of a tree T is the sum, over all nodes x in T , of d(x,T) . a. Argue that the average depth of a node in T is n"
   },
   {
    "type": "body",
@@ -1485,7 +1485,7 @@
    "section_title": "12.3 Insertion and deletion",
    "printed_page": 328,
    "pdf_page": 349,
-   "text": "X x2T d(x;T) = 1 n P(T):"
+   "text": "X x2T d(x,T) = 1 n P(T):"
   },
   {
    "type": "body",

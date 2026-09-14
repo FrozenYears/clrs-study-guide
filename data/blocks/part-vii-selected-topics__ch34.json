@@ -133,7 +133,7 @@
    "section_title": "34.1 Polynomial time",
    "printed_page": 1049,
    "pdf_page": 1070,
-   "text": "This formulation of an abstract problem is more gen eral than necessary for our purposes. As we saw above, the theory of NP-completeness restricts attention to decision problems: those having a yes/no solution. In this case, we can view an abstract decision problem as a function that maps the instance set I to the solution set f0;1 g. For example, a decision problem related to SHORTEST-PATHis the problem PATH that we saw earlier. If i = hG;u;v;k i is an instance of PATH, then PATH(i) = 1 (yes) if G contains a path from u to v with at most k edges, and PATH(i) = 0 (no) otherwise. Many abstract problems are not deci sion problems, but rather optimization problems, which require some value to be minimized or maximized. As we saw above, however, you can usuall y recast an optimization problem as a decision problem that is no harder."
+   "text": "This formulation of an abstract problem is more gen eral than necessary for our purposes. As we saw above, the theory of NP-completeness restricts attention to decision problems: those having a yes/no solution. In this case, we can view an abstract decision problem as a function that maps the instance set I to the solution set f0,1 g. For example, a decision problem related to SHORTEST-PATHis the problem PATH that we saw earlier. If i = ⟨G,u,v,k⟩ is an instance of PATH, then PATH(i) = 1 (yes) if G contains a path from u to v with at most k edges, and PATH(i) = 0 (no) otherwise. Many abstract problems are not deci sion problems, but rather optimization problems, which require some value to be minimized or maximized. As we saw above, however, you can usuall y recast an optimization problem as a decision problem that is no harder."
   },
   {
    "type": "body",
@@ -151,7 +151,7 @@
    "section_title": "34.1 Polynomial time",
    "printed_page": 1049,
    "pdf_page": 1070,
-   "text": "In order for a computer program to solve an abstract problem, its problem instances must appear in a way that the program understands. An encoding of a set S of abstract objects is a mapping e from S to the set of binary strings. 3 For example, we are all familiar with encoding the natural numbe rs N = f0;1;2;3;4;::: g as the strings f0;1;10;11;100;::: g. Using this encoding, e(17) = 10001. If you have looked at computer representations of keyboard characters, you probably have seen the ASCII code, where, for example, the encoding of A is 01000001. You can encode a compound object as a binary string by comb ining the representations of its constituent parts. Polygons, graphs, functions, ordered pairs, programs—all can be encoded as binary strings."
+   "text": "In order for a computer program to solve an abstract problem, its problem instances must appear in a way that the program understands. An encoding of a set S of abstract objects is a mapping e from S to the set of binary strings. 3 For example, we are all familiar with encoding the natural numbe rs N = f0,1,2,3,4,… g as the strings f0,1,10,11,100,… g. Using this encoding, e(17) = 10001. If you have looked at computer representations of keyboard characters, you probably have seen the ASCII code, where, for example, the encoding of A is 01000001. You can encode a compound object as a binary string by comb ining the representations of its constituent parts. Polygons, graphs, functions, ordered pairs, programs—all can be encoded as binary strings."
   },
   {
    "type": "body",
@@ -196,7 +196,7 @@
    "section_title": "34.1 Polynomial time",
    "printed_page": 1050,
    "pdf_page": 1071,
-   "text": "Encodings map abstract problems to concrete problems. Given an abstract decision problem Q mapping an instance set I to f0;1 g, an encoding e W I ! f0;1 g − can induce a related concrete decision problem, which we denote by e(Q). 5 If the solution to an abstract-problem instance i 2 I is Q(i) 2 f0;1 g, then the solution"
+   "text": "Encodings map abstract problems to concrete problems. Given an abstract decision problem Q mapping an instance set I to f0,1 g, an encoding e W I ! f0,1 g − can induce a related concrete decision problem, which we denote by e(Q). 5 If the solution to an abstract-problem instance i 2 I is Q(i) 2 f0,1 g, then the solution"
   },
   {
    "type": "body",
@@ -205,7 +205,7 @@
    "section_title": "34.1 Polynomial time",
    "printed_page": 1050,
    "pdf_page": 1071,
-   "text": "to the concrete-problem instance e(i) 2 f0;1 g − is also Q(i). As a technicality, some binary strings might represent no meaningful abstract-problem instance. For convenience, assume that any such string maps arbit rarily to 0. Thus, the concrete problem produces the same solutions as the abstract problem on binary-string instances that represent the encodings of abstract-problem instances."
+   "text": "to the concrete-problem instance e(i) 2 f0,1 g − is also Q(i). As a technicality, some binary strings might represent no meaningful abstract-problem instance. For convenience, assume that any such string maps arbit rarily to 0. Thus, the concrete problem produces the same solutions as the abstract problem on binary-string instances that represent the encodings of abstract-problem instances."
   },
   {
    "type": "body",
@@ -250,7 +250,7 @@
    "section_title": "34.1 Polynomial time",
    "printed_page": 1050,
    "pdf_page": 1071,
-   "text": "5 The notation f0;1 g − denotes the set of all strings composed of symbols from the set f0;1 g."
+   "text": "5 The notation f0,1 g − denotes the set of all strings composed of symbols from the set f0,1 g."
   },
   {
    "type": "body",
@@ -259,7 +259,7 @@
    "section_title": "34.1 Polynomial time",
    "printed_page": 1051,
    "pdf_page": 1072,
-   "text": "We say that a function f W f0;1 g − ! f0;1 g − is polynomial-time computable if there exists a polynomial-time algorithm A that, given any input x 2 f0;1 g − , produces as output f(x) . For some set I of problem instances, we say that two encodings e 1 and e 2 are polynomially related if there exist two polynomial-time computable functions f 12 and f 21 such that for any i 2 I , we have f 12 (e 1 (i)) = e 2 (i) and f 21 (e 2 (i)) = e 1 (i). 6 That is, a polynomial-time algorithm can compute the encoding e 2 (i) from the encoding e 1 (i), and vice versa. If two encodings e 1 and e 2 of an abstract problem are polynomially related, whether the problem is polynomialtime solvable or not is independent of which encodi ng we use, as the following lemma shows."
+   "text": "We say that a function f W f0,1 g − ! f0,1 g − is polynomial-time computable if there exists a polynomial-time algorithm A that, given any input x 2 f0,1 g − , produces as output f(x) . For some set I of problem instances, we say that two encodings e 1 and e 2 are polynomially related if there exist two polynomial-time computable functions f 12 and f 21 such that for any i 2 I , we have f 12 (e 1 (i)) = e 2 (i) and f 21 (e 2 (i)) = e 1 (i). 6 That is, a polynomial-time algorithm can compute the encoding e 2 (i) from the encoding e 1 (i), and vice versa. If two encodings e 1 and e 2 of an abstract problem are polynomially related, whether the problem is polynomialtime solvable or not is independent of which encodi ng we use, as the following lemma shows."
   },
   {
    "type": "lemma",
@@ -313,7 +313,7 @@
    "section_title": "34.1 Polynomial time",
    "printed_page": 1051,
    "pdf_page": 1072,
-   "text": "A noninstance of an encoding e is a string x 2 f0;1 g − such that there is no instance i for which e(i) = x. We require that f 12 (x) = y for every noninstance x of encoding e 1 , where y is some non- instance of e 2 , and that f 21 (x 0 ) = y 0 for every noninstance x 0 of e 2 , where y 0 is some noninstance of e 1 . such a \"standard\" encoding in hand, we can derive r easonable encodings of other mathematical objects, such as tuples, graphs, and formulas. To denote the standard encoding of an object, we enclose the object in angle brackets. Thus, hGi denotes the standard encoding of a graph G."
+   "text": "A noninstance of an encoding e is a string x 2 f0,1 g − such that there is no instance i for which e(i) = x. We require that f 12 (x) = y for every noninstance x of encoding e 1 , where y is some non- instance of e 2 , and that f 21 (x 0 ) = y 0 for every noninstance x 0 of e 2 , where y 0 is some noninstance of e 1 . such a \"standard\" encoding in hand, we can derive r easonable encodings of other mathematical objects, such as tuples, graphs, and formulas. To denote the standard encoding of an object, we enclose the object in angle brackets. Thus, hGi denotes the standard encoding of a graph G."
   },
   {
    "type": "body",
@@ -340,7 +340,7 @@
    "section_title": "34.1 Polynomial time",
    "printed_page": 1052,
    "pdf_page": 1073,
-   "text": "By focusing on decision problems, we can take advan tage of the machinery of formal-language theory. Let’s review some definitions from that theory. An alphabet † is a finite set of symbols. A language L over † is any set of strings made up of symbols from †. For example, if † = f0;1 g, the set L = f10; 11;101;111;1011;1101;10001;::: g is the language of binary representations of prime numbers. We denote the empty string by \", the empty language by ;, and the language of all strings over † by † − . For example, if † = f0;1 g, then"
+   "text": "By focusing on decision problems, we can take advan tage of the machinery of formal-language theory. Let’s review some definitions from that theory. An alphabet † is a finite set of symbols. A language L over † is any set of strings made up of symbols from †. For example, if † = f0,1 g, the set L = f10; 11,101,111,1011,1101,10001,… g is the language of binary representations of prime numbers. We denote the empty string by \", the empty language by ,, and the language of all strings over † by † − . For example, if † = f0,1 g, then"
   },
   {
    "type": "body",
@@ -349,7 +349,7 @@
    "section_title": "34.1 Polynomial time",
    "printed_page": 1052,
    "pdf_page": 1073,
-   "text": "† − = f\";0;1;00;01;10;11;000;::: g is the set of all binary strings. Every language L over † is a subset of † − ."
+   "text": "† − = f\",0,1,00,01,10,11,000,… g is the set of all binary strings. Every language L over † is a subset of † − ."
   },
   {
    "type": "body",
@@ -394,7 +394,7 @@
    "section_title": "34.1 Polynomial time",
    "printed_page": 1052,
    "pdf_page": 1073,
-   "text": "From the point of view of language theory, the set of instances for any decision problem Q is simply the set † − , where † = f0;1 g. Since Q is entirely characterized by those problem instances that produce a 1 (yes) answer, we can view Q as a language L over † = f0;1 g, where"
+   "text": "From the point of view of language theory, the set of instances for any decision problem Q is simply the set † − , where † = f0,1 g. Since Q is entirely characterized by those problem instances that produce a 1 (yes) answer, we can view Q as a language L over † = f0,1 g, where"
   },
   {
    "type": "body",
@@ -421,7 +421,7 @@
    "section_title": "34.1 Polynomial time",
    "printed_page": 1053,
    "pdf_page": 1074,
-   "text": "PATH = fhG;u;v;k i W G = (V;E) is an undirected graph, u;v 2 V; k ≥ 0 is an integer, and G contains a path from u to v with at most k edgesg :"
+   "text": "PATH = fhG,u,v,k i W G = (V,E) is an undirected graph, u,v 2 V; k ≥ 0 is an integer, and G contains a path from u to v with at most k edgesg :"
   },
   {
    "type": "body",
@@ -439,7 +439,7 @@
    "section_title": "34.1 Polynomial time",
    "printed_page": 1053,
    "pdf_page": 1074,
-   "text": "The formal-language framework allows us to express concisely the relation between decision problems and algorithms that solve t hem. We s ay that an algorithm A accepts a string x 2 f0;1 g − if, given input x , the algorithm’s out- put A(x) is 1. The language accepted by an algorithm A is the set of strings"
+   "text": "The formal-language framework allows us to express concisely the relation between decision problems and algorithms that solve t hem. We s ay that an algorithm A accepts a string x 2 f0,1 g − if, given input x , the algorithm’s out- put A(x) is 1. The language accepted by an algorithm A is the set of strings"
   },
   {
    "type": "body",
@@ -448,7 +448,7 @@
    "section_title": "34.1 Polynomial time",
    "printed_page": 1053,
    "pdf_page": 1074,
-   "text": "L = fx 2 f0;1 g − W A(x) = 1g, that is, the set of strings that the algorithm accepts."
+   "text": "L = fx 2 f0,1 g − W A(x) = 1g, that is, the set of strings that the algorithm accepts."
   },
   {
    "type": "body",
@@ -466,7 +466,7 @@
    "section_title": "34.1 Polynomial time",
    "printed_page": 1053,
    "pdf_page": 1074,
-   "text": "Even if language L is accepted by an algorithm A, the algorithm does not necessarily reject a string x … L provided as input to it. For example, the algorithm might loop forever. A language L is decided by an algorithm A if every binary string in L is accepted by A and every binary string not in L is rejected by A. A language L is accepted in polynomial time by an algorithm A if it is accepted by A and if in addition there exists a constant k such that for any length-n string x 2 L, algorithm A accepts x in O(n k ) time. A language L is decided in polynomial time by an algorithm A if there exists a constant k such that for any length-n string x 2 f0;1 g − , the algorithm correctly decides whether x 2 L in O(n k ) time."
+   "text": "Even if language L is accepted by an algorithm A, the algorithm does not necessarily reject a string x … L provided as input to it. For example, the algorithm might loop forever. A language L is decided by an algorithm A if every binary string in L is accepted by A and every binary string not in L is rejected by A. A language L is accepted in polynomial time by an algorithm A if it is accepted by A and if in addition there exists a constant k such that for any length-n string x 2 L, algorithm A accepts x in O(n k ) time. A language L is decided in polynomial time by an algorithm A if there exists a constant k such that for any length-n string x 2 f0,1 g − , the algorithm correctly decides whether x 2 L in O(n k ) time."
   },
   {
    "type": "body",
@@ -475,7 +475,7 @@
    "section_title": "34.1 Polynomial time",
    "printed_page": 1053,
    "pdf_page": 1074,
-   "text": "Thus, to accept a language, an algorithm need only produce an answer when provided a string in L, but to decide a language, it must correctly accept or reject every string in f0;1 g − ."
+   "text": "Thus, to accept a language, an algorithm need only produce an answer when provided a string in L, but to decide a language, it must correctly accept or reject every string in f0,1 g − ."
   },
   {
    "type": "body",
@@ -511,7 +511,7 @@
    "section_title": "34.1 Polynomial time",
    "printed_page": 1054,
    "pdf_page": 1075,
-   "text": "P = fL ⊆ f0;1 g − W there exists an algorithm A that decides L in polynomial timeg :"
+   "text": "P = fL ⊆ f0,1 g − W there exists an algorithm A that decides L in polynomial timeg :"
   },
   {
    "type": "body",
@@ -574,7 +574,7 @@
    "section_title": "34.1 Polynomial time",
    "printed_page": 1055,
    "pdf_page": 1076,
-   "text": "34.1-1 Define the optimization problem LONGEST-PATH-LENGTH as the relation that associates each instance of an undirected graph and two vertices with the number of edges in a longest simple path between the t wo vertices. Define the decision problem LONGEST-PATH = fhG;u;v;k i W G = (V;E) is an undirected graph, u;v 2 V , k ≥ 0 is an integer, and there exists a simple path from u to v in G consisting of at least k edgesg. Show that the optimization problem LONGEST-PATH-LENGTH can be solved in polynomial time if and only if"
+   "text": "34.1-1 Define the optimization problem LONGEST-PATH-LENGTH as the relation that associates each instance of an undirected graph and two vertices with the number of edges in a longest simple path between the t wo vertices. Define the decision problem LONGEST-PATH = fhG,u,v,k i W G = (V,E) is an undirected graph, u,v 2 V , k ≥ 0 is an integer, and there exists a simple path from u to v in G consisting of at least k edgesg. Show that the optimization problem LONGEST-PATH-LENGTH can be solved in polynomial time if and only if"
   },
   {
    "type": "body",
@@ -628,7 +628,7 @@
    "section_title": "34.1 Polynomial time",
    "printed_page": 1055,
    "pdf_page": 1076,
-   "text": "34.1-6 Show that the class P, viewed as a set of languages , is closed under union, inter- section, concatenation, complement, and Kleene star. That is, if L 1 ;L 2 2 P, then"
+   "text": "34.1-6 Show that the class P, viewed as a set of languages , is closed under union, inter- section, concatenation, complement, and Kleene star. That is, if L 1 ,L 2 2 P, then"
   },
   {
    "type": "body",
@@ -646,7 +646,7 @@
    "section_title": "34.2 Polynomial-time verification",
    "printed_page": 1056,
    "pdf_page": 1077,
-   "text": "Now, let’s look at algorithms that verify membership in languages. For example, suppose that for a given instance hG;u;v;k i of the decision problem PATH, you are also given a path p from u to v. You can check whether p is a path in G and whether the length of p is at most k, and if so, you can view p as a \"certificate\" that the instance indeed belongs to PATH. For the d ecision problem PATH, this certificate doesn’t seem to buy much. After all, PATH belongs to P—in fact, you can solve PATH in linear time—and so verifying membership from a given certificate takes as long as solving the problem from scratch. Instead, let’s examine a problem for which we know of no polynomial-time decision algorithm and yet, given a certificate, verification is easy."
+   "text": "Now, let’s look at algorithms that verify membership in languages. For example, suppose that for a given instance ⟨G,u,v,k⟩ of the decision problem PATH, you are also given a path p from u to v. You can check whether p is a path in G and whether the length of p is at most k, and if so, you can view p as a \"certificate\" that the instance indeed belongs to PATH. For the d ecision problem PATH, this certificate doesn’t seem to buy much. After all, PATH belongs to P—in fact, you can solve PATH in linear time—and so verifying membership from a given certificate takes as long as solving the problem from scratch. Instead, let’s examine a problem for which we know of no polynomial-time decision algorithm and yet, given a certificate, verification is easy."
   },
   {
    "type": "body",
@@ -673,7 +673,7 @@
    "section_title": "34.2 Polynomial-time verification",
    "printed_page": 1056,
    "pdf_page": 1077,
-   "text": "G = (V;E) is a simple cycle that contains each vertex in V . A graph that contains a hamiltonian cycle is said to be hamiltonian, and otherwise, it is nonhamiltonian. The name honors W. R. Hamilton, who described a m athematical game on the dodecahedron (Figure 34.2(a)) in which one player sticks five pins in any five consecutive vertices and the other player must comp lete the path to form a cycle containing all the vertices. 8 The dodecahedron is hamiltonian, and Figure 34.2(a) shows one hamiltonian cycle. Not all graphs are ham iltonian, however. For ex- ample, Figure 34.2(b) shows a bipartite graph with an odd number of vertices."
+   "text": "G = (V,E) is a simple cycle that contains each vertex in V . A graph that contains a hamiltonian cycle is said to be hamiltonian, and otherwise, it is nonhamiltonian. The name honors W. R. Hamilton, who described a m athematical game on the dodecahedron (Figure 34.2(a)) in which one player sticks five pins in any five consecutive vertices and the other player must comp lete the path to form a cycle containing all the vertices. 8 The dodecahedron is hamiltonian, and Figure 34.2(a) shows one hamiltonian cycle. Not all graphs are ham iltonian, however. For ex- ample, Figure 34.2(b) shows a bipartite graph with an odd number of vertices."
   },
   {
    "type": "body",
@@ -772,7 +772,7 @@
    "section_title": "34.2 Polynomial-time verification",
    "printed_page": 1058,
    "pdf_page": 1079,
-   "text": "We define a verification algorithm as being a two-argument algorithm A, where one argument is an ordinary input string x and the other is a binary string y called a certificate. A two-argument algorithm A verifies an input string x if there exists a certificate y such that A(x;y) = 1. The language verified by a verification algorithm A is L = fx 2 f0;1 g − W there exists y 2 f0;1 g − such that A(x;y) = 1g :"
+   "text": "We define a verification algorithm as being a two-argument algorithm A, where one argument is an ordinary input string x and the other is a binary string y called a certificate. A two-argument algorithm A verifies an input string x if there exists a certificate y such that A(x,y) = 1. The language verified by a verification algorithm A is L = fx 2 f0,1 g − W there exists y 2 f0,1 g − such that A(x,y) = 1g :"
   },
   {
    "type": "body",
@@ -799,7 +799,7 @@
    "section_title": "34.2 Polynomial-time verification",
    "printed_page": 1058,
    "pdf_page": 1079,
-   "text": "The complexity class NP is the class of languages that can be verified by a polynomial-time algorithm. 9 More precisely, a language L belongs to NP if and only if there exist a two-input polynomial-time algorithm A and a constant c such that L = fx 2 f0;1 g − W there exists a certificate y with |y| = O(|x| c ) such that A(x;y) = 1g :"
+   "text": "The complexity class NP is the class of languages that can be verified by a polynomial-time algorithm. 9 More precisely, a language L belongs to NP if and only if there exist a two-input polynomial-time algorithm A and a constant c such that L = fx 2 f0,1 g − W there exists a certificate y with |y| = O(|x| c ) such that A(x,y) = 1g :"
   },
   {
    "type": "body",
@@ -925,7 +925,7 @@
    "section_title": "34.2 Polynomial-time verification",
    "printed_page": 1060,
    "pdf_page": 1081,
-   "text": "34.2-1 Consider the language GRAPH-ISOMORPHISM = fhG 1 ;G 2 i W G 1 and G 2 are isomorphic graphsg. Prove that GRAPH-ISOMORPHISM 2 NP by describing a polynomial-time algorithm to verify the language."
+   "text": "34.2-1 Consider the language GRAPH-ISOMORPHISM = fhG 1 ,G 2 i W G 1 and G 2 are isomorphic graphsg. Prove that GRAPH-ISOMORPHISM 2 NP by describing a polynomial-time algorithm to verify the language."
   },
   {
    "type": "exercise",
@@ -970,7 +970,7 @@
    "section_title": "34.2 Polynomial-time verification",
    "printed_page": 1060,
    "pdf_page": 1081,
-   "text": "34.2-6 A hamiltonian path in a graph is a simple path that visits every verte x exactly once. Show that the language HAM-PATH = fhG;u;v i W there is a hamiltonian path from u to v in graph Gg belongs to NP."
+   "text": "34.2-6 A hamiltonian path in a graph is a simple path that visits every verte x exactly once. Show that the language HAM-PATH = fhG,u,v i W there is a hamiltonian path from u to v in graph Gg belongs to NP."
   },
   {
    "type": "exercise",
@@ -988,7 +988,7 @@
    "section_title": "34.2 Polynomial-time verification",
    "printed_page": 1060,
    "pdf_page": 1081,
-   "text": "34.2-8 Let Ω be a boolean formula constructed from the boolean i nput variables x 1 ;x 2 ; :::;x k , negations (:), ANDs (^), ORs (_), and parentheses. The formula Ω is a tautology if it evaluates to 1 for every assignment of 1 and 0 to the input variables."
+   "text": "34.2-8 Let Ω be a boolean formula constructed from the boolean i nput variables x 1 ,x 2 ; …,x k , negations (:), ANDs (^), ORs (_), and parentheses. The formula Ω is a tautology if it evaluates to 1 for every assignment of 1 and 0 to the input variables."
   },
   {
    "type": "body",
@@ -1096,7 +1096,7 @@
    "section_title": "34.3 NP-completeness and reducibility",
    "printed_page": 1062,
    "pdf_page": 1083,
-   "text": "Figure 34.4 A function f that reduces language L 1 to language L 2 . For any input x 2 f0;1 g − , the question of whether x 2 L 1 has the same answer as the question of whether f(x) 2 L 2 . solutions are then x = .−b + b/=2a = 0 and x = .−b − b/=2a = −b/a, thereby providing a solution to ax + b = 0. Thus, if a problem Q reduces to another problem Q 0 , then Q is, in a sense, \"no harder to solve\" than Q 0 ."
+   "text": "Figure 34.4 A function f that reduces language L 1 to language L 2 . For any input x 2 f0,1 g − , the question of whether x 2 L 1 has the same answer as the question of whether f(x) 2 L 2 . solutions are then x = .−b + b/=2a = 0 and x = .−b − b/=2a = −b/a, thereby providing a solution to ax + b = 0. Thus, if a problem Q reduces to another problem Q 0 , then Q is, in a sense, \"no harder to solve\" than Q 0 ."
   },
   {
    "type": "body",
@@ -1105,7 +1105,7 @@
    "section_title": "34.3 NP-completeness and reducibility",
    "printed_page": 1062,
    "pdf_page": 1083,
-   "text": "Returning to our formal-language framework for decision problems, we say that a language L 1 is polynomial-time reducible to a language L 2 , written L 1 ≤ P L 2 , if there exists a polynomial-time computable function f W f0;1 g − ! f0;1 g − such that for all x 2 f0;1 g − , x 2 L 1 if and only if f(x) 2 L 2 : (34.1)"
+   "text": "Returning to our formal-language framework for decision problems, we say that a language L 1 is polynomial-time reducible to a language L 2 , written L 1 ≤ P L 2 , if there exists a polynomial-time computable function f W f0,1 g − ! f0,1 g − such that for all x 2 f0,1 g − , x 2 L 1 if and only if f(x) 2 L 2 : (34.1)"
   },
   {
    "type": "body",
@@ -1123,7 +1123,7 @@
    "section_title": "34.3 NP-completeness and reducibility",
    "printed_page": 1062,
    "pdf_page": 1083,
-   "text": "Figure 34.4 illustrates the idea of a reduction from a language L 1 to another language L 2 . Each language is a subset of f0;1 g − . The reduction function f provides a mapping such that if x 2 L 1 , then f(x) 2 L 2 . Moreover, if x … L 1 , then f(x) … L 2 . Thus, the reduction function maps any instance x of the decision problem represented by the language L 1 to an instance f(x) of the problem represented by L 2 . Providing an answer to whether f(x) 2 L 2 directly provides the answer to whether x 2 L 1 . If, in addition, f can be computed in polynomial time, it is a polynomial-time reduction function."
+   "text": "Figure 34.4 illustrates the idea of a reduction from a language L 1 to another language L 2 . Each language is a subset of f0,1 g − . The reduction function f provides a mapping such that if x 2 L 1 , then f(x) 2 L 2 . Moreover, if x … L 1 , then f(x) … L 2 . Thus, the reduction function maps any instance x of the decision problem represented by the language L 1 to an instance f(x) of the problem represented by L 2 . Providing an answer to whether f(x) 2 L 2 directly provides the answer to whether x 2 L 1 . If, in addition, f can be computed in polynomial time, it is a polynomial-time reduction function."
   },
   {
    "type": "body",
@@ -1150,7 +1150,7 @@
    "section_title": "34.3 NP-completeness and reducibility",
    "printed_page": 1062,
    "pdf_page": 1083,
-   "text": "If L 1 ;L 2 ⊆ f0;1 g − are languages such that L 1 ≤ P L 2 , then L 2 2 P implies"
+   "text": "If L 1 ,L 2 ⊆ f0,1 g − are languages such that L 1 ≤ P L 2 , then L 2 2 P implies"
   },
   {
    "type": "body",
@@ -1195,7 +1195,7 @@
    "section_title": "34.3 NP-completeness and reducibility",
    "printed_page": 1063,
    "pdf_page": 1084,
-   "text": "Figure 34.5 illustrates how we construct A 1 . For a given input x 2 f0;1 g − , algorithm A 1 uses F to transform x into f(x) , and then it uses A 2 to test whether f(x) 2 L 2 . Algorithm A 1 takes the output from algorithm A 2 and produces that answer as its own output."
+   "text": "Figure 34.5 illustrates how we construct A 1 . For a given input x 2 f0,1 g − , algorithm A 1 uses F to transform x into f(x) , and then it uses A 2 to test whether f(x) 2 L 2 . Algorithm A 1 takes the output from algorithm A 2 and produces that answer as its own output."
   },
   {
    "type": "body",
@@ -1240,7 +1240,7 @@
    "section_title": "34.3 NP-completeness and reducibility",
    "printed_page": 1063,
    "pdf_page": 1084,
-   "text": "A language L ⊆ f0;1 g − is NP-complete if"
+   "text": "A language L ⊆ f0,1 g − is NP-complete if"
   },
   {
    "type": "body",
@@ -1294,7 +1294,7 @@
    "section_title": "34.3 NP-completeness and reducibility",
    "printed_page": 1064,
    "pdf_page": 1085,
-   "text": "Figure 34.6 How most theoretical computer scientists view the r elationships among P, NP, and NPC. Both P and NPC are wholly contained within NP, and P \\ NPC = ;."
+   "text": "Figure 34.6 How most theoretical computer scientists view the r elationships among P, NP, and NPC. Both P and NPC are wholly contained within NP, and P \\ NPC = ,."
   },
   {
    "type": "proof",
@@ -1393,7 +1393,7 @@
    "section_title": "34.3 NP-completeness and reducibility",
    "printed_page": 1065,
    "pdf_page": 1086,
-   "text": "Boolean combinational circuits are built from boole an combinational elements that are interconnected by wires. A boolean combinational element is any circuit element that has a constant number of boolean inputs and outputs and that performs a well-defined function. Boolean values are drawn from the set f0;1 g, where 0 represents FALSE and 1 represents TRUE ."
+   "text": "Boolean combinational circuits are built from boole an combinational elements that are interconnected by wires. A boolean combinational element is any circuit element that has a constant number of boolean inputs and outputs and that performs a well-defined function. Boolean values are drawn from the set f0,1 g, where 0 represents FALSE and 1 represents TRUE ."
   },
   {
    "type": "body",
@@ -1447,7 +1447,7 @@
    "section_title": "34.3 NP-completeness and reducibility",
    "printed_page": 1066,
    "pdf_page": 1087,
-   "text": "Figure 34.8 Two instances of the circuit-satisfiability problem. (a) The assignment hx 1 = 1; x 2 = 1;x 3 = 0i to the inputs of this circuit causes the output of the circuit to be 1. The circuit is therefore satisfiable. (b) No assignment to the inputs of this circuit can cau se the output of the circuit to be 1. The circuit is therefore unsatisfiable. the individual wires, given the input hx 1 = 1;x 2 = 1;x 3 = 0i. Although a single wire may have no more than one combinational-element output connected to it, it can feed several element inputs. The number of elem ent inputs fed by a wire is called the fan-out of the wire. If no element output is connected to a wire, the wire is a circuit input, accepting input values from an external source. I f no element input is connected to a wire, the wire is a circuit output, providing the results of the circuit’s computation to the outside world. (An internal wire can also fan out to a circuit output.) For the purpose of defining the circuit-satisfiability problem, we limit the number of circuit outputs to 1, though in actual hardware design, a boolean combinational circuit may have multiple outputs."
+   "text": "Figure 34.8 Two instances of the circuit-satisfiability problem. (a) The assignment hx 1 = 1; x 2 = 1,x 3 = 0i to the inputs of this circuit causes the output of the circuit to be 1. The circuit is therefore satisfiable. (b) No assignment to the inputs of this circuit can cau se the output of the circuit to be 1. The circuit is therefore unsatisfiable. the individual wires, given the input hx 1 = 1,x 2 = 1,x 3 = 0i. Although a single wire may have no more than one combinational-element output connected to it, it can feed several element inputs. The number of elem ent inputs fed by a wire is called the fan-out of the wire. If no element output is connected to a wire, the wire is a circuit input, accepting input values from an external source. I f no element input is connected to a wire, the wire is a circuit output, providing the results of the circuit’s computation to the outside world. (An internal wire can also fan out to a circuit output.) For the purpose of defining the circuit-satisfiability problem, we limit the number of circuit outputs to 1, though in actual hardware design, a boolean combinational circuit may have multiple outputs."
   },
   {
    "type": "body",
@@ -1456,7 +1456,7 @@
    "section_title": "34.3 NP-completeness and reducibility",
    "printed_page": 1066,
    "pdf_page": 1087,
-   "text": "Boolean combinational circuits contain no cycles. I n other words, for a given combinational circuit, imagine a directed graph G = (V;E) with one vertex for each combinational element and with k directed edges for each wire whose fan-out is k, where the graph contains a directed edge (u;v) if a wire connects the output of element u to an input of element v. Then G must be acyclic."
+   "text": "Boolean combinational circuits contain no cycles. I n other words, for a given combinational circuit, imagine a directed graph G = (V,E) with one vertex for each combinational element and with k directed edges for each wire whose fan-out is k, where the graph contains a directed edge (u,v) if a wire connects the output of element u to an input of element v. Then G must be acyclic."
   },
   {
    "type": "body",
@@ -1465,7 +1465,7 @@
    "section_title": "34.3 NP-completeness and reducibility",
    "printed_page": 1066,
    "pdf_page": 1087,
-   "text": "A truth assignment for a boolean combinational circuit is a set of boolean input values. We say that a 1-output boolean combinational circuit is satisfiable if it has a satisfying assignment: a truth assignment that causes the output of the circuit to be 1. For example, the circuit in Figure 34.8(a) has the satisfying assignment hx 1 = 1;x 2 = 1;x 3 = 0i, and so it is satisfiable. As Exercise 34.3-1 asks you to show, no assignment of values to x 1 , x 2 , and x 3 causes the circuit in Figure 34.8(b) to produce a 1 output. Since it always produces 0, it is unsatisfiable."
+   "text": "A truth assignment for a boolean combinational circuit is a set of boolean input values. We say that a 1-output boolean combinational circuit is satisfiable if it has a satisfying assignment: a truth assignment that causes the output of the circuit to be 1. For example, the circuit in Figure 34.8(a) has the satisfying assignment hx 1 = 1,x 2 = 1,x 3 = 0i, and so it is satisfiable. As Exercise 34.3-1 asks you to show, no assignment of values to x 1 , x 2 , and x 3 causes the circuit in Figure 34.8(b) to produce a 1 output. Since it always produces 0, it is unsatisfiable."
   },
   {
    "type": "body",
@@ -1726,7 +1726,7 @@
    "section_title": "34.3 NP-completeness and reducibility",
    "printed_page": 1069,
    "pdf_page": 1090,
-   "text": "The basic idea of the proof is to represent the com putation of A as a sequence of configurations. As Figure 34.9 illustrates, consider each configuration as comprising a few parts: the program for A, the program counter and auxiliary machine state, the input x , the certificate y , and working storage. The combinational circuit M , which implements the computer hardware, maps each configuration c i to the next configuration c i C1 , starting from the initial configuration c 0 . Algorithm A writes its output40 or 14to some designated location by the time it finishes executing. After A halts, the output value never changes. Thus, if the algorithm runs for at most T (n) steps, the output appears as one of the bits in c T (n) ."
+   "text": "The basic idea of the proof is to represent the com putation of A as a sequence of configurations. As Figure 34.9 illustrates, consider each configuration as comprising a few parts: the program for A, the program counter and auxiliary machine state, the input x , the certificate y , and working storage. The combinational circuit M , which implements the computer hardware, maps each configuration c i to the next configuration c i + 1 , starting from the initial configuration c 0 . Algorithm A writes its output40 or 14to some designated location by the time it finishes executing. After A halts, the output value never changes. Thus, if the algorithm runs for at most T (n) steps, the output appears as one of the bits in c T (n) ."
   },
   {
    "type": "body",
@@ -1735,7 +1735,7 @@
    "section_title": "34.3 NP-completeness and reducibility",
    "printed_page": 1070,
    "pdf_page": 1091,
-   "text": "The reduction algorithm F constructs a single combinational circuit that computes all configurations produced by a given initial configuration. The idea is to paste together T (n) copies of the circuit M . The output of the i th circuit, which produces configuration c i , feeds directly into the input of the (i C1)st circuit. Thus, the configurations, rather than being stored in the computer’s memory, simply re- side as values on the wires connecting copies of M ."
+   "text": "The reduction algorithm F constructs a single combinational circuit that computes all configurations produced by a given initial configuration. The idea is to paste together T (n) copies of the circuit M . The output of the i th circuit, which produces configuration c i , feeds directly into the input of the (i + 1)st circuit. Thus, the configurations, rather than being stored in the computer’s memory, simply re- side as values on the wires connecting copies of M ."
   },
   {
    "type": "body",
@@ -2923,7 +2923,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1081,
    "pdf_page": 1102,
-   "text": "A clique in an undirected graph G = (V;E) is a subset V 0 ⊆ V of vertices, each pair of which is connected by an edge in E. In other words, a clique is a complete subgraph of G. The size of a clique is the number of vertices it contains. The clique problem is the optimization problem of finding a clique of maximum size in a graph. The corresponding decision problem asks simply whether a clique of a given size k exists in the graph. The formal definition is CLIQUE = fhG;k i W G is a graph containing a clique of size kg :"
+   "text": "A clique in an undirected graph G = (V,E) is a subset V 0 ⊆ V of vertices, each pair of which is connected by an edge in E. In other words, a clique is a complete subgraph of G. The size of a clique is the number of vertices it contains. The clique problem is the optimization problem of finding a clique of maximum size in a graph. The corresponding decision problem asks simply whether a clique of a given size k exists in the graph. The formal definition is CLIQUE = fhG,k i W G is a graph containing a clique of size kg :"
   },
   {
    "type": "body",
@@ -2932,7 +2932,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1081,
    "pdf_page": 1102,
-   "text": "A naive algorithm for determining whether a graph G = (V;E) with |V| vertices contains a clique of size k lists all k-subsets of V and checks each one to see whether it forms a clique. The running time of this algorithm is Ω.k 2 ã |V| k ä"
+   "text": "A naive algorithm for determining whether a graph G = (V,E) with |V| vertices contains a clique of size k lists all k-subsets of V and checks each one to see whether it forms a clique. The running time of this algorithm is Ω.k 2 ã |V| k ä"
   },
   {
    "type": "body",
@@ -2993,7 +2993,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1082,
    "pdf_page": 1103,
-   "text": "Proof First, we show that CLIQUE 2 NP. For a given graph G = (V;E) , use the set V 0 ⊆ V of vertices in the clique as a certificate for G. To check whether V 0 is a clique in polynomial time, check whether, for each pair u;v 2 V 0 , the edge (u;v) belongs to E."
+   "text": "Proof First, we show that CLIQUE 2 NP. For a given graph G = (V,E) , use the set V 0 ⊆ V of vertices in the clique as a certificate for G. To check whether V 0 is a clique in polynomial time, check whether, for each pair u,v 2 V 0 , the edge (u,v) belongs to E."
   },
   {
    "type": "body",
@@ -3029,7 +3029,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1082,
    "pdf_page": 1103,
-   "text": "1;2;:::;k , each clause C r contains exactly three distinct literals: l r"
+   "text": "1,2,…,k , each clause C r contains exactly three distinct literals: l r"
   },
   {
    "type": "body",
@@ -3047,7 +3047,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1082,
    "pdf_page": 1103,
-   "text": "We construct the undirected graph G = (V;E) as follows. For each clause C r ="
+   "text": "We construct the undirected graph G = (V,E) as follows. For each clause C r ="
   },
   {
    "type": "body",
@@ -3074,7 +3074,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1082,
    "pdf_page": 1103,
-   "text": "3 into V . Add edge (v r i ;v s j ) into E if both of the following hold:"
+   "text": "3 into V . Add edge (v r i ,v s j ) into E if both of the following hold:"
   },
   {
    "type": "body",
@@ -3110,7 +3110,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1082,
    "pdf_page": 1103,
-   "text": "We must show that this transformation of Ω into G is a reduction. First, suppose that Ω has a satisfying assignment. Then each clause C r contains at least one literal l r i that is assigned 1, and each such literal corresponds to a vertex v r i . Picking one such \"true\" literal from each clause yields a set V 0 of k vertices. We claim that V 0 is a clique. For any two vertices v r i ;v s j 2 V 0 , where r ≠ s , both corresponding literals l r i and l s j map to 1 by the given satisfying assignment, and thus the literals cannot be complements. Thus, by the construction of G, the edge (v r i ;v s j ) belongs to E."
+   "text": "We must show that this transformation of Ω into G is a reduction. First, suppose that Ω has a satisfying assignment. Then each clause C r contains at least one literal l r i that is assigned 1, and each such literal corresponds to a vertex v r i . Picking one such \"true\" literal from each clause yields a set V 0 of k vertices. We claim that V 0 is a clique. For any two vertices v r i ,v s j 2 V 0 , where r ≠ s , both corresponding literals l r i and l s j map to 1 by the given satisfying assignment, and thus the literals cannot be complements. Thus, by the construction of G, the edge (v r i ,v s j ) belongs to E."
   },
   {
    "type": "body",
@@ -3245,7 +3245,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1084,
    "pdf_page": 1105,
-   "text": "Figure 34.15 Reducing CLIQUE to VERTEX-COVER. (a) An undirected graph G = (V;E) with clique V 0 = fu;v;x;y g, shown in blue. (b) The graph G produced by the reduction algorithm that has vertex cover V − V 0 = fw;´ g, in blue. whether the formula Ω is satisfiable, since we do not know how to decide whether"
+   "text": "Figure 34.15 Reducing CLIQUE to VERTEX-COVER. (a) An undirected graph G = (V,E) with clique V 0 = fu,v,x,y g, shown in blue. (b) The graph G produced by the reduction algorithm that has vertex cover V − V 0 = fw,´ g, in blue. whether the formula Ω is satisfiable, since we do not know how to decide whether"
   },
   {
    "type": "body",
@@ -3272,7 +3272,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1084,
    "pdf_page": 1105,
-   "text": "A vertex cover of an undirected graph G = (V;E) is a subset V 0 ⊆ V such that if (u;v) 2 E, then u 2 V 0 or v 2 V 0 (or both). That is, each vertex \"covers\" its incident edges, and a vertex cover for G is a set of vertices that covers all the edges in E. The size of a vertex cover is the number of vertices in it. For example, the graph in Figure 34.15(b) has a vertex cover fw;´ g of size 2."
+   "text": "A vertex cover of an undirected graph G = (V,E) is a subset V 0 ⊆ V such that if (u,v) 2 E, then u 2 V 0 or v 2 V 0 (or both). That is, each vertex \"covers\" its incident edges, and a vertex cover for G is a set of vertices that covers all the edges in E. The size of a vertex cover is the number of vertices in it. For example, the graph in Figure 34.15(b) has a vertex cover fw,´ g of size 2."
   },
   {
    "type": "body",
@@ -3290,7 +3290,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1084,
    "pdf_page": 1105,
-   "text": "VERTEX-COVER = fhG;k i W graph G has a vertex cover of size kg :"
+   "text": "VERTEX-COVER = fhG,k i W graph G has a vertex cover of size kg :"
   },
   {
    "type": "body",
@@ -3326,7 +3326,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1084,
    "pdf_page": 1105,
-   "text": "Proof We first show that VERTEX-COVER 2 NP. Given a graph G = (V;E) and an integer k, the certificate is the vertex cover V 0 ⊆ V itself. The verification algorithm affirms that jV 0 j = k, and then it checks, for each edge (u;v) 2 E, that u 2 V 0 or v 2 V 0 . It is easy to verify the certificate in polynomial time."
+   "text": "Proof We first show that VERTEX-COVER 2 NP. Given a graph G = (V,E) and an integer k, the certificate is the vertex cover V 0 ⊆ V itself. The verification algorithm affirms that jV 0 j = k, and then it checks, for each edge (u,v) 2 E, that u 2 V 0 or v 2 V 0 . It is easy to verify the certificate in polynomial time."
   },
   {
    "type": "body",
@@ -3344,7 +3344,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1085,
    "pdf_page": 1106,
-   "text": "(V;E), we define the complement of G as a graph G = (V; E), where E = f(u;v) W u;v 2 V;u ≠ v; and (u;v) … Eg. In other words, G is the graph containing exactly those edges that are not in G. Figure 34.15 shows a graph and its complement and illustrates the reduction from CLIQUE to VERTEX-COVER."
+   "text": "(V,E), we define the complement of G as a graph G = (V; E), where E = f(u,v) W u,v 2 V,u ≠ v; and (u,v) … Eg. In other words, G is the graph containing exactly those edges that are not in G. Figure 34.15 shows a graph and its complement and illustrates the reduction from CLIQUE to VERTEX-COVER."
   },
   {
    "type": "body",
@@ -3353,7 +3353,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1085,
    "pdf_page": 1106,
-   "text": "The reduction algorithm takes as input an instance hG;k i of the clique problem and computes the complement G in polynomial time. The output of the reduction algorithm is the instance h G; |V| − ki of the vertex-cover problem. To complete the proof, we show that this transformation is inde ed a reduction: the graph G contains a clique of size k if and only if the graph G has a vertex cover of size"
+   "text": "The reduction algorithm takes as input an instance ⟨G,k⟩ of the clique problem and computes the complement G in polynomial time. The output of the reduction algorithm is the instance h G; |V| − ki of the vertex-cover problem. To complete the proof, we show that this transformation is inde ed a reduction: the graph G contains a clique of size k if and only if the graph G has a vertex cover of size"
   },
   {
    "type": "body",
@@ -3371,7 +3371,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1085,
    "pdf_page": 1106,
-   "text": "Suppose that G contains a clique V 0 ⊆ V with jV 0 j = k. We claim that V − V 0 is a vertex cover in G. Let (u;v) be any edge in E. Then, (u;v) … E, which implies that at least one of u or v does not belong to V 0 , since every pair of vertices in V 0 is connected by an edge of E. Equivalently, at least one of u or v belongs to V − V 0 , which means that edge (u;v) is covered by V − V 0 . Since (u;v) was chosen arbitrarily from E, every edge of E is covered by a vertex in V − V 0 . Hence the set V − V 0 , which has size |V| − k, forms a vertex cover for G."
+   "text": "Suppose that G contains a clique V 0 ⊆ V with jV 0 j = k. We claim that V − V 0 is a vertex cover in G. Let (u,v) be any edge in E. Then, (u,v) … E, which implies that at least one of u or v does not belong to V 0 , since every pair of vertices in V 0 is connected by an edge of E. Equivalently, at least one of u or v belongs to V − V 0 , which means that edge (u,v) is covered by V − V 0 . Since (u,v) was chosen arbitrarily from E, every edge of E is covered by a vertex in V − V 0 . Hence the set V − V 0 , which has size |V| − k, forms a vertex cover for G."
   },
   {
    "type": "body",
@@ -3389,7 +3389,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1085,
    "pdf_page": 1106,
-   "text": "Then for all u;v 2 V , if (u;v) 2 E, then u 2 V 0 or v 2 V 0 or both. The contrapositive of this implication is that for all u;v 2 V , if u … V 0 and v … V 0 , then (u;v) 2 E. In other words, V −V 0 is a clique, and it has size |V|−jV 0 j = k."
+   "text": "Then for all u,v 2 V , if (u,v) 2 E, then u 2 V 0 or v 2 V 0 or both. The contrapositive of this implication is that for all u,v 2 V , if u … V 0 and v … V 0 , then (u,v) 2 E. In other words, V −V 0 is a clique, and it has size |V|−jV 0 j = k."
   },
   {
    "type": "body",
@@ -3587,7 +3587,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1086,
    "pdf_page": 1107,
-   "text": "Figure 34.16 The gadget used in reducing the vertex-cover problem to the hamiltonian-cycle problem. An edge (u;v) of graph G corresponds to gadget Ω uv in the graph G 0 created in the reduction."
+   "text": "Figure 34.16 The gadget used in reducing the vertex-cover problem to the hamiltonian-cycle problem. An edge (u,v) of graph G corresponds to gadget Ω uv in the graph G 0 created in the reduction."
   },
   {
    "type": "body",
@@ -3614,7 +3614,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1086,
    "pdf_page": 1107,
-   "text": "G = (V;E), the certificate is the sequence of |V| vertices that makes up the hamiltonian cycle. The verification algorithm checks that this sequence contains each vertex in V exactly once and that with the first vertex repeated at the end, it forms a cycle in G. That is, it checks that there is an edge between each pair of consecutive vertices and between the first and last vertices. This certificate can be verified in polynomial time."
+   "text": "G = (V,E), the certificate is the sequence of |V| vertices that makes up the hamiltonian cycle. The verification algorithm checks that this sequence contains each vertex in V exactly once and that with the first vertex repeated at the end, it forms a cycle in G. That is, it checks that there is an edge between each pair of consecutive vertices and between the first and last vertices. This certificate can be verified in polynomial time."
   },
   {
    "type": "body",
@@ -3623,7 +3623,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1086,
    "pdf_page": 1107,
-   "text": "We now prove that VERTEX-COVER ≤ PHAM-CYCLE, which shows that HAM-CYCLE is NP-complete. Given an undirected graph G = (V;E) and an integer k, we construct an undirected graph G 0 = (V 0 ;E 0 ) that has a hamiltonian cycle if and only if G has a vertex cover of size k. We assume without loss of generality that G contains no isolated vertices (that is, every verte x in V has at least one incident edge) and that k ≤ |V|. (If an isolated vertex belongs to a vertex cover of size k, then there also exists a vertex cover of size k − 1, and for any graph, the entire set V is always a vertex cover.)"
+   "text": "We now prove that VERTEX-COVER ≤ PHAM-CYCLE, which shows that HAM-CYCLE is NP-complete. Given an undirected graph G = (V,E) and an integer k, we construct an undirected graph G 0 = (V 0 ,E 0 ) that has a hamiltonian cycle if and only if G has a vertex cover of size k. We assume without loss of generality that G contains no isolated vertices (that is, every verte x in V has at least one incident edge) and that k ≤ |V|. (If an isolated vertex belongs to a vertex cover of size k, then there also exists a vertex cover of size k − 1, and for any graph, the entire set V is always a vertex cover.)"
   },
   {
    "type": "body",
@@ -3632,7 +3632,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1086,
    "pdf_page": 1107,
-   "text": "Our construction uses a gadget, which is a piece of a graph that enforces certain properties. Figure 34.16(a) shows the gadget we use. For each edge (u;v) 2 E, the constructed graph G 0 contains one copy of this gadget, which we denote b y Ω uv ."
+   "text": "Our construction uses a gadget, which is a piece of a graph that enforces certain properties. Figure 34.16(a) shows the gadget we use. For each edge (u,v) 2 E, the constructed graph G 0 contains one copy of this gadget, which we denote b y Ω uv ."
   },
   {
    "type": "body",
@@ -3668,7 +3668,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1087,
    "pdf_page": 1108,
-   "text": "The only other vertices in V 0 other than those of gadgets are selector vertices s 1 ;s 2 ;:::;s k . We’ll use edges incident on selector vertices in G 0 to select the k vertices of the cover in G."
+   "text": "The only other vertices in V 0 other than those of gadgets are selector vertices s 1 ,s 2 ,…,s k . We’ll use edges incident on selector vertices in G 0 to select the k vertices of the cover in G."
   },
   {
    "type": "body",
@@ -3686,7 +3686,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1087,
    "pdf_page": 1108,
-   "text": "Figure 34.17 shows. First, for each vertex u 2 V , edges join pairs of gadgets in order to form a path containing all gadgets corr esponding to edges incident on u in G. We arbitrarily order the vertices adjacent to eac h vertex u 2 V as u .1/ ;u .2/ ;:::;u (degree(u)) , where degree(u) is the number of vertices adjacent to u."
+   "text": "Figure 34.17 shows. First, for each vertex u 2 V , edges join pairs of gadgets in order to form a path containing all gadgets corr esponding to edges incident on u in G. We arbitrarily order the vertices adjacent to eac h vertex u 2 V as u .1/ ,u .2/ ,…,u (degree(u)) , where degree(u) is the number of vertices adjacent to u."
   },
   {
    "type": "body",
@@ -3695,7 +3695,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1087,
    "pdf_page": 1108,
-   "text": "To create a path in G 0 through all the gadgets corresponding to edges inci dent on u, E 0 contains the edges f.[u;u (i ) ; 6]; [u; u (i C1) ; 1]/ W 1 ≤ i ≤ degree(u) − 1g."
+   "text": "To create a path in G 0 through all the gadgets corresponding to edges inci dent on u, E 0 contains the edges f.[u,u (i ) ; 6]; [u; u (i + 1) ; 1]/ W 1 ≤ i ≤ degree(u) − 1g."
   },
   {
    "type": "body",
@@ -3704,7 +3704,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1087,
    "pdf_page": 1108,
-   "text": "In Figure 34.17, for example, we order the vertices adjacent to w as hx;y;´ i, and so graph G 0 in part (b) of the figure includes the edges .[w; x; 6]; [w; y; 1]/ and .[w; y; 6]; [w; ´; 1]/. The vertices adjacent to x are ordered as hw;y i, so that G 0 includes the edge .[x; w; 6]; [x; y; 1]/. For each vertex u 2 V , these edges in G 0 fill in a path containing all gadgets corresponding to edges incident on u in G."
+   "text": "In Figure 34.17, for example, we order the vertices adjacent to w as ⟨x,y,´⟩, and so graph G 0 in part (b) of the figure includes the edges .[w; x; 6]; [w; y; 1]/ and .[w; y; 6]; [w; ´; 1]/. The vertices adjacent to x are ordered as ⟨w,y⟩, so that G 0 includes the edge .[x; w; 6]; [x; y; 1]/. For each vertex u 2 V , these edges in G 0 fill in a path containing all gadgets corresponding to edges incident on u in G."
   },
   {
    "type": "body",
@@ -3713,7 +3713,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1087,
    "pdf_page": 1108,
-   "text": "The intuition behind these edges is that if vertex u 2 V belongs to the vertex cover of G, then G 0 contains a path from [u;u .1/ ; 1] to [u;u (degree(u)) ; 6] that <covers= all gadgets corresponding to edges incident on u. That is, for each of these gadgets, say Ω u;u (i ) , the path either includes all 12 vertices (if u belongs to the vertex cover but u (i ) does not) or just the six vertices [u;u (i ) ; 1] through [u;u (i ) ; 6] (if both u and u (i ) belong to the vertex cover)."
+   "text": "The intuition behind these edges is that if vertex u 2 V belongs to the vertex cover of G, then G 0 contains a path from [u,u .1/ ; 1] to [u,u (degree(u)) ; 6] that <covers= all gadgets corresponding to edges incident on u. That is, for each of these gadgets, say Ω u,u (i ) , the path either includes all 12 vertices (if u belongs to the vertex cover but u (i ) does not) or just the six vertices [u,u (i ) ; 1] through [u,u (i ) ; 6] (if both u and u (i ) belong to the vertex cover)."
   },
   {
    "type": "body",
@@ -3722,7 +3722,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1087,
    "pdf_page": 1108,
-   "text": "The final type of edge in E 0 joins the first vertex [u;u .1/ ; 1] and the last vertex"
+   "text": "The final type of edge in E 0 joins the first vertex [u,u .1/ ; 1] and the last vertex"
   },
   {
    "type": "body",
@@ -3731,7 +3731,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1087,
    "pdf_page": 1108,
-   "text": "[u;u (degree(u)) ; 6] of each of these paths to each of the selector vert ices. That is, E 0 includes the edges f(s j ;[u;u .1) ; 1]/ W u 2 V and 1 ≤ j ≤ kg"
+   "text": "[u,u (degree(u)) ; 6] of each of these paths to each of the selector vert ices. That is, E 0 includes the edges f(s j ,[u,u .1) ; 1]/ W u 2 V and 1 ≤ j ≤ kg"
   },
   {
    "type": "body",
@@ -3740,7 +3740,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1087,
    "pdf_page": 1108,
-   "text": "[ f(s j ;[u;u (degree(u)) ; 6]) W u 2 V and 1 ≤ j ≤ kg :"
+   "text": "[ f(s j ,[u,u (degree(u)) ; 6]) W u 2 V and 1 ≤ j ≤ kg :"
   },
   {
    "type": "body",
@@ -3767,7 +3767,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1088,
    "pdf_page": 1109,
-   "text": "Figure 34.17 Reducing an instance of the vertex-cover problem to an instance of the hamiltoniancycle problem. (a) An undirected graph G with a vertex cover of size 2, consisting of the blue vertices w and y. (b) The undirected graph G 0 produced by the reduction, with the hamiltonian cycle corresponding to the vertex cover highlighted in blue. The vertex cover fw;y g corresponds to edges (s 1 ; [w; x; 1]) and (s 2 ; [y; x; 1]) appearing in the hamiltonian cycle."
+   "text": "Figure 34.17 Reducing an instance of the vertex-cover problem to an instance of the hamiltoniancycle problem. (a) An undirected graph G with a vertex cover of size 2, consisting of the blue vertices w and y. (b) The undirected graph G 0 produced by the reduction, with the hamiltonian cycle corresponding to the vertex cover highlighted in blue. The vertex cover fw,y g corresponds to edges (s 1 ; [w; x; 1]) and (s 2 ; [y; x; 1]) appearing in the hamiltonian cycle."
   },
   {
    "type": "body",
@@ -3830,7 +3830,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1089,
    "pdf_page": 1110,
-   "text": "Suppose that G = (V;E) has a vertex cover V − ⊆ V , where jV − j = k. Let"
+   "text": "Suppose that G = (V,E) has a vertex cover V − ⊆ V , where jV − j = k. Let"
   },
   {
    "type": "body",
@@ -3839,7 +3839,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1089,
    "pdf_page": 1110,
-   "text": "V − = fu 1 ;u 2 ;:::;u k g. As Figure 34.17 shows, we can construct a hamiltonian cycle in G 0 by including the following edges 11 for each vertex u j 2 V − . Start by including edges"
+   "text": "V − = fu 1 ,u 2 ,…,u k g. As Figure 34.17 shows, we can construct a hamiltonian cycle in G 0 by including the following edges 11 for each vertex u j 2 V − . Start by including edges"
   },
   {
    "type": "body",
@@ -3848,7 +3848,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1089,
    "pdf_page": 1110,
-   "text": ".[u j ;u (i ) j ; 6]; [u j ;u (i C1) j ; 1]/ W 1 ≤ i ≤ degree(u j ) − 1"
+   "text": ".[u j ,u (i ) j ; 6]; [u j ,u (i + 1) j ; 1]/ W 1 ≤ i ≤ degree(u j ) − 1"
   },
   {
    "type": "body",
@@ -3857,7 +3857,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1089,
    "pdf_page": 1110,
-   "text": ", which connect all gadgets corresponding to edges incident on u j . Also include the edges within these gadgets as Figures 34.16(b)3(d) show, depending on whether the edge is covered by one or two vertices in V − . The hamiltonian cycle also includes the edges f(s j ;[u j ;u .1) j ; 1]/ W 1 ≤ j ≤ kg"
+   "text": ", which connect all gadgets corresponding to edges incident on u j . Also include the edges within these gadgets as Figures 34.16(b)3(d) show, depending on whether the edge is covered by one or two vertices in V − . The hamiltonian cycle also includes the edges f(s j ,[u j ,u .1) j ; 1]/ W 1 ≤ j ≤ kg"
   },
   {
    "type": "body",
@@ -3866,7 +3866,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1089,
    "pdf_page": 1110,
-   "text": "[ f(s j C1 ;[u j ;u"
+   "text": "[ f(s j + 1 ,[u j ,u"
   },
   {
    "type": "body",
@@ -3884,7 +3884,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1089,
    "pdf_page": 1110,
-   "text": "[ f(s 1 ;[u k ;u (degree(u k )) k ; 6])g :"
+   "text": "[ f(s 1 ,[u k ,u (degree(u k )) k ; 6])g :"
   },
   {
    "type": "body",
@@ -3902,7 +3902,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1089,
    "pdf_page": 1110,
-   "text": "Conversely, suppose that G 0 = (V 0 ;E 0 ) contains a hamiltonian cycle C ⊆ E 0 ."
+   "text": "Conversely, suppose that G 0 = (V 0 ,E 0 ) contains a hamiltonian cycle C ⊆ E 0 ."
   },
   {
    "type": "body",
@@ -3920,7 +3920,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1089,
    "pdf_page": 1110,
-   "text": "V − = fu 2 V W (s j ;[u;u .1) ; 1]/ 2 C for some 1 ≤ j ≤ kg (34.4)"
+   "text": "V − = fu 2 V W (s j ,[u,u .1) ; 1]/ 2 C for some 1 ≤ j ≤ kg (34.4)"
   },
   {
    "type": "body",
@@ -3930,15 +3930,6 @@
    "printed_page": 1089,
    "pdf_page": 1110,
    "text": "11 Technically, a cycle is defined as a sequence of vertices rather than edges (see Section B.4). In the interest of clarity, we abuse notation here and define the hamiltonian cycle by its edges. is a vertex cover for G."
-  },
-  {
-   "type": "body",
-   "chapter": 34,
-   "section": "34.5",
-   "section_title": "34.5 NP-complete problems",
-   "printed_page": 1089,
-   "pdf_page": 1110,
-   "text": "˚ hS;t i W there exists a subset S 0 ⊆ S such that t = P s2S 0 s"
   },
   {
    "type": "body",
@@ -3956,7 +3947,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1090,
    "pdf_page": 1111,
-   "text": "(s j ;[u;u .1) ; 1]/ for some vertex u 2 V . To see why, partition the hamiltonian cycle C into maximal paths that start at some selector vertex s i , visit one or more gadgets, and end at some selector vertex s j without passing through any other selector vertex. Let’s call each of these maximal paths a \"cover path. \" Let P be one such cover path, and orient it going from s i to s j . If P contains the edge (s i ;[u;u .1) ; 1]/ for some vertex u 2 V , then we have shown that one edge incident on s i has the required form. Assume, then, that P contains the edge (s i ;[v;v (degree(v)) ; 6]) for some vertex v 2 V . This path enters a gadget from the bottom, as drawn in Figures"
+   "text": "(s j ,[u,u .1) ; 1]/ for some vertex u 2 V . To see why, partition the hamiltonian cycle C into maximal paths that start at some selector vertex s i , visit one or more gadgets, and end at some selector vertex s j without passing through any other selector vertex. Let’s call each of these maximal paths a \"cover path. \" Let P be one such cover path, and orient it going from s i to s j . If P contains the edge (s i ,[u,u .1) ; 1]/ for some vertex u 2 V , then we have shown that one edge incident on s i has the required form. Assume, then, that P contains the edge (s i ,[v,v (degree(v)) ; 6]) for some vertex v 2 V . This path enters a gadget from the bottom, as drawn in Figures"
   },
   {
    "type": "body",
@@ -3965,7 +3956,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1090,
    "pdf_page": 1111,
-   "text": "34.16 and 34.17, and it leaves from the top. It might go through several gadgets, but it always enters from the bottom of a gadget and leaves from the top. The only edges incident on vertices at the top of a gadget e ither go to the bottoms of other gadgets or to selector vertices. Therefore, after the last gadget in the series of gadgets visited by P , the edge taken must go to a selector vertex s j , so that P contains an edge of the form (s j ;[u;u .1) ; 1]/, where [u;u .1/ ; 1] is a vertex at the top of some gadget. To see that not both edges incident on s j have this form, simply reverse the direction of traversing P in the above argument."
+   "text": "34.16 and 34.17, and it leaves from the top. It might go through several gadgets, but it always enters from the bottom of a gadget and leaves from the top. The only edges incident on vertices at the top of a gadget e ither go to the bottoms of other gadgets or to selector vertices. Therefore, after the last gadget in the series of gadgets visited by P , the edge taken must go to a selector vertex s j , so that P contains an edge of the form (s j ,[u,u .1) ; 1]/, where [u,u .1/ ; 1] is a vertex at the top of some gadget. To see that not both edges incident on s j have this form, simply reverse the direction of traversing P in the above argument."
   },
   {
    "type": "body",
@@ -3974,7 +3965,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1090,
    "pdf_page": 1111,
-   "text": "Having established that the set V − is well defined, let’s see why it is a vertex cover for G. We have already established that each cover path starts at some s i , takes the edge (s i ;[u;u .1) ; 1]/ for some vertex u 2 V , passes through all the gadgets corresponding to edges in E incident on u, and then ends at some selector vertex s j . (This orientation is the reverse of the orientati on in the paragraph above.) Let’s call this cover path P u , and by equation (34.4), the vertex cover V − includes u. Each gadget visited by P u must be Ω uv or Ω vu for some v 2 V . For each gadget visited by P u , its vertices are visited by either one or two cover paths."
+   "text": "Having established that the set V − is well defined, let’s see why it is a vertex cover for G. We have already established that each cover path starts at some s i , takes the edge (s i ,[u,u .1) ; 1]/ for some vertex u 2 V , passes through all the gadgets corresponding to edges in E incident on u, and then ends at some selector vertex s j . (This orientation is the reverse of the orientati on in the paragraph above.) Let’s call this cover path P u , and by equation (34.4), the vertex cover V − includes u. Each gadget visited by P u must be Ω uv or Ω vu for some v 2 V . For each gadget visited by P u , its vertices are visited by either one or two cover paths."
   },
   {
    "type": "body",
@@ -3983,7 +3974,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1090,
    "pdf_page": 1111,
-   "text": "If they are visited by one cover path, then edge (u;v) 2 E is covered in G by vertex u. If two cover paths visit the gadget, then the other cover path must be P v , which implies that v 2 V − , and edge (u;v) 2 E is covered by both u and v. Because each vertex in each gadget is visited by some cover path, we see that each edge in E is covered by some vertex in V − ."
+   "text": "If they are visited by one cover path, then edge (u,v) 2 E is covered in G by vertex u. If two cover paths visit the gadget, then the other cover path must be P v , which implies that v 2 V − , and edge (u,v) 2 E is covered by both u and v. Because each vertex in each gadget is visited by some cover path, we see that each edge in E is covered by some vertex in V − ."
   },
   {
    "type": "body",
@@ -4001,7 +3992,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1090,
    "pdf_page": 1111,
-   "text": "In the traveling-salesperson problem, which is closely related to the hamiltoniancycle problem, a salesperson must visit n cities. Let’s model the problem as a complete graph with n vertices, so that the salesperson wishes to make a tour, or hamiltonian cycle, visiting each city exactly once and finishing at the starting city. The salesperson incurs a nonnegative integer cost c(i;j) to travel from city i u x w"
+   "text": "In the traveling-salesperson problem, which is closely related to the hamiltoniancycle problem, a salesperson must visit n cities. Let’s model the problem as a complete graph with n vertices, so that the salesperson wishes to make a tour, or hamiltonian cycle, visiting each city exactly once and finishing at the starting city. The salesperson incurs a nonnegative integer cost c(i,j) to travel from city i u x w"
   },
   {
    "type": "figure-caption",
@@ -4010,7 +4001,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1091,
    "pdf_page": 1112,
-   "text": "Figure 34.18 An instance of the traveling-salesperson problem. Edges highlighted in blue represent a minimum-cost tour, with cost 7. to city j . In the optimization version of the problem, the s alesperson wishes to make the tour whose total cost is minimum, where th e total cost is the sum of the individual costs along the edges of the tour. F or example, in Figure 34.18, a minimum-cost tour is hu;w;v;x;u i, with cost 7. The formal language for the corresponding decision problem is TSP = fhG;c;k i W G = (V;E) is a complete graph; c is a function from V × V ! N; k 2 N, and G has a traveling-salesperson tour with cost at most kg :"
+   "text": "Figure 34.18 An instance of the traveling-salesperson problem. Edges highlighted in blue represent a minimum-cost tour, with cost 7. to city j . In the optimization version of the problem, the s alesperson wishes to make the tour whose total cost is minimum, where th e total cost is the sum of the individual costs along the edges of the tour. F or example, in Figure 34.18, a minimum-cost tour is ⟨u,w,v,x,u⟩, with cost 7. The formal language for the corresponding decision problem is TSP = fhG,c,k i W G = (V,E) is a complete graph; c is a function from V × V ! N; k 2 N, and G has a traveling-salesperson tour with cost at most kg :"
   },
   {
    "type": "body",
@@ -4055,7 +4046,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1091,
    "pdf_page": 1112,
-   "text": "To prove that TSP is NP-hard, we show that HAM-CYCLE ≤ PTSP. Given an instance G = (V;E) of HAM-CYCLE, construct an instance of TSP by forming the complete graph G 0 = (V;E 0 ), where E 0 = f(i;j) W i;j 2 V and i ≠ j g, with the cost function c defined as c(i;j) ="
+   "text": "To prove that TSP is NP-hard, we show that HAM-CYCLE ≤ PTSP. Given an instance G = (V,E) of HAM-CYCLE, construct an instance of TSP by forming the complete graph G 0 = (V,E 0 ), where E 0 = f(i,j) W i,j 2 V and i ≠ j g, with the cost function c defined as c(i,j) ="
   },
   {
    "type": "body",
@@ -4064,7 +4055,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1091,
    "pdf_page": 1112,
-   "text": "0 if (i;j) 2 E; 1 if (i;j) … E:"
+   "text": "0 if (i,j) 2 E; 1 if (i,j) … E:"
   },
   {
    "type": "body",
@@ -4073,7 +4064,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1091,
    "pdf_page": 1112,
-   "text": "(Because G is undirected, it contains no self-loops, and so c(v;v) = 1 for all vertices v 2 V .) The instance of TSP is then hG 0 ;c;0 i, which can be created in polynomial time."
+   "text": "(Because G is undirected, it contains no self-loops, and so c(v,v) = 1 for all vertices v 2 V .) The instance of TSP is then ⟨G 0 ,c,0⟩, which can be created in polynomial time."
   },
   {
    "type": "body",
@@ -4100,7 +4091,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1092,
    "pdf_page": 1113,
-   "text": "We next consider an arithmetic NP-complete problem. The subset-sum problem takes as inputs a finite set S of positive integers and an integer target t > 0. It asks whether there exists a subset S 0 ⊆ S whose elements sum to exactly t . For example, if S = f1;2;7;14;49;98;343;686;2409;2793;16808;17206;117705 ; 117993g and t = 138457, then the subset S 0 = f1;2;7;98;343;686;2409;17206; 117705g is a solution."
+   "text": "We next consider an arithmetic NP-complete problem. The subset-sum problem takes as inputs a finite set S of positive integers and an integer target t > 0. It asks whether there exists a subset S 0 ⊆ S whose elements sum to exactly t . For example, if S = f1,2,7,14,49,98,343,686,2409,2793,16808,17206,117705 ; 117993g and t = 138457, then the subset S 0 = f1,2,7,98,343,686,2409,17206; 117705g is a solution."
   },
   {
    "type": "body",
@@ -4119,6 +4110,15 @@
    "printed_page": 1092,
    "pdf_page": 1113,
    "text": "SUBSET-SUM ="
+  },
+  {
+   "type": "body",
+   "chapter": 34,
+   "section": "34.5",
+   "section_title": "34.5 NP-complete problems",
+   "printed_page": 1092,
+   "pdf_page": 1113,
+   "text": "⟨S,t⟩ W there exists a subset S 0 ⊆ S such that t = P s2S 0 s"
   },
   {
    "type": "body",
@@ -4154,7 +4154,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1092,
    "pdf_page": 1113,
-   "text": "Proof To show that SUBSET-SUM 2 NP, for an instance hS;t i of the problem, let the subset S 0 be the certificate. A verification algorithm can check whether t = P s2S 0 s in polynomial time."
+   "text": "Proof To show that SUBSET-SUM 2 NP, for an instance ⟨S,t⟩ of the problem, let the subset S 0 be the certificate. A verification algorithm can check whether t = P s2S 0 s in polynomial time."
   },
   {
    "type": "body",
@@ -4163,7 +4163,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1092,
    "pdf_page": 1113,
-   "text": "We now show that 3-CNF-SAT ≤ PSUBSET-SUM. Given a 3-CNF formula Ω over variables x 1 ;x 2 ;:::;x n with clauses C 1 ;C 2 ;:::;C k , each containing exactly three distinct literals, the reduction algorithm co nstructs an instance hS;t i of the subset-sum problem such that Ω is satisfiable if and only if there exists a subset of S whose sum is exactly t . Without loss of generality, we make two simplifying assumptions about the formula Ω. First, no clause contains both a variable and its negation, for such a clause is automatically satisfied by any assignment of values to the variables. Second, each variable appears in at least one clause, because it does not matter what value is assigned to a variable that appears in no clauses."
+   "text": "We now show that 3-CNF-SAT ≤ PSUBSET-SUM. Given a 3-CNF formula Ω over variables x 1 ,x 2 ,…,x n with clauses C 1 ,C 2 ,…,C k , each containing exactly three distinct literals, the reduction algorithm co nstructs an instance ⟨S,t⟩ of the subset-sum problem such that Ω is satisfiable if and only if there exists a subset of S whose sum is exactly t . Without loss of generality, we make two simplifying assumptions about the formula Ω. First, no clause contains both a variable and its negation, for such a clause is automatically satisfied by any assignment of values to the variables. Second, each variable appears in at least one clause, because it does not matter what value is assigned to a variable that appears in no clauses."
   },
   {
    "type": "body",
@@ -4346,7 +4346,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1093,
    "pdf_page": 1114,
-   "text": "C 1 ^C 2 ^C 3 ^C 4 , where C 1 = (x 1 _:x 2 _:x 3 ), C 2 = .:x 1 _:x 2 _:x 3 /, C 3 = .:x 1 _:x 2 _x 3 /, and C 4 = (x 1 _ x 2 _ x 3 ). A satisfying assignment of Ω is hx 1 = 0;x 2 = 0;x 3 = 1i. The set S produced by the reduction consists of the base-10 numbers shown: reading from top to bottom, S = f1001001;1000110;100001;101110;10011;11100;1000;2000 ;100;200;10;20;1;2 g. The target t is 1114444. The subset S 0 ⊆ S is shaded blue, and it contains v 0 satisfying assignment. Subset S 0 also contains slack variables s 1 , s 0"
+   "text": "C 1 ^C 2 ^C 3 ^C 4 , where C 1 = (x 1 _:x 2 _:x 3 ), C 2 = .:x 1 _:x 2 _:x 3 /, C 3 = .:x 1 _:x 2 _x 3 /, and C 4 = (x 1 _ x 2 _ x 3 ). A satisfying assignment of Ω is hx 1 = 0,x 2 = 0,x 3 = 1i. The set S produced by the reduction consists of the base-10 numbers shown: reading from top to bottom, S = f1001001,1000110,100001,101110,10011,11100,1000,2000 ,100,200,10,20,1,2 g. The target t is 1114444. The subset S 0 ⊆ S is shaded blue, and it contains v 0 satisfying assignment. Subset S 0 also contains slack variables s 1 , s 0"
   },
   {
    "type": "body",
@@ -4481,7 +4481,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1094,
    "pdf_page": 1115,
-   "text": "For i = 1;2;:::;n , if x i = 1 in this assignment, then include v i in S 0 . Otherwise, include v 0 i . In other words, S 0 includes exactly the v i and v 0 i values that correspond to literals with the value 1 in the satisfying assignment. Having included eithe r v i or v 0 i , but not both, for all i , and having put 0 in the digits labeled by variables in all s j and s 0 j , we see that for each variable-labeled digit, the sum of the values of S 0 must be 1, which matches those digits of the target t . Because each clause is satisfied, the clause contains some literal with the value 1. Therefore, each digit labeled by a clause has at least one 1 contributed to its sum by a v i or v 0 i value in S 0 . In fact, one, two, or three literals may be 1 in each clause, and so each clause-labeled digit has a sum of 1, 2, or 3 from the v i and v 0 i values in S 0 . In"
+   "text": "For i = 1,2,…,n , if x i = 1 in this assignment, then include v i in S 0 . Otherwise, include v 0 i . In other words, S 0 includes exactly the v i and v 0 i values that correspond to literals with the value 1 in the satisfying assignment. Having included eithe r v i or v 0 i , but not both, for all i , and having put 0 in the digits labeled by variables in all s j and s 0 j , we see that for each variable-labeled digit, the sum of the values of S 0 must be 1, which matches those digits of the target t . Because each clause is satisfied, the clause contains some literal with the value 1. Therefore, each digit labeled by a clause has at least one 1 contributed to its sum by a v i or v 0 i value in S 0 . In fact, one, two, or three literals may be 1 in each clause, and so each clause-labeled digit has a sum of 1, 2, or 3 from the v i and v 0 i values in S 0 . In"
   },
   {
    "type": "body",
@@ -4535,7 +4535,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1095,
    "pdf_page": 1116,
-   "text": "2 , and v 3 contribute 3 to the sum in the digit for C 3 . To achieve the target of 4 in each digit labeled by clause C j , include in S 0 the appropriate nonempty subset of slack variables fs j ;s 0 j g. In Figure 34.19, S 0 includes s 1 , s 0"
+   "text": "2 , and v 3 contribute 3 to the sum in the digit for C 3 . To achieve the target of 4 in each digit labeled by clause C j , include in S 0 the appropriate nonempty subset of slack variables fs j ,s 0 j g. In Figure 34.19, S 0 includes s 1 , s 0"
   },
   {
    "type": "body",
@@ -4553,7 +4553,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1095,
    "pdf_page": 1116,
-   "text": "Now suppose that some subset S 0 ⊆ S sums to t . The subset S 0 must include exactly one of v i and v 0 i for each i = 1;2;:::;n , for otherwise the digits labeled by variables would not sum to 1. If v i 2 S 0 , then set x i = 1. Otherwise, v 0 i 2 S 0 , and set x i = 0. We claim that every clause C j , for j = 1;2;:::;k , is satisfied by this assignment. To prove this claim, note that to achieve a sum of 4 in the digit labeled by C j , the subset S 0 must include at least one v i or v 0 i value that has a 1 in the digit labeled by C j , since the contributions of the slack variables s j and s 0 j together sum to at most 3. If S 0 includes a v i that has a 1 in C j ’s position, then the literal x i appears in clause C j . Since x i = 1 when v i 2 S 0 , clause C j is satisfied."
+   "text": "Now suppose that some subset S 0 ⊆ S sums to t . The subset S 0 must include exactly one of v i and v 0 i for each i = 1,2,…,n , for otherwise the digits labeled by variables would not sum to 1. If v i 2 S 0 , then set x i = 1. Otherwise, v 0 i 2 S 0 , and set x i = 0. We claim that every clause C j , for j = 1,2,…,k , is satisfied by this assignment. To prove this claim, note that to achieve a sum of 4 in the digit labeled by C j , the subset S 0 must include at least one v i or v 0 i value that has a 1 in the digit labeled by C j , since the contributions of the slack variables s j and s 0 j together sum to at most 3. If S 0 includes a v i that has a 1 in C j ’s position, then the literal x i appears in clause C j . Since x i = 1 when v i 2 S 0 , clause C j is satisfied."
   },
   {
    "type": "body",
@@ -4814,7 +4814,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1098,
    "pdf_page": 1119,
-   "text": "34.5-2 Given an integer m × n matrix A and an integer m-vector b, the 0-1 integerprogramming problem asks whether there exists an integer n-vector x with elements in the set f0;1 g such that Ax ≤ b. Prove that 0-1 integer programming is NP-complete. (Hint: Reduce from 3-CNF-SAT.)"
+   "text": "34.5-2 Given an integer m × n matrix A and an integer m-vector b, the 0-1 integerprogramming problem asks whether there exists an integer n-vector x with elements in the set f0,1 g such that Ax ≤ b. Prove that 0-1 integer programming is NP-complete. (Hint: Reduce from 3-CNF-SAT.)"
   },
   {
    "type": "exercise",
@@ -4904,7 +4904,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1099,
    "pdf_page": 1120,
-   "text": "An independent set of a graph G = (V;E) is a subset V 0 ⊆ V of vertices such that each edge in E is incident on at most one vertex in V 0 . The independent-set problem is to find a maximum-size independent set in G. a. Formulate a related decision problem for the independent-set problem, and prove that it is NP-complete. (Hint: Reduce from the clique problem.) b. You are given a \"black-box\" subroutine to solve the decision problem you defined in part (a). Give an algorithm to find an independent set of maximum size. The running time of your algorithm should be polynomial in |V| and |E|, counting queries to the black box as a single step."
+   "text": "An independent set of a graph G = (V,E) is a subset V 0 ⊆ V of vertices such that each edge in E is incident on at most one vertex in V 0 . The independent-set problem is to find a maximum-size independent set in G. a. Formulate a related decision problem for the independent-set problem, and prove that it is NP-complete. (Hint: Reduce from the clique problem.) b. You are given a \"black-box\" subroutine to solve the decision problem you defined in part (a). Give an algorithm to find an independent set of maximum size. The running time of your algorithm should be polynomial in |V| and |E|, counting queries to the black box as a single step."
   },
   {
    "type": "body",
@@ -4949,7 +4949,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1100,
    "pdf_page": 1121,
-   "text": "Mapmakers try to use as few colors as possible when coloring countries on a map, subject to the restriction that if two countries sh are a border, they must have different colors. You can model this problem with an u ndirected graph G = (V;E) in which each vertex represents a country and vertices whose respective countries share a border are adjacent. Then, a k-coloring is a function c W V ! f1;2;:::;k g such that c(u) ≠ c(v) for every edge (u;v) 2 E. In other words, the numbers"
+   "text": "Mapmakers try to use as few colors as possible when coloring countries on a map, subject to the restriction that if two countries sh are a border, they must have different colors. You can model this problem with an u ndirected graph G = (V,E) in which each vertex represents a country and vertices whose respective countries share a border are adjacent. Then, a k-coloring is a function c W V ! f1,2,…,k g such that c(u) ≠ c(v) for every edge (u,v) 2 E. In other words, the numbers"
   },
   {
    "type": "body",
@@ -4958,7 +4958,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1100,
    "pdf_page": 1121,
-   "text": "1;2;:::;k represent the k colors, and adjacent vertices must have different colors. The graph-coloring problem is to determine the minimum number of colors needed to color a given graph. a. Give an efficient algorithm to determine a 2-coloring of a graph, if one exists. b. Cast the graph-coloring problem as a decision problem. Show that your decision problem is solvable in polynomial time if and only if the graph-coloring problem is solvable in polynomial time. c. Let the language 3-COLOR be the set of graphs that can be 3-colored. Show that if 3-COLOR is NP-complete, then your decision problem from part (b) is NP-complete."
+   "text": "1,2,…,k represent the k colors, and adjacent vertices must have different colors. The graph-coloring problem is to determine the minimum number of colors needed to color a given graph. a. Give an efficient algorithm to determine a 2-coloring of a graph, if one exists. b. Cast the graph-coloring problem as a decision problem. Show that your decision problem is solvable in polynomial time if and only if the graph-coloring problem is solvable in polynomial time. c. Let the language 3-COLOR be the set of graphs that can be 3-colored. Show that if 3-COLOR is NP-complete, then your decision problem from part (b) is NP-complete."
   },
   {
    "type": "body",
@@ -5012,7 +5012,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1101,
    "pdf_page": 1122,
-   "text": "Given a formula Ω of m clauses on n variables x 1 ;x 2 ;:::;x n , construct a graph"
+   "text": "Given a formula Ω of m clauses on n variables x 1 ,x 2 ,…,x n , construct a graph"
   },
   {
    "type": "body",
@@ -5021,7 +5021,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1101,
    "pdf_page": 1122,
-   "text": "G = (V;E) as follows. The set V consists of a vertex for each variable, a vertex for the negation of each variable, five vertices for each clause, and three special vertices: TRUE, FALSE , and RED. The edges of the graph are of two types: <literal= edges that are independent of the clauses and \"clause\" edges that depend on the clauses. As Figure 34.20 shows, the literal edges form a triangle on the three special vertices TRUE, FALSE , and RED, and they also form a triangle on x i , :x i , and RED for i = 1;2;:::;n . d. Consider a graph containing the literal edges. Argue that in any 3-coloring c of such a graph, exactly one of a variable and its negation is colored c(TRUE) and the other is colored c(FALSE). Then argue that for any truth assignment for Ω, there exists a 3-coloring of the graph containing just the literal edges."
+   "text": "G = (V,E) as follows. The set V consists of a vertex for each variable, a vertex for the negation of each variable, five vertices for each clause, and three special vertices: TRUE, FALSE , and RED. The edges of the graph are of two types: <literal= edges that are independent of the clauses and \"clause\" edges that depend on the clauses. As Figure 34.20 shows, the literal edges form a triangle on the three special vertices TRUE, FALSE , and RED, and they also form a triangle on x i , :x i , and RED for i = 1,2,…,n . d. Consider a graph containing the literal edges. Argue that in any 3-coloring c of such a graph, exactly one of a variable and its negation is colored c(TRUE) and the other is colored c(FALSE). Then argue that for any truth assignment for Ω, there exists a 3-coloring of the graph containing just the literal edges."
   },
   {
    "type": "body",
@@ -5048,7 +5048,7 @@
    "section_title": "34.5 NP-complete problems",
    "printed_page": 1102,
    "pdf_page": 1123,
-   "text": "You have one computer and a set of n tasks fa 1 ;a 2 ;:::;a n g requiring time on the computer. Each task a j requires t j time units on the computer (its processing time), yields a profit of √j , and has a deadline d j . The computer can process only one task at a time, and task a j must run without interruption for t j consecutive time units."
+   "text": "You have one computer and a set of n tasks fa 1 ,a 2 ,…,a n g requiring time on the computer. Each task a j requires t j time units on the computer (its processing time), yields a profit of √j , and has a deadline d j . The computer can process only one task at a time, and task a j must run without interruption for t j consecutive time units."
   },
   {
    "type": "body",

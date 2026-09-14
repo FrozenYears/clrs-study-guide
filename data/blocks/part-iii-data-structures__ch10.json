@@ -165,7 +165,7 @@
    "section_title": "10.1 Simple array-based data structures: arrays, matrices, stacks, queues",
    "printed_page": 253,
    "pdf_page": 274,
-   "text": "Parts (a) and (b) of Figure 10.1 show how to store this matrix using a single one-dimensional array. It’s stored in row-major order in part (a) and in columnmajor order in part (b). If the rows, columns, and the single array all are indexed starting at s , then M[i;j] 4the element in row i and column j 4is at array in- dex s C (n(i − s)) C (j − s) with row-major order and s C (m(j − s)) C (i − s) with column-major order. When s = 1, the single-array indices are n(i − 1) + j with row-major order and i + m(j − 1) with column-major order. When s = 0, the single-array indices are simpler: ni + j with row-major order and i C mj with column-major order. For the example matrix M with 1-origin indexing, element M[2;1] is stored at index 3.2 −1/ C1 = 4 in the single array using row-major order and at index 2 + 2.1 − 1/ = 2 using column-major order."
+   "text": "Parts (a) and (b) of Figure 10.1 show how to store this matrix using a single one-dimensional array. It’s stored in row-major order in part (a) and in columnmajor order in part (b). If the rows, columns, and the single array all are indexed starting at s , then M[i,j] 4the element in row i and column j 4is at array in- dex s C (n(i − s)) C (j − s) with row-major order and s C (m(j − s)) C (i − s) with column-major order. When s = 1, the single-array indices are n(i − 1) + j with row-major order and i + m(j − 1) with column-major order. When s = 0, the single-array indices are simpler: ni + j with row-major order and i C mj with column-major order. For the example matrix M with 1-origin indexing, element M[2,1] is stored at index 3.2 −1/ C1 = 4 in the single array using row-major order and at index 2 + 2.1 − 1/ = 2 using column-major order."
   },
   {
    "type": "body",
@@ -183,7 +183,7 @@
    "section_title": "10.1 Simple array-based data structures: arrays, matrices, stacks, queues",
    "printed_page": 253,
    "pdf_page": 274,
-   "text": "If we call the blue array A, then A[i] points to the array storing the entries for row i of M , and array element A[i][j] stores matrix element M[i;j] . Part (d) shows the column-major version of the multiple-array representation, with n arrays, each of length m, representing the n columns. Matrix element M[i;j] is stored in array element A[j][i] ."
+   "text": "If we call the blue array A, then A[i] points to the array storing the entries for row i of M , and array element A[i][j] stores matrix element M[i,j] . Part (d) shows the column-major version of the multiple-array representation, with n arrays, each of length m, representing the n columns. Matrix element M[i,j] is stored in array element A[j][i] ."
   },
   {
    "type": "body",
@@ -228,7 +228,7 @@
    "section_title": "10.1 Simple array-based data structures: arrays, matrices, stacks, queues",
    "printed_page": 254,
    "pdf_page": 275,
-   "text": "˘ might be stored in a single array in the order h1;2;5;6;3;4;7;8;9;10;13;14;11; 12;15;16 i."
+   "text": "˘ might be stored in a single array in the order ⟨1,2,5,6,3,4,7,8,9,10,13,14,11; 12,15,16⟩."
   },
   {
    "type": "body",
@@ -455,7 +455,7 @@
    "section_title": "10.1 Simple array-based data structures: arrays, matrices, stacks, queues",
    "printed_page": 255,
    "pdf_page": 276,
-   "text": "(a) Stack S has 4 elements. The top element is 9. (b) Stack S after the calls PUSH(S;17) and PUSH(S;3) . (c) Stack S after the call POP(S) has returned the element 3, which is the one most recently pushed. Although element 3 still appears in the array, it is no longer in the stack. The top is element 17."
+   "text": "(a) Stack S has 4 elements. The top element is 9. (b) Stack S after the calls PUSH(S,17) and PUSH(S,3) . (c) Stack S after the call POP(S) has returned the element 3, which is the one most recently pushed. Although element 3 still appears in the array, it is no longer in the stack. The top is element 17."
   },
   {
    "type": "body",
@@ -509,7 +509,7 @@
    "section_title": "10.1 Simple array-based data structures: arrays, matrices, stacks, queues",
    "printed_page": 255,
    "pdf_page": 276,
-   "text": "PUSH(S;x)"
+   "text": "PUSH(S,x)"
   },
   {
    "type": "body",
@@ -617,7 +617,7 @@
    "section_title": "10.1 Simple array-based data structures: arrays, matrices, stacks, queues",
    "printed_page": 256,
    "pdf_page": 277,
-   "text": "Figure 10.3 A queue implemented using an array Q[1 : 12]. Queue elements appear only in the tan positions. (a) The queue has 5 elements, in locations Q[7 : 11]. (b) The configuration of the queue after the calls ENQUEUE(Q;17) , ENQUEUE(Q;3) , and ENQUEUE(Q;5) . (c) The configuration of the queue after the call DEQUEUE(Q) returns the key value 15 formerly at the head of the queue."
+   "text": "Figure 10.3 A queue implemented using an array Q[1 : 12]. Queue elements appear only in the tan positions. (a) The queue has 5 elements, in locations Q[7 : 11]. (b) The configuration of the queue after the calls ENQUEUE(Q,17) , ENQUEUE(Q,3) , and ENQUEUE(Q,5) . (c) The configuration of the queue after the call DEQUEUE(Q) returns the key value 15 formerly at the head of the queue."
   },
   {
    "type": "body",
@@ -662,7 +662,7 @@
    "section_title": "10.1 Simple array-based data structures: arrays, matrices, stacks, queues",
    "printed_page": 256,
    "pdf_page": 277,
-   "text": "Q: tail indexes the next location at which a newly arriving element will be inserted into the queue. The elements in the queue reside in locations Q: head ;Q: head C 1; :::;Q: tail − 1, where we \"wrap around\" in the sense that location 1 immediately follows location n in a circular order. When Q: head = Q: tail, the queue is empty."
+   "text": "Q: tail indexes the next location at which a newly arriving element will be inserted into the queue. The elements in the queue reside in locations Q: head ,Q: head C 1; …,Q: tail − 1, where we \"wrap around\" in the sense that location 1 immediately follows location n in a circular order. When Q: head = Q: tail, the queue is empty."
   },
   {
    "type": "body",
@@ -778,7 +778,7 @@
    "section_title": "10.1 Simple array-based data structures: arrays, matrices, stacks, queues",
    "printed_page": 257,
    "pdf_page": 278,
-   "text": "ENQUEUE(Q;x)"
+   "text": "ENQUEUE(Q,x)"
   },
   {
    "type": "body",
@@ -796,7 +796,7 @@
    "section_title": "10.1 Simple array-based data structures: arrays, matrices, stacks, queues",
    "printed_page": 257,
    "pdf_page": 278,
-   "text": "10.1-1 Consider an m × n matrix in row-major order, where both m and n are powers of 2 and rows and columns are indexed from 0. We can represent a row index i in binary by the lg m bits hi lg m−1 ;i lg m−2 ;:::;i 0 i and a column index j in binary by the lg n bits hj lg n−1 ;j lg n−2 ;:::;j 0 i. Suppose that this matrix is a 2 × 2 block matrix, where each block has m/2 rows and n/2 columns, and it is to be represented by a single array with 0-origin indexing. Show how to construct the binary representation of the (lg m C lg n)-bit index into the single array from the binary representations of i and j ."
+   "text": "10.1-1 Consider an m × n matrix in row-major order, where both m and n are powers of 2 and rows and columns are indexed from 0. We can represent a row index i in binary by the lg m bits ⟨i lg m−1 ,i lg m−2 ,…,i 0⟩ and a column index j in binary by the lg n bits ⟨j lg n−1 ,j lg n−2 ,…,j 0⟩. Suppose that this matrix is a 2 × 2 block matrix, where each block has m/2 rows and n/2 columns, and it is to be represented by a single array with 0-origin indexing. Show how to construct the binary representation of the (lg m C lg n)-bit index into the single array from the binary representations of i and j ."
   },
   {
    "type": "exercise",
@@ -814,7 +814,7 @@
    "section_title": "10.1 Simple array-based data structures: arrays, matrices, stacks, queues",
    "printed_page": 257,
    "pdf_page": 278,
-   "text": "PUSH(S;4) , PUSH(S;1) , PUSH(S;3) , POP(S), PUSH(S;8) , and POP(S) on an initially empty stack S stored in array S[1 : 6]"
+   "text": "PUSH(S,4) , PUSH(S,1) , PUSH(S,3) , POP(S), PUSH(S,8) , and POP(S) on an initially empty stack S stored in array S[1 : 6]"
   },
   {
    "type": "exercise",
@@ -841,7 +841,7 @@
    "section_title": "10.1 Simple array-based data structures: arrays, matrices, stacks, queues",
    "printed_page": 258,
    "pdf_page": 279,
-   "text": "10.1-4 Using Figure 10.3 as a model, illustrate the result of each operation in the sequence ENQUEUE(Q;4) , ENQUEUE(Q;1) , ENQUEUE(Q;3) , DEQUEUE(Q), ENQUEUE(Q;8) , and DEQUEUE(Q) on an initially empty queue Q stored in array Q[1 : 6]."
+   "text": "10.1-4 Using Figure 10.3 as a model, illustrate the result of each operation in the sequence ENQUEUE(Q,4) , ENQUEUE(Q,1) , ENQUEUE(Q,3) , DEQUEUE(Q), ENQUEUE(Q,8) , and DEQUEUE(Q) on an initially empty queue Q stored in array Q[1 : 6]."
   },
   {
    "type": "exercise",
@@ -967,7 +967,7 @@
    "section_title": "10.2 Linked lists",
    "printed_page": 259,
    "pdf_page": 280,
-   "text": "Figure 10.4 (a) A doubly linked list L representing the dynamic set f1;4;9;16 g. Each element in the list is an object with attributes for the key and pointers (shown by arrows) to the next and previous objects. The next attribute of the tail and the prev attribute of the head are NIL , indicated by a diagonal slash. The attribute L: head points to the head. (b) Following the execution of LIST-PREPEND(L;x) , where x: key = 25, the linked list has an object with key 25 as the new head. This new object points to the old head with key 9. (c) The result of calling LIST-INSERT(x;y) , where x: key = 36 and y points to the object with key 9. (d) The result of the subsequent call LIST-DELETE(L;x) , where x points to the object with key 4. also contain other satellite data. Given an element x in the list, x: next points to its successor in the linked list, and x: prev points to its predecessor. If x: prev DNIL , the element x has no predecessor and is therefore the first element, or head, of the list. If x: next DNIL, the element x has no successor and is therefore the last element, or tail, of the list. An attribute L: head points to the first element of the list. If L: head DNIL, the list is empty."
+   "text": "Figure 10.4 (a) A doubly linked list L representing the dynamic set f1,4,9,16 g. Each element in the list is an object with attributes for the key and pointers (shown by arrows) to the next and previous objects. The next attribute of the tail and the prev attribute of the head are NIL , indicated by a diagonal slash. The attribute L: head points to the head. (b) Following the execution of LIST-PREPEND(L,x) , where x: key = 25, the linked list has an object with key 25 as the new head. This new object points to the old head with key 9. (c) The result of calling LIST-INSERT(x,y) , where x: key = 36 and y points to the object with key 9. (d) The result of the subsequent call LIST-DELETE(L,x) , where x points to the object with key 4. also contain other satellite data. Given an element x in the list, x: next points to its successor in the linked list, and x: prev points to its predecessor. If x: prev DNIL , the element x has no predecessor and is therefore the first element, or head, of the list. If x: next DNIL, the element x has no successor and is therefore the last element, or tail, of the list. An attribute L: head points to the first element of the list. If L: head DNIL, the list is empty."
   },
   {
    "type": "body",
@@ -1065,7 +1065,7 @@
    "section_title": "10.2 Linked lists",
    "printed_page": 260,
    "pdf_page": 281,
-   "text": "The procedure LIST-SEARCH (L;k) finds the first element with key k in list L by a simple linear search, returning a pointer to t his element. If no object with key k appears in the list, then the procedure returns NIL. For the linked list in Figure 10.4(a), the call LIST-SEARCH (L;4) returns a pointer to the third element, and the call LIST-SEARCH (L;7) returns NIL. To search a list of n objects, the LIST-SEARCH procedure takes Θ(n) time in the worst case, since it may have to search the entire list."
+   "text": "The procedure LIST-SEARCH (L,k) finds the first element with key k in list L by a simple linear search, returning a pointer to t his element. If no object with key k appears in the list, then the procedure returns NIL. For the linked list in Figure 10.4(a), the call LIST-SEARCH (L,4) returns a pointer to the third element, and the call LIST-SEARCH (L,7) returns NIL. To search a list of n objects, the LIST-SEARCH procedure takes Θ(n) time in the worst case, since it may have to search the entire list."
   },
   {
    "type": "body",
@@ -1074,7 +1074,7 @@
    "section_title": "10.2 Linked lists",
    "printed_page": 260,
    "pdf_page": 281,
-   "text": "LIST-SEARCH (L;k)"
+   "text": "LIST-SEARCH (L,k)"
   },
   {
    "type": "body",
@@ -1101,7 +1101,7 @@
    "section_title": "10.2 Linked lists",
    "printed_page": 260,
    "pdf_page": 281,
-   "text": "LIST-PREPEND (L;x)"
+   "text": "LIST-PREPEND (L,x)"
   },
   {
    "type": "body",
@@ -1185,7 +1185,7 @@
    "section_title": "10.2 Linked lists",
    "printed_page": 261,
    "pdf_page": 282,
-   "text": "LIST-INSERT (x;y)"
+   "text": "LIST-INSERT (x,y)"
   },
   {
    "type": "body",
@@ -1230,7 +1230,7 @@
    "section_title": "10.2 Linked lists",
    "printed_page": 261,
    "pdf_page": 282,
-   "text": "LIST-DELETE (L;x)"
+   "text": "LIST-DELETE (L,x)"
   },
   {
    "type": "body",
@@ -1323,7 +1323,7 @@
    "section_title": "10.2 Linked lists",
    "printed_page": 262,
    "pdf_page": 283,
-   "text": "Figure 10.5 A circular, doubly linked list with a sentinel. The sentinel L: nil, in blue, appears between the head and tail. The attribute L: head is no longer needed, since the head of the list is L: nil: next. (a) An empty list. (b) The linked list from Figure 10.4(a), with key 9 at the head and key 1 at the tail. (c) The list after executing LIST-INSERT 0 (x;L: nil), where x: key = 25. The new object becomes the head of the list. (d) The list after deleting the object with key 1. The new tail is the object with key 4. (e) The list after executing LIST-INSERT 0 (x;y) , where x: key = 36 and y points to the object with key 9."
+   "text": "Figure 10.5 A circular, doubly linked list with a sentinel. The sentinel L: nil, in blue, appears between the head and tail. The attribute L: head is no longer needed, since the head of the list is L: nil: next. (a) An empty list. (b) The linked list from Figure 10.4(a), with key 9 at the head and key 1 at the tail. (c) The list after executing LIST-INSERT 0 (x,L: nil), where x: key = 25. The new object becomes the head of the list. (d) The list after deleting the object with key 1. The new tail is the object with key 4. (e) The list after executing LIST-INSERT 0 (x,y) , where x: key = 36 and y points to the object with key 9."
   },
   {
    "type": "body",
@@ -1465,7 +1465,7 @@
    "section_title": "10.2 Linked lists",
    "printed_page": 263,
    "pdf_page": 284,
-   "text": "LIST-INSERT 0 (x;y)"
+   "text": "LIST-INSERT 0 (x,y)"
   },
   {
    "type": "body",
@@ -1501,7 +1501,7 @@
    "section_title": "10.2 Linked lists",
    "printed_page": 263,
    "pdf_page": 284,
-   "text": "LIST-SEARCH 0 (L;k)"
+   "text": "LIST-SEARCH 0 (L,k)"
   },
   {
    "type": "body",
@@ -1645,7 +1645,7 @@
    "section_title": "10.3 Representing rooted trees",
    "printed_page": 265,
    "pdf_page": 286,
-   "text": "It’s simple to extend the scheme for representing a binary tree to any class of trees in which the number of children of each node is at most some constant k: replace the left and right attributes by child 1 ; child 2 ;:::; child k . This scheme no longer works when the number of children of a node is unbounded, however, since we do not know how many attributes to allocate in advance. Moreover, if k, the number of children, is bounded by a large constant but most nodes have a small number of children, we may waste a lot of memory."
+   "text": "It’s simple to extend the scheme for representing a binary tree to any class of trees in which the number of children of each node is at most some constant k: replace the left and right attributes by child 1 ; child 2 ,…; child k . This scheme no longer works when the number of children of a node is unbounded, however, since we do not know how many attributes to allocate in advance. Moreover, if k, the number of children, is bounded by a large constant but most nodes have a small number of children, we may waste a lot of memory."
   },
   {
    "type": "body",
@@ -1982,7 +1982,7 @@
     },
     {
      "n": 3,
-     "code": "j DRANDOM(1;n)"
+     "code": "j DRANDOM(1,n)"
     },
     {
      "n": 4,
@@ -2017,7 +2017,7 @@
      "code": "else return i"
     }
    ],
-   "text": "1 i = head\n2 while i ≠ NIL and key[i]<k\n3 j DRANDOM(1;n)\n4 if key[i]<  key[j]  and key[j]  ≤ k\n5 i = j\n6 if key[i] == k\n7 return i\n8 i = next [i]\n9 if i == NIL or key[i]>k\n10 return NIL\n11 else return i"
+   "text": "1 i = head\n2 while i ≠ NIL and key[i]<k\n3 j DRANDOM(1,n)\n4 if key[i]<  key[j]  and key[j]  ≤ k\n5 i = j\n6 if key[i] == k\n7 return i\n8 i = next [i]\n9 if i == NIL or key[i]>k\n10 return NIL\n11 else return i"
   },
   {
    "type": "body",
@@ -2053,7 +2053,7 @@
    "section_title": "10.3 Representing rooted trees",
    "printed_page": 269,
    "pdf_page": 290,
-   "text": "Let’s assume that all keys are distinct and that the compact list is also sorted, that is, key[i]< key[next [i]] for all i = 1;2;:::;n such that next [i] ≠ NIL. Under these assumptions, you will show that the randomized algorithm COMPACT-LIST- SEARCH searches the list for key k in O. √n/ expected time."
+   "text": "Let’s assume that all keys are distinct and that the compact list is also sorted, that is, key[i]< key[next [i]] for all i = 1,2,…,n such that next [i] ≠ NIL. Under these assumptions, you will show that the randomized algorithm COMPACT-LIST- SEARCH searches the list for key k in O. √n/ expected time."
   },
   {
    "type": "body",
@@ -2062,7 +2062,7 @@
    "section_title": "10.3 Representing rooted trees",
    "printed_page": 269,
    "pdf_page": 290,
-   "text": "COMPACT-LIST-SEARCH (key; next ; head ;n;k)"
+   "text": "COMPACT-LIST-SEARCH (key; next ; head ,n,k)"
   },
   {
    "type": "body",
@@ -2071,7 +2071,7 @@
    "section_title": "10.3 Representing rooted trees",
    "printed_page": 269,
    "pdf_page": 290,
-   "text": "If you ignore lines 337 of the procedure, you can see that it’s an ordinary algorithm for searching a sorted linked list, in which index i points to each position of the list in turn. The search terminates once the index i \"falls off\" the end of the list or once key[i] ≥ k. In the latter case, if key[i] = k, the procedure has found a key with the value k. If, however, key[i]>k , then the search will never find a key with the value k, so that terminating the search was the correct action."
+   "text": "If you ignore lines 3–7 of the procedure, you can see that it’s an ordinary algorithm for searching a sorted linked list, in which index i points to each position of the list in turn. The search terminates once the index i \"falls off\" the end of the list or once key[i] ≥ k. In the latter case, if key[i] = k, the procedure has found a key with the value k. If, however, key[i]>k , then the search will never find a key with the value k, so that terminating the search was the correct action."
   },
   {
    "type": "pseudocode",
@@ -2093,7 +2093,7 @@
     },
     {
      "n": 3,
-     "code": "j DRANDOM(1;n)"
+     "code": "j DRANDOM(1,n)"
     },
     {
      "n": 4,
@@ -2132,7 +2132,7 @@
      "code": "else return i"
     }
    ],
-   "text": "1 i = head\n2 for q = 1 to t\n3 j DRANDOM(1;n)\n4 if key[i]<  key[j]  and key[j]  ≤ k\n5 i = j\n6 if key[i] == k\n7 return i\n8 while i ≠ NIL and key[i]<k\n9 i = next [i]\n10 if i = = NIL or key[i]>k\n11 return NIL\n12 else return i"
+   "text": "1 i = head\n2 for q = 1 to t\n3 j DRANDOM(1,n)\n4 if key[i]<  key[j]  and key[j]  ≤ k\n5 i = j\n6 if key[i] == k\n7 return i\n8 while i ≠ NIL and key[i]<k\n9 i = next [i]\n10 if i = = NIL or key[i]>k\n11 return NIL\n12 else return i"
   },
   {
    "type": "body",
@@ -2141,7 +2141,7 @@
    "section_title": "10.3 Representing rooted trees",
    "printed_page": 270,
    "pdf_page": 291,
-   "text": "Lines 337 attempt to skip ahead to a randomly chosen position j . Such a skip helps if key[j] is larger than key[i] and no larger than k. In such a case, j marks a position in the list that i would reach during an ordinary list search. Because the list is compact, we know that any choice of j between 1 and n indexes some element in the list."
+   "text": "Lines 3–7 attempt to skip ahead to a randomly chosen position j . Such a skip helps if key[j] is larger than key[i] and no larger than k. In such a case, j marks a position in the list that i would reach during an ordinary list search. Because the list is compact, we know that any choice of j between 1 and n indexes some element in the list."
   },
   {
    "type": "body",
@@ -2159,7 +2159,7 @@
    "section_title": "10.3 Representing rooted trees",
    "printed_page": 270,
    "pdf_page": 291,
-   "text": "COMPACT-LIST-SEARCH 0 (key; next ; head ;n;k;t)"
+   "text": "COMPACT-LIST-SEARCH 0 (key; next ; head ,n,k,t)"
   },
   {
    "type": "body",
@@ -2168,7 +2168,7 @@
    "section_title": "10.3 Representing rooted trees",
    "printed_page": 270,
    "pdf_page": 291,
-   "text": "To compare the execution of the two algorithms, ass ume that the sequence of calls of RANDOM(1;n) yields the same sequence of integers for both algorithms. a. Argue that for any value of t , COMPACT-LIST-SEARCH (key; next ; head;n;k) and COMPACT-LIST-SEARCH 0 (key; next ; head;n;k;t) return the same result and that the number of iterations of the while loop of lines 238 in COMPACT-LIST-SEARCH is at most the total number of iterations of both the for and while loops in COMPACT-LIST-SEARCH 0 ."
+   "text": "To compare the execution of the two algorithms, ass ume that the sequence of calls of RANDOM(1,n) yields the same sequence of integers for both algorithms. a. Argue that for any value of t , COMPACT-LIST-SEARCH (key; next ; head,n,k) and COMPACT-LIST-SEARCH 0 (key; next ; head,n,k,t) return the same result and that the number of iterations of the while loop of lines 2–8 in COMPACT-LIST-SEARCH is at most the total number of iterations of both the for and while loops in COMPACT-LIST-SEARCH 0 ."
   },
   {
    "type": "body",
@@ -2177,7 +2177,7 @@
    "section_title": "10.3 Representing rooted trees",
    "printed_page": 270,
    "pdf_page": 291,
-   "text": "In the call COMPACT-LIST-SEARCH 0 (key; next ; head;n;k;t) , let X t be the random variable that describes the distance in the linked list (that is, through the chain of next pointers) from position i to the desired key k after t iterations of the for loop of lines 237 have occurred. b. Argue that COMPACT-LIST-SEARCH 0 (key; next ; head ;n;k;t) has an expected running time of O(t + E [X t ]). c. Show that E [X t ] = P n r D1 .1−r/n/ t . (Hint: Use equation (C.28) on page 1193.)"
+   "text": "In the call COMPACT-LIST-SEARCH 0 (key; next ; head,n,k,t) , let X t be the random variable that describes the distance in the linked list (that is, through the chain of next pointers) from position i to the desired key k after t iterations of the for loop of lines 2–7 have occurred. b. Argue that COMPACT-LIST-SEARCH 0 (key; next ; head ,n,k,t) has an expected running time of O(t + E [X t ]). c. Show that E [X t ] = P n r D1 .1−r/n/ t . (Hint: Use equation (C.28) on page 1193.)"
   },
   {
    "type": "chapter-notes",
@@ -2186,7 +2186,7 @@
    "section_title": "10.3 Representing rooted trees",
    "printed_page": 271,
    "pdf_page": 292,
-   "text": "Notes for Chapter 10 271 d. Show that P n−1 r D0 r t ≤ n t C1 =.t C1/. (Hint: Use inequality (A(18) on page 1150.) e. Prove that E [X t ] ≤ n=.t + 1). f. Show that COMPACT-LIST-SEARCH 0 (key; next ; head ;n;k;t) has an expected running time of O(t + n/t) . g. Conclude that COMPACT-LIST-SEARCH runs in O. √n/ expected time. h. Why do we assume that all keys are distinct in COMPACT-LIST-SEARCH? Argue that random skips do not necessarily help asymptotically when the list contains repeated key values."
+   "text": "Notes for Chapter 10 271 d. Show that P n−1 r D0 r t ≤ n t + 1 =.t + 1/. (Hint: Use inequality (A(18) on page 1150.) e. Prove that E [X t ] ≤ n=.t + 1). f. Show that COMPACT-LIST-SEARCH 0 (key; next ; head ,n,k,t) has an expected running time of O(t + n/t) . g. Conclude that COMPACT-LIST-SEARCH runs in O. √n/ expected time. h. Why do we assume that all keys are distinct in COMPACT-LIST-SEARCH? Argue that random skips do not necessarily help asymptotically when the list contains repeated key values."
   },
   {
    "type": "chapter-notes",

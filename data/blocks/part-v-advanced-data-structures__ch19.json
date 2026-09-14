@@ -59,7 +59,7 @@
    "section_title": "19.1 Disjoint-set operations",
    "printed_page": 520,
    "pdf_page": 541,
-   "text": "A disjoint-set data structure maintains a collection S = fS 1 ;S 2 ;:::;S k g of disjoint dynamic sets. To identify each set, choose a representative, which is some member of the set. In some applications, it doesn’t matter which member is used as the representative; it matters only that if you ask for the representative of a dynamic set twice without modifying the set between t he requests, you get the same answer both times. Other applications may require a prespecified rule for choosing the representative, such as choosing the smallest member in the set (for a set whose elements can be ordered)."
+   "text": "A disjoint-set data structure maintains a collection S = fS 1 ,S 2 ,…,S k g of disjoint dynamic sets. To identify each set, choose a representative, which is some member of the set. In some applications, it doesn’t matter which member is used as the representative; it matters only that if you ask for the representative of a dynamic set twice without modifying the set between t he requests, you get the same answer both times. Other applications may require a prespecified rule for choosing the representative, such as choosing the smallest member in the set (for a set whose elements can be ordered)."
   },
   {
    "type": "body",
@@ -86,7 +86,7 @@
    "section_title": "19.1 Disjoint-set operations",
    "printed_page": 521,
    "pdf_page": 542,
-   "text": "UNION(x;y) unites two disjoint, dynamic sets that contain x and y , say S x and S y , into a new set that is the union of these two sets. The representative of the resulting set is any member of S x [ S y , although many implementations of UNION specifically choose the representative of either S x or S y as the new representative. Since the sets in the collection must at all times be disjoint, the UNION operation destroys sets S x and S y , removing them from the collection S . In practice, implementations often absorb the elements of one of the sets into the other set."
+   "text": "UNION(x,y) unites two disjoint, dynamic sets that contain x and y , say S x and S y , into a new set that is the union of these two sets. The representative of the resulting set is any member of S x [ S y , although many implementations of UNION specifically choose the representative of either S x or S y as the new representative. Since the sets in the collection must at all times be disjoint, the UNION operation destroys sets S x and S y , removing them from the collection S . In practice, implementations often absorb the elements of one of the sets into the other set."
   },
   {
    "type": "body",
@@ -149,7 +149,7 @@
    "section_title": "19.1 Disjoint-set operations",
    "printed_page": 521,
    "pdf_page": 542,
-   "text": "The procedure CONNECTED-COMPONENTS initially places each vertex v in its own set. Then, for each edge (u;v) , it unites the sets containing u and v. By"
+   "text": "The procedure CONNECTED-COMPONENTS initially places each vertex v in its own set. Then, for each edge (u,v) , it unites the sets containing u and v. By"
   },
   {
    "type": "body",
@@ -180,7 +180,7 @@
     },
     {
      "n": 3,
-     "code": "for each edge (u;v)  2 G: E"
+     "code": "for each edge (u,v)  2 G: E"
     },
     {
      "n": 4,
@@ -188,10 +188,10 @@
     },
     {
      "n": 5,
-     "code": "UNION(u;v)"
+     "code": "UNION(u,v)"
     }
    ],
-   "text": "1 for each vertex v 2 G: V\n2 MAKE-SET (v)\n3 for each edge (u;v)  2 G: E\n4 if FIND-SET(u) ≠ FIND-SET(v)\n5 UNION(u;v)"
+   "text": "1 for each vertex v 2 G: V\n2 MAKE-SET (v)\n3 for each edge (u,v)  2 G: E\n4 if FIND-SET(u) ≠ FIND-SET(v)\n5 UNION(u,v)"
   },
   {
    "type": "pseudocode",
@@ -333,7 +333,7 @@
    "section_title": "19.1 Disjoint-set operations",
    "printed_page": 522,
    "pdf_page": 543,
-   "text": "Figure 19.1 (a) A graph with four connected components: fa;b;c;d g, fe;f;g g, fh;i g, and fj g."
+   "text": "Figure 19.1 (a) A graph with four connected components: fa,b,c,d g, fe,f,g g, fh,i g, and fj g."
   },
   {
    "type": "body",
@@ -360,7 +360,7 @@
    "section_title": "19.1 Disjoint-set operations",
    "printed_page": 522,
    "pdf_page": 543,
-   "text": "SAME-COMPONENT (u;v) to the same set. Thus CONNECTED-COMPONENTS computes sets in such a way that the procedure SAME-COMPONENT can determine whether two vertices are in the same connected component. Figure 19.1(b) illustrates how CONNECTED-COMPONENTS computes the disjoint sets."
+   "text": "SAME-COMPONENT (u,v) to the same set. Thus CONNECTED-COMPONENTS computes sets in such a way that the procedure SAME-COMPONENT can determine whether two vertices are in the same connected component. Figure 19.1(b) illustrates how CONNECTED-COMPONENTS computes the disjoint sets."
   },
   {
    "type": "body",
@@ -405,7 +405,7 @@
    "section_title": "19.2 Linked-list representation of disjoint sets",
    "printed_page": 523,
    "pdf_page": 544,
-   "text": "(V;E) , where V = fa;b;c;d;e;f;g;h;i;j;k g , and the edges of E are processed in the order (d;i);.f;k/;.g;i/;.b;g/;.a;h/;.i;j/;.d;k/;.b;j/;.d; f/; (g;j);.a;e/ . List the vertices in each connected component after each iteration of lines 335."
+   "text": "(V,E) , where V = fa,b,c,d,e,f,g,h,i,j,k g , and the edges of E are processed in the order (d,i),.f,k/,.g,i/,.b,g/,.a,h/,.i,j/,.d,k/,.b,j/,.d; f/; (g,j),.a,e/ . List the vertices in each connected component after each iteration of lines 3–5."
   },
   {
    "type": "exercise",
@@ -432,7 +432,7 @@
    "section_title": "19.2 Linked-list representation of disjoint sets",
    "printed_page": 523,
    "pdf_page": 544,
-   "text": "(V;E) with k connected components, how many times is FIND-SET called? How many times is UNION called? Express your answers in terms of |V|, |E|, and k."
+   "text": "(V,E) with k connected components, how many times is FIND-SET called? How many times is UNION called? Express your answers in terms of |V|, |E|, and k."
   },
   {
    "type": "body",
@@ -486,7 +486,7 @@
    "section_title": "19.2 Linked-list representation of disjoint sets",
    "printed_page": 524,
    "pdf_page": 545,
-   "text": "Figure 19.2 (a) Linked-list representations of two sets. Set S 1 contains members d , f , and g, with representative f , and set S 2 contains members b, c, e, and h, with representative c. Each object in the list contains a set member, a pointer to the ne xt object in the list, and a pointer back to the se t object. Each set object has pointers head and tail to the first and last objects, respectively. (b) The result of UNION(g;e) , which appends the linked list containing e to the linked list containing g. The representative of the resulting set is f . The set object for e’s list, S 2 , is destroyed."
+   "text": "Figure 19.2 (a) Linked-list representations of two sets. Set S 1 contains members d , f , and g, with representative f , and set S 2 contains members b, c, e, and h, with representative c. Each object in the list contains a set member, a pointer to the ne xt object in the list, and a pointer back to the se t object. Each set object has pointers head and tail to the first and last objects, respectively. (b) The result of UNION(g,e) , which appends the linked list containing e to the linked list containing g. The representative of the resulting set is f . The set object for e’s list, S 2 , is destroyed."
   },
   {
    "type": "body",
@@ -504,7 +504,7 @@
    "section_title": "19.2 Linked-list representation of disjoint sets",
    "printed_page": 524,
    "pdf_page": 545,
-   "text": "The simplest implementation of the UNION operation using the linked-list set representation takes significantly more time than MAKE-SET or FIND-SET. As Figure 19.2(b) shows, the operation UNION(x;y) appends y ’s list onto the end of x ’s list. The representative of x ’s list becomes the representative of the resulting set."
+   "text": "The simplest implementation of the UNION operation using the linked-list set representation takes significantly more time than MAKE-SET or FIND-SET. As Figure 19.2(b) shows, the operation UNION(x,y) appends y ’s list onto the end of x ’s list. The representative of x ’s list becomes the representative of the resulting set."
   },
   {
    "type": "body",
@@ -513,7 +513,7 @@
    "section_title": "19.2 Linked-list representation of disjoint sets",
    "printed_page": 524,
    "pdf_page": 545,
-   "text": "To quickly find where to append y ’s list, use the tail pointer for x ’s list. Because all members of y ’s list join x ’s list, the UNION operation destroys the set object for y ’s list. The UNION operation is where this implementation pays the price for FIND-SET taking constant time: UNION must also update the pointer to the set object for each object originally on y ’s list, which takes time linear in the length of y ’s list. In Figure 19.2, for example, the operation UNION(g;e) causes pointers to be updated in the objects for b, c , e, and h."
+   "text": "To quickly find where to append y ’s list, use the tail pointer for x ’s list. Because all members of y ’s list join x ’s list, the UNION operation destroys the set object for y ’s list. The UNION operation is where this implementation pays the price for FIND-SET taking constant time: UNION must also update the pointer to the set object for each object originally on y ’s list, which takes time linear in the length of y ’s list. In Figure 19.2, for example, the operation UNION(g,e) causes pointers to be updated in the objects for b, c , e, and h."
   },
   {
    "type": "body",
@@ -531,7 +531,7 @@
    "section_title": "19.2 Linked-list representation of disjoint sets",
    "printed_page": 524,
    "pdf_page": 545,
-   "text": "Θ(n 2 ) time. Starting with objects x 1 ;x 2 ;:::;x n , execute the sequence of n MAKE- SET operations followed by n − 1 UNION operations shown in Figure 19.3, so that m = 2n −1. The n MAKE-SET operations take Θ(n) time. Because the i th UNION operation updates i objects, the total number of objects updated by all n − 1 UNION operations forms an arithmetic series:"
+   "text": "Θ(n 2 ) time. Starting with objects x 1 ,x 2 ,…,x n , execute the sequence of n MAKE- SET operations followed by n − 1 UNION operations shown in Figure 19.3, so that m = 2n −1. The n MAKE-SET operations take Θ(n) time. Because the i th UNION operation updates i objects, the total number of objects updated by all n − 1 UNION operations forms an arithmetic series:"
   },
   {
    "type": "body",
@@ -576,7 +576,7 @@
    "section_title": "19.2 Linked-list representation of disjoint sets",
    "printed_page": 525,
    "pdf_page": 546,
-   "text": "UNION(x 2 ;x 1 ) 1"
+   "text": "UNION(x 2 ,x 1 ) 1"
   },
   {
    "type": "body",
@@ -585,7 +585,7 @@
    "section_title": "19.2 Linked-list representation of disjoint sets",
    "printed_page": 525,
    "pdf_page": 546,
-   "text": "UNION(x 3 ;x 2 ) 2"
+   "text": "UNION(x 3 ,x 2 ) 2"
   },
   {
    "type": "body",
@@ -594,7 +594,7 @@
    "section_title": "19.2 Linked-list representation of disjoint sets",
    "printed_page": 525,
    "pdf_page": 546,
-   "text": "UNION(x 4 ;x 3 ) 3"
+   "text": "UNION(x 4 ,x 3 ) 3"
   },
   {
    "type": "body",
@@ -603,7 +603,7 @@
    "section_title": "19.2 Linked-list representation of disjoint sets",
    "printed_page": 525,
    "pdf_page": 546,
-   "text": "UNION(x n ;x n−1 ) n − 1"
+   "text": "UNION(x n ,x n−1 ) n − 1"
   },
   {
    "type": "figure-caption",
@@ -728,7 +728,7 @@
     },
     {
      "n": 4,
-     "code": "UNION(x i ;x  i C1 )"
+     "code": "UNION(x i ,x  i + 1 )"
     },
     {
      "n": 5,
@@ -736,19 +736,19 @@
     },
     {
      "n": 6,
-     "code": "UNION(x i ;x  i C2 )"
+     "code": "UNION(x i ,x  i + 2 )"
     },
     {
      "n": 7,
-     "code": "UNION(x 1 ;x  5 )"
+     "code": "UNION(x 1 ,x  5 )"
     },
     {
      "n": 8,
-     "code": "UNION(x 11 ;x  13 )"
+     "code": "UNION(x 11 ,x  13 )"
     },
     {
      "n": 9,
-     "code": "UNION(x 1 ;x  10 )"
+     "code": "UNION(x 1 ,x  10 )"
     },
     {
      "n": 10,
@@ -759,7 +759,7 @@
      "code": "FIND-SET(x 9 )"
     }
    ],
-   "text": "1 for i = 1 to 16\n2 MAKE-SET (x i )\n3 for i = 1 to 15 by 2\n4 UNION(x i ;x  i C1 )\n5 for i = 1 to 13 by 4\n6 UNION(x i ;x  i C2 )\n7 UNION(x 1 ;x  5 )\n8 UNION(x 11 ;x  13 )\n9 UNION(x 1 ;x  10 )\n10 FIND-SET(x 2 )\n11 FIND-SET(x 9 )"
+   "text": "1 for i = 1 to 16\n2 MAKE-SET (x i )\n3 for i = 1 to 15 by 2\n4 UNION(x i ,x  i + 1 )\n5 for i = 1 to 13 by 4\n6 UNION(x i ,x  i + 2 )\n7 UNION(x 1 ,x  5 )\n8 UNION(x 11 ,x  13 )\n9 UNION(x 1 ,x  10 )\n10 FIND-SET(x 2 )\n11 FIND-SET(x 9 )"
   },
   {
    "type": "body",
@@ -813,7 +813,7 @@
    "section_title": "19.2 Linked-list representation of disjoint sets",
    "printed_page": 526,
    "pdf_page": 547,
-   "text": "19.2-2 Show the data structure that results and the answer s returned by the FIND-SET operations in the following program. Use the linked-list representation with the weighted-union heuristic. Assume that if the sets containing x i and x j have the same size, then the operation UNION(x i ;x j ) appends x j ’s list onto x i ’s list."
+   "text": "19.2-2 Show the data structure that results and the answer s returned by the FIND-SET operations in the following program. Use the linked-list representation with the weighted-union heuristic. Assume that if the sets containing x i and x j have the same size, then the operation UNION(x i ,x j ) appends x j ’s list onto x i ’s list."
   },
   {
    "type": "exercise",
@@ -894,7 +894,7 @@
    "section_title": "19.3 Disjoint-set forests",
    "printed_page": 528,
    "pdf_page": 549,
-   "text": "Figure 19.4 A disjoint-set forest. (a) Trees representing the two sets of Figure 19.2. The tree on the left represents the set fb;c;e;h g, with c as the representative, and the tree on the right represents the set fd;f;g g, with f as the representative. (b) The result of UNION(e;g) . ple path toward the root constitute the find path. AUNION operation, shown in Figure 19.4(b), simply causes the root of one tree to point to the root of the other."
+   "text": "Figure 19.4 A disjoint-set forest. (a) Trees representing the two sets of Figure 19.2. The tree on the left represents the set fb,c,e,h g, with c as the representative, and the tree on the right represents the set fd,f,g g, with f as the representative. (b) The result of UNION(e,g) . ple path toward the root constitute the find path. AUNION operation, shown in Figure 19.4(b), simply causes the root of one tree to point to the root of the other."
   },
   {
    "type": "body",
@@ -1099,7 +1099,7 @@
    "section_title": "19.3 Disjoint-set forests",
    "printed_page": 530,
    "pdf_page": 551,
-   "text": "UNION(x;y)"
+   "text": "UNION(x,y)"
   },
   {
    "type": "body",
@@ -1117,7 +1117,7 @@
    "section_title": "19.3 Disjoint-set forests",
    "printed_page": 530,
    "pdf_page": 551,
-   "text": "LINK(x;y)"
+   "text": "LINK(x,y)"
   },
   {
    "type": "body",
@@ -1153,7 +1153,7 @@
    "section_title": "19.3 Disjoint-set forests",
    "printed_page": 530,
    "pdf_page": 551,
-   "text": "UNION operations) and f FIND-SET operations, the worst-case running time using only the path-compression heuristic is Θ(n + f • .1 C log 2Cf =n n)/."
+   "text": "UNION operations) and f FIND-SET operations, the worst-case running time using only the path-compression heuristic is Θ(n + f • .1 C log 2 + f =n n)/."
   },
   {
    "type": "body",
@@ -1261,7 +1261,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 531,
    "pdf_page": 552,
-   "text": "For integers j;k ≥ 0, we define the function A k (j) as A k (j) ="
+   "text": "For integers j,k ≥ 0, we define the function A k (j) as A k (j) ="
   },
   {
    "type": "body",
@@ -1270,7 +1270,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 532,
    "pdf_page": 553,
-   "text": "( j + 1 if k = 0; A (j C1) k−1 (j) if k ≥ 1; (19.1) where the expression A (j C1) k−1 (j) uses the functional-iteration notation defined in equation (3.30) on page 68. Specifically, equation (3.30) gives A .0/ k−1 (j) = j and A (i ) k−1 (j) = A k−1 (A (i −1) k−1 (j)) for i ≥ 1. We call the parameter k the level of the function A."
+   "text": "( j + 1 if k = 0; A (j + 1) k−1 (j) if k ≥ 1; (19.1) where the expression A (j + 1) k−1 (j) uses the functional-iteration notation defined in equation (3.30) on page 68. Specifically, equation (3.30) gives A .0/ k−1 (j) = j and A (i ) k−1 (j) = A k−1 (A (i −1) k−1 (j)) for i ≥ 1. We call the parameter k the level of the function A."
   },
   {
    "type": "body",
@@ -1315,7 +1315,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 532,
    "pdf_page": 553,
-   "text": "0 (j) = j Ci . For the base case, A .0/"
+   "text": "0 (j) = j + i . For the base case, A .0/"
   },
   {
    "type": "body",
@@ -1360,7 +1360,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 532,
    "pdf_page": 553,
-   "text": "0 (j)) = (j C (i − 1)) + 1 = j + i . Finally, we note that A 1 (j) = A (j C1)"
+   "text": "0 (j)) = (j C (i − 1)) + 1 = j + i . Finally, we note that A 1 (j) = A (j + 1)"
   },
   {
    "type": "footnote",
@@ -1387,7 +1387,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 532,
    "pdf_page": 553,
-   "text": "For any integer j ≥ 1, we have A 2 (j) = 2 j C1 (j + 1) − 1."
+   "text": "For any integer j ≥ 1, we have A 2 (j) = 2 j + 1 (j + 1) − 1."
   },
   {
    "type": "proof",
@@ -1450,7 +1450,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 532,
    "pdf_page": 553,
-   "text": "A 1 .2 i −1 (j + 1) − 1/ = 2• .2 i −1 (j C1) −1/ C1 = 2 i (j C1) −2C1 = 2 i (j C1) −1."
+   "text": "A 1 .2 i −1 (j + 1) − 1/ = 2• .2 i −1 (j + 1) −1/ C1 = 2 i (j + 1) −2 + 1 = 2 i (j + 1) −1."
   },
   {
    "type": "body",
@@ -1459,7 +1459,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 532,
    "pdf_page": 553,
-   "text": "Finally, we note that A 2 (j) = A (j C1)"
+   "text": "Finally, we note that A 2 (j) = A (j + 1)"
   },
   {
    "type": "footnote",
@@ -1468,7 +1468,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 532,
    "pdf_page": 553,
-   "text": "1 (j) = 2 j C1 (j + 1) − 1."
+   "text": "1 (j) = 2 j + 1 (j + 1) − 1."
   },
   {
    "type": "body",
@@ -1477,7 +1477,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 532,
    "pdf_page": 553,
-   "text": "Now we can see how quickly A k (j) grows by simply examining A k .1/ for levels k = 0;1;2;3;4 . From the definition of A 0 (j) and the above lemmas, we have"
+   "text": "Now we can see how quickly A k (j) grows by simply examining A k .1/ for levels k = 0,1,2,3,4 . From the definition of A 0 (j) and the above lemmas, we have"
   },
   {
    "type": "body",
@@ -1486,7 +1486,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 532,
    "pdf_page": 553,
-   "text": "A 0 .1/ = 1 + 1 = 2, A 1 .1/ = 2 • 1 + 1 = 3, and A 2 .1/ = 2 1C1 • .1 + 1/ − 1 = 7."
+   "text": "A 0 .1/ = 1 + 1 = 2, A 1 .1/ = 2 • 1 + 1 = 3, and A 2 .1/ = 2 1 + 1 • .1 + 1/ − 1 = 7."
   },
   {
    "type": "body",
@@ -2080,7 +2080,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 536,
    "pdf_page": 557,
-   "text": "A (x: rankC1) level(x) (x: rank) = A level(x)C1 (x: rank) (by the definition (19.1) of A k (j) )"
+   "text": "A (x: rank + 1) level(x) (x: rank) = A level(x) + 1 (x: rank) (by the definition (19.1) of A k (j) )"
   },
   {
    "type": "body",
@@ -2395,7 +2395,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 538,
    "pdf_page": 559,
-   "text": "Proof Suppose that the qth operation is LINK(x;y) . The actual cost of the LINK operation is O(1). Without loss of generality, suppose that the LINK makes y the parent of x ."
+   "text": "Proof Suppose that the qth operation is LINK(x,y) . The actual cost of the LINK operation is O(1). Without loss of generality, suppose that the LINK makes y the parent of x ."
   },
   {
    "type": "body",
@@ -2503,7 +2503,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 539,
    "pdf_page": 560,
-   "text": "Proof Suppose that the qth operation is a FIND-SET and that the find path contains s nodes. The actual cost of the FIND-SET operation is O(s). We will show that no node’s potential increases due to the FIND-SET and that at least max f0;s − .˛.n/ C 2/g nodes on the find path have their potential decrease by at least 1."
+   "text": "Proof Suppose that the qth operation is a FIND-SET and that the find path contains s nodes. The actual cost of the FIND-SET operation is O(s). We will show that no node’s potential increases due to the FIND-SET and that at least max f0,s − .˛.n/ C 2/g nodes on the find path have their potential decrease by at least 1."
   },
   {
    "type": "body",
@@ -2521,7 +2521,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 539,
    "pdf_page": 560,
-   "text": "Now we show that at least max f0;s − .˛.n/ C 2/g nodes have their potential decrease by at least 1. Let x be a node on the find path such that x: rank > 0 and x is followed somewhere on the find path by another node y that is not a root, where level(y) = level(x) just before the FIND-SET operation. (Node y need not immediately follow x on the find path.) All but at most ˛.n/ C 2 nodes on the find path satisfy these constraints on x . Those that do not satisfy them are the first node on the find path (if it has rank 0), the last node on the path (i.e., the root), and the last node w on the path for which level(w) = k, for each k = 0;1;2;:::;˛.n/ − 1."
+   "text": "Now we show that at least max f0,s − .˛.n/ C 2/g nodes have their potential decrease by at least 1. Let x be a node on the find path such that x: rank > 0 and x is followed somewhere on the find path by another node y that is not a root, where level(y) = level(x) just before the FIND-SET operation. (Node y need not immediately follow x on the find path.) All but at most ˛.n/ C 2 nodes on the find path satisfy these constraints on x . Those that do not satisfy them are the first node on the find path (if it has rank 0), the last node on the path (i.e., the root), and the last node w on the path for which level(w) = k, for each k = 0,1,2,…,˛.n/ − 1."
   },
   {
    "type": "body",
@@ -2566,7 +2566,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 539,
    "pdf_page": 560,
-   "text": "D A (i C1) k (x: rank) (by the definition (3.30) of functional iteration) ."
+   "text": "D A (i + 1) k (x: rank) (by the definition (3.30) of functional iteration) ."
   },
   {
    "type": "body",
@@ -2575,7 +2575,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 540,
    "pdf_page": 561,
-   "text": "Because path compression makes x and y have the same parent, after path compression we have x: p: rank = y: p: rank. The parent of y might change due to the path compression, but if it does, the rank of y ’s new parent compared with the rank of y ’s parent before path compression is either the same or greater. Since x: rank does not change, x: p: rank = y: p: rank ≥ A (i C1) k (x: rank) after path compression."
+   "text": "Because path compression makes x and y have the same parent, after path compression we have x: p: rank = y: p: rank. The parent of y might change due to the path compression, but if it does, the rank of y ’s new parent compared with the rank of y ’s parent before path compression is either the same or greater. Since x: rank does not change, x: p: rank = y: p: rank ≥ A (i + 1) k (x: rank) after path compression."
   },
   {
    "type": "body",
@@ -2593,7 +2593,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 540,
    "pdf_page": 561,
-   "text": "The amortized cost of the FIND-SET operation is the actual cost plus the change in potential. The actual cost is O(s), and we have shown that the total potential decreases by at least max f0;s − .˛.n/ C 2/g. The amortized cost, therefore, is at most O(s) − (s − .˛.n) + 2// = O(s) − s + O.˛.n// = O.˛.n//, since we"
+   "text": "The amortized cost of the FIND-SET operation is the actual cost plus the change in potential. The actual cost is O(s), and we have shown that the total potential decreases by at least max f0,s − .˛.n/ C 2/g. The amortized cost, therefore, is at most O(s) − (s − .˛.n) + 2// = O(s) − s + O.˛.n// = O.˛.n//, since we"
   },
   {
    "type": "body",
@@ -2737,7 +2737,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 541,
    "pdf_page": 562,
-   "text": "In the offline minimum problem, you maintain a dynamic set T of elements from the domain f1;2;:::;n g under the operations INSERT and EXTRACT-MIN. The input is a sequence S of n INSERT and m EXTRACT-MIN calls, where each key in f1;2;:::;n g is inserted exactly once. Your goal is to determine which key is returned by each EXTRACT-MIN call. Specifically, you must fill in an array extracted [1 : m], where for i = 1;2;:::;m , extracted [i ] is the key returned by the i th EXTRACT-MIN call. The problem is \"offline\" in the sense that you are allowed to process the entire sequence S before determining any of the returned keys. a. Consider the following instance of the offline minimum problem, in which each operation INSERT (i) is represented by the value of i and each EXTRACT-MIN is represented by the letter E:"
+   "text": "In the offline minimum problem, you maintain a dynamic set T of elements from the domain f1,2,…,n g under the operations INSERT and EXTRACT-MIN. The input is a sequence S of n INSERT and m EXTRACT-MIN calls, where each key in f1,2,…,n g is inserted exactly once. Your goal is to determine which key is returned by each EXTRACT-MIN call. Specifically, you must fill in an array extracted [1 : m], where for i = 1,2,…,m , extracted [i ] is the key returned by the i th EXTRACT-MIN call. The problem is \"offline\" in the sense that you are allowed to process the entire sequence S before determining any of the returned keys. a. Consider the following instance of the offline minimum problem, in which each operation INSERT (i) is represented by the value of i and each EXTRACT-MIN is represented by the letter E:"
   },
   {
    "type": "body",
@@ -2746,7 +2746,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 541,
    "pdf_page": 562,
-   "text": "4;8; E;3; E;9;2;6; E; E; E;1;7; E;5:"
+   "text": "4,8; E,3; E,9,2,6; E; E; E,1,7; E,5:"
   },
   {
    "type": "body",
@@ -2805,7 +2805,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 542,
    "pdf_page": 563,
-   "text": "To develop an algorithm for this problem, break the sequence S into homogeneous subsequences. That is, represent S by I 1 ; E; I 2 ; E; I 3 ;:::; I m ; E; I mC1 ; where each E represents a single EXTRACT-MIN call and each I j represents a (possibly empty) sequence of INSERT calls. For each subsequence I j , initially place the keys inserted by these operations into a set K j , which is empty if I j is empty. Then execute the OFFLINE-MINIMUM procedure."
+   "text": "To develop an algorithm for this problem, break the sequence S into homogeneous subsequences. That is, represent S by I 1 ; E; I 2 ; E; I 3 ,…; I m ; E; I m + 1 ; where each E represents a single EXTRACT-MIN call and each I j represents a (possibly empty) sequence of INSERT calls. For each subsequence I j , initially place the keys inserted by these operations into a set K j , which is empty if I j is empty. Then execute the OFFLINE-MINIMUM procedure."
   },
   {
    "type": "body",
@@ -2814,7 +2814,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 542,
    "pdf_page": 563,
-   "text": "OFFLINE-MINIMUM(m;n) b. Argue that the array extracted returned by OFFLINE-MINIMUM is correct. c. Describe how to implement OFFLINE-MINIMUM efficiently with a disjoint-set data structure. Give as tight a bound as you can on the worst-case running time of your implementation."
+   "text": "OFFLINE-MINIMUM(m,n) b. Argue that the array extracted returned by OFFLINE-MINIMUM is correct. c. Describe how to implement OFFLINE-MINIMUM efficiently with a disjoint-set data structure. Give as tight a bound as you can on the worst-case running time of your implementation."
   },
   {
    "type": "problem",
@@ -2859,7 +2859,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 542,
    "pdf_page": 563,
-   "text": "GRAFT(r;v) makes node r , which is assumed to be the root of a tree, become the child of node v, which is assumed to be in a different tree from r but may or may not itself be a root. a. Suppose that you use a tree representation similar to a disjoint-set forest: v: p is the parent of node v, except that v: √D v if v is a root. Suppose further that you implement GRAFT(r;v) by setting r: √D v and FIND-DEPTH (v) by following the find path from v up to the root, returning a count of all nodes other than v encountered. Show that the worst-case running time of a sequence of m MAKE-TREE, FIND-DEPTH, and GRAFT operations is Θ(m 2 )."
+   "text": "GRAFT(r,v) makes node r , which is assumed to be the root of a tree, become the child of node v, which is assumed to be in a different tree from r but may or may not itself be a root. a. Suppose that you use a tree representation similar to a disjoint-set forest: v: p is the parent of node v, except that v: √D v if v is a root. Suppose further that you implement GRAFT(r,v) by setting r: √D v and FIND-DEPTH (v) by following the find path from v up to the root, returning a count of all nodes other than v encountered. Show that the worst-case running time of a sequence of m MAKE-TREE, FIND-DEPTH, and GRAFT operations is Θ(m 2 )."
   },
   {
    "type": "body",
@@ -2886,7 +2886,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 543,
    "pdf_page": 564,
-   "text": "The key idea is to maintain in each node v a \"pseudodistance\" v: d, which is defined so that the sum of the pseudodistances along the simple path from v to the root of its set S i equals the depth of v in T i . That is, if the simple path from v to its root in S i is v 0 ;v 1 ;:::;v k , where v 0 = v and v k is S i ’s root, then the depth of v in T i is P k j D0 v j : d. b. Give an implementation of MAKE-TREE. c. Show how to modify FIND-SET to implement FIND-DEPTH. Your implementation should perform path compression, and its run ning time should be linear in the length of the find path. Make sure that your implementation updates pseudodistances correctly. d. Show how to implement GRAFT(r;v) , which combines the sets containing r and v, by modifying the UNION and LINK procedures. Make sure that your implementation updates pseudodistances correctly. Note that the root of a set S i is not necessarily the root of the corresponding tree T i . e. Give a tight bound on the worst-case running time of a sequence of m MAKE- TREE, FIND-DEPTH, and GRAFT operations, n of which are MAKE-TREE operations."
+   "text": "The key idea is to maintain in each node v a \"pseudodistance\" v: d, which is defined so that the sum of the pseudodistances along the simple path from v to the root of its set S i equals the depth of v in T i . That is, if the simple path from v to its root in S i is v 0 ,v 1 ,…,v k , where v 0 = v and v k is S i ’s root, then the depth of v in T i is P k j D0 v j : d. b. Give an implementation of MAKE-TREE. c. Show how to modify FIND-SET to implement FIND-DEPTH. Your implementation should perform path compression, and its run ning time should be linear in the length of the find path. Make sure that your implementation updates pseudodistances correctly. d. Show how to implement GRAFT(r,v) , which combines the sets containing r and v, by modifying the UNION and LINK procedures. Make sure that your implementation updates pseudodistances correctly. Note that the root of a set S i is not necessarily the root of the corresponding tree T i . e. Give a tight bound on the worst-case running time of a sequence of m MAKE- TREE, FIND-DEPTH, and GRAFT operations, n of which are MAKE-TREE operations."
   },
   {
    "type": "problem",
@@ -2904,7 +2904,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 543,
    "pdf_page": 564,
-   "text": "The lowest common ancestor of two nodes u and v in a rooted tree T is the node w that is an ancestor of both u and v and that has the greatest depth in T . In the offline lowest-common-ancestors problem, you are given a rooted tree T and an arbitrary set P = ffu;v gg of unordered pairs of nodes in T , and you wish to determine the lowest common ancestor of each pair in P ."
+   "text": "The lowest common ancestor of two nodes u and v in a rooted tree T is the node w that is an ancestor of both u and v and that has the greatest depth in T . In the offline lowest-common-ancestors problem, you are given a rooted tree T and an arbitrary set P = ffu,v gg of unordered pairs of nodes in T , and you wish to determine the lowest common ancestor of each pair in P ."
   },
   {
    "type": "body",
@@ -2922,7 +2922,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 543,
    "pdf_page": 564,
-   "text": "Assume that each node is colored WHITE prior to the walk. a. Argue that line 10 executes exactly once for each pair fu;v g 2 P . b. Argue that at the time of the call LCA(u), the number of sets in the disjoint-set data structure equals the depth of u in T ."
+   "text": "Assume that each node is colored WHITE prior to the walk. a. Argue that line 10 executes exactly once for each pair fu,v g 2 P . b. Argue that at the time of the call LCA(u), the number of sets in the disjoint-set data structure equals the depth of u in T ."
   },
   {
    "type": "pseudocode",
@@ -2952,7 +2952,7 @@
     },
     {
      "n": 5,
-     "code": "UNION(u;v)"
+     "code": "UNION(u,v)"
     },
     {
      "n": 6,
@@ -2964,7 +2964,7 @@
     },
     {
      "n": 8,
-     "code": "for each node v such that fu;v g 2 P"
+     "code": "for each node v such that fu,v g 2 P"
     },
     {
      "n": 9,
@@ -2975,7 +2975,7 @@
      "code": "print \"The lowest common ancestor of\" u \"and\" v \"is\" FIND-SET (v): ancestor c. Prove that LCA correctly prints the lowest common a ncestor of u and v for"
     }
    ],
-   "text": "1 MAKE-SET (u)\n2 FIND-SET(u): ancestor = u\n3 for each child v of u in T\n4 LCA(v)\n5 UNION(u;v)\n6 FIND-SET(u): ancestor = u\n7 u: color DBLACK\n8 for each node v such that fu;v g 2 P\n9 if v: color = = BLACK\n10 print \"The lowest common ancestor of\" u \"and\" v \"is\" FIND-SET (v): ancestor c. Prove that LCA correctly prints the lowest common a ncestor of u and v for"
+   "text": "1 MAKE-SET (u)\n2 FIND-SET(u): ancestor = u\n3 for each child v of u in T\n4 LCA(v)\n5 UNION(u,v)\n6 FIND-SET(u): ancestor = u\n7 u: color DBLACK\n8 for each node v such that fu,v g 2 P\n9 if v: color = = BLACK\n10 print \"The lowest common ancestor of\" u \"and\" v \"is\" FIND-SET (v): ancestor c. Prove that LCA correctly prints the lowest common a ncestor of u and v for"
   },
   {
    "type": "body",
@@ -2984,7 +2984,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 544,
    "pdf_page": 565,
-   "text": "LCA(u) u \"and\" v \"is\" FIND-SET (v): ancestor c. Prove that LCA correctly prints the lowest common a ncestor of u and v for each pair fu;v g 2 P . d. Analyze the running time of LCA, assuming that you use the implementation of the disjoint-set data structure in Section 19.3."
+   "text": "LCA(u) u \"and\" v \"is\" FIND-SET (v): ancestor c. Prove that LCA correctly prints the lowest common a ncestor of u and v for each pair fu,v g 2 P . d. Analyze the running time of LCA, assuming that you use the implementation of the disjoint-set data structure in Section 19.3."
   },
   {
    "type": "chapter-notes",
@@ -3002,7 +3002,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 544,
    "pdf_page": 565,
-   "text": "Many of the important results for disjoint-set data structures are due at least in part to R. E. Tarjan. Using aggregate analysis, Tarjan [427, 429] gave the first tight upper bound in terms of the very slowly growing inverse y ˛.m;n/ of Ackermann’s function. (The function A k (j) given in Section 19.4 is similar to Ackermann’s function, and the function ˛.n/ is similar to y ˛.m;n/ . Both ˛.n/ and y ˛.m;n/ are at most 4 for all conceivable values of m and n.) An upper bound of O(m lg − n) was proven earlier by Hopcroft and Ullman [5, 227]. The treatment in Section 19.4 is adapted from a later analysis by Tarjan [431], which is based on an analysis by Kozen [270]. Harfst and Reingold [209] give a potential-based version of Tarjan’s earlier bound."
+   "text": "Many of the important results for disjoint-set data structures are due at least in part to R. E. Tarjan. Using aggregate analysis, Tarjan [427, 429] gave the first tight upper bound in terms of the very slowly growing inverse y ˛.m,n/ of Ackermann’s function. (The function A k (j) given in Section 19.4 is similar to Ackermann’s function, and the function ˛.n/ is similar to y ˛.m,n/ . Both ˛.n/ and y ˛.m,n/ are at most 4 for all conceivable values of m and n.) An upper bound of O(m lg − n) was proven earlier by Hopcroft and Ullman [5, 227]. The treatment in Section 19.4 is adapted from a later analysis by Tarjan [431], which is based on an analysis by Kozen [270]. Harfst and Reingold [209] give a potential-based version of Tarjan’s earlier bound."
   },
   {
    "type": "body",
@@ -3020,7 +3020,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 545,
    "pdf_page": 566,
-   "text": "Tarjan [428] showed that a lower bound of ].m y ˛.m;n// time is required for operations on any disjoint-set data structure satisfying certain technical conditions."
+   "text": "Tarjan [428] showed that a lower bound of ].m y ˛.m,n// time is required for operations on any disjoint-set data structure satisfying certain technical conditions."
   },
   {
    "type": "body",
@@ -3029,7 +3029,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 545,
    "pdf_page": 566,
-   "text": "This lower bound was later generalized by Fredman and Saks [155], who showed that in the worst case, ].m y ˛.m;n//. lg n/-bit words of memory must be accessed."
+   "text": "This lower bound was later generalized by Fredman and Saks [155], who showed that in the worst case, ].m y ˛.m,n//. lg n/-bit words of memory must be accessed."
   },
   {
    "type": "body",
@@ -3128,7 +3128,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 548,
    "pdf_page": 569,
-   "text": "G = (V;E) , we usually measure the size of the input in terms of the number of vertices |V| and the number of edges |E| of the graph. That is, we denote the size of the input with two parameters, not just one. We adopt a common notational convention for these parameters. Inside asymptotic notation (such as O-notation or Θ-notation), and only inside such notation, the symbol V denotes |V| and the symbol E denotes |E|. For example, we might say, <the algorithm runs in O(VE) time,= meaning that the algorithm runs in O(|V| |E|) time. This convention makes the running-time formulas easier to read, without risk of ambiguity."
+   "text": "G = (V,E) , we usually measure the size of the input in terms of the number of vertices |V| and the number of edges |E| of the graph. That is, we denote the size of the input with two parameters, not just one. We adopt a common notational convention for these parameters. Inside asymptotic notation (such as O-notation or Θ-notation), and only inside such notation, the symbol V denotes |V| and the symbol E denotes |E|. For example, we might say, <the algorithm runs in O(VE) time,= meaning that the algorithm runs in O(|V| |E|) time. This convention makes the running-time formulas easier to read, without risk of ambiguity."
   },
   {
    "type": "body",
@@ -3182,7 +3182,7 @@
    "section_title": "19.4 Analysis of union by rank with path compression",
    "printed_page": 549,
    "pdf_page": 570,
-   "text": "You can choose between two standard ways to represe nt a graph G = (V;E) : as a collection of adjacency lists or as an adjacen cy matrix. Either way applies to both directed and undirected graphs. Because the adjacency-list representation provides a compact way to represent sparse graphs—those for which |E| is much less than |V| 2 4it is usually the method of choice. Most of the graph algorithms presented in this book assume that an input graph i s represented in adjacency-list form. You might prefer an adjacency-matrix representation, however, when the graph is dense4|E| is close to |V| 2 4or when you need to be able to tell quickly whether there is an edge connecting two given verti ces. For example, two of the"
+   "text": "You can choose between two standard ways to represe nt a graph G = (V,E) : as a collection of adjacency lists or as an adjacen cy matrix. Either way applies to both directed and undirected graphs. Because the adjacency-list representation provides a compact way to represent sparse graphs—those for which |E| is much less than |V| 2 4it is usually the method of choice. Most of the graph algorithms presented in this book assume that an input graph i s represented in adjacency-list form. You might prefer an adjacency-matrix representation, however, when the graph is dense4|E| is close to |V| 2 4or when you need to be able to tell quickly whether there is an edge connecting two given verti ces. For example, two of the"
   }
  ]
 }

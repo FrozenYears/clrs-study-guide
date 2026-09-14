@@ -66,7 +66,7 @@
    "section_title": "33.1 Clustering",
    "printed_page": 1005,
    "pdf_page": 1026,
-   "text": "This chapter makes extensive use of vectors. In contrast to the rest of the book, vector names in this chapter appear in boldface, such as x, to more clearly delineate which quantities are vectors. Components of vectors do not appear in boldface, so if vector x has d dimensions, we might write x = (x 1 ;x 2 ;:::;x d )."
+   "text": "This chapter makes extensive use of vectors. In contrast to the rest of the book, vector names in this chapter appear in boldface, such as x, to more clearly delineate which quantities are vectors. Components of vectors do not appear in boldface, so if vector x has d dimensions, we might write x = (x 1 ,x 2 ,…,x d )."
   },
   {
    "type": "body",
@@ -120,7 +120,7 @@
    "section_title": "33.1 Clustering",
    "printed_page": 1006,
    "pdf_page": 1027,
-   "text": "Each example has a set of attributes in common with all other examples, though the attribute values may vary among examples. For examp le, the clustering problem shown in Figure 33.1 clusters n = 49 examples448 state capitals plus the District of Columbia—into k = 4 clusters. Each example has two attributes: the lati tude and longitude of the capital. In a given clustering problem, each example has d attributes, with an example x specified by a d -dimensional feature vector x = (x 1 ;x 2 ;:::;x d ):"
+   "text": "Each example has a set of attributes in common with all other examples, though the attribute values may vary among examples. For examp le, the clustering problem shown in Figure 33.1 clusters n = 49 examples448 state capitals plus the District of Columbia—into k = 4 clusters. Each example has two attributes: the lati tude and longitude of the capital. In a given clustering problem, each example has d attributes, with an example x specified by a d -dimensional feature vector x = (x 1 ,x 2 ,…,x d ):"
   },
   {
    "type": "body",
@@ -129,7 +129,7 @@
    "section_title": "33.1 Clustering",
    "printed_page": 1006,
    "pdf_page": 1027,
-   "text": "Here, x a for a = 1;2;:::;d is a real number giving the value of attribute a for example x. We call x the point in R d representing the example. For the example in Figure 33.1, each capital x has its latitude in x 1 and its longitude in x 2 ."
+   "text": "Here, x a for a = 1,2,…,d is a real number giving the value of attribute a for example x. We call x the point in R d representing the example. For the example in Figure 33.1, each capital x has its latitude in x 1 and its longitude in x 2 ."
   },
   {
    "type": "body",
@@ -291,7 +291,7 @@
    "section_title": "33.1 Clustering",
    "printed_page": 1008,
    "pdf_page": 1029,
-   "text": "Because the goal is to create k clusters, we define a k-clustering of S as a decomposition of S into a sequence hS .1/ ;S .2/ ;:::;S (k) i of k disjoint subsets, or clusters, so that S = S .1/ [ S .2/ [ • • • [ S (k) :"
+   "text": "Because the goal is to create k clusters, we define a k-clustering of S as a decomposition of S into a sequence hS .1/ ,S .2/ ,…,S (k) i of k disjoint subsets, or clusters, so that S = S .1/ [ S .2/ [ • • • [ S (k) :"
   },
   {
    "type": "body",
@@ -318,7 +318,7 @@
    "section_title": "33.1 Clustering",
    "printed_page": 1008,
    "pdf_page": 1029,
-   "text": "C = hc .1/ ; c .2/ ;:::; c (k) i ; where each center is a point in R d , and the nearest-center rule says that a point x may belong to cluster S .`/ if the center of no other cluster is closer to x than the center c .`/ of S .`/ : x 2 S .`/ only if ].x; c .`/ / = min f].x; c (j ) / W 1 ≤ j ≤ kg :"
+   "text": "C = hc .1/ ; c .2/ ,…; c (k) i ; where each center is a point in R d , and the nearest-center rule says that a point x may belong to cluster S .`/ if the center of no other cluster is closer to x than the center c .`/ of S .`/ : x 2 S .`/ only if ].x; c .`/ / = min f].x; c (j ) / W 1 ≤ j ≤ kg :"
   },
   {
    "type": "body",
@@ -354,7 +354,7 @@
    "section_title": "33.1 Clustering",
    "printed_page": 1008,
    "pdf_page": 1029,
-   "text": "The k-means problem is then the following: given a set S of n points and a positive integer k, find a sequence C = h c .1/ ; c .2/ ;:::; c (k) i of k center points minimizing the sum f(S;C) of the squared distance from each point to its nearest center, where f(S;C) ="
+   "text": "The k-means problem is then the following: given a set S of n points and a positive integer k, find a sequence C = h c .1/ ; c .2/ ,…; c (k) i of k center points minimizing the sum f(S,C) of the squared distance from each point to its nearest center, where f(S,C) ="
   },
   {
    "type": "body",
@@ -390,7 +390,7 @@
    "section_title": "33.1 Clustering",
    "printed_page": 1009,
    "pdf_page": 1030,
-   "text": "In the second line, the k-clustering hS .1/ ;S .2/ ;:::;S (k) i is defined by the centers C and the nearest-center rule. See Exercise 33.1-1 for an alternative formulation based on pairwise interpoint distances."
+   "text": "In the second line, the k-clustering hS .1/ ,S .2/ ,…,S (k) i is defined by the centers C and the nearest-center rule. See Exercise 33.1-1 for an alternative formulation based on pairwise interpoint distances."
   },
   {
    "type": "body",
@@ -408,7 +408,7 @@
    "section_title": "33.1 Clustering",
    "printed_page": 1009,
    "pdf_page": 1030,
-   "text": "Lloyd [304] proposed a simple procedure that finds a sequence C of k centers that yields a local minimum of f(S;C) . A local minimum in the k-means problem satisfies two simple properties: each cluster has an optimal center (defined below), and each point is assigned to the cluster ( or one of the clusters) with the closest center. Lloyd’s procedure finds a good clustering—possibly optimal—that satisfies these two properties. These properties are necessary, but not sufficient, for optimality."
+   "text": "Lloyd [304] proposed a simple procedure that finds a sequence C of k centers that yields a local minimum of f(S,C) . A local minimum in the k-means problem satisfies two simple properties: each cluster has an optimal center (defined below), and each point is assigned to the cluster ( or one of the clusters) with the closest center. Lloyd’s procedure finds a good clustering—possibly optimal—that satisfies these two properties. These properties are necessary, but not sufficient, for optimality."
   },
   {
    "type": "body",
@@ -426,7 +426,7 @@
    "section_title": "33.1 Clustering",
    "printed_page": 1009,
    "pdf_page": 1030,
-   "text": "In an optimal solution to the k-means problem, each center point must be the centroid, or mean, of the points in its cluster. The centroid is a d -dimensional point, where the value in each dimension is the mean of the values of all the points in the cluster in that dimension (that is, the mean of the corresponding attribute values in the cluster). That is, if c .`/ is the centroid for cluster S .`/ , then for attributes a = 1;2;:::;d , we have c .`/ a = 1 jS .`/ j"
+   "text": "In an optimal solution to the k-means problem, each center point must be the centroid, or mean, of the points in its cluster. The centroid is a d -dimensional point, where the value in each dimension is the mean of the values of all the points in the cluster in that dimension (that is, the mean of the corresponding attribute values in the cluster). That is, if c .`/ is the centroid for cluster S .`/ , then for attributes a = 1,2,…,d , we have c .`/ a = 1 jS .`/ j"
   },
   {
    "type": "body",
@@ -669,7 +669,7 @@
    "section_title": "33.1 Clustering",
    "printed_page": 1010,
    "pdf_page": 1031,
-   "text": "Given a set S of n points and a sequence hc .1/ ; c .2/ ;:::; c (k) i of k centers, a clustering hS .1/ ;S .2/ ;:::;S (k) i minimizes k X"
+   "text": "Given a set S of n points and a sequence hc .1/ ; c .2/ ,…; c (k) i of k centers, a clustering hS .1/ ,S .2/ ,…,S (k) i minimizes k X"
   },
   {
    "type": "body",
@@ -723,7 +723,7 @@
    "section_title": "33.1 Clustering",
    "printed_page": 1011,
    "pdf_page": 1032,
-   "text": "Output: A k-clustering hS .1/ ;S .2/ ;:::;S (k) i of S with a sequence of centers hc .1/ ; c .2/ ;:::; c (k) i."
+   "text": "Output: A k-clustering hS .1/ ,S .2/ ,…,S (k) i of S with a sequence of centers hc .1/ ; c .2/ ,…; c (k) i."
   },
   {
    "type": "body",
@@ -732,7 +732,7 @@
    "section_title": "33.1 Clustering",
    "printed_page": 1011,
    "pdf_page": 1032,
-   "text": "1. Initialize centers: Generate an initial sequence hc .1/ ; c .2/ ;:::; c (k) i of k centers by picking k points independently from S at random. (If the points are not necessarily distinct, see Exercise 33.1-3.) Assign all points to cluster S .1/ to begin."
+   "text": "1. Initialize centers: Generate an initial sequence hc .1/ ; c .2/ ,…; c (k) i of k centers by picking k points independently from S at random. (If the points are not necessarily distinct, see Exercise 33.1-3.) Assign all points to cluster S .1/ to begin."
   },
   {
    "type": "body",
@@ -741,7 +741,7 @@
    "section_title": "33.1 Clustering",
    "printed_page": 1011,
    "pdf_page": 1032,
-   "text": "2. Assign points to clusters: Use the nearest-center rule to define the clustering hS .1/ ;S .2/ ;:::;S (k) i. That is, assign each point x 2 S to a cluster S .`/ having a nearest center (breaking ties arbitrarily, but not changing the assignment for a point x unless the new cluster center is strictly closer to x than the old one)."
+   "text": "2. Assign points to clusters: Use the nearest-center rule to define the clustering hS .1/ ,S .2/ ,…,S (k) i. That is, assign each point x 2 S to a cluster S .`/ having a nearest center (breaking ties arbitrarily, but not changing the assignment for a point x unless the new cluster center is strictly closer to x than the old one)."
   },
   {
    "type": "body",
@@ -750,7 +750,7 @@
    "section_title": "33.1 Clustering",
    "printed_page": 1011,
    "pdf_page": 1032,
-   "text": "3. Stop if no change: If step 2 did not change the assignments of any poi nts to clusters, then stop and return the clustering hS .1/ ;S .2/ ;:::;S (k) i and the associated centers hc .1/ ; c .2/ ;:::; c (k) i. Otherwise, go to step 4."
+   "text": "3. Stop if no change: If step 2 did not change the assignments of any poi nts to clusters, then stop and return the clustering hS .1/ ,S .2/ ,…,S (k) i and the associated centers hc .1/ ; c .2/ ,…; c (k) i. Otherwise, go to step 4."
   },
   {
    "type": "body",
@@ -759,7 +759,7 @@
    "section_title": "33.1 Clustering",
    "printed_page": 1011,
    "pdf_page": 1032,
-   "text": "4. Recompute centers as centroids: For ` = 1;2;:::;k , compute the center c .`/ of cluster S .`/ as the centroid of the points in S .`/ . (If S .`/ is empty, let c .`/ be the zero vector.) Then go to step 2."
+   "text": "4. Recompute centers as centroids: For ` = 1,2,…,k , compute the center c .`/ of cluster S .`/ as the centroid of the points in S .`/ . (If S .`/ is empty, let c .`/ be the zero vector.) Then go to step 2."
   },
   {
    "type": "body",
@@ -777,7 +777,7 @@
    "section_title": "33.1 Clustering",
    "printed_page": 1011,
    "pdf_page": 1032,
-   "text": "Lloyd’s procedure always terminates. By Theorem 33.1, recomputing the centers of each cluster as the cluster centroid cannot increase f(S;C) . Lloyd’s procedure ensures that a point is reassigned to a diff erent cluster only when such an operation strictly decreases f(S;C) . Thus each iteration of Lloyd’s procedure, except the last iteration, must strictly decrease f(S;C) . Since there are only a finite number of possible k-clusterings of S (at most k n ), the procedure must terminate. Furthermore, once one iteration of Lloyd’s procedure yields no decrease in f , further iterations would not change anything, and the procedure can stop at this locally optimum assignment of points to clusters."
+   "text": "Lloyd’s procedure always terminates. By Theorem 33.1, recomputing the centers of each cluster as the cluster centroid cannot increase f(S,C) . Lloyd’s procedure ensures that a point is reassigned to a diff erent cluster only when such an operation strictly decreases f(S,C) . Thus each iteration of Lloyd’s procedure, except the last iteration, must strictly decrease f(S,C) . Since there are only a finite number of possible k-clusterings of S (at most k n ), the procedure must terminate. Furthermore, once one iteration of Lloyd’s procedure yields no decrease in f , further iterations would not change anything, and the procedure can stop at this locally optimum assignment of points to clusters."
   },
   {
    "type": "body",
@@ -786,7 +786,7 @@
    "section_title": "33.1 Clustering",
    "printed_page": 1012,
    "pdf_page": 1033,
-   "text": "If Lloyd’s procedure really required k n iterations, it would be impractical. In practice, it sometimes suffices to terminate the procedure when the percentage decrease in f(S;C) in the latest iteration falls below a predetermined threshold. Because Lloyd’s procedure is guaranteed to find only a locally optimal clustering, one approach to finding a good clustering is to run Lloyd’s procedure many times with different randomly chosen initial centers, taking the best result."
+   "text": "If Lloyd’s procedure really required k n iterations, it would be impractical. In practice, it sometimes suffices to terminate the procedure when the percentage decrease in f(S,C) in the latest iteration falls below a predetermined threshold. Because Lloyd’s procedure is guaranteed to find only a locally optimal clustering, one approach to finding a good clustering is to run Lloyd’s procedure many times with different randomly chosen initial centers, taking the best result."
   },
   {
    "type": "body",
@@ -831,7 +831,7 @@
    "section_title": "33.1 Clustering",
    "printed_page": 1012,
    "pdf_page": 1033,
-   "text": "• Second, define a measure f .E; ⊆ / describing how poorly hypothesis h ⊆ fits the given training data E. Smaller values of f .E; ⊆ / are better, and a (locally) optimal solution (locally) minimizes f .E; ⊆ /. (For the k-means problem, f .E; ⊆ / is just f(S;C) .)"
+   "text": "• Second, define a measure f .E; ⊆ / describing how poorly hypothesis h ⊆ fits the given training data E. Smaller values of f .E; ⊆ / are better, and a (locally) optimal solution (locally) minimizes f .E; ⊆ /. (For the k-means problem, f .E; ⊆ / is just f(S,C) .)"
   },
   {
    "type": "body",
@@ -903,7 +903,7 @@
    "section_title": "33.1 Clustering",
    "printed_page": 1013,
    "pdf_page": 1034,
-   "text": "33.1-1 Show that the objective function f(S;C) of equation (33.2) may be alternatively written as f(S;C) = k X"
+   "text": "33.1-1 Show that the objective function f(S,C) of equation (33.2) may be alternatively written as f(S,C) = k X"
   },
   {
    "type": "body",
@@ -930,7 +930,7 @@
    "section_title": "33.1 Clustering",
    "printed_page": 1013,
    "pdf_page": 1034,
-   "text": "33.1-2 Give an example in the plane with n = 4 points and k = 2 clusters where an iteration of Lloyd’s procedure does not improve f(S;C) , yet the k-clustering is not optimal."
+   "text": "33.1-2 Give an example in the plane with n = 4 points and k = 2 clusters where an iteration of Lloyd’s procedure does not improve f(S,C) , yet the k-clustering is not optimal."
   },
   {
    "type": "exercise",
@@ -1038,7 +1038,7 @@
    "section_title": "33.2 Multiplicative-weights algorithms",
    "printed_page": 1015,
    "pdf_page": 1036,
-   "text": "Let’s denote the experts, n of them, by E 1 ;E 2 ;:::;E n , and let’s say that T events are going to take place. Each event has an outcome of either 0 or 1, with o (t) denoting the outcome of the t th event. Before event t , each expert E (i) makes a prediction q (t) i 2 f0;1 g. You, as the \"learner,\" then take the set of n expert predictions for event t and produce a single prediction p (t) 2 f0;1 g of your own."
+   "text": "Let’s denote the experts, n of them, by E 1 ,E 2 ,…,E n , and let’s say that T events are going to take place. Each event has an outcome of either 0 or 1, with o (t) denoting the outcome of the t th event. Before event t , each expert E (i) makes a prediction q (t) i 2 f0,1 g. You, as the \"learner,\" then take the set of n expert predictions for event t and produce a single prediction p (t) 2 f0,1 g of your own."
   },
   {
    "type": "body",
@@ -1164,7 +1164,7 @@
    "section_title": "33.2 Multiplicative-weights algorithms",
    "printed_page": 1017,
    "pdf_page": 1038,
-   "text": "The algorithm appears in the procedure WEIGHTED-MAJORITY on the following page, which takes a set E = fE 1 ;E 2 ;:::;E n g of experts, a number T of events, the number n of experts, and a parameter 0<Ω ≤ 1/2 that controls how the weights change. The algorithm maintains weights w (t) i for i = 1;2;:::;n and t = 1;2;:::;T , where 0 < w (t) i ≤ 1. The for loop of lines 132 sets the initial weights w .1/ i to 1, capturing the idea that with no knowledge, you trust each expert equally. Each iteration of the main for loop of lines 3318 does the following for an event t = 1;2;:::;T . Each expert E i makes a prediction for event t in line 4."
+   "text": "The algorithm appears in the procedure WEIGHTED-MAJORITY on the following page, which takes a set E = fE 1 ,E 2 ,…,E n g of experts, a number T of events, the number n of experts, and a parameter 0<Ω ≤ 1/2 that controls how the weights change. The algorithm maintains weights w (t) i for i = 1,2,…,n and t = 1,2,…,T , where 0 < w (t) i ≤ 1. The for loop of lines 1–2 sets the initial weights w .1/ i to 1, capturing the idea that with no knowledge, you trust each expert equally. Each iteration of the main for loop of lines 3–18 does the following for an event t = 1,2,…,T . Each expert E i makes a prediction for event t in line 4."
   },
   {
    "type": "body",
@@ -1173,7 +1173,7 @@
    "section_title": "33.2 Multiplicative-weights algorithms",
    "printed_page": 1017,
    "pdf_page": 1038,
-   "text": "Lines 538 compute upweight (t) , the sum of the weights of the experts who predict 1 for event t , and downweight (t) , the sum of the weights of the experts who predict 0 for the event. Lines 9311 decide the algorithm’s prediction p (t) for event t based on whichever weighted sum is larger (breaking ties in favor of deciding 1). The outcome of event t is revealed in line 12. Finally, lines 14317 decrease the weights of the experts who made an incorrect prediction for event t by multiplying their weights by 1 − Ω , leaving alone the weights of the experts who correctly predicted the event’s outcome. Thus, the fewer mistakes each expert makes, the higher that expert’s weight."
+   "text": "Lines 5–8 compute upweight (t) , the sum of the weights of the experts who predict 1 for event t , and downweight (t) , the sum of the weights of the experts who predict 0 for the event. Lines 9–11 decide the algorithm’s prediction p (t) for event t based on whichever weighted sum is larger (breaking ties in favor of deciding 1). The outcome of event t is revealed in line 12. Finally, lines 14–17 decrease the weights of the experts who made an incorrect prediction for event t by multiplying their weights by 1 − Ω , leaving alone the weights of the experts who correctly predicted the event’s outcome. Thus, the fewer mistakes each expert makes, the higher that expert’s weight."
   },
   {
    "type": "body",
@@ -1233,7 +1233,7 @@
    "section_title": "33.2 Multiplicative-weights algorithms",
    "printed_page": 1018,
    "pdf_page": 1039,
-   "text": "WEIGHTED-MAJORITY (E;T;n;Ω)"
+   "text": "WEIGHTED-MAJORITY (E,T,n,Ω)"
   },
   {
    "type": "body",
@@ -1359,7 +1359,7 @@
    "section_title": "33.2 Multiplicative-weights algorithms",
    "printed_page": 1018,
    "pdf_page": 1039,
-   "text": "16 w (t C1) i = .1 − Ω/w (t) i / / . . . then decrease that expert’s weight"
+   "text": "16 w (t + 1) i = .1 − Ω/w (t) i / / . . . then decrease that expert’s weight"
   },
   {
    "type": "body",
@@ -1368,7 +1368,7 @@
    "section_title": "33.2 Multiplicative-weights algorithms",
    "printed_page": 1018,
    "pdf_page": 1039,
-   "text": "17 else w (t C1) i = w (t) i"
+   "text": "17 else w (t + 1) i = w (t) i"
   },
   {
    "type": "body",
@@ -1413,7 +1413,7 @@
    "section_title": "33.2 Multiplicative-weights algorithms",
    "printed_page": 1018,
    "pdf_page": 1039,
-   "text": "Proof Every time an expert E i makes a mistake, its weight, which is initially 1, is multiplied by 1 − Ω , and so we have w (t) i = .1 − Ω/ m (t ) i (33.6) for t = 1;2;:::;T ."
+   "text": "Proof Every time an expert E i makes a mistake, its weight, which is initially 1, is multiplied by 1 − Ω , and so we have w (t) i = .1 − Ω/ m (t ) i (33.6) for t = 1,2,…,T ."
   },
   {
    "type": "body",
@@ -1422,7 +1422,7 @@
    "section_title": "33.2 Multiplicative-weights algorithms",
    "printed_page": 1018,
    "pdf_page": 1039,
-   "text": "We use a potential function W(t) = P n i D1 w (t) i , summing the weights for all n experts after iteration t of the for loop of lines 3318. Initially, we have W(0) = n since all n weights start out with the value 1. Because each expert belongs to either the set U or the set = (defined in lines 5 and 7 of WEIGHTED-MAJORITY ), we always have W(t) = upweight (t) C downweight (t) after each execution of line 8."
+   "text": "We use a potential function W(t) = P n i D1 w (t) i , summing the weights for all n experts after iteration t of the for loop of lines 3–18. Initially, we have W(0) = n since all n weights start out with the value 1. Because each expert belongs to either the set U or the set = (defined in lines 5 and 7 of WEIGHTED-MAJORITY ), we always have W(t) = upweight (t) C downweight (t) after each execution of line 8."
   },
   {
    "type": "body",
@@ -1836,7 +1836,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1022,
    "pdf_page": 1043,
-   "text": "Suppose that you have a set fp 1 ;p 2 ;:::;p n g of points and you want to find the line that best fits these points. For any line `, there is a distance d i between each point √i and the line. You want to find the line that minimizes some function f(d 1 ;:::;d n ). There are many possible choices for the definition of distance and for the function f . For example, the distance can be the projection distance to the line and the function can be the sum of the squares of the distances. This type of problem is common in data science and machine learning—the line is the hypothesis that best describes the data—where the particular definition of best is determined by the definition of distance and the objective f . If the definition of distance and the function f are linear, then we have a linear-programming problem, as discussed in Chapter 29. Although the linear-programming framework captures several important problems, many other problems, including various machine-learning problems, have objectives and constraints that are not necessarily linear. We need frameworks and algorithms to solve such problems."
+   "text": "Suppose that you have a set fp 1 ,p 2 ,…,p n g of points and you want to find the line that best fits these points. For any line `, there is a distance d i between each point √i and the line. You want to find the line that minimizes some function f(d 1 ,…,d n ). There are many possible choices for the definition of distance and for the function f . For example, the distance can be the projection distance to the line and the function can be the sum of the squares of the distances. This type of problem is common in data science and machine learning—the line is the hypothesis that best describes the data—where the particular definition of best is determined by the definition of distance and the objective f . If the definition of distance and the function f are linear, then we have a linear-programming problem, as discussed in Chapter 29. Although the linear-programming framework captures several important problems, many other problems, including various machine-learning problems, have objectives and constraints that are not necessarily linear. We need frameworks and algorithms to solve such problems."
   },
   {
    "type": "body",
@@ -1845,7 +1845,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1022,
    "pdf_page": 1043,
-   "text": "In this section, we consider the problem of optimiz ing a continuous function and discuss one of the most popular methods to do s o: gradient descent. Gradient descent is a general method for finding a local minimum of a function f W R n ! R, where informally, a local minimum of a function f is a point x for which f. x/ ≤ f. x 0 / for all x 0 that are \"near\" x. When the function is convex, it can find a point near the global minimizer of f : an n-vector argument x = (x 1 ;x 2 ;:::;x n ) such that f. x/ is minimum. For the intuitive idea behind gradient descent, imagine being in a landscape of h ills and valleys, and wanting to get to a low point as quickly as possible. You s urvey the terrain and choose to move in the direction that takes you downhill the fastest from your current position."
+   "text": "In this section, we consider the problem of optimiz ing a continuous function and discuss one of the most popular methods to do s o: gradient descent. Gradient descent is a general method for finding a local minimum of a function f W R n ! R, where informally, a local minimum of a function f is a point x for which f. x/ ≤ f. x 0 / for all x 0 that are \"near\" x. When the function is convex, it can find a point near the global minimizer of f : an n-vector argument x = (x 1 ,x 2 ,…,x n ) such that f. x/ is minimum. For the intuitive idea behind gradient descent, imagine being in a landscape of h ills and valleys, and wanting to get to a low point as quickly as possible. You s urvey the terrain and choose to move in the direction that takes you downhill the fastest from your current position."
   },
   {
    "type": "body",
@@ -1854,7 +1854,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1023,
    "pdf_page": 1044,
-   "text": "You move in that direction, but only for a short while, because as you proceed, the terrain changes and you might need to choose a diff erent direction. So you stop, reevaluate the possible directions and move another short distance in the steepest downhill direction, which might differ from the dir ection of your previous movement. You continue this process until you reach a p oint from which all directions lead up. Such a point is a local minimum."
+   "text": "You move in that direction, but only for a short while, because as you proceed, the terrain changes and you might need to choose a diff erent direction. So you stop, reevaluate the possible directions and move another short distance in the steepest downhill direction, which might differ from the dir ection of your previous movement. You continue this process until you reach a point from which all directions lead up. Such a point is a local minimum."
   },
   {
    "type": "body",
@@ -1864,15 +1864,6 @@
    "printed_page": 1023,
    "pdf_page": 1044,
    "text": "In order to make this informal procedure more forma l, we need to define the gradient of a function, which in the analogy above is a measure of the steepness of the various directions. Given a function f W R n ! R, its gradient r f is a function r f W R n ! R n comprising n partial derivatives: (r f). x/ = ã @f"
-  },
-  {
-   "type": "body",
-   "chapter": 33,
-   "section": "33.3",
-   "section_title": "33.3 Gradient descent",
-   "printed_page": 1023,
-   "pdf_page": 1044,
-   "text": ";:::; @f"
   },
   {
    "type": "body",
@@ -1899,7 +1890,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1023,
    "pdf_page": 1044,
-   "text": "The general procedure of gradient descent proceeds in steps. You start at some initial point x .0/ , which is an n-vector. At each step t , you compute the value of the gradient of f at point x (t) , that is, (r f). x (t) ), which is also an n-vector. You then move in the direction opposite to the gradient in each dimension at x (t) to arrive at the next point x (t C1) , which again is an n-vector. Because you moved in a monotonically decreasing direction in each dim ension, you should have that f. x (t C1) / ≤ f. x (t) /. Several details are needed to turn this idea into an actual algorithm. The two main details are that you need a n initial point and that you need to decide how far to move in the direction of the negative gradient. You also need to understand when to stop and what you can co nclude about the quality of the solution found. We will explore these issues fu rther in this section, for both constrained minimization, where there are additional constraints on the points, and unconstrained minimization, where there are none."
+   "text": "The general procedure of gradient descent proceeds in steps. You start at some initial point x .0/ , which is an n-vector. At each step t , you compute the value of the gradient of f at point x (t) , that is, (r f). x (t) ), which is also an n-vector. You then move in the direction opposite to the gradient in each dimension at x (t) to arrive at the next point x (t + 1) , which again is an n-vector. Because you moved in a monotonically decreasing direction in each dim ension, you should have that f. x (t + 1) / ≤ f. x (t) /. Several details are needed to turn this idea into an actual algorithm. The two main details are that you need a n initial point and that you need to decide how far to move in the direction of the negative gradient. You also need to understand when to stop and what you can co nclude about the quality of the solution found. We will explore these issues fu rther in this section, for both constrained minimization, where there are additional constraints on the points, and unconstrained minimization, where there are none."
   },
   {
    "type": "body",
@@ -1944,7 +1935,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1024,
    "pdf_page": 1045,
-   "text": "The procedure GRADIENT-DESCENT on the facing page takes as input a function f , an initial point x .0/ 2 R n , a fixed step-size multiplier Ω >0, and a number T >0 of steps to take. Each iteration of the for loop of lines 234 performs a step by computing the n-dimensional gradient at point x (t) and then moving distance Ω in the opposite direction in the n-dimensional space. The complexity of computing the gradient depends on the function f and can sometimes be expensive. Line 3 sums the points visited. After the loop terminates, line 6 returns x-avg, the average of all the points visited except for the last one, x (T ) . It might seem more natural to return x (T ) , and in fact, in many circumstances, you might prefer to have the function return x (T ) . For the version we will analyze, however, we use x-avg."
+   "text": "The procedure GRADIENT-DESCENT on the facing page takes as input a function f , an initial point x .0/ 2 R n , a fixed step-size multiplier Ω >0, and a number T >0 of steps to take. Each iteration of the for loop of lines 2–4 performs a step by computing the n-dimensional gradient at point x (t) and then moving distance Ω in the opposite direction in the n-dimensional space. The complexity of computing the gradient depends on the function f and can sometimes be expensive. Line 3 sums the points visited. After the loop terminates, line 6 returns x-avg, the average of all the points visited except for the last one, x (T ) . It might seem more natural to return x (T ) , and in fact, in many circumstances, you might prefer to have the function return x (T ) . For the version we will analyze, however, we use x-avg."
   },
   {
    "type": "pseudocode",
@@ -1970,7 +1961,7 @@
     },
     {
      "n": 4,
-     "code": "x (t C1) = x (t) − Ω • (r f). x (t) / / / (r f). x (t) /, x (t C1) are n-dimensional"
+     "code": "x (t + 1) = x (t) − Ω • (r f). x (t) / / / (r f). x (t) /, x (t + 1) are n-dimensional"
     },
     {
      "n": 5,
@@ -1981,7 +1972,7 @@
      "code": "return x-avg"
     }
    ],
-   "text": "1 sum = 0 / / n-dimensional vector, initially all 0\n2 for t = 0 to T − 1\n3 sum = sum + x (t) / / add each of n dimensions into sum\n4 x (t C1) = x (t) − Ω • (r f). x (t) / / / (r f). x (t) /, x (t C1) are n-dimensional\n5 x-avg = sum/T / / divide each of n dimensions by T\n6 return x-avg"
+   "text": "1 sum = 0 / / n-dimensional vector, initially all 0\n2 for t = 0 to T − 1\n3 sum = sum + x (t) / / add each of n dimensions into sum\n4 x (t + 1) = x (t) − Ω • (r f). x (t) / / / (r f). x (t) /, x (t + 1) are n-dimensional\n5 x-avg = sum/T / / divide each of n dimensions by T\n6 return x-avg"
   },
   {
    "type": "body",
@@ -1990,7 +1981,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1025,
    "pdf_page": 1046,
-   "text": "GRADIENT-DESCENT (f; x .0) ;Ω;T/"
+   "text": "GRADIENT-DESCENT (f; x .0) ,Ω,T/"
   },
   {
    "type": "body",
@@ -2197,7 +2188,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1027,
    "pdf_page": 1048,
-   "text": "For any convex differentiable function f W R n ! R and for all x;y 2 R n , we have f. x/ ≤ f. y / C h(r f). x/; x − y i."
+   "text": "For any convex differentiable function f W R n ! R and for all x,y 2 R n , we have f. x/ ≤ f. y / C h(r f). x/; x − y i."
   },
   {
    "type": "body",
@@ -2224,7 +2215,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1027,
    "pdf_page": 1048,
-   "text": "For any convex function f W R n ! R, for any integer T ≥ 1, and for all x .0/ ;:::; x (T −1) 2 R n , we have f"
+   "text": "For any convex function f W R n ! R, for any integer T ≥ 1, and for all x .0/ ,…; x (T −1) 2 R n , we have f"
   },
   {
    "type": "body",
@@ -2269,7 +2260,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1027,
    "pdf_page": 1048,
-   "text": "We now proceed to analyze GRADIENT-DESCENT . It might not return the exact global minimizer x − . We use an error bound ] , and we want to choose T so that f(x-avg) − f. x − / ≤ Ω at termination. The value of Ω depends on the number T of iterations and two additional values. First, since you expect it to be better to start close to the global minimizer, Ω is a function of R = kx .0/ − x − k ; (33.20) the euclidean norm (or distance, defined on page 1219) of the difference between x .0/ and x − . The error bound Ω is also a function of a quantity we call L, which is an upper bound on the magnitude k(r f). x/k of the gradient, so that k(r f). x/k ≤ L; (33.21) where x ranges over all the points x .0/ ;:::; x (T −1) whose gradients are computed by GRADIENT-DESCENT. Of course, we don’t know the values of L and R, but for now let’s assume that we do. We’ll discuss later how to remove these assumptions."
+   "text": "We now proceed to analyze GRADIENT-DESCENT . It might not return the exact global minimizer x − . We use an error bound ] , and we want to choose T so that f(x-avg) − f. x − / ≤ Ω at termination. The value of Ω depends on the number T of iterations and two additional values. First, since you expect it to be better to start close to the global minimizer, Ω is a function of R = kx .0/ − x − k ; (33.20) the euclidean norm (or distance, defined on page 1219) of the difference between x .0/ and x − . The error bound Ω is also a function of a quantity we call L, which is an upper bound on the magnitude k(r f). x/k of the gradient, so that k(r f). x/k ≤ L; (33.21) where x ranges over all the points x .0/ ,…; x (T −1) whose gradients are computed by GRADIENT-DESCENT. Of course, we don’t know the values of L and R, but for now let’s assume that we do. We’ll discuss later how to remove these assumptions."
   },
   {
    "type": "body",
@@ -2296,7 +2287,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1028,
    "pdf_page": 1049,
-   "text": "Let x − 2 R n be the minimizer of a convex function f , and suppose that an execution of GRADIENT-DESCENT (f; x .0) ;Ω;T/ returns x-avg, where Ω = R=.L p"
+   "text": "Let x − 2 R n be the minimizer of a convex function f , and suppose that an execution of GRADIENT-DESCENT (f; x .0) ,Ω,T/ returns x-avg, where Ω = R=.L p"
   },
   {
    "type": "body",
@@ -2323,7 +2314,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1028,
    "pdf_page": 1049,
-   "text": "We now prove this theorem. We do not give an absolu te bound on how much progress each iteration makes. Instead, we use a po tential function, as in Section 16.3. Here, we define a potential ˆ(t) after computing x (t) , such that ˆ(t) ≥ 0 for t = 0;:::;T . We define the amortized progress in the iteration that computes x (t) as p(t) = f. x (t) / − f. x − / C ˆ(t + 1) − ˆ(t): (33.22)"
+   "text": "We now prove this theorem. We do not give an absolu te bound on how much progress each iteration makes. Instead, we use a po tential function, as in Section 16.3. Here, we define a potential ˆ(t) after computing x (t) , such that ˆ(t) ≥ 0 for t = 0,…,T . We define the amortized progress in the iteration that computes x (t) as p(t) = f. x (t) / − f. x − / C ˆ(t + 1) − ˆ(t): (33.22)"
   },
   {
    "type": "body",
@@ -2332,7 +2323,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1028,
    "pdf_page": 1049,
-   "text": "Along with including the change in potential (ˆ(t + 1) − ˆ(t)), equation (33.22) also subtracts the minimum value f. x − / because ultimately, you care not about the values f. x (t) / but about how close they are to f. x − /. Suppose that we can show that p(t) ≤ B for some value B and t = 0;:::;T − 1. Then we can substitute for p(t) using equation (33.22), giving f. x (t) / − f. x − / ≤ B − ˆ(t + 1) C ˆ(t): (33.23)"
+   "text": "Along with including the change in potential (ˆ(t + 1) − ˆ(t)), equation (33.22) also subtracts the minimum value f. x − / because ultimately, you care not about the values f. x (t) / but about how close they are to f. x − /. Suppose that we can show that p(t) ≤ B for some value B and t = 0,…,T − 1. Then we can substitute for p(t) using equation (33.22), giving f. x (t) / − f. x − / ≤ B − ˆ(t + 1) C ˆ(t): (33.23)"
   },
   {
    "type": "body",
@@ -2341,7 +2332,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1028,
    "pdf_page": 1049,
-   "text": "Summing inequality (33.23) over t = 0;:::;T − 1 yields"
+   "text": "Summing inequality (33.23) over t = 0,…,T − 1 yields"
   },
   {
    "type": "body",
@@ -2584,7 +2575,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1029,
    "pdf_page": 1050,
-   "text": "‖ x (t C1) − x − ‖ 2"
+   "text": "‖ x (t + 1) − x − ‖ 2"
   },
   {
    "type": "body",
@@ -2611,7 +2602,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1029,
    "pdf_page": 1050,
-   "text": "From line 4 in GRADIENT-DESCENT , we know that x (t C1) − x (t) = −Ω • (r f). x (t) /; (33.28) and so we would like to rewrite equation (33.27) to have x (t C1) − x (t) terms. As"
+   "text": "From line 4 in GRADIENT-DESCENT , we know that x (t + 1) − x (t) = −Ω • (r f). x (t) /; (33.28) and so we would like to rewrite equation (33.27) to have x (t + 1) − x (t) terms. As"
   },
   {
    "type": "body",
@@ -2629,7 +2620,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1029,
    "pdf_page": 1050,
-   "text": "Letting a = x (t) − x − and b = x (t C1) − x (t) , we can write the right-hand side of equation (33.27) as 1"
+   "text": "Letting a = x (t) − x − and b = x (t + 1) − x (t) , we can write the right-hand side of equation (33.27) as 1"
   },
   {
    "type": "body",
@@ -2656,7 +2647,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1029,
    "pdf_page": 1050,
-   "text": "‖ x (t C1) − x − ‖ 2"
+   "text": "‖ x (t + 1) − x − ‖ 2"
   },
   {
    "type": "body",
@@ -2674,7 +2665,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1029,
    "pdf_page": 1050,
-   "text": "‖ x (t C1) − x − ‖ 2"
+   "text": "‖ x (t + 1) − x − ‖ 2"
   },
   {
    "type": "body",
@@ -2710,7 +2701,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1030,
    "pdf_page": 1051,
-   "text": "2hx (t C1) − x (t) ; x (t) − x − i C"
+   "text": "2hx (t + 1) − x (t) ; x (t) − x − i C"
   },
   {
    "type": "body",
@@ -2719,7 +2710,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1030,
    "pdf_page": 1051,
-   "text": "‖ x (t C1) − x (t) ‖ 2 ]"
+   "text": "‖ x (t + 1) − x (t) ‖ 2 ]"
   },
   {
    "type": "body",
@@ -3088,7 +3079,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1031,
    "pdf_page": 1052,
-   "text": "It is quite possible that we don’t really know R and L, since you’d need to know x − in order to know R (since R = kx .0/ − x − k), and you might not have an explicit upper bound on the gradient, which would p rovide L. You can, however, interpret the analysis of gradient descent as a proof that there is some step size for which the procedure makes progress toward the minimum. You can then compute a step size Ω for which f. x (t) / − f. x (t C1) / is large enough. In fact, not having a fixed step size multiplier can actually help in practice, as you are free to use any step size s that achieves sufficient decrease in the value of f . You can search for a step size that achieves a large decrease via a binary-search-like routine, which is often called line search. For a given function f and step size s , define the function g(x (t) ;s) = f. x (t) / − s(r f). x (t) /. Start with a small step size s for which g(x (t) ;s) ≤ f. x (t) /. Then repeatedly double s until g(x (t) ;2s) ≥ g(x (t) ;s) , and then perform a binary search in the interval [s; 2s]. This procedure can produce a step size that achieves a significant decrease in the objective function. In other circumstances, however, you may know good upper bounds on R and L, typically from problem-specific information, which can suffice."
+   "text": "It is quite possible that we don’t really know R and L, since you’d need to know x − in order to know R (since R = kx .0/ − x − k), and you might not have an explicit upper bound on the gradient, which would p rovide L. You can, however, interpret the analysis of gradient descent as a proof that there is some step size for which the procedure makes progress toward the minimum. You can then compute a step size Ω for which f. x (t) / − f. x (t + 1) / is large enough. In fact, not having a fixed step size multiplier can actually help in practice, as you are free to use any step size s that achieves sufficient decrease in the value of f . You can search for a step size that achieves a large decrease via a binary-search-like routine, which is often called line search. For a given function f and step size s , define the function g(x (t) ,s) = f. x (t) / − s(r f). x (t) /. Start with a small step size s for which g(x (t) ,s) ≤ f. x (t) /. Then repeatedly double s until g(x (t) ,2s) ≥ g(x (t) ,s) , and then perform a binary search in the interval [s; 2s]. This procedure can produce a step size that achieves a significant decrease in the objective function. In other circumstances, however, you may know good upper bounds on R and L, typically from problem-specific information, which can suffice."
   },
   {
    "type": "body",
@@ -3097,7 +3088,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1031,
    "pdf_page": 1052,
-   "text": "The dominant computational step in each iteration o f the for loop of lines 234 is computing the gradient. The complexity of comput ing and evaluating a gradient varies widely, depending on the application a t hand. W e’ll discuss several applications later."
+   "text": "The dominant computational step in each iteration o f the for loop of lines 2–4 is computing the gradient. The complexity of comput ing and evaluating a gradient varies widely, depending on the application a t hand. W e’ll discuss several applications later."
   },
   {
    "type": "pseudocode",
@@ -3123,11 +3114,11 @@
     },
     {
      "n": 4,
-     "code": "x 0 (t C1) = x (t) − Ω • (r f). x (t) / / / (r f). x (t) /, x 0 (t C1) are n-dimensional"
+     "code": "x 0 (t + 1) = x (t) − Ω • (r f). x (t) / / / (r f). x (t) /, x 0 (t + 1) are n-dimensional"
     },
     {
      "n": 5,
-     "code": "x (t C1) = … K (x 0 (t C1) ) / / project onto K"
+     "code": "x (t + 1) = … K (x 0 (t + 1) ) / / project onto K"
     },
     {
      "n": 6,
@@ -3138,7 +3129,7 @@
      "code": "return x-avg"
     }
    ],
-   "text": "1 sum = 0 / / n-dimensional vector, initially all 0\n2 for t = 0 to T − 1\n3 sum = sum + x (t) / / add each of n dimensions into sum\n4 x 0 (t C1) = x (t) − Ω • (r f). x (t) / / / (r f). x (t) /, x 0 (t C1) are n-dimensional\n5 x (t C1) = … K (x 0 (t C1) ) / / project onto K\n6 x-avg = sum/T / / divide each of n dimensions by T\n7 return x-avg"
+   "text": "1 sum = 0 / / n-dimensional vector, initially all 0\n2 for t = 0 to T − 1\n3 sum = sum + x (t) / / add each of n dimensions into sum\n4 x 0 (t + 1) = x (t) − Ω • (r f). x (t) / / / (r f). x (t) /, x 0 (t + 1) are n-dimensional\n5 x (t + 1) = … K (x 0 (t + 1) ) / / project onto K\n6 x-avg = sum/T / / divide each of n dimensions by T\n7 return x-avg"
   },
   {
    "type": "body",
@@ -3300,7 +3291,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1033,
    "pdf_page": 1054,
-   "text": "We can now repeat the entire proof for the unconstr ained case and obtain the same bounds. Lemma 33.10 with a = x − , b = x (t C1) , and b 0 = x 0 (t C1) tells us that kx (t C1) −x − k 2 ≤ kx 0 (t C1) −x − k 2 . We can therefore derive an upper bound that matches inequality (33.31). We continue to define ˆ(t) as in equation (33.26), but noting that x (t C1) , computed in line 5 of GRADIENT-DESCENT-CONSTRAINED , has a different meaning here from in inequality (33.31):"
+   "text": "We can now repeat the entire proof for the unconstr ained case and obtain the same bounds. Lemma 33.10 with a = x − , b = x (t + 1) , and b 0 = x 0 (t + 1) tells us that kx (t + 1) −x − k 2 ≤ kx 0 (t + 1) −x − k 2 . We can therefore derive an upper bound that matches inequality (33.31). We continue to define ˆ(t) as in equation (33.26), but noting that x (t + 1) , computed in line 5 of GRADIENT-DESCENT-CONSTRAINED , has a different meaning here from in inequality (33.31):"
   },
   {
    "type": "body",
@@ -3309,7 +3300,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1033,
    "pdf_page": 1054,
-   "text": "‖ x 0 (t C1) − x − ‖ 2"
+   "text": "‖ x 0 (t + 1) − x − ‖ 2"
   },
   {
    "type": "body",
@@ -3327,7 +3318,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1033,
    "pdf_page": 1054,
-   "text": "2hx 0 (t C1) − x (t) ; x (t) − x − i C"
+   "text": "2hx 0 (t + 1) − x (t) ; x (t) − x − i C"
   },
   {
    "type": "body",
@@ -3336,7 +3327,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1033,
    "pdf_page": 1054,
-   "text": "‖ x 0 (t C1) − x − ‖ 2 ]"
+   "text": "‖ x 0 (t + 1) − x − ‖ 2 ]"
   },
   {
    "type": "body",
@@ -3426,7 +3417,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1034,
    "pdf_page": 1055,
-   "text": "First, let’s see how to use gradient descent as a roundabout—and admittedly inefficient—way to solve for x in the scalar equation ax = b, where a;x;b 2 R. This equation is equivalent to ax − b = 0. If ax − b is the derivative of a convex function f(x) , then ax − b = 0 for the value of x that minimizes f(x). Given f(x) , gradient descent can then determine this minimizer. Of course, f(x) is just the in- tegral of ax − b, that is, f(x) = 1"
+   "text": "First, let’s see how to use gradient descent as a roundabout—and admittedly inefficient—way to solve for x in the scalar equation ax = b, where a,x,b 2 R. This equation is equivalent to ax − b = 0. If ax − b is the derivative of a convex function f(x) , then ax − b = 0 for the value of x that minimizes f(x). Given f(x) , gradient descent can then determine this minimizer. Of course, f(x) is just the in- tegral of ax − b, that is, f(x) = 1"
   },
   {
    "type": "body",
@@ -3480,7 +3471,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1035,
    "pdf_page": 1056,
-   "text": "Hessian matrix is positive-semidefinite (see page 1222 for a definition), where the Hessian matrix (r 2 f). x/ of a function f. x/ is the matrix in which entry (i;j) is the partial derivative of f with respect to i and j :"
+   "text": "Hessian matrix is positive-semidefinite (see page 1222 for a definition), where the Hessian matrix (r 2 f). x/ of a function f. x/ is the matrix in which entry (i,j) is the partial derivative of f with respect to i and j :"
   },
   {
    "type": "body",
@@ -3651,7 +3642,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1035,
    "pdf_page": 1056,
-   "text": "A linear function f can be defined by a vector of weights w = (w 0 ;w 1 ;:::;w n ), with f. x/ = w 0 C n X j D1 w |x| : (33.32)"
+   "text": "A linear function f can be defined by a vector of weights w = (w 0 ,w 1 ,…,w n ), with f. x/ = w 0 C n X j D1 w |x| : (33.32)"
   },
   {
    "type": "body",
@@ -3705,7 +3696,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1036,
    "pdf_page": 1057,
-   "text": "The objective function is typically called the loss function, and the least-squares error given by equation (33.33) is just one example of many possible loss functions. The goal is then, given the x (i ) and y (i ) values, to compute the weights w 0 ;w 1 ;:::;w n so as to minimize the loss function in equation (33.33). The variables here are the weights w 0 ;w 1 ;:::;w n and not the x (i ) or y (i ) values."
+   "text": "The objective function is typically called the loss function, and the least-squares error given by equation (33.33) is just one example of many possible loss functions. The goal is then, given the x (i ) and y (i ) values, to compute the weights w 0 ,w 1 ,…,w n so as to minimize the loss function in equation (33.33). The variables here are the weights w 0 ,w 1 ,…,w n and not the x (i ) or y (i ) values."
   },
   {
    "type": "body",
@@ -3750,7 +3741,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1036,
    "pdf_page": 1057,
-   "text": "For this linear-regression problem, the objective is to minimize the expression in equation (33.33), which is a quadratic in each of the nC1 weights w j . Thus, entry j in the gradient is linear in w j . Exercise 33.3-5 asks you to explicitly compute the gradient and see that it can be computed in O(nm) time, which is linear in the input size. Compared with the exact method of solving equation (33.33) in Chapter 28, which needs to invert a matrix, gradient descent is typically much faster."
+   "text": "For this linear-regression problem, the objective is to minimize the expression in equation (33.33), which is a quadratic in each of the n + 1 weights w j . Thus, entry j in the gradient is linear in w j . Exercise 33.3-5 asks you to explicitly compute the gradient and see that it can be computed in O(nm) time, which is linear in the input size. Compared with the exact method of solving equation (33.33) in Chapter 28, which needs to invert a matrix, gradient descent is typically much faster."
   },
   {
    "type": "body",
@@ -3858,7 +3849,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1037,
    "pdf_page": 1058,
-   "text": "33.3-4 Show that the function f in equation (33.32) is a convex function of the variables w 0 ;w 1 ;:::;w n ."
+   "text": "33.3-4 Show that the function f in equation (33.32) is a convex function of the variables w 0 ,w 1 ,…,w n ."
   },
   {
    "type": "exercise",
@@ -3912,7 +3903,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1038,
    "pdf_page": 1059,
-   "text": "The algorithm moves through a series of points x .0/ ;x .1/ ;::: . If the algorithm is currently at a point x (t ) , then to find point x (t C1) , it first takes the equation of the line tangent to the curve at x = x (t ) , y = f 0 (x (t ) ).x − x (t ) / C f(x (t ) ):"
+   "text": "The algorithm moves through a series of points x .0/ ,x .1/ ,… . If the algorithm is currently at a point x (t ) , then to find point x (t + 1) , it first takes the equation of the line tangent to the curve at x = x (t ) , y = f 0 (x (t ) ).x − x (t ) / C f(x (t ) ):"
   },
   {
    "type": "body",
@@ -3921,7 +3912,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1038,
    "pdf_page": 1059,
-   "text": "It then uses the x -intercept of this line as the next point x (t C1) . a. Show that the algorithm described above can be summarized by the update rule x (t C1) = x (t ) − f(x (t ) ) f 0 (x (t ) ) :"
+   "text": "It then uses the x -intercept of this line as the next point x (t + 1) . a. Show that the algorithm described above can be summarized by the update rule x (t + 1) = x (t ) − f(x (t ) ) f 0 (x (t ) ) :"
   },
   {
    "type": "body",
@@ -3957,7 +3948,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1039,
    "pdf_page": 1060,
-   "text": "ˇ ˇ x (t ) − x − ˇ ˇ . Using the Taylor expansion in equation (33.34), show that Ω (t C1) ="
+   "text": "ˇ ˇ x (t ) − x − ˇ ˇ . Using the Taylor expansion in equation (33.34), show that Ω (t + 1) ="
   },
   {
    "type": "body",
@@ -4011,7 +4002,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1039,
    "pdf_page": 1060,
-   "text": "Another variant in the multiplicative-weights framework is known as HEDGE . It differs from WEIGHTED MAJORITY in two ways. First, HEDGE makes the pre- diction randomly—in iteration t , it assigns a probability p (t ) i = w (t ) i =Z (t ) to ex- pert E i , where Z (t ) = P n i D1 w (t ) i . It then chooses an expert E i 0 according to this probability distribution and predicts according to E i 0 . Second, the update rule is different. If an expert makes a mistake, line 16 updates that expert’s weight by the rule w (t C1) i = w (t ) i e −• , for some 0 < Ω < 1. Show that the expected number of mistakes made by HEDGE , running for T rounds, is at most m − C (ln n)=Ω C ΩT ."
+   "text": "Another variant in the multiplicative-weights framework is known as HEDGE . It differs from WEIGHTED MAJORITY in two ways. First, HEDGE makes the pre- diction randomly—in iteration t , it assigns a probability p (t ) i = w (t ) i =Z (t ) to ex- pert E i , where Z (t ) = P n i D1 w (t ) i . It then chooses an expert E i 0 according to this probability distribution and predicts according to E i 0 . Second, the update rule is different. If an expert makes a mistake, line 16 updates that expert’s weight by the rule w (t + 1) i = w (t ) i e −• , for some 0 < Ω < 1. Show that the expected number of mistakes made by HEDGE , running for T rounds, is at most m − C (ln n)=Ω C ΩT ."
   },
   {
    "type": "problem",
@@ -4029,7 +4020,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1039,
    "pdf_page": 1060,
-   "text": "Give an example to show that even in one dimension, Lloyd’s procedure for finding clusters does not always return an optimum result. That is, Lloyd’s procedure may terminate and return as a result a set C of clusters that does not minimize f(S;C) , even when S is a set of points on a line."
+   "text": "Give an example to show that even in one dimension, Lloyd’s procedure for finding clusters does not always return an optimum result. That is, Lloyd’s procedure may terminate and return as a result a set C of clusters that does not minimize f(S,C) , even when S is a set of points on a line."
   },
   {
    "type": "problem",
@@ -4047,7 +4038,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1040,
    "pdf_page": 1061,
-   "text": "Consider the problem described in Section 33.3 of fitting a line f(x) = ax + b to a given set of point/value pairs S = f(x 1 ;y 1 );:::;.x T ;y T /g by optimizing the choice of the parameters a and b using gradient descent to find a best least-squares fit. Here we consider the case where x is a real-valued variable, rather than a vector."
+   "text": "Consider the problem described in Section 33.3 of fitting a line f(x) = ax + b to a given set of point/value pairs S = f(x 1 ,y 1 ),…,.x T ,y T /g by optimizing the choice of the parameters a and b using gradient descent to find a best least-squares fit. Here we consider the case where x is a real-valued variable, rather than a vector."
   },
   {
    "type": "body",
@@ -4056,7 +4047,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1040,
    "pdf_page": 1061,
-   "text": "Suppose that you are not given the point/value pair s in S all at once, but only one at a time in an online manner. Furthermore, the points are given in random order. That is, you know that there are n points, but in iteration t you are given only (x i ;y i ) where i is independently and randomly chosen from f1;:::;T g."
+   "text": "Suppose that you are not given the point/value pair s in S all at once, but only one at a time in an online manner. Furthermore, the points are given in random order. That is, you know that there are n points, but in iteration t you are given only (x i ,y i ) where i is independently and randomly chosen from f1,…,T g."
   },
   {
    "type": "body",
@@ -4065,7 +4056,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1040,
    "pdf_page": 1061,
-   "text": "You can use gradient descent to compute an estimate to the function. As each point (x i ;y i ) is considered, you can update the current values of a and b by taking the derivative with respect to a and b of the term of the objective function depending on (x i ;y i ). Doing so gives you a stochastic estimate of the g radient, and you can then take a small step in the opposite direction."
+   "text": "You can use gradient descent to compute an estimate to the function. As each point (x i ,y i ) is considered, you can update the current values of a and b by taking the derivative with respect to a and b of the term of the objective function depending on (x i ,y i ). Doing so gives you a stochastic estimate of the g radient, and you can then take a small step in the opposite direction."
   },
   {
    "type": "body",
@@ -4182,7 +4173,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1041,
    "pdf_page": 1062,
-   "text": "Gradient descent is known to converge faster when functions obey stronger properties than general convexity. For example, a funct ion f is ˛-strongly convex if f. y / ≥ f. x/ C h(r f). x/;. y − x/i C ˛ ky − xk for all x; y 2 R n . In this case, GRADIENT-DESCENT can use a variable step size and return x (T ) . The step size at step t becomes ] t = 1=.˛.t + 1//, and the procedure returns a point such that f(x-avg) − f. x − / ≤ L 2 =.˛.T + 1//. This convergence is better than that of Theorem 33.8 because the number of iterations needed is linear, rather than quadratic, in the desired error parameter ] , and because the performance is independent of the initial point."
+   "text": "Gradient descent is known to converge faster when functions obey stronger properties than general convexity. For example, a funct ion f is ˛-strongly convex if f. y / ≥ f. x/ C h(r f). x/,. y − x/i C ˛ ky − xk for all x; y 2 R n . In this case, GRADIENT-DESCENT can use a variable step size and return x (T ) . The step size at step t becomes ] t = 1=.˛.t + 1//, and the procedure returns a point such that f(x-avg) − f. x − / ≤ L 2 =.˛.T + 1//. This convergence is better than that of Theorem 33.8 because the number of iterations needed is linear, rather than quadratic, in the desired error parameter ] , and because the performance is independent of the initial point."
   },
   {
    "type": "body",
@@ -4191,7 +4182,7 @@
    "section_title": "33.3 Gradient descent",
    "printed_page": 1041,
    "pdf_page": 1062,
-   "text": "Another case in which gradient descent can be shown to perform better than the analysis in Section 33.3 suggests is for smooth convex functions. We say that a function is ˇ-smooth if f. y / ≤ f. x/ Ch.r f/. x/;. y − x/iC ˇ"
+   "text": "Another case in which gradient descent can be shown to perform better than the analysis in Section 33.3 suggests is for smooth convex functions. We say that a function is ˇ-smooth if f. y / ≤ f. x/ Ch.r f/. x/,. y − x/iC ˇ"
   },
   {
    "type": "body",

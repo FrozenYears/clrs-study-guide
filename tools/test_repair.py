@@ -84,6 +84,21 @@ def main():
     rule("E002 -> − 上标", "coefficient n\ue0021 of", "n−1 of")
     rule("伪代码全行", "1 n L D q \ue003 p C 1", "n L = q − p + 1")
 
+    # --- 短横线伪影：数学字体的 '–' 槽抽出为 ASCII '3'（渲染页逐处核对）---
+    rule("范围 6–7", "begins on line 5 contains lines 637 but not line 8",
+         "contains lines 6–7 but not line 8")
+    rule("范围 1–8（回溯唯一分割）", "The iterations of the for loop of lines 138. In",
+         "for loop of lines 1–8. In")
+    rule("范围表 12–18, 20–23, 24–27",
+         "the while loops of lines 12318, 20323, and 24327 copied back",
+         "lines 12–18, 20–23, and 24–27 copied back")
+    rule("范围 and 尾随", "each of lines 133 and 8310 takes constant time",
+         "each of lines 1–3 and 8–10 takes constant time")
+    rule("pages 复数范围", "in Problem 3-5 on pages 72373 to combine",
+         "on pages 72–73 to combine")
+    keep("单数 page 的 934 是真页码（p27 渲染核对）",
+         "typically takes time logarithmic in n (see equation (31.34) on page 934),")
+
     # --- Ch2/3：点号-斜杠括号对（含嵌套）---
     rule("( ) 单层", "f.n/  D 0", "f(n)")
     rule("( ) 嵌套", "We write f.n/  D O.g.n//  if", "O(g(n))")
@@ -102,11 +117,11 @@ def main():
 
     # --- Ch20/22：图论 ---
     rule("j -> | (势)", "jEj <3 jV j", "|E|")
-    rule("c.u;v/", "we deûne c.u;v/  D 0", "c(u;v)")
-    rule("w.u;v/", "w.u;v/  of the edge", "w(u;v)")
+    rule("函数参数分隔（;→,）", "we deûne c.u;v/  D 0", "c(u,v)")
+    rule("函数参数分隔（;→,）", "w.u;v/  of the edge", "w(u,v)")
 
     # --- Ch31：数论 ---
-    rule("gcd.a;b/", "gcd.a;b/  D gcd.b;a/", "gcd(a;b)")
+    rule("gcd 参数分隔（;→,）", "gcd.a;b/  D gcd.b;a/", "gcd(a,b)")
     rule("模运算", "aCb D c .mod 4/", "c (mod 4)")
 
     # --- Ch34/NP：引号（三种形态）---
@@ -118,7 +133,7 @@ def main():
     rule("小型大写：I NSERTION-SORT", "the I NSERTION-SORT procedure", "INSERTION-SORT")
     rule("小型大写：A VL", "such as A VL trees", "such as AVL trees")
     rule("小型大写：F IB-HEAP", "the F IB-HEAP-EXTRACT-MIN step", "FIB-HEAP-EXTRACT-MIN")
-    rule("小型大写后接括号", "M ERGE.A;p;q;r/", "MERGE(A;p;q;r)")
+    rule("小型大写后接括号", "M ERGE.A;p;q;r/", "MERGE(A,p,q,r)")
     rule("过程名连字符（同行）", "the I NSERTION -SORT procedure", "INSERTION-SORT")
     rule("过程名连字符（跨行）", "procedure M AX-HEAP-I NCREASE -\nKEY", "MAX-HEAP-INCREASE-KEY")
     keep("单字母算术不被粘连", "if A - B then the result is C - D")
@@ -143,7 +158,7 @@ def main():
 
     keep("字母 j 在单词里", "The object just stays the same subject.")
     keep("字母 p 在单词里", "The paper properly appends a point.")
-    rule("小写 p 后跟单词保持原样", "given as the p rocedure", "the p rocedure")
+    rule("小型大写小写伪影（p rocedure）", "given as the p rocedure", "the procedure")
     keep("p equals 不是根号", "that is, when p equals r . As we noted")
     keep("p 后跟多字母", "the average of p \nand r")
     keep("字母 W 作词", "We write What we want when we know.")
@@ -168,7 +183,10 @@ def main():
 
     # 这些是 **已知残余**，断言它们「不被误改」，用来锁定当前行为
     keep("残余：= 作等号在正文", "when this loop is for i 2 to n")
-    keep("残余：; 在数学里", "A[i];A[i + 1];A[j]")
+    # 数学紧贴的 ';' 是逗号（第 4 版签名一律用逗号），已由规则修正
+    rule("数学紧贴的 ; → ,", "A[i];A[i + 1];A[j]", "A[i],A[i + 1],A[j]")
+    # 但英文散文里的 ';' 后必带空格，规则不碰
+    keep("英文分号不受影响", "it is sorted; then we return")
 
     # ---------------------------------------------------------------
     # C. 真实语料回归：从 pages_fixed.jsonl 抽真实页面核对
@@ -209,7 +227,7 @@ def main():
         (55, "Ω(g(n))", "Ch3 Ω-notation 嵌套括号"),
         (67, '"lg n"', "Ch3 双引号包住的记号"),
         (18, "INSERTION-SORT", "Ch2 小型大写名称已合并"),
-        (20, "INSERTION-SORT(A;n)", "Ch2 Figure 2.2 图注里的过程名（连字符已接回）"),
+        (20, "INSERTION-SORT(A,n)", "Ch2 Figure 2.2 图注里的过程名（连字符与逗号都已修正）"),
         (176, "MAX-HEAP-INCREASE-KEY", "Ch6 三段式名称（跨行连字符已接回）"),
         (30, "T(n)  = c 1 n + c 2 (n − 1)", "Ch2 最好情况代价公式"),
     ]

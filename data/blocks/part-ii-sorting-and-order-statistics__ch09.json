@@ -90,7 +90,7 @@
    "section_title": "9.1 Minimum and maximum",
    "printed_page": 228,
    "pdf_page": 249,
-   "text": "MINIMUM(A;n)"
+   "text": "MINIMUM(A,n)"
   },
   {
    "type": "body",
@@ -126,7 +126,7 @@
    "section_title": "9.1 Minimum and maximum",
    "printed_page": 228,
    "pdf_page": 249,
-   "text": "Some applications need to find both the minimum and the maximum of a set of n elements. For example, a graphics program may need to scale a set of (x;y) data to fit onto a rectangular display screen or other graphical output device. To do so, the program must first determine the minimum and maximum value of each coordinate."
+   "text": "Some applications need to find both the minimum and the maximum of a set of n elements. For example, a graphics program may need to scale a set of (x,y) data to fit onto a rectangular display screen or other graphical output device. To do so, the program must first determine the minimum and maximum value of each coordinate."
   },
   {
    "type": "body",
@@ -247,7 +247,7 @@
     },
     {
      "n": 3,
-     "code": "q DRANDOMIZED-PARTITION  (A;p;r)"
+     "code": "q DRANDOMIZED-PARTITION  (A,p,r)"
     },
     {
      "n": 4,
@@ -267,14 +267,14 @@
     },
     {
      "n": 8,
-     "code": "return RANDOMIZED-SELECT (A;p;q  − 1;i)"
+     "code": "return RANDOMIZED-SELECT (A,p,q  − 1,i)"
     },
     {
      "n": 9,
-     "code": "else return RANDOMIZED-SELECT (A;q + 1;r;i  − k)"
+     "code": "else return RANDOMIZED-SELECT (A,q + 1,r,i  − k)"
     }
    ],
-   "text": "1 if p = = r\n2 return A[p] / / 1 ≤ i ≤ r − p + 1 when p == r means that i = 1\n3 q DRANDOMIZED-PARTITION  (A;p;r)\n4 k = q − p + 1\n5 if i == k\n6 return A[q] / / the pivot value is the answer\n7 elseif i <k\n8 return RANDOMIZED-SELECT (A;p;q  − 1;i)\n9 else return RANDOMIZED-SELECT (A;q + 1;r;i  − k)"
+   "text": "1 if p = = r\n2 return A[p] / / 1 ≤ i ≤ r − p + 1 when p == r means that i = 1\n3 q DRANDOMIZED-PARTITION  (A,p,r)\n4 k = q − p + 1\n5 if i == k\n6 return A[q] / / the pivot value is the answer\n7 elseif i <k\n8 return RANDOMIZED-SELECT (A,p,q  − 1,i)\n9 else return RANDOMIZED-SELECT (A,q + 1,r,i  − k)"
   },
   {
    "type": "body",
@@ -301,7 +301,7 @@
    "section_title": "9.2 Selection in expected linear time",
    "printed_page": 230,
    "pdf_page": 251,
-   "text": "RANDOMIZED-SELECT (A;p;r;i)"
+   "text": "RANDOMIZED-SELECT (A,p,r,i)"
   },
   {
    "type": "body",
@@ -427,7 +427,7 @@
    "section_title": "9.2 Selection in expected linear time",
    "printed_page": 231,
    "pdf_page": 252,
-   "text": "A[p : r], showing the values of the parameters p, r , and i at each recursive call. The subarray A[p : r] in each recursive step is shown in tan, with the da rk tan element selected as the pivot for the next partitioning. Blue elements are outside A[p : r]. The answer is the tan element in the bottom array , where √D r = 5 and i = 1. The array designations A .0/ ;A .1/ ;:::;A .5/ , the partitioning numbers, and whether the partitioning is helpful are explained on the following page. the number of elements in the low side of the partition, plus 1 for the pivot element."
+   "text": "A[p : r], showing the values of the parameters p, r , and i at each recursive call. The subarray A[p : r] in each recursive step is shown in tan, with the da rk tan element selected as the pivot for the next partitioning. Blue elements are outside A[p : r]. The answer is the tan element in the bottom array , where √D r = 5 and i = 1. The array designations A .0/ ,A .1/ ,…,A .5/ , the partitioning numbers, and whether the partitioning is helpful are explained on the following page. the number of elements in the low side of the partition, plus 1 for the pivot element."
   },
   {
    "type": "body",
@@ -517,7 +517,7 @@
    "section_title": "9.2 Selection in expected linear time",
    "printed_page": 232,
    "pdf_page": 253,
-   "text": "To make the above argument rigorous, we start by defining the random variable A (j ) as the set of elements of A that are still in play after j partitionings (that is, within the subarray A[p : r] after j calls of RANDOMIZED-SELECT ), so that A .0/ consists of all the elements in A. Since each partitioning removes at least one element—the pivot—from being in play, the sequence jA .0/ j; jA .1/ j; jA .2/ j;::: strictly decreases. Set A (j −1) is in play before the j th partitioning, and set A (j ) remains in play afterward. For convenience, assume that the initial set A .0/ is the result of a 0th \"dummy\" partitioning."
+   "text": "To make the above argument rigorous, we start by defining the random variable A (j ) as the set of elements of A that are still in play after j partitionings (that is, within the subarray A[p : r] after j calls of RANDOMIZED-SELECT ), so that A .0/ consists of all the elements in A. Since each partitioning removes at least one element—the pivot—from being in play, the sequence jA .0/ j; jA .1/ j; jA .2/ j,… strictly decreases. Set A (j −1) is in play before the j th partitioning, and set A (j ) remains in play afterward. For convenience, assume that the initial set A .0/ is the result of a 0th \"dummy\" partitioning."
   },
   {
    "type": "body",
@@ -652,7 +652,7 @@
    "section_title": "9.2 Selection in expected linear time",
    "printed_page": 233,
    "pdf_page": 254,
-   "text": "Proof Since not every partitioning is necessarily helpful, let’s give each partitioning an index starting at 0 and denote by hh 0 ;h 1 ;h 2 ;:::;h m i the sequence of partitionings that are helpful, so that the h k th partitioning is helpful for k ="
+   "text": "Proof Since not every partitioning is necessarily helpful, let’s give each partitioning an index starting at 0 and denote by hh 0 ,h 1 ,h 2 ,…,h m i the sequence of partitionings that are helpful, so that the h k th partitioning is helpful for k ="
   },
   {
    "type": "body",
@@ -661,7 +661,7 @@
    "section_title": "9.2 Selection in expected linear time",
    "printed_page": 233,
    "pdf_page": 254,
-   "text": "0;1;2;:::;m . Although the number m of helpful partitionings is a random vari- … … … generation 0 generation 1 generation k"
+   "text": "0,1,2,…,m . Although the number m of helpful partitionings is a random vari- … … … generation 0 generation 1 generation k"
   },
   {
    "type": "body",
@@ -688,7 +688,7 @@
    "section_title": "9.2 Selection in expected linear time",
    "printed_page": 234,
    "pdf_page": 255,
-   "text": "A (h 1 C1)"
+   "text": "A (h 1 + 1)"
   },
   {
    "type": "body",
@@ -697,7 +697,7 @@
    "section_title": "9.2 Selection in expected linear time",
    "printed_page": 234,
    "pdf_page": 255,
-   "text": "A (h 1 C2)"
+   "text": "A (h 1 + 2)"
   },
   {
    "type": "body",
@@ -742,7 +742,7 @@
    "section_title": "9.2 Selection in expected linear time",
    "printed_page": 234,
    "pdf_page": 255,
-   "text": "A (h k C1)"
+   "text": "A (h k + 1)"
   },
   {
    "type": "body",
@@ -751,7 +751,7 @@
    "section_title": "9.2 Selection in expected linear time",
    "printed_page": 234,
    "pdf_page": 255,
-   "text": "A (h k C2)"
+   "text": "A (h k + 2)"
   },
   {
    "type": "body",
@@ -760,7 +760,7 @@
    "section_title": "9.2 Selection in expected linear time",
    "printed_page": 234,
    "pdf_page": 255,
-   "text": "A (h kC1 −1)"
+   "text": "A (h k + 1 −1)"
   },
   {
    "type": "body",
@@ -769,7 +769,7 @@
    "section_title": "9.2 Selection in expected linear time",
    "printed_page": 234,
    "pdf_page": 255,
-   "text": "A (h kC1 )"
+   "text": "A (h k + 1 )"
   },
   {
    "type": "figure-caption",
@@ -778,7 +778,7 @@
    "section_title": "9.2 Selection in expected linear time",
    "printed_page": 234,
    "pdf_page": 255,
-   "text": "Figure 9.2 The sets within each generation in the proof of Theorem 9.2. Vertical lines represent the sets, with the height of each line indicating the size of the set, which equals the number of elements in play. Each generation starts with a set A (h k ) , which is the result of a helpful partitioning. These sets are ⌈rawn in black and are at most 3/4 th⌉ size of the sets to their immediate left. Sets drawn in orange are not the first within a generation. A generation may contain just one set. The sets in generation k are A (h k ) ;A (h k C1) ;:::;A (h kC1 −1) . The sets A (h k ) are defined so that jA (h k ) j ≤ .3/4/jA (h k−1 ) j."
+   "text": "Figure 9.2 The sets within each generation in the proof of Theorem 9.2. Vertical lines represent the sets, with the height of each line indicating the size of the set, which equals the number of elements in play. Each generation starts with a set A (h k ) , which is the result of a helpful partitioning. These sets are ⌈rawn in black and are at most 3/4 th⌉ size of the sets to their immediate left. Sets drawn in orange are not the first within a generation. A generation may contain just one set. The sets in generation k are A (h k ) ,A (h k + 1) ,…,A (h k + 1 −1) . The sets A (h k ) are defined so that jA (h k ) j ≤ .3/4/jA (h k−1 ) j."
   },
   {
    "type": "body",
@@ -796,7 +796,7 @@
    "section_title": "9.2 Selection in expected linear time",
    "printed_page": 234,
    "pdf_page": 255,
-   "text": "Since the h k th partitioning is helpful and the sizes of the sets A (j ) strictly decrease, we have n k = jA (h k ) j ≤ .3/4/jA (h k −1) j = .3/4/n k−1 for k = 1;2;:::;m . By iterating n k ≤ .3/4/n k−1 , we have that n k ≤ .3/4/ k n 0 for k = 0;1;2;:::;m ."
+   "text": "Since the h k th partitioning is helpful and the sizes of the sets A (j ) strictly decrease, we have n k = jA (h k ) j ≤ .3/4/jA (h k −1) j = .3/4/n k−1 for k = 1,2,…,m . By iterating n k ≤ .3/4/n k−1 , we have that n k ≤ .3/4/ k n 0 for k = 0,1,2,…,m ."
   },
   {
    "type": "body",
@@ -805,7 +805,7 @@
    "section_title": "9.2 Selection in expected linear time",
    "printed_page": 234,
    "pdf_page": 255,
-   "text": "As Figure 9.2 depicts, we break up the sequence of sets A (j ) into m generations consisting of consecutively partitioned sets, start ing with the result A (h k ) of a helpful partitioning and ending with the last set A (h kC1 −1) before the next helpful partitioning, so that the sets in generation k are A (h k ) ;A (h k C1) ;:::;A (h kC1 −1) ."
+   "text": "As Figure 9.2 depicts, we break up the sequence of sets A (j ) into m generations consisting of consecutively partitioned sets, start ing with the result A (h k ) of a helpful partitioning and ending with the last set A (h k + 1 −1) before the next helpful partitioning, so that the sets in generation k are A (h k ) ,A (h k + 1) ,…,A (h k + 1 −1) ."
   },
   {
    "type": "body",
@@ -832,7 +832,7 @@
    "section_title": "9.2 Selection in expected linear time",
    "printed_page": 234,
    "pdf_page": 255,
-   "text": "X k = h kC1 − h k for k = 0;1;2;:::;m − 1. That is, X k is the number of sets in the kth generation, so that the sets in the kth generation are A (h k ) ;A (h k C1) ;:::;A (h k CX k −1) ."
+   "text": "X k = h k + 1 − h k for k = 0,1,2,…,m − 1. That is, X k is the number of sets in the kth generation, so that the sets in the kth generation are A (h k ) ,A (h k + 1) ,…,A (h k + X k −1) ."
   },
   {
    "type": "body",
@@ -841,7 +841,7 @@
    "section_title": "9.2 Selection in expected linear time",
    "printed_page": 234,
    "pdf_page": 255,
-   "text": "By Lemma 9.1, the probability that a partitioning is helpful is at least 1/2. The probability is actually even higher, since a partit ioning is helpful even if the pivot does not fall into the middle half but the i th smallest element happens to lie in the smaller side of the partitioning. We’ll just use the lower bound of 1/2, however, and then equation (C.36) gives that E [X k ] ≤ 2 for k = 0;1;2;:::;m − 1."
+   "text": "By Lemma 9.1, the probability that a partitioning is helpful is at least 1/2. The probability is actually even higher, since a partit ioning is helpful even if the pivot does not fall into the middle half but the i th smallest element happens to lie in the smaller side of the partitioning. We’ll just use the lower bound of 1/2, however, and then equation (C.36) gives that E [X k ] ≤ 2 for k = 0,1,2,…,m − 1."
   },
   {
    "type": "body",
@@ -850,7 +850,7 @@
    "section_title": "9.2 Selection in expected linear time",
    "printed_page": 235,
    "pdf_page": 256,
-   "text": "Let’s derive an upper bound on how many comparisons are made altogether during partitioning, since the running time is dominat ed by the comparisons. Since we are calculating an upper bound, assume that the recursion goes all the way until only one element remains in play. The j th partitioning takes the set A (j −1) of elements in play, and it compares the randomly chos en pivot with all the other jA (j −1) j − 1 elements, so that the j th partitioning makes fewer than jA (j −1) j comparisons. The sets in the kth generation have sizes jA (h k ) j; jA (h k C1) j;:::; jA (h k CX k −1) j. Thus, the total number of comparisons during part itioning is less than m−1 X kD0 h k CX k −1 X j Dh k jA (j ) j ≤ m−1 X kD0 h k CX k −1 X j Dh k jA (h k ) j"
+   "text": "Let’s derive an upper bound on how many comparisons are made altogether during partitioning, since the running time is dominat ed by the comparisons. Since we are calculating an upper bound, assume that the recursion goes all the way until only one element remains in play. The j th partitioning takes the set A (j −1) of elements in play, and it compares the randomly chos en pivot with all the other jA (j −1) j − 1 elements, so that the j th partitioning makes fewer than jA (j −1) j comparisons. The sets in the kth generation have sizes jA (h k ) j; jA (h k + 1) j,…; jA (h k + X k −1) j. Thus, the total number of comparisons during part itioning is less than m−1 X kD0 h k + X k −1 X j Dh k jA (j ) j ≤ m−1 X kD0 h k + X k −1 X j Dh k jA (h k ) j"
   },
   {
    "type": "body",
@@ -1003,7 +1003,7 @@
    "section_title": "9.2 Selection in expected linear time",
    "printed_page": 236,
    "pdf_page": 257,
-   "text": "9.2-3 Suppose that RANDOMIZED-SELECT is used to select the minimum element of the array A = h2;3;0;5;7;9;1;8;6;4 i. Describe a sequence of partitions that results in a worst-case performance of RANDOMIZED-SELECT ."
+   "text": "9.2-3 Suppose that RANDOMIZED-SELECT is used to select the minimum element of the array A = ⟨2,3,0,5,7,9,1,8,6,4⟩. Describe a sequence of partitions that results in a worst-case performance of RANDOMIZED-SELECT ."
   },
   {
    "type": "exercise",
@@ -1101,7 +1101,7 @@
     },
     {
      "n": 13,
-     "code": "sort hA[j];A[j + g];A[j + 2g];A[j + 3g];A[j + 4g]i in place"
+     "code": "sort hA[j],A[j + g],A[j + 2g],A[j + 3g],A[j + 4g]i in place"
     },
     {
      "n": 14,
@@ -1113,15 +1113,15 @@
     },
     {
      "n": 16,
-     "code": "x DSELECT (A;p + 2g;p + 3g − 1; ⌈g/2⌉)"
+     "code": "x DSELECT (A,p + 2g,p + 3g − 1; ⌈g/2⌉)"
     },
     {
      "n": 17,
-     "code": "q DPARTITION-AROUND(A;p;r;x)  / / partition around the pivot"
+     "code": "q DPARTITION-AROUND(A,p,r,x)  / / partition around the pivot"
     },
     {
      "n": 18,
-     "code": "/ / The rest is just like lines 339 of RANDOMIZED-SELECT ."
+     "code": "/ / The rest is just like lines 3–9 of RANDOMIZED-SELECT ."
     },
     {
      "n": 19,
@@ -1141,14 +1141,14 @@
     },
     {
      "n": 23,
-     "code": "return SELECT(A;p;q  − 1;i)"
+     "code": "return SELECT(A,p,q  − 1,i)"
     },
     {
      "n": 24,
-     "code": "else return SELECT(A;q + 1;r;i  − k)"
+     "code": "else return SELECT(A,q + 1,r,i  − k)"
     }
    ],
-   "text": "1 while (r − p + 1) mod 5 ≠ 0\n2 for j = p + 1 to r / / put the minimum into A[p]\n3 if A[p]>A[j]\n4 exchange A[p] with A[j]\n5 / / If we want the minimum of A[p : r], we’re done.\n6 if i == 1\n7 return A[p]\n8 / / Otherwise, we want the (i − 1)st element of A[p + 1 : r].\n9 √D p + 1\n10 i = i − 1\n11 g = (r − p + 1)/5 / / number of 5-element groups\n12 for j = p to p + g − 1 / / sort each group\n13 sort hA[j];A[j + g];A[j + 2g];A[j + 3g];A[j + 4g]i in place\n14 / / All group medians now lie in the middle fifth of A[p : r].\n15 / / Find the pivot x recursively as the median of the group medians.\n16 x DSELECT (A;p + 2g;p + 3g − 1; ⌈g/2⌉)\n17 q DPARTITION-AROUND(A;p;r;x)  / / partition around the pivot\n18 / / The rest is just like lines 339 of RANDOMIZED-SELECT .\n19 k = q − p + 1\n20 if i == k\n21 return A[q] / / the pivot value is the answer\n22 elseif i <k\n23 return SELECT(A;p;q  − 1;i)\n24 else return SELECT(A;q + 1;r;i  − k)"
+   "text": "1 while (r − p + 1) mod 5 ≠ 0\n2 for j = p + 1 to r / / put the minimum into A[p]\n3 if A[p]>A[j]\n4 exchange A[p] with A[j]\n5 / / If we want the minimum of A[p : r], we’re done.\n6 if i == 1\n7 return A[p]\n8 / / Otherwise, we want the (i − 1)st element of A[p + 1 : r].\n9 √D p + 1\n10 i = i − 1\n11 g = (r − p + 1)/5 / / number of 5-element groups\n12 for j = p to p + g − 1 / / sort each group\n13 sort hA[j],A[j + g],A[j + 2g],A[j + 3g],A[j + 4g]i in place\n14 / / All group medians now lie in the middle fifth of A[p : r].\n15 / / Find the pivot x recursively as the median of the group medians.\n16 x DSELECT (A,p + 2g,p + 3g − 1; ⌈g/2⌉)\n17 q DPARTITION-AROUND(A,p,r,x)  / / partition around the pivot\n18 / / The rest is just like lines 3–9 of RANDOMIZED-SELECT .\n19 k = q − p + 1\n20 if i == k\n21 return A[q] / / the pivot value is the answer\n22 elseif i <k\n23 return SELECT(A,p,q  − 1,i)\n24 else return SELECT(A,q + 1,r,i  − k)"
   },
   {
    "type": "body",
@@ -1166,7 +1166,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 237,
    "pdf_page": 258,
-   "text": "SELECT(A;p;r;i)"
+   "text": "SELECT(A,p,r,i)"
   },
   {
    "type": "body",
@@ -1175,7 +1175,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 237,
    "pdf_page": 258,
-   "text": "The pseudocode starts by executing the while loop in lines 1310 to reduce the number r − p + 1 of elements in the subarray until it is divisible by 5. The while loop executes 0 to 4 times, each time rearranging the elements of A[p : r] so that A[p] contains the minimum element. If i = 1, which means that we actually want the minimum element, then the procedure simply retu rns it in line 7. Otherwise, SELECT eliminates the minimum from the subarray A[p : r] and iterates to find the (i − 1)st element in A[p + 1 : r]. Lines 9310 do so by incrementing p and decrementing i . If the while loop completes all of its iterations without returning a x g"
+   "text": "The pseudocode starts by executing the while loop in lines 1–10 to reduce the number r − p + 1 of elements in the subarray until it is divisible by 5. The while loop executes 0 to 4 times, each time rearranging the elements of A[p : r] so that A[p] contains the minimum element. If i = 1, which means that we actually want the minimum element, then the procedure simply retu rns it in line 7. Otherwise, SELECT eliminates the minimum from the subarray A[p : r] and iterates to find the (i − 1)st element in A[p + 1 : r]. Lines 9–10 do so by incrementing p and decrementing i . If the while loop completes all of its iterations without returning a x g"
   },
   {
    "type": "body",
@@ -1202,7 +1202,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 238,
    "pdf_page": 259,
-   "text": "Arrows go from smaller elements to larger. The elem ents on the blue background are all known to be less than or equal to x and cannot fall into the high side of the partition around x. The elements on the yellow background are known to be greater than or equal to x and cannot fall into the low side of the partition around x. The pivot x belongs to both the blue and yellow regions and is shown on a green background. The elements on the white background could lie on either side of the partition. result, the procedure executes the core of the algorithm in lines 11324, assured that the number r − p + 1 of elements in A[p : r] is evenly divisible by 5."
+   "text": "Arrows go from smaller elements to larger. The elem ents on the blue background are all known to be less than or equal to x and cannot fall into the high side of the partition around x. The elements on the yellow background are known to be greater than or equal to x and cannot fall into the low side of the partition around x. The pivot x belongs to both the blue and yellow regions and is shown on a green background. The elements on the white background could lie on either side of the partition. result, the procedure executes the core of the algorithm in lines 11–24, assured that the number r − p + 1 of elements in A[p : r] is evenly divisible by 5."
   },
   {
    "type": "body",
@@ -1211,7 +1211,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 238,
    "pdf_page": 259,
-   "text": "The next part of the algorithm implements the following idea, illustrated in Figure 9.3. Divide the elements in A[p : r] into g = (r −p C1)/5 groups of 5 elements each. The first 5-element group is hA[p];A[p + g];A[p + 2g];A[p + 3g];A[p + 4g]i ; the second is hA[p + 1];A[p + g + 1];A[p + 2g + 1];A[p + 3g + 1];A[p + 4g + 1]i ; and so forth until the last, which is hA[p + g − 1];A[p + 2g − 1];A[p + 3g − 1];A[p + 4g − 1];A[r] i :"
+   "text": "The next part of the algorithm implements the following idea, illustrated in Figure 9.3. Divide the elements in A[p : r] into g = (r −p + 1)/5 groups of 5 elements each. The first 5-element group is hA[p],A[p + g],A[p + 2g],A[p + 3g],A[p + 4g]i ; the second is hA[p + 1],A[p + g + 1],A[p + 2g + 1],A[p + 3g + 1],A[p + 4g + 1]i ; and so forth until the last, which is hA[p + g − 1],A[p + 2g − 1],A[p + 3g − 1],A[p + 4g − 1],A[r] i :"
   },
   {
    "type": "body",
@@ -1220,7 +1220,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 238,
    "pdf_page": 259,
-   "text": "(Note that r = p + 5g − 1.) Line 13 puts each group in order using, for example, insertion sort (Section 2.1), so that for j = p;p + 1;:::;p + g − 1, we have"
+   "text": "(Note that r = p + 5g − 1.) Line 13 puts each group in order using, for example, insertion sort (Section 2.1), so that for j = p,p + 1,…,p + g − 1, we have"
   },
   {
    "type": "body",
@@ -1310,7 +1310,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 239,
    "pdf_page": 260,
-   "text": "We first determine an upper bound on the time spent outside the recursive calls in lines 16, 23, and 24. The while loop in lines 1310 executes 0 to 4 times, which is O(1) times. Since the dominant time within the loop is t he computation of the minimum in lines 234, which takes Θ(n) time, lines 1310 execute in O(1) • Θ(n) = O(n) time. The sorting of the 5-element groups in lines 12313 takes Θ(n) time because each 5-element group takes Θ(1) time to sort (even using an asymptotically inefficient sorting algorithm such as insertion sort), and there are g elements to sort, where n/5 − 1 < g ≤ n/5. Finally, the time to partition in line 17 is Θ(n), as Exercise 7.1-3 on page 187 asks you to show. Because the re- maining bookkeeping only costs Θ(1) time, the total amount of time spent outside of the recursive calls is O(n) + Θ(n) + Θ(n) + Θ(1) = Θ(n)."
+   "text": "We first determine an upper bound on the time spent outside the recursive calls in lines 16, 23, and 24. The while loop in lines 1–10 executes 0 to 4 times, which is O(1) times. Since the dominant time within the loop is t he computation of the minimum in lines 2–4, which takes Θ(n) time, lines 1–10 execute in O(1) • Θ(n) = O(n) time. The sorting of the 5-element groups in lines 12–13 takes Θ(n) time because each 5-element group takes Θ(1) time to sort (even using an asymptotically inefficient sorting algorithm such as insertion sort), and there are g elements to sort, where n/5 − 1 < g ≤ n/5. Finally, the time to partition in line 17 is Θ(n), as Exercise 7.1-3 on page 187 asks you to show. Because the re- maining bookkeeping only costs Θ(1) time, the total amount of time spent outside of the recursive calls is O(n) + Θ(n) + Θ(n) + Θ(1) = Θ(n)."
   },
   {
    "type": "body",
@@ -1454,7 +1454,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 241,
    "pdf_page": 262,
-   "text": "9.3-2 Suppose that the preprocessing in lines 1310 of SELECT is replaced by a base case for n ≥ n 0 , where n 0 is a suitable constant; that g is chosen as br − p + 1/=5c; and that the elements in A[5g : n] belong to no group. Show that although the recurrence for the running time becomes messier, it still solves to Θ(n)."
+   "text": "9.3-2 Suppose that the preprocessing in lines 1–10 of SELECT is replaced by a base case for n ≥ n 0 , where n 0 is a suitable constant; that g is chosen as br − p + 1/=5c; and that the elements in A[5g : n] belong to no group. Show that although the recurrence for the running time becomes messier, it still solves to Θ(n)."
   },
   {
    "type": "exercise",
@@ -1548,7 +1548,7 @@
     },
     {
      "n": 3,
-     "code": "q DRANDOMIZED-PARTITION  (A;p;r)"
+     "code": "q DRANDOMIZED-PARTITION  (A,p,r)"
     },
     {
      "n": 4,
@@ -1560,14 +1560,14 @@
     },
     {
      "n": 6,
-     "code": "return SIMPLER-RANDOMIZED-SELECT (A;p;q;i)"
+     "code": "return SIMPLER-RANDOMIZED-SELECT (A,p,q,i)"
     },
     {
      "n": 7,
-     "code": "else return SIMPLER-RANDOMIZED-SELECT (A;q + 1;r;i  − k) a. Argue that in the worst case, SIMPLER-RANDOMIZED-SELECT never termi- nates."
+     "code": "else return SIMPLER-RANDOMIZED-SELECT (A,q + 1,r,i  − k) a. Argue that in the worst case, SIMPLER-RANDOMIZED-SELECT never termi- nates."
     }
    ],
-   "text": "1 if p == r\n2 return A[p] / / 1 ≤ i ≤ r − p + 1 means that i = 1\n3 q DRANDOMIZED-PARTITION  (A;p;r)\n4 k = q − p + 1\n5 if i ≤ k\n6 return SIMPLER-RANDOMIZED-SELECT (A;p;q;i)\n7 else return SIMPLER-RANDOMIZED-SELECT (A;q + 1;r;i  − k) a. Argue that in the worst case, SIMPLER-RANDOMIZED-SELECT never termi- nates."
+   "text": "1 if p == r\n2 return A[p] / / 1 ≤ i ≤ r − p + 1 means that i = 1\n3 q DRANDOMIZED-PARTITION  (A,p,r)\n4 k = q − p + 1\n5 if i ≤ k\n6 return SIMPLER-RANDOMIZED-SELECT (A,p,q,i)\n7 else return SIMPLER-RANDOMIZED-SELECT (A,q + 1,r,i  − k) a. Argue that in the worst case, SIMPLER-RANDOMIZED-SELECT never termi- nates."
   },
   {
    "type": "exercise",
@@ -1630,7 +1630,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 243,
    "pdf_page": 264,
-   "text": "SIMPLER-RANDOMIZED-SELECT (A;p;r;i) a. Argue that in the worst case, SIMPLER-RANDOMIZED-SELECT never terminates. b. Prove that the expected running time of SIMPLER-RANDOMIZED-SELECT is still O(n)."
+   "text": "SIMPLER-RANDOMIZED-SELECT (A,p,r,i) a. Argue that in the worst case, SIMPLER-RANDOMIZED-SELECT never terminates. b. Prove that the expected running time of SIMPLER-RANDOMIZED-SELECT is still O(n)."
   },
   {
    "type": "problem",
@@ -1648,7 +1648,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 244,
    "pdf_page": 265,
-   "text": "Consider n elements x 1 ;x 2 ;:::;x n with positive weights w 1 ;w 2 ;:::;w n such that P n i D1 w i = 1. The weighted (lower) median is an element x k satisfying"
+   "text": "Consider n elements x 1 ,x 2 ,…,x n with positive weights w 1 ,w 2 ,…,w n such that P n i D1 w i = 1. The weighted (lower) median is an element x k satisfying"
   },
   {
    "type": "body",
@@ -1675,7 +1675,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 244,
    "pdf_page": 265,
-   "text": "For these elements, the median is x 5 = 4, but the weighted median is x 7 = 6. To see why the weighted median is x 7 , observe that the elements less than x 7 are x 1 , x 3 , x 4 , x 5 , and x 6 , and the sum w 1 + w 3 + w 4 + w 5 + w 6 = 0:45, which is less than 1/2. Furthermore, only element x 2 is greater than x 7 , and w 2 = 0:35, which is no greater than 1/2. a. Argue that the median of x 1 ;x 2 ;:::;x n is the weighted median of the x i with weights w i = 1/n for i = 1;2;:::;n . b. Show how to compute the weighted median of n elements in O(n lg n) worstcase time using sorting. c. Show how to compute the weighted median in Θ(n) worst-case time using a linear-time median algorithm such as SELECT from Section 9.3."
+   "text": "For these elements, the median is x 5 = 4, but the weighted median is x 7 = 6. To see why the weighted median is x 7 , observe that the elements less than x 7 are x 1 , x 3 , x 4 , x 5 , and x 6 , and the sum w 1 + w 3 + w 4 + w 5 + w 6 = 0:45, which is less than 1/2. Furthermore, only element x 2 is greater than x 7 , and w 2 = 0:35, which is no greater than 1/2. a. Argue that the median of x 1 ,x 2 ,…,x n is the weighted median of the x i with weights w i = 1/n for i = 1,2,…,n . b. Show how to compute the weighted median of n elements in O(n lg n) worstcase time using sorting. c. Show how to compute the weighted median in Θ(n) worst-case time using a linear-time median algorithm such as SELECT from Section 9.3."
   },
   {
    "type": "body",
@@ -1693,7 +1693,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 244,
    "pdf_page": 265,
-   "text": "√1 ;p 2 ;:::;p n with associated weights w 1 ;w 2 ;:::;w n . A solution is a point p"
+   "text": "√1 ,p 2 ,…,p n with associated weights w 1 ,w 2 ,…,w n . A solution is a point p"
   },
   {
    "type": "body",
@@ -1702,7 +1702,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 244,
    "pdf_page": 265,
-   "text": "(not necessarily one of the input points) that minimizes the sum P n i D1 w i d(p;p i ), where d(a;b) is the distance between points a and b. d. Argue that the weighted median is a best solution for the one-dimensional post- office location problem, in which points are simply real numbers and the distance between points a and b is d(a;b) = ja − bj. e. Find the best solution for the two-dimensional post-office location problem, in which the points are (x;y) coordinate pairs and the distance between points a = (x 1 ;y 1 ) and b = (x 2 ;y 2 ) is the Manhattan distance given by d(a;b) = jx 1 − x 2 |C|y 1 − y 2 j."
+   "text": "(not necessarily one of the input points) that minimizes the sum P n i D1 w i d(p,p i ), where d(a,b) is the distance between points a and b. d. Argue that the weighted median is a best solution for the one-dimensional post- office location problem, in which points are simply real numbers and the distance between points a and b is d(a,b) = ja − bj. e. Find the best solution for the two-dimensional post-office location problem, in which the points are (x,y) coordinate pairs and the distance between points a = (x 1 ,y 1 ) and b = (x 2 ,y 2 ) is the Manhattan distance given by d(a,b) = jx 1 − x 2 |C|y 1 − y 2 j."
   },
   {
    "type": "problem",
@@ -1783,7 +1783,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 245,
    "pdf_page": 266,
-   "text": "As in the quicksort analysis, we assume that all el ements are distinct, and we rename the elements of the input array A as ´ 1 ;´ 2 ;:::;´ n , where ´ i is the i th smallest element. Thus the call RANDOMIZED-SELECT (A;1;n;i) returns ´ i ."
+   "text": "As in the quicksort analysis, we assume that all el ements are distinct, and we rename the elements of the input array A as ´ 1 ,´ 2 ,…,´ n , where ´ i is the i th smallest element. Thus the call RANDOMIZED-SELECT (A,1,n,i) returns ´ i ."
   },
   {
    "type": "body",
@@ -1810,7 +1810,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 246,
    "pdf_page": 267,
-   "text": "• i X j D1 n X kDi k − j + 1 C n X kDi C1 k − i − 1 k − i + 1 C i −2 X j D1 i − j − 1 i − j + 1"
+   "text": "• i X j D1 n X kDi k − j + 1 C n X kDi + 1 k − i − 1 k − i + 1 C i −2 X j D1 i − j − 1 i − j + 1"
   },
   {
    "type": "body",
@@ -1944,7 +1944,7 @@
     },
     {
      "n": 13,
-     "code": "sort hA[j];A[j + g];A[j + 2g]i in place"
+     "code": "sort hA[j],A[j + g],A[j + 2g]i in place"
     },
     {
      "n": 14,
@@ -1960,7 +1960,7 @@
     },
     {
      "n": 17,
-     "code": "sort hA[j];A[j + g 0 ]; A[j + 2g 0 ]i in place"
+     "code": "sort hA[j],A[j + g 0 ]; A[j + 2g 0 ]i in place"
     },
     {
      "n": 18,
@@ -1972,15 +1972,15 @@
     },
     {
      "n": 20,
-     "code": "x DSELECT3 (A;p + 4g 0 ;p + 5g 0 − 1; ⌈g 0 /2⌉)"
+     "code": "x DSELECT3 (A,p + 4g 0 ,p + 5g 0 − 1; ⌈g 0 /2⌉)"
     },
     {
      "n": 21,
-     "code": "q DPARTITION-AROUND(A;p;r;x)  / / partition around the pivot"
+     "code": "q DPARTITION-AROUND(A,p,r,x)  / / partition around the pivot"
     },
     {
      "n": 22,
-     "code": "/ / The rest is just like lines 19324 of SELECT ."
+     "code": "/ / The rest is just like lines 19–24 of SELECT ."
     },
     {
      "n": 23,
@@ -2000,14 +2000,14 @@
     },
     {
      "n": 27,
-     "code": "return SELECT3 (A;p;q  − 1;i)"
+     "code": "return SELECT3 (A,p,q  − 1,i)"
     },
     {
      "n": 28,
-     "code": "else return SELECT3 (A;q + 1;r;i  − k)"
+     "code": "else return SELECT3 (A,q + 1,r,i  − k)"
     }
    ],
-   "text": "1 while (r − p + 1) mod 9 ≠ 0\n2 for j = p + 1 to r / / put the minimum into A[p]\n3 if A[p]>A[j]\n4 exchange A[p] with A[j]\n5 / / If we want the minimum of A[p : r], we’re done.\n6 if i == 1\n7 return A[p]\n8 / / Otherwise, we want the (i − 1)st element of A[p + 1 : r].\n9 √D p + 1\n10 i = i − 1\n11 g = (r − p + 1)/3 / / number of 3-element groups\n12 for j = p to p + g − 1 / / run through the groups\n13 sort hA[j];A[j + g];A[j + 2g]i in place\n14 / / All group medians now lie in the middle third of A[p : r].\n15 g 0 = g/3 / / number of 3-element subgroups\n16 for j = p + g to p + g + g 0 − 1 / / sort the subgroups\n17 sort hA[j];A[j + g 0 ]; A[j + 2g 0 ]i in place\n18 / / All subgroup medians now lie in the middle ninth of A[p : r].\n19 / / Find the pivot x recursively as the median of the subgroup medians.\n20 x DSELECT3 (A;p + 4g 0 ;p + 5g 0 − 1; ⌈g 0 /2⌉)\n21 q DPARTITION-AROUND(A;p;r;x)  / / partition around the pivot\n22 / / The rest is just like lines 19324 of SELECT .\n23 k = q − p + 1\n24 if i == k\n25 return A[q] / / the pivot value is the answer\n26 elseif i <k\n27 return SELECT3 (A;p;q  − 1;i)\n28 else return SELECT3 (A;q + 1;r;i  − k)"
+   "text": "1 while (r − p + 1) mod 9 ≠ 0\n2 for j = p + 1 to r / / put the minimum into A[p]\n3 if A[p]>A[j]\n4 exchange A[p] with A[j]\n5 / / If we want the minimum of A[p : r], we’re done.\n6 if i == 1\n7 return A[p]\n8 / / Otherwise, we want the (i − 1)st element of A[p + 1 : r].\n9 √D p + 1\n10 i = i − 1\n11 g = (r − p + 1)/3 / / number of 3-element groups\n12 for j = p to p + g − 1 / / run through the groups\n13 sort hA[j],A[j + g],A[j + 2g]i in place\n14 / / All group medians now lie in the middle third of A[p : r].\n15 g 0 = g/3 / / number of 3-element subgroups\n16 for j = p + g to p + g + g 0 − 1 / / sort the subgroups\n17 sort hA[j],A[j + g 0 ]; A[j + 2g 0 ]i in place\n18 / / All subgroup medians now lie in the middle ninth of A[p : r].\n19 / / Find the pivot x recursively as the median of the subgroup medians.\n20 x DSELECT3 (A,p + 4g 0 ,p + 5g 0 − 1; ⌈g 0 /2⌉)\n21 q DPARTITION-AROUND(A,p,r,x)  / / partition around the pivot\n22 / / The rest is just like lines 19–24 of SELECT .\n23 k = q − p + 1\n24 if i == k\n25 return A[q] / / the pivot value is the answer\n26 elseif i <k\n27 return SELECT3 (A,p,q  − 1,i)\n28 else return SELECT3 (A,q + 1,r,i  − k)"
   },
   {
    "type": "chapter-notes",
@@ -2025,7 +2025,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 247,
    "pdf_page": 268,
-   "text": "SELECT3 (A;p;r;i)"
+   "text": "SELECT3 (A,p,r,i)"
   },
   {
    "type": "body",
@@ -2160,7 +2160,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 250,
    "pdf_page": 271,
-   "text": "SEARCH(S;k)"
+   "text": "SEARCH(S,k)"
   },
   {
    "type": "body",
@@ -2178,7 +2178,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 250,
    "pdf_page": 271,
-   "text": "INSERT(S;x)"
+   "text": "INSERT(S,x)"
   },
   {
    "type": "body",
@@ -2196,7 +2196,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 250,
    "pdf_page": 271,
-   "text": "DELETE (S;x)"
+   "text": "DELETE (S,x)"
   },
   {
    "type": "body",
@@ -2232,7 +2232,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 250,
    "pdf_page": 271,
-   "text": "SUCCESSOR(S;x)"
+   "text": "SUCCESSOR(S,x)"
   },
   {
    "type": "body",
@@ -2250,7 +2250,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 250,
    "pdf_page": 271,
-   "text": "PREDECESSOR (S;x)"
+   "text": "PREDECESSOR (S,x)"
   },
   {
    "type": "body",
@@ -2322,7 +2322,7 @@
    "section_title": "9.3 Selection in worst-case linear time",
    "printed_page": 251,
    "pdf_page": 272,
-   "text": "Chapters 10313 describe several data structures that we can use to implement dynamic sets. We’ll use many of these data structures later to construct efficient algorithms for a variety of problems. We already saw another important data structure"
+   "text": "Chapters 10–13 describe several data structures that we can use to implement dynamic sets. We’ll use many of these data structures later to construct efficient algorithms for a variety of problems. We already saw another important data structure"
   },
   {
    "type": "body",

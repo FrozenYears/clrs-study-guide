@@ -57,7 +57,7 @@
    "section_title": "17.1 Dynamic order statistics",
    "printed_page": 480,
    "pdf_page": 501,
-   "text": "Chapter 9 introduced the notion of an order statist ic. Speci fically, the i th order statistic of a set of n elements, where i 2 f1;2;:::;n g, is simply the element in the set with the i th smallest key. In Chapter 9, you saw how to determine any order statistic in O(n) time from an unordered set. This section shows how to modify red-black trees so that you can determine any order statistic for a dynamic set in O(lg n) time and also compute the rank of an element—its position in the linear"
+   "text": "Chapter 9 introduced the notion of an order statist ic. Speci fically, the i th order statistic of a set of n elements, where i 2 f1,2,…,n g, is simply the element in the set with the i th smallest key. In Chapter 9, you saw how to determine any order statistic in O(n) time from an unordered set. This section shows how to modify red-black trees so that you can determine any order statistic for a dynamic set in O(lg n) time and also compute the rank of an element—its position in the linear"
   },
   {
    "type": "body",
@@ -129,7 +129,7 @@
    "section_title": "17.1 Dynamic order statistics",
    "printed_page": 481,
    "pdf_page": 502,
-   "text": "Before we show how to maintain the size information during insertion and deletion, let’s see how to implement two order-statistic queries that use this additional information. We begin with an operation that retrie ves the element with a given rank. The procedure OS-SELECT (x;i) on the following page returns a pointer to the node containing the i th smallest key in the subtree rooted at x . To find the node with the i th smallest key in an order-statistic tree T , call OS-SELECT (T: root ;i) ."
+   "text": "Before we show how to maintain the size information during insertion and deletion, let’s see how to implement two order-statistic queries that use this additional information. We begin with an operation that retrie ves the element with a given rank. The procedure OS-SELECT (x,i) on the following page returns a pointer to the node containing the i th smallest key in the subtree rooted at x . To find the node with the i th smallest key in an order-statistic tree T , call OS-SELECT (T: root ,i) ."
   },
   {
    "type": "body",
@@ -168,14 +168,14 @@
     },
     {
      "n": 5,
-     "code": "return OS-SELECT (x: left;i)"
+     "code": "return OS-SELECT (x: left,i)"
     },
     {
      "n": 6,
-     "code": "else return OS-SELECT (x: right;i  − r) before x in an inorder tree walk of the subtree rooted at x . Thus, x: left: size C 1 is the rank of x within the subtree rooted at x . If i = r , then node x is the i th"
+     "code": "else return OS-SELECT (x: right,i  − r) before x in an inorder tree walk of the subtree rooted at x . Thus, x: left: size C 1 is the rank of x within the subtree rooted at x . If i = r , then node x is the i th"
     }
    ],
-   "text": "1 r = x: left: size C 1 / / rank of x within the subtree rooted at x\n2 if i == r\n3 return x\n4 elseif i <r\n5 return OS-SELECT (x: left;i)\n6 else return OS-SELECT (x: right;i  − r) before x in an inorder tree walk of the subtree rooted at x . Thus, x: left: size C 1 is the rank of x within the subtree rooted at x . If i = r , then node x is the i th"
+   "text": "1 r = x: left: size C 1 / / rank of x within the subtree rooted at x\n2 if i == r\n3 return x\n4 elseif i <r\n5 return OS-SELECT (x: left,i)\n6 else return OS-SELECT (x: right,i  − r) before x in an inorder tree walk of the subtree rooted at x . Thus, x: left: size C 1 is the rank of x within the subtree rooted at x . If i = r , then node x is the i th"
   },
   {
    "type": "body",
@@ -184,7 +184,7 @@
    "section_title": "17.1 Dynamic order statistics",
    "printed_page": 482,
    "pdf_page": 503,
-   "text": "OS-SELECT (x;i) before x in an inorder tree walk of the subtree rooted at x . Thus, x: left: size C 1 is the rank of x within the subtree rooted at x . If i = r , then node x is the i th smallest element, and so line 3 returns x . If i < r , then the i th smallest element resides in x ’s left subtree, and therefore, line 5 recurses on x: left. If i > r , then the i th smallest element resides in x ’s right subtree. Since the subtree rooted at x contains r elements that come before x ’s right subtree in an inorder tree walk, the i th smallest element in the subtree rooted at x is the (i − r)th smallest element in the subtree rooted at x: right. Line 6 determines this element recursively."
+   "text": "OS-SELECT (x,i) before x in an inorder tree walk of the subtree rooted at x . Thus, x: left: size C 1 is the rank of x within the subtree rooted at x . If i = r , then node x is the i th smallest element, and so line 3 returns x . If i < r , then the i th smallest element resides in x ’s left subtree, and therefore, line 5 recurses on x: left. If i > r , then the i th smallest element resides in x ’s right subtree. Since the subtree rooted at x contains r elements that come before x ’s right subtree in an inorder tree walk, the i th smallest element in the subtree rooted at x is the (i − r)th smallest element in the subtree rooted at x: right. Line 6 determines this element recursively."
   },
   {
    "type": "body",
@@ -297,7 +297,7 @@
    "section_title": "17.1 Dynamic order statistics",
    "printed_page": 483,
    "pdf_page": 504,
-   "text": "OS-RANK(T;x)"
+   "text": "OS-RANK(T,x)"
   },
   {
    "type": "body",
@@ -324,7 +324,7 @@
    "section_title": "17.1 Dynamic order statistics",
    "printed_page": 483,
    "pdf_page": 504,
-   "text": "At the start of each iteration of the while loop of lines 336, r is the rank of x: key in the subtree rooted at node y ."
+   "text": "At the start of each iteration of the while loop of lines 3–6, r is the rank of x: key in the subtree rooted at node y ."
   },
   {
    "type": "body",
@@ -479,7 +479,7 @@
    "section_title": "17.1 Dynamic order statistics",
    "printed_page": 484,
    "pdf_page": 505,
-   "text": "In the second phase, the only structural changes to the underlying red-black tree are caused by rotations, of which there are at most two. Moreover, a rotation is a local operation: only two nodes have their size attributes invalidated. The link around which the rotation is performed is incident on these two nodes. Referring to the code for LEFT-ROTATE (T;x) on page 336, add the following lines:"
+   "text": "In the second phase, the only structural changes to the underlying red-black tree are caused by rotations, of which there are at most two. Moreover, a rotation is a local operation: only two nodes have their size attributes invalidated. The link around which the rotation is performed is incident on these two nodes. Referring to the code for LEFT-ROTATE (T,x) on page 336, add the following lines:"
   },
   {
    "type": "body",
@@ -560,7 +560,7 @@
    "section_title": "17.1 Dynamic order statistics",
    "printed_page": 485,
    "pdf_page": 506,
-   "text": "17.1-1 Show how OS-SELECT (T: root ;10) operates on the red-black tree T shown in Figure 17.1."
+   "text": "17.1-1 Show how OS-SELECT (T: root ,10) operates on the red-black tree T shown in Figure 17.1."
   },
   {
    "type": "exercise",
@@ -569,7 +569,7 @@
    "section_title": "17.1 Dynamic order statistics",
    "printed_page": 485,
    "pdf_page": 506,
-   "text": "17.1-2 Show how OS-RANK(T;x) operates on the red-black tree T shown in Figure 17.1 and the node x with x: key = 35."
+   "text": "17.1-2 Show how OS-RANK(T,x) operates on the red-black tree T shown in Figure 17.1 and the node x with x: key = 35."
   },
   {
    "type": "exercise",
@@ -587,7 +587,7 @@
    "section_title": "17.1 Dynamic order statistics",
    "printed_page": 485,
    "pdf_page": 506,
-   "text": "17.1-4 Write a procedure OS-KEY-RANK(T;k) that takes an order-statistic tree T and a key k and returns the rank of k in the dynamic set represented by T . Assume that the keys of T are distinct."
+   "text": "17.1-4 Write a procedure OS-KEY-RANK(T,k) that takes an order-statistic tree T and a key k and returns the rank of k in the dynamic set represented by T . Assume that the keys of T are distinct."
   },
   {
    "type": "exercise",
@@ -902,7 +902,7 @@
    "section_title": "17.2 How to augment a data structure",
    "printed_page": 489,
    "pdf_page": 510,
-   "text": "17.2-3 Let ˝ be an associative binary operator, and let a be an attribute maintained in each node of a red-black tree. Suppose that you want to include in each node x an additional attribute f such that x: f = x 1 : a ˝ x 2 : a ˝ • • • ˝ x m : a, where x 1 ;x 2 ;:::;x m is the inorder listing of nodes in the subtree rooted at x . Show how to update the f attributes in O(1) time after a rotation. Modify your argument slightl y to apply it to the size attributes in order-statistic trees."
+   "text": "17.2-3 Let ˝ be an associative binary operator, and let a be an attribute maintained in each node of a red-black tree. Suppose that you want to include in each node x an additional attribute f such that x: f = x 1 : a ˝ x 2 : a ˝ • • • ˝ x m : a, where x 1 ,x 2 ,…,x m is the inorder listing of nodes in the subtree rooted at x . Show how to update the f attributes in O(1) time after a rotation. Modify your argument slightl y to apply it to the size attributes in order-statistic trees."
   },
   {
    "type": "body",
@@ -938,7 +938,7 @@
    "section_title": "17.3 Interval trees",
    "printed_page": 489,
    "pdf_page": 510,
-   "text": "A simple way to represent an interval [t 1 ;t 2 ] is as an object i with attributes i: low = t 1 (the low endpoint) and i: high = t 2 (the high endpoint). We say that in- tervals i and i 0 overlap if i \\ i 0 ≠ ;, that is, if i: low ≤ i 0 : high and i 0 : low ≤ i: high. i i i i"
+   "text": "A simple way to represent an interval [t 1 ,t 2 ] is as an object i with attributes i: low = t 1 (the low endpoint) and i: high = t 2 (the high endpoint). We say that in- tervals i and i 0 overlap if i \\ i 0 ≠ ,, that is, if i: low ≤ i 0 : high and i 0 : low ≤ i: high. i i i i"
   },
   {
    "type": "body",
@@ -983,7 +983,7 @@
    "section_title": "17.3 Interval trees",
    "printed_page": 490,
    "pdf_page": 511,
-   "text": "INTERVAL-INSERT (T;x) adds the element x , whose int attribute is assumed to contain an interval, to the interval tree T ."
+   "text": "INTERVAL-INSERT (T,x) adds the element x , whose int attribute is assumed to contain an interval, to the interval tree T ."
   },
   {
    "type": "body",
@@ -992,7 +992,7 @@
    "section_title": "17.3 Interval trees",
    "printed_page": 490,
    "pdf_page": 511,
-   "text": "INTERVAL-DELETE (T;x) removes the element x from the interval tree T ."
+   "text": "INTERVAL-DELETE (T,x) removes the element x from the interval tree T ."
   },
   {
    "type": "body",
@@ -1001,7 +1001,7 @@
    "section_title": "17.3 Interval trees",
    "printed_page": 490,
    "pdf_page": 511,
-   "text": "INTERVAL-SEARCH (T;i) returns a pointer to an element x in the interval tree T such that x: int overlaps interval i , or a pointer to the sentinel T: nil if no such element belongs to the set."
+   "text": "INTERVAL-SEARCH (T,i) returns a pointer to an element x in the interval tree T such that x: int overlaps interval i , or a pointer to the sentinel T: nil if no such element belongs to the set."
   },
   {
    "type": "body",
@@ -1100,7 +1100,7 @@
    "section_title": "17.3 Interval trees",
    "printed_page": 491,
    "pdf_page": 512,
-   "text": "We must verify that insertion and deletion take O(lg n) time on an interval tree of n nodes. It is simple enough to determine x: max in O(1) time, given interval x: int and the max values of node x ’s children: x: max = max fx: int: high;x: left : max;x: right : maxg :"
+   "text": "We must verify that insertion and deletion take O(lg n) time on an interval tree of n nodes. It is simple enough to determine x: max in O(1) time, given interval x: int and the max values of node x ’s children: x: max = max fx: int: high,x: left : max,x: right : maxg :"
   },
   {
    "type": "pseudocode",
@@ -1164,7 +1164,7 @@
    "section_title": "17.3 Interval trees",
    "printed_page": 492,
    "pdf_page": 513,
-   "text": "The only new operation is INTERVAL-SEARCH (T;i), which finds a node in tree T whose interval overlaps interval i . If there is no interval in the tree that overlaps i , the procedure returns a pointer to the sentinel T: nil."
+   "text": "The only new operation is INTERVAL-SEARCH (T,i), which finds a node in tree T whose interval overlaps interval i . If there is no interval in the tree that overlaps i , the procedure returns a pointer to the sentinel T: nil."
   },
   {
    "type": "body",
@@ -1173,7 +1173,7 @@
    "section_title": "17.3 Interval trees",
    "printed_page": 492,
    "pdf_page": 513,
-   "text": "INTERVAL-SEARCH (T;i)"
+   "text": "INTERVAL-SEARCH (T,i)"
   },
   {
    "type": "body",
@@ -1245,7 +1245,7 @@
    "section_title": "17.3 Interval trees",
    "printed_page": 493,
    "pdf_page": 514,
-   "text": "Any execution of INTERVAL-SEARCH (T;i) either returns a node whose interval overlaps i , or it returns T: nil and the tree T contains no node whose interval over- laps i ."
+   "text": "Any execution of INTERVAL-SEARCH (T,i) either returns a node whose interval overlaps i , or it returns T: nil and the tree T contains no node whose interval over- laps i ."
   },
   {
    "type": "proof",
@@ -1254,7 +1254,7 @@
    "section_title": "17.3 Interval trees",
    "printed_page": 493,
    "pdf_page": 514,
-   "text": "Proof The while loop of lines 235 terminates when either x = T: nil or i overlaps x: int. In the latter case, it is certainly correct to re turn x . Therefore, we focus on the former case, in which the while loop terminates because x = T: nil, which is the node that INTERVAL-SEARCH returns."
+   "text": "Proof The while loop of lines 2–5 terminates when either x = T: nil or i overlaps x: int. In the latter case, it is certainly correct to re turn x . Therefore, we focus on the former case, in which the while loop terminates because x = T: nil, which is the node that INTERVAL-SEARCH returns."
   },
   {
    "type": "body",
@@ -1425,7 +1425,7 @@
    "section_title": "17.3 Interval trees",
    "printed_page": 495,
    "pdf_page": 516,
-   "text": "17.3-3 Given an interval tree T and an interval i , describe how to list all intervals in T that overlap i in O(min fn;k lg ng) time, where k is the number of intervals in the output list. ( Hint: One simple method makes several queries, modifying the tree between queries. A slightly more complicated method does not modify the tree.)"
+   "text": "17.3-3 Given an interval tree T and an interval i , describe how to list all intervals in T that overlap i in O(min fn,k lg ng) time, where k is the number of intervals in the output list. ( Hint: One simple method makes several queries, modifying the tree between queries. A slightly more complicated method does not modify the tree.)"
   },
   {
    "type": "exercise",
@@ -1434,7 +1434,7 @@
    "section_title": "17.3 Interval trees",
    "printed_page": 495,
    "pdf_page": 516,
-   "text": "17.3-4 Suggest modifications to the interval-tree procedures to support the new operation INTERVAL-SEARCH-EXACTLY (T;i) , where T is an interval tree and i is an interval. The operation should return a pointer to a node x in T such that x: int: low = i: low and x: int: high = i: high, or T: nil if T contains no such node."
+   "text": "17.3-4 Suggest modifications to the interval-tree procedures to support the new operation INTERVAL-SEARCH-EXACTLY (T,i) , where T is an interval tree and i is an interval. The operation should return a pointer to a node x in T such that x: int: low = i: low and x: int: high = i: high, or T: nil if T contains no such node."
   },
   {
    "type": "body",
@@ -1461,7 +1461,7 @@
    "section_title": "17.3 Interval trees",
    "printed_page": 495,
    "pdf_page": 516,
-   "text": "MIN-GAP, which gives the absolute value of the difference of the two closest numbers in Q. For example, if we have Q = f1;5;9;15;18;22 g , then MIN-GAP(Q) returns 3, since 15 and 18 are the two closest numbers in Q. Make the operations"
+   "text": "MIN-GAP, which gives the absolute value of the difference of the two closest numbers in Q. For example, if we have Q = f1,5,9,15,18,22 g , then MIN-GAP(Q) returns 3, since 15 and 18 are the two closest numbers in Q. Make the operations"
   },
   {
    "type": "body",
@@ -1533,7 +1533,7 @@
    "section_title": "17.3 Interval trees",
    "printed_page": 496,
    "pdf_page": 517,
-   "text": "We define the Josephus problem as follows. A group of n people form a circle, and we are given a positive integer m ≤ n. Beginning with a designated first person, proceed around the circle, removing every mth person. After each person is removed, counting continues around the circle that remains. This process continues until nobody remains in the circle. The order in which the people are removed from the circle defines the (n; m)-Josephus permutation of the integers 1;2;:::;n . For example, the .7;3/-Josephus permutation is h3;6;2;7;5;1;4 i. a. Suppose that m is a constant. Describe an O(n)-time algorithm that, given an integer n, outputs the (n;m)-Josephus permutation. b. Suppose that m is not necessarily a constant. Describe an O(n lg n)-time algorithm that, given integers n and m, outputs the (n;m)-Josephus permutation."
+   "text": "We define the Josephus problem as follows. A group of n people form a circle, and we are given a positive integer m ≤ n. Beginning with a designated first person, proceed around the circle, removing every mth person. After each person is removed, counting continues around the circle that remains. This process continues until nobody remains in the circle. The order in which the people are removed from the circle defines the (n; m)-Josephus permutation of the integers 1,2,…,n . For example, the .7,3/-Josephus permutation is ⟨3,6,2,7,5,1,4⟩. a. Suppose that m is a constant. Describe an O(n)-time algorithm that, given an integer n, outputs the (n,m)-Josephus permutation. b. Suppose that m is not necessarily a constant. Describe an O(n lg n)-time algorithm that, given integers n and m, outputs the (n,m)-Josephus permutation."
   },
   {
    "type": "chapter-notes",
@@ -1560,7 +1560,7 @@
    "section_title": "17.3 Interval trees",
    "printed_page": 496,
    "pdf_page": 517,
-   "text": "McCreight (1981). The book details an interval tree that, gi ven a static database of n intervals, allows us to enumerate all k intervals that overlap a given query interval in O(k C lg n) time."
+   "text": "Mc + reight (1981). The book details an interval tree that, gi ven a static database of n intervals, allows us to enumerate all k intervals that overlap a given query interval in O(k C lg n) time."
   },
   {
    "type": "footnote",

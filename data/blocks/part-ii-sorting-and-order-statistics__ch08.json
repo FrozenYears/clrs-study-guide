@@ -77,7 +77,7 @@
    "section_title": "8.1 Lower bounds for sorting",
    "printed_page": 205,
    "pdf_page": 226,
-   "text": "A comparison sort uses only comparisons between ele ments to gain order information about an input sequence ha 1 ;a 2 ;:::;a n i. That is, given two elements a i and a j , it performs one of the tests a i <a j , a i ≤ a j , a i = a j , a i ≥ a j , or a i >a j to determine their relative order. It may not inspe ct the values of the elements or gain order information about them in any other way."
+   "text": "A comparison sort uses only comparisons between ele ments to gain order information about an input sequence ⟨a 1 ,a 2 ,…,a n⟩. That is, given two elements a i and a j , it performs one of the tests a i <a j , a i ≤ a j , a i = a j , a i ≥ a j , or a i >a j to determine their relative order. It may not inspe ct the values of the elements or gain order information about them in any other way."
   },
   {
    "type": "body",
@@ -122,7 +122,7 @@
    "section_title": "8.1 Lower bounds for sorting",
    "printed_page": 206,
    "pdf_page": 227,
-   "text": "(shown in blue) annotated by i :j indicates a comparison between a i and a j . A leaf annotated by the permutation hΩ(1); Ω(2); : : : ; Ω(n) i indicates the ordering a −.1/ ≤ a −.2/ ≤ • • • ≤ a −.n/ . The high- lighted path indicates the decisions made when sorting the input sequence ha 1 = 6;a 2 = 8;a 3 = 5i."
+   "text": "(shown in blue) annotated by i :j indicates a comparison between a i and a j . A leaf annotated by the permutation hΩ(1); Ω(2); : : : ; Ω(n) i indicates the ordering a −.1/ ≤ a −.2/ ≤ • • • ≤ a −.n/ . The high- lighted path indicates the decisions made when sorting the input sequence ha 1 = 6,a 2 = 8,a 3 = 5i."
   },
   {
    "type": "body",
@@ -140,7 +140,7 @@
    "section_title": "8.1 Lower bounds for sorting",
    "printed_page": 206,
    "pdf_page": 227,
-   "text": "2:3 indicates that a 2 >a 3 . Going right from the node labeled 1:3 indicates that a 1 >a 3 . Therefore, we have the ordering a 3 ≤ a 1 ≤ a 2 , as indicated in the leaf labeled h3;1;2 i. Because the three input elements have 3! = 6 possible permutations, the decision tree must have at least 6 leaves. comparisons of the form a i = a j are useless, which means that we can assume that no comparisons for exact equality occur. Moreover, the comparisons a i ≤ a j , a i ≥ a j , a i > a j , and a i < a j are all equivalent in that they yield identical information about the relative order of a i and a j . We therefore assume that all comparisons have the form a i ≤ a j ."
+   "text": "2:3 indicates that a 2 >a 3 . Going right from the node labeled 1:3 indicates that a 1 >a 3 . Therefore, we have the ordering a 3 ≤ a 1 ≤ a 2 , as indicated in the leaf labeled ⟨3,1,2⟩. Because the three input elements have 3! = 6 possible permutations, the decision tree must have at least 6 leaves. comparisons of the form a i = a j are useless, which means that we can assume that no comparisons for exact equality occur. Moreover, the comparisons a i ≤ a j , a i ≥ a j , a i > a j , and a i < a j are all equivalent in that they yield identical information about the relative order of a i and a j . We therefore assume that all comparisons have the form a i ≤ a j ."
   },
   {
    "type": "body",
@@ -167,7 +167,7 @@
    "section_title": "8.1 Lower bounds for sorting",
    "printed_page": 206,
    "pdf_page": 227,
-   "text": "A decision tree has each internal node annotated by i :j for some i and j in the range 1 ≤ i;j ≤ n, where n is the number of elements in the input sequence."
+   "text": "A decision tree has each internal node annotated by i :j for some i and j in the range 1 ≤ i,j ≤ n, where n is the number of elements in the input sequence."
   },
   {
    "type": "body",
@@ -425,7 +425,7 @@
    "section_title": "8.2 Counting sort",
    "printed_page": 209,
    "pdf_page": 230,
-   "text": "COUNTING-SORT(A;n;k)"
+   "text": "COUNTING-SORT(A,n,k)"
   },
   {
    "type": "body",
@@ -434,7 +434,7 @@
    "section_title": "8.2 Counting sort",
    "printed_page": 209,
    "pdf_page": 230,
-   "text": "Figure 8.2 illustrates counting sort. After the for loop of lines 233 initializes the array C to all zeros, the for loop of lines 435 makes a pass over the array A to inspect each input element. Each time it finds an input element whose value is i , it increments C[i]. Thus, after line 5, C[i] holds the number of input elements equal to i for each integer i = 0;1;:::;k . Lines 738 determine for each i = 0;1;:::;k how many input elements are less than or equal to i by keeping a running sum of the array C ."
+   "text": "Figure 8.2 illustrates counting sort. After the for loop of lines 2–3 initializes the array C to all zeros, the for loop of lines 4–5 makes a pass over the array A to inspect each input element. Each time it finds an input element whose value is i , it increments C[i]. Thus, after line 5, C[i] holds the number of input elements equal to i for each integer i = 0,1,…,k . Lines 7–8 determine for each i = 0,1,…,k how many input elements are less than or equal to i by keeping a running sum of the array C ."
   },
   {
    "type": "body",
@@ -443,7 +443,7 @@
    "section_title": "8.2 Counting sort",
    "printed_page": 209,
    "pdf_page": 230,
-   "text": "Finally, the for loop of lines 11313 makes another pass over A, but in reverse, to place each element A[j] into its correct sorted position in the output arra y B ."
+   "text": "Finally, the for loop of lines 11–13 makes another pass over A, but in reverse, to place each element A[j] into its correct sorted position in the output arra y B ."
   },
   {
    "type": "body",
@@ -470,7 +470,7 @@
    "section_title": "8.2 Counting sort",
    "printed_page": 209,
    "pdf_page": 230,
-   "text": "How much time does counting sort require? The for loop of lines 233 takes Θ(k) time, the for loop of lines 435 takes Θ(n) time, the for loop of lines 738 takes Θ(k) time, and the for loop of lines 11313 takes Θ(n) time. Thus, the overall time is Θ(k + n). In practice, we usually use counting sort when we have k = O(n), in which case the running time is Θ(n)."
+   "text": "How much time does counting sort require? The for loop of lines 2–3 takes Θ(k) time, the for loop of lines 4–5 takes Θ(n) time, the for loop of lines 7–8 takes Θ(k) time, and the for loop of lines 11–13 takes Θ(n) time. Thus, the overall time is Θ(k + n). In practice, we usually use counting sort when we have k = O(n), in which case the running time is Θ(n)."
   },
   {
    "type": "body",
@@ -635,7 +635,7 @@
    "section_title": "8.2 Counting sort",
    "printed_page": 210,
    "pdf_page": 231,
-   "text": "(b) The array C after line 8. (c)–(e) The output array B and the auxiliary array C after one, two, and three iterations of the loop in lines 11313, respectively. Only the tan elements of array B have been filled in. (f) The final sorted output array B. elements to index into an array. The Ω(n lg n) lower bound for sorting does not apply when we depart from the comparison sort model."
+   "text": "(b) The array C after line 8. (c)–(e) The output array B and the auxiliary array C after one, two, and three iterations of the loop in lines 11–13, respectively. Only the tan elements of array B have been filled in. (f) The final sorted output array B. elements to index into an array. The Ω(n lg n) lower bound for sorting does not apply when we depart from the comparison sort model."
   },
   {
    "type": "body",
@@ -653,7 +653,7 @@
    "section_title": "8.2 Counting sort",
    "printed_page": 210,
    "pdf_page": 231,
-   "text": "8.2-1 Using Figure 8.2 as a model, illustrate the operation of COUNTING-SORT on the array A = h6;0;2;0;1;3;4;6;1;3;2 i."
+   "text": "8.2-1 Using Figure 8.2 as a model, illustrate the operation of COUNTING-SORT on the array A = ⟨6,0,2,0,1,3,4,6,1,3,2⟩."
   },
   {
    "type": "exercise",
@@ -698,7 +698,7 @@
    "section_title": "8.3 Radix sort",
    "printed_page": 211,
    "pdf_page": 232,
-   "text": "At the start of each iteration of the for loop of lines 11313, the last element in A with value i that has not yet been copied into B belongs in B[C[i]] ."
+   "text": "At the start of each iteration of the for loop of lines 11–13, the last element in A with value i that has not yet been copied into B belongs in B[C[i]] ."
   },
   {
    "type": "exercise",
@@ -863,7 +863,7 @@
    "section_title": "8.3 Radix sort",
    "printed_page": 213,
    "pdf_page": 234,
-   "text": "RADIX-SORT(A;n;d)"
+   "text": "RADIX-SORT(A,n,d)"
   },
   {
    "type": "body",
@@ -962,7 +962,7 @@
    "section_title": "8.3 Radix sort",
    "printed_page": 214,
    "pdf_page": 235,
-   "text": "As r decreases, the factor b/r increases, but as r increases so does 2 r . The answer depends on whether b< blg nc. If b< blg nc, then r ≤ b implies .nC2 r / = Θ(n)."
+   "text": "As r decreases, the factor b/r increases, but as r increases so does 2 r . The answer depends on whether b< blg nc. If b< blg nc, then r ≤ b implies .n + 2 r / = Θ(n)."
   },
   {
    "type": "body",
@@ -1043,7 +1043,7 @@
    "section_title": "8.4 Bucket sort",
    "printed_page": 215,
    "pdf_page": 236,
-   "text": "RADIX-SORT calls COUNTING-SORT d times, then since each call of COUNTING- SORT makes two passes over the data (lines 435 and 11313), altogether 2d passes over the data occur. Describe how to reduce the total number of passes to d + 1."
+   "text": "RADIX-SORT calls COUNTING-SORT d times, then since each call of COUNTING- SORT makes two passes over the data (lines 4–5 and 11–13), altogether 2d passes over the data occur. Describe how to reduce the total number of passes to d + 1."
   },
   {
    "type": "exercise",
@@ -1070,7 +1070,7 @@
    "section_title": "8.4 Bucket sort",
    "printed_page": 215,
    "pdf_page": 236,
-   "text": "Bucket sort assumes that the input is drawn from a uniform distribution and has an average-case running time of O(n). Like counting sort, bucket sort is fast because it assumes something about the input. Whereas counting sort assumes that the input consists of integers in a small range, bucket sort assumes that the input is generated by a random process that distributes elements unifo rmly and independently over the interval [0;1/. (See Section C.2 for a definition of a uniform distribution.)"
+   "text": "Bucket sort assumes that the input is drawn from a uniform distribution and has an average-case running time of O(n). Like counting sort, bucket sort is fast because it assumes something about the input. Whereas counting sort assumes that the input consists of integers in a small range, bucket sort assumes that the input is generated by a random process that distributes elements unifo rmly and independently over the interval [0,1/. (See Section C.2 for a definition of a uniform distribution.)"
   },
   {
    "type": "body",
@@ -1079,7 +1079,7 @@
    "section_title": "8.4 Bucket sort",
    "printed_page": 215,
    "pdf_page": 236,
-   "text": "Bucket sort divides the interval [0;1/ into n equal-sized subintervals, or buckets, and then distributes the n input numbers into the buckets. Since the inputs are uniformly and independently distributed over [0;1/ , we do not expect many numbers to fall into each bucket. To produce the output, we simply sort the numbers in each bucket and then go through the buckets in order, listing the elements in each."
+   "text": "Bucket sort divides the interval [0,1/ into n equal-sized subintervals, or buckets, and then distributes the n input numbers into the buckets. Since the inputs are uniformly and independently distributed over [0,1/ , we do not expect many numbers to fall into each bucket. To produce the output, we simply sort the numbers in each bucket and then go through the buckets in order, listing the elements in each."
   },
   {
    "type": "body",
@@ -1130,14 +1130,14 @@
     },
     {
      "n": 8,
-     "code": "concatenate the lists B[0];B[1];:::;B[n  − 1] together in order"
+     "code": "concatenate the lists B[0],B[1],…,B[n  − 1] together in order"
     },
     {
      "n": 9,
      "code": "return the concatenated lists"
     }
    ],
-   "text": "1 let B[0 : n − 1] be a new array\n2 for i = 0 to n − 1\n3 make B[i]  an empty list\n4 for i = 1 to n\n5 insert A[i] into list B[bn • A[i]c]\n6 for i = 0 to n − 1\n7 sort list B[i]  with insertion sort\n8 concatenate the lists B[0];B[1];:::;B[n  − 1] together in order\n9 return the concatenated lists"
+   "text": "1 let B[0 : n − 1] be a new array\n2 for i = 0 to n − 1\n3 make B[i]  an empty list\n4 for i = 1 to n\n5 insert A[i] into list B[bn • A[i]c]\n6 for i = 0 to n − 1\n7 sort list B[i]  with insertion sort\n8 concatenate the lists B[0],B[1],…,B[n  − 1] together in order\n9 return the concatenated lists"
   },
   {
    "type": "figure-caption",
@@ -1146,7 +1146,7 @@
    "section_title": "8.4 Bucket sort",
    "printed_page": 216,
    "pdf_page": 237,
-   "text": "Figure 8.4 The operation of BUCKET-SORT for n = 10. (a) The input array A[1 : 10]. (b) The array B[0 : 9] of sorted lists (buckets) after line 7 of the algorithm, with slashes indicating the end of each bucket. Bucket i holds values in the half-open interval [i/10;.i + 1/=10/. The sorted output consists of a concatenation of the lists B[0];B[1];:::;B[9] in order. that there is a mechanism for maintaining such list s. (Section 10.2 describes how to implement basic operations on linked lists.) Figure 8.4 shows the operation of bucket sort on an input array of 10 numbers."
+   "text": "Figure 8.4 The operation of BUCKET-SORT for n = 10. (a) The input array A[1 : 10]. (b) The array B[0 : 9] of sorted lists (buckets) after line 7 of the algorithm, with slashes indicating the end of each bucket. Bucket i holds values in the half-open interval [i/10,.i + 1/=10/. The sorted output consists of a concatenation of the lists B[0],B[1],…,B[9] in order. that there is a mechanism for maintaining such list s. (Section 10.2 describes how to implement basic operations on linked lists.) Figure 8.4 shows the operation of bucket sort on an input array of 10 numbers."
   },
   {
    "type": "body",
@@ -1155,7 +1155,7 @@
    "section_title": "8.4 Bucket sort",
    "printed_page": 216,
    "pdf_page": 237,
-   "text": "BUCKET-SORT(A;n)"
+   "text": "BUCKET-SORT(A,n)"
   },
   {
    "type": "body",
@@ -1164,7 +1164,7 @@
    "section_title": "8.4 Bucket sort",
    "printed_page": 216,
    "pdf_page": 237,
-   "text": "To see that this algorithm works, consider two elements A[i] and A[j] . Assume without loss of generality that A[i] ≤ A[j] . Since bn • A[i]c ≤ bn • A[j] c, either element A[i] goes into the same bucket as A[j] or it goes into a bucket with a lower index. If A[i] and A[j] go into the same bucket, then the for loop of lines 637 puts them into the proper order. If A[i] and A[j] go into different buckets, then line 8 puts them into the proper order. Therefore, bucket sort works correctly."
+   "text": "To see that this algorithm works, consider two elements A[i] and A[j] . Assume without loss of generality that A[i] ≤ A[j] . Since bn • A[i]c ≤ bn • A[j] c, either element A[i] goes into the same bucket as A[j] or it goes into a bucket with a lower index. If A[i] and A[j] go into the same bucket, then the for loop of lines 6–7 puts them into the proper order. If A[i] and A[j] go into different buckets, then line 8 puts them into the proper order. Therefore, bucket sort works correctly."
   },
   {
    "type": "body",
@@ -1317,7 +1317,7 @@
    "section_title": "8.4 Bucket sort",
    "printed_page": 217,
    "pdf_page": 238,
-   "text": "D 2 − 1/n (8.3) for i = 0;1;:::;n − 1. It is no surprise that each bucket i has the same value of E [n 2 i ], since each value in the input array A is equally likely to fall in any bucket."
+   "text": "D 2 − 1/n (8.3) for i = 0,1,…,n − 1. It is no surprise that each bucket i has the same value of E [n 2 i ], since each value in the input array A is equally likely to fall in any bucket."
   },
   {
    "type": "body",
@@ -1362,7 +1362,7 @@
    "section_title": "8.4 Bucket sort",
    "printed_page": 217,
    "pdf_page": 238,
-   "text": "D 2 − 1/n; which proves equation (8.3). Using this expected value in equation (8.2), we get that the average-case running time for bucket sort is Θ(n) Cn • O(2 −1/n) = Θ(n)."
+   "text": "D 2 − 1/n; which proves equation (8.3). Using this expected value in equation (8.2), we get that the average-case running time for bucket sort is Θ(n) + n • O(2 −1/n) = Θ(n)."
   },
   {
    "type": "body",
@@ -1389,7 +1389,7 @@
    "section_title": "8.4 Bucket sort",
    "printed_page": 218,
    "pdf_page": 239,
-   "text": "A = h:79; :13; :16; :64; :39; :20; :89; :53; :71; :42 i."
+   "text": "A = ⟨:79; :13; :16; :64; :39; :20; :89; :53; :71; :42⟩."
   },
   {
    "type": "exercise",
@@ -1416,7 +1416,7 @@
    "section_title": "8.4 Bucket sort",
    "printed_page": 218,
    "pdf_page": 239,
-   "text": "8.4-4 An array A of size n > 10 is filled in the following way. For each element A[i], choose two random variables x i and y i uniformly and independently from [0;1/ ."
+   "text": "8.4-4 An array A of size n > 10 is filled in the following way. For each element A[i], choose two random variables x i and y i uniformly and independently from [0,1/ ."
   },
   {
    "type": "body",
@@ -1461,7 +1461,7 @@
    "section_title": "8.4 Bucket sort",
    "printed_page": 218,
    "pdf_page": 239,
-   "text": "You are given n points in the unit disk, √i = (x i ;y i ), such that 0<x 2 i + y 2 i ≤ 1 for i = 1;2;:::;n . Suppose that the points are uniformly distributed , that is, the probability of finding a point in any region of the disk is proportional to the area of that region. Design an algorithm with an average-case running time of Θ(n) to sort the n points by their distances d i = p x 2 i + y 2 i from the origin. (Hint: Design the bucket sizes in BUCKET-SORT to reflect the uniform distribution of the points in the unit disk.)"
+   "text": "You are given n points in the unit disk, √i = (x i ,y i ), such that 0<x 2 i + y 2 i ≤ 1 for i = 1,2,…,n . Suppose that the points are uniformly distributed , that is, the probability of finding a point in any region of the disk is proportional to the area of that region. Design an algorithm with an average-case running time of Θ(n) to sort the n points by their distances d i = p x 2 i + y 2 i from the origin. (Hint: Design the bucket sizes in BUCKET-SORT to reflect the uniform distribution of the points in the unit disk.)"
   },
   {
    "type": "body",
@@ -1488,7 +1488,7 @@
    "section_title": "8.4 Bucket sort",
    "printed_page": 219,
    "pdf_page": 240,
-   "text": "X 1 ;X 2 ;:::;X n from a continuous probability distribution function P that is computable in O(1) time (given y you can find x such that P(x) = y in O(1) time)."
+   "text": "X 1 ,X 2 ,…,X n from a continuous probability distribution function P that is computable in O(1) time (given y you can find x such that P(x) = y in O(1) time)."
   },
   {
    "type": "body",
@@ -1542,7 +1542,7 @@
    "section_title": "8.4 Bucket sort",
    "printed_page": 219,
    "pdf_page": 240,
-   "text": "Now consider a randomized comparison sort B . We can extend the decision-tree model to handle randomization by incorporating two kinds of nodes: ordinary comparison nodes and \"randomization\" nodes. A randomization node models a random choice of the form RANDOM(1;r) made by algorithm B . The node has r children, each of which is equally likely to be chosen during an execution of the algorithm. f. Show that for any randomized comparison sort B , there exists a deterministic comparison sort A whose expected number of comparisons is no more tha n those made by B ."
+   "text": "Now consider a randomized comparison sort B . We can extend the decision-tree model to handle randomization by incorporating two kinds of nodes: ordinary comparison nodes and \"randomization\" nodes. A randomization node models a random choice of the form RANDOM(1,r) made by algorithm B . The node has r children, each of which is equally likely to be chosen during an execution of the algorithm. f. Show that for any randomized comparison sort B , there exists a deterministic comparison sort A whose expected number of comparisons is no more tha n those made by B ."
   },
   {
    "type": "problem",
@@ -1650,7 +1650,7 @@
    "section_title": "8.4 Bucket sort",
    "printed_page": 221,
    "pdf_page": 242,
-   "text": "Suppose that, instead of sorting an array, we just require that the elements increase on average. More precisely, we call an n-element array A k-sorted if, for all i = 1;2;:::;n − k, the following holds:"
+   "text": "Suppose that, instead of sorting an array, we just require that the elements increase on average. More precisely, we call an n-element array A k-sorted if, for all i = 1,2,…,n − k, the following holds:"
   },
   {
    "type": "body",
@@ -1659,7 +1659,7 @@
    "section_title": "8.4 Bucket sort",
    "printed_page": 221,
    "pdf_page": 242,
-   "text": "P i Ck−1 j Di A[j] k ≤"
+   "text": "P i + k−1 j Di A[j] k ≤"
   },
   {
    "type": "body",
@@ -1668,7 +1668,7 @@
    "section_title": "8.4 Bucket sort",
    "printed_page": 221,
    "pdf_page": 242,
-   "text": "P i Ck j Di C1 A[j] k : a. What does it mean for an array to be 1-sorted? b. Give a permutation of the numbers 1;2;:::;10 that is 2-sorted, but not sorted. c. Prove that an n-element array is k-sorted if and only if A[i] ≤ A[i + k] for all i = 1;2;:::;n − k. d. Give an algorithm that k-sorts an n-element array in O(n lg(n/k)) time."
+   "text": "P i + k j Di + 1 A[j] k : a. What does it mean for an array to be 1-sorted? b. Give a permutation of the numbers 1,2,…,10 that is 2-sorted, but not sorted. c. Prove that an n-element array is k-sorted if and only if A[i] ≤ A[i + k] for all i = 1,2,…,n − k. d. Give an algorithm that k-sorts an n-element array in O(n lg(n/k)) time."
   },
   {
    "type": "body",
@@ -1752,7 +1752,7 @@
    "section_title": "8.4 Bucket sort",
    "printed_page": 222,
    "pdf_page": 243,
-   "text": "COMPARE-EXCHANGE (A;i;j)"
+   "text": "COMPARE-EXCHANGE (A,i,j)"
   },
   {
    "type": "body",
@@ -1810,10 +1810,10 @@
     },
     {
      "n": 3,
-     "code": "COMPARE-EXCHANGE  (A;j;j + 1)"
+     "code": "COMPARE-EXCHANGE  (A,j,j + 1)"
     }
    ],
-   "text": "1 for i = 2 to n\n2 for j = i − 1 downto 1\n3 COMPARE-EXCHANGE  (A;j;j + 1)"
+   "text": "1 for i = 2 to n\n2 for j = i − 1 downto 1\n3 COMPARE-EXCHANGE  (A,j,j + 1)"
   },
   {
    "type": "body",
@@ -1822,7 +1822,7 @@
    "section_title": "8.4 Bucket sort",
    "printed_page": 223,
    "pdf_page": 244,
-   "text": "COMPARE-EXCHANGE-INSERTION-SORT (A;n)"
+   "text": "COMPARE-EXCHANGE-INSERTION-SORT (A,n)"
   },
   {
    "type": "body",
@@ -1966,7 +1966,7 @@
    "section_title": "8.4 Bucket sort",
    "printed_page": 224,
    "pdf_page": 245,
-   "text": "(c) After transposing and reshaping in step 2. (d) After sorting each column in step 3. (e) After performing step 4, which inverts the permutation from step 2. (f) After sorting each column in step 5. (g) After shifting by half a column in step 6. (h) After sorting each column in step 7. (i) After performing step 8, which inverts the permutation from step 6. Steps 638 sort the bottom half of each column with the top half of the next column. After step 8, the array is sorted in column-major order."
+   "text": "(c) After transposing and reshaping in step 2. (d) After sorting each column in step 3. (e) After performing step 4, which inverts the permutation from step 2. (f) After sorting each column in step 5. (g) After shifting by half a column in step 6. (h) After sorting each column in step 7. (i) After performing step 8, which inverts the permutation from step 6. Steps 6–8 sort the bottom half of each column with the top half of the next column. After step 8, the array is sorted in column-major order."
   },
   {
    "type": "body",
@@ -2029,7 +2029,7 @@
    "section_title": "8.4 Bucket sort",
    "printed_page": 224,
    "pdf_page": 245,
-   "text": "You can think of steps 638 as a single step that sorts the bottom half of each column and the top half of the next column. Figure 8.5 shows an example of the steps of columnsort with r = 6 and s = 3. (Even though this example violates the requirement that r ≥ 2s 2 , it happens to work.) c. Argue that we can treat columnsort as an oblivious compare-exchange algorithm, even if we do not know what sorting method the odd steps use."
+   "text": "You can think of steps 6–8 as a single step that sorts the bottom half of each column and the top half of the next column. Figure 8.5 shows an example of the steps of columnsort with r = 6 and s = 3. (Even though this example violates the requirement that r ≥ 2s 2 , it happens to work.) c. Argue that we can treat columnsort as an oblivious compare-exchange algorithm, even if we do not know what sorting method the odd steps use."
   },
   {
    "type": "chapter-notes",
@@ -2047,7 +2047,7 @@
    "section_title": "8.4 Bucket sort",
    "printed_page": 225,
    "pdf_page": 246,
-   "text": "Although it might seem hard to believe that columns ort actually sorts, you will use the 0-1 sorting lemma to prove that it does. The 0-1 sorting lemma applies because we can treat columnsort as an oblivious compare-exchange algorithm. A couple of definitions will help you apply the 0-1 sorting lemma. We say that an area of an array is clean if we know that it contains either all 0s or all 1s or if it is empty. Otherwise, the area might contain mixed 0s and 1s, and it is dirty. From here on, assume that the input array contains only 0s and 1s, and that we can treat it as an array with r rows and s columns. d. Prove that after steps 133, the array consists of clean rows of 0s at the top, clean rows of 1s at the bottom, and at most s dirty rows between them. (One of the clean rows could be empty.) e. Prove that after step 4, the array, read in column-major order, starts with a clean area of 0s, ends with a clean area of 1s, and has a dirty area of at most s 2 elements in the middle. (Again, one of the clean areas could be empty.) f. Prove that steps 538 produce a fully sorted 0-1 output. Conclude that columnsort correctly sorts all inputs containing arbitrary values. g. Now suppose that s does not divide r . Prove that after steps 133, the array consists of clean rows of 0s at the top, clean rows of 1s at the bottom, and at most 2s − 1 dirty rows between them. (Once again, one of the clean areas could be empty.) How large must r be, compared with s , for columnsort to correctly sort when s does not divide r ? h. Suggest a simple change to step 1 that allows us to maintain the requirement that r ≥ 2s 2 even when s does not divide r , and prove that with your change, columnsort correctly sorts."
+   "text": "Although it might seem hard to believe that columns ort actually sorts, you will use the 0-1 sorting lemma to prove that it does. The 0-1 sorting lemma applies because we can treat columnsort as an oblivious compare-exchange algorithm. A couple of definitions will help you apply the 0-1 sorting lemma. We say that an area of an array is clean if we know that it contains either all 0s or all 1s or if it is empty. Otherwise, the area might contain mixed 0s and 1s, and it is dirty. From here on, assume that the input array contains only 0s and 1s, and that we can treat it as an array with r rows and s columns. d. Prove that after steps 1–3, the array consists of clean rows of 0s at the top, clean rows of 1s at the bottom, and at most s dirty rows between them. (One of the clean rows could be empty.) e. Prove that after step 4, the array, read in column-major order, starts with a clean area of 0s, ends with a clean area of 1s, and has a dirty area of at most s 2 elements in the middle. (Again, one of the clean areas could be empty.) f. Prove that steps 5–8 produce a fully sorted 0-1 output. Conclude that columnsort correctly sorts all inputs containing arbitrary values. g. Now suppose that s does not divide r . Prove that after steps 1–3, the array consists of clean rows of 0s at the top, clean rows of 1s at the bottom, and at most 2s − 1 dirty rows between them. (Once again, one of the clean areas could be empty.) How large must r be, compared with s , for columnsort to correctly sort when s does not divide r ? h. Suggest a simple change to step 1 that allows us to maintain the requirement that r ≥ 2s 2 even when s does not divide r , and prove that with your change, columnsort correctly sorts."
   },
   {
    "type": "chapter-notes",
@@ -2137,7 +2137,7 @@
    "section_title": "8.4 Bucket sort",
    "printed_page": 227,
    "pdf_page": 248,
-   "text": "The i th order statistic of a set of n elements is the i th smallest element. For example, the minimum of a set of elements is the first order statistic (i = 1), and the maximum is the nth order statistic (i = n). A median, informally, is the \"halfway point\" of the set. When n is odd, the median is unique, occurring at i = (n C1)/2. When n is even, there are two medians, the lower median occurring at i = n/2 and the upper median occurring at i = n/2 + 1. Thus, regardless of the parity of n, medians occur at i = ⌊(n + 1)/2⌋ and i = ⌈(n + 1)/2⌉. For simplicity in this text, however, we consistently u se the phrase \"the median\" to refer to the lower median."
+   "text": "The i th order statistic of a set of n elements is the i th smallest element. For example, the minimum of a set of elements is the first order statistic (i = 1), and the maximum is the nth order statistic (i = n). A median, informally, is the \"halfway point\" of the set. When n is odd, the median is unique, occurring at i = (n + 1)/2. When n is even, there are two medians, the lower median occurring at i = n/2 and the upper median occurring at i = n/2 + 1. Thus, regardless of the parity of n, medians occur at i = ⌊(n + 1)/2⌋ and i = ⌈(n + 1)/2⌉. For simplicity in this text, however, we consistently u se the phrase \"the median\" to refer to the lower median."
   },
   {
    "type": "body",
@@ -2182,7 +2182,7 @@
    "section_title": "8.4 Bucket sort",
    "printed_page": 227,
    "pdf_page": 248,
-   "text": "Section 9.1 examines the problem of selecting the minimum and maximum of a set of elements. More interesting is the general selection problem, which we investigate in the subsequent two sections. Section 9.2 analyzes a practical randomized algorithm that achieves an O(n) expected running time, assuming dis- 1 As in the footnote on page 182, you can enforce the assumption that the numbers are distinct by converting each input value A[i] to an ordered pair (A[i];i) with (A[i];i) < (A[j];j) if either"
+   "text": "Section 9.1 examines the problem of selecting the minimum and maximum of a set of elements. More interesting is the general selection problem, which we investigate in the subsequent two sections. Section 9.2 analyzes a practical randomized algorithm that achieves an O(n) expected running time, assuming dis- 1 As in the footnote on page 182, you can enforce the assumption that the numbers are distinct by converting each input value A[i] to an ordered pair (A[i],i) with (A[i],i) < (A[j],j) if either"
   },
   {
    "type": "body",

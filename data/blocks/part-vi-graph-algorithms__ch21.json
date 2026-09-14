@@ -37,7 +37,7 @@
    "section_title": "21.1 Growing a minimum spanning tree",
    "printed_page": 586,
    "pdf_page": 607,
-   "text": "Figure 21.1 A minimum spanning tree for a connected graph. The weights on edges are shown, and the blue edges form a minimum spanning tree. Th e total weight of the tree shown is 37. This minimum spanning tree is not unique: removing the edge (b;c) and replacing it with the edge (a;h) yields another spanning tree with weight 37."
+   "text": "Figure 21.1 A minimum spanning tree for a connected graph. The weights on edges are shown, and the blue edges form a minimum spanning tree. Th e total weight of the tree shown is 37. This minimum spanning tree is not unique: removing the edge (b,c) and replacing it with the edge (a,h) yields another spanning tree with weight 37."
   },
   {
    "type": "body",
@@ -82,7 +82,7 @@
    "section_title": "21.1 Growing a minimum spanning tree",
    "printed_page": 586,
    "pdf_page": 607,
-   "text": "G = (V;E) with a weight function w W E ! R. The goal is to find a minimum spanning tree for G. The two algorithms considered in this chapter use a greedy approach to the problem, although they differ in how they apply this approach."
+   "text": "G = (V,E) with a weight function w W E ! R. The goal is to find a minimum spanning tree for G. The two algorithms considered in this chapter use a greedy approach to the problem, although they differ in how they apply this approach."
   },
   {
    "type": "body",
@@ -122,18 +122,18 @@
     },
     {
      "n": 3,
-     "code": "find an edge (u;v)  that is safe for A"
+     "code": "find an edge (u,v)  that is safe for A"
     },
     {
      "n": 4,
-     "code": "A = A [ f(u;v) g"
+     "code": "A = A [ f(u,v) g"
     },
     {
      "n": 5,
      "code": "return A"
     }
    ],
-   "text": "1 A = ;\n2 while A does not form a spanning tree\n3 find an edge (u;v)  that is safe for A\n4 A = A [ f(u;v) g\n5 return A"
+   "text": "1 A = ;\n2 while A does not form a spanning tree\n3 find an edge (u,v)  that is safe for A\n4 A = A [ f(u,v) g\n5 return A"
   },
   {
    "type": "body",
@@ -142,7 +142,7 @@
    "section_title": "21.1 Growing a minimum spanning tree",
    "printed_page": 587,
    "pdf_page": 608,
-   "text": "GENERIC-MST (G;w)"
+   "text": "GENERIC-MST (G,w)"
   },
   {
    "type": "body",
@@ -151,7 +151,7 @@
    "section_title": "21.1 Growing a minimum spanning tree",
    "printed_page": 587,
    "pdf_page": 608,
-   "text": "Each step determines an edge (u;v) that the procedure can add to A without violating this invariant, in the sense that A [ f(u;v) g is also a subset of a minimum spanning tree. We call such an edge a safe edge for A, since it can be added safely to A while maintaining the invariant."
+   "text": "Each step determines an edge (u,v) that the procedure can add to A without violating this invariant, in the sense that A [ f(u,v) g is also a subset of a minimum spanning tree. We call such an edge a safe edge for A, since it can be added safely to A while maintaining the invariant."
   },
   {
    "type": "body",
@@ -178,7 +178,7 @@
    "section_title": "21.1 Growing a minimum spanning tree",
    "printed_page": 587,
    "pdf_page": 608,
-   "text": "Maintenance: The loop in lines 234 maintains the invariant by adding only safe edges."
+   "text": "Maintenance: The loop in lines 2–4 maintains the invariant by adding only safe edges."
   },
   {
    "type": "body",
@@ -196,7 +196,7 @@
    "section_title": "21.1 Growing a minimum spanning tree",
    "printed_page": 587,
    "pdf_page": 608,
-   "text": "The tricky part is, of course, finding a safe edge in line 3. One must exist, since when line 3 is executed, the invariant dictates that there is a spanning tree T such that A ⊆ T . Within the while loop body, A must be a proper subset of T , and therefore there must be an edge (u;v) 2 T such that (u;v) … A and (u;v) is safe for A."
+   "text": "The tricky part is, of course, finding a safe edge in line 3. One must exist, since when line 3 is executed, the invariant dictates that there is a spanning tree T such that A ⊆ T . Within the while loop body, A must be a proper subset of T , and therefore there must be an edge (u,v) 2 T such that (u,v) … A and (u,v) is safe for A."
   },
   {
    "type": "body",
@@ -214,7 +214,7 @@
    "section_title": "21.1 Growing a minimum spanning tree",
    "printed_page": 587,
    "pdf_page": 608,
-   "text": "We first need some definitions. A cut (S;V − S) of an undirected graph G ="
+   "text": "We first need some definitions. A cut (S,V − S) of an undirected graph G ="
   },
   {
    "type": "body",
@@ -223,7 +223,7 @@
    "section_title": "21.1 Growing a minimum spanning tree",
    "printed_page": 587,
    "pdf_page": 608,
-   "text": "(V;E) is a partition of V . Figure 21.2 illustrates this notion. We say that an edge (u;v) 2 E crosses the cut (S;V − S) if one of its endpoints belongs to S and the other belongs to V − S . A cut respects a set A of edges if no edge in A crosses the cut. An edge is a light edge crossing a cut if its weight is the minimum of any edge crossing the cut. There can be more than one l ight edge crossing a cut in the case of ties. More generally, we say that an edge i s a light edge satisfying a given property if its weight is the minimum of any edge satisfying the property."
+   "text": "(V,E) is a partition of V . Figure 21.2 illustrates this notion. We say that an edge (u,v) 2 E crosses the cut (S,V − S) if one of its endpoints belongs to S and the other belongs to V − S . A cut respects a set A of edges if no edge in A crosses the cut. An edge is a light edge crossing a cut if its weight is the minimum of any edge crossing the cut. There can be more than one l ight edge crossing a cut in the case of ties. More generally, we say that an edge i s a light edge satisfying a given property if its weight is the minimum of any edge satisfying the property."
   },
   {
    "type": "body",
@@ -250,7 +250,7 @@
    "section_title": "21.1 Growing a minimum spanning tree",
    "printed_page": 587,
    "pdf_page": 608,
-   "text": "Let G = (V;E) be a connected, undirected graph with a real-valued weight function w defined on E. Let A be a subset of E that is included in some minimum b a h c g i d f e"
+   "text": "Let G = (V,E) be a connected, undirected graph with a real-valued weight function w defined on E. Let A be a subset of E that is included in some minimum b a h c g i d f e"
   },
   {
    "type": "body",
@@ -259,7 +259,7 @@
    "section_title": "21.1 Growing a minimum spanning tree",
    "printed_page": 587,
    "pdf_page": 608,
-   "text": "Let G = (V;E) be a connected, undirected graph with a real-valued weight function w defined on E. Let A be a subset of E that is included in some minimum spanning tree for G, and let C = (V C ;E C ) be a connected component (tree) in the forest G A = (V;A) . If (u;v) is a light edge connecting C to some other component in G A , then (u;v) is safe for A."
+   "text": "Let G = (V,E) be a connected, undirected graph with a real-valued weight function w defined on E. Let A be a subset of E that is included in some minimum spanning tree for G, and let C = (V C ,E C ) be a connected component (tree) in the forest G A = (V,A) . If (u,v) is a light edge connecting C to some other component in G A , then (u,v) is safe for A."
   },
   {
    "type": "figure-caption",
@@ -268,7 +268,7 @@
    "section_title": "21.1 Growing a minimum spanning tree",
    "printed_page": 588,
    "pdf_page": 609,
-   "text": "Figure 21.2 A cut (S;V − S) of the graph from Figure 21.1. Orange vertices belong to the set S , and tan vertices belong to V − S . The edges crossing the cut are those connecting t an vertices with orange vertices. The edge (d;c) is the unique light edge crossing the cut. Blue edges form a subset A of the edges. The cut (S;V − S) respects A, since no edge of A crosses the cut. spanning tree for G, let (S;V − S) be any cut of G that respects A, and let (u;v) be a light edge crossing (S;V − S). Then, edge (u;v) is safe for A."
+   "text": "Figure 21.2 A cut (S,V − S) of the graph from Figure 21.1. Orange vertices belong to the set S , and tan vertices belong to V − S . The edges crossing the cut are those connecting t an vertices with orange vertices. The edge (d,c) is the unique light edge crossing the cut. Blue edges form a subset A of the edges. The cut (S,V − S) respects A, since no edge of A crosses the cut. spanning tree for G, let (S,V − S) be any cut of G that respects A, and let (u,v) be a light edge crossing (S,V − S). Then, edge (u,v) is safe for A."
   },
   {
    "type": "proof",
@@ -277,7 +277,7 @@
    "section_title": "21.1 Growing a minimum spanning tree",
    "printed_page": 588,
    "pdf_page": 609,
-   "text": "Proof Let T be a minimum spanning tree that includes A, and assume that T does not contain the light edge (u;v), since if it does, we are done. We9ll construct another minimum spanning tree T 0 that includes A [ f(u;v) g by using a cut-andpaste technique, thereby showing that (u;v) is a safe edge for A."
+   "text": "Proof Let T be a minimum spanning tree that includes A, and assume that T does not contain the light edge (u,v), since if it does, we are done. We9ll construct another minimum spanning tree T 0 that includes A [ f(u,v) g by using a cut-andpaste technique, thereby showing that (u,v) is a safe edge for A."
   },
   {
    "type": "body",
@@ -286,7 +286,7 @@
    "section_title": "21.1 Growing a minimum spanning tree",
    "printed_page": 588,
    "pdf_page": 609,
-   "text": "The edge (u;v) forms a cycle with the edges on the simple path p from u to v in T , as Figure 21.3 illustrates. Since u and v are on opposite sides of the cut (S;V − S), at least one edge in T lies on the simple path p and also crosses the cut. Let (x;y) be any such edge. The edge (x;y) is not in A, because the cut respects A. Since (x;y) is on the unique simple path from u to v in T , removing (x;y) breaks T into two components. Adding (u;v) reconnects them to form a new spanning tree T 0 = (T − f(x;y) g) [ f(u;v) g."
+   "text": "The edge (u,v) forms a cycle with the edges on the simple path p from u to v in T , as Figure 21.3 illustrates. Since u and v are on opposite sides of the cut (S,V − S), at least one edge in T lies on the simple path p and also crosses the cut. Let (x,y) be any such edge. The edge (x,y) is not in A, because the cut respects A. Since (x,y) is on the unique simple path from u to v in T , removing (x,y) breaks T into two components. Adding (u,v) reconnects them to form a new spanning tree T 0 = (T − f(x,y) g) [ f(u,v) g."
   },
   {
    "type": "body",
@@ -295,7 +295,7 @@
    "section_title": "21.1 Growing a minimum spanning tree",
    "printed_page": 588,
    "pdf_page": 609,
-   "text": "We next show that T 0 is a minimum spanning tree. Since (u;v) is a light edge crossing (S;V − S) and (x;y) also crosses this cut, w(u;v) ≤ w(x;y) . Therefore, w(T 0 ) = w(T) − w(x;y) + w(u;v)"
+   "text": "We next show that T 0 is a minimum spanning tree. Since (u,v) is a light edge crossing (S,V − S) and (x,y) also crosses this cut, w(u,v) ≤ w(x,y) . Therefore, w(T 0 ) = w(T) − w(x,y) + w(u,v)"
   },
   {
    "type": "body",
@@ -313,7 +313,7 @@
    "section_title": "21.1 Growing a minimum spanning tree",
    "printed_page": 588,
    "pdf_page": 609,
-   "text": "It remains to show that (u;v) is actually a safe edge for A. We have A ⊆ T 0 , since A ⊆ T and (x;y) … A, and thus, A [ f(u;v) g ⊆ T 0 . Consequently, since T 0 is a minimum spanning tree, (u;v) is safe for A."
+   "text": "It remains to show that (u,v) is actually a safe edge for A. We have A ⊆ T 0 , since A ⊆ T and (x,y) … A, and thus, A [ f(u,v) g ⊆ T 0 . Consequently, since T 0 is a minimum spanning tree, (u,v) is safe for A."
   },
   {
    "type": "theorem",
@@ -322,7 +322,7 @@
    "section_title": "21.1 Growing a minimum spanning tree",
    "printed_page": 588,
    "pdf_page": 609,
-   "text": "Theorem 21.1 provides insight into how the GENERIC-MST method works on a connected graph G = (V;E) . As the method proceeds, the set A is always acyclic, since it is a subset of a minimum spanning tree and a tree may not contain a cycle. y u x p v"
+   "text": "Theorem 21.1 provides insight into how the GENERIC-MST method works on a connected graph G = (V,E) . As the method proceeds, the set A is always acyclic, since it is a subset of a minimum spanning tree and a tree may not contain a cycle. y u x p v"
   },
   {
    "type": "figure-caption",
@@ -331,7 +331,7 @@
    "section_title": "21.1 Growing a minimum spanning tree",
    "printed_page": 589,
    "pdf_page": 610,
-   "text": "Figure 21.3 The proof of Theorem 21.1. Orange vertices belong to S , and tan vertices belong to V − S . Only edges in the minimum spanning tree T are shown, along with edge (u;v) , which does not lie in T . The edges in A are blue, and (u;v) is a light edge crossing the cut (S;V − S). The edge (x;y) is an edge on the unique simple path p from u to v in T . To form a minimum spanning tree T 0 that contains (u;v) , remove the edge (x;y) from T and add the edge (u;v) ."
+   "text": "Figure 21.3 The proof of Theorem 21.1. Orange vertices belong to S , and tan vertices belong to V − S . Only edges in the minimum spanning tree T are shown, along with edge (u,v) , which does not lie in T . The edges in A are blue, and (u,v) is a light edge crossing the cut (S,V − S). The edge (x,y) is an edge on the unique simple path p from u to v in T . To form a minimum spanning tree T 0 that contains (u,v) , remove the edge (x,y) from T and add the edge (u,v) ."
   },
   {
    "type": "body",
@@ -340,7 +340,7 @@
    "section_title": "21.1 Growing a minimum spanning tree",
    "printed_page": 589,
    "pdf_page": 610,
-   "text": "At any point in the execution, the graph G A = (V;A) is a forest, and each of the connected components of G A is a tree. (Some of the trees may contain just one vertex, as is the case, for example, when the metho d begins: A is empty and the forest contains |V| trees, one for each vertex.) Moreover, any safe edge (u;v) for A connects distinct components of G A , since A [ f(u;v) g must be acyclic."
+   "text": "At any point in the execution, the graph G A = (V,A) is a forest, and each of the connected components of G A is a tree. (Some of the trees may contain just one vertex, as is the case, for example, when the metho d begins: A is empty and the forest contains |V| trees, one for each vertex.) Moreover, any safe edge (u,v) for A connects distinct components of G A , since A [ f(u,v) g must be acyclic."
   },
   {
    "type": "body",
@@ -349,7 +349,7 @@
    "section_title": "21.1 Growing a minimum spanning tree",
    "printed_page": 589,
    "pdf_page": 610,
-   "text": "The while loop in lines 234 of GENERIC-MST executes |V| − 1 times because it finds one of the |V| − 1 edges of a minimum spanning tree in each iteration."
+   "text": "The while loop in lines 2–4 of GENERIC-MST executes |V| − 1 times because it finds one of the |V| − 1 edges of a minimum spanning tree in each iteration."
   },
   {
    "type": "body",
@@ -385,7 +385,7 @@
    "section_title": "21.1 Growing a minimum spanning tree",
    "printed_page": 589,
    "pdf_page": 610,
-   "text": "Proof The cut (V C ;V − V C ) respects A, and (u;v) is a light edge for this cut."
+   "text": "Proof The cut (V C ,V − V C ) respects A, and (u,v) is a light edge for this cut."
   },
   {
    "type": "body",
@@ -394,7 +394,7 @@
    "section_title": "21.1 Growing a minimum spanning tree",
    "printed_page": 589,
    "pdf_page": 610,
-   "text": "Therefore, (u;v) is safe for A."
+   "text": "Therefore, (u,v) is safe for A."
   },
   {
    "type": "exercise",
@@ -403,7 +403,7 @@
    "section_title": "21.1 Growing a minimum spanning tree",
    "printed_page": 590,
    "pdf_page": 611,
-   "text": "21.1-1 Let (u;v) be a minimum-weight edge in a connected graph G. Show that (u;v) belongs to some minimum spanning tree of G."
+   "text": "21.1-1 Let (u,v) be a minimum-weight edge in a connected graph G. Show that (u,v) belongs to some minimum spanning tree of G."
   },
   {
    "type": "exercise",
@@ -421,7 +421,7 @@
    "section_title": "21.1 Growing a minimum spanning tree",
    "printed_page": 590,
    "pdf_page": 611,
-   "text": "(V;E) be a connected, undirected graph with a real-valued weight function w defined on E. Let A be a subset of E that is included in some minimum spanning tree for G, let (S;V − S) be any cut of G that respects A, and let (u;v) be a safe edge for A crossing (S;V − S). Then, (u;v) is a light edge for the cut. Show that the professor9s conjecture is incorrect by giving a counterexample."
+   "text": "(V,E) be a connected, undirected graph with a real-valued weight function w defined on E. Let A be a subset of E that is included in some minimum spanning tree for G, let (S,V − S) be any cut of G that respects A, and let (u,v) be a safe edge for A crossing (S,V − S). Then, (u,v) is a light edge for the cut. Show that the professor9s conjecture is incorrect by giving a counterexample."
   },
   {
    "type": "exercise",
@@ -430,7 +430,7 @@
    "section_title": "21.1 Growing a minimum spanning tree",
    "printed_page": 590,
    "pdf_page": 611,
-   "text": "21.1-3 Show that if an edge (u;v) is contained in some minimum spanning tree, then it is a light edge crossing some cut of the graph."
+   "text": "21.1-3 Show that if an edge (u,v) is contained in some minimum spanning tree, then it is a light edge crossing some cut of the graph."
   },
   {
    "type": "exercise",
@@ -439,7 +439,7 @@
    "section_title": "21.1 Growing a minimum spanning tree",
    "printed_page": 590,
    "pdf_page": 611,
-   "text": "21.1-4 Give a simple example of a connected graph such that the set of edges f(u;v) W there exists a cut (S;V − S) such that (u;v) is a light edge crossing (S;V − S)g does not form a minimum spanning tree."
+   "text": "21.1-4 Give a simple example of a connected graph such that the set of edges f(u,v) W there exists a cut (S,V − S) such that (u,v) is a light edge crossing (S,V − S)g does not form a minimum spanning tree."
   },
   {
    "type": "exercise",
@@ -448,7 +448,7 @@
    "section_title": "21.1 Growing a minimum spanning tree",
    "printed_page": 590,
    "pdf_page": 611,
-   "text": "21.1-5 Let e be a maximum-weight edge on some cycle of connected graph G = (V;E) ."
+   "text": "21.1-5 Let e be a maximum-weight edge on some cycle of connected graph G = (V,E) ."
   },
   {
    "type": "body",
@@ -457,7 +457,7 @@
    "section_title": "21.1 Growing a minimum spanning tree",
    "printed_page": 590,
    "pdf_page": 611,
-   "text": "Prove that there is a minimum spanning tree of G 0 = (V;E − feg) that is also a minimum spanning tree of G. That is, there is a minimum spanning tree of G that does not include e."
+   "text": "Prove that there is a minimum spanning tree of G 0 = (V,E − feg) that is also a minimum spanning tree of G. That is, there is a minimum spanning tree of G that does not include e."
   },
   {
    "type": "exercise",
@@ -493,7 +493,7 @@
    "section_title": "21.1 Growing a minimum spanning tree",
    "printed_page": 591,
    "pdf_page": 612,
-   "text": "21.1-9 Let T be a minimum spanning tree of a graph G = (V;E) , and let V 0 be a subset of V . Let T 0 be the subgraph of T induced by V 0 , and let G 0 be the subgraph of G induced by V 0 . Show that if T 0 is connected, then T 0 is a minimum spanning tree of G 0 ."
+   "text": "21.1-9 Let T be a minimum spanning tree of a graph G = (V,E) , and let V 0 be a subset of V . Let T 0 be the subgraph of T induced by V 0 , and let G 0 be the subgraph of G induced by V 0 . Show that if T 0 is connected, then T 0 is a minimum spanning tree of G 0 ."
   },
   {
    "type": "exercise",
@@ -511,7 +511,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 591,
    "pdf_page": 612,
-   "text": "More formally, let T be a minimum spanning tree for G with edge weights given by weight function w. Choose one edge (x;y) 2 T and a positive number k, and define the weight function w 0 by w 0 (u;v) ="
+   "text": "More formally, let T be a minimum spanning tree for G with edge weights given by weight function w. Choose one edge (x,y) 2 T and a positive number k, and define the weight function w 0 by w 0 (u,v) ="
   },
   {
    "type": "body",
@@ -520,7 +520,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 591,
    "pdf_page": 612,
-   "text": "( w(u;v) if (u;v) ≠ (x;y); w(x;y) − k if (u;v) = (x;y):"
+   "text": "( w(u,v) if (u,v) ≠ (x,y); w(x,y) − k if (u,v) = (x,y):"
   },
   {
    "type": "body",
@@ -655,7 +655,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 592,
    "pdf_page": 613,
-   "text": "Kruskal9s algorithm finds a safe edge to add to the growing forest by finding, of all the edges that connect any two trees in the forest, an edge (u;v) with the lowest weight. Let C 1 and C 2 denote the two trees that are connected by (u;v) . Since"
+   "text": "Kruskal9s algorithm finds a safe edge to add to the growing forest by finding, of all the edges that connect any two trees in the forest, an edge (u,v) with the lowest weight. Let C 1 and C 2 denote the two trees that are connected by (u,v) . Since"
   },
   {
    "type": "body",
@@ -664,7 +664,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 592,
    "pdf_page": 613,
-   "text": "(u;v) must be a light edge connecting C 1 to some other tree, Corollary 21.2 implies"
+   "text": "(u,v) must be a light edge connecting C 1 to some other tree, Corollary 21.2 implies"
   },
   {
    "type": "body",
@@ -799,7 +799,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 593,
    "pdf_page": 614,
-   "text": "Figure 21.4, continued Further steps in the execution of Kruskal9s algorithm. that (u;v) is a safe edge for C 1 . Kruskal9s algorithm qualifies as a greedy algorithm because at each step it adds to the forest an edge with the lowest possible weight."
+   "text": "Figure 21.4, continued Further steps in the execution of Kruskal9s algorithm. that (u,v) is a safe edge for C 1 . Kruskal9s algorithm qualifies as a greedy algorithm because at each step it adds to the forest an edge with the lowest possible weight."
   },
   {
    "type": "body",
@@ -826,7 +826,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 593,
    "pdf_page": 614,
-   "text": "Figure 21.4 shows how Kruskal9s algorithm works. Lines 133 initialize the set A to the empty set and create |V| trees, one containing each vertex. The for loop in lines 639 examines edges in order of weight, from lowest to highest. The loop checks, for each edge (u;v) , whether the endpoints u and v belong to the same tree. If they do, then the edge (u;v) cannot be added to the forest without creating a cycle, and the edge is ignored. Otherwise, the two vertices belong to different"
+   "text": "Figure 21.4 shows how Kruskal9s algorithm works. Lines 1–3 initialize the set A to the empty set and create |V| trees, one containing each vertex. The for loop in lines 6–9 examines edges in order of weight, from lowest to highest. The loop checks, for each edge (u,v) , whether the endpoints u and v belong to the same tree. If they do, then the edge (u,v) cannot be added to the forest without creating a cycle, and the edge is ignored. Otherwise, the two vertices belong to different"
   },
   {
    "type": "pseudocode",
@@ -860,7 +860,7 @@
     },
     {
      "n": 6,
-     "code": "for each edge (u;v)  taken from the sorted list in order"
+     "code": "for each edge (u,v)  taken from the sorted list in order"
     },
     {
      "n": 7,
@@ -868,18 +868,18 @@
     },
     {
      "n": 8,
-     "code": "A = A [ f(u;v) g"
+     "code": "A = A [ f(u,v) g"
     },
     {
      "n": 9,
-     "code": "UNION(u;v)"
+     "code": "UNION(u,v)"
     },
     {
      "n": 10,
-     "code": "return A trees. In this case, line 8 adds the edge (u;v)  to A, and line 9 merges the vertices in the two trees."
+     "code": "return A trees. In this case, line 8 adds the edge (u,v)  to A, and line 9 merges the vertices in the two trees."
     }
    ],
-   "text": "1 A = ;\n2 for each vertex v 2 G: V\n3 MAKE-SET (v)\n4 create a single list of the edges in G: E\n5 sort the list of edges into monotonically increasing order by weight w\n6 for each edge (u;v)  taken from the sorted list in order\n7 if FIND-SET (u) ≠ FIND-SET (v)\n8 A = A [ f(u;v) g\n9 UNION(u;v)\n10 return A trees. In this case, line 8 adds the edge (u;v)  to A, and line 9 merges the vertices in the two trees."
+   "text": "1 A = ;\n2 for each vertex v 2 G: V\n3 MAKE-SET (v)\n4 create a single list of the edges in G: E\n5 sort the list of edges into monotonically increasing order by weight w\n6 for each edge (u,v)  taken from the sorted list in order\n7 if FIND-SET (u) ≠ FIND-SET (v)\n8 A = A [ f(u,v) g\n9 UNION(u,v)\n10 return A trees. In this case, line 8 adds the edge (u,v)  to A, and line 9 merges the vertices in the two trees."
   },
   {
    "type": "body",
@@ -888,7 +888,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 594,
    "pdf_page": 615,
-   "text": "MST-KRUSKAL(G;w) trees. In this case, line 8 adds the edge (u;v) to A, and line 9 merges the vertices in the two trees."
+   "text": "MST-KRUSKAL(G,w) trees. In this case, line 8 adds the edge (u,v) to A, and line 9 merges the vertices in the two trees."
   },
   {
    "type": "body",
@@ -897,7 +897,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 594,
    "pdf_page": 615,
-   "text": "The running time of Kruskal9s algorithm for a graph G = (V;E) depends on the specific implementation of the disjoint-set data structure. Let9s assume that it uses the disjoint-set-forest implementation of Section 19.3 with the union-by-rank and path-compression heuristics, since that is the asymptotically fastest implementation known. Initializing the set A in line 1 takes O(1) time, creating a single list of edges in line 4 takes O(V + E) time (which is O(E) because G is connected), and the time to sort the edges in line 5 is O(E lg E). (We9ll account for the cost of the |V| MAKE-SET operations in the for loop of lines 233 in a moment.) The for loop of lines 639 performs O(E) FIND-SET and UNION operations on the disjoint-set forest. Along with the |V| MAKE-SET operations, these disjoint-set operations take a total of O..V + E/˛.V// time, where ˛ is the very slowly growing function defined in Section 19.4. Because we assume that G is connected, we have"
+   "text": "The running time of Kruskal9s algorithm for a graph G = (V,E) depends on the specific implementation of the disjoint-set data structure. Let9s assume that it uses the disjoint-set-forest implementation of Section 19.3 with the union-by-rank and path-compression heuristics, since that is the asymptotically fastest implementation known. Initializing the set A in line 1 takes O(1) time, creating a single list of edges in line 4 takes O(V + E) time (which is O(E) because G is connected), and the time to sort the edges in line 5 is O(E lg E). (We9ll account for the cost of the |V| MAKE-SET operations in the for loop of lines 2–3 in a moment.) The for loop of lines 6–9 performs O(E) FIND-SET and UNION operations on the disjoint-set forest. Along with the |V| MAKE-SET operations, these disjoint-set operations take a total of O..V + E/˛.V// time, where ˛ is the very slowly growing function defined in Section 19.4. Because we assume that G is connected, we have"
   },
   {
    "type": "body",
@@ -951,7 +951,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 595,
    "pdf_page": 616,
-   "text": "Figure 21.5 The execution of Prim9s algorithm on the graph from Figure 21.1. The root vertex is a. Blue vertices and edges belong to the tree being grown, and tan vertices have yet to be added to the tree. At each step of the algorithm, the ver tices in the tree determine a cut of the graph, and a light edge crossing the cut is added to the tree. The edge and vertex added to the tree are highlighted in orange. In the second step (part (c)), for examp le, the algorithm has a choice of adding either edge (b;c) or edge (a;h) to the tree since both are light edges crossing the cut. a light edge that connects A to an isolated vertex—one on which no edge of A is incident. By Corollary 21.2, this rule adds only edges that are safe for A. Therefore, when the algorithm terminates, the edges in A form a minimum spanning tree."
+   "text": "Figure 21.5 The execution of Prim9s algorithm on the graph from Figure 21.1. The root vertex is a. Blue vertices and edges belong to the tree being grown, and tan vertices have yet to be added to the tree. At each step of the algorithm, the ver tices in the tree determine a cut of the graph, and a light edge crossing the cut is added to the tree. The edge and vertex added to the tree are highlighted in orange. In the second step (part (c)), for examp le, the algorithm has a choice of adding either edge (b,c) or edge (a,h) to the tree since both are light edges crossing the cut. a light edge that connects A to an isolated vertex—one on which no edge of A is incident. By Corollary 21.2, this rule adds only edges that are safe for A. Therefore, when the algorithm terminates, the edges in A form a minimum spanning tree."
   },
   {
    "type": "pseudocode",
@@ -989,7 +989,7 @@
     },
     {
      "n": 7,
-     "code": "INSERT (Q;u)"
+     "code": "INSERT (Q,u)"
     },
     {
      "n": 8,
@@ -1005,7 +1005,7 @@
     },
     {
      "n": 11,
-     "code": "if v 2 Q and w(u;v)<v:  key"
+     "code": "if v 2 Q and w(u,v)<v:  key"
     },
     {
      "n": 12,
@@ -1013,14 +1013,14 @@
     },
     {
      "n": 13,
-     "code": "v: key = w(u;v)"
+     "code": "v: key = w(u,v)"
     },
     {
      "n": 14,
-     "code": "DECREASE-KEY (Q;v;w(u;v))"
+     "code": "DECREASE-KEY (Q,v,w(u,v))"
     }
    ],
-   "text": "1 for each vertex u 2 G: V\n2 u: key = 1\n3 u:Ω DNIL\n4 r: key = 0\n5 Q = ;\n6 for each vertex u 2 G: V\n7 INSERT (Q;u)\n8 while Q ≠ ;\n9 u DEXTRACT-MIN.Q/ / / add u to the tree\n10 for each vertex v in G: Adj[u] / / update keys of u9s non-tree neighbors\n11 if v 2 Q and w(u;v)<v:  key\n12 v:Ω  = u\n13 v: key = w(u;v)\n14 DECREASE-KEY (Q;v;w(u;v))"
+   "text": "1 for each vertex u 2 G: V\n2 u: key = 1\n3 u:Ω DNIL\n4 r: key = 0\n5 Q = ;\n6 for each vertex u 2 G: V\n7 INSERT (Q,u)\n8 while Q ≠ ;\n9 u DEXTRACT-MIN.Q/ / / add u to the tree\n10 for each vertex v in G: Adj[u] / / update keys of u9s non-tree neighbors\n11 if v 2 Q and w(u,v)<v:  key\n12 v:Ω  = u\n13 v: key = w(u,v)\n14 DECREASE-KEY (Q,v,w(u,v))"
   },
   {
    "type": "body",
@@ -1047,7 +1047,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 596,
    "pdf_page": 617,
-   "text": "MST-PRIM(G;w;r)"
+   "text": "MST-PRIM(G,w,r)"
   },
   {
    "type": "body",
@@ -1056,7 +1056,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 596,
    "pdf_page": 617,
-   "text": "Figure 21.5 shows how Prim9s algorithm works. Lines 137 set the key of each vertex to 1 (except for the root r , whose key is set to 0 to make it the first vertex processed), set the parent of each vertex to NIL, and insert each vertex into the minpriority queue Q. The algorithm maintains the following three-part loop invariant:"
+   "text": "Figure 21.5 shows how Prim9s algorithm works. Lines 1–7 set the key of each vertex to 1 (except for the root r , whose key is set to 0 to make it the first vertex processed), set the parent of each vertex to NIL, and insert each vertex into the minpriority queue Q. The algorithm maintains the following three-part loop invariant:"
   },
   {
    "type": "body",
@@ -1065,7 +1065,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 597,
    "pdf_page": 618,
-   "text": "Prior to each iteration of the while loop of lines 8314, 1. A = f(v; v:Ω) W v 2 V − fr g − Qg."
+   "text": "Prior to each iteration of the while loop of lines 8–14, 1. A = f(v; v:Ω) W v 2 V − fr g − Qg."
   },
   {
    "type": "body",
@@ -1101,7 +1101,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 597,
    "pdf_page": 618,
-   "text": "(V − Q;Q) (with the exception of the first iteration, in which u = r due to lines"
+   "text": "(V − Q,Q) (with the exception of the first iteration, in which u = r due to lines"
   },
   {
    "type": "body",
@@ -1110,7 +1110,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 597,
    "pdf_page": 618,
-   "text": "437). Removing u from the set Q adds it to the set V − Q of vertices in the tree, thus adding the edge (u; u:Ω) to A. The for loop of lines 10314 updates the key and Ω attributes of every vertex v adjacent to u but not in the tree, thereby maintaining the third part of the loop invariant. W henever line 13 updates v: key, line 14 calls DECREASE-KEY to inform the min-priority queue that v9s key has changed."
+   "text": "437). Removing u from the set Q adds it to the set V − Q of vertices in the tree, thus adding the edge (u; u:Ω) to A. The for loop of lines 10–14 updates the key and Ω attributes of every vertex v adjacent to u but not in the tree, thereby maintaining the third part of the loop invariant. W henever line 13 updates v: key, line 14 calls DECREASE-KEY to inform the min-priority queue that v9s key has changed."
   },
   {
    "type": "body",
@@ -1128,7 +1128,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 597,
    "pdf_page": 618,
-   "text": "Chapter 6), including a way to map between vertices and their corresponding heap elements. The BUILD-MIN-HEAP procedure can perform lines 537 in O(V) time."
+   "text": "Chapter 6), including a way to map between vertices and their corresponding heap elements. The BUILD-MIN-HEAP procedure can perform lines 5–7 in O(V) time."
   },
   {
    "type": "body",
@@ -1137,7 +1137,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 597,
    "pdf_page": 618,
-   "text": "In fact, there is no need to call BUILD-MIN-HEAP. You can just put the key of r at the root of the min-heap, and because all other keys are 1, they can go anywhere else in the min-heap. The body of the while loop executes |V| times, and since each EXTRACT-MIN operation takes O(lg V) time, the total time for all calls to EXTRACT-MIN is O(V lg V) . The for loop in lines 10314 executes"
+   "text": "In fact, there is no need to call BUILD-MIN-HEAP. You can just put the key of r at the root of the min-heap, and because all other keys are 1, they can go anywhere else in the min-heap. The body of the while loop executes |V| times, and since each EXTRACT-MIN operation takes O(lg V) time, the total time for all calls to EXTRACT-MIN is O(V lg V) . The for loop in lines 10–14 executes"
   },
   {
    "type": "body",
@@ -1182,7 +1182,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 598,
    "pdf_page": 619,
-   "text": "21.2-2 Give a simple implementation of Prim9s algorithm that runs in O(V 2 ) time when the graph G = (V;E) is represented as an adjacency matrix."
+   "text": "21.2-2 Give a simple implementation of Prim9s algorithm that runs in O(V 2 ) time when the graph G = (V,E) is represented as an adjacency matrix."
   },
   {
    "type": "exercise",
@@ -1191,7 +1191,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 598,
    "pdf_page": 619,
-   "text": "21.2-3 For a sparse graph G = (V;E) , where |E| = Θ(V) , is the implementation of Prim9s algorithm with a Fibonacci heap asymptotically faster than the binary-heap implementation? What about for a dense graph, where |E| = Θ(V 2 )? How must the sizes |E| and |V| be related for the Fibonacci-heap implementation to be asymptotically faster than the binary-heap implementation?"
+   "text": "21.2-3 For a sparse graph G = (V,E) , where |E| = Θ(V) , is the implementation of Prim9s algorithm with a Fibonacci heap asymptotically faster than the binary-heap implementation? What about for a dense graph, where |E| = Θ(V 2 )? How must the sizes |E| and |V| be related for the Fibonacci-heap implementation to be asymptotically faster than the binary-heap implementation?"
   },
   {
    "type": "exercise",
@@ -1236,7 +1236,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 598,
    "pdf_page": 619,
-   "text": "21.2-6 Professor Borden proposes a new divide-and-conquer algorithm for computing minimum spanning trees, which goes as follows. Given a graph G = (V;E) , partition the set V of vertices into two sets V 1 and V 2 such that jV 1 j and jV 2 j differ by at most 1. Let E 1 be the set of edges that are incident only on vertices in V 1 , and let E 2 be the set of edges that are incident only on vertices in V 2 . Recursively solve a minimum-spanning-tree problem on each of the two subgraphs G 1 = (V 1 ;E 1 ) and G 2 = (V 2 ;E 2 ). Finally, select the minimum-weight edge in E that crosses the cut (V 1 ;V 2 ), and use this edge to unite the resulting two mini mum spanning trees into a single spanning tree."
+   "text": "21.2-6 Professor Borden proposes a new divide-and-conquer algorithm for computing minimum spanning trees, which goes as follows. Given a graph G = (V,E) , partition the set V of vertices into two sets V 1 and V 2 such that jV 1 j and jV 2 j differ by at most 1. Let E 1 be the set of edges that are incident only on vertices in V 1 , and let E 2 be the set of edges that are incident only on vertices in V 2 . Recursively solve a minimum-spanning-tree problem on each of the two subgraphs G 1 = (V 1 ,E 1 ) and G 2 = (V 2 ,E 2 ). Finally, select the minimum-weight edge in E that crosses the cut (V 1 ,V 2 ), and use this edge to unite the resulting two mini mum spanning trees into a single spanning tree."
   },
   {
    "type": "body",
@@ -1263,7 +1263,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 599,
    "pdf_page": 620,
-   "text": "Suppose that the edge weights in a graph are unifor mly distributed over the half- open interval [0;1/. Which algorithm, Kruskal9s or Prim9s, can you make run faster?"
+   "text": "Suppose that the edge weights in a graph are unifor mly distributed over the half- open interval [0,1/. Which algorithm, Kruskal9s or Prim9s, can you make run faster?"
   },
   {
    "type": "body",
@@ -1299,7 +1299,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 599,
    "pdf_page": 620,
-   "text": "Let G = (V;E) be an undirected, connected graph whose weight func tion is w W E ! R, and suppose that |E| ≥ |V| and all edge weights are distinct."
+   "text": "Let G = (V,E) be an undirected, connected graph whose weight func tion is w W E ! R, and suppose that |E| ≥ |V| and all edge weights are distinct."
   },
   {
    "type": "body",
@@ -1317,7 +1317,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 599,
    "pdf_page": 620,
-   "text": "(u;v) 2 T and some edge (x;y) … T such that (T − f(u;v) g) [ f(x;y) g is a second-best minimum spanning tree of G. c. Now let T be any spanning tree of G and, for any two vertices u;v 2 V , let max[u; v] denote an edge of maximum weight on the unique simp le path between u and v in T . Describe an O(V 2 )-time algorithm that, given T , computes max[u; v] for all u;v 2 V . d. Give an efficient algorithm to compute the second-best minimum spanning tree of G."
+   "text": "(u,v) 2 T and some edge (x,y) … T such that (T − f(u,v) g) [ f(x,y) g is a second-best minimum spanning tree of G. c. Now let T be any spanning tree of G and, for any two vertices u,v 2 V , let max[u; v] denote an edge of maximum weight on the unique simp le path between u and v in T . Describe an O(V 2 )-time algorithm that, given T , computes max[u; v] for all u,v 2 V . d. Give an efficient algorithm to compute the second-best minimum spanning tree of G."
   },
   {
    "type": "problem",
@@ -1335,7 +1335,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 599,
    "pdf_page": 620,
-   "text": "For a very sparse connected graph G = (V;E) , it is possible to further improve upon the O(E + V lg V) running time of Prim9s algorithm with a Fibonacci heap by preprocessing G to decrease the number of vertices before running Prim9s algorithm. In particular, for each vertex u, choose the minimum-weight edge (u;v) incident on u, and put (u;v) into the minimum spanning tree under construction."
+   "text": "For a very sparse connected graph G = (V,E) , it is possible to further improve upon the O(E + V lg V) running time of Prim9s algorithm with a Fibonacci heap by preprocessing G to decrease the number of vertices before running Prim9s algorithm. In particular, for each vertex u, choose the minimum-weight edge (u,v) incident on u, and put (u,v) into the minimum spanning tree under construction."
   },
   {
    "type": "body",
@@ -1353,7 +1353,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 600,
    "pdf_page": 621,
-   "text": "Initially, set the minimum spanning tree T being constructed to be empty, and for each edge (u;v) 2 E, initialize the two attributes (u;v): orig = (u;v) and (u;v): c = w(u;v) . Use the orig attribute to reference the edge from the initial graph that is associated with an edge in the contracted graph. The c attribute holds the weight of an edge, and as edges are contracted, it is updated according to the above scheme for choosing edge weights. The procedure MST-REDUCE on the facing page takes inputs G and T , and it returns a contracted graph G 0 with up- dated attributes orig 0 and c 0 . The procedure also accumulates edges of G into the minimum spanning tree T . a. Let T be the set of edges returned by MST-REDUCE , and let A be the minimum spanning tree of the graph G 0 formed by the call MST-PRIM(G 0 ;c 0 ;r) , where c 0 is the weight attribute on the edges of G 0 : E and r is any vertex in G 0 : V ."
+   "text": "Initially, set the minimum spanning tree T being constructed to be empty, and for each edge (u,v) 2 E, initialize the two attributes (u,v): orig = (u,v) and (u,v): c = w(u,v) . Use the orig attribute to reference the edge from the initial graph that is associated with an edge in the contracted graph. The c attribute holds the weight of an edge, and as edges are contracted, it is updated according to the above scheme for choosing edge weights. The procedure MST-REDUCE on the facing page takes inputs G and T , and it returns a contracted graph G 0 with up- dated attributes orig 0 and c 0 . The procedure also accumulates edges of G into the minimum spanning tree T . a. Let T be the set of edges returned by MST-REDUCE , and let A be the minimum spanning tree of the graph G 0 formed by the call MST-PRIM(G 0 ,c 0 ,r) , where c 0 is the weight attribute on the edges of G 0 : E and r is any vertex in G 0 : V ."
   },
   {
    "type": "body",
@@ -1362,7 +1362,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 600,
    "pdf_page": 621,
-   "text": "Prove that T [ f(x;y): orig 0 W (x;y) 2 Ag is a minimum spanning tree of G. b. Argue that jG 0 : V j ≤ |V| =2. c. Show how to implement MST-REDUCE so that it runs in O(E) time. ( Hint:"
+   "text": "Prove that T [ f(x,y): orig 0 W (x,y) 2 Ag is a minimum spanning tree of G. b. Argue that jG 0 : V j ≤ |V| =2. c. Show how to implement MST-REDUCE so that it runs in O(E) time. ( Hint:"
   },
   {
    "type": "body",
@@ -1389,7 +1389,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 600,
    "pdf_page": 621,
-   "text": "Prim9s algorithm by calling MST-PRIM(G 0 ;c 0 ;r) , where G 0 , with weight attribute c 0 , is returned by the last phase and r is any vertex in G 0 : V . Show how to pick k so that the overall running time is O(E lg lg V) . Argue that your choice of k minimizes the overall asymptotic running time. f. For what values of |E| (in terms of |V|) does Prim9s algorithm with preprocessing asymptotically beat Prim9s algorithm without preprocessing?"
+   "text": "Prim9s algorithm by calling MST-PRIM(G 0 ,c 0 ,r) , where G 0 , with weight attribute c 0 , is returned by the last phase and r is any vertex in G 0 : V . Show how to pick k so that the overall running time is O(E lg lg V) . Argue that your choice of k minimizes the overall asymptotic running time. f. For what values of |E| (in terms of |V|) does Prim9s algorithm with preprocessing asymptotically beat Prim9s algorithm without preprocessing?"
   },
   {
    "type": "pseudocode",
@@ -1423,15 +1423,15 @@
     },
     {
      "n": 6,
-     "code": "choose v 2 G: Adj[u] such that (u;v):  c is minimized"
+     "code": "choose v 2 G: Adj[u] such that (u,v):  c is minimized"
     },
     {
      "n": 7,
-     "code": "UNION(u;v)"
+     "code": "UNION(u,v)"
     },
     {
      "n": 8,
-     "code": "T = T [ f(u;v):  origg"
+     "code": "T = T [ f(u,v):  origg"
     },
     {
      "n": 9,
@@ -1451,7 +1451,7 @@
     },
     {
      "n": 13,
-     "code": "for each edge (x;y)  2 G: E"
+     "code": "for each edge (x,y)  2 G: E"
     },
     {
      "n": 14,
@@ -1467,31 +1467,31 @@
     },
     {
      "n": 17,
-     "code": "if (u;v)  … G 0 : E"
+     "code": "if (u,v)  … G 0 : E"
     },
     {
      "n": 18,
-     "code": "G 0 : E = G 0 : E [ f(u;v) g"
+     "code": "G 0 : E = G 0 : E [ f(u,v) g"
     },
     {
      "n": 19,
-     "code": "(u;v):  orig 0 = (x;y):  orig"
+     "code": "(u,v):  orig 0 = (x,y):  orig"
     },
     {
      "n": 20,
-     "code": "(u;v):c  0 = (x;y):  c"
+     "code": "(u,v):c  0 = (x,y):  c"
     },
     {
      "n": 21,
-     "code": "elseif (x;y):  c <.u;v/:c  0"
+     "code": "elseif (x,y):  c <.u,v/:c  0"
     },
     {
      "n": 22,
-     "code": "(u;v):  orig 0 = (x;y):  orig"
+     "code": "(u,v):  orig 0 = (x,y):  orig"
     },
     {
      "n": 23,
-     "code": "(u;v):c  0 = (x;y):  c"
+     "code": "(u,v):c  0 = (x,y):  c"
     },
     {
      "n": 24,
@@ -1502,7 +1502,7 @@
      "code": "return G 0 and T"
     }
    ],
-   "text": "1 for each vertex v 2 G: V\n2 v: mark DFALSE\n3 MAKE-SET (v)\n4 for each vertex u 2 G: V\n5 if u: mark = = FALSE\n6 choose v 2 G: Adj[u] such that (u;v):  c is minimized\n7 UNION(u;v)\n8 T = T [ f(u;v):  origg\n9 u: mark DTRUE\n10 v: mark DTRUE\n11 G 0 : V = f FIND-SET(v) W v 2 G: V g\n12 G 0 : E = ;\n13 for each edge (x;y)  2 G: E\n14 u DFIND-SET(x)\n15 v DFIND-SET (y)\n16 if u ≠ v\n17 if (u;v)  … G 0 : E\n18 G 0 : E = G 0 : E [ f(u;v) g\n19 (u;v):  orig 0 = (x;y):  orig\n20 (u;v):c  0 = (x;y):  c\n21 elseif (x;y):  c <.u;v/:c  0\n22 (u;v):  orig 0 = (x;y):  orig\n23 (u;v):c  0 = (x;y):  c\n24 construct adjacency lists G 0 : Adj for G 0\n25 return G 0 and T"
+   "text": "1 for each vertex v 2 G: V\n2 v: mark DFALSE\n3 MAKE-SET (v)\n4 for each vertex u 2 G: V\n5 if u: mark = = FALSE\n6 choose v 2 G: Adj[u] such that (u,v):  c is minimized\n7 UNION(u,v)\n8 T = T [ f(u,v):  origg\n9 u: mark DTRUE\n10 v: mark DTRUE\n11 G 0 : V = f FIND-SET(v) W v 2 G: V g\n12 G 0 : E = ;\n13 for each edge (x,y)  2 G: E\n14 u DFIND-SET(x)\n15 v DFIND-SET (y)\n16 if u ≠ v\n17 if (u,v)  … G 0 : E\n18 G 0 : E = G 0 : E [ f(u,v) g\n19 (u,v):  orig 0 = (x,y):  orig\n20 (u,v):c  0 = (x,y):  c\n21 elseif (x,y):  c <.u,v/:c  0\n22 (u,v):  orig 0 = (x,y):  orig\n23 (u,v):c  0 = (x,y):  c\n24 construct adjacency lists G 0 : Adj for G 0\n25 return G 0 and T"
   },
   {
    "type": "body",
@@ -1511,7 +1511,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 601,
    "pdf_page": 622,
-   "text": "MST-REDUCE(G;T)"
+   "text": "MST-REDUCE(G,T)"
   },
   {
    "type": "problem",
@@ -1667,7 +1667,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 602,
    "pdf_page": 623,
-   "text": "MAYBE-MST-A (G;w)"
+   "text": "MAYBE-MST-A (G,w)"
   },
   {
    "type": "body",
@@ -1676,7 +1676,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 602,
    "pdf_page": 623,
-   "text": "MAYBE-MST-B (G;w)"
+   "text": "MAYBE-MST-B (G,w)"
   },
   {
    "type": "body",
@@ -1685,7 +1685,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 602,
    "pdf_page": 623,
-   "text": "MAYBE-MST-C (G;w) a. Argue that a minimum spanning tree is a bottleneck spanning tree."
+   "text": "MAYBE-MST-C (G,w) a. Argue that a minimum spanning tree is a bottleneck spanning tree."
   },
   {
    "type": "body",
@@ -1739,7 +1739,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 603,
    "pdf_page": 624,
-   "text": "When |E| = ].V lg V/, Prim9s algorithm, implemented with a Fibonacci heap, runs in O(E) time. For sparser graphs, using a combination of th e ideas from Prim9s algorithm, Kruskal9s algorithm, and Bor˚ uvka9s algorithm, together with advanced data structures, Fredman and Tarjan [156] give an algorithm that runs in O(E lg − V) time. Gabow, Galil, Spencer, and Tarjan [165] improved this algorithm to run in O(E lg lg − V) time. Chazelle [83] gives an algorithm that runs in O(E y ˛.E;V)/ time, where y ˛.E;V/ is the functional inverse of Ackermann9s function. (See the chapter notes for Chapter 19 for a brief discussion of Ackermann9s function and its inverse.) Unlike previous minimum-spanning-tree algorithms, Chazelle9s algorithm does not follow the greedy method. Pettie and Ramachandran [356] give an algorithm based on precomputed \"MST decision trees\" that also runs in O(E y ˛.E;V)/ time."
+   "text": "When |E| = ].V lg V/, Prim9s algorithm, implemented with a Fibonacci heap, runs in O(E) time. For sparser graphs, using a combination of th e ideas from Prim9s algorithm, Kruskal9s algorithm, and Bor˚ uvka9s algorithm, together with advanced data structures, Fredman and Tarjan [156] give an algorithm that runs in O(E lg − V) time. Gabow, Galil, Spencer, and Tarjan [165] improved this algorithm to run in O(E lg lg − V) time. Chazelle [83] gives an algorithm that runs in O(E y ˛.E,V)/ time, where y ˛.E,V/ is the functional inverse of Ackermann9s function. (See the chapter notes for Chapter 19 for a brief discussion of Ackermann9s function and its inverse.) Unlike previous minimum-spanning-tree algorithms, Chazelle9s algorithm does not follow the greedy method. Pettie and Ramachandran [356] give an algorithm based on precomputed \"MST decision trees\" that also runs in O(E y ˛.E,V)/ time."
   },
   {
    "type": "body",
@@ -1748,7 +1748,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 603,
    "pdf_page": 624,
-   "text": "A related problem is spanning-tree verification: given a graph G = (V;E) and a tree T ⊆ E, determine whether T is a minimum spanning tree of G. King [254] gives a linear-time algorithm to verify a spanning tree, building on earlier work of Koml´ os [269] and Dixon, Rauch, and Tarjan [120]."
+   "text": "A related problem is spanning-tree verification: given a graph G = (V,E) and a tree T ⊆ E, determine whether T is a minimum spanning tree of G. King [254] gives a linear-time algorithm to verify a spanning tree, building on earlier work of Koml´ os [269] and Dixon, Rauch, and Tarjan [120]."
   },
   {
    "type": "body",
@@ -1811,7 +1811,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 604,
    "pdf_page": 625,
-   "text": "This chapter and Chapter 23 show how to solve such problems efficiently. The input to a shortest-paths problem is a weighted, directed graph G = (V;E) , with a weight function w W E ! R mapping edges to real-valued weights. The weight w(p) of path √D hv 0 ;v 1 ;:::;v k i is the sum of the weights of its constituent edges: w(p) = k X i D1 w(v i −1 ;v i ):"
+   "text": "This chapter and Chapter 23 show how to solve such problems efficiently. The input to a shortest-paths problem is a weighted, directed graph G = (V,E) , with a weight function w W E ! R mapping edges to real-valued weights. The weight w(p) of path √D ⟨v 0 ,v 1 ,…,v k⟩ is the sum of the weights of its constituent edges: w(p) = k X i D1 w(v i −1 ,v i ):"
   },
   {
    "type": "body",
@@ -1820,7 +1820,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 604,
    "pdf_page": 625,
-   "text": "We define the shortest-path weight i(u;v) from u to v by i(u;v) ="
+   "text": "We define the shortest-path weight i(u,v) from u to v by i(u,v) ="
   },
   {
    "type": "body",
@@ -1838,7 +1838,7 @@
    "section_title": "21.2 The algorithms of Kruskal and Prim",
    "printed_page": 604,
    "pdf_page": 625,
-   "text": "A shortest path from vertex u to vertex v is then defined as any path p with weight w(p) = i(u;v) ."
+   "text": "A shortest path from vertex u to vertex v is then defined as any path p with weight w(p) = i(u,v) ."
   },
   {
    "type": "body",

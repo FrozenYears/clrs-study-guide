@@ -64,7 +64,7 @@
    "section_title": "A.1 Summation formulas and properties",
    "printed_page": 1140,
    "pdf_page": 1161,
-   "text": "Given a sequence a 1 ;a 2 ;:::;a n of numbers, where n is a nonnegative integer, the finite sum a 1 + a 2 + • • • + a n can be expressed as P n kD1 a k . If n = 0, the value of the summation is defined to be 0. The value of a finite series is always well defined, and the order in which its terms are added does not matter."
+   "text": "Given a sequence a 1 ,a 2 ,…,a n of numbers, where n is a nonnegative integer, the finite sum a 1 + a 2 + • • • + a n can be expressed as P n kD1 a k . If n = 0, the value of the summation is defined to be 0. The value of a finite series is always well defined, and the order in which its terms are added does not matter."
   },
   {
    "type": "body",
@@ -73,7 +73,7 @@
    "section_title": "A.1 Summation formulas and properties",
    "printed_page": 1140,
    "pdf_page": 1161,
-   "text": "Given an infinite sequence a 1 ;a 2 ;::: of numbers, we can write their infinite sum a 1 + a 2 + • • • as P 1 kD1 a k , which means lim n!1"
+   "text": "Given an infinite sequence a 1 ,a 2 ,… of numbers, we can write their infinite sum a 1 + a 2 + • • • as P 1 kD1 a k , which means lim n!1"
   },
   {
    "type": "body",
@@ -109,7 +109,7 @@
    "section_title": "A.1 Summation formulas and properties",
    "printed_page": 1141,
    "pdf_page": 1162,
-   "text": "For any real number c and any finite sequences a 1 ;a 2 ;:::;a n and b 1 ;b 2 ;:::;b n , n X kD1"
+   "text": "For any real number c and any finite sequences a 1 ,a 2 ,…,a n and b 1 ,b 2 ,…,b n , n X kD1"
   },
   {
    "type": "body",
@@ -280,7 +280,7 @@
    "section_title": "A.1 Summation formulas and properties",
    "printed_page": 1142,
    "pdf_page": 1163,
-   "text": "For real x ≠ 1, the summation n X kD0 x k = 1 + x + x 2 + • • • + x n is a geometric series and has the value n X kD0 x k = x nC1 − 1 x − 1 : (A.6)"
+   "text": "For real x ≠ 1, the summation n X kD0 x k = 1 + x + x 2 + • • • + x n is a geometric series and has the value n X kD0 x k = x n + 1 − 1 x − 1 : (A.6)"
   },
   {
    "type": "body",
@@ -442,7 +442,7 @@
    "section_title": "A.1 Summation formulas and properties",
    "printed_page": 1143,
    "pdf_page": 1164,
-   "text": "For any sequence a 0 ;a 1 ;:::;a n , n X kD1"
+   "text": "For any sequence a 0 ,a 1 ,…,a n , n X kD1"
   },
   {
    "type": "body",
@@ -451,7 +451,7 @@
    "section_title": "A.1 Summation formulas and properties",
    "printed_page": 1143,
    "pdf_page": 1164,
-   "text": "(a k − a k−1 ) = a n − a 0 ; (A.12) since each of the terms a 1 ;a 2 ;:::;a n−1 is added in exactly once and subtracted out exactly once. We say that the sum telescopes. Similarly, n−1 X kD0"
+   "text": "(a k − a k−1 ) = a n − a 0 ; (A.12) since each of the terms a 1 ,a 2 ,…,a n−1 is added in exactly once and subtracted out exactly once. We say that the sum telescopes. Similarly, n−1 X kD0"
   },
   {
    "type": "body",
@@ -460,7 +460,7 @@
    "section_title": "A.1 Summation formulas and properties",
    "printed_page": 1143,
    "pdf_page": 1164,
-   "text": "(a k − a kC1 ) = a 0 − a n :"
+   "text": "(a k − a k + 1 ) = a 0 − a n :"
   },
   {
    "type": "body",
@@ -514,7 +514,7 @@
    "section_title": "A.1 Summation formulas and properties",
    "printed_page": 1143,
    "pdf_page": 1164,
-   "text": "A series can sometimes be simplified by changing its index, often reversing the order of summation. Consider the series P n kD0 a n−k . Because the terms in this summation are a n ;a n−1 ;:::;a 0 , we can reverse the order of indices by letting j = n − k and rewrite this summation as n X kD0 a n−k = n X j D0 a j : (A.13)"
+   "text": "A series can sometimes be simplified by changing its index, often reversing the order of summation. Consider the series P n kD0 a n−k . Because the terms in this summation are a n ,a n−1 ,…,a 0 , we can reverse the order of indices by letting j = n − k and rewrite this summation as n X kD0 a n−k = n X j D0 a j : (A.13)"
   },
   {
    "type": "body",
@@ -640,7 +640,7 @@
    "section_title": "A.1 Summation formulas and properties",
    "printed_page": 1144,
    "pdf_page": 1165,
-   "text": "Let c ≥ 0 be a constant. Show that P n kD1 k c = Θ(n cC1 )."
+   "text": "Let c ≥ 0 be a constant. Show that P n kD1 k c = Θ(n c + 1 )."
   },
   {
    "type": "body",
@@ -757,7 +757,7 @@
    "section_title": "A.2 Bounding summations",
    "printed_page": 1145,
    "pdf_page": 1166,
-   "text": "The most basic way to evaluate a series is to use m athematical induction. As an example, let’s prove that the arithmetic series P n kD1 k evaluates to n(n + 1)/2. For n = 1, we have that n(n + 1)/2 = 1 • 2/2 = 1, which equals P 1 kD1 k. With the inductive assumption that it holds for n, we prove that it holds for n + 1. We have nC1 X kD1 k = n X kD1 k C (n + 1)"
+   "text": "The most basic way to evaluate a series is to use m athematical induction. As an example, let’s prove that the arithmetic series P n kD1 k evaluates to n(n + 1)/2. For n = 1, we have that n(n + 1)/2 = 1 • 2/2 = 1, which equals P 1 kD1 k. With the inductive assumption that it holds for n, we prove that it holds for n + 1. We have n + 1 X kD1 k = n X kD1 k C (n + 1)"
   },
   {
    "type": "body",
@@ -829,7 +829,7 @@
    "section_title": "A.2 Bounding summations",
    "printed_page": 1146,
    "pdf_page": 1167,
-   "text": "We have nC1 X kD0"
+   "text": "We have n + 1 X kD0"
   },
   {
    "type": "body",
@@ -847,7 +847,7 @@
    "section_title": "A.2 Bounding summations",
    "printed_page": 1146,
    "pdf_page": 1167,
-   "text": "3 k + 3 nC1"
+   "text": "3 k + 3 n + 1"
   },
   {
    "type": "body",
@@ -856,7 +856,7 @@
    "section_title": "A.2 Bounding summations",
    "printed_page": 1146,
    "pdf_page": 1167,
-   "text": "≤ c3 n + 3 nC1 (by the inductive hypothesis)"
+   "text": "≤ c3 n + 3 n + 1 (by the inductive hypothesis)"
   },
   {
    "type": "body",
@@ -865,7 +865,7 @@
    "section_title": "A.2 Bounding summations",
    "printed_page": 1146,
    "pdf_page": 1167,
-   "text": "] c3 nC1"
+   "text": "] c3 n + 1"
   },
   {
    "type": "body",
@@ -874,7 +874,7 @@
    "section_title": "A.2 Bounding summations",
    "printed_page": 1146,
    "pdf_page": 1167,
-   "text": "≤ c3 nC1 as long as .1/3 + 1/c/ ≤ 1 or, equivalently, c ≥ 3/2. Thus, P n kD0 3 k = O(3 n ), as we wished to show."
+   "text": "≤ c3 n + 1 as long as .1/3 + 1/c/ ≤ 1 or, equivalently, c ≥ 3/2. Thus, P n kD0 3 k = O(3 n ), as we wished to show."
   },
   {
    "type": "body",
@@ -883,7 +883,7 @@
    "section_title": "A.2 Bounding summations",
    "printed_page": 1146,
    "pdf_page": 1167,
-   "text": "You need to take care when using asymptotic notatio n to prove bounds by in- duction. Consider the following fallacious proof th at P n kD1 k = O(n). Certainly, P 1 kD1 k = O(1). Assuming that the bound holds for n, we now prove it for n + 1: nC1 X kD1 k = n X kD1 k C (n + 1)"
+   "text": "You need to take care when using asymptotic notatio n to prove bounds by in- duction. Consider the following fallacious proof th at P n kD1 k = O(n). Certainly, P 1 kD1 k = O(1). Assuming that the bound holds for n, we now prove it for n + 1: n + 1 X kD1 k = n X kD1 k C (n + 1)"
   },
   {
    "type": "body",
@@ -973,7 +973,7 @@
    "section_title": "A.2 Bounding summations",
    "printed_page": 1147,
    "pdf_page": 1168,
-   "text": "The technique of bounding each term in a series by the largest term is a weak method when the series can in fact be bounded by a geometric series. Given the series P n kD0 a k , suppose that a kC1/a k ≤ r for all k ≥ 0, where 0 < r < 1 is a constant. You can bound the sum by an infinite decreasing geometric series, since a k ≤ a 0 r k , and thus n X kD0 a k ≤"
+   "text": "The technique of bounding each term in a series by the largest term is a weak method when the series can in fact be bounded by a geometric series. Given the series P n kD0 a k , suppose that a k + 1/a k ≤ r for all k ≥ 0, where 0 < r < 1 is a constant. You can bound the sum by an infinite decreasing geometric series, since a k ≤ a 0 r k , and thus n X kD0 a k ≤"
   },
   {
    "type": "footnote",
@@ -1009,7 +1009,7 @@
    "section_title": "A.2 Bounding summations",
    "printed_page": 1147,
    "pdf_page": 1168,
-   "text": "You can apply this method to bound the summation P 1 kD1 (k/3 k ). In order to start the summation at k = 0, rewrite it as P 1 kD0 ..k C1/=3 kC1 /. The first term (a 0 ) is 1/3, and the ratio (r ) of consecutive terms is (k + 2)/3 kC2"
+   "text": "You can apply this method to bound the summation P 1 kD1 (k/3 k ). In order to start the summation at k = 0, rewrite it as P 1 kD0 ..k + 1/=3 k + 1 /. The first term (a 0 ) is 1/3, and the ratio (r ) of consecutive terms is (k + 2)/3 k + 2"
   },
   {
    "type": "body",
@@ -1018,7 +1018,7 @@
    "section_title": "A.2 Bounding summations",
    "printed_page": 1147,
    "pdf_page": 1168,
-   "text": "(k + 1)/3 kC1 = 1"
+   "text": "(k + 1)/3 k + 1 = 1"
   },
   {
    "type": "body",
@@ -1090,7 +1090,7 @@
    "section_title": "A.2 Bounding summations",
    "printed_page": 1147,
    "pdf_page": 1168,
-   "text": "The ratio of the (k C1)st and kth terms in this series is k=.k C1/<1 , but the series is not bounded by a decreasing geometric series. To bound a series by a geometric"
+   "text": "The ratio of the (k + 1)st and kth terms in this series is k=.k + 1/<1 , but the series is not bounded by a decreasing geometric series. To bound a series by a geometric"
   },
   {
    "type": "footnote",
@@ -1135,7 +1135,7 @@
    "section_title": "A.2 Bounding summations",
    "printed_page": 1148,
    "pdf_page": 1169,
-   "text": "You can obtain a better lower bound by first splitting the summation. Assume for convenience that n is even, so that n X kD1 k = n/2 X kD1 k C n X kDn/2C1 k"
+   "text": "You can obtain a better lower bound by first splitting the summation. Assume for convenience that n is even, so that n X kD1 k = n/2 X kD1 k C n X kDn/2 + 1 k"
   },
   {
    "type": "body",
@@ -1153,7 +1153,7 @@
    "section_title": "A.2 Bounding summations",
    "printed_page": 1148,
    "pdf_page": 1169,
-   "text": "0 C n X kDn/2C1 n"
+   "text": "0 C n X kDn/2 + 1 n"
   },
   {
    "type": "body",
@@ -1189,7 +1189,7 @@
    "section_title": "A.2 Bounding summations",
    "printed_page": 1149,
    "pdf_page": 1170,
-   "text": "(k + 1) 2/2 kC1 k 2/2 k = (k + 1) 2"
+   "text": "(k + 1) 2/2 k + 1 k 2/2 k = (k + 1) 2"
   },
   {
    "type": "body",
@@ -1234,7 +1234,7 @@
    "section_title": "A.2 Bounding summations",
    "printed_page": 1149,
    "pdf_page": 1170,
-   "text": "2 kC3 (by reindexing)"
+   "text": "2 k + 3 (by reindexing)"
   },
   {
    "type": "footnote",
@@ -1297,7 +1297,7 @@
    "section_title": "A.2 Bounding summations",
    "printed_page": 1149,
    "pdf_page": 1170,
-   "text": "The idea is to split the range 1 to n into blg nc + 1 pieces and upper-bound the contribution of each piece by 1. For i = 0;1;:::; blg nc, the i th piece consists of the terms starting at 1/2 i and going up to but not including 1/2 i C1 . The last piece might contain terms not in the original harmonic series, giving n X kD1 k ≤ blg nc X i D0"
+   "text": "The idea is to split the range 1 to n into blg nc + 1 pieces and upper-bound the contribution of each piece by 1. For i = 0,1,…; blg nc, the i th piece consists of the terms starting at 1/2 i and going up to but not including 1/2 i + 1 . The last piece might contain terms not in the original harmonic series, giving n X kD1 k ≤ blg nc X i D0"
   },
   {
    "type": "body",
@@ -1378,7 +1378,7 @@
    "section_title": "A.2 Bounding summations",
    "printed_page": 1150,
    "pdf_page": 1171,
-   "text": "Z nC1 m f(x)dx: (A.18)"
+   "text": "Z n + 1 m f(x)dx: (A.18)"
   },
   {
    "type": "body",
@@ -1405,7 +1405,7 @@
    "section_title": "A.2 Bounding summations",
    "printed_page": 1150,
    "pdf_page": 1171,
-   "text": "Z nC1 m f(x)dx ≤ n X kDm f(k) ≤"
+   "text": "Z n + 1 m f(x)dx ≤ n X kDm f(k) ≤"
   },
   {
    "type": "body",
@@ -1432,7 +1432,7 @@
    "section_title": "A.2 Bounding summations",
    "printed_page": 1150,
    "pdf_page": 1171,
-   "text": "Z nC1 dx x"
+   "text": "Z n + 1 dx x"
   },
   {
    "type": "body",
@@ -1522,7 +1522,7 @@
    "section_title": "A.2 Bounding summations",
    "printed_page": 1151,
    "pdf_page": 1172,
-   "text": "R nC1 m f(x)dx in (b)."
+   "text": "R n + 1 m f(x)dx in (b)."
   },
   {
    "type": "body",
@@ -1639,7 +1639,7 @@
    "section_title": "A.2 Bounding summations",
    "printed_page": 1153,
    "pdf_page": 1174,
-   "text": "To describe a set explicitly, write its members as a list inside braces. For example, to define a set S to contain precisely the numbers 1, 2, and 3, write S = f1;2;3 g."
+   "text": "To describe a set explicitly, write its members as a list inside braces. For example, to define a set S to contain precisely the numbers 1, 2, and 3, write S = f1,2,3 g."
   },
   {
    "type": "body",
@@ -1648,7 +1648,7 @@
    "section_title": "A.2 Bounding summations",
    "printed_page": 1153,
    "pdf_page": 1174,
-   "text": "Since 2 belongs to the set S , we can write 2 2 S , and since 4 is not a member, we can write 4 … S . A set cannot contain the same object more than on ce, 1 and its elements are not ordered. Two sets A and B are equal, written A = B , if they contain the same elements. For example, f1;2;3;1 g = f1;2;3 g = f3;2;1 g."
+   "text": "Since 2 belongs to the set S , we can write 2 2 S , and since 4 is not a member, we can write 4 … S . A set cannot contain the same object more than on ce, 1 and its elements are not ordered. Two sets A and B are equal, written A = B , if they contain the same elements. For example, f1,2,3,1 g = f1,2,3 g = f3,2,1 g."
   },
   {
    "type": "body",
@@ -1675,7 +1675,7 @@
    "section_title": "A.2 Bounding summations",
    "printed_page": 1153,
    "pdf_page": 1174,
-   "text": "• Z denotes the set of integers, that is, the set f:::; −2; −1;0;1;2;::: g."
+   "text": "• Z denotes the set of integers, that is, the set f…; −2; −1,0,1,2,… g."
   },
   {
    "type": "body",
@@ -1693,7 +1693,7 @@
    "section_title": "A.2 Bounding summations",
    "printed_page": 1153,
    "pdf_page": 1174,
-   "text": "• N denotes the set of natural numbers, that is, the set f0;1;2;::: g. 2"
+   "text": "• N denotes the set of natural numbers, that is, the set f0,1,2,… g. 2"
   },
   {
    "type": "body",

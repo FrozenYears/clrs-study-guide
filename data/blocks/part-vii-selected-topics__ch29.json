@@ -66,7 +66,7 @@
    "section_title": "29.1 Linear programming formulations and algorithms",
    "printed_page": 853,
    "pdf_page": 874,
-   "text": "In the general linear-programming problem, we wish to optimize a linear function subject to a set of linear inequalities. Given a set of real numbers a 1 ;a 2 ;:::;a n and a set of variables x 1 ;x 2 ;:::;x n , we define a linear function f on those variables by f(x 1 ;x 2 ;:::;x n ) = a 1 x 1 + a 2 x 2 + • • • + a n x n = n X j D1 a |x| :"
+   "text": "In the general linear-programming problem, we wish to optimize a linear function subject to a set of linear inequalities. Given a set of real numbers a 1 ,a 2 ,…,a n and a set of variables x 1 ,x 2 ,…,x n , we define a linear function f on those variables by f(x 1 ,x 2 ,…,x n ) = a 1 x 1 + a 2 x 2 + • • • + a n x n = n X j D1 a |x| :"
   },
   {
    "type": "body",
@@ -75,7 +75,7 @@
    "section_title": "29.1 Linear programming formulations and algorithms",
    "printed_page": 853,
    "pdf_page": 874,
-   "text": "If b is a real number and f is a linear function, then the equation f(x 1 ;x 2 ;:::;x n ) = b is a linear equality and the inequalities f(x 1 ;x 2 ;:::;x n ) ≤ b and f(x 1 ;x 2 ;:::;x n ) ≥ b are linear inequalities. We use the general term linear constraints to denote either linear equalities or linear inequalities. Linear pr ogramming does not allow strict inequalities. Formally, a linear-programming problem is the problem of either minimizing or maximizing a linear function subject to a finite set of linear constraints. If minimizing, we call the linear program a minimization linear program, and if maximizing, we call the linear program a maximization linear program."
+   "text": "If b is a real number and f is a linear function, then the equation f(x 1 ,x 2 ,…,x n ) = b is a linear equality and the inequalities f(x 1 ,x 2 ,…,x n ) ≤ b and f(x 1 ,x 2 ,…,x n ) ≥ b are linear inequalities. We use the general term linear constraints to denote either linear equalities or linear inequalities. Linear pr ogramming does not allow strict inequalities. Formally, a linear-programming problem is the problem of either minimizing or maximizing a linear function subject to a finite set of linear constraints. If minimizing, we call the linear program a minimization linear program, and if maximizing, we call the linear program a maximization linear program."
   },
   {
    "type": "body",
@@ -84,7 +84,7 @@
    "section_title": "29.1 Linear programming formulations and algorithms",
    "printed_page": 853,
    "pdf_page": 874,
-   "text": "In order to discuss linear-programming algorithms and properties, it will be helpful to use a standard notation for the input. B y convention, a maximization linear program takes as input n real numbers c 1 ;c 2 ;:::;c n ; m real numbers b 1 ;b 2 ;:::;b m ; and mn real numbers a ij for i = 1;2;:::;m and j = 1;2;:::;n ."
+   "text": "In order to discuss linear-programming algorithms and properties, it will be helpful to use a standard notation for the input. B y convention, a maximization linear program takes as input n real numbers c 1 ,c 2 ,…,c n ; m real numbers b 1 ,b 2 ,…,b m ; and mn real numbers a ij for i = 1,2,…,m and j = 1,2,…,n ."
   },
   {
    "type": "body",
@@ -93,7 +93,7 @@
    "section_title": "29.1 Linear programming formulations and algorithms",
    "printed_page": 854,
    "pdf_page": 875,
-   "text": "The goal is to find n real numbers x 1 ;x 2 ;:::;x n that maximize n X j D1 c |x| (29.11) subject to n X j D1 a i|x| ≤ b i for i = 1;2;:::;m (29.12) x j ≥ 0 for j = 1;2;:::;n : (29.13)"
+   "text": "The goal is to find n real numbers x 1 ,x 2 ,…,x n that maximize n X j D1 c |x| (29.11) subject to n X j D1 a i|x| ≤ b i for i = 1,2,…,m (29.12) x j ≥ 0 for j = 1,2,…,n : (29.13)"
   },
   {
    "type": "body",
@@ -210,7 +210,7 @@
    "section_title": "29.1 Linear programming formulations and algorithms",
    "printed_page": 855,
    "pdf_page": 876,
-   "text": "5x 1 − 2x 2 ≥ −2 (29.20) x 1 ;x 2 ≥ 0 : (29.21)"
+   "text": "5x 1 − 2x 2 ≥ −2 (29.20) x 1 ,x 2 ≥ 0 : (29.21)"
   },
   {
    "type": "body",
@@ -219,7 +219,7 @@
    "section_title": "29.1 Linear programming formulations and algorithms",
    "printed_page": 855,
    "pdf_page": 876,
-   "text": "Figure 29.2(a) graphs the constraints in the (x 1 ;x 2 )-Cartesian coordinate system."
+   "text": "Figure 29.2(a) graphs the constraints in the (x 1 ,x 2 )-Cartesian coordinate system."
   },
   {
    "type": "body",
@@ -237,7 +237,7 @@
    "section_title": "29.1 Linear programming formulations and algorithms",
    "printed_page": 855,
    "pdf_page": 876,
-   "text": "In two dimensions, you can optimize via a graphical procedure. The set of points for which x 1 + x 2 = ´, for any ´, is a line with a slope of −1. Plotting x 1 + x 2 = 0 produces the line with slope −1 through the origin, as in Figure 29.2(b). The intersection of this line and the feasible region i s the set of feasible solutions that have an objective value of 0. In this case, that intersection of the line with the feasible region is the single point .0;0/ . More generally, for any value ´, the 1 An intuitive definition of a convex region is that it fulfills the requirement that for any two points in the region, all points on a line segment between them are also in the region. x 1 + x 2 = 0"
+   "text": "In two dimensions, you can optimize via a graphical procedure. The set of points for which x 1 + x 2 = ´, for any ´, is a line with a slope of −1. Plotting x 1 + x 2 = 0 produces the line with slope −1 through the origin, as in Figure 29.2(b). The intersection of this line and the feasible region i s the set of feasible solutions that have an objective value of 0. In this case, that intersection of the line with the feasible region is the single point .0,0/ . More generally, for any value ´, the 1 An intuitive definition of a convex region is that it fulfills the requirement that for any two points in the region, all points on a line segment between them are also in the region. x 1 + x 2 = 0"
   },
   {
    "type": "body",
@@ -417,7 +417,7 @@
    "section_title": "29.1 Linear programming formulations and algorithms",
    "printed_page": 858,
    "pdf_page": 879,
-   "text": "−2x 1 − 2x 2 ≤ −10 x 1 ;x 2 ≥ 0 :"
+   "text": "−2x 1 − 2x 2 ≤ −10 x 1 ,x 2 ≥ 0 :"
   },
   {
    "type": "exercise",
@@ -435,7 +435,7 @@
    "section_title": "29.1 Linear programming formulations and algorithms",
    "printed_page": 859,
    "pdf_page": 880,
-   "text": "−x 1 − 2x 2 ≤ −2 x 1 ;x 2 ≥ 0 :"
+   "text": "−x 1 − 2x 2 ≤ −2 x 1 ,x 2 ≥ 0 :"
   },
   {
    "type": "exercise",
@@ -552,7 +552,7 @@
    "section_title": "29.2 Formulating problems as linear programs",
    "printed_page": 860,
    "pdf_page": 881,
-   "text": "When we solved graph problems in Part VI, we used a ttribute notation, such as v: d and (u;v): f . Linear programs typically use subscripted variabl es rather than objects with attached attributes, however. Therefore, when we express variables in linear programs, we indicate vertices and edges thr ough subscripts. For example, we denote the shortest-path weight for vertex v not by v: d but by d v , and we denote the flow from vertex u to vertex v not by (u;v): f but by f uv . For quantities that are given as inputs to problems, such as edge weights or capacities, we continue to use notations such as w(u;v) and c(u;v) ."
+   "text": "When we solved graph problems in Part VI, we used a ttribute notation, such as v: d and (u,v): f . Linear programs typically use subscripted variabl es rather than objects with attached attributes, however. Therefore, when we express variables in linear programs, we indicate vertices and edges thr ough subscripts. For example, we denote the shortest-path weight for vertex v not by v: d but by d v , and we denote the flow from vertex u to vertex v not by (u,v): f but by f uv . For quantities that are given as inputs to problems, such as edge weights or capacities, we continue to use notations such as w(u,v) and c(u,v) ."
   },
   {
    "type": "body",
@@ -597,7 +597,7 @@
    "section_title": "29.2 Formulating problems as linear programs",
    "printed_page": 861,
    "pdf_page": 882,
-   "text": "G = (V;E) , with weight function w W E ! R mapping edges to real-valued weights, a source vertex s , and destination vertex t . The goal is to compute the value d t , which is the weight of a shortest path from s to t . To express this problem as a linear program, you need to determine a se t of variables and constraints that define when you have a shortest path from s to t . The triangle inequality"
+   "text": "G = (V,E) , with weight function w W E ! R mapping edges to real-valued weights, a source vertex s , and destination vertex t . The goal is to compute the value d t , which is the weight of a shortest path from s to t . To express this problem as a linear program, you need to determine a se t of variables and constraints that define when you have a shortest path from s to t . The triangle inequality"
   },
   {
    "type": "body",
@@ -606,7 +606,7 @@
    "section_title": "29.2 Formulating problems as linear programs",
    "printed_page": 861,
    "pdf_page": 882,
-   "text": "(Lemma 22.10 on page 633) gives d v ≤ d u + w(u;v) for each edge (u;v) 2 E."
+   "text": "(Lemma 22.10 on page 633) gives d v ≤ d u + w(u,v) for each edge (u,v) 2 E."
   },
   {
    "type": "body",
@@ -615,7 +615,7 @@
    "section_title": "29.2 Formulating problems as linear programs",
    "printed_page": 861,
    "pdf_page": 882,
-   "text": "The source vertex initially receives a value d s = 0, which never changes. Thus the following linear program expresses the shortest-path weight from s to t : maximize d t (29.22) subject to d v ≤ d u + w(u;v) for each edge (u;v) 2 E (29.23) d s = 0 : (29.24)"
+   "text": "The source vertex initially receives a value d s = 0, which never changes. Thus the following linear program expresses the shortest-path weight from s to t : maximize d t (29.22) subject to d v ≤ d u + w(u,v) for each edge (u,v) 2 E (29.23) d s = 0 : (29.24)"
   },
   {
    "type": "body",
@@ -633,7 +633,7 @@
    "section_title": "29.2 Formulating problems as linear programs",
    "printed_page": 861,
    "pdf_page": 882,
-   "text": "N d v = 0 for all v 2 V (recall that a bar over a variable name denotes a specific setting of the variable’s value) would yield an optimal solution to the linear program without solving the shortest-paths problem. Maximizing is the right thing to do because an optimal solution to the shortest-paths problem sets each N d v to min ˚ N d u + w(u;v) W u 2 V and (u;v) 2 E"
+   "text": "N d v = 0 for all v 2 V (recall that a bar over a variable name denotes a specific setting of the variable’s value) would yield an optimal solution to the linear program without solving the shortest-paths problem. Maximizing is the right thing to do because an optimal solution to the shortest-paths problem sets each N d v to min ˚ N d u + w(u,v) W u 2 V and (u,v) 2 E"
   },
   {
    "type": "body",
@@ -642,7 +642,7 @@
    "section_title": "29.2 Formulating problems as linear programs",
    "printed_page": 861,
    "pdf_page": 882,
-   "text": ", so that N d v is the largest value that is less than or equal to all of the values in the set ˚ N d u + w(u;v) } . Therefore, it makes sense to maximize d v for all vertices v on a shortest path from s to t subject to these constraints, and maximizing d t achieves this goal."
+   "text": ", so that N d v is the largest value that is less than or equal to all of the values in the set ˚ N d u + w(u,v) } . Therefore, it makes sense to maximize d v for all vertices v on a shortest path from s to t subject to these constraints, and maximizing d t achieves this goal."
   },
   {
    "type": "body",
@@ -669,7 +669,7 @@
    "section_title": "29.2 Formulating problems as linear programs",
    "printed_page": 862,
    "pdf_page": 883,
-   "text": "Next, let’s express the maximum-flow problem as a linear program. Recall that the input is a directed graph G = (V;E) in which each edge (u;v) 2 E has a nonnegative capacity c(u;v) ≥ 0, and two distinguished vertices: a source s and a sink t . As defined in Section 24.1, a flow is a nonnegative real-valued function f W V × V ! R that satisfies the capacity constraint and flow conservation. A maximum flow is a flow that satisfies these constraints and maximizes the flow value, which is the total flow coming out of the source minus the total flow into the source. A flow, therefore, satisfies linear constraints, and the value of a flow is a linear function. Recalling also that we assume that c(u;v) = 0 if (u;v) … E and that there are no antiparallel edges, the maximum-flow problem can be expressed as a linear program: maximize"
+   "text": "Next, let’s express the maximum-flow problem as a linear program. Recall that the input is a directed graph G = (V,E) in which each edge (u,v) 2 E has a nonnegative capacity c(u,v) ≥ 0, and two distinguished vertices: a source s and a sink t . As defined in Section 24.1, a flow is a nonnegative real-valued function f W V × V ! R that satisfies the capacity constraint and flow conservation. A maximum flow is a flow that satisfies these constraints and maximizes the flow value, which is the total flow coming out of the source minus the total flow into the source. A flow, therefore, satisfies linear constraints, and the value of a flow is a linear function. Recalling also that we assume that c(u,v) = 0 if (u,v) … E and that there are no antiparallel edges, the maximum-flow problem can be expressed as a linear program: maximize"
   },
   {
    "type": "body",
@@ -687,7 +687,7 @@
    "section_title": "29.2 Formulating problems as linear programs",
    "printed_page": 862,
    "pdf_page": 883,
-   "text": "X v2V f vs (29.25) subject to f uv ≤ c(u;v) for each u;v 2 V (29.26) X v2V f vu ="
+   "text": "X v2V f vs (29.25) subject to f uv ≤ c(u,v) for each u,v 2 V (29.26) X v2V f vu ="
   },
   {
    "type": "body",
@@ -696,7 +696,7 @@
    "section_title": "29.2 Formulating problems as linear programs",
    "printed_page": 862,
    "pdf_page": 883,
-   "text": "X v2V f uv for each u 2 V − fs;t g (29.27) f uv ≥ 0 for each u;v 2 V : (29.28)"
+   "text": "X v2V f uv for each u 2 V − fs,t g (29.27) f uv ≥ 0 for each u,v 2 V : (29.28)"
   },
   {
    "type": "body",
@@ -714,7 +714,7 @@
    "section_title": "29.2 Formulating problems as linear programs",
    "printed_page": 862,
    "pdf_page": 883,
-   "text": "It is usually more efficient to solve a smaller-sized linear program. The linear program in (29.25)3(29.28) has, for ease of notation, a flow and capacity of 0 for each pair of vertices u;v with (u;v) … E. It is more efficient to rewrite the linear program so that it has O(V + E) constraints. Exercise 29.2-4 asks you to do so."
+   "text": "It is usually more efficient to solve a smaller-sized linear program. The linear program in (29.25)3(29.28) has, for ease of notation, a flow and capacity of 0 for each pair of vertices u,v with (u,v) … E. It is more efficient to rewrite the linear program so that it has O(V + E) constraints. Exercise 29.2-4 asks you to do so."
   },
   {
    "type": "body",
@@ -759,7 +759,7 @@
    "section_title": "29.2 Formulating problems as linear programs",
    "printed_page": 862,
    "pdf_page": 883,
-   "text": "X v2V f uv = 0 for each u 2 V − fs;t g"
+   "text": "X v2V f uv = 0 for each u 2 V − fs,t g"
   },
   {
    "type": "body",
@@ -777,7 +777,7 @@
    "section_title": "29.2 Formulating problems as linear programs",
    "printed_page": 862,
    "pdf_page": 883,
-   "text": "X v2V f vs = d f uv ≥ 0 for each u;v 2 V : (29.30)"
+   "text": "X v2V f vs = d f uv ≥ 0 for each u,v 2 V : (29.30)"
   },
   {
    "type": "body",
@@ -795,7 +795,7 @@
    "section_title": "29.2 Formulating problems as linear programs",
    "printed_page": 862,
    "pdf_page": 883,
-   "text": "X v2V f ivu = 0 for each i = 1;2;:::;k and for each u 2 V − fs i ;t i g"
+   "text": "X v2V f ivu = 0 for each i = 1,2,…,k and for each u 2 V − fs i ,t i g"
   },
   {
    "type": "body",
@@ -804,7 +804,7 @@
    "section_title": "29.2 Formulating problems as linear programs",
    "printed_page": 862,
    "pdf_page": 883,
-   "text": "X v2V f i;s i ;v −"
+   "text": "X v2V f i,s i ,v −"
   },
   {
    "type": "body",
@@ -813,7 +813,7 @@
    "section_title": "29.2 Formulating problems as linear programs",
    "printed_page": 862,
    "pdf_page": 883,
-   "text": "X v2V f i;v;s i = d i for each i = 1;2;:::;k f i uv ≥ 0 for each u;v 2 V and for each i = 1;2;:::;k :"
+   "text": "X v2V f i,v,s i = d i for each i = 1,2,…,k f i uv ≥ 0 for each u,v 2 V and for each i = 1,2,…,k :"
   },
   {
    "type": "body",
@@ -894,7 +894,7 @@
    "section_title": "29.2 Formulating problems as linear programs",
    "printed_page": 863,
    "pdf_page": 884,
-   "text": "Consider, for example, the following generalization of the maximum-flow problem. Suppose that, in addition to a capacity c(u;v) for each edge (u;v) , you are given a real-valued cost a(u;v). As in the maximum-flow problem, assume that c(u;v) = 0 if (u;v) … E and that there are no antiparallel edges. If you se nd f uv units of flow over edge (u;v) , you incur a cost of a(u;v) • f uv . You are also given a flow demand d . You wish to send d units of flow from s to t while minimizing the total cost P"
+   "text": "Consider, for example, the following generalization of the maximum-flow problem. Suppose that, in addition to a capacity c(u,v) for each edge (u,v) , you are given a real-valued cost a(u,v). As in the maximum-flow problem, assume that c(u,v) = 0 if (u,v) … E and that there are no antiparallel edges. If you se nd f uv units of flow over edge (u,v) , you incur a cost of a(u,v) • f uv . You are also given a flow demand d . You wish to send d units of flow from s to t while minimizing the total cost P"
   },
   {
    "type": "body",
@@ -903,7 +903,7 @@
    "section_title": "29.2 Formulating problems as linear programs",
    "printed_page": 863,
    "pdf_page": 884,
-   "text": "(u;v)2E a(u;v) • f uv incurred by the flow. This problem is known as the minimum-cost-flow problem."
+   "text": "(u,v)2E a(u,v) • f uv incurred by the flow. This problem is known as the minimum-cost-flow problem."
   },
   {
    "type": "body",
@@ -921,7 +921,7 @@
    "section_title": "29.2 Formulating problems as linear programs",
    "printed_page": 863,
    "pdf_page": 884,
-   "text": "(u;v)2E a(u;v) • f uv . What is the particular 4-unit flow that minimizes this cost? Figure 29.3(b) shows an optimal solution, with total cost P"
+   "text": "(u,v)2E a(u,v) • f uv . What is the particular 4-unit flow that minimizes this cost? Figure 29.3(b) shows an optimal solution, with total cost P"
   },
   {
    "type": "body",
@@ -930,7 +930,7 @@
    "section_title": "29.2 Formulating problems as linear programs",
    "printed_page": 863,
    "pdf_page": 884,
-   "text": "(u;v)2E a(u;v) • f uv = .2 • 2/ C .5 • 2/ C .3 • 1/ C .7 • 1/ C .1 • 3/ = 27:"
+   "text": "(u,v)2E a(u,v) • f uv = .2 • 2/ C .5 • 2/ C .3 • 1/ C .7 • 1/ C .1 • 3/ = 27:"
   },
   {
    "type": "body",
@@ -948,7 +948,7 @@
    "section_title": "29.2 Formulating problems as linear programs",
    "printed_page": 864,
    "pdf_page": 885,
-   "text": "(u;v)2E a(u;v) • f uv (29.29) subject to f uv ≤ c(u;v) for each u;v 2 V X v2V f vu −"
+   "text": "(u,v)2E a(u,v) • f uv (29.29) subject to f uv ≤ c(u,v) for each u,v 2 V X v2V f vu −"
   },
   {
    "type": "body",
@@ -984,7 +984,7 @@
    "section_title": "29.2 Formulating problems as linear programs",
    "printed_page": 864,
    "pdf_page": 885,
-   "text": "This example is an instance of a multicommodity-flow problem. The input to this problem is once again a directed graph G = (V;E) in which each edge (u;v) 2 E has a nonnegative capacity c(u;v) ≥ 0. As in the maximum-flow problem, implicitly assume that c(u;v) = 0 for (u;v) … E and that the graph has no antiparallel edges. In addition, there are k different commodities, K 1 ;K 2 ;:::;K k , with commodity i specified by the triple K i = (s i ;t i ;d i ). Here, vertex s i is the source of commodity i , vertex t i is the sink of commodity i , and d i is the demand for commodity i , which is the desired flow value for the commodity from s i to t i . We define a flow for commodity i , denoted by f i , (so that f i uv is the flow of commodity i from vertex u to vertex v) to be a real-valued function that satisfies the flow-conservation and capacity constraints. We define f uv , the aggregate flow, to be the sum of the various commodity flows, so that f uv = P k i D1 f i uv . The aggregate flow on edge (u;v) must be no more than the capacity of edge (u;v) . This problem has no objective function: the question is to determine whether such a flow exists. Thus the linear program for this problem has a \"null\" objective function: minimize 0 subject to k X i D1 f i uv ≤ c(u;v) for each u;v 2 V"
+   "text": "This example is an instance of a multicommodity-flow problem. The input to this problem is once again a directed graph G = (V,E) in which each edge (u,v) 2 E has a nonnegative capacity c(u,v) ≥ 0. As in the maximum-flow problem, implicitly assume that c(u,v) = 0 for (u,v) … E and that the graph has no antiparallel edges. In addition, there are k different commodities, K 1 ,K 2 ,…,K k , with commodity i specified by the triple K i = (s i ,t i ,d i ). Here, vertex s i is the source of commodity i , vertex t i is the sink of commodity i , and d i is the demand for commodity i , which is the desired flow value for the commodity from s i to t i . We define a flow for commodity i , denoted by f i , (so that f i uv is the flow of commodity i from vertex u to vertex v) to be a real-valued function that satisfies the flow-conservation and capacity constraints. We define f uv , the aggregate flow, to be the sum of the various commodity flows, so that f uv = P k i D1 f i uv . The aggregate flow on edge (u,v) must be no more than the capacity of edge (u,v) . This problem has no objective function: the question is to determine whether such a flow exists. Thus the linear program for this problem has a \"null\" objective function: minimize 0 subject to k X i D1 f i uv ≤ c(u,v) for each u,v 2 V"
   },
   {
    "type": "body",
@@ -1047,7 +1047,7 @@
    "section_title": "29.2 Formulating problems as linear programs",
    "printed_page": 865,
    "pdf_page": 886,
-   "text": "29.2-5 Write a linear program that, given a bipartite graph G = (V;E), solves the maximum-bipartite-matching problem."
+   "text": "29.2-5 Write a linear program that, given a bipartite graph G = (V,E), solves the maximum-bipartite-matching problem."
   },
   {
    "type": "exercise",
@@ -1074,7 +1074,7 @@
    "section_title": "29.2 Formulating problems as linear programs",
    "printed_page": 865,
    "pdf_page": 886,
-   "text": "P = fP 1 ;P 2 ;:::;P √g be the set of all possible directed simple paths from source s"
+   "text": "P = fP 1 ,P 2 ,…,P √g be the set of all possible directed simple paths from source s"
   },
   {
    "type": "body",
@@ -1083,7 +1083,7 @@
    "section_title": "29.3 Duality",
    "printed_page": 866,
    "pdf_page": 887,
-   "text": "to sink t . Using decision variables x 1 ;:::;x p , where x i is the amount of flow on path i , formulate a linear program for the maximum-flow problem. What is an upper bound on p, the number of directed simple paths from s to t ?"
+   "text": "to sink t . Using decision variables x 1 ,…,x p , where x i is the amount of flow on path i , formulate a linear program for the maximum-flow problem. What is an upper bound on p, the number of directed simple paths from s to t ?"
   },
   {
    "type": "exercise",
@@ -1101,7 +1101,7 @@
    "section_title": "29.3 Duality",
    "printed_page": 866,
    "pdf_page": 887,
-   "text": "G = (V;E) in which each edge (u;v) 2 E has a nonnegative capacity c(u;v) ≥ 0 and a cost a(u;v). As in the multicommodity-flow problem, there are k different commodities, K 1 ;K 2 ;:::;K k , with commodity i specified by the triple"
+   "text": "G = (V,E) in which each edge (u,v) 2 E has a nonnegative capacity c(u,v) ≥ 0 and a cost a(u,v). As in the multicommodity-flow problem, there are k different commodities, K 1 ,K 2 ,…,K k , with commodity i specified by the triple"
   },
   {
    "type": "body",
@@ -1110,7 +1110,7 @@
    "section_title": "29.3 Duality",
    "printed_page": 866,
    "pdf_page": 887,
-   "text": "K i = (s i ;t i ;d i ). We define the flow f i for commodity i and the aggregate flow f uv on edge (u;v) as in the multicommodity-flow problem. A feasible flow is one in which the aggregate flow on each edge (u;v) is no more than the capacity of edge (u;v). The cost of a flow is P u;v2V a(u;v) • f uv , and the goal is to find the feasible flow of minimum cost. Express this problem as a linear program."
+   "text": "K i = (s i ,t i ,d i ). We define the flow f i for commodity i and the aggregate flow f uv on edge (u,v) as in the multicommodity-flow problem. A feasible flow is one in which the aggregate flow on each edge (u,v) is no more than the capacity of edge (u,v). The cost of a flow is P u,v2V a(u,v) • f uv , and the goal is to find the feasible flow of minimum cost. Express this problem as a linear program."
   },
   {
    "type": "body",
@@ -1164,7 +1164,7 @@
    "section_title": "29.3 Duality",
    "printed_page": 866,
    "pdf_page": 887,
-   "text": "Given the primal linear program maximize n X j D1 c |x| (29.31) subject to n X j D1 a i|x| ≤ b i for i = 1;2;:::;m (29.32) x j ≥ 0 for j = 1;2;:::;n ; (29.33) its dual is minimize m X i D1 b i y i (29.34) subject to m X i D1 a ij y i ≥ c j for j = 1;2;:::;n (29.35) y i ≥ 0 for i = 1;2;:::;m : (29.36)"
+   "text": "Given the primal linear program maximize n X j D1 c |x| (29.31) subject to n X j D1 a i|x| ≤ b i for i = 1,2,…,m (29.32) x j ≥ 0 for j = 1,2,…,n ; (29.33) its dual is minimize m X i D1 b i y i (29.34) subject to m X i D1 a ij y i ≥ c j for j = 1,2,…,n (29.35) y i ≥ 0 for i = 1,2,…,m : (29.36)"
   },
   {
    "type": "body",
@@ -1191,7 +1191,7 @@
    "section_title": "29.3 Duality",
    "printed_page": 867,
    "pdf_page": 888,
-   "text": "4x 1 + x 2 + 2x 3 ≤ 36 (29.40) x 1 ;x 2 ;x 3 ≥ 0 : (29.41)"
+   "text": "4x 1 + x 2 + 2x 3 ≤ 36 (29.40) x 1 ,x 2 ,x 3 ≥ 0 : (29.41)"
   },
   {
    "type": "body",
@@ -1209,7 +1209,7 @@
    "section_title": "29.3 Duality",
    "printed_page": 867,
    "pdf_page": 888,
-   "text": "3y 1 + 5y 2 + 2y 3 ≥ 4 (29.45) y 1 ;y 2 ;y 3 ≥ 0 : (29.46)"
+   "text": "3y 1 + 5y 2 + 2y 3 ≥ 4 (29.45) y 1 ,y 2 ,y 3 ≥ 0 : (29.46)"
   },
   {
    "type": "body",
@@ -1245,7 +1245,7 @@
    "section_title": "29.3 Duality",
    "printed_page": 868,
    "pdf_page": 889,
-   "text": "In general, for any nonnegative multipliers y 1 , y 2 , and y 3 , you can generate a constraint y 1 (x 1 Cx 2 C3x 3 )Cy 2 .2x 1 C2x 2 C5x 3 /Cy 3 .4x 1 Cx 2 C2x 3 / ≤ 30y 1 C24y 2 C36y 3 from the primal constraints or, by distributing and regrouping, (y 1 C2y 2 C—y 3 )x 1 C(y 1 C2y 2 Cy 3 )x 2 C(3y 1 C5y 2 C2y 3 )x 3 ≤ 30y 1 C24y 2 C36y 3 :"
+   "text": "In general, for any nonnegative multipliers y 1 , y 2 , and y 3 , you can generate a constraint y 1 (x 1 + x 2 + 3x 3 ) + y 2 .2x 1 + 2x 2 + 5x 3 /Cy 3 .4x 1 + x 2 + 2x 3 / ≤ 30y 1 + 24y 2 + 36y 3 from the primal constraints or, by distributing and regrouping, (y 1 + 2y 2 + 4y 3 )x 1 C(y 1 + 2y 2 + y 3 )x 2 C(3y 1 + 5y 2 + 2y 3 )x 3 ≤ 30y 1 + 24y 2 + 36y 3 :"
   },
   {
    "type": "body",
@@ -1254,7 +1254,7 @@
    "section_title": "29.3 Duality",
    "printed_page": 868,
    "pdf_page": 889,
-   "text": "Now, as long as this constraint has coefficients of x 1 , x 2 , and x 3 that are at least their objective-function coefficients, it is a valid upper bound. That is, as long as y 1 + 2y 2 + 4y 3 ≥ 3; y 1 + 2y 2 + y 3 ≥ 1; 3y 1 + 5y 2 + 2y 3 ≥ 4; you have a valid upper bound of 30y 1 C24y 2 C36y 3 . The multipliers y 1 , y 2 , and y 3 must be nonnegative, because otherwise you cannot c ombine the inequalities. Of course, you would like the upper bound to be as small as possible, and so you want to choose y to minimize 30y 1 + 24y 2 + 36y 3 . Observe that we have just described the dual linear program as the problem of finding the smallest possible upper bound on the primal."
+   "text": "Now, as long as this constraint has coefficients of x 1 , x 2 , and x 3 that are at least their objective-function coefficients, it is a valid upper bound. That is, as long as y 1 + 2y 2 + 4y 3 ≥ 3; y 1 + 2y 2 + y 3 ≥ 1; 3y 1 + 5y 2 + 2y 3 ≥ 4; you have a valid upper bound of 30y 1 + 24y 2 + 36y 3 . The multipliers y 1 , y 2 , and y 3 must be nonnegative, because otherwise you cannot c ombine the inequalities. Of course, you would like the upper bound to be as small as possible, and so you want to choose y to minimize 30y 1 + 24y 2 + 36y 3 . Observe that we have just described the dual linear program as the problem of finding the smallest possible upper bound on the primal."
   },
   {
    "type": "body",
@@ -1398,7 +1398,7 @@
    "section_title": "29.3 Duality",
    "printed_page": 869,
    "pdf_page": 890,
-   "text": "Given M 2 R .mC1/×n and g 2 R mC1 , exactly one of the following statements is true:"
+   "text": "Given M 2 R .m + 1/×n and g 2 R m + 1 , exactly one of the following statements is true:"
   },
   {
    "type": "body",
@@ -1407,7 +1407,7 @@
    "section_title": "29.3 Duality",
    "printed_page": 869,
    "pdf_page": 890,
-   "text": "1. There exists v 2 R n such that Mv ≤ g, 2. There exists w 2 R mC1 such that w ≥ 0;w T M = 0 (an n-vector of all zeros), and w T g<0 ."
+   "text": "1. There exists v 2 R n such that Mv ≤ g, 2. There exists w 2 R m + 1 such that w ≥ 0,w T M = 0 (an n-vector of all zeros), and w T g<0 ."
   },
   {
    "type": "theorem",
@@ -1470,7 +1470,7 @@
    "section_title": "29.3 Duality",
    "printed_page": 870,
    "pdf_page": 891,
-   "text": "Ð denotes an .mC1/×n matrix, x is an n-vector, and ] b"
+   "text": "Ð denotes an .m + 1/×n matrix, x is an n-vector, and ] b"
   },
   {
    "type": "body",
@@ -1542,7 +1542,7 @@
    "section_title": "29.3 Duality",
    "printed_page": 870,
    "pdf_page": 891,
-   "text": "Because the augmented primal is infeasible, condition 1 of Farkas’s lemma does not hold. Therefore, condition 2 must apply, so tha t there must exist a w 2 R mC1 such that w ≥ 0, w T M = 0, and w T g<0 . Let’s write w as w ="
+   "text": "Because the augmented primal is infeasible, condition 1 of Farkas’s lemma does not hold. Therefore, condition 2 must apply, so tha t there must exist a w 2 R m + 1 such that w ≥ 0, w T M = 0, and w T g<0 . Let’s write w as w ="
   },
   {
    "type": "body",
@@ -1893,7 +1893,7 @@
    "section_title": "29.3 Duality",
    "printed_page": 873,
    "pdf_page": 894,
-   "text": "Given a set of m linear inequalities on n variables x 1 ;x 2 ;:::;x n , the linearinequality feasibility problem asks whether there is a setting of the variables th at simultaneously satisfies each of the inequalities. a. Given an algorithm for the linear-programming problem, show how to use it to solve a linear-inequality feasibility problem. The number of variables and constraints that you use in the linear-programming problem should be polynomial in n and m. b. Given an algorithm for the linear-inequality feasibility problem, show how to use it to solve a linear-programming problem. The number of variables and linear inequalities that you use in the linear-inequality feasibility problem should be polynomial in n and m, the number of variables and constraints in the linear program."
+   "text": "Given a set of m linear inequalities on n variables x 1 ,x 2 ,…,x n , the linearinequality feasibility problem asks whether there is a setting of the variables th at simultaneously satisfies each of the inequalities. a. Given an algorithm for the linear-programming problem, show how to use it to solve a linear-inequality feasibility problem. The number of variables and constraints that you use in the linear-programming problem should be polynomial in n and m. b. Given an algorithm for the linear-inequality feasibility problem, show how to use it to solve a linear-programming problem. The number of variables and linear inequalities that you use in the linear-inequality feasibility problem should be polynomial in n and m, the number of variables and constraints in the linear program."
   },
   {
    "type": "problem",
@@ -1911,7 +1911,7 @@
    "section_title": "29.3 Duality",
    "printed_page": 873,
    "pdf_page": 894,
-   "text": "Complementary slackness describes a relationship between the values of prim al variables and dual constraints and between the valu es of dual variables and primal constraints. Let N x be a feasible solution to the primal linear program given in (29.31)3(29.33), and let N y be a feasible solution to the dual linear program given in (29.34)3(29.36). Complementary slackness states that the following conditions are necessary and sufficient for N x and N y to be optimal: m X i D1 a ij N y i = c j or N x j = 0 for j = 1;2;:::;n and n X j D1 a ij N x j = b i or N y i = 0 for i = 1;2;:::;m: a. Verify that complementary slackness holds for the l inear program in lines"
+   "text": "Complementary slackness describes a relationship between the values of prim al variables and dual constraints and between the valu es of dual variables and primal constraints. Let N x be a feasible solution to the primal linear program given in (29.31)3(29.33), and let N y be a feasible solution to the dual linear program given in (29.34)3(29.36). Complementary slackness states that the following conditions are necessary and sufficient for N x and N y to be optimal: m X i D1 a ij N y i = c j or N x j = 0 for j = 1,2,…,n and n X j D1 a ij N x j = b i or N y i = 0 for i = 1,2,…,m: a. Verify that complementary slackness holds for the l inear program in lines"
   },
   {
    "type": "body",
@@ -1929,7 +1929,7 @@
    "section_title": "29.3 Duality",
    "printed_page": 874,
    "pdf_page": 895,
-   "text": "(29.31)3(29.33) is optimal if and only if there exist values N y = . N y 1 ; N y 2 ;:::; N y m / such that 1. N y is a feasible solution to the dual linear program given in (29.34)3(29.36), 2. P m i D1 a ij N y i = c j for all j such that N x j >0 , and 3. N y i = 0 for all i such that P n j D1 a ij N x j <b i ."
+   "text": "(29.31)3(29.33) is optimal if and only if there exist values N y = . N y 1 ; N y 2 ,…; N y m / such that 1. N y is a feasible solution to the dual linear program given in (29.34)3(29.36), 2. P m i D1 a ij N y i = c j for all j such that N x j >0 , and 3. N y i = 0 for all i such that P n j D1 a ij N x j <b i ."
   },
   {
    "type": "problem",
@@ -2001,7 +2001,7 @@
    "section_title": "29.3 Duality",
    "printed_page": 875,
    "pdf_page": 896,
-   "text": "This problem considers a variant of the minimum-cost-flow problem from Section 29.2 in which there is no demand, source, or s ink. Instead, the input, as before, contains a flow network, capacity constraints c(u;v) , and edge costs a(u;v) ."
+   "text": "This problem considers a variant of the minimum-cost-flow problem from Section 29.2 in which there is no demand, source, or s ink. Instead, the input, as before, contains a flow network, capacity constraints c(u,v) , and edge costs a(u,v) ."
   },
   {
    "type": "body",
@@ -2010,7 +2010,7 @@
    "section_title": "29.3 Duality",
    "printed_page": 875,
    "pdf_page": 896,
-   "text": "A flow is feasible if it satisfies the capacity constraint on every edge and flow conservation at every vertex. The goal is to find, among all feasible flows, the one of minimum cost. We call this problem the minimum-cost-circulation problem. a. Formulate the minimum-cost-circulation problem as a linear program. b. Suppose that for all edges (u;v) 2 E, we have a(u;v) > 0 . What does an optimal solution to the minimum-cost-circulation problem look like? c. Formulate the maximum-flow problem as a minimum-cost-circulation problem linear program. That is, given a maximum-flow problem instance G = (V;E) with source s , sink t and edge capacities c , create a minimum-cost-circulation problem by giving a (possibly different) network G 0 = (V 0 ;E 0 ) with edge capacities c 0 and edge costs a 0 such that you can derive a solution to the maximumflow problem from a solution to the minimum-cost-circulation problem. d. Formulate the single-source shortest-path problem as a minimum-cost-circulation problem linear program."
+   "text": "A flow is feasible if it satisfies the capacity constraint on every edge and flow conservation at every vertex. The goal is to find, among all feasible flows, the one of minimum cost. We call this problem the minimum-cost-circulation problem. a. Formulate the minimum-cost-circulation problem as a linear program. b. Suppose that for all edges (u,v) 2 E, we have a(u,v) > 0 . What does an optimal solution to the minimum-cost-circulation problem look like? c. Formulate the maximum-flow problem as a minimum-cost-circulation problem linear program. That is, given a maximum-flow problem instance G = (V,E) with source s , sink t and edge capacities c , create a minimum-cost-circulation problem by giving a (possibly different) network G 0 = (V 0 ,E 0 ) with edge capacities c 0 and edge costs a 0 such that you can derive a solution to the maximumflow problem from a solution to the minimum-cost-circulation problem. d. Formulate the single-source shortest-path problem as a minimum-cost-circulation problem linear program."
   },
   {
    "type": "chapter-notes",
@@ -2154,7 +2154,7 @@
    "section_title": "29.3 Duality",
    "printed_page": 877,
    "pdf_page": 898,
-   "text": "The values a 0 ;a 1 ;:::;a n−1 are the coefficients of the polynomial. The coefficients and x are drawn from a field F , typically the set C of complex numbers. A polynomial A(x) has degree k if its highest nonzero coefficient is a k , in which case we say that degree(A) = k. Any integer strictly greater than the degree of a polynomial is a degree-bound of that polynomial. Therefore, the degree of a poly nomial of degree-bound n may be any integer between 0 and n − 1, inclusive."
+   "text": "The values a 0 ,a 1 ,…,a n−1 are the coefficients of the polynomial. The coefficients and x are drawn from a field F , typically the set C of complex numbers. A polynomial A(x) has degree k if its highest nonzero coefficient is a k , in which case we say that degree(A) = k. Any integer strictly greater than the degree of a polynomial is a degree-bound of that polynomial. Therefore, the degree of a poly nomial of degree-bound n may be any integer between 0 and n − 1, inclusive."
   },
   {
    "type": "body",

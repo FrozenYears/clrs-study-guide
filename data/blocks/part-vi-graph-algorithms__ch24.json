@@ -57,7 +57,7 @@
    "section_title": "24.1 Flow networks",
    "printed_page": 671,
    "pdf_page": 692,
-   "text": "A flow network G = (V;E) is a directed graph in which each edge (u;v) 2 E has a nonnegative capacity c(u;v) ≥ 0. We further require that if E contains an edge (u;v) , then there is no edge (v;u) in the reverse direction. (We9ll see shortly how to work around this restriction.) If (u;v) … E, then for convenience we define c(u;v) = 0, and we disallow self-loops. Each flow network contains two distinguished vertices: a source s and a sink t . For convenience, we assume that each vertex lies on some path from the source to the sink. That is, for each vertex v 2 V , the flow network contains a path s → v → t . Because each vertex other than s has at least one entering edge, we have |E| ≥ |V| − 1. Figure 24.1 shows an example of a flow network. s t"
+   "text": "A flow network G = (V,E) is a directed graph in which each edge (u,v) 2 E has a nonnegative capacity c(u,v) ≥ 0. We further require that if E contains an edge (u,v) , then there is no edge (v,u) in the reverse direction. (We9ll see shortly how to work around this restriction.) If (u,v) … E, then for convenience we define c(u,v) = 0, and we disallow self-loops. Each flow network contains two distinguished vertices: a source s and a sink t . For convenience, we assume that each vertex lies on some path from the source to the sink. That is, for each vertex v 2 V , the flow network contains a path s → v → t . Because each vertex other than s has at least one entering edge, we have |E| ≥ |V| − 1. Figure 24.1 shows an example of a flow network. s t"
   },
   {
    "type": "body",
@@ -102,7 +102,7 @@
    "section_title": "24.1 Flow networks",
    "printed_page": 671,
    "pdf_page": 692,
-   "text": "Figure 24.1 (a) A flow network G = (V;E) for the Lucky Puck Company9s trucking problem."
+   "text": "Figure 24.1 (a) A flow network G = (V,E) for the Lucky Puck Company9s trucking problem."
   },
   {
    "type": "body",
@@ -111,7 +111,7 @@
    "section_title": "24.1 Flow networks",
    "printed_page": 671,
    "pdf_page": 692,
-   "text": "The Vancouver factory is the source s , and the Winnipeg warehouse is the sink t . The company ships pucks through intermediate cities, but only c(u;v) crates per day can go from city u to city v. Each edge is labeled with its capacity. (b) A flow f in G with value |f| = 19. Each edge (u;v) is labeled by f(u;v)/c(u;v) . The slash notation merely separates the flow and capacity and does not indicate division."
+   "text": "The Vancouver factory is the source s , and the Winnipeg warehouse is the sink t . The company ships pucks through intermediate cities, but only c(u,v) crates per day can go from city u to city v. Each edge is labeled with its capacity. (b) A flow f in G with value |f| = 19. Each edge (u,v) is labeled by f(u,v)/c(u,v) . The slash notation merely separates the flow and capacity and does not indicate division."
   },
   {
    "type": "body",
@@ -120,7 +120,7 @@
    "section_title": "24.1 Flow networks",
    "printed_page": 672,
    "pdf_page": 693,
-   "text": "We are now ready to define flows more formally. Let G = (V;E) be a flow network with a capacity function c . Let s be the source of the network, and let t be the sink. A flow in G is a real-valued function f W V × V ! R that satisfies the following two properties:"
+   "text": "We are now ready to define flows more formally. Let G = (V,E) be a flow network with a capacity function c . Let s be the source of the network, and let t be the sink. A flow in G is a real-valued function f W V × V ! R that satisfies the following two properties:"
   },
   {
    "type": "body",
@@ -129,7 +129,7 @@
    "section_title": "24.1 Flow networks",
    "printed_page": 672,
    "pdf_page": 693,
-   "text": "Capacity constraint: For all u;v 2 V , we require"
+   "text": "Capacity constraint: For all u,v 2 V , we require"
   },
   {
    "type": "body",
@@ -138,7 +138,7 @@
    "section_title": "24.1 Flow networks",
    "printed_page": 672,
    "pdf_page": 693,
-   "text": "0 ≤ f(u;v) ≤ c(u;v):"
+   "text": "0 ≤ f(u,v) ≤ c(u,v):"
   },
   {
    "type": "body",
@@ -156,7 +156,7 @@
    "section_title": "24.1 Flow networks",
    "printed_page": 672,
    "pdf_page": 693,
-   "text": "Flow conservation: For all u 2 V − fs;t g, we require"
+   "text": "Flow conservation: For all u 2 V − fs,t g, we require"
   },
   {
    "type": "body",
@@ -165,7 +165,7 @@
    "section_title": "24.1 Flow networks",
    "printed_page": 672,
    "pdf_page": 693,
-   "text": "X v2V f(v;u) ="
+   "text": "X v2V f(v,u) ="
   },
   {
    "type": "body",
@@ -174,7 +174,7 @@
    "section_title": "24.1 Flow networks",
    "printed_page": 672,
    "pdf_page": 693,
-   "text": "X v2V f(u;v):"
+   "text": "X v2V f(u,v):"
   },
   {
    "type": "body",
@@ -192,7 +192,7 @@
    "section_title": "24.1 Flow networks",
    "printed_page": 672,
    "pdf_page": 693,
-   "text": "When (u;v) … E, there can be no flow from u to v, and f(u;v) = 0."
+   "text": "When (u,v) … E, there can be no flow from u to v, and f(u,v) = 0."
   },
   {
    "type": "body",
@@ -201,7 +201,7 @@
    "section_title": "24.1 Flow networks",
    "printed_page": 672,
    "pdf_page": 693,
-   "text": "We call the nonnegative quantity f(u;v) the flow from vertex u to vertex v. The value |f| of a flow f is defined as |f| ="
+   "text": "We call the nonnegative quantity f(u,v) the flow from vertex u to vertex v. The value |f| of a flow f is defined as |f| ="
   },
   {
    "type": "body",
@@ -210,7 +210,7 @@
    "section_title": "24.1 Flow networks",
    "printed_page": 672,
    "pdf_page": 693,
-   "text": "X v2V f(s;v) −"
+   "text": "X v2V f(s,v) −"
   },
   {
    "type": "body",
@@ -219,7 +219,7 @@
    "section_title": "24.1 Flow networks",
    "printed_page": 672,
    "pdf_page": 693,
-   "text": "X v2V f(v;s); (24.1) that is, the total flow out of the source minus the flow into the source. (Here, the j•j notation denotes flow value, not absolute value or cardinality.) Typically, a flow network does not have any edges into the source, and the flow into the source, given by the summation P v2V f(v;s) , is 0. We include it, however, because when we introduce residual networks later in this chapter, the flow into the source can be positive. In the maximum-flow problem, the input is a flow network G with source s and sink t , and the goal is to find a flow of maximum value."
+   "text": "X v2V f(v,s); (24.1) that is, the total flow out of the source minus the flow into the source. (Here, the j•j notation denotes flow value, not absolute value or cardinality.) Typically, a flow network does not have any edges into the source, and the flow into the source, given by the summation P v2V f(v,s) , is 0. We include it, however, because when we introduce residual networks later in this chapter, the flow into the source can be positive. In the maximum-flow problem, the input is a flow network G with source s and sink t , and the goal is to find a flow of maximum value."
   },
   {
    "type": "body",
@@ -255,7 +255,7 @@
    "section_title": "24.1 Flow networks",
    "printed_page": 672,
    "pdf_page": 693,
-   "text": "Puck leases space on trucks from another firm to ship the pucks from the factory to the warehouse. Because the trucks travel over specified routes (edges) between cities (vertices) and have a limited capacity, Luck y Puck can ship at most c(u;v) crates per day between each pair of cities u and v in Figure 24.1(a). Lucky Puck s t"
+   "text": "Puck leases space on trucks from another firm to ship the pucks from the factory to the warehouse. Because the trucks travel over specified routes (edges) between cities (vertices) and have a limited capacity, Luck y Puck can ship at most c(u,v) crates per day between each pair of cities u and v in Figure 24.1(a). Lucky Puck s t"
   },
   {
    "type": "body",
@@ -273,7 +273,7 @@
    "section_title": "24.1 Flow networks",
    "printed_page": 673,
    "pdf_page": 694,
-   "text": "Figure 24.2 Converting a network with antiparallel edges to an equivalent one with no antiparallel edges. (a) A flow network containing both the edges (v 1 ;v 2 ) and (v 2 ;v 1 ). (b) An equivalent network with no antiparallel edges. A new vertex v 0 was added, and edge (v 1 ;v 2 ) was replaced by the pair of edges (v 1 ;v 0 ) and (v 0 ;v 2 ), both with the same capacity as (v 1 ;v 2 ). has no control over these routes and capacities, an d so the company cannot alter the flow network shown in Figure 24.1(a). They need to determine the largest number p of crates per day that they can ship and then to produce this amount, since there is no point in producing more pucks than they can ship to their warehouse."
+   "text": "Figure 24.2 Converting a network with antiparallel edges to an equivalent one with no antiparallel edges. (a) A flow network containing both the edges (v 1 ,v 2 ) and (v 2 ,v 1 ). (b) An equivalent network with no antiparallel edges. A new vertex v 0 was added, and edge (v 1 ,v 2 ) was replaced by the pair of edges (v 1 ,v 0 ) and (v 0 ,v 2 ), both with the same capacity as (v 1 ,v 2 ). has no control over these routes and capacities, an d so the company cannot alter the flow network shown in Figure 24.1(a). They need to determine the largest number p of crates per day that they can ship and then to produce this amount, since there is no point in producing more pucks than they can ship to their warehouse."
   },
   {
    "type": "body",
@@ -336,7 +336,7 @@
    "section_title": "24.1 Flow networks",
    "printed_page": 673,
    "pdf_page": 694,
-   "text": "This network suffers from one problem, however: it violates the original assumption that if edge (v 1 ;v 2 ) 2 E, then (v 2 ;v 1 ) … E. We call the two edges (v 1 ;v 2 ) and (v 2 ;v 1 ) antiparallel. Thus, to model a flow problem with antiparallel edges, the network must be transformed into an equivalent one containing no antiparallel edges. Figure 24.2(b) displays this equivalent network. To transform the network, choose one of the two antiparallel edges, in this case (v 1 ;v 2 ), and split it by adding a new vertex v 0 and replacing edge (v 1 ;v 2 ) with the pair of edges (v 1 ;v 0 ) and (v 0 ;v 2 ). Also set the capacity of both new edges to the ca pacity of the original edge. The resulting network satisfies the property that if an edge belongs to ∞"
+   "text": "This network suffers from one problem, however: it violates the original assumption that if edge (v 1 ,v 2 ) 2 E, then (v 2 ,v 1 ) … E. We call the two edges (v 1 ,v 2 ) and (v 2 ,v 1 ) antiparallel. Thus, to model a flow problem with antiparallel edges, the network must be transformed into an equivalent one containing no antiparallel edges. Figure 24.2(b) displays this equivalent network. To transform the network, choose one of the two antiparallel edges, in this case (v 1 ,v 2 ), and split it by adding a new vertex v 0 and replacing edge (v 1 ,v 2 ) with the pair of edges (v 1 ,v 0 ) and (v 0 ,v 2 ). Also set the capacity of both new edges to the ca pacity of the original edge. The resulting network satisfies the property that if an edge belongs to ∞"
   },
   {
    "type": "body",
@@ -698,7 +698,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 678,
    "pdf_page": 699,
-   "text": "A flow in a residual network provides a roadmap for adding flow to the original flow network. If f is a flow in G and f 0 is a flow in the corresponding residual network G f , we define f \" f 0 , the augmentation of flow f by f 0 , to be a function from V × V to R, defined by (f \" f 0 ).u;v/ ="
+   "text": "A flow in a residual network provides a roadmap for adding flow to the original flow network. If f is a flow in G and f 0 is a flow in the corresponding residual network G f , we define f \" f 0 , the augmentation of flow f by f 0 , to be a function from V × V to R, defined by (f \" f 0 ).u,v/ ="
   },
   {
    "type": "body",
@@ -716,7 +716,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 679,
    "pdf_page": 700,
-   "text": "( f(u;v) + f 0 (u;v) − f 0 (v;u) if (u;v) 2 E; 0 otherwise : (24.4)"
+   "text": "( f(u,v) + f 0 (u,v) − f 0 (v,u) if (u,v) 2 E; 0 otherwise : (24.4)"
   },
   {
    "type": "body",
@@ -734,7 +734,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 679,
    "pdf_page": 700,
-   "text": "The flow on (u;v) increases by f 0 (u;v) , but decreases by f 0 (v;u) because pushing flow on the reverse edge in the residual network signifies decreasing the flow in the original network. Pushing flow on the reverse edge in the residual network is also known as cancellation. For example, suppose that 5 crates of hockey pucks go from u to v and 2 crates go from v to u. That is equivalent (from the perspective of the final result) to sending 3 crates from u to v and none from v to u. Cancellation of this type is crucial for any maximum-flow algorithm."
+   "text": "The flow on (u,v) increases by f 0 (u,v) , but decreases by f 0 (v,u) because pushing flow on the reverse edge in the residual network signifies decreasing the flow in the original network. Pushing flow on the reverse edge in the residual network is also known as cancellation. For example, suppose that 5 crates of hockey pucks go from u to v and 2 crates go from v to u. That is equivalent (from the perspective of the final result) to sending 3 crates from u to v and none from v to u. Cancellation of this type is crucial for any maximum-flow algorithm."
   },
   {
    "type": "body",
@@ -761,7 +761,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 679,
    "pdf_page": 700,
-   "text": "Let G = (V;E) be a flow network with source s and sink t , and let f be a flow in G. Let G f be the residual network of G induced by f , and let f 0 be a flow in G f . Then the function f \" f 0 defined in equation (24.4) is a flow in G with value jf \" f 0 j = |f| C jf 0 j."
+   "text": "Let G = (V,E) be a flow network with source s and sink t , and let f be a flow in G. Let G f be the residual network of G induced by f , and let f 0 be a flow in G f . Then the function f \" f 0 defined in equation (24.4) is a flow in G with value jf \" f 0 j = |f| C jf 0 j."
   },
   {
    "type": "proof",
@@ -770,7 +770,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 679,
    "pdf_page": 700,
-   "text": "Proof We first verify that f \" f 0 obeys the capacity constraint for each edge in E and flow conservation at each vertex in V − fs;t g."
+   "text": "Proof We first verify that f \" f 0 obeys the capacity constraint for each edge in E and flow conservation at each vertex in V − fs,t g."
   },
   {
    "type": "body",
@@ -779,7 +779,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 679,
    "pdf_page": 700,
-   "text": "For the capacity constraint, first observe that if (u;v) 2 E, then c f (v;u) = f(u;v) . Because f 0 is a flow in G f , we have f 0 (v;u) ≤ c f (v;u) , which gives f 0 (v;u) ≤ f(u;v) . Therefore, (f \" f 0 ).u;v/ = f(u;v) + f 0 (u;v) − f 0 (v;u) (by equation (24.4))"
+   "text": "For the capacity constraint, first observe that if (u,v) 2 E, then c f (v,u) = f(u,v) . Because f 0 is a flow in G f , we have f 0 (v,u) ≤ c f (v,u) , which gives f 0 (v,u) ≤ f(u,v) . Therefore, (f \" f 0 ).u,v/ = f(u,v) + f 0 (u,v) − f 0 (v,u) (by equation (24.4))"
   },
   {
    "type": "body",
@@ -788,7 +788,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 679,
    "pdf_page": 700,
-   "text": "≥ f(u;v) + f 0 (u;v) − f(u;v) (because f 0 (v;u) ≤ f(u;v) )"
+   "text": "≥ f(u,v) + f 0 (u,v) − f(u,v) (because f 0 (v,u) ≤ f(u,v) )"
   },
   {
    "type": "body",
@@ -797,7 +797,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 679,
    "pdf_page": 700,
-   "text": "D f 0 (u;v)"
+   "text": "D f 0 (u,v)"
   },
   {
    "type": "body",
@@ -806,7 +806,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 679,
    "pdf_page": 700,
-   "text": "In addition, (f \" f 0 ).u;v/"
+   "text": "In addition, (f \" f 0 ).u,v/"
   },
   {
    "type": "body",
@@ -815,7 +815,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 679,
    "pdf_page": 700,
-   "text": "D f(u;v) + f 0 (u;v) − f 0 (v;u) (by equation (24.4))"
+   "text": "D f(u,v) + f 0 (u,v) − f 0 (v,u) (by equation (24.4))"
   },
   {
    "type": "body",
@@ -824,7 +824,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 679,
    "pdf_page": 700,
-   "text": "≤ f(u;v) + f 0 (u;v) (because flows are nonnegative)"
+   "text": "≤ f(u,v) + f 0 (u,v) (because flows are nonnegative)"
   },
   {
    "type": "body",
@@ -833,7 +833,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 679,
    "pdf_page": 700,
-   "text": "≤ f(u;v) + c f (u;v) (capacity constraint)"
+   "text": "≤ f(u,v) + c f (u,v) (capacity constraint)"
   },
   {
    "type": "body",
@@ -842,7 +842,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 679,
    "pdf_page": 700,
-   "text": "D f(u;v) + c(u;v) − f(u;v) (definition of c f )"
+   "text": "D f(u,v) + c(u,v) − f(u,v) (definition of c f )"
   },
   {
    "type": "body",
@@ -851,7 +851,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 679,
    "pdf_page": 700,
-   "text": "D c(u;v):"
+   "text": "D c(u,v):"
   },
   {
    "type": "body",
@@ -869,7 +869,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 679,
    "pdf_page": 700,
-   "text": "( c f (p) if (u;v) is on p; 0 otherwise : (24.7)"
+   "text": "( c f (p) if (u,v) is on p; 0 otherwise : (24.7)"
   },
   {
    "type": "body",
@@ -878,7 +878,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "(f \" f 0 ).u;v/ −"
+   "text": "(f \" f 0 ).u,v/ −"
   },
   {
    "type": "body",
@@ -887,7 +887,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "(f \" f 0 ).v;u/"
+   "text": "(f \" f 0 ).v,u/"
   },
   {
    "type": "body",
@@ -896,7 +896,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X v2V f(u;v) −"
+   "text": "X v2V f(u,v) −"
   },
   {
    "type": "body",
@@ -905,7 +905,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X v2V f(v;u) C"
+   "text": "X v2V f(v,u) C"
   },
   {
    "type": "body",
@@ -914,7 +914,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X v2V f 0 (u;v) −"
+   "text": "X v2V f 0 (u,v) −"
   },
   {
    "type": "body",
@@ -923,7 +923,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X v2V f 0 (v;u): (24.5)"
+   "text": "X v2V f 0 (v,u): (24.5)"
   },
   {
    "type": "body",
@@ -932,7 +932,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "Because we disallow antiparallel edges in G (but not in G f ), we know that for each vertex u, there can be an edge (u;v) or (v;u) in G, but never both. For a fixed vertex u, define V l (u) = fv W (u;v) 2 Eg to be the set of vertices with edges in G leaving u, and define V e (u) = fv W (v;u) 2 Eg to be the set of vertices with edges in G entering u. We have V l (u) [ V e (u) ⊆ V and, because G contains no antiparallel edges, V l (u) \\ V e (u) = ;. By the definition of flow augmentation in equation (24.4), only vertices v in V l (u) can have positive (f \" f 0 ).u;v/ , and only vertices v in V e (u) can have positive (f \" f 0 ).v;u/. Starting from the left-hand side of equation (24.5), we use this fact and then reorder and group terms, giving"
+   "text": "Because we disallow antiparallel edges in G (but not in G f ), we know that for each vertex u, there can be an edge (u,v) or (v,u) in G, but never both. For a fixed vertex u, define V l (u) = fv W (u,v) 2 Eg to be the set of vertices with edges in G leaving u, and define V e (u) = fv W (v,u) 2 Eg to be the set of vertices with edges in G entering u. We have V l (u) [ V e (u) ⊆ V and, because G contains no antiparallel edges, V l (u) \\ V e (u) = ,. By the definition of flow augmentation in equation (24.4), only vertices v in V l (u) can have positive (f \" f 0 ).u,v/ , and only vertices v in V e (u) can have positive (f \" f 0 ).v,u/. Starting from the left-hand side of equation (24.5), we use this fact and then reorder and group terms, giving"
   },
   {
    "type": "body",
@@ -941,7 +941,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "(f \" f 0 ).u;v/ −"
+   "text": "(f \" f 0 ).u,v/ −"
   },
   {
    "type": "body",
@@ -950,43 +950,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "(f \" f 0 ).v;u/"
-  },
-  {
-   "type": "body",
-   "chapter": 24,
-   "section": "24.2",
-   "section_title": "24.2 The Ford-Fulkerson method",
-   "printed_page": 680,
-   "pdf_page": 701,
-   "text": "X v2V l (u)"
-  },
-  {
-   "type": "body",
-   "chapter": 24,
-   "section": "24.2",
-   "section_title": "24.2 The Ford-Fulkerson method",
-   "printed_page": 680,
-   "pdf_page": 701,
-   "text": "(f \" f 0 ).u;v/ −"
-  },
-  {
-   "type": "body",
-   "chapter": 24,
-   "section": "24.2",
-   "section_title": "24.2 The Ford-Fulkerson method",
-   "printed_page": 680,
-   "pdf_page": 701,
-   "text": "X v2V e (u)"
-  },
-  {
-   "type": "body",
-   "chapter": 24,
-   "section": "24.2",
-   "section_title": "24.2 The Ford-Fulkerson method",
-   "printed_page": 680,
-   "pdf_page": 701,
-   "text": "(f \" f 0 ).v;u/"
+   "text": "(f \" f 0 ).v,u/"
   },
   {
    "type": "body",
@@ -1004,7 +968,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "(f(u;v) + f 0 (u;v) − f 0 (v;u)) −"
+   "text": "(f \" f 0 ).u,v/ −"
   },
   {
    "type": "body",
@@ -1022,7 +986,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "(f(v;u) + f 0 (v;u) − f 0 (u;v))"
+   "text": "(f \" f 0 ).v,u/"
   },
   {
    "type": "body",
@@ -1031,7 +995,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X v2V l (u) f(u;v) C"
+   "text": "X v2V l (u)"
   },
   {
    "type": "body",
@@ -1040,7 +1004,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X v2V l (u) f 0 (u;v) −"
+   "text": "(f(u,v) + f 0 (u,v) − f 0 (v,u)) −"
   },
   {
    "type": "body",
@@ -1049,7 +1013,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X v2V l (u) f 0 (v;u)"
+   "text": "X v2V e (u)"
   },
   {
    "type": "body",
@@ -1058,7 +1022,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X v2V e (u) f(v;u) −"
+   "text": "(f(v,u) + f 0 (v,u) − f 0 (u,v))"
   },
   {
    "type": "body",
@@ -1067,7 +1031,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X v2V e (u) f 0 (v;u) C"
+   "text": "X v2V l (u) f(u,v) C"
   },
   {
    "type": "body",
@@ -1076,7 +1040,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X v2V e (u) f 0 (u;v)"
+   "text": "X v2V l (u) f 0 (u,v) −"
   },
   {
    "type": "body",
@@ -1085,7 +1049,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X v2V l (u) f(u;v) −"
+   "text": "X v2V l (u) f 0 (v,u)"
   },
   {
    "type": "body",
@@ -1094,7 +1058,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X v2V e (u) f(v;u)"
+   "text": "X v2V e (u) f(v,u) −"
   },
   {
    "type": "body",
@@ -1103,7 +1067,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X v2V l (u) f 0 (u;v) C"
+   "text": "X v2V e (u) f 0 (v,u) C"
   },
   {
    "type": "body",
@@ -1112,7 +1076,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X v2V e (u) f 0 (u;v) −"
+   "text": "X v2V e (u) f 0 (u,v)"
   },
   {
    "type": "body",
@@ -1121,7 +1085,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X v2V l (u) f 0 (v;u) −"
+   "text": "X v2V l (u) f(u,v) −"
   },
   {
    "type": "body",
@@ -1130,7 +1094,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X v2V e (u) f 0 (v;u)"
+   "text": "X v2V e (u) f(v,u)"
   },
   {
    "type": "body",
@@ -1139,7 +1103,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X v2V l (u) f(u;v) −"
+   "text": "X v2V l (u) f 0 (u,v) C"
   },
   {
    "type": "body",
@@ -1148,7 +1112,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X v2V e (u) f(v;u) C"
+   "text": "X v2V e (u) f 0 (u,v) −"
   },
   {
    "type": "body",
@@ -1157,7 +1121,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X v2V l (u)[V e (u) f 0 (u;v) −"
+   "text": "X v2V l (u) f 0 (v,u) −"
   },
   {
    "type": "body",
@@ -1166,7 +1130,43 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X v2V l (u)[V e (u) f 0 (v;u): (24.6)"
+   "text": "X v2V e (u) f 0 (v,u)"
+  },
+  {
+   "type": "body",
+   "chapter": 24,
+   "section": "24.2",
+   "section_title": "24.2 The Ford-Fulkerson method",
+   "printed_page": 680,
+   "pdf_page": 701,
+   "text": "X v2V l (u) f(u,v) −"
+  },
+  {
+   "type": "body",
+   "chapter": 24,
+   "section": "24.2",
+   "section_title": "24.2 The Ford-Fulkerson method",
+   "printed_page": 680,
+   "pdf_page": 701,
+   "text": "X v2V e (u) f(v,u) C"
+  },
+  {
+   "type": "body",
+   "chapter": 24,
+   "section": "24.2",
+   "section_title": "24.2 The Ford-Fulkerson method",
+   "printed_page": 680,
+   "pdf_page": 701,
+   "text": "X v2V l (u)[V e (u) f 0 (u,v) −"
+  },
+  {
+   "type": "body",
+   "chapter": 24,
+   "section": "24.2",
+   "section_title": "24.2 The Ford-Fulkerson method",
+   "printed_page": 680,
+   "pdf_page": 701,
+   "text": "X v2V l (u)[V e (u) f 0 (v,u): (24.6)"
   },
   {
    "type": "body",
@@ -1211,7 +1211,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X v2V f(s;v) −"
+   "text": "X v2V f(s,v) −"
   },
   {
    "type": "body",
@@ -1220,7 +1220,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X v2V f(v;s) C"
+   "text": "X v2V f(v,s) C"
   },
   {
    "type": "body",
@@ -1229,7 +1229,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X v2V f 0 (s;v) −"
+   "text": "X v2V f 0 (s,v) −"
   },
   {
    "type": "body",
@@ -1238,7 +1238,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X v2V f 0 (v;s)"
+   "text": "X v2V f 0 (v,s)"
   },
   {
    "type": "body",
@@ -1247,7 +1247,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X v2T f(u;v) −"
+   "text": "X v2T f(u,v) −"
   },
   {
    "type": "body",
@@ -1256,7 +1256,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X v2T f(v;u): (24.8)"
+   "text": "X v2T f(v,u): (24.8)"
   },
   {
    "type": "body",
@@ -1265,7 +1265,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X v2T c(u;v): (24.9)"
+   "text": "X v2T c(u,v): (24.9)"
   },
   {
    "type": "body",
@@ -1274,7 +1274,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X v2V f(v;u) = 0: (24.10)"
+   "text": "X v2V f(v,u) = 0: (24.10)"
   },
   {
    "type": "body",
@@ -1283,7 +1283,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X v2V f(s;v) −"
+   "text": "X v2V f(s,v) −"
   },
   {
    "type": "body",
@@ -1292,43 +1292,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X v2V f(v;s) C"
-  },
-  {
-   "type": "body",
-   "chapter": 24,
-   "section": "24.2",
-   "section_title": "24.2 The Ford-Fulkerson method",
-   "printed_page": 680,
-   "pdf_page": 701,
-   "text": "X u2S −fsg"
-  },
-  {
-   "type": "body",
-   "chapter": 24,
-   "section": "24.2",
-   "section_title": "24.2 The Ford-Fulkerson method",
-   "printed_page": 680,
-   "pdf_page": 701,
-   "text": "X v2V f(v;u)"
-  },
-  {
-   "type": "body",
-   "chapter": 24,
-   "section": "24.2",
-   "section_title": "24.2 The Ford-Fulkerson method",
-   "printed_page": 680,
-   "pdf_page": 701,
-   "text": "X v2V f(s;v) −"
-  },
-  {
-   "type": "body",
-   "chapter": 24,
-   "section": "24.2",
-   "section_title": "24.2 The Ford-Fulkerson method",
-   "printed_page": 680,
-   "pdf_page": 701,
-   "text": "X v2V f(v;s) C"
+   "text": "X v2V f(v,s) C"
   },
   {
    "type": "body",
@@ -1346,7 +1310,43 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X v2V f(u;v) −"
+   "text": "X v2V f(v,u)"
+  },
+  {
+   "type": "body",
+   "chapter": 24,
+   "section": "24.2",
+   "section_title": "24.2 The Ford-Fulkerson method",
+   "printed_page": 680,
+   "pdf_page": 701,
+   "text": "X v2V f(s,v) −"
+  },
+  {
+   "type": "body",
+   "chapter": 24,
+   "section": "24.2",
+   "section_title": "24.2 The Ford-Fulkerson method",
+   "printed_page": 680,
+   "pdf_page": 701,
+   "text": "X v2V f(v,s) C"
+  },
+  {
+   "type": "body",
+   "chapter": 24,
+   "section": "24.2",
+   "section_title": "24.2 The Ford-Fulkerson method",
+   "printed_page": 680,
+   "pdf_page": 701,
+   "text": "X u2S −fsg"
+  },
+  {
+   "type": "body",
+   "chapter": 24,
+   "section": "24.2",
+   "section_title": "24.2 The Ford-Fulkerson method",
+   "printed_page": 680,
+   "pdf_page": 701,
+   "text": "X v2V f(u,v) −"
   },
   {
    "type": "body",
@@ -1364,7 +1364,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X v2V f(v;u)"
+   "text": "X v2V f(v,u)"
   },
   {
    "type": "body",
@@ -1373,7 +1373,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X u2S −fsg f(u;v)"
+   "text": "X u2S −fsg f(u,v)"
   },
   {
    "type": "body",
@@ -1382,7 +1382,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X u2S−fsg f(v;u)"
+   "text": "X u2S−fsg f(v,u)"
   },
   {
    "type": "body",
@@ -1391,7 +1391,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X u2S f(u;v) −"
+   "text": "X u2S f(u,v) −"
   },
   {
    "type": "body",
@@ -1400,7 +1400,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X u2S f(v;u):"
+   "text": "X u2S f(v,u):"
   },
   {
    "type": "body",
@@ -1409,7 +1409,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X u2S f(u;v) C"
+   "text": "X u2S f(u,v) C"
   },
   {
    "type": "body",
@@ -1418,7 +1418,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X u2S f(u;v) −"
+   "text": "X u2S f(u,v) −"
   },
   {
    "type": "body",
@@ -1427,7 +1427,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X u2S f(v;u) −"
+   "text": "X u2S f(v,u) −"
   },
   {
    "type": "body",
@@ -1436,7 +1436,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X u2S f(v;u)"
+   "text": "X u2S f(v,u)"
   },
   {
    "type": "body",
@@ -1445,7 +1445,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X u2S f(u;v) −"
+   "text": "X u2S f(u,v) −"
   },
   {
    "type": "body",
@@ -1454,7 +1454,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X u2S f(v;u)"
+   "text": "X u2S f(v,u)"
   },
   {
    "type": "body",
@@ -1463,7 +1463,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X u2S f(u;v) −"
+   "text": "X u2S f(u,v) −"
   },
   {
    "type": "body",
@@ -1472,7 +1472,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X u2S f(v;u)"
+   "text": "X u2S f(v,u)"
   },
   {
    "type": "body",
@@ -1481,7 +1481,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X v2T f(u;v) −"
+   "text": "X v2T f(u,v) −"
   },
   {
    "type": "body",
@@ -1490,7 +1490,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X v2T f(v;u)"
+   "text": "X v2T f(v,u)"
   },
   {
    "type": "body",
@@ -1499,7 +1499,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X v2T f(u;v) −"
+   "text": "X v2T f(u,v) −"
   },
   {
    "type": "body",
@@ -1508,7 +1508,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X v2T f(v;u)"
+   "text": "X v2T f(v,u)"
   },
   {
    "type": "body",
@@ -1517,7 +1517,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X v2T f(u;v)"
+   "text": "X v2T f(u,v)"
   },
   {
    "type": "body",
@@ -1526,7 +1526,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X v2T c(u;v)"
+   "text": "X v2T c(u,v)"
   },
   {
    "type": "body",
@@ -1535,7 +1535,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X v2T f(u;v) −"
+   "text": "X v2T f(u,v) −"
   },
   {
    "type": "body",
@@ -1544,7 +1544,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X u2S f(v;u)"
+   "text": "X u2S f(v,u)"
   },
   {
    "type": "body",
@@ -1553,7 +1553,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 680,
    "pdf_page": 701,
-   "text": "X v2T c(u;v) −"
+   "text": "X v2T c(u,v) −"
   },
   {
    "type": "body",
@@ -1562,7 +1562,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 681,
    "pdf_page": 702,
-   "text": "(f \" f 0 ).s;v/ −"
+   "text": "(f \" f 0 ).s,v/ −"
   },
   {
    "type": "body",
@@ -1571,7 +1571,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 681,
    "pdf_page": 702,
-   "text": "(f \" f 0 ).v;s/"
+   "text": "(f \" f 0 ).v,s/"
   },
   {
    "type": "body",
@@ -1589,7 +1589,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 681,
    "pdf_page": 702,
-   "text": "For flow conservation, observe that for any vertex u that is neither s nor t , flow conservation for f and f 0 means that the right-hand side of equation (24.5) is 0, and thus P v2V (f \" f 0 ).u;v/ = P v2V (f \" f 0 ).v;u/ ."
+   "text": "For flow conservation, observe that for any vertex u that is neither s nor t , flow conservation for f and f 0 means that the right-hand side of equation (24.5) is 0, and thus P v2V (f \" f 0 ).u,v/ = P v2V (f \" f 0 ).v,u/ ."
   },
   {
    "type": "body",
@@ -1607,7 +1607,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 681,
    "pdf_page": 702,
-   "text": "Given a flow network G = (V;E) and a flow f , an augmenting path p is a simple path from s to t in the residual network G f . By the definition of the residual network, the flow on an edge (u;v) of an augmenting path may increase by up to c f (u;v) without violating the capacity constraint on whiche ver of (u;v) and (v;u) belongs to the original flow network G."
+   "text": "Given a flow network G = (V,E) and a flow f , an augmenting path p is a simple path from s to t in the residual network G f . By the definition of the residual network, the flow on an edge (u,v) of an augmenting path may increase by up to c f (u,v) without violating the capacity constraint on whiche ver of (u,v) and (v,u) belongs to the original flow network G."
   },
   {
    "type": "body",
@@ -1616,7 +1616,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 681,
    "pdf_page": 702,
-   "text": "The blue path in Figure 24.4(b) is an augmenting path. Treating the residual network G f in the figure as a flow network, the flow through each edge of this path can increase by up to 4 units without violating a capacity constraint, since the smallest residual capacity on this path is c f (v 2 ;v 3 ) = 4. We call the maximum amount by which we can increase the flow on each edge in an augmenting path p the residual capacity of p, given by c f (p) = min fc f (u;v) W (u;v) is in pg :"
+   "text": "The blue path in Figure 24.4(b) is an augmenting path. Treating the residual network G f in the figure as a flow network, the flow through each edge of this path can increase by up to 4 units without violating a capacity constraint, since the smallest residual capacity on this path is c f (v 2 ,v 3 ) = 4. We call the maximum amount by which we can increase the flow on each edge in an augmenting path p the residual capacity of p, given by c f (p) = min fc f (u,v) W (u,v) is in pg :"
   },
   {
    "type": "body",
@@ -1643,7 +1643,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 681,
    "pdf_page": 702,
-   "text": "Let G = (V;E) be a flow network, let f be a flow in G, and let p be an augmenting path in G f . Define a function f √W V × V ! R by f p (u;v) ="
+   "text": "Let G = (V,E) be a flow network, let f be a flow in G, and let p be an augmenting path in G f . Define a function f √W V × V ! R by f p (u,v) ="
   },
   {
    "type": "body",
@@ -1679,7 +1679,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 682,
    "pdf_page": 703,
-   "text": "Let G = (V;E) be a flow network, let f be a flow in G, and let p be an augmenting path in G f . Let f p be defined as in equation (24.7), and suppose that f is augmented by f p . Then the function f \" f p is a flow in G with value jf \" f √j = |f| C jf √j > |f|."
+   "text": "Let G = (V,E) be a flow network, let f be a flow in G, and let p be an augmenting path in G f . Let f p be defined as in equation (24.7), and suppose that f is augmented by f p . Then the function f \" f p is a flow in G with value jf \" f √j = |f| C jf √j > |f|."
   },
   {
    "type": "proof",
@@ -1715,7 +1715,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 682,
    "pdf_page": 703,
-   "text": "A cut (S;T) of flow network G = (V;E) is a partition of V into S and T = V − S such that s 2 S and t 2 T . (This definition is similar to the definition of \"cut\" that we used for minimum spanning trees in Chapter 21, except that here we are cutting a directed graph rather th an an undirected graph, and we insist that s 2 S and t 2 T .) If f is a flow, then the net flow f(S;T) across the cut (S;T) is defined to be f(S;T) ="
+   "text": "A cut (S,T) of flow network G = (V,E) is a partition of V into S and T = V − S such that s 2 S and t 2 T . (This definition is similar to the definition of \"cut\" that we used for minimum spanning trees in Chapter 21, except that here we are cutting a directed graph rather th an an undirected graph, and we insist that s 2 S and t 2 T .) If f is a flow, then the net flow f(S,T) across the cut (S,T) is defined to be f(S,T) ="
   },
   {
    "type": "body",
@@ -1724,7 +1724,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 682,
    "pdf_page": 703,
-   "text": "The capacity of the cut (S;T) is c(S;T) ="
+   "text": "The capacity of the cut (S,T) is c(S,T) ="
   },
   {
    "type": "body",
@@ -1751,7 +1751,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 682,
    "pdf_page": 703,
-   "text": "Figure 24.5 shows the cut .fs;v 1 ;v 2 g ; fv 3 ;v 4 ;t g/ in the flow network of Figure 24.1(b). The net flow across this cut is f(v 1 ;v 3 ) + f(v 2 ;v 4 ) − f(v 3 ;v 2 ) = 12 + 11 − 4"
+   "text": "Figure 24.5 shows the cut .fs,v 1 ,v 2 g ; fv 3 ,v 4 ,t g/ in the flow network of Figure 24.1(b). The net flow across this cut is f(v 1 ,v 3 ) + f(v 2 ,v 4 ) − f(v 3 ,v 2 ) = 12 + 11 − 4"
   },
   {
    "type": "body",
@@ -1778,7 +1778,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 683,
    "pdf_page": 704,
-   "text": "Figure 24.5 A cut (S;T) in the flow network of Figure 24.1(b), where S = fs;v 1 ;v 2 g and T = fv 3 ;v 4 ;t g. The vertices in S are orange, and the vertices in T are tan. The net flow across (S;T) is f(S;T) = 19, and the capacity is c(S;T) = 26. c(v 1 ;v 3 ) + c(v 2 ;v 4 ) = 12 + 14"
+   "text": "Figure 24.5 A cut (S,T) in the flow network of Figure 24.1(b), where S = fs,v 1 ,v 2 g and T = fv 3 ,v 4 ,t g. The vertices in S are orange, and the vertices in T are tan. The net flow across (S,T) is f(S,T) = 19, and the capacity is c(S,T) = 26. c(v 1 ,v 3 ) + c(v 2 ,v 4 ) = 12 + 14"
   },
   {
    "type": "body",
@@ -1805,7 +1805,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 683,
    "pdf_page": 704,
-   "text": "Let f be a flow in a flow network G with source s and sink t , and let (S;T) be any cut of G. Then the net flow across (S;T) is f(S;T) = |f|."
+   "text": "Let f be a flow in a flow network G with source s and sink t , and let (S,T) be any cut of G. Then the net flow across (S,T) is f(S,T) = |f|."
   },
   {
    "type": "proof",
@@ -1814,7 +1814,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 683,
    "pdf_page": 704,
-   "text": "Proof For any vertex u 2 V − fs;t g, rewrite the flow-conservation condition as X v2V f(u;v) −"
+   "text": "Proof For any vertex u 2 V − fs,t g, rewrite the flow-conservation condition as X v2V f(u,v) −"
   },
   {
    "type": "body",
@@ -1832,7 +1832,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 683,
    "pdf_page": 704,
-   "text": "• X v2V f(u;v) −"
+   "text": "• X v2V f(u,v) −"
   },
   {
    "type": "body",
@@ -1850,7 +1850,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 683,
    "pdf_page": 704,
-   "text": "• f(s;v) C"
+   "text": "• f(s,v) C"
   },
   {
    "type": "body",
@@ -1859,7 +1859,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 683,
    "pdf_page": 704,
-   "text": "• f(v;s) C"
+   "text": "• f(v,s) C"
   },
   {
    "type": "body",
@@ -1877,7 +1877,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 684,
    "pdf_page": 705,
-   "text": "The two summations within the parentheses are actua lly the same, since for all vertices x;y 2 S , the term f(x;y) appears once in each summation. Hence, these summations cancel, yielding"
+   "text": "The two summations within the parentheses are actua lly the same, since for all vertices x,y 2 S , the term f(x,y) appears once in each summation. Hence, these summations cancel, yielding"
   },
   {
    "type": "body",
@@ -1886,7 +1886,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 684,
    "pdf_page": 705,
-   "text": "D f(S;T):"
+   "text": "D f(S,T):"
   },
   {
    "type": "body",
@@ -1922,7 +1922,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 684,
    "pdf_page": 705,
-   "text": "Proof Let (S;T) be any cut of G and let f be any flow. By Lemma 24.4 and the capacity constraint, |f| = f(S;T)"
+   "text": "Proof Let (S,T) be any cut of G and let f be any flow. By Lemma 24.4 and the capacity constraint, |f| = f(S,T)"
   },
   {
    "type": "body",
@@ -1931,7 +1931,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 684,
    "pdf_page": 705,
-   "text": "D c(S;T):"
+   "text": "D c(S,T):"
   },
   {
    "type": "corollary",
@@ -1949,7 +1949,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 684,
    "pdf_page": 705,
-   "text": "D c(S;T):"
+   "text": "D c(S,T):"
   },
   {
    "type": "theorem",
@@ -1967,7 +1967,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 685,
    "pdf_page": 706,
-   "text": "If f is a flow in a flow network G = (V;E) with source s and sink t , then the following conditions are equivalent:"
+   "text": "If f is a flow in a flow network G = (V,E) with source s and sink t , then the following conditions are equivalent:"
   },
   {
    "type": "body",
@@ -1994,7 +1994,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 685,
    "pdf_page": 706,
-   "text": "3. |f| = c(S;T) for some cut (S;T) of G."
+   "text": "3. |f| = c(S,T) for some cut (S,T) of G."
   },
   {
    "type": "proof",
@@ -2021,7 +2021,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 685,
    "pdf_page": 706,
-   "text": "S = fv 2 V W there exists a path from s to v in G f g and T = V − S . The partition (S;T) is a cut: we have s 2 S trivially and t … S because there is no path from s to t in G f . Now consider a pair of vertices u 2 S and v 2 T . If (u;v) 2 E, we must have f(u;v) = c(u;v) , since otherwise (u;v) 2 E f , which would place v in set S . If (v;u) 2 E, we must have f(v;u) = 0, because otherwise c f (u;v) = f(v;u) would be positive and we would have (u;v) 2 E f , which again would place v in S . Of course, if neither"
+   "text": "S = fv 2 V W there exists a path from s to v in G f g and T = V − S . The partition (S,T) is a cut: we have s 2 S trivially and t … S because there is no path from s to t in G f . Now consider a pair of vertices u 2 S and v 2 T . If (u,v) 2 E, we must have f(u,v) = c(u,v) , since otherwise (u,v) 2 E f , which would place v in set S . If (v,u) 2 E, we must have f(v,u) = 0, because otherwise c f (u,v) = f(v,u) would be positive and we would have (u,v) 2 E f , which again would place v in S . Of course, if neither"
   },
   {
    "type": "body",
@@ -2030,7 +2030,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 685,
    "pdf_page": 706,
-   "text": "(u;v) nor (v;u) belongs to E, then f(u;v) = f(v;u) = 0. We thus have f(S;T) ="
+   "text": "(u,v) nor (v,u) belongs to E, then f(u,v) = f(v,u) = 0. We thus have f(S,T) ="
   },
   {
    "type": "body",
@@ -2039,7 +2039,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 685,
    "pdf_page": 706,
-   "text": "By Lemma 24.4, therefore, |f| = f(S;T) = c(S;T) ."
+   "text": "By Lemma 24.4, therefore, |f| = f(S,T) = c(S,T) ."
   },
   {
    "type": "body",
@@ -2048,7 +2048,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 685,
    "pdf_page": 706,
-   "text": ".3/ ) .1/: By Corollary 24.5, |f| ≤ c(S;T) for all cuts (S;T) . The condition"
+   "text": ".3/ ) .1/: By Corollary 24.5, |f| ≤ c(S,T) for all cuts (S,T) . The condition"
   },
   {
    "type": "body",
@@ -2057,7 +2057,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 685,
    "pdf_page": 706,
-   "text": "|f| = c(S;T) thus implies that f is a maximum flow."
+   "text": "|f| = c(S,T) thus implies that f is a maximum flow."
   },
   {
    "type": "body",
@@ -2084,7 +2084,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 685,
    "pdf_page": 706,
-   "text": "FORD-FULKERSON on the next page implements the method by updating the flow attribute (u;v): f for each edge (u;v) 2 E. 1 It assumes implicitly that (u;v): f = 0 if (u;v) … E. The procedure also assumes that the capacities c(u;v) come with the flow network, and that c(u;v) = 0 if (u;v) … E. The procedure computes the residual capacity c f (u;v) in accordance with the formula (24.2). The expression c f (p) in the code is just a temporary variable that stores the residual capacity of the path p."
+   "text": "FORD-FULKERSON on the next page implements the method by updating the flow attribute (u,v): f for each edge (u,v) 2 E. 1 It assumes implicitly that (u,v): f = 0 if (u,v) … E. The procedure also assumes that the capacities c(u,v) come with the flow network, and that c(u,v) = 0 if (u,v) … E. The procedure computes the residual capacity c f (u,v) in accordance with the formula (24.2). The expression c f (p) in the code is just a temporary variable that stores the residual capacity of the path p."
   },
   {
    "type": "pseudocode",
@@ -2098,11 +2098,11 @@
    "lines": [
     {
      "n": 1,
-     "code": "for each edge (u;v)  2 G: E"
+     "code": "for each edge (u,v)  2 G: E"
     },
     {
      "n": 2,
-     "code": "(u;v):  f = 0"
+     "code": "(u,v):  f = 0"
     },
     {
      "n": 3,
@@ -2110,30 +2110,30 @@
     },
     {
      "n": 4,
-     "code": "c f (p) = min fc f (u;v)  W (u;v)  is in pg"
+     "code": "c f (p) = min fc f (u,v)  W (u,v)  is in pg"
     },
     {
      "n": 5,
-     "code": "for each edge (u;v)  in p"
+     "code": "for each edge (u,v)  in p"
     },
     {
      "n": 6,
-     "code": "if (u;v)  2 G: E"
+     "code": "if (u,v)  2 G: E"
     },
     {
      "n": 7,
-     "code": "(u;v):  f = (u;v):  f + c f (p)"
+     "code": "(u,v):  f = (u,v):  f + c f (p)"
     },
     {
      "n": 8,
-     "code": "else (v;u):  f = (v;u):  f − c f (p)"
+     "code": "else (v,u):  f = (v,u):  f − c f (p)"
     },
     {
      "n": 9,
      "code": "return f"
     }
    ],
-   "text": "1 for each edge (u;v)  2 G: E\n2 (u;v):  f = 0\n3 while there exists a path p from s to t in the residual network G f\n4 c f (p) = min fc f (u;v)  W (u;v)  is in pg\n5 for each edge (u;v)  in p\n6 if (u;v)  2 G: E\n7 (u;v):  f = (u;v):  f + c f (p)\n8 else (v;u):  f = (v;u):  f − c f (p)\n9 return f"
+   "text": "1 for each edge (u,v)  2 G: E\n2 (u,v):  f = 0\n3 while there exists a path p from s to t in the residual network G f\n4 c f (p) = min fc f (u,v)  W (u,v)  is in pg\n5 for each edge (u,v)  in p\n6 if (u,v)  2 G: E\n7 (u,v):  f = (u,v):  f + c f (p)\n8 else (v,u):  f = (v,u):  f − c f (p)\n9 return f"
   },
   {
    "type": "body",
@@ -2142,7 +2142,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 686,
    "pdf_page": 707,
-   "text": "FORD-FULKERSON (G;s;t)"
+   "text": "FORD-FULKERSON (G,s,t)"
   },
   {
    "type": "body",
@@ -2151,7 +2151,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 686,
    "pdf_page": 707,
-   "text": "The FORD-FULKERSON procedure simply expands on the FORD-FULKERSON-METHOD pseudocode given earlier. Figure 24.6 shows the result of each iteration in a sample run. Lines 132 initialize the flow f to 0. The while loop of lines 338 repeatedly finds an augmenting path p in G f and augments flow f along p by the residual capacity c f (p). Each residual edge in path p is either an edge in the original network or the reversal of an edge in the original network. Lines 638 update the flow in each case appropriately, adding flow when the residual edge is an original edge and subtracting it otherwise. When no augmenting paths exist, the flow f is a maximum flow."
+   "text": "The FORD-FULKERSON procedure simply expands on the FORD-FULKERSON-METHOD pseudocode given earlier. Figure 24.6 shows the result of each iteration in a sample run. Lines 1–2 initialize the flow f to 0. The while loop of lines 3–8 repeatedly finds an augmenting path p in G f and augments flow f along p by the residual capacity c f (p). Each residual edge in path p is either an edge in the original network or the reversal of an edge in the original network. Lines 6–8 update the flow in each case appropriately, adding flow when the residual edge is an original edge and subtracting it otherwise. When no augmenting paths exist, the flow f is a maximum flow."
   },
   {
    "type": "body",
@@ -2169,7 +2169,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 686,
    "pdf_page": 707,
-   "text": "The running time of FORD-FULKERSON depends on the augmenting path p and how it’s found in line 3. If the edge capacities are irrational numbers, it’s possible to choose the augmenting path so that the algorithm never terminates: the value of the flow increases with successive augmentations, but never converges to the maximum flow value. The good news is that if the algorithm finds the augmenting path by using a breadth-first search (which we saw in Section 20.2), it runs in 1 Recall from Section 20.1 that we represent an attribute f for edge (u;v) with the same style of notation4.u;v/: f 4that we use for an attribute of any other object."
+   "text": "The running time of FORD-FULKERSON depends on the augmenting path p and how it’s found in line 3. If the edge capacities are irrational numbers, it’s possible to choose the augmenting path so that the algorithm never terminates: the value of the flow increases with successive augmentations, but never converges to the maximum flow value. The good news is that if the algorithm finds the augmenting path by using a breadth-first search (which we saw in Section 20.2), it runs in 1 Recall from Section 20.1 that we represent an attribute f for edge (u,v) with the same style of notation4.u,v/: f 4that we use for an attribute of any other object."
   },
   {
    "type": "body",
@@ -2340,7 +2340,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 688,
    "pdf_page": 709,
-   "text": "In practice, the maximum-flow problem often arises with integer capacities. If the capacities are rational numbers, an appropriate scaling transformation can make them all integers. If f − denotes a maximum flow in the transformed network, then a straightforward implementation of FORD-FULKERSON executes the while loop of lines 338 at most jf − j times, since the flow value increases by at least 1 unit in each iteration."
+   "text": "In practice, the maximum-flow problem often arises with integer capacities. If the capacities are rational numbers, an appropriate scaling transformation can make them all integers. If f − denotes a maximum flow in the transformed network, then a straightforward implementation of FORD-FULKERSON executes the while loop of lines 3–8 at most jf − j times, since the flow value increases by at least 1 unit in each iteration."
   },
   {
    "type": "body",
@@ -2349,7 +2349,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 688,
    "pdf_page": 709,
-   "text": "A good implementation should perform the work done within the while loop efficiently. It should represent the flow network G = (V;E) with the right data structure and find an augmenting path by a linear-time algorithm. Let’s assume that the implementation keeps a data structure corr esponding to a directed graph"
+   "text": "A good implementation should perform the work done within the while loop efficiently. It should represent the flow network G = (V,E) with the right data structure and find an augmenting path by a linear-time algorithm. Let’s assume that the implementation keeps a data structure corr esponding to a directed graph"
   },
   {
    "type": "body",
@@ -2358,7 +2358,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 688,
    "pdf_page": 709,
-   "text": "G 0 = (V;E 0 ), where E 0 = f(u;v) W (u;v) 2 E or (v;u) 2 Eg. Edges in the network G are also edges in G 0 , making it straightforward to maintain capacities and flows in this data structure. Given a flow f on G, the edges in the residual network G f consist of all edges (u;v) of G 0 such that c f (u;v) > 0, where c f conforms to equation (24.2). The time to find a path in a residual network is therefore O(V + E 0 ) = O(E) using either depth-first search or breadth-first search."
+   "text": "G 0 = (V,E 0 ), where E 0 = f(u,v) W (u,v) 2 E or (v,u) 2 Eg. Edges in the network G are also edges in G 0 , making it straightforward to maintain capacities and flows in this data structure. Given a flow f on G, the edges in the residual network G f consist of all edges (u,v) of G 0 such that c f (u,v) > 0, where c f conforms to equation (24.2). The time to find a path in a residual network is therefore O(V + E 0 ) = O(E) using either depth-first search or breadth-first search."
   },
   {
    "type": "body",
@@ -2367,7 +2367,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 688,
    "pdf_page": 709,
-   "text": "Each iteration of the while loop thus takes O(E) time, as does the initialization in lines 132, making the total running time of the FORD-FULKERSON algorithm"
+   "text": "Each iteration of the while loop thus takes O(E) time, as does the initialization in lines 1–2, making the total running time of the FORD-FULKERSON algorithm"
   },
   {
    "type": "body",
@@ -2421,7 +2421,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 689,
    "pdf_page": 710,
-   "text": "Let’s now prove that the Edmonds-Karp algorithm runs in O(VE 2 ) time. The analysis depends on the distances to vertices in th e residual network G f . The notation i f (u;v) denotes the shortest-path distance from u to v in G f , where each edge has unit distance."
+   "text": "Let’s now prove that the Edmonds-Karp algorithm runs in O(VE 2 ) time. The analysis depends on the distances to vertices in th e residual network G f . The notation i f (u,v) denotes the shortest-path distance from u to v in G f , where each edge has unit distance."
   },
   {
    "type": "lemma",
@@ -2439,7 +2439,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 689,
    "pdf_page": 710,
-   "text": "If the Edmonds-Karp algorithm is run on a flow network G = (V;E) with source s and sink t , then for all vertices v 2 V − fs;t g, the shortest-path distance i f (s;v) in the residual network G f increases monotonically with each flow augmentation."
+   "text": "If the Edmonds-Karp algorithm is run on a flow network G = (V,E) with source s and sink t , then for all vertices v 2 V − fs,t g, the shortest-path distance i f (s,v) in the residual network G f increases monotonically with each flow augmentation."
   },
   {
    "type": "proof",
@@ -2448,7 +2448,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 689,
    "pdf_page": 710,
-   "text": "Proof We’ll suppose that a flow augmentation occurs that causes the shortestpath distance from s to some vertex v 2 V − fs;t g to decrease and then derive a contradiction. Let f be the flow just before an augmentation that decreases some shortest-path distance, and let f 0 be the flow just afterward. Let v be a vertex with the minimum i f 0 (s;v) whose distance was decreased by the augmentation, so that i f 0 (s;v)<i f (s;v) . Let √D s → u ! v be a shortest path from s to v in G f 0 , so that (u;v) 2 E f 0 and i f 0 (s;u) = i f 0 (s;v) − 1: (24.11)"
+   "text": "Proof We’ll suppose that a flow augmentation occurs that causes the shortestpath distance from s to some vertex v 2 V − fs,t g to decrease and then derive a contradiction. Let f be the flow just before an augmentation that decreases some shortest-path distance, and let f 0 be the flow just afterward. Let v be a vertex with the minimum i f 0 (s,v) whose distance was decreased by the augmentation, so that i f 0 (s,v)<i f (s,v) . Let √D s → u ! v be a shortest path from s to v in G f 0 , so that (u,v) 2 E f 0 and i f 0 (s,u) = i f 0 (s,v) − 1: (24.11)"
   },
   {
    "type": "body",
@@ -2457,7 +2457,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 689,
    "pdf_page": 710,
-   "text": "Because of how we chose v, we know that the distance of vertex u from the source s did not decrease, that is, i f 0 (s;u) ≥ i f (s;u): (24.12)"
+   "text": "Because of how we chose v, we know that the distance of vertex u from the source s did not decrease, that is, i f 0 (s,u) ≥ i f (s,u): (24.12)"
   },
   {
    "type": "body",
@@ -2466,7 +2466,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 689,
    "pdf_page": 710,
-   "text": "We claim that (u;v) 62 E f . Why? If we have (u;v) 2 E f , then we also have i f (s;v) ≤ i f (s;u) + 1 (by Lemma 22.10, the triangle inequality)"
+   "text": "We claim that (u,v) 62 E f . Why? If we have (u,v) 2 E f , then we also have i f (s,v) ≤ i f (s,u) + 1 (by Lemma 22.10, the triangle inequality)"
   },
   {
    "type": "body",
@@ -2475,7 +2475,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 689,
    "pdf_page": 710,
-   "text": "If the Edmonds-Karp algorithm is run on a flow network G = (V;E) with source s and sink t , then the total number of flow augmentations performed by the algorithm is O(VE) ."
+   "text": "If the Edmonds-Karp algorithm is run on a flow network G = (V,E) with source s and sink t , then the total number of flow augmentations performed by the algorithm is O(VE) ."
   },
   {
    "type": "body",
@@ -2484,7 +2484,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 690,
    "pdf_page": 711,
-   "text": "≤ i f 0 (s;u) + 1 (by inequality (24.12))"
+   "text": "≤ i f 0 (s,u) + 1 (by inequality (24.12))"
   },
   {
    "type": "body",
@@ -2493,7 +2493,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 690,
    "pdf_page": 711,
-   "text": "D i f 0 (s;v) (by equation (24.11)) , which contradicts our assumption that i f 0 (s;v)<i f (s;v) ."
+   "text": "D i f 0 (s,v) (by equation (24.11)) , which contradicts our assumption that i f 0 (s,v)<i f (s,v) ."
   },
   {
    "type": "body",
@@ -2502,7 +2502,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 690,
    "pdf_page": 711,
-   "text": "How can we have (u;v) … E f and (u;v) 2 E f 0 ? The augmentation must have increased the flow from v to u, so that edge (v;u) was in the augmenting path. The augmenting path was a shortest path from s to t in G f , and since any subpath of a shortest path is itself a shortest path, this augmenting path includes a shortest path from s to u in G f that has (v;u) as its last edge. Therefore, i f (s;v) = i f (s;u) − 1"
+   "text": "How can we have (u,v) … E f and (u,v) 2 E f 0 ? The augmentation must have increased the flow from v to u, so that edge (v,u) was in the augmenting path. The augmenting path was a shortest path from s to t in G f , and since any subpath of a shortest path is itself a shortest path, this augmenting path includes a shortest path from s to u in G f that has (v,u) as its last edge. Therefore, i f (s,v) = i f (s,u) − 1"
   },
   {
    "type": "body",
@@ -2511,7 +2511,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 690,
    "pdf_page": 711,
-   "text": "≤ i f 0 (s;u) − 1 (by inequality (24.12))"
+   "text": "≤ i f 0 (s,u) − 1 (by inequality (24.12))"
   },
   {
    "type": "body",
@@ -2520,7 +2520,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 690,
    "pdf_page": 711,
-   "text": "D i f 0 (s;v) − 2 (by equation (24.11)) , so that i f 0 (s;v)>i f (s;v) , contradicting our assumption that i f 0 (s;v)<i f (s;v) ."
+   "text": "D i f 0 (s,v) − 2 (by equation (24.11)) , so that i f 0 (s,v)>i f (s,v) , contradicting our assumption that i f 0 (s,v)<i f (s,v) ."
   },
   {
    "type": "body",
@@ -2556,7 +2556,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 690,
    "pdf_page": 711,
-   "text": "Proof We say that an edge (u;v) in a residual network G f is critical on an augmenting path p if the residual capacity of p is the residual capacity of (u;v) , that is, if c f (p) = c f (u;v). After flow is augmented along an augmenting path, any critical edge on the path disappears from the resid ual network. Moreover, at least one edge on any augmenting path must be critical. We’ll show that each of the |E| edges can become critical at most |V| =2 times."
+   "text": "Proof We say that an edge (u,v) in a residual network G f is critical on an augmenting path p if the residual capacity of p is the residual capacity of (u,v) , that is, if c f (p) = c f (u,v). After flow is augmented along an augmenting path, any critical edge on the path disappears from the resid ual network. Moreover, at least one edge on any augmenting path must be critical. We’ll show that each of the |E| edges can become critical at most |V| =2 times."
   },
   {
    "type": "body",
@@ -2565,7 +2565,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 690,
    "pdf_page": 711,
-   "text": "Let u and v be vertices in V that are connected by an edge in E. Since augmenting paths are shortest paths, when (u;v) is critical for the first time, we have i f (s;v) = i f (s;u) + 1:"
+   "text": "Let u and v be vertices in V that are connected by an edge in E. Since augmenting paths are shortest paths, when (u,v) is critical for the first time, we have i f (s,v) = i f (s,u) + 1:"
   },
   {
    "type": "body",
@@ -2574,7 +2574,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 690,
    "pdf_page": 711,
-   "text": "Once the flow is augmented, the edge (u;v) disappears from the residual network."
+   "text": "Once the flow is augmented, the edge (u,v) disappears from the residual network."
   },
   {
    "type": "body",
@@ -2583,7 +2583,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 690,
    "pdf_page": 711,
-   "text": "It cannot reappear later on another augmenting path until after the flow from u to v is decreased, which occurs only if (v;u) appears on an augmenting path. If f 0 is the flow in G when this event occurs, then we have i f 0 (s;u) = i f 0 (s;v) + 1:"
+   "text": "It cannot reappear later on another augmenting path until after the flow from u to v is decreased, which occurs only if (v,u) appears on an augmenting path. If f 0 is the flow in G when this event occurs, then we have i f 0 (s,u) = i f 0 (s,v) + 1:"
   },
   {
    "type": "body",
@@ -2592,7 +2592,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 691,
    "pdf_page": 712,
-   "text": "Since i f (s;v) ≤ i f 0 (s;v) by Lemma 24.7, we have i f 0 (s;u) = i f 0 (s;v) + 1"
+   "text": "Since i f (s,v) ≤ i f 0 (s,v) by Lemma 24.7, we have i f 0 (s,u) = i f 0 (s,v) + 1"
   },
   {
    "type": "body",
@@ -2601,7 +2601,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 691,
    "pdf_page": 712,
-   "text": "≥ i f (s;v) + 1"
+   "text": "≥ i f (s,v) + 1"
   },
   {
    "type": "body",
@@ -2610,7 +2610,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 691,
    "pdf_page": 712,
-   "text": "D i f (s;u) + 2:"
+   "text": "D i f (s,u) + 2:"
   },
   {
    "type": "body",
@@ -2619,7 +2619,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 691,
    "pdf_page": 712,
-   "text": "Consequently, from the time (u;v) becomes critical to the time when it next becomes critical, the distance of u from the source increases by at least 2. The distance of u from the source is initially at least 0. Because edge (u;v) is on an augmenting path, and augmenting paths end at t , we know that u cannot be t , so that in any residual network that has a path from s to u, the shortest such path has at most |V| − 2 edges. Thus, after the first time that (u;v) becomes critical, it can become critical at most .|V| − 2/=2 = |V| =2 − 1 times more, for a total of at most |V| =2 times. Since there are O(E) pairs of vertices that can have an edge between them in a residual network, the total numbe r of critical edges during the entire execution of the Edmonds-Karp algorithm is O(VE) . Each augmenting path has at least one critical edge, and hence the theorem follows."
+   "text": "Consequently, from the time (u,v) becomes critical to the time when it next becomes critical, the distance of u from the source increases by at least 2. The distance of u from the source is initially at least 0. Because edge (u,v) is on an augmenting path, and augmenting paths end at t , we know that u cannot be t , so that in any residual network that has a path from s to u, the shortest such path has at most |V| − 2 edges. Thus, after the first time that (u,v) becomes critical, it can become critical at most .|V| − 2/=2 = |V| =2 − 1 times more, for a total of at most |V| =2 times. Since there are O(E) pairs of vertices that can have an edge between them in a residual network, the total numbe r of critical edges during the entire execution of the Edmonds-Karp algorithm is O(VE) . Each augmenting path has at least one critical edge, and hence the theorem follows."
   },
   {
    "type": "body",
@@ -2646,7 +2646,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 691,
    "pdf_page": 712,
-   "text": "24.2-2 In Figure 24.1(b), what is the net flow across the cut .fs;v 2 ;v 4 g ; fv 1 ;v 3 ;t g/? What is the capacity of this cut?"
+   "text": "24.2-2 In Figure 24.1(b), what is the net flow across the cut .fs,v 2 ,v 4 g ; fv 1 ,v 3 ,t g/? What is the capacity of this cut?"
   },
   {
    "type": "exercise",
@@ -2682,7 +2682,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 692,
    "pdf_page": 713,
-   "text": "24.2-6 Suppose that each source s i in a flow network with multiple sources and sinks produces exactly √i units of flow, so that P v2V f(s i ;v) = √i . Suppose also that each sink t j consumes exactly q j units, so that P v2V f(v;t j ) = q j , where P i √i = P"
+   "text": "24.2-6 Suppose that each source s i in a flow network with multiple sources and sinks produces exactly √i units of flow, so that P v2V f(s i ,v) = √i . Suppose also that each sink t j consumes exactly q j units, so that P v2V f(v,t j ) = q j , where P i √i = P"
   },
   {
    "type": "body",
@@ -2727,7 +2727,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 692,
    "pdf_page": 713,
-   "text": "24.2-10 Show how to find a maximum flow in a flow network G = (V;E) by a sequence of at most |E| augmenting paths. ( Hint: Determine the paths after finding the maximum flow.)"
+   "text": "24.2-10 Show how to find a maximum flow in a flow network G = (V,E) by a sequence of at most |E| augmenting paths. ( Hint: Determine the paths after finding the maximum flow.)"
   },
   {
    "type": "exercise",
@@ -2736,7 +2736,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 692,
    "pdf_page": 713,
-   "text": "24.2-11 The edge connectivity of an undirected graph is the minimum number k of edges that must be removed to disconnect the graph. For example, the edge connectivity of a tree is 1, and the edge connectivity of a cyclic chain of vertices is 2. Show how to determine the edge connectivity of an undirected graph G = (V;E) by running a maximum-flow algorithm on at most |V| flow networks, each having O(V + E) vertices and O(E) edges."
+   "text": "24.2-11 The edge connectivity of an undirected graph is the minimum number k of edges that must be removed to disconnect the graph. For example, the edge connectivity of a tree is 1, and the edge connectivity of a cyclic chain of vertices is 2. Show how to determine the edge connectivity of an undirected graph G = (V,E) by running a maximum-flow algorithm on at most |V| flow networks, each having O(V + E) vertices and O(E) edges."
   },
   {
    "type": "exercise",
@@ -2754,7 +2754,7 @@
    "section_title": "24.2 The Ford-Fulkerson method",
    "printed_page": 692,
    "pdf_page": 713,
-   "text": "Let f be a flow in G with |f| ≥ 0 in which one of the edges (v;s) entering"
+   "text": "Let f be a flow in G with |f| ≥ 0 in which one of the edges (v,s) entering"
   },
   {
    "type": "body",
@@ -2763,7 +2763,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 693,
    "pdf_page": 714,
-   "text": "the source has f(v;s) = 1. Prove that there must exist another flow f 0 with f 0 (v;s) = 0 such that |f| = jf 0 j. Give an O(E)-time algorithm to compute f 0 , given f and assuming that all edge capacities are integers."
+   "text": "the source has f(v,s) = 1. Prove that there must exist another flow f 0 with f 0 (v,s) = 0 such that |f| = jf 0 j. Give an O(E)-time algorithm to compute f 0 , given f and assuming that all edge capacities are integers."
   },
   {
    "type": "exercise",
@@ -2781,7 +2781,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 693,
    "pdf_page": 714,
-   "text": "Some combinatorial problems can be cast as maximum-flow problems, such as the multiple-source, multiple-sink maximum-flow problem from Section 24.1. Other combinatorial problems seem on the surface to have little to do with flow networks, but they can in fact be reduced to maximum-flow problems. This section presents one such problem: finding a maximum matching in a bipartite graph. In order to solve this problem, we’ll take advantage of an integrality property provided by the Ford-Fulkerson method. We’ll also see how to use the Ford-Fulkerson method to solve the maximum-bipartite-matching problem on a graph G = (V;E) in O(VE) time. Section 25.1 will present an algorithm specifically designed to solve this problem."
+   "text": "Some combinatorial problems can be cast as maximum-flow problems, such as the multiple-source, multiple-sink maximum-flow problem from Section 24.1. Other combinatorial problems seem on the surface to have little to do with flow networks, but they can in fact be reduced to maximum-flow problems. This section presents one such problem: finding a maximum matching in a bipartite graph. In order to solve this problem, we’ll take advantage of an integrality property provided by the Ford-Fulkerson method. We’ll also see how to use the Ford-Fulkerson method to solve the maximum-bipartite-matching problem on a graph G = (V,E) in O(VE) time. Section 25.1 will present an algorithm specifically designed to solve this problem."
   },
   {
    "type": "body",
@@ -2799,7 +2799,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 693,
    "pdf_page": 714,
-   "text": "Given an undirected graph G = (V;E) , a matching is a subset of edges M ⊆ E such that for all vertices v 2 V , at most one edge of M is incident on v. We say that a vertex v 2 V is matched by the matching M if some edge in M is incident on v, and otherwise, v is unmatched. A maximum matching is a matching of maximum cardinality, that is, a matching M such that for any matching M 0 , we have |M| ≥ jM 0 j. In this section, we restrict our attention to finding maximum matchings in bipartite graphs: graphs in which the vertex set can be partitioned into V = L [ R, where L and R are disjoint and all edges in E go between L and R. We further assume that every vertex in V has at least one incident edge."
+   "text": "Given an undirected graph G = (V,E) , a matching is a subset of edges M ⊆ E such that for all vertices v 2 V , at most one edge of M is incident on v. We say that a vertex v 2 V is matched by the matching M if some edge in M is incident on v, and otherwise, v is unmatched. A maximum matching is a matching of maximum cardinality, that is, a matching M such that for any matching M 0 , we have |M| ≥ jM 0 j. In this section, we restrict our attention to finding maximum matchings in bipartite graphs: graphs in which the vertex set can be partitioned into V = L [ R, where L and R are disjoint and all edges in E go between L and R. We further assume that every vertex in V has at least one incident edge."
   },
   {
    "type": "body",
@@ -2817,7 +2817,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 693,
    "pdf_page": 714,
-   "text": "The problem of finding a maximum matching in a bipartite graph has many practical applications. As an example, consider matching a set L of machines with a set R of tasks to be performed simultaneously. An edge (u;v) in E signifies that L R L R s t"
+   "text": "The problem of finding a maximum matching in a bipartite graph has many practical applications. As an example, consider matching a set L of machines with a set R of tasks to be performed simultaneously. An edge (u,v) in E signifies that L R L R s t"
   },
   {
    "type": "figure-caption",
@@ -2826,7 +2826,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 694,
    "pdf_page": 715,
-   "text": "Figure 24.8 A bipartite graph G = (V;E) with vertex partition V = L [ R. (a) A matching with cardinality 2, indicated by blue edges. (b) A maximum matching with cardinality 3. (c) The corresponding flow network G 0 with a maximum flow shown. Each edge has unit capacity. Blue edges have a flow of 1, and all other edges carry no flow. The blue edges from L to R correspond to those in the maximum matching from (b). a particular machine u 2 L is capable of performing a particular task v 2 R. A maximum matching provides work for as many machines as possible."
+   "text": "Figure 24.8 A bipartite graph G = (V,E) with vertex partition V = L [ R. (a) A matching with cardinality 2, indicated by blue edges. (b) A maximum matching with cardinality 3. (c) The corresponding flow network G 0 with a maximum flow shown. Each edge has unit capacity. Blue edges have a flow of 1, and all other edges carry no flow. The blue edges from L to R correspond to those in the maximum matching from (b). a particular machine u 2 L is capable of performing a particular task v 2 R. A maximum matching provides work for as many machines as possible."
   },
   {
    "type": "body",
@@ -2844,7 +2844,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 694,
    "pdf_page": 715,
-   "text": "The Ford-Fulkerson method provides a basis for finding a maximum matching in an undirected bipartite graph G = (V;E) in time polynomial in |V| and |E|."
+   "text": "The Ford-Fulkerson method provides a basis for finding a maximum matching in an undirected bipartite graph G = (V,E) in time polynomial in |V| and |E|."
   },
   {
    "type": "body",
@@ -2853,7 +2853,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 694,
    "pdf_page": 715,
-   "text": "The trick is to construct a flow network in which flows correspond to matchings, as shown in Figure 24.8(c). We define the corresponding flow network G 0 = (V 0 ;E 0 ) for the bipartite graph G as follows. Let the source s and sink t be new vertices not in V , and let V 0 = V [ fs;t g. If the vertex partition of G is V = L [ R, the directed edges of G 0 are the edges of E, directed from L to R, along with |V| new directed edges:"
+   "text": "The trick is to construct a flow network in which flows correspond to matchings, as shown in Figure 24.8(c). We define the corresponding flow network G 0 = (V 0 ,E 0 ) for the bipartite graph G as follows. Let the source s and sink t be new vertices not in V , and let V 0 = V [ fs,t g. If the vertex partition of G is V = L [ R, the directed edges of G 0 are the edges of E, directed from L to R, along with |V| new directed edges:"
   },
   {
    "type": "body",
@@ -2862,7 +2862,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 694,
    "pdf_page": 715,
-   "text": "E 0 = f(s;u) W u 2 Lg"
+   "text": "E 0 = f(s,u) W u 2 Lg"
   },
   {
    "type": "body",
@@ -2871,7 +2871,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 694,
    "pdf_page": 715,
-   "text": "[ f(u;v) W u 2 L;v 2 R; and (u;v) 2 Eg"
+   "text": "[ f(u,v) W u 2 L,v 2 R; and (u,v) 2 Eg"
   },
   {
    "type": "body",
@@ -2880,7 +2880,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 694,
    "pdf_page": 715,
-   "text": "[ f(v;t) W v 2 Rg :"
+   "text": "[ f(v,t) W v 2 Rg :"
   },
   {
    "type": "body",
@@ -2916,7 +2916,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 695,
    "pdf_page": 716,
-   "text": "G = (V;E) is integer-valued if f(u;v) is an integer for all (u;v) 2 V × V ."
+   "text": "G = (V,E) is integer-valued if f(u,v) is an integer for all (u,v) 2 V × V ."
   },
   {
    "type": "lemma",
@@ -2934,7 +2934,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 695,
    "pdf_page": 716,
-   "text": "Let G = (V;E) be a bipartite graph with vertex partition V = L [ R, and let"
+   "text": "Let G = (V,E) be a bipartite graph with vertex partition V = L [ R, and let"
   },
   {
    "type": "body",
@@ -2943,7 +2943,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 695,
    "pdf_page": 716,
-   "text": "G 0 = (V 0 ;E 0 ) be its corresponding flow network. If M is a matching in G, then there is an integer-valued flow f in G 0 with value |f| = |M|. Conversely, if f is an integer-valued flow in G 0 , then there is a matching M in G with cardinality"
+   "text": "G 0 = (V 0 ,E 0 ) be its corresponding flow network. If M is a matching in G, then there is an integer-valued flow f in G 0 with value |f| = |M|. Conversely, if f is an integer-valued flow in G 0 , then there is a matching M in G with cardinality"
   },
   {
    "type": "body",
@@ -2952,7 +2952,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 695,
    "pdf_page": 716,
-   "text": "|M| = |f| consisting of edges (u;v) 2 E such that f(u;v)>0 ."
+   "text": "|M| = |f| consisting of edges (u,v) 2 E such that f(u,v)>0 ."
   },
   {
    "type": "proof",
@@ -2961,7 +2961,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 695,
    "pdf_page": 716,
-   "text": "Proof We first show that a matching M in G corresponds to an integer-valued flow f in G 0 . Define f as follows. If (u;v) 2 M , then f(s;u) = f(u;v) = f(v;t) = 1. For all other edges (u;v) 2 E 0 , define f(u;v) = 0. It is simple to verify that f satisfies the capacity constraint and flow conservation."
+   "text": "Proof We first show that a matching M in G corresponds to an integer-valued flow f in G 0 . Define f as follows. If (u,v) 2 M , then f(s,u) = f(u,v) = f(v,t) = 1. For all other edges (u,v) 2 E 0 , define f(u,v) = 0. It is simple to verify that f satisfies the capacity constraint and flow conservation."
   },
   {
    "type": "body",
@@ -2970,7 +2970,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 695,
    "pdf_page": 716,
-   "text": "Intuitively, each edge (u;v) 2 M corresponds to 1 unit of flow in G 0 that traverses the path s ! u ! v ! t . Moreover, the paths induced by edges in M are vertex-disjoint, except for s and t . The net flow across cut (L [ fs g ;R [ ft g) is equal to |M|, and thus, by Lemma 24.4, the value of the flow is |f| = |M|."
+   "text": "Intuitively, each edge (u,v) 2 M corresponds to 1 unit of flow in G 0 that traverses the path s ! u ! v ! t . Moreover, the paths induced by edges in M are vertex-disjoint, except for s and t . The net flow across cut (L [ fs g ,R [ ft g) is equal to |M|, and thus, by Lemma 24.4, the value of the flow is |f| = |M|."
   },
   {
    "type": "body",
@@ -2988,7 +2988,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 695,
    "pdf_page": 716,
-   "text": "M = f(u;v) W u 2 L;v 2 R; and f(u;v)>0 g :"
+   "text": "M = f(u,v) W u 2 L,v 2 R; and f(u,v)>0 g :"
   },
   {
    "type": "body",
@@ -2997,7 +2997,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 695,
    "pdf_page": 716,
-   "text": "Each vertex u 2 L has only one entering edge, namely (s;u) , and its capacity is 1. Thus, each u 2 L has at most 1 unit of flow entering it, and if 1 unit of flow does enter, by flow conservation, 1 unit of flow must leave. Furthermore, since the flow f is integer-valued, for each u 2 L, the 1 unit of flow can enter on at most one edge and can leave on at most one edge. Thus, 1 unit of flow enters u if and only if there is exactly one vertex v 2 R such that f(u;v) = 1, and at most one edge leaving each u 2 L carries positive flow. A symmetric argument applies to each v 2 R. The set M is therefore a matching."
+   "text": "Each vertex u 2 L has only one entering edge, namely (s,u) , and its capacity is 1. Thus, each u 2 L has at most 1 unit of flow entering it, and if 1 unit of flow does enter, by flow conservation, 1 unit of flow must leave. Furthermore, since the flow f is integer-valued, for each u 2 L, the 1 unit of flow can enter on at most one edge and can leave on at most one edge. Thus, 1 unit of flow enters u if and only if there is exactly one vertex v 2 R such that f(u,v) = 1, and at most one edge leaving each u 2 L carries positive flow. A symmetric argument applies to each v 2 R. The set M is therefore a matching."
   },
   {
    "type": "body",
@@ -3006,7 +3006,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 695,
    "pdf_page": 716,
-   "text": "To see that |M| = |f|, observe that of the edges (u;v) 2 E 0 such that u 2 L and v 2 R, f(u;v) ="
+   "text": "To see that |M| = |f|, observe that of the edges (u,v) 2 E 0 such that u 2 L and v 2 R, f(u,v) ="
   },
   {
    "type": "body",
@@ -3015,7 +3015,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 695,
    "pdf_page": 716,
-   "text": "1 if (u;v) 2 M ; 0 if (u;v) … M :"
+   "text": "1 if (u,v) 2 M ; 0 if (u,v) … M :"
   },
   {
    "type": "body",
@@ -3024,7 +3024,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 695,
    "pdf_page": 716,
-   "text": "Consequently, f(L [ fs g ;R [ ft g), the net flow across cut (L [ fs g ;R [ ft g), is equal to |M|. Lemma 24.4 gives that |f| = f(L [ fs g ;R [ ft g) = |M|."
+   "text": "Consequently, f(L [ fs g ,R [ ft g), the net flow across cut (L [ fs g ,R [ ft g), is equal to |M|. Lemma 24.4 gives that |f| = f(L [ fs g ,R [ ft g) = |M|."
   },
   {
    "type": "body",
@@ -3033,7 +3033,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 695,
    "pdf_page": 716,
-   "text": "Based on Lemma 24.9, we would like to conclude that a maximum matching in a bipartite graph G corresponds to a maximum flow in its corresponding flow network G 0 , and therefore running a maximum-flow algorithm on G 0 provides a maximum matching in G. The only hitch in this reasoning is that the maximumflow algorithm might return a flow in G 0 for which some f(u;v) is not an integer, even though the flow value |f| must be an integer. The following theorem shows that the Ford-Fulkerson method cannot produce a solution with this problem."
+   "text": "Based on Lemma 24.9, we would like to conclude that a maximum matching in a bipartite graph G corresponds to a maximum flow in its corresponding flow network G 0 , and therefore running a maximum-flow algorithm on G 0 provides a maximum matching in G. The only hitch in this reasoning is that the maximumflow algorithm might return a flow in G 0 for which some f(u,v) is not an integer, even though the flow value |f| must be an integer. The following theorem shows that the Ford-Fulkerson method cannot produce a solution with this problem."
   },
   {
    "type": "theorem",
@@ -3060,7 +3060,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 696,
    "pdf_page": 717,
-   "text": "Moreover, for all vertices u and v, the value of f(u;v) is an integer."
+   "text": "Moreover, for all vertices u and v, the value of f(u,v) is an integer."
   },
   {
    "type": "proof",
@@ -3150,7 +3150,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 697,
    "pdf_page": 718,
-   "text": "24.3-3 Let G = (V;E) be a bipartite graph with vertex partition V = L [ R, and let G 0 be its corresponding flow network. Give a good upper bound on the length of any augmenting path found in G 0 during the execution of FORD-FULKERSON ."
+   "text": "24.3-3 Let G = (V,E) be a bipartite graph with vertex partition V = L [ R, and let G 0 be its corresponding flow network. Give a good upper bound on the length of any augmenting path found in G 0 during the execution of FORD-FULKERSON ."
   },
   {
    "type": "problem",
@@ -3168,7 +3168,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 697,
    "pdf_page": 718,
-   "text": "An n×n grid is an undirected graph consisting of n rows and n columns of vertices, as shown in Figure 24.9. We denote the vertex in the i th row and the j th column by (i;j) . All vertices in a grid have exactly four neighbors, except for the boundary vertices, which are the points (i;j) for which i = 1, i = n, j = 1, or j = n."
+   "text": "An n×n grid is an undirected graph consisting of n rows and n columns of vertices, as shown in Figure 24.9. We denote the vertex in the i th row and the j th column by (i,j) . All vertices in a grid have exactly four neighbors, except for the boundary vertices, which are the points (i,j) for which i = 1, i = n, j = 1, or j = n."
   },
   {
    "type": "body",
@@ -3177,7 +3177,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 697,
    "pdf_page": 718,
-   "text": "Given m ≤ n 2 starting points (x 1 ;y 1 );.x 2 ;y 2 /;:::;.x m ;y m / in the grid, the escape problem is to determine whether there are m vertex-disjoint paths from the starting points to any m different points on the boundary. For example, the grid in Figure 24.9(a) has an escape, but the grid in Figure 24.9(b) does not."
+   "text": "Given m ≤ n 2 starting points (x 1 ,y 1 ),.x 2 ,y 2 /,…,.x m ,y m / in the grid, the escape problem is to determine whether there are m vertex-disjoint paths from the starting points to any m different points on the boundary. For example, the grid in Figure 24.9(a) has an escape, but the grid in Figure 24.9(b) does not."
   },
   {
    "type": "figure-caption",
@@ -3222,7 +3222,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 698,
    "pdf_page": 719,
-   "text": "A path cover of a directed graph G = (V;E) is a set P of vertex-disjoint paths such that every vertex in V is included in exactly one path in P . Paths may start and end anywhere, and they may be of any length, in cluding 0. A minimum path cover of G is a path cover containing the fewest possible paths. a. Give an efficient algorithm to find a minimum path cover of a directed acyclic graph G = (V;E) . (Hint: Assuming that V = f1;2;:::;n g, construct a flow network based on the graph G 0 = (V 0 ;E 0 ), where"
+   "text": "A path cover of a directed graph G = (V,E) is a set P of vertex-disjoint paths such that every vertex in V is included in exactly one path in P . Paths may start and end anywhere, and they may be of any length, in cluding 0. A minimum path cover of G is a path cover containing the fewest possible paths. a. Give an efficient algorithm to find a minimum path cover of a directed acyclic graph G = (V,E) . (Hint: Assuming that V = f1,2,…,n g, construct a flow network based on the graph G 0 = (V 0 ,E 0 ), where"
   },
   {
    "type": "body",
@@ -3231,7 +3231,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 698,
    "pdf_page": 719,
-   "text": "V 0 = fx 0 ;x 1 ;:::;x n g [ fy 0 ;y 1 ;:::;y n g ; E 0 = f(x 0 ;x i ) W i 2 V g [ f(y i ;y 0 ) W i 2 V g [ f(x i ;y j ) W (i;j) 2 Eg ; and run a maximum-flow algorithm.) b. Does your algorithm work for directed graphs that contain cycles? Explain."
+   "text": "V 0 = fx 0 ,x 1 ,…,x n g [ fy 0 ,y 1 ,…,y n g ; E 0 = f(x 0 ,x i ) W i 2 V g [ f(y i ,y 0 ) W i 2 V g [ f(x i ,y j ) W (i,j) 2 Eg ; and run a maximum-flow algorithm.) b. Does your algorithm work for directed graphs that contain cycles? Explain."
   },
   {
    "type": "problem",
@@ -3249,7 +3249,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 698,
    "pdf_page": 719,
-   "text": "Professor Fieri wants to open a consulting company for the food industry. He has identified n important food categories, which he represents by t he set + = fC 1 ;C 2 ;:::;C n g. In each category C k , he can hire an expert in that category for e k >0 dollars. The consulting company has lined up a set J = fJ 1 ;J 2 ;:::;J m g of potential jobs. In order to perform job J i , the company needs to have hired experts in a subset R i ⊆ C of categories. Each expert can work on multiple job s simultaneously. If the company chooses to accept job J i , it must have hired experts in all categories in R i , and it takes in revenue of √i >0 dollars."
+   "text": "Professor Fieri wants to open a consulting company for the food industry. He has identified n important food categories, which he represents by t he set + = fC 1 ,C 2 ,…,C n g. In each category C k , he can hire an expert in that category for e k >0 dollars. The consulting company has lined up a set J = fJ 1 ,J 2 ,…,J m g of potential jobs. In order to perform job J i , the company needs to have hired experts in a subset R i ⊆ C of categories. Each expert can work on multiple job s simultaneously. If the company chooses to accept job J i , it must have hired experts in all categories in R i , and it takes in revenue of √i >0 dollars."
   },
   {
    "type": "body",
@@ -3276,7 +3276,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 698,
    "pdf_page": 719,
-   "text": "C 1 ;C 2 ;:::;C n , vertices J 1 ;J 2 ;:::;J m , and a sink vertex t . For k = 1;2:::;n , the flow network contains an edge (s;C k ) with capacity c(s;C k ) = e k , and for i = 1;2;:::;m , the flow network contains an edge (J i ;t) with capacity c(J i ;t) = √i . For k = 1;2;:::;n and i = 1;2;:::;m , if C k 2 R i , then G contains an edge (C k ;J i ) with capacity c(C k ;J i ) = 1. a. Show that if J i 2 T for a finite-capacity cut (S;T) of G, then C k 2 T for each C k 2 R i . b. Show how to determine the maximum net revenue from the capacity of a minimum cut of G and the given √i values. c. Give an efficient algorithm to determine which jobs to accept and which experts to hire. Analyze the running time of your algorithm in terms of m, n, and r = P m i D1 jR i j."
+   "text": "C 1 ,C 2 ,…,C n , vertices J 1 ,J 2 ,…,J m , and a sink vertex t . For k = 1,2…,n , the flow network contains an edge (s,C k ) with capacity c(s,C k ) = e k , and for i = 1,2,…,m , the flow network contains an edge (J i ,t) with capacity c(J i ,t) = √i . For k = 1,2,…,n and i = 1,2,…,m , if C k 2 R i , then G contains an edge (C k ,J i ) with capacity c(C k ,J i ) = 1. a. Show that if J i 2 T for a finite-capacity cut (S,T) of G, then C k 2 T for each C k 2 R i . b. Show how to determine the maximum net revenue from the capacity of a minimum cut of G and the given √i values. c. Give an efficient algorithm to determine which jobs to accept and which experts to hire. Analyze the running time of your algorithm in terms of m, n, and r = P m i D1 jR i j."
   },
   {
    "type": "problem",
@@ -3294,7 +3294,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 699,
    "pdf_page": 720,
-   "text": "Let G = (V;E) be a flow network with source s , sink t , and integer capacities."
+   "text": "Let G = (V,E) be a flow network with source s , sink t , and integer capacities."
   },
   {
    "type": "body",
@@ -3303,7 +3303,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 699,
    "pdf_page": 720,
-   "text": "Suppose that you are given a maximum flow in G. a. Suppose that the capacity of a single edge (u;v) 2 E increases by 1. Give an"
+   "text": "Suppose that you are given a maximum flow in G. a. Suppose that the capacity of a single edge (u,v) 2 E increases by 1. Give an"
   },
   {
    "type": "body",
@@ -3312,7 +3312,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 699,
    "pdf_page": 720,
-   "text": "O(V + E)-time algorithm to update the maximum flow. b. Suppose that the capacity of a single edge (u;v) 2 E decreases by 1. Give an"
+   "text": "O(V + E)-time algorithm to update the maximum flow. b. Suppose that the capacity of a single edge (u,v) 2 E decreases by 1. Give an"
   },
   {
    "type": "body",
@@ -3339,7 +3339,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 699,
    "pdf_page": 720,
-   "text": "Let G = (V;E) be a flow network with source s , sink t , and an integer capacity c(u;v) on each edge (u;v) 2 E. Let C = max fc(u;v) W (u;v) 2 Eg. a. Argue that a minimum cut of G has capacity at most C |E|. b. For a given number K, show how to find an augmenting path of capacity at least K in O(E) time, if such a path exists."
+   "text": "Let G = (V,E) be a flow network with source s , sink t , and an integer capacity c(u,v) on each edge (u,v) 2 E. Let C = max fc(u,v) W (u,v) 2 Eg. a. Argue that a minimum cut of G has capacity at most C |E|. b. For a given number K, show how to find an augmenting path of capacity at least K in O(E) time, if such a path exists."
   },
   {
    "type": "body",
@@ -3348,7 +3348,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 699,
    "pdf_page": 720,
-   "text": "The procedure MAX-FLOW-BY-SCALING appearing on the following page modifies the basic FORD-FULKERSON-METHOD procedure to compute a maximum flow in G. c. Argue that MAX-FLOW-BY-SCALING returns a maximum flow. d. Show that the capacity of a minimum cut of the resi dual network G f is less than 2K |E| each time line 4 executes. e. Argue that the inner while loop of lines 536 executes O(E) times for each value of K."
+   "text": "The procedure MAX-FLOW-BY-SCALING appearing on the following page modifies the basic FORD-FULKERSON-METHOD procedure to compute a maximum flow in G. c. Argue that MAX-FLOW-BY-SCALING returns a maximum flow. d. Show that the capacity of a minimum cut of the resi dual network G f is less than 2K |E| each time line 4 executes. e. Argue that the inner while loop of lines 5–6 executes O(E) times for each value of K."
   },
   {
    "type": "pseudocode",
@@ -3362,7 +3362,7 @@
    "lines": [
     {
      "n": 1,
-     "code": "+ = max fc(u;v)  W (u;v)  2 Eg"
+     "code": "+ = max fc(u,v)  W (u,v)  2 Eg"
     },
     {
      "n": 2,
@@ -3393,7 +3393,7 @@
      "code": "return f f. Conclude that MAX-FLOW-BY-SCALING  can be implemented so that it runs in O(E 2 lg C)  time."
     }
    ],
-   "text": "1 + = max fc(u;v)  W (u;v)  2 Eg\n2 initialize flow f to 0\n3 K = 2 blg + c\n4 while K ≥ 1\n5 while there exists an augmenting path p of capacity at least K\n6 augment flow f along p\n7 K = K/2\n8 return f f. Conclude that MAX-FLOW-BY-SCALING  can be implemented so that it runs in O(E 2 lg C)  time."
+   "text": "1 + = max fc(u,v)  W (u,v)  2 Eg\n2 initialize flow f to 0\n3 K = 2 blg + c\n4 while K ≥ 1\n5 while there exists an augmenting path p of capacity at least K\n6 augment flow f along p\n7 K = K/2\n8 return f f. Conclude that MAX-FLOW-BY-SCALING  can be implemented so that it runs in O(E 2 lg C)  time."
   },
   {
    "type": "body",
@@ -3402,7 +3402,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 700,
    "pdf_page": 721,
-   "text": "MAX-FLOW-BY-SCALING (G;s;t) f. Conclude that MAX-FLOW-BY-SCALING can be implemented so that it runs in O(E 2 lg C) time."
+   "text": "MAX-FLOW-BY-SCALING (G,s,t) f. Conclude that MAX-FLOW-BY-SCALING can be implemented so that it runs in O(E 2 lg C) time."
   },
   {
    "type": "problem",
@@ -3420,7 +3420,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 700,
    "pdf_page": 721,
-   "text": "The Edmonds-Karp algorithm implements the Ford-Fulkerson algorithm by always choosing a shortest augmenting path in the residual network. Suppose instead that the Ford-Fulkerson algorithm chooses a widest augmenting path: an augmenting path with the greatest residual capacity. Assume that G = (V;E) is a flow network with source s and sink t , that all capacities are integer, and that the largest capacity is C . In this problem, you will show that choosing a widest augmenting path results in at most |E| ln jf − j augmentations to find a maximum flow f − . a. Show how to adjust Dijkstra’s algorithm to find the widest augmenting path in the residual network. b. Show that a maximum flow in G can be formed by successive flow augmentations along at most |E| paths from s to t . c. Given a flow f , argue that the residual network G f has an augmenting path p with residual capacity c f (p) ≥ .jf − j − |f|/= |E|. d. Assuming that each augmenting path is a widest augm enting path, let f i be the flow after augmenting the flow by the i th augmenting path, where f 0 has f(u;v) = 0 for all edges (u;v) . Show that jf − j − jf i j ≤ jf − j .1 − 1= |E|/ i . e. Show that jf − j − jf i j < jf − j e −i/|E| . f. Conclude that after the flow is augmented at most |E| ln jf − j times, the flow is a maximum flow."
+   "text": "The Edmonds-Karp algorithm implements the Ford-Fulkerson algorithm by always choosing a shortest augmenting path in the residual network. Suppose instead that the Ford-Fulkerson algorithm chooses a widest augmenting path: an augmenting path with the greatest residual capacity. Assume that G = (V,E) is a flow network with source s and sink t , that all capacities are integer, and that the largest capacity is C . In this problem, you will show that choosing a widest augmenting path results in at most |E| ln jf − j augmentations to find a maximum flow f − . a. Show how to adjust Dijkstra’s algorithm to find the widest augmenting path in the residual network. b. Show that a maximum flow in G can be formed by successive flow augmentations along at most |E| paths from s to t . c. Given a flow f , argue that the residual network G f has an augmenting path p with residual capacity c f (p) ≥ .jf − j − |f|/= |E|. d. Assuming that each augmenting path is a widest augm enting path, let f i be the flow after augmenting the flow by the i th augmenting path, where f 0 has f(u,v) = 0 for all edges (u,v) . Show that jf − j − jf i j ≤ jf − j .1 − 1= |E|/ i . e. Show that jf − j − jf i j < jf − j e −i/|E| . f. Conclude that after the flow is augmented at most |E| ln jf − j times, the flow is a maximum flow."
   },
   {
    "type": "problem",
@@ -3438,7 +3438,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 701,
    "pdf_page": 722,
-   "text": "A global cut in an undirected graph G = (V;E) is a partition (see page 1156) of V into two nonempty sets V 1 and V 2 . This definition is like the definition of cut that we have used in this chapter, except that we no longer have distinguished vertices s and t . Any edge (u;v) with u 2 V 1 and v 2 V 2 is said to cross the cut."
+   "text": "A global cut in an undirected graph G = (V,E) is a partition (see page 1156) of V into two nonempty sets V 1 and V 2 . This definition is like the definition of cut that we have used in this chapter, except that we no longer have distinguished vertices s and t . Any edge (u,v) with u 2 V 1 and v 2 V 2 is said to cross the cut."
   },
   {
    "type": "body",
@@ -3447,7 +3447,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 701,
    "pdf_page": 722,
-   "text": "We can extend this definition of a cut to a multigraph G = (V;E) (see page 1167), and we denote by c(u;v) the number of edges in the multigraph with endpoints u and v. A global cut in a multigraph is still a partition of the vertices, and the value of a global cut (V 1 ;V 2 ) is c(V 1 ;V 2 ) = P u2V 1 ;v2V 2 c(u;v). A solution to the global-minimum-cut problem is a cut (V 1 ;V 2 ) such that c(V 1 ;V 2 ) is minimum. Let Ω(G) denote the value of a global minimum cut in a graph or multigraph G. a. Show how to find a global minimum cut of a graph G = (V;E) by solving ã |V| ä maximum-flow problems, each with a different pair of vertices as the source and sink, and taking the mininum value of the cuts found. b. Give an algorithm to find a global minimum cut by solving only Θ(V) maximum-flow problems. What is the running time of your algorithm?"
+   "text": "We can extend this definition of a cut to a multigraph G = (V,E) (see page 1167), and we denote by c(u,v) the number of edges in the multigraph with endpoints u and v. A global cut in a multigraph is still a partition of the vertices, and the value of a global cut (V 1 ,V 2 ) is c(V 1 ,V 2 ) = P u2V 1 ,v2V 2 c(u,v). A solution to the global-minimum-cut problem is a cut (V 1 ,V 2 ) such that c(V 1 ,V 2 ) is minimum. Let Ω(G) denote the value of a global minimum cut in a graph or multigraph G. a. Show how to find a global minimum cut of a graph G = (V,E) by solving ã |V| ä maximum-flow problems, each with a different pair of vertices as the source and sink, and taking the mininum value of the cuts found. b. Give an algorithm to find a global minimum cut by solving only Θ(V) maximum-flow problems. What is the running time of your algorithm?"
   },
   {
    "type": "body",
@@ -3456,7 +3456,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 701,
    "pdf_page": 722,
-   "text": "The remainder of this problem develops an algorithm for the global-minimumcut problem that does not use any maximum-flow computations. It uses the notion of an edge contraction, defined on page 1168, with one crucial difference. The algorithm maintains a multigraph, so that upon contracting an edge (u;v) , it creates a new vertex x , and for any other vertex y 2 V , the number of edges between x and y is c(u;y) + c(v;y). The algorithm does not maintain self-loops, and so it sets c(x;x) to 0. Denote by G=.u;v/ the multigraph that results from contracting edge (u;v) in multigraph G."
+   "text": "The remainder of this problem develops an algorithm for the global-minimumcut problem that does not use any maximum-flow computations. It uses the notion of an edge contraction, defined on page 1168, with one crucial difference. The algorithm maintains a multigraph, so that upon contracting an edge (u,v) , it creates a new vertex x , and for any other vertex y 2 V , the number of edges between x and y is c(u,y) + c(v,y). The algorithm does not maintain self-loops, and so it sets c(x,x) to 0. Denote by G=.u,v/ the multigraph that results from contracting edge (u,v) in multigraph G."
   },
   {
    "type": "body",
@@ -3465,7 +3465,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 701,
    "pdf_page": 722,
-   "text": "Consider what can happen to the minimum cut when an edge is contracted. Assume that, at all points, the minimum cut in a multigraph G is unique. We’ll remove this assumption later. c. Show that for any edge (u;v) , we have Ω(G=.u; v)/ ≤ Ω(G). Under what conditions is Ω(G=.u; v)/ < Ω(G) ?"
+   "text": "Consider what can happen to the minimum cut when an edge is contracted. Assume that, at all points, the minimum cut in a multigraph G is unique. We’ll remove this assumption later. c. Show that for any edge (u,v) , we have Ω(G=.u; v)/ ≤ Ω(G). Under what conditions is Ω(G=.u; v)/ < Ω(G) ?"
   },
   {
    "type": "body",
@@ -3474,7 +3474,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 701,
    "pdf_page": 722,
-   "text": "Next, you will show that if you pick an edge uniformly at random, the probability that it belongs to the minimum cut is small. d. Show that for any multigraph G = (V;E) , the value of the global minimum cut is at most the average degree of a vertex: that Ω(G) ≤ 2 |E| = |V|, where"
+   "text": "Next, you will show that if you pick an edge uniformly at random, the probability that it belongs to the minimum cut is small. d. Show that for any multigraph G = (V,E) , the value of the global minimum cut is at most the average degree of a vertex: that Ω(G) ≤ 2 |E| = |V|, where"
   },
   {
    "type": "body",
@@ -3483,7 +3483,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 701,
    "pdf_page": 722,
-   "text": "|E| denotes the total number of edges in the multigraph. e. Using the results from parts (c) and (d), show that , if we pick an edge (u;v) uniformly at random, then the probability that (u;v) belongs to the minimum cut is at most 2/V ."
+   "text": "|E| denotes the total number of edges in the multigraph. e. Using the results from parts (c) and (d), show that , if we pick an edge (u,v) uniformly at random, then the probability that (u,v) belongs to the minimum cut is at most 2/V ."
   },
   {
    "type": "body",
@@ -3492,7 +3492,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 702,
    "pdf_page": 723,
-   "text": "Consider the algorithm that repeatedly chooses an edge at random and contracts it until the multigraph has exactly two vertices, s ay u and v. At that point, the multigraph corresponds to a cut in the original gra ph, with vertex u representing all the nodes in one side of the original graph, an d v representing all the vertices on the other side. The number of edges given by c(u;v) corresponds exactly to the number of edges crossing the corresponding cut in the original graph. We call this algorithm the contraction algorithm. f. Suppose that the contraction algorithm terminates w ith a multigraph whose only vertices are u and v. Show that Pr fc(u;v) = Ω(G)g = Ω"
+   "text": "Consider the algorithm that repeatedly chooses an edge at random and contracts it until the multigraph has exactly two vertices, s ay u and v. At that point, the multigraph corresponds to a cut in the original gra ph, with vertex u representing all the nodes in one side of the original graph, an d v representing all the vertices on the other side. The number of edges given by c(u,v) corresponds exactly to the number of edges crossing the corresponding cut in the original graph. We call this algorithm the contraction algorithm. f. Suppose that the contraction algorithm terminates w ith a multigraph whose only vertices are u and v. Show that Pr fc(u,v) = Ω(G)g = Ω"
   },
   {
    "type": "body",
@@ -3591,7 +3591,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 703,
    "pdf_page": 724,
-   "text": "V 2/3 ;E 1/2 }"
+   "text": "V 2/3 ,E 1/2 }"
   },
   {
    "type": "body",
@@ -3645,7 +3645,7 @@
    "section_title": "24.3 Maximum bipartite matching",
    "printed_page": 704,
    "pdf_page": 725,
-   "text": "Many real-world problems can be modeled as finding matchings in an undirected graph. For an undirected graph G = (V;E) , a matching is a subset of edges"
+   "text": "Many real-world problems can be modeled as finding matchings in an undirected graph. For an undirected graph G = (V,E) , a matching is a subset of edges"
   },
   {
    "type": "body",

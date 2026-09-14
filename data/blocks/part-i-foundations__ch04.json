@@ -128,7 +128,7 @@
    "section_title": "4.1 Multiplying square matrices",
    "printed_page": 80,
    "pdf_page": 101,
-   "text": "We can use the divide-and-conquer method to multiply square matrices. If you’ve seen matrices before, then you probably know how to multiply them. (Otherwise, you should read Section D.1.) Let A = (a i k ) and B = (b j k ) be square n × n matrices. The matrix product C = A • B is also an n × n matrix, where for i;j = 1;2;:::;n , the (i;j) entry of C is given by c ij = n X kD1 a i k • b kj : (4.1)"
+   "text": "We can use the divide-and-conquer method to multiply square matrices. If you’ve seen matrices before, then you probably know how to multiply them. (Otherwise, you should read Section D.1.) Let A = (a i k ) and B = (b j k ) be square n × n matrices. The matrix product C = A • B is also an n × n matrix, where for i,j = 1,2,…,n , the (i,j) entry of C is given by c ij = n X kD1 a i k • b kj : (4.1)"
   },
   {
    "type": "pseudocode",
@@ -184,7 +184,7 @@
    "section_title": "4.1 Multiplying square matrices",
    "printed_page": 81,
    "pdf_page": 102,
-   "text": "MATRIX-MULTIPLY (A;B;C;n)"
+   "text": "MATRIX-MULTIPLY (A,B,C,n)"
   },
   {
    "type": "body",
@@ -193,7 +193,7 @@
    "section_title": "4.1 Multiplying square matrices",
    "printed_page": 81,
    "pdf_page": 102,
-   "text": "The pseudocode for MATRIX-MULTIPLY works as follows. The for loop of lines 134 computes the entries of each row i , and within a given row i , the for loop of lines 234 computes each of the entries c ij for each column j . Each iteration of the for loop of lines 334 adds in one more term of equation (4.1)."
+   "text": "The pseudocode for MATRIX-MULTIPLY works as follows. The for loop of lines 1–4 computes the entries of each row i , and within a given row i , the for loop of lines 2–4 computes each of the entries c ij for each column j . Each iteration of the for loop of lines 3–4 adds in one more term of equation (4.1)."
   },
   {
    "type": "body",
@@ -572,7 +572,7 @@
    "section_title": "4.1 Multiplying square matrices",
    "printed_page": 83,
    "pdf_page": 104,
-   "text": "MATRIX-MULTIPLY-RECURSIVE (A;B;C;n)"
+   "text": "MATRIX-MULTIPLY-RECURSIVE (A,B,C,n)"
   },
   {
    "type": "body",
@@ -581,7 +581,7 @@
    "section_title": "4.1 Multiplying square matrices",
    "printed_page": 83,
    "pdf_page": 104,
-   "text": "A 11 ;A 12 ;A 21 ;A 22 ; B 11 ;B 12 ;B 21 ;B 22 ; and C 11 ;C 12 ;C 21 ;C 22 ; respectively"
+   "text": "A 11 ,A 12 ,A 21 ,A 22 ; B 11 ,B 12 ,B 21 ,B 22 ; and C 11 ,C 12 ,C 21 ,C 22 ; respectively"
   },
   {
    "type": "body",
@@ -599,7 +599,7 @@
    "section_title": "4.1 Multiplying square matrices",
    "printed_page": 83,
    "pdf_page": 104,
-   "text": "8 MATRIX-MULTIPLY-RECURSIVE (A 11 ;B 11 ;C 11 ;n/2)"
+   "text": "8 MATRIX-MULTIPLY-RECURSIVE (A 11 ,B 11 ,C 11 ,n/2)"
   },
   {
    "type": "footnote",
@@ -608,7 +608,7 @@
    "section_title": "4.1 Multiplying square matrices",
    "printed_page": 83,
    "pdf_page": 104,
-   "text": "9 MATRIX-MULTIPLY-RECURSIVE (A 11 ;B 12 ;C 12 ;n/2)"
+   "text": "9 MATRIX-MULTIPLY-RECURSIVE (A 11 ,B 12 ,C 12 ,n/2)"
   },
   {
    "type": "footnote",
@@ -617,7 +617,7 @@
    "section_title": "4.1 Multiplying square matrices",
    "printed_page": 83,
    "pdf_page": 104,
-   "text": "10 MATRIX-MULTIPLY-RECURSIVE (A 21 ;B 11 ;C 21 ;n/2)"
+   "text": "10 MATRIX-MULTIPLY-RECURSIVE (A 21 ,B 11 ,C 21 ,n/2)"
   },
   {
    "type": "footnote",
@@ -626,7 +626,7 @@
    "section_title": "4.1 Multiplying square matrices",
    "printed_page": 83,
    "pdf_page": 104,
-   "text": "11 MATRIX-MULTIPLY-RECURSIVE (A 21 ;B 12 ;C 22 ;n/2)"
+   "text": "11 MATRIX-MULTIPLY-RECURSIVE (A 21 ,B 12 ,C 22 ,n/2)"
   },
   {
    "type": "footnote",
@@ -635,7 +635,7 @@
    "section_title": "4.1 Multiplying square matrices",
    "printed_page": 83,
    "pdf_page": 104,
-   "text": "12 MATRIX-MULTIPLY-RECURSIVE (A 12 ;B 21 ;C 11 ;n/2)"
+   "text": "12 MATRIX-MULTIPLY-RECURSIVE (A 12 ,B 21 ,C 11 ,n/2)"
   },
   {
    "type": "footnote",
@@ -644,7 +644,7 @@
    "section_title": "4.1 Multiplying square matrices",
    "printed_page": 83,
    "pdf_page": 104,
-   "text": "13 MATRIX-MULTIPLY-RECURSIVE (A 12 ;B 22 ;C 12 ;n/2)"
+   "text": "13 MATRIX-MULTIPLY-RECURSIVE (A 12 ,B 22 ,C 12 ,n/2)"
   },
   {
    "type": "footnote",
@@ -653,7 +653,7 @@
    "section_title": "4.1 Multiplying square matrices",
    "printed_page": 83,
    "pdf_page": 104,
-   "text": "14 MATRIX-MULTIPLY-RECURSIVE (A 22 ;B 21 ;C 21 ;n/2)"
+   "text": "14 MATRIX-MULTIPLY-RECURSIVE (A 22 ,B 21 ,C 21 ,n/2)"
   },
   {
    "type": "footnote",
@@ -662,7 +662,7 @@
    "section_title": "4.1 Multiplying square matrices",
    "printed_page": 83,
    "pdf_page": 104,
-   "text": "15 MATRIX-MULTIPLY-RECURSIVE (A 22 ;B 22 ;C 22 ;n/2)"
+   "text": "15 MATRIX-MULTIPLY-RECURSIVE (A 22 ,B 22 ,C 22 ,n/2)"
   },
   {
    "type": "body",
@@ -689,7 +689,7 @@
    "section_title": "4.1 Multiplying square matrices",
    "printed_page": 83,
    "pdf_page": 104,
-   "text": "The recursive case occurs when n > 1. As discussed, we’ll use index calculations to partition the matrices in line 6, taking Θ(1) time. Lines 8315 recursively call MATRIX-MULTIPLY-RECURSIVE a total of eight times. The first four recursive calls compute the first terms of equations (4.5)3(4.8), and the subsequent four recursive calls compute and add in the second terms. Each recursive call adds the product of a submatrix of A and a submatrix of B to the appropriate submatrix of C in place, thanks to index calculations. Because each recursive call multiplies two n/2 × n/2 matrices, thereby contributing T(n/2) to the overall running time, the time taken by all eight recursive calls is 8T(n/2) . There is no combine step, because the matrix C is updated in place. The total time for the recursi ve case, therefore, is the sum of the partitioning time and the time for all the recursive calls, or Θ(1) + 8T(n/2) ."
+   "text": "The recursive case occurs when n > 1. As discussed, we’ll use index calculations to partition the matrices in line 6, taking Θ(1) time. Lines 8–15 recursively call MATRIX-MULTIPLY-RECURSIVE a total of eight times. The first four recursive calls compute the first terms of equations (4.5)3(4.8), and the subsequent four recursive calls compute and add in the second terms. Each recursive call adds the product of a submatrix of A and a submatrix of B to the appropriate submatrix of C in place, thanks to index calculations. Because each recursive call multiplies two n/2 × n/2 matrices, thereby contributing T(n/2) to the overall running time, the time taken by all eight recursive calls is 8T(n/2) . There is no combine step, because the matrix C is updated in place. The total time for the recursi ve case, therefore, is the sum of the partitioning time and the time for all the recursive calls, or Θ(1) + 8T(n/2) ."
   },
   {
    "type": "body",
@@ -806,7 +806,7 @@
    "section_title": "4.2 Strassen’s algorithm for matrix multiplication",
    "printed_page": 85,
    "pdf_page": 106,
-   "text": "Strassen’s algorithm runs in Θ(n lg 7 ) time. Since lg 7 = 2:8073549::: , Strassen’s algorithm runs in O(n 2:81 ) time, which is asymptotically better than the Θ(n 3 )"
+   "text": "Strassen’s algorithm runs in Θ(n lg 7 ) time. Since lg 7 = 2:8073549… , Strassen’s algorithm runs in O(n 2:81 ) time, which is asymptotically better than the Θ(n 3 )"
   },
   {
    "type": "body",
@@ -878,7 +878,7 @@
    "section_title": "4.2 Strassen’s algorithm for matrix multiplication",
    "printed_page": 86,
    "pdf_page": 107,
-   "text": "2. Create n/2 × n/2 matrices S 1 ;S 2 ;:::;S 10 , each of which is the sum or difference of two submatrices from step 1. Create and zero the entries of seven n/2 × n/2 matrices P 1 ;P 2 ;:::;P 7 to hold seven n/2 × n/2 matrix products."
+   "text": "2. Create n/2 × n/2 matrices S 1 ,S 2 ,…,S 10 , each of which is the sum or difference of two submatrices from step 1. Create and zero the entries of seven n/2 × n/2 matrices P 1 ,P 2 ,…,P 7 to hold seven n/2 × n/2 matrix products."
   },
   {
    "type": "body",
@@ -896,7 +896,7 @@
    "section_title": "4.2 Strassen’s algorithm for matrix multiplication",
    "printed_page": 86,
    "pdf_page": 107,
-   "text": "3. Using the submatrices from step 1 and the matrices S 1 ;S 2 ;:::;S 10 created in step 2, recursively compute each of the seven matri x products P 1 ;P 2 ;:::;P 7 , taking 7T(n/2) time."
+   "text": "3. Using the submatrices from step 1 and the matrices S 1 ,S 2 ,…,S 10 created in step 2, recursively compute each of the seven matri x products P 1 ,P 2 ,…,P 7 , taking 7T(n/2) time."
   },
   {
    "type": "body",
@@ -905,7 +905,7 @@
    "section_title": "4.2 Strassen’s algorithm for matrix multiplication",
    "printed_page": 86,
    "pdf_page": 107,
-   "text": "4. Update the four submatrices C 11 ;C 12 ;C 21 ;C 22 of the result matrix C by adding or subtracting various P i matrices, which takes Θ(n 2 ) time."
+   "text": "4. Update the four submatrices C 11 ,C 12 ,C 21 ,C 22 of the result matrix C by adding or subtracting various P i matrices, which takes Θ(n 2 ) time."
   },
   {
    "type": "body",
@@ -914,7 +914,7 @@
    "section_title": "4.2 Strassen’s algorithm for matrix multiplication",
    "printed_page": 87,
    "pdf_page": 108,
-   "text": "We’ll see the details of steps 234 in a moment, but we already have enough information to set up a recurrence for the running time of Strassen’s method. As is common, the base case in step 1 takes Θ(1) time, which we’ll omit when stating the recurrence. When n > 1, steps 1, 2, and 4 take a total of Θ(n 2 ) time, and step 3 requires seven multiplications of n/2 × n/2 matrices. Hence, we obtain the following recurrence for the running time of Strassen’s algorithm:"
+   "text": "We’ll see the details of steps 2–4 in a moment, but we already have enough information to set up a recurrence for the running time of Strassen’s method. As is common, the base case in step 1 takes Θ(1) time, which we’ll omit when stating the recurrence. When n > 1, steps 1, 2, and 4 take a total of Θ(n 2 ) time, and step 3 requires seven multiplications of n/2 × n/2 matrices. Hence, we obtain the following recurrence for the running time of Strassen’s algorithm:"
   },
   {
    "type": "body",
@@ -1184,7 +1184,7 @@
    "section_title": "4.2 Strassen’s algorithm for matrix multiplication",
    "printed_page": 89,
    "pdf_page": 110,
-   "text": "We can see that Strassen’s remarkable algorithm, comprising steps 134, produces the correct matrix product using 7 submatrix multiplications and 18 submatrix additions. We can also see that recurrence (4.10) characterizes its running time."
+   "text": "We can see that Strassen’s remarkable algorithm, comprising steps 1–4, produces the correct matrix product using 7 submatrix multiplications and 18 submatrix additions. We can also see that recurrence (4.10) characterizes its running time."
   },
   {
    "type": "body",
@@ -1445,7 +1445,7 @@
    "section_title": "4.3 The substitution method for solving recurrences",
    "printed_page": 91,
    "pdf_page": 112,
-   "text": "We’ve shown that the inductive hypothesis holds for the inductive case, but we also need to prove that the inductive hypothesis ho lds for the base cases of the induction, that is, that T(n) ≤ cn lg n when n 0 ≤ n<2n 0 . As long as n 0 >1 (a new constraint on n 0 ), we have lg n > 0, which implies that n lg n > 0. So let’s pick n 0 = 2. Since the base case of recurrence (4.11) is not stated explicitly, by our convention, T(n) is algorithmic, which means that T(2) and T(3) are constant (as they should be if they describe the worst-case running time of any real program on inputs of size 2 or 3). Picking c = max fT(2);T(3) g yields T(2) ≤ c <.2 lg 2/c and T(3) ≤ c<.3 lg 3/c , establishing the inductive hypothesis for the base cases."
+   "text": "We’ve shown that the inductive hypothesis holds for the inductive case, but we also need to prove that the inductive hypothesis ho lds for the base cases of the induction, that is, that T(n) ≤ cn lg n when n 0 ≤ n<2n 0 . As long as n 0 >1 (a new constraint on n 0 ), we have lg n > 0, which implies that n lg n > 0. So let’s pick n 0 = 2. Since the base case of recurrence (4.11) is not stated explicitly, by our convention, T(n) is algorithmic, which means that T(2) and T(3) are constant (as they should be if they describe the worst-case running time of any real program on inputs of size 2 or 3). Picking c = max fT(2),T(3) g yields T(2) ≤ c <.2 lg 2/c and T(3) ≤ c<.3 lg 3/c , establishing the inductive hypothesis for the base cases."
   },
   {
    "type": "body",
@@ -1625,7 +1625,7 @@
    "section_title": "4.3 The substitution method for solving recurrences",
    "printed_page": 92,
    "pdf_page": 113,
-   "text": "that T(n) ≤ cn for n ≥ n 0 , where we choose the constants c;n 0 > 0 suitably."
+   "text": "that T(n) ≤ cn for n ≥ n 0 , where we choose the constants c,n 0 > 0 suitably."
   },
   {
    "type": "body",
@@ -1796,7 +1796,7 @@
    "section_title": "4.3 The substitution method for solving recurrences",
    "printed_page": 94,
    "pdf_page": 115,
-   "text": "The problem with this reasoning is that the constan t hidden by the O-notation changes. We can expose the fallacy by repeating the \"proof\" using an explicit constant. For the inductive hypothesis, assume that T(n) ≤ cn for all n ≥ n 0 , where c;n 0 >0 are constants. Repeating the first two steps in the inequality chain yields"
+   "text": "The problem with this reasoning is that the constan t hidden by the O-notation changes. We can expose the fallacy by repeating the \"proof\" using an explicit constant. For the inductive hypothesis, assume that T(n) ≤ cn for all n ≥ n 0 , where c,n 0 >0 are constants. Repeating the first two steps in the inequality chain yields"
   },
   {
    "type": "body",
@@ -2156,7 +2156,7 @@
    "section_title": "4.4 The recursion-tree method for solving recurrences",
    "printed_page": 97,
    "pdf_page": 118,
-   "text": "What’s the height of the recursion tree? The subproblem size for a node at depth i is n/4 i . As we descend the tree from the root, the subprob lem size hits n = 1 when n/4 i = 1 or, equivalently, when i = log 4 n. Thus, the tree has internal nodes at depths 0;1;2;:::; log 4 n − 1 and leaves at depth log 4 n."
+   "text": "What’s the height of the recursion tree? The subproblem size for a node at depth i is n/4 i . As we descend the tree from the root, the subprob lem size hits n = 1 when n/4 i = 1 or, equivalently, when i = log 4 n. Thus, the tree has internal nodes at depths 0,1,2,…; log 4 n − 1 and leaves at depth log 4 n."
   },
   {
    "type": "body",
@@ -2165,7 +2165,7 @@
    "section_title": "4.4 The recursion-tree method for solving recurrences",
    "printed_page": 97,
    "pdf_page": 118,
-   "text": "Part (d) of Figure 4.1 shows the cost at each level of the tree. Each level has three times as many nodes as the level above, and s o the number of nodes at depth i is 3 i . Because subproblem sizes reduce by a factor of 4 for each level further from the root, each internal node at depth i = 0;1;2;:::; log 4 n − 1 has a cost of c(n/4 i ) 2 . Multiplying, we see that the total cost of all no des at a given depth i is 3 i c(n/4 i ) 2 = .3/16/ i cn 2 . The bottom level, at depth log 4 n, contains 3 log 4 n = n log 4 3 leaves (using equation (3.21) on page 66). Each leaf contributes Θ(1), leading to a total leaf cost of Θ(n log 4 3 )."
+   "text": "Part (d) of Figure 4.1 shows the cost at each level of the tree. Each level has three times as many nodes as the level above, and s o the number of nodes at depth i is 3 i . Because subproblem sizes reduce by a factor of 4 for each level further from the root, each internal node at depth i = 0,1,2,…; log 4 n − 1 has a cost of c(n/4 i ) 2 . Multiplying, we see that the total cost of all no des at a given depth i is 3 i c(n/4 i ) 2 = .3/16/ i cn 2 . The bottom level, at depth log 4 n, contains 3 log 4 n = n log 4 3 leaves (using equation (3.21) on page 66). Each leaf contributes Θ(1), leading to a total leaf cost of Θ(n log 4 3 )."
   },
   {
    "type": "body",
@@ -2291,7 +2291,7 @@
    "section_title": "4.4 The recursion-tree method for solving recurrences",
    "printed_page": 98,
    "pdf_page": 119,
-   "text": "Let’s now use the substitution method to verify that our guess is correct, namely, that T(n) = O(n 2 ) is an upper bound for the recurrence T(n) = 3T(n/4) CΘ(n 2 )."
+   "text": "Let’s now use the substitution method to verify that our guess is correct, namely, that T(n) = O(n 2 ) is an upper bound for the recurrence T(n) = 3T(n/4) + Θ(n 2 )."
   },
   {
    "type": "body",
@@ -2444,7 +2444,7 @@
    "section_title": "4.4 The recursion-tree method for solving recurrences",
    "printed_page": 99,
    "pdf_page": 120,
-   "text": "The height of the tree runs down the right edge of the tree, corresponding to sub- problems of sizes n;.2/3/n;.4/9/n;:::;Θ(1) with costs bounded by cn;c(2n/3); c(4n/9);:::;Θ(1) , respectively. We hit the rightmost leaf when .2/3/ h n<n 0 ≤"
+   "text": "The height of the tree runs down the right edge of the tree, corresponding to sub- problems of sizes n,.2/3/n,.4/9/n,…,Θ(1) with costs bounded by cn,c(2n/3); c(4n/9),…,Θ(1) , respectively. We hit the rightmost leaf when .2/3/ h n<n 0 ≤"
   },
   {
    "type": "body",
@@ -2462,7 +2462,7 @@
    "section_title": "4.4 The recursion-tree method for solving recurrences",
    "printed_page": 99,
    "pdf_page": 120,
-   "text": ".2/3/ bxcC1 n<.2/3/ x n = (n 0/n)n = n 0 and .2/3/ h−1 n = .2/3/ bxc n>.2/3/ x n"
+   "text": ".2/3/ bxc + 1 n<.2/3/ x n = (n 0/n)n = n 0 and .2/3/ h−1 n = .2/3/ bxc n>.2/3/ x n"
   },
   {
    "type": "body",
@@ -2489,7 +2489,7 @@
    "section_title": "4.4 The recursion-tree method for solving recurrences",
    "printed_page": 99,
    "pdf_page": 120,
-   "text": "It remains to deal with the leaves of the recursion tree, which represent base cases, each costing Θ(1). How many leaves are there? It’s tempting to upperbound their number by the number of leaves in a com plete binary tree of height h = blog 3/2 (n/n 0 )c + 1, since the recursion tree is contained within such a complete binary tree. But this approach turns out to g ive us a poor bound. The complete binary tree has 1 node at the root, 2 nodes at depth 1, and generally 2 k nodes at depth k. Since the height is h = ⌊ log 3/2 n⌋ + 1, there are 2 h = 2 blog 3/2 ncC1 ≤ 2n log 3/2 2 leaves in the complete binary tree, which is an upper bound on the number of leaves in the recursio n tree. Because the cost of each leaf is Θ(1), this analysis says that the total cost of all leaves in the recursion tree is O(n log 3/2 2 ) = O(n 1:71 ), which is an asymptotically greater bound than the"
+   "text": "It remains to deal with the leaves of the recursion tree, which represent base cases, each costing Θ(1). How many leaves are there? It’s tempting to upperbound their number by the number of leaves in a com plete binary tree of height h = blog 3/2 (n/n 0 )c + 1, since the recursion tree is contained within such a complete binary tree. But this approach turns out to g ive us a poor bound. The complete binary tree has 1 node at the root, 2 nodes at depth 1, and generally 2 k nodes at depth k. Since the height is h = ⌊ log 3/2 n⌋ + 1, there are 2 h = 2 ⌊log 3/2 n⌋ + 1 ≤ 2n log 3/2 2 leaves in the complete binary tree, which is an upper bound on the number of leaves in the recursio n tree. Because the cost of each leaf is Θ(1), this analysis says that the total cost of all leaves in the recursion tree is O(n log 3/2 2 ) = O(n 1:71 ), which is an asymptotically greater bound than the"
   },
   {
    "type": "body",
@@ -2858,7 +2858,7 @@
    "section_title": "4.5 The master method for solving recurrences",
    "printed_page": 103,
    "pdf_page": 124,
-   "text": "Θ(n log b a lg kC1 n)."
+   "text": "Θ(n log b a lg k + 1 n)."
   },
   {
    "type": "body",
@@ -2903,7 +2903,7 @@
    "section_title": "4.5 The master method for solving recurrences",
    "printed_page": 103,
    "pdf_page": 124,
-   "text": "Θ(n log b a lg kC1 n). In this case, each level of the recursion tree co sts approximately the same4Θ(n log b a lg k n)4and there are Θ(lg n) levels. In practice, the most common situation for case 2 occurs when k = 0, in which case the watershed and driving functions have the same asymptotic growth, and the solution is T(n) = Θ(n log b a lg n)."
+   "text": "Θ(n log b a lg k + 1 n). In this case, each level of the recursion tree co sts approximately the same4Θ(n log b a lg k n)4and there are Θ(lg n) levels. In practice, the most common situation for case 2 occurs when k = 0, in which case the watershed and driving functions have the same asymptotic growth, and the solution is T(n) = Θ(n log b a lg n)."
   },
   {
    "type": "body",
@@ -3074,7 +3074,7 @@
    "section_title": "4.5 The master method for solving recurrences",
    "printed_page": 105,
    "pdf_page": 126,
-   "text": "Finally, recurrence (4.10), T(n) = 7T(n/2) + Θ(n 2 ), on page 87, arose from the analysis of Strassen’s algorithm for matrix multiplication. For this recurrence, we have a = 7 and b = 2, and the watershed function is n log b a = n lg 7 . Observing that lg 7 = 2:807355::: , we can let Ω = 0:8 and bound the driving function f(n) = Θ(n 2 ) = O.n lg 7−• /. Case 1 applies with solution T(n) = Θ(n lg 7 )."
+   "text": "Finally, recurrence (4.10), T(n) = 7T(n/2) + Θ(n 2 ), on page 87, arose from the analysis of Strassen’s algorithm for matrix multiplication. For this recurrence, we have a = 7 and b = 2, and the watershed function is n log b a = n lg 7 . Observing that lg 7 = 2:807355… , we can let Ω = 0:8 and bound the driving function f(n) = Θ(n 2 ) = O.n lg 7−• /. Case 1 applies with solution T(n) = Θ(n lg 7 )."
   },
   {
    "type": "body",
@@ -3344,7 +3344,7 @@
    "section_title": "4.6 Proof of the continuous master theorem",
    "printed_page": 108,
    "pdf_page": 129,
-   "text": "Some of the proofs use the properties described in Problem 3-5 on pages 72373 to combine and simplify complicated asymptotic expr essions. Although Problem 3-5 addresses only Θ-notation, the properties enumerated there can be ex- tended to O-notation and Ω-notation as well."
+   "text": "Some of the proofs use the properties described in Problem 3-5 on pages 72–73 to combine and simplify complicated asymptotic expr essions. Although Problem 3-5 addresses only Θ-notation, the properties enumerated there can be ex- tended to O-notation and Ω-notation as well."
   },
   {
    "type": "body",
@@ -3407,7 +3407,7 @@
    "section_title": "4.6 Proof of the continuous master theorem",
    "printed_page": 108,
    "pdf_page": 129,
-   "text": "Now, let’s move on to understanding the leaves. The tree grows downward until n/b j becomes less than 1. Thus, the tree has height blog b nc + 1, because n/b blog b nc ≥ n/b log b n = 1 and n/b blog b ncC1 < n/b log b n = 1. Since, as we have observed, the number of nodes at depth j is a j and all the leaves are at depth blog b nc + 1, the tree contains a blog b ncC1 leaves. Using the identity (3.21) on page 66, we have a blog b ncC1 ≤ a log b nC1 = an log b a = O(n log b a ), since a is constant, and a blog b ncC1 ≥ a log b n = n log b a = Ω(n log b a ). Consequently, the total number of leaves is Θ(n log b a )4asymptotically, the watershed function."
+   "text": "Now, let’s move on to understanding the leaves. The tree grows downward until n/b j becomes less than 1. Thus, the tree has height blog b nc + 1, because n/b blog b nc ≥ n=⌊ log b n = 1 and n/b blog b n⌋ + 1 < n/b log b n = 1. Since, as we have observed, the number of nodes at depth j is a j and all the leaves are at depth blog b nc + 1, the tree contains a blog b nc + 1 leaves. Using the identity (3.21) on page 66, we have a blog b nc + 1 ≤ a log b n + 1 = an log b a = O(n log b a ), since a is constant, and a blog b nc + 1 ≥ a log b n = n log b a = Ω(n log b a ). Consequently, the total number of leaves is Θ(n log b a )4asymptotically, the watershed function."
   },
   {
    "type": "body",
@@ -3416,7 +3416,7 @@
    "section_title": "4.6 Proof of the continuous master theorem",
    "printed_page": 108,
    "pdf_page": 129,
-   "text": "We are now in a position to derive equation (4.18) by summing the costs of the nodes at each depth in the tree, as shown in the figure. The first term in the equation is the total costs of the leaves. Since ea ch leaf is at depth blog b nc + 1 and n/b blog b ncC1 < 1, the base case of the recurrence gives the cost of a leaf: T(n/b blog b ncC1 ) = Θ(1). Hence the cost of all Θ(n log b a ) leaves is Θ(n log b a ) • Θ(1) = Θ(n log b a ) by Problem 3-5(d). The second term in equation (4.18) is the cost of the internal nodes, which, in the underlying divide-andconquer algorithm, represents the costs of dividing problems into subproblems and …"
+   "text": "We are now in a position to derive equation (4.18) by summing the costs of the nodes at each depth in the tree, as shown in the figure. The first term in the equation is the total costs of the leaves. Since ea ch leaf is at depth blog b nc + 1 and n/b blog b nc + 1 < 1, the base case of the recurrence gives the cost of a leaf: T(n/b blog b nc + 1 ) = Θ(1). Hence the cost of all Θ(n log b a ) leaves is Θ(n log b a ) • Θ(1) = Θ(n log b a ) by Problem 3-5(d). The second term in equation (4.18) is the cost of the internal nodes, which, in the underlying divide-andconquer algorithm, represents the costs of dividing problems into subproblems and …"
   },
   {
    "type": "body",
@@ -3434,7 +3434,7 @@
    "section_title": "4.6 Proof of the continuous master theorem",
    "printed_page": 109,
    "pdf_page": 130,
-   "text": "… f(n) f(n) a a a a a a a a a a a a a f(n/b) f(n/b) f(n/b) f(n/b 2 ) f(n/b 2 ) f(n/b 2 ) f(n/b 2 ) f(n/b 2 ) f(n/b 2 ) f(n/b 2 ) f(n/b 2 ) f(n/b 2 ) af(n/b) a 2 f(n/b 2 ) blog b nc + 1 a blog b ncC1"
+   "text": "… f(n) f(n) a a a a a a a a a a a a a f(n/b) f(n/b) f(n/b) f(n/b 2 ) f(n/b 2 ) f(n/b 2 ) f(n/b 2 ) f(n/b 2 ) f(n/b 2 ) f(n/b 2 ) f(n/b 2 ) f(n/b 2 ) af(n/b) a 2 f(n/b 2 ) blog b nc + 1 a blog b nc + 1"
   },
   {
    "type": "body",
@@ -3461,7 +3461,7 @@
    "section_title": "4.6 Proof of the continuous master theorem",
    "printed_page": 109,
    "pdf_page": 130,
-   "text": "Figure 4.3 The recursion tree generated by T(n) = aT(n/b) + f(n) . The tree is a complete a-ary tree with a blog b ncC1 leaves and height blog b nc + 1. The cost of the nodes at each depth is shown at the right, and their sum is given in equation (4.18). then recombining the subproblems. Since the cost fo r all the internal nodes at depth j is a j f(n/b j ), the total cost of all internal nodes is blog b nc X j D0 a j f(n/b j ):"
+   "text": "Figure 4.3 The recursion tree generated by T(n) = aT(n/b) + f(n) . The tree is a complete a-ary tree with a blog b nc + 1 leaves and height blog b nc + 1. The cost of the nodes at each depth is shown at the right, and their sum is given in equation (4.18). then recombining the subproblems. Since the cost fo r all the internal nodes at depth j is a j f(n/b j ), the total cost of all internal nodes is blog b nc X j D0 a j f(n/b j ):"
   },
   {
    "type": "body",
@@ -3551,7 +3551,7 @@
    "section_title": "4.6 Proof of the continuous master theorem",
    "printed_page": 110,
    "pdf_page": 131,
-   "text": "Θ(n log b a lg kC1 n)."
+   "text": "Θ(n log b a lg k + 1 n)."
   },
   {
    "type": "body",
@@ -3686,7 +3686,7 @@
    "section_title": "4.6 Proof of the continuous master theorem",
    "printed_page": 110,
    "pdf_page": 131,
-   "text": "[ b •.blog b ncC1/ − 1 b • − 1"
+   "text": "[ b •.blog b nc + 1/ − 1 b • − 1"
   },
   {
    "type": "body",
@@ -3695,7 +3695,7 @@
    "section_title": "4.6 Proof of the continuous master theorem",
    "printed_page": 110,
    "pdf_page": 131,
-   "text": "(by equation (A.6) on page 1142) , the last series being geometric. Since b and ] are constants, the b • − 1 denominator doesn’t affect the asymptotic growth of g(n), and neither does the −1 in the numerator. Since b •.blog b ncC1/ ≤ (b log b nC1 )"
+   "text": "(by equation (A.6) on page 1142) , the last series being geometric. Since b and ] are constants, the b • − 1 denominator doesn’t affect the asymptotic growth of g(n), and neither does the −1 in the numerator. Since b •.blog b nc + 1/ ≤ (b log b n + 1 )"
   },
   {
    "type": "body",
@@ -3767,7 +3767,7 @@
    "section_title": "4.6 Proof of the continuous master theorem",
    "printed_page": 110,
    "pdf_page": 131,
-   "text": "Θ(n log b a lg kC1 n)."
+   "text": "Θ(n log b a lg k + 1 n)."
   },
   {
    "type": "body",
@@ -3893,7 +3893,7 @@
    "section_title": "4.6 Proof of the continuous master theorem",
    "printed_page": 111,
    "pdf_page": 132,
-   "text": "D blog b ncC1 X j D1 j k (reindexing—pages 114331144)"
+   "text": "D blog b nc + 1 X j D1 j k (reindexing—pages 114331144)"
   },
   {
    "type": "body",
@@ -3902,7 +3902,7 @@
    "section_title": "4.6 Proof of the continuous master theorem",
    "printed_page": 111,
    "pdf_page": 132,
-   "text": "D O..blog b nc + 1/ kC1 / (by Exercise A.1-5 on page 1144)"
+   "text": "D O..blog b nc + 1/ k + 1 / (by Exercise A.1-5 on page 1144)"
   },
   {
    "type": "body",
@@ -3911,7 +3911,7 @@
    "section_title": "4.6 Proof of the continuous master theorem",
    "printed_page": 111,
    "pdf_page": 132,
-   "text": "D O(log kC1 b n) (by Exercise 3.3-3 on page 70) ."
+   "text": "D O(log k + 1 b n) (by Exercise 3.3-3 on page 70) ."
   },
   {
    "type": "body",
@@ -3920,7 +3920,7 @@
    "section_title": "4.6 Proof of the continuous master theorem",
    "printed_page": 111,
    "pdf_page": 132,
-   "text": "Exercise 4.6-1 asks you to show that the summation can similarly be bounded from below by ].log kC1 b n/. Since we have tight upper and lower bounds, the summation is Θ(log kC1 b n), from which we can conclude that g(n) = Θ ã n log b a log kC1 b n ä"
+   "text": "Exercise 4.6-1 asks you to show that the summation can similarly be bounded from below by ].log k + 1 b n/. Since we have tight upper and lower bounds, the summation is Θ(log k + 1 b n), from which we can conclude that g(n) = Θ ã n log b a log k + 1 b n ä"
   },
   {
    "type": "body",
@@ -4280,7 +4280,7 @@
    "section_title": "4.6 Proof of the continuous master theorem",
    "printed_page": 114,
    "pdf_page": 135,
-   "text": "Θ(n log b a lg kC1 n), which implies that T(n) = T 0 (n/n 0 )"
+   "text": "Θ(n log b a lg k + 1 n), which implies that T(n) = T 0 (n/n 0 )"
   },
   {
    "type": "body",
@@ -4289,7 +4289,7 @@
    "section_title": "4.6 Proof of the continuous master theorem",
    "printed_page": 114,
    "pdf_page": 135,
-   "text": "D Θ..n/n 0 / log b a / C Θ..n/n 0 / log b a lg kC1 (n/n 0 )/"
+   "text": "D Θ..n/n 0 / log b a / C Θ..n/n 0 / log b a lg k + 1 (n/n 0 )/"
   },
   {
    "type": "body",
@@ -4298,7 +4298,7 @@
    "section_title": "4.6 Proof of the continuous master theorem",
    "printed_page": 114,
    "pdf_page": 135,
-   "text": "D Θ(n log b a ) + Θ(n log b a lg kC1 n)"
+   "text": "D Θ(n log b a ) + Θ(n log b a lg k + 1 n)"
   },
   {
    "type": "body",
@@ -4307,7 +4307,7 @@
    "section_title": "4.6 Proof of the continuous master theorem",
    "printed_page": 114,
    "pdf_page": 135,
-   "text": "D Θ(n log b a lg kC1 n) (by Problem 3-5(c)) , which proves case 2 of the theorem."
+   "text": "D Θ(n log b a lg k + 1 n) (by Problem 3-5(c)) , which proves case 2 of the theorem."
   },
   {
    "type": "body",
@@ -4406,7 +4406,7 @@
    "section_title": "4.6 Proof of the continuous master theorem",
    "printed_page": 114,
    "pdf_page": 135,
-   "text": "4.6-1 Show that P blog b nc j D0 (log b n − j) k = Ω(log kC1 b n)."
+   "text": "4.6-1 Show that P blog b nc j D0 (log b n − j) k = Ω(log k + 1 b n)."
   },
   {
    "type": "body",
@@ -4478,7 +4478,7 @@
    "section_title": "4.7 Akra-Bazzi recurrences",
    "printed_page": 115,
    "pdf_page": 136,
-   "text": "T(n) = f(n) C k X i D1 a i T(n/b i ); (4.22) where k is a positive integer; all the constants a 1 ;a 2 ;:::;a k 2 R are strictly positive; all the constants b 1 ;b 2 ;:::;b k 2 R are strictly greater than 1; and the driving function f(n) is defined on sufficiently large nonnegative reals and is itself non- negative."
+   "text": "T(n) = f(n) C k X i D1 a i T(n/b i ); (4.22) where k is a positive integer; all the constants a 1 ,a 2 ,…,a k 2 R are strictly positive; all the constants b 1 ,b 2 ,…,b k 2 R are strictly greater than 1; and the driving function f(n) is defined on sufficiently large nonnegative reals and is itself non- negative."
   },
   {
    "type": "body",
@@ -4703,7 +4703,7 @@
    "section_title": "4.7 Akra-Bazzi recurrences",
    "printed_page": 117,
    "pdf_page": 138,
-   "text": "Z n f(x) x pC1 dx"
+   "text": "Z n f(x) x p + 1 dx"
   },
   {
    "type": "body",
@@ -4757,7 +4757,7 @@
    "section_title": "4.7 Akra-Bazzi recurrences",
    "printed_page": 117,
    "pdf_page": 138,
-   "text": "Solving for p is kind of messy—it turns out that √D 0:83978::: 4but we can solve the recurrence without actually knowing the exact value for p. Observe that .1/5/ 0 C .7/10/ 0 = 2 and .1/5/ 1 C .7/10/ 1 = 9/10, and thus p lies in the range 0 < p < 1. That turns out to be sufficient for the Akra-Bazzi method to give us the solution. We’ll use the fact from calculus that if k ≠ −1, then R x k dx = x kC1 =.k + 1/, which we’ll apply with k = −p ≠ −1. The Akra-Bazzi solution (4.23) gives us"
+   "text": "Solving for p is kind of messy—it turns out that √D 0:83978… 4but we can solve the recurrence without actually knowing the exact value for p. Observe that .1/5/ 0 C .7/10/ 0 = 2 and .1/5/ 1 C .7/10/ 1 = 9/10, and thus p lies in the range 0 < p < 1. That turns out to be sufficient for the Akra-Bazzi method to give us the solution. We’ll use the fact from calculus that if k ≠ −1, then R x k dx = x k + 1 =.k + 1/, which we’ll apply with k = −p ≠ −1. The Akra-Bazzi solution (4.23) gives us"
   },
   {
    "type": "body",
@@ -4775,7 +4775,7 @@
    "section_title": "4.7 Akra-Bazzi recurrences",
    "printed_page": 117,
    "pdf_page": 138,
-   "text": "Z n f(x) x pC1 dx"
+   "text": "Z n f(x) x p + 1 dx"
   },
   {
    "type": "body",
@@ -5099,7 +5099,7 @@
    "section_title": "4.7 Akra-Bazzi recurrences",
    "printed_page": 120,
    "pdf_page": 141,
-   "text": "Give nine recurrences T a1 (N;n);T a2 (N;n);:::;T c3 (N;n) for the worst-case running times of each of the three algorithms above wh en arrays and matrices are passed using each of the three parameter-passing strategies above. Solve your re- currences, giving tight asymptotic bounds."
+   "text": "Give nine recurrences T a1 (N,n),T a2 (N,n),…,T c3 (N,n) for the worst-case running times of each of the three algorithms above wh en arrays and matrices are passed using each of the three parameter-passing strategies above. Solve your re- currences, giving tight asymptotic bounds."
   },
   {
    "type": "problem",
@@ -5396,7 +5396,7 @@
    "section_title": "4.7 Akra-Bazzi recurrences",
    "printed_page": 122,
    "pdf_page": 143,
-   "text": "ˇ ˇ <1 .) e. Prove that F i C2 ≥ Ω i for i ≥ 0."
+   "text": "ˇ ˇ <1 .) e. Prove that F i + 2 ≥ Ω i for i ≥ 0."
   },
   {
    "type": "problem",
@@ -5576,7 +5576,7 @@
    "section_title": "4.7 Akra-Bazzi recurrences",
    "printed_page": 123,
    "pdf_page": 144,
-   "text": "75 66 51 53 34 a. Prove that an array is Monge if and only if for all i = 1;2;:::;m − 1 and j = 1;2;:::;n − 1, we have"
+   "text": "75 66 51 53 34 a. Prove that an array is Monge if and only if for all i = 1,2,…,m − 1 and j = 1,2,…,n − 1, we have"
   },
   {
    "type": "body",
@@ -5585,7 +5585,7 @@
    "section_title": "4.7 Akra-Bazzi recurrences",
    "printed_page": 123,
    "pdf_page": 144,
-   "text": "A[i; j ] + A[i + 1;j + 1] ≤ A[i;j + 1] + A[i + 1; j ] :"
+   "text": "A[i; j ] + A[i + 1,j + 1] ≤ A[i,j + 1] + A[i + 1; j ] :"
   },
   {
    "type": "body",

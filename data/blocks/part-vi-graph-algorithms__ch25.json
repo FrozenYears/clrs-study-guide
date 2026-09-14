@@ -39,7 +39,7 @@
    "section_title": "25.1 Maximum bipartite matching (revisited)",
    "printed_page": 705,
    "pdf_page": 726,
-   "text": "The algorithms in this chapter find matchings in bipartite graphs. As in Section 24.3, the input is an undirected graph G = (V;E) , where V = L [ R, the vertex sets L and R are disjoint, and every edge in E is incident on one vertex in L and one vertex in R. A matching, therefore, matches vertices in L with vertices in R. In some applications, the sets L and R have equal cardinality, and in other applications they need not be the same size."
+   "text": "The algorithms in this chapter find matchings in bipartite graphs. As in Section 24.3, the input is an undirected graph G = (V,E) , where V = L [ R, the vertex sets L and R are disjoint, and every edge in E is incident on one vertex in L and one vertex in R. A matching, therefore, matches vertices in L with vertices in R. In some applications, the sets L and R have equal cardinality, and in other applications they need not be the same size."
   },
   {
    "type": "body",
@@ -48,7 +48,7 @@
    "section_title": "25.1 Maximum bipartite matching (revisited)",
    "printed_page": 705,
    "pdf_page": 726,
-   "text": "An undirected graph need not be bipartite for the c oncept of matching to apply. Matching in general undirected graphs has appl ications in areas such as scheduling and computational chemistry. It models p roblems in which you want to pair up entities, represented by vertices. Two v ertices are adjacent if they represent compatible entities, and you need to find a large set of compatible pairs."
+   "text": "An undirected graph need not be bipartite for the c oncept of matching to apply. Matching in general undirected graphs has appl ications in areas such as scheduling and computational chemistry. It models problems in which you want to pair up entities, represented by vertices. Two v ertices are adjacent if they represent compatible entities, and you need to find a large set of compatible pairs."
   },
   {
    "type": "body",
@@ -84,7 +84,7 @@
    "section_title": "25.1 Maximum bipartite matching (revisited)",
    "printed_page": 705,
    "pdf_page": 726,
-   "text": "Many algorithms to find maximum matchings, the Hopcroft-Karp algorithm in- cluded, work by incrementally increasing the size o f a matching. Given a matching M in an undirected graph G = (V;E) , an M -alternating path is a simple path whose edges alternate between being in M and being in E − M . Figure 25.1(b) depicts an M -augmenting path (sometimes called an augmenting path with respect to M ): an M -alternating path whose first and last edges belong to E − M . Since an"
+   "text": "Many algorithms to find maximum matchings, the Hopcroft-Karp algorithm in- cluded, work by incrementally increasing the size o f a matching. Given a matching M in an undirected graph G = (V,E) , an M -alternating path is a simple path whose edges alternate between being in M and being in E − M . Figure 25.1(b) depicts an M -augmenting path (sometimes called an augmenting path with respect to M ): an M -alternating path whose first and last edges belong to E − M . Since an"
   },
   {
    "type": "body",
@@ -147,7 +147,7 @@
    "section_title": "25.1 Maximum bipartite matching (revisited)",
    "printed_page": 706,
    "pdf_page": 727,
-   "text": "Figure 25.1 A bipartite graph, where V = L [ R, L = fl 1 ;l 2 ;:::;l 7 g, and R = fr 1 ;r 2 ;:::;r 8 g."
+   "text": "Figure 25.1 A bipartite graph, where V = L [ R, L = fl 1 ,l 2 ,…,l 7 g, and R = fr 1 ,r 2 ,…,r 8 g."
   },
   {
    "type": "body",
@@ -192,7 +192,7 @@
    "section_title": "25.1 Maximum bipartite matching (revisited)",
    "printed_page": 706,
    "pdf_page": 727,
-   "text": "Let M be a matching in any undirected graph G = (V;E) , and let P be an"
+   "text": "Let M be a matching in any undirected graph G = (V,E) , and let P be an"
   },
   {
    "type": "body",
@@ -237,7 +237,7 @@
    "section_title": "25.1 Maximum bipartite matching (revisited)",
    "printed_page": 707,
    "pdf_page": 728,
-   "text": "Proof Let P contain q edges, so that ⌈q/2⌉ edges ⌊elong to E − M and bq/2⌋ edges belong to M , and let these q edges be (v 1 ;v 2 );.v 2 ;v 3 /;:::;.v q ;v qC1 /. Because P is an M -augmenting path, vertices v 1 and v qC1 are unmatched under M and all other vertices in P are matched. Edges (v 1 ;v 2 );.v 3 ;v 4 /;:::;.v q ;v qC1 / belong to E − M , and edges (v 2 ;v 3 );.v 4 ;v 5 /;:::;.v q−1 ;v q / belong to M ."
+   "text": "Proof Let P contain q edges, so that ⌈q/2⌉ edges ⌊elong to E − M and bq/2⌋ edges belong to M , and let these q edges be (v 1 ,v 2 ),.v 2 ,v 3 /,…,.v q ,v q + 1 /. Because P is an M -augmenting path, vertices v 1 and v q + 1 are unmatched under M and all other vertices in P are matched. Edges (v 1 ,v 2 ),.v 3 ,v 4 /,…,.v q ,v q + 1 / belong to E − M , and edges (v 2 ,v 3 ),.v 4 ,v 5 /,…,.v q−1 ,v q / belong to M ."
   },
   {
    "type": "body",
@@ -255,7 +255,7 @@
    "section_title": "25.1 Maximum bipartite matching (revisited)",
    "printed_page": 707,
    "pdf_page": 728,
-   "text": "(v 1 ;v 2 );.v 3 ;v 4 /;:::;.v q ;v qC1 / belong to M 0 and (v 2 ;v 3 );.v 4 ;v 5 /;:::;.v q−1 ;v q / belong to E − M 0 . Each vertex v 1 ;v 2 ;:::;v q ;v qC1 is matched under M 0 , which gains one additional edge relative to M , and no other vertices or edges in G are affected by the change from M to M 0 . Hence, M 0 is a matching in G, and jM 0 j = |M| + 1."
+   "text": "(v 1 ,v 2 ),.v 3 ,v 4 /,…,.v q ,v q + 1 / belong to M 0 and (v 2 ,v 3 ),.v 4 ,v 5 /,…,.v q−1 ,v q / belong to E − M 0 . Each vertex v 1 ,v 2 ,…,v q ,v q + 1 is matched under M 0 , which gains one additional edge relative to M , and no other vertices or edges in G are affected by the change from M to M 0 . Hence, M 0 is a matching in G, and jM 0 j = |M| + 1."
   },
   {
    "type": "body",
@@ -282,7 +282,7 @@
    "section_title": "25.1 Maximum bipartite matching (revisited)",
    "printed_page": 707,
    "pdf_page": 728,
-   "text": "Let M be a matching in any undirected graph G = (V;E) and P 1 ;P 2 ;:::;P k be vertex-disjoint M -augmenting paths. Then the set of edges M 0 = M ˚ (P 1 [ P 2 ["
+   "text": "Let M be a matching in any undirected graph G = (V,E) and P 1 ,P 2 ,…,P k be vertex-disjoint M -augmenting paths. Then the set of edges M 0 = M ˚ (P 1 [ P 2 ["
   },
   {
    "type": "body",
@@ -300,7 +300,7 @@
    "section_title": "25.1 Maximum bipartite matching (revisited)",
    "printed_page": 707,
    "pdf_page": 728,
-   "text": "Proof Since the M -augmenting paths P 1 ;P 2 ;:::;P k are vertex-disjoint, we have that P 1 [P 2 [• • •[P k = P 1 ˚P 2 ˚• • •˚P k . Because the operator ˚ is associative, we have"
+   "text": "Proof Since the M -augmenting paths P 1 ,P 2 ,…,P k are vertex-disjoint, we have that P 1 [P 2 [• • •[P k = P 1 ˚P 2 ˚• • •˚P k . Because the operator ˚ is associative, we have"
   },
   {
    "type": "body",
@@ -354,7 +354,7 @@
    "section_title": "25.1 Maximum bipartite matching (revisited)",
    "printed_page": 707,
    "pdf_page": 728,
-   "text": "Let M and M − be matchings in graph G = (V;E) , and consider the graph G 0 ="
+   "text": "Let M and M − be matchings in graph G = (V,E) , and consider the graph G 0 ="
   },
   {
    "type": "body",
@@ -363,7 +363,7 @@
    "section_title": "25.1 Maximum bipartite matching (revisited)",
    "printed_page": 707,
    "pdf_page": 728,
-   "text": "(V;E 0 ), where E 0 = M ˚ M − . Then, G 0 is a disjoint union of simple paths, simple cycles, and/or isolated vertices. The edges in each such simple path or simple cycle alternate between M and M − . If jM − j > |M|, then G 0 contains at least jM − j−|M| vertex-disjoint M -augmenting paths."
+   "text": "(V,E 0 ), where E 0 = M ˚ M − . Then, G 0 is a disjoint union of simple paths, simple cycles, and/or isolated vertices. The edges in each such simple path or simple cycle alternate between M and M − . If jM − j > |M|, then G 0 contains at least jM − j−|M| vertex-disjoint M -augmenting paths."
   },
   {
    "type": "proof",
@@ -426,7 +426,7 @@
    "section_title": "25.1 Maximum bipartite matching (revisited)",
    "printed_page": 708,
    "pdf_page": 729,
-   "text": "Matching M in graph G = (V;E) is a maximum matching if and only if G contains no M -augmenting path."
+   "text": "Matching M in graph G = (V,E) is a maximum matching if and only if G contains no M -augmenting path."
   },
   {
    "type": "proof",
@@ -484,7 +484,7 @@
     },
     {
      "n": 3,
-     "code": "let P = fP 1 ;P  2 ;:::;P  k g be a maximal set of vertex-disjoint shortest M -augmenting paths"
+     "code": "let P = fP 1 ,P  2 ,…,P  k g be a maximal set of vertex-disjoint shortest M -augmenting paths"
     },
     {
      "n": 4,
@@ -499,7 +499,7 @@
      "code": "return M"
     }
    ],
-   "text": "1 M = ;\n2 repeat\n3 let P = fP 1 ;P  2 ;:::;P  k g be a maximal set of vertex-disjoint shortest M -augmenting paths\n4 M = M ˚ (P 1 [ P 2 [ • • • [ P k )\n5 until P == ;\n6 return M"
+   "text": "1 M = ;\n2 repeat\n3 let P = fP 1 ,P  2 ,…,P  k g be a maximal set of vertex-disjoint shortest M -augmenting paths\n4 M = M ˚ (P 1 [ P 2 [ • • • [ P k )\n5 until P == ;\n6 return M"
   },
   {
    "type": "body",
@@ -553,7 +553,7 @@
    "section_title": "25.1 Maximum bipartite matching (revisited)",
    "printed_page": 709,
    "pdf_page": 730,
-   "text": "VE/ time. We’ll see that the repeat loop of lines 235 iterates O. p"
+   "text": "VE/ time. We’ll see that the repeat loop of lines 2–5 iterates O. p"
   },
   {
    "type": "body",
@@ -598,7 +598,7 @@
    "section_title": "25.1 Maximum bipartite matching (revisited)",
    "printed_page": 709,
    "pdf_page": 730,
-   "text": "G M = (V;E M ), where l 1 l 2 l 3 l 4 l 5 l 6 l 7"
+   "text": "G M = (V,E M ), where l 1 l 2 l 3 l 4 l 5 l 6 l 7"
   },
   {
    "type": "body",
@@ -616,7 +616,7 @@
    "section_title": "25.1 Maximum bipartite matching (revisited)",
    "printed_page": 710,
    "pdf_page": 731,
-   "text": "E M = f(l;r) W l 2 L;r 2 R; and (l;r) 2 E − M g (edges from L to R)"
+   "text": "E M = f(l,r) W l 2 L,r 2 R; and (l,r) 2 E − M g (edges from L to R)"
   },
   {
    "type": "body",
@@ -625,7 +625,7 @@
    "section_title": "25.1 Maximum bipartite matching (revisited)",
    "printed_page": 710,
    "pdf_page": 731,
-   "text": "[ f(r;l) W r 2 R;l 2 L; and (l;r) 2 M g (edges from R to L) ."
+   "text": "[ f(r,l) W r 2 R,l 2 L; and (l,r) 2 M g (edges from R to L) ."
   },
   {
    "type": "body",
@@ -643,7 +643,7 @@
    "section_title": "25.1 Maximum bipartite matching (revisited)",
    "printed_page": 710,
    "pdf_page": 731,
-   "text": "The dag H = (V H ;E H ) created by the second phase has layers of vertices. Figure 25.2(b) shows the dag H corresponding to the directed graph G M in part (a) of the figure. Each layer contains only vertices from L or only vertices from R, alternating from layer to layer. The layer that a vertex resides in is given by that vertex’s minimum breadth-first distance in G M from any unmatched vertex in L. Vertices in L appear in even-numbered layers, and vertices in R appear in odd-numbered layers. Let q denote the smallest distance in G M of any unmatched vertex in R."
+   "text": "The dag H = (V H ,E H ) created by the second phase has layers of vertices. Figure 25.2(b) shows the dag H corresponding to the directed graph G M in part (a) of the figure. Each layer contains only vertices from L or only vertices from R, alternating from layer to layer. The layer that a vertex resides in is given by that vertex’s minimum breadth-first distance in G M from any unmatched vertex in L. Vertices in L appear in even-numbered layers, and vertices in R appear in odd-numbered layers. Let q denote the smallest distance in G M of any unmatched vertex in R."
   },
   {
    "type": "body",
@@ -661,7 +661,7 @@
    "section_title": "25.1 Maximum bipartite matching (revisited)",
    "printed_page": 711,
    "pdf_page": 732,
-   "text": "E H = f(l;r) 2 E M W r: d ≤ q and r: d = l: d + 1g [ f(r;l) 2 E M : l: d ≤ qg ; where the attribute d of a vertex gives the vertex’s breadth-first distance in G M from any unmatched vertex in L. Edges that do not go between two consecutive layers are omitted from E H ."
+   "text": "E H = f(l,r) 2 E M W r: d ≤ q and r: d = l: d + 1g [ f(r,l) 2 E M : l: d ≤ qg ; where the attribute d of a vertex gives the vertex’s breadth-first distance in G M from any unmatched vertex in L. Edges that do not go between two consecutive layers are omitted from E H ."
   },
   {
    "type": "body",
@@ -706,7 +706,7 @@
    "section_title": "25.1 Maximum bipartite matching (revisited)",
    "printed_page": 711,
    "pdf_page": 732,
-   "text": "Figure 25.3 shows the result of the third phase. The first depth-first search starts from vertex r 1 . It identifies the M -augmenting path h(r 1 ;l 3 );.l 3 ;r 3 /;.r 3 ;l 1 /i, which is highlighted in orange, and discovers verti ces r 1 , l 3 , r 3 , and l 1 . The next depth-first search starts from vertex r 4 . This search first examines the edge (r 4 ;l 3 ), but because l 3 was already discovered, it backtracks and examines edge (r 4 ;l 5 )."
+   "text": "Figure 25.3 shows the result of the third phase. The first depth-first search starts from vertex r 1 . It identifies the M -augmenting path h(r 1 ,l 3 ),.l 3 ,r 3 /,.r 3 ,l 1 /i, which is highlighted in orange, and discovers verti ces r 1 , l 3 , r 3 , and l 1 . The next depth-first search starts from vertex r 4 . This search first examines the edge (r 4 ,l 3 ), but because l 3 was already discovered, it backtracks and examines edge (r 4 ,l 5 )."
   },
   {
    "type": "body",
@@ -715,7 +715,7 @@
    "section_title": "25.1 Maximum bipartite matching (revisited)",
    "printed_page": 711,
    "pdf_page": 732,
-   "text": "From there, it continues and identifies the M -augmenting path h(r 4 ;l 5 );.l 5 ;r 7 /; (r 7 ;l 6 )i, which is highlighted in yellow, and discovers ver tices r 4 , l 5 , r 7 , and l 6 ."
+   "text": "From there, it continues and identifies the M -augmenting path h(r 4 ,l 5 ),.l 5 ,r 7 /; (r 7 ,l 6 )i, which is highlighted in yellow, and discovers ver tices r 4 , l 5 , r 7 , and l 6 ."
   },
   {
    "type": "body",
@@ -724,7 +724,7 @@
    "section_title": "25.1 Maximum bipartite matching (revisited)",
    "printed_page": 711,
    "pdf_page": 732,
-   "text": "The depth-first search from vertex r 6 gets stuck at vertices l 3 and l 5 , which have already been discovered, and so this search fails to find a path of undiscovered vertices to a vertex in layer 0. There is no depth-first search from vertex r 5 because it is matched, and depth-first searches start from unmatched vertices. Therefore, the maximal set of vertex-disjoint shortest M -augmenting paths found contains just the two M -augmenting paths .hr 1 ;l 3 /;.l 3 ;r 3 /;.r 3 ;l 1 /i and h(r 4 ;l 5 );.l 5 ;r 7 /;.r 7 ;l 6 /i."
+   "text": "The depth-first search from vertex r 6 gets stuck at vertices l 3 and l 5 , which have already been discovered, and so this search fails to find a path of undiscovered vertices to a vertex in layer 0. There is no depth-first search from vertex r 5 because it is matched, and depth-first searches start from unmatched vertices. Therefore, the maximal set of vertex-disjoint shortest M -augmenting paths found contains just the two M -augmenting paths .hr 1 ,l 3 /,.l 3 ,r 3 /,.r 3 ,l 1 /i and h(r 4 ,l 5 ),.l 5 ,r 7 /,.r 7 ,l 6 /i."
   },
   {
    "type": "body",
@@ -733,7 +733,7 @@
    "section_title": "25.1 Maximum bipartite matching (revisited)",
    "printed_page": 711,
    "pdf_page": 732,
-   "text": "You might have noticed that in this example, this m aximal set of two vertexdisjoint shortest M -augmenting paths is not a maximum set. The graph contains three vertex-disjoint shortest M -augmenting paths: h(r 1 ;l 2 );.l 2 ;r 2 /;.r 2 ;l 1 /i, h(r 4 ;l 3 );.l 3 ;r 3 /;.r 3 ;l 4 /i, and h(r 6 ;l 5 );.l 5 ;r 7 /;.r 7 ;l 6 /i. No matter: the algorithm layer 0 layer 1 layer 2 layer 3 l 4 l 6 l 1 r 2 r 3 r 7 l 2 l 3 l 5 r 1 r 4 r 5 r 6"
+   "text": "You might have noticed that in this example, this m aximal set of two vertexdisjoint shortest M -augmenting paths is not a maximum set. The graph contains three vertex-disjoint shortest M -augmenting paths: h(r 1 ,l 2 ),.l 2 ,r 2 /,.r 2 ,l 1 /i, h(r 4 ,l 3 ),.l 3 ,r 3 /,.r 3 ,l 4 /i, and h(r 6 ,l 5 ),.l 5 ,r 7 /,.r 7 ,l 6 /i. No matter: the algorithm layer 0 layer 1 layer 2 layer 3 l 4 l 6 l 1 r 2 r 3 r 7 l 2 l 3 l 5 r 1 r 4 r 5 r 6"
   },
   {
    "type": "figure-caption",
@@ -742,7 +742,7 @@
    "section_title": "25.1 Maximum bipartite matching (revisited)",
    "printed_page": 712,
    "pdf_page": 733,
-   "text": "Figure 25.3 The transpose H T of the dag H created in the third phase. The first depth-first search, starting from vertex r 1 , identifies the M -augmenting path h(r 1 ;l 3 );.l 3 ;r 3 /;.r 3 ;l 1 /i highlighted in orange, and it discovers vertices r 1 ;l 3 ;r 3 ;l 1 . The second depth-first search, starting from vertex r 4 , identifies the M -augmenting path h(r 4 ;l 5 ); (l 5 ;r 7 ); (r 7 ;l 6 )i highlighted in yellow, discovering vertices r 4 ;l 5 ;r 7 ;l 6 . requires the set of vertex-disjoint shortest M -augmenting paths found in line 3 of HOPCROFT-KARP to be only maximal, not necessarily maximum."
+   "text": "Figure 25.3 The transpose H T of the dag H created in the third phase. The first depth-first search, starting from vertex r 1 , identifies the M -augmenting path h(r 1 ,l 3 ),.l 3 ,r 3 /,.r 3 ,l 1 /i highlighted in orange, and it discovers vertices r 1 ,l 3 ,r 3 ,l 1 . The second depth-first search, starting from vertex r 4 , identifies the M -augmenting path h(r 4 ,l 5 ); (l 5 ,r 7 ); (r 7 ,l 6 )i highlighted in yellow, discovering vertices r 4 ,l 5 ,r 7 ,l 6 . requires the set of vertex-disjoint shortest M -augmenting paths found in line 3 of HOPCROFT-KARP to be only maximal, not necessarily maximum."
   },
   {
    "type": "body",
@@ -751,7 +751,7 @@
    "section_title": "25.1 Maximum bipartite matching (revisited)",
    "printed_page": 712,
    "pdf_page": 733,
-   "text": "It remains to show that all three phases of line 3 take O(E) time. We assume that in the original bipartite graph G, each vertex has at least one incident edge so that |V| = O(E), which in turn implies that |V|C|E| = O(E). The first phase creates the directed graph G M by simply directing each edge of G, so that jV M j = |V| and jE M j = |E|. The second phase performs a breadth-first search on G M , taking"
+   "text": "It remains to show that all three phases of line 3 take O(E) time. We assume that in the original bipartite graph G, each vertex has at least one incident edge so that |V| = O(E), which in turn implies that |V| + |E| = O(E). The first phase creates the directed graph G M by simply directing each edge of G, so that jV M j = |V| and jE M j = |E|. The second phase performs a breadth-first search on G M , taking"
   },
   {
    "type": "body",
@@ -769,7 +769,7 @@
    "section_title": "25.1 Maximum bipartite matching (revisited)",
    "printed_page": 712,
    "pdf_page": 733,
-   "text": "Once the maximal set of vertex-disjoint shortest M -augmenting paths have been found in line 3, updating the matching in line 4 takes O(E) time, as it is just a matter of going through the edges of the M -augmenting paths and adding edges to and removing edges from the matching M . Thus, each iteration of the repeat loop of lines 235 can run in O(E) time."
+   "text": "Once the maximal set of vertex-disjoint shortest M -augmenting paths have been found in line 3, updating the matching in line 4 takes O(E) time, as it is just a matter of going through the edges of the M -augmenting paths and adding edges to and removing edges from the matching M . Thus, each iteration of the repeat loop of lines 2–5 can run in O(E) time."
   },
   {
    "type": "body",
@@ -805,7 +805,7 @@
    "section_title": "25.1 Maximum bipartite matching (revisited)",
    "printed_page": 713,
    "pdf_page": 734,
-   "text": "Let G = (V;E) be an undirected bipartite graph with matching M , and let q be the length of a shortest M -augmenting path. Let P = fP 1 ;P 2 ;:::;P k g be a maximal set of vertex-disjoint M -augmenting paths of length q. Let M 0 ="
+   "text": "Let G = (V,E) be an undirected bipartite graph with matching M , and let q be the length of a shortest M -augmenting path. Let P = fP 1 ,P 2 ,…,P k g be a maximal set of vertex-disjoint M -augmenting paths of length q. Let M 0 ="
   },
   {
    "type": "body",
@@ -841,7 +841,7 @@
    "section_title": "25.1 Maximum bipartite matching (revisited)",
    "printed_page": 713,
    "pdf_page": 734,
-   "text": "First, assume that P is vertex-disjoint from the augmenting paths in P . Then, P contains edges that are in M but are not in any of P 1 ;P 2 ;:::;P k , so that P is also an M -augmenting path. Since P is disjoint from P 1 ;P 2 ;:::;P k but is also an M -augmenting path, and since P is a maximal set of shortest M -augmenting paths, P must be longer than any of the augmenting paths in P , each of which has length q. Therefore, P has more than q edges."
+   "text": "First, assume that P is vertex-disjoint from the augmenting paths in P . Then, P contains edges that are in M but are not in any of P 1 ,P 2 ,…,P k , so that P is also an M -augmenting path. Since P is disjoint from P 1 ,P 2 ,…,P k but is also an M -augmenting path, and since P is a maximal set of shortest M -augmenting paths, P must be longer than any of the augmenting paths in P , each of which has length q. Therefore, P has more than q edges."
   },
   {
    "type": "body",
@@ -985,7 +985,7 @@
    "section_title": "25.1 Maximum bipartite matching (revisited)",
    "printed_page": 714,
    "pdf_page": 735,
-   "text": "Let M be a matching in graph G = (V;E) , and let a shortest M -augmenting path in G contain q edges. Then the size of a maximum matching in G is at most"
+   "text": "Let M be a matching in graph G = (V,E) , and let a shortest M -augmenting path in G contain q edges. Then the size of a maximum matching in G is at most"
   },
   {
    "type": "body",
@@ -1003,7 +1003,7 @@
    "section_title": "25.1 Maximum bipartite matching (revisited)",
    "printed_page": 714,
    "pdf_page": 735,
-   "text": "Proof Let M − be a maximum matching in G. By Lemma 25.3, G contains at least jM − j−|M| vertex-disjoint M -augmenting paths. Each of these paths contains at least q edges, and hence at least q + 1 vertices. Because these paths are vertexdisjoint, we have .jM − j−|M|/.q C1/ ≤ |V|, so that jM − j ≤ |M|C|V| =.q C1/."
+   "text": "Proof Let M − be a maximum matching in G. By Lemma 25.3, G contains at least jM − j−|M| vertex-disjoint M -augmenting paths. Each of these paths contains at least q edges, and hence at least q + 1 vertices. Because these paths are vertexdisjoint, we have .jM − j−|M|/.q + 1/ ≤ |V|, so that jM − j ≤ |M| + |V| =.q + 1/."
   },
   {
    "type": "body",
@@ -1012,7 +1012,7 @@
    "section_title": "25.1 Maximum bipartite matching (revisited)",
    "printed_page": 714,
    "pdf_page": 735,
-   "text": "The final lemma bounds the number of iterations of the repeat loop of lines 235."
+   "text": "The final lemma bounds the number of iterations of the repeat loop of lines 2–5."
   },
   {
    "type": "lemma",
@@ -1039,7 +1039,7 @@
    "section_title": "25.1 Maximum bipartite matching (revisited)",
    "printed_page": 714,
    "pdf_page": 735,
-   "text": "(V;E) , the repeat loop of lines 235 iterates O. p"
+   "text": "(V,E) , the repeat loop of lines 2–5 iterates O. p"
   },
   {
    "type": "body",
@@ -1129,7 +1129,7 @@
    "section_title": "25.1 Maximum bipartite matching (revisited)",
    "printed_page": 715,
    "pdf_page": 736,
-   "text": "VE/ time on an undirected bipartite graph G = (V;E) ."
+   "text": "VE/ time on an undirected bipartite graph G = (V,E) ."
   },
   {
    "type": "proof",
@@ -1192,7 +1192,7 @@
    "section_title": "25.1 Maximum bipartite matching (revisited)",
    "printed_page": 715,
    "pdf_page": 736,
-   "text": "25.1-4 Show how to bound the number of iterations of the the repeat loop of lines 235 of HOPCROFT-KARP by ˙ p"
+   "text": "25.1-4 Show how to bound the number of iterations of the the repeat loop of lines 2–5 of HOPCROFT-KARP by ˙ p"
   },
   {
    "type": "body",
@@ -1219,7 +1219,7 @@
    "section_title": "25.1 Maximum bipartite matching (revisited)",
    "printed_page": 715,
    "pdf_page": 736,
-   "text": "(V;E) be an undirected bipartite graph with vertex partit ion V = L [ R, where"
+   "text": "(V,E) be an undirected bipartite graph with vertex partit ion V = L [ R, where"
   },
   {
    "type": "body",
@@ -1228,7 +1228,7 @@
    "section_title": "25.1 Maximum bipartite matching (revisited)",
    "printed_page": 715,
    "pdf_page": 736,
-   "text": "|L| = |R|. For any X ⊆ V , define the neighborhood of X as N(X) = fy 2 V W (x;y) 2 E for some x 2 X g ; that is, the set of vertices adjacent to some membe r of X . Prove Hall’s theorem: there exists a perfect matching in G if and only if |A| ≤ jN(A)j for every subset"
+   "text": "|L| = |R|. For any X ⊆ V , define the neighborhood of X as N(X) = fy 2 V W (x,y) 2 E for some x 2 X g ; that is, the set of vertices adjacent to some membe r of X . Prove Hall’s theorem: there exists a perfect matching in G if and only if |A| ≤ jN(A)j for every subset"
   },
   {
    "type": "exercise",
@@ -1237,7 +1237,7 @@
    "section_title": "25.1 Maximum bipartite matching (revisited)",
    "printed_page": 716,
    "pdf_page": 737,
-   "text": "25.1-6 In a d -regular graph, every vertex has degree d . If G = (V;E) is bipartite with vertex partition V = L [ R and also d -regular, then |L| = |R|. Use Hall’s theorem (see Exercise 25.1-5) to prove that every d -regular bipartite graph contains a perfect matching. Then use that result to prove t hat every d -regular bipartite graph contains d disjoint perfect matchings."
+   "text": "25.1-6 In a d -regular graph, every vertex has degree d . If G = (V,E) is bipartite with vertex partition V = L [ R and also d -regular, then |L| = |R|. Use Hall’s theorem (see Exercise 25.1-5) to prove that every d -regular bipartite graph contains a perfect matching. Then use that result to prove t hat every d -regular bipartite graph contains d disjoint perfect matchings."
   },
   {
    "type": "body",
@@ -1246,7 +1246,7 @@
    "section_title": "25.2 The stable-marriage problem",
    "printed_page": 716,
    "pdf_page": 737,
-   "text": "In Section 25.1, the goal was to find a maximum matching in an undirected bipartite graph. If you know that the graph G = (V;E) with vertex partition V = L [ R is a complete bipartite graph 1 4containing an edge from every vertex in L to every vertex in R—then you can find a maximum matching by a simple greedy algorithm."
+   "text": "In Section 25.1, the goal was to find a maximum matching in an undirected bipartite graph. If you know that the graph G = (V,E) with vertex partition V = L [ R is a complete bipartite graph 1 4containing an edge from every vertex in L to every vertex in R—then you can find a maximum matching by a simple greedy algorithm."
   },
   {
    "type": "body",
@@ -1417,7 +1417,7 @@
    "section_title": "25.2 The stable-marriage problem",
    "printed_page": 717,
    "pdf_page": 738,
-   "text": "Stable matchings need not be unique. For example, suppose that there are three women—Monica, Phoebe, and Rachel—and three men—Chandler, Joey, and Ross"
+   "text": "Stable matchings need not be unique. For example, suppose that there are three women—Monica, Phoebe, and Rachel—and three men4 + handler, Joey, and Ross"
   },
   {
    "type": "body",
@@ -1884,7 +1884,7 @@
    "section_title": "25.2 The stable-marriage problem",
    "printed_page": 720,
    "pdf_page": 741,
-   "text": "We need to show that there are no blocking pairs. We first observe that once a man m is engaged to a woman w, all subsequent actions for m occur in lines 638."
+   "text": "We need to show that there are no blocking pairs. We first observe that once a man m is engaged to a woman w, all subsequent actions for m occur in lines 6–8."
   },
   {
    "type": "body",
@@ -2181,7 +2181,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 723,
    "pdf_page": 744,
-   "text": "Let us once again add some information to a complete bipartite graph G = (V;E) , where V = L [ R. This time, instead of having the vertices of each side rank the vertices on the other side, we assign a weight to e ach edge. Ag ain, let’s assume that the vertex sets L and R each contain n vertices, so that the graph contains n 2 edges. For l 2 L and r 2 R, denote the weight of edge (l;r) by w(l;r) , which represents the utility gained by matching vertex l with vertex r ."
+   "text": "Let us once again add some information to a complete bipartite graph G = (V,E) , where V = L [ R. This time, instead of having the vertices of each side rank the vertices on the other side, we assign a weight to e ach edge. Ag ain, let’s assume that the vertex sets L and R each contain n vertices, so that the graph contains n 2 edges. For l 2 L and r 2 R, denote the weight of edge (l,r) by w(l,r) , which represents the utility gained by matching vertex l with vertex r ."
   },
   {
    "type": "body",
@@ -2199,7 +2199,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 723,
    "pdf_page": 744,
-   "text": "(l;r) 2M w(l;r) denote the total weight of the edges in matching M , we want to find a perfect matching M − such that w.M − / = max fw(M) W M is a perfect matchingg :"
+   "text": "(l,r) 2M w(l,r) denote the total weight of the edges in matching M , we want to find a perfect matching M − such that w.M − / = max fw(M) W M is a perfect matchingg :"
   },
   {
    "type": "body",
@@ -2244,7 +2244,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 724,
    "pdf_page": 745,
-   "text": "The equality subgraph depends on assigning an attri bute h to each vertex. We call h the label of a vertex, and we say that h is a feasible vertex labeling of G if l: h + r: h ≥ w(l;r) for all l 2 L and r 2 R:"
+   "text": "The equality subgraph depends on assigning an attri bute h to each vertex. We call h the label of a vertex, and we say that h is a feasible vertex labeling of G if l: h + r: h ≥ w(l,r) for all l 2 L and r 2 R:"
   },
   {
    "type": "body",
@@ -2253,7 +2253,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 724,
    "pdf_page": 745,
-   "text": "A feasible vertex labeling always exists, such as the default vertex labeling given by l: h = max fw(l;r) W r 2 Rg for all l 2 L , (25.1) r: h = 0 for all r 2 R . (25.2)"
+   "text": "A feasible vertex labeling always exists, such as the default vertex labeling given by l: h = max fw(l,r) W r 2 Rg for all l 2 L , (25.1) r: h = 0 for all r 2 R . (25.2)"
   },
   {
    "type": "body",
@@ -2262,7 +2262,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 724,
    "pdf_page": 745,
-   "text": "Given a feasible vertex labeling h, the equality subgraph G h = (V;E h ) of G consists of the same vertices as G and the subset of edges"
+   "text": "Given a feasible vertex labeling h, the equality subgraph G h = (V,E h ) of G consists of the same vertices as G and the subset of edges"
   },
   {
    "type": "body",
@@ -2271,7 +2271,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 724,
    "pdf_page": 745,
-   "text": "E h = f(l;r) 2 E W l: h + r: h = w(l;r) g :"
+   "text": "E h = f(l,r) 2 E W l: h + r: h = w(l,r) g :"
   },
   {
    "type": "body",
@@ -2298,7 +2298,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 724,
    "pdf_page": 745,
-   "text": "Let G = (V;E) , where V = L [ R, be a complete bipartite graph where each edge (l;r) 2 E has weight w(l;r) . Let h be a feasible vertex labeling of G and G h be the equality subgraph of G. If G h contains a perfect matching M − , then M − is an optimal solution to the assignment problem on G."
+   "text": "Let G = (V,E) , where V = L [ R, be a complete bipartite graph where each edge (l,r) 2 E has weight w(l,r) . Let h be a feasible vertex labeling of G and G h be the equality subgraph of G. If G h contains a perfect matching M − , then M − is an optimal solution to the assignment problem on G."
   },
   {
    "type": "proof",
@@ -2316,7 +2316,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 725,
    "pdf_page": 746,
-   "text": "(l;r) 2M − w(l;r)"
+   "text": "(l,r) 2M − w(l,r)"
   },
   {
    "type": "body",
@@ -2325,7 +2325,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 725,
    "pdf_page": 746,
-   "text": "(l;r) 2M −"
+   "text": "(l,r) 2M −"
   },
   {
    "type": "body",
@@ -2370,7 +2370,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 725,
    "pdf_page": 746,
-   "text": "(l;r) 2M w(l;r)"
+   "text": "(l,r) 2M w(l,r)"
   },
   {
    "type": "body",
@@ -2379,7 +2379,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 725,
    "pdf_page": 746,
-   "text": "(l;r) 2M"
+   "text": "(l,r) 2M"
   },
   {
    "type": "body",
@@ -2508,14 +2508,14 @@
     },
     {
      "n": 5,
-     "code": "M = M [ f(l;r) g"
+     "code": "M = M [ f(l,r) g"
     },
     {
      "n": 6,
      "code": "return M"
     }
    ],
-   "text": "1 M = ;\n2 for each vertex l 2 L\n3 if l has an unmatched neighbor in R\n4 choose any such unmatched neighbor r 2 R\n5 M = M [ f(l;r) g\n6 return M"
+   "text": "1 M = ;\n2 for each vertex l 2 L\n3 if l has an unmatched neighbor in R\n4 choose any such unmatched neighbor r 2 R\n5 M = M [ f(l,r) g\n6 return M"
   },
   {
    "type": "body",
@@ -2578,7 +2578,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 726,
    "pdf_page": 747,
-   "text": "Here, L = fl 1 ;l 2 ;:::;l 7 g and R = fr 1 ;r 2 ;:::;r 7 g. The edge weights appear in the matrix shown in part (a), where the weight w(l i ;r j ) appears in row i and column j ."
+   "text": "Here, L = fl 1 ,l 2 ,…,l 7 g and R = fr 1 ,r 2 ,…,r 7 g. The edge weights appear in the matrix shown in part (a), where the weight w(l i ,r j ) appears in row i and column j ."
   },
   {
    "type": "body",
@@ -2587,7 +2587,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 726,
    "pdf_page": 747,
-   "text": "The feasible vertex labels, given by the default ve rtex labeling, appear to the left of and above the matrix. Matrix entries in red indi cate edges (l i ;r j ) for which l i : h + r j : h = w(l i ;r j ), that is, edges in the equality subgraph G h appearing in part (b) of the figure."
+   "text": "The feasible vertex labels, given by the default ve rtex labeling, appear to the left of and above the matrix. Matrix entries in red indi cate edges (l i ,r j ) for which l i : h + r j : h = w(l i ,r j ), that is, edges in the equality subgraph G h appearing in part (b) of the figure."
   },
   {
    "type": "body",
@@ -2713,7 +2713,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 727,
    "pdf_page": 748,
-   "text": "Figure 25.4 The start of the Hungarian algorithm. (a) The matrix of edge weights for a bipartite graph with L = fl 1 ;l 2 ;:::;l 7 g and R = fr 1 ;r 2 ;:::;r 7 g. The value in row i and column j indicates w(l i ;r j ). Feasible vertex labels appear above and next to the matrix. Red entries correspond to edges in the equality subgraph. (b) The equality subgraph G h . Edges highlighted in blue belong to the initial greedy maximal matching M . Blue vertices are matched, and tan vertices are unmatched."
+   "text": "Figure 25.4 The start of the Hungarian algorithm. (a) The matrix of edge weights for a bipartite graph with L = fl 1 ,l 2 ,…,l 7 g and R = fr 1 ,r 2 ,…,r 7 g. The value in row i and column j indicates w(l i ,r j ). Feasible vertex labels appear above and next to the matrix. Red entries correspond to edges in the equality subgraph. (b) The equality subgraph G h . Edges highlighted in blue belong to the initial greedy maximal matching M . Blue vertices are matched, and tan vertices are unmatched."
   },
   {
    "type": "body",
@@ -2722,7 +2722,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 727,
    "pdf_page": 748,
-   "text": "(c) The directed equality subgraph G M;h created from G h by directing edges in M from R to L and all other edges from L to R."
+   "text": "(c) The directed equality subgraph G M,h created from G h by directing edges in M from R to L and all other edges from L to R."
   },
   {
    "type": "body",
@@ -2740,7 +2740,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 727,
    "pdf_page": 748,
-   "text": "To find an M -augmenting path in the equality subgraph G h with a matching M , the Hungarian algorithm first creates the directed equality subgraph G M;h from G h , just as the Hopcroft-Karp algorithm creates G M from G. As in the Hopcroft-Karp algorithm, you can think of an M -augmenting path as starting from an unmatched vertex in L, ending at an unmatched vertex in R, taking unmatched edges from L to R, and taking matched edges from R to L. Thus, G M;h = (V;E M;h ), where"
+   "text": "To find an M -augmenting path in the equality subgraph G h with a matching M , the Hungarian algorithm first creates the directed equality subgraph G M,h from G h , just as the Hopcroft-Karp algorithm creates G M from G. As in the Hopcroft-Karp algorithm, you can think of an M -augmenting path as starting from an unmatched vertex in L, ending at an unmatched vertex in R, taking unmatched edges from L to R, and taking matched edges from R to L. Thus, G M,h = (V,E M,h ), where"
   },
   {
    "type": "body",
@@ -2749,7 +2749,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 727,
    "pdf_page": 748,
-   "text": "E M;h = f(l;r) W l 2 L;r 2 R; and (l;r) 2 E h − M g (edges from L to R)"
+   "text": "E M,h = f(l,r) W l 2 L,r 2 R; and (l,r) 2 E h − M g (edges from L to R)"
   },
   {
    "type": "body",
@@ -2758,7 +2758,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 727,
    "pdf_page": 748,
-   "text": "[ f(r;l) W r 2 R;l 2 L; and (l;r) 2 M g (edges from R to L) ."
+   "text": "[ f(r,l) W r 2 R,l 2 L; and (l,r) 2 M g (edges from R to L) ."
   },
   {
    "type": "body",
@@ -2776,7 +2776,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 727,
    "pdf_page": 748,
-   "text": "M -augmenting path in the equality subgraph G h , it suffices to find M -augmenting paths in G M:h . Figure 25.4(c) shows the directed equality subgraph G M;h corresponding to the equality subgraph G h and matching M from part (b) of the figure."
+   "text": "M -augmenting path in the equality subgraph G h , it suffices to find M -augmenting paths in G M:h . Figure 25.4(c) shows the directed equality subgraph G M,h corresponding to the equality subgraph G h and matching M from part (b) of the figure."
   },
   {
    "type": "body",
@@ -3217,7 +3217,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 728,
    "pdf_page": 749,
-   "text": "With the directed equality subgraph G M;h in hand, the Hungarian algorithm searches for an M -augmenting path from any unmatched vertex in L to any unmatched vertex in R. Any exhaustive graph-search method suffices. Here, we’ll use breadth-first search, starting from all the unmatched vertices in L (just as the Hopcroft-Karp algorithm does when creating the dag H ), but stopping upon first discovering some unmatched vertex in R. Figure 25.5 shows the idea. To start from all the unmatched vertices in L, initialize the first-in, first-out queue with all the unmatched vertices in L, rather than just one source vertex. Unlike the da g H in the Hopcroft-Karp algorithm, here each vertex needs just one predecessor, so that the breadth-first search creates a breadth-first forest F = (V F ;E F ). Each unmatched vertex in L is a root in F ."
+   "text": "With the directed equality subgraph G M,h in hand, the Hungarian algorithm searches for an M -augmenting path from any unmatched vertex in L to any unmatched vertex in R. Any exhaustive graph-search method suffices. Here, we’ll use breadth-first search, starting from all the unmatched vertices in L (just as the Hopcroft-Karp algorithm does when creating the dag H ), but stopping upon first discovering some unmatched vertex in R. Figure 25.5 shows the idea. To start from all the unmatched vertices in L, initialize the first-in, first-out queue with all the unmatched vertices in L, rather than just one source vertex. Unlike the da g H in the Hopcroft-Karp algorithm, here each vertex needs just one predecessor, so that the breadth-first search creates a breadth-first forest F = (V F ,E F ). Each unmatched vertex in L is a root in F ."
   },
   {
    "type": "body",
@@ -3226,7 +3226,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 728,
    "pdf_page": 749,
-   "text": "In Figure 25.5(g), the breadth-first search has found the M -augmenting path h(l 4 ;r 2 );.r 2 ;l 1 /;.l 1 ;r 3 /;.r 3 ;l 6 /;.l 6 ;r 5 /i. Figure 25.6(a) shows the new matching created by taking the symmetric difference of the m atching M in Figure 25.5(a) with this M -augmenting path."
+   "text": "In Figure 25.5(g), the breadth-first search has found the M -augmenting path h(l 4 ,r 2 ),.r 2 ,l 1 /,.l 1 ,r 3 /,.r 3 ,l 6 /,.l 6 ,r 5 /i. Figure 25.6(a) shows the new matching created by taking the symmetric difference of the m atching M in Figure 25.5(a) with this M -augmenting path."
   },
   {
    "type": "body",
@@ -3244,7 +3244,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 728,
    "pdf_page": 749,
-   "text": "Having updated the matching M from an M -augmenting path, the Hungarian algorithm updates the directed equality subgraph G M;h according to the new matching and then starts a new breadth-first search from all the unmatched vertices in L."
+   "text": "Having updated the matching M from an M -augmenting path, the Hungarian algorithm updates the directed equality subgraph G M,h according to the new matching and then starts a new breadth-first search from all the unmatched vertices in L."
   },
   {
    "type": "body",
@@ -3307,7 +3307,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 728,
    "pdf_page": 749,
-   "text": "3. At least one edge (l;r) , where l 2 L \\ V F and r 2 R − V F goes into E h , and hence into E M;h . Therefore, at least one vertex in R will be newly discovered."
+   "text": "3. At least one edge (l,r) , where l 2 L \\ V F and r 2 R − V F goes into E h , and hence into E M,h . Therefore, at least one vertex in R will be newly discovered."
   },
   {
    "type": "body",
@@ -3352,7 +3352,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 729,
    "pdf_page": 750,
-   "text": "Figure 25.5 Finding an M -augmenting path in G M;h by breadth-first search. (a) The directed equality subgraph G M;h from Figure 25.4(c). (b)–(g) Successive versions of the breadth-first forest F , shown as the vertices at each distance from the roots—the unmatched vertices in L—are discovered. In parts (b)–(f), the layer of vertices closest to the bottom of the figure are those in the firstin, first-out queue. For example, in part (b), the queue contains the roots hl 4 ;l 5 ;l 7 i, and in part (e), the queue contains hr 3 ;r 4 i, at distance 3 from the roots. In part (g), the unmatched vertex r 5 is discovered, so the breadth-first search terminates. The path h(l 4 ;r 2 );.r 2 ;l 1 /;.l 1 ;r 3 /;.r 3 ;l 6 /;.l 6 ;r 5 /i, highlighted in orange in parts (a) and (g), is an M -augmenting path. Taking its symmetric difference with the matching M yields a new matching with one more edge than M ."
+   "text": "Figure 25.5 Finding an M -augmenting path in G M,h by breadth-first search. (a) The directed equality subgraph G M,h from Figure 25.4(c). (b)–(g) Successive versions of the breadth-first forest F , shown as the vertices at each distance from the roots—the unmatched vertices in L—are discovered. In parts (b)–(f), the layer of vertices closest to the bottom of the figure are those in the firstin, first-out queue. For example, in part (b), the queue contains the roots ⟨l 4 ,l 5 ,l 7⟩, and in part (e), the queue contains ⟨r 3 ,r 4⟩, at distance 3 from the roots. In part (g), the unmatched vertex r 5 is discovered, so the breadth-first search terminates. The path h(l 4 ,r 2 ),.r 2 ,l 1 /,.l 1 ,r 3 /,.r 3 ,l 6 /,.l 6 ,r 5 /i, highlighted in orange in parts (a) and (g), is an M -augmenting path. Taking its symmetric difference with the matching M yields a new matching with one more edge than M ."
   },
   {
    "type": "body",
@@ -3433,7 +3433,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 730,
    "pdf_page": 751,
-   "text": "To update the feasible vertex labeling, the Hungari an algorithm first computes the value i = min fl: h + r: h − w(l;r) W l 2 F L and r 2 R − F R g ; (25.4) where F L = L \\ V F and F R = R \\ V F denote the vertices in the breadth-first forest F that belong to L and R, respectively. That is, i is the smallest difference by which an edge incident on a vertex in F L missed being in the current equality subgraph G h . The Hungarian algorithm then creates a new feasible vertex labeling, say h 0 , by subtracting i from l: h for all vertices l 2 F L and adding i to r: h for all vertices r 2 F R : v: h 0 ="
+   "text": "To update the feasible vertex labeling, the Hungari an algorithm first computes the value i = min fl: h + r: h − w(l,r) W l 2 F L and r 2 R − F R g ; (25.4) where F L = L \\ V F and F R = R \\ V F denote the vertices in the breadth-first forest F that belong to L and R, respectively. That is, i is the smallest difference by which an edge incident on a vertex in F L missed being in the current equality subgraph G h . The Hungarian algorithm then creates a new feasible vertex labeling, say h 0 , by subtracting i from l: h for all vertices l 2 F L and adding i to r: h for all vertices r 2 F R : v: h 0 ="
   },
   {
    "type": "body",
@@ -3469,7 +3469,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 731,
    "pdf_page": 752,
-   "text": "Let h be a feasible vertex labeling for the complete bipartite graph G with equality subgraph G h , and let M be a matching for G h and F be a breadth-first forest being constructed for the directed equality subgraph G M;h . Then, the labeling h 0 in equation (25.5) is a feasible vertex labeling for G with the following properties:"
+   "text": "Let h be a feasible vertex labeling for the complete bipartite graph G with equality subgraph G h , and let M be a matching for G h and F be a breadth-first forest being constructed for the directed equality subgraph G M,h . Then, the labeling h 0 in equation (25.5) is a feasible vertex labeling for G with the following properties:"
   },
   {
    "type": "body",
@@ -3478,7 +3478,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 731,
    "pdf_page": 752,
-   "text": "1. If (u;v) is an edge in the breadth-first forest F for G M;h , then (u;v) 2 E M;h 0 ."
+   "text": "1. If (u,v) is an edge in the breadth-first forest F for G M,h , then (u,v) 2 E M,h 0 ."
   },
   {
    "type": "body",
@@ -3487,7 +3487,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 731,
    "pdf_page": 752,
-   "text": "2. If (l;r) belongs to the matching M for G h , then (r;l) 2 E M;h 0 ."
+   "text": "2. If (l,r) belongs to the matching M for G h , then (r,l) 2 E M,h 0 ."
   },
   {
    "type": "body",
@@ -3496,7 +3496,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 731,
    "pdf_page": 752,
-   "text": "3. There exist vertices l 2 F L and r 2 R − F R such that (l;r) … E M;h but"
+   "text": "3. There exist vertices l 2 F L and r 2 R − F R such that (l,r) … E M,h but"
   },
   {
    "type": "body",
@@ -3505,7 +3505,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 731,
    "pdf_page": 752,
-   "text": "(l;r) 2 E M;h 0 ."
+   "text": "(l,r) 2 E M,h 0 ."
   },
   {
    "type": "proof",
@@ -3514,7 +3514,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 731,
    "pdf_page": 752,
-   "text": "Proof We first show that h 0 is a feasible vertex labeling for G. Because h is a feasible vertex labeling, we have l: h + r: h ≥ w(l;r) for all l 2 L and r 2 R."
+   "text": "Proof We first show that h 0 is a feasible vertex labeling for G. Because h is a feasible vertex labeling, we have l: h + r: h ≥ w(l,r) for all l 2 L and r 2 R."
   },
   {
    "type": "body",
@@ -3523,7 +3523,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 731,
    "pdf_page": 752,
-   "text": "In order for h 0 to not be a feasible vertex labeling, we would need l: h 0 + r: h 0 < l: h + r: h for some l 2 L and r 2 R. The only way this could occur would be for some l 2 F L and r 2 R − F R . In this instance, the amount of the decrease equals i , so that l: h 0 + r: h 0 = l: h − i + r: h. By equation (25.4), we have that l: h −i Cr: h ≥ w(l;r) for any l 2 F L and r 2 R −F R , so that l: h 0 Cr: h 0 ≥ w(l;r) ."
+   "text": "In order for h 0 to not be a feasible vertex labeling, we would need l: h 0 + r: h 0 < l: h + r: h for some l 2 L and r 2 R. The only way this could occur would be for some l 2 F L and r 2 R − F R . In this instance, the amount of the decrease equals i , so that l: h 0 + r: h 0 = l: h − i + r: h. By equation (25.4), we have that l: h −i + r: h ≥ w(l,r) for any l 2 F L and r 2 R −F R , so that l: h 0 + r: h 0 ≥ w(l,r) ."
   },
   {
    "type": "body",
@@ -3532,7 +3532,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 731,
    "pdf_page": 752,
-   "text": "For all other edges, we have l: h 0 + r: h 0 ≥ l: h + r: h ≥ w(l;r) . Thus, h 0 is a feasible vertex labeling."
+   "text": "For all other edges, we have l: h 0 + r: h 0 ≥ l: h + r: h ≥ w(l,r) . Thus, h 0 is a feasible vertex labeling."
   },
   {
    "type": "body",
@@ -3550,7 +3550,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 731,
    "pdf_page": 752,
-   "text": "1. If l 2 F L and r 2 F R , then we have l: h 0 Cr: h 0 = l: h Cr: h because i is added to the label of l and subtracted from the label of r . Therefore, if an edge belongs to F for the directed graph G M;h , it also belongs to G M;h 0 ."
+   "text": "1. If l 2 F L and r 2 F R , then we have l: h 0 + r: h 0 = l: h + r: h because i is added to the label of l and subtracted from the label of r . Therefore, if an edge belongs to F for the directed graph G M,h , it also belongs to G M,h 0 ."
   },
   {
    "type": "body",
@@ -3559,7 +3559,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 731,
    "pdf_page": 752,
-   "text": "2. We claim that at the time the Hungarian algorith m computes the new feasible vertex labeling h 0 , for every edge (l;r) 2 M , we have l 2 F L if and only if r 2 F R . To see why, consider a matched vertex r and let (l;r) 2 M . First suppose that r 2 F R , so that the search discovered r and enqueued it. When r was removed from the queue, l was discovered, so l 2 F L . Now suppose that r … F R , so r is undiscovered. We will show that l … F L . The only edge in G M;h that enters l is (r;l) , and since r is undiscovered, the search has not taken this edge; if l 2 F L , it is not because of the edge (r;l) . The only other way that a vertex in L can be in F L is if it is a root of the search, but only unmatche d vertices in L are roots and l is matched. Thus, l … F L , and the claim is proved."
+   "text": "2. We claim that at the time the Hungarian algorith m computes the new feasible vertex labeling h 0 , for every edge (l,r) 2 M , we have l 2 F L if and only if r 2 F R . To see why, consider a matched vertex r and let (l,r) 2 M . First suppose that r 2 F R , so that the search discovered r and enqueued it. When r was removed from the queue, l was discovered, so l 2 F L . Now suppose that r … F R , so r is undiscovered. We will show that l … F L . The only edge in G M,h that enters l is (r,l) , and since r is undiscovered, the search has not taken this edge; if l 2 F L , it is not because of the edge (r,l) . The only other way that a vertex in L can be in F L is if it is a root of the search, but only unmatche d vertices in L are roots and l is matched. Thus, l … F L , and the claim is proved."
   },
   {
    "type": "body",
@@ -3568,7 +3568,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 731,
    "pdf_page": 752,
-   "text": "We already saw that l 2 F L and r 2 F R implies l: h 0 + r: h 0 = l: h + r: h. For the opposite case, when l 2 L − F L and R 2 R − F R , we have that l: h 0 = l: h and r: h 0 = r: h, so that again l: h 0 + r: h 0 = l: h + r: h. Thus, if edge (l;r) is in the matching M for the equality graph G h , then (r;l) 2 E M;h 0 ."
+   "text": "We already saw that l 2 F L and r 2 F R implies l: h 0 + r: h 0 = l: h + r: h. For the opposite case, when l 2 L − F L and R 2 R − F R , we have that l: h 0 = l: h and r: h 0 = r: h, so that again l: h 0 + r: h 0 = l: h + r: h. Thus, if edge (l,r) is in the matching M for the equality graph G h , then (r,l) 2 E M,h 0 ."
   },
   {
    "type": "body",
@@ -3577,7 +3577,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 732,
    "pdf_page": 753,
-   "text": "3. Let (l;r) be an edge not in E h such that l 2 F L , r 2 R − F R , and i = l: h + r: h − w(l;r) . By the definition of i , there is at least one such edge. Then, we have l: h 0 + r: h 0 = l: h − i + r: h"
+   "text": "3. Let (l,r) be an edge not in E h such that l 2 F L , r 2 R − F R , and i = l: h + r: h − w(l,r) . By the definition of i , there is at least one such edge. Then, we have l: h 0 + r: h 0 = l: h − i + r: h"
   },
   {
    "type": "body",
@@ -3586,7 +3586,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 732,
    "pdf_page": 753,
-   "text": "D l: h − (l: h + r: h − w(l;r)) + r: h"
+   "text": "D l: h − (l: h + r: h − w(l,r)) + r: h"
   },
   {
    "type": "body",
@@ -3595,7 +3595,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 732,
    "pdf_page": 753,
-   "text": "D w(l;r); and thus (l;r) 2 E h 0 . Since (l;r) is not in E h , it is not in the matching M , so that in E M;h 0 it must be directed from L to R. Thus, (l;r) 2 E M;h 0 ."
+   "text": "D w(l,r); and thus (l,r) 2 E h 0 . Since (l,r) is not in E h , it is not in the matching M , so that in E M,h 0 it must be directed from L to R. Thus, (l,r) 2 E M,h 0 ."
   },
   {
    "type": "body",
@@ -3604,7 +3604,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 732,
    "pdf_page": 753,
-   "text": "It is possible for an edge to belong to E M;h but not to E M;h 0 . By Lemma 25.15, any such edge belongs neither to the matching M nor to the breadth-first forest F at the time that the new feasible vertex labeling h 0 is computed. (See Exercise 25.3-3.)"
+   "text": "It is possible for an edge to belong to E M,h but not to E M,h 0 . By Lemma 25.15, any such edge belongs neither to the matching M nor to the breadth-first forest F at the time that the new feasible vertex labeling h 0 is computed. (See Exercise 25.3-3.)"
   },
   {
    "type": "body",
@@ -3613,7 +3613,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 732,
    "pdf_page": 753,
-   "text": "Going back to Figure 25.6(d), the queue became empty before an M -augmenting path was found. Figure 25.7 shows the next steps taken by the algorithm. The value of i = 1 is achieved by the edge (l 5 ;r 3 ) because in Figure 25.4(a), l 5 : h C r 3 : h − w(l 5 ;r 3 ) = 6 + 0 − 5 = 1. In Figure 25.7(a), the values of l 3 : h, l 4 : h, l 5 : h, and l 7 : h have decreased by 1 and the values of r 2 : h and r 7 : h have increased by 1 because these vertices are in F . As a result, the edges (l 1 ;r 2 ) and (l 6 ;r 7 ) leave G M;h and the edge (l 5 ;r 3 ) enters. Figure 25.7(b) shows the new directed equality subgraph G M;h . With edge (l 5 ;r 3 ) now in G M;h , Figure 25.7(c) shows that this edge is added to the breadth-first forest F , and r 3 is added to the queue."
+   "text": "Going back to Figure 25.6(d), the queue became empty before an M -augmenting path was found. Figure 25.7 shows the next steps taken by the algorithm. The value of i = 1 is achieved by the edge (l 5 ,r 3 ) because in Figure 25.4(a), l 5 : h C r 3 : h − w(l 5 ,r 3 ) = 6 + 0 − 5 = 1. In Figure 25.7(a), the values of l 3 : h, l 4 : h, l 5 : h, and l 7 : h have decreased by 1 and the values of r 2 : h and r 7 : h have increased by 1 because these vertices are in F . As a result, the edges (l 1 ,r 2 ) and (l 6 ,r 7 ) leave G M,h and the edge (l 5 ,r 3 ) enters. Figure 25.7(b) shows the new directed equality subgraph G M,h . With edge (l 5 ,r 3 ) now in G M,h , Figure 25.7(c) shows that this edge is added to the breadth-first forest F , and r 3 is added to the queue."
   },
   {
    "type": "body",
@@ -3631,7 +3631,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 732,
    "pdf_page": 753,
-   "text": "(l 1 ;r 6 ), (l 5 ;r 6 ), and (l 7 ;r 6 )."
+   "text": "(l 1 ,r 6 ), (l 5 ,r 6 ), and (l 7 ,r 6 )."
   },
   {
    "type": "body",
@@ -3640,7 +3640,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 732,
    "pdf_page": 753,
-   "text": "As Figure 25.8 shows in parts (a) and (b), these edges enter G M;h , and edge (l 6 ;r 3 ) leaves. Part (c) shows that edge (l 1 ;r 6 ) is added to the breadthfirst forest. (Either of edges (l 5 ;r 6 ) or (l 7 ;r 6 ) could have been added in- stead.) Because r 6 is unmatched, the search has found the M -augmenting path h(l 5 ;r 3 );.r 3 ;l 1 /;.l 1 ;r 6 /i, highlighted in orange."
+   "text": "As Figure 25.8 shows in parts (a) and (b), these edges enter G M,h , and edge (l 6 ,r 3 ) leaves. Part (c) shows that edge (l 1 ,r 6 ) is added to the breadthfirst forest. (Either of edges (l 5 ,r 6 ) or (l 7 ,r 6 ) could have been added in- stead.) Because r 6 is unmatched, the search has found the M -augmenting path h(l 5 ,r 3 ),.r 3 ,l 1 /,.l 1 ,r 6 /i, highlighted in orange."
   },
   {
    "type": "body",
@@ -3649,7 +3649,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 732,
    "pdf_page": 753,
-   "text": "Figure 25.9(a) shows G M;h after the matching M has been updated by taking its symmetric difference with the M -augmenting path. The Hungarian algorithm starts its last breadth-first search, with vertex l 7 as the only root. The search proceeds as shown in parts (b)3(h) of the figure, until the queue becomes empty after removing l 4 . This time, we find that i = 2, achieved by the five edges (l 2 ;r 5 ), (l 3 ;r 1 ), (l 4 ;r 5 ), (l 5 ;r 1 ), and (l 5 ;r 5 ), each of which enters G M;h ."
+   "text": "Figure 25.9(a) shows G M,h after the matching M has been updated by taking its symmetric difference with the M -augmenting path. The Hungarian algorithm starts its last breadth-first search, with vertex l 7 as the only root. The search proceeds as shown in parts (b)3(h) of the figure, until the queue becomes empty after removing l 4 . This time, we find that i = 2, achieved by the five edges (l 2 ,r 5 ), (l 3 ,r 1 ), (l 4 ,r 5 ), (l 5 ,r 1 ), and (l 5 ,r 5 ), each of which enters G M,h ."
   },
   {
    "type": "body",
@@ -3658,7 +3658,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 732,
    "pdf_page": 753,
-   "text": "Figure 25.10(a) shows the results of decreasing the feasible vertex label of each vertex in F L by 2 and increasing the feasible vertex label of each ve rtex in F R r 4 l 1"
+   "text": "Figure 25.10(a) shows the results of decreasing the feasible vertex label of each vertex in F L by 2 and increasing the feasible vertex label of each ve rtex in F R"
   },
   {
    "type": "body",
@@ -3676,7 +3676,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 733,
    "pdf_page": 754,
-   "text": "Figure 25.7 Updating the feasible vertex labeling and the directed equality subgraph G M;h when the queue becomes empty before finding an M -augmenting path. (a) With i = 1, the values of l 3 : h, l 4 : h, l 5 : h, and l 7 : h decreased by 1 and r 2 : h and r 7 : h increased by 1. Edges (l 1 ;r 2 ) and (l 6 ;r 7 ) leave G M;h , and edge (l 5 ;r 3 ) enters. These changes are highlighted in yellow. (b) The resulting directed equality subgraph G M;h . (c)–(f) With edge (l 5 ;r 3 ) added to the breadth-first forest and r 3 added to the queue, the breadth-first search continues until the queue once again becomes empty in part (f). by 2, and Figure 25.10(b) shows the resulting directed equality subgraph G M;h ."
+   "text": "Figure 25.7 Updating the feasible vertex labeling and the directed equality subgraph G M,h when the queue becomes empty before finding an M -augmenting path. (a) With i = 1, the values of l 3 : h, l 4 : h, l 5 : h, and l 7 : h decreased by 1 and r 2 : h and r 7 : h increased by 1. Edges (l 1 ,r 2 ) and (l 6 ,r 7 ) leave G M,h , and edge (l 5 ,r 3 ) enters. These changes are highlighted in yellow. (b) The resulting directed equality subgraph G M,h . (c)–(f) With edge (l 5 ,r 3 ) added to the breadth-first forest and r 3 added to the queue, the breadth-first search continues until the queue once again becomes empty in part (f). by 2, and Figure 25.10(b) shows the resulting directed equality subgraph G M,h ."
   },
   {
    "type": "body",
@@ -3685,7 +3685,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 733,
    "pdf_page": 754,
-   "text": "Part (c) shows that edge (l 3 ;r 1 ) is added to the breadth-first forest. Since r 1 is an unmatched vertex, the search terminates, having found the M -augmenting path h(l 7 ;r 7 );.r 7 ;l 3 /;.l 3 ;r 1 /i, highlighted in orange. If r 1 had been matched, vertex r 5 would also have been added to the breadth-first forest, with any of l 2 , l 4 , or l 5 as its parent."
+   "text": "Part (c) shows that edge (l 3 ,r 1 ) is added to the breadth-first forest. Since r 1 is an unmatched vertex, the search terminates, having found the M -augmenting path h(l 7 ,r 7 ),.r 7 ,l 3 /,.l 3 ,r 1 /i, highlighted in orange. If r 1 had been matched, vertex r 5 would also have been added to the breadth-first forest, with any of l 2 , l 4 , or l 5 as its parent."
   },
   {
    "type": "body",
@@ -3694,7 +3694,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 733,
    "pdf_page": 754,
-   "text": "After updating the matching M , the algorithm arrives at the perfect matching shown for the equality subgraph G h in Figure 25.11. By Theorem 25.14, the edges in M form an optimal solution to the original assignment problem given in the matrix. Here, the weights of edges (l 1 ;r 6 ), (l 2 ;r 4 ), (l 3 ;r 1 ), (l 4 ;r 2 ), (l 5 ;r 3 ), (l 6 ;r 5 ), and (l 7 ;r 7 ) sum to 65, which is the maximum weight of any matching."
+   "text": "After updating the matching M , the algorithm arrives at the perfect matching shown for the equality subgraph G h in Figure 25.11. By Theorem 25.14, the edges in M form an optimal solution to the original assignment problem given in the matrix. Here, the weights of edges (l 1 ,r 6 ), (l 2 ,r 4 ), (l 3 ,r 1 ), (l 4 ,r 2 ), (l 5 ,r 3 ), (l 6 ,r 5 ), and (l 7 ,r 7 ) sum to 65, which is the maximum weight of any matching."
   },
   {
    "type": "body",
@@ -3721,7 +3721,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 734,
    "pdf_page": 755,
-   "text": "Figure 25.8 Another update to the feasible vertex labeling and directed equality subgraph G M;h because the queue became empty before finding an M -augmenting path. (a) With i = 1, the values of l 1 : h, l 2 : h, l 3 : h, l 4 : h, l 5 : h, and l 7 : h decrease by 1, and r 2 : h, r 3 : h, r 4 : h, and r 7 : h increase by 1."
+   "text": "Figure 25.8 Another update to the feasible vertex labeling and directed equality subgraph G M,h because the queue became empty before finding an M -augmenting path. (a) With i = 1, the values of l 1 : h, l 2 : h, l 3 : h, l 4 : h, l 5 : h, and l 7 : h decrease by 1, and r 2 : h, r 3 : h, r 4 : h, and r 7 : h increase by 1."
   },
   {
    "type": "body",
@@ -3730,7 +3730,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 734,
    "pdf_page": 755,
-   "text": "Edge (l 6 ;r 3 ) leaves G M;h , and edges (l 1 ;r 6 ), (l 5 ;r 6 ) and (l 7 ;r 6 ) enter. (b) The resulting directed equality subgraph G M;h . (c) With edge (l 1 ;r 6 ) added to the breadth-first forest and r 6 unmatched, the search terminates, having found the M -augmenting path h(l 5 ;r 3 );.r 3 ;l 1 /;.l 1 ;r 6 /i, highlighted in orange in parts (b) and (c). mizing the sum of the feasible vertex labels—are \"duals\" of each other, in a similar vein to how the value of a maximum flow equals the capacity of a minimum cut."
+   "text": "Edge (l 6 ,r 3 ) leaves G M,h , and edges (l 1 ,r 6 ), (l 5 ,r 6 ) and (l 7 ,r 6 ) enter. (b) The resulting directed equality subgraph G M,h . (c) With edge (l 1 ,r 6 ) added to the breadth-first forest and r 6 unmatched, the search terminates, having found the M -augmenting path h(l 5 ,r 3 ),.r 3 ,l 1 /,.l 1 ,r 6 /i, highlighted in orange in parts (b) and (c). mizing the sum of the feasible vertex labels—are \"duals\" of each other, in a similar vein to how the value of a maximum flow equals the capacity of a minimum cut."
   },
   {
    "type": "body",
@@ -3784,7 +3784,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 735,
    "pdf_page": 756,
-   "text": "Figure 25.9 (a) The new matching M and the new directed equality subgraph G M;h after up- dating the matching in Figure 25.8 with the M -augmenting path in Figure 25.8 parts (b) and (c)."
+   "text": "Figure 25.9 (a) The new matching M and the new directed equality subgraph G M,h after up- dating the matching in Figure 25.8 with the M -augmenting path in Figure 25.8 parts (b) and (c)."
   },
   {
    "type": "body",
@@ -3820,7 +3820,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 735,
    "pdf_page": 756,
-   "text": "verify that lines 136 and 11 take O(n 2 ) time. The while loop of lines 7310 iterates at most n times, since each iteration increases the size of t he matching M by 1."
+   "text": "verify that lines 1–6 and 11 take O(n 2 ) time. The while loop of lines 7–10 iterates at most n times, since each iteration increases the size of t he matching M by 1."
   },
   {
    "type": "body",
@@ -3847,7 +3847,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 735,
    "pdf_page": 756,
-   "text": "AUGMENTING-PATH runs in O(n 3 ) time. Let’s call each execution of lines 10322"
+   "text": "AUGMENTING-PATH runs in O(n 3 ) time. Let’s call each execution of lines 10–22"
   },
   {
    "type": "body",
@@ -3865,7 +3865,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 736,
    "pdf_page": 757,
-   "text": "Figure 25.10 Updating the feasible vertex labeling and directed equality subgraph G M;h . (a) Here, i = 2, so the values of l 1 : h, l 2 : h, l 3 : h, l 4 : h, l 5 : h, and l 7 : h decreased by 2, and the values of r 2 : h, r 3 : h, r 4 : h, r 6 : h, and r 7 : h increased by 2. Edges (l 2 ;r 5 ), (l 3 ;r 1 ), (l 4 ;r 5 ), (l 5 ;r 1 ), and (l 5 ;r 5 ) enter G M;h . (b) The resulting directed graph G M;h . (c) With edge (l 3 ;r 1 ) added to the breadthfirst forest and r 1 unmatched, the search terminates, having found the M -augmenting path h(l 7 ;r 7 ); (r 7 ;l 3 );.l 3 ;r 1 /i, highlighted in orange in parts (b) and (c). a growth step. Ignoring the growth steps, you can verify that FIND-AUGMENTING-PATH is a breadth-first search. With the sets F L and F R represented appropriately, the breadth-first search takes O(V + E) = O(n 2 ) time. Within a call of FIND- AUGMENTING-PATH, at most n growth steps can occur, since each growth step is guaranteed to discover at least one vertex in R. Since there are at most n 2 edges in G M;h , the for loop of lines 16322 iterates at most n 2 times per call of FIND- AUGMENTING-PATH. The bottleneck is lines 10 and 15, which take O(n 2 ) time,"
+   "text": "Figure 25.10 Updating the feasible vertex labeling and directed equality subgraph G M,h . (a) Here, i = 2, so the values of l 1 : h, l 2 : h, l 3 : h, l 4 : h, l 5 : h, and l 7 : h decreased by 2, and the values of r 2 : h, r 3 : h, r 4 : h, r 6 : h, and r 7 : h increased by 2. Edges (l 2 ,r 5 ), (l 3 ,r 1 ), (l 4 ,r 5 ), (l 5 ,r 1 ), and (l 5 ,r 5 ) enter G M,h . (b) The resulting directed graph G M,h . (c) With edge (l 3 ,r 1 ) added to the breadthfirst forest and r 1 unmatched, the search terminates, having found the M -augmenting path h(l 7 ,r 7 ); (r 7 ,l 3 ),.l 3 ,r 1 /i, highlighted in orange in parts (b) and (c). a growth step. Ignoring the growth steps, you can verify that FIND-AUGMENTING-PATH is a breadth-first search. With the sets F L and F R represented appropriately, the breadth-first search takes O(V + E) = O(n 2 ) time. Within a call of FIND- AUGMENTING-PATH, at most n growth steps can occur, since each growth step is guaranteed to discover at least one vertex in R. Since there are at most n 2 edges in G M,h , the for loop of lines 16–22 iterates at most n 2 times per call of FIND- AUGMENTING-PATH. The bottleneck is lines 10 and 15, which take O(n 2 ) time,"
   },
   {
    "type": "body",
@@ -3883,7 +3883,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 736,
    "pdf_page": 757,
-   "text": "Exercise 25.3-5 asks you to show that reconstructing the directed equality sub- graph G M;h in line 15 is actually unnecessary, so that its cost can be eliminated. Re- ducing the cost of computing i in line 10 to O(n) takes a little more effort and is the"
+   "text": "Exercise 25.3-5 asks you to show that reconstructing the directed equality sub- graph G M,h in line 15 is actually unnecessary, so that its cost can be eliminated. Re- ducing the cost of computing i in line 10 to O(n) takes a little more effort and is the"
   },
   {
    "type": "body",
@@ -3919,7 +3919,7 @@
     },
     {
      "n": 2,
-     "code": "l: h = max fw(l;r)  W r 2 Rg / / from equation (25.1)"
+     "code": "l: h = max fw(l,r)  W r 2 Rg / / from equation (25.1)"
     },
     {
      "n": 3,
@@ -3934,7 +3934,7 @@
      "code": "let M be any matching in G h (such as the matching returned by"
     }
    ],
-   "text": "1 for each vertex l 2 L\n2 l: h = max fw(l;r)  W r 2 Rg / / from equation (25.1)\n3 for each vertex r 2 R\n4 r: h = 0 / / from equation (25.2)\n5 let M be any matching in G h (such as the matching returned by"
+   "text": "1 for each vertex l 2 L\n2 l: h = max fw(l,r)  W r 2 Rg / / from equation (25.1)\n3 for each vertex r 2 R\n4 r: h = 0 / / from equation (25.2)\n5 let M be any matching in G h (such as the matching returned by"
   },
   {
    "type": "figure-caption",
@@ -3970,7 +3970,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 737,
    "pdf_page": 758,
-   "text": "6 from G, M , and h, form the equality subgraph G h and the directed equality subgraph G M;h"
+   "text": "6 from G, M , and h, form the equality subgraph G h and the directed equality subgraph G M,h"
   },
   {
    "type": "body",
@@ -3988,7 +3988,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 737,
    "pdf_page": 758,
-   "text": "8 PDFIND-AUGMENTING-PATH (G M;h )"
+   "text": "8 PDFIND-AUGMENTING-PATH (G M,h )"
   },
   {
    "type": "footnote",
@@ -4006,7 +4006,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 737,
    "pdf_page": 758,
-   "text": "10 update the equality subgraph G h and the directed equality subgraph G M;h"
+   "text": "10 update the equality subgraph G h and the directed equality subgraph G M,h"
   },
   {
    "type": "body",
@@ -4049,7 +4049,7 @@
     },
     {
      "n": 6,
-     "code": "ENQUEUE(Q;l)"
+     "code": "ENQUEUE(Q,l)"
     },
     {
      "n": 7,
@@ -4065,7 +4065,7 @@
     },
     {
      "n": 10,
-     "code": "i = min fl: h + r: h − w(l;r)  : l 2 F L and r 2 R − F R g"
+     "code": "i = min fl: h + r: h − w(l,r)  : l 2 F L and r 2 R − F R g"
     },
     {
      "n": 11,
@@ -4085,11 +4085,11 @@
     },
     {
      "n": 15,
-     "code": "from G, M , and h, form a new directed equality graph G M;h"
+     "code": "from G, M , and h, form a new directed equality graph G M,h"
     },
     {
      "n": 16,
-     "code": "for each new edge (l;r)  in G M;h / / continue search with new edges"
+     "code": "for each new edge (l,r)  in G M,h / / continue search with new edges"
     },
     {
      "n": 17,
@@ -4108,7 +4108,7 @@
      "code": "an M -augmenting path has been found"
     }
    ],
-   "text": "1 Q = ;\n2 F L = ;\n3 F R = ;\n4 for each unmatched vertex l 2 L\n5 l:Ω  DNIL\n6 ENQUEUE(Q;l)\n7 F L = F L [ fl g / / forest F starts with unmatched vertices in L\n8 repeat\n9 if Q is empty / / ran out of vertices to search from?\n10 i = min fl: h + r: h − w(l;r)  : l 2 F L and r 2 R − F R g\n11 for each vertex l 2 F L\n12 l: h = l: h − i / / relabel according to equation (25.5)\n13 for each vertex r 2 F R\n14 r: h = r: h + i / / relabel according to equation (25.5)\n15 from G, M , and h, form a new directed equality graph G M;h\n16 for each new edge (l;r)  in G M;h / / continue search with new edges\n17 if r … F R\n18 r:] = l / / discover r , add it to F\n19 if r is unmatched\n20 an M -augmenting path has been found"
+   "text": "1 Q = ;\n2 F L = ;\n3 F R = ;\n4 for each unmatched vertex l 2 L\n5 l:Ω  DNIL\n6 ENQUEUE(Q,l)\n7 F L = F L [ fl g / / forest F starts with unmatched vertices in L\n8 repeat\n9 if Q is empty / / ran out of vertices to search from?\n10 i = min fl: h + r: h − w(l,r)  : l 2 F L and r 2 R − F R g\n11 for each vertex l 2 F L\n12 l: h = l: h − i / / relabel according to equation (25.5)\n13 for each vertex r 2 F R\n14 r: h = r: h + i / / relabel according to equation (25.5)\n15 from G, M , and h, form a new directed equality graph G M,h\n16 for each new edge (l,r)  in G M,h / / continue search with new edges\n17 if r … F R\n18 r:] = l / / discover r , add it to F\n19 if r is unmatched\n20 an M -augmenting path has been found"
   },
   {
    "type": "body",
@@ -4117,7 +4117,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 738,
    "pdf_page": 759,
-   "text": "FIND-AUGMENTING-PATH (G M;h )"
+   "text": "FIND-AUGMENTING-PATH (G M,h )"
   },
   {
    "type": "body",
@@ -4135,7 +4135,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 738,
    "pdf_page": 759,
-   "text": "21 else ENQUEUE(Q;r) / / can search from r later"
+   "text": "21 else ENQUEUE(Q,r) / / can search from r later"
   },
   {
    "type": "footnote",
@@ -4162,7 +4162,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 738,
    "pdf_page": 759,
-   "text": "24 for each neighbor v of u in G M;h"
+   "text": "24 for each neighbor v of u in G M,h"
   },
   {
    "type": "body",
@@ -4198,7 +4198,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 738,
    "pdf_page": 759,
-   "text": "28 ENQUEUE(Q;v) / / can search from v later"
+   "text": "28 ENQUEUE(Q,v) / / can search from v later"
   },
   {
    "type": "body",
@@ -4207,7 +4207,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 738,
    "pdf_page": 759,
-   "text": "29 elseif v … F R / / v 2 R, do same as lines 18322"
+   "text": "29 elseif v … F R / / v 2 R, do same as lines 18–22"
   },
   {
    "type": "body",
@@ -4252,7 +4252,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 738,
    "pdf_page": 759,
-   "text": "33 else ENQUEUE(Q;v)"
+   "text": "33 else ENQUEUE(Q,v)"
   },
   {
    "type": "footnote",
@@ -4315,7 +4315,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 739,
    "pdf_page": 760,
-   "text": "25.3-3 Show that if an edge (l;r) belongs to the directed equality subgraph G M;h but is not a member of G M;h 0 , where h 0 is given by equation (25.5), then l 2 L − F L and r 2 F R at the time that h 0 is computed."
+   "text": "25.3-3 Show that if an edge (l,r) belongs to the directed equality subgraph G M,h but is not a member of G M,h 0 , where h 0 is given by equation (25.5), then l 2 L − F L and r 2 F R at the time that h 0 is computed."
   },
   {
    "type": "exercise",
@@ -4324,7 +4324,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 739,
    "pdf_page": 760,
-   "text": "25.3-4 At line 29 in the FIND-AUGMENTING-PATH procedure, it has already been established that v 2 R. This line checks to see whether v is already discovered by testing whether v 2 F R . Why doesn’t the procedure need to check whether v is already discovered for the case when v 2 L, in lines 26328?"
+   "text": "25.3-4 At line 29 in the FIND-AUGMENTING-PATH procedure, it has already been established that v 2 R. This line checks to see whether v is already discovered by testing whether v 2 F R . Why doesn’t the procedure need to check whether v is already discovered for the case when v 2 L, in lines 26–28?"
   },
   {
    "type": "exercise",
@@ -4333,7 +4333,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 739,
    "pdf_page": 760,
-   "text": "25.3-5 Professor Hrabosky asserts that the directed equality subgraph G M;h must be constructed and maintained by the Hungarian algorithm, so that line 6 of HUNGARIAN and line 15 of FIND-AUGMENTING-PATH are required. Argue that the professor is incorrect by showing how to determine whether an ed ge belongs to E M;h without explicitly constructing G M;h ."
+   "text": "25.3-5 Professor Hrabosky asserts that the directed equality subgraph G M,h must be constructed and maintained by the Hungarian algorithm, so that line 6 of HUNGARIAN and line 15 of FIND-AUGMENTING-PATH are required. Argue that the professor is incorrect by showing how to determine whether an ed ge belongs to E M,h without explicitly constructing G M,h ."
   },
   {
    "type": "exercise",
@@ -4360,7 +4360,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 740,
    "pdf_page": 761,
-   "text": "25-1 Perfect matchings in a regular bipartite graph a. Problem 20-3 asked about Euler tours in directed graphs. Prove that a connected, undirected graph G = (V;E) has an Euler tour—a cycle traversing each edge exactly once, though it may visit a verte x multiple times—if and only if the degree of every vertex in V is even. b. Assuming that G is connected, undirected, and every vertex in V has even degree, give an O(E)-time algorithm to find an Euler tour of G, as in Problem 20-3(b). c. Exercise 25.1-6 states that if G = (V;E) is a d -regular bipartite graph, then it contains d disjoint perfect matchings. Suppose that d is an exact power of 2."
+   "text": "25-1 Perfect matchings in a regular bipartite graph a. Problem 20-3 asked about Euler tours in directed graphs. Prove that a connected, undirected graph G = (V,E) has an Euler tour—a cycle traversing each edge exactly once, though it may visit a verte x multiple times—if and only if the degree of every vertex in V is even. b. Assuming that G is connected, undirected, and every vertex in V has even degree, give an O(E)-time algorithm to find an Euler tour of G, as in Problem 20-3(b). c. Exercise 25.1-6 states that if G = (V,E) is a d -regular bipartite graph, then it contains d disjoint perfect matchings. Suppose that d is an exact power of 2."
   },
   {
    "type": "body",
@@ -4405,7 +4405,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 740,
    "pdf_page": 761,
-   "text": "For each vertex r 2 R − F R , define a new attribute r:Ω , where r:Ω = min fl: h + r: h − w(l;r) W l 2 F L g :"
+   "text": "For each vertex r 2 R − F R , define a new attribute r:Ω , where r:Ω = min fl: h + r: h − w(l,r) W l 2 F L g :"
   },
   {
    "type": "body",
@@ -4414,7 +4414,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 740,
    "pdf_page": 761,
-   "text": "That is, r:Ω indicates how close r is to being adjacent to some vertex l 2 F L in the directed equality subgraph G m;h . Initially, before placing any vertices into F L , set r:Ω to 1 for all r 2 R. a. Show how to compute i in line 10 in O(n) time, based on the Ω attribute."
+   "text": "That is, r:Ω indicates how close r is to being adjacent to some vertex l 2 F L in the directed equality subgraph G m,h . Initially, before placing any vertices into F L , set r:Ω to 1 for all r 2 R. a. Show how to compute i in line 10 in O(n) time, based on the Ω attribute."
   },
   {
    "type": "body",
@@ -4450,7 +4450,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 741,
    "pdf_page": 762,
-   "text": "The Hungarian algorithm finds a maximum-weight perfect matching in a complete bipartite graph. It is possible to use the Hungaria n algorithm to solve problems in other graphs by modifying the input graph, running the Hungarian algorithm, and then possibly modifying the output. Show how to sol ve the following matching problems in this manner. a. Give an algorithm to find a maximum-weight matching in a weighted bipartite graph that is not necessarily complete and with all edge weights positive. b. Redo part (a), but with edge weights allowed to also be 0 or negative. c. A cycle cover in a directed graph, not necessarily bipartite, is a set of edgedisjoint directed cycles such that each vertex lies on at most one cycle. Given nonnegative edge weights w(u;v) , let C be the set of edges in a cycle cover, and define w(C) = P"
+   "text": "The Hungarian algorithm finds a maximum-weight perfect matching in a complete bipartite graph. It is possible to use the Hungaria n algorithm to solve problems in other graphs by modifying the input graph, running the Hungarian algorithm, and then possibly modifying the output. Show how to sol ve the following matching problems in this manner. a. Give an algorithm to find a maximum-weight matching in a weighted bipartite graph that is not necessarily complete and with all edge weights positive. b. Redo part (a), but with edge weights allowed to also be 0 or negative. c. A cycle cover in a directed graph, not necessarily bipartite, is a set of edgedisjoint directed cycles such that each vertex lies on at most one cycle. Given nonnegative edge weights w(u,v) , let C be the set of edges in a cycle cover, and define w(C) = P"
   },
   {
    "type": "body",
@@ -4459,7 +4459,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 741,
    "pdf_page": 762,
-   "text": "(u;v)2C w(u;v) to be the weight of the cycle cover. Give an algorithm to find a maximum-weight cycle cover."
+   "text": "(u,v)2C w(u,v) to be the weight of the cycle cover. Give an algorithm to find a maximum-weight cycle cover."
   },
   {
    "type": "problem",
@@ -4477,7 +4477,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 741,
    "pdf_page": 762,
-   "text": "It is possible to define a fractional matching. Given a graph G = (V;E), we define a fractional matching x as a function x W E ! [0; 1] (real numbers between 0 and 1, inclusive) such that for every vertex u 2 V , we have P"
+   "text": "It is possible to define a fractional matching. Given a graph G = (V,E), we define a fractional matching x as a function x W E ! [0; 1] (real numbers between 0 and 1, inclusive) such that for every vertex u 2 V , we have P"
   },
   {
    "type": "body",
@@ -4486,7 +4486,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 741,
    "pdf_page": 762,
-   "text": "(u;v)2E x(u;v) ≤ 1. The value of a fractional matching is P"
+   "text": "(u,v)2E x(u,v) ≤ 1. The value of a fractional matching is P"
   },
   {
    "type": "body",
@@ -4495,7 +4495,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 741,
    "pdf_page": 762,
-   "text": "(u;v)2E x(u;v). The definition of a fractional matching is identical to that of a matching, except that a matching has the additional constraint that x(u;v) 2 f0;1 g for all edges (u;v) 2 E. Given a graph, we let M − denote a maximum matching and x − denote a fractional matching with maximum value. a. Argue that, for any bipartite graph, we must have P"
+   "text": "(u,v)2E x(u,v). The definition of a fractional matching is identical to that of a matching, except that a matching has the additional constraint that x(u,v) 2 f0,1 g for all edges (u,v) 2 E. Given a graph, we let M − denote a maximum matching and x − denote a fractional matching with maximum value. a. Argue that, for any bipartite graph, we must have P"
   },
   {
    "type": "body",
@@ -4504,7 +4504,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 741,
    "pdf_page": 762,
-   "text": "(u;v)2E x − (u;v) ≥ jM − j. b. Prove that, for any bipartite graph, we must have P"
+   "text": "(u,v)2E x − (u,v) ≥ jM − j. b. Prove that, for any bipartite graph, we must have P"
   },
   {
    "type": "body",
@@ -4513,7 +4513,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 741,
    "pdf_page": 762,
-   "text": "(u;v)2E x − (e) ≤ jM − j."
+   "text": "(u,v)2E x − (e) ≤ jM − j."
   },
   {
    "type": "body",
@@ -4531,7 +4531,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 741,
    "pdf_page": 762,
-   "text": "(u;v)2E w(u;v)x(u;v) . Extend the results of the previous parts to show that in a weighted bi partite graph, the maximum value of a weighted fractional matching is equal to the value of a maximum weighted matching. d. In a general graph, the analogous results do not ne cessarily hold. Give an ex- ample of a small graph that is not bipartite for wh ich the fractional matching with maximum value is not a maximum matching."
+   "text": "(u,v)2E w(u,v)x(u,v) . Extend the results of the previous parts to show that in a weighted bi partite graph, the maximum value of a weighted fractional matching is equal to the value of a maximum weighted matching. d. In a general graph, the analogous results do not ne cessarily hold. Give an ex- ample of a small graph that is not bipartite for wh ich the fractional matching with maximum value is not a maximum matching."
   },
   {
    "type": "problem",
@@ -4549,7 +4549,7 @@
    "section_title": "25.3 The Hungarian algorithm for the assignment problem",
    "printed_page": 742,
    "pdf_page": 763,
-   "text": "You are given a complete bipartite graph G = (V;E) with edge weights w(l;r) for all (l;r) 2 E. You are also given a maximum-weight perfect matching M − for G. You wish to compute a feasible vertex labeling h such that M − is a perfect matching in the equality subgraph G h . That is, you want to compute a labeling h of vertices such that l: h + r: h ≥ w(l;r) for all l 2 L and r 2 R , (25.6) l: h + r: h = w(l;r) for all (l;r) 2 M − . (25.7)"
+   "text": "You are given a complete bipartite graph G = (V,E) with edge weights w(l,r) for all (l,r) 2 E. You are also given a maximum-weight perfect matching M − for G. You wish to compute a feasible vertex labeling h such that M − is a perfect matching in the equality subgraph G h . That is, you want to compute a labeling h of vertices such that l: h + r: h ≥ w(l,r) for all l 2 L and r 2 R , (25.6) l: h + r: h = w(l,r) for all (l,r) 2 M − . (25.7)"
   },
   {
    "type": "body",

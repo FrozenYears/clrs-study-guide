@@ -40,7 +40,7 @@
    "section_title": "31.1 Elementary number-theoretic notions",
    "printed_page": 904,
    "pdf_page": 925,
-   "text": "puts a 1 ;a 2 ;:::;a k is a polynomial-time algorithm if it runs in time polynomial in lg a 1 ; lg a 2 ;:::; lg a k , that is, polynomial in the lengths of its binary-encoded inputs."
+   "text": "puts a 1 ,a 2 ,…,a k is a polynomial-time algorithm if it runs in time polynomial in lg a 1 ; lg a 2 ,…; lg a k , that is, polynomial in the lengths of its binary-encoded inputs."
   },
   {
    "type": "body",
@@ -67,7 +67,7 @@
    "section_title": "31.1 Elementary number-theoretic notions",
    "printed_page": 904,
    "pdf_page": 925,
-   "text": "This section provides a brief review of notions fro m elementary number theory concerning the set Z = f:::; −2; −1;0;1;2;::: g of integers and the set N = f0;1;2;::: g of natural numbers."
+   "text": "This section provides a brief review of notions fro m elementary number theory concerning the set Z = f…; −2; −1,0,1,2,… g of integers and the set N = f0,1,2,… g of natural numbers."
   },
   {
    "type": "body",
@@ -211,7 +211,7 @@
    "section_title": "31.1 Elementary number-theoretic notions",
    "printed_page": 905,
    "pdf_page": 926,
-   "text": "For example, [3] 7 = f:::; −11; −4;3;10;17;::: g, and [−4] 7 and [10] 7 also denote this set. With the notation defined on page 64, writing a 2 [b] n is the same as writing a = b (mod n). The set of all such equivalence classes is Z n = f[a] n W 0 ≤ a ≤ n − 1g : (31.1)"
+   "text": "For example, [3] 7 = f…; −11; −4,3,10,17,… g, and [−4] 7 and [10] 7 also denote this set. With the notation defined on page 64, writing a 2 [b] n is the same as writing a = b (mod n). The set of all such equivalence classes is Z n = f[a] n W 0 ≤ a ≤ n − 1g : (31.1)"
   },
   {
    "type": "body",
@@ -229,7 +229,7 @@
    "section_title": "31.1 Elementary number-theoretic notions",
    "printed_page": 905,
    "pdf_page": 926,
-   "text": "Z n = f0;1;:::;n − 1g ; (31.2) you should read it as equivalent to equation (31.1) with the understanding that 0 represents [0] n , 1 represents [1] n , and so on. Each class is represented by its smallest nonnegative element. You should keep the underlying equivalence classes in mind, however. For example, if we refer to −1 as a member of Z n , we are really referring to [n − 1] n , since −1 = n − 1 (mod n)."
+   "text": "Z n = f0,1,…,n − 1g ; (31.2) you should read it as equivalent to equation (31.1) with the understanding that 0 represents [0] n , 1 represents [1] n , and so on. Each class is represented by its smallest nonnegative element. You should keep the underlying equivalence classes in mind, however. For example, if we refer to −1 as a member of Z n , we are really referring to [n − 1] n , since −1 = n − 1 (mod n)."
   },
   {
    "type": "body",
@@ -283,7 +283,7 @@
    "section_title": "31.1 Elementary number-theoretic notions",
    "printed_page": 906,
    "pdf_page": 927,
-   "text": "The greatest common divisor of two integers a and b which are not both 0, denoted by gcd(a;b) , is the largest of the common divisors of a and b. For example, gcd(24;30) = 6, gcd(5;7) = 1, and gcd(0;9) = 9. If a and b are both nonzero, then gcd(a;b) is an integer between 1 and min f|a|; |b|g. We define gcd(0;0) to be 0, so that standard properties of the gcd function ( such as equation (31.9) below) hold universally."
+   "text": "The greatest common divisor of two integers a and b which are not both 0, denoted by gcd(a,b) , is the largest of the common divisors of a and b. For example, gcd(24,30) = 6, gcd(5,7) = 1, and gcd(0,9) = 9. If a and b are both nonzero, then gcd(a,b) is an integer between 1 and min f|a|; |b|g. We define gcd(0,0) to be 0, so that standard properties of the gcd function ( such as equation (31.9) below) hold universally."
   },
   {
    "type": "body",
@@ -292,7 +292,7 @@
    "section_title": "31.1 Elementary number-theoretic notions",
    "printed_page": 906,
    "pdf_page": 927,
-   "text": "Exercise 31.1-9 asks you to prove the following elementary properties of the gcd function: gcd(a;b) = gcd(b;a); (31.6) gcd(a;b) = gcd.−a;b/; (31.7) gcd(a;b) = gcd(|a|; |b|); (31.8) gcd(a;0) = |a| ; (31.9) gcd(a;ka) = |a| for any k 2 Z : (31.10)"
+   "text": "Exercise 31.1-9 asks you to prove the following elementary properties of the gcd function: gcd(a,b) = gcd(b,a); (31.6) gcd(a,b) = gcd.−a,b/; (31.7) gcd(a,b) = gcd(|a|; |b|); (31.8) gcd(a,0) = |a| ; (31.9) gcd(a,ka) = |a| for any k 2 Z : (31.10)"
   },
   {
    "type": "body",
@@ -301,7 +301,7 @@
    "section_title": "31.1 Elementary number-theoretic notions",
    "printed_page": 906,
    "pdf_page": 927,
-   "text": "The following theorem provides an alternative and u seful way to characterize gcd(a;b) ."
+   "text": "The following theorem provides an alternative and u seful way to characterize gcd(a,b) ."
   },
   {
    "type": "theorem",
@@ -319,7 +319,7 @@
    "section_title": "31.1 Elementary number-theoretic notions",
    "printed_page": 906,
    "pdf_page": 927,
-   "text": "If a and b are any integers, not both zero, then gcd (a;b) is the smallest positive element of the set fax C by W x;y 2 Zg of linear combinations of a and b."
+   "text": "If a and b are any integers, not both zero, then gcd (a,b) is the smallest positive element of the set fax C by W x,y 2 Zg of linear combinations of a and b."
   },
   {
    "type": "proof",
@@ -328,7 +328,7 @@
    "section_title": "31.1 Elementary number-theoretic notions",
    "printed_page": 907,
    "pdf_page": 928,
-   "text": "Proof Let s be the smallest positive such linear combination of a and b, and let s = ax C by for some x;y 2 Z. Let q = ⌊a/s ⌋. Equation (3.11) on page 64 then implies a mod s = a − qs"
+   "text": "Proof Let s be the smallest positive such linear combination of a and b, and let s = ax C by for some x,y 2 Z. Let q = ⌊a/s ⌋. Equation (3.11) on page 64 then implies a mod s = a − qs"
   },
   {
    "type": "body",
@@ -346,7 +346,7 @@
    "section_title": "31.1 Elementary number-theoretic notions",
    "printed_page": 907,
    "pdf_page": 928,
-   "text": "D a(1 − qx) + b. −qy/ ; so that a mod s is a linear combination of a and b as well. Because s is the smallest positive such linear combination and 0 ≤ a mod s < s (inequality (3.12) on page 64), a mod s cannot be positive. Hence, a mod s = 0. Therefore, we have that s j a and, by analogous reasoning, s j b. Thus, s is a common divisor of a and b, so that gcd(a;b) ≥ s . By definition, gcd(a;b) divides both a and b, and s is defined as a linear combination of a and b. Equation (31.4) therefore implies that gcd(a;b) j s . But gcd(a;b) j s and s > 0 imply that gcd(a;b) ≤ s . Combining gcd(a;b) ≥ s and gcd(a;b) ≤ s yields gcd(a;b) = s . We conclude that s , the smallest positive linear combination of a and b, is also their greatest common divisor."
+   "text": "D a(1 − qx) + b. −qy/ ; so that a mod s is a linear combination of a and b as well. Because s is the smallest positive such linear combination and 0 ≤ a mod s < s (inequality (3.12) on page 64), a mod s cannot be positive. Hence, a mod s = 0. Therefore, we have that s j a and, by analogous reasoning, s j b. Thus, s is a common divisor of a and b, so that gcd(a,b) ≥ s . By definition, gcd(a,b) divides both a and b, and s is defined as a linear combination of a and b. Equation (31.4) therefore implies that gcd(a,b) j s . But gcd(a,b) j s and s > 0 imply that gcd(a,b) ≤ s . Combining gcd(a,b) ≥ s and gcd(a,b) ≤ s yields gcd(a,b) = s . We conclude that s , the smallest positive linear combination of a and b, is also their greatest common divisor."
   },
   {
    "type": "theorem",
@@ -373,7 +373,7 @@
    "section_title": "31.1 Elementary number-theoretic notions",
    "printed_page": 907,
    "pdf_page": 928,
-   "text": "For any integers a and b, if d j a and d j b, then d j gcd(a;b) ."
+   "text": "For any integers a and b, if d j a and d j b, then d j gcd(a,b) ."
   },
   {
    "type": "proof",
@@ -382,7 +382,7 @@
    "section_title": "31.1 Elementary number-theoretic notions",
    "printed_page": 907,
    "pdf_page": 928,
-   "text": "Proof This corollary follows from equation (31.4) and Theorem 31.2, because gcd(a;b) is a linear combination of a and b, Corollary 31.4"
+   "text": "Proof This corollary follows from equation (31.4) and Theorem 31.2, because gcd(a,b) is a linear combination of a and b, Corollary 31.4"
   },
   {
    "type": "body",
@@ -391,7 +391,7 @@
    "section_title": "31.1 Elementary number-theoretic notions",
    "printed_page": 907,
    "pdf_page": 928,
-   "text": "For all integers a and b and any nonnegative integer n, we have gcd(an;bn) = n gcd(a;b):"
+   "text": "For all integers a and b and any nonnegative integer n, we have gcd(an,bn) = n gcd(a,b):"
   },
   {
    "type": "proof",
@@ -400,7 +400,7 @@
    "section_title": "31.1 Elementary number-theoretic notions",
    "printed_page": 907,
    "pdf_page": 928,
-   "text": "Proof If n = 0, the corollary is trivial. If n>0 , then gcd(an;bn) is the smallest positive element of the set fanx C bny W x;y 2 Zg, which in turn is n times the smallest positive element of the set fax C by W x;y 2 Zg."
+   "text": "Proof If n = 0, the corollary is trivial. If n>0 , then gcd(an,bn) is the smallest positive element of the set fanx C bny W x,y 2 Zg, which in turn is n times the smallest positive element of the set fax C by W x,y 2 Zg."
   },
   {
    "type": "corollary",
@@ -418,7 +418,7 @@
    "section_title": "31.1 Elementary number-theoretic notions",
    "printed_page": 907,
    "pdf_page": 928,
-   "text": "For all positive integers n, a, and b, if n j ab and gcd(a;n) = 1, then n j b."
+   "text": "For all positive integers n, a, and b, if n j ab and gcd(a,n) = 1, then n j b."
   },
   {
    "type": "proof",
@@ -445,7 +445,7 @@
    "section_title": "31.1 Elementary number-theoretic notions",
    "printed_page": 908,
    "pdf_page": 929,
-   "text": "Two integers a and b are relatively prime if their only common divisor is 1, that is, if gcd(a;b) = 1. For example, 8 and 15 are relatively prime, since the divisors of 8 are 1, 2, 4, and 8, and the divisors of 15 are 1, 3, 5, and 15. The following theorem states that if two integers are each relati vely prime to an integer p, then their product is relatively prime to p."
+   "text": "Two integers a and b are relatively prime if their only common divisor is 1, that is, if gcd(a,b) = 1. For example, 8 and 15 are relatively prime, since the divisors of 8 are 1, 2, 4, and 8, and the divisors of 15 are 1, 3, 5, and 15. The following theorem states that if two integers are each relati vely prime to an integer p, then their product is relatively prime to p."
   },
   {
    "type": "theorem",
@@ -463,7 +463,7 @@
    "section_title": "31.1 Elementary number-theoretic notions",
    "printed_page": 908,
    "pdf_page": 929,
-   "text": "For any integers a, b, and p, we have gcd(ab;p) = 1 if and only if gcd(a;p) = 1 and gcd(b;p) = 1 both hold."
+   "text": "For any integers a, b, and p, we have gcd(ab,p) = 1 if and only if gcd(a,p) = 1 and gcd(b,p) = 1 both hold."
   },
   {
    "type": "proof",
@@ -472,7 +472,7 @@
    "section_title": "31.1 Elementary number-theoretic notions",
    "printed_page": 908,
    "pdf_page": 929,
-   "text": "Proof If gcd(a;p) = 1 and gcd(b;p) = 1, then it follows from Theorem 31.2 that there exist integers x , y , x 0 , and y 0 such that ax C py = 1; bx 0 C py 0 = 1:"
+   "text": "Proof If gcd(a,p) = 1 and gcd(b,p) = 1, then it follows from Theorem 31.2 that there exist integers x , y , x 0 , and y 0 such that ax C py = 1; bx 0 C py 0 = 1:"
   },
   {
    "type": "body",
@@ -490,7 +490,7 @@
    "section_title": "31.1 Elementary number-theoretic notions",
    "printed_page": 908,
    "pdf_page": 929,
-   "text": "Since 1 is thus a positive linear combination of ab and p, it is the smallest positive linear combination. Applying Theorem 31.2 implies gcd(ab;p) = 1, completing the proof in this direction."
+   "text": "Since 1 is thus a positive linear combination of ab and p, it is the smallest positive linear combination. Applying Theorem 31.2 implies gcd(ab,p) = 1, completing the proof in this direction."
   },
   {
    "type": "body",
@@ -499,7 +499,7 @@
    "section_title": "31.1 Elementary number-theoretic notions",
    "printed_page": 908,
    "pdf_page": 929,
-   "text": "Conversely, if gcd(ab;p) = 1, then Theorem 31.2 implies that there exist integers x and y such that abx C py = 1:"
+   "text": "Conversely, if gcd(ab,p) = 1, then Theorem 31.2 implies that there exist integers x and y such that abx C py = 1:"
   },
   {
    "type": "body",
@@ -508,7 +508,7 @@
    "section_title": "31.1 Elementary number-theoretic notions",
    "printed_page": 908,
    "pdf_page": 929,
-   "text": "Writing abx as a(bx) and applying Theorem 31.2 again proves that gcd(a;p) = 1."
+   "text": "Writing abx as a(bx) and applying Theorem 31.2 again proves that gcd(a,p) = 1."
   },
   {
    "type": "body",
@@ -517,7 +517,7 @@
    "section_title": "31.1 Elementary number-theoretic notions",
    "printed_page": 908,
    "pdf_page": 929,
-   "text": "Proving that gcd(b;p) = 1 is similar."
+   "text": "Proving that gcd(b,p) = 1 is similar."
   },
   {
    "type": "body",
@@ -526,7 +526,7 @@
    "section_title": "31.1 Elementary number-theoretic notions",
    "printed_page": 908,
    "pdf_page": 929,
-   "text": "Integers n 1 , n 2 , . . . , n k are pairwise relatively prime if gcd(n i ;n j ) = 1 for 1 ≤ i <j ≤ k."
+   "text": "Integers n 1 , n 2 , . . . , n k are pairwise relatively prime if gcd(n i ,n j ) = 1 for 1 ≤ i <j ≤ k."
   },
   {
    "type": "body",
@@ -571,7 +571,7 @@
    "section_title": "31.1 Elementary number-theoretic notions",
    "printed_page": 908,
    "pdf_page": 929,
-   "text": "Proof Assume for the purpose of contradiction that √j ab, but that p − a and p − b. Because p > 1 and ab = kp for some k 2 Z, equation (31.10) gives that gcd(ab;p) = p. We also have that gcd(a;p) = 1 and gcd(b;p) = 1, since the only divisors of p are 1 and p, and we assumed that p divides neither a nor b."
+   "text": "Proof Assume for the purpose of contradiction that √j ab, but that p − a and p − b. Because p > 1 and ab = kp for some k 2 Z, equation (31.10) gives that gcd(ab,p) = p. We also have that gcd(a,p) = 1 and gcd(b,p) = 1, since the only divisors of p are 1 and p, and we assumed that p divides neither a nor b."
   },
   {
    "type": "theorem",
@@ -580,7 +580,7 @@
    "section_title": "31.1 Elementary number-theoretic notions",
    "printed_page": 909,
    "pdf_page": 930,
-   "text": "Theorem 31.6 then implies that gcd(ab;p) = 1, contradicting gcd(ab;p) = p."
+   "text": "Theorem 31.6 then implies that gcd(ab,p) = 1, contradicting gcd(ab,p) = p."
   },
   {
    "type": "body",
@@ -661,7 +661,7 @@
    "section_title": "31.1 Elementary number-theoretic notions",
    "printed_page": 909,
    "pdf_page": 930,
-   "text": "√1 ;p 2 ;:::;p k divide (p 1 √2 • • • √k ) + 1.)"
+   "text": "√1 ,p 2 ,…,p k divide (p 1 √2 • • • √k ) + 1.)"
   },
   {
    "type": "exercise",
@@ -679,7 +679,7 @@
    "section_title": "31.1 Elementary number-theoretic notions",
    "printed_page": 909,
    "pdf_page": 930,
-   "text": "31.1-4 Prove that if p is prime and 0<k<p , then gcd(k;p) = 1."
+   "text": "31.1-4 Prove that if p is prime and 0<k<p , then gcd(k,p) = 1."
   },
   {
    "type": "exercise",
@@ -751,7 +751,7 @@
    "section_title": "31.1 Elementary number-theoretic notions",
    "printed_page": 910,
    "pdf_page": 931,
-   "text": "31.1-10 Show that the gcd operator is associative. That is, prove that for all integers a, b, and c , we have gcd(a; gcd(b;c)) = gcd(gcd(a;b);c):"
+   "text": "31.1-10 Show that the gcd operator is associative. That is, prove that for all integers a, b, and c , we have gcd(a; gcd(b,c)) = gcd(gcd(a,b),c):"
   },
   {
    "type": "body",
@@ -796,7 +796,7 @@
    "section_title": "31.1 Elementary number-theoretic notions",
    "printed_page": 910,
    "pdf_page": 931,
-   "text": "31.1-14 Professor Marshall sets up n lightbulbs in a row. The lightbulbs all have switches, so that if he presses a bulb, it toggles on if it was off and off if it was on. The lightbulbs all start off. For i = 1;2;3;:::;n , the professor presses bulb i;2i;3i;::: ."
+   "text": "31.1-14 Professor Marshall sets up n lightbulbs in a row. The lightbulbs all have switches, so that if he presses a bulb, it toggles on if it was off and off if it was on. The lightbulbs all start off. For i = 1,2,3,…,n , the professor presses bulb i,2i,3i,… ."
   },
   {
    "type": "body",
@@ -823,7 +823,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 911,
    "pdf_page": 932,
-   "text": "We restrict ourselves in this section to nonnegativ e integers. This restriction is justified by equation (31.8), which states that gcd(a;b) = gcd(|a|; |b|)."
+   "text": "We restrict ourselves in this section to nonnegativ e integers. This restriction is justified by equation (31.8), which states that gcd(a,b) = gcd(|a|; |b|)."
   },
   {
    "type": "body",
@@ -832,7 +832,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 911,
    "pdf_page": 932,
-   "text": "In principle, for positive integers a and b, their prime factorizations suffice to compute gcd(a;b) . Indeed, if a = √e 1"
+   "text": "In principle, for positive integers a and b, their prime factorizations suffice to compute gcd(a,b) . Indeed, if a = √e 1"
   },
   {
    "type": "body",
@@ -850,7 +850,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 911,
    "pdf_page": 932,
-   "text": "2 • • • √f r r ; (31.12) with 0 exponents being used to make the set of primes √1 ;p 2 ;:::;p r the same for both a and b, then, as Exercise 31.2-1 asks you to show, gcd(a;b) = p minfe 1 ;f 1 g"
+   "text": "2 • • • √f r r ; (31.12) with 0 exponents being used to make the set of primes √1 ,p 2 ,…,p r the same for both a and b, then, as Exercise 31.2-1 asks you to show, gcd(a,b) = p minfe 1 ,f 1 g"
   },
   {
    "type": "body",
@@ -859,7 +859,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 911,
    "pdf_page": 932,
-   "text": "1 p minfe 2 ;f 2 g"
+   "text": "1 p minfe 2 ,f 2 g"
   },
   {
    "type": "body",
@@ -868,7 +868,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 911,
    "pdf_page": 932,
-   "text": "2 • • • p minfe r ;f r g r : (31.13)"
+   "text": "2 • • • p minfe r ,f r g r : (31.13)"
   },
   {
    "type": "body",
@@ -904,7 +904,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 911,
    "pdf_page": 932,
-   "text": "For any nonnegative integer a and any positive integer b, gcd(a;b) = gcd(b;a mod b):"
+   "text": "For any nonnegative integer a and any positive integer b, gcd(a,b) = gcd(b,a mod b):"
   },
   {
    "type": "proof",
@@ -913,7 +913,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 911,
    "pdf_page": 932,
-   "text": "Proof We will show that gcd(a;b) and gcd(b;a mod b) divide each other. Since they are both nonnegative, equation (31.5) then implies that they must be equal."
+   "text": "Proof We will show that gcd(a,b) and gcd(b,a mod b) divide each other. Since they are both nonnegative, equation (31.5) then implies that they must be equal."
   },
   {
    "type": "body",
@@ -922,7 +922,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 911,
    "pdf_page": 932,
-   "text": "We first show that gcd(a;b) j gcd(b;a mod b). If we let d = gcd(a;b) , then d j a and d j b. By equation (3.11) on page 64, a mod b = a − qb, where q = ⌊a/b⌋. Since a mod b is thus a linear combination of a and b, equation (31.4) implies that d j (a mod b). Therefore, since d j b and d j (a mod b), Corollary 31.3 implies that d j gcd(b;a mod b), that is, gcd(a;b) j gcd(b;a mod b): (31.14)"
+   "text": "We first show that gcd(a,b) j gcd(b,a mod b). If we let d = gcd(a,b) , then d j a and d j b. By equation (3.11) on page 64, a mod b = a − qb, where q = ⌊a/b⌋. Since a mod b is thus a linear combination of a and b, equation (31.4) implies that d j (a mod b). Therefore, since d j b and d j (a mod b), Corollary 31.3 implies that d j gcd(b,a mod b), that is, gcd(a,b) j gcd(b,a mod b): (31.14)"
   },
   {
    "type": "body",
@@ -931,7 +931,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 911,
    "pdf_page": 932,
-   "text": "Showing that gcd(b;a mod b) j gcd(a;b) is almost the same. If we now let d = gcd(b;a mod b), then d j b and d j (a mod b). Since a = qb C (a mod b), where q = ⌊a/b⌋, we have that a is a linear combination of b and (a mod b). By equation (31.4), we conclude that d j a. Since d j b and d j a, we have that d j gcd(a;b) by Corollary 31.3, so that gcd(b;a mod b) j gcd(a;b): (31.15)"
+   "text": "Showing that gcd(b,a mod b) j gcd(a,b) is almost the same. If we now let d = gcd(b,a mod b), then d j b and d j (a mod b). Since a = qb C (a mod b), where q = ⌊a/b⌋, we have that a is a linear combination of b and (a mod b). By equation (31.4), we conclude that d j a. Since d j b and d j a, we have that d j gcd(a,b) by Corollary 31.3, so that gcd(b,a mod b) j gcd(a,b): (31.15)"
   },
   {
    "type": "pseudocode",
@@ -953,10 +953,10 @@
     },
     {
      "n": 3,
-     "code": "else return EUCLID(b;a  mod b)"
+     "code": "else return EUCLID(b,a  mod b)"
     }
    ],
-   "text": "1 if b == 0\n2 return a\n3 else return EUCLID(b;a  mod b)"
+   "text": "1 if b == 0\n2 return a\n3 else return EUCLID(b,a  mod b)"
   },
   {
    "type": "body",
@@ -992,7 +992,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 912,
    "pdf_page": 933,
-   "text": "EUCLID(a;b)"
+   "text": "EUCLID(a,b)"
   },
   {
    "type": "body",
@@ -1001,7 +1001,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 912,
    "pdf_page": 933,
-   "text": "For example, here is how the procedure computes gcd(30;21) :"
+   "text": "For example, here is how the procedure computes gcd(30,21) :"
   },
   {
    "type": "body",
@@ -1010,7 +1010,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 912,
    "pdf_page": 933,
-   "text": "EUCLID(30;21) DEUCLID(21;9)"
+   "text": "EUCLID(30,21) DEUCLID(21,9)"
   },
   {
    "type": "body",
@@ -1019,7 +1019,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 912,
    "pdf_page": 933,
-   "text": "DEUCLID(9;3)"
+   "text": "DEUCLID(9,3)"
   },
   {
    "type": "body",
@@ -1028,7 +1028,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 912,
    "pdf_page": 933,
-   "text": "DEUCLID(3;0)"
+   "text": "DEUCLID(3,0)"
   },
   {
    "type": "body",
@@ -1046,7 +1046,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 912,
    "pdf_page": 933,
-   "text": "The correctness of EUCLID follows from Theorem 31.9 and the property that if the algorithm returns a in line 2, then b = 0, so that by equation (31.9), gcd(a;b) = gcd(a;0) = a. The algorithm cannot recurse indefinitely, since the second argument strictly decreases in each recursiv e call and is always nonnegative. Therefore, EUCLID always terminates with the correct answer."
+   "text": "The correctness of EUCLID follows from Theorem 31.9 and the property that if the algorithm returns a in line 2, then b = 0, so that by equation (31.9), gcd(a,b) = gcd(a,0) = a. The algorithm cannot recurse indefinitely, since the second argument strictly decreases in each recursiv e call and is always nonnegative. Therefore, EUCLID always terminates with the correct answer."
   },
   {
    "type": "body",
@@ -1064,7 +1064,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 912,
    "pdf_page": 933,
-   "text": "Let’s analyze the worst-case running time of EUCLID as a function of the size of a and b. The overall running time of EUCLID is proportional to the number of recursive calls it makes. The analysis assumes t hat a > b ≥ 0, that is, the first argument is greater than the second argument. Why? If b = a > 0, then a mod b = 0 and the procedure terminates after one recursive call. If b>a ≥ 0, then the procedure makes just one more recursive call than when a>b , because in this case EUCLID(a;b) immediately makes the recursive call EUCLID(b;a) , and now the first argument is greater than the second."
+   "text": "Let’s analyze the worst-case running time of EUCLID as a function of the size of a and b. The overall running time of EUCLID is proportional to the number of recursive calls it makes. The analysis assumes t hat a > b ≥ 0, that is, the first argument is greater than the second argument. Why? If b = a > 0, then a mod b = 0 and the procedure terminates after one recursive call. If b>a ≥ 0, then the procedure makes just one more recursive call than when a>b , because in this case EUCLID(a,b) immediately makes the recursive call EUCLID(b,a) , and now the first argument is greater than the second."
   },
   {
    "type": "body",
@@ -1091,7 +1091,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 913,
    "pdf_page": 934,
-   "text": "If a > b ≥ 1 and the call EUCLID(a;b) performs k ≥ 1 recursive calls, then a ≥ F kC2 and b ≥ F kC1 ."
+   "text": "If a > b ≥ 1 and the call EUCLID(a,b) performs k ≥ 1 recursive calls, then a ≥ F k + 2 and b ≥ F k + 1 ."
   },
   {
    "type": "proof",
@@ -1109,7 +1109,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 913,
    "pdf_page": 934,
-   "text": "Assuming inductively that the lemma holds if the procedure makes k − 1 recursive calls, we shall prove that the lemma holds for k recursive calls. Since k >0, we have b > 0, and EUCLID(a;b) calls EUCLID(b;a mod b) recursively, which in turn makes k − 1 recursive calls. The inductive hypothesis then impl ies that b ≥ F kC1 (thus proving part of the lemma), and a mod b ≥ F k . We have"
+   "text": "Assuming inductively that the lemma holds if the procedure makes k − 1 recursive calls, we shall prove that the lemma holds for k recursive calls. Since k >0, we have b > 0, and EUCLID(a,b) calls EUCLID(b,a mod b) recursively, which in turn makes k − 1 recursive calls. The inductive hypothesis then impl ies that b ≥ F k + 1 (thus proving part of the lemma), and a mod b ≥ F k . We have"
   },
   {
    "type": "body",
@@ -1136,7 +1136,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 913,
    "pdf_page": 934,
-   "text": "≥ F kC1 + F k"
+   "text": "≥ F k + 1 + F k"
   },
   {
    "type": "body",
@@ -1145,7 +1145,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 913,
    "pdf_page": 934,
-   "text": "D F kC2 :"
+   "text": "D F k + 2 :"
   },
   {
    "type": "body",
@@ -1172,7 +1172,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 913,
    "pdf_page": 934,
-   "text": "For any integer k ≥ 1, if a > b ≥ 1 and b < F kC1 , then the call EUCLID(a;b) makes fewer than k recursive calls."
+   "text": "For any integer k ≥ 1, if a > b ≥ 1 and b < F k + 1 , then the call EUCLID(a,b) makes fewer than k recursive calls."
   },
   {
    "type": "body",
@@ -1181,7 +1181,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 913,
    "pdf_page": 934,
-   "text": "To show that the upper bound of Theorem 31.11 is the best possible, we’ll show that the call EUCLID(F kC1 ;F k ) makes exactly k − 1 recursive calls when k ≥ 2."
+   "text": "To show that the upper bound of Theorem 31.11 is the best possible, we’ll show that the call EUCLID(F k + 1 ,F k ) makes exactly k − 1 recursive calls when k ≥ 2."
   },
   {
    "type": "body",
@@ -1190,7 +1190,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 913,
    "pdf_page": 934,
-   "text": "We use induction on k. For the base case, k = 2, and the call EUCLID(F 3 ;F 2 ) makes exactly one recursive call, to EUCLID(1;0) . (We have to start at k = 2, because when k = 1 we do not have F 2 > F 1 .) For the inductive step, assume that EUCLID(F k ;F k−1 ) makes exactly k − 2 recursive calls. For k > 2, we have F k >F k−1 >0 and F kC1 = F k + F k−1 , and so by Exercise 31.1-1, we have F kC1 mod F k = F k−1 . Because EUCLID(a;b) calls EUCLID(b;a mod b) when b > 0, the call EUCLID(F kC1 ;F k ) recurses one time more than the call"
+   "text": "We use induction on k. For the base case, k = 2, and the call EUCLID(F 3 ,F 2 ) makes exactly one recursive call, to EUCLID(1,0) . (We have to start at k = 2, because when k = 1 we do not have F 2 > F 1 .) For the inductive step, assume that EUCLID(F k ,F k−1 ) makes exactly k − 2 recursive calls. For k > 2, we have F k >F k−1 >0 and F k + 1 = F k + F k−1 , and so by Exercise 31.1-1, we have F k + 1 mod F k = F k−1 . Because EUCLID(a,b) calls EUCLID(b,a mod b) when b > 0, the call EUCLID(F k + 1 ,F k ) recurses one time more than the call"
   },
   {
    "type": "pseudocode",
@@ -1208,22 +1208,22 @@
     },
     {
      "n": 2,
-     "code": "return (a;1;0)"
+     "code": "return (a,1,0)"
     },
     {
      "n": 3,
-     "code": "else (d 0 ;x  0 ;y  0 ) DEXTENDED-EUCLID (b;a  mod b)"
+     "code": "else (d 0 ,x  0 ,y  0 ) DEXTENDED-EUCLID (b,a  mod b)"
     },
     {
      "n": 4,
-     "code": "(d;x;y)  = (d 0 ;y  0 ;x  0 − ⌊a/b⌋ y 0 )"
+     "code": "(d,x,y)  = (d 0 ,y  0 ,x  0 − ⌊a/b⌋ y 0 )"
     },
     {
      "n": 5,
-     "code": "return (d;x;y)"
+     "code": "return (d,x,y)"
     }
    ],
-   "text": "1 if b == 0\n2 return (a;1;0)\n3 else (d 0 ;x  0 ;y  0 ) DEXTENDED-EUCLID (b;a  mod b)\n4 (d;x;y)  = (d 0 ;y  0 ;x  0 − ⌊a/b⌋ y 0 )\n5 return (d;x;y)"
+   "text": "1 if b == 0\n2 return (a,1,0)\n3 else (d 0 ,x  0 ,y  0 ) DEXTENDED-EUCLID (b,a  mod b)\n4 (d,x,y)  = (d 0 ,y  0 ,x  0 − ⌊a/b⌋ y 0 )\n5 return (d,x,y)"
   },
   {
    "type": "body",
@@ -1232,7 +1232,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 914,
    "pdf_page": 935,
-   "text": "EUCLID(F k ;F k−1 ), or exactly k − 1 times, which meets the upper bound given by Theorem 31.11."
+   "text": "EUCLID(F k ,F k−1 ), or exactly k − 1 times, which meets the upper bound given by Theorem 31.11."
   },
   {
    "type": "body",
@@ -1277,7 +1277,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 914,
    "pdf_page": 935,
-   "text": "By rewriting Euclid’s algorithm, we can gain additional useful information. Specifically, let’s extend the algorithm to compute the integer coefficients x and y such that d = gcd(a;b) = ax C by; (31.16) where either or both of x and y may be zero or negative. These coefficients will prove useful later for computing modular multiplica tive inverses. The procedure"
+   "text": "By rewriting Euclid’s algorithm, we can gain additional useful information. Specifically, let’s extend the algorithm to compute the integer coefficients x and y such that d = gcd(a,b) = ax C by; (31.16) where either or both of x and y may be zero or negative. These coefficients will prove useful later for computing modular multiplica tive inverses. The procedure"
   },
   {
    "type": "body",
@@ -1286,7 +1286,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 914,
    "pdf_page": 935,
-   "text": "EXTENDED-EUCLID takes as input a pair of nonnegative integers and r eturns a triple of the form (d;x;y) that satisfies equation (31.16). As an example, Figure 31.1 traces out the call EXTENDED-EUCLID .99;78/ ."
+   "text": "EXTENDED-EUCLID takes as input a pair of nonnegative integers and r eturns a triple of the form (d,x,y) that satisfies equation (31.16). As an example, Figure 31.1 traces out the call EXTENDED-EUCLID .99,78/ ."
   },
   {
    "type": "body",
@@ -1295,7 +1295,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 914,
    "pdf_page": 935,
-   "text": "EXTENDED-EUCLID (a;b)"
+   "text": "EXTENDED-EUCLID (a,b)"
   },
   {
    "type": "body",
@@ -1322,7 +1322,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 914,
    "pdf_page": 935,
-   "text": "EXTENDED-EUCLID returns not only d = a in line 2, but also the coefficients x = 1 and y = 0, so that a = ax C by . If b ≠ 0, EXTENDED-EUCLID first computes (d 0 ;x 0 ;y 0 ) such that d 0 = gcd(b;a mod b) and d 0 = bx 0 C (a mod b)y 0 : (31.17)"
+   "text": "EXTENDED-EUCLID returns not only d = a in line 2, but also the coefficients x = 1 and y = 0, so that a = ax C by . If b ≠ 0, EXTENDED-EUCLID first computes (d 0 ,x 0 ,y 0 ) such that d 0 = gcd(b,a mod b) and d 0 = bx 0 C (a mod b)y 0 : (31.17)"
   },
   {
    "type": "body",
@@ -1331,7 +1331,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 914,
    "pdf_page": 935,
-   "text": "As in the EUCLID procedure, we have d = gcd(a;b) = d 0 = gcd(b;a mod b)."
+   "text": "As in the EUCLID procedure, we have d = gcd(a,b) = d 0 = gcd(b,a mod b)."
   },
   {
    "type": "body",
@@ -1403,7 +1403,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 915,
    "pdf_page": 936,
-   "text": "Figure 31.1 How EXTENDED-EUCLID computes gcd(99;78) . Each line shows one level of the recursion: the values of the inputs a and b, the computed value ⌊a/b⌋, and the values d , x, and y returned. The triple (d;x;y) returned becomes the triple (d 0 ;x 0 ;y 0 ) used at the next higher level of recursion. The call EXTENDED-EUCLID(99;78) returns .3; −11;14/ , so that gcd(99;78) = 3 ="
+   "text": "Figure 31.1 How EXTENDED-EUCLID computes gcd(99,78) . Each line shows one level of the recursion: the values of the inputs a and b, the computed value ⌊a/b⌋, and the values d , x, and y returned. The triple (d,x,y) returned becomes the triple (d 0 ,x 0 ,y 0 ) used at the next higher level of recursion. The call EXTENDED-EUCLID(99,78) returns .3; −11,14/ , so that gcd(99,78) = 3 ="
   },
   {
    "type": "body",
@@ -1457,7 +1457,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 915,
    "pdf_page": 936,
-   "text": "31.2-2 Compute the values (d;x;y) that the call EXTENDED-EUCLID .899;493/ returns."
+   "text": "31.2-2 Compute the values (d,x,y) that the call EXTENDED-EUCLID .899,493/ returns."
   },
   {
    "type": "exercise",
@@ -1466,7 +1466,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 915,
    "pdf_page": 936,
-   "text": "31.2-3 Prove that for all integers a, k, and n, gcd(a;n) = gcd(a C kn;n): (31.18)"
+   "text": "31.2-3 Prove that for all integers a, k, and n, gcd(a,n) = gcd(a C kn,n): (31.18)"
   },
   {
    "type": "body",
@@ -1475,7 +1475,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 915,
    "pdf_page": 936,
-   "text": "Use equation (31.18) to show that a = 1 (mod n) implies gcd(a;n) = 1."
+   "text": "Use equation (31.18) to show that a = 1 (mod n) implies gcd(a,n) = 1."
   },
   {
    "type": "exercise",
@@ -1502,7 +1502,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 916,
    "pdf_page": 937,
-   "text": "31.2-5 If a>b ≥ 0, show that the call EUCLID(a;b) makes at most 1 C log × b recursive calls. Improve this bound to 1 C log × (b= gcd(a;b)) ."
+   "text": "31.2-5 If a>b ≥ 0, show that the call EUCLID(a,b) makes at most 1 C log × b recursive calls. Improve this bound to 1 C log × (b= gcd(a,b)) ."
   },
   {
    "type": "exercise",
@@ -1511,7 +1511,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 916,
    "pdf_page": 937,
-   "text": "31.2-6 What does EXTENDED-EUCLID (F kC1 ;F k ) return? Prove your answer correct."
+   "text": "31.2-6 What does EXTENDED-EUCLID (F k + 1 ,F k ) return? Prove your answer correct."
   },
   {
    "type": "exercise",
@@ -1520,7 +1520,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 916,
    "pdf_page": 937,
-   "text": "31.2-7 Define the gcd function for more than two arguments by the recursive equation gcd(a 0 ;a 1 ;:::;a n ) = gcd(a 0 ; gcd(a 1 ;a 2 ;:::;a n )). Show that the gcd function returns the same answer independent of the order in which its arguments are specified. Also show how to find integers x 0 ;x 1 ;:::;x n such that gcd(a 0 ;a 1 ;:::;a n ) = a 0 x 0 + a 1 x 1 + • • • + a n x n . Show that the number of divisions performed by your algorithm is O(n C lg(max fa 0 ;a 1 ;:::;a n g))."
+   "text": "31.2-7 Define the gcd function for more than two arguments by the recursive equation gcd(a 0 ,a 1 ,…,a n ) = gcd(a 0 ; gcd(a 1 ,a 2 ,…,a n )). Show that the gcd function returns the same answer independent of the order in which its arguments are specified. Also show how to find integers x 0 ,x 1 ,…,x n such that gcd(a 0 ,a 1 ,…,a n ) = a 0 x 0 + a 1 x 1 + • • • + a n x n . Show that the number of divisions performed by your algorithm is O(n C lg(max fa 0 ,a 1 ,…,a n g))."
   },
   {
    "type": "exercise",
@@ -1529,7 +1529,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 916,
    "pdf_page": 937,
-   "text": "31.2-8 The least common multiple lcm(a 1 ;a 2 ;:::;a n ) of integers a 1 ;a 2 ;:::;a n is the smallest nonnegative integer that is a multiple of each a i . Show how to compute lcm(a 1 ;a 2 ;:::;a n ) efficiently using the (two-argument) gcd operation as a sub- routine."
+   "text": "31.2-8 The least common multiple lcm(a 1 ,a 2 ,…,a n ) of integers a 1 ,a 2 ,…,a n is the smallest nonnegative integer that is a multiple of each a i . Show how to compute lcm(a 1 ,a 2 ,…,a n ) efficiently using the (two-argument) gcd operation as a sub- routine."
   },
   {
    "type": "exercise",
@@ -1538,7 +1538,7 @@
    "section_title": "31.2 Greatest common divisor",
    "printed_page": 916,
    "pdf_page": 937,
-   "text": "31.2-9 Prove that n 1 , n 2 , n 3 , and n 4 are pairwise relatively prime if and only if gcd(n 1 n 2 ;n 3 n 4 ) = gcd(n 1 n 3 ;n 2 n 4 ) = 1:"
+   "text": "31.2-9 Prove that n 1 , n 2 , n 3 , and n 4 are pairwise relatively prime if and only if gcd(n 1 n 2 ,n 3 n 4 ) = gcd(n 1 n 3 ,n 2 n 4 ) = 1:"
   },
   {
    "type": "body",
@@ -1547,7 +1547,7 @@
    "section_title": "31.3 Modular arithmetic",
    "printed_page": 916,
    "pdf_page": 937,
-   "text": "More generally, show that n 1 ;n 2 ;:::;n k are pairwise relatively prime if and only if a set of dlg ke pairs of numbers derived from the n i are relatively prime."
+   "text": "More generally, show that n 1 ,n 2 ,…,n k are pairwise relatively prime if and only if a set of dlg ke pairs of numbers derived from the n i are relatively prime."
   },
   {
    "type": "body",
@@ -1556,7 +1556,7 @@
    "section_title": "31.3 Modular arithmetic",
    "printed_page": 916,
    "pdf_page": 937,
-   "text": "Informally, you can think of modular arithmetic as arithmetic as usual over the integers, except that when working modulo n, then every result x is replaced by the element of f0;1;:::;n − 1g that is equivalent to x , modulo n (so that x is replaced by x mod n). This informal model suffices if you stick to the operations of addition, subtraction, and multiplication. A mor e formal model for modular arithmetic, which follows, is best described within the framework of group theory."
+   "text": "Informally, you can think of modular arithmetic as arithmetic as usual over the integers, except that when working modulo n, then every result x is replaced by the element of f0,1,…,n − 1g that is equivalent to x , modulo n (so that x is replaced by x mod n). This informal model suffices if you stick to the operations of addition, subtraction, and multiplication. A mor e formal model for modular arithmetic, which follows, is best described within the framework of group theory."
   },
   {
    "type": "body",
@@ -1583,7 +1583,7 @@
    "section_title": "31.3 Modular arithmetic",
    "printed_page": 917,
    "pdf_page": 938,
-   "text": "1. Closure: For all a;b 2 S , we have a Ü b 2 S ."
+   "text": "1. Closure: For all a,b 2 S , we have a Ü b 2 S ."
   },
   {
    "type": "body",
@@ -1601,7 +1601,7 @@
    "section_title": "31.3 Modular arithmetic",
    "printed_page": 917,
    "pdf_page": 938,
-   "text": "3. Associativity: For all a;b;c 2 S , we have (a Ü b) Ü c = a Ü (b Ü c)."
+   "text": "3. Associativity: For all a,b,c 2 S , we have (a Ü b) Ü c = a Ü (b Ü c)."
   },
   {
    "type": "body",
@@ -1619,7 +1619,7 @@
    "section_title": "31.3 Modular arithmetic",
    "printed_page": 917,
    "pdf_page": 938,
-   "text": "As an example, consider the familiar group (Z; C) of the integers Z under the operation of addition: 0 is the identity, and the inverse of a is −a. An abelian group (S; Ü) satisfies the commutative law a Ü b = b Ü a for all a;b 2 S . The size of group (S; Ü) is |S|, and if |S| < 1, then (S; Ü) is a finite group."
+   "text": "As an example, consider the familiar group (Z; C) of the integers Z under the operation of addition: 0 is the identity, and the inverse of a is −a. An abelian group (S; Ü) satisfies the commutative law a Ü b = b Ü a for all a,b 2 S . The size of group (S; Ü) is |S|, and if |S| < 1, then (S; Ü) is a finite group."
   },
   {
    "type": "body",
@@ -1997,7 +1997,7 @@
    "section_title": "31.3 Modular arithmetic",
    "printed_page": 919,
    "pdf_page": 940,
-   "text": "Z − n = f[a] n 2 Z n W gcd(a;n) = 1g :"
+   "text": "Z − n = f[a] n 2 Z n W gcd(a,n) = 1g :"
   },
   {
    "type": "body",
@@ -2015,7 +2015,7 @@
    "section_title": "31.3 Modular arithmetic",
    "printed_page": 919,
    "pdf_page": 940,
-   "text": "(mod n) for all integers k. By Exercise 31.2-3, therefore, gcd(a;n) = 1 implies gcd(a C kn;n) = 1 for all integers k. Since [a] n = fa C kn W k 2 Zg, the set Z − n is well defined. An example of such a group is Z −"
+   "text": "(mod n) for all integers k. By Exercise 31.2-3, therefore, gcd(a,n) = 1 implies gcd(a C kn,n) = 1 for all integers k. Since [a] n = fa C kn W k 2 Zg, the set Z − n is well defined. An example of such a group is Z −"
   },
   {
    "type": "body",
@@ -2024,7 +2024,7 @@
    "section_title": "31.3 Modular arithmetic",
    "printed_page": 919,
    "pdf_page": 940,
-   "text": "15 = f1;2;4;7;8;11;13;14 g ; where the group operation is multiplication modulo 15. (We have denoted an element [a] 15 as a, and thus, for example, we denote [7] 15 as 7.) Figure 31.2(b) shows the group (Z −"
+   "text": "15 = f1,2,4,7,8,11,13,14 g ; where the group operation is multiplication modulo 15. (We have denoted an element [a] 15 as a, and thus, for example, we denote [7] 15 as 7.) Figure 31.2(b) shows the group (Z −"
   },
   {
    "type": "body",
@@ -2078,7 +2078,7 @@
    "section_title": "31.3 Modular arithmetic",
    "printed_page": 919,
    "pdf_page": 940,
-   "text": "The identity element is [1] n . To show the existence of inverses, let a be an element of Z − n and let (d;x;y) be returned by EXTENDED-EUCLID (a;n) . Then we have d = 1, since a 2 Z − n , and ax C ny = 1; (31.20) or equivalently, ax = 1 (mod n):"
+   "text": "The identity element is [1] n . To show the existence of inverses, let a be an element of Z − n and let (d,x,y) be returned by EXTENDED-EUCLID (a,n) . Then we have d = 1, since a 2 Z − n , and ax C ny = 1; (31.20) or equivalently, ax = 1 (mod n):"
   },
   {
    "type": "body",
@@ -2087,7 +2087,7 @@
    "section_title": "31.3 Modular arithmetic",
    "printed_page": 919,
    "pdf_page": 940,
-   "text": "Thus [x] n is a multiplicative inverse of [a] n , modulo n. Furthermore, we claim that [x] n 2 Z − n . To see why, equation (31.20) demonstrates that the smallest positive linear combination of x and n must be 1. Therefore, Theorem 31.2 implies that gcd(x;n) = 1. We defer the proof that inverses are uniquely defined until"
+   "text": "Thus [x] n is a multiplicative inverse of [a] n , modulo n. Furthermore, we claim that [x] n 2 Z − n . To see why, equation (31.20) demonstrates that the smallest positive linear combination of x and n must be 1. Therefore, Theorem 31.2 implies that gcd(x,n) = 1. We defer the proof that inverses are uniquely defined until"
   },
   {
    "type": "corollary",
@@ -2105,7 +2105,7 @@
    "section_title": "31.3 Modular arithmetic",
    "printed_page": 919,
    "pdf_page": 940,
-   "text": "As an example of computing multiplicative inverses, suppose that a = 5 and n = 11. Then EXTENDED-EUCLID (a;n) returns (d;x;y) = .1; −2;1/ , so that 1 = 5 • .−2/ C 11 • 1. Thus, [−2] 11 (i.e., [9] 11 ) is the multiplicative inverse of [5] 11 ."
+   "text": "As an example of computing multiplicative inverses, suppose that a = 5 and n = 11. Then EXTENDED-EUCLID (a,n) returns (d,x,y) = .1; −2,1/ , so that 1 = 5 • .−2/ C 11 • 1. Thus, [−2] 11 (i.e., [9] 11 ) is the multiplicative inverse of [5] 11 ."
   },
   {
    "type": "body",
@@ -2204,7 +2204,7 @@
    "section_title": "31.3 Modular arithmetic",
    "printed_page": 920,
    "pdf_page": 941,
-   "text": "We won’t prove this formula here. Intuitively, begin with a list of the n remainders f0;1;:::;n − 1g and then, for each prime p that divides n, cross out every multiple of p in the list. For example, since the prime divisors of 45 are 3 and 5, ].45/ = 45"
+   "text": "We won’t prove this formula here. Intuitively, begin with a list of the n remainders f0,1,…,n − 1g and then, for each prime p that divides n, cross out every multiple of p in the list. For example, since the prime divisors of 45 are 3 and 5, ].45/ = 45"
   },
   {
    "type": "body",
@@ -2222,7 +2222,7 @@
    "section_title": "31.3 Modular arithmetic",
    "printed_page": 920,
    "pdf_page": 941,
-   "text": "√D f1;2;:::;p − 1g, and ].p/ = p"
+   "text": "√D f1,2,…,p − 1g, and ].p/ = p"
   },
   {
    "type": "body",
@@ -2240,7 +2240,7 @@
    "section_title": "31.3 Modular arithmetic",
    "printed_page": 920,
    "pdf_page": 941,
-   "text": "If n is composite, then ].n/ < n − 1, although it can be shown that ].n/ > n e − ln ln n + 3= ln ln n (31.23) for n ≥ 3, where Ω = 0:5772156649::: is Euler’s constant. A somewhat simpler"
+   "text": "If n is composite, then ].n/ < n − 1, although it can be shown that ].n/ > n e − ln ln n + 3= ln ln n (31.23) for n ≥ 3, where Ω = 0:5772156649… is Euler’s constant. A somewhat simpler"
   },
   {
    "type": "body",
@@ -2312,7 +2312,7 @@
    "section_title": "31.3 Modular arithmetic",
    "printed_page": 921,
    "pdf_page": 942,
-   "text": "If (S; Ü) is a finite group and S 0 is any nonempty subset of S such that a Ü b 2 S 0 for all a;b 2 S 0 , then (S 0 ; Ü) is a subgroup of (S; Ü)."
+   "text": "If (S; Ü) is a finite group and S 0 is any nonempty subset of S such that a Ü b 2 S 0 for all a,b 2 S 0 , then (S 0 ; Ü) is a subgroup of (S; Ü)."
   },
   {
    "type": "body",
@@ -2321,7 +2321,7 @@
    "section_title": "31.3 Modular arithmetic",
    "printed_page": 921,
    "pdf_page": 942,
-   "text": "For example, the set f0;2;4;6 g forms a subgroup of Z 8 , since it is nonempty and closed under the operation C (that is, it is closed under C 8 )."
+   "text": "For example, the set f0,2,4,6 g forms a subgroup of Z 8 , since it is nonempty and closed under the operation C (that is, it is closed under C 8 )."
   },
   {
    "type": "body",
@@ -2402,7 +2402,7 @@
    "section_title": "31.3 Modular arithmetic",
    "printed_page": 922,
    "pdf_page": 943,
-   "text": "For example, taking a = 2 in the group Z 6 yields the sequence a .1/ ;a .2/ ;a .3/ ;::: = 2;4;0;2;4;0;2;4;0;::: :"
+   "text": "For example, taking a = 2 in the group Z 6 yields the sequence a .1/ ,a .2/ ,a .3/ ,… = 2,4,0,2,4,0,2,4,0,… :"
   },
   {
    "type": "body",
@@ -2429,7 +2429,7 @@
    "section_title": "31.3 Modular arithmetic",
    "printed_page": 922,
    "pdf_page": 943,
-   "text": "We say that a generates the subgroup hai or that a is a generator of hai. Since S is finite, hai is a finite subset of S , possibly including all of S . Since the associativity of Ü implies a (i ) Ü a (j ) = a (i Cj ) ; hai is closed and therefore, by Theorem 31.14, hai is a subgroup of S . For example, in Z 6 , we have h0i = f 0g ; h1i = f 0;1;2;3;4;5 g ; h2i = f 0;2;4 g :"
+   "text": "We say that a generates the subgroup hai or that a is a generator of hai. Since S is finite, hai is a finite subset of S , possibly including all of S . Since the associativity of Ü implies a (i ) Ü a (j ) = a (i + j ) ; hai is closed and therefore, by Theorem 31.14, hai is a subgroup of S . For example, in Z 6 , we have h0i = f 0g ; h1i = f 0,1,2,3,4,5 g ; h2i = f 0,2,4 g :"
   },
   {
    "type": "body",
@@ -2447,7 +2447,7 @@
    "section_title": "31.3 Modular arithmetic",
    "printed_page": 922,
    "pdf_page": 943,
-   "text": "7 , we have h1i = f 1g ; h2i = f 1;2;4 g ; h3i = f 1;2;3;4;5;6 g :"
+   "text": "7 , we have h1i = f 1g ; h2i = f 1,2,4 g ; h3i = f 1,2,3,4,5,6 g :"
   },
   {
    "type": "body",
@@ -2483,7 +2483,7 @@
    "section_title": "31.3 Modular arithmetic",
    "printed_page": 922,
    "pdf_page": 943,
-   "text": "Proof Let t = ord(a). Since a (t ) = e and a (t Ck) = a (t ) Ü a (k) = a (k) for k ≥ 1, if i > t , then a (i ) = a (j ) for some j < i . Therefore, as we generate elements by a, we see no new elements after a (t ) . Thus, hai ="
+   "text": "Proof Let t = ord(a). Since a (t ) = e and a (t + k) = a (t ) Ü a (k) = a (k) for k ≥ 1, if i > t , then a (i ) = a (j ) for some j < i . Therefore, as we generate elements by a, we see no new elements after a (t ) . Thus, hai ="
   },
   {
    "type": "body",
@@ -2492,7 +2492,7 @@
    "section_title": "31.3 Modular arithmetic",
    "printed_page": 922,
    "pdf_page": 943,
-   "text": "˚ a .1/ ;a .2/ ;:::;a (t ) }"
+   "text": "˚ a .1/ ,a .2/ ,…,a (t ) }"
   },
   {
    "type": "body",
@@ -2501,7 +2501,7 @@
    "section_title": "31.3 Modular arithmetic",
    "printed_page": 922,
    "pdf_page": 943,
-   "text": ", and so jhaij ≤ t . To show that jhaij ≥ t , we show that each element of the sequence a .1/ ;a .2/ ;:::;a (t ) is distinct. Suppose for the purpose of contradiction that a (i ) = a (j ) for some i and j satisfying 1 ≤ i <j ≤ t . Then, a (i Ck) = a (j Ck) for k ≥ 0. But this equation implies that a (i C(t −j )) = a (j C(t −j )) = e, a contradiction, since i C (t − j) < t but t is the least positive value such that a (t ) = e. Therefore, each element of the sequence a .1/ ;a .2/ ;:::;a (t ) is distinct, and jhaij ≥ t . We conclude that ord(a) = jhaij."
+   "text": ", and so jhaij ≤ t . To show that jhaij ≥ t , we show that each element of the sequence a .1/ ,a .2/ ,…,a (t ) is distinct. Suppose for the purpose of contradiction that a (i ) = a (j ) for some i and j satisfying 1 ≤ i <j ≤ t . Then, a (i + k) = a (j + k) for k ≥ 0. But this equation implies that a (i C(t −j )) = a (j C(t −j )) = e, a contradiction, since i C (t − j) < t but t is the least positive value such that a (t ) = e. Therefore, each element of the sequence a .1/ ,a .2/ ,…,a (t ) is distinct, and jhaij ≥ t . We conclude that ord(a) = jhaij."
   },
   {
    "type": "corollary",
@@ -2519,7 +2519,7 @@
    "section_title": "31.3 Modular arithmetic",
    "printed_page": 923,
    "pdf_page": 944,
-   "text": "The sequence a .1/ ;a .2/ ;::: is periodic with period t = ord(a), that is, a (i ) = a (j ) if and only if i = j (mod t)."
+   "text": "The sequence a .1/ ,a .2/ ,… is periodic with period t = ord(a), that is, a (i ) = a (j ) if and only if i = j (mod t)."
   },
   {
    "type": "body",
@@ -2600,7 +2600,7 @@
    "section_title": "31.3 Modular arithmetic",
    "printed_page": 923,
    "pdf_page": 944,
-   "text": "5 such that aCb = c (mod 4) if and only if f(a) •f(b) = f(c) (mod 5)."
+   "text": "5 such that a + b = c (mod 4) if and only if f(a) •f(b) = f(c) (mod 5)."
   },
   {
    "type": "exercise",
@@ -2699,7 +2699,7 @@
    "section_title": "31.4 Solving modular linear equations",
    "printed_page": 924,
    "pdf_page": 945,
-   "text": "For any positive integers a and n, if d = gcd(a;n) , then we have hai = hd i"
+   "text": "For any positive integers a and n, if d = gcd(a,n) , then we have hai = hd i"
   },
   {
    "type": "body",
@@ -2708,7 +2708,7 @@
    "section_title": "31.4 Solving modular linear equations",
    "printed_page": 924,
    "pdf_page": 945,
-   "text": "D f0;d;2d;:::;..n/d/ − 1/d g in Z n , and thus jhaij = n/d :"
+   "text": "D f0,d,2d,…,..n/d/ − 1/d g in Z n , and thus jhaij = n/d :"
   },
   {
    "type": "proof",
@@ -2717,7 +2717,7 @@
    "section_title": "31.4 Solving modular linear equations",
    "printed_page": 924,
    "pdf_page": 945,
-   "text": "Proof We begin by showing that d 2 hai. Recall that EXTENDED-EUCLID (a;n) returns a triple (d;x;y) such that ax C ny = d . Thus, ax = d (mod n), so that d 2 hai. In other words, d is a multiple of a in Z n ."
+   "text": "Proof We begin by showing that d 2 hai. Recall that EXTENDED-EUCLID (a,n) returns a triple (d,x,y) such that ax C ny = d . Thus, ax = d (mod n), so that d 2 hai. In other words, d is a multiple of a in Z n ."
   },
   {
    "type": "body",
@@ -2726,7 +2726,7 @@
    "section_title": "31.4 Solving modular linear equations",
    "printed_page": 924,
    "pdf_page": 945,
-   "text": "Since d 2 hai, it follows that every multiple of d belongs to hai, because any multiple of a multiple of a is itself a multiple of a. Thus, hai contains every element in f0;d;2d;:::;..n/d/ − 1/d g. That is, hd i ⊆ hai."
+   "text": "Since d 2 hai, it follows that every multiple of d belongs to hai, because any multiple of a multiple of a is itself a multiple of a. Thus, hai contains every element in f0,d,2d,…,..n/d/ − 1/d g. That is, hd i ⊆ hai."
   },
   {
    "type": "body",
@@ -2735,7 +2735,7 @@
    "section_title": "31.4 Solving modular linear equations",
    "printed_page": 924,
    "pdf_page": 945,
-   "text": "We now show that hai ⊆ h d i. If m 2 hai, then m = ax mod n for some integer x , and so m = ax C ny for some integer y . Because d = gcd(a;n) , we know that d j a and d j n, and so d j m by equation (31.4). Therefore, m 2 hd i."
+   "text": "We now show that hai ⊆ h d i. If m 2 hai, then m = ax mod n for some integer x , and so m = ax C ny for some integer y . Because d = gcd(a,n) , we know that d j a and d j n, and so d j m by equation (31.4). Therefore, m 2 hd i."
   },
   {
    "type": "body",
@@ -2762,7 +2762,7 @@
    "section_title": "31.4 Solving modular linear equations",
    "printed_page": 924,
    "pdf_page": 945,
-   "text": "The equation ax = b (mod n) is solvable for the unknown x if and only if d j b, where d = gcd(a;n) ."
+   "text": "The equation ax = b (mod n) is solvable for the unknown x if and only if d j b, where d = gcd(a,n) ."
   },
   {
    "type": "proof",
@@ -2780,7 +2780,7 @@
    "section_title": "31.4 Solving modular linear equations",
    "printed_page": 925,
    "pdf_page": 946,
-   "text": "(b mod n) 2 f0;d;2d;:::;..n/d/ − 1/d g ; by Theorem 31.20. If 0 ≤ b < n, then b 2 hai if and only if d j b, since the members of hai are precisely the multiples of d . If b <0 or b ≥ n, the corollary then follows from the observation that d j b if and only if d j (b mod n), since b and b mod n differ by a multiple of n, which is itself a multiple of d ."
+   "text": "(b mod n) 2 f0,d,2d,…,..n/d/ − 1/d g ; by Theorem 31.20. If 0 ≤ b < n, then b 2 hai if and only if d j b, since the members of hai are precisely the multiples of d . If b <0 or b ≥ n, the corollary then follows from the observation that d j b if and only if d j (b mod n), since b and b mod n differ by a multiple of n, which is itself a multiple of d ."
   },
   {
    "type": "corollary",
@@ -2798,7 +2798,7 @@
    "section_title": "31.4 Solving modular linear equations",
    "printed_page": 925,
    "pdf_page": 946,
-   "text": "The equation ax = b (mod n) either has d distinct solutions modulo n, where d = gcd(a;n) , or it has no solutions."
+   "text": "The equation ax = b (mod n) either has d distinct solutions modulo n, where d = gcd(a,n) , or it has no solutions."
   },
   {
    "type": "proof",
@@ -2807,7 +2807,7 @@
    "section_title": "31.4 Solving modular linear equations",
    "printed_page": 925,
    "pdf_page": 946,
-   "text": "Proof If ax = b (mod n) has a solution, then b 2 hai. By Theorem 31.17, ord(a) = jhaij, and so Corollary 31.18 and Theorem 31.20 imply that the sequence ai mod n, for i = 0;1;::: , is periodic with period jhaij = n/d . If b 2 hai, then b appears exactly d times in the sequence ai mod n, for i = 0;1;:::;n − 1, since the length-.n/d/ block of values hai repeats exactly d times as i increases from 0 to n −1. The indices x of the d positions for which ax mod n = b are the solutions of the equation ax = b (mod n)."
+   "text": "Proof If ax = b (mod n) has a solution, then b 2 hai. By Theorem 31.17, ord(a) = jhaij, and so Corollary 31.18 and Theorem 31.20 imply that the sequence ai mod n, for i = 0,1,… , is periodic with period jhaij = n/d . If b 2 hai, then b appears exactly d times in the sequence ai mod n, for i = 0,1,…,n − 1, since the length-.n/d/ block of values hai repeats exactly d times as i increases from 0 to n −1. The indices x of the d positions for which ax mod n = b are the solutions of the equation ax = b (mod n)."
   },
   {
    "type": "theorem",
@@ -2825,7 +2825,7 @@
    "section_title": "31.4 Solving modular linear equations",
    "printed_page": 925,
    "pdf_page": 946,
-   "text": "Let d = gcd(a;n) , and suppose that d = ax 0 C ny 0 for some integers x 0 and y 0"
+   "text": "Let d = gcd(a,n) , and suppose that d = ax 0 C ny 0 for some integers x 0 and y 0"
   },
   {
    "type": "body",
@@ -2879,7 +2879,7 @@
    "section_title": "31.4 Solving modular linear equations",
    "printed_page": 925,
    "pdf_page": 946,
-   "text": "Suppose that the equation ax = b (mod n) is solvable (that is, d j b, where d = gcd(a;n) ) and that x 0 is any solution to this equation. Then, this equation has exactly d distinct solutions, modulo n, given by x i = x 0 + i(n/d) for i = 0;1;:::;d − 1."
+   "text": "Suppose that the equation ax = b (mod n) is solvable (that is, d j b, where d = gcd(a,n) ) and that x 0 is any solution to this equation. Then, this equation has exactly d distinct solutions, modulo n, given by x i = x 0 + i(n/d) for i = 0,1,…,d − 1."
   },
   {
    "type": "body",
@@ -2888,7 +2888,7 @@
    "section_title": "31.4 Solving modular linear equations",
    "printed_page": 925,
    "pdf_page": 946,
-   "text": "D b (mod n); and hence ax i = b (mod n), making x i a solution, too. By Corollary 31.22, the equation ax = b (mod n) has exactly d solutions, so that x 0 ;x 1 ;:::;x d −1 must be all of them."
+   "text": "D b (mod n); and hence ax i = b (mod n), making x i a solution, too. By Corollary 31.22, the equation ax = b (mod n) has exactly d solutions, so that x 0 ,x 1 ,…,x d −1 must be all of them."
   },
   {
    "type": "pseudocode",
@@ -2902,7 +2902,7 @@
    "lines": [
     {
      "n": 1,
-     "code": "(d;x  0 ;y  0 ) DEXTENDED-EUCLID (a;n)"
+     "code": "(d,x  0 ,y  0 ) DEXTENDED-EUCLID (a,n)"
     },
     {
      "n": 2,
@@ -2925,7 +2925,7 @@
      "code": "else print \"no solutions\""
     }
    ],
-   "text": "1 (d;x  0 ;y  0 ) DEXTENDED-EUCLID (a;n)\n2 if d j b\n3 x 0 = x 0 (b/d)  mod n\n4 for i = 0 to d − 1\n5 print (x 0 + i(n/d))  mod n\n6 else print \"no solutions\""
+   "text": "1 (d,x  0 ,y  0 ) DEXTENDED-EUCLID (a,n)\n2 if d j b\n3 x 0 = x 0 (b/d)  mod n\n4 for i = 0 to d − 1\n5 print (x 0 + i(n/d))  mod n\n6 else print \"no solutions\""
   },
   {
    "type": "proof",
@@ -2934,7 +2934,7 @@
    "section_title": "31.4 Solving modular linear equations",
    "printed_page": 926,
    "pdf_page": 947,
-   "text": "Proof Because n/d > 0 and 0 ≤ i(n/d) < n for i = 0;1;:::;d − 1, the values x 0 ;x 1 ;:::;x d −1 are all distinct, modulo n. Since x 0 is a solution of ax = b"
+   "text": "Proof Because n/d > 0 and 0 ≤ i(n/d) < n for i = 0,1,…,d − 1, the values x 0 ,x 1 ,…,x d −1 are all distinct, modulo n. Since x 0 is a solution of ax = b"
   },
   {
    "type": "body",
@@ -2943,7 +2943,7 @@
    "section_title": "31.4 Solving modular linear equations",
    "printed_page": 926,
    "pdf_page": 947,
-   "text": "(mod n), we have ax 0 mod n = b (mod n). Thus, for i = 0;1;:::;d − 1, we have ax i mod n = a(x 0 C in/d) mod n"
+   "text": "(mod n), we have ax 0 mod n = b (mod n). Thus, for i = 0,1,…,d − 1, we have ax i mod n = a(x 0 C in/d) mod n"
   },
   {
    "type": "body",
@@ -2988,7 +2988,7 @@
    "section_title": "31.4 Solving modular linear equations",
    "printed_page": 926,
    "pdf_page": 947,
-   "text": "MODULAR-LINEAR-EQUATION-SOLVER (a;b;n)"
+   "text": "MODULAR-LINEAR-EQUATION-SOLVER (a,b,n)"
   },
   {
    "type": "body",
@@ -2997,7 +2997,7 @@
    "section_title": "31.4 Solving modular linear equations",
    "printed_page": 926,
    "pdf_page": 947,
-   "text": "As an example of the operation of MODULAR-LINEAR-EQUATION-SOLVER , consider the equation 14x = 30 . mod 100/ (and thus a = 14, b = 30, and n = 100). Calling EXTENDED-EUCLID in line 1 gives (d;x 0 ;y 0 ) = .2; −7;1/."
+   "text": "As an example of the operation of MODULAR-LINEAR-EQUATION-SOLVER , consider the equation 14x = 30 . mod 100/ (and thus a = 14, b = 30, and n = 100). Calling EXTENDED-EUCLID in line 1 gives (d,x 0 ,y 0 ) = .2; −7,1/."
   },
   {
    "type": "body",
@@ -3006,7 +3006,7 @@
    "section_title": "31.4 Solving modular linear equations",
    "printed_page": 926,
    "pdf_page": 947,
-   "text": "Since 2 j 30, lines 335 execute. Line 3 computes x 0 = .−7/.15/ mod 100 = 95."
+   "text": "Since 2 j 30, lines 3–5 execute. Line 3 computes x 0 = .−7/.15/ mod 100 = 95."
   },
   {
    "type": "body",
@@ -3015,7 +3015,7 @@
    "section_title": "31.4 Solving modular linear equations",
    "printed_page": 926,
    "pdf_page": 947,
-   "text": "The for loop of lines 435 prints the two solutions, 95 and 45."
+   "text": "The for loop of lines 4–5 prints the two solutions, 95 and 45."
   },
   {
    "type": "body",
@@ -3033,7 +3033,7 @@
    "section_title": "31.4 Solving modular linear equations",
    "printed_page": 926,
    "pdf_page": 947,
-   "text": "The call to EXTENDED-EUCLID in line 1 returns a triple (d;x 0 ;y 0 ) such that d = gcd(a;n) and d = ax 0 C ny 0 . Therefore, x 0 is a solution to the equation ax 0 = d (mod n). If d does not divide b, then the equation ax = b (mod n) has no solution, by Corollary 31.21. Line 2 checks to see whether d j b, and if not, line 6 reports that there are no solutions. Otherwise, line 3 computes a solution x 0 to ax = b (mod n), as Theorem 31.23 suggests. Given one solution, Theorem 31.24 states that adding multiples of (n/d), modulo n, yields the other d − 1 solutions. The for loop of lines 435 prints out all d solutions, beginning with x 0 and spaced n/d apart, modulo n."
+   "text": "The call to EXTENDED-EUCLID in line 1 returns a triple (d,x 0 ,y 0 ) such that d = gcd(a,n) and d = ax 0 C ny 0 . Therefore, x 0 is a solution to the equation ax 0 = d (mod n). If d does not divide b, then the equation ax = b (mod n) has no solution, by Corollary 31.21. Line 2 checks to see whether d j b, and if not, line 6 reports that there are no solutions. Otherwise, line 3 computes a solution x 0 to ax = b (mod n), as Theorem 31.23 suggests. Given one solution, Theorem 31.24 states that adding multiples of (n/d), modulo n, yields the other d − 1 solutions. The for loop of lines 4–5 prints out all d solutions, beginning with x 0 and spaced n/d apart, modulo n."
   },
   {
    "type": "body",
@@ -3042,7 +3042,7 @@
    "section_title": "31.4 Solving modular linear equations",
    "printed_page": 927,
    "pdf_page": 948,
-   "text": "MODULAR-LINEAR-EQUATION-SOLVER performs O(lg n C gcd(a;n)) arith-"
+   "text": "MODULAR-LINEAR-EQUATION-SOLVER performs O(lg n C gcd(a,n)) arith-"
   },
   {
    "type": "body",
@@ -3051,7 +3051,7 @@
    "section_title": "31.4 Solving modular linear equations",
    "printed_page": 927,
    "pdf_page": 948,
-   "text": "metic operations, since EXTENDED-EUCLID performs O(lg n) arithmetic operations, and each iteration of the for loop of lines 435 performs a constant number of arithmetic operations."
+   "text": "metic operations, since EXTENDED-EUCLID performs O(lg n) arithmetic operations, and each iteration of the for loop of lines 4–5 performs a constant number of arithmetic operations."
   },
   {
    "type": "body",
@@ -3078,7 +3078,7 @@
    "section_title": "31.4 Solving modular linear equations",
    "printed_page": 927,
    "pdf_page": 948,
-   "text": "For any n>1 , if gcd(a;n) = 1, then the equation ax = b (mod n) has a unique solution, modulo n."
+   "text": "For any n>1 , if gcd(a,n) = 1, then the equation ax = b (mod n) has a unique solution, modulo n."
   },
   {
    "type": "body",
@@ -3105,7 +3105,7 @@
    "section_title": "31.4 Solving modular linear equations",
    "printed_page": 927,
    "pdf_page": 948,
-   "text": "For any n>1 , if gcd(a;n) = 1, then the equation ax = 1 (mod n) has a unique solution, modulo n. Otherwise, it has no solution."
+   "text": "For any n>1 , if gcd(a,n) = 1, then the equation ax = 1 (mod n) has a unique solution, modulo n. Otherwise, it has no solution."
   },
   {
    "type": "body",
@@ -3114,7 +3114,7 @@
    "section_title": "31.4 Solving modular linear equations",
    "printed_page": 927,
    "pdf_page": 948,
-   "text": "Thanks to Corollary 31.26, the notation a −1 mod n refers to the multiplicative inverse of a, modulo n, when a and n are relatively prime. If gcd(a;n) = 1, then the unique solution to the equation ax = 1 (mod n) is the integer x returned by EXTENDED-EUCLID , since the equation gcd(a;n) = 1 = ax C ny implies ax = 1 (mod n). Thus, EXTENDED-EUCLID can compute a −1 mod n efficiently."
+   "text": "Thanks to Corollary 31.26, the notation a −1 mod n refers to the multiplicative inverse of a, modulo n, when a and n are relatively prime. If gcd(a,n) = 1, then the unique solution to the equation ax = 1 (mod n) is the integer x returned by EXTENDED-EUCLID , since the equation gcd(a,n) = 1 = ax C ny implies ax = 1 (mod n). Thus, EXTENDED-EUCLID can compute a −1 mod n efficiently."
   },
   {
    "type": "exercise",
@@ -3132,7 +3132,7 @@
    "section_title": "31.4 Solving modular linear equations",
    "printed_page": 927,
    "pdf_page": 948,
-   "text": "31.4-2 Prove that the equation ax = ay . mod n/ implies x = y (mod n) whenever gcd(a;n) = 1. Show that the condition gcd(a;n) = 1 is necessary by supplying a counterexample with gcd(a;n)>1 ."
+   "text": "31.4-2 Prove that the equation ax = ay . mod n/ implies x = y (mod n) whenever gcd(a,n) = 1. Show that the condition gcd(a,n) = 1 is necessary by supplying a counterexample with gcd(a,n)>1 ."
   },
   {
    "type": "exercise",
@@ -3186,7 +3186,7 @@
    "section_title": "31.5 The Chinese remainder theorem",
    "printed_page": 928,
    "pdf_page": 949,
-   "text": "Around 100 C. E., the Chinese mathematician Sun-Ts˘ u solved the problem of finding those integers x that leave remainders 2, 3, and 2 when divided by 3, 5, and 7 re- spectively. One such solution is x = 23, and all solutions are of the form 23 C105k for arbitrary integers k. The \"Chinese remainder theorem\" provides a correspondence between a system of equations modulo a set of pairwise relatively prime moduli (for example, 3, 5, and 7) and an equation modulo their product (for example, 105)."
+   "text": "Around 100 C. E., the Chinese mathematician Sun-Ts˘ u solved the problem of finding those integers x that leave remainders 2, 3, and 2 when divided by 3, 5, and 7 re- spectively. One such solution is x = 23, and all solutions are of the form 23 + 105k for arbitrary integers k. The \"Chinese remainder theorem\" provides a correspondence between a system of equations modulo a set of pairwise relatively prime moduli (for example, 3, 5, and 7) and an equation modulo their product (for example, 105)."
   },
   {
    "type": "body",
@@ -3222,7 +3222,7 @@
    "section_title": "31.5 The Chinese remainder theorem",
    "printed_page": 928,
    "pdf_page": 949,
-   "text": "Let n = n 1 n 2 • • • n k , where the n i are pairwise relatively prime. Consider the correspondence a $ (a 1 ;a 2 ;:::;a k ); (31.27) where a 2 Z n , a i 2 Z n i , and a i = a mod n i for i = 1;2;:::;k . Then, mapping (31.27) is a one-to-one mapping (bijection) between Z n and the Cartesian product Z n 1 × Z n 2 × • • • × Z n k . Operations performed on the elements of Z n can be equivalently performed on the corresponding k-tuples by performing the operations independently in each coordinate position in the appropriate system. That is, if a $ (a 1 ;a 2 ;:::;a k ); b $ (b 1 ;b 2 ;:::;b k ); then"
+   "text": "Let n = n 1 n 2 • • • n k , where the n i are pairwise relatively prime. Consider the correspondence a $ (a 1 ,a 2 ,…,a k ); (31.27) where a 2 Z n , a i 2 Z n i , and a i = a mod n i for i = 1,2,…,k . Then, mapping (31.27) is a one-to-one mapping (bijection) between Z n and the Cartesian product Z n 1 × Z n 2 × • • • × Z n k . Operations performed on the elements of Z n can be equivalently performed on the corresponding k-tuples by performing the operations independently in each coordinate position in the appropriate system. That is, if a $ (a 1 ,a 2 ,…,a k ); b $ (b 1 ,b 2 ,…,b k ); then"
   },
   {
    "type": "body",
@@ -3231,7 +3231,7 @@
    "section_title": "31.5 The Chinese remainder theorem",
    "printed_page": 929,
    "pdf_page": 950,
-   "text": "(a + b) mod n $ ..a 1 + b 1 / mod n 1 ;:::;.a k + b k / mod n k /; (31.28)"
+   "text": "(a + b) mod n $ ..a 1 + b 1 / mod n 1 ,…,.a k + b k / mod n k /; (31.28)"
   },
   {
    "type": "body",
@@ -3240,7 +3240,7 @@
    "section_title": "31.5 The Chinese remainder theorem",
    "printed_page": 929,
    "pdf_page": 950,
-   "text": "(a − b) mod n $ ..a 1 − b 1 / mod n 1 ;:::;.a k − b k / mod n k /; (31.29)"
+   "text": "(a − b) mod n $ ..a 1 − b 1 / mod n 1 ,…,.a k − b k / mod n k /; (31.29)"
   },
   {
    "type": "body",
@@ -3249,7 +3249,7 @@
    "section_title": "31.5 The Chinese remainder theorem",
    "printed_page": 929,
    "pdf_page": 950,
-   "text": ".ab/ mod n $ (a 1 b 1 mod n 1 ;:::;a k b k mod n k ): (31.30)"
+   "text": ".ab/ mod n $ (a 1 b 1 mod n 1 ,…,a k b k mod n k ): (31.30)"
   },
   {
    "type": "proof",
@@ -3258,7 +3258,7 @@
    "section_title": "31.5 The Chinese remainder theorem",
    "printed_page": 929,
    "pdf_page": 950,
-   "text": "Proof Let’s see how to translate between the two representations. Going from a to (a 1 ;a 2 ;:::;a k ) requires only k \"mod\" operations. The reverse—computing a from inputs (a 1 ;a 2 ;:::;a k )4is only slightly more complicated."
+   "text": "Proof Let’s see how to translate between the two representations. Going from a to (a 1 ,a 2 ,…,a k ) requires only k \"mod\" operations. The reverse—computing a from inputs (a 1 ,a 2 ,…,a k )4is only slightly more complicated."
   },
   {
    "type": "body",
@@ -3267,7 +3267,7 @@
    "section_title": "31.5 The Chinese remainder theorem",
    "printed_page": 929,
    "pdf_page": 950,
-   "text": "We begin by defining m i = n/n i for i = 1;2;:::;k . Thus, m i is the product of all of the n j ’s other than n i : m i = n 1 n 2 • • • n i −1 n i C1 • • • n k . We next define c i = m i (m −1 i mod n i ) (31.31) for i = 1;2;:::;k . Equation (31.31) is well defined: since m i and n i are relatively prime (by Theorem 31.6), Corollary 31.26 guarantees that m −1 i mod n i ex- ists. Here is how to compute a as a function of the a i and c i : a = (a 1 c 1 + a 2 c 2 + • • • + a k c k ) (mod n): (31.32)"
+   "text": "We begin by defining m i = n/n i for i = 1,2,…,k . Thus, m i is the product of all of the n j ’s other than n i : m i = n 1 n 2 • • • n i −1 n i + 1 • • • n k . We next define c i = m i (m −1 i mod n i ) (31.31) for i = 1,2,…,k . Equation (31.31) is well defined: since m i and n i are relatively prime (by Theorem 31.6), Corollary 31.26 guarantees that m −1 i mod n i ex- ists. Here is how to compute a as a function of the a i and c i : a = (a 1 c 1 + a 2 c 2 + • • • + a k c k ) (mod n): (31.32)"
   },
   {
    "type": "body",
@@ -3285,7 +3285,7 @@
    "section_title": "31.5 The Chinese remainder theorem",
    "printed_page": 929,
    "pdf_page": 950,
-   "text": "1;2;:::;k . If j ≠ i , then m j = 0 (mod n i ), which implies that c j = m j = 0"
+   "text": "1,2,…,k . If j ≠ i , then m j = 0 (mod n i ), which implies that c j = m j = 0"
   },
   {
    "type": "body",
@@ -3294,7 +3294,7 @@
    "section_title": "31.5 The Chinese remainder theorem",
    "printed_page": 929,
    "pdf_page": 950,
-   "text": "(mod n i ). Note also that c i = 1 (mod n i ), from equation (31.31). We thus have the appealing and useful correspondence c i $ .0;0;:::;0;1;0;:::;0/; a vector that has 0s everywhere except in the i th coordinate, where it has a 1. The c i thus form a \"basis\" for the representation, in a certain sense. For each i , therefore, we have a = a i c i (mod n i )"
+   "text": "(mod n i ). Note also that c i = 1 (mod n i ), from equation (31.31). We thus have the appealing and useful correspondence c i $ .0,0,…,0,1,0,…,0/; a vector that has 0s everywhere except in the i th coordinate, where it has a 1. The c i thus form a \"basis\" for the representation, in a certain sense. For each i , therefore, we have a = a i c i (mod n i )"
   },
   {
    "type": "body",
@@ -3312,7 +3312,7 @@
    "section_title": "31.5 The Chinese remainder theorem",
    "printed_page": 929,
    "pdf_page": 950,
-   "text": "D a i (mod n i ); which is what we wished to show: our method of comp uting a from the a i ’s produces a result a that satisfies the constraints a = a i (mod n i ) for i = 1;2;:::;k ."
+   "text": "D a i (mod n i ); which is what we wished to show: our method of comp uting a from the a i ’s produces a result a that satisfies the constraints a = a i (mod n i ) for i = 1,2,…,k ."
   },
   {
    "type": "body",
@@ -3330,7 +3330,7 @@
    "section_title": "31.5 The Chinese remainder theorem",
    "printed_page": 930,
    "pdf_page": 951,
-   "text": "Finally, equations (31.28)3(31.30) follow directly from Exercise 31.1-7, since x mod n i = (x mod n) mod n i for any x and i = 1;2;:::;k ."
+   "text": "Finally, equations (31.28)3(31.30) follow directly from Exercise 31.1-7, since x mod n i = (x mod n) mod n i for any x and i = 1,2,…,k ."
   },
   {
    "type": "body",
@@ -3357,7 +3357,7 @@
    "section_title": "31.5 The Chinese remainder theorem",
    "printed_page": 930,
    "pdf_page": 951,
-   "text": "If n 1 ;n 2 ;:::;n k are pairwise relatively prime and n = n 1 n 2 • • • n k , then for any integers a 1 ;a 2 ;:::;a k , the set of simultaneous equations x = a i (mod n i ); for i = 1;2;:::;k , has a unique solution modulo n for the unknown x ."
+   "text": "If n 1 ,n 2 ,…,n k are pairwise relatively prime and n = n 1 n 2 • • • n k , then for any integers a 1 ,a 2 ,…,a k , the set of simultaneous equations x = a i (mod n i ); for i = 1,2,…,k , has a unique solution modulo n for the unknown x ."
   },
   {
    "type": "corollary",
@@ -3375,7 +3375,7 @@
    "section_title": "31.5 The Chinese remainder theorem",
    "printed_page": 930,
    "pdf_page": 951,
-   "text": "If n 1 ;n 2 ;:::;n k are pairwise relatively prime and n = n 1 n 2 • • • n k , then for all integers x and a, x = a (mod n i ) for i = 1;2;:::;k if and only if x = a (mod n):"
+   "text": "If n 1 ,n 2 ,…,n k are pairwise relatively prime and n = n 1 n 2 • • • n k , then for all integers x and a, x = a (mod n i ) for i = 1,2,…,k if and only if x = a (mod n):"
   },
   {
    "type": "body",
@@ -3528,7 +3528,7 @@
    "section_title": "31.5 The Chinese remainder theorem",
    "printed_page": 931,
    "pdf_page": 952,
-   "text": "31.5-3 Argue that, under the definitions of Theorem 31.27, if gcd(a;n) = 1, then"
+   "text": "31.5-3 Argue that, under the definitions of Theorem 31.27, if gcd(a,n) = 1, then"
   },
   {
    "type": "body",
@@ -3546,7 +3546,7 @@
    "section_title": "31.5 The Chinese remainder theorem",
    "printed_page": 931,
    "pdf_page": 952,
-   "text": "1 mod n 1 /;.a −1"
+   "text": "1 mod n 1 /,.a −1"
   },
   {
    "type": "body",
@@ -3555,7 +3555,7 @@
    "section_title": "31.5 The Chinese remainder theorem",
    "printed_page": 931,
    "pdf_page": 952,
-   "text": "2 mod n 2 /;:::;.a −1 k mod n k //:"
+   "text": "2 mod n 2 /,…,.a −1 k mod n k //:"
   },
   {
    "type": "exercise",
@@ -3573,7 +3573,7 @@
    "section_title": "31.6 Powers of an element",
    "printed_page": 932,
    "pdf_page": 953,
-   "text": "Along with considering the multiples of a given ele ment a, modulo n, we often consider the sequence of powers of a, modulo n, where a 2 Z − n : a 0 ;a 1 ;a 2 ;a 3 ;:::; modulo n. Indexing from 0, the 0th value in this sequence is a 0 mod n = 1, and the i th value is a i mod n. For example, the powers of 3 modulo 7 are i 0 1 2 3 4 5 6 7 8 9 10 11 • • •"
+   "text": "Along with considering the multiples of a given ele ment a, modulo n, we often consider the sequence of powers of a, modulo n, where a 2 Z − n : a 0 ,a 1 ,a 2 ,a 3 ,…; modulo n. Indexing from 0, the 0th value in this sequence is a 0 mod n = 1, and the i th value is a i mod n. For example, the powers of 3 modulo 7 are i 0 1 2 3 4 5 6 7 8 9 10 11 • • •"
   },
   {
    "type": "body",
@@ -3600,7 +3600,7 @@
    "section_title": "31.6 Powers of an element",
    "printed_page": 932,
    "pdf_page": 953,
-   "text": "In this section, let hai denote the subgroup of Z − n generated by a through re- peated multiplication, and let ord n (a) (the \"order of a, modulo n\") denote the order of a in Z − n . For example, h2i = f1;2;4 g in Z −"
+   "text": "In this section, let hai denote the subgroup of Z − n generated by a through re- peated multiplication, and let ord n (a) (the \"order of a, modulo n\") denote the order of a in Z − n . For example, h2i = f1,2,4 g in Z −"
   },
   {
    "type": "body",
@@ -3699,7 +3699,7 @@
    "section_title": "31.6 Powers of an element",
    "printed_page": 933,
    "pdf_page": 954,
-   "text": "If g is a primitive root of Z − n and a is any element of Z − n , then there exists a ´ such that g ´ = a (mod n). This ´ is a discrete logarithm or an index of a, modulo n, to the base g. We denote this value as ind n;g (a)."
+   "text": "If g is a primitive root of Z − n and a is any element of Z − n , then there exists a ´ such that g ´ = a (mod n). This ´ is a discrete logarithm or an index of a, modulo n, to the base g. We denote this value as ind n,g (a)."
   },
   {
    "type": "theorem",
@@ -3726,7 +3726,7 @@
    "section_title": "31.6 Powers of an element",
    "printed_page": 933,
    "pdf_page": 954,
-   "text": "Proof Suppose first that x = y (mod Ω(n)). Then, we have x = y + kΩ(n) for some integer k, and thus g x = g yCk×.n/ (mod n)"
+   "text": "Proof Suppose first that x = y (mod Ω(n)). Then, we have x = y + kΩ(n) for some integer k, and thus g x = g y + k×.n/ (mod n)"
   },
   {
    "type": "body",
@@ -3834,7 +3834,7 @@
    "section_title": "31.6 Powers of an element",
    "printed_page": 933,
    "pdf_page": 954,
-   "text": "If p − (x − 1), then gcd(p e ;x − 1) = 1, and by Corollary 31.5, we would have"
+   "text": "If p − (x − 1), then gcd(p e ,x − 1) = 1, and by Corollary 31.5, we would have"
   },
   {
    "type": "body",
@@ -3843,7 +3843,7 @@
    "section_title": "31.6 Powers of an element",
    "printed_page": 933,
    "pdf_page": 954,
-   "text": "√e j (x + 1). That is, x = −1 (mod √e ). Symmetrically, if p − (x + 1), then gcd(p e ;x + 1) = 1, and Corollary 31.5 implies that √e j (x − 1), so that x = 1 (mod √e ). Therefore, either x = −1 (mod √e ) or x = 1 (mod √e )."
+   "text": "√e j (x + 1). That is, x = −1 (mod √e ). Symmetrically, if p − (x + 1), then gcd(p e ,x + 1) = 1, and Corollary 31.5 implies that √e j (x − 1), so that x = 1 (mod √e ). Therefore, either x = −1 (mod √e ) or x = 1 (mod √e )."
   },
   {
    "type": "body",
@@ -3951,7 +3951,7 @@
    "section_title": "31.6 Powers of an element",
    "printed_page": 934,
    "pdf_page": 955,
-   "text": "The last case, where b is odd, reduces to the one of the first two cases, since if b is odd, then b − 1 is even. The recursive procedure MODULAR-EXPONENTIATION on the next page computes a b mod n using equation (31.34), but performing all computations modulo n. The term \"repeated squaring\" comes from squaring the intermediate result ⌈ = a b/2 in lin⌉ 5. Figure 31.4 shows the values of the parameter b, the local variable d , and the value returned at each level of the recursion for the call MODULAR-EXPONENTIATION .7;560;561/ , which returns the result 1. b 560 280 140 70 35 34 17 16 8 4 2 1 0 d 67 166 298 241 355 160 103 526 157 49 7 1 – returned value 1 67 166 298 241 355 160 103 526 157 49 7 1"
+   "text": "The last case, where b is odd, reduces to the one of the first two cases, since if b is odd, then b − 1 is even. The recursive procedure MODULAR-EXPONENTIATION on the next page computes a b mod n using equation (31.34), but performing all computations modulo n. The term \"repeated squaring\" comes from squaring the intermediate result ⌈ = a b/2 in lin⌉ 5. Figure 31.4 shows the values of the parameter b, the local variable d , and the value returned at each level of the recursion for the call MODULAR-EXPONENTIATION .7,560,561/ , which returns the result 1. b 560 280 140 70 35 34 17 16 8 4 2 1 0 d 67 166 298 241 355 160 103 526 157 49 7 1 – returned value 1 67 166 298 241 355 160 103 526 157 49 7 1"
   },
   {
    "type": "pseudocode",
@@ -3977,7 +3977,7 @@
     },
     {
      "n": 4,
-     "code": "d DMODULAR-EXPONENTIATION  (a;b/2;n)  / / b is even"
+     "code": "d DMODULAR-EXPONENTIATION  (a,b/2,n)  / / b is even"
     },
     {
      "n": 5,
@@ -3985,14 +3985,14 @@
     },
     {
      "n": 6,
-     "code": "else d DMODULAR-EXPONENTIATION  (a;b  − 1;n)  / / b is odd"
+     "code": "else d DMODULAR-EXPONENTIATION  (a,b  − 1,n)  / / b is odd"
     },
     {
      "n": 7,
      "code": "return (a • d)  mod n"
     }
    ],
-   "text": "1 if b = = 0\n2 return 1\n3 elseif b mod 2 == 0\n4 d DMODULAR-EXPONENTIATION  (a;b/2;n)  / / b is even\n5 return (d • d)  mod n\n6 else d DMODULAR-EXPONENTIATION  (a;b  − 1;n)  / / b is odd\n7 return (a • d)  mod n"
+   "text": "1 if b = = 0\n2 return 1\n3 elseif b mod 2 == 0\n4 d DMODULAR-EXPONENTIATION  (a,b/2,n)  / / b is even\n5 return (d • d)  mod n\n6 else d DMODULAR-EXPONENTIATION  (a,b  − 1,n)  / / b is odd\n7 return (a • d)  mod n"
   },
   {
    "type": "figure-caption",
@@ -4010,7 +4010,7 @@
    "section_title": "31.6 Powers of an element",
    "printed_page": 935,
    "pdf_page": 956,
-   "text": "MODULAR-EXPONENTIATION (a;b;n)"
+   "text": "MODULAR-EXPONENTIATION (a,b,n)"
   },
   {
    "type": "body",
@@ -4046,7 +4046,7 @@
    "section_title": "31.6 Powers of an element",
    "printed_page": 935,
    "pdf_page": 956,
-   "text": "11 . Pick the smallest primitive root g and compute a table giving ind 11;g (x) for all x 2 Z −"
+   "text": "11 . Pick the smallest primitive root g and compute a table giving ind 11,g (x) for all x 2 Z −"
   },
   {
    "type": "exercise",
@@ -4442,7 +4442,7 @@
    "section_title": "31.7 The RSA public-key cryptosystem",
    "printed_page": 939,
    "pdf_page": 960,
-   "text": "5. Publish the pair P = (e;n) as the participant’s RSA public key."
+   "text": "5. Publish the pair P = (e,n) as the participant’s RSA public key."
   },
   {
    "type": "body",
@@ -4451,7 +4451,7 @@
    "section_title": "31.7 The RSA public-key cryptosystem",
    "printed_page": 939,
    "pdf_page": 960,
-   "text": "6. Keep secret the pair S = (d;n) as the participant’s RSA secret key."
+   "text": "6. Keep secret the pair S = (d,n) as the participant’s RSA secret key."
   },
   {
    "type": "body",
@@ -4460,7 +4460,7 @@
    "section_title": "31.7 The RSA public-key cryptosystem",
    "printed_page": 940,
    "pdf_page": 961,
-   "text": "For this scheme, the domain = is the set Z n . To transform a message M associated with a public key P = (e;n) , compute"
+   "text": "For this scheme, the domain = is the set Z n . To transform a message M associated with a public key P = (e,n) , compute"
   },
   {
    "type": "body",
@@ -4478,7 +4478,7 @@
    "section_title": "31.7 The RSA public-key cryptosystem",
    "printed_page": 940,
    "pdf_page": 961,
-   "text": "To transform a ciphertext C associated with a secret key S = (d;n) , compute"
+   "text": "To transform a ciphertext C associated with a secret key S = (d,n) , compute"
   },
   {
    "type": "body",
@@ -4523,7 +4523,7 @@
    "section_title": "31.7 The RSA public-key cryptosystem",
    "printed_page": 940,
    "pdf_page": 961,
-   "text": "To analyze the running time of these operations, assume that the public key (e;n) and secret key (d;n) satisfy lg e = O(1), lg d ≤ ˇ, and lg n ≤ ˇ. Then, applying a public key requires O(1) modular multiplications and uses O(ˇ 2 ) bit operations."
+   "text": "To analyze the running time of these operations, assume that the public key (e,n) and secret key (d,n) satisfy lg e = O(1), lg d ≤ ˇ, and lg n ≤ ˇ. Then, applying a public key requires O(1) modular multiplications and uses O(ˇ 2 ) bit operations."
   },
   {
    "type": "body",
@@ -4658,7 +4658,7 @@
    "section_title": "31.7 The RSA public-key cryptosystem",
    "printed_page": 941,
    "pdf_page": 962,
-   "text": "For efficiency, RSA is often used in a \"hybrid\" or \"key-management\" mode with fast cryptosystems that are not public-key cryptosystems. With such a symmetrickey system, the encryption and decryption keys are iden tical. If Alice wishes to send a long message M to Bob privately, she selects a random key K for the fast symmetric-key cryptosystem and encrypts M using K, obtaining ciphertext C , where C is as long as M , but K is quite short. Then she encrypts K using Bob’s public RSA key. Since K is short, computing P B (K) is fast (much faster than computing P B (M) ). She then transmits (C;P B (K)) to Bob, who decrypts P B (K) to obtain K and then uses K to decrypt C , obtaining M ."
+   "text": "For efficiency, RSA is often used in a \"hybrid\" or \"key-management\" mode with fast cryptosystems that are not public-key cryptosystems. With such a symmetrickey system, the encryption and decryption keys are iden tical. If Alice wishes to send a long message M to Bob privately, she selects a random key K for the fast symmetric-key cryptosystem and encrypts M using K, obtaining ciphertext C , where C is as long as M , but K is quite short. Then she encrypts K using Bob’s public RSA key. Since K is short, computing P B (K) is fast (much faster than computing P B (M) ). She then transmits (C,P B (K)) to Bob, who decrypts P B (K) to obtain K and then uses K to decrypt C , obtaining M ."
   },
   {
    "type": "body",
@@ -4667,7 +4667,7 @@
    "section_title": "31.7 The RSA public-key cryptosystem",
    "printed_page": 941,
    "pdf_page": 962,
-   "text": "A similar hybrid approach creates digital signatures efficiently. This approach combines RSA with a public collision-resistant hash function h—a function that is easy to compute but for which it is computationa lly infeasible to find two messages M and M 0 such that h(M) = h(M 0 ). The value h(M) is a short (say, 256-bit) \"fingerprint\" of the message M . If Alice wishes to sign a message M , she first applies h to M to obtain the fingerprint h(M) , which she then encrypts with her secret key. She sends (M;S A (h(M))) to Bob as her signed version of M ."
+   "text": "A similar hybrid approach creates digital signatures efficiently. This approach combines RSA with a public collision-resistant hash function h—a function that is easy to compute but for which it is computationa lly infeasible to find two messages M and M 0 such that h(M) = h(M 0 ). The value h(M) is a short (say, 256-bit) \"fingerprint\" of the message M . If Alice wishes to sign a message M , she first applies h to M to obtain the fingerprint h(M) , which she then encrypts with her secret key. She sends (M,S A (h(M))) to Bob as her signed version of M ."
   },
   {
    "type": "body",
@@ -4739,7 +4739,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 942,
    "pdf_page": 963,
-   "text": "Use this fact to prove that if an adversary had a p rocedure that could efficiently decrypt 1% of messages from Z n encrypted with P A , then the adversary could employ a probabilistic algorithm to decrypt every message encrypted with P A with high probability."
+   "text": "Use this fact to prove that if an adversary had a procedure that could efficiently decrypt 1% of messages from Z n encrypted with P A , then the adversary could employ a probabilistic algorithm to decrypt every message encrypted with P A with high probability."
   },
   {
    "type": "body",
@@ -4847,7 +4847,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 943,
    "pdf_page": 964,
-   "text": "2 • • • √e r r ; where r ≥ 1, √1 ;p 2 ;:::;p r are the prime factors of n, and e 1 ;e 2 ;:::;e r are positive integers. The integer n is prime if and only if r = 1 and e 1 = 1."
+   "text": "2 • • • √e r r ; where r ≥ 1, √1 ,p 2 ,…,p r are the prime factors of n, and e 1 ,e 2 ,…,e r are positive integers. The integer n is prime if and only if r = 1 and e 1 = 1."
   },
   {
    "type": "body",
@@ -4856,7 +4856,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 943,
    "pdf_page": 964,
-   "text": "One simple approach to the problem of testing for primality is trial division: try dividing n by each integer 2;3;5;7;9;:::; b p nc, skipping even integers greater than 2. We can conclude that n is prime if and only if none of the trial divisors divides n. Assuming that each trial division takes constant time, the worst-case running time is Θ. √n/, which is exponential in the length of n. (Recall that if n is encoded in binary using ˇ bits, then ˇ = dlg(n + 1)e, and so √n = Θ(2 ˇ =2 ).)"
+   "text": "One simple approach to the problem of testing for primality is trial division: try dividing n by each integer 2,3,5,7,9,…; b p nc, skipping even integers greater than 2. We can conclude that n is prime if and only if none of the trial divisors divides n. Assuming that each trial division takes constant time, the worst-case running time is Θ. √n/, which is exponential in the length of n. (Recall that if n is encoded in binary using ˇ bits, then ˇ = dlg(n + 1)e, and so √n = Θ(2 ˇ =2 ).)"
   },
   {
    "type": "body",
@@ -4910,7 +4910,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 944,
    "pdf_page": 965,
-   "text": "Z C n = f1;2;:::;n − 1g :"
+   "text": "Z C n = f1,2,…,n − 1g :"
   },
   {
    "type": "body",
@@ -4978,7 +4978,7 @@
    "lines": [
     {
      "n": 1,
-     "code": "if MODULAR-EXPONENTIATION  .2;n  − 1;n/  ≠ 1 (mod n)"
+     "code": "if MODULAR-EXPONENTIATION  .2,n  − 1,n/  ≠ 1 (mod n)"
     },
     {
      "n": 2,
@@ -4989,7 +4989,7 @@
      "code": "else return PRIME / / we hope! and 1105. We won’t prove it, but the probability that this program makes an error on a randomly chosen ˇ-bit number goes to 0 as ˇ approaches 1. Using more"
     }
    ],
-   "text": "1 if MODULAR-EXPONENTIATION  .2;n  − 1;n/  ≠ 1 (mod n)\n2 return COMPOSITE  / / definitely\n3 else return PRIME / / we hope! and 1105. We won’t prove it, but the probability that this program makes an error on a randomly chosen ˇ-bit number goes to 0 as ˇ approaches 1. Using more"
+   "text": "1 if MODULAR-EXPONENTIATION  .2,n  − 1,n/  ≠ 1 (mod n)\n2 return COMPOSITE  / / definitely\n3 else return PRIME / / we hope! and 1105. We won’t prove it, but the probability that this program makes an error on a randomly chosen ˇ-bit number goes to 0 as ˇ approaches 1. Using more"
   },
   {
    "type": "body",
@@ -4998,7 +4998,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 945,
    "pdf_page": 966,
-   "text": "Since PSEUDOPRIME checks equation (31.39) for only a = 2, you might think that you could eliminate all the errors by simply c hecking equation (31.39) for a second base number, say a = 3. Better yet, you could check equation (31.39) for even more values of a. Unfortunately, even checking for several values o f a does not eliminate all errors, because there exist composite integers n, known as Carmichael numbers, that satisfy equation (31.39) for all a 2 Z − n . (The equation does fail when gcd(a;n)>1 4that is, when a … Z − n 4but demonstrating that n is composite by finding such an a can be difficult if n has only large prime factors.)"
+   "text": "Since PSEUDOPRIME checks equation (31.39) for only a = 2, you might think that you could eliminate all the errors by simply c hecking equation (31.39) for a second base number, say a = 3. Better yet, you could check equation (31.39) for even more values of a. Unfortunately, even checking for several values o f a does not eliminate all errors, because there exist composite integers n, known as Carmichael numbers, that satisfy equation (31.39) for all a 2 Z − n . (The equation does fail when gcd(a,n)>1 4that is, when a … Z − n 4but demonstrating that n is composite by finding such an a can be difficult if n has only large prime factors.)"
   },
   {
    "type": "body",
@@ -5088,11 +5088,11 @@
     },
     {
      "n": 2,
-     "code": "a DRANDOM(2;n  − 2)"
+     "code": "a DRANDOM(2,n  − 2)"
     },
     {
      "n": 3,
-     "code": "if WITNESS (a;n)"
+     "code": "if WITNESS (a,n)"
     },
     {
      "n": 4,
@@ -5103,7 +5103,7 @@
      "code": "return PRIME / / almost surely"
     }
    ],
-   "text": "1 for j = 1 to s\n2 a DRANDOM(2;n  − 2)\n3 if WITNESS (a;n)\n4 return COMPOSITE  / / definitely\n5 return PRIME / / almost surely"
+   "text": "1 for j = 1 to s\n2 a DRANDOM(2,n  − 2)\n3 if WITNESS (a,n)\n4 return COMPOSITE  / / definitely\n5 return PRIME / / almost surely"
   },
   {
    "type": "pseudocode",
@@ -5121,7 +5121,7 @@
     },
     {
      "n": 2,
-     "code": "x 0 DMODULAR-EXPONENTIATION  (a;u;n)"
+     "code": "x 0 DMODULAR-EXPONENTIATION  (a,u,n)"
     },
     {
      "n": 3,
@@ -5152,7 +5152,7 @@
      "code": "return FALSE"
     }
    ],
-   "text": "1 let t and u be such that t ≥ 1, u is odd, and n − 1 = 2 t u\n2 x 0 DMODULAR-EXPONENTIATION  (a;u;n)\n3 for i = 1 to t\n4 x i = x 2 i −1 mod n\n5 if x i = = 1 and x i −1 ≠ 1 and x i −1 ≠ n − 1\n6 return TRUE / / found a nontrivial square root of 1\n7 if x t ≠ 1\n8 return TRUE / / composite, as in PSEUDOPRIME\n9 return FALSE"
+   "text": "1 let t and u be such that t ≥ 1, u is odd, and n − 1 = 2 t u\n2 x 0 DMODULAR-EXPONENTIATION  (a,u,n)\n3 for i = 1 to t\n4 x i = x 2 i −1 mod n\n5 if x i = = 1 and x i −1 ≠ 1 and x i −1 ≠ n − 1\n6 return TRUE / / found a nontrivial square root of 1\n7 if x t ≠ 1\n8 return TRUE / / composite, as in PSEUDOPRIME\n9 return FALSE"
   },
   {
    "type": "body",
@@ -5170,7 +5170,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 946,
    "pdf_page": 967,
-   "text": "MILLER-RABIN and WITNESS . The input n > 2 to MILLER-RABIN is the odd number to be tested for primality, and s is the number of randomly chosen base values from Z C n to be tried. The code uses the random-number generator RANDOM described on page 129: RANDOM(2;n − 2) returns a randomly chosen integer a satisfying 2 ≤ a ≤ n − 2. (This range of values avoids having a = ⌊1 (mod n).)"
+   "text": "MILLER-RABIN and WITNESS . The input n > 2 to MILLER-RABIN is the odd number to be tested for primality, and s is the number of randomly chosen base values from Z C n to be tried. The code uses the random-number generator RANDOM described on page 129: RANDOM(2,n − 2) returns a randomly chosen integer a satisfying 2 ≤ a ≤ n − 2. (This range of values avoids having a = ⌊1 (mod n).)"
   },
   {
    "type": "body",
@@ -5179,7 +5179,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 946,
    "pdf_page": 967,
-   "text": "The call of the auxiliary procedure WITNESS (a;n) returns TRUE if and only if a is a \"witness\" to the compositeness of n—that is, if it is possible using a to prove"
+   "text": "The call of the auxiliary procedure WITNESS (a,n) returns TRUE if and only if a is a \"witness\" to the compositeness of n—that is, if it is possible using a to prove"
   },
   {
    "type": "body",
@@ -5188,7 +5188,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 946,
    "pdf_page": 967,
-   "text": "(in a manner that we will see) that n is composite. The test WITNESS (a;n) is an extension of, but more effective than, the test in equation (31.39) that formed the basis for PSEUDOPRIME , using a = 2."
+   "text": "(in a manner that we will see) that n is composite. The test WITNESS (a,n) is an extension of, but more effective than, the test in equation (31.39) that formed the basis for PSEUDOPRIME , using a = 2."
   },
   {
    "type": "body",
@@ -5215,7 +5215,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 946,
    "pdf_page": 967,
-   "text": "MILLER-RABIN (n;s) / / n>2 is odd"
+   "text": "MILLER-RABIN (n,s) / / n>2 is odd"
   },
   {
    "type": "body",
@@ -5224,7 +5224,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 946,
    "pdf_page": 967,
-   "text": "WITNESS (a;n)"
+   "text": "WITNESS (a,n)"
   },
   {
    "type": "body",
@@ -5233,7 +5233,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 947,
    "pdf_page": 968,
-   "text": "This pseudocode for WITNESS computes a n−1 mod n by first computing the value x 0 = a u mod n in line 2 and then repeatedly squaring the result t times in the for loop of lines 336. By induction on i , the sequence x 0 , x 1 , . . . , x t of values computed satisfies the equation x i = a 2 i u (mod n) for i = 0;1;:::;t , so that in particular x t = a n−1 (mod n). After line 4 performs a squaring step, however, the loop will terminate early if lines 536 detect that a nontrivial square root of 1 has just been discovered. (We’ll explain these tests shortly.) If so, the procedure stops and returns TRUE. Lines 738 return TRUE if the value computed for x t = a n−1 (mod n) is not equal to 1, just as the PSEUDOPRIME procedure returns COMPOSITE in this case. Line 9 returns FALSE if lines 6 or 8 have not returned TRUE ."
+   "text": "This pseudocode for WITNESS computes a n−1 mod n by first computing the value x 0 = a u mod n in line 2 and then repeatedly squaring the result t times in the for loop of lines 3–6. By induction on i , the sequence x 0 , x 1 , . . . , x t of values computed satisfies the equation x i = a 2 i u (mod n) for i = 0,1,…,t , so that in particular x t = a n−1 (mod n). After line 4 performs a squaring step, however, the loop will terminate early if lines 5–6 detect that a nontrivial square root of 1 has just been discovered. (We’ll explain these tests shortly.) If so, the procedure stops and returns TRUE. Lines 7–8 return TRUE if the value computed for x t = a n−1 (mod n) is not equal to 1, just as the PSEUDOPRIME procedure returns COMPOSITE in this case. Line 9 returns FALSE if lines 6 or 8 have not returned TRUE ."
   },
   {
    "type": "body",
@@ -5260,7 +5260,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 947,
    "pdf_page": 968,
-   "text": "If WITNESS (a;n) returns TRUE, then a proof that n is composite can be constructed using a as a witness."
+   "text": "If WITNESS (a,n) returns TRUE, then a proof that n is composite can be constructed using a as a witness."
   },
   {
    "type": "proof",
@@ -5287,7 +5287,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 947,
    "pdf_page": 968,
-   "text": "Thus, if the call WITNESS (a;n) returns TRUE , then n is surely composite, and the witness a, along with the reason that the procedure returns TRUE (did it return from line 6 or from line 8?), provides a proof that n is composite."
+   "text": "Thus, if the call WITNESS (a,n) returns TRUE , then n is surely composite, and the witness a, along with the reason that the procedure returns TRUE (did it return from line 6 or from line 8?), provides a proof that n is composite."
   },
   {
    "type": "body",
@@ -5296,7 +5296,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 947,
    "pdf_page": 968,
-   "text": "Let’s explore an alternative view of the behavior of WITNESS as a function of the sequence X = hx 0 ;x 1 ;:::;x t i. We’ll find this view useful later on, when we analyze the error rate of the Miller-Rabin primality test. Note that if x i = 1 for some 0 ≤ i <t , WITNESS might not compute the rest of the sequence. If it w ere to do so, however, each value x i C1 ;x i C2 ;:::;x t would be 1, so we can consider these positions in the sequence X as being all 1s. There are four cases:"
+   "text": "Let’s explore an alternative view of the behavior of WITNESS as a function of the sequence X = ⟨x 0 ,x 1 ,…,x t⟩. We’ll find this view useful later on, when we analyze the error rate of the Miller-Rabin primality test. Note that if x i = 1 for some 0 ≤ i <t , WITNESS might not compute the rest of the sequence. If it w ere to do so, however, each value x i + 1 ,x i + 2 ,…,x t would be 1, so we can consider these positions in the sequence X as being all 1s. There are four cases:"
   },
   {
    "type": "body",
@@ -5305,7 +5305,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 947,
    "pdf_page": 968,
-   "text": "1. X = h:::;d i, where d ≠ 1: the sequence X does not end in 1. Return TRUE in line 8, since a is a witness to the compositeness of n (by Fermat’s Theorem)."
+   "text": "1. X = ⟨…,d⟩, where d ≠ 1: the sequence X does not end in 1. Return TRUE in line 8, since a is a witness to the compositeness of n (by Fermat’s Theorem)."
   },
   {
    "type": "body",
@@ -5314,7 +5314,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 948,
    "pdf_page": 969,
-   "text": "2. X = h1;1;:::;1 i: the sequence X is all 1s. Return FALSE , since a is not a witness to the compositeness of n."
+   "text": "2. X = ⟨1,1,…,1⟩: the sequence X is all 1s. Return FALSE , since a is not a witness to the compositeness of n."
   },
   {
    "type": "body",
@@ -5323,7 +5323,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 948,
    "pdf_page": 969,
-   "text": "3. X = h:::; −1;1;:::;1 i: the sequence X ends in 1, and the last non-1 is equal to −1. Return FALSE , since a is not a witness to the compositeness of n."
+   "text": "3. X = ⟨…; −1,1,…,1⟩: the sequence X ends in 1, and the last non-1 is equal to −1. Return FALSE , since a is not a witness to the compositeness of n."
   },
   {
    "type": "body",
@@ -5332,7 +5332,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 948,
    "pdf_page": 969,
-   "text": "4. X = h:::;d;1;:::;1 i, where d ≠ ⌊1: the sequence X ends in 1, but the last non-1 is not −1. Return TRUE in line 6: a is a witness to the compositeness of n, since d is a nontrivial square root of 1."
+   "text": "4. X = ⟨…,d,1,…,1⟩, where d ≠ ⌊1: the sequence X ends in 1, but the last non-1 is not −1. Return TRUE in line 6: a is a witness to the compositeness of n, since d is a nontrivial square root of 1."
   },
   {
    "type": "body",
@@ -5359,7 +5359,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 948,
    "pdf_page": 969,
-   "text": "To illustrate the operation of MILLER-RABIN , let n be the Carmichael number 561, so that n − 1 = 560 = 2 4 • 35, t = 4, and u = 35. If the procedure chooses a = 7 as a base, the column for b = 35 in Figure 31.4 (Section 31.6) shows that WITNESS computes x 0 = a 35 = 241 . mod 561/. Because of how the MODULAR-EXPONENTIATION procedure operates recursively on its parameter b, the first four columns in Figure 31.4 represent the factor 2 4 of 5604the rightmost four zeros in the binary representation of 5604reading these four zeros from right to left in the binary representation. Th us WITNESS computes the sequence X = h241; 298; 166; 67; 1 i. Then, in the last squaring step, WITNESS discovers that a 280 is a nontrivial square root of 1 since a 280 = 67 . mod n/ and (a 280 ) 2 = a 560 = 1 (mod n). Therefore, a = 7 is a witness to the compositeness of n, WITNESS .7;n/ returns TRUE , and MILLER-RABIN returns COMPOSITE ."
+   "text": "To illustrate the operation of MILLER-RABIN , let n be the Carmichael number 561, so that n − 1 = 560 = 2 4 • 35, t = 4, and u = 35. If the procedure chooses a = 7 as a base, the column for b = 35 in Figure 31.4 (Section 31.6) shows that WITNESS computes x 0 = a 35 = 241 . mod 561/. Because of how the MODULAR-EXPONENTIATION procedure operates recursively on its parameter b, the first four columns in Figure 31.4 represent the factor 2 4 of 5604the rightmost four zeros in the binary representation of 5604reading these four zeros from right to left in the binary representation. Th us WITNESS computes the sequence X = ⟨241; 298; 166; 67; 1⟩. Then, in the last squaring step, WITNESS discovers that a 280 is a nontrivial square root of 1 since a 280 = 67 . mod n/ and (a 280 ) 2 = a 560 = 1 (mod n). Therefore, a = 7 is a witness to the compositeness of n, WITNESS .7,n/ returns TRUE , and MILLER-RABIN returns COMPOSITE ."
   },
   {
    "type": "body",
@@ -5440,7 +5440,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 949,
    "pdf_page": 970,
-   "text": "Consider any nonwitness a. It must satisfy a n−1 = 1 (mod n) or, equivalently, a • a n−2 = 1 (mod n). Thus the equation ax = 1 (mod n) has a solution, namely a n−2 . By Corollary 31.21 on page 924, gcd(a;n) j 1, which in turn implies that gcd(a;n) = 1. Therefore, a is a member of Z − n , and all nonwitnesses belong to Z − n ."
+   "text": "Consider any nonwitness a. It must satisfy a n−1 = 1 (mod n) or, equivalently, a • a n−2 = 1 (mod n). Thus the equation ax = 1 (mod n) has a solution, namely a n−2 . By Corollary 31.21 on page 924, gcd(a,n) j 1, which in turn implies that gcd(a,n) = 1. Therefore, a is a member of Z − n , and all nonwitnesses belong to Z − n ."
   },
   {
    "type": "body",
@@ -5602,7 +5602,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 950,
    "pdf_page": 971,
-   "text": "X = ha u ;a 2u ;a 2 2 u ;:::;a 2 t u i where all computations are performed modulo n."
+   "text": "X = ⟨a u ,a 2u ,a 2 2 u ,…,a 2 t u⟩ where all computations are performed modulo n."
   },
   {
    "type": "body",
@@ -5611,7 +5611,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 950,
    "pdf_page": 971,
-   "text": "Let us call a pair (v;j) of integers acceptable if v 2 Z − n , j 2 f0;1;:::;t g, and v 2 j u = −1 (mod n):"
+   "text": "Let us call a pair (v,j) of integers acceptable if v 2 Z − n , j 2 f0,1,…,t g, and v 2 j u = −1 (mod n):"
   },
   {
    "type": "body",
@@ -5620,7 +5620,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 950,
    "pdf_page": 971,
-   "text": "Acceptable pairs certainly exist, since u is odd. Choose v = n − 1 and j = 0, and let u = 2k + 1, so that v 2 j u = (n − 1) u = (n − 1) 2kC1 . Taking this number modulo n gives (n − 1) 2kC1 = (n − 1) 2k • (n − 1) = .−1/ 2k • −1 = −1 (mod n)."
+   "text": "Acceptable pairs certainly exist, since u is odd. Choose v = n − 1 and j = 0, and let u = 2k + 1, so that v 2 j u = (n − 1) u = (n − 1) 2k + 1 . Taking this number modulo n gives (n − 1) 2k + 1 = (n − 1) 2k • (n − 1) = .−1/ 2k • −1 = −1 (mod n)."
   },
   {
    "type": "body",
@@ -5629,7 +5629,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 950,
    "pdf_page": 971,
-   "text": "Thus, (n − 1;0) is an acceptable pair. Now pick the largest possibl e j such that there exists an acceptable pair (v;j) , and fix v so that (v;j) is an acceptable pair."
+   "text": "Thus, (n − 1,0) is an acceptable pair. Now pick the largest possibl e j such that there exists an acceptable pair (v,j) , and fix v so that (v,j) is an acceptable pair."
   },
   {
    "type": "body",
@@ -5656,7 +5656,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 951,
    "pdf_page": 972,
-   "text": "(If (a;j 0 ) is acceptable, where a is a nonwitness, we must have j 0 ≤ j by how we chose j .)"
+   "text": "(If (a,j 0 ) is acceptable, where a is a nonwitness, we must have j 0 ≤ j by how we chose j .)"
   },
   {
    "type": "body",
@@ -5701,7 +5701,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 951,
    "pdf_page": 972,
-   "text": "It remains to show that w 2 Z − n . We start by working separately modulo n 1 and modulo n 2 . Working modulo n 1 , since v 2 Z − n , we have that gcd(v;n) = 1. Also, we have gcd (v;n 1 ) = 1, since if v does not have any common divisors with n, then it certainly does not have any common diviso rs with n 1 . Since w = v (mod n 1 ), we see that gcd (w;n 1 ) = 1. Working modulo n 2 , we have w = 1 (mod n 2 ) implies gcd(w;n 2 ) = 1 by Exercise 31.2-3."
+   "text": "It remains to show that w 2 Z − n . We start by working separately modulo n 1 and modulo n 2 . Working modulo n 1 , since v 2 Z − n , we have that gcd(v,n) = 1. Also, we have gcd (v,n 1 ) = 1, since if v does not have any common divisors with n, then it certainly does not have any common diviso rs with n 1 . Since w = v (mod n 1 ), we see that gcd (w,n 1 ) = 1. Working modulo n 2 , we have w = 1 (mod n 2 ) implies gcd(w,n 2 ) = 1 by Exercise 31.2-3."
   },
   {
    "type": "body",
@@ -5710,7 +5710,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 951,
    "pdf_page": 972,
-   "text": "Since gcd(w;n 1 ) = 1 and gcd(w;n 2 ) = 1, Theorem 31.6 on page 908 yields gcd(w;n 1 n 2 ) = gcd(w;n) = 1. That is, w 2 Z − n ."
+   "text": "Since gcd(w,n 1 ) = 1 and gcd(w,n 2 ) = 1, Theorem 31.6 on page 908 yields gcd(w,n 1 n 2 ) = gcd(w,n) = 1. That is, w 2 Z − n ."
   },
   {
    "type": "body",
@@ -5764,7 +5764,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 951,
    "pdf_page": 972,
-   "text": "For any odd integer n > 2 and positive integer s , the probability that MILLER- RABIN(n;s) errs is at most 2 −s ."
+   "text": "For any odd integer n > 2 and positive integer s , the probability that MILLER- RABIN(n,s) errs is at most 2 −s ."
   },
   {
    "type": "proof",
@@ -5773,7 +5773,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 951,
    "pdf_page": 972,
-   "text": "Proof By Theorem 31.39, if n is composite, then each execution of the for loop of lines 134 of MILLER-RABIN has a probability of at least 1/2 of discovering a witness to the compositeness of n. MILLER-RABIN makes an error only if it is so unlucky as to miss discovering a witness to the compositeness of n on each of the s iterations of the main loop. The probability of suc h a sequence of misses is at most 2 −s ."
+   "text": "Proof By Theorem 31.39, if n is composite, then each execution of the for loop of lines 1–4 of MILLER-RABIN has a probability of at least 1/2 of discovering a witness to the compositeness of n. MILLER-RABIN makes an error only if it is so unlucky as to miss discovering a witness to the compositeness of n on each of the s iterations of the main loop. The probability of suc h a sequence of misses is at most 2 −s ."
   },
   {
    "type": "body",
@@ -6007,7 +6007,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 953,
    "pdf_page": 974,
-   "text": "Ω(n) = lcm(2;10;16) = 80, which divides 560. Prove that Carmichael numbers must be both \"square-free\" (not divisible by the square of any prime) and the product of at least three primes. (For this reason, they are not common.)"
+   "text": "Ω(n) = lcm(2,10,16) = 80, which divides 560. Prove that Carmichael numbers must be both \"square-free\" (not divisible by the square of any prime) and the product of at least three primes. (For this reason, they are not common.)"
   },
   {
    "type": "exercise",
@@ -6016,7 +6016,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 953,
    "pdf_page": 974,
-   "text": "31.8-3 Prove that if x is a nontrivial square root of 1, modulo n, then gcd(x − 1;n) and gcd(x + 1;n) are both nontrivial divisors of n."
+   "text": "31.8-3 Prove that if x is a nontrivial square root of 1, modulo n, then gcd(x − 1,n) and gcd(x + 1,n) are both nontrivial divisors of n."
   },
   {
    "type": "problem",
@@ -6043,7 +6043,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 953,
    "pdf_page": 974,
-   "text": "This problem investigates the binary gcd algorithm, which avoids the remainder computations used in Euclid’s algorithm. a. Prove that if a and b are both even, then gcd(a;b) = 2 • gcd(a/2;b/2) . b. Prove that if a is odd and b is even, then gcd(a;b) = gcd(a;b/2) . c. Prove that if a and b are both odd, then gcd(a;b) = gcd..a − b/=2;b/ . d. Design an efficient binary gcd algorithm for input integers a and b, where a ≥ b, that runs in O(lg a) time. Assume that each subtraction, parity test, and halving takes unit time."
+   "text": "This problem investigates the binary gcd algorithm, which avoids the remainder computations used in Euclid’s algorithm. a. Prove that if a and b are both even, then gcd(a,b) = 2 • gcd(a/2,b/2) . b. Prove that if a is odd and b is even, then gcd(a,b) = gcd(a,b/2) . c. Prove that if a and b are both odd, then gcd(a,b) = gcd..a − b/=2,b/ . d. Design an efficient binary gcd algorithm for input integers a and b, where a ≥ b, that runs in O(lg a) time. Assume that each subtraction, parity test, and halving takes unit time."
   },
   {
    "type": "problem",
@@ -6052,7 +6052,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 954,
    "pdf_page": 975,
-   "text": "31-2 Analysis of bit operations in Euclid’s algorithm a. Consider the ordinary \"paper and pencil\" algorithm for long division: dividing a by b, which yields a quotient q and remainder r . Show that this method requires O..1 C lg q/ lg b/ bit operations. b. Define Ω(a; b) = .1 C lg a/.1 C lg b/. Show that the number of bit operations performed by EUCLID in reducing the problem of computing gcd(a;b) to that of computing gcd(b;a mod b) is at most c(Ω(a; b) − Ω(b; a mod b)) for some sufficiently large constant c>0 . c. Show that EUCLID(a;b) requires O(Ω(a; b)) bit operations in general and O(ˇ 2 ) bit operations when applied to two ˇ-bit inputs."
+   "text": "31-2 Analysis of bit operations in Euclid’s algorithm a. Consider the ordinary \"paper and pencil\" algorithm for long division: dividing a by b, which yields a quotient q and remainder r . Show that this method requires O..1 C lg q/ lg b/ bit operations. b. Define Ω(a; b) = .1 C lg a/.1 C lg b/. Show that the number of bit operations performed by EUCLID in reducing the problem of computing gcd(a,b) to that of computing gcd(b,a mod b) is at most c(Ω(a; b) − Ω(b; a mod b)) for some sufficiently large constant c>0 . c. Show that EUCLID(a,b) requires O(Ω(a; b)) bit operations in general and O(ˇ 2 ) bit operations when applied to two ˇ-bit inputs."
   },
   {
    "type": "problem",
@@ -6142,7 +6142,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 955,
    "pdf_page": 976,
-   "text": "Give an efficient algorithm that determines whether a given number a is a quadratic residue, modulo p. Analyze the efficiency of your algorithm. c. Prove that if p is a prime of the form 4k + 3 and a is a quadratic residue in Z − p , then a kC1 mod p is a square root of a, modulo p. How much time is required to find the square root of a quadratic residue a, modulo p? d. Describe an efficient randomized algorithm for finding a nonquadratic residue, modulo an arbitrary prime p, that is, a member of Z − p that is not a quadratic residue. How many arithmetic operations does your algorithm require on average?"
+   "text": "Give an efficient algorithm that determines whether a given number a is a quadratic residue, modulo p. Analyze the efficiency of your algorithm. c. Prove that if p is a prime of the form 4k + 3 and a is a quadratic residue in Z − p , then a k + 1 mod p is a square root of a, modulo p. How much time is required to find the square root of a quadratic residue a, modulo p? d. Describe an efficient randomized algorithm for finding a nonquadratic residue, modulo an arbitrary prime p, that is, a member of Z − p that is not a quadratic residue. How many arithmetic operations does your algorithm require on average?"
   },
   {
    "type": "chapter-notes",
@@ -6250,7 +6250,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 956,
    "pdf_page": 977,
-   "text": "The best algorithms for factoring large numbers have a running time that grows roughly exponentially with the cube root of the len gth of the number n to be factored. The general number-field sieve factoring algorithm (as developed by Buhler, Lenstra, and Pomerance [77] as an extension of the ideas in the number-field sieve factoring algorithm by Pollard [360] and Lenstra et al. [295] and refined by Coppersmith [102] and others) is perhaps the most efficient such algorithm in general for large inputs. Although it is difficult to give a rigorous analysis of this algorithm, under reasonable assumptions we can derive a running-time estimate of L(1/3;n) 1:902Co(1) , where L.˛;n/ = e (ln n) ˛ (ln ln n) 1−˛"
+   "text": "The best algorithms for factoring large numbers have a running time that grows roughly exponentially with the cube root of the len gth of the number n to be factored. The general number-field sieve factoring algorithm (as developed by Buhler, Lenstra, and Pomerance [77] as an extension of the ideas in the number-field sieve factoring algorithm by Pollard [360] and Lenstra et al. [295] and refined by Coppersmith [102] and others) is perhaps the most efficient such algorithm in general for large inputs. Although it is difficult to give a rigorous analysis of this algorithm, under reasonable assumptions we can derive a running-time estimate of L(1/3,n) 1:902 + o(1) , where L.˛,n/ = e (ln n) ˛ (ln ln n) 1−˛"
   },
   {
    "type": "body",
@@ -6268,7 +6268,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 956,
    "pdf_page": 977,
-   "text": "L(1/2;p) p"
+   "text": "L(1/2,p) p"
   },
   {
    "type": "body",
@@ -6277,7 +6277,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 956,
    "pdf_page": 977,
-   "text": "2Co(1) ."
+   "text": "2 + o(1) ."
   },
   {
    "type": "footnote",
@@ -6322,7 +6322,7 @@
    "section_title": "31.8 Primality testing",
    "printed_page": 957,
    "pdf_page": 978,
-   "text": "The elements of P and T are characters drawn from an alphabet †, which is a finite set of characters. For example, † could be the set f0; 1g, or it could be the set fa; b;:::; zg. The character arrays P and T are often called strings of characters."
+   "text": "The elements of P and T are characters drawn from an alphabet †, which is a finite set of characters. For example, † could be the set f0; 1g, or it could be the set fa; b,…; zg. The character arrays P and T are often called strings of characters."
   },
   {
    "type": "body",

@@ -70,7 +70,7 @@
    "section_title": "20.1 Representations of graphs",
    "printed_page": 549,
    "pdf_page": 570,
-   "text": "You can choose between two standard ways to represe nt a graph G = (V;E) : as a collection of adjacency lists or as an adjacen cy matrix. Either way applies to both directed and undirected graphs. Because the adjacency-list representation provides a compact way to represent sparse graphs—those for which |E| is much less than |V| 2 4it is usually the method of choice. Most of the graph algorithms presented in this book assume that an input graph i s represented in adjacency-list form. You might prefer an adjacency-matrix representation, however, when the graph is dense4|E| is close to |V| 2 4or when you need to be able to tell quickly whether there is an edge connecting two given verti ces. For example, two of the 1 2"
+   "text": "You can choose between two standard ways to represe nt a graph G = (V,E) : as a collection of adjacency lists or as an adjacen cy matrix. Either way applies to both directed and undirected graphs. Because the adjacency-list representation provides a compact way to represent sparse graphs—those for which |E| is much less than |V| 2 4it is usually the method of choice. Most of the graph algorithms presented in this book assume that an input graph i s represented in adjacency-list form. You might prefer an adjacency-matrix representation, however, when the graph is dense4|E| is close to |V| 2 4or when you need to be able to tell quickly whether there is an edge connecting two given verti ces. For example, two of the 1 2"
   },
   {
    "type": "body",
@@ -142,7 +142,7 @@
    "section_title": "20.1 Representations of graphs",
    "printed_page": 550,
    "pdf_page": 571,
-   "text": "The adjacency-list representation of a graph G = (V;E) consists of an array Adj of |V| lists, one for each vertex in V . For each u 2 V , the adjacency list Adj[u] contains all the vertices v such that there is an edge (u;v) 2 E. That is, Adj[u] consists of all the vertices adjacent to u in G. (Alternatively, it can contain pointers to these vertices.) Since the adjacen cy lists represent the edges of a graph, our pseudocode treats the array Adj as an attribute of the graph, just like the edge set E. In pseudocode, therefore, you will see notation s uch as G: Adj[u]."
+   "text": "The adjacency-list representation of a graph G = (V,E) consists of an array Adj of |V| lists, one for each vertex in V . For each u 2 V , the adjacency list Adj[u] contains all the vertices v such that there is an edge (u,v) 2 E. That is, Adj[u] consists of all the vertices adjacent to u in G. (Alternatively, it can contain pointers to these vertices.) Since the adjacen cy lists represent the edges of a graph, our pseudocode treats the array Adj as an attribute of the graph, just like the edge set E. In pseudocode, therefore, you will see notation s uch as G: Adj[u]."
   },
   {
    "type": "body",
@@ -160,7 +160,7 @@
    "section_title": "20.1 Representations of graphs",
    "printed_page": 550,
    "pdf_page": 571,
-   "text": "If G is a directed graph, the sum of the lengths of all the adjacency lists is |E|, since an edge of the form (u;v) is represented by having v appear in Adj[u]. If G is an undirected graph, the sum of the lengths of all the adjacency lists is 2 |E|, since if (u;v) is an undirected edge, then u appears in v’s adjacency list and vice versa."
+   "text": "If G is a directed graph, the sum of the lengths of all the adjacency lists is |E|, since an edge of the form (u,v) is represented by having v appear in Adj[u]. If G is an undirected graph, the sum of the lengths of all the adjacency lists is 2 |E|, since if (u,v) is an undirected edge, then u appears in v’s adjacency list and vice versa."
   },
   {
    "type": "body",
@@ -178,7 +178,7 @@
    "section_title": "20.1 Representations of graphs",
    "printed_page": 551,
    "pdf_page": 572,
-   "text": "Adjacency lists can also represent weighted graphs, that is, graphs for which each edge has an associated weight given by a weight function w W E ! R. For example, let G = (V;E) be a weighted graph with weight function w. Then you can simply store the weight w(u;v) of the edge (u;v) 2 E with vertex v in u’s adjacency list. The adjacency-list representation is quite robust in that you can modify it to support many other graph variants."
+   "text": "Adjacency lists can also represent weighted graphs, that is, graphs for which each edge has an associated weight given by a weight function w W E ! R. For example, let G = (V,E) be a weighted graph with weight function w. Then you can simply store the weight w(u,v) of the edge (u,v) 2 E with vertex v in u’s adjacency list. The adjacency-list representation is quite robust in that you can modify it to support many other graph variants."
   },
   {
    "type": "body",
@@ -187,7 +187,7 @@
    "section_title": "20.1 Representations of graphs",
    "printed_page": 551,
    "pdf_page": 572,
-   "text": "A potential disadvantage of the adjacency-list representation is that it provides no quicker way to determine whether a given edge (u;v) is present in the graph than to search for v in the adjacency list Adj[u]. An adjacency-matrix representation of the graph remedies this disadvantage, but at the cost of using asymptotically more memory. (See Exercise 20.1-8 for suggestions of variations on adjacency lists that permit faster edge lookup.)"
+   "text": "A potential disadvantage of the adjacency-list representation is that it provides no quicker way to determine whether a given edge (u,v) is present in the graph than to search for v in the adjacency list Adj[u]. An adjacency-matrix representation of the graph remedies this disadvantage, but at the cost of using asymptotically more memory. (See Exercise 20.1-8 for suggestions of variations on adjacency lists that permit faster edge lookup.)"
   },
   {
    "type": "body",
@@ -196,7 +196,7 @@
    "section_title": "20.1 Representations of graphs",
    "printed_page": 551,
    "pdf_page": 572,
-   "text": "The adjacency-matrix representation of a graph G = (V;E) assumes that the vertices are numbered 1;2;:::; |V| in some arbitrary manner. Then the adjacencymatrix representation of a graph G consists of a |V| × |V| matrix A = (a ij ) such that a ij ="
+   "text": "The adjacency-matrix representation of a graph G = (V,E) assumes that the vertices are numbered 1,2,…; |V| in some arbitrary manner. Then the adjacencymatrix representation of a graph G consists of a |V| × |V| matrix A = (a ij ) such that a ij ="
   },
   {
    "type": "body",
@@ -205,7 +205,7 @@
    "section_title": "20.1 Representations of graphs",
    "printed_page": 551,
    "pdf_page": 572,
-   "text": "1 if (i;j) 2 E; 0 otherwise :"
+   "text": "1 if (i,j) 2 E; 0 otherwise :"
   },
   {
    "type": "body",
@@ -232,7 +232,7 @@
    "section_title": "20.1 Representations of graphs",
    "printed_page": 551,
    "pdf_page": 572,
-   "text": "Observe the symmetry along the main diagonal of the adjacency matrix in Figure 20.1(c). Since in an undirected graph, (u;v) and (v;u) represent the same edge, the adjacency matrix A of an undirected graph is its own transpose: A = A T ."
+   "text": "Observe the symmetry along the main diagonal of the adjacency matrix in Figure 20.1(c). Since in an undirected graph, (u,v) and (v,u) represent the same edge, the adjacency matrix A of an undirected graph is its own transpose: A = A T ."
   },
   {
    "type": "body",
@@ -250,7 +250,7 @@
    "section_title": "20.1 Representations of graphs",
    "printed_page": 551,
    "pdf_page": 572,
-   "text": "Like the adjacency-list representation of a graph, an adjacency matrix can represent a weighted graph. For example, if G = (V;E) is a weighted graph with edge-weight function w, you can store the weight w(u;v) of the edge (u;v) 2 E as the entry in row u and column v of the adjacency matrix. If an edge does not exist, you can store a NIL value as its corresponding matrix entry, though for many problems it is convenient to use a value such as 0 or 1."
+   "text": "Like the adjacency-list representation of a graph, an adjacency matrix can represent a weighted graph. For example, if G = (V,E) is a weighted graph with edge-weight function w, you can store the weight w(u,v) of the edge (u,v) 2 E as the entry in row u and column v of the adjacency matrix. If an edge does not exist, you can store a NIL value as its corresponding matrix entry, though for many problems it is convenient to use a value such as 0 or 1."
   },
   {
    "type": "body",
@@ -277,7 +277,7 @@
    "section_title": "20.1 Representations of graphs",
    "printed_page": 552,
    "pdf_page": 573,
-   "text": "Most algorithms that operate on graphs need to main tain attributes for vertices and/or edges. We indicate these attributes using ou r usual notation, such as v: d for an attribute d of a vertex v. When we indicate edges as pairs of vertices, we use the same style of notation. For example, if edg es have an attribute f , then we denote this attribute for edge (u;v) by (u;v): f . For the purpose of presenting and understanding algorithms, our attribute notation suffices."
+   "text": "Most algorithms that operate on graphs need to main tain attributes for vertices and/or edges. We indicate these attributes using ou r usual notation, such as v: d for an attribute d of a vertex v. When we indicate edges as pairs of vertices, we use the same style of notation. For example, if edg es have an attribute f , then we denote this attribute for edge (u,v) by (u,v): f . For the purpose of presenting and understanding algorithms, our attribute notation suffices."
   },
   {
    "type": "body",
@@ -322,7 +322,7 @@
    "section_title": "20.1 Representations of graphs",
    "printed_page": 553,
    "pdf_page": 574,
-   "text": "20.1-3 The transpose of a directed graph G = (V;E) is the graph G T = (V;E T ), where"
+   "text": "20.1-3 The transpose of a directed graph G = (V,E) is the graph G T = (V,E T ), where"
   },
   {
    "type": "body",
@@ -331,7 +331,7 @@
    "section_title": "20.1 Representations of graphs",
    "printed_page": 553,
    "pdf_page": 574,
-   "text": "E T = f(v;u) 2 V × V W (u;v) 2 Eg. That is, G T is G with all its edges reversed."
+   "text": "E T = f(v,u) 2 V × V W (u,v) 2 Eg. That is, G T is G with all its edges reversed."
   },
   {
    "type": "body",
@@ -349,7 +349,7 @@
    "section_title": "20.1 Representations of graphs",
    "printed_page": 553,
    "pdf_page": 574,
-   "text": "20.1-4 Given an adjacency-list representation of a multigraph G = (V;E) , describe an"
+   "text": "20.1-4 Given an adjacency-list representation of a multigraph G = (V,E) , describe an"
   },
   {
    "type": "body",
@@ -358,7 +358,7 @@
    "section_title": "20.1 Representations of graphs",
    "printed_page": 553,
    "pdf_page": 574,
-   "text": "O(V + E)-time algorithm to compute the adjacency-list representation of the \"equivalent\" undirected graph G 0 = (V;E 0 ), where E 0 consists of the edges in E with all multiple edges between two vertices replaced by a single edge and with all self-loops removed."
+   "text": "O(V + E)-time algorithm to compute the adjacency-list representation of the \"equivalent\" undirected graph G 0 = (V,E 0 ), where E 0 consists of the edges in E with all multiple edges between two vertices replaced by a single edge and with all self-loops removed."
   },
   {
    "type": "exercise",
@@ -367,7 +367,7 @@
    "section_title": "20.1 Representations of graphs",
    "printed_page": 553,
    "pdf_page": 574,
-   "text": "20.1-5 The square of a directed graph G = (V;E) is the graph G 2 = (V;E 2 ) such that (u;v) 2 E 2 if and only if G contains a path with at most two edges between u and v. Describe efficient algorithms for computing G 2 from G for both the adjacency-list and adjacency-matrix representations of G. Analyze the running times of your algorithms."
+   "text": "20.1-5 The square of a directed graph G = (V,E) is the graph G 2 = (V,E 2 ) such that (u,v) 2 E 2 if and only if G contains a path with at most two edges between u and v. Describe efficient algorithms for computing G 2 from G for both the adjacency-list and adjacency-matrix representations of G. Analyze the running times of your algorithms."
   },
   {
    "type": "exercise",
@@ -385,7 +385,7 @@
    "section_title": "20.1 Representations of graphs",
    "printed_page": 553,
    "pdf_page": 574,
-   "text": "20.1-7 The incidence matrix of a directed graph G = (V;E) with no self-loops is a |V| × |E| matrix B = (b ij ) such that b ij ="
+   "text": "20.1-7 The incidence matrix of a directed graph G = (V,E) with no self-loops is a |V| × |E| matrix B = (b ij ) such that b ij ="
   },
   {
    "type": "body",
@@ -412,7 +412,7 @@
    "section_title": "20.1 Representations of graphs",
    "printed_page": 553,
    "pdf_page": 574,
-   "text": "20.1-8 Suppose that instead of a linked list, each array entry Adj[u] is a hash table containing the vertices v for which (u;v) 2 E, with collisions resolved by chaining. Under the assumption of uniform independent hashing, if all edge lookups are equally likely, what is the expected time to determine whet her an edge is in the graph?"
+   "text": "20.1-8 Suppose that instead of a linked list, each array entry Adj[u] is a hash table containing the vertices v for which (u,v) 2 E, with collisions resolved by chaining. Under the assumption of uniform independent hashing, if all edge lookups are equally likely, what is the expected time to determine whet her an edge is in the graph?"
   },
   {
    "type": "body",
@@ -448,7 +448,7 @@
    "section_title": "20.2 Breadth-first search",
    "printed_page": 554,
    "pdf_page": 575,
-   "text": "Given a graph G = (V;E) and a distinguished source vertex s , breadth-first search systematically explores the edges of G to \"discover\" every vertex that is reachable from s . It computes the distance from s to each reachable vertex, where the distance to a vertex v equals the smallest number of edges needed to go from s to v. Breadth-first search also produces a \"breadth-first tree\" with root s that contains all reachable vertices. For any vertex v reachable from s , the simple path in the breadth-first tree from s to v corresponds to a shortest path from s to v in G, that is, a path containing the smallest number of e dges. The algorithm works on both directed and undirected graphs."
+   "text": "Given a graph G = (V,E) and a distinguished source vertex s , breadth-first search systematically explores the edges of G to \"discover\" every vertex that is reachable from s . It computes the distance from s to each reachable vertex, where the distance to a vertex v equals the smallest number of edges needed to go from s to v. Breadth-first search also produces a \"breadth-first tree\" with root s that contains all reachable vertices. For any vertex v reachable from s , the simple path in the breadth-first tree from s to v corresponds to a shortest path from s to v in G, that is, a path containing the smallest number of e dges. The algorithm works on both directed and undirected graphs."
   },
   {
    "type": "body",
@@ -502,7 +502,7 @@
    "section_title": "20.2 Breadth-first search",
    "printed_page": 555,
    "pdf_page": 576,
-   "text": "Breadth-first search constructs a breadth-first tree, initially containing only its root, which is the source vertex s . Whenever the search discovers a white vertex v in the course of scanning the adjacency list of a g ray vertex u, the vertex v and the edge (u;v) are added to the tree. We say that u is the predecessor or parent of v in the breadth-first tree. Since every vertex reachable from s is discovered at most once, each vertex reachable from s has exactly one parent. (There is one exception: because s is the root of the breadth-first tree, it has no parent.) Ancestor and descendant relationships in the breadth-first tree are defined relative to the root s as usual: if u is on the simple path in the tree from the root s to vertex v, then u is an ancestor of v and v is a descendant of u."
+   "text": "Breadth-first search constructs a breadth-first tree, initially containing only its root, which is the source vertex s . Whenever the search discovers a white vertex v in the course of scanning the adjacency list of a g ray vertex u, the vertex v and the edge (u,v) are added to the tree. We say that u is the predecessor or parent of v in the breadth-first tree. Since every vertex reachable from s is discovered at most once, each vertex reachable from s has exactly one parent. (There is one exception: because s is the root of the breadth-first tree, it has no parent.) Ancestor and descendant relationships in the breadth-first tree are defined relative to the root s as usual: if u is on the simple path in the tree from the root s to vertex v, then u is an ancestor of v and v is a descendant of u."
   },
   {
    "type": "body",
@@ -511,7 +511,7 @@
    "section_title": "20.2 Breadth-first search",
    "printed_page": 555,
    "pdf_page": 576,
-   "text": "The breadth-first-search procedure BFS on the following page assumes that the graph G = (V;E) is represented using adjacency lists. It denotes the queue by Q, and it attaches three additional attributes to each vertex v in the graph:"
+   "text": "The breadth-first-search procedure BFS on the following page assumes that the graph G = (V,E) is represented using adjacency lists. It denotes the queue by Q, and it attaches three additional attributes to each vertex v in the graph:"
   },
   {
    "type": "body",
@@ -556,7 +556,7 @@
    "section_title": "20.2 Breadth-first search",
    "printed_page": 555,
    "pdf_page": 576,
-   "text": "The procedure BFS works as follows. With the exception of the source vertex s , lines 134 paint every vertex white, set u: d = 1 for each vertex u, and set the parent of every vertex to be NIL. Because the source vertex s is always the first vertex discovered, lines 537 paint s gray, set s: d to 0, and set the predecessor of s to NIL. Lines 839 create the queue Q, initially containing just the source vertex."
+   "text": "The procedure BFS works as follows. With the exception of the source vertex s , lines 1–4 paint every vertex white, set u: d = 1 for each vertex u, and set the parent of every vertex to be NIL. Because the source vertex s is always the first vertex discovered, lines 5–7 paint s gray, set s: d to 0, and set the predecessor of s to NIL. Lines 8–9 create the queue Q, initially containing just the source vertex."
   },
   {
    "type": "body",
@@ -565,7 +565,7 @@
    "section_title": "20.2 Breadth-first search",
    "printed_page": 555,
    "pdf_page": 576,
-   "text": "The while loop of lines 10318 iterates as long as there remain gray vertices, which are on the frontier: discovered vertices that have not yet had their adjacency lists fully examined. This while loop maintains the following invariant:"
+   "text": "The while loop of lines 10–18 iterates as long as there remain gray vertices, which are on the frontier: discovered vertices that have not yet had their adjacency lists fully examined. This while loop maintains the following invariant:"
   },
   {
    "type": "body",
@@ -638,7 +638,7 @@
     },
     {
      "n": 9,
-     "code": "ENQUEUE(Q;s)"
+     "code": "ENQUEUE(Q,s)"
     },
     {
      "n": 10,
@@ -670,14 +670,14 @@
     },
     {
      "n": 17,
-     "code": "ENQUEUE(Q;v)  / / v is now on the frontier"
+     "code": "ENQUEUE(Q,v)  / / v is now on the frontier"
     },
     {
      "n": 18,
-     "code": "u: color DBLACK  / / u is now behind the frontier in Q, is the source vertex s . Line 11 determines the gray vertex u at the head of the queue Q and removes it from Q. The for loop of lines 12317 considers each"
+     "code": "u: color DBLACK  / / u is now behind the frontier in Q, is the source vertex s . Line 11 determines the gray vertex u at the head of the queue Q and removes it from Q. The for loop of lines 12–17 considers each"
     }
    ],
-   "text": "1 for each vertex u 2 G: V − fs g\n2 u: color DWHITE\n3 u: d = 1\n4 u:Ω DNIL\n5 s: color DGRAY\n6 s: d = 0\n7 s:Ω  DNIL\n8 Q = ;\n9 ENQUEUE(Q;s)\n10 while Q ≠ ;\n11 u DDEQUEUE(Q)\n12 for each vertex v in G: Adj[u] / / search the neighbors of u\n13 if v: color = = WHITE / / is v being discovered now?\n14 v: color DGRAY\n15 v: d = u: d + 1\n16 v:Ω  = u\n17 ENQUEUE(Q;v)  / / v is now on the frontier\n18 u: color DBLACK  / / u is now behind the frontier in Q, is the source vertex s . Line 11 determines the gray vertex u at the head of the queue Q and removes it from Q. The for loop of lines 12317 considers each"
+   "text": "1 for each vertex u 2 G: V − fs g\n2 u: color DWHITE\n3 u: d = 1\n4 u:Ω DNIL\n5 s: color DGRAY\n6 s: d = 0\n7 s:Ω  DNIL\n8 Q = ;\n9 ENQUEUE(Q,s)\n10 while Q ≠ ;\n11 u DDEQUEUE(Q)\n12 for each vertex v in G: Adj[u] / / search the neighbors of u\n13 if v: color = = WHITE / / is v being discovered now?\n14 v: color DGRAY\n15 v: d = u: d + 1\n16 v:Ω  = u\n17 ENQUEUE(Q,v)  / / v is now on the frontier\n18 u: color DBLACK  / / u is now behind the frontier in Q, is the source vertex s . Line 11 determines the gray vertex u at the head of the queue Q and removes it from Q. The for loop of lines 12–17 considers each"
   },
   {
    "type": "body",
@@ -686,7 +686,7 @@
    "section_title": "20.2 Breadth-first search",
    "printed_page": 556,
    "pdf_page": 577,
-   "text": "BFS(G;s) in Q, is the source vertex s . Line 11 determines the gray vertex u at the head of the queue Q and removes it from Q. The for loop of lines 12317 considers each vertex v in the adjacency list of u. If v is white, then it has not yet been discovered, and the procedure discovers it by executing lines 14317. These lines paint vertex v gray, set v’s distance v: d to u: d + 1, record u as v’s parent v:Ω , and place v at the tail of the queue Q. Once the procedure has examined all the vertices on u’s adjacency list, it blackens u in line 18, indicating that u is now behind the frontier."
+   "text": "BFS(G,s) in Q, is the source vertex s . Line 11 determines the gray vertex u at the head of the queue Q and removes it from Q. The for loop of lines 12–17 considers each vertex v in the adjacency list of u. If v is white, then it has not yet been discovered, and the procedure discovers it by executing lines 14–17. These lines paint vertex v gray, set v’s distance v: d to u: d + 1, record u as v’s parent v:Ω , and place v at the tail of the queue Q. Once the procedure has examined all the vertices on u’s adjacency list, it blackens u in line 18, indicating that u is now behind the frontier."
   },
   {
    "type": "body",
@@ -812,7 +812,7 @@
    "section_title": "20.2 Breadth-first search",
    "printed_page": 557,
    "pdf_page": 578,
-   "text": "Figure 20.3 The operation of BFS on an undirected graph. Each p art shows the graph and the queue Q at the beginning of each iteration of the while loop of lines 10318. Vertex distances appear within each vertex and below vertices in the queue. The tan region surrounds the frontier of the search, consisting of the vertices in the queue. Th e light blue region surrounds the vertices behind the frontier, which have been dequeued. Each part highlights in orange the vertex dequeued and the breadth-first tree edges added, if any, in the previous iteration. Blue edges belong to the breadth-first tree constructed so far."
+   "text": "Figure 20.3 The operation of BFS on an undirected graph. Each p art shows the graph and the queue Q at the beginning of each iteration of the while loop of lines 10–18. Vertex distances appear within each vertex and below vertices in the queue. The tan region surrounds the frontier of the search, consisting of the vertices in the queue. Th e light blue region surrounds the vertices behind the frontier, which have been dequeued. Each part highlights in orange the vertex dequeued and the breadth-first tree edges added, if any, in the previous iteration. Blue edges belong to the breadth-first tree constructed so far."
   },
   {
    "type": "body",
@@ -821,7 +821,7 @@
    "section_title": "20.2 Breadth-first search",
    "printed_page": 558,
    "pdf_page": 579,
-   "text": "Analysis Before proving the various properties of breadth-first search, let’s take on the easier job of analyzing its running time on an input graph G = (V;E) . We use aggregate analysis, as we saw in Section 16.1. After initialization, breadth-first search never whitens a vertex, and thus the test in line 13 ensures that each vertex is enqueued at most once, and hence dequeued at most once. The operations of enqueuing and dequeuing take O(1) time, and so the total time devoted to queue operat ions is O(V) . Because the procedure scans the adjacency list of each vertex only when the vertex is dequeued, it scans each adjacency lis t at most once. Since the sum of the lengths of all |V| adjacency lists is Θ(E), the total time spent in scanning adjacency lists is O(V + E). The overhead for initialization is O(V) , and thus the total running time of the BFS procedure is O(V + E). Thus, breadth-first search runs in time linear in the size of the adjacency-list representation of G."
+   "text": "Analysis Before proving the various properties of breadth-first search, let’s take on the easier job of analyzing its running time on an input graph G = (V,E) . We use aggregate analysis, as we saw in Section 16.1. After initialization, breadth-first search never whitens a vertex, and thus the test in line 13 ensures that each vertex is enqueued at most once, and hence dequeued at most once. The operations of enqueuing and dequeuing take O(1) time, and so the total time devoted to queue operat ions is O(V) . Because the procedure scans the adjacency list of each vertex only when the vertex is dequeued, it scans each adjacency lis t at most once. Since the sum of the lengths of all |V| adjacency lists is Θ(E), the total time spent in scanning adjacency lists is O(V + E). The overhead for initialization is O(V) , and thus the total running time of the BFS procedure is O(V + E). Thus, breadth-first search runs in time linear in the size of the adjacency-list representation of G."
   },
   {
    "type": "body",
@@ -839,7 +839,7 @@
    "section_title": "20.2 Breadth-first search",
    "printed_page": 558,
    "pdf_page": 579,
-   "text": "Now, let’s see why breadth-first search finds the shortest distance from a given source vertex s to each vertex in a graph. Define the shortest-path distance i(s;v) from s to v as the minimum number of edges in any path from vertex s to vertex v."
+   "text": "Now, let’s see why breadth-first search finds the shortest distance from a given source vertex s to each vertex in a graph. Define the shortest-path distance i(s,v) from s to v as the minimum number of edges in any path from vertex s to vertex v."
   },
   {
    "type": "body",
@@ -848,7 +848,7 @@
    "section_title": "20.2 Breadth-first search",
    "printed_page": 558,
    "pdf_page": 579,
-   "text": "If there is no path from s to v, then i(s;v) = 1. We call a path of length i(s;v) from s to v a shortest path 2 from s to v. Before showing that breadth-first search correctly computes shortest-path distances, we investigate an important property of shortest-path distances."
+   "text": "If there is no path from s to v, then i(s,v) = 1. We call a path of length i(s,v) from s to v a shortest path 2 from s to v. Before showing that breadth-first search correctly computes shortest-path distances, we investigate an important property of shortest-path distances."
   },
   {
    "type": "lemma",
@@ -866,7 +866,7 @@
    "section_title": "20.2 Breadth-first search",
    "printed_page": 558,
    "pdf_page": 579,
-   "text": "Let G = (V;E) be a directed or undirected graph, and let s 2 V be an arbitrary vertex. Then, for any edge (u;v) 2 E, i(s;v) ≤ i(s;u) + 1:"
+   "text": "Let G = (V,E) be a directed or undirected graph, and let s 2 V be an arbitrary vertex. Then, for any edge (u,v) 2 E, i(s,v) ≤ i(s,u) + 1:"
   },
   {
    "type": "proof",
@@ -875,7 +875,7 @@
    "section_title": "20.2 Breadth-first search",
    "printed_page": 558,
    "pdf_page": 579,
-   "text": "Proof If u is reachable from s , then so is v. In this case, the shortest path from s to v cannot be longer than the shortest path from s to u followed by the edge (u;v) , and thus the inequality holds. If u is not reachable from s , then i(s;u) = 1, and again, the inequality holds."
+   "text": "Proof If u is reachable from s , then so is v. In this case, the shortest path from s to v cannot be longer than the shortest path from s to u followed by the edge (u,v) , and thus the inequality holds. If u is not reachable from s , then i(s,u) = 1, and again, the inequality holds."
   },
   {
    "type": "body",
@@ -884,7 +884,7 @@
    "section_title": "20.2 Breadth-first search",
    "printed_page": 558,
    "pdf_page": 579,
-   "text": "Our goal is to show that the BFS procedure properly computes v: d = i(s;v) for each vertex v 2 V . We first show that v: d bounds i(s;v) from above."
+   "text": "Our goal is to show that the BFS procedure properly computes v: d = i(s,v) for each vertex v 2 V . We first show that v: d bounds i(s,v) from above."
   },
   {
    "type": "body",
@@ -911,7 +911,7 @@
    "section_title": "20.2 Breadth-first search",
    "printed_page": 559,
    "pdf_page": 580,
-   "text": "Let G = (V;E) be a directed or undirected graph, and suppose that BFS is run on G from a given source vertex s 2 V . Then, for each vertex v 2 V , the value v: d computed by BFS satisfies v: d ≥ i(s;v) at all times, including at termination."
+   "text": "Let G = (V,E) be a directed or undirected graph, and suppose that BFS is run on G from a given source vertex s 2 V . Then, for each vertex v 2 V , the value v: d computed by BFS satisfies v: d ≥ i(s,v) at all times, including at termination."
   },
   {
    "type": "proof",
@@ -920,7 +920,7 @@
    "section_title": "20.2 Breadth-first search",
    "printed_page": 559,
    "pdf_page": 580,
-   "text": "Proof The lemma is true intuitively, because any finite value assigned to v: d equals the number of edges on some path from s to v. The formal proof is by induction on the number of ENQUEUE operations. The inductive hypothesis is that v: d ≥ i(s;v) for all v 2 V ."
+   "text": "Proof The lemma is true intuitively, because any finite value assigned to v: d equals the number of edges on some path from s to v. The formal proof is by induction on the number of ENQUEUE operations. The inductive hypothesis is that v: d ≥ i(s,v) for all v 2 V ."
   },
   {
    "type": "body",
@@ -929,7 +929,7 @@
    "section_title": "20.2 Breadth-first search",
    "printed_page": 559,
    "pdf_page": 580,
-   "text": "The base case of the induction is the situation immediately after enqueuing s in line 9 of BFS. The inductive hypothesis holds here, because s: d = 0 = i(s;s) and v: d = 1 ≥ i(s;v) for all v 2 V − fs g."
+   "text": "The base case of the induction is the situation immediately after enqueuing s in line 9 of BFS. The inductive hypothesis holds here, because s: d = 0 = i(s,s) and v: d = 1 ≥ i(s,v) for all v 2 V − fs g."
   },
   {
    "type": "body",
@@ -938,7 +938,7 @@
    "section_title": "20.2 Breadth-first search",
    "printed_page": 559,
    "pdf_page": 580,
-   "text": "For the inductive step, consider a white vertex v that is discovered during the search from a vertex u. The inductive hypothesis implies that u: d ≥ i(s;u) . The assignment performed by line 15 and Lemma 20.1 give v: d = u: d + 1"
+   "text": "For the inductive step, consider a white vertex v that is discovered during the search from a vertex u. The inductive hypothesis implies that u: d ≥ i(s,u) . The assignment performed by line 15 and Lemma 20.1 give v: d = u: d + 1"
   },
   {
    "type": "body",
@@ -947,7 +947,7 @@
    "section_title": "20.2 Breadth-first search",
    "printed_page": 559,
    "pdf_page": 580,
-   "text": "≥ i(s;u) + 1"
+   "text": "≥ i(s,u) + 1"
   },
   {
    "type": "body",
@@ -956,7 +956,7 @@
    "section_title": "20.2 Breadth-first search",
    "printed_page": 559,
    "pdf_page": 580,
-   "text": "≥ i(s;v):"
+   "text": "≥ i(s,v):"
   },
   {
    "type": "body",
@@ -965,7 +965,7 @@
    "section_title": "20.2 Breadth-first search",
    "printed_page": 559,
    "pdf_page": 580,
-   "text": "Vertex v is then enqueued, and it is never enqueued again because it is also grayed and lines 14317 execute only for white vertices. Thus, the value of v: d never changes again, and the inductive hypothesis is maintained."
+   "text": "Vertex v is then enqueued, and it is never enqueued again because it is also grayed and lines 14–17 execute only for white vertices. Thus, the value of v: d never changes again, and the inductive hypothesis is maintained."
   },
   {
    "type": "body",
@@ -974,7 +974,7 @@
    "section_title": "20.2 Breadth-first search",
    "printed_page": 559,
    "pdf_page": 580,
-   "text": "To prove that v: d = i(s;v), we first show more precisely how the queue Q operates during the course of BFS. The next lemma s hows that at all times, the d values of vertices in the queue either are all the same or form a sequence hk;k;:::;k;k + 1;k + 1;:::;k + 1i for some integer k ≥ 0."
+   "text": "To prove that v: d = i(s,v), we first show more precisely how the queue Q operates during the course of BFS. The next lemma s hows that at all times, the d values of vertices in the queue either are all the same or form a sequence hk,k,…,k,k + 1,k + 1,…,k + 1i for some integer k ≥ 0."
   },
   {
    "type": "lemma",
@@ -992,7 +992,7 @@
    "section_title": "20.2 Breadth-first search",
    "printed_page": 559,
    "pdf_page": 580,
-   "text": "Suppose that during the execution of BFS on a graph G = (V;E) , the queue Q contains the vertices hv 1 ;v 2 ;:::;v r i, where v 1 is the head of Q and v r is the tail."
+   "text": "Suppose that during the execution of BFS on a graph G = (V,E) , the queue Q contains the vertices ⟨v 1 ,v 2 ,…,v r⟩, where v 1 is the head of Q and v r is the tail."
   },
   {
    "type": "body",
@@ -1001,7 +1001,7 @@
    "section_title": "20.2 Breadth-first search",
    "printed_page": 559,
    "pdf_page": 580,
-   "text": "Then, v r : d ≤ v 1 : d + 1 and v i : d ≤ v i C1 : d for i = 1;2;:::;r − 1."
+   "text": "Then, v r : d ≤ v 1 : d + 1 and v i : d ≤ v i + 1 : d for i = 1,2,…,r − 1."
   },
   {
    "type": "proof",
@@ -1019,7 +1019,7 @@
    "section_title": "20.2 Breadth-first search",
    "printed_page": 559,
    "pdf_page": 580,
-   "text": "For the inductive step, we must prove that the lemma holds after both dequeuing and enqueuing a vertex. First, we examine dequeuing . When the head v 1 of the queue is dequeued, v 2 becomes the new head. (If the queue becomes empty, then the lemma holds vacuously.) By the inductive hypoth esis, v 1 : d ≤ v 2 : d. But then we have v r : d ≤ v 1 : d C1 ≤ v 2 : d C1, and the remaining inequalities are unaffected."
+   "text": "For the inductive step, we must prove that the lemma holds after both dequeuing and enqueuing a vertex. First, we examine dequeuing . When the head v 1 of the queue is dequeued, v 2 becomes the new head. (If the queue becomes empty, then the lemma holds vacuously.) By the inductive hypoth esis, v 1 : d ≤ v 2 : d. But then we have v r : d ≤ v 1 : d + 1 ≤ v 2 : d + 1, and the remaining inequalities are unaffected."
   },
   {
    "type": "body",
@@ -1037,7 +1037,7 @@
    "section_title": "20.2 Breadth-first search",
    "printed_page": 559,
    "pdf_page": 580,
-   "text": "Let G = (V;E) be a directed or undirected graph, and suppose that BFS is run on G from a given source vertex s 2 V . Then, during its execution, BFS discovers every vertex v 2 V that is reachable from the source s , and upon termination, v: d = i(s;v) for all v 2 V . Moreover, for any vertex v ≠ s that is reachable from s , one of the shortest paths from s to v is a shortest path from s to v:Ω followed by the edge (v:Ω; v) ."
+   "text": "Let G = (V,E) be a directed or undirected graph, and suppose that BFS is run on G from a given source vertex s 2 V . Then, during its execution, BFS discovers every vertex v 2 V that is reachable from the source s , and upon termination, v: d = i(s,v) for all v 2 V . Moreover, for any vertex v ≠ s that is reachable from s , one of the shortest paths from s to v is a shortest path from s to v:Ω followed by the edge (v:Ω; v) ."
   },
   {
    "type": "body",
@@ -1046,7 +1046,7 @@
    "section_title": "20.2 Breadth-first search",
    "printed_page": 560,
    "pdf_page": 581,
-   "text": "Now, we examine enqueuing. When line 17 of BFS enqueues a vertex v onto a queue containing vertices hv 1 ;v 2 ;:::;v r i, the enqueued vertex becomes v r C1 ."
+   "text": "Now, we examine enqueuing. When line 17 of BFS enqueues a vertex v onto a queue containing vertices ⟨v 1 ,v 2 ,…,v r⟩, the enqueued vertex becomes v r + 1 ."
   },
   {
    "type": "body",
@@ -1064,7 +1064,7 @@
    "section_title": "20.2 Breadth-first search",
    "printed_page": 560,
    "pdf_page": 581,
-   "text": "Thus, v r C1 : d = v: d = u: d + 1 ≤ v 1 : d + 1. Since v r : d ≤ u: d + 1, we have v r : d ≤ u: d + 1 = v: d = v r C1 : d, and the remaining inequalities are unaffected."
+   "text": "Thus, v r + 1 : d = v: d = u: d + 1 ≤ v 1 : d + 1. Since v r : d ≤ u: d + 1, we have v r : d ≤ u: d + 1 = v: d = v r + 1 : d, and the remaining inequalities are unaffected."
   },
   {
    "type": "body",
@@ -1136,7 +1136,7 @@
    "section_title": "20.2 Breadth-first search",
    "printed_page": 560,
    "pdf_page": 581,
-   "text": "Proof Assume for the purpose of contradiction that some v ertex receives a d value not equal to its shortest-path distance. Of all such vertices, let v be a vertex that has the minimum i(s;v) . By Lemma 20.2, we have v: d ≥ i(s;v) , and thus v: d >i(s;v) . We cannot have v = s , because s: d = 0 and i(s;s) = 0. Vertex v must be reachable from s , for otherwise we would have i(s;v) = 1 ≥ v: d. Let u be the vertex immediately preceding v on some shortest path from s to v (since v ≠ s , vertex u must exist), so that i(s;v) = i(s;u) C1. Because i(s;u)<i(s;v) , and because of how we chose v, we have u: d = i(s;u) . Putting these properties together gives v: d >i(s;v) = i(s;u) + 1 = u: d + 1: (20.1)"
+   "text": "Proof Assume for the purpose of contradiction that some v ertex receives a d value not equal to its shortest-path distance. Of all such vertices, let v be a vertex that has the minimum i(s,v) . By Lemma 20.2, we have v: d ≥ i(s,v) , and thus v: d >i(s,v) . We cannot have v = s , because s: d = 0 and i(s,s) = 0. Vertex v must be reachable from s , for otherwise we would have i(s,v) = 1 ≥ v: d. Let u be the vertex immediately preceding v on some shortest path from s to v (since v ≠ s , vertex u must exist), so that i(s,v) = i(s,u) + 1. Because i(s,u)<i(s,v) , and because of how we chose v, we have u: d = i(s,u) . Putting these properties together gives v: d >i(s,v) = i(s,u) + 1 = u: d + 1: (20.1)"
   },
   {
    "type": "body",
@@ -1154,7 +1154,7 @@
    "section_title": "20.2 Breadth-first search",
    "printed_page": 561,
    "pdf_page": 582,
-   "text": "Thus we conclude that v: d = i(s;v) for all v 2 V . All vertices v reachable from s must be discovered, for otherwise they would have 1 = v: d >i(s;v) . To conclude the proof of the theorem, observe from lines 15316 that if v:Ω = u, then v: d = u: d + 1. Thus, to form a shortest path from s to v, take a shortest path from s to v:Ω and then traverse the edge (v:Ω; v) ."
+   "text": "Thus we conclude that v: d = i(s,v) for all v 2 V . All vertices v reachable from s must be discovered, for otherwise they would have 1 = v: d >i(s,v) . To conclude the proof of the theorem, observe from lines 15–16 that if v:Ω = u, then v: d = u: d + 1. Thus, to form a shortest path from s to v, take a shortest path from s to v:Ω and then traverse the edge (v:Ω; v) ."
   },
   {
    "type": "body",
@@ -1172,7 +1172,7 @@
    "section_title": "20.2 Breadth-first search",
    "printed_page": 561,
    "pdf_page": 582,
-   "text": "The blue edges in Figure 20.3 show the breadth-first tree built by the BFS procedure as it searches the graph. The tree correspon ds to the Ω attributes. More formally, for a graph G = (V;E) with source s , we define the predecessor sub- graph of G as G − = .V − ;E − /, where"
+   "text": "The blue edges in Figure 20.3 show the breadth-first tree built by the BFS procedure as it searches the graph. The tree correspon ds to the Ω attributes. More formally, for a graph G = (V,E) with source s , we define the predecessor sub- graph of G as G − = .V − ,E − /, where"
   },
   {
    "type": "body",
@@ -1217,7 +1217,7 @@
    "section_title": "20.2 Breadth-first search",
    "printed_page": 561,
    "pdf_page": 582,
-   "text": "When applied to a directed or undirected graph G = (V;E), procedure BFS constructs Ω so that the predecessor subgraph G − = .V − ;E − / is a breadth-first tree."
+   "text": "When applied to a directed or undirected graph G = (V,E), procedure BFS constructs Ω so that the predecessor subgraph G − = .V − ,E − / is a breadth-first tree."
   },
   {
    "type": "pseudocode",
@@ -1263,7 +1263,7 @@
    "section_title": "20.2 Breadth-first search",
    "printed_page": 562,
    "pdf_page": 583,
-   "text": "Proof Line 16 of BFS sets v:Ω = u if and only if (u;v) 2 E and i(s;v)< 14 that is, if v is reachable from s 4and thus V − consists of the vertices in V reachable from s . Since the predecessor subgraph G − forms a tree, by Theorem B.2, it contains a unique simple path from s to each vertex in V − . Applying Theorem 20.5 inductively yields that every such path is a shortest path in G."
+   "text": "Proof Line 16 of BFS sets v:Ω = u if and only if (u,v) 2 E and i(s,v)< 14 that is, if v is reachable from s 4and thus V − consists of the vertices in V reachable from s . Since the predecessor subgraph G − forms a tree, by Theorem B.2, it contains a unique simple path from s to each vertex in V − . Applying Theorem 20.5 inductively yields that every such path is a shortest path in G."
   },
   {
    "type": "body",
@@ -1281,7 +1281,7 @@
    "section_title": "20.2 Breadth-first search",
    "printed_page": 562,
    "pdf_page": 583,
-   "text": "PRINT-PATH(G;s;v)"
+   "text": "PRINT-PATH(G,s,v)"
   },
   {
    "type": "exercise",
@@ -1344,7 +1344,7 @@
    "section_title": "20.2 Breadth-first search",
    "printed_page": 563,
    "pdf_page": 584,
-   "text": "20.2-6 Give an example of a directed graph G = (V;E) , a source vertex s 2 V , and a set of tree edges E − ⊆ E such that for each vertex v 2 V , the unique simple path in the graph .V;E − / from s to v is a shortest path in G, yet the set of edges E − cannot be produced by running BFS on G, no matter how the vertices are ordered in each adjacency list."
+   "text": "20.2-6 Give an example of a directed graph G = (V,E) , a source vertex s 2 V , and a set of tree edges E − ⊆ E such that for each vertex v 2 V , the unique simple path in the graph .V,E − / from s to v is a shortest path in G, yet the set of edges E − cannot be produced by running BFS on G, no matter how the vertices are ordered in each adjacency list."
   },
   {
    "type": "exercise",
@@ -1371,7 +1371,7 @@
    "section_title": "20.3 Depth-first search",
    "printed_page": 563,
    "pdf_page": 584,
-   "text": "The diameter of a tree T = (V;E) is defined as max fi(u;v) W u;v 2 V g, that is, the largest of all shortest-path distances in the tree. Give an efficient algorithm to compute the diameter of a tree, and analyze the running time of your algorithm."
+   "text": "The diameter of a tree T = (V,E) is defined as max fi(u,v) W u,v 2 V g, that is, the largest of all shortest-path distances in the tree. Give an efficient algorithm to compute the diameter of a tree, and analyze the running time of your algorithm."
   },
   {
    "type": "body",
@@ -1389,7 +1389,7 @@
    "section_title": "20.3 Depth-first search",
    "printed_page": 564,
    "pdf_page": 585,
-   "text": "As in breadth-first search, whenever depth-first search discovers a vertex v during a scan of the adjacency list of an already disc overed vertex u, it records this event by setting v’s predecessor attribute v:Ω to u. Unlike breadth-first search, whose predecessor subgraph forms a tree, depth-first search produces a predecessor subgraph that might contain several trees, because the search may repeat from multiple sources. Therefore, we define the predecessor subgraph of a depth-first search slightly differently from that of a breadth-first search: it always includes all vertices, and it accounts for multiple sources. Specifically, for a depth-first search the predecessor subgraph is G − = .V;E − /, where"
+   "text": "As in breadth-first search, whenever depth-first search discovers a vertex v during a scan of the adjacency list of an already disc overed vertex u, it records this event by setting v’s predecessor attribute v:Ω to u. Unlike breadth-first search, whose predecessor subgraph forms a tree, depth-first search produces a predecessor subgraph that might contain several trees, because the search may repeat from multiple sources. Therefore, we define the predecessor subgraph of a depth-first search slightly differently from that of a breadth-first search: it always includes all vertices, and it accounts for multiple sources. Specifically, for a depth-first search the predecessor subgraph is G − = .V,E − /, where"
   },
   {
    "type": "body",
@@ -1481,10 +1481,10 @@
     },
     {
      "n": 7,
-     "code": "DFS-VISIT (G;u)"
+     "code": "DFS-VISIT (G,u)"
     }
    ],
-   "text": "1 for each vertex u 2 G: V\n2 u: color DWHITE\n3 u:Ω DNIL\n4 time = 0\n5 for each vertex u 2 G: V\n6 if u: color == WHITE\n7 DFS-VISIT (G;u)"
+   "text": "1 for each vertex u 2 G: V\n2 u: color DWHITE\n3 u:Ω DNIL\n4 time = 0\n5 for each vertex u 2 G: V\n6 if u: color == WHITE\n7 DFS-VISIT (G,u)"
   },
   {
    "type": "pseudocode",
@@ -1510,7 +1510,7 @@
     },
     {
      "n": 4,
-     "code": "for each vertex v in G: Adj[u] / / explore each edge (u;v)"
+     "code": "for each vertex v in G: Adj[u] / / explore each edge (u,v)"
     },
     {
      "n": 5,
@@ -1522,7 +1522,7 @@
     },
     {
      "n": 7,
-     "code": "DFS-VISIT (G;v)"
+     "code": "DFS-VISIT (G,v)"
     },
     {
      "n": 8,
@@ -1537,7 +1537,7 @@
      "code": "u: color DBLACK  / / blacken u; it is finished"
     }
    ],
-   "text": "1 time = time C 1 / / white vertex u has just been discovered\n2 u: d = time\n3 u: color DGRAY\n4 for each vertex v in G: Adj[u] / / explore each edge (u;v)\n5 if v: color == WHITE\n6 v:Ω  = u\n7 DFS-VISIT (G;v)\n8 time = time C 1\n9 u: f = time\n10 u: color DBLACK  / / blacken u; it is finished"
+   "text": "1 time = time C 1 / / white vertex u has just been discovered\n2 u: d = time\n3 u: color DGRAY\n4 for each vertex v in G: Adj[u] / / explore each edge (u,v)\n5 if v: color == WHITE\n6 v:Ω  = u\n7 DFS-VISIT (G,v)\n8 time = time C 1\n9 u: f = time\n10 u: color DBLACK  / / blacken u; it is finished"
   },
   {
    "type": "body",
@@ -1546,7 +1546,7 @@
    "section_title": "20.3 Depth-first search",
    "printed_page": 565,
    "pdf_page": 586,
-   "text": "DFS-VISIT (G;u)"
+   "text": "DFS-VISIT (G,u)"
   },
   {
    "type": "body",
@@ -1555,7 +1555,7 @@
    "section_title": "20.3 Depth-first search",
    "printed_page": 565,
    "pdf_page": 586,
-   "text": "The DFS procedure works as follows. Lines 133 paint all vertices white and initialize their Ω attributes to NIL. Line 4 resets the global time counter. Lines 537 check each vertex in V in turn and, when a white vertex is found, visit it by calling"
+   "text": "The DFS procedure works as follows. Lines 1–3 paint all vertices white and initialize their Ω attributes to NIL. Line 4 resets the global time counter. Lines 5–7 check each vertex in V in turn and, when a white vertex is found, visit it by calling"
   },
   {
    "type": "body",
@@ -1564,7 +1564,7 @@
    "section_title": "20.3 Depth-first search",
    "printed_page": 565,
    "pdf_page": 586,
-   "text": "DFS-VISIT. Upon every call of DFS-VISIT (G;u) in line 7, vertex u becomes the root of a new tree in the depth-first forest. When DFS returns, every vertex u has been assigned a discovery time u: d and a finish time u: f ."
+   "text": "DFS-VISIT. Upon every call of DFS-VISIT (G,u) in line 7, vertex u becomes the root of a new tree in the depth-first forest. When DFS returns, every vertex u has been assigned a discovery time u: d and a finish time u: f ."
   },
   {
    "type": "body",
@@ -1573,7 +1573,7 @@
    "section_title": "20.3 Depth-first search",
    "printed_page": 565,
    "pdf_page": 586,
-   "text": "In each call DFS-VISIT (G;u) , vertex u is initially white. Lines 133 increment the global variable time, record the new value of time as the discovery time u: d, and paint u gray. Lines 437 examine each vertex v adjacent to u and recursively visit v if it is white. As line 4 considers each vertex v 2 Adj[u], the depth-first search explores edge (u;v) . Finally, after every edge leaving u has been explored, lines 8310 increment time, record the finish time in u: f , and paint u black."
+   "text": "In each call DFS-VISIT (G,u) , vertex u is initially white. Lines 1–3 increment the global variable time, record the new value of time as the discovery time u: d, and paint u gray. Lines 4–7 examine each vertex v adjacent to u and recursively visit v if it is white. As line 4 considers each vertex v 2 Adj[u], the depth-first search explores edge (u,v) . Finally, after every edge leaving u has been explored, lines 8–10 increment time, record the finish time in u: f , and paint u black."
   },
   {
    "type": "body",
@@ -1672,7 +1672,7 @@
    "section_title": "20.3 Depth-first search",
    "printed_page": 566,
    "pdf_page": 587,
-   "text": "What is the running time of DFS? The loops on lines 133 and lines 537 of DFS take Θ(V) time, exclusive of the time to execute the calls to DFS-VISIT . As we did for breadth-first search, we use aggregate analysis. The procedure DFS-VISIT is called exactly once for each vertex v 2 V , since the vertex u on which DFS-VISIT is invoked must be white and the first thing DFS-VISIT does is paint vertex u gray."
+   "text": "What is the running time of DFS? The loops on lines 1–3 and lines 5–7 of DFS take Θ(V) time, exclusive of the time to execute the calls to DFS-VISIT . As we did for breadth-first search, we use aggregate analysis. The procedure DFS-VISIT is called exactly once for each vertex v 2 V , since the vertex u on which DFS-VISIT is invoked must be white and the first thing DFS-VISIT does is paint vertex u gray."
   },
   {
    "type": "body",
@@ -1681,7 +1681,7 @@
    "section_title": "20.3 Depth-first search",
    "printed_page": 566,
    "pdf_page": 587,
-   "text": "During an execution of DFS-VISIT (G;v), the loop in lines 437 executes jAdj[v]j times. Since P v2V jAdj[v]j = Θ(E) and DFS-VISIT is called once per vertex, the total cost of executing lines 437 of DFS-VISIT is Θ(V + E). The running time of DFS is therefore Θ(V + E)."
+   "text": "During an execution of DFS-VISIT (G,v), the loop in lines 4–7 executes jAdj[v]j times. Since P v2V jAdj[v]j = Θ(E) and DFS-VISIT is called once per vertex, the total cost of executing lines 4–7 of DFS-VISIT is Θ(V + E). The running time of DFS is therefore Θ(V + E)."
   },
   {
    "type": "body",
@@ -1708,7 +1708,7 @@
    "section_title": "20.3 Depth-first search",
    "printed_page": 567,
    "pdf_page": 588,
-   "text": "Depth-first search yields valuable information about the structure of a graph. Perhaps the most basic property of depth-first search is that the predecessor sub- graph G − does indeed form a forest of trees, since the struc ture of the depthfirst trees exactly mirrors the structure of recursive calls of DFS-VISIT . That is, u = v:Ω if and only if DFS-VISIT (G;v) was called during a search of u’s adjacency list. Additionally, vertex v is a descendant of vertex u in the depth-first forest if and only if v is discovered during the time in which u is gray."
+   "text": "Depth-first search yields valuable information about the structure of a graph. Perhaps the most basic property of depth-first search is that the predecessor sub- graph G − does indeed form a forest of trees, since the struc ture of the depthfirst trees exactly mirrors the structure of recursive calls of DFS-VISIT . That is, u = v:Ω if and only if DFS-VISIT (G,v) was called during a search of u’s adjacency list. Additionally, vertex v is a descendant of vertex u in the depth-first forest if and only if v is discovered during the time in which u is gray."
   },
   {
    "type": "body",
@@ -1735,7 +1735,7 @@
    "section_title": "20.3 Depth-first search",
    "printed_page": 567,
    "pdf_page": 588,
-   "text": "In any depth-first search of a (directed or undirected) graph G = (V;E) , for any two vertices u and v, exactly one of the following three conditions holds:"
+   "text": "In any depth-first search of a (directed or undirected) graph G = (V,E) , for any two vertices u and v, exactly one of the following three conditions holds:"
   },
   {
    "type": "body",
@@ -1744,7 +1744,7 @@
    "section_title": "20.3 Depth-first search",
    "printed_page": 567,
    "pdf_page": 588,
-   "text": "• the intervals [u: d;u: f ] and [v: d;v: f ] are entirely disjoint, and neither u nor v is a descendant of the other in the depth-first forest, • the interval [u: d;u: f ] is contained entirely within the interval [v: d;v: f ], and u is a descendant of v in a depth-first tree, or • the interval [v: d;v: f ] is contained entirely within the interval [u: d;u: f ], and v is a descendant of u in a depth-first tree."
+   "text": "• the intervals [u: d,u: f ] and [v: d,v: f ] are entirely disjoint, and neither u nor v is a descendant of the other in the depth-first forest, • the interval [u: d,u: f ] is contained entirely within the interval [v: d,v: f ], and u is a descendant of v in a depth-first tree, or • the interval [v: d,v: f ] is contained entirely within the interval [u: d,u: f ], and v is a descendant of u in a depth-first tree."
   },
   {
    "type": "proof",
@@ -1762,7 +1762,7 @@
    "section_title": "20.3 Depth-first search",
    "printed_page": 567,
    "pdf_page": 588,
-   "text": "Moreover, since v was discovered after u, all of its outgoing edges are explored, and v is finished, before the search returns to and finishes u. In this case, therefore, the interval [v: d;v: f ] is entirely contained within the interval [u: d;u: f ]. In the other subcase, u: f < v: d, and by inequality (20.4), u: d < u: f < v: d < v: f , and thus the intervals [u: d;u: f ] and [v: d;v: f ] are disjoint. Because the intervals are disjoint, neither vertex was discovered while the other was gray, and so neither vertex is a descendant of the other."
+   "text": "Moreover, since v was discovered after u, all of its outgoing edges are explored, and v is finished, before the search returns to and finishes u. In this case, therefore, the interval [v: d,v: f ] is entirely contained within the interval [u: d,u: f ]. In the other subcase, u: f < v: d, and by inequality (20.4), u: d < u: f < v: d < v: f , and thus the intervals [u: d,u: f ] and [v: d,v: f ] are disjoint. Because the intervals are disjoint, neither vertex was discovered while the other was gray, and so neither vertex is a descendant of the other."
   },
   {
    "type": "body",
@@ -1888,7 +1888,7 @@
    "section_title": "20.3 Depth-first search",
    "printed_page": 569,
    "pdf_page": 590,
-   "text": "In a depth-first forest of a (directed or undirected) graph G = (V;E) , vertex v is a descendant of vertex u if and only if at the time u: d that the search discovers u, there is a path from u to v consisting entirely of white vertices."
+   "text": "In a depth-first forest of a (directed or undirected) graph G = (V,E) , vertex v is a descendant of vertex u if and only if at the time u: d that the search discovers u, there is a path from u to v consisting entirely of white vertices."
   },
   {
    "type": "proof",
@@ -1915,7 +1915,7 @@
    "section_title": "20.3 Depth-first search",
    "printed_page": 569,
    "pdf_page": 590,
-   "text": "[v: d;v: f ] is contained entirely within the interval [u: d;u: f ]. By Corollary 20.8, v must after all be a descendant of u."
+   "text": "[v: d,v: f ] is contained entirely within the interval [u: d,u: f ]. By Corollary 20.8, v must after all be a descendant of u."
   },
   {
    "type": "body",
@@ -1951,7 +1951,7 @@
    "section_title": "20.3 Depth-first search",
    "printed_page": 569,
    "pdf_page": 590,
-   "text": "1. Tree edges are edges in the depth-first forest G − . Edge (u;v) is a tree edge if v was first discovered by exploring edge (u;v) ."
+   "text": "1. Tree edges are edges in the depth-first forest G − . Edge (u,v) is a tree edge if v was first discovered by exploring edge (u,v) ."
   },
   {
    "type": "body",
@@ -1960,7 +1960,7 @@
    "section_title": "20.3 Depth-first search",
    "printed_page": 569,
    "pdf_page": 590,
-   "text": "2. Back edges are those edges (u;v) connecting a vertex u to an ancestor v in a depth-first tree. We consider self-loops, which may occur in directed graphs, to be back edges."
+   "text": "2. Back edges are those edges (u,v) connecting a vertex u to an ancestor v in a depth-first tree. We consider self-loops, which may occur in directed graphs, to be back edges."
   },
   {
    "type": "body",
@@ -1969,7 +1969,7 @@
    "section_title": "20.3 Depth-first search",
    "printed_page": 569,
    "pdf_page": 590,
-   "text": "3. Forward edges are those nontree edges (u;v) connecting a vertex u to a proper descendant v in a depth-first tree."
+   "text": "3. Forward edges are those nontree edges (u,v) connecting a vertex u to a proper descendant v in a depth-first tree."
   },
   {
    "type": "body",
@@ -1996,7 +1996,7 @@
    "section_title": "20.3 Depth-first search",
    "printed_page": 570,
    "pdf_page": 591,
-   "text": "The DFS algorithm has enough information to classify some edges as it encounters them. The key idea is that when an edge (u;v) is first explored, the color of vertex v says something about the edge:"
+   "text": "The DFS algorithm has enough information to classify some edges as it encounters them. The key idea is that when an edge (u,v) is first explored, the color of vertex v says something about the edge:"
   },
   {
    "type": "body",
@@ -2014,7 +2014,7 @@
    "section_title": "20.3 Depth-first search",
    "printed_page": 570,
    "pdf_page": 591,
-   "text": "The first case is immediate from the specification of the algorithm. For the second case, observe that the gray vertices always form a linear chain of descendants corresponding to the stack of active DFS-VISIT invocations. The number of gray vertices is 1 more than the depth in the depth-first forest of the vertex most recently discovered. Depth-first search always explores from the deepest gray vertex, so that an edge that reaches another gray vertex has r eached an ancestor. The third case handles the remaining possibility. Exercise 20.3-5 asks you to show that such an edge (u;v) is a forward edge if u: d <v: d and a cross edge if u: d >v: d."
+   "text": "The first case is immediate from the specification of the algorithm. For the second case, observe that the gray vertices always form a linear chain of descendants corresponding to the stack of active DFS-VISIT invocations. The number of gray vertices is 1 more than the depth in the depth-first forest of the vertex most recently discovered. Depth-first search always explores from the deepest gray vertex, so that an edge that reaches another gray vertex has r eached an ancestor. The third case handles the remaining possibility. Exercise 20.3-5 asks you to show that such an edge (u,v) is a forward edge if u: d <v: d and a cross edge if u: d >v: d."
   },
   {
    "type": "body",
@@ -2050,7 +2050,7 @@
    "section_title": "20.3 Depth-first search",
    "printed_page": 570,
    "pdf_page": 591,
-   "text": "Proof Let (u;v) be an arbitrary edge of G, and suppose without loss of generality that u: d < v: d. Then, while u is gray, the search must discover and finish v before it finishes u, since v is on u’s adjacency list. If the first time that the search explores edge (u;v) , it is in the direction from u to v, then v is undiscovered"
+   "text": "Proof Let (u,v) be an arbitrary edge of G, and suppose without loss of generality that u: d < v: d. Then, while u is gray, the search must discover and finish v before it finishes u, since v is on u’s adjacency list. If the first time that the search explores edge (u,v) , it is in the direction from u to v, then v is undiscovered"
   },
   {
    "type": "body",
@@ -2059,7 +2059,7 @@
    "section_title": "20.3 Depth-first search",
    "printed_page": 570,
    "pdf_page": 591,
-   "text": "(white) until that time, for otherwise the search w ould have explored this edge already in the direction from v to u. Thus, (u;v) becomes a tree edge. If the search explores (u;v) first in the direction from v to u, then (u;v) is a back edge, since there must be a path of tree edges from u to v."
+   "text": "(white) until that time, for otherwise the search w ould have explored this edge already in the direction from v to u. Thus, (u,v) becomes a tree edge. If the search explores (u,v) first in the direction from v to u, then (u,v) is a back edge, since there must be a path of tree edges from u to v."
   },
   {
    "type": "body",
@@ -2068,7 +2068,7 @@
    "section_title": "20.3 Depth-first search",
    "printed_page": 570,
    "pdf_page": 591,
-   "text": "Since (u;v) and (v;u) are really the same edge in an undirected graph, the proof of Theorem 20.10 says how to classify the edge. When searching from a vertex, which must be gray, if the adjacent vertex is white , then the edge is a tree edge."
+   "text": "Since (u,v) and (v,u) are really the same edge in an undirected graph, the proof of Theorem 20.10 says how to classify the edge. When searching from a vertex, which must be gray, if the adjacent vertex is white , then the edge is a tree edge."
   },
   {
    "type": "body",
@@ -2104,7 +2104,7 @@
    "section_title": "20.3 Depth-first search",
    "printed_page": 571,
    "pdf_page": 592,
-   "text": "20.3-1 Make a 3-by-3 chart with row and column labels WHITE , GRAY, and BLACK . In each cell (i;j) , indicate whether, at any point during a depth-first search of a directed graph, there can be an edge from a vertex of color i to a vertex of color j ."
+   "text": "20.3-1 Make a 3-by-3 chart with row and column labels WHITE , GRAY, and BLACK . In each cell (i,j) , indicate whether, at any point during a depth-first search of a directed graph, there can be an edge from a vertex of color i to a vertex of color j ."
   },
   {
    "type": "body",
@@ -2122,7 +2122,7 @@
    "section_title": "20.3 Depth-first search",
    "printed_page": 571,
    "pdf_page": 592,
-   "text": "20.3-2 Show how depth-first search works on the graph of Figure 20.6. Assume that the for loop of lines 537 of the DFS procedure considers the vertices in alphabetical order, and assume that each adjacency list is order ed alphabetically. Show the discovery and finish times for each vertex, and show the classification of each edge."
+   "text": "20.3-2 Show how depth-first search works on the graph of Figure 20.6. Assume that the for loop of lines 5–7 of the DFS procedure considers the vertices in alphabetical order, and assume that each adjacency list is order ed alphabetically. Show the discovery and finish times for each vertex, and show the classification of each edge."
   },
   {
    "type": "exercise",
@@ -2149,7 +2149,7 @@
    "section_title": "20.3 Depth-first search",
    "printed_page": 571,
    "pdf_page": 592,
-   "text": "20.3-5 Show that in a directed graph, edge (u;v) is a. a tree edge or forward edge if and only if u: d <v: d <v: f <u: f , b. a back edge if and only if v: d ≤ u: d <u: f ≤ v: f , and c. a cross edge if and only if v: d <v: f <u: d <u: f ."
+   "text": "20.3-5 Show that in a directed graph, edge (u,v) is a. a tree edge or forward edge if and only if u: d <v: d <v: f <u: f , b. a back edge if and only if v: d ≤ u: d <u: f ≤ v: f , and c. a cross edge if and only if v: d <v: f <u: d <u: f ."
   },
   {
    "type": "exercise",
@@ -2203,7 +2203,7 @@
    "section_title": "20.3 Depth-first search",
    "printed_page": 572,
    "pdf_page": 593,
-   "text": "20.3-11 Let G = (V;E) be a connected, undirected graph. Give an O(V + E)-time algorithm to compute a path in G that traverses each edge in E exactly once in each direction. Describe how you can find your way out of a maze if you are given a large supply of pennies."
+   "text": "20.3-11 Let G = (V,E) be a connected, undirected graph. Give an O(V + E)-time algorithm to compute a path in G that traverses each edge in E exactly once in each direction. Describe how you can find your way out of a maze if you are given a large supply of pennies."
   },
   {
    "type": "exercise",
@@ -2230,7 +2230,7 @@
    "section_title": "20.3 Depth-first search",
    "printed_page": 572,
    "pdf_page": 593,
-   "text": "A directed graph G = (V;E) is singly connected if u → v implies that G contains at most one simple path from u to v for all vertices u;v 2 V . Give an efficient algorithm to determine whether a directed graph is singly connected."
+   "text": "A directed graph G = (V,E) is singly connected if u → v implies that G contains at most one simple path from u to v for all vertices u,v 2 V . Give an efficient algorithm to determine whether a directed graph is singly connected."
   },
   {
    "type": "pseudocode",
@@ -2264,7 +2264,7 @@
    "section_title": "20.4 Topological sort",
    "printed_page": 573,
    "pdf_page": 594,
-   "text": "This section shows how to use depth-first search to perform a topological sort of a directed acyclic graph, or a \"dag\" as it is somet imes called. A topological sort of a dag G = (V;E) is a linear ordering of all its vertices such that if G contains an edge (u;v) , then u appears before v in the ordering. Topological sorting is defined only on directed graphs that are acyclic; no linear ordering is possible when a directed graph contains a cycle. Think of a topological sort of a graph as an ordering of its vertices along a horizontal line so that all directed edges go from left to right. Topological sorting is thus differen t from the usual kind of \"sorting\" studied in Part II."
+   "text": "This section shows how to use depth-first search to perform a topological sort of a directed acyclic graph, or a \"dag\" as it is somet imes called. A topological sort of a dag G = (V,E) is a linear ordering of all its vertices such that if G contains an edge (u,v) , then u appears before v in the ordering. Topological sorting is defined only on directed graphs that are acyclic; no linear ordering is possible when a directed graph contains a cycle. Think of a topological sort of a graph as an ordering of its vertices along a horizontal line so that all directed edges go from left to right. Topological sorting is thus differen t from the usual kind of \"sorting\" studied in Part II."
   },
   {
    "type": "body",
@@ -2282,7 +2282,7 @@
    "section_title": "20.4 Topological sort",
    "printed_page": 573,
    "pdf_page": 594,
-   "text": "(e.g., socks before shoes). Other items may be put on in any order (e.g., socks and pants). A directed edge (u;v) in the dag of Figure 20.7(a) indicates that garment u must be donned before garment v. A topological sort of this dag therefore gives a possible order for getting dressed. Figure 20.7(b) shows the topologically sorted dag as an ordering of vertices along a horizontal l ine such that all directed edges go from left to right."
+   "text": "(e.g., socks before shoes). Other items may be put on in any order (e.g., socks and pants). A directed edge (u,v) in the dag of Figure 20.7(a) indicates that garment u must be donned before garment v. A topological sort of this dag therefore gives a possible order for getting dressed. Figure 20.7(b) shows the topologically sorted dag as an ordering of vertices along a horizontal l ine such that all directed edges go from left to right."
   },
   {
    "type": "body",
@@ -2363,7 +2363,7 @@
    "section_title": "20.4 Topological sort",
    "printed_page": 574,
    "pdf_page": 595,
-   "text": "Figure 20.7 (a) Professor Bumstead topologically sorts his clothing when getting dressed. Each directed edge (u;v) means that garment u must be put on before garment v. The discovery and finish times from a depth-first search are shown next to each vertex. (b) The same graph shown topologically sorted, with its vertices arranged fr om left to right in order of decreasing finish time."
+   "text": "Figure 20.7 (a) Professor Bumstead topologically sorts his clothing when getting dressed. Each directed edge (u,v) means that garment u must be put on before garment v. The discovery and finish times from a depth-first search are shown next to each vertex. (b) The same graph shown topologically sorted, with its vertices arranged fr om left to right in order of decreasing finish time."
   },
   {
    "type": "body",
@@ -2381,7 +2381,7 @@
    "section_title": "20.4 Topological sort",
    "printed_page": 574,
    "pdf_page": 595,
-   "text": "Proof ): Suppose that a depth-first search produces a back edge (u;v) . Then vertex v is an ancestor of vertex u in the depth-first forest. Thus, G contains a path from v to u, and the back edge (u;v) completes a cycle."
+   "text": "Proof ): Suppose that a depth-first search produces a back edge (u,v) . Then vertex v is an ancestor of vertex u in the depth-first forest. Thus, G contains a path from v to u, and the back edge (u,v) completes a cycle."
   },
   {
    "type": "body",
@@ -2390,7 +2390,7 @@
    "section_title": "20.4 Topological sort",
    "printed_page": 574,
    "pdf_page": 595,
-   "text": "(: Suppose that G contains a cycle c . We show that a depth-first search of G yields a back edge. Let v be the first vertex to be discovered in c , and let (u;v) be the preceding edge in c . At time v: d, the vertices of c form a path of white vertices from v to u. By the white-path theorem, vertex u becomes a descendant of v in the depth-first forest. Therefore, (u;v) is a back edge."
+   "text": "(: Suppose that G contains a cycle c . We show that a depth-first search of G yields a back edge. Let v be the first vertex to be discovered in c , and let (u,v) be the preceding edge in c . At time v: d, the vertices of c form a path of white vertices from v to u. By the white-path theorem, vertex u becomes a descendant of v in the depth-first forest. Therefore, (u,v) is a back edge."
   },
   {
    "type": "theorem",
@@ -2417,7 +2417,7 @@
    "section_title": "20.4 Topological sort",
    "printed_page": 574,
    "pdf_page": 595,
-   "text": "Proof Suppose that DFS is run on a given dag G = (V;E) to determine finish times for its vertices. It suffices to show that for any pair of distinct vertices u;v 2 V , if G contains an edge from u to v, then v: f < u: f . Consider any edge (u;v) explored by DFS(G). When this edge is explored, v cannot be gray, since then v would be an ancestor of u and (u;v) would be a back edge, contradicting Lemma 20.11. Therefore, v must be either white or black. If v is z y x w u t s r q"
+   "text": "Proof Suppose that DFS is run on a given dag G = (V,E) to determine finish times for its vertices. It suffices to show that for any pair of distinct vertices u,v 2 V , if G contains an edge from u to v, then v: f < u: f . Consider any edge (u,v) explored by DFS(G). When this edge is explored, v cannot be gray, since then v would be an ancestor of u and (u,v) would be a back edge, contradicting Lemma 20.11. Therefore, v must be either white or black. If v is z y x w u t s r q"
   },
   {
    "type": "body",
@@ -2435,7 +2435,7 @@
    "section_title": "20.4 Topological sort",
    "printed_page": 575,
    "pdf_page": 596,
-   "text": "Figure 20.8 A dag for topological sorting. white, it becomes a descendant of u, and so v: f <u: f . If v is black, it has already been finished, so that v: f has already been set. Because the search is still exploring from u, it has yet to assign a timestamp to u: f , so that the timestamp eventually assigned to u: f is greater than v: f . Thus, v: f <u: f for any edge (u;v) in the dag, proving the theorem."
+   "text": "Figure 20.8 A dag for topological sorting. white, it becomes a descendant of u, and so v: f <u: f . If v is black, it has already been finished, so that v: f has already been set. Because the search is still exploring from u, it has yet to assign a timestamp to u: f , so that the timestamp eventually assigned to u: f is greater than v: f . Thus, v: f <u: f for any edge (u,v) in the dag, proving the theorem."
   },
   {
    "type": "exercise",
@@ -2444,7 +2444,7 @@
    "section_title": "20.4 Topological sort",
    "printed_page": 575,
    "pdf_page": 596,
-   "text": "20.4-1 Show the ordering of vertices produced by TOPOLOGICAL-SORT when it is run on the dag of Figure 20.8. Assume that the for loop of lines 537 of the DFS procedure considers the vertices in alphabetical order, and assume that each adjacency list is ordered alphabetically."
+   "text": "20.4-1 Show the ordering of vertices produced by TOPOLOGICAL-SORT when it is run on the dag of Figure 20.8. Assume that the for loop of lines 5–7 of the DFS procedure considers the vertices in alphabetical order, and assume that each adjacency list is ordered alphabetically."
   },
   {
    "type": "exercise",
@@ -2453,7 +2453,7 @@
    "section_title": "20.4 Topological sort",
    "printed_page": 575,
    "pdf_page": 596,
-   "text": "20.4-2 Give a linear-time algorithm that, given a directed acyclic graph G = (V;E) and two vertices a;b 2 V , returns the number of simple paths from a to b in G. For example, the directed acyclic graph of Figure 20.8 contains exactly four simple paths from vertex p to vertex v: hp;o;v i, hp;o;r;y;v i, hp;o;s;r;y;v i, and hp;s;r;y;v i. Your algorithm needs only to count the simple paths, not list them."
+   "text": "20.4-2 Give a linear-time algorithm that, given a directed acyclic graph G = (V,E) and two vertices a,b 2 V , returns the number of simple paths from a to b in G. For example, the directed acyclic graph of Figure 20.8 contains exactly four simple paths from vertex p to vertex v: ⟨p,o,v⟩, ⟨p,o,r,y,v⟩, ⟨p,o,s,r,y,v⟩, and ⟨p,s,r,y,v⟩. Your algorithm needs only to count the simple paths, not list them."
   },
   {
    "type": "exercise",
@@ -2462,7 +2462,7 @@
    "section_title": "20.4 Topological sort",
    "printed_page": 575,
    "pdf_page": 596,
-   "text": "20.4-3 Give an algorithm that determines whether an undirected graph G = (V;E) contains a simple cycle. Your algorithm should run in O(V) time, independent of |E|."
+   "text": "20.4-3 Give an algorithm that determines whether an undirected graph G = (V,E) contains a simple cycle. Your algorithm should run in O(V) time, independent of |E|."
   },
   {
    "type": "exercise",
@@ -2480,7 +2480,7 @@
    "section_title": "20.4 Topological sort",
    "printed_page": 576,
    "pdf_page": 597,
-   "text": "20.4-5 Another way to topologically sort a directed acycli c graph G = (V;E) is to re- peatedly find a vertex of in-degree 0, output it, and remove it and all of its outgoing edges from the graph. Explain how to implement this idea so that it runs in time O(V + E). What happens to this algorithm if G has cycles?"
+   "text": "20.4-5 Another way to topologically sort a directed acycli c graph G = (V,E) is to re- peatedly find a vertex of in-degree 0, output it, and remove it and all of its outgoing edges from the graph. Explain how to implement this idea so that it runs in time O(V + E). What happens to this algorithm if G has cycles?"
   },
   {
    "type": "body",
@@ -2498,7 +2498,7 @@
    "section_title": "20.5 Strongly connected components",
    "printed_page": 576,
    "pdf_page": 597,
-   "text": "Recall from Appendix B that a strongly connected co mponent of a directed graph G = (V;E) is a maximal set of vertices C ⊆ V such that for every pair of vertices u;v 2 C , both u → v and v → u, that is, vertices u and v are reachable from each other. Figure 20.9 shows an example."
+   "text": "Recall from Appendix B that a strongly connected co mponent of a directed graph G = (V,E) is a maximal set of vertices C ⊆ V such that for every pair of vertices u,v 2 C , both u → v and v → u, that is, vertices u and v are reachable from each other. Figure 20.9 shows an example."
   },
   {
    "type": "body",
@@ -2516,7 +2516,7 @@
    "section_title": "20.5 Strongly connected components",
    "printed_page": 576,
    "pdf_page": 597,
-   "text": "G = (V;E) uses the transpose of G, which we defined in Exercise 20.1-3 to be the graph G T = (V;E T ), where E T = f(u;v) W (v;u) 2 Eg. That is, E T consists of the edges of G with their directions reversed. Given an adjacency-list representation of G, the time to create G T is Θ(V + E). The graphs G and G T have exactly the same strongly connected components: u and v are reachable from each other in G if and only if they are reachable from each other i n G T . Figure 20.9(b) shows the transpose of the graph in Figure 20.9(a), with the strongly connected components shaded blue in both parts."
+   "text": "G = (V,E) uses the transpose of G, which we defined in Exercise 20.1-3 to be the graph G T = (V,E T ), where E T = f(u,v) W (v,u) 2 Eg. That is, E T consists of the edges of G with their directions reversed. Given an adjacency-list representation of G, the time to create G T is Θ(V + E). The graphs G and G T have exactly the same strongly connected components: u and v are reachable from each other in G if and only if they are reachable from each other i n G T . Figure 20.9(b) shows the transpose of the graph in Figure 20.9(a), with the strongly connected components shaded blue in both parts."
   },
   {
    "type": "body",
@@ -2525,7 +2525,7 @@
    "section_title": "20.5 Strongly connected components",
    "printed_page": 576,
    "pdf_page": 597,
-   "text": "The linear-time (i.e., Θ(V + E)-time) procedure STRONGLY-CONNECTED-COMPONENTS on the next page computes the strongly connected co mponents of a directed graph G = (V;E) using two depth-first searches, one on G and one on G T ."
+   "text": "The linear-time (i.e., Θ(V + E)-time) procedure STRONGLY-CONNECTED-COMPONENTS on the next page computes the strongly connected co mponents of a directed graph G = (V,E) using two depth-first searches, one on G and one on G T ."
   },
   {
    "type": "body",
@@ -2534,7 +2534,7 @@
    "section_title": "20.5 Strongly connected components",
    "printed_page": 576,
    "pdf_page": 597,
-   "text": "The idea behind this algorithm comes from a key pro perty of the component graph GSCC = .VSCC ;E SCC /, defined as follows. Suppose that G has strongly connected components C 1 ;C 2 ;:::;C k . The vertex set VSCC is fv 1 ;v 2 ;:::;v k g, and it contains one vertex v i for each strongly connected component C i of G."
+   "text": "The idea behind this algorithm comes from a key pro perty of the component graph GSCC = .VSCC ,E SCC /, defined as follows. Suppose that G has strongly connected components C 1 ,C 2 ,…,C k . The vertex set VSCC is fv 1 ,v 2 ,…,v k g, and it contains one vertex v i for each strongly connected component C i of G."
   },
   {
    "type": "body",
@@ -2543,7 +2543,7 @@
    "section_title": "20.5 Strongly connected components",
    "printed_page": 576,
    "pdf_page": 597,
-   "text": "There is an edge (v i ;v j ) 2 ESCC if G contains a directed edge (x;y) for some x 2 + i and some y 2 + j . Looked at another way, if we contract all edges w hose incident vertices are within the same strongly conn ected component of G so that 13/14 11/16"
+   "text": "There is an edge (v i ,v j ) 2 ESCC if G contains a directed edge (x,y) for some x 2 + i and some y 2 + j . Looked at another way, if we contract all edges w hose incident vertices are within the same strongly conn ected component of G so that 13/14 11/16"
   },
   {
    "type": "pseudocode",
@@ -2653,7 +2653,7 @@
    "section_title": "20.5 Strongly connected components",
    "printed_page": 578,
    "pdf_page": 599,
-   "text": "(V;E) , let u;v 2 C , let u 0 ;v 0 2 + 0 , and suppose that G contains a path u → u 0 ."
+   "text": "(V,E) , let u,v 2 C , let u 0 ,v 0 2 + 0 , and suppose that G contains a path u → u 0 ."
   },
   {
    "type": "body",
@@ -2725,7 +2725,7 @@
    "section_title": "20.5 Strongly connected components",
    "printed_page": 578,
    "pdf_page": 599,
-   "text": "(V;E) . Suppose that there is an edge (u;v) 2 E, where u 2 + 0 and v 2 C . Then f(C 0 )>f(C) ."
+   "text": "(V,E) . Suppose that there is an edge (u,v) 2 E, where u 2 + 0 and v 2 C . Then f(C 0 )>f(C) ."
   },
   {
    "type": "proof",
@@ -2743,7 +2743,7 @@
    "section_title": "20.5 Strongly connected components",
    "printed_page": 578,
    "pdf_page": 599,
-   "text": "If d(C 0 )<d(C) , let x be the first vertex discovered in C 0 . At time x: d, all vertices in C and C 0 are white. At that time, G contains a path from x to each vertex in C 0 consisting only of white vertices. Because (u;v) 2 E, for any vertex w 2 C , there is also a path in G at time x: d from x to w consisting only of white vertices: x → u ! v → w. By the white-path theorem, all vertices in C and C 0 become descendants of x in the depth-first tree. By Corollary 20.8, x has the latest finish time of any of its descendants, and so x: f = f(C 0 )>f(C) ."
+   "text": "If d(C 0 )<d(C) , let x be the first vertex discovered in C 0 . At time x: d, all vertices in C and C 0 are white. At that time, G contains a path from x to each vertex in C 0 consisting only of white vertices. Because (u,v) 2 E, for any vertex w 2 C , there is also a path in G at time x: d from x to w consisting only of white vertices: x → u ! v → w. By the white-path theorem, all vertices in C and C 0 become descendants of x in the depth-first tree. By Corollary 20.8, x has the latest finish time of any of its descendants, and so x: f = f(C 0 )>f(C) ."
   },
   {
    "type": "body",
@@ -2752,7 +2752,7 @@
    "section_title": "20.5 Strongly connected components",
    "printed_page": 578,
    "pdf_page": 599,
-   "text": "Otherwise, d(C 0 ) > d(C). Let y be the first vertex discovered in C , so that y: d = d(C) . At time y: d, all vertices in C are white and G contains a path from y to each vertex in C consisting only of white vertices. By the white-path theorem, all vertices in C become descendants of y in the depth-first tree, and by Corollary 20.8, y: f = f(C) . Because d(C 0 )>d(C) = y: d, all vertices in C 0 are white at time y: d. Since there is an edge (u;v) from C 0 to C , Lemma 20.13 implies that there cannot be a path from C to C 0 . Hence, no vertex in C 0 is reachable from y . At time y: f , therefore, all vertices in C 0 are still white. Thus, for any vertex w 2 + 0 , we have w: f >y: f , which implies that f(C 0 )>f(C) ."
+   "text": "Otherwise, d(C 0 ) > d(C). Let y be the first vertex discovered in C , so that y: d = d(C) . At time y: d, all vertices in C are white and G contains a path from y to each vertex in C consisting only of white vertices. By the white-path theorem, all vertices in C become descendants of y in the depth-first tree, and by Corollary 20.8, y: f = f(C) . Because d(C 0 )>d(C) = y: d, all vertices in C 0 are white at time y: d. Since there is an edge (u,v) from C 0 to C , Lemma 20.13 implies that there cannot be a path from C to C 0 . Hence, no vertex in C 0 is reachable from y . At time y: f , therefore, all vertices in C 0 are still white. Thus, for any vertex w 2 + 0 , we have w: f >y: f , which implies that f(C 0 )>f(C) ."
   },
   {
    "type": "body",
@@ -2779,7 +2779,7 @@
    "section_title": "20.5 Strongly connected components",
    "printed_page": 579,
    "pdf_page": 600,
-   "text": "(V;E) , and suppose that f(C) > f(C 0 ). Then E T contains no edge (v;u) such that u 2 + 0 and v 2 C ."
+   "text": "(V,E) , and suppose that f(C) > f(C 0 ). Then E T contains no edge (v,u) such that u 2 + 0 and v 2 C ."
   },
   {
    "type": "proof",
@@ -2788,7 +2788,7 @@
    "section_title": "20.5 Strongly connected components",
    "printed_page": 579,
    "pdf_page": 600,
-   "text": "Proof The contrapositive of Lemma 20.14 says that if f(C 0 )<f(C) , then there is no edge (u;v) 2 E such that u 2 + 0 and v 2 C . Because the strongly connected components of G and G T are the same, if there is no such edge (u;v) 2 E, then there is no edge (v;u) 2 E T such that u 2 + 0 and v 2 C ."
+   "text": "Proof The contrapositive of Lemma 20.14 says that if f(C 0 )<f(C) , then there is no edge (u,v) 2 E such that u 2 + 0 and v 2 C . Because the strongly connected components of G and G T are the same, if there is no such edge (u,v) 2 E, then there is no edge (v,u) 2 E T such that u 2 + 0 and v 2 C ."
   },
   {
    "type": "corollary",
@@ -2869,7 +2869,7 @@
    "section_title": "20.5 Strongly connected components",
    "printed_page": 580,
    "pdf_page": 601,
-   "text": "20.5-2 Show how the procedure STRONGLY-CONNECTED-COMPONENTS works on the graph of Figure 20.6. Specifically, show the finish times computed in line 1 and the forest produced in line 3. Assume that the loop of lines 537 of DFS considers vertices in alphabetical order and that the adjacency lists are in alphabetical order."
+   "text": "20.5-2 Show how the procedure STRONGLY-CONNECTED-COMPONENTS works on the graph of Figure 20.6. Specifically, show the finish times computed in line 1 and the forest produced in line 3. Assume that the loop of lines 5–7 of DFS considers vertices in alphabetical order and that the adjacency lists are in alphabetical order."
   },
   {
    "type": "exercise",
@@ -2896,7 +2896,7 @@
    "section_title": "20.5 Strongly connected components",
    "printed_page": 581,
    "pdf_page": 602,
-   "text": "20.5-5 Give an O(V + E)-time algorithm to compute the component graph of a directed graph G = (V;E) . Make sure that there is at most one edge between two vertices in the component graph your algorithm produces."
+   "text": "20.5-5 Give an O(V + E)-time algorithm to compute the component graph of a directed graph G = (V,E) . Make sure that there is at most one edge between two vertices in the component graph your algorithm produces."
   },
   {
    "type": "exercise",
@@ -2905,7 +2905,7 @@
    "section_title": "20.5 Strongly connected components",
    "printed_page": 581,
    "pdf_page": 602,
-   "text": "20.5-6 Give an O(V + E)-time algorithm that, given a directed graph G = (V;E), constructs another graph G 0 = (V;E 0 ) such that G and G 0 have the same strongly connected components, G 0 has the same component graph as G, and jE 0 j is as small as possible."
+   "text": "20.5-6 Give an O(V + E)-time algorithm that, given a directed graph G = (V,E), constructs another graph G 0 = (V,E 0 ) such that G and G 0 have the same strongly connected components, G 0 has the same component graph as G, and jE 0 j is as small as possible."
   },
   {
    "type": "exercise",
@@ -2914,7 +2914,7 @@
    "section_title": "20.5 Strongly connected components",
    "printed_page": 581,
    "pdf_page": 602,
-   "text": "20.5-7 A directed graph G = (V;E) is semiconnected if, for all pairs of vertices u;v 2 V , we have u → v or v → u. Give an efficient algorithm to determine whether G is semiconnected. Prove that your algorithm is correct, and analyze its running time."
+   "text": "20.5-7 A directed graph G = (V,E) is semiconnected if, for all pairs of vertices u,v 2 V , we have u → v or v → u. Give an efficient algorithm to determine whether G is semiconnected. Prove that your algorithm is correct, and analyze its running time."
   },
   {
    "type": "exercise",
@@ -2923,7 +2923,7 @@
    "section_title": "20.5 Strongly connected components",
    "printed_page": 581,
    "pdf_page": 602,
-   "text": "20.5-8 Let G = (V;E) be a directed graph, and let l W V ! R be a function that assigns a real-valued label l to each vertex. For vertices s;t 2 V , define"
+   "text": "20.5-8 Let G = (V,E) be a directed graph, and let l W V ! R be a function that assigns a real-valued label l to each vertex. For vertices s,t 2 V , define"
   },
   {
    "type": "body",
@@ -2995,7 +2995,7 @@
    "section_title": "20.5 Strongly connected components",
    "printed_page": 582,
    "pdf_page": 603,
-   "text": "2. If (u;v) is a tree edge, then v: d = u: d + 1."
+   "text": "2. If (u,v) is a tree edge, then v: d = u: d + 1."
   },
   {
    "type": "body",
@@ -3004,7 +3004,7 @@
    "section_title": "20.5 Strongly connected components",
    "printed_page": 582,
    "pdf_page": 603,
-   "text": "3. If (u;v) is a cross edge, then v: d = u: d or v: d = u: d + 1. b. Prove that in a breadth-first search of a directed graph, the following properties hold:"
+   "text": "3. If (u,v) is a cross edge, then v: d = u: d or v: d = u: d + 1. b. Prove that in a breadth-first search of a directed graph, the following properties hold:"
   },
   {
    "type": "body",
@@ -3022,7 +3022,7 @@
    "section_title": "20.5 Strongly connected components",
    "printed_page": 582,
    "pdf_page": 603,
-   "text": "2. If (u;v) is a tree edge, then v: d = u: d + 1."
+   "text": "2. If (u,v) is a tree edge, then v: d = u: d + 1."
   },
   {
    "type": "body",
@@ -3031,7 +3031,7 @@
    "section_title": "20.5 Strongly connected components",
    "printed_page": 582,
    "pdf_page": 603,
-   "text": "3. If (u;v) is a cross edge, then v: d ≤ u: d + 1."
+   "text": "3. If (u,v) is a cross edge, then v: d ≤ u: d + 1."
   },
   {
    "type": "body",
@@ -3040,7 +3040,7 @@
    "section_title": "20.5 Strongly connected components",
    "printed_page": 582,
    "pdf_page": 603,
-   "text": "4. If (u;v) is a back edge, then 0 ≤ v: d ≤ u: d."
+   "text": "4. If (u,v) is a back edge, then 0 ≤ v: d ≤ u: d."
   },
   {
    "type": "problem",
@@ -3058,7 +3058,7 @@
    "section_title": "20.5 Strongly connected components",
    "printed_page": 582,
    "pdf_page": 603,
-   "text": "Let G = (V;E) be a connected, undirected graph. An articulation point of G is a vertex whose removal disconnects G. A bridge of G is an edge whose removal disconnects G. A biconnected component of G is a maximal set of edges such that any two edges in the set lie on a common simple cycle. Figure 20.10 illustrates these definitions. You can determine articulation points, bridges, and biconnected components using depth-first search. Let G − = .V;E − / be a depth-first tree of G. a. Prove that the root of G − is an articulation point of G if and only if it has at least two children in G − . b. Let v be a nonroot vertex of G − . Prove that v is an articulation point of G if and only if v has a child s such that there is no back edge from s or any descendant of s to a proper ancestor of v. c. Let v: low = min ( v: d ; w: d W (u;w) is a back edge for some descendant u of v:"
+   "text": "Let G = (V,E) be a connected, undirected graph. An articulation point of G is a vertex whose removal disconnects G. A bridge of G is an edge whose removal disconnects G. A biconnected component of G is a maximal set of edges such that any two edges in the set lie on a common simple cycle. Figure 20.10 illustrates these definitions. You can determine articulation points, bridges, and biconnected components using depth-first search. Let G − = .V,E − / be a depth-first tree of G. a. Prove that the root of G − is an articulation point of G if and only if it has at least two children in G − . b. Let v be a nonroot vertex of G − . Prove that v is an articulation point of G if and only if v has a child s such that there is no back edge from s or any descendant of s to a proper ancestor of v. c. Let v: low = min ( v: d ; w: d W (u,w) is a back edge for some descendant u of v:"
   },
   {
    "type": "body",
@@ -3085,7 +3085,7 @@
    "section_title": "20.5 Strongly connected components",
    "printed_page": 583,
    "pdf_page": 604,
-   "text": "An Euler tour of a strongly connected, directed graph G = (V;E) is a cycle that traverses each edge of G exactly once, although it may visit a vertex more t han once. a. Show that G has an Euler tour if and only if in-degree(v) = out-degree(v) for each vertex v 2 V . b. Describe an O(E)-time algorithm to find an Euler tour of G if one exists. (Hint:"
+   "text": "An Euler tour of a strongly connected, directed graph G = (V,E) is a cycle that traverses each edge of G exactly once, although it may visit a vertex more t han once. a. Show that G has an Euler tour if and only if in-degree(v) = out-degree(v) for each vertex v 2 V . b. Describe an O(E)-time algorithm to find an Euler tour of G if one exists. (Hint:"
   },
   {
    "type": "body",
@@ -3112,7 +3112,7 @@
    "section_title": "20.5 Strongly connected components",
    "printed_page": 583,
    "pdf_page": 604,
-   "text": "Let G = (V;E) be a directed graph in which each vertex u 2 V is labeled with a unique integer L(u) from the set f1;2;:::; |V|g. For each vertex u 2 V , let"
+   "text": "Let G = (V,E) be a directed graph in which each vertex u 2 V is labeled with a unique integer L(u) from the set f1,2,…; |V|g. For each vertex u 2 V , let"
   },
   {
    "type": "body",
@@ -3175,7 +3175,7 @@
    "section_title": "20.5 Strongly connected components",
    "printed_page": 584,
    "pdf_page": 605,
-   "text": "• INSERT(G;v; neighbors ) inserts a new vertex v into G, where neighbors is an array (possibly empty) of vertices that have alread y been inserted into G and will become all the neighbors of v in G when v is inserted."
+   "text": "• INSERT(G,v; neighbors ) inserts a new vertex v into G, where neighbors is an array (possibly empty) of vertices that have alread y been inserted into G and will become all the neighbors of v in G when v is inserted."
   },
   {
    "type": "body",
@@ -3184,7 +3184,7 @@
    "section_title": "20.5 Strongly connected components",
    "printed_page": 584,
    "pdf_page": 605,
-   "text": "• NEWEST-NEIGHBOR (G;v) returns the neighbor of vertex v that was most re- cently inserted into G, or NIL if v has no neighbors."
+   "text": "• NEWEST-NEIGHBOR (G,v) returns the neighbor of vertex v that was most re- cently inserted into G, or NIL if v has no neighbors."
   },
   {
    "type": "body",
@@ -3274,7 +3274,7 @@
    "section_title": "20.5 Strongly connected components",
    "printed_page": 585,
    "pdf_page": 606,
-   "text": "To model this wiring problem, use a connected, undi rected graph G = (V;E) , where V is the set of pins, E is the set of possible interconnections between pairs of pins, and for each edge (u;v) 2 E, a weight w(u;v) specifies the cost (amount of wire needed) to connect u and v. The goal is to find an acyclic subset T ⊆ E that connects all of the vertices and whose total weight w(T) ="
+   "text": "To model this wiring problem, use a connected, undi rected graph G = (V,E) , where V is the set of pins, E is the set of possible interconnections between pairs of pins, and for each edge (u,v) 2 E, a weight w(u,v) specifies the cost (amount of wire needed) to connect u and v. The goal is to find an acyclic subset T ⊆ E that connects all of the vertices and whose total weight w(T) ="
   },
   {
    "type": "body",
@@ -3283,7 +3283,7 @@
    "section_title": "20.5 Strongly connected components",
    "printed_page": 585,
    "pdf_page": 606,
-   "text": "(u;v)2T w(u;v) is minimized. Since T is acyclic and connects all of the vertices, it must form a tree, which we call a spanning tree since it \"spans\" the graph G. We call the problem of determining the tree T the minimum-spanning-tree problem. 1 Figure 21.1 shows an example of a connected graph and a minimum spanning tree."
+   "text": "(u,v)2T w(u,v) is minimized. Since T is acyclic and connects all of the vertices, it must form a tree, which we call a spanning tree since it \"spans\" the graph G. We call the problem of determining the tree T the minimum-spanning-tree problem. 1 Figure 21.1 shows an example of a connected graph and a minimum spanning tree."
   },
   {
    "type": "body",

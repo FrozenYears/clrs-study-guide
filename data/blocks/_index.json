@@ -17,10 +17,10 @@
   "part-i-foundations__ch02.json": {
    "chapter": 2,
    "chapter_title": "2 Getting Started",
-   "blocks": 332,
+   "blocks": 333,
    "by_type": {
     "footnote": 10,
-    "body": 288,
+    "body": 289,
     "pseudocode": 7,
     "figure-caption": 5,
     "exercise": 17,
@@ -177,9 +177,9 @@
   "part-iii-data-structures__ch11.json": {
    "chapter": 11,
    "chapter_title": "11 Hash Tables",
-   "blocks": 403,
+   "blocks": 406,
    "by_type": {
-    "body": 350,
+    "body": 353,
     "exercise": 17,
     "figure-caption": 5,
     "theorem": 8,
@@ -232,9 +232,9 @@
   "part-iv-advanced-design-and-analysis-techniques__ch14.json": {
    "chapter": 14,
    "chapter_title": "14 Dynamic Programming",
-   "blocks": 503,
+   "blocks": 508,
    "by_type": {
-    "body": 432,
+    "body": 437,
     "figure-caption": 12,
     "pseudocode": 15,
     "exercise": 25,
@@ -269,9 +269,9 @@
   "part-iv-advanced-design-and-analysis-techniques__ch16.json": {
    "chapter": 16,
    "chapter_title": "16 Amortized Analysis",
-   "blocks": 304,
+   "blocks": 305,
    "by_type": {
-    "body": 270,
+    "body": 271,
     "pseudocode": 3,
     "figure-caption": 6,
     "footnote": 3,
@@ -380,10 +380,10 @@
   "part-vi-graph-algorithms__ch22.json": {
    "chapter": 22,
    "chapter_title": "22 Single-Source Shortest Paths",
-   "blocks": 338,
+   "blocks": 339,
    "by_type": {
     "pseudocode": 3,
-    "body": 249,
+    "body": 250,
     "figure-caption": 6,
     "lemma": 9,
     "proof": 16,
@@ -477,9 +477,9 @@
   "part-vii-selected-topics__ch27.json": {
    "chapter": 27,
    "chapter_title": "27 Online Algorithms",
-   "blocks": 298,
+   "blocks": 297,
    "by_type": {
-    "body": 263,
+    "body": 262,
     "exercise": 12,
     "figure-caption": 1,
     "theorem": 5,
@@ -594,9 +594,9 @@
   "part-vii-selected-topics__ch33.json": {
    "chapter": 33,
    "chapter_title": "33 Machine-Learning Algorithms",
-   "blocks": 463,
+   "blocks": 462,
    "by_type": {
-    "body": 409,
+    "body": 408,
     "figure-caption": 6,
     "theorem": 6,
     "proof": 7,
@@ -687,9 +687,9 @@
   "part-viii-appendix-mathematical-background__chD.json": {
    "chapter": "D",
    "chapter_title": "D Matrices",
-   "blocks": 1466,
+   "blocks": 1463,
    "by_type": {
-    "body": 1453,
+    "body": 1450,
     "proof": 1,
     "problem": 12
    },
@@ -699,7 +699,7 @@
  },
  "totals_by_type": {
   "footnote": 154,
-  "body": 12284,
+  "body": 12290,
   "exercise": 759,
   "problem": 166,
   "chapter-notes": 57,
@@ -711,6 +711,6 @@
   "proof": 201,
   "corollary": 45
  },
- "total_blocks": 14269,
+ "total_blocks": 14275,
  "missing_sections": []
 }

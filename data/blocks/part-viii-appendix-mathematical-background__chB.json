@@ -70,7 +70,7 @@
    "section_title": "B.1 Sets",
    "printed_page": 1153,
    "pdf_page": 1174,
-   "text": "To describe a set explicitly, write its members as a list inside braces. For example, to define a set S to contain precisely the numbers 1, 2, and 3, write S = f1;2;3 g."
+   "text": "To describe a set explicitly, write its members as a list inside braces. For example, to define a set S to contain precisely the numbers 1, 2, and 3, write S = f1,2,3 g."
   },
   {
    "type": "body",
@@ -79,7 +79,7 @@
    "section_title": "B.1 Sets",
    "printed_page": 1153,
    "pdf_page": 1174,
-   "text": "Since 2 belongs to the set S , we can write 2 2 S , and since 4 is not a member, we can write 4 … S . A set cannot contain the same object more than on ce, 1 and its elements are not ordered. Two sets A and B are equal, written A = B , if they contain the same elements. For example, f1;2;3;1 g = f1;2;3 g = f3;2;1 g."
+   "text": "Since 2 belongs to the set S , we can write 2 2 S , and since 4 is not a member, we can write 4 … S . A set cannot contain the same object more than on ce, 1 and its elements are not ordered. Two sets A and B are equal, written A = B , if they contain the same elements. For example, f1,2,3,1 g = f1,2,3 g = f3,2,1 g."
   },
   {
    "type": "body",
@@ -106,7 +106,7 @@
    "section_title": "B.1 Sets",
    "printed_page": 1153,
    "pdf_page": 1174,
-   "text": "• Z denotes the set of integers, that is, the set f:::; −2; −1;0;1;2;::: g."
+   "text": "• Z denotes the set of integers, that is, the set f…; −2; −1,0,1,2,… g."
   },
   {
    "type": "body",
@@ -124,7 +124,7 @@
    "section_title": "B.1 Sets",
    "printed_page": 1153,
    "pdf_page": 1174,
-   "text": "• N denotes the set of natural numbers, that is, the set f0;1;2;::: g. 2"
+   "text": "• N denotes the set of natural numbers, that is, the set f0,1,2,… g. 2"
   },
   {
    "type": "body",
@@ -475,7 +475,7 @@
    "section_title": "B.1 Sets",
    "printed_page": 1156,
    "pdf_page": 1177,
-   "text": "An equivalent way to express DeMorgan’s laws (B.2) uses set complements. For any two sets B;C ⊆ U , we have"
+   "text": "An equivalent way to express DeMorgan’s laws (B.2) uses set complements. For any two sets B,C ⊆ U , we have"
   },
   {
    "type": "body",
@@ -502,7 +502,7 @@
    "section_title": "B.1 Sets",
    "printed_page": 1156,
    "pdf_page": 1177,
-   "text": "A \\ B = ;. A collection of sets S 1 ;S 2 ;::: , either finite or infinite, is a set of sets, in which each member is a set S i . A collection S = fS i g of nonempty sets forms a partition of a set S if"
+   "text": "A \\ B = ,. A collection of sets S 1 ,S 2 ,… , either finite or infinite, is a set of sets, in which each member is a set S i . A collection S = fS i g of nonempty sets forms a partition of a set S if"
   },
   {
    "type": "body",
@@ -511,7 +511,7 @@
    "section_title": "B.1 Sets",
    "printed_page": 1156,
    "pdf_page": 1177,
-   "text": "• the sets are pairwise disjoint, that is, S i ;S j 2 S and i ≠ j imply S i \\ S j = ;, and • their union is S , that is, S ="
+   "text": "• the sets are pairwise disjoint, that is, S i ,S j 2 S and i ≠ j imply S i \\ S j = ,, and • their union is S , that is, S ="
   },
   {
    "type": "body",
@@ -538,7 +538,7 @@
    "section_title": "B.1 Sets",
    "printed_page": 1156,
    "pdf_page": 1177,
-   "text": "Two sets have the same cardinality if their element s can be put into a one-to-one correspondence. The cardinality of the empty set is j;j = 0. If the cardinality of a set is a natural number, the set is finite, and otherwise, it is infinite. An infinite set that can be put into a one-to-one correspondence with the natural numbers N is countably infinite, and otherwise, it is uncountable. For example, the integers Z are countable, but the reals R are uncountable."
+   "text": "Two sets have the same cardinality if their element s can be put into a one-to-one correspondence. The cardinality of the empty set is j,j = 0. If the cardinality of a set is a natural number, the set is finite, and otherwise, it is infinite. An infinite set that can be put into a one-to-one correspondence with the natural numbers N is countably infinite, and otherwise, it is uncountable. For example, the integers Z are countable, but the reals R are uncountable."
   },
   {
    "type": "body",
@@ -583,7 +583,7 @@
    "section_title": "B.1 Sets",
    "printed_page": 1156,
    "pdf_page": 1177,
-   "text": "We denote the set of all subsets of a set S , including the empty set and S itself, by 2 S , called the power set of S . For example, 2 fa;bg = f;; fag ; fbg ; fa;b gg. The power set of a finite set S has cardinality 2 |S| (see Exercise B.1-5)."
+   "text": "We denote the set of all subsets of a set S , including the empty set and S itself, by 2 S , called the power set of S . For example, 2 fa,bg = f,; fag ; fbg ; fa,b gg. The power set of a finite set S has cardinality 2 |S| (see Exercise B.1-5)."
   },
   {
    "type": "body",
@@ -601,7 +601,7 @@
    "section_title": "B.1 Sets",
    "printed_page": 1156,
    "pdf_page": 1177,
-   "text": "An ordered pair of two elements a and b is denoted (a;b) and is defined formally"
+   "text": "An ordered pair of two elements a and b is denoted (a,b) and is defined formally"
   },
   {
    "type": "body",
@@ -610,7 +610,7 @@
    "section_title": "B.1 Sets",
    "printed_page": 1157,
    "pdf_page": 1178,
-   "text": "B.1 Sets 1157 as the set (a;b) = fa; fa;b gg. Thus, the ordered pair (a;b) is not the same as the ordered pair (b;a) ."
+   "text": "B.1 Sets 1157 as the set (a,b) = fa; fa,b gg. Thus, the ordered pair (a,b) is not the same as the ordered pair (b,a) ."
   },
   {
    "type": "body",
@@ -619,7 +619,7 @@
    "section_title": "B.1 Sets",
    "printed_page": 1157,
    "pdf_page": 1178,
-   "text": "The Cartesian product of two sets A and B , denoted A × B , is the set of all ordered pairs such that the first element of the pair is an element of A and the second is an element of B . More formally, A × B = f(a;b) W a 2 A and b 2 B g :"
+   "text": "The Cartesian product of two sets A and B , denoted A × B , is the set of all ordered pairs such that the first element of the pair is an element of A and the second is an element of B . More formally, A × B = f(a,b) W a 2 A and b 2 B g :"
   },
   {
    "type": "body",
@@ -628,7 +628,7 @@
    "section_title": "B.1 Sets",
    "printed_page": 1157,
    "pdf_page": 1178,
-   "text": "For example, fa;b g×fa;b;c g = f(a;a);.a;b/;.a;c/;.b;a/;.b;b/;.b;c/ g. When"
+   "text": "For example, fa,b g×fa,b,c g = f(a,a),.a,b/,.a,c/,.b,a/,.b,b/,.b,c/ g. When"
   },
   {
    "type": "body",
@@ -646,7 +646,7 @@
    "section_title": "B.1 Sets",
    "printed_page": 1157,
    "pdf_page": 1178,
-   "text": "The Cartesian product of n sets A 1 ;A 2 ;:::;A n is the set of n-tuples"
+   "text": "The Cartesian product of n sets A 1 ,A 2 ,…,A n is the set of n-tuples"
   },
   {
    "type": "body",
@@ -655,7 +655,7 @@
    "section_title": "B.1 Sets",
    "printed_page": 1157,
    "pdf_page": 1178,
-   "text": "A 1 × A 2 × • • • × A n = f(a 1 ;a 2 ;:::;a n ) W a i 2 A i for i = 1;2;:::;n g ; whose cardinality is jA 1 × A 2 × • • • × A n j = jA 1 j • jA 2 j • • • jA n j if all sets A i are finite. We denote an n-fold Cartesian product over a single set A by the set"
+   "text": "A 1 × A 2 × • • • × A n = f(a 1 ,a 2 ,…,a n ) W a i 2 A i for i = 1,2,…,n g ; whose cardinality is jA 1 × A 2 × • • • × A n j = jA 1 j • jA 2 j • • • jA n j if all sets A i are finite. We denote an n-fold Cartesian product over a single set A by the set"
   },
   {
    "type": "body",
@@ -691,7 +691,7 @@
    "section_title": "B.1 Sets",
    "printed_page": 1157,
    "pdf_page": 1178,
-   "text": "(If a > b, this definition implies that [a; b] = ; .) The open interval (a;b) = fx 2 R W a<x<b g omits both of the endpoints from the set. There are two half- open intervals [a;b/ = fx 2 R : a ≤ x<b g and .a; b] = fx 2 R W a<x ≤ bg, each of which excludes one endpoint."
+   "text": "(If a > b, this definition implies that [a; b] = ; .) The open interval (a,b) = fx 2 R W a<x<b g omits both of the endpoints from the set. There are two half- open intervals [a,b/ = fx 2 R : a ≤ x<b g and .a; b] = fx 2 R W a<x ≤ bg, each of which excludes one endpoint."
   },
   {
    "type": "body",
@@ -826,7 +826,7 @@
    "section_title": "B.2 Relations",
    "printed_page": 1158,
    "pdf_page": 1179,
-   "text": "If (a;b) 2 R, we sometimes write aRb . When we say that R is a binary relation on a set A, we mean that R is a subset of A × A. For example, the \"less than\" relation on the natural numbers is the set f(a;b) W a;b 2 N and a<b g. An n-ary relation on sets A 1 ;A 2 ;:::;A n is a subset of A 1 × A 2 × • • • × A n ."
+   "text": "If (a,b) 2 R, we sometimes write aRb . When we say that R is a binary relation on a set A, we mean that R is a subset of A × A. For example, the \"less than\" relation on the natural numbers is the set f(a,b) W a,b 2 N and a<b g. An n-ary relation on sets A 1 ,A 2 ,…,A n is a subset of A 1 × A 2 × • • • × A n ."
   },
   {
    "type": "body",
@@ -835,7 +835,7 @@
    "section_title": "B.2 Relations",
    "printed_page": 1158,
    "pdf_page": 1179,
-   "text": "A binary relation R ⊆ A × A is reflexive if aRa B.2 Relations 1159 for all a 2 A. For example, \" D\" and \"≤\" are reflexive relations on N, but <<= is not. The relation R is symmetric if aRb implies bRa for all a;b 2 A. For example, \" D\" is symmetric, but <<= and \"≤\" are not. The relation R is transitive if aRb and bRc imply aRc for all a;b;c 2 A. For example, the relations <\",\" \"≤,\" and \"D\" are transitive, but the relation R = f(a;b) W a;b 2 N and a = b − 1g is not, since 3R4 and 4R5 do not imply 3R5 ."
+   "text": "A binary relation R ⊆ A × A is reflexive if aRa B.2 Relations 1159 for all a 2 A. For example, \" D\" and \"≤\" are reflexive relations on N, but <<= is not. The relation R is symmetric if aRb implies bRa for all a,b 2 A. For example, \" D\" is symmetric, but <<= and \"≤\" are not. The relation R is transitive if aRb and bRc imply aRc for all a,b,c 2 A. For example, the relations <\",\" \"≤,\" and \"D\" are transitive, but the relation R = f(a,b) W a,b 2 N and a = b − 1g is not, since 3R4 and 4R5 do not imply 3R5 ."
   },
   {
    "type": "body",
@@ -871,7 +871,7 @@
    "section_title": "B.2 Relations",
    "printed_page": 1159,
    "pdf_page": 1180,
-   "text": "For example, if we define R = f(a;b) W a;b 2 N and a + b is an even numberg, then R is an equivalence relation, since a + a is even (reflexive), a + b is even implies b + a is even (symmetric), and a + b is even and b + c is even imply a + c is even (transitive). The equivalence class of 4 is [4] = f0;2;4;6;::: g, and the equivalence class of 3 is [3] = f1;3;5;7;::: g. A basic theorem of equivalence classes is the following."
+   "text": "For example, if we define R = f(a,b) W a,b 2 N and a + b is an even numberg, then R is an equivalence relation, since a + a is even (reflexive), a + b is even implies b + a is even (symmetric), and a + b is even and b + c is even imply a + c is even (transitive). The equivalence class of 4 is [4] = f0,2,4,6,… g, and the equivalence class of 3 is [3] = f1,3,5,7,… g. A basic theorem of equivalence classes is the following."
   },
   {
    "type": "body",
@@ -907,7 +907,7 @@
    "section_title": "B.2 Relations",
    "printed_page": 1159,
    "pdf_page": 1180,
-   "text": "For the second part of the proof, let A = fA i g be a partition of A, and define R = f(a;b) W there exists i such that a 2 A i and b 2 A i g. We claim that R is an equivalence relation on A. Reflexivity holds, since a 2 A i implies aRa ."
+   "text": "For the second part of the proof, let A = fA i g be a partition of A, and define R = f(a,b) W there exists i such that a 2 A i and b 2 A i g. We claim that R is an equivalence relation on A. Reflexivity holds, since a 2 A i implies aRa ."
   },
   {
    "type": "body",
@@ -952,7 +952,7 @@
    "section_title": "B.2 Relations",
    "printed_page": 1160,
    "pdf_page": 1181,
-   "text": "A relation R on a set A is a total relation if for all a;b 2 A, we have aRb or bRa (or both), that is, if every pairing of elements of A is related by R. A partial order that is also a total relation is a total order or linear order. For example, the relation \"≤\" is a total order on the natural numbers, but the <is a descendant of= relation is not a total order on the set of all people, since there are individuals neither of whom is descended from the other. A total relation that is transitive, but not necessarily either symmetric or antisymmetric, is a total preorder."
+   "text": "A relation R on a set A is a total relation if for all a,b 2 A, we have aRb or bRa (or both), that is, if every pairing of elements of A is related by R. A partial order that is also a total relation is a total order or linear order. For example, the relation \"≤\" is a total order on the natural numbers, but the <is a descendant of= relation is not a total order on the set of all people, since there are individuals neither of whom is descended from the other. A total relation that is transitive, but not necessarily either symmetric or antisymmetric, is a total preorder."
   },
   {
    "type": "body",
@@ -1042,7 +1042,7 @@
    "section_title": "B.3 Functions",
    "printed_page": 1161,
    "pdf_page": 1182,
-   "text": "Given two sets A and B , a function f is a binary relation on A and B such that for all a 2 A, there exists precisely one b 2 B such that (a;b) 2 f . The set A is called the domain of f , and the set B is called the codomain of f . We sometimes write f W A ! B , and if (a;b) 2 f , we write b = f(a) , since the choice of a uniquely determines b."
+   "text": "Given two sets A and B , a function f is a binary relation on A and B such that for all a 2 A, there exists precisely one b 2 B such that (a,b) 2 f . The set A is called the domain of f , and the set B is called the codomain of f . We sometimes write f W A ! B , and if (a,b) 2 f , we write b = f(a) , since the choice of a uniquely determines b."
   },
   {
    "type": "body",
@@ -1051,7 +1051,7 @@
    "section_title": "B.3 Functions",
    "printed_page": 1161,
    "pdf_page": 1182,
-   "text": "Intuitively, the function f assigns an element of B to each element of A. No element of A is assigned two different elements of B , but the same element of B can be assigned to two different elements of A. For example, the binary relation f = f(a;b) W a;b 2 N and b = a mod 2g is a function f W N ! f0;1 g, since for each natural number a, there is exactly one value b in f0;1 g such that b = a mod 2. For this example, 0 = f(0) , 1 = f(1) , 0 = f(2) , 1 = f(3) , etc. In contrast, the binary relation g = f(a;b) W a;b 2 N and a + b is eveng is not a function, since .1;3/ and .1;5/ are both in g, and thus for the choice a = 1, there is not precisely one b such that (a;b) 2 g."
+   "text": "Intuitively, the function f assigns an element of B to each element of A. No element of A is assigned two different elements of B , but the same element of B can be assigned to two different elements of A. For example, the binary relation f = f(a,b) W a,b 2 N and b = a mod 2g is a function f W N ! f0,1 g, since for each natural number a, there is exactly one value b in f0,1 g such that b = a mod 2. For this example, 0 = f(0) , 1 = f(1) , 0 = f(2) , 1 = f(3) , etc. In contrast, the binary relation g = f(a,b) W a,b 2 N and a + b is eveng is not a function, since .1,3/ and .1,5/ are both in g, and thus for the choice a = 1, there is not precisely one b such that (a,b) 2 g."
   },
   {
    "type": "body",
@@ -1060,7 +1060,7 @@
    "section_title": "B.3 Functions",
    "printed_page": 1161,
    "pdf_page": 1182,
-   "text": "Given a function f W A ! B , if b = f(a) , we say that a is the argument of f and that b is the value of f at a. We can define a function by stating its value for 1162 Appendix B Sets, Etc. every element of its domain. For example, we might define f(n) = 2n for n 2 N, which means f = f(n;2n) W n 2 Ng. Two functions f and g are equal if they have the same domain and codomain and if f(a) = g(a) for all a in the domain."
+   "text": "Given a function f W A ! B , if b = f(a) , we say that a is the argument of f and that b is the value of f at a. We can define a function by stating its value for 1162 Appendix B Sets, Etc. every element of its domain. For example, we might define f(n) = 2n for n 2 N, which means f = f(n,2n) W n 2 Ng. Two functions f and g are equal if they have the same domain and codomain and if f(a) = g(a) for all a in the domain."
   },
   {
    "type": "body",
@@ -1069,7 +1069,7 @@
    "section_title": "B.3 Functions",
    "printed_page": 1162,
    "pdf_page": 1183,
-   "text": "A finite sequence of length n is a function f whose domain is the set of n integers f0;1;:::;n − 1g. We often denote a finite sequence by listing its values in angle brackets: hf(0);f(1);:::;f(n − 1)i. An infinite sequence is a function whose domain is the set N of natural numbers. For example, the Fibonacci sequ ence, defined by recurrence (3.31), is the infinite sequence h0;1;1;2;3;5;8;13;21;::: i."
+   "text": "A finite sequence of length n is a function f whose domain is the set of n integers f0,1,…,n − 1g. We often denote a finite sequence by listing its values in angle brackets: hf(0),f(1),…,f(n − 1)i. An infinite sequence is a function whose domain is the set N of natural numbers. For example, the Fibonacci sequ ence, defined by recurrence (3.31), is the infinite sequence ⟨0,1,1,2,3,5,8,13,21,…⟩."
   },
   {
    "type": "body",
@@ -1078,7 +1078,7 @@
    "section_title": "B.3 Functions",
    "printed_page": 1162,
    "pdf_page": 1183,
-   "text": "When the domain of a function f is a Cartesian product, we often omit the extra parentheses surrounding the argument of f . For example, if we have a function f W A 1 ×A 2 ×• • •×A n ! B , we write b = f(a 1 ;a 2 ;:::;a n ) instead of writing b = f..a 1 ;a 2 ;:::;a n //. We also call each a i an argument to the function f , though technically f has just a single argument, which is the n-tuple (a 1 ;a 2 ;:::;a n )."
+   "text": "When the domain of a function f is a Cartesian product, we often omit the extra parentheses surrounding the argument of f . For example, if we have a function f W A 1 ×A 2 ×• • •×A n ! B , we write b = f(a 1 ,a 2 ,…,a n ) instead of writing b = f..a 1 ,a 2 ,…,a n //. We also call each a i an argument to the function f , though technically f has just a single argument, which is the n-tuple (a 1 ,a 2 ,…,a n )."
   },
   {
    "type": "body",
@@ -1249,7 +1249,7 @@
    "section_title": "B.4 Graphs",
    "printed_page": 1164,
    "pdf_page": 1185,
-   "text": "A directed graph (or digraph) G is a pair (V;E) , where V is a finite set and E is a binary relation on V . The set V is called the vertex set of G, and its elements are called vertices (singular: vertex). The set E is called the edge set of G, and its elements are called edges. Figure B.2(a) is a pictorial representation of a directed graph on the vertex set f1;2;3;4;5;6 g . Vertices are represented by circles in the figure, and edges are represented by arrows. Self-loops—edges from a vertex to itself—are possible."
+   "text": "A directed graph (or digraph) G is a pair (V,E) , where V is a finite set and E is a binary relation on V . The set V is called the vertex set of G, and its elements are called vertices (singular: vertex). The set E is called the edge set of G, and its elements are called edges. Figure B.2(a) is a pictorial representation of a directed graph on the vertex set f1,2,3,4,5,6 g . Vertices are represented by circles in the figure, and edges are represented by arrows. Self-loops—edges from a vertex to itself—are possible."
   },
   {
    "type": "body",
@@ -1258,7 +1258,7 @@
    "section_title": "B.4 Graphs",
    "printed_page": 1164,
    "pdf_page": 1185,
-   "text": "In an undirected graph G = (V;E) , the edge set E consists of unordered pairs of vertices, rather than ordered pairs. That is, an edge is a set fu;v g, where u;v 2 V and u ≠ v. By convention, we use the notation (u;v) for an edge, rather than the set notation fu;v g, and we consider (u;v) and (v;u) to be the same edge."
+   "text": "In an undirected graph G = (V,E) , the edge set E consists of unordered pairs of vertices, rather than ordered pairs. That is, an edge is a set fu,v g, where u,v 2 V and u ≠ v. By convention, we use the notation (u,v) for an edge, rather than the set notation fu,v g, and we consider (u,v) and (v,u) to be the same edge."
   },
   {
    "type": "body",
@@ -1267,7 +1267,7 @@
    "section_title": "B.4 Graphs",
    "printed_page": 1164,
    "pdf_page": 1185,
-   "text": "In an undirected graph, self-loops are forbidden, so that every edge consists of two distinct vertices. Figure B.2(b) shows an undir ected graph on the vertex set f1;2;3;4;5;6 g ."
+   "text": "In an undirected graph, self-loops are forbidden, so that every edge consists of two distinct vertices. Figure B.2(b) shows an undir ected graph on the vertex set f1,2,3,4,5,6 g ."
   },
   {
    "type": "body",
@@ -1276,7 +1276,7 @@
    "section_title": "B.4 Graphs",
    "printed_page": 1164,
    "pdf_page": 1185,
-   "text": "Many definitions for directed and undirected graphs are the same, although certain terms have slightly different meanings in the two contexts. If (u;v) is an edge in a directed graph G = (V;E) , we say that (u;v) is incident from or leaves vertex u and is incident to or enters vertex v. For example, the edges leaving vertex 2"
+   "text": "Many definitions for directed and undirected graphs are the same, although certain terms have slightly different meanings in the two contexts. If (u,v) is an edge in a directed graph G = (V,E) , we say that (u,v) is incident from or leaves vertex u and is incident to or enters vertex v. For example, the edges leaving vertex 2"
   },
   {
    "type": "body",
@@ -1285,7 +1285,7 @@
    "section_title": "B.4 Graphs",
    "printed_page": 1164,
    "pdf_page": 1185,
-   "text": "Figure B.2 Directed and undirected graphs. (a) A directed graph G = (V;E) , where V = f1;2;3;4;5;6 g and E = f(1;2);.2;2/;.2;4/;.2;5/;.4;1/;.4;5/;.5;4/;.6;3/ g. The edge .2;2/ is a self-loop. (b) An undirected graph G = (V;E) , where V = f1;2;3;4;5;6 g and E = f(1;2);.1;5/;.2;5/;.3;6/ g. The vertex 4 is isolated. (c) The subgraph of the graph in part (a) induced by the vertex set f1;2;3;6 g."
+   "text": "Figure B.2 Directed and undirected graphs. (a) A directed graph G = (V,E) , where V = f1,2,3,4,5,6 g and E = f(1,2),.2,2/,.2,4/,.2,5/,.4,1/,.4,5/,.5,4/,.6,3/ g. The edge .2,2/ is a self-loop. (b) An undirected graph G = (V,E) , where V = f1,2,3,4,5,6 g and E = f(1,2),.1,5/,.2,5/,.3,6/ g. The vertex 4 is isolated. (c) The subgraph of the graph in part (a) induced by the vertex set f1,2,3,6 g."
   },
   {
    "type": "body",
@@ -1294,7 +1294,7 @@
    "section_title": "B.4 Graphs",
    "printed_page": 1165,
    "pdf_page": 1186,
-   "text": "B(4 Graphs 1165 in Figure B(2(a) are .2;2) , .2;4) , and .2;5/ . The edges entering vertex 2 are .1;2/ and .2;2/ . If (u;v) is an edge in an undirected graph G = (V;E) , we say that (u;v) is incident on vertices u and v. In Figure B(2(b), the edges incident on vertex 2 are .1;2) and .2;5/ ."
+   "text": "B(4 Graphs 1165 in Figure B(2(a) are .2,2) , .2,4) , and .2,5/ . The edges entering vertex 2 are .1,2/ and .2,2/ . If (u,v) is an edge in an undirected graph G = (V,E) , we say that (u,v) is incident on vertices u and v. In Figure B(2(b), the edges incident on vertex 2 are .1,2) and .2,5/ ."
   },
   {
    "type": "body",
@@ -1303,7 +1303,7 @@
    "section_title": "B.4 Graphs",
    "printed_page": 1165,
    "pdf_page": 1186,
-   "text": "If (u;v) is an edge in a graph G = (V;E) , we say that vertex v is adjacent to vertex u. When the graph is undirected, the adjacency relat ion is symmetric."
+   "text": "If (u,v) is an edge in a graph G = (V,E) , we say that vertex v is adjacent to vertex u. When the graph is undirected, the adjacency relat ion is symmetric."
   },
   {
    "type": "body",
@@ -1312,7 +1312,7 @@
    "section_title": "B.4 Graphs",
    "printed_page": 1165,
    "pdf_page": 1186,
-   "text": "When the graph is directed, the adjacency relation is not necessarily symmetric. If v is adjacent to u in a directed graph, we can write u ! v. In parts (a) and (b) of Figure B(2, vertex 2 is adjacent to vertex 1, since the edge .1;2) belongs to both graphs. Vertex 1 is not adjacent to vertex 2 in Figure B(2(a), since the edge .2;1) is absent."
+   "text": "When the graph is directed, the adjacency relation is not necessarily symmetric. If v is adjacent to u in a directed graph, we can write u ! v. In parts (a) and (b) of Figure B(2, vertex 2 is adjacent to vertex 1, since the edge .1,2) belongs to both graphs. Vertex 1 is not adjacent to vertex 2 in Figure B(2(a), since the edge .2,1) is absent."
   },
   {
    "type": "body",
@@ -1330,7 +1330,7 @@
    "section_title": "B.4 Graphs",
    "printed_page": 1165,
    "pdf_page": 1186,
-   "text": "A path of length k from a vertex u to a vertex u 0 in a graph G = (V;E) is a sequence hv 0 ;v 1 ;v 2 ;:::;v k i of vertices such that u = v 0 , u 0 = v k , and (v i −1 ;v i ) 2 E for i = 1;2;:::;k . The length of the path is the number of edges in the path, which is 1 less than the number of vertices in the path. The path contains the vertices v 0 ;v 1 ;:::;v k and the edges (v 0 ;v 1 );.v 1 ;v 2 /;:::;.v k−1 ;v k /. (There is always a 0-length path from u to u.) If there is a path p from u to u 0 , we say that u 0 is reachable from u via p, which we can write as u p"
+   "text": "A path of length k from a vertex u to a vertex u 0 in a graph G = (V,E) is a sequence ⟨v 0 ,v 1 ,v 2 ,…,v k⟩ of vertices such that u = v 0 , u 0 = v k , and (v i −1 ,v i ) 2 E for i = 1,2,…,k . The length of the path is the number of edges in the path, which is 1 less than the number of vertices in the path. The path contains the vertices v 0 ,v 1 ,…,v k and the edges (v 0 ,v 1 ),.v 1 ,v 2 /,…,.v k−1 ,v k /. (There is always a 0-length path from u to u.) If there is a path p from u to u 0 , we say that u 0 is reachable from u via p, which we can write as u p"
   },
   {
    "type": "body",
@@ -1339,7 +1339,7 @@
    "section_title": "B.4 Graphs",
    "printed_page": 1165,
    "pdf_page": 1186,
-   "text": "→ u 0 . A path is simple 4 if all vertices in the path are distinct. In Figure B.2(a), the path h1;2;5;4 i is a simple path of length 3. The path h2;5;4;5 i is not simple. A subpath of path"
+   "text": "→ u 0 . A path is simple 4 if all vertices in the path are distinct. In Figure B.2(a), the path ⟨1,2,5,4⟩ is a simple path of length 3. The path ⟨2,5,4,5⟩ is not simple. A subpath of path"
   },
   {
    "type": "body",
@@ -1348,7 +1348,7 @@
    "section_title": "B.4 Graphs",
    "printed_page": 1165,
    "pdf_page": 1186,
-   "text": "√D hv 0 ;v 1 ;:::;v k i is a contiguous subsequence of its vertices. That i s, for any"
+   "text": "√D ⟨v 0 ,v 1 ,…,v k⟩ is a contiguous subsequence of its vertices. That i s, for any"
   },
   {
    "type": "body",
@@ -1357,7 +1357,7 @@
    "section_title": "B.4 Graphs",
    "printed_page": 1165,
    "pdf_page": 1186,
-   "text": "0 ≤ i ≤ j ≤ k, the subsequence of vertices hv i ;v i C1 ;:::;v j i is a subpath of p."
+   "text": "0 ≤ i ≤ j ≤ k, the subsequence of vertices hv i ,v i + 1 ,…,v j i is a subpath of p."
   },
   {
    "type": "body",
@@ -1366,7 +1366,7 @@
    "section_title": "B.4 Graphs",
    "printed_page": 1165,
    "pdf_page": 1186,
-   "text": "In a directed graph, a path hv 0 ;v 1 ;:::;v k i forms a cycle if v 0 = v k and the path contains at least one edge. The cycle is simple if, in addition, v 1 ;v 2 ;:::;v k are distinct. A cycle consisting of k vertices has length k. A self-loop is a cycle of length 1. Two paths hv 0 ;v 1 ;v 2 ;:::;v k−1 ;v 0 i and hv 0"
+   "text": "In a directed graph, a path ⟨v 0 ,v 1 ,…,v k⟩ forms a cycle if v 0 = v k and the path contains at least one edge. The cycle is simple if, in addition, v 1 ,v 2 ,…,v k are distinct. A cycle consisting of k vertices has length k. A self-loop is a cycle of length 1. Two paths ⟨v 0 ,v 1 ,v 2 ,…,v k−1 ,v 0⟩ and ⟨v 0"
   },
   {
    "type": "body",
@@ -1375,7 +1375,7 @@
    "section_title": "B.4 Graphs",
    "printed_page": 1165,
    "pdf_page": 1186,
-   "text": "2 ;:::;v 0 k−1 ;v 0"
+   "text": "2 ,…,v 0 k−1 ,v 0"
   },
   {
    "type": "body",
@@ -1384,7 +1384,7 @@
    "section_title": "B.4 Graphs",
    "printed_page": 1165,
    "pdf_page": 1186,
-   "text": "0 i form the same cycle if there exists an integer j such that v 0 i = v (i Cj ) mod k for i = 0;1;:::;k −1. In Figure B.2(a), the path h1;2;4;1 i forms the same cycle as the paths h2;4;1;2 i and h4;1;2;4 i. This cycle is simple, but the cycle h1;2;4;5;4;1 i is not. The cycle h2;2 i formed by the edge .2;2/ is a self-loop. A directed graph"
+   "text": "0⟩ form the same cycle if there exists an integer j such that v 0 i = v (i + j ) mod k for i = 0,1,…,k −1. In Figure B.2(a), the path ⟨1,2,4,1⟩ forms the same cycle as the paths ⟨2,4,1,2⟩ and ⟨4,1,2,4⟩. This cycle is simple, but the cycle ⟨1,2,4,5,4,1⟩ is not. The cycle ⟨2,2⟩ formed by the edge .2,2/ is a self-loop. A directed graph"
   },
   {
    "type": "footnote",
@@ -1402,7 +1402,7 @@
    "section_title": "B.4 Graphs",
    "printed_page": 1166,
    "pdf_page": 1187,
-   "text": "1166 Appendix B Sets, Etc. with no self-loops is simple. In an undirected graph, a path hv 0 ;v 1 ;:::;v k i forms a cycle if k>0 , v 0 = v k , and all edges on the path are distinct. The cycle is simple if v 1 ;v 2 ;:::;v k are distinct. For example, in Figure B.2(b), the pa th h1;2;5;1 i is a simple cycle. A graph with no simple cycles is acyclic."
+   "text": "1166 Appendix B Sets, Etc. with no self-loops is simple. In an undirected graph, a path ⟨v 0 ,v 1 ,…,v k⟩ forms a cycle if k>0 , v 0 = v k , and all edges on the path are distinct. The cycle is simple if v 1 ,v 2 ,…,v k are distinct. For example, in Figure B.2(b), the pa th ⟨1,2,5,1⟩ is a simple cycle. A graph with no simple cycles is acyclic."
   },
   {
    "type": "body",
@@ -1411,7 +1411,7 @@
    "section_title": "B.4 Graphs",
    "printed_page": 1166,
    "pdf_page": 1187,
-   "text": "An undirected graph is connected if every vertex is reachable from all other vertices. The connected components of an undirected graph are the equivalence classes of vertices under the \"is reachable from\" r elation. The graph shown in Figure B.2(b) has three connected components: f1;2;5 g, f3;6 g, and f—g. Every vertex in the connected component f1;2;5 g is reachable from every other vertex in f1;2;5 g. An undirected graph is connected if it has exactly one connected component. The edges of a connected component are those that are incident on only the vertices of the component. In other words, edge (u;v) is an edge of a connected component only if both u and v are vertices of the component."
+   "text": "An undirected graph is connected if every vertex is reachable from all other vertices. The connected components of an undirected graph are the equivalence classes of vertices under the \"is reachable from\" r elation. The graph shown in Figure B.2(b) has three connected components: f1,2,5 g, f3,6 g, and f—g. Every vertex in the connected component f1,2,5 g is reachable from every other vertex in f1,2,5 g. An undirected graph is connected if it has exactly one connected component. The edges of a connected component are those that are incident on only the vertices of the component. In other words, edge (u,v) is an edge of a connected component only if both u and v are vertices of the component."
   },
   {
    "type": "body",
@@ -1420,7 +1420,7 @@
    "section_title": "B.4 Graphs",
    "printed_page": 1166,
    "pdf_page": 1187,
-   "text": "A directed graph is strongly connected if every two vertices are reachable from each other. The strongly connected components of a directed graph are the equivalence classes of vertices under the \"are mutually reachable\" relation. A directed graph is strongly connected if it has only one strongly connected component. The graph in Figure B.2(a) has three strongly connected components: f1;2;4;5 g, f3g, and f6g. All pairs of vertices in f1;2;4;5 g are mutually reachable. The vertices f3;6 g do not form a strongly connected component, since v ertex 6 cannot be reached from vertex 3."
+   "text": "A directed graph is strongly connected if every two vertices are reachable from each other. The strongly connected components of a directed graph are the equivalence classes of vertices under the \"are mutually reachable\" relation. A directed graph is strongly connected if it has only one strongly connected component. The graph in Figure B.2(a) has three strongly connected components: f1,2,4,5 g, f3g, and f6g. All pairs of vertices in f1,2,4,5 g are mutually reachable. The vertices f3,6 g do not form a strongly connected component, since v ertex 6 cannot be reached from vertex 3."
   },
   {
    "type": "body",
@@ -1429,7 +1429,7 @@
    "section_title": "B.4 Graphs",
    "printed_page": 1166,
    "pdf_page": 1187,
-   "text": "Two graphs G = (V;E) and G 0 = (V 0 ;E 0 ) are isomorphic if there exists a bijection f W V ! V 0 such that (u;v) 2 E if and only if (f(u);f(v)) 2 E 0 ."
+   "text": "Two graphs G = (V,E) and G 0 = (V 0 ,E 0 ) are isomorphic if there exists a bijection f W V ! V 0 such that (u,v) 2 E if and only if (f(u),f(v)) 2 E 0 ."
   },
   {
    "type": "body",
@@ -1438,7 +1438,7 @@
    "section_title": "B.4 Graphs",
    "printed_page": 1166,
    "pdf_page": 1187,
-   "text": "In other words, G and G 0 are isomorphic if the vertices of G can be relabeled to be vertices of G 0 , maintaining the corresponding edges in G and G 0 . Figure B.3(a) shows a pair of isomorphic graphs G and G 0 with respective vertex sets V = f1;2;3;4;5;6 g and V 0 = fu;v;w;x;y;´ g. The mapping from V to V 0 given by f(1) = u;f(2) = v;f(3) = w;f(4) = x;f(5) = y;f(6) = ´ provides the required bijective function. The graph s in Figure B.3(b) are not isomorphic. Although both graphs have 5 vertices and 7 edges, the top graph has a vertex of degree 4 and the bottom graph does not."
+   "text": "In other words, G and G 0 are isomorphic if the vertices of G can be relabeled to be vertices of G 0 , maintaining the corresponding edges in G and G 0 . Figure B.3(a) shows a pair of isomorphic graphs G and G 0 with respective vertex sets V = f1,2,3,4,5,6 g and V 0 = fu,v,w,x,y,´ g. The mapping from V to V 0 given by f(1) = u,f(2) = v,f(3) = w,f(4) = x,f(5) = y,f(6) = ´ provides the required bijective function. The graph s in Figure B.3(b) are not isomorphic. Although both graphs have 5 vertices and 7 edges, the top graph has a vertex of degree 4 and the bottom graph does not."
   },
   {
    "type": "body",
@@ -1447,7 +1447,7 @@
    "section_title": "B.4 Graphs",
    "printed_page": 1166,
    "pdf_page": 1187,
-   "text": "We say that a graph G 0 = (V 0 ;E 0 ) is a subgraph of G = (V;E) if V 0 ⊆ V and E 0 ⊆ E. Given a set V 0 ⊆ V , the subgraph of G induced by V 0 is the graph G 0 = (V 0 ;E 0 ), where"
+   "text": "We say that a graph G 0 = (V 0 ,E 0 ) is a subgraph of G = (V,E) if V 0 ⊆ V and E 0 ⊆ E. Given a set V 0 ⊆ V , the subgraph of G induced by V 0 is the graph G 0 = (V 0 ,E 0 ), where"
   },
   {
    "type": "body",
@@ -1456,7 +1456,7 @@
    "section_title": "B.4 Graphs",
    "printed_page": 1166,
    "pdf_page": 1187,
-   "text": "E 0 = f(u;v) 2 E W u;v 2 V 0 g :"
+   "text": "E 0 = f(u,v) 2 E W u,v 2 V 0 g :"
   },
   {
    "type": "body",
@@ -1465,7 +1465,7 @@
    "section_title": "B.4 Graphs",
    "printed_page": 1166,
    "pdf_page": 1187,
-   "text": "The subgraph induced by the vertex set f1;2;3;6 g in Figure B.2(a) appears in Figure B(2(c) and has the edge set f(1;2);.2;2);.6;3/ g ."
+   "text": "The subgraph induced by the vertex set f1,2,3,6 g in Figure B.2(a) appears in Figure B(2(c) and has the edge set f(1,2),.2,2),.6,3/ g ."
   },
   {
    "type": "body",
@@ -1474,7 +1474,7 @@
    "section_title": "B.4 Graphs",
    "printed_page": 1166,
    "pdf_page": 1187,
-   "text": "Given an undirected graph G = (V;E) , the directed version of G is the directed graph G 0 = (V;E 0 ), where (u;v) 2 E 0 if and only if (u;v) 2 E. That is, each undirected edge (u;v) in G turns into two directed edges, (u;v) and (v;u) , in the B.4 Graphs 1167"
+   "text": "Given an undirected graph G = (V,E) , the directed version of G is the directed graph G 0 = (V,E 0 ), where (u,v) 2 E 0 if and only if (u,v) 2 E. That is, each undirected edge (u,v) in G turns into two directed edges, (u,v) and (v,u) , in the B.4 Graphs 1167"
   },
   {
    "type": "body",
@@ -1501,7 +1501,7 @@
    "section_title": "B.4 Graphs",
    "printed_page": 1167,
    "pdf_page": 1188,
-   "text": "Figure B.3 (a) A pair of isomorphic graphs. The vertices of the to p graph are mapped to the vertices of the bottom graph by f(1) = u;f(2) = v;f(3) = w;f(4) = x;f(5) = y;f(6) = ´."
+   "text": "Figure B.3 (a) A pair of isomorphic graphs. The vertices of the to p graph are mapped to the vertices of the bottom graph by f(1) = u,f(2) = v,f(3) = w,f(4) = x,f(5) = y,f(6) = ´."
   },
   {
    "type": "body",
@@ -1510,7 +1510,7 @@
    "section_title": "B.4 Graphs",
    "printed_page": 1167,
    "pdf_page": 1188,
-   "text": "(b) Two graphs that are not isomorphic. The top graph has a vertex of degree 4, and the bottom graph does not. directed version. Given a directed graph G = (V;E) , the undirected version of G is the undirected graph G 0 = (V;E 0 ), where (u;v) 2 E 0 if and only if u ≠ v and E contains at least one of the edges (u;v) and (v;u) . That is, the undirected version contains the edges of G \"with their directions removed\" and with self-loops eliminated. (Since (u;v) and (v;u) are the same edge in an undirected graph, the undirected version of a directed graph contains it only once, even if the directed graph contains both edges (u;v) and (v;u) .) In a directed graph G = (V;E) , a neighbor of a vertex u is any vertex that is adjacent to u in the undirected version of G. That is, v is a neighbor of u if u ≠ v and either (u;v) 2 E or (v;u) 2 E. In an undirected graph, u and v are neighbors if they are adjacent."
+   "text": "(b) Two graphs that are not isomorphic. The top graph has a vertex of degree 4, and the bottom graph does not. directed version. Given a directed graph G = (V,E) , the undirected version of G is the undirected graph G 0 = (V,E 0 ), where (u,v) 2 E 0 if and only if u ≠ v and E contains at least one of the edges (u,v) and (v,u) . That is, the undirected version contains the edges of G \"with their directions removed\" and with self-loops eliminated. (Since (u,v) and (v,u) are the same edge in an undirected graph, the undirected version of a directed graph contains it only once, even if the directed graph contains both edges (u,v) and (v,u) .) In a directed graph G = (V,E) , a neighbor of a vertex u is any vertex that is adjacent to u in the undirected version of G. That is, v is a neighbor of u if u ≠ v and either (u,v) 2 E or (v,u) 2 E. In an undirected graph, u and v are neighbors if they are adjacent."
   },
   {
    "type": "body",
@@ -1519,7 +1519,7 @@
    "section_title": "B.4 Graphs",
    "printed_page": 1167,
    "pdf_page": 1188,
-   "text": "Several kinds of graphs have special names. A complete graph is an undirected graph in which every pair of vertices is adjacent. An undirected graph G = (V;E) is bipartite if V can be partitioned into two sets V 1 and V 2 such that (u;v) 2 E implies either u 2 V 1 and v 2 V 2 or u 2 V 2 and v 2 V 1 . That is, all edges go between the two sets V 1 and V 2 . An acyclic, undirected graph is a forest, and a connected, acyclic, undirected graph is a (free) tree (see Section B.5). We often take the first letters of \"directed acyclic graph\" and call such a graph a dag."
+   "text": "Several kinds of graphs have special names. A complete graph is an undirected graph in which every pair of vertices is adjacent. An undirected graph G = (V,E) is bipartite if V can be partitioned into two sets V 1 and V 2 such that (u,v) 2 E implies either u 2 V 1 and v 2 V 2 or u 2 V 2 and v 2 V 1 . That is, all edges go between the two sets V 1 and V 2 . An acyclic, undirected graph is a forest, and a connected, acyclic, undirected graph is a (free) tree (see Section B.5). We often take the first letters of \"directed acyclic graph\" and call such a graph a dag."
   },
   {
    "type": "body",
@@ -1528,7 +1528,7 @@
    "section_title": "B.4 Graphs",
    "printed_page": 1167,
    "pdf_page": 1188,
-   "text": "There are two variants of graphs that you may occasionally encounter. A multi- graph is like an undirected graph, but it can have both multiple edges between vertices (such as two distinct edges (u;v) and (u;v)) and self-loops. A hypergraph is like an undirected graph, but each hyperedge, rather than connecting two vertices, 1168 Appendix B Sets, Etc. connects an arbitrary subset of vertices. Many algo rithms written for ordinary directed and undirected graphs can be adapted to run on these graphlike structures."
+   "text": "There are two variants of graphs that you may occasionally encounter. A multi- graph is like an undirected graph, but it can have both multiple edges between vertices (such as two distinct edges (u,v) and (u,v)) and self-loops. A hypergraph is like an undirected graph, but each hyperedge, rather than connecting two vertices, 1168 Appendix B Sets, Etc. connects an arbitrary subset of vertices. Many algo rithms written for ordinary directed and undirected graphs can be adapted to run on these graphlike structures."
   },
   {
    "type": "body",
@@ -1537,7 +1537,7 @@
    "section_title": "B.4 Graphs",
    "printed_page": 1168,
    "pdf_page": 1189,
-   "text": "The contraction of an undirected graph G = (V;E) by an edge e = (u;v) is a graph G 0 = (V 0 ;E 0 ), where V 0 = V − fu;v g [ fx g and x is a new vertex."
+   "text": "The contraction of an undirected graph G = (V,E) by an edge e = (u,v) is a graph G 0 = (V 0 ,E 0 ), where V 0 = V − fu,v g [ fx g and x is a new vertex."
   },
   {
    "type": "body",
@@ -1546,7 +1546,7 @@
    "section_title": "B.4 Graphs",
    "printed_page": 1168,
    "pdf_page": 1189,
-   "text": "The set of edges E 0 is formed from E by deleting the edge (u;v) and, for each vertex w adjacent to u or v, deleting whichever of (u;w) and (v;w) belongs to E and adding the new edge (x;w) . In effect, u and v are \"contracted\" into a single vertex."
+   "text": "The set of edges E 0 is formed from E by deleting the edge (u,v) and, for each vertex w adjacent to u or v, deleting whichever of (u,w) and (v,w) belongs to E and adding the new edge (x,w) . In effect, u and v are \"contracted\" into a single vertex."
   },
   {
    "type": "body",
@@ -1555,7 +1555,7 @@
    "section_title": "B.4 Graphs",
    "printed_page": 1168,
    "pdf_page": 1189,
-   "text": "Attendees of a faculty party shake hands to greet e ach other, with every pair of professors shaking hands one time. Each professor remembers the number of times he or she shook hands. At the end of the party, the department head asks the professors for their totals and adds them all up. S how that the result is even by proving the handshaking lemma: if G = (V;E) is an undirected graph, then"
+   "text": "Attendees of a faculty party shake hands to greet e ach other, with every pair of professors shaking hands one time. Each professor remembers the number of times he or she shook hands. At the end of the party, the department head asks the professors for their totals and adds them all up. S how that the result is even by proving the handshaking lemma: if G = (V,E) is an undirected graph, then"
   },
   {
    "type": "body",
@@ -1582,7 +1582,7 @@
    "section_title": "B.4 Graphs",
    "printed_page": 1168,
    "pdf_page": 1189,
-   "text": "Show that any connected, undirected graph G = (V;E) satisfies |E| ≥ |V| − 1."
+   "text": "Show that any connected, undirected graph G = (V,E) satisfies |E| ≥ |V| − 1."
   },
   {
    "type": "body",
@@ -1699,7 +1699,7 @@
    "section_title": "B.5 Trees",
    "printed_page": 1169,
    "pdf_page": 1190,
-   "text": "Let G = (V;E) be an undirected graph. The following statements are equivalent."
+   "text": "Let G = (V,E) be an undirected graph. The following statements are equivalent."
   },
   {
    "type": "body",
@@ -1834,7 +1834,7 @@
    "section_title": "B.5 Trees",
    "printed_page": 1170,
    "pdf_page": 1191,
-   "text": "G is connected. Let (u;v) be any edge in E. This edge is a path from u to v, and so it must be the unique path from u to v. If (u;v) were to be removed from G, there would be no path from u to v, and G would be disconnected."
+   "text": "G is connected. Let (u,v) be any edge in E. This edge is a path from u to v, and so it must be the unique path from u to v. If (u,v) were to be removed from G, there would be no path from u to v, and G would be disconnected."
   },
   {
    "type": "body",
@@ -1843,7 +1843,7 @@
    "section_title": "B.5 Trees",
    "printed_page": 1170,
    "pdf_page": 1191,
-   "text": "(3) ) (4): By assumption, the graph G is connected, so Exercise B.4-3 gives that |E| ≥ |V| − 1. We prove |E| ≤ |V| − 1 by induction on |V|. The base cases are when |V| = 1 or |V| = 2, and in either case, |E| = |V| − 1. For the inductive step, suppose that |V| ≥ 3 for graph G and that any graph G 0 = (V 0 ;E 0 ), where"
+   "text": "(3) ) (4): By assumption, the graph G is connected, so Exercise B.4-3 gives that |E| ≥ |V| − 1. We prove |E| ≤ |V| − 1 by induction on |V|. The base cases are when |V| = 1 or |V| = 2, and in either case, |E| = |V| − 1. For the inductive step, suppose that |V| ≥ 3 for graph G and that any graph G 0 = (V 0 ,E 0 ), where"
   },
   {
    "type": "body",
@@ -1861,7 +1861,7 @@
    "section_title": "B.5 Trees",
    "printed_page": 1171,
    "pdf_page": 1192,
-   "text": "(4) ) (5): Suppose that G is connected and that |E| = |V| − 1. We must show that G is acyclic. Suppose that G has a cycle containing k vertices v 1 ;v 2 ;:::;v k , and without loss of generality assume that this cycle is simple. Let G k = (V k ;E k ) be the subgraph of G consisting of the cycle, so that jV k j = jE k j = k. If k< |V|, then because G is connected, there must be a vertex v kC1 2 V − V k that is adjacent to some vertex v i 2 V k . Define G kC1 = (V kC1 ;E kC1 ) to be the subgraph of G with V kC1 = V k [ fv kC1 g and E kC1 = E k [ f(v i ;v kC1 )g. Note that jV kC1 j = jE kC1 j = k + 1. If k + 1 < |V|, then continue, defining G kC2 in the same manner, and so forth, until we obtain G n = (V n ;E n ), where n = |V|, V n = V , and jE n j = jV n j = |V|. Since G n is a subgraph of G, we have E n ⊆ E, and hence"
+   "text": "(4) ) (5): Suppose that G is connected and that |E| = |V| − 1. We must show that G is acyclic. Suppose that G has a cycle containing k vertices v 1 ,v 2 ,…,v k , and without loss of generality assume that this cycle is simple. Let G k = (V k ,E k ) be the subgraph of G consisting of the cycle, so that jV k j = jE k j = k. If k< |V|, then because G is connected, there must be a vertex v k + 1 2 V − V k that is adjacent to some vertex v i 2 V k . Define G k + 1 = (V k + 1 ,E k + 1 ) to be the subgraph of G with V k + 1 = V k [ fv k + 1 g and E k + 1 = E k [ f(v i ,v k + 1 )g. Note that jV k + 1 j = jE k + 1 j = k + 1. If k + 1 < |V|, then continue, defining G k + 2 in the same manner, and so forth, until we obtain G n = (V n ,E n ), where n = |V|, V n = V , and jE n j = jV n j = |V|. Since G n is a subgraph of G, we have E n ⊆ E, and hence"
   },
   {
    "type": "body",
@@ -1924,7 +1924,7 @@
    "section_title": "B.5 Trees",
    "printed_page": 1171,
    "pdf_page": 1192,
-   "text": "If u and v are not already adjacent, adding the edge (u;v) creates a cycle in which all edges but (u;v) belong to G. Thus, the cycle minus edge (u;v) must contain a path from u to v, and since u and v were chosen arbitrarily, G is connected."
+   "text": "If u and v are not already adjacent, adding the edge (u,v) creates a cycle in which all edges but (u,v) belong to G. Thus, the cycle minus edge (u,v) must contain a path from u to v, and since u and v were chosen arbitrarily, G is connected."
   },
   {
    "type": "body",
@@ -1978,7 +1978,7 @@
    "section_title": "B.5 Trees",
    "printed_page": 1172,
    "pdf_page": 1193,
-   "text": "If the last edge on the simple path from the root r of a tree T to a node x is (y;x) , then y is the parent of x , and x is a child of y . The root is the only node in T with no parent. If two nodes have the same parent, they are siblings. A node with no children is a leaf or external node. A nonleaf node is an internal node."
+   "text": "If the last edge on the simple path from the root r of a tree T to a node x is (y,x) , then y is the parent of x , and x is a child of y . The root is the only node in T with no parent. If two nodes have the same parent, they are siblings. A node with no children is a leaf or external node. A nonleaf node is an internal node."
   },
   {
    "type": "footnote",
@@ -2176,7 +2176,7 @@
    "section_title": "B.5 Trees",
    "printed_page": 1175,
    "pdf_page": 1196,
-   "text": "Let G = (V;E) be a directed acyclic graph in which there is a ver tex v 0 2 V such that there exists a unique path from v 0 to every vertex v 2 V . Prove that the undirected version of G forms a tree."
+   "text": "Let G = (V,E) be a directed acyclic graph in which there is a ver tex v 0 2 V such that there exists a unique path from v 0 to every vertex v 2 V . Prove that the undirected version of G forms a tree."
   },
   {
    "type": "body",
@@ -2266,7 +2266,7 @@
    "section_title": "B.5 Trees",
    "printed_page": 1176,
    "pdf_page": 1197,
-   "text": "A k-coloring of undirected graph G = (V;E) is a function c W V ! f1;2;:::;k g such that c(u) ≠ c(v) for every edge (u;v) 2 E. In other words, the numbers"
+   "text": "A k-coloring of undirected graph G = (V,E) is a function c W V ! f1,2,…,k g such that c(u) ≠ c(v) for every edge (u,v) 2 E. In other words, the numbers"
   },
   {
    "type": "body",
@@ -2275,7 +2275,7 @@
    "section_title": "B.5 Trees",
    "printed_page": 1176,
    "pdf_page": 1197,
-   "text": "1;2;:::;k represent the k colors, and adjacent vertices must have different colors. a. Show that any tree is 2-colorable. b. Show that the following are equivalent:"
+   "text": "1,2,…,k represent the k colors, and adjacent vertices must have different colors. a. Show that any tree is 2-colorable. b. Show that the following are equivalent:"
   },
   {
    "type": "body",

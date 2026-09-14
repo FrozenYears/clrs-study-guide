@@ -496,7 +496,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 753,
    "pdf_page": 774,
-   "text": "In this case, the function f maps the set P of fork-join programs to the set P S ⊂ P of serial programs, which are themselves fork-join programs with no parallelism. For a fork-join program x 2 P , since we have f.f(x)/ = f(x), the serial projection, as we have defined it, is indeed a mathematical projection. cessors as the computation unfolds. We’ll discuss the theory behind task-parallel schedulers shortly (on page 759)."
+   "text": "In this case, the function f maps the set P of fork-join programs to the set P S ⊂ P of serial programs, which are themselves fork-join programs with no parallelism. For a fork-join program x 2 P , since we have f(f(x)) = f(x), the serial projection, as we have defined it, is indeed a mathematical projection. cessors as the computation unfolds. We’ll discuss the theory behind task-parallel schedulers shortly (on page 759)."
   },
   {
    "type": "body",
@@ -532,7 +532,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 754,
    "pdf_page": 775,
-   "text": "It helps to view the execution of a parallel computation—the dynamic stream of runtime instructions executed by processors under t he direction of a parallel program—as a directed acyclic graph G = (V;E) , called a (parallel) trace. 2 Conceptually, the vertices in V are executed instructions, and the edges in E represent dependencies between instructions, where (u;v) 2 E means that the parallel program required instruction u to execute before instruction v."
+   "text": "It helps to view the execution of a parallel computation—the dynamic stream of runtime instructions executed by processors under t he direction of a parallel program—as a directed acyclic graph G = (V,E) , called a (parallel) trace. 2 Conceptually, the vertices in V are executed instructions, and the edges in E represent dependencies between instructions, where (u,v) 2 E means that the parallel program required instruction u to execute before instruction v."
   },
   {
    "type": "body",
@@ -550,7 +550,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 754,
    "pdf_page": 775,
-   "text": "When a parent procedure calls a child, the trace co ntains an edge (u;v) from the strand u in the parent that executes the call to the first strand v of the spawned child, as illustrated in Figure 26.2 by the edge from the orange strand in P-FIB(4) to the blue strand in P-FIB(2). When the last strand v 0 in the child returns, the trace contains an edge (v 0 ;u 0 ) to the strand u 0 , where u 0 is the successor strand of u in the parent, as with the edge from the white strand in P-FIB(2) to the white strand in P-FIB(4)."
+   "text": "When a parent procedure calls a child, the trace co ntains an edge (u,v) from the strand u in the parent that executes the call to the first strand v of the spawned child, as illustrated in Figure 26.2 by the edge from the orange strand in P-FIB(4) to the blue strand in P-FIB(2). When the last strand v 0 in the child returns, the trace contains an edge (v 0 ,u 0 ) to the strand u 0 , where u 0 is the successor strand of u in the parent, as with the edge from the white strand in P-FIB(2) to the white strand in P-FIB(4)."
   },
   {
    "type": "footnote",
@@ -649,7 +649,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 755,
    "pdf_page": 776,
-   "text": "When the parent spawns a child, however, the trace is a little different. The edge (u;v) goes from parent to child as with a call, such as the edge from the blue strand in P-FIB(4) to the blue strand in P-FIB(3), but the trace contains another edge (u;u 0 ) as well, indicating that u’s successor strand u 0 can continue to execute while v is executing. The edge from the blue strand in P-FIB(4) to the orange strand in P-FIB(4) illustrates one such edge. As with a call, there is an edge from the last strand v 0 in the child, but with a spawn, it no longer goes to u’s successor."
+   "text": "When the parent spawns a child, however, the trace is a little different. The edge (u,v) goes from parent to child as with a call, such as the edge from the blue strand in P-FIB(4) to the blue strand in P-FIB(3), but the trace contains another edge (u,u 0 ) as well, indicating that u’s successor strand u 0 can continue to execute while v is executing. The edge from the blue strand in P-FIB(4) to the orange strand in P-FIB(4) illustrates one such edge. As with a call, there is an edge from the last strand v 0 in the child, but with a spawn, it no longer goes to u’s successor."
   },
   {
    "type": "body",
@@ -658,7 +658,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 755,
    "pdf_page": 776,
-   "text": "Instead, the edge is (v 0 ;x) , where x is the strand immediately following the sync in the parent that ensures that the child has finished, as with the edge from the white strand in P-FIB(3) to the white strand in P-FIB(4)."
+   "text": "Instead, the edge is (v 0 ,x) , where x is the strand immediately following the sync in the parent that ensures that the child has finished, as with the edge from the white strand in P-FIB(3) to the white strand in P-FIB(4)."
   },
   {
    "type": "body",
@@ -721,7 +721,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 757,
    "pdf_page": 778,
-   "text": "We can gauge the theoretical efficiency of a task-parallel algorithm using work/ span analysis, which is based on two metrics: \"work\" and \"span.\" The work of a task-parallel computation is the total time to execute the entire computation on one processor. In other words, the work is the sum of the times taken by each of the strands. If each strand takes unit time, the wo rk is just the number of vertices in the trace. The span is the fastest possible time to execute the computation on an unlimited number of processors, which corresponds t o the sum of the times taken by the strands along a longest path in the trace, w here \"longest\" means that each strand is weighted by its execution time. Such a lo ngest path is called the critical path of the trace, and thus the span is the weight of th e longest (weighted) path in the trace. (Section 22.2, pages 6173619 shows how to find a critical path in a dag G = (V;E) in Θ(V + E) time.) For a trace in which each strand takes unit time, the span equals the number of strands on the critical path. For example, the trace of Figure 26.2 has 17 vertices in all and 8 vertices on its critical path, so that if each strand takes unit time, its work is 17 time units and its span is 8 time units."
+   "text": "We can gauge the theoretical efficiency of a task-parallel algorithm using work/ span analysis, which is based on two metrics: \"work\" and \"span.\" The work of a task-parallel computation is the total time to execute the entire computation on one processor. In other words, the work is the sum of the times taken by each of the strands. If each strand takes unit time, the wo rk is just the number of vertices in the trace. The span is the fastest possible time to execute the computation on an unlimited number of processors, which corresponds t o the sum of the times taken by the strands along a longest path in the trace, w here \"longest\" means that each strand is weighted by its execution time. Such a lo ngest path is called the critical path of the trace, and thus the span is the weight of th e longest (weighted) path in the trace. (Section 22.2, pages 6173619 shows how to find a critical path in a dag G = (V,E) in Θ(V + E) time.) For a trace in which each strand takes unit time, the span equals the number of strands on the critical path. For example, the trace of Figure 26.2 has 17 vertices in all and 8 vertices on its critical path, so that if each strand takes unit time, its work is 17 time units and its span is 8 time units."
   },
   {
    "type": "body",
@@ -1045,7 +1045,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 760,
    "pdf_page": 781,
-   "text": "P ≥ max fT 1/P;T 1 g, Theorem 26.1 implies that T P ≤ T 1/P + T 1"
+   "text": "P ≥ max fT 1/P,T 1 g, Theorem 26.1 implies that T P ≤ T 1/P + T 1"
   },
   {
    "type": "body",
@@ -1054,7 +1054,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 760,
    "pdf_page": 781,
-   "text": "≤ 2 • max fT 1/P;T 1 g"
+   "text": "≤ 2 • max fT 1/P,T 1 g"
   },
   {
    "type": "body",
@@ -1171,7 +1171,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 762,
    "pdf_page": 783,
-   "text": "Span: T 1 (A [ B) = max.T 1 (A);T 1 (B))"
+   "text": "Span: T 1 (A [ B) = max.T 1 (A),T 1 (B))"
   },
   {
    "type": "figure-caption",
@@ -1198,7 +1198,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 762,
    "pdf_page": 783,
-   "text": "T 1 (n) = max fT 1 (n − 1);T 1 (n − 2)g + Θ(1)"
+   "text": "T 1 (n) = max fT 1 (n − 1),T 1 (n − 2)g + Θ(1)"
   },
   {
    "type": "body",
@@ -1298,18 +1298,18 @@
     },
     {
      "n": 5,
-     "code": "spawn P-MAT-VEC-RECURSIVE (A;x;y;n;i;  mid)"
+     "code": "spawn P-MAT-VEC-RECURSIVE (A,x,y,n,i;  mid)"
     },
     {
      "n": 6,
-     "code": "P-MAT-VEC-RECURSIVE (A;x;y;n;  mid C 1;i  0 )"
+     "code": "P-MAT-VEC-RECURSIVE (A,x,y,n;  mid C 1,i  0 )"
     },
     {
      "n": 7,
      "code": "sync"
     }
    ],
-   "text": "1 if i = = i 0 / / just one iteration to do?\n2 for j = 1 to n / / mimic P-MAT-VEC serial loop\n3 y i = y i + a i|x|\n4 else mid = ⌊(i + i 0 )/2⌋ / / parallel divide-and-conquer\n5 spawn P-MAT-VEC-RECURSIVE (A;x;y;n;i;  mid)\n6 P-MAT-VEC-RECURSIVE (A;x;y;n;  mid C 1;i  0 )\n7 sync"
+   "text": "1 if i = = i 0 / / just one iteration to do?\n2 for j = 1 to n / / mimic P-MAT-VEC serial loop\n3 y i = y i + a i|x|\n4 else mid = ⌊(i + i 0 )/2⌋ / / parallel divide-and-conquer\n5 spawn P-MAT-VEC-RECURSIVE (A,x,y,n,i;  mid)\n6 P-MAT-VEC-RECURSIVE (A,x,y,n;  mid C 1,i  0 )\n7 sync"
   },
   {
    "type": "body",
@@ -1327,7 +1327,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 763,
    "pdf_page": 784,
-   "text": "A = (a ij ) by an n-vector x = (x j ). The resulting n-vector y = (y i ) is given by the equation y i = n X j D1 a i|x| ; for i = 1;2;:::;n . The P-MAT-VEC procedure performs matrix-vector multiplication (actually, y = y C Ax ) by computing all the entries of y in parallel. The parallel for keywords in line 1 of P-MAT-VEC indicate that the n iterations of the loop body, which includes a serial for loop, may be run in parallel. The initialization y = 0, if desired, should be performed before calling the procedure (and can be done with a parallel for loop)."
+   "text": "A = (a ij ) by an n-vector x = (x j ). The resulting n-vector y = (y i ) is given by the equation y i = n X j D1 a i|x| ; for i = 1,2,…,n . The P-MAT-VEC procedure performs matrix-vector multiplication (actually, y = y C Ax ) by computing all the entries of y in parallel. The parallel for keywords in line 1 of P-MAT-VEC indicate that the n iterations of the loop body, which includes a serial for loop, may be run in parallel. The initialization y = 0, if desired, should be performed before calling the procedure (and can be done with a parallel for loop)."
   },
   {
    "type": "body",
@@ -1336,7 +1336,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 763,
    "pdf_page": 784,
-   "text": "P-MAT-VEC(A;x;y;n)"
+   "text": "P-MAT-VEC(A,x,y,n)"
   },
   {
    "type": "body",
@@ -1345,7 +1345,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 763,
    "pdf_page": 784,
-   "text": "Compilers for fork-join parallel programs can implement parallel for loops in terms of spawn and sync by using recursive spawning. For example, for the parallel for loop in lines 133, a compiler can generate the auxiliary subroutine"
+   "text": "Compilers for fork-join parallel programs can implement parallel for loops in terms of spawn and sync by using recursive spawning. For example, for the parallel for loop in lines 1–3, a compiler can generate the auxiliary subroutine"
   },
   {
    "type": "body",
@@ -1354,7 +1354,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 763,
    "pdf_page": 784,
-   "text": "P-MAT-VEC-RECURSIVE and call P-MAT-VEC-RECURSIVE (A;x;y;n;1;n) in the place where the loop would be in the compiled c ode. As Figu re 26.4 illustrates, this procedure recursively spawns the first half of the iterations of the loop to execute in parallel (line 5) with the second half of the iterations (line 6) and then executes a sync (line 7), thereby creating a binary tree of parallel execution. Each leaf represents a base case, which is the serial for loop of lines 233."
+   "text": "P-MAT-VEC-RECURSIVE and call P-MAT-VEC-RECURSIVE (A,x,y,n,1,n) in the place where the loop would be in the compiled c ode. As Figu re 26.4 illustrates, this procedure recursively spawns the first half of the iterations of the loop to execute in parallel (line 5) with the second half of the iterations (line 6) and then executes a sync (line 7), thereby creating a binary tree of parallel execution. Each leaf represents a base case, which is the serial for loop of lines 2–3."
   },
   {
    "type": "body",
@@ -1363,7 +1363,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 763,
    "pdf_page": 784,
-   "text": "P-MAT-VEC-RECURSIVE (A;x;y;n;i;i 0 )"
+   "text": "P-MAT-VEC-RECURSIVE (A,x,y,n,i,i 0 )"
   },
   {
    "type": "body",
@@ -1399,7 +1399,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 764,
    "pdf_page": 785,
-   "text": "Figure 26.4 A trace for the computation of P-MAT-VEC-RECURSIVE(A;x;y;8;1;8) . The two numbers within each rounded rectangle give the valu es of the last two parameters ( i and i 0 in the procedure header) in the invocation (spawn, in blue, or call, in tan) of the procedure. The blue circles represent strands corresponding to the part of the procedure up to the spawn of P-MAT-VEC-RECURSIVE in line 5. The orange circles represent strands corresponding to the part of the procedure that calls P-MAT-VEC-RECURSIVE in line 6 up to the sync in line 7, where it suspends until the spawned subroutine in line 5 returns. The white circles represent strands corresponding to the (negligible) part of the procedure after the sync up to the point where it returns. for loop in line 1 with an ordinary for loop. The running time of the resulting serial pseudocode is Θ(n 2 ), which means that T 1 (n) = Θ(n 2 ). This analysis seems to ignore the overhead for recursive spawning in imple menting the parallel loops, however. Indeed, the overhead of recursive spawning does increase the work of a parallel loop compared with that of its serial pr ojection, but not asymptotically."
+   "text": "Figure 26.4 A trace for the computation of P-MAT-VEC-RECURSIVE(A,x,y,8,1,8) . The two numbers within each rounded rectangle give the valu es of the last two parameters ( i and i 0 in the procedure header) in the invocation (spawn, in blue, or call, in tan) of the procedure. The blue circles represent strands corresponding to the part of the procedure up to the spawn of P-MAT-VEC-RECURSIVE in line 5. The orange circles represent strands corresponding to the part of the procedure that calls P-MAT-VEC-RECURSIVE in line 6 up to the sync in line 7, where it suspends until the spawned subroutine in line 5 returns. The white circles represent strands corresponding to the (negligible) part of the procedure after the sync up to the point where it returns. for loop in line 1 with an ordinary for loop. The running time of the resulting serial pseudocode is Θ(n 2 ), which means that T 1 (n) = Θ(n 2 ). This analysis seems to ignore the overhead for recursive spawning in imple menting the parallel loops, however. Indeed, the overhead of recursive spawning does increase the work of a parallel loop compared with that of its serial pr ojection, but not asymptotically."
   },
   {
    "type": "body",
@@ -1444,7 +1444,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 765,
    "pdf_page": 786,
-   "text": "For example, let’s compute the span of the doubly nested loops in lines 133 of P-MAT-VEC. The span for the parallel for loop control is Θ(lg n). For each iteration of the outer parallel loop, the inner seria l for loop contains n iterations of line 3. Since each iteration takes constant time, the total span for the inner serial for loop is Θ(n), no matter which iteration of the outer parallel for loop it’s in. Thus, taking the maximum over all iterations of the outer loop and adding in the Θ(lg n) for loop control yields an overall span of T 1 n = Θ(n) + Θ(lg n) = Θ(n) for the procedure. Since the work is Θ(n 2 ), the parallelism is Θ(n 2 )=Θ(n) = Θ(n). (Ex- ercise 26.1-7 asks you to provide an implementation with even more parallelism.)"
+   "text": "For example, let’s compute the span of the doubly nested loops in lines 1–3 of P-MAT-VEC. The span for the parallel for loop control is Θ(lg n). For each iteration of the outer parallel loop, the inner seria l for loop contains n iterations of line 3. Since each iteration takes constant time, the total span for the inner serial for loop is Θ(n), no matter which iteration of the outer parallel for loop it’s in. Thus, taking the maximum over all iterations of the outer loop and adding in the Θ(lg n) for loop control yields an overall span of T 1 n = Θ(n) + Θ(lg n) = Θ(n) for the procedure. Since the work is Θ(n 2 ), the parallelism is Θ(n 2 )=Θ(n) = Θ(n). (Ex- ercise 26.1-7 asks you to provide an implementation with even more parallelism.)"
   },
   {
    "type": "body",
@@ -1696,7 +1696,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 768,
    "pdf_page": 789,
-   "text": "P-MAT-VEC-WRONG (A;x;y;n) execution of the loop body. Even if two parallel iterations both access the same in- dex variable, they really are accessing different variable instances—hence different memory locations—and no race occurs."
+   "text": "P-MAT-VEC-WRONG (A,x,y,n) execution of the loop body. Even if two parallel iterations both access the same in- dex variable, they really are accessing different variable instances—hence different memory locations—and no race occurs."
   },
   {
    "type": "body",
@@ -1831,7 +1831,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 769,
    "pdf_page": 790,
-   "text": "2048/512C1 = 5 seconds, and the second version runs in T 0"
+   "text": "2048/512 + 1 = 5 seconds, and the second version runs in T 0"
   },
   {
    "type": "body",
@@ -1840,7 +1840,7 @@
    "section_title": "26.1 The basics of fork-join parallelism",
    "printed_page": 769,
    "pdf_page": 790,
-   "text": "512 = 1024/512C8 ="
+   "text": "512 = 1024/512 + 8 ="
   },
   {
    "type": "body",
@@ -1991,7 +1991,7 @@
    "section_title": "26.2 Parallel matrix multiplication",
    "printed_page": 770,
    "pdf_page": 791,
-   "text": "P-TRANSPOSE (A;n)"
+   "text": "P-TRANSPOSE (A,n)"
   },
   {
    "type": "exercise",
@@ -2074,7 +2074,7 @@
    "section_title": "26.2 Parallel matrix multiplication",
    "printed_page": 771,
    "pdf_page": 792,
-   "text": "P-MATRIX-MULTIPLY (A;B;C;n)"
+   "text": "P-MATRIX-MULTIPLY (A,B,C,n)"
   },
   {
    "type": "body",
@@ -2128,7 +2128,7 @@
    "section_title": "26.2 Parallel matrix multiplication",
    "printed_page": 771,
    "pdf_page": 792,
-   "text": "Lines 233 of P-MATRIX-MULTIPLY-RECURSIVE handle the base case of multiplying 1 × 1 matrices. The remainder of the procedure deals with the recursive case. Line 4 allocates a temporary matrix D, and lines 537 zero it. Line 8 partitions each of the four matrices A, B , C , and = into n/2 × n/2 submatrices. (As"
+   "text": "Lines 2–3 of P-MATRIX-MULTIPLY-RECURSIVE handle the base case of multiplying 1 × 1 matrices. The remainder of the procedure deals with the recursive case. Line 4 allocates a temporary matrix D, and lines 5–7 zero it. Line 8 partitions each of the four matrices A, B , C , and = into n/2 × n/2 submatrices. (As"
   },
   {
    "type": "pseudocode",
@@ -2182,7 +2182,7 @@
    "section_title": "26.2 Parallel matrix multiplication",
    "printed_page": 772,
    "pdf_page": 793,
-   "text": "P-MATRIX-MULTIPLY-RECURSIVE (A;B;C;n)"
+   "text": "P-MATRIX-MULTIPLY-RECURSIVE (A,B,C,n)"
   },
   {
    "type": "body",
@@ -2191,7 +2191,7 @@
    "section_title": "26.2 Parallel matrix multiplication",
    "printed_page": 772,
    "pdf_page": 793,
-   "text": "A 11 ;A 12 ;A 21 ;A 22 ; B 11 ;B 12 ;B 21 ;B 22 ; C 11 ;C 12 ;C 21 ;C 22 ; and = 11 ;D 12 ;D 21 ;D 22 ; respectively"
+   "text": "A 11 ,A 12 ,A 21 ,A 22 ; B 11 ,B 12 ,B 21 ,B 22 ; C 11 ,C 12 ,C 21 ,C 22 ; and = 11 ,D 12 ,D 21 ,D 22 ; respectively"
   },
   {
    "type": "body",
@@ -2200,7 +2200,7 @@
    "section_title": "26.2 Parallel matrix multiplication",
    "printed_page": 772,
    "pdf_page": 793,
-   "text": "9 spawn P-MATRIX-MULTIPLY-RECURSIVE (A 11 ;B 11 ;C 11 ;n/2)"
+   "text": "9 spawn P-MATRIX-MULTIPLY-RECURSIVE (A 11 ,B 11 ,C 11 ,n/2)"
   },
   {
    "type": "body",
@@ -2209,7 +2209,7 @@
    "section_title": "26.2 Parallel matrix multiplication",
    "printed_page": 772,
    "pdf_page": 793,
-   "text": "10 spawn P-MATRIX-MULTIPLY-RECURSIVE (A 11 ;B 12 ;C 12 ;n/2)"
+   "text": "10 spawn P-MATRIX-MULTIPLY-RECURSIVE (A 11 ,B 12 ,C 12 ,n/2)"
   },
   {
    "type": "body",
@@ -2218,7 +2218,7 @@
    "section_title": "26.2 Parallel matrix multiplication",
    "printed_page": 772,
    "pdf_page": 793,
-   "text": "11 spawn P-MATRIX-MULTIPLY-RECURSIVE (A 21 ;B 11 ;C 21 ;n/2)"
+   "text": "11 spawn P-MATRIX-MULTIPLY-RECURSIVE (A 21 ,B 11 ,C 21 ,n/2)"
   },
   {
    "type": "body",
@@ -2227,7 +2227,7 @@
    "section_title": "26.2 Parallel matrix multiplication",
    "printed_page": 772,
    "pdf_page": 793,
-   "text": "12 spawn P-MATRIX-MULTIPLY-RECURSIVE (A 21 ;B 12 ;C 22 ;n/2)"
+   "text": "12 spawn P-MATRIX-MULTIPLY-RECURSIVE (A 21 ,B 12 ,C 22 ,n/2)"
   },
   {
    "type": "body",
@@ -2236,7 +2236,7 @@
    "section_title": "26.2 Parallel matrix multiplication",
    "printed_page": 772,
    "pdf_page": 793,
-   "text": "13 spawn P-MATRIX-MULTIPLY-RECURSIVE (A 12 ;B 21 ;D 11 ;n/2)"
+   "text": "13 spawn P-MATRIX-MULTIPLY-RECURSIVE (A 12 ,B 21 ,D 11 ,n/2)"
   },
   {
    "type": "body",
@@ -2245,7 +2245,7 @@
    "section_title": "26.2 Parallel matrix multiplication",
    "printed_page": 772,
    "pdf_page": 793,
-   "text": "14 spawn P-MATRIX-MULTIPLY-RECURSIVE (A 12 ;B 22 ;D 12 ;n/2)"
+   "text": "14 spawn P-MATRIX-MULTIPLY-RECURSIVE (A 12 ,B 22 ,D 12 ,n/2)"
   },
   {
    "type": "body",
@@ -2254,7 +2254,7 @@
    "section_title": "26.2 Parallel matrix multiplication",
    "printed_page": 772,
    "pdf_page": 793,
-   "text": "15 spawn P-MATRIX-MULTIPLY-RECURSIVE (A 22 ;B 21 ;D 21 ;n/2)"
+   "text": "15 spawn P-MATRIX-MULTIPLY-RECURSIVE (A 22 ,B 21 ,D 21 ,n/2)"
   },
   {
    "type": "body",
@@ -2263,7 +2263,7 @@
    "section_title": "26.2 Parallel matrix multiplication",
    "printed_page": 772,
    "pdf_page": 793,
-   "text": "16 spawn P-MATRIX-MULTIPLY-RECURSIVE (A 22 ;B 22 ;D 22 ;n/2)"
+   "text": "16 spawn P-MATRIX-MULTIPLY-RECURSIVE (A 22 ,B 22 ,D 22 ,n/2)"
   },
   {
    "type": "body",
@@ -2317,7 +2317,7 @@
    "section_title": "26.2 Parallel matrix multiplication",
    "printed_page": 772,
    "pdf_page": 793,
-   "text": "10312 cause each of C 12 , C 21 , and C 22 in parallel to accumulate the first of the two terms in equations (4.6)3(4.8), respectively. Line 13 sets the submatrix = 11 to the submatrix product A 12 • B 21 , so that = 11 equals the second of the two terms in equation (4.5). Lines 14316 set each of = 12 , = 21 , and = 22 in parallel to the second of the two terms in equations (4.6)3(4.8), respectively. The sync statement in line 17 ensures that all the spawned submatrix products in lines 9316 have been computed, after which the doubly nested parallel for loops in lines 18320 add the elements of = to the corresponding elements of C ."
+   "text": "10312 cause each of C 12 , C 21 , and C 22 in parallel to accumulate the first of the two terms in equations (4.6)3(4.8), respectively. Line 13 sets the submatrix = 11 to the submatrix product A 12 • B 21 , so that = 11 equals the second of the two terms in equation (4.5). Lines 14–16 set each of = 12 , = 21 , and = 22 in parallel to the second of the two terms in equations (4.6)3(4.8), respectively. The sync statement in line 17 ensures that all the spawned submatrix products in lines 9–16 have been computed, after which the doubly nested parallel for loops in lines 18–20 add the elements of = to the corresponding elements of C ."
   },
   {
    "type": "body",
@@ -2362,7 +2362,7 @@
    "section_title": "26.2 Parallel matrix multiplication",
    "printed_page": 773,
    "pdf_page": 794,
-   "text": "Let’s determine the span M 1 (n) of P-MATRIX-MULTIPLY-RECURSIVE . Because the eight parallel recursive spawns all execute on matrices of the same size, the maximum span for any recursive spawn is just th e span of a single one of them, or M 1 (n/2). The span for the doubly nested parallel for loops in lines 537 is Θ(lg n) because each loop control adds Θ(lg n) to the constant span of line 7."
+   "text": "Let’s determine the span M 1 (n) of P-MATRIX-MULTIPLY-RECURSIVE . Because the eight parallel recursive spawns all execute on matrices of the same size, the maximum span for any recursive spawn is just th e span of a single one of them, or M 1 (n/2). The span for the doubly nested parallel for loops in lines 5–7 is Θ(lg n) because each loop control adds Θ(lg n) to the constant span of line 7."
   },
   {
    "type": "body",
@@ -2371,7 +2371,7 @@
    "section_title": "26.2 Parallel matrix multiplication",
    "printed_page": 773,
    "pdf_page": 794,
-   "text": "Similarly, the doubly nested parallel for loops in lines 18320 add another Θ(lg n)."
+   "text": "Similarly, the doubly nested parallel for loops in lines 18–20 add another Θ(lg n)."
   },
   {
    "type": "body",
@@ -2434,7 +2434,7 @@
    "section_title": "26.2 Parallel matrix multiplication",
    "printed_page": 773,
    "pdf_page": 794,
-   "text": "To parallelize Strassen’s algorithm, we can follow the same general outline as on pages 86387, but use spawning. You may find it helpful to compare each step below with the corresponding step there. We’ll analyze costs as we go along to develop recurrences T 1 (n) and T 1 (n) for the overall work and span, respectively."
+   "text": "To parallelize Strassen’s algorithm, we can follow the same general outline as on pages 86–87, but use spawning. You may find it helpful to compare each step below with the corresponding step there. We’ll analyze costs as we go along to develop recurrences T 1 (n) and T 1 (n) for the overall work and span, respectively."
   },
   {
    "type": "body",
@@ -2452,7 +2452,7 @@
    "section_title": "26.2 Parallel matrix multiplication",
    "printed_page": 773,
    "pdf_page": 794,
-   "text": "2. Create n/2 × n/2 matrices S 1 ;S 2 ;:::;S 10 , each of which is the sum or difference of two submatrices from step 1. Create and zero the entries of seven n/2×n/2 matrices P 1 ;P 2 ;:::;P 7 to hold seven n/2×n/2 matrix products. All"
+   "text": "2. Create n/2 × n/2 matrices S 1 ,S 2 ,…,S 10 , each of which is the sum or difference of two submatrices from step 1. Create and zero the entries of seven n/2×n/2 matrices P 1 ,P 2 ,…,P 7 to hold seven n/2×n/2 matrix products. All"
   },
   {
    "type": "body",
@@ -2470,7 +2470,7 @@
    "section_title": "26.2 Parallel matrix multiplication",
    "printed_page": 774,
    "pdf_page": 795,
-   "text": "3. Using the submatrices from step 1 and the matrices S 1 ;S 2 ;:::;S 10 created in step 2, recursively spawn computations of each of the seven n/2 × n/2 matrix products P 1 ;P 2 ;:::;P 7 , taking 7T 1 (n/2) work and T 1 (n/2) span."
+   "text": "3. Using the submatrices from step 1 and the matrices S 1 ,S 2 ,…,S 10 created in step 2, recursively spawn computations of each of the seven n/2 × n/2 matrix products P 1 ,P 2 ,…,P 7 , taking 7T 1 (n/2) work and T 1 (n/2) span."
   },
   {
    "type": "body",
@@ -2479,7 +2479,7 @@
    "section_title": "26.2 Parallel matrix multiplication",
    "printed_page": 774,
    "pdf_page": 795,
-   "text": "4. Update the four submatrices C 11 ;C 12 ;C 21 ;C 22 of the result matrix C by adding or subtracting various P i matrices. Using doubly nested parallel for loops, computing all four submatrices takes Θ(n 2 ) work and Θ(lg n) span."
+   "text": "4. Update the four submatrices C 11 ,C 12 ,C 21 ,C 22 of the result matrix C by adding or subtracting various P i matrices. Using doubly nested parallel for loops, computing all four submatrices takes Θ(n 2 ) work and Θ(lg n) span."
   },
   {
    "type": "body",
@@ -2563,7 +2563,7 @@
     },
     {
      "n": 5,
-     "code": "spawn P-MERGE-SORT (A;p;q)"
+     "code": "spawn P-MERGE-SORT (A,p,q)"
     },
     {
      "n": 6,
@@ -2571,7 +2571,7 @@
     },
     {
      "n": 7,
-     "code": "spawn P-MERGE-SORT (A;q + 1;r)"
+     "code": "spawn P-MERGE-SORT (A,q + 1,r)"
     },
     {
      "n": 8,
@@ -2583,10 +2583,10 @@
     },
     {
      "n": 10,
-     "code": "P-MERGE(A;p;q;r)"
+     "code": "P-MERGE(A,p,q,r)"
     }
    ],
-   "text": "1 if p ≥ r / / zero or one element?\n2 return\n3 q = ⌊(p + r)/2⌋ / / midpoint of A[p : r]\n4 / / Recursively sort A[p : q] in parallel.\n5 spawn P-MERGE-SORT (A;p;q)\n6 / / Recursively sort A[q + 1 : r] in parallel.\n7 spawn P-MERGE-SORT (A;q + 1;r)\n8 sync / / wait for spawns\n9 / / Merge A[p : q] and A[q + 1 : r] into A[p : r].\n10 P-MERGE(A;p;q;r)"
+   "text": "1 if p ≥ r / / zero or one element?\n2 return\n3 q = ⌊(p + r)/2⌋ / / midpoint of A[p : r]\n4 / / Recursively sort A[p : q] in parallel.\n5 spawn P-MERGE-SORT (A,p,q)\n6 / / Recursively sort A[q + 1 : r] in parallel.\n7 spawn P-MERGE-SORT (A,q + 1,r)\n8 sync / / wait for spawns\n9 / / Merge A[p : q] and A[q + 1 : r] into A[p : r].\n10 P-MERGE(A,p,q,r)"
   },
   {
    "type": "exercise",
@@ -2631,7 +2631,7 @@
    "section_title": "26.3 Parallel merge sort",
    "printed_page": 775,
    "pdf_page": 796,
-   "text": "P-MERGE-SORT (A;p;r)"
+   "text": "P-MERGE-SORT (A,p,r)"
   },
   {
    "type": "body",
@@ -2811,7 +2811,7 @@
    "section_title": "26.3 Parallel merge sort",
    "printed_page": 777,
    "pdf_page": 798,
-   "text": "FIND-SPLIT-POINT (A;p;r;x) on the next page, which takes as input a sorted subarray A[p : r] and a key x . The procedure returns a split point of A[p : r]: an index q in the range p ≤ q ≤ r + 1 such that all the elements in A[p : q − 1] (if any) are at most x and all the elements in A[q : r] (if any) are at least x ."
+   "text": "FIND-SPLIT-POINT (A,p,r,x) on the next page, which takes as input a sorted subarray A[p : r] and a key x . The procedure returns a split point of A[p : r]: an index q in the range p ≤ q ≤ r + 1 such that all the elements in A[p : q − 1] (if any) are at most x and all the elements in A[q : r] (if any) are at least x ."
   },
   {
    "type": "body",
@@ -2883,7 +2883,7 @@
    "section_title": "26.3 Parallel merge sort",
    "printed_page": 778,
    "pdf_page": 799,
-   "text": "FIND-SPLIT-POINT (A;p;r;x)"
+   "text": "FIND-SPLIT-POINT (A,p,r,x)"
   },
   {
    "type": "body",
@@ -2910,7 +2910,7 @@
    "section_title": "26.3 Parallel merge sort",
    "printed_page": 778,
    "pdf_page": 799,
-   "text": "P-MERGE-AUX. The procedure P-MERGE itself is just a \"wrapper\" that sets up for P-MERGE-AUX. It allocates a new array B[p : r] to hold the output of P-MERGE-AUX in line 1. It then calls P-MERGE-AUX in line 2, passing the in- dices of the two subarrays to be merged and providing B as the output destination of the merged result, starting at index p. After P-MERGE-AUX returns, lines 334 perform a parallel copy of the output B[p : r] into the subarray A[p : r], which is where P-MERGE-SORT expects it."
+   "text": "P-MERGE-AUX. The procedure P-MERGE itself is just a \"wrapper\" that sets up for P-MERGE-AUX. It allocates a new array B[p : r] to hold the output of P-MERGE-AUX in line 1. It then calls P-MERGE-AUX in line 2, passing the in- dices of the two subarrays to be merged and providing B as the output destination of the merged result, starting at index p. After P-MERGE-AUX returns, lines 3–4 perform a parallel copy of the output B[p : r] into the subarray A[p : r], which is where P-MERGE-SORT expects it."
   },
   {
    "type": "body",
@@ -2919,7 +2919,7 @@
    "section_title": "26.3 Parallel merge sort",
    "printed_page": 778,
    "pdf_page": 799,
-   "text": "The P-MERGE-AUX procedure is the interesting part of the algorithm. Let’s start by understanding the parameters of this recur sive parallel procedure. The input array A and the four indices √1 ;r 1 ;p 2 ;r 2 specify the subarrays A[p 1 : r 1 ] and A[p 2 : r 2 ] to be merged. The array B and the index √3 indicate that the merged result should be stored into B[p 3 : r 3 ], where r 3 = √3 C (r 1 − √1 ) C (r 2 − √2 ) + 1, as we saw earlier. The end index r 3 of the output subarray is not needed by the pseudocode, but it helps conceptually to name the end index, as in the comment in line 13."
+   "text": "The P-MERGE-AUX procedure is the interesting part of the algorithm. Let’s start by understanding the parameters of this recur sive parallel procedure. The input array A and the four indices √1 ,r 1 ,p 2 ,r 2 specify the subarrays A[p 1 : r 1 ] and A[p 2 : r 2 ] to be merged. The array B and the index √3 indicate that the merged result should be stored into B[p 3 : r 3 ], where r 3 = √3 C (r 1 − √1 ) C (r 2 − √2 ) + 1, as we saw earlier. The end index r 3 of the output subarray is not needed by the pseudocode, but it helps conceptually to name the end index, as in the comment in line 13."
   },
   {
    "type": "body",
@@ -2946,7 +2946,7 @@
     },
     {
      "n": 2,
-     "code": "P-MERGE-AUX (A;p;q;q + 1;r;B;p)  / / merge from A into B"
+     "code": "P-MERGE-AUX (A,p,q,q + 1,r,B,p)  / / merge from A into B"
     },
     {
      "n": 3,
@@ -2957,7 +2957,7 @@
      "code": "A[i ] = B[i ]"
     }
    ],
-   "text": "1 let B[p : r] be a new array / / allocate scratch array\n2 P-MERGE-AUX (A;p;q;q + 1;r;B;p)  / / merge from A into B\n3 parallel for i = p to r / / copy B back to A in parallel\n4 A[i ] = B[i ]"
+   "text": "1 let B[p : r] be a new array / / allocate scratch array\n2 P-MERGE-AUX (A,p,q,q + 1,r,B,p)  / / merge from A into B\n3 parallel for i = p to r / / copy B back to A in parallel\n4 A[i ] = B[i ]"
   },
   {
    "type": "pseudocode",
@@ -2999,15 +2999,15 @@
     },
     {
      "n": 8,
-     "code": "q 2 DFIND-SPLIT-POINT  (A;p  2 ;r  2 ;x)  / / split A[p 2 : r 2 ] around x"
+     "code": "q 2 DFIND-SPLIT-POINT  (A,p  2 ,r  2 ,x)  / / split A[p 2 : r 2 ] around x"
     },
     {
      "n": 9,
-     "code": "q 3 = √3 C (q 1 − √1 ) C (q 2 − √2 ) / / where x belongs in B:::"
+     "code": "q 3 = √3 C (q 1 − √1 ) C (q 2 − √2 ) / / where x belongs in B…"
     },
     {
      "n": 10,
-     "code": "B[q 3 ] = x / / :::  put it there"
+     "code": "B[q 3 ] = x / / …  put it there"
     },
     {
      "n": 11,
@@ -3015,7 +3015,7 @@
     },
     {
      "n": 12,
-     "code": "spawn P-MERGE-AUX(A;p  1 ;q  1 − 1;p  2 ;q  2 − 1;B;p  3 )"
+     "code": "spawn P-MERGE-AUX(A,p  1 ,q  1 − 1,p  2 ,q  2 − 1,B,p  3 )"
     },
     {
      "n": 13,
@@ -3023,14 +3023,14 @@
     },
     {
      "n": 14,
-     "code": "spawn P-MERGE-AUX(A;q  1 + 1;r  1 ;q  2 ;r  2 ;B;q  3 + 1)"
+     "code": "spawn P-MERGE-AUX(A,q  1 + 1,r  1 ,q  2 ,r  2 ,B,q  3 + 1)"
     },
     {
      "n": 15,
      "code": "sync / / wait for spawns is the smaller of the two, lines 4 and 5 switch the roles of the subarrays so that"
     }
    ],
-   "text": "1 if √1 >r  1 and √2 >r  2 / / are both subarrays empty?\n2 return\n3 if r 1 − √1 <r  2 − √2 / / second subarray bigger?\n4 exchange √1 with √2 / / swap subarray roles\n5 exchange r 1 with r 2\n6 q 1 = ⌊(p 1 + r 1 )/2⌋ / / midpoint of A[p 1 : r 1 ]\n7 x = A[q 1 ] / / median of A[p 1 : r 1 ] is pivot x\n8 q 2 DFIND-SPLIT-POINT  (A;p  2 ;r  2 ;x)  / / split A[p 2 : r 2 ] around x\n9 q 3 = √3 C (q 1 − √1 ) C (q 2 − √2 ) / / where x belongs in B:::\n10 B[q 3 ] = x / / :::  put it there\n11 / / Recursively merge A[p 1 : q 1 − 1] and A[p 2 : q 2 − 1] into B[p 3 : q 3 − 1].\n12 spawn P-MERGE-AUX(A;p  1 ;q  1 − 1;p  2 ;q  2 − 1;B;p  3 )\n13 / / Recursively merge A[q 1 + 1 : r 1 ] and A[q 2 : r 2 ] into B[q 3 + 1 : r 3 ].\n14 spawn P-MERGE-AUX(A;q  1 + 1;r  1 ;q  2 ;r  2 ;B;q  3 + 1)\n15 sync / / wait for spawns is the smaller of the two, lines 4 and 5 switch the roles of the subarrays so that"
+   "text": "1 if √1 >r  1 and √2 >r  2 / / are both subarrays empty?\n2 return\n3 if r 1 − √1 <r  2 − √2 / / second subarray bigger?\n4 exchange √1 with √2 / / swap subarray roles\n5 exchange r 1 with r 2\n6 q 1 = ⌊(p 1 + r 1 )/2⌋ / / midpoint of A[p 1 : r 1 ]\n7 x = A[q 1 ] / / median of A[p 1 : r 1 ] is pivot x\n8 q 2 DFIND-SPLIT-POINT  (A,p  2 ,r  2 ,x)  / / split A[p 2 : r 2 ] around x\n9 q 3 = √3 C (q 1 − √1 ) C (q 2 − √2 ) / / where x belongs in B…\n10 B[q 3 ] = x / / …  put it there\n11 / / Recursively merge A[p 1 : q 1 − 1] and A[p 2 : q 2 − 1] into B[p 3 : q 3 − 1].\n12 spawn P-MERGE-AUX(A,p  1 ,q  1 − 1,p  2 ,q  2 − 1,B,p  3 )\n13 / / Recursively merge A[q 1 + 1 : r 1 ] and A[q 2 : r 2 ] into B[q 3 + 1 : r 3 ].\n14 spawn P-MERGE-AUX(A,q  1 + 1,r  1 ,q  2 ,r  2 ,B,q  3 + 1)\n15 sync / / wait for spawns is the smaller of the two, lines 4 and 5 switch the roles of the subarrays so that"
   },
   {
    "type": "body",
@@ -3039,7 +3039,7 @@
    "section_title": "26.3 Parallel merge sort",
    "printed_page": 779,
    "pdf_page": 800,
-   "text": "P-MERGE(A;p;q;r)"
+   "text": "P-MERGE(A,p,q,r)"
   },
   {
    "type": "body",
@@ -3048,7 +3048,7 @@
    "section_title": "26.3 Parallel merge sort",
    "printed_page": 779,
    "pdf_page": 800,
-   "text": "P-MERGE-AUX(A;p 1 ;r 1 ;p 2 ;r 2 ;B;p 3 ) is the smaller of the two, lines 4 and 5 switch the roles of the subarrays so that A[p 1 ;r 1 ] refers to the larger subarray for the balance of the procedure."
+   "text": "P-MERGE-AUX(A,p 1 ,r 1 ,p 2 ,r 2 ,B,p 3 ) is the smaller of the two, lines 4 and 5 switch the roles of the subarrays so that A[p 1 ,r 1 ] refers to the larger subarray for the balance of the procedure."
   },
   {
    "type": "body",
@@ -3264,7 +3264,7 @@
    "section_title": "26.3 Parallel merge sort",
    "printed_page": 781,
    "pdf_page": 802,
-   "text": "The execution of the pseudocode in the P-MERGE procedure itself does not add asymptotically to the work and span of P-MERGE-AUX. The parallel for loop in lines 334 has Θ(lg n) span due to the loop control, and each iteration ru ns in constant time. Thus the Θ(lg 2 n) span of P-MERGE-AUX dominates, yielding"
+   "text": "The execution of the pseudocode in the P-MERGE procedure itself does not add asymptotically to the work and span of P-MERGE-AUX. The parallel for loop in lines 3–4 has Θ(lg n) span due to the loop control, and each iteration ru ns in constant time. Thus the Θ(lg 2 n) span of P-MERGE-AUX dominates, yielding"
   },
   {
    "type": "body",
@@ -3291,7 +3291,7 @@
    "section_title": "26.3 Parallel merge sort",
    "printed_page": 781,
    "pdf_page": 802,
-   "text": "The \"heavy lifting\" is done. Now that we have deter mined the work and span of P-MERGE, we can analyze P-MERGE-SORT. Let T 1 (n) and T 1 (n) be the work and span, respectively, of P-MERGE-SORT on an array of n elements. The call to P-MERGE in line 10 of P-MERGE-SORT dominates the costs of lines 133, for both work and span. Thus we obtain the recurrence"
+   "text": "The \"heavy lifting\" is done. Now that we have deter mined the work and span of P-MERGE, we can analyze P-MERGE-SORT. Let T 1 (n) and T 1 (n) be the work and span, respectively, of P-MERGE-SORT on an array of n elements. The call to P-MERGE in line 10 of P-MERGE-SORT dominates the costs of lines 1–3, for both work and span. Thus we obtain the recurrence"
   },
   {
    "type": "body",
@@ -3446,14 +3446,14 @@
     },
     {
      "n": 4,
-     "code": "spawn ADD-SUBARRAY(A;B;C;k  • grain-size C 1; min f(k + 1) • grain-size;n g)"
+     "code": "spawn ADD-SUBARRAY(A,B,C,k  • grain-size C 1; min f(k + 1) • grain-size,n g)"
     },
     {
      "n": 5,
      "code": "sync"
     }
    ],
-   "text": "1 grain-size = ‹ / / to be determined\n2 r = dn/grain-sizee\n3 for k = 0 to r − 1\n4 spawn ADD-SUBARRAY(A;B;C;k  • grain-size C 1; min f(k + 1) • grain-size;n g)\n5 sync"
+   "text": "1 grain-size = ‹ / / to be determined\n2 r = dn/grain-sizee\n3 for k = 0 to r − 1\n4 spawn ADD-SUBARRAY(A,B,C,k  • grain-size C 1; min f(k + 1) • grain-size,n g)\n5 sync"
   },
   {
    "type": "pseudocode",
@@ -3501,7 +3501,7 @@
    "section_title": "26.3 Parallel merge sort",
    "printed_page": 783,
    "pdf_page": 804,
-   "text": "SUM-ARRAYS(A;B;C;n) a. Rewrite the parallel loop in SUM-ARRAYS using recursive spawning in the manner of P-MAT-VEC-RECURSIVE . Analyze the parallelism."
+   "text": "SUM-ARRAYS(A,B,C,n) a. Rewrite the parallel loop in SUM-ARRAYS using recursive spawning in the manner of P-MAT-VEC-RECURSIVE . Analyze the parallelism."
   },
   {
    "type": "body",
@@ -3519,7 +3519,7 @@
    "section_title": "26.3 Parallel merge sort",
    "printed_page": 783,
    "pdf_page": 804,
-   "text": "SUM-ARRAYS 0 (A;B;C;n)"
+   "text": "SUM-ARRAYS 0 (A,B,C,n)"
   },
   {
    "type": "body",
@@ -3528,7 +3528,7 @@
    "section_title": "26.3 Parallel merge sort",
    "printed_page": 783,
    "pdf_page": 804,
-   "text": "ADD-SUBARRAY(A;B;C;i;j) b. Suppose that you set grain-size = 1. What is the resulting parallelism? c. Give a formula for the span of SUM-ARRAYS 0 in terms of n and grain-size."
+   "text": "ADD-SUBARRAY(A,B,C,i,j) b. Suppose that you set grain-size = 1. What is the resulting parallelism? c. Give a formula for the span of SUM-ARRAYS 0 in terms of n and grain-size."
   },
   {
    "type": "body",
@@ -3638,7 +3638,7 @@
    "section_title": "26.3 Parallel merge sort",
    "printed_page": 784,
    "pdf_page": 805,
-   "text": "REDUCE(x;i;j) a. Design and analyze a parallel algorithm P-REDUCE that uses recursive spawning to perform the same function with Θ(n) work and Θ(lg n) span."
+   "text": "REDUCE(x,i,j) a. Design and analyze a parallel algorithm P-REDUCE that uses recursive spawning to perform the same function with Θ(n) work and Θ(lg n) span."
   },
   {
    "type": "pseudocode",
@@ -3689,14 +3689,14 @@
     },
     {
      "n": 2,
-     "code": "P-SCAN-1-AUX(x;y;1;n)"
+     "code": "P-SCAN-1-AUX(x,y,1,n)"
     },
     {
      "n": 3,
      "code": "return y"
     }
    ],
-   "text": "1 let y[1 : n] be a new array\n2 P-SCAN-1-AUX(x;y;1;n)\n3 return y"
+   "text": "1 let y[1 : n] be a new array\n2 P-SCAN-1-AUX(x,y,1,n)\n3 return y"
   },
   {
    "type": "pseudocode",
@@ -3714,10 +3714,10 @@
     },
     {
      "n": 2,
-     "code": "y[l]  = P-REDUCE(x;1;l) b. Analyze the work, span, and parallelism of P-SCAN-1."
+     "code": "y[l]  = P-REDUCE(x,1,l) b. Analyze the work, span, and parallelism of P-SCAN-1."
     }
    ],
-   "text": "1 parallel for l = i to j\n2 y[l]  = P-REDUCE(x;1;l) b. Analyze the work, span, and parallelism of P-SCAN-1."
+   "text": "1 parallel for l = i to j\n2 y[l]  = P-REDUCE(x,1,l) b. Analyze the work, span, and parallelism of P-SCAN-1."
   },
   {
    "type": "body",
@@ -3735,7 +3735,7 @@
    "section_title": "26.3 Parallel merge sort",
    "printed_page": 785,
    "pdf_page": 806,
-   "text": "SCAN(x;n)"
+   "text": "SCAN(x,n)"
   },
   {
    "type": "body",
@@ -3753,7 +3753,7 @@
    "section_title": "26.3 Parallel merge sort",
    "printed_page": 785,
    "pdf_page": 806,
-   "text": "P-SCAN-1.x;n/"
+   "text": "P-SCAN-1.x,n/"
   },
   {
    "type": "body",
@@ -3762,7 +3762,7 @@
    "section_title": "26.3 Parallel merge sort",
    "printed_page": 785,
    "pdf_page": 806,
-   "text": "P-SCAN-1-AUX(x;y;i;j) b. Analyze the work, span, and parallelism of P-SCAN-1."
+   "text": "P-SCAN-1-AUX(x,y,i,j) b. Analyze the work, span, and parallelism of P-SCAN-1."
   },
   {
    "type": "pseudocode",
@@ -3780,14 +3780,14 @@
     },
     {
      "n": 2,
-     "code": "P-SCAN-2-AUX (x;y;1;n)"
+     "code": "P-SCAN-2-AUX (x,y,1,n)"
     },
     {
      "n": 3,
      "code": "return y"
     }
    ],
-   "text": "1 let y[1 : n] be a new array\n2 P-SCAN-2-AUX (x;y;1;n)\n3 return y"
+   "text": "1 let y[1 : n] be a new array\n2 P-SCAN-2-AUX (x,y,1,n)\n3 return y"
   },
   {
    "type": "pseudocode",
@@ -3813,11 +3813,11 @@
     },
     {
      "n": 4,
-     "code": "spawn P-SCAN-2-AUX(x;y;i;k)"
+     "code": "spawn P-SCAN-2-AUX(x,y,i,k)"
     },
     {
      "n": 5,
-     "code": "P-SCAN-2-AUX(x;y;k + 1;j)"
+     "code": "P-SCAN-2-AUX(x,y,k + 1,j)"
     },
     {
      "n": 6,
@@ -3832,7 +3832,7 @@
      "code": "y[l]  = y[k]  ˝ y[l] c. Argue that P-SCAN-2 is correct, and analyze its work, span, and parallelism."
     }
    ],
-   "text": "1 if i == j\n2 y[i ] = x[i ]\n3 else k = ⌊(i + j)/2 ⌋\n4 spawn P-SCAN-2-AUX(x;y;i;k)\n5 P-SCAN-2-AUX(x;y;k + 1;j)\n6 sync\n7 parallel for l = k + 1 to j\n8 y[l]  = y[k]  ˝ y[l] c. Argue that P-SCAN-2 is correct, and analyze its work, span, and parallelism."
+   "text": "1 if i == j\n2 y[i ] = x[i ]\n3 else k = ⌊(i + j)/2 ⌋\n4 spawn P-SCAN-2-AUX(x,y,i,k)\n5 P-SCAN-2-AUX(x,y,k + 1,j)\n6 sync\n7 parallel for l = k + 1 to j\n8 y[l]  = y[k]  ˝ y[l] c. Argue that P-SCAN-2 is correct, and analyze its work, span, and parallelism."
   },
   {
    "type": "body",
@@ -3850,7 +3850,7 @@
    "section_title": "26.3 Parallel merge sort",
    "printed_page": 786,
    "pdf_page": 807,
-   "text": "P-SCAN-2 (x;n)"
+   "text": "P-SCAN-2 (x,n)"
   },
   {
    "type": "body",
@@ -3859,7 +3859,7 @@
    "section_title": "26.3 Parallel merge sort",
    "printed_page": 786,
    "pdf_page": 807,
-   "text": "P-SCAN-2-AUX (x;y;i;j) c. Argue that P-SCAN-2 is correct, and analyze its work, span, and parallelism."
+   "text": "P-SCAN-2-AUX (x,y,i,j) c. Argue that P-SCAN-2 is correct, and analyze its work, span, and parallelism."
   },
   {
    "type": "body",
@@ -3868,7 +3868,7 @@
    "section_title": "26.3 Parallel merge sort",
    "printed_page": 786,
    "pdf_page": 807,
-   "text": "To improve on both P-SCAN-1 and P-SCAN-2, perform the ˝-scan in two distinct passes over the data. The first pass gathers the terms for various contiguous subarrays of x into a temporary array t , and the second pass uses the terms in t to compute the final result y . The pseudocode in the procedures P-SCAN-3, P-SCAN-UP, and P-SCAN-DOWN on the facing page implements this strategy, but certain expressions have been omitted. d. Fill in the three missing expressions in line 8 of P-SCAN-UP and lines 5 and 6 of P-SCAN-DOWN. Argue that with the expressions you supplied, P-SCAN-3 is correct. (Hint: Prove that the value v passed to P-SCAN-DOWN(v;x;t;y;i;j) satisfies v = x[1] ˝ x[2] ˝ • • • ˝ x[i − 1].) e. Analyze the work, span, and parallelism of P-SCAN-3. f. Describe how to rewrite P-SCAN-3 so that it doesn’t require the use of the temporary array t ."
+   "text": "To improve on both P-SCAN-1 and P-SCAN-2, perform the ˝-scan in two distinct passes over the data. The first pass gathers the terms for various contiguous subarrays of x into a temporary array t , and the second pass uses the terms in t to compute the final result y . The pseudocode in the procedures P-SCAN-3, P-SCAN-UP, and P-SCAN-DOWN on the facing page implements this strategy, but certain expressions have been omitted. d. Fill in the three missing expressions in line 8 of P-SCAN-UP and lines 5 and 6 of P-SCAN-DOWN. Argue that with the expressions you supplied, P-SCAN-3 is correct. (Hint: Prove that the value v passed to P-SCAN-DOWN(v,x,t,y,i,j) satisfies v = x[1] ˝ x[2] ˝ • • • ˝ x[i − 1].) e. Analyze the work, span, and parallelism of P-SCAN-3. f. Describe how to rewrite P-SCAN-3 so that it doesn’t require the use of the temporary array t ."
   },
   {
    "type": "body",
@@ -3877,7 +3877,7 @@
    "section_title": "26.3 Parallel merge sort",
    "printed_page": 786,
    "pdf_page": 807,
-   "text": "? g. Give an algorithm P-SCAN-4 (x;n) for a scan that operates in place. It should place its output in x and require only constant auxiliary storage. h. Describe an efficient parallel algorithm that uses a C-scan to determine whether a string of parentheses is well formed. For example, the string ( ( )( ) )( ) is well formed, but the string ( ( ) ) )( ( ) is not. ( Hint: Interpret ( as a 1 and ) as a −1, and then perform a C-scan.)"
+   "text": "? g. Give an algorithm P-SCAN-4 (x,n) for a scan that operates in place. It should place its output in x and require only constant auxiliary storage. h. Describe an efficient parallel algorithm that uses a C-scan to determine whether a string of parentheses is well formed. For example, the string ( ( )( ) )( ) is well formed, but the string ( ( ) ) )( ( ) is not. ( Hint: Interpret ( as a 1 and ) as a −1, and then perform a C-scan.)"
   },
   {
    "type": "pseudocode",
@@ -3903,7 +3903,7 @@
     },
     {
      "n": 4,
-     "code": "P-SCAN-UP(x;t;2;n)"
+     "code": "P-SCAN-UP(x,t,2,n)"
     },
     {
      "n": 5,
@@ -3914,7 +3914,7 @@
      "code": "return y"
     }
    ],
-   "text": "1 let y[1 : n] and t[1 : n] be new arrays\n2 y[1] = x[1]\n3 if n>1\n4 P-SCAN-UP(x;t;2;n)\n5 P-SCAN-DOWN (x[1]; x; t; y; 2; n)\n6 return y"
+   "text": "1 let y[1 : n] and t[1 : n] be new arrays\n2 y[1] = x[1]\n3 if n>1\n4 P-SCAN-UP(x,t,2,n)\n5 P-SCAN-DOWN (x[1]; x; t; y; 2; n)\n6 return y"
   },
   {
    "type": "pseudocode",
@@ -3944,11 +3944,11 @@
     },
     {
      "n": 5,
-     "code": "t[k]  = spawn P-SCAN-UP(x;t;i;k)"
+     "code": "t[k]  = spawn P-SCAN-UP(x,t,i,k)"
     },
     {
      "n": 6,
-     "code": "right = P-SCAN-UP(x;t;k + 1;j)"
+     "code": "right = P-SCAN-UP(x,t,k + 1,j)"
     },
     {
      "n": 7,
@@ -3959,7 +3959,7 @@
      "code": "return / / fill in the blank"
     }
    ],
-   "text": "1 if i = = j\n2 return x[i ]\n3 else\n4 k = ⌊(i + j)/2 ⌋\n5 t[k]  = spawn P-SCAN-UP(x;t;i;k)\n6 right = P-SCAN-UP(x;t;k + 1;j)\n7 sync\n8 return / / fill in the blank"
+   "text": "1 if i = = j\n2 return x[i ]\n3 else\n4 k = ⌊(i + j)/2 ⌋\n5 t[k]  = spawn P-SCAN-UP(x,t,i,k)\n6 right = P-SCAN-UP(x,t,k + 1,j)\n7 sync\n8 return / / fill in the blank"
   },
   {
    "type": "pseudocode",
@@ -3989,18 +3989,18 @@
     },
     {
      "n": 5,
-     "code": "spawn P-SCAN-DOWN. ;x;t;y;i;k/  / / fill in the blank"
+     "code": "spawn P-SCAN-DOWN. ,x,t,y,i,k/  / / fill in the blank"
     },
     {
      "n": 6,
-     "code": "P-SCAN-DOWN. ;x;t;y;k + 1;j/  / / fill in the blank"
+     "code": "P-SCAN-DOWN. ,x,t,y,k + 1,j/  / / fill in the blank"
     },
     {
      "n": 7,
      "code": "sync"
     }
    ],
-   "text": "1 if i = = j\n2 y[i ] = v ˝ x[i ]\n3 else\n4 k = ⌊(i + j)/2 ⌋\n5 spawn P-SCAN-DOWN. ;x;t;y;i;k/  / / fill in the blank\n6 P-SCAN-DOWN. ;x;t;y;k + 1;j/  / / fill in the blank\n7 sync"
+   "text": "1 if i = = j\n2 y[i ] = v ˝ x[i ]\n3 else\n4 k = ⌊(i + j)/2 ⌋\n5 spawn P-SCAN-DOWN. ,x,t,y,i,k/  / / fill in the blank\n6 P-SCAN-DOWN. ,x,t,y,k + 1,j/  / / fill in the blank\n7 sync"
   },
   {
    "type": "body",
@@ -4009,7 +4009,7 @@
    "section_title": "26.3 Parallel merge sort",
    "printed_page": 787,
    "pdf_page": 808,
-   "text": "P-SCAN-3.x;n/"
+   "text": "P-SCAN-3.x,n/"
   },
   {
    "type": "body",
@@ -4018,7 +4018,7 @@
    "section_title": "26.3 Parallel merge sort",
    "printed_page": 787,
    "pdf_page": 808,
-   "text": "P-SCAN-UP(x;t;i;j)"
+   "text": "P-SCAN-UP(x,t,i,j)"
   },
   {
    "type": "body",
@@ -4027,7 +4027,7 @@
    "section_title": "26.3 Parallel merge sort",
    "printed_page": 787,
    "pdf_page": 808,
-   "text": "P-SCAN-DOWN(v;x;t;y;i;j)"
+   "text": "P-SCAN-DOWN(v,x,t,y,i,j)"
   },
   {
    "type": "problem",
@@ -4045,7 +4045,7 @@
    "section_title": "26.3 Parallel merge sort",
    "printed_page": 787,
    "pdf_page": 808,
-   "text": "Computational science is replete with algorithms that require the entries of an array to be filled in with values that depend on the values of certain already computed neighboring entries, along with other information t hat does not change over the course of the computation. The pattern of neighbori ng entries does not change during the computation and is called a stencil. For example, Section 14.4 presents a stencil algorithm to compute a longest common subsequence, where the value in entry c[i; j ] depends only on the values in c[i − 1; j ], c[i;j − 1], and c[i − 1;j − 1], as well as the elements x i and y j within the two sequences given as inputs. The input sequences are fixed, but the algorithm fills in the two-dimensional array c so that it computes entry c[i; j ] after computing all three entries c[i − 1; j ], c[i;j − 1], and c[i − 1;j − 1]."
+   "text": "Computational science is replete with algorithms that require the entries of an array to be filled in with values that depend on the values of certain already computed neighboring entries, along with other information t hat does not change over the course of the computation. The pattern of neighbori ng entries does not change during the computation and is called a stencil. For example, Section 14.4 presents a stencil algorithm to compute a longest common subsequence, where the value in entry c[i; j ] depends only on the values in c[i − 1; j ], c[i,j − 1], and c[i − 1,j − 1], as well as the elements x i and y j within the two sequences given as inputs. The input sequences are fixed, but the algorithm fills in the two-dimensional array c so that it computes entry c[i; j ] after computing all three entries c[i − 1; j ], c[i,j − 1], and c[i − 1,j − 1]."
   },
   {
    "type": "body",
@@ -4054,7 +4054,7 @@
    "section_title": "26.3 Parallel merge sort",
    "printed_page": 788,
    "pdf_page": 809,
-   "text": "This problem examines how to use recursive spawning to parallelize a simple stencil calculation on an n × n array A in which the value placed into entry A[i; j ] depends only on values in A[i 0 ;j 0 ], where i 0 ≤ i and j 0 ≤ j (and of course, i 0 ≠ i or j 0 ≠ j ). In other words, the value in an entry depends only on values in entries that are above it and/or to its left, along with static information outside of the array."
+   "text": "This problem examines how to use recursive spawning to parallelize a simple stencil calculation on an n × n array A in which the value placed into entry A[i; j ] depends only on values in A[i 0 ,j 0 ], where i 0 ≤ i and j 0 ≤ j (and of course, i 0 ≠ i or j 0 ≠ j ). In other words, the value in an entry depends only on values in entries that are above it and/or to its left, along with static information outside of the array."
   },
   {
    "type": "body",
@@ -4162,7 +4162,7 @@
    "section_title": "26.3 Parallel merge sort",
    "printed_page": 789,
    "pdf_page": 810,
-   "text": "This problem explores how to adapt the measures of work, span, and parallelism to handle the expected behavior of randomized task-parallel algorithms. It also asks you to design and analyze a parallel algorithm for randomized quicksort. a. Explain how to modify the work law (26.2), span law (26.3), and greedy scheduler bound (26.4) to work with expectations when T P , T 1 , and T 1 are all random variables. b. Consider a randomized parallel algorithm for which 1% of the time, T 1 = 10 4 and T 10;000 = 1, but for the remaining 99% of the time, T 1 = T 10;000 = 10 9 ."
+   "text": "This problem explores how to adapt the measures of work, span, and parallelism to handle the expected behavior of randomized task-parallel algorithms. It also asks you to design and analyze a parallel algorithm for randomized quicksort. a. Explain how to modify the work law (26.2), span law (26.3), and greedy scheduler bound (26.4) to work with expectations when T P , T 1 , and T 1 are all random variables. b. Consider a randomized parallel algorithm for which 1% of the time, T 1 = 10 4 and T 10,000 = 1, but for the remaining 99% of the time, T 1 = T 10,000 = 10 9 ."
   },
   {
    "type": "body",
@@ -4225,7 +4225,7 @@
    "section_title": "26.3 Parallel merge sort",
    "printed_page": 790,
    "pdf_page": 811,
-   "text": "The parallel pseudocode and programming model were influenced by Cilk [290, 291, 383, 396]. The open-source project OpenCilk (www.opencilk.org) provides"
+   "text": "The parallel pseudocode and programming model were influenced by Cilk [290, 291, 383, 396]. The open-source project Open + ilk (www.opencilk.org) provides"
   },
   {
    "type": "body",

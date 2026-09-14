@@ -91,7 +91,7 @@
    "section_title": "1.1 Algorithms",
    "printed_page": 5,
    "pdf_page": 26,
-   "text": "Input: A sequence of n numbers ha 1 ;a 2 ;:::;a n i."
+   "text": "Input: A sequence of n numbers ⟨a 1 ,a 2 ,…,a n⟩."
   },
   {
    "type": "body",
@@ -100,7 +100,7 @@
    "section_title": "1.1 Algorithms",
    "printed_page": 5,
    "pdf_page": 26,
-   "text": "Output: A permutation (reordering) ha 0"
+   "text": "Output: A permutation (reordering) ⟨a 0"
   },
   {
    "type": "body",
@@ -109,7 +109,7 @@
    "section_title": "1.1 Algorithms",
    "printed_page": 5,
    "pdf_page": 26,
-   "text": "2 ;:::;a 0 n i of the input sequence such that a 0"
+   "text": "2 ,…,a 0 n⟩ of the input sequence such that a 0"
   },
   {
    "type": "body",
@@ -127,7 +127,7 @@
    "section_title": "1.1 Algorithms",
    "printed_page": 5,
    "pdf_page": 26,
-   "text": "Thus, given the input sequence h31;41;59;26;41;58 i, a correct sorting algorithm returns as output the sequence h26;31;41;41;58;59 i. Such an input sequence is called an instance of the sorting problem. In general, an instance of a problem 1 consists of the input (satisfying whatever constrai nts are imposed in the problem statement) needed to compute a solution to the problem."
+   "text": "Thus, given the input sequence ⟨31,41,59,26,41,58⟩, a correct sorting algorithm returns as output the sequence ⟨26,31,41,41,58,59⟩. Such an input sequence is called an instance of the sorting problem. In general, an instance of a problem 1 consists of the input (satisfying whatever constrai nts are imposed in the problem statement) needed to compute a solution to the problem."
   },
   {
    "type": "body",
@@ -892,7 +892,7 @@
    "section_title": "1.2 Algorithms as a technology",
    "printed_page": 17,
    "pdf_page": 38,
-   "text": "Input: A sequence of n numbers ha 1 ;a 2 ;:::;a n i."
+   "text": "Input: A sequence of n numbers ⟨a 1 ,a 2 ,…,a n⟩."
   },
   {
    "type": "body",
@@ -901,7 +901,7 @@
    "section_title": "1.2 Algorithms as a technology",
    "printed_page": 17,
    "pdf_page": 38,
-   "text": "Output: A permutation (reordering) ha 0"
+   "text": "Output: A permutation (reordering) ⟨a 0"
   },
   {
    "type": "body",
@@ -910,7 +910,7 @@
    "section_title": "1.2 Algorithms as a technology",
    "printed_page": 17,
    "pdf_page": 38,
-   "text": "2 ;:::;a 0 n i of the input sequence such that a 0"
+   "text": "2 ,…,a 0 n⟩ of the input sequence such that a 0"
   },
   {
    "type": "body",

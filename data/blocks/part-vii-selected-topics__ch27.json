@@ -156,16 +156,7 @@
    "section_title": "27.1 Waiting for an elevator",
    "printed_page": 793,
    "pdf_page": 814,
-   "text": "3 ;:::; k"
-  },
-  {
-   "type": "body",
-   "chapter": 27,
-   "section": "27.1",
-   "section_title": "27.1 Waiting for an elevator",
-   "printed_page": 793,
-   "pdf_page": 814,
-   "text": "(k − 1) ; k k ; k k ;:::; k k ð"
+   "text": "(k − 1) ; k k ; k k ,…; k k ð"
   },
   {
    "type": "body",
@@ -201,7 +192,7 @@
    "section_title": "27.1 Waiting for an elevator",
    "printed_page": 794,
    "pdf_page": 815,
-   "text": "2 ;:::; k k ; k + 1 k ; k + 2 k ;:::; B k ð"
+   "text": "2 ,…; k k ; k + 1 k ; k + 2 k ,…; B k ð"
   },
   {
    "type": "body",
@@ -264,7 +255,7 @@
    "section_title": "27.1 Waiting for an elevator",
    "printed_page": 794,
    "pdf_page": 815,
-   "text": "2 ;:::; k k ; k + 1 k ; 2k k ; 2k k ; 2k k ;:::; 2k k ð"
+   "text": "2 ,…; k k ; k + 1 k ; 2k k ; 2k k ; 2k k ,…; 2k k ð"
   },
   {
    "type": "body",
@@ -336,7 +327,7 @@
    "section_title": "27.2 Maintaining a search list",
    "printed_page": 796,
    "pdf_page": 817,
-   "text": "The list-maintenance problem can be set up as follows. You are given a list L of n elements fx 1 ;x 2 ;:::;x n g. We’ll assume that the list is doubly linked, although the algorithms and analysis work just as well for s ingly linked lists. Denote the position of element x i in the list L by r L (x i ), where 1 ≤ r L (x i ) ≤ n. Calling"
+   "text": "The list-maintenance problem can be set up as follows. You are given a list L of n elements fx 1 ,x 2 ,…,x n g. We’ll assume that the list is doubly linked, although the algorithms and analysis work just as well for s ingly linked lists. Denote the position of element x i in the list L by r L (x i ), where 1 ≤ r L (x i ) ≤ n. Calling"
   },
   {
    "type": "body",
@@ -345,7 +336,7 @@
    "section_title": "27.2 Maintaining a search list",
    "printed_page": 796,
    "pdf_page": 817,
-   "text": "LIST-SEARCH (L;x i ) on page 260 thus takes Θ(r L (x i )) time."
+   "text": "LIST-SEARCH (L,x i ) on page 260 thus takes Θ(r L (x i )) time."
   },
   {
    "type": "body",
@@ -417,7 +408,7 @@
    "section_title": "27.2 Maintaining a search list",
    "printed_page": 796,
    "pdf_page": 817,
-   "text": "The online algorithm that we’ll explore is MOVE-TO-FRONT (L;x). This procedure first searches for x in the doubly linked list L, and then it moves x to the front of the list. 1 If x is located at position r = r L (x) before the call, MOVE-TO-FRONT swaps x with the element in position r − 1, then with the element in position r − 2, 1 The path-compression heuristic in Section 19.3 resembles MOVE-TO-FRONT , although it would be more accurately expressed as \"move-to-next-to-front.\" Unlike MOVE-TO-FRONT in a doubly linked list, path compression can relocate multiple elements to become \"next-to-front.\""
+   "text": "The online algorithm that we’ll explore is MOVE-TO-FRONT (L,x). This procedure first searches for x in the doubly linked list L, and then it moves x to the front of the list. 1 If x is located at position r = r L (x) before the call, MOVE-TO-FRONT swaps x with the element in position r − 1, then with the element in position r − 2, 1 The path-compression heuristic in Section 19.3 resembles MOVE-TO-FRONT , although it would be more accurately expressed as \"move-to-next-to-front.\" Unlike MOVE-TO-FRONT in a doubly linked list, path compression can relocate multiple elements to become \"next-to-front.\""
   },
   {
    "type": "body",
@@ -435,7 +426,7 @@
    "section_title": "27.2 Maintaining a search list",
    "printed_page": 797,
    "pdf_page": 818,
-   "text": "5 h1;2;3;4;5 i 5 0 5 5 h1;2;3;4;5 i 5 4 9 9"
+   "text": "5 ⟨1,2,3,4,5⟩ 5 0 5 5 ⟨1,2,3,4,5⟩ 5 4 9 9"
   },
   {
    "type": "body",
@@ -444,7 +435,7 @@
    "section_title": "27.2 Maintaining a search list",
    "printed_page": 797,
    "pdf_page": 818,
-   "text": "3 h1;2;3;4;5 i 3 3 6 11 h5;1;2;3;4 i 4 3 7 16"
+   "text": "3 ⟨1,2,3,4,5⟩ 3 3 6 11 ⟨5,1,2,3,4⟩ 4 3 7 16"
   },
   {
    "type": "body",
@@ -453,7 +444,7 @@
    "section_title": "27.2 Maintaining a search list",
    "printed_page": 797,
    "pdf_page": 818,
-   "text": "4 h4;1;2;3;5 i 1 0 1 12 h3;5;1;2;4 i 5 4 9 25"
+   "text": "4 ⟨4,1,2,3,5⟩ 1 0 1 12 ⟨3,5,1,2,4⟩ 5 4 9 25"
   },
   {
    "type": "body",
@@ -462,7 +453,7 @@
    "section_title": "27.2 Maintaining a search list",
    "printed_page": 797,
    "pdf_page": 818,
-   "text": "4 h4;1;2;3;5 i 1 0 1 13 h4;3;5;1;2 i 1 0 1 26"
+   "text": "4 ⟨4,1,2,3,5⟩ 1 0 1 13 ⟨4,3,5,1,2⟩ 1 0 1 26"
   },
   {
    "type": "figure-caption",
@@ -471,7 +462,7 @@
    "section_title": "27.2 Maintaining a search list",
    "printed_page": 797,
    "pdf_page": 818,
-   "text": "Figure 27.1 The costs incurred by the procedures FORESEE and MOVE-TO-FRONT when searching for the elements 5, 3, 4, and 4, starting with the list L = h1;2;3;4;5 i. If FORESEE instead moved 3 to the front after the search for 5, the cumulative cost would not change, nor would t he cumulative cost change if 4 moved to the second position after the search for 5. and so on, until it finally swaps x with the element in position 1. Thus if the call"
+   "text": "Figure 27.1 The costs incurred by the procedures FORESEE and MOVE-TO-FRONT when searching for the elements 5, 3, 4, and 4, starting with the list L = ⟨1,2,3,4,5⟩. If FORESEE instead moved 3 to the front after the search for 5, the cumulative cost would not change, nor would t he cumulative cost change if 4 moved to the second position after the search for 5. and so on, until it finally swaps x with the element in position 1. Thus if the call"
   },
   {
    "type": "body",
@@ -480,7 +471,7 @@
    "section_title": "27.2 Maintaining a search list",
    "printed_page": 797,
    "pdf_page": 818,
-   "text": "MOVE-TO-FRONT (L;8) executes on the list L = h5;3;12;4;8;9;22 i, the list becomes h8;5;3;12;4;9;22 i. The call MOVE-TO-FRONT (L;k) costs 2r L (k) − 1: it costs r L (k) to search for k, and it costs 1 for each of the r L (k) − 1 swaps that move k to the front of the list."
+   "text": "MOVE-TO-FRONT (L,8) executes on the list L = ⟨5,3,12,4,8,9,22⟩, the list becomes ⟨8,5,3,12,4,9,22⟩. The call MOVE-TO-FRONT (L,k) costs 2r L (k) − 1: it costs r L (k) to search for k, and it costs 1 for each of the r L (k) − 1 swaps that move k to the front of the list."
   },
   {
    "type": "body",
@@ -507,7 +498,7 @@
    "section_title": "27.2 Maintaining a search list",
    "printed_page": 797,
    "pdf_page": 818,
-   "text": "Consider the example shown in Figure 27.1. Starting with the list h1;2;3;4;5 i , four searches occur, for the elements 5, 3, 4, and 4. The hypothetical procedure"
+   "text": "Consider the example shown in Figure 27.1. Starting with the list ⟨1,2,3,4,5⟩ , four searches occur, for the elements 5, 3, 4, and 4. The hypothetical procedure"
   },
   {
    "type": "body",
@@ -534,7 +525,7 @@
    "section_title": "27.2 Maintaining a search list",
    "printed_page": 797,
    "pdf_page": 818,
-   "text": "If we compare any particular step, MOVE-TO-FRONT and FORESEE may be operating on very different lists and do very different things. If we focus on the search for 4 above, we observe that FORESEE actually moves it to the front of the list early, paying to move the element to the front before it is accessed. To capture this concept, we use the idea of an inversion: a pair of elements, say a and b, in which a appears before b in one list, but b appears before a in another list. For two lists L and L 0 , let I(L;L 0 ), called the inversion count, denote the number of inversions between the two lists, that is, the number of pairs of elements whose order differs in the two lists. For example, with lists L = h5;3;1;4;2 i and L 0 = h3;1;2;4;5 i, then out of the ã 5 ä"
+   "text": "If we compare any particular step, MOVE-TO-FRONT and FORESEE may be operating on very different lists and do very different things. If we focus on the search for 4 above, we observe that FORESEE actually moves it to the front of the list early, paying to move the element to the front before it is accessed. To capture this concept, we use the idea of an inversion: a pair of elements, say a and b, in which a appears before b in one list, but b appears before a in another list. For two lists L and L 0 , let I(L,L 0 ), called the inversion count, denote the number of inversions between the two lists, that is, the number of pairs of elements whose order differs in the two lists. For example, with lists L = ⟨5,3,1,4,2⟩ and L 0 = ⟨3,1,2,4,5⟩, then out of the ã 5 ä"
   },
   {
    "type": "body",
@@ -543,7 +534,7 @@
    "section_title": "27.2 Maintaining a search list",
    "printed_page": 798,
    "pdf_page": 819,
-   "text": "D 10 pairs, exactly five of them4.1;5/;.2;4/;.2;5/;.3;5/;.4;5/"
+   "text": "D 10 pairs, exactly five of them4.1,5/,.2,4/,.2,5/,.3,5/,.4,5/"
   },
   {
    "type": "body",
@@ -552,7 +543,7 @@
    "section_title": "27.2 Maintaining a search list",
    "printed_page": 798,
    "pdf_page": 819,
-   "text": "4are inversions, since these pairs, and only these pairs, appear in different orders in the two lists. Thus the inversion count is I(L;L 0 ) = 5."
+   "text": "4are inversions, since these pairs, and only these pairs, appear in different orders in the two lists. Thus the inversion count is I(L,L 0 ) = 5."
   },
   {
    "type": "body",
@@ -633,7 +624,7 @@
    "section_title": "27.2 Maintaining a search list",
    "printed_page": 798,
    "pdf_page": 819,
-   "text": "When a swap occurs in one of the lists, it changes the relative positions of the two elements involved, which in turn changes the in version count. Suppose that elements x and y are swapped in some list. Then the only possible di fference in the inversion count between this list and any other list depends on whether (x;y) is an inversion. In fact, the inversion count of (x;y) with respect to any other list must change. If (x;y) is an inversion before the swap, it no longer is af terward, and vice versa. Therefore, if two consecutive eleme nts x and y swap positions in a list L, then for any other list L 0 , the value of the inversion count I(L;L 0 ) either increases by 1 or decreases by 1."
+   "text": "When a swap occurs in one of the lists, it changes the relative positions of the two elements involved, which in turn changes the in version count. Suppose that elements x and y are swapped in some list. Then the only possible di fference in the inversion count between this list and any other list depends on whether (x,y) is an inversion. In fact, the inversion count of (x,y) with respect to any other list must change. If (x,y) is an inversion before the swap, it no longer is af terward, and vice versa. Therefore, if two consecutive eleme nts x and y swap positions in a list L, then for any other list L 0 , the value of the inversion count I(L,L 0 ) either increases by 1 or decreases by 1."
   },
   {
    "type": "body",
@@ -642,7 +633,7 @@
    "section_title": "27.2 Maintaining a search list",
    "printed_page": 799,
    "pdf_page": 820,
-   "text": "As we compare MOVE-TO-FRONT and FORESEE searching and modifying their lists, we’ll think about MOVE-TO-FRONT executing on its list for the i th time and then FORESEE executing on its list for the i th time. After MOVE-TO-FRONT has executed for the i th time and before FORESEE has executed for the i th time, we’ll compare I(L M i −1 ;L F i −1 ) (the inversion count immediately before the i th call of MOVE-TO-FRONT ) with I(L M i ;L F i −1 ) (the inversion count after the i th call of MOVE-TO-FRONT but before the i th call of FORESEE). We’ll concern ourselves later with what FORESEE does."
+   "text": "As we compare MOVE-TO-FRONT and FORESEE searching and modifying their lists, we’ll think about MOVE-TO-FRONT executing on its list for the i th time and then FORESEE executing on its list for the i th time. After MOVE-TO-FRONT has executed for the i th time and before FORESEE has executed for the i th time, we’ll compare I(L M i −1 ,L F i −1 ) (the inversion count immediately before the i th call of MOVE-TO-FRONT ) with I(L M i ,L F i −1 ) (the inversion count after the i th call of MOVE-TO-FRONT but before the i th call of FORESEE). We’ll concern ourselves later with what FORESEE does."
   },
   {
    "type": "body",
@@ -651,7 +642,7 @@
    "section_title": "27.2 Maintaining a search list",
    "printed_page": 799,
    "pdf_page": 820,
-   "text": "Let us analyze what happens to the inversion count after executing the i th call of MOVE-TO-FRONT , and suppose that it searches for element x . More precisely, we’ll compute I(L M i ;L F i −1 ) − I(L M i −1 ;L F i −1 ), the change in the inversion count, which gives a rough idea of how much MOVE-TO-FRONT’s list becomes more or less like FORESEE’s list. After searching, MOVE-TO-FRONT performs a series of swaps with each of the elements on the list L M i −1 that precedes x . Using the notation above, the number of such swaps is jBB|C|BAj. Bearing in mind that the list L F i −1 has yet to be changed by the i th call of FORESEE, let’s see how the inversion count changes."
+   "text": "Let us analyze what happens to the inversion count after executing the i th call of MOVE-TO-FRONT , and suppose that it searches for element x . More precisely, we’ll compute I(L M i ,L F i −1 ) − I(L M i −1 ,L F i −1 ), the change in the inversion count, which gives a rough idea of how much MOVE-TO-FRONT’s list becomes more or less like FORESEE’s list. After searching, MOVE-TO-FRONT performs a series of swaps with each of the elements on the list L M i −1 that precedes x . Using the notation above, the number of such swaps is jBB|C|BAj. Bearing in mind that the list L F i −1 has yet to be changed by the i th call of FORESEE, let’s see how the inversion count changes."
   },
   {
    "type": "body",
@@ -660,7 +651,7 @@
    "section_title": "27.2 Maintaining a search list",
    "printed_page": 799,
    "pdf_page": 820,
-   "text": "Consider a swap with an element y 2 BB. Before the swap, y precedes x in both L M i −1 and L F i −1 . After the swap, x precedes y in L M i , and L F i −1 does not change. Therefore, the inversion count increases by 1 for each element in BB. Now consider a swap with an element ´ 2 BA. Before the swap, ´ precedes x in L M i −1 but x precedes ´ in L F i −1 . After the swap, x precedes ´ in both lists. Therefore, the inversion count decreases by 1 for each element in BA. Thus altogether, the inversion count increases by I(L M i ;L F i −1 ) − I(L M i −1 ;L F i −1 ) = jBBj − jBAj : (27.7)"
+   "text": "Consider a swap with an element y 2 BB. Before the swap, y precedes x in both L M i −1 and L F i −1 . After the swap, x precedes y in L M i , and L F i −1 does not change. Therefore, the inversion count increases by 1 for each element in BB. Now consider a swap with an element ´ 2 BA. Before the swap, ´ precedes x in L M i −1 but x precedes ´ in L F i −1 . After the swap, x precedes ´ in both lists. Therefore, the inversion count decreases by 1 for each element in BA. Thus altogether, the inversion count increases by I(L M i ,L F i −1 ) − I(L M i −1 ,L F i −1 ) = jBBj − jBAj : (27.7)"
   },
   {
    "type": "body",
@@ -705,7 +696,7 @@
    "section_title": "27.2 Maintaining a search list",
    "printed_page": 799,
    "pdf_page": 820,
-   "text": "ˆ i = 2I(L M i ;L F i ):"
+   "text": "ˆ i = 2I(L M i ,L F i ):"
   },
   {
    "type": "body",
@@ -966,7 +957,7 @@
    "section_title": "27.2 Maintaining a search list",
    "printed_page": 801,
    "pdf_page": 822,
-   "text": "27.2-1 You are given a set S = fx 1 ;x 2 ;:::;x n g of n elements, and you wish to make a static list L (no rearranging once the list is created) containin g the elements of S that is good for searching. Suppose that you have a probability distribution, where p(x i ) is the probability that a given search searches for element x i . Argue that the expected cost for m searches is m n X i D1 p(x i ) • r L (x i ):"
+   "text": "27.2-1 You are given a set S = fx 1 ,x 2 ,…,x n g of n elements, and you wish to make a static list L (no rearranging once the list is created) containin g the elements of S that is good for searching. Suppose that you have a probability distribution, where p(x i ) is the probability that a given search searches for element x i . Argue that the expected cost for m searches is m n X i D1 p(x i ) • r L (x i ):"
   },
   {
    "type": "body",
@@ -1011,7 +1002,7 @@
    "section_title": "27.2 Maintaining a search list",
    "printed_page": 802,
    "pdf_page": 823,
-   "text": "27.2-4 The model in this section charged a cost of 1 for each swap. We can consider an alternative cost model in which, after accessing x , you can move x anywhere earlier in the list, and there is no cost for doing so. The only cost is the cost of the actual accesses. Show that MOVE-TO-FRONT is 2-competitive in this cost model, assuming that the number requests is sufficiently large. (Hint: Use the potential function ˆ i = I(L M i ;L F i ).)"
+   "text": "27.2-4 The model in this section charged a cost of 1 for each swap. We can consider an alternative cost model in which, after accessing x , you can move x anywhere earlier in the list, and there is no cost for doing so. The only cost is the cost of the actual accesses. Show that MOVE-TO-FRONT is 2-competitive in this cost model, assuming that the number requests is sufficiently large. (Hint: Use the potential function ˆ i = I(L M i ,L F i ).)"
   },
   {
    "type": "body",
@@ -1047,7 +1038,7 @@
    "section_title": "27.3 Online caching",
    "printed_page": 803,
    "pdf_page": 824,
-   "text": "In the caching problem, the input comprises a sequence of n memory requests, for data in blocks b 1 ;b 2 ;:::;b n , in that order. The blocks requested are not necessarily distinct: each block may appear multiple times within the request sequence. After block b i is requested, it resides in a cache that can hold up to k blocks, where k is a fixed cache size. We assume that n>k , since otherwise we are assured that the cache can hold all the requested blocks at once. When a block b i is requested, if it is already in the cache, then a cache hit occurs and the cache remains unchanged."
+   "text": "In the caching problem, the input comprises a sequence of n memory requests, for data in blocks b 1 ,b 2 ,…,b n , in that order. The blocks requested are not necessarily distinct: each block may appear multiple times within the request sequence. After block b i is requested, it resides in a cache that can hold up to k blocks, where k is a fixed cache size. We assume that n>k , since otherwise we are assured that the cache can hold all the requested blocks at once. When a block b i is requested, if it is already in the cache, then a cache hit occurs and the cache remains unchanged."
   },
   {
    "type": "body",
@@ -1155,7 +1146,7 @@
    "section_title": "27.3 Online caching",
    "printed_page": 804,
    "pdf_page": 825,
-   "text": "Proof We first show a lower bound of Ω(n/k). Suppose that the input consists of k + 1 blocks, numbered 1;2;:::;k + 1, and the request sequence is 1; 2; 3; 4; :::; k; k + 1; k; k + 1; k; k + 1; ::: ; where after the initial 1;2;:::;k;k + 1, the remainder of the sequence alternates between k and k + 1, with a total of n requests. The sequence ends on block k if n and k are either both even or both odd, and otherwise, th e sequence ends on block kC1. That is, b i = i for i = 1;2;:::k −1, b i = kC1 for i = kC1;k C3;::: and b i = k for i = k;k + 2;::: . How many blocks does LIFO evict? After the first k requests (which are considered to be cache misses), the cache is filled with blocks 1;2;:::;k . The (k + 1)st request, which is for block k + 1, causes block k to be evicted. The (k + 2)nd request, which is for block k, forces block k + 1 to be evicted, since that block was just placed into the cache. This behavior continues, alternately evicting blocks k and k + 1 for the remaining requests. LIFO, therefore, suffers a cache miss on every one of the n requests."
+   "text": "Proof We first show a lower bound of Ω(n/k). Suppose that the input consists of k + 1 blocks, numbered 1,2,…,k + 1, and the request sequence is 1; 2; 3; 4; …; k; k + 1; k; k + 1; k; k + 1; … ; where after the initial 1,2,…,k,k + 1, the remainder of the sequence alternates between k and k + 1, with a total of n requests. The sequence ends on block k if n and k are either both even or both odd, and otherwise, th e sequence ends on block k + 1. That is, b i = i for i = 1,2,…k −1, b i = k + 1 for i = k + 1,k + 3,… and b i = k for i = k,k + 2,… . How many blocks does LIFO evict? After the first k requests (which are considered to be cache misses), the cache is filled with blocks 1,2,…,k . The (k + 1)st request, which is for block k + 1, causes block k to be evicted. The (k + 2)nd request, which is for block k, forces block k + 1 to be evicted, since that block was just placed into the cache. This behavior continues, alternately evicting blocks k and k + 1 for the remaining requests. LIFO, therefore, suffers a cache miss on every one of the n requests."
   },
   {
    "type": "body",
@@ -1344,7 +1335,7 @@
    "section_title": "27.3 Online caching",
    "printed_page": 805,
    "pdf_page": 826,
-   "text": "Consider a scenario in which the cache has size k and the set of possible blocks to request is f1;2;:::;k + 1g. The first k requests are for blocks 1;2;:::;k , so that both the adversary and the deterministic onlin e algorithm place these blocks into the cache. The next request is for block k + 1. In order to make room in the cache for block k + 1, the online algorithm evicts some block b 1 from the cache. The adversary, knowing that the online algorithm has just evicted block b 1 , makes the next request be for b 1 , so that the online algorithm must evict some other block b 2 to clear room in the cache for b 1 . As you might have guessed, the adversary makes the next request be for block b 2 , so that the online algorithm evicts some other block b 3 to make room for b 2 . The online algorithm and the adversary continue in this manner. The online algorithm incurs a cache miss on every request and therefore incurs n cache misses over the n requests."
+   "text": "Consider a scenario in which the cache has size k and the set of possible blocks to request is f1,2,…,k + 1g. The first k requests are for blocks 1,2,…,k , so that both the adversary and the deterministic onlin e algorithm place these blocks into the cache. The next request is for block k + 1. In order to make room in the cache for block k + 1, the online algorithm evicts some block b 1 from the cache. The adversary, knowing that the online algorithm has just evicted block b 1 , makes the next request be for b 1 , so that the online algorithm must evict some other block b 2 to clear room in the cache for b 1 . As you might have guessed, the adversary makes the next request be for block b 2 , so that the online algorithm evicts some other block b 3 to make room for b 2 . The online algorithm and the adversary continue in this manner. The online algorithm incurs a cache miss on every request and therefore incurs n cache misses over the n requests."
   },
   {
    "type": "body",
@@ -1798,7 +1789,7 @@
    "section_title": "27.3 Online caching",
    "printed_page": 809,
    "pdf_page": 830,
-   "text": "} for i = 1;:::;n . e. Prove that C i ≤ max fr |W| ≤ i g + P i j D1 √j for i = 1;:::;n . f. Algorithm COMPLETION-TIME-SCHEDULE is an offline algorithm. Explain how to modify it to produce an online algorithm. g. Combine parts (c)–(f) to show that the online version of COMPLETION-TIME- SCHEDULE is 2-competitive."
+   "text": "} for i = 1,…,n . e. Prove that C i ≤ max fr |W| ≤ i g + P i j D1 √j for i = 1,…,n . f. Algorithm COMPLETION-TIME-SCHEDULE is an offline algorithm. Explain how to modify it to produce an online algorithm. g. Combine parts (c)–(f) to show that the online version of COMPLETION-TIME- SCHEDULE is 2-competitive."
   },
   {
    "type": "proof",
@@ -1915,7 +1906,7 @@
    "section_title": "27.3 Online caching",
    "printed_page": 811,
    "pdf_page": 832,
-   "text": "Start by considering the first old request, for block b i;1 . What is the probability that this request causes a cache miss? It causes a cache miss precisely when one of the n i;1 previous requests resulted in b i;1 being evicted. We can determine the probability that b i;1 was chosen for eviction by using Lemma 27.6: consider the k blocks in the cache to be k balls, with block b i;1 as the red ball, the other k − 1 blocks as the k − 1 blue balls, and no white balls. Each of the n i;1 requests chooses a block to evict with equal probability, correspond ing to drawing balls n i;1 times."
+   "text": "Start by considering the first old request, for block b i,1 . What is the probability that this request causes a cache miss? It causes a cache miss precisely when one of the n i,1 previous requests resulted in b i,1 being evicted. We can determine the probability that b i,1 was chosen for eviction by using Lemma 27.6: consider the k blocks in the cache to be k balls, with block b i,1 as the red ball, the other k − 1 blocks as the k − 1 blue balls, and no white balls. Each of the n i,1 requests chooses a block to evict with equal probability, correspond ing to drawing balls n i,1 times."
   },
   {
    "type": "body",
@@ -1924,7 +1915,7 @@
    "section_title": "27.3 Online caching",
    "printed_page": 811,
    "pdf_page": 832,
-   "text": "Thus, we can apply Lemma 27.6 with x = k, y = 0, and m = n i;1 , deriving the probability of a cache miss upon the first old request as n i;1/k , which equals n ij =.k − j + 1/ since j = 1."
+   "text": "Thus, we can apply Lemma 27.6 with x = k, y = 0, and m = n i,1 , deriving the probability of a cache miss upon the first old request as n i,1/k , which equals n ij =.k − j + 1/ since j = 1."
   },
   {
    "type": "body",
@@ -1933,7 +1924,7 @@
    "section_title": "27.3 Online caching",
    "printed_page": 811,
    "pdf_page": 832,
-   "text": "In order to determine the probability of a cache miss for subsequent old requests, we’ll need an additional observation. Let’s consider the second old request, which is for block b i;2 . This request causes a cache miss precisely when o ne of the pre- vious requests evicts b i;2 . Let’s consider two cases, based on the request for b i;1 ."
+   "text": "In order to determine the probability of a cache miss for subsequent old requests, we’ll need an additional observation. Let’s consider the second old request, which is for block b i,2 . This request causes a cache miss precisely when o ne of the pre- vious requests evicts b i,2 . Let’s consider two cases, based on the request for b i,1 ."
   },
   {
    "type": "body",
@@ -1942,7 +1933,7 @@
    "section_title": "27.3 Online caching",
    "printed_page": 811,
    "pdf_page": 832,
-   "text": "In the first case, suppose that the request for b i;1 did not cause an eviction, because b i;1 was already in the cache. Then, the only way that b i;2 could have been evicted is by one of the n i;2 new requests that precedes it. What is the probabil ity that this eviction happens? There are n i;2 chances for b i;2 to be evicted, but we also know that there is one block in the cache, namely b i;1 , that is not evicted. Thus, we can again apply Lemma 27.6, but with b i;1 as the white ball, b i;2 as the red ball, the remaining blocks as the blue balls, and drawing balls n i;2 times. Applying"
+   "text": "In the first case, suppose that the request for b i,1 did not cause an eviction, because b i,1 was already in the cache. Then, the only way that b i,2 could have been evicted is by one of the n i,2 new requests that precedes it. What is the probabil ity that this eviction happens? There are n i,2 chances for b i,2 to be evicted, but we also know that there is one block in the cache, namely b i,1 , that is not evicted. Thus, we can again apply Lemma 27.6, but with b i,1 as the white ball, b i,2 as the red ball, the remaining blocks as the blue balls, and drawing balls n i,2 times. Applying"
   },
   {
    "type": "lemma",
@@ -1951,7 +1942,7 @@
    "section_title": "27.3 Online caching",
    "printed_page": 811,
    "pdf_page": 832,
-   "text": "Lemma 27.6, with x = k − 1, y = 1, and m = n i;2 , we find that the probability of a cache miss is n i;2 =.k − 1/. In the second case, the request for b i;1 does cause an eviction, which can happen only if one of the new r equests preceding the request for b i;1 evicts b i;1 . Then, the request for b i;1 brings b i;1 back into the cache and evicts some other block. In this case, we know that of the new requests, one of them did not result in b i;2 being evicted, since b i;1 was evicted. Therefore, n i;2 − 1 new requests could evict b i;2 , as could the request for b i;1 , so that the number of requests that could evict b i;2 is n i;2 . Each such request evicts a block chosen from among k − 1 blocks, since the request that resulted in evicting b i;1 did not also cause b i;2 to be evicted. Therefore, we can apply Lemma 27.6, with x = k − 1, y = 1, and m = n i;2 , and get that the probability of a miss is n i;2 =.k − 1/. In both cases the probability is the same, and it equals n ij =.k − j + 1/ since j = 2."
+   "text": "Lemma 27.6, with x = k − 1, y = 1, and m = n i,2 , we find that the probability of a cache miss is n i,2 =.k − 1/. In the second case, the request for b i,1 does cause an eviction, which can happen only if one of the new r equests preceding the request for b i,1 evicts b i,1 . Then, the request for b i,1 brings b i,1 back into the cache and evicts some other block. In this case, we know that of the new requests, one of them did not result in b i,2 being evicted, since b i,1 was evicted. Therefore, n i,2 − 1 new requests could evict b i,2 , as could the request for b i,1 , so that the number of requests that could evict b i,2 is n i,2 . Each such request evicts a block chosen from among k − 1 blocks, since the request that resulted in evicting b i,1 did not also cause b i,2 to be evicted. Therefore, we can apply Lemma 27.6, with x = k − 1, y = 1, and m = n i,2 , and get that the probability of a miss is n i,2 =.k − 1/. In both cases the probability is the same, and it equals n ij =.k − j + 1/ since j = 2."
   },
   {
    "type": "body",
@@ -2005,7 +1996,7 @@
    "section_title": "27.3 Online caching",
    "printed_page": 812,
    "pdf_page": 833,
-   "text": "We have Z ij = 1 for j = 1;2;:::;r i , since every new request results in a cache miss. Let X i be the random variable denoting the number of cache misses during epoch i , so that X i = k−r i X j D1"
+   "text": "We have Z ij = 1 for j = 1,2,…,r i , since every new request results in a cache miss. Let X i be the random variable denoting the number of cache misses during epoch i , so that X i = k−r i X j D1"
   },
   {
    "type": "body",
@@ -2194,7 +2185,7 @@
    "section_title": "27.3 Online caching",
    "printed_page": 813,
    "pdf_page": 834,
-   "text": "If we consider two consecutive epochs, however, we can better analyze the optimal offline algorithm. Consider two consecutive epochs, i − 1 and i . Each contains k requests for k different blocks. (Recall our assumption that all r equests are first requests in an epoch.) Epoch i contains r i requests for new blocks, that is, blocks that were not requested during epoch i − 1. Therefore, the number of distinct re- quests during epochs i −1 and i is exactly k Cr i . No matter what the cache contents were at the beginning of epoch i − 1, after k + r i distinct requests, there must be at least r i cache misses. There could be more, but there is no way to have fewer. Letting m i denote the number of cache misses of the offline algorithm during epoch i , we have just argued that m i −1 + m i ≥ r i : (27.18)"
+   "text": "If we consider two consecutive epochs, however, we can better analyze the optimal offline algorithm. Consider two consecutive epochs, i − 1 and i . Each contains k requests for k different blocks. (Recall our assumption that all r equests are first requests in an epoch.) Epoch i contains r i requests for new blocks, that is, blocks that were not requested during epoch i − 1. Therefore, the number of distinct re- quests during epochs i −1 and i is exactly k + r i . No matter what the cache contents were at the beginning of epoch i − 1, after k + r i distinct requests, there must be at least r i cache misses. There could be more, but there is no way to have fewer. Letting m i denote the number of cache misses of the offline algorithm during epoch i , we have just argued that m i −1 + m i ≥ r i : (27.18)"
   },
   {
    "type": "body",
@@ -2455,7 +2446,7 @@
    "section_title": "27.3 Online caching",
    "printed_page": 816,
    "pdf_page": 837,
-   "text": "Problem 15-2 discusses scheduling to minimize average completion time on one machine, without release times and preemption and with release times and preemption. Now you will develop an online algorithm for nonpreemptively scheduling a set of tasks with release times. Suppose you are given a set S = fa 1 ;a 2 ;:::;a n g of tasks, where task a i has release time r i , before which it cannot start, and requires"
+   "text": "Problem 15-2 discusses scheduling to minimize average completion time on one machine, without release times and preemption and with release times and preemption. Now you will develop an online algorithm for nonpreemptively scheduling a set of tasks with release times. Suppose you are given a set S = fa 1 ,a 2 ,…,a n g of tasks, where task a i has release time r i , before which it cannot start, and requires"
   },
   {
    "type": "body",
@@ -2509,7 +2500,7 @@
    "section_title": "27.3 Online caching",
    "printed_page": 816,
    "pdf_page": 837,
-   "text": "1 ;:::;C P n . Show that n X i D1"
+   "text": "1 ,…,C P n . Show that n X i D1"
   },
   {
    "type": "body",
@@ -2579,18 +2570,18 @@
     },
     {
      "n": 3,
-     "code": "greedily schedule the tasks nonpreemptively in the renumbered order a 1 ;:::;a  n"
+     "code": "greedily schedule the tasks nonpreemptively in the renumbered order a 1 ,…,a  n"
     },
     {
      "n": 4,
-     "code": "let C 1 ;:::;C  n be the completion times of renumbered tasks a 1 ;:::;a  n in this nonpreemptive schedule"
+     "code": "let C 1 ,…,C  n be the completion times of renumbered tasks a 1 ,…,a  n in this nonpreemptive schedule"
     },
     {
      "n": 5,
-     "code": "return C 1 ;:::;C  n d. Prove that C P i ≥ max"
+     "code": "return C 1 ,…,C  n d. Prove that C P i ≥ max"
     }
    ],
-   "text": "1 <C  P\n2 < • • • <C  P n in SRPT order\n3 greedily schedule the tasks nonpreemptively in the renumbered order a 1 ;:::;a  n\n4 let C 1 ;:::;C  n be the completion times of renumbered tasks a 1 ;:::;a  n in this nonpreemptive schedule\n5 return C 1 ;:::;C  n d. Prove that C P i ≥ max"
+   "text": "1 <C  P\n2 < • • • <C  P n in SRPT order\n3 greedily schedule the tasks nonpreemptively in the renumbered order a 1 ,…,a  n\n4 let C 1 ,…,C  n be the completion times of renumbered tasks a 1 ,…,a  n in this nonpreemptive schedule\n5 return C 1 ,…,C  n d. Prove that C P i ≥ max"
   },
   {
    "type": "chapter-notes",
@@ -2779,7 +2770,7 @@
    "section_title": "27.3 Online caching",
    "printed_page": 819,
    "pdf_page": 840,
-   "text": "The process starts with a set of linear equations in n unknowns x 1 ;x 2 ;:::;x n :"
+   "text": "The process starts with a set of linear equations in n unknowns x 1 ,x 2 ,…,x n :"
   }
  ]
 }

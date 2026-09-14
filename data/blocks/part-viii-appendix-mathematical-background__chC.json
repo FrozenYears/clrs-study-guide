@@ -142,7 +142,7 @@
    "section_title": "C.1 Counting",
    "printed_page": 1179,
    "pdf_page": 1200,
-   "text": "000;001;010;011;100;101;110;111:"
+   "text": "000,001,010,011,100,101,110,111:"
   },
   {
    "type": "body",
@@ -196,7 +196,7 @@
    "section_title": "C.1 Counting",
    "printed_page": 1179,
    "pdf_page": 1200,
-   "text": "A permutation of a finite set S is an ordered sequence of all the elements of S , with each element appearing exactly once. For examp le, if S = fa;b;c g, then S has 6 permutations: abc;acb;bac;bca;cab;cba:"
+   "text": "A permutation of a finite set S is an ordered sequence of all the elements of S , with each element appearing exactly once. For examp le, if S = fa,b,c g, then S has 6 permutations: abc,acb,bac,bca,cab,cba:"
   },
   {
    "type": "body",
@@ -223,7 +223,7 @@
    "section_title": "C.1 Counting",
    "printed_page": 1180,
    "pdf_page": 1201,
-   "text": "A k-permutation of S is an ordered sequence of k elements of S , with no element appearing more than once in the sequence. (Thus, an ordinary permutation is an n-permutation of an n-set.) Here are the 2-permutations of the set fa;b;c;d g: ab;ac;ad;ba;bc;bd;ca;cb;cd;da;db;dc:"
+   "text": "A k-permutation of S is an ordered sequence of k elements of S , with no element appearing more than once in the sequence. (Thus, an ordinary permutation is an n-permutation of an n-set.) Here are the 2-permutations of the set fa,b,c,d g: ab,ac,ad,ba,bc,bd,ca,cb,cd,da,db,dc:"
   },
   {
    "type": "body",
@@ -259,7 +259,7 @@
    "section_title": "C.1 Counting",
    "printed_page": 1180,
    "pdf_page": 1201,
-   "text": "A k-combination of an n-set S is simply a k-subset of S . For example, the 4-set fa;b;c;d g has six 2-combinations: ab;ac;ad;bc;bd;cd :"
+   "text": "A k-combination of an n-set S is simply a k-subset of S . For example, the 4-set fa,b,c,d g has six 2-combinations: ab,ac,ad,bc,bd,cd :"
   },
   {
    "type": "body",
@@ -340,7 +340,7 @@
    "section_title": "C.1 Counting",
    "printed_page": 1180,
    "pdf_page": 1201,
-   "text": "! x k y n−k ; (C.4) where n 2 N and x;y 2 R. The right-hand side of equation (C.4) is called the binomial expansion of the left-hand side. A special case of the binomial theorem occurs when x = y = 1:"
+   "text": "! x k y n−k ; (C.4) where n 2 N and x,y 2 R. The right-hand side of equation (C.4) is called the binomial expansion of the left-hand side. A special case of the binomial theorem occurs when x = y = 1:"
   },
   {
    "type": "body",
@@ -601,7 +601,7 @@
    "section_title": "C.1 Counting",
    "printed_page": 1182,
    "pdf_page": 1203,
-   "text": "An n-input, m-output boolean function is a function from f0;1 g n to f0;1 g m . How many n-input, 1-output boolean functions are there? How many n-input, m-output boolean functions are there?"
+   "text": "An n-input, m-output boolean function is a function from f0,1 g n to f0,1 g m . How many n-input, 1-output boolean functions are there? How many n-input, m-output boolean functions are there?"
   },
   {
    "type": "body",
@@ -619,7 +619,7 @@
    "section_title": "C.1 Counting",
    "printed_page": 1182,
    "pdf_page": 1203,
-   "text": "In how many ways is it possible to choose three dis tinct numbers from the set f1;2;:::;99 g so that their sum is even?"
+   "text": "In how many ways is it possible to choose three dis tinct numbers from the set f1,2,…,99 g so that their sum is even?"
   },
   {
    "type": "body",
@@ -682,7 +682,7 @@
    "section_title": "C.1 Counting",
    "printed_page": 1183,
    "pdf_page": 1204,
-   "text": "Using the result of Exercise C.1-7, make a table for n = 0;1;:::;6 and 0 ≤ k ≤ n of the binomial coefficients ã n k ä with ã 0 ä at the top, ã 1 ä and ã 1 ä on the next line, then ã 2 ä"
+   "text": "Using the result of Exercise C.1-7, make a table for n = 0,1,…,6 and 0 ≤ k ≤ n of the binomial coefficients ã n k ä with ã 0 ä at the top, ã 1 ä and ã 1 ä on the next line, then ã 2 ä"
   },
   {
    "type": "body",
@@ -961,7 +961,7 @@
    "section_title": "C.2 Probability",
    "printed_page": 1185,
    "pdf_page": 1206,
-   "text": "An event is a subset 1 of the sample space S . For example, in the experiment of flipping two coins, the event of obtaining one head and one tail is fHT; THg. The event S is called the certain event, and the event ; is called the null event. We say that two events A and B are mutually exclusive if A \\ B = ;. An outcome s also defines the event fs g, which we sometimes write as just s . By definition, all outcomes are mutually exclusive."
+   "text": "An event is a subset 1 of the sample space S . For example, in the experiment of flipping two coins, the event of obtaining one head and one tail is fHT; THg. The event S is called the certain event, and the event ; is called the null event. We say that two events A and B are mutually exclusive if A \\ B = ,. An outcome s also defines the event fs g, which we sometimes write as just s . By definition, all outcomes are mutually exclusive."
   },
   {
    "type": "body",
@@ -1015,7 +1015,7 @@
    "section_title": "C.2 Probability",
    "printed_page": 1185,
    "pdf_page": 1206,
-   "text": "More generally, for any sequence of events A 1 ;A 2 ;::: (finite or countably infinite) that are pairwise mutually exclusive, Pr ï [ i"
+   "text": "More generally, for any sequence of events A 1 ,A 2 ,… (finite or countably infinite) that are pairwise mutually exclusive, Pr ï [ i"
   },
   {
    "type": "body",
@@ -1051,7 +1051,7 @@
    "section_title": "C.2 Probability",
    "printed_page": 1185,
    "pdf_page": 1206,
-   "text": "Section B.1). The null event ; has probability Pr f;g = 0. If A ⊆ B , then"
+   "text": "Section B.1). The null event ; has probability Pr f,g = 0. If A ⊆ B , then"
   },
   {
    "type": "footnote",
@@ -1240,7 +1240,7 @@
    "section_title": "C.2 Probability",
    "printed_page": 1187,
    "pdf_page": 1208,
-   "text": "Letting c = d gives that the probability of a single point is 0. Removing the endpoints [c; c] and [d; d ] of an interval [c; d ] results in the open interval (c;d) . Since"
+   "text": "Letting c = d gives that the probability of a single point is 0. Removing the endpoints [c; c] and [d; d ] of an interval [c; d ] results in the open interval (c,d) . Since"
   },
   {
    "type": "body",
@@ -1249,7 +1249,7 @@
    "section_title": "C.2 Probability",
    "printed_page": 1187,
    "pdf_page": 1208,
-   "text": "[c; d ] = [c; c] [ (c;d) [ [d; d ], axiom 3 gives Pr f[c; d ]g = Pr f(c;d) g. Generally, the set of events for the continuous uniform probab ility distribution contains any subset of the sample space [a; b] that can be obtained by a finite or countable union of open and closed intervals, as well as certain more complicated sets."
+   "text": "[c; d ] = [c; c] [ (c,d) [ [d; d ], axiom 3 gives Pr f[c; d ]g = Pr f(c,d) g. Generally, the set of events for the continuous uniform probab ility distribution contains any subset of the sample space [a; b] that can be obtained by a finite or countable union of open and closed intervals, as well as certain more complicated sets."
   },
   {
    "type": "body",
@@ -1366,7 +1366,7 @@
    "section_title": "C.2 Probability",
    "printed_page": 1188,
    "pdf_page": 1209,
-   "text": "A collection A 1 ;A 2 ;:::;A n of events is said to be pairwise independent if"
+   "text": "A collection A 1 ,A 2 ,…,A n of events is said to be pairwise independent if"
   },
   {
    "type": "body",
@@ -1375,7 +1375,7 @@
    "section_title": "C.2 Probability",
    "printed_page": 1188,
    "pdf_page": 1209,
-   "text": "Pr fA i \\ A j g = Pr fA i g Pr fA j g for all 1 ≤ i < j ≤ n. We say that the events of the collection are (mutually) independent if every k-subset A i 1 ;A i 2 ;:::;A i k of the collection, where 2 ≤ k ≤ n and 1 ≤ i 1 <i 2 < • • • <i k ≤ n, satisfies"
+   "text": "Pr fA i \\ A j g = Pr fA i g Pr fA j g for all 1 ≤ i < j ≤ n. We say that the events of the collection are (mutually) independent if every k-subset A i 1 ,A i 2 ,…,A i k of the collection, where 2 ≤ k ≤ n and 1 ≤ i 1 <i 2 < • • • <i k ≤ n, satisfies"
   },
   {
    "type": "body",
@@ -1618,7 +1618,7 @@
    "section_title": "C.2 Probability",
    "printed_page": 1190,
    "pdf_page": 1211,
-   "text": "A 1 ;A 2 ;::: , Pr fA 1 [ A 2 [ • • •g ≤ Pr fA 1 g C Pr fA 2 g + • • • : (C.21)"
+   "text": "A 1 ,A 2 ,… , Pr fA 1 [ A 2 [ • • •g ≤ Pr fA 1 g C Pr fA 2 g + • • • : (C.21)"
   },
   {
    "type": "body",
@@ -1654,7 +1654,7 @@
    "section_title": "C.2 Probability",
    "printed_page": 1190,
    "pdf_page": 1211,
-   "text": "Prove that for any collection of events A 1 ;A 2 ;:::;A n , Pr fA 1 \\ A 2 \\ • • • \\ A n g = Pr fA 1 g • Pr fA 2 j A 1 g • Pr fA 3 j A 1 \\ A 2 g • • •"
+   "text": "Prove that for any collection of events A 1 ,A 2 ,…,A n , Pr fA 1 \\ A 2 \\ • • • \\ A n g = Pr fA 1 g • Pr fA 2 j A 1 g • Pr fA 3 j A 1 \\ A 2 g • • •"
   },
   {
    "type": "body",
@@ -1807,7 +1807,7 @@
    "section_title": "C.3 Discrete random variables",
    "printed_page": 1191,
    "pdf_page": 1212,
-   "text": "Pr fs g = 1/36. Define the random variable X to be the maximum of the two values showing on the dice. We have Pr fX = 3g = 5/36, since X assigns a value of 3 to 5 of the 36 possible outcomes, namely, .1;3/ , .2;3/ , .3;3/ , .3;2/ , and .3;1/ ."
+   "text": "Pr fs g = 1/36. Define the random variable X to be the maximum of the two values showing on the dice. We have Pr fX = 3g = 5/36, since X assigns a value of 3 to 5 of the 36 possible outcomes, namely, .1,3/ , .2,3/ , .3,3/ , .3,2/ , and .3,1/ ."
   },
   {
    "type": "body",
@@ -1816,7 +1816,7 @@
    "section_title": "C.3 Discrete random variables",
    "printed_page": 1191,
    "pdf_page": 1212,
-   "text": "We can define several random variables on the same sample space. If X and Y are random variables, the function f(x;y) = Pr fX = x and Y = y g is the joint probability density function of X and Y . For a fixed value y , 1192 Appendix C Counting and Probability"
+   "text": "We can define several random variables on the same sample space. If X and Y are random variables, the function f(x,y) = Pr fX = x and Y = y g is the joint probability density function of X and Y . For a fixed value y , 1192 Appendix C Counting and Probability"
   },
   {
    "type": "body",
@@ -2068,7 +2068,7 @@
    "section_title": "C.3 Discrete random variables",
    "printed_page": 1193,
    "pdf_page": 1214,
-   "text": "In general, when n random variables X 1 ;X 2 ;:::;X n are mutually independent, E [X 1 X 2 • • • X n ] = E [X 1 ] E [X 2 ] • • • E [X n ] : (C.27)"
+   "text": "In general, when n random variables X 1 ,X 2 ,…,X n are mutually independent, E [X 1 X 2 • • • X n ] = E [X 1 ] E [X 2 ] • • • E [X n ] : (C.27)"
   },
   {
    "type": "body",
@@ -2086,7 +2086,7 @@
    "section_title": "C.3 Discrete random variables",
    "printed_page": 1193,
    "pdf_page": 1214,
-   "text": "N = f0;1;2;::: g, we have a nice formula for its expectation:"
+   "text": "N = f0,1,2,… g, we have a nice formula for its expectation:"
   },
   {
    "type": "footnote",
@@ -2320,7 +2320,7 @@
    "section_title": "C.3 Discrete random variables",
    "printed_page": 1195,
    "pdf_page": 1216,
-   "text": "In general, if n random variables X 1 ;X 2 ;:::;X n are pairwise independent, then"
+   "text": "In general, if n random variables X 1 ,X 2 ,…,X n are pairwise independent, then"
   },
   {
    "type": "body",
@@ -2383,7 +2383,7 @@
    "section_title": "C.3 Discrete random variables",
    "printed_page": 1195,
    "pdf_page": 1216,
-   "text": "A carnival game consists of three dice in a cage. A player can bet a dollar on any of the numbers 1 through 6. The cage is shaken, and the payoff is as follows. If the player’s number doesn’t appear on any of the dice, the player loses the dollar. Otherwise, if the player’s number appears on exactly k of the three dice, for k = 1;2;3 , the player keeps the dollar and wins k more dollars. What is the expected gain from playing the carnival game once?"
+   "text": "A carnival game consists of three dice in a cage. A player can bet a dollar on any of the numbers 1 through 6. The cage is shaken, and the payoff is as follows. If the player’s number doesn’t appear on any of the dice, the player loses the dollar. Otherwise, if the player’s number appears on exactly k of the three dice, for k = 1,2,3 , the player keeps the dollar and wins k more dollars. What is the expected gain from playing the carnival game once?"
   },
   {
    "type": "body",
@@ -2401,7 +2401,7 @@
    "section_title": "C.3 Discrete random variables",
    "printed_page": 1195,
    "pdf_page": 1216,
-   "text": "E [max fX;Y g] ≤ E [X ] + E [Y ] :"
+   "text": "E [max fX,Y g] ≤ E [X ] + E [Y ] :"
   },
   {
    "type": "body",
@@ -2536,7 +2536,7 @@
    "section_title": "C.4 The geometric and binomial distributions",
    "printed_page": 1196,
    "pdf_page": 1217,
-   "text": "X has values in the range f1;2;::: g, and for k ≥ 1, C.4 The geometric and binomial distributions 1197"
+   "text": "X has values in the range f1,2,… g, and for k ≥ 1, C.4 The geometric and binomial distributions 1197"
   },
   {
    "type": "body",
@@ -2716,7 +2716,7 @@
    "section_title": "C.4 The geometric and binomial distributions",
    "printed_page": 1198,
    "pdf_page": 1219,
-   "text": "How many successes occur during n Bernoulli trials, where a success occurs with probability p and a failure with probability q = 1 − p? Define the random variable X to be the number of successes in n trials. Then X has values in the range f0;1;:::;n g, and for k = 0;1;:::;n , Pr fX = kg ="
+   "text": "How many successes occur during n Bernoulli trials, where a success occurs with probability p and a failure with probability q = 1 − p? Define the random variable X to be the number of successes in n trials. Then X has values in the range f0,1,…,n g, and for k = 0,1,…,n , Pr fX = kg ="
   },
   {
    "type": "body",
@@ -2725,7 +2725,7 @@
    "section_title": "C.4 The geometric and binomial distributions",
    "printed_page": 1198,
    "pdf_page": 1219,
-   "text": "√k q n−k ; (C.38) since there are ã n k ä ways to pick which k of the n trials are successes, and the probability that each occurs is √k q n−k . A probability distribution satisfying equation (C.38) is said to be a binomial distribution. For convenience, we define the family of binomial distributions using the notation b(kI n;p) ="
+   "text": "√k q n−k ; (C.38) since there are ã n k ä ways to pick which k of the n trials are successes, and the probability that each occurs is √k q n−k . A probability distribution satisfying equation (C.38) is said to be a binomial distribution. For convenience, we define the family of binomial distributions using the notation b(kI n,p) ="
   },
   {
    "type": "body",
@@ -2752,7 +2752,7 @@
    "section_title": "C.4 The geometric and binomial distributions",
    "printed_page": 1198,
    "pdf_page": 1219,
-   "text": "Consequently, since p + q = 1, equation (C.4) on page 1181 gives n X kD0 b(kI n;p) = 1; (C.40) as axiom 2 of the probability axioms requires."
+   "text": "Consequently, since p + q = 1, equation (C.4) on page 1181 gives n X kD0 b(kI n,p) = 1; (C.40) as axiom 2 of the probability axioms requires."
   },
   {
    "type": "body",
@@ -2761,7 +2761,7 @@
    "section_title": "C.4 The geometric and binomial distributions",
    "printed_page": 1198,
    "pdf_page": 1219,
-   "text": "We can compute the expectation of a random variable having a binomial distribution from equations (C.9) and (C.40). Let X be a random variable that follows the binomial distribution b(kI n;p) , and let q = 1 − p. The definition of expectation gives"
+   "text": "We can compute the expectation of a random variable having a binomial distribution from equations (C.9) and (C.40). Let X be a random variable that follows the binomial distribution b(kI n,p) , and let q = 1 − p. The definition of expectation gives"
   },
   {
    "type": "body",
@@ -2797,7 +2797,7 @@
    "section_title": "C.4 The geometric and binomial distributions",
    "printed_page": 1199,
    "pdf_page": 1220,
-   "text": "Figure C.2 The binomial distribution b(kI 15;1/3) resulting from n = 15 Bernoulli trials, each with probability √D 1/3 of success. The expectation of the distribution is np = 5."
+   "text": "Figure C.2 The binomial distribution b(kI 15,1/3) resulting from n = 15 Bernoulli trials, each with probability √D 1/3 of success. The expectation of the distribution is np = 5."
   },
   {
    "type": "body",
@@ -2806,7 +2806,7 @@
    "section_title": "C.4 The geometric and binomial distributions",
    "printed_page": 1199,
    "pdf_page": 1220,
-   "text": "D n X kD0 k • b(kI n;p)"
+   "text": "D n X kD0 k • b(kI n,p)"
   },
   {
    "type": "body",
@@ -2869,7 +2869,7 @@
    "section_title": "C.4 The geometric and binomial distributions",
    "printed_page": 1199,
    "pdf_page": 1220,
-   "text": "D np n−1 X kD0 b(kI n − 1;p)"
+   "text": "D np n−1 X kD0 b(kI n − 1,p)"
   },
   {
    "type": "body",
@@ -3058,7 +3058,7 @@
    "section_title": "C.4 The geometric and binomial distributions",
    "printed_page": 1200,
    "pdf_page": 1221,
-   "text": "As Figure C.2 shows, the binomial distribution b(kI n;p) increases with k until it reaches the mean np, and then it decreases. To prove that the distribution always behaves in this manner, examine the ratio of successive terms: b(kI n;p) b(k − 1I n;p) = ã n k ä"
+   "text": "As Figure C.2 shows, the binomial distribution b(kI n,p) increases with k until it reaches the mean np, and then it decreases. To prove that the distribution always behaves in this manner, examine the ratio of successive terms: b(kI n,p) b(k − 1I n,p) = ã n k ä"
   },
   {
    "type": "body",
@@ -3067,7 +3067,7 @@
    "section_title": "C.4 The geometric and binomial distributions",
    "printed_page": 1200,
    "pdf_page": 1221,
-   "text": "√k−1 q n−kC1"
+   "text": "√k−1 q n−k + 1"
   },
   {
    "type": "body",
@@ -3130,7 +3130,7 @@
    "section_title": "C.4 The geometric and binomial distributions",
    "printed_page": 1201,
    "pdf_page": 1222,
-   "text": "This ratio is greater than 1 precisely when (n + 1)p − k is positive. Consequently, b(kI n;p) > b(k − 1I n;p) for k < (n + 1)p (the distribution increases), and b(kI n;p) < b(k − 1I n;p) for k > (n + 1)p (the distribution decreases). If"
+   "text": "This ratio is greater than 1 precisely when (n + 1)p − k is positive. Consequently, b(kI n,p) > b(k − 1I n,p) for k < (n + 1)p (the distribution increases), and b(kI n,p) < b(k − 1I n,p) for k > (n + 1)p (the distribution decreases). If"
   },
   {
    "type": "body",
@@ -3139,7 +3139,7 @@
    "section_title": "C.4 The geometric and binomial distributions",
    "printed_page": 1201,
    "pdf_page": 1222,
-   "text": "(n + 1)p is an integer, then for k = (n + 1)p, the ratio b(kI n;p)/b(k − 1I n;p) equals 1, so that b(kI n;p) = b(k − 1I n;p) . In this case, the distribution has two maxima: at k = .nC1/p and at k −1 = .nC1/p−1 = np−q. Otherwise, it attains a maximum at the unique integer k that lies in the range np − q<k<.n + 1/p."
+   "text": "(n + 1)p is an integer, then for k = (n + 1)p, the ratio b(kI n,p)/b(k − 1I n,p) equals 1, so that b(kI n,p) = b(k − 1I n,p) . In this case, the distribution has two maxima: at k = .n + 1/p and at k −1 = .n + 1/p−1 = np−q. Otherwise, it attains a maximum at the unique integer k that lies in the range np − q<k<.n + 1/p."
   },
   {
    "type": "body",
@@ -3166,7 +3166,7 @@
    "section_title": "C.4 The geometric and binomial distributions",
    "printed_page": 1201,
    "pdf_page": 1222,
-   "text": "Let n ≥ 0, let 0<p<1 , let q = 1 − p, and let 0 ≤ k ≤ n. Then b(kI n;p) ≤"
+   "text": "Let n ≥ 0, let 0<p<1 , let q = 1 − p, and let 0 ≤ k ≤ n. Then b(kI n,p) ≤"
   },
   {
    "type": "body",
@@ -3184,7 +3184,7 @@
    "section_title": "C.4 The geometric and binomial distributions",
    "printed_page": 1201,
    "pdf_page": 1222,
-   "text": "Proof We have b(kI n;p) ="
+   "text": "Proof We have b(kI n,p) ="
   },
   {
    "type": "body",
@@ -3247,7 +3247,7 @@
    "section_title": "C.4 The geometric and binomial distributions",
    "printed_page": 1201,
    "pdf_page": 1222,
-   "text": "Show that b(kI n;p) = b(n − kI n;q) , where q = 1 − p."
+   "text": "Show that b(kI n,p) = b(n − kI n,q) , where q = 1 − p."
   },
   {
    "type": "body",
@@ -3265,7 +3265,7 @@
    "section_title": "C.4 The geometric and binomial distributions",
    "printed_page": 1202,
    "pdf_page": 1223,
-   "text": "Show that the value of the maximum of the binomial distribution b(kI n;p) is approximately 1= √2Ω npq , where q = 1 − p."
+   "text": "Show that the value of the maximum of the binomial distribution b(kI n,p) is approximately 1= √2Ω npq , where q = 1 − p."
   },
   {
    "type": "body",
@@ -3328,7 +3328,7 @@
    "section_title": "C.4 The geometric and binomial distributions",
    "printed_page": 1202,
    "pdf_page": 1223,
-   "text": "Show that for 0 ≤ k ≤ n, b(kI n;1/2) ≤ 2 n H(k/n) −n ;"
+   "text": "Show that for 0 ≤ k ≤ n, b(kI n,1/2) ≤ 2 n H(k/n) −n ;"
   },
   {
    "type": "body",
@@ -3346,7 +3346,7 @@
    "section_title": "C.4 The geometric and binomial distributions",
    "printed_page": 1202,
    "pdf_page": 1223,
-   "text": "Consider n Bernoulli trials, where for i = 1;2;:::;n , the i th trial has probability √i of success, and let X be the random variable denoting the total number of successes. Let p ≥ √i for all i = 1;2;:::;n . Prove that for 1 ≤ k ≤ n, Pr fX <kg ≥ k−1 X i D0 b(i I n;p):"
+   "text": "Consider n Bernoulli trials, where for i = 1,2,…,n , the i th trial has probability √i of success, and let X be the random variable denoting the total number of successes. Let p ≥ √i for all i = 1,2,…,n . Prove that for 1 ≤ k ≤ n, Pr fX <kg ≥ k−1 X i D0 b(i I n,p):"
   },
   {
    "type": "body",
@@ -3418,7 +3418,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1203,
    "pdf_page": 1224,
-   "text": "The probability of having at least, or at most, k successes in n Bernoulli trials, each with probability p of success, is often of more interest than the probability of having exactly k successes. In this section, we investigate the tails of the binomial distribution: the two regions of the distribution b(kI n;p) that are far from the mean np. We’ll prove several important bounds on (the sum of all terms in) a tail."
+   "text": "The probability of having at least, or at most, k successes in n Bernoulli trials, each with probability p of success, is often of more interest than the probability of having exactly k successes. In this section, we investigate the tails of the binomial distribution: the two regions of the distribution b(kI n,p) that are far from the mean np. We’ll prove several important bounds on (the sum of all terms in) a tail."
   },
   {
    "type": "body",
@@ -3427,7 +3427,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1203,
    "pdf_page": 1224,
-   "text": "We first provide a bound on the right tail of the distribution b(kI n;p). To determine bounds on the left tail, simply invert the roles of successes and failures."
+   "text": "We first provide a bound on the right tail of the distribution b(kI n,p). To determine bounds on the left tail, simply invert the roles of successes and failures."
   },
   {
    "type": "body",
@@ -3454,7 +3454,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1203,
    "pdf_page": 1224,
-   "text": "Let X be the random variable denoting the total number of successes. Then for 0 ≤ k ≤ n, the probability of at least k successes is Pr fX ≥ kg = n X i Dk b(i I n;p)"
+   "text": "Let X be the random variable denoting the total number of successes. Then for 0 ≤ k ≤ n, the probability of at least k successes is Pr fX ≥ kg = n X i Dk b(i I n,p)"
   },
   {
    "type": "proof",
@@ -3463,7 +3463,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1203,
    "pdf_page": 1224,
-   "text": "Proof For S ⊆ f1;2;:::;n g, let A S denote the event that the i th trial is a success for every i 2 S . Since Pr fA S g = √k , where |S| = k, we have"
+   "text": "Proof For S ⊆ f1,2,…,n g, let A S denote the event that the i th trial is a success for every i 2 S . Since Pr fA S g = √k , where |S| = k, we have"
   },
   {
    "type": "body",
@@ -3472,7 +3472,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1203,
    "pdf_page": 1224,
-   "text": "Pr fX ≥ kg = Pr fthere exists S ⊆ f1;2;:::;n g W |S| = k and A S g"
+   "text": "Pr fX ≥ kg = Pr fthere exists S ⊆ f1,2,…,n g W |S| = k and A S g"
   },
   {
    "type": "body",
@@ -3490,7 +3490,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1203,
    "pdf_page": 1224,
-   "text": "S ⊆f1;2;:::;ngW|S|Dk"
+   "text": "S ⊆f1,2,…,ngW|S|Dk"
   },
   {
    "type": "body",
@@ -3499,7 +3499,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1203,
    "pdf_page": 1224,
-   "text": "S ⊆f1;2;:::;ngW|S|Dk"
+   "text": "S ⊆f1,2,…,ngW|S|Dk"
   },
   {
    "type": "body",
@@ -3562,7 +3562,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1203,
    "pdf_page": 1224,
-   "text": "Let X be the random variable denoting the total number of successes. Then for np<k<n , the probability of more than k successes is Pr fX >kg = n X i DkC1 b(i I n;p)"
+   "text": "Let X be the random variable denoting the total number of successes. Then for np<k<n , the probability of more than k successes is Pr fX >kg = n X i Dk + 1 b(i I n,p)"
   },
   {
    "type": "body",
@@ -3607,7 +3607,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1203,
    "pdf_page": 1224,
-   "text": "! a i <.a + 1) n k na − k(a + 1) b(kI n;a=.a + 1)/ for all a>0 and all k such that 0<k\"na\".a + 1/."
+   "text": "! a i <.a + 1) n k na − k(a + 1) b(kI n,a=.a + 1)/ for all a>0 and all k such that 0<k\"na\".a + 1/."
   },
   {
    "type": "body",
@@ -3616,7 +3616,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1204,
    "pdf_page": 1225,
-   "text": "Pr fX ≤ kg = k X i D0 b(i I n;p)"
+   "text": "Pr fX ≤ kg = k X i D0 b(i I n,p)"
   },
   {
    "type": "body",
@@ -3661,7 +3661,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1204,
    "pdf_page": 1225,
-   "text": "Consider a sequence of n Bernoulli trials, where success occurs with probability p and failure with probability q = 1 − p. Let X be the random variable denoting the total number of successes. Then for 0 < k < np , the probability of fewer than k successes is Pr fX <kg = k−1 X i D0 b(i I n;p)"
+   "text": "Consider a sequence of n Bernoulli trials, where success occurs with probability p and failure with probability q = 1 − p. Let X be the random variable denoting the total number of successes. Then for 0 < k < np , the probability of fewer than k successes is Pr fX <kg = k−1 X i D0 b(i I n,p)"
   },
   {
    "type": "body",
@@ -3670,7 +3670,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1204,
    "pdf_page": 1225,
-   "text": "< kq np − k b(kI n;p):"
+   "text": "< kq np − k b(kI n,p):"
   },
   {
    "type": "proof",
@@ -3679,7 +3679,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1204,
    "pdf_page": 1225,
-   "text": "Proof We bound the series P k−1 i D0 b(i I n;p) by a geometric series using the technique from Section A.2, page 1147. For i = 1;2;:::;k , equation (C.45) gives b(i − 1I n;p) b(i I n;p) = iq"
+   "text": "Proof We bound the series P k−1 i D0 b(i I n,p) by a geometric series using the technique from Section A.2, page 1147. For i = 1,2,…,k , equation (C.45) gives b(i − 1I n,p) b(i I n,p) = iq"
   },
   {
    "type": "body",
@@ -3751,7 +3751,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1204,
    "pdf_page": 1225,
-   "text": "D kq np − kp − kq b(kI n;p)"
+   "text": "D kq np − kp − kq b(kI n,p)"
   },
   {
    "type": "body",
@@ -3760,7 +3760,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1204,
    "pdf_page": 1225,
-   "text": "D kq np − k b(kI n;p):"
+   "text": "D kq np − k b(kI n,p):"
   },
   {
    "type": "body",
@@ -3778,7 +3778,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1204,
    "pdf_page": 1225,
-   "text": "Pr fX <kg = k−1 X i D0 b(i I n;p)<b(k I n;p):"
+   "text": "Pr fX <kg = k−1 X i D0 b(i I n,p)<b(k I n,p):"
   },
   {
    "type": "body",
@@ -3805,7 +3805,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1205,
    "pdf_page": 1226,
-   "text": "< 1; it follows that b(i − 1I n;p)<xb(i I n;p) for 0<i ≤ k. Iteratively applying this inequality k − i times gives b(i I n;p)<x k−i b(kI n;p) for 0 ≤ i <k, and hence k−1 X i D0 b(i I n;p) < k−1 X i D0 x k−i b(kI n;p)"
+   "text": "< 1; it follows that b(i − 1I n,p)<xb(i I n,p) for 0<i ≤ k. Iteratively applying this inequality k − i times gives b(i I n,p)<x k−i b(kI n,p) for 0 ≤ i <k, and hence k−1 X i D0 b(i I n,p) < k−1 X i D0 x k−i b(kI n,p)"
   },
   {
    "type": "body",
@@ -3814,7 +3814,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1205,
    "pdf_page": 1226,
-   "text": "< b(k I n;p)"
+   "text": "< b(k I n,p)"
   },
   {
    "type": "footnote",
@@ -3832,7 +3832,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1205,
    "pdf_page": 1226,
-   "text": "1 − x b(kI n;p)"
+   "text": "1 − x b(kI n,p)"
   },
   {
    "type": "body",
@@ -3850,7 +3850,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1205,
    "pdf_page": 1226,
-   "text": "..n − k/p − kq/=..n − k/p/ b(kI n;p)"
+   "text": "..n − k/p − kq/=..n − k/p/ b(kI n,p)"
   },
   {
    "type": "body",
@@ -3922,7 +3922,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1206,
    "pdf_page": 1227,
-   "text": "P k−1 i D0 b(i I n;p)"
+   "text": "P k−1 i D0 b(i I n,p)"
   },
   {
    "type": "body",
@@ -3931,7 +3931,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1206,
    "pdf_page": 1227,
-   "text": "P k i D0 b(i I n;p)"
+   "text": "P k i D0 b(i I n,p)"
   },
   {
    "type": "body",
@@ -3940,7 +3940,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1206,
    "pdf_page": 1227,
-   "text": "P k−1 i D0 b(i I n;p)"
+   "text": "P k−1 i D0 b(i I n,p)"
   },
   {
    "type": "body",
@@ -3949,7 +3949,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1206,
    "pdf_page": 1227,
-   "text": "P k−1 i D0 b(i I n;p) + b(kI n;p)"
+   "text": "P k−1 i D0 b(i I n,p) + b(kI n,p)"
   },
   {
    "type": "body",
@@ -3958,7 +3958,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1206,
    "pdf_page": 1227,
-   "text": "< 1/2 ; since P k−1 i D0 b(i I n;p)<b(k I n;p) ."
+   "text": "< 1/2 ; since P k−1 i D0 b(i I n,p)<b(k I n,p) ."
   },
   {
    "type": "body",
@@ -3985,7 +3985,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1206,
    "pdf_page": 1227,
-   "text": "< (n − k)p k − np b(kI n;p):"
+   "text": "< (n − k)p k − np b(kI n,p):"
   },
   {
    "type": "body",
@@ -4003,7 +4003,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1206,
    "pdf_page": 1227,
-   "text": "The next theorem considers n Bernoulli trials, each with a probability √i of success, for i = 1;2;:::;n . As the subsequent corollary shows, we can use the theorem to provide a bound on the right tail of the binomial distribution by setting"
+   "text": "The next theorem considers n Bernoulli trials, each with a probability √i of success, for i = 1,2,…,n . As the subsequent corollary shows, we can use the theorem to provide a bound on the right tail of the binomial distribution by setting"
   },
   {
    "type": "body",
@@ -4030,7 +4030,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1206,
    "pdf_page": 1227,
-   "text": "Consider a sequence of n Bernoulli trials, where in the i th trial, for i = 1;2;:::;n , success occurs with probability √i and failure occurs with probability q i = 1 − √i ."
+   "text": "Consider a sequence of n Bernoulli trials, where in the i th trial, for i = 1,2,…,n , success occurs with probability √i and failure occurs with probability q i = 1 − √i ."
   },
   {
    "type": "body",
@@ -4057,7 +4057,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1206,
    "pdf_page": 1227,
-   "text": "Consider a sequence of n Bernoulli trials, where in the i th trial, for i = 1;2;:::;n , success occurs with probability √i and failure occurs with probability q i = 1 − √i ."
+   "text": "Consider a sequence of n Bernoulli trials, where in the i th trial, for i = 1,2,…,n , success occurs with probability √i and failure occurs with probability q i = 1 − √i ."
   },
   {
    "type": "body",
@@ -4138,7 +4138,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1207,
    "pdf_page": 1228,
-   "text": "Bernoulli trial is a success g for i = 1;2;:::;n . That is, X i is the random variable that is 1 if the i th Bernoulli trial is a success and 0 if it is a failure. Thus, we have"
+   "text": "Bernoulli trial is a success g for i = 1,2,…,n . That is, X i is the random variable that is 1 if the i th Bernoulli trial is a success and 0 if it is a failure. Thus, we have"
   },
   {
    "type": "body",
@@ -4426,7 +4426,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1209,
    "pdf_page": 1230,
-   "text": "Pr fX − np ≥ r g = n X kDdnpCr e b(kI n;p)"
+   "text": "Pr fX − np ≥ r g = n X kDdnp + r e b(kI n,p)"
   },
   {
    "type": "proof",
@@ -4768,7 +4768,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1212,
    "pdf_page": 1233,
-   "text": "Prove that there are exactly (b + n − 1)!=.b − 1/! ways to place the balls in the bins. ( Hint: Consider the number of ways of arranging n distinct balls and b − 1 indistinguishable sticks in a row.) c. Suppose that the balls are identical, and hence their order within a bin does not matter. Show that the number of ways of placing the balls in the bins is ã bCn−1 n ä"
+   "text": "Prove that there are exactly (b + n − 1)!=.b − 1/! ways to place the balls in the bins. ( Hint: Consider the number of ways of arranging n distinct balls and b − 1 indistinguishable sticks in a row.) c. Suppose that the balls are identical, and hence their order within a bin does not matter. Show that the number of ways of placing the balls in the bins is ã b + n−1 n ä"
   },
   {
    "type": "body",
@@ -4912,7 +4912,7 @@
    "section_title": "C.5 The tails of the binomial distribution",
    "printed_page": 1214,
    "pdf_page": 1235,
-   "text": "(D.1) is a 2 × 3 matrix A = (a ij ), where for i = 1;2 and j = 1;2;3 , the element of the matrix in row i and column j is denoted by a ij . By convention, uppercase letters denote matrices and corresponding subscripted lowercase letters denote their elements. We denote the set of all m × n matrices with real-valued entries by R m×n and, in general, the set of m × n matrices with entries drawn from a set S by S m×n ."
+   "text": "(D.1) is a 2 × 3 matrix A = (a ij ), where for i = 1,2 and j = 1,2,3 , the element of the matrix in row i and column j is denoted by a ij . By convention, uppercase letters denote matrices and corresponding subscripted lowercase letters denote their elements. We denote the set of all m × n matrices with real-valued entries by R m×n and, in general, the set of m × n matrices with entries drawn from a set S by S m×n ."
   },
   {
    "type": "body",

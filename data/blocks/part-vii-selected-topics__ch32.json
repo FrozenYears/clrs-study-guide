@@ -104,7 +104,7 @@
    "section_title": "32.1 The naive string-matching algorithm",
    "printed_page": 960,
    "pdf_page": 981,
-   "text": "NAIVE-STRING-MATCHER (T;P;n;m)"
+   "text": "NAIVE-STRING-MATCHER (T,P,n,m)"
   },
   {
    "type": "body",
@@ -113,7 +113,7 @@
    "section_title": "32.1 The naive string-matching algorithm",
    "printed_page": 960,
    "pdf_page": 981,
-   "text": "Figure 32.3 portrays the naive string-matching procedure as sliding a \"template\" containing the pattern over the text, noting for wh ich shifts all of the characters on the template equal the corresponding characters in the text. The for loop of lines 133 considers each possible shift explicitly. The test in line 2 determines whether the current shift is valid. This test implicitly loops to check corresponding character positions until all positions match succe ssfully or a mismatch is found."
+   "text": "Figure 32.3 portrays the naive string-matching procedure as sliding a \"template\" containing the pattern over the text, noting for wh ich shifts all of the characters on the template equal the corresponding characters in the text. The for loop of lines 1–3 considers each possible shift explicitly. The test in line 2 determines whether the current shift is valid. This test implicitly loops to check corresponding character positions until all positions match succe ssfully or a mismatch is found."
   },
   {
    "type": "body",
@@ -131,7 +131,7 @@
    "section_title": "32.1 The naive string-matching algorithm",
    "printed_page": 960,
    "pdf_page": 981,
-   "text": "Procedure NAIVE-STRING-MATCHER takes O..n − m + 1/m/ time, and this bound is tight in the worst case. For example, cons ider the text string a n (a string of n a’s) and the pattern a m . For each of the n − m C1 possible values of the shift s , the implicit loop on line 2 to compare correspondin g characters must execute m times to validate the shift. The worst-case running time is thus Θ..n − m + 1/m/, which is Θ(n 2 ) if m = ⌊n/2⌋. Because it requires no preprocessing, NAIVE- STRING-MATCHER’s running time equals its matching time."
+   "text": "Procedure NAIVE-STRING-MATCHER takes O..n − m + 1/m/ time, and this bound is tight in the worst case. For example, cons ider the text string a n (a string of n a’s) and the pattern a m . For each of the n − m + 1 possible values of the shift s , the implicit loop on line 2 to compare correspondin g characters must execute m times to validate the shift. The worst-case running time is thus Θ..n − m + 1/m/, which is Θ(n 2 ) if m = ⌊n/2⌋. Because it requires no preprocessing, NAIVE- STRING-MATCHER’s running time equals its matching time."
   },
   {
    "type": "body",
@@ -239,7 +239,7 @@
    "section_title": "32.1 The naive string-matching algorithm",
    "printed_page": 961,
    "pdf_page": 982,
-   "text": "32.1-3 Suppose that pattern P and text T are randomly chosen strings of length m and n, respectively, from the d -ary alphabet † d = f0;1;:::;d − 1g, where d ≥ 2. Show that the expected number of character-to-character comparisons made by the implicit loop in line 2 of the naive algorithm is (n − m + 1) 1 − d −m"
+   "text": "32.1-3 Suppose that pattern P and text T are randomly chosen strings of length m and n, respectively, from the d -ary alphabet † d = f0,1,…,d − 1g, where d ≥ 2. Show that the expected number of character-to-character comparisons made by the implicit loop in line 2 of the naive algorithm is (n − m + 1) 1 − d −m"
   },
   {
    "type": "body",
@@ -347,7 +347,7 @@
    "section_title": "32.2 The Rabin-Karp algorithm",
    "printed_page": 962,
    "pdf_page": 983,
-   "text": "For expository purposes, let’s assume that † = f 0; 1; 2;:::; 9g, so that each character is a decimal digit. (In the general case, you can assume that each character is a digit in radix-d notation, so that it has a numerical value in the r ange 0 to d −1, where d = j†j.) You can then view a string of k consecutive characters as representing a length-k decimal number. For example, the character string 31415 corresponds to the decimal number 31,415. Because we interpret the input characters as both graphical symbols and digits, it will be convenient in this section to denote them as digits in standard text font."
+   "text": "For expository purposes, let’s assume that † = f 0; 1; 2,…; 9g, so that each character is a decimal digit. (In the general case, you can assume that each character is a digit in radix-d notation, so that it has a numerical value in the r ange 0 to d −1, where d = j†j.) You can then view a string of k consecutive characters as representing a length-k decimal number. For example, the character string 31415 corresponds to the decimal number 31,415. Because we interpret the input characters as both graphical symbols and digits, it will be convenient in this section to denote them as digits in standard text font."
   },
   {
    "type": "body",
@@ -356,7 +356,7 @@
    "section_title": "32.2 The Rabin-Karp algorithm",
    "printed_page": 962,
    "pdf_page": 983,
-   "text": "Given a pattern P[1 : m], let p denote its corresponding decimal value. In a similar manner, given a text T[1 : n], let t s denote the decimal value of the length-m substring T[s + 1 : s + m], for s = 0;1;:::;n − m. Certainly, t s = p if and only if T[s + 1 : s + m] = P[1 : m], and thus, s is a valid shift if and only if t s = p. If you could compute p in Θ(m) time and all the t s values in a total of Θ(n − m + 1) time, 2 then you could determine all valid shifts s in Θ(m) + Θ(n − m + 1) = Θ(n)"
+   "text": "Given a pattern P[1 : m], let p denote its corresponding decimal value. In a similar manner, given a text T[1 : n], let t s denote the decimal value of the length-m substring T[s + 1 : s + m], for s = 0,1,…,n − m. Certainly, t s = p if and only if T[s + 1 : s + m] = P[1 : m], and thus, s is a valid shift if and only if t s = p. If you could compute p in Θ(m) time and all the t s values in a total of Θ(n − m + 1) time, 2 then you could determine all valid shifts s in Θ(m) + Θ(n − m + 1) = Θ(n)"
   },
   {
    "type": "footnote",
@@ -428,7 +428,7 @@
    "section_title": "32.2 The Rabin-Karp algorithm",
    "printed_page": 963,
    "pdf_page": 984,
-   "text": "To compute the remaining values t 1 ;t 2 ;:::;t n−m in Θ(n − m) time, observe that you can compute t sC1 from t s in constant time, since t sC1 = 10.t s − 10 m−1 T[s + 1]/ C T[s + m + 1]: (32.1)"
+   "text": "To compute the remaining values t 1 ,t 2 ,…,t n−m in Θ(n − m) time, observe that you can compute t s + 1 from t s in constant time, since t s + 1 = 10.t s − 10 m−1 T[s + 1]/ C T[s + m + 1]: (32.1)"
   },
   {
    "type": "body",
@@ -437,7 +437,7 @@
    "section_title": "32.2 The Rabin-Karp algorithm",
    "printed_page": 963,
    "pdf_page": 984,
-   "text": "Subtracting 10 m−1 T[s + 1] removes the high-order digit from t s , multiplying the result by 10 shifts the number left by one digit position, and adding T[s + m + 1] brings in the appropriate low-order digit. For example, suppose that m = 5, t s = 31415, and the new low-order digit is T[s + 5 + 1] = 2. The high-order digit to remove is T[s + 1] = 3, and so t sC1 = 10.31415 − 10000 • 3/ C 2"
+   "text": "Subtracting 10 m−1 T[s + 1] removes the high-order digit from t s , multiplying the result by 10 shifts the number left by one digit position, and adding T[s + m + 1] brings in the appropriate low-order digit. For example, suppose that m = 5, t s = 31415, and the new low-order digit is T[s + 5 + 1] = 2. The high-order digit to remove is T[s + 1] = 3, and so t s + 1 = 10.31415 − 10000 • 3/ C 2"
   },
   {
    "type": "body",
@@ -464,7 +464,7 @@
    "section_title": "32.2 The Rabin-Karp algorithm",
    "printed_page": 963,
    "pdf_page": 984,
-   "text": "O(m)-time method suffices), then each execution of equation (32.1) takes a constant number of arithmetic operations. Thus, you ca n compute p in Θ(m) time, and you can compute all of t 0 ;t 1 ;:::;t n−m in Θ(n − m + 1) time. Therefore, you can find all occurrences of the pattern P[1 : m] in the text T[1 : n] with Θ(m) preprocessing time and Θ(n − m + 1) matching time."
+   "text": "O(m)-time method suffices), then each execution of equation (32.1) takes a constant number of arithmetic operations. Thus, you ca n compute p in Θ(m) time, and you can compute all of t 0 ,t 1 ,…,t n−m in Θ(n − m + 1) time. Therefore, you can find all occurrences of the pattern P[1 : m] in the text T[1 : n] with Θ(m) preprocessing time and Θ(n − m + 1) matching time."
   },
   {
    "type": "body",
@@ -482,7 +482,7 @@
    "section_title": "32.2 The Rabin-Karp algorithm",
    "printed_page": 963,
    "pdf_page": 984,
-   "text": "Fortunately, this problem can be solved, as Figure 32.4 shows: compute p and the t s values modulo a suitable modulus q. You can compute p modulo q in Θ(m) time and all the t s values modulo q in Θ(n − m + 1) time. With j†j = 10, if you choose the modulus q as a prime such that 10q just fits within one computer word, then you can perform all the necessary comput ations with single-precision arithmetic. In general, with a d -ary alphabet f0;1;:::;d − 1g, choose q so that dq fits within a computer word and adjust the recurrence equation (32.1) to work modulo q, so that it becomes t sC1 = ã d(t s − T[s + 1]h) + T[s + m + 1] ä mod q; (32.2)"
+   "text": "Fortunately, this problem can be solved, as Figure 32.4 shows: compute p and the t s values modulo a suitable modulus q. You can compute p modulo q in Θ(m) time and all the t s values modulo q in Θ(n − m + 1) time. With j†j = 10, if you choose the modulus q as a prime such that 10q just fits within one computer word, then you can perform all the necessary comput ations with single-precision arithmetic. In general, with a d -ary alphabet f0,1,…,d − 1g, choose q so that dq fits within a computer word and adjust the recurrence equation (32.1) to work modulo q, so that it becomes t s + 1 = ã d(t s − T[s + 1]h) + T[s + m + 1] ä mod q; (32.2)"
   },
   {
    "type": "body",
@@ -608,7 +608,7 @@
    "section_title": "32.2 The Rabin-Karp algorithm",
    "printed_page": 965,
    "pdf_page": 986,
-   "text": "The procedure RABIN-KARP-MATCHER on the next page makes these ideas precise. The inputs to the procedure are the text T , the pattern P , their lengths n and m, the radix d to use (which is typically taken to be j†j), and the prime q to use. The procedure works as follows. All charact ers are interpreted as radix-d digits. The subscripts on t are provided only for clarity: the procedure works correctly if all the subscripts are dropped. Line 1 initializes h to the value of the high-order digit position of an m-digit window. Lines 236 compute p as the value of P[1 : m] mod q and t 0 as the value of T[1 : m] mod q. The for loop of lines 7312 iterates through all possible shifts s , maintaining the following invariant:"
+   "text": "The procedure RABIN-KARP-MATCHER on the next page makes these ideas precise. The inputs to the procedure are the text T , the pattern P , their lengths n and m, the radix d to use (which is typically taken to be j†j), and the prime q to use. The procedure works as follows. All charact ers are interpreted as radix-d digits. The subscripts on t are provided only for clarity: the procedure works correctly if all the subscripts are dropped. Line 1 initializes h to the value of the high-order digit position of an m-digit window. Lines 2–6 compute p as the value of P[1 : m] mod q and t 0 as the value of T[1 : m] mod q. The for loop of lines 7–12 iterates through all possible shifts s , maintaining the following invariant:"
   },
   {
    "type": "body",
@@ -626,7 +626,7 @@
    "section_title": "32.2 The Rabin-Karp algorithm",
    "printed_page": 965,
    "pdf_page": 986,
-   "text": "If a hit occurs because √D t s in line 8, then line 9 determines whether s is a valid shift or the hit was spurious via the test P[1 : m] = = T[s + 1 : s + m]. Line 10 prints out any valid shifts that are found. If s < n − m (checked in line 11), then the for loop will iterate at least one more time, and so line 12 first executes to ensure that the loop invariant holds upon the next iteration. Line 12 computes the value of t sC1 mod q from the value of t s mod q in constant time using equation (32.2) directly."
+   "text": "If a hit occurs because √D t s in line 8, then line 9 determines whether s is a valid shift or the hit was spurious via the test P[1 : m] = = T[s + 1 : s + m]. Line 10 prints out any valid shifts that are found. If s < n − m (checked in line 11), then the for loop will iterate at least one more time, and so line 12 first executes to ensure that the loop invariant holds upon the next iteration. Line 12 computes the value of t s + 1 mod q from the value of t s mod q in constant time using equation (32.2) directly."
   },
   {
    "type": "body",
@@ -635,7 +635,7 @@
    "section_title": "32.2 The Rabin-Karp algorithm",
    "printed_page": 965,
    "pdf_page": 986,
-   "text": "RABIN-KARP-MATCHER takes Θ(m) preprocessing time, and its matching time is Θ..n − m + 1/m/ in the worst case, since (like the naive string-matching algorithm) the Rabin-Karp algorithm explicitly verifies every valid shift. If P = a m and T = a n , then verifying takes Θ..n −mC1/m/ time, since each of the n −mC1 possible shifts is valid."
+   "text": "RABIN-KARP-MATCHER takes Θ(m) preprocessing time, and its matching time is Θ..n − m + 1/m/ in the worst case, since (like the naive string-matching algorithm) the Rabin-Karp algorithm explicitly verifies every valid shift. If P = a m and T = a n , then verifying takes Θ..n −m + 1/m/ time, since each of the n −m + 1 possible shifts is valid."
   },
   {
    "type": "body",
@@ -671,7 +671,7 @@
    "section_title": "32.2 The Rabin-Karp algorithm",
    "printed_page": 965,
    "pdf_page": 986,
-   "text": "equivalent to p, modulo q, as 1/q. Since there are O(n) positions at which the RABIN-KARP-MATCHER (T;P;n;m;d;q) ã d(t s − T[s + 1]h) + T[s + m + 1] ä mod q test of line 8 fails (actually, at most n − m + 1 positions) and checking each hit takes O(m) time in line 9, the expected matching time taken by the Rabin-Karp algorithm is O(n) + O(m(v + n/q));"
+   "text": "equivalent to p, modulo q, as 1/q. Since there are O(n) positions at which the RABIN-KARP-MATCHER (T,P,n,m,d,q) ã d(t s − T[s + 1]h) + T[s + m + 1] ä mod q test of line 8 fails (actually, at most n − m + 1 positions) and checking each hit takes O(m) time in line 9, the expected matching time taken by the Rabin-Karp algorithm is O(n) + O(m(v + n/q));"
   },
   {
    "type": "pseudocode",
@@ -729,10 +729,10 @@
     },
     {
      "n": 12,
-     "code": "t sC1 = ã d(t s − T[s + 1]h) + T[s + m + 1]"
+     "code": "t s + 1 = ã d(t s − T[s + 1]h) + T[s + m + 1]"
     }
    ],
-   "text": "1 h = d m−1 mod q\n2 √D 0\n3 t 0 = 0\n4 for i = 1 to m / / preprocessing\n5 √D .dp + P[i]/  mod q\n6 t 0 = .dt 0 + T[i]/  mod q\n7 for s = 0 to n − m / / matching—try all possible shifts\n8 if p = = t s / / a hit?\n9 if P[1  : m] == T[s + 1 : s + m] / / valid shift?\n10 print \"Pattern occurs with shift\" s\n11 if s<n  − m\n12 t sC1 = ã d(t s − T[s + 1]h) + T[s + m + 1]"
+   "text": "1 h = d m−1 mod q\n2 √D 0\n3 t 0 = 0\n4 for i = 1 to m / / preprocessing\n5 √D .dp + P[i]/  mod q\n6 t 0 = .dt 0 + T[i]/  mod q\n7 for s = 0 to n − m / / matching—try all possible shifts\n8 if p = = t s / / a hit?\n9 if P[1  : m] == T[s + 1 : s + m] / / valid shift?\n10 print \"Pattern occurs with shift\" s\n11 if s<n  − m\n12 t s + 1 = ã d(t s − T[s + 1]h) + T[s + m + 1]"
   },
   {
    "type": "body",
@@ -786,7 +786,7 @@
    "section_title": "32.2 The Rabin-Karp algorithm",
    "printed_page": 967,
    "pdf_page": 988,
-   "text": "32.2-4 Alice has a copy of a long n-bit file A = ha n−1 ;a n−2 ;:::;a 0 i, and Bob similarly has an n-bit file B = hb n−1 ;b n−2 ;:::;b 0 i. Alice and Bob wish to know if their files are identical. To avoid transmitting all of A or B , they use the following fast probabilistic check. Together, they select a prime q > 1000n and randomly select an integer x from f0;1;:::;q − 1g. Letting"
+   "text": "32.2-4 Alice has a copy of a long n-bit file A = ⟨a n−1 ,a n−2 ,…,a 0⟩, and Bob similarly has an n-bit file B = ⟨b n−1 ,b n−2 ,…,b 0⟩. Alice and Bob wish to know if their files are identical. To avoid transmitting all of A or B , they use the following fast probabilistic check. Together, they select a prime q > 1000n and randomly select an integer x from f0,1,…,q − 1g. Letting"
   },
   {
    "type": "body",
@@ -867,7 +867,7 @@
    "section_title": "32.3 String matching with finite automata",
    "printed_page": 967,
    "pdf_page": 988,
-   "text": "Finite automata A finite automaton M , illustrated in Figure 32.5, is a 5-tuple (Q;q 0 ;A;†;i) , where"
+   "text": "Finite automata A finite automaton M , illustrated in Figure 32.5, is a 5-tuple (Q,q 0 ,A,†,i) , where"
   },
   {
    "type": "body",
@@ -903,7 +903,7 @@
    "section_title": "32.3 String matching with finite automata",
    "printed_page": 968,
    "pdf_page": 989,
-   "text": "Figure 32.5 A simple two-state finite automaton with state set Q = f0;1 g, start state q 0 = 0, and input alphabet † = fa; bg. (a) A tabular representation of the transition function i. (b) An equivalent state-transition diagram. State 1, in orange, is the only accepting state. Directed edges represent transitions. For example, the edge from state 1 to state 0 labeled b indicates that i(1; b) = 0. This automaton accepts those strings that end in an odd number of a’s. More precisely, it accepts a string x if and only if x = y´, where y = \" or y ends with a b, and ´ = a k , where k is odd. For example, on input abaaa, including the start state, this automaton enters the sequence of states h0;1;0;1;0;1 i, and so it accepts this input. For input abbaa, it enters the sequence of states h0;1;0;0;1;0 i, and so it rejects this input."
+   "text": "Figure 32.5 A simple two-state finite automaton with state set Q = f0,1 g, start state q 0 = 0, and input alphabet † = fa; bg. (a) A tabular representation of the transition function i. (b) An equivalent state-transition diagram. State 1, in orange, is the only accepting state. Directed edges represent transitions. For example, the edge from state 1 to state 0 labeled b indicates that i(1; b) = 0. This automaton accepts those strings that end in an odd number of a’s. More precisely, it accepts a string x if and only if x = y´, where y = \" or y ends with a b, and ´ = a k , where k is odd. For example, on input abaaa, including the start state, this automaton enters the sequence of states ⟨0,1,0,1,0,1⟩, and so it accepts this input. For input abbaa, it enters the sequence of states ⟨0,1,0,0,1,0⟩, and so it rejects this input."
   },
   {
    "type": "body",
@@ -921,7 +921,7 @@
    "section_title": "32.3 String matching with finite automata",
    "printed_page": 968,
    "pdf_page": 989,
-   "text": "(\"makes a transition\") from state q to state i(q;a) . Whenever its current state q is a member of A, the machine M has accepted the string read so far. An input that is not accepted is rejected."
+   "text": "(\"makes a transition\") from state q to state i(q,a) . Whenever its current state q is a member of A, the machine M has accepted the string read so far. An input that is not accepted is rejected."
   },
   {
    "type": "body",
@@ -948,7 +948,7 @@
    "section_title": "32.3 String matching with finite automata",
    "printed_page": 968,
    "pdf_page": 989,
-   "text": "Ω.\"/ = q 0 ; Ω(wa) = i(Ω(w); a) for w 2 † − ;a 2 † ."
+   "text": "Ω.\"/ = q 0 ; Ω(wa) = i(Ω(w); a) for w 2 † − ,a 2 † ."
   },
   {
    "type": "body",
@@ -975,7 +975,7 @@
    "section_title": "32.3 String matching with finite automata",
    "printed_page": 968,
    "pdf_page": 989,
-   "text": "In order to specify the string-matching automaton corresponding to a given pattern P[1 : m], we first define an auxiliary function Ω , called the suffix function corresponding to the pattern P . The function Ω maps † − to f0;1;:::;m g such that Ω (x) is the length of the longest prefix of P that is also a suffix of x :"
+   "text": "In order to specify the string-matching automaton corresponding to a given pattern P[1 : m], we first define an auxiliary function Ω , called the suffix function corresponding to the pattern P . The function Ω maps † − to f0,1,…,m g such that Ω (x) is the length of the longest prefix of P that is also a suffix of x :"
   },
   {
    "type": "body",
@@ -1029,7 +1029,7 @@
    "section_title": "32.3 String matching with finite automata",
    "printed_page": 969,
    "pdf_page": 990,
-   "text": "Figure 32.6 (a) A state-transition diagram for the string-matching automaton that accepts all strings ending in the string ababaca. State 0 is the start state, and state 7 (in orange) is the only accepting state. The transition function i is defined by equation (32.4), and a directed edge from state i to state j labeled a represents i(i;a) = j . The right-going edges forming the \"spine\" of the automaton, shown in blue, correspond to successful matche s between pattern and input characters. Except for the edges from state 7 to states 1 and 2, the left-going edges correspond to mismatches. Some edges corresponding to mismatches are omitted: by convention, if a state i has no outgoing edge labeled a for some a 2 †, then i(i;a) = 0. (b) The corresponding transition function i, and the pattern string P = ababaca. The entries corresponding to successful matches b etween pattern and input characters are shown in blue. (c) The operation of the automaton on the text T = abababacaba."
+   "text": "Figure 32.6 (a) A state-transition diagram for the string-matching automaton that accepts all strings ending in the string ababaca. State 0 is the start state, and state 7 (in orange) is the only accepting state. The transition function i is defined by equation (32.4), and a directed edge from state i to state j labeled a represents i(i,a) = j . The right-going edges forming the \"spine\" of the automaton, shown in blue, correspond to successful matche s between pattern and input characters. Except for the edges from state 7 to states 1 and 2, the left-going edges correspond to mismatches. Some edges corresponding to mismatches are omitted: by convention, if a state i has no outgoing edge labeled a for some a 2 †, then i(i,a) = 0. (b) The corresponding transition function i, and the pattern string P = ababaca. The entries corresponding to successful matches b etween pattern and input characters are shown in blue. (c) The operation of the automaton on the text T = abababacaba."
   },
   {
    "type": "body",
@@ -1074,7 +1074,7 @@
    "section_title": "32.3 String matching with finite automata",
    "printed_page": 970,
    "pdf_page": 991,
-   "text": "• The state set Q is f0;1;:::;m g. The start state q 0 is state 0, and state m is the only accepting state."
+   "text": "• The state set Q is f0,1,…,m g. The start state q 0 is state 0, and state m is the only accepting state."
   },
   {
    "type": "body",
@@ -1083,7 +1083,7 @@
    "section_title": "32.3 String matching with finite automata",
    "printed_page": 970,
    "pdf_page": 991,
-   "text": "• The transition function i is defined, for any state q and character a, by i(q;a) = Ω (P [ : q]a): (32.4)"
+   "text": "• The transition function i is defined, for any state q and character a, by i(q,a) = Ω (P [ : q]a): (32.4)"
   },
   {
    "type": "body",
@@ -1101,7 +1101,7 @@
    "section_title": "32.3 String matching with finite automata",
    "printed_page": 970,
    "pdf_page": 991,
-   "text": "With this intuition behind the design of the automaton, here is the reasoning behind defining i(q;a) = Ω (P [ : q]a). Suppose that the automaton is in state q after reading the first i characters of the text, that is, q = Ω(T [ : i]). The intuitive idea then says that q also equals the length of the longest prefix of P that matches a suffix of T[ : i] or, equivalently, that q = Ω (T [ : i]). Thus, since Ω(T [ : i]) and Ω (T [ : i]) both equal q, we will see (in Theorem 32.4 on page 973) that the automaton maintains the following invariant:"
+   "text": "With this intuition behind the design of the automaton, here is the reasoning behind defining i(q,a) = Ω (P [ : q]a). Suppose that the automaton is in state q after reading the first i characters of the text, that is, q = Ω(T [ : i]). The intuitive idea then says that q also equals the length of the longest prefix of P that matches a suffix of T[ : i] or, equivalently, that q = Ω (T [ : i]). Thus, since Ω(T [ : i]) and Ω (T [ : i]) both equal q, we will see (in Theorem 32.4 on page 973) that the automaton maintains the following invariant:"
   },
   {
    "type": "body",
@@ -1128,7 +1128,7 @@
    "section_title": "32.3 String matching with finite automata",
    "printed_page": 970,
    "pdf_page": 991,
-   "text": "Ω (T [ : i]a) . Because P[ : q] is the longest prefix of P that is a suffix of T[ : i], the longest prefix of P that is a suffix of T[ : i]a has length not only Ω (T [ : i]a) , but also Ω (P [ : q]a), and so Ω(T [ : i]a) = Ω (P [ : q]a). (Lemma 32.3 on page 972 will prove that Ω (T [ : i]a) = Ω (P [ : q]a).) Thus, when the automaton is in state q, the transition function i on character a should take the automaton to state i(q;a) = i(Ω(T [ : i]);a) = Ω(T [ : i]a) = Ω (P [ : q]a) (with the last equality following from equation (32.5))."
+   "text": "Ω (T [ : i]a) . Because P[ : q] is the longest prefix of P that is a suffix of T[ : i], the longest prefix of P that is a suffix of T[ : i]a has length not only Ω (T [ : i]a) , but also Ω (P [ : q]a), and so Ω(T [ : i]a) = Ω (P [ : q]a). (Lemma 32.3 on page 972 will prove that Ω (T [ : i]a) = Ω (P [ : q]a).) Thus, when the automaton is in state q, the transition function i on character a should take the automaton to state i(q,a) = i(Ω(T [ : i]),a) = Ω(T [ : i]a) = Ω (P [ : q]a) (with the last equality following from equation (32.5))."
   },
   {
    "type": "body",
@@ -1137,7 +1137,7 @@
    "section_title": "32.3 String matching with finite automata",
    "printed_page": 970,
    "pdf_page": 991,
-   "text": "There are two cases to consider, depending on wheth er the next character continues to match the pattern. In the first case, a = P[q + 1], so that the character a continues to match the pattern. In this case, becau se i(q;a) = q + 1, the transition continues to go along the \"spine\" of the automaton (the blue edges in Figure 32.6(a)). In the second case, a ≠ P[q + 1], so that a does not extend the match being built. In this case, we need to find the longest prefix of P that is also a suffix of T[ : i]a , which will have length at most q. The preprocessing step matches the pattern against itself when creating the string-matching automaton, so that the transition function can quickly identify the longest such smaller prefix of P ."
+   "text": "There are two cases to consider, depending on wheth er the next character continues to match the pattern. In the first case, a = P[q + 1], so that the character a continues to match the pattern. In this case, becau se i(q,a) = q + 1, the transition continues to go along the \"spine\" of the automaton (the blue edges in Figure 32.6(a)). In the second case, a ≠ P[q + 1], so that a does not extend the match being built. In this case, we need to find the longest prefix of P that is also a suffix of T[ : i]a , which will have length at most q. The preprocessing step matches the pattern against itself when creating the string-matching automaton, so that the transition function can quickly identify the longest such smaller prefix of P ."
   },
   {
    "type": "pseudocode",
@@ -1159,7 +1159,7 @@
     },
     {
      "n": 3,
-     "code": "q = i(q;T[i])"
+     "code": "q = i(q,T[i])"
     },
     {
      "n": 4,
@@ -1170,7 +1170,7 @@
      "code": "print \"Pattern occurs with shift\" i − m"
     }
    ],
-   "text": "1 q = 0\n2 for i = 1 to n\n3 q = i(q;T[i])\n4 if q == m\n5 print \"Pattern occurs with shift\" i − m"
+   "text": "1 q = 0\n2 for i = 1 to n\n3 q = i(q,T[i])\n4 if q == m\n5 print \"Pattern occurs with shift\" i − m"
   },
   {
    "type": "body",
@@ -1197,7 +1197,7 @@
    "section_title": "32.3 String matching with finite automata",
    "printed_page": 971,
    "pdf_page": 992,
-   "text": "To clarify the operation of a string-matching automaton, the simple and efficient procedure FINITE-AUTOMATON-MATCHER simulates the behavior of such an automaton (represented by its transition functio n i ) in finding occurrences of a pattern P of length m in an input text T[1 : n]. As for any string-matching automaton for a pattern of length m, the state set Q is f0;1;:::;m g, the start state is 0, and the only accepting state is state m. From the simple loop structure of FINITE-AUTOMATON-MATCHER , you can see that its matching time on a text string of length n is Θ(n), assuming that each lookup of the transition funct ion i takes constant time. This matching time, however, d oes not include the preprocessing time required to compute the transition function. We address this problem later, after first proving that the procedure FINITE-AUTOMATON-MATCHER operates correctly."
+   "text": "To clarify the operation of a string-matching automaton, the simple and efficient procedure FINITE-AUTOMATON-MATCHER simulates the behavior of such an automaton (represented by its transition functio n i ) in finding occurrences of a pattern P of length m in an input text T[1 : n]. As for any string-matching automaton for a pattern of length m, the state set Q is f0,1,…,m g, the start state is 0, and the only accepting state is state m. From the simple loop structure of FINITE-AUTOMATON-MATCHER , you can see that its matching time on a text string of length n is Θ(n), assuming that each lookup of the transition funct ion i takes constant time. This matching time, however, d oes not include the preprocessing time required to compute the transition function. We address this problem later, after first proving that the procedure FINITE-AUTOMATON-MATCHER operates correctly."
   },
   {
    "type": "body",
@@ -1206,7 +1206,7 @@
    "section_title": "32.3 String matching with finite automata",
    "printed_page": 971,
    "pdf_page": 992,
-   "text": "FINITE-AUTOMATON-MATCHER (T;i;n;m)"
+   "text": "FINITE-AUTOMATON-MATCHER (T,i,n,m)"
   },
   {
    "type": "body",
@@ -1287,7 +1287,7 @@
    "section_title": "32.3 String matching with finite automata",
    "printed_page": 972,
    "pdf_page": 993,
-   "text": "Ω .xa/ = r ≤ Ω (x) C1 is trivially satisfied since Ω (x) is nonnegative. Now assume that r > 0. Then, P[ : r] h xa, by the definition of Ω . Thus, P[ : r − 1] h x , by dropping the a from both the end of P[ : r] and the end of xa. Therefore, r − 1 ≤ Ω (x), since Ω (x) is the largest k such that P[ : k] h x , and thus Ω .xa/ = r ≤ Ω (x) + 1."
+   "text": "Ω .xa/ = r ≤ Ω (x) + 1 is trivially satisfied since Ω (x) is nonnegative. Now assume that r > 0. Then, P[ : r] h xa, by the definition of Ω . Thus, P[ : r − 1] h x , by dropping the a from both the end of P[ : r] and the end of xa. Therefore, r − 1 ≤ Ω (x), since Ω (x) is the largest k such that P[ : k] h x , and thus Ω .xa/ = r ≤ Ω (x) + 1."
   },
   {
    "type": "lemma",
@@ -1368,7 +1368,7 @@
    "section_title": "32.3 String matching with finite automata",
    "printed_page": 973,
    "pdf_page": 994,
-   "text": "Ω(T [ : i]) = Ω (T [ : i]) for i = 0;1;:::;n ."
+   "text": "Ω(T [ : i]) = Ω (T [ : i]) for i = 0,1,…,n ."
   },
   {
    "type": "proof",
@@ -1413,7 +1413,7 @@
    "section_title": "32.3 String matching with finite automata",
    "printed_page": 973,
    "pdf_page": 994,
-   "text": "D i(Ω(T [ : i]);a) (by the definition of Ω)"
+   "text": "D i(Ω(T [ : i]),a) (by the definition of Ω)"
   },
   {
    "type": "body",
@@ -1422,7 +1422,7 @@
    "section_title": "32.3 String matching with finite automata",
    "printed_page": 973,
    "pdf_page": 994,
-   "text": "D i(q;a) (by the definition of q)"
+   "text": "D i(q,a) (by the definition of q)"
   },
   {
    "type": "body",
@@ -1476,7 +1476,7 @@
    "section_title": "32.3 String matching with finite automata",
    "printed_page": 973,
    "pdf_page": 994,
-   "text": "The procedure COMPUTE-TRANSITION-FUNCTION on the following page computes the transition function i from a given pattern P[1 : m]. It computes i(q;a) in a straightforward manner according to its definition in equation (32.4). The nested loops beginning on lines 1 and 2 consider all states q and all characters a, and lines 336 set i(q;a) to be the largest k such that P[ : k] h P[ : q]a. The code starts with the largest conceivable value of k, which is q C1, unless q = m, in which case k cannot be larger than m. It then decreases k until P[ : k] is a suffix of P[ : q]a, which must eventually occur, since P[ : 0] = \" is a suffix of every string."
+   "text": "The procedure COMPUTE-TRANSITION-FUNCTION on the following page computes the transition function i from a given pattern P[1 : m]. It computes i(q,a) in a straightforward manner according to its definition in equation (32.4). The nested loops beginning on lines 1 and 2 consider all states q and all characters a, and lines 3–6 set i(q,a) to be the largest k such that P[ : k] h P[ : q]a. The code starts with the largest conceivable value of k, which is q + 1, unless q = m, in which case k cannot be larger than m. It then decreases k until P[ : k] is a suffix of P[ : q]a, which must eventually occur, since P[ : 0] = \" is a suffix of every string."
   },
   {
    "type": "pseudocode",
@@ -1498,7 +1498,7 @@
     },
     {
      "n": 3,
-     "code": "k = min fm;q + 1g"
+     "code": "k = min fm,q + 1g"
     },
     {
      "n": 4,
@@ -1510,14 +1510,14 @@
     },
     {
      "n": 6,
-     "code": "i(q;a)  = k"
+     "code": "i(q,a)  = k"
     },
     {
      "n": 7,
      "code": "return i"
     }
    ],
-   "text": "1 for q = 0 to m\n2 for each character a 2 †\n3 k = min fm;q + 1g\n4 while P[  : k] is not a suffix of P[  : q]a\n5 k = k − 1\n6 i(q;a)  = k\n7 return i"
+   "text": "1 for q = 0 to m\n2 for each character a 2 †\n3 k = min fm,q + 1g\n4 while P[  : k] is not a suffix of P[  : q]a\n5 k = k − 1\n6 i(q,a)  = k\n7 return i"
   },
   {
    "type": "body",
@@ -1526,7 +1526,7 @@
    "section_title": "32.3 String matching with finite automata",
    "printed_page": 974,
    "pdf_page": 995,
-   "text": "COMPUTE-TRANSITION-FUNCTION (P;†;m)"
+   "text": "COMPUTE-TRANSITION-FUNCTION (P,†,m)"
   },
   {
    "type": "body",
@@ -1643,7 +1643,7 @@
    "section_title": "32.4 The Knuth-Morris-Pratt algorithm",
    "printed_page": 975,
    "pdf_page": 996,
-   "text": "Loosely speaking, for any state q = 0;1;:::;m and any character a 2 †, the value Ω[q] contains the information needed to compute i(q;a) but that does not depend on a. Since the array Ω has only m entries, whereas i has Θ(m j†j) entries, the KMP algorithm saves a factor of j†j in the preprocessing time by computing Ω rather than i . Like the procedure FINITE-AUTOMATON-MATCHER , once preprocessing has completed, the KMP algorithm uses Θ(n) matching time."
+   "text": "Loosely speaking, for any state q = 0,1,…,m and any character a 2 †, the value Ω[q] contains the information needed to compute i(q,a) but that does not depend on a. Since the array Ω has only m entries, whereas i has Θ(m j†j) entries, the KMP algorithm saves a factor of j†j in the preprocessing time by computing Ω rather than i . Like the procedure FINITE-AUTOMATON-MATCHER , once preprocessing has completed, the KMP algorithm uses Θ(n) matching time."
   },
   {
    "type": "body",
@@ -1733,7 +1733,7 @@
    "section_title": "32.4 The Knuth-Morris-Pratt algorithm",
    "printed_page": 976,
    "pdf_page": 997,
-   "text": "Here’s another way to look at this question. If you know P[ : q] h T[ : s + q], then how do you find the longest proper prefix P[ : k] of P[ : q] that is also a suffix of T[ : s + q]? These questions are equivalent because given s and q, requiring s 0 + k = s + q means that finding the smallest shift s 0 (2 in Figure 32.9(b)) is tantamount to finding the longest prefix length k (3 in Figure 32.9(b)). If you add the difference q − k in the lengths of these prefixes of P to the shift s , you get the new shift s 0 , so that s 0 = s C (q − k). In the best case, k = 0, so that s 0 = s + q, immediately ruling out shifts s + 1;s + 2;:::;s + q − 1. In any case, at the new shift s 0 , it is redundant to compare the first k characters of P with the corresponding characters of T , since equation (32.6) guarantees that they match."
+   "text": "Here’s another way to look at this question. If you know P[ : q] h T[ : s + q], then how do you find the longest proper prefix P[ : k] of P[ : q] that is also a suffix of T[ : s + q]? These questions are equivalent because given s and q, requiring s 0 + k = s + q means that finding the smallest shift s 0 (2 in Figure 32.9(b)) is tantamount to finding the longest prefix length k (3 in Figure 32.9(b)). If you add the difference q − k in the lengths of these prefixes of P to the shift s , you get the new shift s 0 , so that s 0 = s C (q − k). In the best case, k = 0, so that s 0 = s + q, immediately ruling out shifts s + 1,s + 2,…,s + q − 1. In any case, at the new shift s 0 , it is redundant to compare the first k characters of P with the corresponding characters of T , since equation (32.6) guarantees that they match."
   },
   {
    "type": "body",
@@ -1760,7 +1760,7 @@
    "section_title": "32.4 The Knuth-Morris-Pratt algorithm",
    "printed_page": 976,
    "pdf_page": 997,
-   "text": "Let’s look at the precomputed information a little more formally. For a given pattern P[1 : m], the prefix function for P is the function Ω W f1;2;:::;m g ! f0;1;:::;m − 1g such that Ω[q] = max fk W k<q and P[ : k] h P[ : q]g :"
+   "text": "Let’s look at the precomputed information a little more formally. For a given pattern P[1 : m], the prefix function for P is the function Ω W f1,2,…,m g ! f0,1,…,m − 1g such that Ω[q] = max fk W k<q and P[ : k] h P[ : q]g :"
   },
   {
    "type": "body",
@@ -1850,7 +1850,7 @@
    "section_title": "32.4 The Knuth-Morris-Pratt algorithm",
    "printed_page": 977,
    "pdf_page": 998,
-   "text": "Running-time analysis The running time of COMPUTE-PREFIX-FUNCTION is Θ(m), which we show by using the aggregate method of amortized analysis (s ee Section 16.1). The only tricky part is showing that the while loop of lines 536 executes O(m) times alto- KMP-MATCHER (T;P;n;m)"
+   "text": "Running-time analysis The running time of COMPUTE-PREFIX-FUNCTION is Θ(m), which we show by using the aggregate method of amortized analysis (s ee Section 16.1). The only tricky part is showing that the while loop of lines 5–6 executes O(m) times alto- KMP-MATCHER (T,P,n,m)"
   },
   {
    "type": "pseudocode",
@@ -1864,7 +1864,7 @@
    "lines": [
     {
      "n": 1,
-     "code": "Ω DCOMPUTE-PREFIX-FUNCTION  (P;m)"
+     "code": "Ω DCOMPUTE-PREFIX-FUNCTION  (P,m)"
     },
     {
      "n": 2,
@@ -1903,7 +1903,7 @@
      "code": "q = Ω[q] / / look for the next match"
     }
    ],
-   "text": "1 Ω DCOMPUTE-PREFIX-FUNCTION  (P;m)\n2 q = 0 / / number of characters matched\n3 for i = 1 to n / / scan the text from left to right\n4 while q>0  and P[q + 1] ≠ T[i]\n5 q = Ω[q] / / next character does not match\n6 if P[q + 1] = = T[i]\n7 q = q + 1 / / next character matches\n8 if q == m / / is all of P matched?\n9 print \"Pattern occurs with shift\" i − m\n10 q = Ω[q] / / look for the next match"
+   "text": "1 Ω DCOMPUTE-PREFIX-FUNCTION  (P,m)\n2 q = 0 / / number of characters matched\n3 for i = 1 to n / / scan the text from left to right\n4 while q>0  and P[q + 1] ≠ T[i]\n5 q = Ω[q] / / next character does not match\n6 if P[q + 1] = = T[i]\n7 q = q + 1 / / next character matches\n8 if q == m / / is all of P matched?\n9 print \"Pattern occurs with shift\" i − m\n10 q = Ω[q] / / look for the next match"
   },
   {
    "type": "pseudocode",
@@ -1965,7 +1965,7 @@
    "section_title": "32.4 The Knuth-Morris-Pratt algorithm",
    "printed_page": 978,
    "pdf_page": 999,
-   "text": "COMPUTE-PREFIX-FUNCTION (P;m) gether. Starting with some observations about k, we’ll show that it makes at most m−1 iterations. First, line 3 starts k at 0, and the only way that k increases is by the increment operation in line 8, which executes at most once per iteration of the for loop of lines 439. Thus, the total increase in k is at most m−1. Second, since k<q upon entering the for loop and each iteration of the loop increments q, we always have k <q. Therefore, the assignments in lines 2 and 9 ensur e that Ω[q]<q for all q = 1;2;:::;m , which means that each iteration of the while loop decreases k."
+   "text": "COMPUTE-PREFIX-FUNCTION (P,m) gether. Starting with some observations about k, we’ll show that it makes at most m−1 iterations. First, line 3 starts k at 0, and the only way that k increases is by the increment operation in line 8, which executes at most once per iteration of the for loop of lines 4–9. Thus, the total increase in k is at most m−1. Second, since k<q upon entering the for loop and each iteration of the loop increments q, we always have k <q. Therefore, the assignments in lines 2 and 9 ensur e that Ω[q]<q for all q = 1,2,…,m , which means that each iteration of the while loop decreases k."
   },
   {
    "type": "body",
@@ -2055,7 +2055,7 @@
    "section_title": "32.4 The Knuth-Morris-Pratt algorithm",
    "printed_page": 979,
    "pdf_page": 1000,
-   "text": "Ω − [5] = f3;1;0 g. (b) Sliding the template containing the pattern P to the right and noting when some prefix P[ : k] of P matches up with some proper suffix of P[ : 5]. Matches occur when k = 3, 1, and 0. In the figure, the first row gives P , and the vertical red line is drawn just after P[ : 5]."
+   "text": "Ω − [5] = f3,1,0 g. (b) Sliding the template containing the pattern P to the right and noting when some prefix P[ : k] of P matches up with some proper suffix of P[ : 5]. Matches occur when k = 3, 1, and 0. In the figure, the first row gives P , and the vertical red line is drawn just after P[ : 5]."
   },
   {
    "type": "body",
@@ -2064,7 +2064,7 @@
    "section_title": "32.4 The Knuth-Morris-Pratt algorithm",
    "printed_page": 979,
    "pdf_page": 1000,
-   "text": "Successive rows show all the shifts of P that cause some prefix P[ : k] of P to match some suffix of P[ : 5]. Successfully matched characters are shown in blue . Blue lines connect aligned matching characters. Thus, fk W k<5 and P[ : k] ❂ P[ : 5]g = f3;1;0 g. Lemma 32.5 claims that Ω − [q] = fk W k<q and P[ : k] ❂ P[ : q]g for all q."
+   "text": "Successive rows show all the shifts of P that cause some prefix P[ : k] of P to match some suffix of P[ : 5]. Successfully matched characters are shown in blue . Blue lines connect aligned matching characters. Thus, fk W k<5 and P[ : k] ❂ P[ : 5]g = f3,1,0 g. Lemma 32.5 claims that Ω − [q] = fk W k<q and P[ : k] ❂ P[ : q]g for all q."
   },
   {
    "type": "body",
@@ -2109,7 +2109,7 @@
    "section_title": "32.4 The Knuth-Morris-Pratt algorithm",
    "printed_page": 979,
    "pdf_page": 1000,
-   "text": "Ω[q]; Ω .2/ [q]; Ω .3/ [q];:::; Ω (t ) [q]"
+   "text": "Ω[q]; Ω .2/ [q]; Ω .3/ [q],…; Ω (t ) [q]"
   },
   {
    "type": "body",
@@ -2136,7 +2136,7 @@
    "section_title": "32.4 The Knuth-Morris-Pratt algorithm",
    "printed_page": 980,
    "pdf_page": 1001,
-   "text": "Let P be a pattern of length m with prefix function Ω . Then, for q = 1;2;:::;m , we have Ω − [q] = fk W k<q and P[ : k] ❂ P[ : q]g."
+   "text": "Let P be a pattern of length m with prefix function Ω . Then, for q = 1,2,…,m , we have Ω − [q] = fk W k<q and P[ : k] ❂ P[ : q]g."
   },
   {
    "type": "proof",
@@ -2154,7 +2154,7 @@
    "section_title": "32.4 The Knuth-Morris-Pratt algorithm",
    "printed_page": 980,
    "pdf_page": 1001,
-   "text": "If i 2 Ω − [q], then i = Ω (u) [q] for some u > 0. We prove equation (32.7) by induction on u. For u = 1, we have i = Ω[q], and the claim follows since i <q and P[ : ][q]Ω ❂ P[ : q] by the definition of Ω . Now consider some u ≥ 1 such that both Ω (u) [q] and Ω .uC1/ [q] belong to Ω − [q]. Let i = Ω (u) [q], so that Ω[i ] = Ω .uC1/ [q]. The inductive hypothesis is that P[ : i] ❂ P[ : q]. Because the relations < and ❂ are transitive, we have Ω[i ] < i < q and P[ : ][i ]Ω ❂"
+   "text": "If i 2 Ω − [q], then i = Ω (u) [q] for some u > 0. We prove equation (32.7) by induction on u. For u = 1, we have i = Ω[q], and the claim follows since i <q and P[ : ][q]Ω ❂ P[ : q] by the definition of Ω . Now consider some u ≥ 1 such that both Ω (u) [q] and Ω .u + 1/ [q] belong to Ω − [q]. Let i = Ω (u) [q], so that Ω[i ] = Ω .u + 1/ [q]. The inductive hypothesis is that P[ : i] ❂ P[ : q]. Because the relations < and ❂ are transitive, we have Ω[i ] < i < q and P[ : ][i ]Ω ❂"
   },
   {
    "type": "body",
@@ -2199,7 +2199,7 @@
    "section_title": "32.4 The Knuth-Morris-Pratt algorithm",
    "printed_page": 980,
    "pdf_page": 1001,
-   "text": "1;2;:::;m . Setting Ω[1] to 0 in line 2 of COMPUTE-PREFIX-FUNCTION is certainly correct, since Ω[q] < q for all q. We’ll use the following lemma and its corollary to prove that COMPUTE-PREFIX-FUNCTION computes Ω[q] correctly for q>1 ."
+   "text": "1,2,…,m . Setting Ω[1] to 0 in line 2 of COMPUTE-PREFIX-FUNCTION is certainly correct, since Ω[q] < q for all q. We’ll use the following lemma and its corollary to prove that COMPUTE-PREFIX-FUNCTION computes Ω[q] correctly for q>1 ."
   },
   {
    "type": "lemma",
@@ -2226,7 +2226,7 @@
    "section_title": "32.4 The Knuth-Morris-Pratt algorithm",
    "printed_page": 980,
    "pdf_page": 1001,
-   "text": "1;2;:::;m , if Ω[q]>0 , then Ω[q] − 1 2 Ω − [q − 1]."
+   "text": "1,2,…,m , if Ω[q]>0 , then Ω[q] − 1 2 Ω − [q − 1]."
   },
   {
    "type": "proof",
@@ -2244,7 +2244,7 @@
    "section_title": "32.4 The Knuth-Morris-Pratt algorithm",
    "printed_page": 981,
    "pdf_page": 1002,
-   "text": "For q = 2;3;:::;m , define the subset E q−1 ⊆ Ω − [q − 1] by E q−1 = fk 2 Ω − [q − 1] W P[k + 1] = P[q] g"
+   "text": "For q = 2,3,…,m , define the subset E q−1 ⊆ Ω − [q − 1] by E q−1 = fk 2 Ω − [q − 1] W P[k + 1] = P[q] g"
   },
   {
    "type": "body",
@@ -2298,7 +2298,7 @@
    "section_title": "32.4 The Knuth-Morris-Pratt algorithm",
    "printed_page": 981,
    "pdf_page": 1002,
-   "text": "Let P be a pattern of length m, and let Ω be the prefix function for P . Then, for q = 2;3;:::;m , Ω[q] ="
+   "text": "Let P be a pattern of length m, and let Ω be the prefix function for P . Then, for q = 2,3,…,m , Ω[q] ="
   },
   {
    "type": "body",
@@ -2379,7 +2379,7 @@
    "section_title": "32.4 The Knuth-Morris-Pratt algorithm",
    "printed_page": 981,
    "pdf_page": 1002,
-   "text": "We now finish the proof that COMPUTE-PREFIX-FUNCTION computes Ω correctly. The key is to combine the definition of E q−1 with the statement of Corollary 32.7, so that Ω[q] equals 1 plus the greatest value of k in Ω − [q − 1] such that P[k + 1] = P[q] . First, in COMPUTE-PREFIX-FUNCTION , k = Ω[q − 1] at the start of each iteration of the for loop of lines 439. This condition is enforced by lines 2 and 3 when the loop is first entered, and it remains true in each successive iteration because of line 9. Lines 538 adjust k so that it becomes the correct value of Ω[q]. The while loop of lines 536 searches through all values k 2 Ω − [q − 1] in decreasing order to find the value of Ω[q]. The loop terminates either because k reaches 0 or P[k + 1] = P[q]. Because the \"and\" operator short-circuits, if the loop terminates because P[k + 1] = P[q] , then k must have also been positive, and so k is the greatest value in E q−1 . In this case, lines 739 set Ω[q] to k + 1, according to Corollary 32.7. If, instead, the while loop terminates because k = 0, then there are two possibilities. If P[1] = P[q] , then E q−1 = f0g, and lines 739 set both k and Ω[q] to 1. If k = 0 and P[1] ≠ P[q] , however, then E q−1 = ;. In this case, line 9 sets Ω[q] to 0, again according to Corollary 32.7, which completes the proof of the correctness of COMPUTE-PREFIX-FUNCTION ."
+   "text": "We now finish the proof that COMPUTE-PREFIX-FUNCTION computes Ω correctly. The key is to combine the definition of E q−1 with the statement of Corollary 32.7, so that Ω[q] equals 1 plus the greatest value of k in Ω − [q − 1] such that P[k + 1] = P[q] . First, in COMPUTE-PREFIX-FUNCTION , k = Ω[q − 1] at the start of each iteration of the for loop of lines 4–9. This condition is enforced by lines 2 and 3 when the loop is first entered, and it remains true in each successive iteration because of line 9. Lines 5–8 adjust k so that it becomes the correct value of Ω[q]. The while loop of lines 5–6 searches through all values k 2 Ω − [q − 1] in decreasing order to find the value of Ω[q]. The loop terminates either because k reaches 0 or P[k + 1] = P[q]. Because the \"and\" operator short-circuits, if the loop terminates because P[k + 1] = P[q] , then k must have also been positive, and so k is the greatest value in E q−1 . In this case, lines 7–9 set Ω[q] to k + 1, according to Corollary 32.7. If, instead, the while loop terminates because k = 0, then there are two possibilities. If P[1] = P[q] , then E q−1 = f0g, and lines 7–9 set both k and Ω[q] to 1. If k = 0 and P[1] ≠ P[q] , however, then E q−1 = ,. In this case, line 9 sets Ω[q] to 0, again according to Corollary 32.7, which completes the proof of the correctness of COMPUTE-PREFIX-FUNCTION ."
   },
   {
    "type": "body",
@@ -2415,7 +2415,7 @@
    "section_title": "32.4 The Knuth-Morris-Pratt algorithm",
    "printed_page": 982,
    "pdf_page": 1003,
-   "text": "Before formally proving that KMP-MATCHER correctly simulates FINITE- AUTOMATON-MATCHER, let’s take a moment to understand how the prefix function Ω replaces the i transition function. Recall that when a string-matching automaton is in state q and it scans a character a = T[i] , it moves to a new state i(q;a) . If a = P[q + 1], so that a continues to match the pattern, then the state number is incremented: i(q;a) = q + 1. Otherwise, a ≠ P[q + 1], so that a does not continue to match the pattern, and the sta te number does not increase:"
+   "text": "Before formally proving that KMP-MATCHER correctly simulates FINITE- AUTOMATON-MATCHER, let’s take a moment to understand how the prefix function Ω replaces the i transition function. Recall that when a string-matching automaton is in state q and it scans a character a = T[i] , it moves to a new state i(q,a) . If a = P[q + 1], so that a continues to match the pattern, then the state number is incremented: i(q,a) = q + 1. Otherwise, a ≠ P[q + 1], so that a does not continue to match the pattern, and the sta te number does not increase:"
   },
   {
    "type": "body",
@@ -2424,7 +2424,7 @@
    "section_title": "32.4 The Knuth-Morris-Pratt algorithm",
    "printed_page": 982,
    "pdf_page": 1003,
-   "text": "0 ≤ i(q;a) ≤ q. In the first case, when a continues to match, KMP-MATCHER moves to state q + 1 without referring to the Ω function: the while loop test in line 4 immediately comes up false, the test in line 6 comes up true, and line 7 increments q."
+   "text": "0 ≤ i(q,a) ≤ q. In the first case, when a continues to match, KMP-MATCHER moves to state q + 1 without referring to the Ω function: the while loop test in line 4 immediately comes up false, the test in line 6 comes up true, and line 7 increments q."
   },
   {
    "type": "body",
@@ -2433,7 +2433,7 @@
    "section_title": "32.4 The Knuth-Morris-Pratt algorithm",
    "printed_page": 982,
    "pdf_page": 1003,
-   "text": "The Ω function comes into play when the character a does not continue to match the pattern, so that the new state i(q;a) is either q or to the left of q along the spine of the automaton. The while loop of lines 435 in KMP-MATCHER iterates through the states in Ω − [q], stopping either when it arrives in a state, say q 0 , such that a matches P[q 0 + 1] or q 0 has gone all the way down to 0. If a matches P[q 0 + 1], then line 7 sets the new state to q 0 C1, which should equal i(q;a) for the simulation to work correctly. In other words, the new state i(q;a) should be either state 0 or a state numbered 1 more than some state in Ω − [q]."
+   "text": "The Ω function comes into play when the character a does not continue to match the pattern, so that the new state i(q,a) is either q or to the left of q along the spine of the automaton. The while loop of lines 4–5 in KMP-MATCHER iterates through the states in Ω − [q], stopping either when it arrives in a state, say q 0 , such that a matches P[q 0 + 1] or q 0 has gone all the way down to 0. If a matches P[q 0 + 1], then line 7 sets the new state to q 0 + 1, which should equal i(q,a) for the simulation to work correctly. In other words, the new state i(q,a) should be either state 0 or a state numbered 1 more than some state in Ω − [q]."
   },
   {
    "type": "body",
@@ -2478,7 +2478,7 @@
    "section_title": "32.4 The Knuth-Morris-Pratt algorithm",
    "printed_page": 983,
    "pdf_page": 1004,
-   "text": "Thus, the intuition is that KMP-MATCHER iterates through the states in Ω − [q] in decreasing order, stopping at some state q 0 and then possibly moving to state q 0 C1."
+   "text": "Thus, the intuition is that KMP-MATCHER iterates through the states in Ω − [q] in decreasing order, stopping at some state q 0 and then possibly moving to state q 0 + 1."
   },
   {
    "type": "body",
@@ -2487,7 +2487,7 @@
    "section_title": "32.4 The Knuth-Morris-Pratt algorithm",
    "printed_page": 983,
    "pdf_page": 1004,
-   "text": "Although that might seem like a lot of work just to simulate computing i(q;a) , bear in mind that asymptotically, KMP-MATCHER is no slower than FINITE- AUTOMATON-MATCHER ."
+   "text": "Although that might seem like a lot of work just to simulate computing i(q,a) , bear in mind that asymptotically, KMP-MATCHER is no slower than FINITE- AUTOMATON-MATCHER ."
   },
   {
    "type": "body",
@@ -2532,7 +2532,7 @@
    "section_title": "32.4 The Knuth-Morris-Pratt algorithm",
    "printed_page": 984,
    "pdf_page": 1005,
-   "text": "The while loop of lines 435 iterates through each value q 0 in Ω − [q], but although"
+   "text": "The while loop of lines 4–5 iterates through each value q 0 in Ω − [q], but although"
   },
   {
    "type": "body",
@@ -2550,7 +2550,7 @@
    "section_title": "32.4 The Knuth-Morris-Pratt algorithm",
    "printed_page": 984,
    "pdf_page": 1005,
-   "text": "• If Ω(T[ : i]) = q C1, then P[q C1] = T[i] , and the while loop test in line 4 fails the first time through. Line 7 executes, incrementing the state number to q + 1, which equals Ω(T[ : i])."
+   "text": "• If Ω(T[ : i]) = q + 1, then P[q + 1] = T[i] , and the while loop test in line 4 fails the first time through. Line 7 executes, incrementing the state number to q + 1, which equals Ω(T[ : i])."
   },
   {
    "type": "body",
@@ -2559,7 +2559,7 @@
    "section_title": "32.4 The Knuth-Morris-Pratt algorithm",
    "printed_page": 984,
    "pdf_page": 1005,
-   "text": "• If 0 < Ω(T[ : i]) ≤ q 0 , then the while loop of lines 435 iterates at least once, checking in decreasing order each value in Ω − [q] until it stops at some q 0 <q ."
+   "text": "• If 0 < Ω(T[ : i]) ≤ q 0 , then the while loop of lines 4–5 iterates at least once, checking in decreasing order each value in Ω − [q] until it stops at some q 0 <q ."
   },
   {
    "type": "body",
@@ -2613,7 +2613,7 @@
    "section_title": "32.4 The Knuth-Morris-Pratt algorithm",
    "printed_page": 984,
    "pdf_page": 1005,
-   "text": "Line 10 is necessary in KMP-MATCHER, because otherwise, line 4 might try to reference P[m + 1] after finding an occurrence of P . (The argument that q = Ω(T[ : i − 1]) upon the next execution of line 4 remains valid by the hint given in Exercise 32.4-8: that i(m;a) = i(Ω[m]; a) or, equivalently, Ω(Pa) ="
+   "text": "Line 10 is necessary in KMP-MATCHER, because otherwise, line 4 might try to reference P[m + 1] after finding an occurrence of P . (The argument that q = Ω(T[ : i − 1]) upon the next execution of line 4 remains valid by the hint given in Exercise 32.4-8: that i(m,a) = i(Ω[m]; a) or, equivalently, Ω(Pa) ="
   },
   {
    "type": "body",
@@ -2649,7 +2649,7 @@
    "section_title": "32.4 The Knuth-Morris-Pratt algorithm",
    "printed_page": 985,
    "pdf_page": 1006,
-   "text": "32.4-3 Explain how to determine the occurrences of pattern P in the text T by examining the Ω function for the string PT (the string of length mCn that is the concatenation of P and T )."
+   "text": "32.4-3 Explain how to determine the occurrences of pattern P in the text T by examining the Ω function for the string PT (the string of length m + n that is the concatenation of P and T )."
   },
   {
    "type": "exercise",
@@ -2685,7 +2685,7 @@
    "section_title": "32.5 Suffix arrays",
    "printed_page": 985,
    "pdf_page": 1006,
-   "text": "(but not line 10) by Ω 0 , where Ω 0 is defined recursively for q = 1;2;:::;m − 1 by the equation"
+   "text": "(but not line 10) by Ω 0 , where Ω 0 is defined recursively for q = 1,2,…,m − 1 by the equation"
   },
   {
    "type": "body",
@@ -2739,7 +2739,7 @@
    "section_title": "32.5 Suffix arrays",
    "printed_page": 985,
    "pdf_page": 1006,
-   "text": "Give an O(m j†j)-time algorithm for computing the transition function i for the string-matching automaton corresponding to a given pattern P . (Hint: Prove that i(q;a) = i(Ω[q]; a) if q = m or P[q + 1] ≠ a.)"
+   "text": "Give an O(m j†j)-time algorithm for computing the transition function i for the string-matching automaton corresponding to a given pattern P . (Hint: Prove that i(q,a) = i(Ω[q]; a) if q = m or P[q + 1] ≠ a.)"
   },
   {
    "type": "body",
@@ -2829,7 +2829,7 @@
    "section_title": "32.5 Suffix arrays",
    "printed_page": 986,
    "pdf_page": 1007,
-   "text": "Figure 32.11 The suffix array SA, rank array rank, longest common prefix array LCP, and lexicographically sorted suffixes of the text T = ratatat with length n = 7. The value of rank[i] indicates the position of the suffix T[i : ] in the lexicographically sorted order: rank[SA[i]] = i for i = 1;2;:::;n . The rank array is used to compute the LCP array. of a pattern as quickly as, say, the Knuth-Morris-Pratt algorithm, but its additional flexibility makes it well worth studying."
+   "text": "Figure 32.11 The suffix array SA, rank array rank, longest common prefix array LCP, and lexicographically sorted suffixes of the text T = ratatat with length n = 7. The value of rank[i] indicates the position of the suffix T[i : ] in the lexicographically sorted order: rank[SA[i]] = i for i = 1,2,…,n . The rank array is used to compute the LCP array. of a pattern as quickly as, say, the Knuth-Morris-Pratt algorithm, but its additional flexibility makes it well worth studying."
   },
   {
    "type": "body",
@@ -3090,7 +3090,7 @@
    "section_title": "32.5 Suffix arrays",
    "printed_page": 987,
    "pdf_page": 1008,
-   "text": "Where do these ranks come from? Initially, the substrings being considered are just single characters from the text. Assume that, as in many programming languages, there is a function, ord, that maps a chara cter to its underlying encoding, which is a positive integer. The ord function could be the ASCII or Unicode encodings or any other function that produces a relative ordering of the characters. For example if all the characters are known to be lower case letters, then ord(a) = 1, COMPUTE-SUFFIX-ARRAY (T;n)"
+   "text": "Where do these ranks come from? Initially, the substrings being considered are just single characters from the text. Assume that, as in many programming languages, there is a function, ord, that maps a chara cter to its underlying encoding, which is a positive integer. The ord function could be the ASCII or Unicode encodings or any other function that produces a relative ordering of the characters. For example if all the characters are known to be lower case letters, then ord(a) = 1, COMPUTE-SUFFIX-ARRAY (T,n)"
   },
   {
    "type": "pseudocode",
@@ -3144,7 +3144,7 @@
     },
     {
      "n": 11,
-     "code": "MAKE-RANKS(substr-rank ; rank;n)"
+     "code": "MAKE-RANKS(substr-rank ; rank,n)"
     },
     {
      "n": 12,
@@ -3191,7 +3191,7 @@
      "code": "return SA"
     }
    ],
-   "text": "1 allocate arrays substr-rank [1 : n], rank[1 : n], and SA[1 : n]\n2 for i = 1 to n\n3 substr-rank [i]: left-rank = ord(T[i])\n4 if i <n\n5 substr-rank [i]: right-rank = ord(T[i + 1])\n6 else substr-rank [i]: right-rank = 0\n7 substr-rank [i]: index = i\n8 sort the array substr-rank into monotonically increasing order based on the left-rank attributes, using the right-rank attributes to break ties; if still a tie, the order does not matter\n9 l = 2\n10 while l <n\n11 MAKE-RANKS(substr-rank ; rank;n)\n12 for i = 1 to n\n13 substr-rank [i]: left-rank = rank[i]\n14 if i + l ≤ n\n15 substr-rank [i]: right-rank = rank[i + l]\n16 else substr-rank [i]: right-rank = 0\n17 substr-rank [i]: index = i\n18 sort the array substr-rank into monotonically increasing order based on the left-rank attributes, using the right-rank attributes to break ties; if still a tie, the order does not matter\n19 l = 2l\n20 for i = 1 to n\n21 SA[i] = substr-rank [i]: index\n22 return SA"
+   "text": "1 allocate arrays substr-rank [1 : n], rank[1 : n], and SA[1 : n]\n2 for i = 1 to n\n3 substr-rank [i]: left-rank = ord(T[i])\n4 if i <n\n5 substr-rank [i]: right-rank = ord(T[i + 1])\n6 else substr-rank [i]: right-rank = 0\n7 substr-rank [i]: index = i\n8 sort the array substr-rank into monotonically increasing order based on the left-rank attributes, using the right-rank attributes to break ties; if still a tie, the order does not matter\n9 l = 2\n10 while l <n\n11 MAKE-RANKS(substr-rank ; rank,n)\n12 for i = 1 to n\n13 substr-rank [i]: left-rank = rank[i]\n14 if i + l ≤ n\n15 substr-rank [i]: right-rank = rank[i + l]\n16 else substr-rank [i]: right-rank = 0\n17 substr-rank [i]: index = i\n18 sort the array substr-rank into monotonically increasing order based on the left-rank attributes, using the right-rank attributes to break ties; if still a tie, the order does not matter\n19 l = 2l\n20 for i = 1 to n\n21 SA[i] = substr-rank [i]: index\n22 return SA"
   },
   {
    "type": "pseudocode",
@@ -3237,7 +3237,7 @@
    "section_title": "32.5 Suffix arrays",
    "printed_page": 988,
    "pdf_page": 1009,
-   "text": "MAKE-RANKS(substr-rank ; rank;n)"
+   "text": "MAKE-RANKS(substr-rank ; rank,n)"
   },
   {
    "type": "body",
@@ -3336,7 +3336,7 @@
    "section_title": "32.5 Suffix arrays",
    "printed_page": 989,
    "pdf_page": 1010,
-   "text": "6 116 97 3 ta 7 116 97 5 ta Figure 32.12 The substr-rank array for indices i = 1;2;:::;7 after the for loop of lines 237 and after the sorting step in line 8 for input string T = ratatat. ord(b) = 2, . . . , ord(z) = 26 would work. Once the substrings being considered contain multiple characters, their ranks will be positive integers less than or equal to n, coming from their relative order after being sorted. An empty substring always has rank 0, since it is lexicographically less than any nonempty substring."
+   "text": "6 116 97 3 ta 7 116 97 5 ta Figure 32.12 The substr-rank array for indices i = 1,2,…,7 after the for loop of lines 2–7 and after the sorting step in line 8 for input string T = ratatat. ord(b) = 2, . . . , ord(z) = 26 would work. Once the substrings being considered contain multiple characters, their ranks will be positive integers less than or equal to n, coming from their relative order after being sorted. An empty substring always has rank 0, since it is lexicographically less than any nonempty substring."
   },
   {
    "type": "body",
@@ -3381,7 +3381,7 @@
    "section_title": "32.5 Suffix arrays",
    "printed_page": 989,
    "pdf_page": 1010,
-   "text": "Before delving into the details of how the procedur e works, let’s look at how it operates on the input text ratatat, with n = 7. Assuming that the ord function returns the ASCII code for a character, Figure 32.12 shows the substr-rank array after the for loop of lines 237 and then after the sorting step in line 8. The left-rank and right-rank values after lines 237 are the ranks of length-1 substrings in positions i and i + 1, for i = 1;2;:::;n . These initial ranks are the ASCII values of the characters. At this point, the left-rank and right-rank values give the ranks of the left and right part of each substring of length 2. Because the substring starting at index 7 consists of only one character, its right part is e mpty and so its right-rank is 0. After the sorting step in line 8, the substr-rank array gives the relative lexicographic order of all the substrings of length 2, with starting points of these substrings in the index attribute. For example, the lexicographically smallest length-2 substring is at, which starts at position substr-rank [1]: index, which equals 2. This substring also occurs at positions substr-rank [2]: index = 4 and substr-rank [3]: index = 6."
+   "text": "Before delving into the details of how the procedur e works, let’s look at how it operates on the input text ratatat, with n = 7. Assuming that the ord function returns the ASCII code for a character, Figure 32.12 shows the substr-rank array after the for loop of lines 2–7 and then after the sorting step in line 8. The left-rank and right-rank values after lines 2–7 are the ranks of length-1 substrings in positions i and i + 1, for i = 1,2,…,n . These initial ranks are the ASCII values of the characters. At this point, the left-rank and right-rank values give the ranks of the left and right part of each substring of length 2. Because the substring starting at index 7 consists of only one character, its right part is e mpty and so its right-rank is 0. After the sorting step in line 8, the substr-rank array gives the relative lexicographic order of all the substrings of length 2, with starting points of these substrings in the index attribute. For example, the lexicographically smallest length-2 substring is at, which starts at position substr-rank [1]: index, which equals 2. This substring also occurs at positions substr-rank [2]: index = 4 and substr-rank [3]: index = 6."
   },
   {
    "type": "body",
@@ -3390,7 +3390,7 @@
    "section_title": "32.5 Suffix arrays",
    "printed_page": 989,
    "pdf_page": 1010,
-   "text": "The procedure then enters the while loop of lines 10319. The loop variable l gives an upper bound on the length of substrings th at have been sorted thus far."
+   "text": "The procedure then enters the while loop of lines 10–19. The loop variable l gives an upper bound on the length of substrings th at have been sorted thus far."
   },
   {
    "type": "body",
@@ -3516,7 +3516,7 @@
    "section_title": "32.5 Suffix arrays",
    "printed_page": 990,
    "pdf_page": 1011,
-   "text": "7 4 4 3 tata Figure 32.13 The rank array after line 11 and the substr-rank array after lines 12317 and after line 18 in the first iteration of the while loop of lines 10319, where l = 2."
+   "text": "7 4 4 3 tata Figure 32.13 The rank array after line 11 and the substr-rank array after lines 12–17 and after line 18 in the first iteration of the while loop of lines 10–19, where l = 2."
   },
   {
    "type": "body",
@@ -3543,7 +3543,7 @@
    "section_title": "32.5 Suffix arrays",
    "printed_page": 990,
    "pdf_page": 1011,
-   "text": "12317 reconstitutes the substr-rank array, with substr-rank [i]: left-rank based on rank[i] (the rank of the length-2 substring T[i : i C1]) and substr-rank [i]: right-rank based on rank[i C2] (the rank of the length-2 substring T[i C2 : i C3], which is 0 if this substring starts beyond the end of the length-n text). Together, these two ranks give the relative rank of the length-4 substring T[i : i + 3]. Figure 32.13 shows the effect of lines 12317. The figure also shows the result of sorting the substr-rank array in line 18, based on the left-rank attribute, and using the right-rank attribute to break ties. Now substr-rank gives the lexicographically sorted order of all sub- strings with length at most 4."
+   "text": "12317 reconstitutes the substr-rank array, with substr-rank [i]: left-rank based on rank[i] (the rank of the length-2 substring T[i : i + 1]) and substr-rank [i]: right-rank based on rank[i + 2] (the rank of the length-2 substring T[i + 2 : i + 3], which is 0 if this substring starts beyond the end of the length-n text). Together, these two ranks give the relative rank of the length-4 substring T[i : i + 3]. Figure 32.13 shows the effect of lines 12–17. The figure also shows the result of sorting the substr-rank array in line 18, based on the left-rank attribute, and using the right-rank attribute to break ties. Now substr-rank gives the lexicographically sorted order of all sub- strings with length at most 4."
   },
   {
    "type": "body",
@@ -3732,7 +3732,7 @@
    "section_title": "32.5 Suffix arrays",
    "printed_page": 991,
    "pdf_page": 1012,
-   "text": "Figure 32.14 The rank array after line 11 and the substr-rank array after lines 12317 and after line 18 in the second—and final—iteration of the while loop of lines 10319, where l = 4. before and after sorting. This iteration is the final one, since with the length n of the text equaling 7, the procedure has sorted all substrings."
+   "text": "Figure 32.14 The rank array after line 11 and the substr-rank array after lines 12–17 and after line 18 in the second—and final—iteration of the while loop of lines 10–19, where l = 4. before and after sorting. This iteration is the final one, since with the length n of the text equaling 7, the procedure has sorted all substrings."
   },
   {
    "type": "body",
@@ -3741,7 +3741,7 @@
    "section_title": "32.5 Suffix arrays",
    "printed_page": 991,
    "pdf_page": 1012,
-   "text": "In general, as the loop variable l increases, more and more of the right parts of the substrings are empty. Therefore, more of the right-rank values are 0. Because i is at most n within the loop of lines 12317, the left part of each substring is always nonempty, and so all left-rank values are always positive."
+   "text": "In general, as the loop variable l increases, more and more of the right parts of the substrings are empty. Therefore, more of the right-rank values are 0. Because i is at most n within the loop of lines 12–17, the left part of each substring is always nonempty, and so all left-rank values are always positive."
   },
   {
    "type": "body",
@@ -3759,7 +3759,7 @@
    "section_title": "32.5 Suffix arrays",
    "printed_page": 991,
    "pdf_page": 1012,
-   "text": "The initial ranks established in lines 237 are simply the ord values of the characters in the text, and so when line 8 sorts the substr-rank array, its ordering corresponds to the lexicographic ordering of the length-2 substrings. Each iteration of the while loop of lines 10319 takes sorted substrings of length l and produces sorted substrings of length 2l . Once l reaches or exceeds n, all substrings have been sorted."
+   "text": "The initial ranks established in lines 2–7 are simply the ord values of the characters in the text, and so when line 8 sorts the substr-rank array, its ordering corresponds to the lexicographic ordering of the length-2 substrings. Each iteration of the while loop of lines 10–19 takes sorted substrings of length l and produces sorted substrings of length 2l . Once l reaches or exceeds n, all substrings have been sorted."
   },
   {
    "type": "body",
@@ -3786,7 +3786,7 @@
    "section_title": "32.5 Suffix arrays",
    "printed_page": 991,
    "pdf_page": 1012,
-   "text": "Let’s analyze the running time of COMPUTE-SUFFIX-ARRAY. Lines 137 take"
+   "text": "Let’s analyze the running time of COMPUTE-SUFFIX-ARRAY. Lines 1–7 take"
   },
   {
    "type": "body",
@@ -3795,7 +3795,7 @@
    "section_title": "32.5 Suffix arrays",
    "printed_page": 991,
    "pdf_page": 1012,
-   "text": "Θ(n) time. Line 8 takes O(n lg n) time, using either merge sort (see Section 2.3.1) or heapsort (see Chapter 6). Because the value of l doubles in each iteration of the while loop of lines 10319, this loop makes dlg ne − 1 iterations. Within each iteration, the call of MAKE-RANKS takes Θ(n) time, as does the for loop of lines"
+   "text": "Θ(n) time. Line 8 takes O(n lg n) time, using either merge sort (see Section 2.3.1) or heapsort (see Chapter 6). Because the value of l doubles in each iteration of the while loop of lines 10–19, this loop makes dlg ne − 1 iterations. Within each iteration, the call of MAKE-RANKS takes Θ(n) time, as does the for loop of lines"
   },
   {
    "type": "body",
@@ -3804,7 +3804,7 @@
    "section_title": "32.5 Suffix arrays",
    "printed_page": 992,
    "pdf_page": 1013,
-   "text": "12317. Line 18, like line 8, takes O(n lg n) time, using either merge sort or heapsort. Finally, the for loop of lines 20321 takes Θ(n) time. The total time works out to O(n lg 2 n)."
+   "text": "12317. Line 18, like line 8, takes O(n lg n) time, using either merge sort or heapsort. Finally, the for loop of lines 20–21 takes Θ(n) time. The total time works out to O(n lg 2 n)."
   },
   {
    "type": "body",
@@ -3831,7 +3831,7 @@
    "section_title": "32.5 Suffix arrays",
    "printed_page": 992,
    "pdf_page": 1013,
-   "text": "Exercise 32.5-2 asks you to make a simple modification to COMPUTE-SUFFIX- ARRAY that allows the while loop of lines 10319 to iterate fewer than dlg ne − 1 times for certain inputs."
+   "text": "Exercise 32.5-2 asks you to make a simple modification to COMPUTE-SUFFIX- ARRAY that allows the while loop of lines 10–19 to iterate fewer than dlg ne − 1 times for certain inputs."
   },
   {
    "type": "body",
@@ -3876,7 +3876,7 @@
    "section_title": "32.5 Suffix arrays",
    "printed_page": 992,
    "pdf_page": 1013,
-   "text": "SA[i] = j , then rank[j] = i . That is, we have rank[SA[i]] = i for i = 1;2;:::;n ."
+   "text": "SA[i] = j , then rank[j] = i . That is, we have rank[SA[i]] = i for i = 1,2,…,n ."
   },
   {
    "type": "body",
@@ -3958,7 +3958,7 @@
     },
     {
      "n": 9,
-     "code": "m = max fi;j  g"
+     "code": "m = max fi,j  g"
     },
     {
      "n": 10,
@@ -3985,7 +3985,7 @@
      "code": "return LCP"
     }
    ],
-   "text": "1 allocate arrays rank[1 : n] and LCP[1 : n]\n2 for i = 1 to n\n3 rank[SA[i]] = i / / by definition\n4 LCP[1] = 0 / / also by definition\n5 l = 0 / / initialize length of LCP\n6 for i = 1 to n\n7 if rank[i]>1\n8 j DSA[rank[i] − 1] / / T[j  : ] precedes T[i  : ] lexicographically\n9 m = max fi;j  g\n10 while m + l ≤ n and T[i + l] == T[j + l]\n11 l = l + 1 / / next character is in common prefix\n12 LCP[rank[i]] = l / / length of LCP of T[j  : ] and T[i  : ]\n13 if l >0\n14 l = l − 1 / / peel off first character of common prefix\n15 return LCP"
+   "text": "1 allocate arrays rank[1 : n] and LCP[1 : n]\n2 for i = 1 to n\n3 rank[SA[i]] = i / / by definition\n4 LCP[1] = 0 / / also by definition\n5 l = 0 / / initialize length of LCP\n6 for i = 1 to n\n7 if rank[i]>1\n8 j DSA[rank[i] − 1] / / T[j  : ] precedes T[i  : ] lexicographically\n9 m = max fi,j  g\n10 while m + l ≤ n and T[i + l] == T[j + l]\n11 l = l + 1 / / next character is in common prefix\n12 LCP[rank[i]] = l / / length of LCP of T[j  : ] and T[i  : ]\n13 if l >0\n14 l = l − 1 / / peel off first character of common prefix\n15 return LCP"
   },
   {
    "type": "body",
@@ -3994,7 +3994,7 @@
    "section_title": "32.5 Suffix arrays",
    "printed_page": 993,
    "pdf_page": 1014,
-   "text": "COMPUTE-LCP (T; SA;n)"
+   "text": "COMPUTE-LCP (T; SA,n)"
   },
   {
    "type": "lemma",
@@ -4066,7 +4066,7 @@
    "section_title": "32.5 Suffix arrays",
    "printed_page": 993,
    "pdf_page": 1014,
-   "text": "T[i − 1 : ] and they have the same first l >1 characters, T[ SA[rank[i − 1] − 1] + 1 W ] must appear in the sorted order somewhere before T[i : ], with one or more other suffixes intervening. Each of these suffixes must start with the same l −1 characters as T[ SA[rank[i −1] −1] C1 W ] and T[i : ], for otherwise it would appear either before"
+   "text": "T[i − 1 : ] and they have the same first l >1 characters, T[ SA[rank[i − 1] − 1] + 1 W ] must appear in the sorted order somewhere before T[i : ], with one or more other suffixes intervening. Each of these suffixes must start with the same l −1 characters as T[ SA[rank[i −1] −1] + 1 W ] and T[i : ], for otherwise it would appear either before"
   },
   {
    "type": "body",
@@ -4084,7 +4084,7 @@
    "section_title": "32.5 Suffix arrays",
    "printed_page": 994,
    "pdf_page": 1015,
-   "text": "The COMPUTE-LCP procedure works as follows. After allocating the rank and LCP arrays in line 1, lines 233 fill in the rank array and line 4 pegs LCP[1] to 0, per the definition of the LCP array."
+   "text": "The COMPUTE-LCP procedure works as follows. After allocating the rank and LCP arrays in line 1, lines 2–3 fill in the rank array and line 4 pegs LCP[1] to 0, per the definition of the LCP array."
   },
   {
    "type": "body",
@@ -4093,7 +4093,7 @@
    "section_title": "32.5 Suffix arrays",
    "printed_page": 994,
    "pdf_page": 1015,
-   "text": "The for loop of lines 6314 fills in the rest of the LCP array going by decreasinglength suffixes. That is, it fills the position of the LCP array in the order rank[1]; rank[2]; rank[3];:::; rank[n], with the assignment occurring in line 12. Upon considering a suffix T[i : ], line 8 determines the suffix T[j : ] that immediately pre- cedes T[i : ] in the lexicographically sorted order. At this poin t, the longest common prefix of T[j : ] and T[i : ] has length at least l . This property certainly holds upon the first iteration of the for loop, when l = 0. Assuming that line 12 sets LCP[rank[i]] correctly, line 14 (which decrements l if it is positive) and Lemma 32.8 maintain this property for the next iteration. The longest common prefix of T[j : ] and T[i : ] might be even longer than the value of l at the start of the iteration, however. Lines 9311 increment l for each additional character the prefixes have in common so that it achieves the length of the longest common pre- fix. The index m is set in line 9 and used in the test in line 10 to make sure that the test T[i + l] = = T[j + l] for extending the longest common prefix does not run off the end of the text T . When the while loop of lines 10311 terminates, l is the length of the longest common prefix of T[j : ] and T[i : ]."
+   "text": "The for loop of lines 6–14 fills in the rest of the LCP array going by decreasinglength suffixes. That is, it fills the position of the LCP array in the order rank[1]; rank[2]; rank[3],…; rank[n], with the assignment occurring in line 12. Upon considering a suffix T[i : ], line 8 determines the suffix T[j : ] that immediately pre- cedes T[i : ] in the lexicographically sorted order. At this poin t, the longest common prefix of T[j : ] and T[i : ] has length at least l . This property certainly holds upon the first iteration of the for loop, when l = 0. Assuming that line 12 sets LCP[rank[i]] correctly, line 14 (which decrements l if it is positive) and Lemma 32.8 maintain this property for the next iteration. The longest common prefix of T[j : ] and T[i : ] might be even longer than the value of l at the start of the iteration, however. Lines 9–11 increment l for each additional character the prefixes have in common so that it achieves the length of the longest common pre- fix. The index m is set in line 9 and used in the test in line 10 to make sure that the test T[i + l] = = T[j + l] for extending the longest common prefix does not run off the end of the text T . When the while loop of lines 10–11 terminates, l is the length of the longest common prefix of T[j : ] and T[i : ]."
   },
   {
    "type": "body",
@@ -4102,7 +4102,7 @@
    "section_title": "32.5 Suffix arrays",
    "printed_page": 994,
    "pdf_page": 1015,
-   "text": "As a simple aggregate analysis shows, the COMPUTE-LCP procedure runs in Θ(n) time. Each of the two for loops iterates n times, and so it remains only to bound the total number of iterations by the while loop of lines 10311. Each iteration increases l by 1, and the test m + l ≤ n ensures that l is always less than n. Because l has an initial value of 0 and decreases at most n − 1 times in line 14, line 11 increments l fewer than 2n times. Thus, COMPUTE-LCP takes"
+   "text": "As a simple aggregate analysis shows, the COMPUTE-LCP procedure runs in Θ(n) time. Each of the two for loops iterates n times, and so it remains only to bound the total number of iterations by the while loop of lines 10–11. Each iteration increases l by 1, and the test m + l ≤ n ensures that l is always less than n. Because l has an initial value of 0 and decreases at most n − 1 times in line 14, line 11 increments l fewer than 2n times. Thus, COMPUTE-LCP takes"
   },
   {
    "type": "body",
@@ -4120,7 +4120,7 @@
    "section_title": "32.5 Suffix arrays",
    "printed_page": 994,
    "pdf_page": 1015,
-   "text": "32.5-1 Show the substr-rank and rank arrays before each iteration of the while loop of lines 10319 and after the last iteration of the while loop, the suffix array SA re- turned, and the sorted suffixes when COMPUTE-SUFFIX-ARRAY is run on the text hippityhoppity . Use the position of each letter in the alphabet a s its ord value, so that ord(b) = 2. Then show the LCP array after each iteration of the for loop of lines 6314 of COMPUTE-LCP given the text hippityhoppity and its suffix array."
+   "text": "32.5-1 Show the substr-rank and rank arrays before each iteration of the while loop of lines 10–19 and after the last iteration of the while loop, the suffix array SA re- turned, and the sorted suffixes when COMPUTE-SUFFIX-ARRAY is run on the text hippityhoppity . Use the position of each letter in the alphabet a s its ord value, so that ord(b) = 2. Then show the LCP array after each iteration of the for loop of lines 6–14 of COMPUTE-LCP given the text hippityhoppity and its suffix array."
   },
   {
    "type": "exercise",
@@ -4129,7 +4129,7 @@
    "section_title": "32.5 Suffix arrays",
    "printed_page": 995,
    "pdf_page": 1016,
-   "text": "32.5-2 For some inputs, the COMPUTE-SUFFIX-ARRAY procedure can produce the correct result with fewer than dlg ne − 1 iterations of the while loop of lines 10319."
+   "text": "32.5-2 For some inputs, the COMPUTE-SUFFIX-ARRAY procedure can produce the correct result with fewer than dlg ne − 1 iterations of the while loop of lines 10–19."
   },
   {
    "type": "body",
@@ -4303,7 +4303,7 @@
    "section_title": "32.5 Suffix arrays",
    "printed_page": 996,
    "pdf_page": 1017,
-   "text": "Let y i denote the concatenation of string y with itself i times. For example, .ab/ 3 = ababab. We say that a string x 2 † − has repetition factor r if x = y r for some string y 2 † − and some r >0. Let Ω(x) denote the largest r such that x has repetition factor r . a. Give an efficient algorithm that takes as input a pattern P[1 : m] and computes the value Ω(P [ : i]) for i = 1;2;:::;m . What is the running time of your algorithm? b. For any pattern P[1 : m], let Ω − (P) be defined as max fΩ(P [ : i]) W 1 ≤ i ≤ mg."
+   "text": "Let y i denote the concatenation of string y with itself i times. For example, .ab/ 3 = ababab. We say that a string x 2 † − has repetition factor r if x = y r for some string y 2 † − and some r >0. Let Ω(x) denote the largest r such that x has repetition factor r . a. Give an efficient algorithm that takes as input a pattern P[1 : m] and computes the value Ω(P [ : i]) for i = 1,2,…,m . What is the running time of your algorithm? b. For any pattern P[1 : m], let Ω − (P) be defined as max fΩ(P [ : i]) W 1 ≤ i ≤ mg."
   },
   {
    "type": "body",
@@ -4321,7 +4321,7 @@
    "section_title": "32.5 Suffix arrays",
    "printed_page": 996,
    "pdf_page": 1017,
-   "text": "REPETITION-MATCHER (T;P;n;m)"
+   "text": "REPETITION-MATCHER (T,P,n,m)"
   },
   {
    "type": "problem",
@@ -4357,7 +4357,7 @@
    "section_title": "32.5 Suffix arrays",
    "printed_page": 997,
    "pdf_page": 1018,
-   "text": "For i = 1;2;:::;n , if i mod 3 equals 1 or 2, then i is a sample position, and the suffixes starting at such positions are sample suffixes. Positions 3;6;9;::: are non- sample positions, and the suffixes starting at nonsample positions are nonsample suffixes."
+   "text": "For i = 1,2,…,n , if i mod 3 equals 1 or 2, then i is a sample position, and the suffixes starting at such positions are sample suffixes. Positions 3,6,9,… are non- sample positions, and the suffixes starting at nonsample positions are nonsample suffixes."
   },
   {
    "type": "body",
@@ -4546,7 +4546,7 @@
    "section_title": "32.5 Suffix arrays",
    "printed_page": 999,
    "pdf_page": 1020,
-   "text": "Figure 32.16 The ranks r 1 through r nC3 for the text T = bippityboppityboo with n = 17."
+   "text": "Figure 32.16 The ranks r 1 through r n + 3 for the text T = bippityboppityboo with n = 17."
   },
   {
    "type": "body",
@@ -4555,7 +4555,7 @@
    "section_title": "32.5 Suffix arrays",
    "printed_page": 999,
    "pdf_page": 1020,
-   "text": "G. Extending the text T by the two special characters ¿¿, so that T now has n + 2 characters, consider each suffix T[i : ] for i = 1;2;:::;n + 2. Assign a rank r i to each suffix T[i : ]. For the two special characters ¿¿, set r nC1 = r nC2 = 0. For the sample positions of T , base the rank on the list of sorted sample positions of T . The rank is currently undefined for the nonsample positions of T . For these positions, set r i = Ω. Figure 32.16 shows the ranks for T = bippityboppityboo with n = 17."
+   "text": "G. Extending the text T by the two special characters ¿¿, so that T now has n + 2 characters, consider each suffix T[i : ] for i = 1,2,…,n + 2. Assign a rank r i to each suffix T[i : ]. For the two special characters ¿¿, set r n + 1 = r n + 2 = 0. For the sample positions of T , base the rank on the list of sorted sample positions of T . The rank is currently undefined for the nonsample positions of T . For these positions, set r i = Ω. Figure 32.16 shows the ranks for T = bippityboppityboo with n = 17."
   },
   {
    "type": "body",
@@ -4564,7 +4564,7 @@
    "section_title": "32.5 Suffix arrays",
    "printed_page": 999,
    "pdf_page": 1020,
-   "text": "H. Sort the nonsample suffixes by comparing tuples (T[i];r i C1 ). In our ex- ample, we get T[15 : ] < T[12 : ] < T[9 : ] < T[3 : ] < T[6 : ] because"
+   "text": "H. Sort the nonsample suffixes by comparing tuples (T[i],r i + 1 ). In our ex- ample, we get T[15 : ] < T[12 : ] < T[9 : ] < T[3 : ] < T[6 : ] because"
   },
   {
    "type": "body",
@@ -4573,7 +4573,7 @@
    "section_title": "32.5 Suffix arrays",
    "printed_page": 999,
    "pdf_page": 1020,
-   "text": "(b;6)<. i;10/<. o ;9/<. p;8/<. t;12/ ."
+   "text": "(b,6)<. i,10/<. o ,9/<. p,8/<. t,12/ ."
   },
   {
    "type": "body",
@@ -4807,7 +4807,7 @@
    "section_title": "32.5 Suffix arrays",
    "printed_page": 1002,
    "pdf_page": 1023,
-   "text": "The suffix-array algorithm in Section 32.5 is by Manber and Myers [312], who first proposed the notion of suffix arrays. The linear-time algorithm to compute the longest common prefix array presented here is by Kasai et al. [252]. Problem 32-2 is based on the DC3 algorithm by K¨ arkk¨ ainen, Sanders, and Burkhardt [245]. For a survey of suffix-array algorithms, see the article by Puglisi, Smyth, and Turpin [370]. To learn more about the Burrows-Wheeler transform from Problem 32-3, see the articles by Burrows and Wheeler [78] and Manzini [314]."
+   "text": "The suffix-array algorithm in Section 32.5 is by Manber and Myers [312], who first proposed the notion of suffix arrays. The linear-time algorithm to compute the longest common prefix array presented here is by Kasai et al. [252]. Problem 32-2 is based on the = + 3 algorithm by K¨ arkk¨ ainen, Sanders, and Burkhardt [245]. For a survey of suffix-array algorithms, see the article by Puglisi, Smyth, and Turpin [370]. To learn more about the Burrows-Wheeler transform from Problem 32-3, see the articles by Burrows and Wheeler [78] and Manzini [314]."
   },
   {
    "type": "footnote",

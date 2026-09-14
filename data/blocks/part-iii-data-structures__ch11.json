@@ -34,7 +34,7 @@
    "section_title": "11.1 Direct-address tables",
    "printed_page": 273,
    "pdf_page": 294,
-   "text": "Direct addressing is a simple technique that works well when the universe U of keys is reasonably small. Suppose that an application needs a dynamic set in which each element has a distinct key drawn from the univ erse U = f0;1;:::;m − 1g, where m is not too large."
+   "text": "Direct addressing is a simple technique that works well when the universe U of keys is reasonably small. Suppose that an application needs a dynamic set in which each element has a distinct key drawn from the univ erse U = f0,1,…,m − 1g, where m is not too large."
   },
   {
    "type": "body",
@@ -106,7 +106,7 @@
    "section_title": "11.1 Direct-address tables",
    "printed_page": 273,
    "pdf_page": 294,
-   "text": "U = f0;1;:::;9 g corresponds to an index into the table. The set K = f2;3;5;8 g of actual keys determines the slots in the table that contain poin ters to elements. The other slots, in blue, contain NIL ."
+   "text": "U = f0,1,…,9 g corresponds to an index into the table. The set K = f2,3,5,8 g of actual keys determines the slots in the table that contain poin ters to elements. The other slots, in blue, contain NIL ."
   },
   {
    "type": "body",
@@ -115,7 +115,7 @@
    "section_title": "11.1 Direct-address tables",
    "printed_page": 274,
    "pdf_page": 295,
-   "text": "DIRECT-ADDRESS-SEARCH (T;k)"
+   "text": "DIRECT-ADDRESS-SEARCH (T,k)"
   },
   {
    "type": "body",
@@ -133,7 +133,7 @@
    "section_title": "11.1 Direct-address tables",
    "printed_page": 274,
    "pdf_page": 295,
-   "text": "DIRECT-ADDRESS-INSERT (T;x)"
+   "text": "DIRECT-ADDRESS-INSERT (T,x)"
   },
   {
    "type": "body",
@@ -151,7 +151,7 @@
    "section_title": "11.1 Direct-address tables",
    "printed_page": 274,
    "pdf_page": 295,
-   "text": "DIRECT-ADDRESS-DELETE (T;x)"
+   "text": "DIRECT-ADDRESS-DELETE (T,x)"
   },
   {
    "type": "body",
@@ -178,7 +178,7 @@
    "section_title": "11.1 Direct-address tables",
    "printed_page": 274,
    "pdf_page": 295,
-   "text": "11.1-2 A bit vector is simply an array of bits (each either 0 or 1). A bit vector of length m takes much less space than an array of m pointers. Describe how to use a bit vector to represent a dynamic set of distinct elements drawn from the set f0;1;:::;m − 1g and with no satellite data. Dictionary operations should run in O(1) time."
+   "text": "11.1-2 A bit vector is simply an array of bits (each either 0 or 1). A bit vector of length m takes much less space than an array of m pointers. Describe how to use a bit vector to represent a dynamic set of distinct elements drawn from the set f0,1,…,m − 1g and with no satellite data. Dictionary operations should run in O(1) time."
   },
   {
    "type": "exercise",
@@ -268,7 +268,7 @@
    "section_title": "11.2 Hash tables",
    "printed_page": 275,
    "pdf_page": 296,
-   "text": "With direct addressing, an element with key k is stored in slot k, but with hashing, we use a hash function h to compute the slot number from the key k, so that the element goes into slot h(k). The hash function h maps the universe U of keys into the slots of a hash table T[0 : m − 1]: h W U ! f0;1;:::;m − 1g ; where the size m of the hash table is typically much less than |U|. We say that an element with key k hashes to slot h(k), and we also say that h(k) is the hash value of key k. Figure 11.2 illustrates the basic idea. The hash function reduces the range of array indices and hence the size of the array. Instead of a size of |U|, the array can have size m. An example of a simple, but not particularly good, hash function is h(k) = k mod m."
+   "text": "With direct addressing, an element with key k is stored in slot k, but with hashing, we use a hash function h to compute the slot number from the key k, so that the element goes into slot h(k). The hash function h maps the universe U of keys into the slots of a hash table T[0 : m − 1]: h W U ! f0,1,…,m − 1g ; where the size m of the hash table is typically much less than |U|. We say that an element with key k hashes to slot h(k), and we also say that h(k) is the hash value of key k. Figure 11.2 illustrates the basic idea. The hash function reduces the range of array indices and hence the size of the array. Instead of a size of |U|, the array can have size m. An example of a simple, but not particularly good, hash function is h(k) = k mod m."
   },
   {
    "type": "body",
@@ -358,7 +358,7 @@
    "section_title": "11.2 Hash tables",
    "printed_page": 276,
    "pdf_page": 297,
-   "text": "An \"ideal\" hashing function h would have, for each possible input k in the domain U , an output h(k) that is an element randomly and independently chose n uniformly from the range f0;1;:::;m − 1g. Once a value h(k) is randomly chosen, each subsequent call to h with the same input k yields the same output h(k)."
+   "text": "An \"ideal\" hashing function h would have, for each possible input k in the domain U , an output h(k) that is an element randomly and independently chose n uniformly from the range f0,1,…,m − 1g. Once a value h(k) is randomly chosen, each subsequent call to h with the same input k yields the same output h(k)."
   },
   {
    "type": "body",
@@ -691,7 +691,7 @@
    "section_title": "11.2 Hash tables",
    "printed_page": 279,
    "pdf_page": 300,
-   "text": "Proof We assume that the element being searched for is equally likely to be any of the n elements stored in the table. The number of element s examined during a successful search for an element x is 1 more than the number of elements that appear before x in x ’s list. Because new elements are placed at the front of the list, elements before x in the list were all inserted after x was inserted. Let x i denote the i th element inserted into the table, for i = 1;2;:::;n , and let k i = x i : key."
+   "text": "Proof We assume that the element being searched for is equally likely to be any of the n elements stored in the table. The number of element s examined during a successful search for an element x is 1 more than the number of elements that appear before x in x ’s list. Because new elements are placed at the front of the list, elements before x in the list were all inserted after x was inserted. Let x i denote the i th element inserted into the table, for i = 1,2,…,n , and let k i = x i : key."
   },
   {
    "type": "body",
@@ -943,7 +943,7 @@
    "section_title": "11.2 Hash tables",
    "printed_page": 281,
    "pdf_page": 302,
-   "text": "Assuming independent uniform hashing, what is the e xpected number of collisions? More precisely, what is the expected cardinality of ˚ fk 1 ;k 2 g W k 1 ≠ k 2 and h(k 1 ) = h(k 2 ) } ?"
+   "text": "Assuming independent uniform hashing, what is the e xpected number of collisions? More precisely, what is the expected cardinality of ˚ fk 1 ,k 2 g W k 1 ≠ k 2 and h(k 1 ) = h(k 2 ) } ?"
   },
   {
    "type": "exercise",
@@ -952,7 +952,7 @@
    "section_title": "11.2 Hash tables",
    "printed_page": 281,
    "pdf_page": 302,
-   "text": "11.2-2 Consider a hash table with 9 slots and the hash function h(k) = k mod 9. Demonstrate what happens upon inserting the keys 5;28;19;15;20;33;12;17;10 with collisions resolved by chaining."
+   "text": "11.2-2 Consider a hash table with 9 slots and the hash function h(k) = k mod 9. Demonstrate what happens upon inserting the keys 5,28,19,15,20,33,12,17,10 with collisions resolved by chaining."
   },
   {
    "type": "exercise",
@@ -1312,7 +1312,7 @@
    "section_title": "11.3 Hash functions",
    "printed_page": 286,
    "pdf_page": 307,
-   "text": "Let H be a finite family of hash functions that map a given universe U of keys into the range f0;1;:::;m − 1g. Such a family is said to be universal if for each pair of distinct keys k 1 ;k 2 2 U , the number of hash functions h 2 H for which h(k 1 ) = h(k 2 ) is at most |H| =m. In other words, with a hash function randomly chosen from H , the chance of a collision between distinct keys k 1 and k 2 is no more than the chance 1/m of a collision if h(k 1 ) and h(k 2 ) were randomly and independently chosen from the set f0;1;:::;m − 1g."
+   "text": "Let H be a finite family of hash functions that map a given universe U of keys into the range f0,1,…,m − 1g. Such a family is said to be universal if for each pair of distinct keys k 1 ,k 2 2 U , the number of hash functions h 2 H for which h(k 1 ) = h(k 2 ) is at most |H| =m. In other words, with a hash function randomly chosen from H , the chance of a collision between distinct keys k 1 and k 2 is no more than the chance 1/m of a collision if h(k 1 ) and h(k 2 ) were randomly and independently chosen from the set f0,1,…,m − 1g."
   },
   {
    "type": "body",
@@ -1330,7 +1330,7 @@
    "section_title": "11.3 Hash functions",
    "printed_page": 286,
    "pdf_page": 307,
-   "text": "Every independent uniform random family of hash function is universal, but the converse need not be true: consider the case where U = f0;1;:::;m − 1g and the only hash function in the family is the identity fu nction. The probability that two distinct keys collide is zero, even though each key is hashes to a fixed value."
+   "text": "Every independent uniform random family of hash function is universal, but the converse need not be true: consider the case where U = f0,1,…,m − 1g and the only hash function in the family is the identity fu nction. The probability that two distinct keys collide is zero, even though each key is hashes to a fixed value."
   },
   {
    "type": "body",
@@ -1366,7 +1366,7 @@
    "section_title": "11.3 Hash functions",
    "printed_page": 287,
    "pdf_page": 308,
-   "text": "Proof The INSERT and DELETE operations take constant time. Since the number n of insertions is O(m), we have that ˛ = O(1). Furthermore, the expected time for each SEARCH operation is O(1), which can be seen by examining the proof of Theorem 11.2. That analysis depends only on collision probabilities, which are 1/m for any pair k 1 ;k 2 of keys by the choice of an independent uniform hash function in that theorem. Using a universal fa mily of hash functions here instead of using independent uniform hashing changes the probability of collision from 1/m to at most 1/m. By linearity of expectation, therefore, the expected time for the entire sequence of s operations is O(s). Since each operation takes Ω(1) time, the Θ(s) bound follows."
+   "text": "Proof The INSERT and DELETE operations take constant time. Since the number n of insertions is O(m), we have that ˛ = O(1). Furthermore, the expected time for each SEARCH operation is O(1), which can be seen by examining the proof of Theorem 11.2. That analysis depends only on collision probabilities, which are 1/m for any pair k 1 ,k 2 of keys by the choice of an independent uniform hash function in that theorem. Using a universal fa mily of hash functions here instead of using independent uniform hashing changes the probability of collision from 1/m to at most 1/m. By linearity of expectation, therefore, the expected time for the entire sequence of s operations is O(s). Since each operation takes Ω(1) time, the Θ(s) bound follows."
   },
   {
    "type": "body",
@@ -1393,7 +1393,7 @@
    "section_title": "11.3 Hash functions",
    "printed_page": 287,
    "pdf_page": 308,
-   "text": "Let H be a family of hash functions, each with domain U and range f0;1;:::; m − 1g, and let h be any hash function that is picked uniformly at random from H ."
+   "text": "Let H be a family of hash functions, each with domain U and range f0,1,…; m − 1g, and let h be any hash function that is picked uniformly at random from H ."
   },
   {
    "type": "body",
@@ -1411,7 +1411,7 @@
    "section_title": "11.3 Hash functions",
    "printed_page": 287,
    "pdf_page": 308,
-   "text": "• The family H is uniform if for any key k in U and any slot q in the range f0;1;:::;m − 1g, the probability that h(k) = q is 1/m."
+   "text": "• The family H is uniform if for any key k in U and any slot q in the range f0,1,…,m − 1g, the probability that h(k) = q is 1/m."
   },
   {
    "type": "body",
@@ -1447,7 +1447,7 @@
    "section_title": "11.3 Hash functions",
    "printed_page": 288,
    "pdf_page": 309,
-   "text": "• The family H is d -independent if for any distinct keys k 1 , k 2 , . . . , k d in U and any slots q 1 , q 2 , . . . , q d , not necessarily distinct, in f0;1;:::;m − 1g the probability that h(k i ) = q i for i = 1;2;:::;d is 1/m d ."
+   "text": "• The family H is d -independent if for any distinct keys k 1 , k 2 , . . . , k d in U and any slots q 1 , q 2 , . . . , q d , not necessarily distinct, in f0,1,…,m − 1g the probability that h(k i ) = q i for i = 1,2,…,d is 1/m d ."
   },
   {
    "type": "body",
@@ -1510,7 +1510,7 @@
    "section_title": "11.3 Hash functions",
    "printed_page": 288,
    "pdf_page": 309,
-   "text": "Begin by choosing a prime number p large enough so that every possible key k lies in the range 0 to p − 1, inclusive. We assume here that p has a \"reasonable\" length. (See Section 11.3.5 for a discussion of methods for handling long input keys, such as variable-length strings.) Let Z p denote the set f0;1;:::;p − 1g, and let Z − p denote the set f1;2;:::;p − 1g. Since p is prime, we can solve equations modulo p with the methods given in Chapter 31. Because the size of the universe of keys is greater than the number of slots in the hash table (otherwise, just use direct addressing), we have p>m ."
+   "text": "Begin by choosing a prime number p large enough so that every possible key k lies in the range 0 to p − 1, inclusive. We assume here that p has a \"reasonable\" length. (See Section 11.3.5 for a discussion of methods for handling long input keys, such as variable-length strings.) Let Z p denote the set f0,1,…,p − 1g, and let Z − p denote the set f1,2,…,p − 1g. Since p is prime, we can solve equations modulo p with the methods given in Chapter 31. Because the size of the universe of keys is greater than the number of slots in the hash table (otherwise, just use direct addressing), we have p>m ."
   },
   {
    "type": "body",
@@ -1528,7 +1528,7 @@
    "section_title": "11.3 Hash functions",
    "printed_page": 288,
    "pdf_page": 309,
-   "text": "For example, with √D 17 and m = 6, we have h 3;4 .8/ = ..3 • 8 + 4/ mod 17/ mod 6"
+   "text": "For example, with √D 17 and m = 6, we have h 3,4 .8/ = ..3 • 8 + 4/ mod 17/ mod 6"
   },
   {
    "type": "body",
@@ -1618,7 +1618,7 @@
    "section_title": "11.3 Hash functions",
    "printed_page": 289,
    "pdf_page": 310,
-   "text": "We first note that r 1 ≠ r 2 . Why? Since we have r 1 − r 2 = a(k 1 − k 2 ) (mod p), it follows that r 1 ≠ r 2 because p is prime and both a and (k 1 − k 2 ) are nonzero modulo p. By Theorem 31.6 on page 908, their product must also be nonzero modulo p. Therefore, when computing any h ab 2 H pm , distinct inputs k 1 and k 2 map to distinct values r 1 and r 2 modulo p, and there are no collisions yet at the \"mod p level.\" Moreover, each of the possible p(p − 1) choices for the pair (a;b) with a ≠ 0 yields a different resulting pair (r 1 ;r 2 ) with r 1 ≠ r 2 , since we can solve for a and b given r 1 and r 2 : a = ã (r 1 − r 2 )..k 1 − k 2 / −1 mod p/ ä mod p; b = (r 1 − ak 1 ) mod p; where ..k 1 − k 2 / −1 mod p/ denotes the unique multiplicative inverse, modulo p, of k 1 − k 2 . For each of the p possible values of r 1 , there are only p − 1 possible values of r 2 that do not equal r 1 , making only p(p − 1) possible pairs (r 1 ;r 2 ) with r 1 ≠ r 2 . Therefore, there is a one-to-one correspondence between pairs (a;b) with a ≠ 0 and pairs (r 1 ;r 2 ) with r 1 ≠ r 2 . Thus, for any given pair of distinct inputs k 1 and k 2 , if we pick (a;b) uniformly at random from Z − p × Z p , the resulting pair"
+   "text": "We first note that r 1 ≠ r 2 . Why? Since we have r 1 − r 2 = a(k 1 − k 2 ) (mod p), it follows that r 1 ≠ r 2 because p is prime and both a and (k 1 − k 2 ) are nonzero modulo p. By Theorem 31.6 on page 908, their product must also be nonzero modulo p. Therefore, when computing any h ab 2 H pm , distinct inputs k 1 and k 2 map to distinct values r 1 and r 2 modulo p, and there are no collisions yet at the \"mod p level.\" Moreover, each of the possible p(p − 1) choices for the pair (a,b) with a ≠ 0 yields a different resulting pair (r 1 ,r 2 ) with r 1 ≠ r 2 , since we can solve for a and b given r 1 and r 2 : a = ã (r 1 − r 2 )..k 1 − k 2 / −1 mod p/ ä mod p; b = (r 1 − ak 1 ) mod p; where ..k 1 − k 2 / −1 mod p/ denotes the unique multiplicative inverse, modulo p, of k 1 − k 2 . For each of the p possible values of r 1 , there are only p − 1 possible values of r 2 that do not equal r 1 , making only p(p − 1) possible pairs (r 1 ,r 2 ) with r 1 ≠ r 2 . Therefore, there is a one-to-one correspondence between pairs (a,b) with a ≠ 0 and pairs (r 1 ,r 2 ) with r 1 ≠ r 2 . Thus, for any given pair of distinct inputs k 1 and k 2 , if we pick (a,b) uniformly at random from Z − p × Z p , the resulting pair"
   },
   {
    "type": "body",
@@ -1627,7 +1627,7 @@
    "section_title": "11.3 Hash functions",
    "printed_page": 289,
    "pdf_page": 310,
-   "text": "(r 1 ;r 2 ) is equally likely to be any pair of distinct values modulo p."
+   "text": "(r 1 ,r 2 ) is equally likely to be any pair of distinct values modulo p."
   },
   {
    "type": "body",
@@ -1681,7 +1681,7 @@
    "section_title": "11.3 Hash functions",
    "printed_page": 290,
    "pdf_page": 311,
-   "text": "Therefore, for any pair of distinct values k 1 ;k 2 2 Z p , Pr fh ab (k 1 ) = h ab (k 2 )g ≤ 1/m; so that H pm is indeed universal."
+   "text": "Therefore, for any pair of distinct values k 1 ,k 2 2 Z p , Pr fh ab (k 1 ) = h ab (k 2 )g ≤ 1/m; so that H pm is indeed universal."
   },
   {
    "type": "body",
@@ -1852,7 +1852,7 @@
    "section_title": "11.3 Hash functions",
    "printed_page": 291,
    "pdf_page": 312,
-   "text": "To define a family of such hash functions one may prepend a \"salt\" string a to the input before hashing it, as in h a (k) DSHA-256 (a k k) mod m; where a k k denotes the string formed by concatenating the strings a and k. The literature on message authentication codes (MACs) provides additional approaches."
+   "text": "To define a family of such hash functions one may prepend a \"salt\" string a to the input before hashing it, as in h a (k) DSHA-256 (a k k) mod m; where a k k denotes the string formed by concatenating the strings a and k. The literature on message authentication codes (MA + s) provides additional approaches."
   },
   {
    "type": "body",
@@ -1861,7 +1861,7 @@
    "section_title": "11.3 Hash functions",
    "printed_page": 291,
    "pdf_page": 312,
-   "text": "Cryptographic approaches to hash-function design are becoming more practical as computers arrange their memories in hierarch ies of differing capacities and speeds. Section 11.5 discusses one hash-function design based on the RC6 encryption method."
+   "text": "Cryptographic approaches to hash-function design are becoming more practical as computers arrange their memories in hierarch ies of differing capacities and speeds. Section 11.5 discusses one hash-function design based on the R + 6 encryption method."
   },
   {
    "type": "exercise",
@@ -1951,7 +1951,16 @@
    "section_title": "11.3 Hash functions",
    "printed_page": 292,
    "pdf_page": 313,
-   "text": "Let U be the set of d -tuples of values drawn from Z p , and let Q = Z p , where p is prime. Define the hash function h b W U ! Q for b 2 Z p on an input d -tuple ha 0 ;a 1 ;:::;a d −1 i from U as h b .ha 0 ;a 1 ;:::;a d −1 i/ ="
+   "text": "Let U be the set of d -tuples of values drawn from Z p , and let Q = Z p , where p is prime. Define the hash function h b W U ! Q for b 2 Z p on an input d -tuple"
+  },
+  {
+   "type": "body",
+   "chapter": 11,
+   "section": "11.3",
+   "section_title": "11.3 Hash functions",
+   "printed_page": 292,
+   "pdf_page": 313,
+   "text": "⟨a 0 ,a 1 ,…,a d −1⟩ from U as h b .⟨a 0 ,a 1 ,…,a d −1⟩/ ="
   },
   {
    "type": "body",
@@ -2032,7 +2041,7 @@
    "section_title": "11.4 Open addressing",
    "printed_page": 293,
    "pdf_page": 314,
-   "text": "To perform insertion using open addressing, successively examine, or probe, the hash table until you find an empty slot in which to put the key. Instead of being fixed in the order 0;1;:::;m − 1 (which implies a Θ(n) search time), the sequence of positions probed depends upon the key being inserted. To determine which slots to probe, the hash function includes the probe number (starting from 0) as a second input. Thus, the hash function becomes h W U × f0;1;:::;m − 1g ! f0;1;:::;m − 1g :"
+   "text": "To perform insertion using open addressing, successively examine, or probe, the hash table until you find an empty slot in which to put the key. Instead of being fixed in the order 0,1,…,m − 1 (which implies a Θ(n) search time), the sequence of positions probed depends upon the key being inserted. To determine which slots to probe, the hash function includes the probe number (starting from 0) as a second input. Thus, the hash function becomes h W U × f0,1,…,m − 1g ! f0,1,…,m − 1g :"
   },
   {
    "type": "body",
@@ -2041,7 +2050,7 @@
    "section_title": "11.4 Open addressing",
    "printed_page": 293,
    "pdf_page": 314,
-   "text": "Open addressing requires that for every key k, the probe sequence hh(k;0);h(k;1); :::;h(k;m − 1)i be a permutation of h0;1;:::;m − 1i, so that every hash-table position is eventually considered as a slot for a n ew key as the table fills up. The"
+   "text": "Open addressing requires that for every key k, the probe sequence hh(k,0),h(k,1); …,h(k,m − 1)i be a permutation of h0,1,…,m − 1i, so that every hash-table position is eventually considered as a slot for a n ew key as the table fills up. The"
   },
   {
    "type": "body",
@@ -2072,7 +2081,7 @@
     },
     {
      "n": 3,
-     "code": "q = h(k;i)"
+     "code": "q = h(k,i)"
     },
     {
      "n": 4,
@@ -2099,7 +2108,7 @@
      "code": "error \"hash table overflow\""
     }
    ],
-   "text": "1 i = 0\n2 repeat\n3 q = h(k;i)\n4 if T [q] == NIL\n5 T [q] = k\n6 return q\n7 else i = i + 1\n8 until i = = m\n9 error \"hash table overflow\""
+   "text": "1 i = 0\n2 repeat\n3 q = h(k,i)\n4 if T [q] == NIL\n5 T [q] = k\n6 return q\n7 else i = i + 1\n8 until i = = m\n9 error \"hash table overflow\""
   },
   {
    "type": "pseudocode",
@@ -2121,7 +2130,7 @@
     },
     {
      "n": 3,
-     "code": "q = h(k;i)"
+     "code": "q = h(k,i)"
     },
     {
      "n": 4,
@@ -2144,7 +2153,7 @@
      "code": "return NIL"
     }
    ],
-   "text": "1 i = 0\n2 repeat\n3 q = h(k;i)\n4 if T [q] == k\n5 return q\n6 i = i + 1\n7 until T [q] = = NIL or i == m\n8 return NIL"
+   "text": "1 i = 0\n2 repeat\n3 q = h(k,i)\n4 if T [q] == k\n5 return q\n6 i = i + 1\n7 until T [q] = = NIL or i == m\n8 return NIL"
   },
   {
    "type": "body",
@@ -2153,7 +2162,7 @@
    "section_title": "11.4 Open addressing",
    "printed_page": 294,
    "pdf_page": 315,
-   "text": "HASH-INSERT (T;k)"
+   "text": "HASH-INSERT (T,k)"
   },
   {
    "type": "body",
@@ -2162,7 +2171,7 @@
    "section_title": "11.4 Open addressing",
    "printed_page": 294,
    "pdf_page": 315,
-   "text": "HASH-SEARCH(T;k)"
+   "text": "HASH-SEARCH(T,k)"
   },
   {
    "type": "body",
@@ -2207,7 +2216,7 @@
    "section_title": "11.4 Open addressing",
    "printed_page": 295,
    "pdf_page": 316,
-   "text": "In our analysis, we assume independent uniform permutation hashing (also confusingly known as uniform hashing in the literature): the probe sequence of each key is equally likely to be any of the m! permutations of h0;1;:::;m − 1i."
+   "text": "In our analysis, we assume independent uniform permutation hashing (also confusingly known as uniform hashing in the literature): the probe sequence of each key is equally likely to be any of the m! permutations of h0,1,…,m − 1i."
   },
   {
    "type": "body",
@@ -2234,7 +2243,7 @@
    "section_title": "11.4 Open addressing",
    "printed_page": 295,
    "pdf_page": 316,
-   "text": "We’ll examine both double hashing and its special case, linear probing. These techniques guarantee that hh(k;0);h(k;1);:::;h(k;m − 1)i is a permutation of h0;1;:::;m − 1i for each key k. (Recall that the second parameter to the hash function h is the probe number.) Neither double hashing nor li near probing meets the assumption of independent uniform permutation h ashing, however. Double hashing cannot generate more than m 2 different probe sequences (instead of the m! that independent uniform permutation hashing requir es). Nonetheless, double hashing has a large number of possible probe sequences and, as you might expect, seems to give good results. Linear probing is even more restricted, capable of generating only m different probe sequences."
+   "text": "We’ll examine both double hashing and its special case, linear probing. These techniques guarantee that hh(k,0),h(k,1),…,h(k,m − 1)i is a permutation of h0,1,…,m − 1i for each key k. (Recall that the second parameter to the hash function h is the probe number.) Neither double hashing nor li near probing meets the assumption of independent uniform permutation h ashing, however. Double hashing cannot generate more than m 2 different probe sequences (instead of the m! that independent uniform permutation hashing requir es). Nonetheless, double hashing has a large number of possible probe sequences and, as you might expect, seems to give good results. Linear probing is even more restricted, capable of generating only m different probe sequences."
   },
   {
    "type": "body",
@@ -2252,7 +2261,7 @@
    "section_title": "11.4 Open addressing",
    "printed_page": 295,
    "pdf_page": 316,
-   "text": "Double hashing offers one of the best methods avail able for open addressing because the permutations produced have many of the ch aracteristics of randomly chosen permutations. Double hashing uses a hash function of the form h(k;i) = (h 1 (k) C ih 2 (k)) mod m; where both h 1 and h 2 are auxiliary hash functions. The initial probe goes to position T[h 1 (k)], and successive probe positions are offset from previous positions by the amount h 2 (k), modulo m. Thus, the probe sequence here depends in two ways upon the key k, since the initial probe position h 1 (k), the step size h 2 (k), or both, may vary. Figure 11.5 gives an example of insertion by double hashing."
+   "text": "Double hashing offers one of the best methods avail able for open addressing because the permutations produced have many of the ch aracteristics of randomly chosen permutations. Double hashing uses a hash function of the form h(k,i) = (h 1 (k) C ih 2 (k)) mod m; where both h 1 and h 2 are auxiliary hash functions. The initial probe goes to position T[h 1 (k)], and successive probe positions are offset from previous positions by the amount h 2 (k), modulo m. Thus, the probe sequence here depends in two ways upon the key k, since the initial probe position h 1 (k), the step size h 2 (k), or both, may vary. Figure 11.5 gives an example of insertion by double hashing."
   },
   {
    "type": "body",
@@ -2297,7 +2306,7 @@
    "section_title": "11.4 Open addressing",
    "printed_page": 296,
    "pdf_page": 317,
-   "text": "When m is prime or an exact power of 2, double hashing produces Θ(m 2 ) probe sequences, since each possible (h 1 (k);h 2 (k)) pair yields a distinct probe sequence."
+   "text": "When m is prime or an exact power of 2, double hashing produces Θ(m 2 ) probe sequences, since each possible (h 1 (k),h 2 (k)) pair yields a distinct probe sequence."
   },
   {
    "type": "body",
@@ -2333,7 +2342,7 @@
    "section_title": "11.4 Open addressing",
    "printed_page": 297,
    "pdf_page": 318,
-   "text": "T[h 1 (k)] is already occupied, probe the next position T[h 1 (k) + 1]. Keep going as necessary, on up to slot T[m − 1], and then wrap around to slots T [0], T [1], and so on, but never going past slot T[h 1 (k) − 1]. To view linear probing as a special case of double hashing, just set the double-hashing step function h 2 to be fixed at 1: h 2 (k) = 1 for all k. That is, the hash function is h(k;i) = (h 1 (k) + i) mod m (11.6) for i = 0;1;:::;m − 1. The value of h 1 (k) determines the entire probe sequence, and so assuming that h 1 (k) can take on any value in f0;1;:::;m − 1g, linear probing allows only m distinct probe sequences."
+   "text": "T[h 1 (k)] is already occupied, probe the next position T[h 1 (k) + 1]. Keep going as necessary, on up to slot T[m − 1], and then wrap around to slots T [0], T [1], and so on, but never going past slot T[h 1 (k) − 1]. To view linear probing as a special case of double hashing, just set the double-hashing step function h 2 to be fixed at 1: h 2 (k) = 1 for all k. That is, the hash function is h(k,i) = (h 1 (k) + i) mod m (11.6) for i = 0,1,…,m − 1. The value of h 1 (k) determines the entire probe sequence, and so assuming that h 1 (k) can take on any value in f0,1,…,m − 1g, linear probing allows only m distinct probe sequences."
   },
   {
    "type": "body",
@@ -2369,7 +2378,7 @@
    "section_title": "11.4 Open addressing",
    "printed_page": 297,
    "pdf_page": 318,
-   "text": "For the hash function, we assume independent uniform permutation hashing. In this idealized scheme, the probe sequence hh(k;0);h(k;1);:::;h(k;m − 1)i used to insert or search for each key k is equally likely to be any permutation of h0;1; :::;m − 1i. Of course, any given key has a unique fixed probe sequence associated with it. What we mean here is that, considering the probability distribution on the space of keys and the operation of the hash functio n on the keys, each possible probe sequence is equally likely."
+   "text": "For the hash function, we assume independent uniform permutation hashing. In this idealized scheme, the probe sequence hh(k,0),h(k,1),…,h(k,m − 1)i used to insert or search for each key k is equally likely to be any permutation of h0,1; …,m − 1i. Of course, any given key has a unique fixed probe sequence associated with it. What we mean here is that, considering the probability distribution on the space of keys and the operation of the hash functio n on the keys, each possible probe sequence is equally likely."
   },
   {
    "type": "body",
@@ -2414,7 +2423,7 @@
    "section_title": "11.4 Open addressing",
    "printed_page": 298,
    "pdf_page": 319,
-   "text": "Proof In an unsuccessful search, every probe but the last accesses an occupied slot that does not contain the desired key, and the last slot probed is empty. Let the random variable X denote the number of probes made in an unsuccessful search, and define the event A i , for i = 1;2;::: , as the event that an i th probe occurs and it is to an occupied slot. Then the event fX ≥ i g is the intersection of events"
+   "text": "Proof In an unsuccessful search, every probe but the last accesses an occupied slot that does not contain the desired key, and the last slot probed is empty. Let the random variable X denote the number of probes made in an unsuccessful search, and define the event A i , for i = 1,2,… , as the event that an i th probe occurs and it is to an occupied slot. Then the event fX ≥ i g is the intersection of events"
   },
   {
    "type": "body",
@@ -2513,7 +2522,7 @@
    "section_title": "11.4 Open addressing",
    "printed_page": 298,
    "pdf_page": 319,
-   "text": "D nC1 X i D1"
+   "text": "D n + 1 X i D1"
   },
   {
    "type": "body",
@@ -2531,7 +2540,7 @@
    "section_title": "11.4 Open addressing",
    "printed_page": 298,
    "pdf_page": 319,
-   "text": "X i >nC1"
+   "text": "X i >n + 1"
   },
   {
    "type": "body",
@@ -2702,7 +2711,7 @@
    "section_title": "11.4 Open addressing",
    "printed_page": 300,
    "pdf_page": 321,
-   "text": "˛ m X kDm−nC1 k"
+   "text": "˛ m X kDm−n + 1 k"
   },
   {
    "type": "body",
@@ -2747,7 +2756,7 @@
    "section_title": "11.4 Open addressing",
    "printed_page": 300,
    "pdf_page": 321,
-   "text": "11.4-1 Consider inserting the keys 10;22;31;4;15;28;17;88;59 into a hash table of length m = 11 using open addressing. Illustrate the result of ins erting these keys using linear probing with h(k;i) = (k + i) mod m and using double hashing with h 1 (k) = k and h 2 (k) = 1 C (k mod (m − 1))."
+   "text": "11.4-1 Consider inserting the keys 10,22,31,4,15,28,17,88,59 into a hash table of length m = 11 using open addressing. Illustrate the result of ins erting these keys using linear probing with h(k,i) = (k + i) mod m and using double hashing with h 1 (k) = k and h 2 (k) = 1 C (k mod (m − 1))."
   },
   {
    "type": "exercise",
@@ -2936,7 +2945,7 @@
    "section_title": "11.5 Practical considerations",
    "printed_page": 302,
    "pdf_page": 323,
-   "text": "The deletion procedure relies on an \"inverse\" function to the linear-probing hash function h(k;i) = (h 1 (k) + i) mod m, which maps a key k and a probe number i to a slot number in the hash table. The inverse fun ction g maps a key k and a slot number q, where 0 ≤ q<m , to the probe number that reaches slot q: g(k;q) = (q − h 1 (k)) mod m:"
+   "text": "The deletion procedure relies on an \"inverse\" function to the linear-probing hash function h(k,i) = (h 1 (k) + i) mod m, which maps a key k and a probe number i to a slot number in the hash table. The inverse fun ction g maps a key k and a slot number q, where 0 ≤ q<m , to the probe number that reaches slot q: g(k,q) = (q − h 1 (k)) mod m:"
   },
   {
    "type": "body",
@@ -2945,7 +2954,7 @@
    "section_title": "11.5 Practical considerations",
    "printed_page": 302,
    "pdf_page": 323,
-   "text": "If h(k;i) = q, then g(k;q) = i , and so h(k;g(k;q)) = q."
+   "text": "If h(k,i) = q, then g(k,q) = i , and so h(k,g(k,q)) = q."
   },
   {
    "type": "body",
@@ -2963,7 +2972,7 @@
    "section_title": "11.5 Practical considerations",
    "printed_page": 302,
    "pdf_page": 323,
-   "text": "The procedure first deletes the key in position q by setting T [q] to NIL in line 2. It then searches for a slot q 0 (if any) that contains a key that should be moved t o the slot q just vacated by key k. Line 9 asks the critical question: does the key k 0 in slot q 0 need to be moved to the vacated slot q in order to preserve the accessibility of k 0 ? If g(k 0 ;q) <g(k 0 ;q 0 ), then during the insertion of k 0 into the table, slot q was examined but found to be already occupied. But now slot q, where a search will look for k 0 , is empty. In this case, key k 0 moves to slot q in line 10, and the (a)"
+   "text": "The procedure first deletes the key in position q by setting T [q] to NIL in line 2. It then searches for a slot q 0 (if any) that contains a key that should be moved t o the slot q just vacated by key k. Line 9 asks the critical question: does the key k 0 in slot q 0 need to be moved to the vacated slot q in order to preserve the accessibility of k 0 ? If g(k 0 ,q) <g(k 0 ,q 0 ), then during the insertion of k 0 into the table, slot q was examined but found to be already occupied. But now slot q, where a search will look for k 0 , is empty. In this case, key k 0 moves to slot q in line 10, and the (a)"
   },
   {
    "type": "pseudocode",
@@ -3009,7 +3018,7 @@
     },
     {
      "n": 9,
-     "code": "until g(k 0 ;q)<g(k  0 ;q  0 ) / / was empty slot q probed before q 0 ?"
+     "code": "until g(k 0 ,q)<g(k  0 ,q  0 ) / / was empty slot q probed before q 0 ?"
     },
     {
      "n": 10,
@@ -3020,7 +3029,7 @@
      "code": "q = q 0 / / free up slot q 0"
     }
    ],
-   "text": "1 while TRUE\n2 T [q] DNIL / / make slot q empty\n3 q 0 = q / / starting point for search\n4 repeat\n5 q 0 = (q 0 + 1) mod m / / next slot number with linear probing\n6 k 0 = T[q  0 ] / / next key to try to move\n7 if k 0 = = NIL\n8 return / / return when an empty slot is found\n9 until g(k 0 ;q)<g(k  0 ;q  0 ) / / was empty slot q probed before q 0 ?\n10 T [q] = k 0 / / move k 0 into slot q\n11 q = q 0 / / free up slot q 0"
+   "text": "1 while TRUE\n2 T [q] DNIL / / make slot q empty\n3 q 0 = q / / starting point for search\n4 repeat\n5 q 0 = (q 0 + 1) mod m / / next slot number with linear probing\n6 k 0 = T[q  0 ] / / next key to try to move\n7 if k 0 = = NIL\n8 return / / return when an empty slot is found\n9 until g(k 0 ,q)<g(k  0 ,q  0 ) / / was empty slot q probed before q 0 ?\n10 T [q] = k 0 / / move k 0 into slot q\n11 q = q 0 / / free up slot q 0"
   },
   {
    "type": "figure-caption",
@@ -3047,7 +3056,7 @@
    "section_title": "11.5 Practical considerations",
    "printed_page": 303,
    "pdf_page": 324,
-   "text": "LINEAR-PROBING-HASH-DELETE (T;q)"
+   "text": "LINEAR-PROBING-HASH-DELETE (T,q)"
   },
   {
    "type": "body",
@@ -3164,7 +3173,7 @@
    "section_title": "11.5 Practical considerations",
    "printed_page": 304,
    "pdf_page": 325,
-   "text": "Instead, we present here a simple hash function bas ed only on addition, multi- plication, and swapping the halves of a word. This function can be implemented entirely within the fast registers, and on a machin e with a memory hierarchy, its latency is small compared with the time taken to ac cess a random slot of the hash table. It is related to the RC6 encryption algorithm and can f or practical purposes be considered a \"random oracle.\""
+   "text": "Instead, we present here a simple hash function bas ed only on addition, multi- plication, and swapping the halves of a word. This function can be implemented entirely within the fast registers, and on a machin e with a memory hierarchy, its latency is small compared with the time taken to ac cess a random slot of the hash table. It is related to the R + 6 encryption algorithm and can f or practical purposes be considered a \"random oracle.\""
   },
   {
    "type": "body",
@@ -3227,7 +3236,7 @@
    "section_title": "11.5 Practical considerations",
    "printed_page": 305,
    "pdf_page": 326,
-   "text": "We first define the wee hash function h for short inputs, where by \"short\" we means \"whose length t is at most w-bits,\" so that the input fits within one computer word. We would like inputs of different lengths to be hashed differently. The wee hash function h a;b;t;r (k) for parameters a, b, and r on t -bit input k is defined as h a;b;t;r (k) = ã f (r) aC2t (k + b) ä mod m: (11.7)"
+   "text": "We first define the wee hash function h for short inputs, where by \"short\" we means \"whose length t is at most w-bits,\" so that the input fits within one computer word. We would like inputs of different lengths to be hashed differently. The wee hash function h a,b,t,r (k) for parameters a, b, and r on t -bit input k is defined as h a,b,t,r (k) = ã f (r) a + 2t (k + b) ä mod m: (11.7)"
   },
   {
    "type": "body",
@@ -3236,7 +3245,7 @@
    "section_title": "11.5 Practical considerations",
    "printed_page": 305,
    "pdf_page": 326,
-   "text": "That is, the hash value for t -bit input k is obtained by applying f (r) aC2t to k + b, then taking the final result modulo m. Adding the value b provides hash-dependent randomization of the input, in a way that ensures that for variable-length inputs the 0-length input does not have a fixed hash value. Adding the value 2t to a ensures that the hash function acts differently for inputs of different lengths. (We use 2t rather than t to ensure that the key a + 2t is odd if a is odd.) We call this hash function \"wee\" because it uses a tiny amount of memory—more precisely, it can be implemented efficiently using only the computer’s fast registers. (This hash function does not have a name in the literature; it is a variant we developed for this textbook.)"
+   "text": "That is, the hash value for t -bit input k is obtained by applying f (r) a + 2t to k + b, then taking the final result modulo m. Adding the value b provides hash-dependent randomization of the input, in a way that ensures that for variable-length inputs the 0-length input does not have a fixed hash value. Adding the value 2t to a ensures that the hash function acts differently for inputs of different lengths. (We use 2t rather than t to ensure that the key a + 2t is odd if a is odd.) We call this hash function \"wee\" because it uses a tiny amount of memory—more precisely, it can be implemented efficiently using only the computer’s fast registers. (This hash function does not have a name in the literature; it is a variant we developed for this textbook.)"
   },
   {
    "type": "body",
@@ -3281,7 +3290,16 @@
    "section_title": "11.5 Practical considerations",
    "printed_page": 306,
    "pdf_page": 327,
-   "text": "Suppose that an input k has length t (measured in bits). Break k into a sequence hk 1 ;k 2 ;:::;k u i of w-bit words, where u = ⌈t/w⌉, k 1 contains the least-significant w bits of k, and k u contains the most significant bits. If t is not a multiple of w, then k u contains fewer than w bits, in which case, pad out the unused high-order bits of k u with 0-bits. Define the function chop to return a sequence of the w-bit words in k: chop(k) = hk 1 ;k 2 ;:::;k u i :"
+   "text": "Suppose that an input k has length t (measured in bits). Break k into a sequence"
+  },
+  {
+   "type": "body",
+   "chapter": 11,
+   "section": "11.5",
+   "section_title": "11.5 Practical considerations",
+   "printed_page": 306,
+   "pdf_page": 327,
+   "text": "⟨k 1 ,k 2 ,…,k u⟩ of w-bit words, where u = ⌈t/w⌉, k 1 contains the least-significant w bits of k, and k u contains the most significant bits. If t is not a multiple of w, then k u contains fewer than w bits, in which case, pad out the unused high-order bits of k u with 0-bits. Define the function chop to return a sequence of the w-bit words in k: chop(k) = ⟨k 1 ,k 2 ,…,k u⟩ :"
   },
   {
    "type": "body",
@@ -3299,7 +3317,7 @@
    "section_title": "11.5 Practical considerations",
    "printed_page": 306,
    "pdf_page": 327,
-   "text": "With the chop function in hand, we specify the wee hash function h a;b;t;r (k) for an input k of length t bits as follows: h a;b;t;r (k) DWEE(k;a;b;t;r;m); where the procedure WEE defined on the facing page iterates through the elements of the w-bit words returned by chop(k), applying f r a to the sum of the current word k i and the previously computed hash value so far, finally returning the result obtained modulo m. This definition for variable-length and long (multiple-word) inputs is a consistent extension of the definition in equation (11.7) for short (singleword) inputs. For practical use, we recommend that a be a randomly chosen odd w-bit word, b be a randomly chosen w-bit word, and that r = 4."
+   "text": "With the chop function in hand, we specify the wee hash function h a,b,t,r (k) for an input k of length t bits as follows: h a,b,t,r (k) DWEE(k,a,b,t,r,m); where the procedure WEE defined on the facing page iterates through the elements of the w-bit words returned by chop(k), applying f r a to the sum of the current word k i and the previously computed hash value so far, finally returning the result obtained modulo m. This definition for variable-length and long (multiple-word) inputs is a consistent extension of the definition in equation (11.7) for short (singleword) inputs. For practical use, we recommend that a be a randomly chosen odd w-bit word, b be a randomly chosen w-bit word, and that r = 4."
   },
   {
    "type": "body",
@@ -3308,7 +3326,7 @@
    "section_title": "11.5 Practical considerations",
    "printed_page": 306,
    "pdf_page": 327,
-   "text": "Note that the wee hash function is really a hash fu nction family, with individual hash functions determined by parameters a;b;t;r; and m. The (approximate)"
+   "text": "Note that the wee hash function is really a hash fu nction family, with individual hash functions determined by parameters a,b,t,r; and m. The (approximate)"
   },
   {
    "type": "body",
@@ -3344,7 +3362,7 @@
     },
     {
      "n": 2,
-     "code": "hk 1 ;k  2 ;:::;k  u i = chop(k)"
+     "code": "⟨k 1 ,k  2 ,…,k  u⟩ = chop(k)"
     },
     {
      "n": 3,
@@ -3356,14 +3374,14 @@
     },
     {
      "n": 5,
-     "code": "q = f (r) aC2t (k i + q)"
+     "code": "q = f (r) a + 2t (k i + q)"
     },
     {
      "n": 6,
      "code": "return q mod m"
     }
    ],
-   "text": "1 u = ⌈t/w⌉\n2 hk 1 ;k  2 ;:::;k  u i = chop(k)\n3 q = b\n4 for i = 1 to u\n5 q = f (r) aC2t (k i + q)\n6 return q mod m"
+   "text": "1 u = ⌈t/w⌉\n2 ⟨k 1 ,k  2 ,…,k  u⟩ = chop(k)\n3 q = b\n4 for i = 1 to u\n5 q = f (r) a + 2t (k i + q)\n6 return q mod m"
   },
   {
    "type": "body",
@@ -3372,7 +3390,7 @@
    "section_title": "11.5 Practical considerations",
    "printed_page": 307,
    "pdf_page": 328,
-   "text": "WEE(k;a;b;t;r;m)"
+   "text": "WEE(k,a,b,t,r,m)"
   },
   {
    "type": "body",
@@ -3471,7 +3489,7 @@
    "section_title": "11.5 Practical considerations",
    "printed_page": 308,
    "pdf_page": 329,
-   "text": "1;2;:::;n , the probability is at most 2 −p that the i th insertion requires strictly more than p probes. b. Show that for i = 1;2;:::;n , the probability is O(1/n 2 ) that the i th insertion requires more than 2 lg n probes."
+   "text": "1,2,…,n , the probability is at most 2 −p that the i th insertion requires strictly more than p probes. b. Show that for i = 1,2,…,n , the probability is O(1/n 2 ) that the i th insertion requires more than 2 lg n probes."
   },
   {
    "type": "body",
@@ -3606,7 +3624,16 @@
    "section_title": "11.5 Practical considerations",
    "printed_page": 309,
    "pdf_page": 330,
-   "text": "Let H be a family of hash functions in which each hash function h 2 H maps the universe U of keys to f0;1;:::;m − 1g. a. Show that if the family H of hash functions is 2-independent, then it is universal. b. Suppose that the universe U is the set of n-tuples of values drawn from Z √D f 0;1;:::;p − 1g, where p is prime. Consider an element x = hx 0 ;x 1 ;:::;x n−1 i 2 U . For any n-tuple a = ha 0 ;a 1 ;:::;a n−1 i 2 U , define the hash function h a by h a (x) ="
+   "text": "Let H be a family of hash functions in which each hash function h 2 H maps the universe U of keys to f0,1,…,m − 1g. a. Show that if the family H of hash functions is 2-independent, then it is universal. b. Suppose that the universe U is the set of n-tuples of values drawn from Z √D f 0,1,…,p − 1g, where p is prime. Consider an element x ="
+  },
+  {
+   "type": "body",
+   "chapter": 11,
+   "section": "11.5",
+   "section_title": "11.5 Practical considerations",
+   "printed_page": 309,
+   "pdf_page": 330,
+   "text": "⟨x 0 ,x 1 ,…,x n−1⟩ 2 U . For any n-tuple a = ⟨a 0 ,a 1 ,…,a n−1⟩ 2 U , define the hash function h a by h a (x) ="
   },
   {
    "type": "body",
@@ -3669,7 +3696,7 @@
    "section_title": "11.5 Practical considerations",
    "printed_page": 310,
    "pdf_page": 331,
-   "text": "Consider fixed n-tuples x 2 U and y 2 U , with x i ≠ y i for some i . What happens to h 0 ab (x) and h 0 ab (y) as a i and b range over Z p ?) d. Alice and Bob secretly agree on a hash function h from a 2-independent family H of hash functions. Each h 2 H maps from a universe of keys U to Z p , where p is prime. Later, Alice sends a message m to Bob over the internet, where m 2 U . She authenticates this message to Bob by also sending an authentication tag t = h(m), and Bob checks that the pair (m;t) he receives indeed satisfies t = h(m). Suppose that an adversary intercepts (m;t) en route and tries to fool Bob by replacing the pair (m;t) with a different pair (m 0 ;t 0 )."
+   "text": "Consider fixed n-tuples x 2 U and y 2 U , with x i ≠ y i for some i . What happens to h 0 ab (x) and h 0 ab (y) as a i and b range over Z p ?) d. Alice and Bob secretly agree on a hash function h from a 2-independent family H of hash functions. Each h 2 H maps from a universe of keys U to Z p , where p is prime. Later, Alice sends a message m to Bob over the internet, where m 2 U . She authenticates this message to Bob by also sending an authentication tag t = h(m), and Bob checks that the pair (m,t) he receives indeed satisfies t = h(m). Suppose that an adversary intercepts (m,t) en route and tries to fool Bob by replacing the pair (m,t) with a different pair (m 0 ,t 0 )."
   },
   {
    "type": "body",
@@ -3678,7 +3705,7 @@
    "section_title": "11.5 Practical considerations",
    "printed_page": 310,
    "pdf_page": 331,
-   "text": "Argue that the probability that the adversary succe eds in fooling Bob into accepting (m 0 ;t 0 ) is at most 1/p, no matter how much computing power the adversary has, even if the adversary knows the family H of hash functions used."
+   "text": "Argue that the probability that the adversary succe eds in fooling Bob into accepting (m 0 ,t 0 ) is at most 1/p, no matter how much computing power the adversary has, even if the adversary knows the family H of hash functions used."
   },
   {
    "type": "chapter-notes",
@@ -3750,7 +3777,7 @@
    "section_title": "11.5 Practical considerations",
    "printed_page": 310,
    "pdf_page": 331,
-   "text": "The wee hash function is based on the RC6 encryption algorithm [379]. Leiserson et al. [292] propose an \"RC6 MIX\" function that is essentially the same as the Notes for Chapter 11 311 wee hash function. They give experimental evidence that it has good randomness, and they also give a \"DOTMIX\" function for dealing with variable-length inputs."
+   "text": "The wee hash function is based on the R + 6 encryption algorithm [379]. Leiserson et al. [292] propose an \"R + 6 MIX\" function that is essentially the same as the Notes for Chapter 11 311 wee hash function. They give experimental evidence that it has good randomness, and they also give a \"DOTMIX\" function for dealing with variable-length inputs."
   },
   {
    "type": "body",

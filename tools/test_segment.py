@@ -8,6 +8,7 @@ Locks in the properties that the level content depends on:
   * figure captions, exercise lists and theorem numbering survive segmentation;
   * running heads are gone and no prose was swallowed by the pseudocode scanner.
 """
+import importlib.util
 import json
 import os
 import re
@@ -148,6 +149,41 @@ def main():
     RUNHEAD = re.compile(r"^\d{1,4}\s+Chapter\s+\d+\s+", re.M)
     bad = [b for b in all_blocks if RUNHEAD.search(b["text"])]
     ok(not bad, "没有任何块含 '<页码> Chapter N ...' 形式的页眉（实际 %d）" % len(bad))
+
+    # ★ 页眉剥离的正则必须**形状严格**。曾经用过一条宽松的
+    #   `^(?:\d+ )?(?:Chapter|Part|Appendix)\s+\d+.*$` 来剥页眉，
+    #   结果把正文整句删掉了——`Chapter 4 presents the "master theorem," …`
+    #   也以 "Chapter 4 " 开头。正文被吞掉后引述比对永远失败，而且看不出原因。
+    #   这里把「必须剥掉」和「必须留下」两类行都钉死。
+    _spec = importlib.util.spec_from_file_location(
+        "seg", os.path.join(os.path.dirname(os.path.abspath(__file__)), "03_segment.py"))
+    seg = importlib.util.module_from_spec(_spec)
+    _spec.loader.exec_module(seg)          # 与第 6 节共用同一个模块实例
+
+    def _is_head(line):
+        s = line.strip()
+        return bool(s) and any(rx.match(s) for rx in seg.RUNHEAD_RES)
+
+    heads_must_go = [
+        "36 Chapter 2 Getting Started",
+        "42 Chapter 3 Characterizing Running Times",
+        "Chapter 20 Elementary Graph Algorithms",
+        "2.3 Designing algorithms 39",
+        "Problems for Chapter 2 45",
+        "1284",
+    ]
+    left = [h for h in heads_must_go if not _is_head(h)]
+    ok(not left, "六种页眉/页码形态都被识别为页眉（漏 %s）" % left)
+
+    bodies_must_stay = [
+        # 真实语料 p41 的正文句（曾被宽松正则整行删除）
+        'Chapter 4 presents the "master theorem," which shows that T(n) = Θ(n lg n). 17',
+        "Chapter 2 introduced insertion sort and analyzed its running time.",
+        "Chapter 4 will discuss the master theorem in more detail.",
+        "In Chapter 2, we saw our first algorithms.",
+    ]
+    gone = [b for b in bodies_must_stay if _is_head(b)]
+    ok(not gone, "以 Chapter N 开头的**正文句**不会被当成页眉删掉（误删 %d 条）" % len(gone))
     ch20 = None
     for fname in os.listdir(BLOCKS_DIR):
         if re.search(r"ch20\.json$", fname):
@@ -164,11 +200,7 @@ def main():
     # ---- 6. no prose swallowed by the pseudocode scanner ----------------------
     print("\n[6] 伪代码扫描没有吞掉正文")
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-    import importlib.util
-    spec = importlib.util.spec_from_file_location(
-        "seg", os.path.join(os.path.dirname(os.path.abspath(__file__)), "03_segment.py"))
-    seg = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(seg)
+    # 03_segment 已在第 5 节装进 seg，这里直接复用
 
     pages = []
     for line in open(PAGES, encoding="utf-8"):
@@ -199,6 +231,10 @@ def main():
        "MERGE 之后的正文（脚注 12）没有被伪代码扫描吞掉")
     ok("The while loop of lines 12" in ch2_text or "Lines 8" in ch2_text,
        "MERGE 之后的正文段落（Lines 8–18…）完好")
+    # (d) guard the running-head regression end to end: p41 的正文句以
+    #     "Chapter 4 presents…" 开头，曾被过宽的页眉正则整行删除。
+    ok("Chapter 4 presents the" in ch2_text,
+       "p41 的正文句「Chapter 4 presents the \"master theorem,\" …」没有被页眉剥离删掉")
 
     # ---- 7. corpus statistics -------------------------------------------------
     print("\n[7] 分块统计")

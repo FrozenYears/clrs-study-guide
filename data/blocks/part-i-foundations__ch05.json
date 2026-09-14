@@ -213,7 +213,7 @@
    "section_title": "5.1 The hiring problem",
    "printed_page": 128,
    "pdf_page": 149,
-   "text": "For the hiring problem, we can assume that the appl icants come in a random order. What does that mean for this problem? We assume that you can compare any two candidates and decide which one is better qualified, which is to say that there is a total order on the candidates. (See Section B.2 for the definition of a total order.) Thus, you can rank each candidate with a unique number from 1 through n, using rank(i) to denote the rank of applicant i , and adopt the convention that a higher rank corresponds to a better qualified applicant. The ordered list hrank(1); rank(2);:::; rank(n)i is a permutation of the list h1;2;:::;n i. Saying that the applicants come in a random order is equivalent to saying that this list of ranks is equally likely to be any one of the n! permutations of the numbers 1 through n."
+   "text": "For the hiring problem, we can assume that the appl icants come in a random order. What does that mean for this problem? We assume that you can compare any two candidates and decide which one is better qualified, which is to say that there is a total order on the candidates. (See Section B.2 for the definition of a total order.) Thus, you can rank each candidate with a unique number from 1 through n, using rank(i) to denote the rank of applicant i , and adopt the convention that a higher rank corresponds to a better qualified applicant. The ordered list hrank(1); rank(2),…; rank(n)i is a permutation of the list ⟨1,2,…,n⟩. Saying that the applicants come in a random order is equivalent to saying that this list of ranks is equally likely to be any one of the n! permutations of the numbers 1 through n."
   },
   {
    "type": "body",
@@ -294,7 +294,7 @@
    "section_title": "5.1 The hiring problem",
    "printed_page": 129,
    "pdf_page": 150,
-   "text": "A call to RANDOM(a;b) returns an integer between a and b, inclusive, with each such integer being equally likely. For example, RANDOM(0;1) produces 0 with probability 1/2, and it produces 1 with probability 1/2. A call to RANDOM(3;7) returns any one of 3, 4, 5, 6, or 7, each with probability 1/5. Each integer returned by RANDOM is independent of the integers returned on previous calls. You may imagine RANDOM as rolling a (b − a + 1)-sided die to obtain its output. (In practice, most programming environments offer a pseudorandom-number generator: a deterministic algorithm returning numbers that \"look\" statistically random.)"
+   "text": "A call to RANDOM(a,b) returns an integer between a and b, inclusive, with each such integer being equally likely. For example, RANDOM(0,1) produces 0 with probability 1/2, and it produces 1 with probability 1/2. A call to RANDOM(3,7) returns any one of 3, 4, 5, 6, or 7, each with probability 1/5. Each integer returned by RANDOM is independent of the integers returned on previous calls. You may imagine RANDOM as rolling a (b − a + 1)-sided die to obtain its output. (In practice, most programming environments offer a pseudorandom-number generator: a deterministic algorithm returning numbers that \"look\" statistically random.)"
   },
   {
    "type": "body",
@@ -321,7 +321,7 @@
    "section_title": "5.1 The hiring problem",
    "printed_page": 129,
    "pdf_page": 150,
-   "text": "Describe an implementation of the procedure RANDOM(a;b) that makes calls only to RANDOM(0;1) . What is the expected running time of your procedu re, as a function of a and b?"
+   "text": "Describe an implementation of the procedure RANDOM(a,b) that makes calls only to RANDOM(0,1) . What is the expected running time of your procedu re, as a function of a and b?"
   },
   {
    "type": "body",
@@ -366,7 +366,7 @@
    "section_title": "5.2 Indicator random variables",
    "printed_page": 130,
    "pdf_page": 151,
-   "text": "As a simple example, let us determine the expected number of heads obtained when flipping a fair coin. The sample space for a single coin flip is S = fH;T g, with Pr fH g = Pr fT g = 1/2. We can then define an indicator random variable X H , associated with the coin coming up heads, which i s the event H . This variable counts the number of heads obtained in this flip, and it is 1 if the coin comes up heads and 0 otherwise. We write"
+   "text": "As a simple example, let us determine the expected number of heads obtained when flipping a fair coin. The sample space for a single coin flip is S = fH,T g, with Pr fH g = Pr fT g = 1/2. We can then define an indicator random variable X H , associated with the coin coming up heads, which i s the event H . This variable counts the number of heads obtained in this flip, and it is 1 if the coin comes up heads and 0 otherwise. We write"
   },
   {
    "type": "body",
@@ -582,7 +582,7 @@
    "section_title": "5.2 Indicator random variables",
    "printed_page": 131,
    "pdf_page": 152,
-   "text": "By Lemma 5.1, the expectation of each of the random variables is E [X i ] = 1/2 for i = 1;2;:::;n . Then we can compute the sum of the expectations: P n i D1 E [X i ] = n/2. But equation (5.2) calls for the expectation of the sum, not the sum of the ex- pectations. How can we resolve this conundrum? Linearity of expectation, equation (C.24) on page 1192, to the rescue: the expectation of the sum always equals the sum of the expectations. Linearity of expectation applies even when there is dependence among the random variables. Combining in dicator random variables with linearity of expectation gives us a powerful t echnique to compute expected values when multiple events occur. We now can compute the expected number of heads:"
+   "text": "By Lemma 5.1, the expectation of each of the random variables is E [X i ] = 1/2 for i = 1,2,…,n . Then we can compute the sum of the expectations: P n i D1 E [X i ] = n/2. But equation (5.2) calls for the expectation of the sum, not the sum of the ex- pectations. How can we resolve this conundrum? Linearity of expectation, equation (C.24) on page 1192, to the rescue: the expectation of the sum always equals the sum of the expectations. Linearity of expectation applies even when there is dependence among the random variables. Combining in dicator random variables with linearity of expectation gives us a powerful t echnique to compute expected values when multiple events occur. We now can compute the expected number of heads:"
   },
   {
    "type": "body",
@@ -690,7 +690,7 @@
    "section_title": "5.2 Indicator random variables",
    "printed_page": 132,
    "pdf_page": 153,
-   "text": "E [X i ] = Pr fcandidate i is hiredg ; and we must therefore compute the probability that lines 536 of HIRE-ASSISTANT are executed."
+   "text": "E [X i ] = Pr fcandidate i is hiredg ; and we must therefore compute the probability that lines 5–6 of HIRE-ASSISTANT are executed."
   },
   {
    "type": "body",
@@ -834,7 +834,7 @@
    "section_title": "5.2 Indicator random variables",
    "printed_page": 134,
    "pdf_page": 155,
-   "text": "5.2-6 Let A[1 : n] be an array of n distinct numbers. If i <j and A[i ] > A[j ], then the pair (i;j) is called an inversion of A. (See Problem 2-4 on page 47 for more on inversions.) Suppose that the elements of A form a uniform random permutation of h1;2;:::;n i. Use indicator random variables to compute the exp ected number of inversions."
+   "text": "5.2-6 Let A[1 : n] be an array of n distinct numbers. If i <j and A[i ] > A[j ], then the pair (i,j) is called an inversion of A. (See Problem 2-4 on page 47 for more on inversions.) Suppose that the elements of A form a uniform random permutation of ⟨1,2,…,n⟩. Use indicator random variables to compute the exp ected number of inversions."
   },
   {
    "type": "body",
@@ -870,7 +870,7 @@
    "section_title": "5.3 Randomized algorithms",
    "printed_page": 134,
    "pdf_page": 155,
-   "text": "Let us further explore the distinction between prob abilistic analysis and randomized algorithms. In Section 5.2, we claimed that, assuming that the candidates arrive in a random order, the expected number of ti mes you hire a new office assistant is about ln n. This algorithm is deterministic: for any particul ar input, the number of times a new office assistant is hired is always the same. Furthermore, the number of times you hire a new office assistant differs for different inputs, and it depends on the ranks of the various candidat es. Since this number depends only on the ranks of the candidates, to represent a particular input, we can just list, in order, the ranks hrank(1); rank(2);:::; rank(n)i of the candidates. Given the rank list A 1 = h1;2;3;4;5;6;7;8;9;10 i, a new office assistant is always hired 10 times, since each successive candidate is better than the previous one, and lines 536 of HIRE-ASSISTANT are executed in each iteration. Given the list of ranks A 2 = h10;9;8;7;6;5;4;3;2;1 i, a new office assistant is hired only once, in the first iteration. Given a list of ranks A 3 = h5;2;1;8;4;7;10;9;3;6 i, a new office assistant is hired three times, upon interviewing the candidates with ranks 5, 8, and 10. Recalling that the cost of our algorithm depends on how many times you hire a new office assistant, we see that there are expensive inputs such as A 1 , inexpensive inputs such as A 2 , and moderately expensive inputs such as A 3 ."
+   "text": "Let us further explore the distinction between prob abilistic analysis and randomized algorithms. In Section 5.2, we claimed that, assuming that the candidates arrive in a random order, the expected number of ti mes you hire a new office assistant is about ln n. This algorithm is deterministic: for any particul ar input, the number of times a new office assistant is hired is always the same. Furthermore, the number of times you hire a new office assistant differs for different inputs, and it depends on the ranks of the various candidat es. Since this number depends only on the ranks of the candidates, to represent a particular input, we can just list, in order, the ranks hrank(1); rank(2),…; rank(n)i of the candidates. Given the rank list A 1 = ⟨1,2,3,4,5,6,7,8,9,10⟩, a new office assistant is always hired 10 times, since each successive candidate is better than the previous one, and lines 5–6 of HIRE-ASSISTANT are executed in each iteration. Given the list of ranks A 2 = ⟨10,9,8,7,6,5,4,3,2,1⟩, a new office assistant is hired only once, in the first iteration. Given a list of ranks A 3 = ⟨5,2,1,8,4,7,10,9,3,6⟩, a new office assistant is hired three times, upon interviewing the candidates with ranks 5, 8, and 10. Recalling that the cost of our algorithm depends on how many times you hire a new office assistant, we see that there are expensive inputs such as A 1 , inexpensive inputs such as A 2 , and moderately expensive inputs such as A 3 ."
   },
   {
    "type": "pseudocode",
@@ -1029,7 +1029,7 @@
    "section_title": "5.3 Randomized algorithms",
    "printed_page": 136,
    "pdf_page": 157,
-   "text": "RANDOMLY-PERMUTE (A;n)"
+   "text": "RANDOMLY-PERMUTE (A,n)"
   },
   {
    "type": "body",
@@ -1074,7 +1074,7 @@
    "section_title": "5.3 Randomized algorithms",
    "printed_page": 137,
    "pdf_page": 158,
-   "text": "Just prior to the i th iteration of the for loop of lines 132, for each possible"
+   "text": "Just prior to the i th iteration of the for loop of lines 1–2, for each possible"
   },
   {
    "type": "body",
@@ -1119,7 +1119,7 @@
    "section_title": "5.3 Randomized algorithms",
    "printed_page": 137,
    "pdf_page": 158,
-   "text": "Let us examine the i th iteration. Consider a particular i -permutation, and denote the elements in it by hx 1 ;x 2 ;:::;x i i. This permutation consists of an"
+   "text": "Let us examine the i th iteration. Consider a particular i -permutation, and denote the elements in it by ⟨x 1 ,x 2 ,…,x⟩ i. This permutation consists of an"
   },
   {
    "type": "body",
@@ -1128,7 +1128,7 @@
    "section_title": "5.3 Randomized algorithms",
    "printed_page": 137,
    "pdf_page": 158,
-   "text": "(i − 1)-permutation hx 1 ;:::;x i −1 i followed by the value x i that the algorithm places in A[i ]. Let E 1 denote the event in which the first i − 1 iterations have created the particular (i − 1)-permutation hx 1 ;:::;x i −1 i in A[1 : i − 1]. By the loop invariant, Pr fE 1 g = (n − i + 1)!=n!. Let E 2 be the event that the i th iteration puts x i in position A[i ]. The i -permutation hx 1 ;:::;x i i appears in A[1 : i ] precisely when both E 1 and E 2 occur, and so we wish to compute"
+   "text": "(i − 1)-permutation ⟨x 1 ,…,x⟩ −1 i followed by the value x i that the algorithm places in A[i ]. Let E 1 denote the event in which the first i − 1 iterations have created the particular (i − 1)-permutation ⟨x 1 ,…,x⟩ −1 i in A[1 : i − 1]. By the loop invariant, Pr fE 1 g = (n − i + 1)!=n!. Let E 2 be the event that the i th iteration puts x i in position A[i ]. The i -permutation ⟨x 1 ,…,x⟩ i appears in A[1 : i ] precisely when both E 1 and E 2 occur, and so we wish to compute"
   },
   {
    "type": "body",
@@ -1155,7 +1155,7 @@
    "section_title": "5.3 Randomized algorithms",
    "printed_page": 137,
    "pdf_page": 158,
-   "text": "The probability Pr fE 2 j E 1 g equals 1=.n−i C1/ because in line 2 the algorithm chooses x i randomly from the n − i + 1 values in positions A[i : n]. Thus, we have"
+   "text": "The probability Pr fE 2 j E 1 g equals 1=.n−i + 1/ because in line 2 the algorithm chooses x i randomly from the n − i + 1 values in positions A[i : n]. Thus, we have"
   },
   {
    "type": "pseudocode",
@@ -1266,7 +1266,7 @@
    "section_title": "5.3 Randomized algorithms",
    "printed_page": 138,
    "pdf_page": 159,
-   "text": "PERMUTE-WITHOUT-IDENTITY (A;n)"
+   "text": "PERMUTE-WITHOUT-IDENTITY (A,n)"
   },
   {
    "type": "exercise",
@@ -1314,7 +1314,7 @@
     },
     {
      "n": 2,
-     "code": "offset DRANDOM(1;n)"
+     "code": "offset DRANDOM(1,n)"
     },
     {
      "n": 3,
@@ -1341,7 +1341,7 @@
      "code": "return B"
     }
    ],
-   "text": "1 let B[1 : n] be a new array\n2 offset DRANDOM(1;n)\n3 for i = 1 to n\n4 dest = i C offset\n5 if dest >n\n6 dest = dest − n\n7 B[dest ] = A[i ]\n8 return B"
+   "text": "1 let B[1 : n] be a new array\n2 offset DRANDOM(1,n)\n3 for i = 1 to n\n4 dest = i C offset\n5 if dest >n\n6 dest = dest − n\n7 B[dest ] = A[i ]\n8 return B"
   },
   {
    "type": "pseudocode",
@@ -1363,7 +1363,7 @@
     },
     {
      "n": 3,
-     "code": "i DRANDOM(1;k)"
+     "code": "i DRANDOM(1,k)"
     },
     {
      "n": 4,
@@ -1382,7 +1382,7 @@
      "code": "return S"
     }
    ],
-   "text": "1 S = ;\n2 for k = n − m + 1 to n / / iterates m times\n3 i DRANDOM(1;k)\n4 if i 2 S\n5 S = S [ fkg\n6 else S = S [ fi g\n7 return S"
+   "text": "1 S = ;\n2 for k = n − m + 1 to n / / iterates m times\n3 i DRANDOM(1,k)\n4 if i 2 S\n5 S = S [ fkg\n6 else S = S [ fi g\n7 return S"
   },
   {
    "type": "body",
@@ -1391,7 +1391,7 @@
    "section_title": "5.3 Randomized algorithms",
    "printed_page": 139,
    "pdf_page": 160,
-   "text": "PERMUTE-WITH-ALL (A;n)"
+   "text": "PERMUTE-WITH-ALL (A,n)"
   },
   {
    "type": "exercise",
@@ -1409,7 +1409,7 @@
    "section_title": "5.3 Randomized algorithms",
    "printed_page": 139,
    "pdf_page": 160,
-   "text": "PERMUTE-BY-CYCLE (A;n)"
+   "text": "PERMUTE-BY-CYCLE (A,n)"
   },
   {
    "type": "exercise",
@@ -1418,7 +1418,7 @@
    "section_title": "5.3 Randomized algorithms",
    "printed_page": 139,
    "pdf_page": 160,
-   "text": "5.3-5 Professor Gallup wants to create a random sample of the set f1;2;3;:::;n g, that is, an m-element subset S , where 0 ≤ m ≤ n, such that each m-subset is equally likely to be created. One way is to set A[i ] = i , for i = 1;2;3;:::;n , call"
+   "text": "5.3-5 Professor Gallup wants to create a random sample of the set f1,2,3,…,n g, that is, an m-element subset S , where 0 ≤ m ≤ n, such that each m-subset is equally likely to be created. One way is to set A[i ] = i , for i = 1,2,3,…,n , call"
   },
   {
    "type": "body",
@@ -1436,7 +1436,7 @@
    "section_title": "5.3 Randomized algorithms",
    "printed_page": 139,
    "pdf_page": 160,
-   "text": "RANDOM-SAMPLE (m;n)"
+   "text": "RANDOM-SAMPLE (m,n)"
   },
   {
    "type": "body",
@@ -1445,7 +1445,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 140,
    "pdf_page": 161,
-   "text": "Show that the procedure RANDOM-SAMPLE on the previous page returns a random m-subset S of f1;2;3;:::;n g, in which each m-subset is equally likely, while making only m calls to RANDOM ."
+   "text": "Show that the procedure RANDOM-SAMPLE on the previous page returns a random m-subset S of f1,2,3,…,n g, in which each m-subset is equally likely, while making only m calls to RANDOM ."
   },
   {
    "type": "body",
@@ -1499,7 +1499,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 140,
    "pdf_page": 161,
-   "text": "1;2;:::;k , where k is the number of people in the room. We ignore the issue of leap years and assume that all years have n = 365 days. For i = 1;2;:::;k , let b i be the day of the year on which person i ’s birthday falls, where 1 ≤ b i ≤ n."
+   "text": "1,2,…,k , where k is the number of people in the room. We ignore the issue of leap years and assume that all years have n = 365 days. For i = 1,2,…,k , let b i be the day of the year on which person i ’s birthday falls, where 1 ≤ b i ≤ n."
   },
   {
    "type": "body",
@@ -1508,7 +1508,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 140,
    "pdf_page": 161,
-   "text": "We also assume that birthdays are uniformly distrib uted across the n days of the year, so that Pr fb i = r g = 1/n for i = 1;2;:::;k and r = 1;2;:::;n ."
+   "text": "We also assume that birthdays are uniformly distrib uted across the n days of the year, so that Pr fb i = r g = 1/n for i = 1,2,…,k and r = 1,2,…,n ."
   },
   {
    "type": "body",
@@ -1652,7 +1652,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 141,
    "pdf_page": 162,
-   "text": "Pr fB k g = Pr fB k−1 g Pr fA k j B k−1 g ; (5.8) where we take Pr fB 1 g = Pr fA 1 g = 1 as an initial condition. In other words, the probability that b 1 ;b 2 ;:::;b k are distinct birthdays equals the probability that b 1 ;b 2 ;:::;b k−1 are distinct birthdays multiplied by the probabilit y that b k ≠ b i for i = 1;2;:::;k − 1, given that b 1 ;b 2 ;:::;b k−1 are distinct."
+   "text": "Pr fB k g = Pr fB k−1 g Pr fA k j B k−1 g ; (5.8) where we take Pr fB 1 g = Pr fA 1 g = 1 as an initial condition. In other words, the probability that b 1 ,b 2 ,…,b k are distinct birthdays equals the probability that b 1 ,b 2 ,…,b k−1 are distinct birthdays multiplied by the probabilit y that b k ≠ b i for i = 1,2,…,k − 1, given that b 1 ,b 2 ,…,b k−1 are distinct."
   },
   {
    "type": "body",
@@ -1661,7 +1661,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 141,
    "pdf_page": 162,
-   "text": "If b 1 ;b 2 ;:::;b k−1 are distinct, the conditional probability that b k ≠ b i for i = 1;2;:::;k − 1 is Pr fA k j B k−1 g = (n − k + 1)/n, since out of the n days, n − (k − 1) days are not taken. We iteratively apply the recurrence (5.8) to obtain Pr fB k g = Pr fB k−1 g Pr fA k j B k−1 g"
+   "text": "If b 1 ,b 2 ,…,b k−1 are distinct, the conditional probability that b k ≠ b i for i = 1,2,…,k − 1 is Pr fA k j B k−1 g = (n − k + 1)/n, since out of the n days, n − (k − 1) days are not taken. We iteratively apply the recurrence (5.8) to obtain Pr fB k g = Pr fB k−1 g Pr fA k j B k−1 g"
   },
   {
    "type": "body",
@@ -1733,7 +1733,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 141,
    "pdf_page": 162,
-   "text": "D k−1 X i D1 k X j Di C1"
+   "text": "D k−1 X i D1 k X j Di + 1"
   },
   {
    "type": "body",
@@ -1760,7 +1760,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 141,
    "pdf_page": 162,
-   "text": "D n−kC1 X i D1"
+   "text": "D n−k + 1 X i D1"
   },
   {
    "type": "body",
@@ -1769,7 +1769,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 141,
    "pdf_page": 162,
-   "text": "D n−kC1 X i D1"
+   "text": "D n−k + 1 X i D1"
   },
   {
    "type": "body",
@@ -1778,7 +1778,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 141,
    "pdf_page": 162,
-   "text": "D n−kC1 X i D1"
+   "text": "D n−k + 1 X i D1"
   },
   {
    "type": "body",
@@ -1787,7 +1787,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 141,
    "pdf_page": 162,
-   "text": "D n X i DkC1 k n(i − 1)"
+   "text": "D n X i Dk + 1 k n(i − 1)"
   },
   {
    "type": "body",
@@ -1859,7 +1859,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 142,
    "pdf_page": 163,
-   "text": "Indicator random variables afford a simpler but approximate analysis of the birthday paradox. For each pair (i;j) of the k people in the room, define the indicator random variable X ij , for 1 ≤ i <j ≤ k, by X ij = I fperson i and person j have the same birthdayg"
+   "text": "Indicator random variables afford a simpler but approximate analysis of the birthday paradox. For each pair (i,j) of the k people in the room, define the indicator random variable X ij , for 1 ≤ i <j ≤ k, by X ij = I fperson i and person j have the same birthdayg"
   },
   {
    "type": "body",
@@ -1904,7 +1904,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 142,
    "pdf_page": 163,
-   "text": "X = k−1 X i D1 k X j Di C1"
+   "text": "X = k−1 X i D1 k X j Di + 1"
   },
   {
    "type": "body",
@@ -1922,7 +1922,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 142,
    "pdf_page": 163,
-   "text": "\" k−1 X i D1 k X j Di C1"
+   "text": "\" k−1 X i D1 k X j Di + 1"
   },
   {
    "type": "body",
@@ -2012,7 +2012,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 143,
    "pdf_page": 164,
-   "text": "Consider a process in which you randomly toss ident ical balls into b bins, numbered 1;2;:::;b . The tosses are independent, and on each toss the ball is equally likely to end up in any bin. The probability that a tossed ball lands in any given bin is 1/b. If we view the ball-tossing process as a sequence of Bernoulli trials (see"
+   "text": "Consider a process in which you randomly toss ident ical balls into b bins, numbered 1,2,…,b . The tosses are independent, and on each toss the ball is equally likely to end up in any bin. The probability that a tossed ball lands in any given bin is 1/b. If we view the ball-tossing process as a sequence of Bernoulli trials (see"
   },
   {
    "type": "body",
@@ -2030,7 +2030,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 143,
    "pdf_page": 164,
-   "text": "• How many balls fall in a given bin? The number of balls that fall in a given bin follows the binomial distribution b(kI n;1/b) . If you toss n balls, equation (C.41) on page 1199 tells us that the expected number of balls that fall in the given bin is n/b."
+   "text": "• How many balls fall in a given bin? The number of balls that fall in a given bin follows the binomial distribution b(kI n,1/b) . If you toss n balls, equation (C.41) on page 1199 tells us that the expected number of balls that fall in the given bin is n/b."
   },
   {
    "type": "body",
@@ -2192,7 +2192,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 145,
    "pdf_page": 166,
-   "text": "The probability that each coin flip is a head is 1/2. Let A i k be the event that a streak of heads of length at least k begins with the i th coin flip or, more precisely, the event that the k consecutive coin flips i;i + 1;:::;i + k − 1 yield only heads, where 1 ≤ k ≤ n and 1 ≤ i ≤ n −k C1. Since coin flips are mutually independent, for any given event A i k , the probability that all k flips are heads is Pr fA i k g = 1"
+   "text": "The probability that each coin flip is a head is 1/2. Let A i k be the event that a streak of heads of length at least k begins with the i th coin flip or, more precisely, the event that the k consecutive coin flips i,i + 1,…,i + k − 1 yield only heads, where 1 ≤ k ≤ n and 1 ≤ i ≤ n −k + 1. Since coin flips are mutually independent, for any given event A i k , the probability that all k flips are heads is Pr fA i k g = 1"
   },
   {
    "type": "body",
@@ -2210,7 +2210,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 145,
    "pdf_page": 166,
-   "text": "For k = 2 dlg ne, Pr fA i;2dlg ne g = 1"
+   "text": "For k = 2 dlg ne, Pr fA i,2dlg ne g = 1"
   },
   {
    "type": "body",
@@ -2237,7 +2237,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 145,
    "pdf_page": 166,
-   "text": "( n−2dlg neC1 [ i D1"
+   "text": "( n−2dlg ne + 1 [ i D1"
   },
   {
    "type": "body",
@@ -2246,7 +2246,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 145,
    "pdf_page": 166,
-   "text": "A i;2dlg ne"
+   "text": "A i,2dlg ne"
   },
   {
    "type": "body",
@@ -2255,7 +2255,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 145,
    "pdf_page": 166,
-   "text": "≤ n−2dlg neC1 X i D1"
+   "text": "≤ n−2dlg ne + 1 X i D1"
   },
   {
    "type": "body",
@@ -2264,7 +2264,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 145,
    "pdf_page": 166,
-   "text": "Pr fA i;2dlg ne g (by Boole’s inequality (C.21) on page 1190)"
+   "text": "Pr fA i,2dlg ne g (by Boole’s inequality (C.21) on page 1190)"
   },
   {
    "type": "body",
@@ -2273,7 +2273,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 145,
    "pdf_page": 166,
-   "text": "≤ n−2dlg neC1 X i D1 n 2"
+   "text": "≤ n−2dlg ne + 1 X i D1 n 2"
   },
   {
    "type": "body",
@@ -2291,7 +2291,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 145,
    "pdf_page": 166,
-   "text": "We can use inequality (5.10) to bound the length of the longest streak. For j = 0;1;2;:::;n , let L j be the event that the longest streak of heads has l ength exactly j , and let L be the length of the longest streak. By the definition of ex- pected value, we have"
+   "text": "We can use inequality (5.10) to bound the length of the longest streak. For j = 0,1,2,…,n , let L j be the event that the longest streak of heads has l ength exactly j , and let L be the length of the longest streak. By the definition of ex- pected value, we have"
   },
   {
    "type": "body",
@@ -2336,7 +2336,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 146,
    "pdf_page": 167,
-   "text": "We could try to evaluate this sum using upper bound s on each Pr fL j g similar to those computed in inequality (5.10). Unfortunately, this method yields weak bounds. We can use some intuition gained by the abo ve analysis to obtain a good bound, however. For no individual term in the summa tion in equation (5.11) are both the factors j and Pr fL j g large. Why? When j ≥ 2 dlg ne, then Pr fL j g is very small, and when j <2 dlg ne, then j is fairly small. More precisely, since the events L j for j = 0;1;:::;n are disjoint, the probability that a streak of heads of length at least 2 dlg ne begins anywhere is P n j D2dlg ne Pr fL j g. Inequality (5.10) tells us that the probability that a streak of head s of length at least 2 dlg ne begins anywhere is less than 1/n, which means that P n j D2dlg ne Pr fL j g <1/n. Also, noting that P n j D0 Pr fL j g = 1, we have that P 2dlg ne−1 j D0 Pr fL j g ≤ 1. Thus, we obtain E [L] = n X j D0 j Pr fL j g"
+   "text": "We could try to evaluate this sum using upper bound s on each Pr fL j g similar to those computed in inequality (5.10). Unfortunately, this method yields weak bounds. We can use some intuition gained by the abo ve analysis to obtain a good bound, however. For no individual term in the summa tion in equation (5.11) are both the factors j and Pr fL j g large. Why? When j ≥ 2 dlg ne, then Pr fL j g is very small, and when j <2 dlg ne, then j is fairly small. More precisely, since the events L j for j = 0,1,…,n are disjoint, the probability that a streak of heads of length at least 2 dlg ne begins anywhere is P n j D2dlg ne Pr fL j g. Inequality (5.10) tells us that the probability that a streak of head s of length at least 2 dlg ne begins anywhere is less than 1/n, which means that P n j D2dlg ne Pr fL j g <1/n. Also, noting that P n j D0 Pr fL j g = 1, we have that P 2dlg ne−1 j D0 Pr fL j g ≤ 1. Thus, we obtain E [L] = n X j D0 j Pr fL j g"
   },
   {
    "type": "body",
@@ -2426,7 +2426,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 146,
    "pdf_page": 167,
-   "text": "The probability that a streak of heads exceeds r dlg ne flips diminishes quickly with r . Let’s get a rough bound on the probability that a streak of at least r dlg ne heads occurs, for r ≥ 1. The probability that a streak of at least r dlg ne heads starts in position i is Pr fA i;r dlg ne g = 1"
+   "text": "The probability that a streak of heads exceeds r dlg ne flips diminishes quickly with r . Let’s get a rough bound on the probability that a streak of at least r dlg ne heads occurs, for r ≥ 1. The probability that a streak of at least r dlg ne heads starts in position i is Pr fA i,r dlg ne g = 1"
   },
   {
    "type": "body",
@@ -2480,7 +2480,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 147,
    "pdf_page": 168,
-   "text": "A i;r dlg ne"
+   "text": "A i,r dlg ne"
   },
   {
    "type": "body",
@@ -2489,7 +2489,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 147,
    "pdf_page": 168,
-   "text": "Pr fA i;r dlg ne g (by Boole’s inequality (C.21))"
+   "text": "Pr fA i,r dlg ne g (by Boole’s inequality (C.21))"
   },
   {
    "type": "body",
@@ -2525,7 +2525,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 147,
    "pdf_page": 168,
-   "text": "Let’s partition the n coin flips into at least bn= ⌊(lg n)/2c⌋ groups of ⌊(lg n)/2⌋ consecutive flips and bound the probability that no group comes up all heads. By equation (5.9), the probability that the group starting in position i comes up all heads is Pr fA i;⌊(lg n)/2⌋ g = 1"
+   "text": "Let’s partition the n coin flips into at least bn= ⌊(lg n)/2c⌋ groups of ⌊(lg n)/2⌋ consecutive flips and bound the probability that no group comes up all heads. By equation (5.9), the probability that the group starting in position i comes up all heads is Pr fA i,⌊(lg n)/2⌋ g = 1"
   },
   {
    "type": "body",
@@ -2795,7 +2795,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 149,
    "pdf_page": 170,
-   "text": "X k = n−kC1 X i D1"
+   "text": "X k = n−k + 1 X i D1"
   },
   {
    "type": "body",
@@ -2822,7 +2822,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 149,
    "pdf_page": 170,
-   "text": "\" n−kC1 X i D1"
+   "text": "\" n−k + 1 X i D1"
   },
   {
    "type": "body",
@@ -2993,7 +2993,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 150,
    "pdf_page": 171,
-   "text": "ONLINE-MAXIMUM(k;n) , which returns the index of the candidate you wish to hire."
+   "text": "ONLINE-MAXIMUM(k,n) , which returns the index of the candidate you wish to hire."
   },
   {
    "type": "body",
@@ -3002,7 +3002,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 150,
    "pdf_page": 171,
-   "text": "ONLINE-MAXIMUM(k;n)"
+   "text": "ONLINE-MAXIMUM(k,n)"
   },
   {
    "type": "body",
@@ -3038,7 +3038,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 151,
    "pdf_page": 172,
-   "text": "1 through j . Let S be the event that you succeed in choosing the best-qualified applicant, and let S i be the event that you succeed when the best-qualified applicant is the i th one interviewed. Since the various S i are disjoint, we have that Pr fS g = P n i D1 Pr fS i g. Noting that you never succeed when the best-qualified applicant is one of the first k, we have that Pr fS i g = 0 for i = 1;2;:::;k . Thus, we obtain Pr fS g = n X i DkC1"
+   "text": "1 through j . Let S be the event that you succeed in choosing the best-qualified applicant, and let S i be the event that you succeed when the best-qualified applicant is the i th one interviewed. Since the various S i are disjoint, we have that Pr fS g = P n i D1 Pr fS i g. Noting that you never succeed when the best-qualified applicant is one of the first k, we have that Pr fS i g = 0 for i = 1,2,…,k . Thus, we obtain Pr fS g = n X i Dk + 1"
   },
   {
    "type": "body",
@@ -3092,7 +3092,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 151,
    "pdf_page": 172,
-   "text": "Pr fS g = n X i DkC1"
+   "text": "Pr fS g = n X i Dk + 1"
   },
   {
    "type": "body",
@@ -3110,7 +3110,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 152,
    "pdf_page": 173,
-   "text": "D k n n X i DkC1 i − 1"
+   "text": "D k n n X i Dk + 1 i − 1"
   },
   {
    "type": "body",
@@ -3272,7 +3272,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 153,
    "pdf_page": 174,
-   "text": "We let a counter value of i represent a count of n i for i = 0;1;:::;2 b − 1, where the n i form an increasing sequence of nonnegative values. We assume that the initial value of the counter is 0, representing a count of n 0 = 0. The INCREMENT operation works on a counter containing the value i in a probabilistic manner. If i = 2 b − 1, then the operation reports an overflow error. Otherwise, the INCRE- MENT operation increases the counter by 1 with probability 1=.n i C1 − n i /, and it leaves the counter unchanged with probability 1 − 1=.n i C1 − n i /."
+   "text": "We let a counter value of i represent a count of n i for i = 0,1,…,2 b − 1, where the n i form an increasing sequence of nonnegative values. We assume that the initial value of the counter is 0, representing a count of n 0 = 0. The INCREMENT operation works on a counter containing the value i in a probabilistic manner. If i = 2 b − 1, then the operation reports an overflow error. Otherwise, the INCRE- MENT operation increases the counter by 1 with probability 1=.n i + 1 − n i /, and it leaves the counter unchanged with probability 1 − 1=.n i + 1 − n i /."
   },
   {
    "type": "body",
@@ -3470,7 +3470,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 157,
    "pdf_page": 178,
-   "text": "Input: A sequence of n numbers ha 1 ;a 2 ;:::;a n i."
+   "text": "Input: A sequence of n numbers ⟨a 1 ,a 2 ,…,a n⟩."
   },
   {
    "type": "body",
@@ -3479,7 +3479,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 157,
    "pdf_page": 178,
-   "text": "Output: A permutation (reordering) ha 0"
+   "text": "Output: A permutation (reordering) ⟨a 0"
   },
   {
    "type": "body",
@@ -3488,7 +3488,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 157,
    "pdf_page": 178,
-   "text": "2 ;:::;a 0 n i of the input sequence such that a 0"
+   "text": "2 ,…,a 0 n⟩ of the input sequence such that a 0"
   },
   {
    "type": "body",
@@ -3686,7 +3686,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 159,
    "pdf_page": 180,
-   "text": "Chapter 8 then goes on to show that we might be able to beat this lower bound of Ω(n lg n) if an algorithm can gather information about the so rted order of the input by means other than comparing elements. The c ounting sort algorithm, for example, assumes that the input numbers belong to the set f0;1;:::;k g. By using array indexing as a tool for determining relative o rder, counting sort can sort n numbers in Θ(k + n) time. Thus, when k = O(n), counting sort runs in time that is linear in the size of the input array. A related algorithm, radix sort, can be used to extend the range of counting sort. If there are n integers to sort, each integer has d digits, and each digit can take on up to k possible values, then radix sort can sort the numbers in Θ(d(n + k)) time. When d is a constant and k is O(n), radix sort runs in linear time. A third algorithm, bucket sort, requires knowledge of the probabilistic distribution of numbers in the input array. It can sort n real numbers uniformly distributed in the half-open interval [0;1/ in average-case O(n) time."
+   "text": "Chapter 8 then goes on to show that we might be able to beat this lower bound of Ω(n lg n) if an algorithm can gather information about the so rted order of the input by means other than comparing elements. The c ounting sort algorithm, for example, assumes that the input numbers belong to the set f0,1,…,k g. By using array indexing as a tool for determining relative o rder, counting sort can sort n numbers in Θ(k + n) time. Thus, when k = O(n), counting sort runs in time that is linear in the size of the input array. A related algorithm, radix sort, can be used to extend the range of counting sort. If there are n integers to sort, each integer has d digits, and each digit can take on up to k possible values, then radix sort can sort the numbers in Θ(d(n + k)) time. When d is a constant and k is O(n), radix sort runs in linear time. A third algorithm, bucket sort, requires knowledge of the probabilistic distribution of numbers in the input array. It can sort n real numbers uniformly distributed in the half-open interval [0,1/ in average-case O(n) time."
   },
   {
    "type": "body",
@@ -3704,7 +3704,7 @@
    "section_title": "5.4 Probabilistic analysis and further uses of indicator random variables",
    "printed_page": 159,
    "pdf_page": 180,
-   "text": "For counting sort, the items to sort are integers i n the set f0;1;:::;k g. For radix sort, each item is a d -digit number, where each digit takes on k possible values. For bucket sort, we assume that the keys are real numbers uniformly distributed in the half-open interval [0;1/. The rightmost column gives the average-case or expected running time, indicating which one it gives when it differs from the worst-case running time. We omit the average-case running time of heapsort because we do not analyze it in this book."
+   "text": "For counting sort, the items to sort are integers i n the set f0,1,…,k g. For radix sort, each item is a d -digit number, where each digit takes on k possible values. For bucket sort, we assume that the keys are real numbers uniformly distributed in the half-open interval [0,1/. The rightmost column gives the average-case or expected running time, indicating which one it gives when it differs from the worst-case running time. We omit the average-case running time of heapsort because we do not analyze it in this book."
   },
   {
    "type": "footnote",

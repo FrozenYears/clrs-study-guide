@@ -91,7 +91,7 @@
    "section_title": "D.1 Matrices and matrix operations",
    "printed_page": 1214,
    "pdf_page": 1235,
-   "text": "(D.1) is a 2 × 3 matrix A = (a ij ), where for i = 1;2 and j = 1;2;3 , the element of the matrix in row i and column j is denoted by a ij . By convention, uppercase letters denote matrices and corresponding subscripted lowercase letters denote their elements. We denote the set of all m × n matrices with real-valued entries by R m×n and, in general, the set of m × n matrices with entries drawn from a set S by S m×n ."
+   "text": "(D.1) is a 2 × 3 matrix A = (a ij ), where for i = 1,2 and j = 1,2,3 , the element of the matrix in row i and column j is denoted by a ij . By convention, uppercase letters denote matrices and corresponding subscripted lowercase letters denote their elements. We denote the set of all m × n matrices with real-valued entries by R m×n and, in general, the set of m × n matrices with entries drawn from a set S by S m×n ."
   },
   {
    "type": "body",
@@ -127,7 +127,7 @@
    "section_title": "D.1 Matrices and matrix operations",
    "printed_page": 1215,
    "pdf_page": 1236,
-   "text": "A vector is a one-dimensional array of numbers. For example, x = ã ä is a vector of size 3. We sometimes call a vector of length n an n-vector. By convention, lowercase letters denote vectors, and the i th element of a size-n vector x is denoted by x i , for i = 1;2;:::;n . We take the standard form of a vector to be as a column vector equivalent to an n × 1 matrix, whereas the corresponding row vector is obtained by taking the transpose: x T = .2 3 5/:"
+   "text": "A vector is a one-dimensional array of numbers. For example, x = ã ä is a vector of size 3. We sometimes call a vector of length n an n-vector. By convention, lowercase letters denote vectors, and the i th element of a size-n vector x is denoted by x i , for i = 1,2,…,n . We take the standard form of a vector to be as a column vector equivalent to an n × 1 matrix, whereas the corresponding row vector is obtained by taking the transpose: x T = .2 3 5/:"
   },
   {
    "type": "body",
@@ -172,7 +172,7 @@
    "section_title": "D.1 Matrices and matrix operations",
    "printed_page": 1215,
    "pdf_page": 1236,
-   "text": "1. A diagonal matrix has a ij = 0 whenever i ≠ j . Because all of the off-diagonal elements are 0, a succinct way to specify the matrix lists only the elements along the diagonal: diag(a 11 ;a 22 ;:::;a nn ) ="
+   "text": "1. A diagonal matrix has a ij = 0 whenever i ≠ j . Because all of the off-diagonal elements are 0, a succinct way to specify the matrix lists only the elements along the diagonal: diag(a 11 ,a 22 ,…,a nn ) ="
   },
   {
    "type": "body",
@@ -181,7 +181,7 @@
    "section_title": "D.1 Matrices and matrix operations",
    "printed_page": 1215,
    "pdf_page": 1236,
-   "text": "˙ a 11 0 ::: 0"
+   "text": "˙ a 11 0 … 0"
   },
   {
    "type": "body",
@@ -190,7 +190,7 @@
    "section_title": "D.1 Matrices and matrix operations",
    "printed_page": 1215,
    "pdf_page": 1236,
-   "text": "0 a 22 ::: 0"
+   "text": "0 a 22 … 0"
   },
   {
    "type": "body",
@@ -208,7 +208,7 @@
    "section_title": "D.1 Matrices and matrix operations",
    "printed_page": 1215,
    "pdf_page": 1236,
-   "text": "0 0 ::: a nn"
+   "text": "0 0 … a nn"
   },
   {
    "type": "body",
@@ -226,25 +226,7 @@
    "section_title": "D.1 Matrices and matrix operations",
    "printed_page": 1215,
    "pdf_page": 1236,
-   "text": "I n = diag(1;1;:::;1)"
-  },
-  {
-   "type": "body",
-   "chapter": "D",
-   "section": "D.1",
-   "section_title": "D.1 Matrices and matrix operations",
-   "printed_page": 1215,
-   "pdf_page": 1236,
-   "text": "1 0 ::: 0"
-  },
-  {
-   "type": "body",
-   "chapter": "D",
-   "section": "D.1",
-   "section_title": "D.1 Matrices and matrix operations",
-   "printed_page": 1215,
-   "pdf_page": 1236,
-   "text": "0 1 ::: 0"
+   "text": "I n = diag(1,1,…,1)"
   },
   {
    "type": "body",
@@ -262,16 +244,7 @@
    "section_title": "D.1 Matrices and matrix operations",
    "printed_page": 1215,
    "pdf_page": 1236,
-   "text": "0 0 ::: 1"
-  },
-  {
-   "type": "body",
-   "chapter": "D",
-   "section": "D.1",
-   "section_title": "D.1 Matrices and matrix operations",
-   "printed_page": 1215,
-   "pdf_page": 1236,
-   "text": "˙ u 11 u 12 ::: u 1n"
+   "text": "˙ u 11 u 12 … u 1n"
   },
   {
    "type": "body",
@@ -289,7 +262,7 @@
    "section_title": "D.1 Matrices and matrix operations",
    "printed_page": 1215,
    "pdf_page": 1236,
-   "text": "˙ l 11 0 ::: 0 l 21 l 22 ::: 0"
+   "text": "˙ l 11 0 … 0 l 21 l 22 … 0"
   },
   {
    "type": "body",
@@ -298,7 +271,7 @@
    "section_title": "D.1 Matrices and matrix operations",
    "printed_page": 1215,
    "pdf_page": 1236,
-   "text": ": : : : : : : : : : : : l n1 l n2 ::: l nn"
+   "text": ": : : : : : : : : : : : l n1 l n2 … l nn"
   },
   {
    "type": "body",
@@ -325,7 +298,7 @@
    "section_title": "D.1 Matrices and matrix operations",
    "printed_page": 1216,
    "pdf_page": 1237,
-   "text": "3. A tridiagonal matrix T is one for which t ij = 0 if ji − j j >1 . Nonzero entries appear only on the main diagonal, immediately above the main diagonal (t i;i C1 for i = 1;2;:::;n − 1), or immediately below the main diagonal ( t i C1;i for i = 1;2;:::;n − 1):"
+   "text": "3. A tridiagonal matrix T is one for which t ij = 0 if ji − j j >1 . Nonzero entries appear only on the main diagonal, immediately above the main diagonal (t i,i + 1 for i = 1,2,…,n − 1), or immediately below the main diagonal ( t i + 1,i for i = 1,2,…,n − 1):"
   },
   {
    "type": "body",
@@ -334,7 +307,7 @@
    "section_title": "D.1 Matrices and matrix operations",
    "printed_page": 1216,
    "pdf_page": 1237,
-   "text": "• t 11 t 12 0 0 ::: 0 0 0 t 21 t 22 t 23 0 ::: 0 0 0"
+   "text": "• t 11 t 12 0 0 … 0 0 0 t 21 t 22 t 23 0 … 0 0 0"
   },
   {
    "type": "body",
@@ -343,7 +316,7 @@
    "section_title": "D.1 Matrices and matrix operations",
    "printed_page": 1216,
    "pdf_page": 1237,
-   "text": "0 t 32 t 33 t 34 ::: 0 0 0"
+   "text": "0 t 32 t 33 t 34 … 0 0 0"
   },
   {
    "type": "body",
@@ -361,7 +334,7 @@
    "section_title": "D.1 Matrices and matrix operations",
    "printed_page": 1216,
    "pdf_page": 1237,
-   "text": "0 0 0 0 ::: t n−2;n−2 t n−2;n−1 0"
+   "text": "0 0 0 0 … t n−2,n−2 t n−2,n−1 0"
   },
   {
    "type": "body",
@@ -370,7 +343,7 @@
    "section_title": "D.1 Matrices and matrix operations",
    "printed_page": 1216,
    "pdf_page": 1237,
-   "text": "0 0 0 0 ::: t n−1;n−2 t n−1;n−1 t n−1;n"
+   "text": "0 0 0 0 … t n−1,n−2 t n−1,n−1 t n−1,n"
   },
   {
    "type": "body",
@@ -379,7 +352,7 @@
    "section_title": "D.1 Matrices and matrix operations",
    "printed_page": 1216,
    "pdf_page": 1237,
-   "text": "0 0 0 0 ::: 0 t n;n−1 t nn"
+   "text": "0 0 0 0 … 0 t n,n−1 t nn"
   },
   {
    "type": "body",
@@ -397,7 +370,7 @@
    "section_title": "D.1 Matrices and matrix operations",
    "printed_page": 1216,
    "pdf_page": 1237,
-   "text": "0 u 22 ::: u 2n"
+   "text": "0 u 22 … u 2n"
   },
   {
    "type": "body",
@@ -406,7 +379,7 @@
    "section_title": "D.1 Matrices and matrix operations",
    "printed_page": 1216,
    "pdf_page": 1237,
-   "text": "0 0 ::: u nn"
+   "text": "0 0 … u nn"
   },
   {
    "type": "body",
@@ -550,7 +523,7 @@
    "section_title": "D.1 Matrices and matrix operations",
    "printed_page": 1217,
    "pdf_page": 1238,
-   "text": "We define matrix addition as follows. If A = (a ij ) and B = (b ij ) are m × n matrices, then their matrix sum + = (c ij ) = A + B is the m × n matrix defined by c ij = a ij + b ij for i = 1;2;:::;m and j = 1;2;:::;n . That is, matrix addition is performed componentwise. A zero matrix is the identity for matrix addition:"
+   "text": "We define matrix addition as follows. If A = (a ij ) and B = (b ij ) are m × n matrices, then their matrix sum + = (c ij ) = A + B is the m × n matrix defined by c ij = a ij + b ij for i = 1,2,…,m and j = 1,2,…,n . That is, matrix addition is performed componentwise. A zero matrix is the identity for matrix addition:"
   },
   {
    "type": "body",
@@ -595,7 +568,7 @@
    "section_title": "D.1 Matrices and matrix operations",
    "printed_page": 1218,
    "pdf_page": 1239,
-   "text": "We define matrix multiplication as follows. Start with two matrices A and B that are compatible in the sense that the number of columns of A equals the number of rows of B . (In general, an expression containing a matrix product AB is always assumed to imply that matrices A and B are compatible.) If A = (a i k ) is a p × q matrix and B = (b kj ) is a q × r matrix, then their matrix product CDAB is the p × r matrix C = (c ij ), where c ij = q X kD1 a i k b kj (D.2) for i = 1;2;:::;m and j = 1;2;:::;p . The procedure RECTANGULAR-MATRIX-MULTIPLY on page 374 implements matrix multiplication in the straightforward manner based on equation (D.2), assuming that C is initialized to 0, using pqr multiplications and p(q − 1)r additions for a running time of Θ(pqr) . If the matrices are n×n square matrices, so that n = √D q = r , the pseudocode reduces to MATRIX-MULTIPLY on page 81, whose running time is Θ(n 3 ). (Section 4.2 describes an asymptotically faster Θ(n lg 7 )-time algorithm due to V. Strassen.)"
+   "text": "We define matrix multiplication as follows. Start with two matrices A and B that are compatible in the sense that the number of columns of A equals the number of rows of B . (In general, an expression containing a matrix product AB is always assumed to imply that matrices A and B are compatible.) If A = (a i k ) is a p × q matrix and B = (b kj ) is a q × r matrix, then their matrix product CDAB is the p × r matrix C = (c ij ), where c ij = q X kD1 a i k b kj (D.2) for i = 1,2,…,m and j = 1,2,…,p . The procedure RECTANGULAR-MATRIX-MULTIPLY on page 374 implements matrix multiplication in the straightforward manner based on equation (D.2), assuming that C is initialized to 0, using pqr multiplications and p(q − 1)r additions for a running time of Θ(pqr) . If the matrices are n×n square matrices, so that n = √D q = r , the pseudocode reduces to MATRIX-MULTIPLY on page 81, whose running time is Θ(n 3 ). (Section 4.2 describes an asymptotically faster Θ(n lg 7 )-time algorithm due to V. Strassen.)"
   },
   {
    "type": "body",
@@ -658,7 +631,7 @@
    "section_title": "D.1 Matrices and matrix operations",
    "printed_page": 1218,
    "pdf_page": 1239,
-   "text": "A(B + C) DAB C AC ; (B + C)D DBD C CD:"
+   "text": "A(B + C) DAB C AC ; (B + C)D DBD C + D:"
   },
   {
    "type": "body",
@@ -712,7 +685,7 @@
    "section_title": "D.2 Basic matrix properties",
    "printed_page": 1219,
    "pdf_page": 1240,
-   "text": "We also use the notation hx;y i to denote x T y . The inner-product operator is commutative: hx;y i = hy;x i. The matrix xy T is an n × n matrix Z called the outer product of x and y , where ´ ij = x i y j . The (euclidean) norm kx k of an n-vector x is defined by kx k = (x 2"
+   "text": "We also use the notation ⟨x,y⟩ to denote x T y . The inner-product operator is commutative: ⟨x,y⟩ = ⟨y,x⟩. The matrix xy T is an n × n matrix Z called the outer product of x and y , where ´ ij = x i y j . The (euclidean) norm kx k of an n-vector x is defined by kx k = (x 2"
   },
   {
    "type": "body",
@@ -901,7 +874,7 @@
    "section_title": "D.2 Basic matrix properties",
    "printed_page": 1220,
    "pdf_page": 1241,
-   "text": "The vectors x 1 ;x 2 ;:::;x n are linearly dependent if there exist coefficients c 1 ;c 2 ;:::;c n , not all of which are 0, such that c 1 x 1 + c 2 x 2 + • • • + c n x n = 0. The row vectors x 1 = .1 2 3/ , x 2 = .2 6 4/ , and x 3 = .4 11 9/ are linearly dependent, for example, since 2x 1 C3x 2 −2x 3 = 0. If vectors are not linearly dependent, they are linearly independent. For example, the columns of an identity matrix are linearly independent."
+   "text": "The vectors x 1 ,x 2 ,…,x n are linearly dependent if there exist coefficients c 1 ,c 2 ,…,c n , not all of which are 0, such that c 1 x 1 + c 2 x 2 + • • • + c n x n = 0. The row vectors x 1 = .1 2 3/ , x 2 = .2 6 4/ , and x 3 = .4 11 9/ are linearly dependent, for example, since 2x 1 + 3x 2 −2x 3 = 0. If vectors are not linearly dependent, they are linearly independent. For example, the columns of an identity matrix are linearly independent."
   },
   {
    "type": "body",
@@ -910,7 +883,7 @@
    "section_title": "D.2 Basic matrix properties",
    "printed_page": 1220,
    "pdf_page": 1241,
-   "text": "The column rank of a nonzero m × n matrix A is the size of the largest set of linearly independent columns of A. Similarly, the row rank of A is the size of the largest set of linearly independent rows of A. A fundamental property of any matrix A is that its row rank always equals its column rank, so that we can simply refer to the rank of A. The rank of an m × n matrix is an integer between 0 and min fm;n g, inclusive. (The rank of a zero matrix is 0, and the rank of an n × n identity matrix is n.) An alternate, but equivalent and often more useful, definition is that the rank of a nonzero m × n matrix A is the smallest number r such that there exist matrices B and C of respective sizes m × r and r × n such that ADBC ."
+   "text": "The column rank of a nonzero m × n matrix A is the size of the largest set of linearly independent columns of A. Similarly, the row rank of A is the size of the largest set of linearly independent rows of A. A fundamental property of any matrix A is that its row rank always equals its column rank, so that we can simply refer to the rank of A. The rank of an m × n matrix is an integer between 0 and min fm,n g, inclusive. (The rank of a zero matrix is 0, and the rank of an n × n identity matrix is n.) An alternate, but equivalent and often more useful, definition is that the rank of a nonzero m × n matrix A is the smallest number r such that there exist matrices B and C of respective sizes m × r and r × n such that ADBC ."
   },
   {
    "type": "body",
@@ -1045,7 +1018,7 @@
    "section_title": "D.2 Basic matrix properties",
    "printed_page": 1221,
    "pdf_page": 1242,
-   "text": ".−1/ 1Cj a 1 j det(A [1 j Ł ) if n>1:"
+   "text": ".−1/ 1 + j a 1 j det(A [1 j Ł ) if n>1:"
   },
   {
    "type": "body",
@@ -1054,7 +1027,7 @@
    "section_title": "D.2 Basic matrix properties",
    "printed_page": 1221,
    "pdf_page": 1242,
-   "text": "The term .−1/ i Cj det(A [ij Ł ) is known as the cofactor of the element a ij ."
+   "text": "The term .−1/ i + j det(A [ij Ł ) is known as the cofactor of the element a ij ."
   },
   {
    "type": "body",
@@ -1360,7 +1333,7 @@
    "section_title": "D.2 Basic matrix properties",
    "printed_page": 1223,
    "pdf_page": 1244,
-   "text": "Given numbers x 0 ;x 1 ;:::;x n−1 , prove that the determinant of the V andermonde matrix"
+   "text": "Given numbers x 0 ,x 1 ,…,x n−1 , prove that the determinant of the V andermonde matrix"
   },
   {
    "type": "body",
@@ -1378,7 +1351,7 @@
    "section_title": "D.2 Basic matrix properties",
    "printed_page": 1224,
    "pdf_page": 1245,
-   "text": "V(x 0 ;x 1 ;:::;x n−1 ) ="
+   "text": "V(x 0 ,x 1 ,…,x n−1 ) ="
   },
   {
    "type": "body",
@@ -1441,7 +1414,7 @@
    "section_title": "D.2 Basic matrix properties",
    "printed_page": 1224,
    "pdf_page": 1245,
-   "text": "× is det(V(x 0 ;x 1 ;:::;x n−1 )) ="
+   "text": "× is det(V(x 0 ,x 1 ,…,x n−1 )) ="
   },
   {
    "type": "body",
@@ -1468,7 +1441,7 @@
    "section_title": "D.2 Basic matrix properties",
    "printed_page": 1224,
    "pdf_page": 1245,
-   "text": "(Hint: Multiply column i by −x 0 and add it to column i + 1 for i = n − 1; n − 2;:::;1 , and then use induction.)"
+   "text": "(Hint: Multiply column i by −x 0 and add it to column i + 1 for i = n − 1; n − 2,…,1 , and then use induction.)"
   },
   {
    "type": "body",
@@ -1486,7 +1459,7 @@
    "section_title": "D.2 Basic matrix properties",
    "printed_page": 1224,
    "pdf_page": 1245,
-   "text": "One class of permutations of the integers in the set S n = f0;1;2;:::;2 n − 1g is defined by matrix multiplication over GF(2), the Galois field of two elements. For each integer x 2 S n , we view its binary representation as an n-bit vector â x 0 x 1 x 2"
+   "text": "One class of permutations of the integers in the set S n = f0,1,2,…,2 n − 1g is defined by matrix multiplication over GF(2), the Galois field of two elements. For each integer x 2 S n , we view its binary representation as an n-bit vector â x 0 x 1 x 2"
   },
   {
    "type": "body",
@@ -1522,7 +1495,7 @@
    "section_title": "D.2 Basic matrix properties",
    "printed_page": 1224,
    "pdf_page": 1245,
-   "text": "As an example, for S 2 = f0;1;2;3 g, the matrix"
+   "text": "As an example, for S 2 = f0,1,2,3 g, the matrix"
   },
   {
    "type": "body",
@@ -1540,7 +1513,7 @@
    "section_title": "D.2 Basic matrix properties",
    "printed_page": 1224,
    "pdf_page": 1245,
-   "text": "; we get the following permutation ] A;c : ] A;c .0/ = 2, Ω A;c .1/ = 1, Ω A;c .2/ = 0, Ω A;c .3/ = 3. We call any permutation that maps x 2 S n to Ax + c , for some n × n"
+   "text": "; we get the following permutation ] A,c : ] A,c .0/ = 2, Ω A,c .1/ = 1, Ω A,c .2/ = 0, Ω A,c .3/ = 3. We call any permutation that maps x 2 S n to Ax + c , for some n × n"
   },
   {
    "type": "body",
@@ -1594,7 +1567,7 @@
    "section_title": "D.2 Basic matrix properties",
    "printed_page": 1225,
    "pdf_page": 1246,
-   "text": "For a given n × n matrix A and a given value y 2 R(A), we define the preimage of y by P(A;y) = fx W Ax = y g ; so that P(A;y) is the set of values in S n that map to y when multiplied by A. b. If r is the rank of n × n matrix A and y 2 R(A), prove that jP(A;y) j = 2 n−r ."
+   "text": "For a given n × n matrix A and a given value y 2 R(A), we define the preimage of y by P(A,y) = fx W Ax = y g ; so that P(A,y) is the set of values in S n that map to y when multiplied by A. b. If r is the rank of n × n matrix A and y 2 R(A), prove that jP(A,y) j = 2 n−r ."
   },
   {
    "type": "body",
@@ -1603,7 +1576,7 @@
    "section_title": "D.2 Basic matrix properties",
    "printed_page": 1225,
    "pdf_page": 1246,
-   "text": "Let 0 ≤ m ≤ n, and suppose that we partition the set S n into blocks of consecutive numbers, where the i th block consists of the 2 m numbers i2 m ;i2 m + 1; i2 m + 2;:::;.i + 1/2 m − 1. For any subset S ⊆ S n , define B(S;m) to be the set of size-2 m blocks of S n containing some element of S . As an example, when n = 3, m = 1, and S = f1;4;5 g, then B(S;m) consists of blocks 0 (since 1 is in the 0th block) and 2 (since both 4 and 5 belong to block 2). c. Let r be the rank of the lower left (n − m) × m submatrix of A, that is, the matrix formed by taking the intersection of the bot tom n − m rows and the leftmost m columns of A. Let S be any size-2 m block of S n , and let S 0 = fy W y = Ax for some x 2 S g. Prove that jB(S 0 ;m) j = 2 r and that for each block in B(S 0 ;m) , exactly 2 m−r numbers in S map to that block."
+   "text": "Let 0 ≤ m ≤ n, and suppose that we partition the set S n into blocks of consecutive numbers, where the i th block consists of the 2 m numbers i2 m ,i2 m + 1; i2 m + 2,…,.i + 1/2 m − 1. For any subset S ⊆ S n , define B(S,m) to be the set of size-2 m blocks of S n containing some element of S . As an example, when n = 3, m = 1, and S = f1,4,5 g, then B(S,m) consists of blocks 0 (since 1 is in the 0th block) and 2 (since both 4 and 5 belong to block 2). c. Let r be the rank of the lower left (n − m) × m submatrix of A, that is, the matrix formed by taking the intersection of the bot tom n − m rows and the leftmost m columns of A. Let S be any size-2 m block of S n , and let S 0 = fy W y = Ax for some x 2 S g. Prove that jB(S 0 ,m) j = 2 r and that for each block in B(S 0 ,m) , exactly 2 m−r numbers in S map to that block."
   },
   {
    "type": "body",
@@ -1855,7 +1828,7 @@
    "section_title": "D.2 Basic matrix properties",
    "printed_page": 1228,
    "pdf_page": 1249,
-   "text": "[16] Arne Andersson. Balanced search trees made simple. In Proceedings of the Third W orkshop on Algorithms and Data Structures, volume 709 of Lecture Notes in Computer Science, pages 60371. Springer, 1993."
+   "text": "[16] Arne Andersson. Balanced search trees made simple. In Proceedings of the Third W orkshop on Algorithms and Data Structures, volume 709 of Lecture Notes in Computer Science, pages 60–71. Springer, 1993."
   },
   {
    "type": "body",
@@ -2107,7 +2080,7 @@
    "section_title": "D.2 Basic matrix properties",
    "printed_page": 1229,
    "pdf_page": 1250,
-   "text": "[36] Hannah Bast, Daniel Delling, Andrew V. Goldberg, Matthias M¨ uller-Hannemann, Thomas Pajor, Peter Sanders, Dorothea Wagner, and Renato F . Werneck. Route planning in transportation networks. In Algorithm Engineering - Selected Results and Surveys, volume 9220 of Lecture Notes in Computer Science, pages 19380. Springer, 2016."
+   "text": "[36] Hannah Bast, Daniel Delling, Andrew V. Goldberg, Matthias M¨ uller-Hannemann, Thomas Pajor, Peter Sanders, Dorothea Wagner, and Renato F . Werneck. Route planning in transportation networks. In Algorithm Engineering - Selected Results and Surveys, volume 9220 of Lecture Notes in Computer Science, pages 19–80. Springer, 2016."
   },
   {
    "type": "body",
@@ -2134,7 +2107,7 @@
    "section_title": "D.2 Basic matrix properties",
    "printed_page": 1229,
    "pdf_page": 1250,
-   "text": "[39] R. Bayer and E. M. McCreight. Organization and maintenance of large ordered indexes."
+   "text": "[39] R. Bayer and E. M. Mc + reight. Organization and maintenance of large ordered indexes."
   },
   {
    "type": "body",
@@ -2206,7 +2179,7 @@
    "section_title": "D.2 Basic matrix properties",
    "printed_page": 1229,
    "pdf_page": 1250,
-   "text": "[43] Mihir Bellare and Phillip Rogaway. Random oracles are practical: A paradigm for designing efficient protocols. In CCS ’93, Proceedings of the 1st ACM Conference on Computer and Communications Security, pages 62373, 1993."
+   "text": "[43] Mihir Bellare and Phillip Rogaway. Random oracles are practical: A paradigm for designing efficient protocols. In CCS ’93, Proceedings of the 1st ACM Conference on Computer and Communications Security, pages 62–73, 1993."
   },
   {
    "type": "body",
@@ -2233,7 +2206,7 @@
    "section_title": "D.2 Basic matrix properties",
    "printed_page": 1229,
    "pdf_page": 1250,
-   "text": "[46] Michael Ben-Or. Lower bounds for algebraic computation trees. In Proceedings of the Fifteenth Annual ACM Symposium on Theory of Computing, pages 80386, 1983."
+   "text": "[46] Michael Ben-Or. Lower bounds for algebraic computation trees. In Proceedings of the Fifteenth Annual ACM Symposium on Theory of Computing, pages 80–86, 1983."
   },
   {
    "type": "body",
@@ -2260,7 +2233,7 @@
    "section_title": "D.2 Basic matrix properties",
    "printed_page": 1229,
    "pdf_page": 1250,
-   "text": "[48] Samuel W. Bent and John W. John. Finding the median requires 2n comparisons. In Proceedings of the Seventeenth Annual ACM Symposium on Theory of Computing, pages 2133"
+   "text": "[48] Samuel W. Bent and John W. John. Finding the median requires 2n comparisons. In Proceedings of the Seventeenth Annual ACM Symposium on Theory of Computing, pages 21–3"
   },
   {
    "type": "body",
@@ -2341,7 +2314,7 @@
    "section_title": "D.2 Basic matrix properties",
    "printed_page": 1230,
    "pdf_page": 1251,
-   "text": "[55] Daniel Bienstock and Benjamin McClosky. Tightening simplex mixed-integer sets with guaranteed bounds. Optimization Online, 2008."
+   "text": "[55] Daniel Bienstock and Benjamin Mc + losky. Tightening simplex mixed-integer sets with guaranteed bounds. Optimization Online, 2008."
   },
   {
    "type": "body",
@@ -2647,7 +2620,7 @@
    "section_title": "D.2 Basic matrix properties",
    "printed_page": 1231,
    "pdf_page": 1252,
-   "text": "Field Sieve, volume 1554 of Lecture Notes in Mathematics, pages 50394. Springer, 1993."
+   "text": "Field Sieve, volume 1554 of Lecture Notes in Mathematics, pages 50–94. Springer, 1993."
   },
   {
    "type": "body",
@@ -2908,7 +2881,7 @@
    "section_title": "D.2 Basic matrix properties",
    "printed_page": 1232,
    "pdf_page": 1253,
-   "text": "[96] Alan Cobham. The intrinsic computational difficulty of functions. In Proceedings of the 1964 Congress for Logic, Methodology, and the Philosophy of Science, pages 24330. North- Holland, 1964."
+   "text": "[96] Alan Cobham. The intrinsic computational difficulty of functions. In Proceedings of the 1964 Congress for Logic, Methodology, and the Philosophy of Science, pages 243–0. North- Holland, 1964."
   },
   {
    "type": "body",
@@ -3043,7 +3016,7 @@
    "section_title": "D.2 Basic matrix properties",
    "printed_page": 1232,
    "pdf_page": 1253,
-   "text": "In H. J. van den Herik and B. Monien, editors, Advances in Computer Games, volume 9, pages 25352. University of Maastricht, Netherlands, 2001."
+   "text": "In H. J. van den Herik and B. Monien, editors, Advances in Computer Games, volume 9, pages 25–52. University of Maastricht, Netherlands, 2001."
   },
   {
    "type": "body",
@@ -3430,7 +3403,7 @@
    "section_title": "D.2 Basic matrix properties",
    "printed_page": 1234,
    "pdf_page": 1255,
-   "text": "[140] Mingdong Feng and Charles E. Leiserson. Efficient detection of determinacy races in Cilk programs. In Proceedings of the 9th Annual ACM Symposium on Parallel Algorithms and Architectures, pages 1311, 1997."
+   "text": "[140] Mingdong Feng and Charles E. Leiserson. Efficient detection of determinacy races in Cilk programs. In Proceedings of the 9th Annual ACM Symposium on Parallel Algorithms and Architectures, pages 1–11, 1997."
   },
   {
    "type": "body",
@@ -3664,7 +3637,7 @@
    "section_title": "D.2 Basic matrix properties",
    "printed_page": 1235,
    "pdf_page": 1256,
-   "text": "Parallelism in Algorithms and Architectures, pages 79390, 2009."
+   "text": "Parallelism in Algorithms and Architectures, pages 79–90, 2009."
   },
   {
    "type": "body",
@@ -4276,7 +4249,7 @@
    "section_title": "D.2 Basic matrix properties",
    "printed_page": 1237,
    "pdf_page": 1258,
-   "text": "1853 of Lecture Notes in Computer Science, pages 61372. Springer, 2000."
+   "text": "1853 of Lecture Notes in Computer Science, pages 61–72. Springer, 2000."
   },
   {
    "type": "body",
@@ -5419,7 +5392,7 @@
    "section_title": "D.2 Basic matrix properties",
    "printed_page": 1242,
    "pdf_page": 1263,
-   "text": "In A. K. Lenstra and H. W. Lenstra, Jr., editors, The Development of the Number Field Sieve, volume 1554 of Lecture Notes in Mathematics, pages 11342. Springer, 1993."
+   "text": "In A. K. Lenstra and H. W. Lenstra, Jr., editors, The Development of the Number Field Sieve, volume 1554 of Lecture Notes in Mathematics, pages 11–42. Springer, 1993."
   },
   {
    "type": "body",
@@ -6274,7 +6247,7 @@
    "section_title": "D.2 Basic matrix properties",
    "printed_page": 1245,
    "pdf_page": 1266,
-   "text": "[360] J. M. Pollard. Factoring with cubic integers. In A. K. Lenstra and H. W. Lenstra, Jr., editors, The Development of the Number Field Sieve, volume 1554 of Lecture Notes in Mathematics, pages 4310. Springer, 1993."
+   "text": "[360] J. M. Pollard. Factoring with cubic integers. In A. K. Lenstra and H. W. Lenstra, Jr., editors, The Development of the Number Field Sieve, volume 1554 of Lecture Notes in Mathematics, pages 4–10. Springer, 1993."
   },
   {
    "type": "body",
@@ -6418,7 +6391,7 @@
    "section_title": "D.2 Basic matrix properties",
    "printed_page": 1246,
    "pdf_page": 1267,
-   "text": "[372] Michael O. Rabin. Probabilistic algorithms. In J. F. Traub, editor, Algorithms and Complexity: New Directions and Recent Results, pages 21339. Academic Press, 1976."
+   "text": "[372] Michael O. Rabin. Probabilistic algorithms. In J. F. Traub, editor, Algorithms and Complexity: New Directions and Recent Results, pages 213–9. Academic Press, 1976."
   },
   {
    "type": "body",
@@ -6490,7 +6463,7 @@
    "section_title": "D.2 Basic matrix properties",
    "printed_page": 1246,
    "pdf_page": 1267,
-   "text": "[379] Ronald L. Rivest, M. J. B. Robshaw, R. Sidney, and Y. L. Yin. The RC6 block cipher. In"
+   "text": "[379] Ronald L. Rivest, M. J. B. Robshaw, R. Sidney, and Y. L. Yin. The R + 6 block cipher. In"
   },
   {
    "type": "body",
@@ -7543,7 +7516,7 @@
    "section_title": "D.2 Basic matrix properties",
    "printed_page": 1250,
    "pdf_page": 1271,
-   "text": "2011, volume 6648 of Lecture Notes in Computer Science, pages 14326. Springer, 2011."
+   "text": "2011, volume 6648 of Lecture Notes in Computer Science, pages 14–26. Springer, 2011."
   },
   {
    "type": "body",
@@ -9451,7 +9424,7 @@
    "section_title": "D.2 Basic matrix properties",
    "printed_page": 1263,
    "pdf_page": 1284,
-   "text": "Edmonds-Karp algorithm, 6893691 elementary event, 1185 elementary insertion, 461 element of a set (2), 1153 ellipsoid algorithm, 857 elliptic-curve factorization method, 956 elseif, in pseudocode, 22 n. else, in pseudocode, 22 empty language (;), 1052 empty set (;), 1153 empty set laws, 1154 empty stack, 255 empty string (\"), 959, 1052 empty tree, 1173 encoding of problem instances, 104931052 encryption, 936 endpoint of an interval, 489"
+   "text": "Edmonds-Karp algorithm, 6893691 elementary event, 1185 elementary insertion, 461 element of a set (2), 1153 ellipsoid algorithm, 857 elliptic-curve factorization method, 956 elseif, in pseudocode, 22 n. else, in pseudocode, 22 empty language (,), 1052 empty set (,), 1153 empty set laws, 1154 empty stack, 255 empty string (\"), 959, 1052 empty tree, 1173 encoding of problem instances, 104931052 encryption, 936 endpoint of an interval, 489"
   },
   {
    "type": "body",
@@ -12313,7 +12286,7 @@
    "section_title": "D.2 Basic matrix properties",
    "printed_page": 1282,
    "pdf_page": 1303,
-   "text": "RC6, 304 reachability in a graph (g), 1165 real numbers (R), 1153 reconstructing an optimal solution, in dynamic programming, 390 record, 17, 157 rectangle, 495 ex."
+   "text": "R + 6, 304 reachability in a graph (g), 1165 real numbers (R), 1153 reconstructing an optimal solution, in dynamic programming, 390 record, 17, 157 rectangle, 495 ex."
   },
   {
    "type": "body",

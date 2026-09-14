@@ -705,8 +705,11 @@
     "Ω": 1308,
     "Θ": 1074,
     "’": 1658,
-    "—": 298,
-    "–": 343,
+    "—": 295,
+    "–": 697,
+    "⟨": 224,
+    "…": 1054,
+    "⟩": 224,
     "≤": 1242,
     "−": 4694,
     "√": 418,
@@ -714,9 +717,8 @@
     "♥": 38,
     "≠": 231,
     "≥": 551,
-    "⌊": 124,
-    "⌋": 116,
-    "…": 159,
+    "⌊": 126,
+    "⌋": 118,
     "⌈": 55,
     "⌉": 55,
     "ã": 115,
@@ -815,10 +817,22 @@
       "note": "U+0398 already-correct Theta (a few pages had a valid ToUnicode)."
     },
     {
+      "glyph": "…",
+      "codepoint": "U+2026",
+      "count": 1054,
+      "note": "U+2026 ellipsis — correct, kept."
+    },
+    {
       "glyph": "´",
       "codepoint": "U+00B4",
       "count": 779,
       "note": "U+00B4 acute accent — math/diacritic, left as-is (legit Unicode)."
+    },
+    {
+      "glyph": "–",
+      "codepoint": "U+2013",
+      "count": 697,
+      "note": "U+2013 en dash — correct, kept."
     },
     {
       "glyph": "≥",
@@ -831,12 +845,6 @@
       "codepoint": "U+221A",
       "count": 418,
       "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
-    },
-    {
-      "glyph": "–",
-      "codepoint": "U+2013",
-      "count": 343,
-      "note": "U+2013 en dash — correct, kept."
     },
     {
       "glyph": "×",
@@ -853,7 +861,7 @@
     {
       "glyph": "—",
       "codepoint": "U+2014",
-      "count": 298,
+      "count": 295,
       "note": "U+2014 em dash — correct, kept."
     },
     {
@@ -863,16 +871,22 @@
       "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
     },
     {
+      "glyph": "⟨",
+      "codepoint": "U+27E8",
+      "count": 224,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "⟩",
+      "codepoint": "U+27E9",
+      "count": 224,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
       "glyph": "ˆ",
       "codepoint": "U+02C6",
       "count": 185,
       "note": "U+02C6 circumflex — diacritic, left as-is."
-    },
-    {
-      "glyph": "…",
-      "codepoint": "U+2026",
-      "count": 159,
-      "note": "U+2026 ellipsis — correct, kept."
     },
     {
       "glyph": "ˇ",
@@ -889,13 +903,13 @@
     {
       "glyph": "⌊",
       "codepoint": "U+230A",
-      "count": 124,
+      "count": 126,
       "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
     },
     {
       "glyph": "⌋",
       "codepoint": "U+230B",
-      "count": 116,
+      "count": 118,
       "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
     },
     {

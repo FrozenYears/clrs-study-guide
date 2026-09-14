@@ -111,7 +111,7 @@
    "section_title": "18.1 Definition of B-trees",
    "printed_page": 502,
    "pdf_page": 523,
-   "text": "1. Every node x has the following attributes: a. x:n , the number of keys currently stored in node x , b. the x:n keys themselves, x: key 1 ;x: key 2 ;:::;x: key x: n , stored in monotonically increasing order, so that x: key 1 ≤ x: key 2 ≤ • • • ≤ x: key x: n , c. x: leaf , a boolean value that is TRUE if x is a leaf and FALSE if x is an internal node."
+   "text": "1. Every node x has the following attributes: a. x:n , the number of keys currently stored in node x , b. the x:n keys themselves, x: key 1 ,x: key 2 ,…,x: key x: n , stored in monotonically increasing order, so that x: key 1 ≤ x: key 2 ≤ • • • ≤ x: key x: n , c. x: leaf , a boolean value that is TRUE if x is a leaf and FALSE if x is an internal node."
   },
   {
    "type": "body",
@@ -120,7 +120,7 @@
    "section_title": "18.1 Definition of B-trees",
    "printed_page": 502,
    "pdf_page": 523,
-   "text": "2. Each internal node x also contains x:n + 1 pointers x:c 1 ;x:c 2 ;:::;x:c x: nC1 to its children. Leaf nodes have no children, and so their c i attributes are undefined."
+   "text": "2. Each internal node x also contains x:n + 1 pointers x:c 1 ,x:c 2 ,…,x:c x: n + 1 to its children. Leaf nodes have no children, and so their c i attributes are undefined."
   },
   {
    "type": "body",
@@ -129,7 +129,7 @@
    "section_title": "18.1 Definition of B-trees",
    "printed_page": 502,
    "pdf_page": 523,
-   "text": "3. The keys x: key i separate the ranges of keys stored in each subtree: if k i is any key stored in the subtree with root x:c i , then k 1 ≤ x: key 1 ≤ k 2 ≤ x: key 2 ≤ • • • ≤ x: key x: n ≤ k x: nC1 :"
+   "text": "3. The keys x: key i separate the ranges of keys stored in each subtree: if k i is any key stored in the subtree with root x:c i , then k 1 ≤ x: key 1 ≤ k 2 ≤ x: key 2 ≤ • • • ≤ x: key x: n ≤ k x: n + 1 :"
   },
   {
    "type": "body",
@@ -318,7 +318,7 @@
    "section_title": "18.1 Definition of B-trees",
    "printed_page": 504,
    "pdf_page": 525,
-   "text": "18.1-3 Show all legal B-trees of minimum degree 2 that store the keys 1;2;3;4;5 ."
+   "text": "18.1-3 Show all legal B-trees of minimum degree 2 that store the keys 1,2,3,4,5 ."
   },
   {
    "type": "exercise",
@@ -420,7 +420,7 @@
     },
     {
      "n": 5,
-     "code": "return (x;i)"
+     "code": "return (x,i)"
     },
     {
      "n": 6,
@@ -436,10 +436,10 @@
     },
     {
      "n": 9,
-     "code": "return B-TREE-SEARCH (x:c  i ;k)"
+     "code": "return B-TREE-SEARCH (x:c  i ,k)"
     }
    ],
-   "text": "1 i = 1\n2 while i ≤ x:n  and k>x:  key i\n3 i = i + 1\n4 if i ≤ x:n  and k = = x: key i\n5 return (x;i)\n6 elseif x: leaf\n7 return NIL\n8 else DISK-READ (x:c  i )\n9 return B-TREE-SEARCH (x:c  i ;k)"
+   "text": "1 i = 1\n2 while i ≤ x:n  and k>x:  key i\n3 i = i + 1\n4 if i ≤ x:n  and k = = x: key i\n5 return (x,i)\n6 elseif x: leaf\n7 return NIL\n8 else DISK-READ (x:c  i )\n9 return B-TREE-SEARCH (x:c  i ,k)"
   },
   {
    "type": "body",
@@ -448,7 +448,7 @@
    "section_title": "18.2 Basic operations on B-trees",
    "printed_page": 505,
    "pdf_page": 526,
-   "text": "The procedure B-TREE-SEARCH generalizes the TREE-SEARCH procedure defined for binary search trees on page 316. It takes as input a pointer to the root node x of a subtree and a key k to be searched for in that subtree. The top-level call is thus of the form B-TREE-SEARCH (T: root ;k) . If k is in the B-tree, then"
+   "text": "The procedure B-TREE-SEARCH generalizes the TREE-SEARCH procedure defined for binary search trees on page 316. It takes as input a pointer to the root node x of a subtree and a key k to be searched for in that subtree. The top-level call is thus of the form B-TREE-SEARCH (T: root ,k) . If k is in the B-tree, then"
   },
   {
    "type": "body",
@@ -457,7 +457,7 @@
    "section_title": "18.2 Basic operations on B-trees",
    "printed_page": 505,
    "pdf_page": 526,
-   "text": "B-TREE-SEARCH returns the ordered pair (y;i) consisting of a node y and an index i such that y: key i = k. Otherwise, the procedure returns NIL."
+   "text": "B-TREE-SEARCH returns the ordered pair (y,i) consisting of a node y and an index i such that y: key i = k. Otherwise, the procedure returns NIL."
   },
   {
    "type": "body",
@@ -466,7 +466,7 @@
    "section_title": "18.2 Basic operations on B-trees",
    "printed_page": 505,
    "pdf_page": 526,
-   "text": "B-TREE-SEARCH (x;k)"
+   "text": "B-TREE-SEARCH (x,k)"
   },
   {
    "type": "body",
@@ -475,7 +475,7 @@
    "section_title": "18.2 Basic operations on B-trees",
    "printed_page": 505,
    "pdf_page": 526,
-   "text": "Using a linear-search procedure, lines 133 of B-TREE-SEARCH find the smallest index i such that k ≤ x: key i , or else they set i to x:n + 1. Lines 435 check to see whether the search has discovered the key, returning if it has. Otherwise, if x is a leaf, then line 7 terminates the search unsuccessfully, and if x is an internal node, lines 839 recurse to search the appropriate subtree of x , after performing the necessary DISK-READ on that child. Figure 18.1 illustrates the operation of B-TREE-SEARCH . The blue nodes are those examined during a search for the key R."
+   "text": "Using a linear-search procedure, lines 1–3 of B-TREE-SEARCH find the smallest index i such that k ≤ x: key i , or else they set i to x:n + 1. Lines 4–5 check to see whether the search has discovered the key, returning if it has. Otherwise, if x is a leaf, then line 7 terminates the search unsuccessfully, and if x is an internal node, lines 8–9 recurse to search the appropriate subtree of x , after performing the necessary DISK-READ on that child. Figure 18.1 illustrates the operation of B-TREE-SEARCH . The blue nodes are those examined during a search for the key R."
   },
   {
    "type": "body",
@@ -493,7 +493,7 @@
    "section_title": "18.2 Basic operations on B-trees",
    "printed_page": 505,
    "pdf_page": 526,
-   "text": "Since x:n<2t , the while loop of lines 233 takes O(t) time within each node, and"
+   "text": "Since x:n<2t , the while loop of lines 2–3 takes O(t) time within each node, and"
   },
   {
    "type": "body",
@@ -668,7 +668,7 @@
     },
     {
      "n": 6,
-     "code": "´: key j = y: key j Ct"
+     "code": "´: key j = y: key j + t"
     },
     {
      "n": 7,
@@ -680,7 +680,7 @@
     },
     {
      "n": 9,
-     "code": "´:c j = y:c  j Ct"
+     "code": "´:c j = y:c  j + t"
     },
     {
      "n": 10,
@@ -692,11 +692,11 @@
     },
     {
      "n": 12,
-     "code": "x:c  j C1 = x:c  j"
+     "code": "x:c  j + 1 = x:c  j"
     },
     {
      "n": 13,
-     "code": "x:c  i C1 = ´ / / . . . to make room for ´ as a child"
+     "code": "x:c  i + 1 = ´ / / . . . to make room for ´ as a child"
     },
     {
      "n": 14,
@@ -704,7 +704,7 @@
     },
     {
      "n": 15,
-     "code": "x: key j C1 = x: key j"
+     "code": "x: key j + 1 = x: key j"
     },
     {
      "n": 16,
@@ -727,7 +727,7 @@
      "code": "DISK-WRITE (x)"
     }
    ],
-   "text": "1 y = x:c  i / / full node to split\n2 ´ DALLOCATE-NODE  ./ / / ´ will take half of y\n3 ´: leaf = y: leaf\n4 ´: n = t − 1\n5 for j = 1 to t − 1 / / ´ gets y ’s greatest keys . . .\n6 ´: key j = y: key j Ct\n7 if not y: leaf\n8 for j = 1 to t / / . . . and its corresponding children\n9 ´:c j = y:c  j Ct\n10 y: n = t − 1 / / y keeps t − 1 keys\n11 for j = x:n + 1 downto i + 1 / / shift x ’s children to the right . . .\n12 x:c  j C1 = x:c  j\n13 x:c  i C1 = ´ / / . . . to make room for ´ as a child\n14 for j = x:n  downto i / / shift the corresponding keys in x\n15 x: key j C1 = x: key j\n16 x: key i = y: key t / / insert y ’s median key\n17 x:n  = x:n + 1 / / x has gained a child\n18 DISK-WRITE (y)\n19 DISK-WRITE .´/\n20 DISK-WRITE (x)"
+   "text": "1 y = x:c  i / / full node to split\n2 ´ DALLOCATE-NODE  ./ / / ´ will take half of y\n3 ´: leaf = y: leaf\n4 ´: n = t − 1\n5 for j = 1 to t − 1 / / ´ gets y ’s greatest keys . . .\n6 ´: key j = y: key j + t\n7 if not y: leaf\n8 for j = 1 to t / / . . . and its corresponding children\n9 ´:c j = y:c  j + t\n10 y: n = t − 1 / / y keeps t − 1 keys\n11 for j = x:n + 1 downto i + 1 / / shift x ’s children to the right . . .\n12 x:c  j + 1 = x:c  j\n13 x:c  i + 1 = ´ / / . . . to make room for ´ as a child\n14 for j = x:n  downto i / / shift the corresponding keys in x\n15 x: key j + 1 = x: key j\n16 x: key i = y: key t / / insert y ’s median key\n17 x:n  = x:n + 1 / / x has gained a child\n18 DISK-WRITE (y)\n19 DISK-WRITE .´/\n20 DISK-WRITE (x)"
   },
   {
    "type": "body",
@@ -736,7 +736,7 @@
    "section_title": "18.2 Basic operations on B-trees",
    "printed_page": 507,
    "pdf_page": 528,
-   "text": "B-TREE-SPLIT-CHILD (x;i)"
+   "text": "B-TREE-SPLIT-CHILD (x,i)"
   },
   {
    "type": "body",
@@ -772,7 +772,7 @@
    "section_title": "18.2 Basic operations on B-trees",
    "printed_page": 507,
    "pdf_page": 528,
-   "text": "Lines 2–9 create node ´ and give it the largest t − 1 keys and, if y and ´ are internal nodes, the corresponding t children of y . Line 10 adjusts the key count for y . Then, lines 11317 shift keys and child pointers in x to the right in order to make room for x ’s new child, insert ´ as a new child of x , move the median key"
+   "text": "Lines 2–9 create node ´ and give it the largest t − 1 keys and, if y and ´ are internal nodes, the corresponding t children of y . Line 10 adjusts the key count for y . Then, lines 11–17 shift keys and child pointers in x to the right in order to make room for x ’s new child, insert ´ as a new child of x , move the median key"
   },
   {
    "type": "pseudocode",
@@ -798,14 +798,14 @@
     },
     {
      "n": 4,
-     "code": "B-TREE-INSERT-NONFULL  (s;k)"
+     "code": "B-TREE-INSERT-NONFULL  (s,k)"
     },
     {
      "n": 5,
-     "code": "else B-TREE-INSERT-NONFULL  (r;k)"
+     "code": "else B-TREE-INSERT-NONFULL  (r,k)"
     }
    ],
-   "text": "1 r = T: root\n2 if r: n = = 2t − 1\n3 s = B-TREE-SPLIT-ROOT (T)\n4 B-TREE-INSERT-NONFULL  (s;k)\n5 else B-TREE-INSERT-NONFULL  (r;k)"
+   "text": "1 r = T: root\n2 if r: n = = 2t − 1\n3 s = B-TREE-SPLIT-ROOT (T)\n4 B-TREE-INSERT-NONFULL  (s,k)\n5 else B-TREE-INSERT-NONFULL  (r,k)"
   },
   {
    "type": "body",
@@ -832,7 +832,7 @@
    "section_title": "18.2 Basic operations on B-trees",
    "printed_page": 508,
    "pdf_page": 529,
-   "text": "T 1 T 1 T 2 T 2 T 3 T 3 T 4 T 4 T 5 T 5 T 6 T 6 T 7 T 7 T 8 T 8 y = x:c i y = x:c i ´ = x:c i C1 x: key i −1 x: key i −1 x: key i x: key i x: key i C1"
+   "text": "T 1 T 1 T 2 T 2 T 3 T 3 T 4 T 4 T 5 T 5 T 6 T 6 T 7 T 7 T 8 T 8 y = x:c i y = x:c i ´ = x:c i + 1 x: key i −1 x: key i −1 x: key i x: key i x: key i + 1"
   },
   {
    "type": "figure-caption",
@@ -841,7 +841,7 @@
    "section_title": "18.2 Basic operations on B-trees",
    "printed_page": 508,
    "pdf_page": 529,
-   "text": "Figure 18.5 Splitting a node with t = 4. Node y = x:c i splits into two nodes, y and ´, and the median key S of y moves up into y’s parent. from y up to x in order to separate y from ´, and adjust x ’s key count. Lines 18320 write out all modified disk blocks. The CPU time used by B-TREE-SPLIT-CHILD is Θ(t), due to the for loops in lines 536 and 839. (The for loops in lines 11312 and 14315 also run for O(t) iterations.) The procedure performs O(1) disk operations."
+   "text": "Figure 18.5 Splitting a node with t = 4. Node y = x:c i splits into two nodes, y and ´, and the median key S of y moves up into y’s parent. from y up to x in order to separate y from ´, and adjust x ’s key count. Lines 18–20 write out all modified disk blocks. The CPU time used by B-TREE-SPLIT-CHILD is Θ(t), due to the for loops in lines 5–6 and 8–9. (The for loops in lines 11–12 and 14315 also run for O(t) iterations.) The procedure performs O(1) disk operations."
   },
   {
    "type": "body",
@@ -877,7 +877,7 @@
    "section_title": "18.2 Basic operations on B-trees",
    "printed_page": 508,
    "pdf_page": 529,
-   "text": "B-TREE-INSERT (T;k)"
+   "text": "B-TREE-INSERT (T,k)"
   },
   {
    "type": "body",
@@ -920,14 +920,14 @@
     },
     {
      "n": 6,
-     "code": "B-TREE-SPLIT-CHILD (s;1)"
+     "code": "B-TREE-SPLIT-CHILD (s,1)"
     },
     {
      "n": 7,
      "code": "return s"
     }
    ],
-   "text": "1 s DALLOCATE-NODE  ./\n2 s: leaf DFALSE\n3 s: n = 0\n4 s:c  1 = T: root\n5 T: root = s\n6 B-TREE-SPLIT-CHILD (s;1)\n7 return s"
+   "text": "1 s DALLOCATE-NODE  ./\n2 s: leaf DFALSE\n3 s: n = 0\n4 s:c  1 = T: root\n5 T: root = s\n6 B-TREE-SPLIT-CHILD (s,1)\n7 return s"
   },
   {
    "type": "body",
@@ -999,7 +999,7 @@
    "section_title": "18.2 Basic operations on B-trees",
    "printed_page": 509,
    "pdf_page": 530,
-   "text": "Figure 18.7 illustrates the various cases of how B-TREE-INSERT-NONFULL in- serts a key into a B-tree. Lines 338 handle the case in which x is a leaf node by inserting key k into x , shifting to the right all keys in x that are greater than k. If x is not a leaf node, then k should go into the appropriate leaf node in the subtree rooted at internal node x . Lines 9311 determine the child x:c i to which the recursion descends. Line 13 detects whether the recursion would descend to a full child, in which case line 14 calls B-TREE-SPLIT-CHILD to split that child into two non- P X M G (a)"
+   "text": "Figure 18.7 illustrates the various cases of how B-TREE-INSERT-NONFULL in- serts a key into a B-tree. Lines 3–8 handle the case in which x is a leaf node by inserting key k into x , shifting to the right all keys in x that are greater than k. If x is not a leaf node, then k should go into the appropriate leaf node in the subtree rooted at internal node x . Lines 9–11 determine the child x:c i to which the recursion descends. Line 13 detects whether the recursion would descend to a full child, in which case line 14 calls B-TREE-SPLIT-CHILD to split that child into two non- P X M G (a)"
   },
   {
    "type": "body",
@@ -1151,7 +1151,7 @@
     },
     {
      "n": 4,
-     "code": "x: key i C1 = x: key i"
+     "code": "x: key i + 1 = x: key i"
     },
     {
      "n": 5,
@@ -1159,7 +1159,7 @@
     },
     {
      "n": 6,
-     "code": "x: key i C1 = k / / insert key k in x"
+     "code": "x: key i + 1 = k / / insert key k in x"
     },
     {
      "n": 7,
@@ -1191,11 +1191,11 @@
     },
     {
      "n": 14,
-     "code": "B-TREE-SPLIT-CHILD (x;i)"
+     "code": "B-TREE-SPLIT-CHILD (x,i)"
     },
     {
      "n": 15,
-     "code": "if k>x:  key i / / does k go into x:c  i or x:c  i C1 ?"
+     "code": "if k>x:  key i / / does k go into x:c  i or x:c  i + 1 ?"
     },
     {
      "n": 16,
@@ -1203,10 +1203,10 @@
     },
     {
      "n": 17,
-     "code": "B-TREE-INSERT-NONFULL  (x:c  i ;k) full children, and lines 15316 determine which of the two children is the correct one to descend to. (Note that DISK-READ(x:c  i ) is not needed after line 16 incre-"
+     "code": "B-TREE-INSERT-NONFULL  (x:c  i ,k) full children, and lines 15–16 determine which of the two children is the correct one to descend to. (Note that DISK-READ(x:c  i ) is not needed after line 16 incre-"
     }
    ],
-   "text": "1 i = x:n\n2 if x: leaf / / inserting into a leaf?\n3 while i ≥ 1 and k<x:  key i / / shift keys in x to make room for k\n4 x: key i C1 = x: key i\n5 i = i − 1\n6 x: key i C1 = k / / insert key k in x\n7 x:n  = x:n + 1 / / now x has 1 more key\n8 DISK-WRITE (x)\n9 else while i ≥ 1 and k<x:  key i / / find the child where k belongs\n10 i = i − 1\n11 i = i + 1\n12 DISK-READ (x:c  i )\n13 if x:c  i :n = = 2t − 1 / / split the child if it’s full\n14 B-TREE-SPLIT-CHILD (x;i)\n15 if k>x:  key i / / does k go into x:c  i or x:c  i C1 ?\n16 i = i + 1\n17 B-TREE-INSERT-NONFULL  (x:c  i ;k) full children, and lines 15316 determine which of the two children is the correct one to descend to. (Note that DISK-READ(x:c  i ) is not needed after line 16 incre-"
+   "text": "1 i = x:n\n2 if x: leaf / / inserting into a leaf?\n3 while i ≥ 1 and k<x:  key i / / shift keys in x to make room for k\n4 x: key i + 1 = x: key i\n5 i = i − 1\n6 x: key i + 1 = k / / insert key k in x\n7 x:n  = x:n + 1 / / now x has 1 more key\n8 DISK-WRITE (x)\n9 else while i ≥ 1 and k<x:  key i / / find the child where k belongs\n10 i = i − 1\n11 i = i + 1\n12 DISK-READ (x:c  i )\n13 if x:c  i :n = = 2t − 1 / / split the child if it’s full\n14 B-TREE-SPLIT-CHILD (x,i)\n15 if k>x:  key i / / does k go into x:c  i or x:c  i + 1 ?\n16 i = i + 1\n17 B-TREE-INSERT-NONFULL  (x:c  i ,k) full children, and lines 15–16 determine which of the two children is the correct one to descend to. (Note that DISK-READ(x:c  i ) is not needed after line 16 incre-"
   },
   {
    "type": "body",
@@ -1215,7 +1215,7 @@
    "section_title": "18.2 Basic operations on B-trees",
    "printed_page": 511,
    "pdf_page": 532,
-   "text": "B-TREE-INSERT-NONFULL (x;k) full children, and lines 15316 determine which of the two children is the correct one to descend to. (Note that DISK-READ(x:c i ) is not needed after line 16 increments i , since the recursion descends in this case to a child that was just created by B-TREE-SPLIT-CHILD.) The net effect of lines 13316 is thus to guarantee that the procedure never recurses to a full node. Line 17 then recurses to insert k into the appropriate subtree."
+   "text": "B-TREE-INSERT-NONFULL (x,k) full children, and lines 15–16 determine which of the two children is the correct one to descend to. (Note that DISK-READ(x:c i ) is not needed after line 16 increments i , since the recursion descends in this case to a child that was just created by B-TREE-SPLIT-CHILD.) The net effect of lines 13–16 is thus to guarantee that the procedure never recurses to a full node. Line 17 then recurses to insert k into the appropriate subtree."
   },
   {
    "type": "body",
@@ -1251,7 +1251,7 @@
    "section_title": "18.2 Basic operations on B-trees",
    "printed_page": 511,
    "pdf_page": 532,
-   "text": "F;S;Q;K;C;L;H;T;V;W;M;R;N;P;A;B;X;Y;D;Z;E in order into an empty B-tree with minimum degree 2. Draw only the configurations of the tree just before some node must split, and also draw the final configuration."
+   "text": "F,S,Q,K,C,L,H,T,V,W,M,R,N,P,A,B,X,Y,D,Z,E in order into an empty B-tree with minimum degree 2. Draw only the configurations of the tree just before some node must split, and also draw the final configuration."
   },
   {
    "type": "exercise",
@@ -1278,7 +1278,7 @@
    "section_title": "18.2 Basic operations on B-trees",
    "printed_page": 512,
    "pdf_page": 533,
-   "text": "18.2-3 Professor Bunyan asserts that the B-TREE-INSERT procedure always results in a B-tree with the minimum possible height. Show that the professor is mistaken by proving that with t = 2 and the set of keys f1;2;:::;15 g, there is no insertion sequence that results in a B-tree with the minimum possible height."
+   "text": "18.2-3 Professor Bunyan asserts that the B-TREE-INSERT procedure always results in a B-tree with the minimum possible height. Show that the professor is mistaken by proving that with t = 2 and the set of keys f1,2,…,15 g, there is no insertion sequence that results in a B-tree with the minimum possible height."
   },
   {
    "type": "body",
@@ -1296,7 +1296,7 @@
    "section_title": "18.2 Basic operations on B-trees",
    "printed_page": 512,
    "pdf_page": 533,
-   "text": "If you insert the keys f1;2;:::;n g into an empty B-tree with minimum degree 2, how many nodes does the final B-tree have?"
+   "text": "If you insert the keys f1,2,…,n g into an empty B-tree with minimum degree 2, how many nodes does the final B-tree have?"
   },
   {
    "type": "exercise",
@@ -1395,7 +1395,7 @@
    "section_title": "18.3 Deleting a key from a B-tree",
    "printed_page": 513,
    "pdf_page": 534,
-   "text": "We describe how the procedure B-TREE-DELETE (T;k) deletes a key k from a B-tree T instead of presenting detailed pseudocode. We exami ne three cases, illustrated in Figure 18.8. The cases are for when the search arrives at a leaf, at an internal node containing key k, and at an internal node not containing key k. As mentioned above, in all three cases node x has at least t keys (with the possible exception of when x is the root). Cases 2 and 34when x is an internal node4 guarantee this property as the recursion descends through the B-tree."
+   "text": "We describe how the procedure B-TREE-DELETE (T,k) deletes a key k from a B-tree T instead of presenting detailed pseudocode. We exami ne three cases, illustrated in Figure 18.8. The cases are for when the search arrives at a leaf, at an internal node containing key k, and at an internal node not containing key k. As mentioned above, in all three cases node x has at least t keys (with the possible exception of when x is the root). Cases 2 and 34when x is an internal node4 guarantee this property as the recursion descends through the B-tree."
   },
   {
    "type": "body",
@@ -1494,7 +1494,7 @@
    "section_title": "18.3 Deleting a key from a B-tree",
    "printed_page": 514,
    "pdf_page": 535,
-   "text": "Case 2: The search arrives at an internal node x that contains key k. Let k = x: key i . One of the following three cases applies, depending on the number of keys in x:c i (the child of x that precedes k) and x:c i C1 (the child of x that follows k)."
+   "text": "Case 2: The search arrives at an internal node x that contains key k. Let k = x: key i . One of the following three cases applies, depending on the number of keys in x:c i (the child of x that precedes k) and x:c i + 1 (the child of x that follows k)."
   },
   {
    "type": "body",
@@ -1512,7 +1512,7 @@
    "section_title": "18.3 Deleting a key from a B-tree",
    "printed_page": 514,
    "pdf_page": 535,
-   "text": "Case 2b: x:c i has t − 1 keys and x:c i C1 has at least t keys. This case is symmetric to case 2a. Find the successor k 0 of k in the subtree rooted at x:c i C1 ."
+   "text": "Case 2b: x:c i has t − 1 keys and x:c i + 1 has at least t keys. This case is symmetric to case 2a. Find the successor k 0 of k in the subtree rooted at x:c i + 1 ."
   },
   {
    "type": "body",
@@ -1620,7 +1620,7 @@
    "section_title": "18.3 Deleting a key from a B-tree",
    "printed_page": 515,
    "pdf_page": 536,
-   "text": "Recursively delete k 0 from x:c i C1 , and replace k by k 0 in x . (Again, finding and deleting k 0 can be done in a single downward pass.)"
+   "text": "Recursively delete k 0 from x:c i + 1 , and replace k by k 0 in x . (Again, finding and deleting k 0 can be done in a single downward pass.)"
   },
   {
    "type": "body",
@@ -1629,7 +1629,7 @@
    "section_title": "18.3 Deleting a key from a B-tree",
    "printed_page": 515,
    "pdf_page": 536,
-   "text": "Case 2c: Both x:c i and x:c i C1 have t − 1 keys. Merge k and all of x:c i C1 into x:c i , so that x loses both k and the pointer to x:c i C1 , and x:c i now contains"
+   "text": "Case 2c: Both x:c i and x:c i + 1 have t − 1 keys. Merge k and all of x:c i + 1 into x:c i , so that x loses both k and the pointer to x:c i + 1 , and x:c i now contains"
   },
   {
    "type": "body",
@@ -1638,7 +1638,7 @@
    "section_title": "18.3 Deleting a key from a B-tree",
    "printed_page": 515,
    "pdf_page": 536,
-   "text": "2t − 1 keys. Then free x:c i C1 and recursively delete k from x:c i ."
+   "text": "2t − 1 keys. Then free x:c i + 1 and recursively delete k from x:c i ."
   },
   {
    "type": "body",
@@ -1845,7 +1845,7 @@
    "section_title": "18.3 Deleting a key from a B-tree",
    "printed_page": 518,
    "pdf_page": 539,
-   "text": "1 ;:::;T 0 m g and a set of keys fk 0"
+   "text": "1 ,…,T 0 m g and a set of keys fk 0"
   },
   {
    "type": "body",
@@ -1854,7 +1854,7 @@
    "section_title": "18.3 Deleting a key from a B-tree",
    "printed_page": 518,
    "pdf_page": 539,
-   "text": "2 ;:::;k 0 m g such that y <k 0 i <´ for i = 1;2;:::;m and any keys y 2 T 0 i −1 and ´ 2 T 0 i . What is the relationship between the heights of T 0 i −1 and T 0 i ? Describe how p breaks S 00 into sets of trees and keys. d. Show how to implement the split operation on T . Use the join operation to assemble the keys in S 0 into a single 2-3-4 tree T 0 and the keys in S 00 into a single 2-3-4 tree T 00 . The running time of the split operation should be O(lg n), where n is the number of keys in T . (Hint: The costs for joining should telescope.)"
+   "text": "2 ,…,k 0 m g such that y <k 0 i <´ for i = 1,2,…,m and any keys y 2 T 0 i −1 and ´ 2 T 0 i . What is the relationship between the heights of T 0 i −1 and T 0 i ? Describe how p breaks S 00 into sets of trees and keys. d. Show how to implement the split operation on T . Use the join operation to assemble the keys in S 0 into a single 2-3-4 tree T 0 and the keys in S 00 into a single 2-3-4 tree T 00 . The running time of the split operation should be O(lg n), where n is the number of keys in T . (Hint: The costs for joining should telescope.)"
   },
   {
    "type": "chapter-notes",
@@ -1890,7 +1890,7 @@
    "section_title": "18.3 Deleting a key from a B-tree",
    "printed_page": 519,
    "pdf_page": 540,
-   "text": "In 1970, J. E. Hopcroft invented 2-3 trees, a precursor to B-trees and 2-3-4 trees, in which every internal node has either two or three children. Bayer and McCreight [39] introduced B-trees in 1972 with no explanation of their choice of name."
+   "text": "In 1970, J. E. Hopcroft invented 2-3 trees, a precursor to B-trees and 2-3-4 trees, in which every internal node has either two or three children. Bayer and Mc + reight [39] introduced B-trees in 1972 with no explanation of their choice of name."
   },
   {
    "type": "body",
@@ -1935,7 +1935,7 @@
    "section_title": "18.3 Deleting a key from a B-tree",
    "printed_page": 520,
    "pdf_page": 541,
-   "text": "A disjoint-set data structure maintains a collection S = fS 1 ;S 2 ;:::;S k g of disjoint dynamic sets. To identify each set, choose a representative, which is some member of the set. In some applications, it doesn’t matter which member is used as the representative; it matters only that if you ask for the representative of a dynamic set twice without modifying the set between t he requests, you get the same answer both times. Other applications may require a prespecified rule for choosing the representative, such as choosing the smallest member in the set (for a set whose elements can be ordered)."
+   "text": "A disjoint-set data structure maintains a collection S = fS 1 ,S 2 ,…,S k g of disjoint dynamic sets. To identify each set, choose a representative, which is some member of the set. In some applications, it doesn’t matter which member is used as the representative; it matters only that if you ask for the representative of a dynamic set twice without modifying the set between t he requests, you get the same answer both times. Other applications may require a prespecified rule for choosing the representative, such as choosing the smallest member in the set (for a set whose elements can be ordered)."
   }
  ]
 }

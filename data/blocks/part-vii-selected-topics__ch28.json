@@ -75,7 +75,7 @@
    "section_title": "28.1 Solving systems of linear equations",
    "printed_page": 819,
    "pdf_page": 840,
-   "text": "The process starts with a set of linear equations in n unknowns x 1 ;x 2 ;:::;x n : a 11 x 1 + a 12 x 2 + • • • + a 1n x n = b 1 ; a 21 x 1 + a 22 x 2 + • • • + a 2n x n = b 2 ; : : : a n1 x 1 + a n2 x 2 + • • • + a nn x n = b n :"
+   "text": "The process starts with a set of linear equations in n unknowns x 1 ,x 2 ,…,x n : a 11 x 1 + a 12 x 2 + • • • + a 1n x n = b 1 ; a 21 x 1 + a 22 x 2 + • • • + a 2n x n = b 2 ; : : : a n1 x 1 + a n2 x 2 + • • • + a nn x n = b n :"
   },
   {
    "type": "body",
@@ -84,7 +84,7 @@
    "section_title": "28.1 Solving systems of linear equations",
    "printed_page": 820,
    "pdf_page": 841,
-   "text": "A solution to the equations (28.1) is a set of values for x 1 ;x 2 ;:::;x n that satisfy all of the equations simultaneously. In this section, we treat only the case in which there are exactly n equations in n unknowns."
+   "text": "A solution to the equations (28.1) is a set of values for x 1 ,x 2 ,…,x n that satisfy all of the equations simultaneously. In this section, we treat only the case in which there are exactly n equations in n unknowns."
   },
   {
    "type": "body",
@@ -408,7 +408,7 @@
    "section_title": "28.1 Solving systems of linear equations",
    "printed_page": 822,
    "pdf_page": 843,
-   "text": "Forward substitution can solve the lower-triangular system (28.5) in Θ(n 2 ) time, given L, P , and b. An array Ω[1 : n] provides a more compact format to represent the permutation P than an n × n matrix that is mostly 0s. For i = 1;2;:::;n , the entry Ω[i ] indicates that P i;−[i Ł = 1 and P ij = 0 for j ≠ ][i ]. Thus, PA has a −[i Ł;j in row i and column j , and Pb has b −[i Ł as its i th element. Since L is unit lower-triangular, the matrix equation Ly = Pb is equivalent to the n equations y 1 = b −[1Ł ; l 21 y 1 + y 2 = b −[2Ł ; l 31 y 1 + l 32 y 2 + y 3 = b −[3Ł ; : : : l n1 y 1 + l n2 y 2 + l n3 y 3 + • • • + y n = b −[nŁ :"
+   "text": "Forward substitution can solve the lower-triangular system (28.5) in Θ(n 2 ) time, given L, P , and b. An array Ω[1 : n] provides a more compact format to represent the permutation P than an n × n matrix that is mostly 0s. For i = 1,2,…,n , the entry Ω[i ] indicates that P i,−[i Ł = 1 and P ij = 0 for j ≠ ][i ]. Thus, PA has a −[i Ł,j in row i and column j , and Pb has b −[i Ł as its i th element. Since L is unit lower-triangular, the matrix equation Ly = Pb is equivalent to the n equations y 1 = b −[1Ł ; l 21 y 1 + y 2 = b −[2Ł ; l 31 y 1 + l 32 y 2 + y 3 = b −[3Ł ; : : : l n1 y 1 + l n2 y 2 + l n3 y 3 + • • • + y n = b −[nŁ :"
   },
   {
    "type": "body",
@@ -435,7 +435,7 @@
    "section_title": "28.1 Solving systems of linear equations",
    "printed_page": 822,
    "pdf_page": 843,
-   "text": "In general, you substitute y 1 ;y 2 ;:::;y i −1 \"forward\" into the i th equation to solve for y i : y i = b −[i Ł − i −1 X j D1 l i|y| :"
+   "text": "In general, you substitute y 1 ,y 2 ,…,y i −1 \"forward\" into the i th equation to solve for y i : y i = b −[i Ł − i −1 X j D1 l i|y| :"
   },
   {
    "type": "body",
@@ -453,7 +453,7 @@
    "section_title": "28.1 Solving systems of linear equations",
    "printed_page": 823,
    "pdf_page": 844,
-   "text": "Ux = y is equivalent to the n equations u 11 x 1 + u 12 x 2 + • • • + u 1;n−2 x n−2 + u 1;n−1 x n−1 + u 1n x n = y 1 ; u 22 x 2 + • • • + u 2;n−2 x n−2 + u 2;n−1 x n−1 + u 2n x n = y 2 ; : : : u n−2;n−2 x n−2 + u n−2;n−1 x n−1 + u n−2;n x n = y n−2 ; u n−1;n−1 x n−1 + u n−1;n x n = y n−1 ; u n;n x n = y n :"
+   "text": "Ux = y is equivalent to the n equations u 11 x 1 + u 12 x 2 + • • • + u 1,n−2 x n−2 + u 1,n−1 x n−1 + u 1n x n = y 1 ; u 22 x 2 + • • • + u 2,n−2 x n−2 + u 2,n−1 x n−1 + u 2n x n = y 2 ; : : : u n−2,n−2 x n−2 + u n−2,n−1 x n−1 + u n−2,n x n = y n−2 ; u n−1,n−1 x n−1 + u n−1,n x n = y n−1 ; u n,n x n = y n :"
   },
   {
    "type": "body",
@@ -462,7 +462,7 @@
    "section_title": "28.1 Solving systems of linear equations",
    "printed_page": 823,
    "pdf_page": 844,
-   "text": "Thus, you can solve for x n ;x n−1 ;:::;x 1 successively as follows: x n = y n =u n;n ; x n−1 = (y n−1 − u n−1;n x n )/u n−1;n−1 ; x n−2 = (y n−2 − (u n−2;n−1 x n−1 + u n−2;n x n ))/u n−2;n−2 ; : : : or, in general, x i ="
+   "text": "Thus, you can solve for x n ,x n−1 ,…,x 1 successively as follows: x n = y n =u n,n ; x n−1 = (y n−1 − u n−1,n x n )/u n−1,n−1 ; x n−2 = (y n−2 − (u n−2,n−1 x n−1 + u n−2,n x n ))/u n−2,n−2 ; : : : or, in general, x i ="
   },
   {
    "type": "body",
@@ -471,7 +471,7 @@
    "section_title": "28.1 Solving systems of linear equations",
    "printed_page": 823,
    "pdf_page": 844,
-   "text": "• y i − n X j Di C1 u i|x|"
+   "text": "• y i − n X j Di + 1 u i|x|"
   },
   {
    "type": "body",
@@ -489,7 +489,7 @@
    "section_title": "28.1 Solving systems of linear equations",
    "printed_page": 823,
    "pdf_page": 844,
-   "text": "Given P , L, U , and b, the procedure LUP-SOLVE on the next page solves for x by combining forward and back substitution. The per mutation matrix P is represented by the array ] . The procedure first solves for y using forward substitution in lines 233, and then it solves for x using backward substitution in lines 435. Since the summation within each of the for loops includes an implicit loop, the running time is Θ(n 2 )."
+   "text": "Given P , L, U , and b, the procedure LUP-SOLVE on the next page solves for x by combining forward and back substitution. The per mutation matrix P is represented by the array ] . The procedure first solves for y using forward substitution in lines 2–3, and then it solves for x using backward substitution in lines 4–5. Since the summation within each of the for loops includes an implicit loop, the running time is Θ(n 2 )."
   },
   {
    "type": "body",
@@ -516,7 +516,7 @@
    "section_title": "28.1 Solving systems of linear equations",
    "printed_page": 823,
    "pdf_page": 844,
-   "text": "; LUP-SOLVE (L; U; Ω; b; n) ã y i − P n j Di C1 u i|x| ä"
+   "text": "; LUP-SOLVE (L; U; Ω; b; n) ã y i − P n j Di + 1 u i|x| ä"
   },
   {
    "type": "body",
@@ -552,7 +552,7 @@
    "section_title": "28.1 Solving systems of linear equations",
    "printed_page": 823,
    "pdf_page": 844,
-   "text": "; where v = (a 21 ;a 31 ;:::;a n1 ), except that a 11 replaces a k1 ; w T = (a k2 ;a k3 ; :::;a k n ) T ; and A 0 is an (n − 1) × (n − 1) matrix. Since a k1 ≠ 0, the analog to equation (28.9) guarantees no division by 0:"
+   "text": "; where v = (a 21 ,a 31 ,…,a n1 ), except that a 11 replaces a k1 ; w T = (a k2 ,a k3 ; …,a k n ) T ; and A 0 is an (n − 1) × (n − 1) matrix. Since a k1 ≠ 0, the analog to equation (28.9) guarantees no division by 0:"
   },
   {
    "type": "pseudocode",
@@ -756,7 +756,7 @@
    "section_title": "28.1 Solving systems of linear equations",
    "printed_page": 825,
    "pdf_page": 846,
-   "text": "; (28.8) where v = (a 21 ;a 31 ;:::;a n1 ) is a column (n−1)-vector, w T = (a 12 ;a 13 ;:::;a 1n ) T is a row (n − 1)-vector, and A 0 is an (n − 1) × (n − 1) matrix. Then, using matrix algebra (verify the equations by simply multiplying through), factor A as A ="
+   "text": "; (28.8) where v = (a 21 ,a 31 ,…,a n1 ) is a column (n−1)-vector, w T = (a 12 ,a 13 ,…,a 1n ) T is a row (n − 1)-vector, and A 0 is an (n − 1) × (n − 1) matrix. Then, using matrix algebra (verify the equations by simply multiplying through), factor A as A ="
   },
   {
    "type": "body",
@@ -1132,7 +1132,7 @@
    "section_title": "28.1 Solving systems of linear equations",
    "printed_page": 827,
    "pdf_page": 848,
-   "text": "LU-DECOMPOSITION (A;n)"
+   "text": "LU-DECOMPOSITION (A,n)"
   },
   {
    "type": "body",
@@ -1141,7 +1141,7 @@
    "section_title": "28.1 Solving systems of linear equations",
    "printed_page": 827,
    "pdf_page": 848,
-   "text": "Each recursive step in the description above takes place in one iteration of the outer for loop of lines 4311. Within this loop, line 5 determines the pivot to be u kk = a kk . The for loop in lines 638 (which does not execute when k = n) uses the v and w vectors to update L and U . Line 7 determines the below-diagonal elements of L, storing v i =a kk in l i k , and line 8 computes the above-diagonal elements of U , storing w i in u ki . Finally, lines 9311 compute the elements of the Schur complement and store them back into the matri x A. (There is no need to divide by a kk in line 11 because that already happened when line 7 computed l i k .)"
+   "text": "Each recursive step in the description above takes place in one iteration of the outer for loop of lines 4–11. Within this loop, line 5 determines the pivot to be u kk = a kk . The for loop in lines 6–8 (which does not execute when k = n) uses the v and w vectors to update L and U . Line 7 determines the below-diagonal elements of L, storing v i =a kk in l i k , and line 8 computes the above-diagonal elements of U , storing w i in u ki . Finally, lines 9–11 compute the elements of the Schur complement and store them back into the matri x A. (There is no need to divide by a kk in line 11 because that already happened when line 7 computed l i k .)"
   },
   {
    "type": "body",
@@ -1279,7 +1279,7 @@
    "section_title": "28.1 Solving systems of linear equations",
    "printed_page": 828,
    "pdf_page": 849,
-   "text": "Figure 28.1 The operation of LU-DECOMPOSITION . (a) The matrix A. (b) The result of the first iteration of the outer for loop of lines 4311. The element a 11 = 2 highlighted in blue is the pivot, the tan column is v/a 11 , and the tan row is w T . The elements of U computed thus far are above the horizontal line, and the elements of L are to the left of the vertical line. The Schur com plement matrix A 0 − vw T =a 11 occupies the lower right. (c) The result of the next iteration of the outer for loop, on the Schur complement matrix from part (b). The element a 22 = 4 highlighted in blue is the pivot, and the tan column and row are v/a 22 and w T (in the partitioning of the Schur complement), respectively. Lines divide the matrix into the elem ents of U computed so far (above), the elements of L computed so far (left), and the new Schur complement (lower right). (d) After the next iteration, the matrix A is factored. The element 3 in the new Schur complement becomes part of U when the recursion terminates.) (e) The factorization ADLU ."
+   "text": "Figure 28.1 The operation of LU-DECOMPOSITION . (a) The matrix A. (b) The result of the first iteration of the outer for loop of lines 4–11. The element a 11 = 2 highlighted in blue is the pivot, the tan column is v/a 11 , and the tan row is w T . The elements of U computed thus far are above the horizontal line, and the elements of L are to the left of the vertical line. The Schur com plement matrix A 0 − vw T =a 11 occupies the lower right. (c) The result of the next iteration of the outer for loop, on the Schur complement matrix from part (b). The element a 22 = 4 highlighted in blue is the pivot, and the tan column and row are v/a 22 and w T (in the partitioning of the Schur complement), respectively. Lines divide the matrix into the elem ents of U computed so far (above), the elements of L computed so far (left), and the new Schur complement (lower right). (d) After the next iteration, the matrix A is factored. The element 3 in the new Schur complement becomes part of U when the recursion terminates.) (e) The factorization ADLU ."
   },
   {
    "type": "body",
@@ -1306,7 +1306,7 @@
    "section_title": "28.1 Solving systems of linear equations",
    "printed_page": 828,
    "pdf_page": 849,
-   "text": "In LUP decomposition, the input is an n × n nonsingular matrix A, with a goal of finding a permutation matrix P , a unit lower-triangular matrix L, and an uppertriangular matrix U such that PA DLU . Before partitioning the matrix A, as LU decomposition does, LUP decomposition moves a nonzero element, say a k1 , from somewhere in the first column to the .1;1/ position of the matrix. For the greatest numerical stability, LUP decomposition chooses the element in the first column with the greatest absolute value as a k1 . (The first column cannot contain only 0s, for then A would be singular, because its determinant would be 0, by Theorems"
+   "text": "In LUP decomposition, the input is an n × n nonsingular matrix A, with a goal of finding a permutation matrix P , a unit lower-triangular matrix L, and an uppertriangular matrix U such that PA DLU . Before partitioning the matrix A, as LU decomposition does, LUP decomposition moves a nonzero element, say a k1 , from somewhere in the first column to the .1,1/ position of the matrix. For the greatest numerical stability, LUP decomposition chooses the element in the first column with the greatest absolute value as a k1 . (The first column cannot contain only 0s, for then A would be singular, because its determinant would be 0, by Theorems"
   },
   {
    "type": "body",
@@ -1616,7 +1616,7 @@
    "section_title": "28.1 Solving systems of linear equations",
    "printed_page": 830,
    "pdf_page": 851,
-   "text": "LUP-DECOMPOSITION (A;n)"
+   "text": "LUP-DECOMPOSITION (A,n)"
   },
   {
    "type": "body",
@@ -1652,7 +1652,7 @@
    "section_title": "28.1 Solving systems of linear equations",
    "printed_page": 830,
    "pdf_page": 851,
-   "text": "233 initialize the array Ω to represent the identity permutation. The outer for loop of lines 4318 implements the recursion, finding an LUP decomposition of 2 0 2 0.6"
+   "text": "233 initialize the array Ω to represent the identity permutation. The outer for loop of lines 4–18 implements the recursion, finding an LUP decomposition of 2 0 2 0.6"
   },
   {
    "type": "body",
@@ -1985,7 +1985,7 @@
    "section_title": "28.1 Solving systems of linear equations",
    "printed_page": 831,
    "pdf_page": 852,
-   "text": "Lines divide the matrix into three regions: elements of U (above), elements of L (left), and elements of the Schur complement (lower right). (d)–(f) The second step. (g)–(i) The third step. No further changes occur on the fourth (final) step. (j) The LUP decomposition PA DLU . the (n − k + 1) × (n − k + 1) submatrix whose upper left is in row k and column k. Each time through the outer loop, lines 539 determine the element a k 0 k with the largest absolute value of those in the current first column (column k) of the (n − k + 1) × (n − k + 1) submatrix that the procedure is currently working on. If all elements in the current first column are 0, lines 10311 report that the matrix is singular. To pivot, line 12 exchanges Ω[k 0 ] with Ω[k ], and lines 13314 exchange the kth and k 0 th rows of A, thereby making the pivot element a kk . (The entire rows are swapped because in the derivation of the method above, not only is A 0 − vw T =a k1 multiplied by P 0 , but so is v/a k1 .) Finally, the Schur complement is computed by lines 15318 in much the same way as it is computed by lines 6311 of LU-DECOMPOSITION , except that here the operation is written to work in place."
+   "text": "Lines divide the matrix into three regions: elements of U (above), elements of L (left), and elements of the Schur complement (lower right). (d)–(f) The second step. (g)–(i) The third step. No further changes occur on the fourth (final) step. (j) The LUP decomposition PA DLU . the (n − k + 1) × (n − k + 1) submatrix whose upper left is in row k and column k. Each time through the outer loop, lines 5–9 determine the element a k 0 k with the largest absolute value of those in the current first column (column k) of the (n − k + 1) × (n − k + 1) submatrix that the procedure is currently working on. If all elements in the current first column are 0, lines 10–11 report that the matrix is singular. To pivot, line 12 exchanges Ω[k 0 ] with Ω[k ], and lines 13–14 exchange the kth and k 0 th rows of A, thereby making the pivot element a kk . (The entire rows are swapped because in the derivation of the method above, not only is A 0 − vw T =a k1 multiplied by P 0 , but so is v/a k1 .) Finally, the Schur complement is computed by lines 15–18 in much the same way as it is computed by lines 6–11 of LU-DECOMPOSITION , except that here the operation is written to work in place."
   },
   {
    "type": "body",
@@ -2444,7 +2444,7 @@
    "section_title": "28.2 Inverting matrices",
    "printed_page": 835,
    "pdf_page": 856,
-   "text": "] B −1 + B −1 + T S −1 CB −1 −B −1 + T S −1"
+   "text": "] B −1 + B −1 + T S −1 + B −1 −B −1 + T S −1"
   },
   {
    "type": "body",
@@ -2453,7 +2453,7 @@
    "section_title": "28.2 Inverting matrices",
    "printed_page": 835,
    "pdf_page": 856,
-   "text": "−S −1 CB −1 S −1"
+   "text": "−S −1 + B −1 S −1"
   },
   {
    "type": "body",
@@ -2480,7 +2480,7 @@
    "section_title": "28.2 Inverting matrices",
    "printed_page": 835,
    "pdf_page": 856,
-   "text": "R = B −1 + B −1 + T S −1 CB −1 ; T = −B −1 + T S −1 ; U = −S −1 CB −1 ; and V = S −1 of A −1 , do the following, where all matrices mentioned are n/2 × n/2:"
+   "text": "R = B −1 + B −1 + T S −1 + B −1 ; T = −B −1 + T S −1 ; U = −S −1 + B −1 ; and V = S −1 of A −1 , do the following, where all matrices mentioned are n/2 × n/2:"
   },
   {
    "type": "body",
@@ -2534,7 +2534,7 @@
    "section_title": "28.2 Inverting matrices",
    "printed_page": 836,
    "pdf_page": 857,
-   "text": "6. Compute the matrix product Y = S −1 W , which equals S −1 CB −1 , and then compute its transpose Y T , which equals B −1 + T S −1 (by Exercise D.1-2, (B −1 ) T = B −1 , and (S −1 ) T = S −1 )."
+   "text": "6. Compute the matrix product Y = S −1 W , which equals S −1 + B −1 , and then compute its transpose Y T , which equals B −1 + T S −1 (by Exercise D.1-2, (B −1 ) T = B −1 , and (S −1 ) T = S −1 )."
   },
   {
    "type": "body",
@@ -2543,7 +2543,7 @@
    "section_title": "28.2 Inverting matrices",
    "printed_page": 836,
    "pdf_page": 857,
-   "text": "7. Compute the matrix product Z = W T Y , which equals B −1 + T S −1 CB −1 ."
+   "text": "7. Compute the matrix product Z = W T Y , which equals B −1 + T S −1 + B −1 ."
   },
   {
    "type": "body",
@@ -3254,7 +3254,7 @@
    "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
    "printed_page": 841,
    "pdf_page": 862,
-   "text": "(x 1 ;y 1 );.x 2 ;y 2 /;:::;.x m ;y m /; where you know that the y i are subject to measurement errors. You wish to determine a function F(x) such that the approximation errors"
+   "text": "(x 1 ,y 1 ),.x 2 ,y 2 /,…,.x m ,y m /; where you know that the y i are subject to measurement errors. You wish to determine a function F(x) such that the approximation errors"
   },
   {
    "type": "body",
@@ -3263,7 +3263,7 @@
    "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
    "printed_page": 841,
    "pdf_page": 862,
-   "text": "ශ i = F(x i ) − y i (28.19) are small for i = 1;2;:::;m . The form of the function F depends on the problem at hand. Let’s assume that it has the form of a linearly weighted sum"
+   "text": "ශ i = F(x i ) − y i (28.19) are small for i = 1,2,…,m . The form of the function F depends on the problem at hand. Let’s assume that it has the form of a linearly weighted sum"
   },
   {
    "type": "body",
@@ -3281,7 +3281,7 @@
    "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
    "printed_page": 841,
    "pdf_page": 862,
-   "text": "(x 1 ;y 1 );.x 2 ;y 2 /;:::;.x m ;y m /, you need to calculate n coefficients c 1 ;c 2 ;:::;c n that minimize the approximation errors ශ 1 ; ශ 2 ; : : : ; ශ m ."
+   "text": "(x 1 ,y 1 ),.x 2 ,y 2 /,…,.x m ,y m /, you need to calculate n coefficients c 1 ,c 2 ,…,c n that minimize the approximation errors ශ 1 ; ශ 2 ; : : : ; ශ m ."
   },
   {
    "type": "body",
@@ -3326,7 +3326,7 @@
    "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
    "printed_page": 842,
    "pdf_page": 863,
-   "text": "⌊ f 1 (x 1 ) f 2 (x 1 ) ::: f n (x 1 ) f 1 (x 2 ) f 2 (x 2 ) ::: f n (x 2 )"
+   "text": "⌊ f 1 (x 1 ) f 2 (x 1 ) … f n (x 1 ) f 1 (x 2 ) f 2 (x 2 ) … f n (x 2 )"
   },
   {
    "type": "body",
@@ -3335,7 +3335,7 @@
    "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
    "printed_page": 842,
    "pdf_page": 863,
-   "text": ": : : : : : : : : : : : f 1 (x m ) f 2 (x m ) ::: f n (x m )"
+   "text": ": : : : : : : : : : : : f 1 (x m ) f 2 (x m ) … f n (x m )"
   },
   {
    "type": "body",
@@ -3353,7 +3353,7 @@
    "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
    "printed_page": 842,
    "pdf_page": 863,
-   "text": "⌊ f 1 (x 1 ) f 2 (x 1 ) ::: f n (x 1 ) f 1 (x 2 ) f 2 (x 2 ) ::: f n (x 2 )"
+   "text": "⌊ f 1 (x 1 ) f 2 (x 1 ) … f n (x 1 ) f 1 (x 2 ) f 2 (x 2 ) … f n (x 2 )"
   },
   {
    "type": "body",
@@ -3362,7 +3362,7 @@
    "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
    "printed_page": 842,
    "pdf_page": 863,
-   "text": ": : : : : : : : : : : : f 1 (x m ) f 2 (x m ) ::: f n (x m )"
+   "text": ": : : : : : : : : : : : f 1 (x m ) f 2 (x m ) … f n (x m )"
   },
   {
    "type": "body",
@@ -3470,7 +3470,7 @@
    "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
    "printed_page": 842,
    "pdf_page": 863,
-   "text": "The n equations (28.20) for k = 1;2;:::;n are equivalent to the single matrix equation"
+   "text": "The n equations (28.20) for k = 1,2,…,n are equivalent to the single matrix equation"
   },
   {
    "type": "body",
@@ -3569,7 +3569,7 @@
    "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
    "printed_page": 843,
    "pdf_page": 864,
-   "text": "(x 1 ;y 1 ) = .−1;2/; (x 2 ;y 2 ) = .1;1/; (x 3 ;y 3 ) = .2;1/; (x 4 ;y 4 ) = .3;0/; (x 5 ;y 5 ) = .5;3/; shown as orange dots in Figure 28.3, and you want to fit these points with a quadratic polynomial"
+   "text": "(x 1 ,y 1 ) = .−1,2/; (x 2 ,y 2 ) = .1,1/; (x 3 ,y 3 ) = .2,1/; (x 4 ,y 4 ) = .3,0/; (x 5 ,y 5 ) = .5,3/; shown as orange dots in Figure 28.3, and you want to fit these points with a quadratic polynomial"
   },
   {
    "type": "body",
@@ -3668,7 +3668,7 @@
    "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
    "printed_page": 844,
    "pdf_page": 865,
-   "text": "Figure 28.3 The least-squares fit of a quadratic polynomial to the set of five data points f.−1;2/;.1;1/;.2;1/;.3;0/;.5;3/ g. The orange dots are the data points, and the blue dots are their estimated values predicted by the polynomial F(x) = 1:2 − 0:757x + 0:214x 2 , the quadratic polynomial that minimizes the sum of the squared errors , plotted in blue. Each orange line shows the error for one data point."
+   "text": "Figure 28.3 The least-squares fit of a quadratic polynomial to the set of five data points f.−1,2/,.1,1/,.2,1/,.3,0/,.5,3/ g. The orange dots are the data points, and the blue dots are their estimated values predicted by the polynomial F(x) = 1:2 − 0:757x + 0:214x 2 , the quadratic polynomial that minimizes the sum of the squared errors , plotted in blue. Each orange line shows the error for one data point."
   },
   {
    "type": "body",
@@ -3857,7 +3857,7 @@
    "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
    "printed_page": 846,
    "pdf_page": 867,
-   "text": ".1;1/;.2;1/;.3;3/;.4;8/:"
+   "text": ".1,1/,.2,1/,.3,3/,.4,8/:"
   },
   {
    "type": "exercise",
@@ -3956,7 +3956,7 @@
    "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
    "printed_page": 847,
    "pdf_page": 868,
-   "text": "A practical method for interpolating a set of point s with a curve is to use cubic splines. You are given a set f(x i ;y i ) W i = 0;1;:::;n g of n + 1 point-value pairs, where x 0 < x 1 < • • • < x n . Your goal is to fit a piecewise-cubic curve"
+   "text": "A practical method for interpolating a set of point s with a curve is to use cubic splines. You are given a set f(x i ,y i ) W i = 0,1,…,n g of n + 1 point-value pairs, where x 0 < x 1 < • • • < x n . Your goal is to fit a piecewise-cubic curve"
   },
   {
    "type": "body",
@@ -3965,7 +3965,7 @@
    "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
    "printed_page": 847,
    "pdf_page": 868,
-   "text": "(spline) f(x) to the points. That is, the curve f(x) is made up of n cubic polynomials f i (x) = a i + b i x + c i x 2 + d i x 3 for i = 0;1;:::;n − 1, where if x falls in the range x i ≤ x ≤ x i C1 , then the value of the curve is given by f(x) = f i (x − x i )."
+   "text": "(spline) f(x) to the points. That is, the curve f(x) is made up of n cubic polynomials f i (x) = a i + b i x + c i x 2 + d i x 3 for i = 0,1,…,n − 1, where if x falls in the range x i ≤ x ≤ x i + 1 , then the value of the curve is given by f(x) = f i (x − x i )."
   },
   {
    "type": "body",
@@ -3983,7 +3983,7 @@
    "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
    "printed_page": 847,
    "pdf_page": 868,
-   "text": "For simplicity, assume that x i = i for i = 0;1;:::;n ."
+   "text": "For simplicity, assume that x i = i for i = 0,1,…,n ."
   },
   {
    "type": "body",
@@ -3992,7 +3992,7 @@
    "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
    "printed_page": 847,
    "pdf_page": 868,
-   "text": "To ensure continuity of f(x) , require that f(x i ) = f i .0/ = y i ; f(x i C1 ) = f i .1/ = y i C1 for i = 0;1;:::;n − 1. To ensure that f(x) is sufficiently smooth, also require the first derivative to be continuous at each knot: f 0 (x i C1 ) = f 0 i .1/ = f 0 i C1 .0/ for i = 0;1;:::;n − 2. a. Suppose that for i = 0;1;:::;n , in addition to the point-value pairs f(x i ;y i )g, you are also given the first derivative = i = f 0 (x i ) at each knot. Express each coefficient a i , b i , c i , and d i in terms of the values y i , y i C1 , = i , and = i C1 ."
+   "text": "To ensure continuity of f(x) , require that f(x i ) = f i .0/ = y i ; f(x i + 1 ) = f i .1/ = y i + 1 for i = 0,1,…,n − 1. To ensure that f(x) is sufficiently smooth, also require the first derivative to be continuous at each knot: f 0 (x i + 1 ) = f 0 i .1/ = f 0 i + 1 .0/ for i = 0,1,…,n − 2. a. Suppose that for i = 0,1,…,n , in addition to the point-value pairs f(x i ,y i )g, you are also given the first derivative = i = f 0 (x i ) at each knot. Express each coefficient a i , b i , c i , and d i in terms of the values y i , y i + 1 , = i , and = i + 1 ."
   },
   {
    "type": "body",
@@ -4019,7 +4019,7 @@
    "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
    "printed_page": 848,
    "pdf_page": 869,
-   "text": "One method is to require the second derivatives to be continuous at the knots: f 00 (x i C1 ) = f 00 i .1/ = f 00 i C1 .0/ for i = 0;1;:::;n −2. At the first and last knots, assume that f 00 (x 0 ) = f 00"
+   "text": "One method is to require the second derivatives to be continuous at the knots: f 00 (x i + 1 ) = f 00 i .1/ = f 00 i + 1 .0/ for i = 0,1,…,n −2. At the first and last knots, assume that f 00 (x 0 ) = f 00"
   },
   {
    "type": "body",
@@ -4037,7 +4037,7 @@
    "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
    "printed_page": 848,
    "pdf_page": 869,
-   "text": "1;2;:::;n − 1, D i −1 + 4D i + = i C1 = 3.y i C1 − y i −1 /: (28.23) c. Show that 2D 0 + = 1 = 3.y 1 − y 0 /; (28.24)"
+   "text": "1,2,…,n − 1, D i −1 + 4D i + = i + 1 = 3.y i + 1 − y i −1 /: (28.23) c. Show that 2D 0 + = 1 = 3.y 1 − y 0 /; (28.24)"
   },
   {
    "type": "body",
@@ -4046,7 +4046,7 @@
    "section_title": "28.3 Symmetric positive-definite matrices and least-squares approximation",
    "printed_page": 848,
    "pdf_page": 869,
-   "text": "D n−1 + 2D n = 3.y n − y n−1 /: (28.25) d. Rewrite equations (28.23)3(28.25) as a matrix equation involving the vector D = (D 0 = 1 = 2 • • • = n ) T of unknowns. What attributes does the matrix in your equation have? e. Argue that a natural cubic spline can interpolate a set of n + 1 point-value pairs in O(n) time (see Problem 28-1). f. Show how to determine a natural cubic spline that i nterpolates a set of n + 1 points (x i ;y i ) satisfying x 0 <x 1 < • • • <x n , even when x i is not necessarily equal to i . What matrix equation must your method solve, and how quickly does your algorithm run?"
+   "text": "D n−1 + 2D n = 3.y n − y n−1 /: (28.25) d. Rewrite equations (28.23)3(28.25) as a matrix equation involving the vector D = (D 0 = 1 = 2 • • • = n ) T of unknowns. What attributes does the matrix in your equation have? e. Argue that a natural cubic spline can interpolate a set of n + 1 point-value pairs in O(n) time (see Problem 28-1). f. Show how to determine a natural cubic spline that i nterpolates a set of n + 1 points (x i ,y i ) satisfying x 0 <x 1 < • • • <x n , even when x i is not necessarily equal to i . What matrix equation must your method solve, and how quickly does your algorithm run?"
   },
   {
    "type": "chapter-notes",

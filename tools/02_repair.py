@@ -99,6 +99,16 @@ SMALLCAPS_RE = re.compile(r"\b([A-Z]) ([A-Z]{2,}[A-Z-]*)")
 # Requiring >=3 capitals before the gap keeps "A - B" style arithmetic intact
 # (the corpus has none, but the rule should not depend on that).
 SMALLCAPS_HYPHEN_RE = re.compile(r"(?<=[A-Z]{3})[ \t]+-[ \t\n]*(?=[A-Z])")
+# Small-caps *lowercase* artifacts: the book prints "procedure" / "problem" /
+# "point" with a small-cap P, which extracts as "p rocedure" etc.  Measured:
+# exactly 6 occurrences in the whole book (3 + 2 + 1), and every other
+# `<letter> <word>` bigram is genuine English ("a given", "a vertex", ...), so
+# the rule is an exact whitelist -- no pattern generalization.
+SMALLCAPS_LOWER = {
+    "p rocedure": "procedure",
+    "p roblem": "problem",
+    "p oint": "point",
+}
 SMALLCAPS_KEEP_APART = {
     "ALL", "AND", "THE", "NOT", "ONE", "TWO", "NEW", "OLD", "OUT", "USE", "SEE",
     "ADD", "SET", "GET", "PUT", "RUN", "END", "FOR", "ANY", "OUR", "ARE", "YOU",
@@ -160,9 +170,13 @@ ABBREV_WORDS = {
     "chap", "app", "ref", "refs", "max", "min", "iff",
 }
 
-# i.e. / e.g.  -> a Latin abbreviation, not f(n).  Lowercase ONLY: `O.g.` is
-# math (O(g(..))) and must not be swallowed by this test.
-ABBREV_PAIR_RE = re.compile(r"^[a-z]\.[a-z][.,]")
+# The Latin abbreviations are exactly two: "i.e." and "e.g.".  Measured over the
+# whole book, the shape `<lowercase>.<lowercase>[.,]` occurs 40 times and the
+# other 14 are all math function applications -- `o.g.` / `o.f.` / `o.h.` are
+# o(g(n)) / o(f(n)) / o(h(n)), `f.g.` is f(g(..)), `f.f.` is f(f(..)).  A
+# lowercase-only test is therefore not enough (little-oh is lowercase!); the
+# whitelist below is what actually separates prose from notation.
+ABBREV_PAIR_RE = re.compile(r"^(?:i\.e|e\.g)[.,]")
 
 # --- subarray slice: the 4th edition writes A[p : q] with a COLON, not the
 #     3rd edition's A[p .. q].  Confirmed on the rendered pages 18/19/36
@@ -186,7 +200,14 @@ _C_LEFT = (r"(?:(?<![A-Za-z0-9])[A-Za-z0-9]{1,3}"
            r"|(?<![0-9])[0-9]{4,6}"
            r"|[\)\]\}•])")
 _C_RIGHT = r"(?:[A-Za-z]|[0-9]{1,4}[A-Za-z]?|[\(•ΘΩ√≤≥≠⌈⌊])"
-C_PLUS_RE = re.compile(r"(" + _C_LEFT + r")[ \t]+C[ \t]+(" + _C_RIGHT + r")(?![A-Za-z0-9])")
+# The space before the RIGHT operand is optional: the raw corpus contains
+# "lg n Cc 1 n" (= lg n + c_1 n, page 44) where the '+' slot is glued to its
+# right operand.  English words cannot slip through: for "…a Computer…", the
+# right operand 'o' is followed by 'm', so the (?![A-Za-z0-9]) guard rejects.
+C_PLUS_RE = re.compile(r"(" + _C_LEFT + r")[ \t]+C[ \t]*(" + _C_RIGHT + r")(?![A-Za-z0-9])")
+# glued form: alnum/paren + C + lowercase-letter-or-digit, nothing spaced.
+# (?<!Mac) protects the one measured false positive, the name "MacCormick".
+C_PLUS_GLUED_RE = re.compile(r"(?<!Mac)(?<=[A-Za-z0-9)\]])C(?=[a-z0-9])")
 C_PLUS_DENY = {
     "the", "and", "for", "let", "not", "are", "has", "had", "was", "its", "our",
     "any", "all", "one", "two", "new", "old", "use", "see", "out", "add", "get",
@@ -197,6 +218,64 @@ C_PLUS_DENY = {
     "to", "in", "on", "as", "at", "by", "or", "if", "it", "we", "no", "so",
     "an", "am", "as", "is", "us", "do", "go",
 }
+# --- ellipsis: the math font sets '…' as three colon glyphs.  Measured on the
+#     raw corpus: ':::' occurs 895 times and '::' occurs exactly 895 times, i.e.
+#     every '::' in the book is part of a ':::', and there is no '::::'.  The
+#     ';' that follows it in "a1 ;a2 ;:::;an" is the list comma (see SEMI_RE).
+ELLIPSIS_RE = re.compile(re.escape(":::"))
+
+# --- quoted colon: page 23 (verified on the rendered image) reads
+#       The notation ":" denotes a subarray.
+#     which extracts as `The notation <W= denotes a subarray.`  The quote
+#     delimiters < and = wrap the colon glyph W, so this must run BEFORE the
+#     quote rules -- otherwise it becomes a literal "W".
+QUOTED_COLON_RE = re.compile(r"<W=")
+
+# --- angle brackets: `hat 1 ;a2 i` is '⟨a1, a2⟩'.  'h' and 'i' are ordinary
+#     letters almost everywhere (836 standalone 'h', 4900 standalone 'i'), so
+#     the rule is deliberately narrow: the span must contain a ',' (i.e. an
+#     original ';' or ':::') and every token inside must be a short math token
+#     that is not an English word.  See _angle() for the token test.
+ANGLE_RE = re.compile(r"(?<![A-Za-z])h([^h]{1,70}?)[ \t]i(?![A-Za-z0-9])")
+
+# --- list / argument separator: the math font's ',' is ';'.  A real English
+#     semicolon is always followed by a space ("Computer Science; the MIT ..."),
+#     so a ';' glued to the next character is unambiguously a comma in this book
+#     (measured: u;v 636, 1;2 307, V;E 262, i;j 199, 2;: 233 ...).
+SEMI_RE = re.compile(r";(?=\S)")
+
+# --- en dash inside numeric ranges: the math font's '–' slot extracts as the
+#     ASCII digit '3'.  "lines 6–7" arrives as `lines 637`, "1–3 and 8–10" as
+#     `133 and 8310`, "pages 72–73" as `72373` (measured 380 hits, printed
+#     pages 20..137+ spot-verified against the rendered pages).  The rule is
+#     anchored to range nouns; greedy backtracking splits at the ONLY '3', so
+#     `lines 138` -> 1–8 (verified on the Figure 2.2 caption) and
+#     `lines 12318` -> 12–18.  Singular `page` is deliberately EXCLUDED:
+#     printed page 27 really says "on page 934" (a plain page number, verified
+#     on the rendered image), so singular page references must stay intact.
+RANGE_ANCHOR = (r"(?:lines?|Lines?|Steps?|steps?|pages|Pages|Sections?|sections?|"
+                r"Chapters?|chapters?|Exercises?|exercises?|Problems?|problems?|"
+                r"Figures?|figures?|Tables?|tables?|Parts?|parts?)")
+RANGE_DASH_RE = re.compile(
+    r"\b(" + RANGE_ANCHOR + r")[ \t]+(\d{1,3})3(\d{1,2})\b")
+
+# Range LISTS: "lines 12–18, 20–23, and 24–27" extracts with the anchor only on
+# the FIRST item ("lines 12318, 20323, and 24327"), so the anchored rule above
+# fixes item 1 and leaves `20323`/`24327` behind.  This rule extends a converted
+# first item across its ", ..."/"and ..." tail; each tail item is split by the
+# same shape test, so digits that legitimately contain 3 ("20–23") survive.
+RANGE_LIST_RE = re.compile(
+    r"\b(" + RANGE_ANCHOR + r")((?:[ \t]+\d{1,3}3\d{1,2})+)"
+    r"((?:[ \t]*(?:,|and|, and)[ \t]*\d{1,3}3\d{1,2})+)")
+
+
+def _range_split(s):
+    return re.sub(r"(\d{1,3})3(\d{1,2})", r"\1–\2", s)
+
+
+def _range_list(m):
+    return m.group(1) + _range_split(m.group(2)) + _range_split(m.group(3))
+
 BAR_PAIR_RE = re.compile(r"j\s*(?!D)([A-Za-z0-9])\s*j")
 EMDASH_RE = re.compile(r"([A-Za-z])4([A-Za-z])")
 # U+E011 is the norm bar.  Each ‖ prints as TWO adjacent glyph runs, so the pair
@@ -305,6 +384,42 @@ def _c_plus(m):
     return "%s + %s" % (m.group(1), m.group(2))
 
 
+def _angle(m):
+    """`h<list> i` -> `⟨<list>⟩`, but only when the span really is a tuple.
+
+    'h' and 'i' are ordinary letters (836 standalone 'h', 4900 standalone 'i'),
+    so five guards must all hold.  Each one was chosen from an actual false
+    positive found while auditing every hit:
+
+      - the span contains a list separator (';'/':::'/'…');
+      - the span has no '.' or '/' -- those are the math parentheses, and a tuple
+        never contains parens.  This kills `h.k;i/` (= `h(k,i)`) and
+        `h 1 .k/ C i` (= `h1(k)+…`);
+      - the first token is 1-2 characters, or starts with a non-letter.  This
+        kills `have i`, `have |F i`, `have |E Œn i` (first token `ave`);
+      - every token is at most 3 characters (math tokens: a, 1, an, 26, n2);
+      - no token is an ordinary English word (the 2-3 letter words that could
+        still slip through: `as`, `old`, `low`, `one`, ...).
+    """
+    body = m.group(1)
+    if ";" not in body and "…" not in body and "," not in body:
+        return m.group(0)
+    if "." in body or "/" in body or "(" in body or ")" in body:
+        return m.group(0)
+    parts = [p for p in re.split(r"[;,\s]+", body) if p]
+    if not parts:
+        return m.group(0)
+    head = parts[0]
+    if len(head) > 2 and head[:1].isalpha():
+        return m.group(0)
+    for p in parts:
+        if len(p) > 3:
+            return m.group(0)
+        if p.lower() in C_PLUS_DENY:
+            return m.group(0)
+    return "⟨" + body.strip() + "⟩"
+
+
 def repair_text(txt):
     # --- 2a. rejoin small-caps name splits FIRST, so later rules see clean
     #         procedure names (MERGE.A;p;q/ -> MERGE(A;p;q)).
@@ -325,6 +440,11 @@ def repair_text(txt):
     #          both sides, so nothing in ordinary math or prose is at risk. ---
     txt = SMALLCAPS_HYPHEN_RE.sub("-", txt)
 
+    # --- 2a''. small-caps lowercase words ("p rocedure") -- exact whitelist. ---
+    for k, v in SMALLCAPS_LOWER.items():
+        if k in txt:
+            txt = txt.replace(k, v)
+
     # --- 2b. direct glyph replacements (unambiguous) ---
     for ch, (rep, _why) in DIRECT.items():
         if ch in txt:
@@ -332,6 +452,27 @@ def repair_text(txt):
 
     # --- 2b. resolve FFFD (needs '[' already present) ---
     txt = _resolve_fffd(txt)
+
+    # --- 2b'. ':::' is the math font's ellipsis '…' (895 hits = the whole '::'
+    #          population).  Runs first so the tuple/list rules below can see it
+    #          as a separator. ---
+    txt = ELLIPSIS_RE.sub("…", txt)
+
+    # --- 2b''. the quoted colon: `<W=` is `":"`  (printed page 23).  Must run
+    #           before the quote rules, which would otherwise emit a literal W. ---
+    txt = QUOTED_COLON_RE.sub('":"', txt)
+
+    # --- 2b'''. angle-bracket tuples, guarded (see _angle). ---
+    txt = ANGLE_RE.sub(_angle, txt)
+
+    # --- 2b''''. ';' glued to the next character is the math comma. ---
+    txt = SEMI_RE.sub(",", txt)
+
+    # --- 2b'''''. en dash inside "lines 6–7" style ranges (the dash glyph
+    #           extracts as '3'; see RANGE_DASH_RE).  The list form runs first
+    #           so its tail items are not left half-converted. ---
+    txt = RANGE_LIST_RE.sub(_range_list, txt)
+    txt = RANGE_DASH_RE.sub(r"\1 \2–\3", txt)
 
     # --- 2c. nested '.' / '/' parenthesis pairs (stack-matched, see below) ---
     txt = _resolve_math_parens(txt)
@@ -346,6 +487,13 @@ def repair_text(txt):
         if nxt == txt:
             break
         txt = nxt
+
+    # --- 2d'. 'C' as '+', GLUED form (no spaces at all).  Measured on the raw
+    #          corpus: 243 hits -- nC1 (=n+1), mCn, blogbncC1, lgkC1, 2nC1 --
+    #          every one a genuine addition; the single false positive is the
+    #          author name "MacCormick", excluded via the (?<!Mac) guard.
+    #          Runs after the spaced rule so operands may already be ')' / '('. ---
+    txt = C_PLUS_GLUED_RE.sub(" + ", txt)
 
     # --- 2e. ceil / floor delimiters (after the paren matcher, so their operand
     #         can already contain real parens; and before the division rule,

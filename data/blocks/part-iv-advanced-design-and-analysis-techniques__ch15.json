@@ -32,7 +32,7 @@
    "section_title": "15.1 An activity-selection problem",
    "printed_page": 418,
    "pdf_page": 439,
-   "text": "Our first example is the problem of scheduling several competing activities that re- quire exclusive use of a common resource, with a goal of selecting a maximum-size set of mutually compatible activities. Imagine that you are in charge of scheduling a conference room. You are presented with a set S = fa 1 ;a 2 ;:::;a n g of n proposed activities that wish to reserve the conference room, and the r oom can serve only one activity at a time. Each activity a i has a start time s i and a finish time f i , where 0 ≤ s i <f i < 1. If selected, activity a i takes place during the half-open time interval [s i ;f i /. Activities a i and a j are compatible if the intervals [s i ;f i / and [s j ;f j / do not overlap. That is, a i and a j are compatible if s i ≥ f j or s j ≥ f i ."
+   "text": "Our first example is the problem of scheduling several competing activities that re- quire exclusive use of a common resource, with a goal of selecting a maximum-size set of mutually compatible activities. Imagine that you are in charge of scheduling a conference room. You are presented with a set S = fa 1 ,a 2 ,…,a n g of n proposed activities that wish to reserve the conference room, and the r oom can serve only one activity at a time. Each activity a i has a start time s i and a finish time f i , where 0 ≤ s i <f i < 1. If selected, activity a i takes place during the half-open time interval [s i ,f i /. Activities a i and a j are compatible if the intervals [s i ,f i / and [s j ,f j / do not overlap. That is, a i and a j are compatible if s i ≥ f j or s j ≥ f i ."
   },
   {
    "type": "body",
@@ -50,7 +50,7 @@
    "section_title": "15.1 An activity-selection problem",
    "printed_page": 418,
    "pdf_page": 439,
-   "text": "(We’ll see later the advantage that this assumption provides.) For example, consider the set of activities in Figure 15.1. The subset fa 3 ;a 9 ;a 11 g consists of mutually compatible activities. It is not a maximum sub set, however, since the subset fa 1 ;a 4 ;a 8 ;a 11 g is larger. In fact, fa 1 ;a 4 ;a 8 ;a 11 g is a largest subset of mutually compatible activities, and another largest subset is fa 2 ;a 4 ;a 9 ;a 11 g."
+   "text": "(We’ll see later the advantage that this assumption provides.) For example, consider the set of activities in Figure 15.1. The subset fa 3 ,a 9 ,a 11 g consists of mutually compatible activities. It is not a maximum sub set, however, since the subset fa 1 ,a 4 ,a 8 ,a 11 g is larger. In fact, fa 1 ,a 4 ,a 8 ,a 11 g is a largest subset of mutually compatible activities, and another largest subset is fa 2 ,a 4 ,a 9 ,a 11 g."
   },
   {
    "type": "body",
@@ -68,7 +68,7 @@
    "section_title": "15.1 An activity-selection problem",
    "printed_page": 418,
    "pdf_page": 439,
-   "text": "Figure 15.1 A set fa 1 ;a 2 ;:::;a 11 g of activities. Activity a i has start time s i and finish time f i ."
+   "text": "Figure 15.1 A set fa 1 ,a 2 ,…,a 11 g of activities. Activity a i has start time s i and finish time f i ."
   },
   {
    "type": "body",
@@ -113,7 +113,7 @@
    "section_title": "15.1 An activity-selection problem",
    "printed_page": 419,
    "pdf_page": 440,
-   "text": "This way of characterizing optimal substructure suggests that you can solve the activity-selection problem by dynamic programming. Let’s denote the size of an optimal solution for the set S ij by c[i;j] . Then, the dynamic-programming approach gives the recurrence c[i;j] = c[i;k] + c[k;j] + 1:"
+   "text": "This way of characterizing optimal substructure suggests that you can solve the activity-selection problem by dynamic programming. Let’s denote the size of an optimal solution for the set S ij by c[i,j] . Then, the dynamic-programming approach gives the recurrence c[i,j] = c[i,k] + c[k,j] + 1:"
   },
   {
    "type": "body",
@@ -122,7 +122,7 @@
    "section_title": "15.1 An activity-selection problem",
    "printed_page": 419,
    "pdf_page": 440,
-   "text": "Of course, if you do not know that an optimal solution for the set S ij includes activity a k , you must examine all activities in S ij to find which one to choose, so that c[i;j] ="
+   "text": "Of course, if you do not know that an optimal solution for the set S ij includes activity a k , you must examine all activities in S ij to find which one to choose, so that c[i,j] ="
   },
   {
    "type": "body",
@@ -131,7 +131,7 @@
    "section_title": "15.1 An activity-selection problem",
    "printed_page": 419,
    "pdf_page": 440,
-   "text": "0 if S ij = ; ; max fc[i;k] + c[k;j] + 1 W a k 2 S ij g if S ij ≠ ; : (15.2)"
+   "text": "0 if S ij = ; ; max fc[i,k] + c[k,j] + 1 W a k 2 S ij g if S ij ≠ ; : (15.2)"
   },
   {
    "type": "body",
@@ -284,7 +284,7 @@
    "section_title": "15.1 An activity-selection problem",
    "printed_page": 421,
    "pdf_page": 442,
-   "text": "Now that you know you can bypass the dynamic-programming approach and in- stead use a top-down, greedy algorithm, let’s see a straightforward, recursive procedure to solve the activity-selection problem. The procedure RECURSIVE-ACTIVITY-SELECTOR on the following page takes the start and finish times of the activities, represented as arrays s and f , 2 the index k that defines the subproblem S k it is to solve, and the size n of the original problem. It returns a maximum- 2 Because the pseudocode takes s and f as arrays, it indexes into them with square bracket s rather than with subscripts. size set of mutually compatible activities in S k . The procedure assumes that the n input activities are already ordered by monotonically increasing finish time, according to equation (15.1). If not, you can first sort them into this order in O(n lg n) time, breaking ties arbitrarily. In order to start, add the fictitious activity a 0 with f 0 = 0, so that subproblem S 0 is the entire set of activities S . The initial call, which solves the entire problem, is RECURSIVE-ACTIVITY-SELECTOR (s;f;0;n) ."
+   "text": "Now that you know you can bypass the dynamic-programming approach and in- stead use a top-down, greedy algorithm, let’s see a straightforward, recursive procedure to solve the activity-selection problem. The procedure RECURSIVE-ACTIVITY-SELECTOR on the following page takes the start and finish times of the activities, represented as arrays s and f , 2 the index k that defines the subproblem S k it is to solve, and the size n of the original problem. It returns a maximum- 2 Because the pseudocode takes s and f as arrays, it indexes into them with square bracket s rather than with subscripts. size set of mutually compatible activities in S k . The procedure assumes that the n input activities are already ordered by monotonically increasing finish time, according to equation (15.1). If not, you can first sort them into this order in O(n lg n) time, breaking ties arbitrarily. In order to start, add the fictitious activity a 0 with f 0 = 0, so that subproblem S 0 is the entire set of activities S . The initial call, which solves the entire problem, is RECURSIVE-ACTIVITY-SELECTOR (s,f,0,n) ."
   },
   {
    "type": "pseudocode",
@@ -314,14 +314,14 @@
     },
     {
      "n": 5,
-     "code": "return fa m g [ RECURSIVE-ACTIVITY-SELECTOR  (s;f;m;n)"
+     "code": "return fa m g [ RECURSIVE-ACTIVITY-SELECTOR  (s,f,m,n)"
     },
     {
      "n": 6,
      "code": "else return ;"
     }
    ],
-   "text": "1 m = k + 1\n2 while m ≤ n and s[m]<f[k]  / / find the first activity in S k to finish\n3 m = m + 1\n4 if m ≤ n\n5 return fa m g [ RECURSIVE-ACTIVITY-SELECTOR  (s;f;m;n)\n6 else return ;"
+   "text": "1 m = k + 1\n2 while m ≤ n and s[m]<f[k]  / / find the first activity in S k to finish\n3 m = m + 1\n4 if m ≤ n\n5 return fa m g [ RECURSIVE-ACTIVITY-SELECTOR  (s,f,m,n)\n6 else return ;"
   },
   {
    "type": "body",
@@ -330,7 +330,7 @@
    "section_title": "15.1 An activity-selection problem",
    "printed_page": 422,
    "pdf_page": 443,
-   "text": "RECURSIVE-ACTIVITY-SELECTOR (s;f;k;n)"
+   "text": "RECURSIVE-ACTIVITY-SELECTOR (s,f,k,n)"
   },
   {
    "type": "body",
@@ -348,7 +348,7 @@
    "section_title": "15.1 An activity-selection problem",
    "printed_page": 422,
    "pdf_page": 443,
-   "text": "In a given recursive call RECURSIVE-ACTIVITY-SELECTOR (s;f;k;n) , the while loop of lines 233 looks for the first activity in S k to finish. The loop examines a kC1 ;a kC2 ;:::;a n , until it finds the first activity a m that is compatible with a k , which means that s m ≥ f k . If the loop terminates because it finds such an activity, line 5 returns the union of fa m g and the maximum-size subset of S m returned by the recursive call RECURSIVE-ACTIVITY-SELECTOR (s;f;m;n) . Alternatively, the loop may terminate because m > n, in which case the procedure has examined all activities in S k without finding one that is compatible with a k . In this case, S k = ;, and so line 6 returns ;."
+   "text": "In a given recursive call RECURSIVE-ACTIVITY-SELECTOR (s,f,k,n) , the while loop of lines 2–3 looks for the first activity in S k to finish. The loop examines a k + 1 ,a k + 2 ,…,a n , until it finds the first activity a m that is compatible with a k , which means that s m ≥ f k . If the loop terminates because it finds such an activity, line 5 returns the union of fa m g and the maximum-size subset of S m returned by the recursive call RECURSIVE-ACTIVITY-SELECTOR (s,f,m,n) . Alternatively, the loop may terminate because m > n, in which case the procedure has examined all activities in S k without finding one that is compatible with a k . In this case, S k = ,, and so line 6 returns ,."
   },
   {
    "type": "body",
@@ -357,7 +357,7 @@
    "section_title": "15.1 An activity-selection problem",
    "printed_page": 422,
    "pdf_page": 443,
-   "text": "Assuming that the activities have already been sorted by finish times, the running time of the call RECURSIVE-ACTIVITY-SELECTOR (s;f;0;n) is Θ(n). To see why, observe that over all recursive calls, eac h activity is examined exactly once in the while loop test of line 2. In particular, activity a i is examined in the last call made in which k<i ."
+   "text": "Assuming that the activities have already been sorted by finish times, the running time of the call RECURSIVE-ACTIVITY-SELECTOR (s,f,0,n) is Θ(n). To see why, observe that over all recursive calls, eac h activity is examined exactly once in the while loop test of line 2. In particular, activity a i is examined in the last call made in which k<i ."
   },
   {
    "type": "body",
@@ -483,7 +483,7 @@
    "section_title": "15.1 An activity-selection problem",
    "printed_page": 423,
    "pdf_page": 444,
-   "text": "Figure 15.2 The operation of RECURSIVE-ACTIVITY-SELECTOR on the 11 activities from Figure 15.1. Activities considered in each recursive call appear between horizontal lines. The fictitious activity a 0 finishes at time 0, and the initial call RECURSIVE-ACTIVITY-SELECTOR(s;f;0;11) , selects activity a 1 . In each recursive call, the activities that have already been selected are blue, and the activity shown in tan is being considered. If the starting time of an activity occurs before the finish time of the most recently added activity (the arrow between them points left), it is re- jected. Otherwise (the arrow points directly up or to the right), it is selected. The last recursive call, RECURSIVE-ACTIVITY-SELECTOR(s;f;11;11) , returns ;. The resulting set of selected activities is fa 1 ;a 4 ;a 8 ;a 11 g."
+   "text": "Figure 15.2 The operation of RECURSIVE-ACTIVITY-SELECTOR on the 11 activities from Figure 15.1. Activities considered in each recursive call appear between horizontal lines. The fictitious activity a 0 finishes at time 0, and the initial call RECURSIVE-ACTIVITY-SELECTOR(s,f,0,11) , selects activity a 1 . In each recursive call, the activities that have already been selected are blue, and the activity shown in tan is being considered. If the starting time of an activity occurs before the finish time of the most recently added activity (the arrow between them points left), it is re- jected. Otherwise (the arrow points directly up or to the right), it is selected. The last recursive call, RECURSIVE-ACTIVITY-SELECTOR(s,f,11,11) , returns ,. The resulting set of selected activities is fa 1 ,a 4 ,a 8 ,a 11 g."
   },
   {
    "type": "pseudocode",
@@ -542,7 +542,7 @@
    "section_title": "15.1 An activity-selection problem",
    "printed_page": 424,
    "pdf_page": 445,
-   "text": "GREEDY-ACTIVITY-SELECTOR (s;f;n)"
+   "text": "GREEDY-ACTIVITY-SELECTOR (s,f,n)"
   },
   {
    "type": "body",
@@ -560,7 +560,7 @@
    "section_title": "15.1 An activity-selection problem",
    "printed_page": 424,
    "pdf_page": 445,
-   "text": "Lines 132 select activity a 1 , initialize A to contain just this activity, and initialize k to index this activity. The for loop of lines 336 finds the earliest activity in S k to finish. The loop considers each activity a m in turn and adds a m to A if it is compatible with all previously selected activities. Such an activity is the earliest in S k to finish. To see whether activity a m is compatible with every activity currently in A, it suffices by equation (15.3) to check (in line 4) that its start time s m is not earlier than the finish time f k of the activity most recently added to A. If activity a m is compatible, then lines 536 add activity a m to A and set k to m. The set A returned by the call GREEDY-ACTIVITY-SELECTOR (s;f) is precisely the set returned by the initial call RECURSIVE-ACTIVITY-SELECTOR (s;f;0;n) ."
+   "text": "Lines 1–2 select activity a 1 , initialize A to contain just this activity, and initialize k to index this activity. The for loop of lines 3–6 finds the earliest activity in S k to finish. The loop considers each activity a m in turn and adds a m to A if it is compatible with all previously selected activities. Such an activity is the earliest in S k to finish. To see whether activity a m is compatible with every activity currently in A, it suffices by equation (15.3) to check (in line 4) that its start time s m is not earlier than the finish time f k of the activity most recently added to A. If activity a m is compatible, then lines 5–6 add activity a m to A and set k to m. The set A returned by the call GREEDY-ACTIVITY-SELECTOR (s,f) is precisely the set returned by the initial call RECURSIVE-ACTIVITY-SELECTOR (s,f,0,n) ."
   },
   {
    "type": "body",
@@ -578,7 +578,7 @@
    "section_title": "15.1 An activity-selection problem",
    "printed_page": 424,
    "pdf_page": 445,
-   "text": "15.1-1 Give a dynamic-programming algorithm for the activity-selection problem, based on recurrence (15.2). Have your algorithm compute the sizes c[i;j] as defined above and also produce the maximum-size subset of mutually compatible activities."
+   "text": "15.1-1 Give a dynamic-programming algorithm for the activity-selection problem, based on recurrence (15.2). Have your algorithm compute the sizes c[i,j] as defined above and also produce the maximum-size subset of mutually compatible activities."
   },
   {
    "type": "body",
@@ -1046,7 +1046,7 @@
    "section_title": "15.2 Elements of the greedy strategy",
    "printed_page": 431,
    "pdf_page": 452,
-   "text": "15.2-5 Describe an efficient algorithm that, given a set fx 1 ;x 2 ;:::;x n g of points on the real line, determines the smallest set of unit-length closed intervals that contains all of the given points. Argue that your algorithm is correct."
+   "text": "15.2-5 Describe an efficient algorithm that, given a set fx 1 ,x 2 ,…,x n g of points on the real line, determines the smallest set of unit-length closed intervals that contains all of the given points. Argue that your algorithm is correct."
   },
   {
    "type": "body",
@@ -1474,14 +1474,14 @@
     },
     {
      "n": 10,
-     "code": "INSERT(Q;´/"
+     "code": "INSERT(Q,´/"
     },
     {
      "n": 11,
      "code": "return EXTRACT-MIN.Q) / / the root of the tree is the only node left"
     }
    ],
-   "text": "1 n = |C|\n2 Q = C\n3 for i = 1 to n − 1\n4 allocate a new node ´\n5 x DEXTRACT-MIN (Q)\n6 y DEXTRACT-MIN (Q)\n7 ´: left = x\n8 ´: right = y\n9 ´: freq = x: freq C y: freq\n10 INSERT(Q;´/\n11 return EXTRACT-MIN.Q) / / the root of the tree is the only node left"
+   "text": "1 n = |C|\n2 Q = C\n3 for i = 1 to n − 1\n4 allocate a new node ´\n5 x DEXTRACT-MIN (Q)\n6 y DEXTRACT-MIN (Q)\n7 ´: left = x\n8 ´: right = y\n9 ´: freq = x: freq C y: freq\n10 INSERT(Q,´/\n11 return EXTRACT-MIN.Q) / / the root of the tree is the only node left"
   },
   {
    "type": "body",
@@ -1580,7 +1580,7 @@
    "section_title": "15.3 Huffman codes",
    "printed_page": 435,
    "pdf_page": 456,
-   "text": "The HUFFMAN procedure works as follows. Line 2 initializes the min-priority queue Q with the characters in C . The for loop in lines 3310 repeatedly extracts the two nodes x and y of lowest frequency from the queue and replaces the m in the queue with a new node ´ representing their merger. The frequency of ´ is computed as the sum of the frequencies of x and y in line 9. The node ´ has x as its left child and y as its right child. (This order is arbitrary. Switc hing the left and right child of any node yields a different code of the same cost.) After n − 1 mergers, line 11 returns the one node left in the queue, which is the root of the code tree."
+   "text": "The HUFFMAN procedure works as follows. Line 2 initializes the min-priority queue Q with the characters in C . The for loop in lines 3–10 repeatedly extracts the two nodes x and y of lowest frequency from the queue and replaces the m in the queue with a new node ´ representing their merger. The frequency of ´ is computed as the sum of the frequencies of x and y in line 9. The node ´ has x as its left child and y as its right child. (This order is arbitrary. Switc hing the left and right child of any node yields a different code of the same cost.) After n − 1 mergers, line 11 returns the one node left in the queue, which is the root of the code tree."
   },
   {
    "type": "body",
@@ -1823,7 +1823,7 @@
    "section_title": "15.3 Huffman codes",
    "printed_page": 438,
    "pdf_page": 459,
-   "text": "Let x and y be two characters in C with minimum frequency. Let C 0 be the alphabet C with the characters x and y removed and a new character ´ added, so that C 0 = (C − fx;y g) [ f´g. Define freq for all characters in C 0 with the same values as in C , along with ´: freq = x: freq C y: freq. Let T 0 be any tree representing an optimal prefix-free code for alphabet C 0 . Then the tree T , obtained from T 0 by replacing the leaf node for ´ with an internal node having x and y as children, represents an optimal prefix-free code for the alphabet C ."
+   "text": "Let x and y be two characters in C with minimum frequency. Let C 0 be the alphabet C with the characters x and y removed and a new character ´ added, so that C 0 = (C − fx,y g) [ f´g. Define freq for all characters in C 0 with the same values as in C , along with ´: freq = x: freq C y: freq. Let T 0 be any tree representing an optimal prefix-free code for alphabet C 0 . Then the tree T , obtained from T 0 by replacing the leaf node for ´ with an internal node having x and y as children, represents an optimal prefix-free code for the alphabet C ."
   },
   {
    "type": "proof",
@@ -1841,7 +1841,7 @@
    "section_title": "15.3 Huffman codes",
    "printed_page": 438,
    "pdf_page": 459,
-   "text": "For each character c 2 C − fx;y g, we have that d T (c) = d T 0 (c), and hence c: freq • d T (c) = c: freq • d T 0 (c). Since d T (x) = d T (y) = d T 0 .´/ C 1, we have x: freq • d T (x) + y: freq • d T (y) = (x: freq C y: freq).d T 0 .´/ C 1/"
+   "text": "For each character c 2 C − fx,y g, we have that d T (c) = d T 0 (c), and hence c: freq • d T (c) = c: freq • d T 0 (c). Since d T (x) = d T (y) = d T 0 .´/ C 1, we have x: freq • d T (x) + y: freq • d T (y) = (x: freq C y: freq).d T 0 .´/ C 1/"
   },
   {
    "type": "body",
@@ -2012,7 +2012,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 440,
    "pdf_page": 461,
-   "text": "As a computer program executes, it makes a sequence of memory requests. Say that there are n memory requests, to data in blocks b 1 ;b 2 ;:::;b n , in that order. The blocks in the access sequence might not be distinct, and indeed, any given block is usually accessed multiple times. For example, a program that accesses four distinct blocks p;q;r;s might make a sequence of requests to blocks s;q;s;q;q;s;p;p;r; s;s;q;p;r;q . The cache can hold up to some fixed number k of cache blocks. It starts out empty before the first request. Each request causes at most one block to enter the cache and at most one block to be evicted from the cache. Upon a request for block b i , any one of three scenarios may occur:"
+   "text": "As a computer program executes, it makes a sequence of memory requests. Say that there are n memory requests, to data in blocks b 1 ,b 2 ,…,b n , in that order. The blocks in the access sequence might not be distinct, and indeed, any given block is usually accessed multiple times. For example, a program that accesses four distinct blocks p,q,r,s might make a sequence of requests to blocks s,q,s,q,q,s,p,p,r; s,s,q,p,r,q . The cache can hold up to some fixed number k of cache blocks. It starts out empty before the first request. Each request causes at most one block to enter the cache and at most one block to be evicted from the cache. Upon a request for block b i , any one of three scenarios may occur:"
   },
   {
    "type": "body",
@@ -2129,7 +2129,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 441,
    "pdf_page": 462,
-   "text": "To show that the offline problem exhibits optimal substructure, let’s define the subproblem (C;i) as processing requests for blocks b i ;b i C1 ;:::;b n with cache configuration C at the time that the request for block b i occurs, that is, C is a subset of the set of blocks such that |C| ≤ k. A solution to subproblem (C;i) is a sequence of decisions that specifies which block to evict (if any) upon each request for blocks b i ;b i C1 ;:::;b n . An optimal solution to subproblem (C;i) minimizes the number of cache misses."
+   "text": "To show that the offline problem exhibits optimal substructure, let’s define the subproblem (C,i) as processing requests for blocks b i ,b i + 1 ,…,b n with cache configuration C at the time that the request for block b i occurs, that is, C is a subset of the set of blocks such that |C| ≤ k. A solution to subproblem (C,i) is a sequence of decisions that specifies which block to evict (if any) upon each request for blocks b i ,b i + 1 ,…,b n . An optimal solution to subproblem (C,i) minimizes the number of cache misses."
   },
   {
    "type": "body",
@@ -2138,7 +2138,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 441,
    "pdf_page": 462,
-   "text": "Consider an optimal solution S to subproblem (C;i) , and let C 0 be the contents of the cache after processing the request for block b i in solution S . Let S 0 be the subsolution of S for the resulting subproblem (C 0 ;i + 1). If the request for b i results in a cache hit, then the cache remains unch anged, so that C 0 = C . If the request for block b i results in a cache miss, then the contents of the cache change, so that C 0 ≠ C . We claim that in either case, S 0 is an optimal solution to subproblem (C 0 ;i + 1). Why? If S 0 is not an optimal solution to subproblem (C 0 ;i + 1), then there exists another solution S 00 to subproblem (C 0 ;i + 1) that makes fewer cache misses than S 0 . Combining S 00 with the decision of S at the request for block b i yields another solution that makes fewer cache misses than S , which contradicts the assumption that S is an optimal solution to subproblem (C;i) ."
+   "text": "Consider an optimal solution S to subproblem (C,i) , and let C 0 be the contents of the cache after processing the request for block b i in solution S . Let S 0 be the subsolution of S for the resulting subproblem (C 0 ,i + 1). If the request for b i results in a cache hit, then the cache remains unch anged, so that C 0 = C . If the request for block b i results in a cache miss, then the contents of the cache change, so that C 0 ≠ C . We claim that in either case, S 0 is an optimal solution to subproblem (C 0 ,i + 1). Why? If S 0 is not an optimal solution to subproblem (C 0 ,i + 1), then there exists another solution S 00 to subproblem (C 0 ,i + 1) that makes fewer cache misses than S 0 . Combining S 00 with the decision of S at the request for block b i yields another solution that makes fewer cache misses than S , which contradicts the assumption that S is an optimal solution to subproblem (C,i) ."
   },
   {
    "type": "body",
@@ -2147,7 +2147,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 442,
    "pdf_page": 463,
-   "text": "To quantify a recursive solution, we need a little more notation. Let R C;i be the set of all cache configurations that can immediately follow configuration C after processing a request for block b i . If the request results in a cache hit, then the cache remains unchanged, so that R C;i = fC g. If the request for b i results in a cache miss, then there are two possibilities. If the cache is not full (|C| <k ), then the cache is filling up and the only choice is to insert b i into the cache, so that R C;i = fC [ fb i gg. If the cache is full ( |C| = k) upon a cache miss, then R C;i contains k potential configurations: one for each candidate block in C that could be evicted and replaced by block b i . In this case, R C;i = f(C − fx g) [ fb i g W x 2 + g."
+   "text": "To quantify a recursive solution, we need a little more notation. Let R C,i be the set of all cache configurations that can immediately follow configuration C after processing a request for block b i . If the request results in a cache hit, then the cache remains unchanged, so that R C,i = fC g. If the request for b i results in a cache miss, then there are two possibilities. If the cache is not full (|C| <k ), then the cache is filling up and the only choice is to insert b i into the cache, so that R C,i = fC [ fb i gg. If the cache is full ( |C| = k) upon a cache miss, then R C,i contains k potential configurations: one for each candidate block in C that could be evicted and replaced by block b i . In this case, R C,i = f(C − fx g) [ fb i g W x 2 + g."
   },
   {
    "type": "body",
@@ -2156,7 +2156,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 442,
    "pdf_page": 463,
-   "text": "For example, if C = fp;q;r g, k = 3, and block s is requested, then R C;i = ffp;q;s g ; fp;r;s g ; fq;r;s gg."
+   "text": "For example, if C = fp,q,r g, k = 3, and block s is requested, then R C,i = ffp,q,s g ; fp,r,s g ; fq,r,s gg."
   },
   {
    "type": "body",
@@ -2165,7 +2165,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 442,
    "pdf_page": 463,
-   "text": "Let miss(C;i) denote the minimum number of cache misses in a solu tion for subproblem (C;i) . Here is a recurrence for miss(C;i) : miss(C;i) ="
+   "text": "Let miss(C,i) denote the minimum number of cache misses in a solu tion for subproblem (C,i) . Here is a recurrence for miss(C,i) : miss(C,i) ="
   },
   {
    "type": "body",
@@ -2174,7 +2174,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 442,
    "pdf_page": 463,
-   "text": "0 if i = n and b n 2 C ; 1 if i = n and b n 62 C ; miss(C;i + 1) if i <n and b i 2 C ; 1 C min fmiss(C 0 ;i + 1) W + 0 2 R C;i g if i <n and b i 62 C :"
+   "text": "0 if i = n and b n 2 C ; 1 if i = n and b n 62 C ; miss(C,i + 1) if i <n and b i 2 C ; 1 C min fmiss(C 0 ,i + 1) W + 0 2 R C,i g if i <n and b i 62 C :"
   },
   {
    "type": "body",
@@ -2210,7 +2210,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 442,
    "pdf_page": 463,
-   "text": "Consider a subproblem (C;i) when the cache C contains k blocks, so that it is full, and a cache miss occurs. When block b i is requested, let ´ = b m be the block in C whose next access is furthest in the future. (If so me block in the cache will never again be referenced, then consider any such b lock to be block ´, and add a dummy request for block ´ = b m = b nC1 .) Then evicting block ´ upon a request for block b i is included in some optimal solution for the subproblem (C;i) ."
+   "text": "Consider a subproblem (C,i) when the cache C contains k blocks, so that it is full, and a cache miss occurs. When block b i is requested, let ´ = b m be the block in C whose next access is furthest in the future. (If so me block in the cache will never again be referenced, then consider any such b lock to be block ´, and add a dummy request for block ´ = b m = b n + 1 .) Then evicting block ´ upon a request for block b i is included in some optimal solution for the subproblem (C,i) ."
   },
   {
    "type": "proof",
@@ -2219,7 +2219,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 442,
    "pdf_page": 463,
-   "text": "Proof Let S be an optimal solution to subproblem (C;i) . If S evicts block ´ upon the request for block b i , then we are done, since we have shown that some optimal solution includes evicting ´."
+   "text": "Proof Let S be an optimal solution to subproblem (C,i) . If S evicts block ´ upon the request for block b i , then we are done, since we have shown that some optimal solution includes evicting ´."
   },
   {
    "type": "body",
@@ -2228,7 +2228,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 442,
    "pdf_page": 463,
-   "text": "So now suppose that optimal solution S evicts some other block x when block b i is requested. We’ll construct another solution S 0 to subproblem (C;i) which, upon the request for b i , evicts block ´ instead of x and induces no more cache misses than S does, so that S 0 is also optimal. Because different solutions may yi eld different cache configurations, denote by C S;j the configuration of the cache under solution S just before the request for some block b j , and likewise for solution S 0 and C S 0 ;j . We’ll show how to construct S 0 with the following properties:"
+   "text": "So now suppose that optimal solution S evicts some other block x when block b i is requested. We’ll construct another solution S 0 to subproblem (C,i) which, upon the request for b i , evicts block ´ instead of x and induces no more cache misses than S does, so that S 0 is also optimal. Because different solutions may yi eld different cache configurations, denote by C S,j the configuration of the cache under solution S just before the request for some block b j , and likewise for solution S 0 and C S 0 ,j . We’ll show how to construct S 0 with the following properties:"
   },
   {
    "type": "body",
@@ -2237,7 +2237,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 443,
    "pdf_page": 464,
-   "text": "1. For j = i + 1;:::;m , let = j = + S;j \\ C S 0 ;j . Then, jD j j ≥ k − 1, so that the cache configurations C S;j and C S 0 ;j differ by at most one block. If they differ, then C S;j = D j [ f´g and C S 0 ;j = D j [ fy g for some block y ≠ ´."
+   "text": "1. For j = i + 1,…,m , let = j = + S,j \\ C S 0 ,j . Then, jD j j ≥ k − 1, so that the cache configurations C S,j and C S 0 ,j differ by at most one block. If they differ, then C S,j = D j [ f´g and C S 0 ,j = D j [ fy g for some block y ≠ ´."
   },
   {
    "type": "body",
@@ -2246,7 +2246,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 443,
    "pdf_page": 464,
-   "text": "2. For each request of blocks b i ;:::;b m−1 , if solution S has a cache hit, then solution S 0 also has a cache hit."
+   "text": "2. For each request of blocks b i ,…,b m−1 , if solution S has a cache hit, then solution S 0 also has a cache hit."
   },
   {
    "type": "body",
@@ -2255,7 +2255,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 443,
    "pdf_page": 464,
-   "text": "3. For all j >m, the cache configurations C S;j and C S 0 ;j are identical."
+   "text": "3. For all j >m, the cache configurations C S,j and C S 0 ,j are identical."
   },
   {
    "type": "body",
@@ -2264,7 +2264,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 443,
    "pdf_page": 464,
-   "text": "4. Over the sequence of requests for blocks b i ;:::;b m , the number of cache misses produced by solution S 0 is at most the number of cache misses produced by solution S ."
+   "text": "4. Over the sequence of requests for blocks b i ,…,b m , the number of cache misses produced by solution S 0 is at most the number of cache misses produced by solution S ."
   },
   {
    "type": "body",
@@ -2282,7 +2282,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 443,
    "pdf_page": 464,
-   "text": "1. We proceed by induction on j , for j = i + 1;:::;m . For the base case, the initial caches C S;i and C S 0 ;i are identical. Upon the request for block b i , solution S evicts x and solution S 0 evicts ´. Thus, cache configurations C S;i C1 and C S 0 ;i C1 differ by just one block, C S;i C1 = D i C1 [ f´g, C S 0 ;i C1 = D i C1 [ fx g, and x ≠ ´."
+   "text": "1. We proceed by induction on j , for j = i + 1,…,m . For the base case, the initial caches C S,i and C S 0 ,i are identical. Upon the request for block b i , solution S evicts x and solution S 0 evicts ´. Thus, cache configurations C S,i + 1 and C S 0 ,i + 1 differ by just one block, C S,i + 1 = D i + 1 [ f´g, C S 0 ,i + 1 = D i + 1 [ fx g, and x ≠ ´."
   },
   {
    "type": "body",
@@ -2291,7 +2291,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 443,
    "pdf_page": 464,
-   "text": "The inductive step defines how solution S 0 behaves upon a request for block b j for i + 1 ≤ j ≤ m − 1. The inductive hypothesis is that property 1 holds when b j is requested. Because ´ = b m is the block in C S;i whose next reference is furthest in the future, we know that b j ≠ ´. We consider several scenarios:"
+   "text": "The inductive step defines how solution S 0 behaves upon a request for block b j for i + 1 ≤ j ≤ m − 1. The inductive hypothesis is that property 1 holds when b j is requested. Because ´ = b m is the block in C S,i whose next reference is furthest in the future, we know that b j ≠ ´. We consider several scenarios:"
   },
   {
    "type": "body",
@@ -2300,7 +2300,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 443,
    "pdf_page": 464,
-   "text": "• If C S;j = + S 0 ;j (so that jD j j = k), then solution S 0 makes the same decision upon the request for b j as S makes, so that C S;j C1 = + S 0 ;j C1 ."
+   "text": "• If C S,j = + S 0 ,j (so that jD j j = k), then solution S 0 makes the same decision upon the request for b j as S makes, so that C S,j + 1 = + S 0 ,j + 1 ."
   },
   {
    "type": "body",
@@ -2309,7 +2309,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 443,
    "pdf_page": 464,
-   "text": "• If jD j j = k − 1 and b j 2 = j , then both caches already contain block b j , and both solutions S and S 0 have cache hits. Therefore, C S;j C1 = + S;j and C S 0 ;j C1 = + S 0 ;j ."
+   "text": "• If jD j j = k − 1 and b j 2 = j , then both caches already contain block b j , and both solutions S and S 0 have cache hits. Therefore, C S,j + 1 = + S,j and C S 0 ,j + 1 = + S 0 ,j ."
   },
   {
    "type": "body",
@@ -2318,7 +2318,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 443,
    "pdf_page": 464,
-   "text": "• If jD j j = k − 1 and b j … = j , then because C S;j = D j [ f´g and b j ≠ ´, solution S has a cache miss. It evicts either block ´ or some block w 2 = j ."
+   "text": "• If jD j j = k − 1 and b j … = j , then because C S,j = D j [ f´g and b j ≠ ´, solution S has a cache miss. It evicts either block ´ or some block w 2 = j ."
   },
   {
    "type": "body",
@@ -2327,7 +2327,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 443,
    "pdf_page": 464,
-   "text": "B If solution S evicts block ´, then C S;j C1 = D j [ fb j g. There are two cases, depending on whether b j = y :"
+   "text": "B If solution S evicts block ´, then C S,j + 1 = D j [ fb j g. There are two cases, depending on whether b j = y :"
   },
   {
    "type": "body",
@@ -2336,7 +2336,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 443,
    "pdf_page": 464,
-   "text": "˘ If b j = y , then solution S 0 has a cache hit, so that C S 0 ;j C1 ="
+   "text": "˘ If b j = y , then solution S 0 has a cache hit, so that C S 0 ,j + 1 ="
   },
   {
    "type": "body",
@@ -2345,7 +2345,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 443,
    "pdf_page": 464,
-   "text": "C S 0 ;j = D j [ fb j g. Thus, C S;j C1 = + S 0 ;j C1 ."
+   "text": "C S 0 ,j = D j [ fb j g. Thus, C S,j + 1 = + S 0 ,j + 1 ."
   },
   {
    "type": "body",
@@ -2354,7 +2354,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 443,
    "pdf_page": 464,
-   "text": "˘ If b j ≠ y , then solution S 0 has a cache miss. It evicts block y , so that C S 0 ;j C1 = D j [ fb j g, and again C S;j C1 = + S 0 ;j C1 ."
+   "text": "˘ If b j ≠ y , then solution S 0 has a cache miss. It evicts block y , so that C S 0 ,j + 1 = D j [ fb j g, and again C S,j + 1 = + S 0 ,j + 1 ."
   },
   {
    "type": "body",
@@ -2363,7 +2363,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 443,
    "pdf_page": 464,
-   "text": "˘ If b j = y , then solution S 0 has a cache hit, so that C S 0 ;j C1 ="
+   "text": "˘ If b j = y , then solution S 0 has a cache hit, so that C S 0 ,j + 1 ="
   },
   {
    "type": "body",
@@ -2372,7 +2372,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 444,
    "pdf_page": 465,
-   "text": "B If solution S evicts some block w 2 = j , then C S;j C1 = (D j − fwg) [ fb j ;´ g. Once again, there are two cases, depending on whether b j = y :"
+   "text": "B If solution S evicts some block w 2 = j , then C S,j + 1 = (D j − fwg) [ fb j ,´ g. Once again, there are two cases, depending on whether b j = y :"
   },
   {
    "type": "body",
@@ -2381,7 +2381,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 444,
    "pdf_page": 465,
-   "text": "C S 0 ;j = D j [ fb j g. Since w 2 = j and w was not evicted by solution S 0 , we have w 2 + S 0 ;j C1 . Therefore, w … = j C1 and b j 2 = j C1 , so that = j C1 = (D j − fwg) [ fb j g. Thus, C S;j C1 = D j C1 [ f´g, C S 0 ;j C1 = D j C1 [ fwg, and because w ≠ ´, property 1 holds when block b j C1 is requested. (In other words, block w replaces block y in property 1.)"
+   "text": "C S 0 ,j = D j [ fb j g. Since w 2 = j and w was not evicted by solution S 0 , we have w 2 + S 0 ,j + 1 . Therefore, w … = j + 1 and b j 2 = j + 1 , so that = j + 1 = (D j − fwg) [ fb j g. Thus, C S,j + 1 = D j + 1 [ f´g, C S 0 ,j + 1 = D j + 1 [ fwg, and because w ≠ ´, property 1 holds when block b j + 1 is requested. (In other words, block w replaces block y in property 1.)"
   },
   {
    "type": "body",
@@ -2390,7 +2390,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 444,
    "pdf_page": 465,
-   "text": "˘ If b j ≠ y , then solution S 0 has a cache miss. It evicts block w, so that C S 0 ;j C1 = (D j − fwg) [ fb j ;y g. Therefore, we have that D j C1 = (D j − fwg) [ fb j g and so C S;j C1 = D j C1 [ f´g and C S 0 ;j C1 = D j C1 [ fy g."
+   "text": "˘ If b j ≠ y , then solution S 0 has a cache miss. It evicts block w, so that C S 0 ,j + 1 = (D j − fwg) [ fb j ,y g. Therefore, we have that D j + 1 = (D j − fwg) [ fb j g and so C S,j + 1 = D j + 1 [ f´g and C S 0 ,j + 1 = D j + 1 [ fy g."
   },
   {
    "type": "body",
@@ -2408,7 +2408,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 444,
    "pdf_page": 465,
-   "text": "3. If C S;m = + S 0 ;m , then solution S 0 makes the same decision upon the request for block ´ = b m as S makes, so that C S;mC1 = + S 0 ;mC1 . If C S;m ≠ C S 0 ;m , then by property 1, C S;m = D m [f´g and C S 0 ;m = D m [fy g, where y ≠ ´. In this case, solution S has a cache hit, so that C S;mC1 = + S;m = D m [ f´g. Solution S 0 evicts block y and brings in block ´, so that C S 0 ;mC1 = D m [ f´g = + S;mC1 ."
+   "text": "3. If C S,m = + S 0 ,m , then solution S 0 makes the same decision upon the request for block ´ = b m as S makes, so that C S,m + 1 = + S 0 ,m + 1 . If C S,m ≠ C S 0 ,m , then by property 1, C S,m = D m [f´g and C S 0 ,m = D m [fy g, where y ≠ ´. In this case, solution S has a cache hit, so that C S,m + 1 = + S,m = D m [ f´g. Solution S 0 evicts block y and brings in block ´, so that C S 0 ,m + 1 = D m [ f´g = + S,m + 1 ."
   },
   {
    "type": "body",
@@ -2417,7 +2417,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 444,
    "pdf_page": 465,
-   "text": "Thus, regardless of whether or not C S;m = + S 0 ;m , we have C S;mC1 = + S 0 ;mC1 , and starting with the request for block b mC1 , solution S 0 simply makes the same decisions as S ."
+   "text": "Thus, regardless of whether or not C S,m = + S 0 ,m , we have C S,m + 1 = + S 0 ,m + 1 , and starting with the request for block b m + 1 , solution S 0 simply makes the same decisions as S ."
   },
   {
    "type": "body",
@@ -2426,7 +2426,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 444,
    "pdf_page": 465,
-   "text": "4. By property 2, upon the requests for blocks b i ;:::;b m−1 , whenever solution S has a cache hit, so does S 0 . Only the request for block b m = ´ remains to be considered. If S has a cache miss upon the request for b m , then regardless of whether S 0 has a cache hit or a cache miss, we are done: S 0 has at most the same number of cache misses as S ."
+   "text": "4. By property 2, upon the requests for blocks b i ,…,b m−1 , whenever solution S has a cache hit, so does S 0 . Only the request for block b m = ´ remains to be considered. If S has a cache miss upon the request for b m , then regardless of whether S 0 has a cache hit or a cache miss, we are done: S 0 has at most the same number of cache misses as S ."
   },
   {
    "type": "body",
@@ -2435,7 +2435,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 444,
    "pdf_page": 465,
-   "text": "So now suppose that S has a cache hit and S 0 has a cache miss upon the re- quest for b m . We’ll show that there exists a request for at least one of blocks b i C1 ;:::;b m−1 in which the request results in a cache miss for S and a cache hit for S 0 , thereby compensating for what happens upon the re quest for block b m ."
+   "text": "So now suppose that S has a cache hit and S 0 has a cache miss upon the re- quest for b m . We’ll show that there exists a request for at least one of blocks b i + 1 ,…,b m−1 in which the request results in a cache miss for S and a cache hit for S 0 , thereby compensating for what happens upon the re quest for block b m ."
   },
   {
    "type": "body",
@@ -2444,7 +2444,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 444,
    "pdf_page": 465,
-   "text": "The proof is by contradiction. Assume that no request for blocks b i C1 ;:::;b m−1 results in a cache miss for S and a cache hit for S 0 ."
+   "text": "The proof is by contradiction. Assume that no request for blocks b i + 1 ,…,b m−1 results in a cache miss for S and a cache hit for S 0 ."
   },
   {
    "type": "body",
@@ -2453,7 +2453,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 444,
    "pdf_page": 465,
-   "text": "We start by observing that once the caches C S;j and C S 0 j are equal for some j > i , they remain equal thereafter. Observe also that if b m 2 + S;m and b m … C S 0 ;m , then C S;m ≠ C S 0 ;m . Therefore, solution S cannot have evicted block ´ upon the requests for blocks b i ;:::;b m−1 , for if it had, then these two cache configurations would be equal. The remaining possibility is that upon each of these requests, we had C S;j = D j [ f´g, C S 0 ;j = D j [ fy g for some block y ≠ ´, and solution S evicted some block w 2 = j . Moreover, since none of these requests resulted in a cache miss for S and a cache hit for S 0 , the case of b j = y never occurred. That is, for every request of blocks b i C1 ;:::;b m−1 , the requested block b j was never the block y 2 + S 0 ;j − C S;j . In these cases, after processing the request, we had C S 0 ;j C1 = D j C1 [ fy g: the difference between the two caches did not change. Now, let’s go back to the request for block b i , where afterward, we had C S 0 ;i C1 = D i C1 [ fx g. Because every succeeding request until requesting block b m did not change the difference between the caches, we had C S 0 ;j = D j [ fx g for j = i + 1;:::;m ."
+   "text": "We start by observing that once the caches C S,j and C S 0 j are equal for some j > i , they remain equal thereafter. Observe also that if b m 2 + S,m and b m … C S 0 ,m , then C S,m ≠ C S 0 ,m . Therefore, solution S cannot have evicted block ´ upon the requests for blocks b i ,…,b m−1 , for if it had, then these two cache configurations would be equal. The remaining possibility is that upon each of these requests, we had C S,j = D j [ f´g, C S 0 ,j = D j [ fy g for some block y ≠ ´, and solution S evicted some block w 2 = j . Moreover, since none of these requests resulted in a cache miss for S and a cache hit for S 0 , the case of b j = y never occurred. That is, for every request of blocks b i + 1 ,…,b m−1 , the requested block b j was never the block y 2 + S 0 ,j − C S,j . In these cases, after processing the request, we had C S 0 ,j + 1 = D j + 1 [ fy g: the difference between the two caches did not change. Now, let’s go back to the request for block b i , where afterward, we ⟨ad + S 0 ,i + 1 = D⟩ C1 [ fx g. Because every succeeding request until requesting block b m did not change the difference between the caches, we had C S 0 ,j = D j [ fx g for j = i + 1,…,m ."
   },
   {
    "type": "body",
@@ -2462,7 +2462,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 445,
    "pdf_page": 466,
-   "text": "By definition, block ´ = b m is requested after block x . That means at least one of blocks b i C1 ;:::;b m−1 is block x . But for j = i + 1;:::;m , we have x 2 + S 0 ;j and x … C S;j , so that at least one of these requests had a cach e hit for S 0 and a cache miss for S , a contradiction. We conclude that if solution S has a cache hit and solution S 0 has a cache miss upon the request for block b m , then some earlier request had the opposite result, and so solution S 0 produces no more cache misses than solution S . Since S is assumed to be optimal, S 0 is optimal as well."
+   "text": "By definition, block ´ = b m is requested after block x . That means at least one of blocks b i + 1 ,…,b m−1 is block x . But for j = i + 1,…,m , we have x 2 + S 0 ,j and x … C S,j , so that at least one of these requests had a cach e hit for S 0 and a cache miss for S , a contradiction. We conclude that if solution S has a cache hit and solution S 0 has a cache miss upon the request for block b m , then some earlier request had the opposite result, and so solution S 0 produces no more cache misses than solution S . Since S is assumed to be optimal, S 0 is optimal as well."
   },
   {
    "type": "body",
@@ -2480,7 +2480,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 445,
    "pdf_page": 466,
-   "text": "15.4-1 Write pseudocode for a cache manager that uses the furthest-in-future strategy. It should take as input a set C of blocks in the cache, the number of blocks k that the cache can hold, a sequence b 1 ;b 2 ;:::;b n of requested blocks, and the index i into the sequence for the block b i being requested. For each request, it should print out whether a cache hit or cache miss occurs, and for e ach cache miss, it should also print out which block, if any, is evicted."
+   "text": "15.4-1 Write pseudocode for a cache manager that uses the furthest-in-future strategy. It should take as input a set C of blocks in the cache, the number of blocks k that the cache can hold, a sequence b 1 ,b 2 ,…,b n of requested blocks, and the index i into the sequence for the block b i being requested. For each request, it should print out whether a cache hit or cache miss occurs, and for e ach cache miss, it should also print out which block, if any, is evicted."
   },
   {
    "type": "exercise",
@@ -2498,7 +2498,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 446,
    "pdf_page": 467,
-   "text": "15.4-3 Professor Croesus suggests that in the proof of Theorem 15.5, the last clause in property 1 can change to C S 0 ;j = D j [ fx g or, equivalently, require the block y given in property 1 to always be the block x evicted by solution S upon the request for block b i . Show where the proof breaks down with this requirement."
+   "text": "15.4-3 Professor Croesus suggests that in the proof of Theorem 15.5, the last clause in property 1 can change to C S 0 ,j = D j [ fx g or, equivalently, require the block y given in property 1 to always be the block x evicted by solution S upon the request for block b i . Show where the proof breaks down with this requirement."
   },
   {
    "type": "exercise",
@@ -2525,7 +2525,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 446,
    "pdf_page": 467,
-   "text": "Consider the problem of making change for n cents using the smallest number of coins. Assume that each coin’s value is an integer. a. Describe a greedy algorithm to make change consisti ng of quarters, dimes, nickels, and pennies. Prove that your algorithm yields an optimal solution. b. Suppose that the available coins are in denominations that are powers of c : the denominations are c 0 ;c 1 ;:::;c k for some integers c>1 and k ≥ 1. Show that the greedy algorithm always yields an optimal solution. c. Give a set of coin denominations for which the greedy algorithm does not yield an optimal solution. Your set should include a penny so that there is a solution for every value of n. d. Give an O(nk)-time algorithm that makes change for any set of k different coin denominations using the smallest number of coi ns, assuming that one of the coins is a penny."
+   "text": "Consider the problem of making change for n cents using the smallest number of coins. Assume that each coin’s value is an integer. a. Describe a greedy algorithm to make change consisti ng of quarters, dimes, nickels, and pennies. Prove that your algorithm yields an optimal solution. b. Suppose that the available coins are in denominations that are powers of c : the denominations are c 0 ,c 1 ,…,c k for some integers c>1 and k ≥ 1. Show that the greedy algorithm always yields an optimal solution. c. Give a set of coin denominations for which the greedy algorithm does not yield an optimal solution. Your set should include a penny so that there is a solution for every value of n. d. Give an O(nk)-time algorithm that makes change for any set of k different coin denominations using the smallest number of coi ns, assuming that one of the coins is a penny."
   },
   {
    "type": "problem",
@@ -2543,7 +2543,7 @@
    "section_title": "15.4 Offline caching",
    "printed_page": 446,
    "pdf_page": 467,
-   "text": "You are given a set S = fa 1 ;a 2 ;:::;a n g of tasks, where task a i requires √i units of processing time to complete. Let C i be the completion time of task a i , that is, the time at which task a i completes processing. Your goal is to minimize the average completion time, that is, to minimize .1/n/ P n i D1 + i . For example, suppose that there are two tasks a 1 and a 2 with √1 = 3 and √2 = 5, and consider the schedule"
+   "text": "You are given a set S = fa 1 ,a 2 ,…,a n g of tasks, where task a i requires √i units of processing time to complete. Let C i be the completion time of task a i , that is, the time at which task a i completes processing. Your goal is to minimize the average completion time, that is, to minimize .1/n/ P n i D1 + i . For example, suppose that there are two tasks a 1 and a 2 with √1 = 3 and √2 = 5, and consider the schedule"
   },
   {
    "type": "chapter-notes",

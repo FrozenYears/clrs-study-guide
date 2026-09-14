@@ -75,7 +75,7 @@
    "section_title": "2.1 Insertion sort",
    "printed_page": 17,
    "pdf_page": 38,
-   "text": "Input: A sequence of n numbers ha 1 ;a 2 ;:::;a n i."
+   "text": "Input: A sequence of n numbers ⟨a 1 ,a 2 ,…,a n⟩."
   },
   {
    "type": "body",
@@ -84,7 +84,7 @@
    "section_title": "2.1 Insertion sort",
    "printed_page": 17,
    "pdf_page": 38,
-   "text": "Output: A permutation (reordering) ha 0"
+   "text": "Output: A permutation (reordering) ⟨a 0"
   },
   {
    "type": "body",
@@ -93,7 +93,7 @@
    "section_title": "2.1 Insertion sort",
    "printed_page": 17,
    "pdf_page": 38,
-   "text": "2 ;:::;a 0 n i of the input sequence such that a 0"
+   "text": "2 ,…,a 0 n⟩ of the input sequence such that a 0"
   },
   {
    "type": "body",
@@ -165,7 +165,7 @@
    "section_title": "2.1 Insertion sort",
    "printed_page": 18,
    "pdf_page": 39,
-   "text": "The pseudocode for insertion sort is given as the p rocedure INSERTION-SORT on the facing page. It takes two parameters: an arr ay A containing the values to be sorted and the number n of values of sort. The values occupy positions A[1] through A[n] of the array, which we denote by A[1 : n]. When the INSERTION- SORT procedure is finished, array A[1 : n] contains the original values, but in sorted order."
+   "text": "The pseudocode for insertion sort is given as the procedure INSERTION-SORT on the facing page. It takes two parameters: an arr ay A containing the values to be sorted and the number n of values of sort. The values occupy positions A[1] through A[n] of the array, which we denote by A[1 : n]. When the INSERTION- SORT procedure is finished, array A[1 : n] contains the original values, but in sorted order."
   },
   {
    "type": "body",
@@ -237,7 +237,7 @@
    "section_title": "2.1 Insertion sort",
    "printed_page": 19,
    "pdf_page": 40,
-   "text": "INSERTION-SORT (A;n)"
+   "text": "INSERTION-SORT (A,n)"
   },
   {
    "type": "body",
@@ -255,7 +255,7 @@
    "section_title": "2.1 Insertion sort",
    "printed_page": 19,
    "pdf_page": 40,
-   "text": "Figure 2.2 shows how this algorithm works for an ar ray A that starts out with the sequence h5;2;4;6;1;3 i. The index i indicates the \"current card\" being inserted into the hand. At the beginning of each it eration of the for loop, which is indexed by i , the subarray (a contiguous portion of the array) consisting of elements A[1 : i − 1] (that is, A[1] through A[i − 1]) constitutes the currently sorted hand, and the remaining subarray A[i + 1 : n] (elements A[i + 1] through A[n]) corresponds to the pile of cards still on the table. In fact, elements A[1 : i − 1] are the elements originally in positions 1 through i − 1, but now in sorted order. We state these properties of A[1 : i − 1] formally as a loop invariant:"
+   "text": "Figure 2.2 shows how this algorithm works for an ar ray A that starts out with the sequence ⟨5,2,4,6,1,3⟩. The index i indicates the \"current card\" being inserted into the hand. At the beginning of each it eration of the for loop, which is indexed by i , the subarray (a contiguous portion of the array) consisting of elements A[1 : i − 1] (that is, A[1] through A[i − 1]) constitutes the currently sorted hand, and the remaining subarray A[i + 1 : n] (elements A[i + 1] through A[n]) corresponds to the pile of cards still on the table. In fact, elements A[1 : i − 1] are the elements originally in positions 1 through i − 1, but now in sorted order. We state these properties of A[1 : i − 1] formally as a loop invariant:"
   },
   {
    "type": "body",
@@ -372,7 +372,7 @@
    "section_title": "2.1 Insertion sort",
    "printed_page": 20,
    "pdf_page": 41,
-   "text": "Figure 2.2 The operation of INSERTION-SORT(A;n) , where A initially contains the sequence h5;2;4;6;1;3 i and n = 6. Array indices appear above the rectangles, and va lues stored in the array positions appear within the rectangles. (a)–(e) The iterations of the for loop of lines 138. In each iteration, the blue rectangle holds the key ta ken from A[i], which is compared with the values in tan rectangles to its left in the test of line 5. Orange arrows show array values moved one position to the right in line 6, and blue arrows indicate where the key moves to in line 8. (f) The final sorted array."
+   "text": "Figure 2.2 The operation of INSERTION-SORT(A,n) , where A initially contains the sequence"
   },
   {
    "type": "body",
@@ -381,7 +381,16 @@
    "section_title": "2.1 Insertion sort",
    "printed_page": 20,
    "pdf_page": 41,
-   "text": "At the start of each iteration of the for loop of lines 138, the subarray"
+   "text": "⟨5,2,4,6,1,3⟩ and n = 6. Array indices appear above the rectangles, and va lues stored in the array positions appear within the rectangles. (a)–(e) The iterations of the for loop of lines 1–8. In each iteration, the blue rectangle holds the key ta ken from A[i], which is compared with the values in tan rectangles to its left in the test of line 5. Orange arrows show array values moved one position to the right in line 6, and blue arrows indicate where the key moves to in line 8. (f) The final sorted array."
+  },
+  {
+   "type": "body",
+   "chapter": 2,
+   "section": "2.1",
+   "section_title": "2.1 Insertion sort",
+   "printed_page": 20,
+   "pdf_page": 41,
+   "text": "At the start of each iteration of the for loop of lines 1–8, the subarray"
   },
   {
    "type": "body",
@@ -480,7 +489,7 @@
    "section_title": "2.1 Insertion sort",
    "printed_page": 21,
    "pdf_page": 42,
-   "text": "Maintenance: Next, we tackle the second property: showing that e ach iteration maintains the loop invariant. Informally, the body of the for loop works by moving the values in A[i − 1], A[i − 2], A[i − 3], and so on by one position to the right until it finds the proper position for A[i] (lines 437), at which point it inserts the value of A[i] (line 8). The subarray A[1 : i] then consists of the elements originally in A[1 : i], but in sorted order. Incrementing i (increasing its value by 1) for the next iteration of the for loop then preserves the loop invariant."
+   "text": "Maintenance: Next, we tackle the second property: showing that e ach iteration maintains the loop invariant. Informally, the body of the for loop works by moving the values in A[i − 1], A[i − 2], A[i − 3], and so on by one position to the right until it finds the proper position for A[i] (lines 4–7), at which point it inserts the value of A[i] (line 8). The subarray A[1 : i] then consists of the elements originally in A[1 : i], but in sorted order. Incrementing i (increasing its value by 1) for the next iteration of the for loop then preserves the loop invariant."
   },
   {
    "type": "body",
@@ -489,7 +498,7 @@
    "section_title": "2.1 Insertion sort",
    "printed_page": 21,
    "pdf_page": 42,
-   "text": "A more formal treatment of the second property woul d require us to state and show a loop invariant for the while loop of lines 537. Let’s not get bogged down in such formalism just yet. Instead, we’ll rely on our informal analysis to show that the second property holds for the outer loop."
+   "text": "A more formal treatment of the second property woul d require us to state and show a loop invariant for the while loop of lines 5–7. Let’s not get bogged down in such formalism just yet. Instead, we’ll rely on our informal analysis to show that the second property holds for the outer loop."
   },
   {
    "type": "body",
@@ -534,7 +543,7 @@
    "section_title": "2.1 Insertion sort",
    "printed_page": 21,
    "pdf_page": 42,
-   "text": "• Indentation indicates block structure. For example, the body of the for loop that begins on line 1 consists of lines 238, and the body of the while loop that 2 When the loop is a for loop, the loop-invariant check just prior to the first iteration occurs immediately after the initial assignment to the loop-counter variable and just before the first test in the loop header. In the case of INSERTION-SORT, this time is after assigning 2 to the variable i but before the first test of whether i ≤ n. begins on line 5 contains lines 637 but not line 8. Our indentation style applies to if-else statements 3 as well. Using indentation instead of textual indic ators of block structure, such as begin and end statements or curly braces, reduces clutter while preserving, or even enhancing, clarity. 4"
+   "text": "• Indentation indicates block structure. For example, the body of the for loop that begins on line 1 consists of lines 2–8, and the body of the while loop that 2 When the loop is a for loop, the loop-invariant check just prior to the first iteration occurs immediately after the initial assignment to the loop-counter variable and just before the first test in the loop header. In the case of INSERTION-SORT, this time is after assigning 2 to the variable i but before the first test of whether i ≤ n. begins on line 5 contains lines 6–7 but not line 8. Our indentation style applies to if-else statements 3 as well. Using indentation instead of textual indic ators of block structure, such as begin and end statements or curly braces, reduces clutter while preserving, or even enhancing, clarity. 4"
   },
   {
    "type": "body",
@@ -543,7 +552,7 @@
    "section_title": "2.1 Insertion sort",
    "printed_page": 22,
    "pdf_page": 43,
-   "text": "• The looping constructs while, for, and repeat-until and the if-else conditional construct have interpretations similar to those in C, C++, Java, Python, and JavaScript. 5 In this book, the loop counter retains its value af ter the loop is exited, unlike some situations that arise in C++ and Java. Thus, immediately after a for loop, the loop counter’s value is the value that first exceeded the for loop bound. 6 We used this property in our correctness argument f or insertion sort. The for loop header in line 1 is for i = 2 to n, and so when this loop terminates, i equals nC1. We use the keyword to when a for loop increments its loop counter in each iteration, and we use the keyword downto when a for loop decrements its loop counter (reduces its value by 1 in each iteration). When the loop counter changes by an amount greater than 1, the amount of change follows the optional keyword by."
+   "text": "• The looping constructs while, for, and repeat-until and the if-else conditional construct have interpretations similar to those in C, C++, Java, Python, and JavaScript. 5 In this book, the loop counter retains its value af ter the loop is exited, unlike some situations that arise in C++ and Java. Thus, immediately after a for loop, the loop counter’s value is the value that first exceeded the for loop bound. 6 We used this property in our correctness argument f or insertion sort. The for loop header in line 1 is for i = 2 to n, and so when this loop terminates, i equals n + 1. We use the keyword to when a for loop increments its loop counter in each iteration, and we use the keyword downto when a for loop decrements its loop counter (reduces its value by 1 in each iteration). When the loop counter changes by an amount greater than 1, the amount of change follows the optional keyword by."
   },
   {
    "type": "body",
@@ -642,7 +651,7 @@
    "section_title": "2.1 Insertion sort",
    "printed_page": 23,
    "pdf_page": 44,
-   "text": "The notation \"W\" denotes a subarray. Thus, A[i : j] indicates the subarray of A consisting of the elements A[i];A[i + 1];:::;A[j] . 7 We also use this notation to indicate the bounds of an array, as we did earli er when discussing the array"
+   "text": "The notation \":\" denotes a subarray. Thus, A[i : j] indicates the subarray of A consisting of the elements A[i],A[i + 1],…,A[j] . 7 We also use this notation to indicate the bounds of an array, as we did earli er when discussing the array"
   },
   {
    "type": "body",
@@ -741,7 +750,7 @@
    "section_title": "2.1 Insertion sort",
    "printed_page": 24,
    "pdf_page": 45,
-   "text": "2.1-1 Using Figure 2.2 as a model, illustrate the operati on of INSERTION-SORT on an array initially containing the sequence h31;41;59;26;41;58 i."
+   "text": "2.1-1 Using Figure 2.2 as a model, illustrate the operati on of INSERTION-SORT on an array initially containing the sequence ⟨31,41,59,26,41,58⟩."
   },
   {
    "type": "exercise",
@@ -797,7 +806,7 @@
    "section_title": "2.2 Analyzing algorithms",
    "printed_page": 25,
    "pdf_page": 46,
-   "text": "SUM-ARRAY(A;n)"
+   "text": "SUM-ARRAY(A,n)"
   },
   {
    "type": "exercise",
@@ -824,7 +833,7 @@
    "section_title": "2.2 Analyzing algorithms",
    "printed_page": 25,
    "pdf_page": 46,
-   "text": "Input: A sequence of n numbers ha 1 ;a 2 ;:::;a n i stored in array A[1 : n] and a value x ."
+   "text": "Input: A sequence of n numbers ⟨a 1 ,a 2 ,…,a n⟩ stored in array A[1 : n] and a value x ."
   },
   {
    "type": "body",
@@ -1049,7 +1058,7 @@
    "section_title": "2.2 Analyzing algorithms",
    "printed_page": 29,
    "pdf_page": 50,
-   "text": "To analyze the INSERTION-SORT procedure, let’s view it on the following page with the time cost of each statement and the number of times each statement is executed. For each i = 2;3;:::;n , let t i denote the number of times the while loop test in line 5 is executed for that value of i . When a for or while loop exits in the usual way—because the test in the loop header comes up FALSE—the test is executed one time more than the loop body. Because comments are not executable statements, assume that they take no time."
+   "text": "To analyze the INSERTION-SORT procedure, let’s view it on the following page with the time cost of each statement and the number of times each statement is executed. For each i = 2,3,…,n , let t i denote the number of times the while loop test in line 5 is executed for that value of i . When a for or while loop exits in the usual way—because the test in the loop header comes up FALSE—the test is executed one time more than the loop body. Because comments are not executable statements, assume that they take no time."
   },
   {
    "type": "body",
@@ -1118,7 +1127,7 @@
    "section_title": "2.2 Analyzing algorithms",
    "printed_page": 30,
    "pdf_page": 51,
-   "text": "INSERTION-SORT (A;n) cost times"
+   "text": "INSERTION-SORT (A,n) cost times"
   },
   {
    "type": "body",
@@ -1217,7 +1226,7 @@
    "section_title": "2.2 Analyzing algorithms",
    "printed_page": 30,
    "pdf_page": 51,
-   "text": "Even for inputs of a given size, an algorithm’s running time may depend on which input of that size is given. For example, in INSERTION-SORT, the best case occurs when the array is already sorted. In this case, each time that line 5 executes, the value of key—the value originally in A[i]4is already greater than or equal to all values in A[1 : i − 1], so that the while loop of lines 537 always exits upon the first test in line 5. Therefore, we have that t i = 1 for i = 2;3;:::;n , and the best-case running time is given by T(n) = c 1 n + c 2 (n − 1) + c 4 (n − 1) + c 5 (n − 1) + c 8 (n − 1)"
+   "text": "Even for inputs of a given size, an algorithm’s running time may depend on which input of that size is given. For example, in INSERTION-SORT, the best case occurs when the array is already sorted. In this case, each time that line 5 executes, the value of key—the value originally in A[i]4is already greater than or equal to all values in A[1 : i − 1], so that the while loop of lines 5–7 always exits upon the first test in line 5. Therefore, we have that t i = 1 for i = 2,3,…,n , and the best-case running time is given by T(n) = c 1 n + c 2 (n − 1) + c 4 (n − 1) + c 5 (n − 1) + c 8 (n − 1)"
   },
   {
    "type": "body",
@@ -1235,7 +1244,7 @@
    "section_title": "2.2 Analyzing algorithms",
    "printed_page": 30,
    "pdf_page": 51,
-   "text": "We can express this running time as an C b for constants a and b that depend on the statement costs c k (where a = c 1 Cc 2 Cc 4 Cc 5 Cc 8 and b = c 2 Cc 4 Cc 5 Cc 8 )."
+   "text": "We can express this running time as an C b for constants a and b that depend on the statement costs c k (where a = c 1 + c 2 + c 4 + c 5 + c 8 and b = c 2 + c 4 + c 5 + c 8 )."
   },
   {
    "type": "body",
@@ -1253,7 +1262,7 @@
    "section_title": "2.2 Analyzing algorithms",
    "printed_page": 30,
    "pdf_page": 51,
-   "text": "The worst case arises when the array is in reverse sorted order—that is, it starts out in decreasing order. The procedure must compare each element A[i] with each element in the entire sorted subarray A[1 : i − 1], and so t i = i for i = 2;3;:::;n ."
+   "text": "The worst case arises when the array is in reverse sorted order—that is, it starts out in decreasing order. The procedure must compare each element A[i] with each element in the entire sorted subarray A[1 : i − 1], and so t i = i for i = 2,3,…,n ."
   },
   {
    "type": "body",
@@ -1685,7 +1694,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 35,
    "pdf_page": 56,
-   "text": "The key operation of the merge sort algorithm occur s in the \"combine\" step, which merges two adjacent, sorted subarrays. The me rge operation is performed by the auxiliary procedure MERGE(A;p;q;r) on the following page, where A is an array and p, q, and r are indices into the array such that p ≤ q < r . The procedure assumes that the adjacent subarrays A[p : q] and A[q + 1 : r] were already recursively sorted. It merges the two sorted subarrays to form a single sorted subarray that replaces the current subarray A[p : r]."
+   "text": "The key operation of the merge sort algorithm occur s in the \"combine\" step, which merges two adjacent, sorted subarrays. The me rge operation is performed by the auxiliary procedure MERGE(A,p,q,r) on the following page, where A is an array and p, q, and r are indices into the array such that p ≤ q < r . The procedure assumes that the adjacent subarrays A[p : q] and A[q + 1 : r] were already recursively sorted. It merges the two sorted subarrays to form a single sorted subarray that replaces the current subarray A[p : r]."
   },
   {
    "type": "body",
@@ -1839,10 +1848,10 @@
     },
     {
      "n": 27,
-     "code": "k = k + 1 line 3 creates arrays L[0 : n L − 1] and R[0 : n R − 1] with respective lengths n L and n R . 12 The for loop of lines 435 copies the subarray A[p : q] into L, and the for"
+     "code": "k = k + 1 line 3 creates arrays L[0 : n L − 1] and R[0 : n R − 1] with respective lengths n L and n R . 12 The for loop of lines 4–5 copies the subarray A[p : q] into L, and the for"
     }
    ],
-   "text": "1 n L = q − p + 1 / / length of A[p : q]\n2 n R = r − q / / length of A[q + 1 : r]\n3 let L[0 : n L − 1] and R[0 : n R − 1] be new arrays\n4 for i = 0 to n L − 1 / / copy A[p : q] into L[0 : n L − 1]\n5 L[i] = A[p + i]\n6 for j = 0 to n R − 1 / / copy A[q + 1 : r] into R[0 : n R − 1]\n7 R[j]  = A[q + j + 1]\n8 i = 0 / / i indexes the smallest remaining element in L\n9 j = 0 / / j indexes the smallest remaining element in R\n10 k = p / / k indexes the location in A to fill\n11 / / As long as each of the arrays L and R contains an unmerged element, / / copy the smallest unmerged element back into A[p : r].\n12 while i <n L and j <n R\n13 if L[i] ≤ R[j]\n14 A[k] = L[i]\n15 i = i + 1\n16 else A[k] = R[j]\n17 j = j + 1\n18 k = k + 1\n19 / / Having gone through one of L and R entirely, copy the / / remainder of the other to the end of A[p : r].\n20 while i <n L\n21 A[k] = L[i]\n22 i = i + 1\n23 k = k + 1\n24 while j <n R\n25 A[k] = R[j]\n26 j = j + 1\n27 k = k + 1 line 3 creates arrays L[0 : n L − 1] and R[0 : n R − 1] with respective lengths n L and n R . 12 The for loop of lines 435 copies the subarray A[p : q] into L, and the for"
+   "text": "1 n L = q − p + 1 / / length of A[p : q]\n2 n R = r − q / / length of A[q + 1 : r]\n3 let L[0 : n L − 1] and R[0 : n R − 1] be new arrays\n4 for i = 0 to n L − 1 / / copy A[p : q] into L[0 : n L − 1]\n5 L[i] = A[p + i]\n6 for j = 0 to n R − 1 / / copy A[q + 1 : r] into R[0 : n R − 1]\n7 R[j]  = A[q + j + 1]\n8 i = 0 / / i indexes the smallest remaining element in L\n9 j = 0 / / j indexes the smallest remaining element in R\n10 k = p / / k indexes the location in A to fill\n11 / / As long as each of the arrays L and R contains an unmerged element, / / copy the smallest unmerged element back into A[p : r].\n12 while i <n L and j <n R\n13 if L[i] ≤ R[j]\n14 A[k] = L[i]\n15 i = i + 1\n16 else A[k] = R[j]\n17 j = j + 1\n18 k = k + 1\n19 / / Having gone through one of L and R entirely, copy the / / remainder of the other to the end of A[p : r].\n20 while i <n L\n21 A[k] = L[i]\n22 i = i + 1\n23 k = k + 1\n24 while j <n R\n25 A[k] = R[j]\n26 j = j + 1\n27 k = k + 1 line 3 creates arrays L[0 : n L − 1] and R[0 : n R − 1] with respective lengths n L and n R . 12 The for loop of lines 4–5 copies the subarray A[p : q] into L, and the for"
   },
   {
    "type": "body",
@@ -1851,7 +1860,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 36,
    "pdf_page": 57,
-   "text": "MERGE(A;p;q;r) line 3 creates arrays L[0 : n L − 1] and R[0 : n R − 1] with respective lengths n L and n R . 12 The for loop of lines 435 copies the subarray A[p : q] into L, and the for loop of lines 637 copies the subarray A[q + 1 : r] into R."
+   "text": "MERGE(A,p,q,r) line 3 creates arrays L[0 : n L − 1] and R[0 : n R − 1] with respective lengths n L and n R . 12 The for loop of lines 4–5 copies the subarray A[p : q] into L, and the for loop of lines 6–7 copies the subarray A[q + 1 : r] into R."
   },
   {
    "type": "body",
@@ -1860,7 +1869,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 36,
    "pdf_page": 57,
-   "text": "Lines 8318, illustrated in Figure 2.3, perform the basic steps. The while loop of lines 12318 repeatedly identifies the smallest value in L and R that has yet to 12 This procedure is the rare case that uses both 1-origin indexing (for array A) and 0-origin indexing"
+   "text": "Lines 8–18, illustrated in Figure 2.3, perform the basic steps. The while loop of lines 12–18 repeatedly identifies the smallest value in L and R that has yet to 12 This procedure is the rare case that uses both 1-origin indexing (for array A) and 0-origin indexing"
   },
   {
    "type": "body",
@@ -2121,7 +2130,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 37,
    "pdf_page": 58,
-   "text": "Figure 2.3 The operation of the while loop in lines 8318 in the call MERGE(A;9;12;16) , when the subarray A[9 : 16] contains the values h2;4;6;7;1;2;3;5 i. After allocating and copying into the arrays L and R, the array L contains h2;4;6;7 i, and the array R contains h1;2;3;5 i. Tan positions in A contain their final values, and tan positions in L and R contain values that have yet to be copied back into A. Taken together, the tan positions always comprise the values originally in A[9 : 16]. Blue positions in A contain values that will be copied over, and dark p ositions in L and R contain values that have already been copied back into A. (a)–(g) The arrays A, L, and R, and their respective indices k, i , and j prior to each iteration of the loop of lines 12318. At the point in part (g), all values in R have been copied back into A (indicated by j equaling the length of R), and so the while loop in lines 12318 terminates. (h) The arrays and indices at termination. The while loops of lines 20323 and 24327 copied back into A the remaining values in L and R, which are the largest values originally in A[9 : 16]. Here, lines 20323 copied L[2 : 3] into A[15 : 16], and because all values in R had already been copied back into A, the while loop of lines 24327 iterated 0 times."
+   "text": "Figure 2.3 The operation of the while loop in lines 8–18 in the call MERGE(A,9,12,16) , when the subarray A[9 : 16] contains the values ⟨2,4,6,7,1,2,3,5⟩. After allocating and copying into the arrays L and R, the array L contains ⟨2,4,6,7⟩, and the array R contains ⟨1,2,3,5⟩. Tan positions in A contain their final values, and tan positions in L and R contain values that have yet to be copied back into A. Taken together, the tan positions always comprise the values originally in A[9 : 16]. Blue positions in A contain values that will be copied over, and dark p ositions in L and R contain values that have already been copied back into A. (a)–(g) The arrays A, L, and R, and their respective indices k, i , and j prior to each iteration of the loop of lines 12–18. At the point in part (g), all values in R have been copied back into A (indicated by j equaling the length of R), and so the while loop in lines 12–18 terminates. (h) The arrays and indices at termination. The while loops of lines 20–23 and 24–27 copied back into A the remaining values in L and R, which are the largest values originally in A[9 : 16]. Here, lines 20–23 copied L[2 : 3] into A[15 : 16], and because all values in R had already been copied back into A, the while loop of lines 24–27 iterated 0 times."
   },
   {
    "type": "body",
@@ -2139,7 +2148,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 38,
    "pdf_page": 59,
-   "text": "If the loop terminates because all of R has been copied back, that is, because j equals n R , then i is still less than n L , so that some of L has yet to be copied back, and these values are the greatest in both L and R. In this case, the while loop of lines 20323 copies these remaining values of L into the last few positions of A[p : r]. Because j equals n R , the while loop of lines 24327 iterates 0 times. If instead the while loop of lines 12318 terminates because i equals n L , then all of L has already been copied back into A[p : r], and the while loop of lines 24327 copies the remaining values of R back into the end of A[p : r]."
+   "text": "If the loop terminates because all of R has been copied back, that is, because j equals n R , then i is still less than n L , so that some of L has yet to be copied back, and these values are the greatest in both L and R. In this case, the while loop of lines 20–23 copies these remaining values of L into the last few positions of A[p : r]. Because j equals n R , the while loop of lines 24–27 iterates 0 times. If instead the while loop of lines 12–18 terminates because i equals n L , then all of L has already been copied back into A[p : r], and the while loop of lines 24–27 copies the remaining values of R back into the end of A[p : r]."
   },
   {
    "type": "body",
@@ -2148,7 +2157,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 38,
    "pdf_page": 59,
-   "text": "To see that the MERGE procedure runs in Θ(n) time, where n = r − p + 1, 13 observe that each of lines 133 and 8310 takes constant time, and the for loops of lines 437 take Θ(n L + n R ) = Θ(n) time. 14 To account for the three while loops of lines 12318, 20323, and 24327, observe that each iteration of these loops copies exactly one value from L or R back into A and that every value is copied back into A exactly once. Therefore, these three loops together make a total of n iterations. Since each iteration of each of the thr ee loops takes constant time, the total time spent in these three loops is Θ(n)."
+   "text": "To see that the MERGE procedure runs in Θ(n) time, where n = r − p + 1, 13 observe that each of lines 1–3 and 8–10 takes constant time, and the for loops of lines 4–7 take Θ(n L + n R ) = Θ(n) time. 14 To account for the three while loops of lines 12–18, 20–23, and 24–27, observe that each iteration of these loops copies exactly one value from L or R back into A and that every value is copied back into A exactly once. Therefore, these three loops together make a total of n iterations. Since each iteration of each of the thr ee loops takes constant time, the total time spent in these three loops is Θ(n)."
   },
   {
    "type": "body",
@@ -2157,7 +2166,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 38,
    "pdf_page": 59,
-   "text": "We can now use the MERGE procedure as a subroutine in the merge sort algorithm. The procedure MERGE-SORT(A;p;r) on the facing page sorts the elements in the subarray A[p : r]. If p equals r , the subarray has just 1 element and is therefore already sorted. Otherwise, we must have p < r , and MERGE-SORT runs the divide, conquer, and combine steps. The di vide step simply computes an index q that partitions A[p : r] into two adjacent subarrays: A[p : q], containing"
+   "text": "We can now use the MERGE procedure as a subroutine in the merge sort algorithm. The procedure MERGE-SORT(A,p,r) on the facing page sorts the elements in the subarray A[p : r]. If p equals r , the subarray has just 1 element and is therefore already sorted. Otherwise, we must have p < r , and MERGE-SORT runs the divide, conquer, and combine steps. The di vide step simply computes an index q that partitions A[p : r] into two adjacent subarrays: A[p : q], containing"
   },
   {
    "type": "body",
@@ -2175,7 +2184,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 38,
    "pdf_page": 59,
-   "text": "MERGE-SORT (A;1;n) sorts the entire array A[1 : n]."
+   "text": "MERGE-SORT (A,1,n) sorts the entire array A[1 : n]."
   },
   {
    "type": "body",
@@ -2219,11 +2228,11 @@
     },
     {
      "n": 4,
-     "code": "MERGE-SORT (A;p;q)  / / recursively sort A[p : q]"
+     "code": "MERGE-SORT (A,p,q)  / / recursively sort A[p : q]"
     },
     {
      "n": 5,
-     "code": "MERGE-SORT (A;q + 1;r)  / / recursively sort A[q + 1 : r]"
+     "code": "MERGE-SORT (A,q + 1,r)  / / recursively sort A[q + 1 : r]"
     },
     {
      "n": 6,
@@ -2231,10 +2240,10 @@
     },
     {
      "n": 7,
-     "code": "MERGE(A;p;q;r) rays to form sorted subarrays of length 2, merges those to form sorted subarrays of length 4, and merges those to form the final sorted subarray of length 8. If n"
+     "code": "MERGE(A,p,q,r) rays to form sorted subarrays of length 2, merges those to form sorted subarrays of length 4, and merges those to form the final sorted subarray of length 8. If n"
     }
    ],
-   "text": "1 if p ≥ r / / zero or one element?\n2 return\n3 q = ⌊(p + r)/2⌋ / / midpoint of A[p : r]\n4 MERGE-SORT (A;p;q)  / / recursively sort A[p : q]\n5 MERGE-SORT (A;q + 1;r)  / / recursively sort A[q + 1 : r]\n6 / / Merge A[p : q] and A[q + 1 : r] into A[p : r].\n7 MERGE(A;p;q;r) rays to form sorted subarrays of length 2, merges those to form sorted subarrays of length 4, and merges those to form the final sorted subarray of length 8. If n"
+   "text": "1 if p ≥ r / / zero or one element?\n2 return\n3 q = ⌊(p + r)/2⌋ / / midpoint of A[p : r]\n4 MERGE-SORT (A,p,q)  / / recursively sort A[p : q]\n5 MERGE-SORT (A,q + 1,r)  / / recursively sort A[q + 1 : r]\n6 / / Merge A[p : q] and A[q + 1 : r] into A[p : r].\n7 MERGE(A,p,q,r) rays to form sorted subarrays of length 2, merges those to form sorted subarrays of length 4, and merges those to form the final sorted subarray of length 8. If n"
   },
   {
    "type": "body",
@@ -2243,7 +2252,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 39,
    "pdf_page": 60,
-   "text": "MERGE-SORT(A;p;r) rays to form sorted subarrays of length 2, merges those to form sorted subarrays of length 4, and merges those to form the final sorted subarray of length 8. If n is not an exact power of 2, then some divide steps create subarrays whose len gths differ by 1. (For example, when dividing a subarray of length 7, one subarray has length 4 and the other has length 3.) Regardless of the lengths of the two subarrays being merged, the time to merge a total of n items is Θ(n)."
+   "text": "MERGE-SORT(A,p,r) rays to form sorted subarrays of length 2, merges those to form sorted subarrays of length 4, and merges those to form the final sorted subarray of length 8. If n is not an exact power of 2, then some divide steps create subarrays whose len gths differ by 1. (For example, when dividing a subarray of length 7, one subarray has length 4 and the other has length 3.) Regardless of the lengths of the two subarrays being merged, the time to merge a total of n items is Θ(n)."
   },
   {
    "type": "body",
@@ -2504,7 +2513,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 40,
    "pdf_page": 61,
-   "text": "Figure 2.4 The operation of merge sort on the array A with length 8 that initially contains the sequence h12;3;7;9;14;6;11;2 i. The indices p, q, and r into each subarray appear above their values. Numbers in italics indicate the order in which the MERGE-SORT and MERGE procedures are called following the initial call of MERGE-SORT(A;1;8) ."
+   "text": "Figure 2.4 The operation of merge sort on the array A with length 8 that initially contains the sequence ⟨12,3,7,9,14,6,11,2⟩. The indices p, q, and r into each subarray appear above their values. Numbers in italics indicate the order in which the MERGE-SORT and MERGE procedures are called following the initial call of MERGE-SORT(A,1,8) ."
   },
   {
    "type": "body",
@@ -2720,7 +2729,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 42,
    "pdf_page": 63,
-   "text": "The total number of levels of the recursion tree in Figure 2.5 is lg n + 1, where n is the number of leaves, corresponding to the input size. An informal inductive argument justifies this claim. The base case occurs when n = 1, in which case the tree has only 1 level. Since lg 1 = 0, we have that lg n + 1 gives the correct number of levels. Now assume as an inductive hypothesis that the number of levels of a recursion tree with 2 i leaves is lg 2 i + 1 = i + 1 (since for any value of i , we have that lg 2 i = i ). Because we assume that the input size is an exact power of 2, the next input size to consider is 2 i C1 . A tree with n = 2 i C1 leaves has 1 more"
+   "text": "The total number of levels of the recursion tree in Figure 2.5 is lg n + 1, where n is the number of leaves, corresponding to the input size. An informal inductive argument justifies this claim. The base case occurs when n = 1, in which case the tree has only 1 level. Since lg 1 = 0, we have that lg n + 1 gives the correct number of levels. Now assume as an inductive hypothesis that the number of levels of a recursion tree with 2 i leaves is lg 2 i + 1 = i + 1 (since for any value of i , we have that lg 2 i = i ). Because we assume that the input size is an exact power of 2, the next input size to consider is 2 i + 1 . A tree with n = 2 i + 1 leaves has 1 more"
   },
   {
    "type": "footnote",
@@ -2783,7 +2792,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 43,
    "pdf_page": 64,
-   "text": "Figure 2.5 How to construct a recursion tree for the recurrence (2.4). Part (a) shows T(n) , which progressively expands in (b)–(d) to form the recursion tree. The fully expanded tree in part (d) has lg n + 1 levels. Each level above the leaves contributes a t otal cost of c 2 n, and the leaf level contributes c 1 n. The total cost, therefore, is c 2 n lg n + c 1 n = Θ(n lg n). level than a tree with 2 i leaves, and so the total number of levels is (i + 1) + 1 = lg 2 i C1 + 1."
+   "text": "Figure 2.5 How to construct a recursion tree for the recurrence (2.4). Part (a) shows T(n) , which progressively expands in (b)–(d) to form the recursion tree. The fully expanded tree in part (d) has lg n + 1 levels. Each level above the leaves contributes a t otal cost of c 2 n, and the leaf level contributes c 1 n. The total cost, therefore, is c 2 n lg n + c 1 n = Θ(n lg n). level than a tree with 2 i leaves, and so the total number of levels is (i + 1) + 1 = lg 2 i + 1 + 1."
   },
   {
    "type": "body",
@@ -2792,7 +2801,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 44,
    "pdf_page": 65,
-   "text": "To compute the total cost represented by the recurrence (2.4), simply add up the costs of all the levels. The recursion tree has lg n + 1 levels. The levels above the leaves each cost c 2 n, and the leaf level costs c 1 n, for a total cost of c 2 n lg n Cc 1 n ="
+   "text": "To compute the total cost represented by the recurrence (2.4), simply add up the costs of all the levels. The recursion tree has lg n + 1 levels. The levels above the leaves each cost c 2 n, and the leaf level costs c 1 n, for a total cost of c 2 n lg n + c 1 n ="
   },
   {
    "type": "body",
@@ -2810,7 +2819,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 44,
    "pdf_page": 65,
-   "text": "2.3-1 Using Figure 2.4 as a model, illustrate the operation of merge sort on an array initially containing the sequence h3;41;52;26;38;57;9;49 i."
+   "text": "2.3-1 Using Figure 2.4 as a model, illustrate the operation of merge sort on an array initially containing the sequence ⟨3,41,52,26,38,57,9,49⟩."
   },
   {
    "type": "exercise",
@@ -2828,7 +2837,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 44,
    "pdf_page": 65,
-   "text": "Argue that as long as the initial call of MERGE-SORT(A;1;n) has n ≥ 1, the test"
+   "text": "Argue that as long as the initial call of MERGE-SORT(A,1,n) has n ≥ 1, the test"
   },
   {
    "type": "body",
@@ -2846,7 +2855,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 44,
    "pdf_page": 65,
-   "text": "2.3-3 State a loop invariant for the while loop of lines 12318 of the MERGE procedure."
+   "text": "2.3-3 State a loop invariant for the while loop of lines 12–18 of the MERGE procedure."
   },
   {
    "type": "body",
@@ -2855,7 +2864,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 44,
    "pdf_page": 65,
-   "text": "Show how to use it, along with the while loops of lines 20323 and 24327, to prove that the MERGE procedure is correct."
+   "text": "Show how to use it, along with the while loops of lines 20–23 and 24–27, to prove that the MERGE procedure is correct."
   },
   {
    "type": "exercise",
@@ -2909,7 +2918,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 45,
    "pdf_page": 66,
-   "text": "2.3-7 The while loop of lines 537 of the INSERTION-SORT procedure in Section 2.1 uses a linear search to scan (backward) through the sorted subarray A[1 : j − 1]."
+   "text": "2.3-7 The while loop of lines 5–7 of the INSERTION-SORT procedure in Section 2.1 uses a linear search to scan (backward) through the sorted subarray A[1 : j − 1]."
   },
   {
    "type": "body",
@@ -2971,10 +2980,10 @@
     },
     {
      "n": 4,
-     "code": "exchange A[j]  with A[j − 1] a. Let A 0 denote the array A after BUBBLESORT  (A;n)  is executed. To prove that"
+     "code": "exchange A[j]  with A[j − 1] a. Let A 0 denote the array A after BUBBLESORT  (A,n)  is executed. To prove that"
     }
    ],
-   "text": "1 for i = 1 to n − 1\n2 for j = n downto i + 1\n3 if A[j]<A[j  − 1]\n4 exchange A[j]  with A[j − 1] a. Let A 0 denote the array A after BUBBLESORT  (A;n)  is executed. To prove that"
+   "text": "1 for i = 1 to n − 1\n2 for j = n downto i + 1\n3 if A[j]<A[j  − 1]\n4 exchange A[j]  with A[j − 1] a. Let A 0 denote the array A after BUBBLESORT  (A,n)  is executed. To prove that"
   },
   {
    "type": "problem",
@@ -3001,7 +3010,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 46,
    "pdf_page": 67,
-   "text": "BUBBLESORT (A;n) a. Let A 0 denote the array A after BUBBLESORT (A;n) is executed. To prove that BUBBLESORT is correct, you need to prove that it terminates and that A 0 [1] ≤ A 0 [2] ≤ • • • ≤ A 0 [n]: (2.5)"
+   "text": "BUBBLESORT (A,n) a. Let A 0 denote the array A after BUBBLESORT (A,n) is executed. To prove that BUBBLESORT is correct, you need to prove that it terminates and that A 0 [1] ≤ A 0 [2] ≤ • • • ≤ A 0 [n]: (2.5)"
   },
   {
    "type": "body",
@@ -3019,7 +3028,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 46,
    "pdf_page": 67,
-   "text": "The next two parts prove inequality (2.5). b. State precisely a loop invariant for the for loop in lines 234, and prove that this loop invariant holds. Your proof should use the str ucture of the loop-invariant proof presented in this chapter. c. Using the termination condition of the loop invaria nt proved in part (b), state a loop invariant for the for loop in lines 134 that allows you to prove inequality (2.5). Your proof should use the structure of the loop-invariant proof pre- sented in this chapter. d. What is the worst-case running time of BUBBLESORT ? How does it compare with the running time of INSERTION-SORT?"
+   "text": "The next two parts prove inequality (2.5). b. State precisely a loop invariant for the for loop in lines 2–4, and prove that this loop invariant holds. Your proof should use the str ucture of the loop-invariant proof presented in this chapter. c. Using the termination condition of the loop invaria nt proved in part (b), state a loop invariant for the for loop in lines 1–4 that allows you to prove inequality (2.5). Your proof should use the structure of the loop-invariant proof pre- sented in this chapter. d. What is the worst-case running time of BUBBLESORT ? How does it compare with the running time of INSERTION-SORT?"
   },
   {
    "type": "problem",
@@ -3037,7 +3046,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 46,
    "pdf_page": 67,
-   "text": "You are given the coefficents a 0 ;a 1 ;a 2 ;:::;a n of a polynomial"
+   "text": "You are given the coefficents a 0 ,a 1 ,a 2 ,…,a n of a polynomial"
   },
   {
    "type": "body",
@@ -3111,7 +3120,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 47,
    "pdf_page": 68,
-   "text": "The procedure HORNER implements Horner’s rule to evaluate P(x) , given the coefficients a 0 ;a 1 ;a 2 ;:::;a n in an array A[0 : n] and the value of x ."
+   "text": "The procedure HORNER implements Horner’s rule to evaluate P(x) , given the coefficients a 0 ,a 1 ,a 2 ,…,a n in an array A[0 : n] and the value of x ."
   },
   {
    "type": "body",
@@ -3120,7 +3129,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 47,
    "pdf_page": 68,
-   "text": "HORNER(A;n;x) a. In terms of Θ-notation, what is the running time of this procedure? b. Write pseudocode to implement the naive polynomial-evaluation algorithm that computes each term of the polynomial from scratch. What is the running time of this algorithm? How does it compare with HORNER? c. Consider the following loop invariant for the procedure HORNER :"
+   "text": "HORNER(A,n,x) a. In terms of Θ-notation, what is the running time of this procedure? b. Write pseudocode to implement the naive polynomial-evaluation algorithm that computes each term of the polynomial from scratch. What is the running time of this algorithm? How does it compare with HORNER? c. Consider the following loop invariant for the procedure HORNER :"
   },
   {
    "type": "body",
@@ -3129,7 +3138,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 47,
    "pdf_page": 68,
-   "text": "At the start of each iteration of the for loop of lines 233, √D n−.i C1/ X kD0"
+   "text": "At the start of each iteration of the for loop of lines 2–3, √D n−.i + 1/ X kD0"
   },
   {
    "type": "body",
@@ -3165,7 +3174,7 @@
    "section_title": "2.3 Designing algorithms",
    "printed_page": 47,
    "pdf_page": 68,
-   "text": "Let A[1 : n] be an array of n distinct numbers. If i <j and A[i]>A[j] , then the pair (i;j) is called an inversion of A. a. List the five inversions of the array h2;3;8;6;1 i. b. What array with elements from the set f1;2;:::;n g has the most inversions?"
+   "text": "Let A[1 : n] be an array of n distinct numbers. If i <j and A[i]>A[j] , then the pair (i,j) is called an inversion of A. a. List the five inversions of the array ⟨2,3,8,6,1⟩. b. What array with elements from the set f1,2,…,n g has the most inversions?"
   },
   {
    "type": "body",
