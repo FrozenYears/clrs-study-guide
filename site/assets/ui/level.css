@@ -444,6 +444,35 @@
   border-radius: 2px;
   display: inline-block;
 }
+/* 增长曲线图例里的色块是一条线：高度为 0，靠上边框表现实线/虚线 */
+.growth-legend .swatch--line {
+  width: 1.5em;
+  height: 0;
+  border-radius: 0;
+  align-self: center;
+  flex: 0 0 auto;
+}
+/* 曲线本体在 .growth 里占满剩余宽度，图例靠右 */
+.growth > svg {
+  flex: 1 1 340px;
+  min-width: 0;
+}
+
+/* 增长曲线面板的两个滑杆（常数 c / 起点 n₀） */
+.chart-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-4);
+  align-items: center;
+}
+.chart-control {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--fs-xs);
+  color: var(--fg-1);
+  white-space: nowrap;
+}
 
 /* ---------- 证明步骤 ---------- */
 .proof-step {

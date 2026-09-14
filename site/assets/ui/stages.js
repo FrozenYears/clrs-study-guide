@@ -16,6 +16,7 @@ import * as katex from '../core/katex.js';
 import * as store from '../core/store.js';
 import { createStepper } from '../core/stepper.js';
 import { getViz, getAlgorithm } from './registry.js';
+import { chartSVG, chartLegend } from '../viz/growth.js';
 
 export const STAGE_META = {
   map: { no: 0, name: '位置感', en: 'Where this fits' },
@@ -184,105 +185,6 @@ function pseudocodeTable(lines, opts = {}) {
 }
 
 /** 增长速度曲线（线性纵轴，n 从 2 到 xMax）。color 传 CSS 变量名（不带 var()）。 */
-function growthChart({ series, xMax = 16, width = 400, height = 200, xLabel = 'n', yLabel = '基本操作次数' }) {
-  const M = { l: 52, r: 14, t: 14, b: 30 };
-  const iw = width - M.l - M.r;
-  const ih = height - M.t - M.b;
-  const maxY = Math.max(1, ...series.flatMap((s) => [s.fn(xMax)]));
-  const X = (n) => M.l + ((n - 2) / (xMax - 2)) * iw;
-  const Y = (v) => M.t + ih - (v / maxY) * ih;
-
-  const g = svg('svg', {
-    viewBox: `0 0 ${width} ${height}`,
-    width: String(width),
-    height: String(height),
-    role: 'img',
-    'aria-label': '增长曲线对比图',
-  });
-
-  // 横向网格 + y 轴刻度
-  const ticks = 4;
-  for (let i = 0; i <= ticks; i++) {
-    const v = (maxY / ticks) * i;
-    const y = Y(v);
-    g.appendChild(svg('line', {
-      x1: String(M.l), y1: String(y), x2: String(width - M.r), y2: String(y),
-      style: 'stroke:var(--bd-0);stroke-width:1;stroke-dasharray:2 3',
-    }));
-    const t = svg('text', {
-      x: String(M.l - 6), y: String(y + 4), 'text-anchor': 'end',
-      style: 'fill:var(--fg-2);font:11px var(--font-mono)',
-    });
-    t.textContent = String(Math.round(v));
-    g.appendChild(t);
-  }
-
-  // x 轴刻度
-  [2, 5, 8, 11, 14, 16].forEach((n) => {
-    const t = svg('text', {
-      x: String(X(n)), y: String(height - M.b + 16), 'text-anchor': 'middle',
-      style: 'fill:var(--fg-2);font:11px var(--font-mono)',
-    });
-    t.textContent = String(n);
-    g.appendChild(t);
-  });
-
-  // 坐标轴
-  g.appendChild(svg('line', {
-    x1: String(M.l), y1: String(M.t), x2: String(M.l), y2: String(M.t + ih),
-    style: 'stroke:var(--bd-1);stroke-width:1',
-  }));
-  g.appendChild(svg('line', {
-    x1: String(M.l), y1: String(M.t + ih), x2: String(width - M.r), y2: String(M.t + ih),
-    style: 'stroke:var(--bd-1);stroke-width:1',
-  }));
-
-  // 曲线
-  series.forEach((s) => {
-    const pts = [];
-    for (let n = 2; n <= xMax; n++) pts.push(`${X(n)},${Y(s.fn(n))}`);
-    g.appendChild(svg('polyline', {
-      points: pts.join(' '),
-      fill: 'none',
-      style: `stroke:var(${s.color});stroke-width:2`,
-    }));
-    // 终点标记（形状不同，色盲也能区分）
-    const last = svg('circle', {
-      cx: String(X(xMax)), cy: String(Y(s.fn(xMax))), r: '3.5',
-      style: `fill:var(${s.color});stroke:var(--bg-1);stroke-width:1`,
-    });
-    g.appendChild(last);
-  });
-
-  // 轴名
-  const xl = svg('text', {
-    x: String(M.l + iw / 2), y: String(height - 2), 'text-anchor': 'middle',
-    style: 'fill:var(--fg-2);font:11px var(--font-sans)',
-  });
-  xl.textContent = xLabel;
-  g.appendChild(xl);
-
-  const yl = svg('text', {
-    x: '12', y: String(M.t + ih / 2), 'text-anchor': 'middle',
-    transform: `rotate(-90 12 ${M.t + ih / 2})`,
-    style: 'fill:var(--fg-2);font:11px var(--font-sans)',
-  });
-  yl.textContent = yLabel;
-  g.appendChild(yl);
-
-  return g;
-}
-
-function growthLegend(series) {
-  return h('div', { class: 'growth-legend' },
-    series.map((s) =>
-      h('span', { class: 'key' },
-        h('span', { class: 'swatch', style: { background: `var(${s.color})` } }),
-        s.name
-      )
-    )
-  );
-}
 
 /* ============================ 阶段渲染器 ============================ */
 
@@ -471,7 +373,100 @@ function rPseudocode(stage) {
  * 上层用 stage.panels = [spec, spec] 声明；不写 panels 时，
  * stage 自身就是唯一的面板，老关卡完全不受影响。
  */
+/**
+ * 增长曲线面板（viz: 'growth'）—— 不跑算法，只画图。
+ *
+ * 为什么需要它：九段式第 5 段原本只支持「有算法可单步」的引擎，而第 3 章这类
+ * 「记号与函数」的节没有算法可跑，它要看见的是增长速度怎么分开。
+ *
+ * 带 band（c·g(n) 上界）时额外给两个滑杆：常数 c 与起点 n₀。
+ * 拖它们就能亲眼看到「存在 c 与 n₀，使所有 n ≥ n₀ 都有 f(n) ≤ c·g(n)」
+ * 这句定义到底在说什么 —— 这正是原书 Figure 3.2 想表达的东西。
+ */
+function makeChartPanel(stage) {
+  const vizMod = getViz('growth');
+  if (!vizMod) {
+    return {
+      node: noteBlock(h('p', { style: { margin: '0' } },
+        '可视化引擎「growth」尚未注册（见 site/assets/ui/registry.js）。')),
+      destroy() {},
+    };
+  }
+
+  const spec = Object.assign({}, stage.chart);
+  const band = spec.band ? Object.assign({ n0: 1, c: 1 }, spec.band) : null;
+  spec.band = band;
+  const xMax = spec.xMax || 32;
+  const first = (spec.series || [])[0] || null;
+
+  const host = h('div', { class: 'viz-stage' });
+  const readout = h('div', { class: 'viz-readout' });
+  const noteEl = h('div', { class: 'viz-note' },
+    stage.note
+      ? katex.renderMixed(stage.note)
+      : '拖动滑杆，看「从某一刻起一直成立」是什么意思。');
+  const viz = vizMod.create(host, {});
+
+  /** 在 n₀ 之后的每个整数点上验证 f(n) ≤ c·g(n)。 */
+  function verdict() {
+    if (!band || !first) return null;
+    const fnF = new Function('n', 'return ' + first.expr);
+    const fnG = new Function('n', 'return ' + band.g);
+    for (let n = band.n0; n <= xMax; n++) {
+      const lhs = fnF(n);
+      const rhs = band.c * fnG(n);
+      if (lhs > rhs + 1e-9) return { ok: false, n, lhs, rhs };
+    }
+    return { ok: true };
+  }
+
+  function refresh() {
+    viz.render(spec);
+    const kids = [];
+    if (band) {
+      kids.push(h('span', { class: 'badge' }, 'c = ' + band.c));
+      kids.push(h('span', { class: 'badge' }, 'n₀ = ' + band.n0));
+      const v = verdict();
+      kids.push(h('span', {
+        class: 'badge' + (v.ok ? ' badge--done' : ''),
+        style: v.ok ? null : { borderColor: 'var(--viz-violation)', color: 'var(--viz-violation)' },
+      }, v.ok
+        ? '✓ 所有 n ≥ n₀ 都满足 f(n) ≤ c·g(n)'
+        : '✗ 在 n = ' + v.n + ' 处不成立（' + Math.round(v.lhs) + ' > ' + Math.round(v.rhs) + '）'));
+    }
+    readout.replaceChildren(kids);
+  }
+
+  const controls = h('div', { class: 'chart-controls' });
+  if (band) {
+    const mk = (label, min, max, value, onInput) => {
+      const input = h('input', {
+        class: 'speed-range', type: 'range', min: String(min), max: String(max), step: '1',
+        value: String(value), 'aria-label': label,
+        onInput: (e) => { onInput(Number(e.target.value)); refresh(); },
+      });
+      return h('label', { class: 'chart-control' }, h('span', null, label), input);
+    };
+    controls.appendChild(mk('常数 c', 1, 10, band.c, (v) => { band.c = v; }));
+    controls.appendChild(mk('起点 n₀', 1, Math.max(2, Math.floor(xMax / 2)), band.n0, (v) => { band.n0 = v; }));
+  }
+
+  refresh();
+
+  return {
+    node: h('div', { class: 'viz-panel' },
+      controls.childElementCount ? controls : null,
+      host,
+      readout,
+      noteEl),
+    destroy() { viz.destroy(); },
+  };
+}
+
 function makeVizPanel(stage, ctx) {
+  // 增长曲线模式：没有算法可单步，交给专用面板（画图 + c/n₀ 滑杆）
+  if (stage.viz === 'growth' && stage.chart) return makeChartPanel(stage);
+
   const vizMod = getViz(stage.viz);
   const algoFn = getAlgorithm(stage.algorithm);
   // 三种驱动方式：
@@ -767,15 +762,9 @@ function rAnalyze(stage) {
 
   const chart = stage.chart || stage.plot;
   if (chart && chart.series && chart.series.length && typeof chart.series[0] === 'object') {
-    const series = chart.series.map((s) => ({
-      name: s.name,
-      color: s.color,
-      fn: new Function('n', 'return ' + s.expr),
-    }));
-    kids.push(h('div', { class: 'growth' },
-      growthChart({ series, xMax: chart.xMax || 16 }),
-      growthLegend(series)
-    ));
+    // 绘图只有一份实现（viz/growth.js），analyze 与 visualize 共用，避免两处漂移
+    const spec = Object.assign({}, chart, { xMax: chart.xMax || 16 });
+    kids.push(h('div', { class: 'growth' }, chartSVG(spec), chartLegend(spec)));
   }
 
   (stage.derivations || []).forEach((d) => {

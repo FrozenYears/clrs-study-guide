@@ -14,6 +14,7 @@
 
 import * as vizArray from '../viz/array.js';
 import * as vizTree from '../viz/tree.js';
+import * as vizGrowth from '../viz/growth.js';
 
 import { insertionSort } from '../algorithms/insertion-sort.js';
 import { mergeSort } from '../algorithms/merge-sort.js';
@@ -64,6 +65,8 @@ export function listAlgorithms() {
 /* ---------- 内置注册（新增引擎/算法时在此追加一行） ---------- */
 registerViz('array', vizArray);
 registerViz('tree', vizTree);
+// growth：不跑算法，画增长曲线 + c·g(n) 上界 + n₀（讲 O/Ω/Θ 用，见 viz/growth.js）
+registerViz('growth', vizGrowth);
 
 registerAlgorithm('insertion-sort', insertionSort);
 registerAlgorithm('merge-sort', mergeSort);
