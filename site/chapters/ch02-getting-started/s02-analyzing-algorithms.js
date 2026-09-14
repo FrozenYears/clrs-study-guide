@@ -6,7 +6,7 @@
  * 而"快慢"这门语言正是在 2.2 定义出来的。全书后面的复杂度分析都以本关为起点。
  *
  * 排版与记法约定（原书第 4 版，本关严格照抄）：
- *   · 子数组用 A[p : q]（冒号），不是 A[p .. q]
+ *   · 子数组用 A[p : q]（冒号），不是 A[p : q]
  *   · 伪代码用 = 表示赋值（第 4 版已不再用 ←）
  *   · 注释用 //
  *   · 序列用 ⟨5, 2, 4, 6, 1, 3⟩
@@ -455,7 +455,7 @@ export default {
           en:
             'The running time of the algorithm is the sum of running times for each statement ' +
             'executed. A statement that takes c_k steps to execute and executes m times ' +
-            'contributes c_k·m to the total running time. We usually denote the running time of ' +
+            'contributes c_k m to the total running time. We usually denote the running time of ' +
             'an algorithm on an input of size n by T(n).',
           zh:
             '把上面所有零件拼起来：**总时间 = Σ（每行的代价 × 每行的执行次数）**，' +
@@ -549,7 +549,7 @@ export default {
       lines: [
         { n: 1, code: 'for i = 2 to n', zh: 'cost = c₁，times = n。★ 注意这里为什么是 **n** 而不是 n − 1：书上把 for 的"循环头判断"也算作这一行的一次执行，i 从 2 试到 n，最后还要再判一次 i = n + 1 才退出 —— 一共 n 次。这是全表唯一一处"次数比直觉多 1"的行。' },
         { n: 2, code: '    key = A[i]', zh: 'cost = c₂，times = n − 1。循环体真的跑了 n − 1 轮（i = 2, 3, …, n）。' },
-        { n: 3, code: '    // Insert A[i] into the sorted subarray A[1 .. i − 1].', zh: 'cost = **0**，times = n − 1。★ 这条最容易被误读。它是注释，书上 p.29 明说"注释不是可执行语句，不花时间"，所以 cost 是 0；但它挂在 for 循环体里，**次数仍然记 n − 1**。代价乘积 0 × (n − 1) = 0，对总时间没有贡献。' },
+        { n: 3, code: '    // Insert A[i] into the sorted subarray A[1 : i − 1].', zh: 'cost = **0**，times = n − 1。★ 这条最容易被误读。它是注释，书上 p.29 明说"注释不是可执行语句，不花时间"，所以 cost 是 0；但它挂在 for 循环体里，**次数仍然记 n − 1**。代价乘积 0 × (n − 1) = 0，对总时间没有贡献。' },
         { n: 4, code: '    j = i − 1', zh: 'cost = c₄，times = n − 1。' },
         { n: 5, code: '    while j > 0 and A[j] > key', zh: 'cost = c₅，times = **Σtᵢ**（i 从 2 加到 n）。★ 全表最特殊的一行 —— 别的行次数都是 n 或 n − 1 这样固定的，只有它取决于**输入的具体排列**。tᵢ 的定义就是"这一行被求值了几次"。' },
         { n: 6, code: '        A[j + 1] = A[j]', zh: 'cost = c₆，times = Σ(tᵢ − 1)。为什么减 1？因为每一轮的 tᵢ 次判断里，恰好有一次是"为假、退出"的判断，那次没有执行循环体。所以循环体执行了 tᵢ − 1 次。' },
@@ -578,7 +578,7 @@ export default {
       algorithm: 'insertion-sort',
       pseudocodeRef: 'INSERTION-SORT',
       input: { array: [5, 2, 4, 6, 1, 3] },
-      invariants: [{ label: 'A[1 .. i − 1] 是原来的那些元素，且已排序' }],
+      invariants: [{ label: 'A[1 : i − 1] 是原来的那些元素，且已排序' }],
       presets: [
         { name: '原书 Figure 2.2 的数组（Σtᵢ = 14）', array: [5, 2, 4, 6, 1, 3] },
         { name: '已经排好序 · 最好情况（Σtᵢ = 5）', array: [1, 2, 3, 4, 5, 6] },

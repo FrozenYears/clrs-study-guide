@@ -18,6 +18,13 @@ const C_IMPL = String.raw`/*
  *
  * 书中伪代码下标从 1 开始（A[1 .. n]），本实现从 0 开始。
  * 对应关系（新手最容易翻车的点）：书中的 A[i] ↔ 本文件的 a[i-1]。
+ *   书第 2 行  key = A[i]        →  key = a[i-1]
+ *   书第 4 行  j = i - 1          →  j = i - 1
+ *   书第 5 行  while j > 0 and A[j] > key
+ *                             →  while (j >= 0 && a[j] > key)
+ *   书第 6 行  A[j + 1] = A[j]    →  a[j + 1] = a[j]
+ *   书第 8 行  A[j + 1] = key     →  a[j + 1] = key
+ * 即：把书上所有下标都减 1 即可。循环不变量 A[1..i-1] 已排序 ↔ a[0..i-1] 已排序。
  */
 #include <stdio.h>
 #include <assert.h>
@@ -35,15 +42,44 @@ void insertion_sort(int a[], int n)
     }
 }
 
+static void check(const char *name, int a[], int n, const int expected[])
+{
+    insertion_sort(a, n);
+    for (int i = 0; i < n; i++) {
+        assert(a[i] == expected[i]);
+    }
+    printf("ok: %s\n", name);
+}
+
 int main(void)
 {
-    int a[] = {5, 2, 4, 6, 1, 3};      /* 原书 Figure 2.2 的输入 */
-    int expected[] = {1, 2, 3, 4, 5, 6};
-    insertion_sort(a, 6);
-    for (int i = 0; i < 6; i++) assert(a[i] == expected[i]);
-    printf("ok: %s\n", "fig2.2");
+    int a1[] = {5, 2, 4, 6, 1, 3};
+    int e1[] = {1, 2, 3, 4, 5, 6};
+    check("fig2.2", a1, 6, e1);
+
+    int a2[] = {6, 5, 4, 3, 2, 1};
+    int e2[] = {1, 2, 3, 4, 5, 6};
+    check("reverse6", a2, 6, e2);
+
+    int a3[] = {12, 3, 7, 9, 14, 6, 11, 2};
+    int e3[] = {2, 3, 6, 7, 9, 11, 12, 14};
+    check("fig2.4", a3, 8, e3);
+
+    int a4[] = {2, 2, 1, 1, 3, 3};
+    int e4[] = {1, 1, 2, 2, 3, 3};
+    check("duplicates", a4, 6, e4);
+
+    int a5[] = {42};
+    int e5[] = {42};
+    check("single", a5, 1, e5);
+
+    int a6[1] = {7};
+    check("empty", a6, 0, a6);   /* n = 0：循环不执行，直接通过 */
+
+    printf("ALL INSERTION-SORT TESTS PASSED\n");
     return 0;
-}`;
+}
+`;
 
 /* 驱动动画的那份实现（默认折叠，不干扰主线） */
 const ENGINE_EXCERPT = String.raw`export function* insertionSort(A) {
@@ -224,11 +260,12 @@ export default {
           kind: 'remark',
           page: 23,
           en:
-            'The notation A[i .. j] denotes a subarray. Thus, A[i .. j] indicates the subarray ' +
+            'The notation ":" denotes a subarray. Thus, A[i : j] indicates the subarray ' +
             'of A consisting of the elements A[i], A[i + 1], …, A[j].',
           zh:
-            '`A[1 .. i − 1]` 这种写法会反复出现，它就是"从第 1 个到第 i−1 个元素"这一段连续区间，' +
-            '**两头都包含**。注意英文里 `..` 和中文习惯的"到"是一回事。',
+            '`A[1 : i − 1]` 这种写法会反复出现，它就是"从第 1 个到第 i−1 个元素"这一段连续区间，' +
+            '**两头都包含**。注意这个冒号记法 `A[i : j]` 是第 4 版的写法（第 3 版用的是 `A[i .. j]`，' +
+            '你在别处看到过别奇怪）。',
         },
         {
           kind: 'figure-caption',
@@ -272,11 +309,11 @@ export default {
           page: 20,
           en:
             'At the start of each iteration of the for loop of lines 1–8, the subarray ' +
-            'A[1 .. i − 1] consists of the elements originally in A[1 .. i − 1], but in ' +
+            'A[1 : i − 1] consists of the elements originally in A[1 : i − 1], but in ' +
             'sorted order.',
           zh:
             '这就是插入排序的循环不变量，逐字对照原文读两遍，注意它说了**两件事**：' +
-            '① A[1 .. i−1] 里的元素**本来就是**原来那几个（没有凭空多出、也没有丢掉）；' +
+            '① A[1 : i−1] 里的元素**本来就是**原来那几个（没有凭空多出、也没有丢掉）；' +
             '② 它们现在**已经排好序**。第二点容易看到，第一点常常被忽略，但证 Termination 时靠的就是它。',
         },
       ],
@@ -289,7 +326,7 @@ export default {
         { en: 'loop invariant', zh: '循环不变量', page: 20 },
         { en: 'Initialization / Maintenance / Termination', zh: '初始化 / 保持 / 终止', page: 20 },
         { en: '1-origin indexing', zh: '从 1 开始的下标', page: [22, 23] },
-        { en: 'subarray A[i .. j]', zh: '子数组（两头都包含）', page: 23 },
+        { en: 'subarray A[i : j]', zh: '子数组（两头都包含）', page: 23 },
       ],
     },
 
@@ -303,19 +340,19 @@ export default {
       lines: [
         { n: 1, code: 'for i = 2 to n', zh: 'i 是「现在要插哪一张牌」。从第 2 张开始，因为只有 1 张牌时天然有序。注意循环结束时 i 会变成 n + 1（书上 p.22 专门讲了这一点）。' },
         { n: 2, code: '    key = A[i]', zh: '把当前这张牌先拿出来攥在手里，记作 key。为什么要先拿出来？因为下一步右移会覆盖掉 A[i] 这个位置。' },
-        { n: 3, code: '    // Insert A[i] into the sorted subarray A[1 .. i − 1].', zh: '注释行。书上 p.29 明确说「注释不是可执行语句，不计时间」，所以阶段 6 的代价表里它的 cost 是 0。' },
+        { n: 3, code: '    // Insert A[i] into the sorted subarray A[1 : i − 1].', zh: '注释行。书上 p.29 明确说「注释不是可执行语句，不计时间」，所以阶段 6 的代价表里它的 cost 是 0。' },
         { n: 4, code: '    j = i − 1', zh: 'j 从左边那叠牌的**最右边**开始，准备往左找位置。' },
         { n: 5, code: '    while j > 0 and A[j] > key', zh: '★ 两个条件缺一不可：j > 0 是防止越界（牌看完了就停），A[j] > key 是判断"这张牌要不要给它让位"。注意 and 是短路的：j = 0 时后面的 A[j] 根本不会被求值，这条细节在阶段 6 数 tᵢ 时非常关键。' },
         { n: 6, code: '        A[j + 1] = A[j]', zh: '比 key 大的元素整体右移一格，给 key 腾位置。这正是 Figure 2.2 里橙色箭头画的动作。' },
         { n: 7, code: '        j = j − 1', zh: '继续往左看下一张。' },
-        { n: 8, code: '    A[j + 1] = key', zh: '退出 while 时，j 要么是 0，要么 A[j] ≤ key。两种情况下 key 的正确位置都恰好是 j + 1。把 key 放下，这一轮结束 —— 此时 A[1 .. i] 已经有序。' },
+        { n: 8, code: '    A[j + 1] = key', zh: '退出 while 时，j 要么是 0，要么 A[j] ≤ key。两种情况下 key 的正确位置都恰好是 j + 1。把 key 放下，这一轮结束 —— 此时 A[1 : i] 已经有序。' },
       ],
       vars: [
-        { name: 'A', meaning: '待排序的数组，`A[1 .. n]` 存放 n 个值（书上从 1 开始编号）' },
+        { name: 'A', meaning: '待排序的数组，`A[1 : n]` 存放 n 个值（书上从 1 开始编号）' },
         { name: 'n', meaning: '数组里元素的个数，也就是问题的"规模"' },
         { name: 'i', meaning: '本轮要插入的元素下标。循环结束后它的值是 `n + 1`' },
         { name: 'key', meaning: '本轮被拿在手里、等待插入的那个值，等于 `A[i]` 的原值' },
-        { name: 'j', meaning: '在已排序区间 `A[1 .. i − 1]` 里从右往左扫描的下标' },
+        { name: 'j', meaning: '在已排序区间 `A[1 : i − 1]` 里从右往左扫描的下标' },
       ],
       note:
         '读这段伪代码时请特别留意第 8 行的缩进层级：它在 while 循环**外面**，但在 for 循环**里面**。' +
@@ -330,7 +367,7 @@ export default {
       algorithm: 'insertion-sort',
       pseudocodeRef: 'INSERTION-SORT',
       input: { array: [5, 2, 4, 6, 1, 3] },
-      invariants: [{ label: 'A[1 .. i − 1] 是原来的那些元素，且已排序' }],
+      invariants: [{ label: 'A[1 : i − 1] 是原来的那些元素，且已排序' }],
       presets: [
         { name: '原书 Figure 2.2 的数组', array: [5, 2, 4, 6, 1, 3] },
         { name: '已经排好序（最好情况）', array: [1, 2, 3, 4, 5, 6] },
@@ -487,7 +524,7 @@ export default {
       title: '凭什么说它一定对',
       statement:
         'At the start of each iteration of the for loop of lines 1–8, the subarray ' +
-        'A[1 .. i − 1] consists of the elements originally in A[1 .. i − 1], but in ' +
+        'A[1 : i − 1] consists of the elements originally in A[1 : i − 1], but in ' +
         'sorted order.',
       page: 20,
       intro:
@@ -499,7 +536,7 @@ export default {
           en: 'We start by showing that the loop invariant holds before the first loop iteration, when i = 2.',
           page: 21,
           body: [
-            '第一次进入循环时 i = 2，那么 `A[1 .. i − 1]` 就是 `A[1 .. 1]` —— 只有一个元素。',
+            '第一次进入循环时 i = 2，那么 `A[1 : i − 1]` 就是 `A[1 : 1]` —— 只有一个元素。',
             '一个元素的数组当然是有序的（书上原话反问："how could a subarray with just one value not be sorted?"），' +
               '而且这个元素本来就是原来在 A[1] 的那个。两件事都成立，初始化这一步完成。',
             '书上 p.21 脚注 2 补了一个细节：for 循环的"首次迭代前"指的是**给 i 赋了 2 之后、第一次判断 i ≤ n 之前**。',
@@ -512,7 +549,7 @@ export default {
           body: [
             '这一轮做的事情是：把 `A[i−1], A[i−2], A[i−3] …` 依次右移一格，' +
               '直到找到 `A[i]` 该待的位置（书上注明是第 4–7 行），然后把 key 放进去（第 8 行）。',
-            '搬完之后，`A[1 .. i]` 里的元素正是原先 `A[1 .. i]` 那几个，而且已经有序。' +
+            '搬完之后，`A[1 : i]` 里的元素正是原先 `A[1 : i]` 那几个，而且已经有序。' +
               '下一轮 i 加 1，于是不变量在"下一轮开始前"依然成立。',
             '书在这里做了一件有意思的事（原书 p.21）：他说严格证明 while 循环（第 5–7 行）也有自己的不变量，' +
               '但**现在先不陷进那种形式主义**，先用非形式化的论证带过。' +
@@ -525,7 +562,7 @@ export default {
           page: 21,
           body: [
             'i 从 2 开始，每轮加 1，一旦 i 超过 n 循环就停 —— 也就是 **i 等于 n + 1 时停**。',
-            '把 i = n + 1 代进不变量：`A[1 .. n]` 里是原来的那些元素，而且已经排好序。' +
+            '把 i = n + 1 代进不变量：`A[1 : n]` 里是原来的那些元素，而且已经排好序。' +
               '这正是"排序问题"定义要求的输出（阶段 1 的第一条原文）。',
             '**算法正确。** 注意这一步为什么必要：只有前两步，你只证明了"过程中一直对"，' +
               '而"最后也对"必须靠循环真的会停 + 停的时候不变量说什么。',
@@ -564,10 +601,10 @@ export default {
         {
           kind: 'single',
           q: '当 i = 6 时，循环不变量说的是哪个子数组已经有序？',
-          options: ['A[1 .. 6]', 'A[1 .. 5]', 'A[1 .. 4]', 'A[6 .. 6]'],
+          options: ['A[1 : 6]', 'A[1 : 5]', 'A[1 : 4]', 'A[6 : 6]'],
           answer: 1,
           why:
-            '不变量说的是 A[1 .. i − 1]。i = 6 时就是 A[1 .. 5]。' +
+            '不变量说的是 A[1 : i − 1]。i = 6 时就是 A[1 : 5]。' +
             '换句话说，进入这一轮之前，前 5 个元素已经排好了，这一轮的工作是把第 6 个插进去。',
         },
         {
@@ -586,7 +623,7 @@ export default {
           placeholder: '例如：2 4 5 6 1 3',
           why:
             'i = 4 时 key = 6。比较 A[3] = 5 > 6 不成立，所以一次都没搬，key 原地放回。' +
-            '此时 A[1 .. 4] = ⟨2, 4, 5, 6⟩ 有序。你可以回阶段 4 用单步验证。',
+            '此时 A[1 : 4] = ⟨2, 4, 5, 6⟩ 有序。你可以回阶段 4 用单步验证。',
         },
         {
           kind: 'judge',
@@ -597,8 +634,7 @@ export default {
             '书里甚至说第三条或许是最重要的（p.20 之后那段），因为你要靠它把不变量接到最终结论上。',
         },
       ],
-      bookExercises: [
-        {
+      bookExercises: [{
           id: '2.1-1',
           page: 24,
           star: 1,
@@ -615,12 +651,12 @@ export default {
           star: 2,
           statement:
             'Consider the procedure SUM-ARRAY on the facing page. It computes the sum of the ' +
-            'n numbers in array A[1 .. n]. State a loop invariant for this procedure, and use ' +
+            'n numbers in array A[1 : n]. State a loop invariant for this procedure, and use ' +
             'its initialization, maintenance, and termination properties to show that the ' +
-            'SUM-ARRAY procedure returns the sum of the numbers in A[1 .. n].',
+            'SUM-ARRAY procedure returns the sum of the numbers in A[1 : n].',
           hint:
             'SUM-ARRAY 的伪代码在原书印刷页 25。照抄阶段 7 的三步模板就行。' +
-            '关键是写出正确的不变量：试着写成「进入第 i 轮时，sum 等于 A[1 .. i−1] 的和」，' +
+            '关键是写出正确的不变量：试着写成「进入第 i 轮时，sum 等于 A[1 : i−1] 的和」，' +
             '然后你会发现 Termination 时 i = n + 1，结论自然就是全部的和。',
         },
         {
@@ -640,13 +676,13 @@ export default {
           star: 3,
           statement:
             'Consider the searching problem: Input: A sequence of n numbers ⟨a₁, a₂, …, aₙ⟩ ' +
-            'stored in array A[1 .. n] and a value x. Output: An index i such that x equals ' +
+            'stored in array A[1 : n] and a value x. Output: An index i such that x equals ' +
             'A[i] or the special value NIL if x does not appear in A. Write pseudocode for ' +
             'linear search, which scans through the array from beginning to end, looking for ' +
             'x. Using a loop invariant, prove that your algorithm is correct. Make sure that ' +
             'your loop invariant fulfills the three necessary properties.',
           hint:
-            '不变量可以写成「进入第 i 轮时，x 不在 A[1 .. i−1] 中」。' +
+            '不变量可以写成「进入第 i 轮时，x 不在 A[1 : i−1] 中」。' +
             '然后仔细想 Termination 那一步为什么能得出正确结论 —— 这道题的价值全在那儿，' +
             '因为返回值有 NIL 和下标两种可能，得分开讨论。',
         },
@@ -656,10 +692,10 @@ export default {
           star: 4,
           statement:
             'Consider the problem of adding two n-bit binary integers a and b, stored in two ' +
-            'n-element arrays A[0 .. n − 1] and B[0 .. n − 1], where each element is either 0 ' +
+            'n-element arrays A[0 : n − 1] and B[0 : n − 1], where each element is either 0 ' +
             'or 1, a = Σ_{i=0}^{n−1} A[i] · 2^i, and b = Σ_{i=0}^{n−1} B[i] · 2^i. The sum ' +
             'c = a + b of the two integers should be stored in binary form in an (n + 1)-element ' +
-            'array C[0 .. n], where c = Σ_{i=0}^{n} C[i] · 2^i. Write a procedure ' +
+            'array C[0 : n], where c = Σ_{i=0}^{n} C[i] · 2^i. Write a procedure ' +
             'ADD-BINARY-INTEGERS that takes as input arrays A and B, along with the length n, ' +
             'and returns array C holding the sum.',
           hint:
