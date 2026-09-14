@@ -6,7 +6,8 @@
  * ========================================================================== */
 
 import s01 from './s01-insertion-sort.js';
-import s02 from './s02-merge-sort.js';
+import s02 from './s02-analyzing-algorithms.js';
+import s03 from './s03-merge-sort.js';
 
 export default {
   ch: 2,
@@ -15,5 +16,5 @@ export default {
   title: 'Getting Started',
   titleZh: '起步',
   source: { printed: [17, 46], pdf: [38, 67] },
-  levels: [s01, s02],
+  levels: [s01, s02, s03],
 };

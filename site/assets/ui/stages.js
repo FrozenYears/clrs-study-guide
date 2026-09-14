@@ -76,13 +76,14 @@ function sourceBlock(block) {
   );
   const kids = [head];
   if (block.en) {
+    // 原文必须原样呈现（衬线体 + data-kind="source"），不做任何标记解析
     kids.push(h('p', { class: 'src-block__en', 'data-kind': 'source' }, block.en));
   }
   if (block.zh) {
-    kids.push(h('p', { class: 'src-block__zh', 'data-kind': 'note' }, block.zh));
+    kids.push(h('p', { class: 'src-block__zh', 'data-kind': 'note' }, katex.renderMixed(block.zh)));
   }
   if (block.note) {
-    kids.push(h('p', { class: 'src-block__zh', 'data-kind': 'note' }, block.note));
+    kids.push(h('p', { class: 'src-block__zh', 'data-kind': 'note' }, katex.renderMixed(block.note)));
   }
   return h('div', { class: 'src-block' }, ...kids);
 }
@@ -92,10 +93,21 @@ function termCards(terms) {
     (terms || []).map((t) =>
       h('span', { class: 'term', title: '原书印刷页 ' + t.page },
         h('span', { class: 'term-en' }, t.en),
-        h('span', { class: 'term-zh' }, t.zh)
+        h('span', { class: 'term-zh' }, katex.renderMixed(t.zh))
       )
     )
   );
+}
+
+/**
+ * 表格单元格内容。
+ * - 字符串：走 renderMixed，于是 $公式$ 与 **粗体** 都能用（关卡文案大量依赖）。
+ * - 已渲染好的 Node：原样使用（rAnalyze 的 claims 就把一个 span 传进来）。
+ * 注意：单元格里不放代码 —— 按规范，C 代码走「代码轨道」的代码块，不进表格。
+ */
+function cell(v) {
+  if (v == null) return null;
+  return typeof v === 'string' ? katex.renderMixed(v) : v;
 }
 
 function kvTable(caption, rows) {
@@ -103,8 +115,8 @@ function kvTable(caption, rows) {
     caption ? h('caption', caption) : null,
     h('tbody', rows.map((r) =>
       h('tr', null,
-        h('th', { scope: 'row' }, r[0]),
-        h('td', { class: r[2] ? 'mono' : null }, r[1])
+        h('th', { scope: 'row' }, cell(r[0])),
+        h('td', { class: r[2] ? 'mono' : null }, cell(r[1]))
       )
     ))
   );
@@ -300,7 +312,7 @@ function rMap(stage) {
   }
   (stage.mathKit || []).forEach((k) => {
     kids.push(h('details', { class: 'kit' },
-      h('summary', null, '数学急救包 · ' + k.title),
+      h('summary', null, katex.renderMixed('数学急救包 · ' + k.title)),
       noteBlock(h('p', { style: { margin: '0' } }, katex.renderMixed(k.body)))
     ));
   });
@@ -377,7 +389,9 @@ function rIntuition(stage) {
   if (stage.interactive && stage.interactive.kind === 'cards-hand') {
     inner = cardsHandGame(stage.interactive);
   } else if (stage.interactive && stage.interactive.text) {
-    inner = h('div', { class: 'viz-note' }, katex.renderMixed(stage.interactive.text));
+    // 两种 interactive 的返回值形状不同：cardsHandGame 返回 {node, destroy}，
+    // 而这里只想插一个说明块。统一包成 {node}，否则下面的 inner.node 会是 undefined。
+    inner = { node: h('div', { class: 'viz-note' }, katex.renderMixed(stage.interactive.text)) };
   }
   if (inner) kids.push(inner.node);
 
@@ -904,7 +918,7 @@ function rDrill(stage, ctx) {
             });
             setResult(i, ok, why);
           },
-        }, o)
+        }, katex.renderMixed(o))
       );
       body = h('div', { class: 'quiz__options' }, btns);
     } else if (it.kind === 'simulate') {
@@ -942,7 +956,8 @@ function rDrill(stage, ctx) {
         h('p', { class: 'drill-exercise__stmt', 'data-kind': 'source' }, ex.statement),
         ex.hint
           ? h('details', { class: 'kit' },
-              h('summary', null, '给个提示'), noteBlock(ex.hint))
+              h('summary', null, '给个提示'),
+              noteBlock(h('p', { style: { margin: '0' } }, katex.renderMixed(ex.hint))))
           : null
       ));
     });

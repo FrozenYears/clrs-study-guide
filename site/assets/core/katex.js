@@ -14,10 +14,13 @@
  *   renderInline(tex) -> Node   （行内公式，对应 $...$）
  *   renderBlock(tex)  -> Node   （独立成行公式，对应 $$...$$）
  *   render(tex, opts?) -> Node  （opts.display 时走 renderBlock）
- *   renderMixed(text) -> Node   （扫描文本中的 $...$ / $$...$$，返回混排片段）
+ *   renderMixed(text) -> Node   （扫描文本中的 $...$ / $$...$$ / **粗体**，返回混排片段）
  *
  * 支持记号：Θ Ο Ω Σ Π αβγδε θλμπρσ τφω ≤ ≥ ≠ ≈ ≡ ∼ ∞ ∂ ∇ ⌊⌋ ⌈⌉ ∈ ∉ ⊆ ⊂ ⊇
  *          ∪ ∩ ∅ ∀ ∃ → ← ↔ × · ÷ ± ∓ ∑ ∏ ∫ √ log lg ln mod ⋯ … ∠ ⊥ ∥ 等
+ * 支持结构：上下标 _{}/^{}、分式 \frac{}{}（\dfrac/\tfrac 同义）、根号 \sqrt{}、
+ *          花体 \mathcal{}；\left \right 与 \, \; \! 等间距命令只吃字符不产出。
+ * 另注：renderMixed 还负责 **粗体** 与 $...$ / $$...$$ 的混排。
  * ========================================================================== */
 
 let _katex = null; // 外部 KaTeX 命名空间（含 renderToString）
@@ -131,6 +134,13 @@ const SYM = {
   implies: "⟹",
   iff: "⟺",
   mapsto: "↦",
+  // —— 大写箭头族。注意 \Rightarrow(⇒) 与 \implies(⟹) 是不同字形，不能合并。——
+  Rightarrow: "⇒",
+  Leftarrow: "⇐",
+  Leftrightarrow: "⇔",
+  Longrightarrow: "⟹",
+  Longleftarrow: "⟸",
+  Longleftrightarrow: "⟺",
   coloneqq: "≔",
   triangleq: "≜",
   propto: "∝",
@@ -234,6 +244,102 @@ function parse(src) {
     return el;
   }
 
+  /** `\text{...}`（含 \textrm/\mathrm/\mathit）走文本模式：内容原样输出，不再当数学解析。
+   *  否则 `\text{for }` 会变成 "\textfor " 这种碎片。 */
+  function textNode(text) {
+    const el = document.createElement("span");
+    el.className = "tex-text";
+    el.appendChild(document.createTextNode(text));
+    return el;
+  }
+
+  /** 按顶层分隔符切分（跳过 {} 内部），供 cases 环境拆行/拆列。 */
+  function splitTop(src, sep) {
+    const parts = [];
+    let depth = 0;
+    let cur = "";
+    for (let k = 0; k < src.length; k++) {
+      const ch = src[k];
+      if (ch === "{") depth++;
+      else if (ch === "}") depth--;
+      if (ch === sep && depth === 0) {
+        parts.push(cur);
+        cur = "";
+        continue;
+      }
+      cur += ch;
+    }
+    parts.push(cur);
+    return parts;
+  }
+
+  /** `\begin{cases} 值 & 条件 \\ 值 & 条件 \end{cases}` → 带左花括号的分段函数。
+   *  行以 `\\` 分隔，列以 `&` 分隔（都是顶层才切）。 */
+  function casesNode(body) {
+    const el = document.createElement("span");
+    el.className = "cases";
+    const brace = document.createElement("span");
+    brace.className = "cases__brace";
+    brace.appendChild(document.createTextNode("{"));
+    el.appendChild(brace);
+    const rows = document.createElement("span");
+    rows.className = "cases__rows";
+    body.split("\\\\").forEach((rawRow) => {
+      const rowSrc = rawRow.trim();
+      if (!rowSrc) return;
+      const r = document.createElement("span");
+      r.className = "cases__row";
+      splitTop(rowSrc, "&").forEach((cellSrc, ci) => {
+        const cell = document.createElement("span");
+        cell.className = ci === 0 ? "cases__val" : "cases__cond";
+        parse(cellSrc.trim()).forEach((c2) => cell.appendChild(c2));
+        r.appendChild(cell);
+      });
+      rows.appendChild(r);
+    });
+    el.appendChild(rows);
+    return el;
+  }
+
+  /** `\underbrace{X}_{Y}` → X 下方带标注 Y。紧随的 `_{...}` 由本函数一并吃掉，
+   *  否则它会变成一个游离的 <sub> 兄弟节点。 */
+  function ubraceNode(body) {
+    const el = document.createElement("span");
+    el.className = "ubrace";
+    const b = document.createElement("span");
+    b.className = "ubrace__body";
+    parse(body).forEach((c) => b.appendChild(c));
+    el.appendChild(b);
+    if (s[i] === "_") {
+      i++;
+      const lab = readGroup();
+      if (lab) {
+        const l = document.createElement("span");
+        l.className = "ubrace__label";
+        parse(lab.text).forEach((c) => l.appendChild(c));
+        el.appendChild(l);
+      } else {
+        el.appendChild(document.createTextNode("_"));
+      }
+    }
+    return el;
+  }
+
+  /** `\xrightarrow{...}` / `\xleftarrow{...}` → 带上方标注的箭头（用于"这一步做了什么"）。 */
+  function xarrowNode(labelSrc, arrow) {
+    const el = document.createElement("span");
+    el.className = "xarrow";
+    const lab = document.createElement("span");
+    lab.className = "xarrow__label";
+    parse(labelSrc).forEach((c) => lab.appendChild(c));
+    const ar = document.createElement("span");
+    ar.className = "xarrow__arrow";
+    ar.appendChild(document.createTextNode(arrow));
+    el.appendChild(lab);
+    el.appendChild(ar);
+    return el;
+  }
+
   let buf = "";
   function flush() {
     if (buf) {
@@ -264,14 +370,17 @@ function parse(src) {
       if (DROP.has(name)) {
         continue; // 纯排版命令，只吃字符不产出
       }
-      if (name === "frac") {
+      // \frac / \dfrac / \tfrac 都渲染成同一个 .frac 结构。
+      // 真正的 KaTeX 会区分 display / text 字号，本实现不区分 —— 但至少不能
+      // 像以前那样把 \dfrac 原样吐出来（页面上会出现 "\dfracn(n+1)2" 这种碎片）。
+      if (name === "frac" || name === "dfrac" || name === "tfrac") {
         const a = readGroup();
         const b = readGroup();
         if (a && b) {
           out.push(fracNode(a.text, b.text));
           continue;
         }
-        buf += "\\frac";
+        buf += "\\" + name;
         continue;
       }
       if (name === "sqrt") {
@@ -290,6 +399,55 @@ function parse(src) {
           continue;
         }
         buf += "\\mathcal";
+        continue;
+      }
+      // \text{...}：文本模式，内容原样输出
+      if (name === "text" || name === "textrm" || name === "mathrm" || name === "mathit") {
+        const a = readGroup();
+        if (a) {
+          out.push(textNode(a.text));
+          continue;
+        }
+        buf += "\\" + name;
+        continue;
+      }
+      // \begin{cases} ... \end{cases}：环境体要一直读到配对的 \end{...}
+      if (name === "begin") {
+        const env = readGroup();
+        const envName = env ? env.text.trim() : "";
+        const closeTag = "\\end{" + envName + "}";
+        const endPos = envName ? s.indexOf(closeTag, i) : -1;
+        if (endPos >= 0) {
+          const body = s.slice(i, endPos);
+          i = endPos + closeTag.length;
+          out.push(casesNode(body));
+          continue;
+        }
+        buf += "\\begin";
+        continue;
+      }
+      if (name === "end") {
+        // 正常情况下上面已经把 \end{...} 一起消费了；这里兜底吃掉孤立的 \end{cases}
+        if (readGroup()) continue;
+        buf += "\\end";
+        continue;
+      }
+      if (name === "underbrace" || name === "overbrace") {
+        const a = readGroup();
+        if (a) {
+          out.push(ubraceNode(a.text));
+          continue;
+        }
+        buf += "\\" + name;
+        continue;
+      }
+      if (name === "xrightarrow" || name === "xleftarrow") {
+        const a = readGroup();
+        if (a) {
+          out.push(xarrowNode(a.text, name === "xrightarrow" ? "→" : "←"));
+          continue;
+        }
+        buf += "\\" + name;
         continue;
       }
       const sym = SYM[name];
@@ -394,6 +552,21 @@ export function renderMixed(text) {
     }
   }
   while (i < n) {
+    // **粗体**：要求开标记紧跟非空白、闭标记紧跟非空白，
+    // 这样 `a ** b`（乘法/幂）与落单的 `**` 都不会被误当强调。
+    // 里面允许再嵌 $...$，所以递归调用自己。
+    if (s[i] === "*" && s[i + 1] === "*") {
+      const end = s.indexOf("**", i + 2);
+      const inner = end === -1 ? "" : s.slice(i + 2, end);
+      if (end !== -1 && inner && !/^\s/.test(inner) && !/\s$/.test(inner)) {
+        flush();
+        const strong = document.createElement("strong");
+        strong.appendChild(renderMixed(inner));
+        frag.appendChild(strong);
+        i = end + 2;
+        continue;
+      }
+    }
     if (s[i] === "$" && s[i + 1] === "$") {
       flush();
       let j = i + 2;

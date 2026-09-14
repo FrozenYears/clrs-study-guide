@@ -104,13 +104,20 @@ function appendChildren(el, children) {
   flat.forEach((n) => el.appendChild(n));
 }
 
+/**
+ * 判断第二个参数是不是"属性对象"。
+ * 只有普通对象才算；数组、DOM 节点、字符串、数字都不是。
+ * ★ 数组必须排除：h('tbody', rows.map(...)) 是很自然的写法，
+ *   而 Array 的 typeof 也是 "object"，不排除就会被当成 attrs，
+ *   结果是子节点全部丢失（元素上出现 0="[object HTMLTableRowElement]" 这种属性）。
+ */
+function isPropsObject(x) {
+  return x != null && typeof x === "object" && !Array.isArray(x) && !isNode(x);
+}
+
 export function h(tag, props, ...rest) {
-  let attrs = props;
-  let children = rest;
-  if (typeof props === "string") {
-    attrs = null;
-    children = [props, ...rest];
-  }
+  const attrs = isPropsObject(props) ? props : null;
+  const children = isPropsObject(props) ? rest : (props == null ? rest : [props, ...rest]);
   const el = document.createElement(tag);
   applyAttrs(el, attrs, false);
   appendChildren(el, children);
@@ -118,12 +125,8 @@ export function h(tag, props, ...rest) {
 }
 
 export function svg(tag, props, ...rest) {
-  let attrs = props;
-  let children = rest;
-  if (typeof props === "string") {
-    attrs = null;
-    children = [props, ...rest];
-  }
+  const attrs = isPropsObject(props) ? props : null;
+  const children = isPropsObject(props) ? rest : (props == null ? rest : [props, ...rest]);
   const el = document.createElementNS(SVG_NS, tag);
   applyAttrs(el, attrs, true);
   appendChildren(el, children);

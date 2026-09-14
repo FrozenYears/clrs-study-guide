@@ -342,6 +342,75 @@
   border-top: var(--bd-w) solid currentColor;
   padding: 0 0.15em;
 }
+/* \text{...}：正体，与数学斜体区分 */
+.tex-text {
+  font-style: normal;
+  white-space: pre;
+}
+/* \begin{cases}：左花括号 + 两列（值 / 条件） */
+.cases {
+  display: inline-flex;
+  align-items: stretch;
+  vertical-align: middle;
+  margin: 0 0.15em;
+}
+.cases__brace {
+  display: flex;
+  align-items: center;
+  font-size: 2.4em;
+  line-height: 1;
+  font-weight: 300;
+  padding-right: 0.08em;
+}
+.cases__rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+  text-align: left;
+}
+.cases__row {
+  display: flex;
+  gap: 0.9em;
+  align-items: baseline;
+}
+.cases__val {
+  min-width: 2.5em;
+}
+.cases__cond {
+  color: var(--fg-1);
+}
+/* \underbrace{...}_{...}：主体 + 下方标注（含一条表示覆盖范围的横线） */
+.ubrace {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  vertical-align: middle;
+  margin: 0 0.15em;
+}
+.ubrace__body {
+  border-bottom: var(--bd-w) solid currentColor;
+  padding: 0 0.2em;
+}
+.ubrace__label {
+  font-size: 0.78em;
+  line-height: 1.2;
+  padding-top: 0.05em;
+}
+/* \xrightarrow{...}：箭头上方标注 */
+.xarrow {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  vertical-align: middle;
+  margin: 0 0.3em;
+}
+.xarrow__label {
+  font-size: 0.78em;
+  line-height: 1.2;
+}
+.xarrow__arrow {
+  line-height: 1;
+}
 
 /* 可视化图例（可选，供 viz 引擎复用） */
 .viz-legend {

@@ -256,8 +256,8 @@ const FIG25_NOTES = [
 ];
 
 export default {
-  key: 's02',
-  id: 'ch02/s02',
+  key: 's03',
+  id: 'ch02/s03',
   chapter: 2,
   section: '2.3',
   title: '分治法与归并排序',
@@ -266,6 +266,7 @@ export default {
   source: { printed: [34, 46], pdf: [55, 67] },
   prerequisites: [
     { label: '2.1 插入排序', url: '#/ch02/s01' },
+    { label: '2.2 分析算法（本关下面要反复用到 Θ 与 T(n)）', url: '#/ch02/s02' },
   ],
   sourceNote:
     '本关对应原书 2.3 节（印刷页 34–46）。它为 2.1 的插入排序找到了一个最坏情况更快的对手：' +
@@ -292,7 +293,7 @@ export default {
       unlocks: [
         { label: '第 3 章 函数的增长（Θ / O / Ω 正式定义）', url: '#/ch03/s01' },
         { label: '第 4 章 分治策略（递归式与主定理）', url: '#/ch04/s01' },
-        { label: '原书习题 2.3-1 ~ 2.3-8', url: '#/ch02/s02/s09' },
+        { label: '原书习题 2.3-1 ~ 2.3-8', url: '#/ch02/s03/s09' },
       ],
       mathKit: [
         {
