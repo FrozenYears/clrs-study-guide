@@ -1,0 +1,47 @@
+[
+ {
+  "fig_id": "14.1",
+  "printed_page": 364,
+  "path": "data/figs/fig-14-1.png",
+  "reasons": [
+   "宽高比异常(8.92)"
+  ],
+  "metrics": {
+   "width": 678,
+   "height": 76,
+   "bytes": 9849,
+   "aspect": 8.921,
+   "ink_ratio": 0.10433
+  }
+ },
+ {
+  "fig_id": "31.4",
+  "printed_page": 935,
+  "path": "data/figs/fig-31-4.png",
+  "reasons": [
+   "宽高比异常(9.95)"
+  ],
+  "metrics": {
+   "width": 1075,
+   "height": 108,
+   "bytes": 18556,
+   "aspect": 9.954,
+   "ink_ratio": 0.08611
+  }
+ },
+ {
+  "fig_id": "32.16",
+  "printed_page": 999,
+  "path": "data/figs/fig-32-16.png",
+  "reasons": [
+   "宽高比异常(9.06)"
+  ],
+  "metrics": {
+   "width": 988,
+   "height": 109,
+   "bytes": 14427,
+   "aspect": 9.064,
+   "ink_ratio": 0.09513
+  }
+ }
+]

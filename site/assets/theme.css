@@ -1,0 +1,219 @@
+/* =============================================================================
+ * theme.css — 设计令牌 + 明暗主题（运行时 Agent 拥有）
+ * 契约来源：docs/开发规范.md 第七章（7.1 语义色 / 7.2 可视化色 / 7.3 字体）
+ *
+ * 红线 R5：全站只允许使用本文件定义的令牌，禁止硬编码颜色/字号/圆角。
+ * 因此除 7.1–7.3 要求的令牌外，本文件也补充了字号/圆角/阴影/间距令牌，
+ * 供组件层（components.css）与所有下游 agent 使用。
+ *
+ * 主题策略：
+ *   - 默认（:root，无 data-theme 属性）= 明色。
+ *   - [data-theme="dark"] = 强制暗色。
+ *   - 未显式选择时（无 data-theme 属性）跟随系统 prefers-color-scheme。
+ *     JS（store.setThemePref）只写 'light' | 'dark' | 'auto'；'auto' 即移除属性。
+ * ========================================================================== */
+
+/* ---------- 7.3 字体栈 ---------- */
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei",
+    "PingFang SC", "Hiragino Sans GB", "Source Han Sans SC", "Noto Sans CJK SC",
+    sans-serif;
+  --font-serif: Charter, "Iowan Old Style", Georgia, Cambria, "Songti SC",
+    "Source Han Serif SC", "Noto Serif CJK SC", serif;
+  --font-mono: "Cascadia Code", "JetBrains Mono", "Fira Code", Consolas,
+    "SFMono-Regular", "DejaVu Sans Mono", monospace;
+}
+
+/* ---------- 7.1 语义色（明色默认） ---------- */
+:root {
+  /* 背景层级：页面底 / 卡片 / 内嵌块 */
+  --bg-0: #f5f6f8;
+  --bg-1: #ffffff;
+  --bg-2: #eef1f5;
+
+  /* 前景层级：主文本 / 次要 / 弱提示 */
+  --fg-0: #161b22;
+  --fg-1: #4a5562;
+  --fg-2: #8a94a3;
+
+  /* 边框：常规 / 强调 */
+  --bd-0: #d9dee6;
+  --bd-1: #b6bfcc;
+
+  /* 原文 vs 讲解底色（核心视觉惯例，配合 data-kind） */
+  --c-source: #f3efe6; /* 书页米色，像翻开的原文 */
+  --c-note: #eaf2fb;   /* 冷蓝底，讲解补充 */
+
+  /* 状态色：正确 / 提示 / 错误 */
+  --c-ok: #1f9d57;
+  --c-warn: #c9821a;
+  --c-err: #d23b3b;
+
+  /* 品牌强调（链接、主按钮） */
+  --accent: #2f7ff0;
+  --accent-fg: #ffffff;
+
+  /* 可视化上的文字颜色（绘制标签/数字时用） */
+  --viz-fg: #ffffff;
+  --viz-track: #e4e8ee; /* 柱/条轨道背景 */
+  --viz-grid: #cfd6df;  /* 网格线 */
+}
+
+/* ---------- 7.2 可视化专用色（色盲友好，灰阶也可分） ----------
+ * 设计要点：不使用「纯红/纯绿」配对；各状态同时给足色相与明度差异。
+ * 下游可视化 agent 只引用这些变量名，不自行定义。
+ * 每个状态都建议再叠加形状/纹理/文字标签（由可视化层负责）。
+ */
+:root {
+  --viz-idle: #98a2b3;      /* 未处理 · 中性灰 */
+  --viz-compare: #e0922f;   /* 比较中 · 琥珀 */
+  --viz-active: #7c5cfc;    /* 当前操作 · 紫 */
+  --viz-done: #2f7ff0;      /* 已确定 · 蓝 */
+  --viz-result: #14b8c4;    /* 结果/路径 · 青 */
+  --viz-mark: #475569;      /* 已访问标记 · 深岩灰 */
+  --viz-violation: #e23b3b; /* 违反不变量 · 红 */
+}
+
+/* ---------- 排版：字号刻度（禁止硬编码 px 字号） ---------- */
+:root {
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.125rem;
+  --fs-xl: 1.375rem;
+  --fs-2xl: 1.75rem;
+  --fs-3xl: 2.25rem;
+  --lh-tight: 1.25;
+  --lh-base: 1.65;
+}
+
+/* ---------- 形状：圆角（禁止硬编码 px 圆角） ---------- */
+:root {
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-pill: 999px;
+  --bd-w: 1px;
+}
+
+/* ---------- 阴影 ---------- */
+:root {
+  --shadow-1: 0 1px 2px rgba(16, 27, 34, 0.08), 0 1px 3px rgba(16, 27, 34, 0.06);
+  --shadow-2: 0 4px 12px rgba(16, 27, 34, 0.12), 0 2px 4px rgba(16, 27, 34, 0.08);
+}
+
+/* ---------- 间距 / 布局 ---------- */
+:root {
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.5rem;
+  --sp-6: 2rem;
+  --maxw: 1140px;
+  --header-h: 3.25rem;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur: 160ms;
+  --z-header: 50;
+  --z-modal: 100;
+}
+
+/* =============================================================================
+ * 暗色主题
+ * ========================================================================== */
+[data-theme="dark"] {
+  --bg-0: #0e131b;
+  --bg-1: #161d27;
+  --bg-2: #1f2834;
+
+  --fg-0: #e8edf4;
+  --fg-1: #aab4c2;
+  --fg-2: #6f7c8d;
+
+  --bd-0: #2a3340;
+  --bd-1: #3a4655;
+
+  --c-source: #241f15; /* 暗色下仍是偏暖的书页感 */
+  --c-note: #142133;
+
+  --c-ok: #4cd08a;
+  --c-warn: #e6a94b;
+  --c-err: #ff6b6b;
+
+  --accent: #5aa0ff;
+  --accent-fg: #06101f;
+
+  --viz-fg: #0d1117;
+  --viz-track: #28313d;
+  --viz-grid: #38424f;
+
+  /* 暗色下整体提亮，保证在深色底上可分辨 */
+  --viz-idle: #5b6675;
+  --viz-compare: #f3ad4e;
+  --viz-active: #a78bfa;
+  --viz-done: #5aa0ff;
+  --viz-result: #2fd4e0;
+  --viz-mark: #94a3b8;
+  --viz-violation: #ff6b6b;
+
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.5), 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-2: 0 4px 12px rgba(0, 0, 0, 0.55), 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* 未显式选择主题时，跟随系统偏好（auto = 无 data-theme 属性） */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]):not([data-theme="dark"]) {
+    --bg-0: #0e131b;
+    --bg-1: #161d27;
+    --bg-2: #1f2834;
+
+    --fg-0: #e8edf4;
+    --fg-1: #aab4c2;
+    --fg-2: #6f7c8d;
+
+    --bd-0: #2a3340;
+    --bd-1: #3a4655;
+
+    --c-source: #241f15;
+    --c-note: #142133;
+
+    --c-ok: #4cd08a;
+    --c-warn: #e6a94b;
+    --c-err: #ff6b6b;
+
+    --accent: #5aa0ff;
+    --accent-fg: #06101f;
+
+    --viz-fg: #0d1117;
+    --viz-track: #28313d;
+    --viz-grid: #38424f;
+
+    --viz-idle: #5b6675;
+    --viz-compare: #f3ad4e;
+    --viz-active: #a78bfa;
+    --viz-done: #5aa0ff;
+    --viz-result: #2fd4e0;
+    --viz-mark: #94a3b8;
+    --viz-violation: #ff6b6b;
+
+    --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.5), 0 1px 3px rgba(0, 0, 0, 0.4);
+    --shadow-2: 0 4px 12px rgba(0, 0, 0, 0.55), 0 2px 4px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* 降低动效（尊重 prefers-reduced-motion）：由 stepper 也读取此偏好，
+   这里兜底关掉过渡/动画，避免 CSS 侧仍闪动。 */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur: 0ms;
+    --ease: linear;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

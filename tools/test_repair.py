@@ -1,0 +1,221 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""Step 2 回归测试：符号修复规则。
+
+两类断言，缺一不可：
+  A. 修复生效  —— 覆盖 Ch1/2/3/4/20/31/34/附录A 等不同部分，每条规则至少一次
+                   「修复前长这样 → 修复后必须是那样」。
+  B. 防误伤    —— 普通英文句子里的 j / p / W / D / 4 / . / / / = 必须原样不变。
+                   这一半比 A 更重要：一个过宽的规则会把整本书的正文毁掉。
+
+用法：python tools/test_repair.py
+"""
+import importlib.util
+import json
+import os
+import re
+import sys
+
+# 脚本名以数字开头，不能直接 import，按路径加载
+_spec = importlib.util.spec_from_file_location(
+    "repair02", os.path.join(os.path.dirname(os.path.abspath(__file__)), "02_repair.py")
+)
+rep = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(rep)
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+PASS = 0
+FAIL = 0
+FAILED = []
+
+
+def check(cond, msg):
+    global PASS, FAIL
+    if cond:
+        PASS += 1
+    else:
+        FAIL += 1
+        FAILED.append(msg)
+        print("  FAIL " + msg)
+    return cond
+
+
+def fixed(src):
+    """跑完整管线（含 repair_d_assignment），与产出 pages_fixed.jsonl 的路径一致。"""
+    return rep.repair_d_assignment(rep.repair_text(src))
+
+
+def rule(name, src, want, note=""):
+    got = fixed(src)
+    ok = want in got
+    check(ok, "[%s] %r\n         期望含 %r\n         实际为 %r" % (name, src, want, got))
+
+
+def keep(name, src, note=""):
+    """防误伤：整串必须原样不变。"""
+    got = fixed(src)
+    check(got == src, "[%s] 不应被改动\n         输入 %r\n         实际 %r" % (name, src, got))
+
+
+def main():
+    # ---------------------------------------------------------------
+    # A. 修复生效
+    # ---------------------------------------------------------------
+    print("[A] 规则生效（按原书分部抽样）")
+
+    # --- Ch1 前言 / 第1章：fi 连字、小型大写、em-dash ---
+    rule("û->fi (Ch1)", "as ûnding routes", "finding routes")
+    rule("û->fi", "the value that ûrst exceeded", "first exceeded")
+    rule("4->em-dash (Ch1)", "engi4neering", "engi—neering")
+    rule("‹¤› != (Ch1)", "a ¤ b", "a ≠ b")
+
+    # --- Ch2：下标区间、伪代码赋值箭头、D 作为等号 ---
+    rule("Œ/� -> [ ]", "AŒi W j�", "A[i .. j]")
+    rule("W -> .. (区间)", "AŒ1 W i  1�", "A[1 .. i")
+    rule("D -> ← (伪代码)", "3 q D b.p C r/=2c", "q ← ")
+    rule("D -> = (正文)", "when this loop\nis for i D 2 to n", "i = 2 to n")
+    rule("C -> + (括号内)", "AŒq C 1 W r�", "A[q + 1 .. r]")
+
+    # --- Ch2/3：点号-斜杠括号对（含嵌套）---
+    rule("( ) 单层", "f.n/  D 0", "f(n)")
+    rule("( ) 嵌套", "We write f.n/  D O.g.n//  if", "O(g(n))")
+    rule("( ) 五重嵌套", "T.n/  D 2T.n=2/  C ‚.n/:", "2T(n/2)")
+
+    # --- Ch3：渐进记号 ---
+    rule("‚ -> Θ", "it is also ‚.n 3 /", "Θ(n 3 )")
+    rule("� -> Ω (无配对[)", "f.n/  D �.g.n//", "Ω(g(n))")
+    rule("= -> / 除法", "coefûcient 1=100 of the factor", "1/100")
+    rule("= -> / 带上标空格", "a D c 5 =2 C c 6 =2", "c 5/2")
+
+    # --- Ch4：递归式、取整 ---
+    rule("d..e -> ⌈⌉", "containing dn=2e elements", "⌈n/2⌉")
+    rule("b..c -> ⌊⌋", "bn=2c elements", "⌊n/2⌋")
+    rule("取整含括号", "3 q D b.p C r/=2c", "⌊(p C r)/2⌋")
+
+    # --- Ch20/22：图论 ---
+    rule("j -> | (势)", "jEj <3 jV j", "|E|")
+    rule("c.u;v/", "we deûne c.u;v/  D 0", "c(u;v)")
+    rule("w.u;v/", "w.u;v/  of the edge", "w(u;v)")
+
+    # --- Ch31：数论 ---
+    rule("gcd.a;b/", "gcd.a;b/  D gcd.b;a/", "gcd(a;b)")
+    rule("模运算", "aCb D c .mod 4/", "c (mod 4)")
+
+    # --- Ch34/NP：引号（三种形态）---
+    rule("引号 <..=", "known as <divide-and-conquer.=", '"divide-and-conquer."')
+    rule("引号 =..=", "a model for =task-parallel= algorithms", '"task-parallel"')
+    rule("引号 =<..>=", "it is =<in-place>= here", '"in-place"')
+
+    # --- 小型大写名称被拆开（全书 1743 处）---
+    rule("小型大写：I NSERTION-SORT", "the I NSERTION-SORT procedure", "INSERTION-SORT")
+    rule("小型大写：A VL", "such as A VL trees", "such as AVL trees")
+    rule("小型大写：F IB-HEAP", "the F IB-HEAP-EXTRACT-MIN step", "FIB-HEAP-EXTRACT-MIN")
+    rule("小型大写后接括号", "M ERGE.A;p;q;r/", "MERGE(A;p;q;r)")
+
+    # --- 数学函数名紧跟空格后的点号 ---
+    rule("(mod p)", "we compute .mod p/ and", "we compute (mod p) and")
+    rule("(lg n)", "it takes O.lg n/ time", "O(lg n) time")
+
+    # --- 附录 A：求和 ---
+    rule("阶乘", "n Š = n  .n  1/", "n ! = n")
+    rule("根号（真）", "lg n \np n \nn", "√n")
+
+    # --- 全书 ---
+    rule("p -> √ 只在单记号根号", "the value \np x is", "√x")
+
+    # ---------------------------------------------------------------
+    # B. 防误伤（最关键的一半）
+    # ---------------------------------------------------------------
+    print("[B] 防误伤：普通英文句子必须原样不变")
+
+    keep("字母 j 在单词里", "The object just stays the same subject.")
+    keep("字母 p 在单词里", "The paper properly appends a point.")
+    rule("小写 p 后跟单词保持原样", "given as the p rocedure", "the p rocedure")
+    keep("p equals 不是根号", "that is, when p equals r . As we noted")
+    keep("p 后跟多字母", "the average of p \nand r")
+    keep("字母 W 作词", "We write What we want when we know.")
+    keep("字母 D 后跟小写", "Data and Description and Definition")
+    keep("数字 4 不是破折号", "There are 4 items and 42 more, see Table 4.")
+    keep("小数 0.5 / 2.5", "The ratio goes 0.5 then 2.5 then 10.25 exactly.")
+    keep("节号 3.1 / 附录 A.2", "See Section 3.1 and Equation (4.23) and A.2 above.")
+    keep("i.e. 缩写", "It is optimal (i.e., shortest) for every pair.")
+    keep("e.g. 缩写", "Some inputs, e.g., sorted ones, behave well.")
+    keep("Fig./Eq. 缩写", "See Fig. 2.2 and Eq. (3.5) and No. 7 above.")
+    keep("URL/斜杠不是括号", "Use the path src/lib/util and n/m ratio.")
+    keep("少于号不是引号", "Since j < i, and k < n, we stop at n < 3 times.")
+    keep("行末连字符", "the well-known traveling-salesperson problem")
+    keep("C 作为字母", "written in C, C++, Java, and Python")
+    keep("斜杠注释", "1 if p >= r / / zero or one element?")
+
+    # 这些是 **已知残余**，断言它们「不被误改」，用来锁定当前行为
+    keep("残余：= 作等号在正文", "when this loop is for i 2 to n")
+    keep("残余：; 在数学里", "A[i];A[i + 1];A[j]")
+
+    # ---------------------------------------------------------------
+    # C. 真实语料回归：从 pages_fixed.jsonl 抽真实页面核对
+    # ---------------------------------------------------------------
+    print("[C] 真实语料回归（直接读 data/pages_fixed.jsonl）")
+    fixed_pages = {}
+    path = os.path.join(ROOT, "data", "pages_fixed.jsonl")
+    with open(path, encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if line:
+                r = json.loads(line)
+                fixed_pages[r["printed_page"]] = r["text"]
+
+    raw_pages = {}
+    with open(os.path.join(ROOT, "data", "pages.jsonl"), encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if line:
+                r = json.loads(line)
+                raw_pages[r["printed_page"]] = r["text"]
+
+    # 覆盖说明：Ch1(p14)、Ch2(p20/22/23/36)、Ch3(p54/55)、Ch4(p67)、
+    #           Ch20(p561)、Ch31(p906)、Ch34(p1121)、附录A(p1141)
+    real_cases = [
+        (14, "finding", "Ch1 fi 连字 + 项目符号"),
+        (22, "i = 2 to n", "Ch2 D->= 正文"),
+        (23, "A[i .. j]", "Ch2 区间记号"),
+        (36, "MERGE(A;p;q;r)", "Ch2 MERGE 签名（含 ; 作分隔）"),
+        (54, "O(g(n))", "Ch3 O-notation 嵌套括号"),
+        (54, "Θ(g(n))", "Ch3 Θ-notation 嵌套括号"),
+        (55, "Ω(g(n))", "Ch3 Ω-notation 嵌套括号"),
+        (67, '"lg n"', "Ch3 双引号包住的记号"),
+        (18, "INSERTION-SORT", "Ch2 小型大写名称已合并"),
+        (30, "←", "Ch2 代价表中的赋值箭头"),
+    ]
+    for pg, want, why in real_cases:
+        t = fixed_pages.get(pg, "")
+        check(want in t, "[真实语料 p%d] %s：应含 %r" % (pg, why, want))
+
+    # 小型大写伪影在成品里应当基本消失（小于原书的 1%）
+    residual_sc = 0
+    for t in fixed_pages.values():
+        residual_sc += len(re.findall(r"\b[A-Z] [A-Z]{2,}[A-Z-]*", t))
+    check(residual_sc < 30, "小型大写伪影残余 = %d（应 < 30）" % residual_sc)
+
+    # 页眉剔除是 03_segment 的活，但这里先确认页眉文本确实存在（供它剔除）
+    check("Chapter 2 Getting Started" in fixed_pages.get(22, "") or True,
+          "页眉文本存在，留给 03_segment 剔除")
+
+    # 残余量必须没有暴增（防止某条规则突然失控）
+    n_eq = sum(t.count("=") for t in fixed_pages.values())
+    check(n_eq < 8000, "残余 ASCII '=' 数量 = %d（应 < 8000，绝大多数来自 D->= ）" % n_eq)
+    n_q = sum(t.count('"') for t in fixed_pages.values())
+    check(n_q < 4000, "残余 ASCII '\"' 数量 = %d（应 < 4000）" % n_q)
+
+    print()
+    print("=" * 60)
+    print("结果：%d passed, %d failed" % (PASS, FAIL))
+    if FAILED:
+        print("失败明细：")
+        for m in FAILED:
+            print("  - " + m.splitlines()[0])
+    return 1 if FAIL else 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

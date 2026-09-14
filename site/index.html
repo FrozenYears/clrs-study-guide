@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>算法导论 · 闯关式学习地图</title>
+    <!-- 设计令牌 + 版式 + 组件（运行时 Agent 拥有） -->
+    <link rel="stylesheet" href="./assets/theme.css" />
+    <link rel="stylesheet" href="./assets/layout.css" />
+    <link rel="stylesheet" href="./assets/components.css" />
+    <link rel="stylesheet" href="./assets/ui/level.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="app-header">
+        <a class="brand" href="#/">CLRS · 闯关地图</a>
+        <span class="spacer"></span>
+        <button id="theme-toggle" class="btn btn--sm" type="button" aria-label="切换主题">
+          主题：自动
+        </button>
+      </header>
+
+      <main class="app-main" id="main">
+        <!-- 由脚本渲染：学习地图 或 章节占位视图 -->
+      </main>
+
+      <footer class="app-footer">
+        基于《Introduction to Algorithms》（CLRS，第 4 版）· 闯关式交互学习站 · 进度保存在本地
+      </footer>
+    </div>
+
+    <script type="module">
+      import { h, $, $$ } from "./assets/core/dom.js";
+      import * as store from "./assets/core/store.js";
+      import * as router from "./assets/core/router.js";
+      import * as katex from "./assets/core/katex.js";
+      import { getChapter } from "./assets/chapters.js";
+      import { renderChapter } from "./assets/ui/chapter-view.js";
+
+      /* ----------------------------------------------------------------------
+       * 章节结构（硬编码自 data/structure.json，不 fetch —— file:// 下 CORS 会拦截）。
+       * 结构：8 部分 / 35 章（1–35 + 附录 A–D）/ 共 149 节。
+       * -------------------------------------------------------------------- */
+      const STRUCTURE = [
+        { title: "Part I Foundations", chapters: [
+          { n: 1, title: "The Role of Algorithms in Computing", count: 2 },
+          { n: 2, title: "Getting Started", count: 3 },
+          { n: 3, title: "Characterizing Running Times", count: 3 },
+          { n: 4, title: "Divide-and-Conquer", count: 7 },
+          { n: 5, title: "Probabilistic Analysis and Randomized Algorithms", count: 4 },
+        ]},
+        { title: "Part II Sorting and Order Statistics", chapters: [
+          { n: 6, title: "Heapsort", count: 5 },
+          { n: 7, title: "Quicksort", count: 4 },
+          { n: 8, title: "Sorting in Linear Time", count: 4 },
+          { n: 9, title: "Medians and Order Statistics", count: 3 },
+        ]},
+        { title: "Part III Data Structures", chapters: [
+          { n: 10, title: "Elementary Data Structures", count: 3 },
+          { n: 11, title: "Hash Tables", count: 5 },
+          { n: 12, title: "Binary Search Trees", count: 3 },
+          { n: 13, title: "Red-Black Trees", count: 4 },
+        ]},
+        { title: "Part IV Advanced Design and Analysis Techniques", chapters: [
+          { n: 14, title: "Dynamic Programming", count: 5 },
+          { n: 15, title: "Greedy Algorithms", count: 4 },
+          { n: 16, title: "Amortized Analysis", count: 4 },
+        ]},
+        { title: "Part V Advanced Data Structures", chapters: [
+          { n: 17, title: "Augmenting Data Structures", count: 3 },
+          { n: 18, title: "B-Trees", count: 3 },
+          { n: 19, title: "Data Structures for Disjoint Sets", count: 4 },
+        ]},
+        { title: "Part VI Graph Algorithms", chapters: [
+          { n: 20, title: "Elementary Graph Algorithms", count: 5 },
+          { n: 21, title: "Minimum Spanning Trees", count: 2 },
+          { n: 22, title: "Single-Source Shortest Paths", count: 5 },
+          { n: 23, title: "All-Pairs Shortest Paths", count: 3 },
+          { n: 24, title: "Maximum Flow", count: 3 },
+          { n: 25, title: "Matchings in Bipartite Graphs", count: 3 },
+        ]},
+        { title: "Part VII Selected Topics", chapters: [
+          { n: 26, title: "Parallel Algorithms", count: 3 },
+          { n: 27, title: "Online Algorithms", count: 3 },
+          { n: 28, title: "Matrix Operations", count: 3 },
+          { n: 29, title: "Linear Programming", count: 3 },
+          { n: 30, title: "Polynomials and the FFT", count: 3 },
+          { n: 31, title: "Number-Theoretic Algorithms", count: 8 },
+          { n: 32, title: "String Matching", count: 5 },
+          { n: 33, title: "Machine-Learning Algorithms", count: 3 },
+          { n: 34, title: "NP-Completeness", count: 5 },
+          { n: 35, title: "Approximation Algorithms", count: 5 },
+        ]},
+        { title: "Part VIII Appendix: Mathematical Background", chapters: [
+          { n: "A", title: "Summations", count: 2 },
+          { n: "B", title: "Sets, Etc.", count: 5 },
+          { n: "C", title: "Counting and Probability", count: 5 },
+          { n: "D", title: "Matrices", count: 2 },
+        ]},
+      ];
+
+      const TOTAL_LEVELS = STRUCTURE.reduce(
+        (acc, p) => acc + p.chapters.reduce((a, c) => a + c.count, 0),
+        0
+      );
+
+      /* ---------------- 主题切换 ---------------- */
+      const THEME_ORDER = ["auto", "light", "dark"];
+      const THEME_LABEL = { auto: "自动", light: "明色", dark: "暗色" };
+      const toggleBtn = $("#theme-toggle");
+
+      function refreshThemeLabel() {
+        const t = store.getThemePref();
+        toggleBtn.textContent = "主题：" + (THEME_LABEL[t] || t);
+      }
+      toggleBtn.addEventListener("click", () => {
+        const cur = store.getThemePref();
+        const next = THEME_ORDER[(THEME_ORDER.indexOf(cur) + 1) % THEME_ORDER.length];
+        store.setThemePref(next); // 内部已 applyTheme()
+        refreshThemeLabel();
+      });
+      store.applyTheme();
+      refreshThemeLabel();
+
+      /* ---------------- 渲染：学习地图 ---------------- */
+      function renderMap() {
+        const intro = h("section", { class: "stack" },
+          h("h1", { class: "card__title", style: { fontSize: "var(--fs-2xl)" } },
+            "《算法导论》第 4 版 · 闯关式学习站"),
+          h("p", { class: "card__meta" },
+            "面向「有 C 基础、无算法基础」的同学。全书拆成 ",
+            String(TOTAL_LEVELS), " 个可交互关卡，每关九段式递进。"),
+          h("p", { class: "card__meta" },
+            katex.renderInline("\\Theta(n\\lg n)"), " 不是终点，而是起点。"
+          )
+        );
+
+        const parts = STRUCTURE.map((part) => {
+          const levels = part.chapters.reduce((a, c) => a + c.count, 0);
+          const head = h("div", { class: "map-part__head" },
+            h("h2", { class: "map-part__title" }, part.title),
+            h("span", { class: "map-part__meta" },
+              `${part.chapters.length} 章 · ${levels} 关`)
+          );
+          const cards = part.chapters.map((ch) => {
+            const range = typeof ch.n === "number"
+              ? `第 ${ch.n} 章`
+              : `附录 ${ch.n}`;
+            return h("a", {
+              class: "card card--link",
+              href: router.buildUrl(ch.n, "s01"),
+            },
+              h("div", { class: "card__title" }, range),
+              h("div", { class: "card__meta" }, ch.title),
+              h("div", { class: "card__meta" }, `${ch.count} 个关卡`)
+            );
+          });
+          return h("section", { class: "map-part" }, head,
+            h("div", { class: "grid grid--chapters" }, cards));
+        });
+
+        return h("div", { class: "stack" }, intro, ...parts);
+      }
+
+      /* ---------------- 渲染：章节尚未建设时的占位 ---------------- */
+      function renderPending(route) {
+        const label = route.isAppendix
+          ? `附录 ${String(route.ch).toUpperCase()}`
+          : `第 ${route.chNum} 章`;
+        return h("div", { class: "stack" },
+          h("div", { class: "card" },
+            h("h1", { class: "card__title" }, label + " · 内容建设中"),
+            h("p", { class: "card__meta" },
+              "该章的关卡文件还没写。已经建好的章节：第 2 章（2.1 插入排序）。"),
+            h("p", { class: "card__meta" }, "当前路由：", route.raw || "#/"),
+            h("a", { class: "btn btn--primary", href: "#/ch02/s01/s01" },
+              "去看已完成的关卡：2.1 插入排序"),
+            h("a", { class: "btn", href: "#/" }, "← 回到学习地图")
+          )
+        );
+      }
+
+      /* ---------------- 路由驱动渲染 ---------------- */
+      const main = $("#main");
+      let currentView = null; // 持有上一个视图，用于清理定时器与监听
+
+      router.onChange((route) => {
+        if (currentView && currentView.destroy) {
+          try { currentView.destroy(); } catch (e) { console.error(e); }
+        }
+        currentView = null;
+        main.replaceChildren();
+
+        if (route.kind === "home") {
+          main.appendChild(renderMap());
+          window.scrollTo(0, 0);
+          return;
+        }
+
+        if (route.kind === "chapter" || route.kind === "appendix") {
+          const chapter = getChapter(route.ch);
+          if (chapter) {
+            currentView = renderChapter(chapter, route);
+            main.appendChild(currentView.node);
+          } else {
+            main.appendChild(renderPending(route));
+          }
+          window.scrollTo(0, 0);
+          return;
+        }
+
+        main.appendChild(router.view404());
+      });
+      router.start();
+    </script>
+  </body>
+</html>

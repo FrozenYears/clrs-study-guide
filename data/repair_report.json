@@ -1,0 +1,1231 @@
+{
+  "source": "E:\\Projects\\Mid\\Introduction to Algorithms\\data\\pages.jsonl",
+  "output": "E:\\Projects\\Mid\\Introduction to Algorithms\\data\\pages_fixed.jsonl",
+  "pages_processed": 1312,
+  "direct_replacements": [
+    {
+      "glyph": "‚",
+      "codepoint": "U+201A",
+      "replacement": "Θ",
+      "rationale": "U+201A always the Greek Theta in O/Ω/Θ-notation (Theta)"
+    },
+    {
+      "glyph": "Œ",
+      "codepoint": "U+0152",
+      "replacement": "[",
+      "rationale": "U+0152 math open bracket '[' (A[1..n])"
+    },
+    {
+      "glyph": "ﬁ",
+      "codepoint": "U+FB01",
+      "replacement": "fi",
+      "rationale": "U+FB01 real fi-ligature, normalise to ASCII fi"
+    },
+    {
+      "glyph": "ﬂ",
+      "codepoint": "U+FB02",
+      "replacement": "fl",
+      "rationale": "U+FB02 real fl-ligature, normalise to ASCII fl"
+    },
+    {
+      "glyph": "û",
+      "codepoint": "U+00FB",
+      "replacement": "fi",
+      "rationale": "U+00FB broken fi-ligature (Identi<fb>ers->Identifiers, de<fb>nitions)"
+    },
+    {
+      "glyph": "ü",
+      "codepoint": "U+00FC",
+      "replacement": "fl",
+      "rationale": "U+00FC broken fl-ligature (Of<fc>ine->Offline, in<fc>uence, <fc>ow->flow)"
+    },
+    {
+      "glyph": "Š",
+      "codepoint": "U+0160",
+      "replacement": "!",
+      "rationale": "U+0160 factorial '!' (n! = n Š)"
+    },
+    {
+      "glyph": "හ",
+      "codepoint": "U+0DC4",
+      "replacement": "≤",
+      "rationale": "U+0DC4 Sinhala slot = less-or-equal ≤ (0 ≤ f(n) ≤ cg(n))"
+    },
+    {
+      "glyph": "ෂ",
+      "codepoint": "U+0DC2",
+      "replacement": "⊆",
+      "rationale": "U+0DC2 Sinhala slot = subset-or-equal ⊆ (A ⊆ T, M ⊆ E) — confirmed by symbol index"
+    },
+    {
+      "glyph": "❀",
+      "codepoint": "U+2740",
+      "replacement": "→",
+      "rationale": "U+2740 decorative slot = right arrow → (path u → v in graphs)"
+    },
+    {
+      "glyph": "¤",
+      "codepoint": "U+00A4",
+      "replacement": "≠",
+      "rationale": "U+00A4 generic-currency slot = not-equal ≠ (x ≠ NIL, a ≠ b)"
+    },
+    {
+      "glyph": "ı",
+      "codepoint": "U+0131",
+      "replacement": "i",
+      "rationale": "U+0131 dotless i, the math variable i"
+    },
+    {
+      "glyph": "U+E001",
+      "codepoint": "U+E001",
+      "replacement": "•",
+      "rationale": "U+E001 bullet • used in the Preface itemised lists"
+    },
+    {
+      "glyph": "U+E002",
+      "codepoint": "U+E002",
+      "replacement": "−",
+      "rationale": "U+E002 minus sign − (n−1, −c6); mostly minus, see report residual note"
+    },
+    {
+      "glyph": "U+E003",
+      "codepoint": "U+E003",
+      "replacement": "+",
+      "rationale": "U+E003 plus sign + (i+1, A[j+1]); math font '+' slot"
+    },
+    {
+      "glyph": "U+E004",
+      "codepoint": "U+E004",
+      "replacement": "≥",
+      "rationale": "U+E004 greater-or-equal ≥ (n ≥ n0, p ≥ r)"
+    },
+    {
+      "glyph": "U+E005",
+      "codepoint": "U+E005",
+      "replacement": "×",
+      "rationale": "U+E005 times × (n × n matrices)"
+    },
+    {
+      "glyph": "U+E006",
+      "codepoint": "U+E006",
+      "replacement": "φ",
+      "rationale": "U+E006 Euler totient φ / soft-Oh Õ (rare; mapped to φ)"
+    },
+    {
+      "glyph": "U+E007",
+      "codepoint": "U+E007",
+      "replacement": "≫",
+      "rationale": "U+E007 much-greater-than ≫ — confirmed by symbol index"
+    },
+    {
+      "glyph": "U+E008",
+      "codepoint": "U+E008",
+      "replacement": "≪",
+      "rationale": "U+E008 much-less-than ≪ — confirmed by symbol index"
+    },
+    {
+      "glyph": "U+E009",
+      "codepoint": "U+E009",
+      "replacement": "}",
+      "rationale": "U+E009 close brace } (Pr{...}, min{...})"
+    },
+    {
+      "glyph": "U+E00A",
+      "codepoint": "U+E00A",
+      "replacement": "⊂",
+      "rationale": "U+E00A proper subset ⊂ — confirmed by symbol index"
+    },
+    {
+      "glyph": "U+E00C",
+      "codepoint": "U+E00C",
+      "replacement": "⌋",
+      "rationale": "U+E00C floor close ⌋ (⌊n/2^{h+1}⌋)"
+    },
+    {
+      "glyph": "U+E00B",
+      "codepoint": "U+E00B",
+      "replacement": "}",
+      "rationale": "U+E00B close brace } (rare brace variant)"
+    },
+    {
+      "glyph": "U+E00F",
+      "codepoint": "U+E00F",
+      "replacement": "}",
+      "rationale": "U+E00F close brace } (rare brace variant)"
+    },
+    {
+      "glyph": "Î",
+      "codepoint": "U+00CE",
+      "replacement": "[",
+      "rationale": "U+00CE left display bracket [ (matrix [[..]])"
+    },
+    {
+      "glyph": "Ï",
+      "codepoint": "U+00CF",
+      "replacement": "]",
+      "rationale": "U+00CF right display bracket ] (matrix [[..]])"
+    },
+    {
+      "glyph": "Í",
+      "codepoint": "U+00CD",
+      "replacement": "]",
+      "rationale": "U+00CD right display bracket/bracket variant ]"
+    },
+    {
+      "glyph": "Û",
+      "codepoint": "U+00DB",
+      "replacement": "⌊",
+      "rationale": "U+00DB floor left ⌊ (⌊n/2^{h+1}⌋)"
+    }
+  ],
+  "context_rules": [
+    {
+      "rule": "_resolve_fffd stack",
+      "target": "� (U+FFFD)",
+      "rationale": "Ambiguous between ']' and 'Ω'; emits ']' iff an open '[' is pending, else 'Ω'."
+    },
+    {
+      "rule": "QUOTE_BOTH_RE / QUOTE_OPEN_RE",
+      "target": "= and <",
+      "rationale": "Measured: '=' adjacent to a word is a quote mark in both orientations (<phrase= and =phrase=, 681 hits). Applied before the division rule so phrase quotes are never turned into '/'."
+    },
+    {
+      "rule": "CEIL_RE / FLOOR_RE",
+      "target": "d..e and b..c",
+      "rationale": "Only 'dX=Ye' is ⌈X/Y⌉ and 'bX=Yc' is ⌊X/Y⌋ (dn=2e, bn=2c). Anchored with non-alnum lookarounds so the letters b/c/d/e as variables are untouched."
+    },
+    {
+      "rule": "_resolve_math_parens (stack)",
+      "target": ". and /",
+      "rationale": "'.' before alnum = '(' and '/' after alnum = ')'. They NEST, so a stack match is required; only matched positions are rewritten, which is what protects decimals (0.5), section numbers (4.1) and abbreviations (i.e.)."
+    },
+    {
+      "rule": "DIVISION_RE",
+      "target": "=",
+      "rationale": "Measured: ASCII '=' is NEVER equals here ('D' is). Between alnum it is division (n=2 -> n/2, 1=100 -> 1/100)."
+    },
+    {
+      "rule": "BRACKET_RANGE_RE",
+      "target": "W",
+      "rationale": "Only ' W ' inside [..] is the range '..'; real W (We/What) and 'such that' W are untouched."
+    },
+    {
+      "rule": "BRACKET_PLUS_RE",
+      "target": "C",
+      "rationale": "Only ' C ' inside [..] is '+'; C is otherwise the letter C (Computer/Cormen)."
+    },
+    {
+      "rule": "BAR_PAIR_RE",
+      "target": "j",
+      "rationale": "Only j<token>j is a |bar|; j as pseudocode variable (A[j]) or English letter (just) is untouched."
+    },
+    {
+      "rule": "EMDASH_RE",
+      "target": "4",
+      "rationale": "Only 4 between two Latin letters is an em-dash (engineering—such); 4 is otherwise a digit."
+    },
+    {
+      "rule": "SQRT_RE",
+      "target": "p",
+      "rationale": "Only standalone p followed by a radicand is √; p is otherwise a normal letter."
+    },
+    {
+      "rule": "repair_d_assignment",
+      "target": "D",
+      "rationale": " D  with a leading line number is the assignment arrow ←; elsewhere it is = (e.g. n = 0). 'Data' etc. safe (no trailing space)."
+    }
+  ],
+  "before_counts": [
+    {
+      "glyph": "û",
+      "codepoint": "U+00FB",
+      "count": 4670
+    },
+    {
+      "glyph": "�",
+      "codepoint": "U+FFFD",
+      "count": 3723
+    },
+    {
+      "glyph": "U+E003",
+      "codepoint": "U+E003",
+      "count": 3461
+    },
+    {
+      "glyph": "Œ",
+      "codepoint": "U+0152",
+      "count": 2391
+    },
+    {
+      "glyph": "’",
+      "codepoint": "U+2019",
+      "count": 1658
+    },
+    {
+      "glyph": "U+E001",
+      "codepoint": "U+E001",
+      "count": 1529
+    },
+    {
+      "glyph": "හ",
+      "codepoint": "U+0DC4",
+      "count": 1231
+    },
+    {
+      "glyph": "U+E002",
+      "codepoint": "U+E002",
+      "count": 1226
+    },
+    {
+      "glyph": "‚",
+      "codepoint": "U+201A",
+      "count": 1072
+    },
+    {
+      "glyph": "ü",
+      "codepoint": "U+00FC",
+      "count": 911
+    },
+    {
+      "glyph": "´",
+      "codepoint": "U+00B4",
+      "count": 779
+    },
+    {
+      "glyph": "U+E004",
+      "codepoint": "U+E004",
+      "count": 551
+    },
+    {
+      "glyph": "ı",
+      "codepoint": "U+0131",
+      "count": 360
+    },
+    {
+      "glyph": "–",
+      "codepoint": "U+2013",
+      "count": 343
+    },
+    {
+      "glyph": "U+E005",
+      "codepoint": "U+E005",
+      "count": 337
+    },
+    {
+      "glyph": "˛",
+      "codepoint": "U+02DB",
+      "count": 327
+    },
+    {
+      "glyph": "¤",
+      "codepoint": "U+00A4",
+      "count": 231
+    },
+    {
+      "glyph": "ˆ",
+      "codepoint": "U+02C6",
+      "count": 185
+    },
+    {
+      "glyph": "Ï",
+      "codepoint": "U+00CF",
+      "count": 161
+    },
+    {
+      "glyph": "…",
+      "codepoint": "U+2026",
+      "count": 159
+    },
+    {
+      "glyph": "ˇ",
+      "codepoint": "U+02C7",
+      "count": 140
+    },
+    {
+      "glyph": "˚",
+      "codepoint": "U+02DA",
+      "count": 131
+    },
+    {
+      "glyph": "ã",
+      "codepoint": "U+00E3",
+      "count": 115
+    },
+    {
+      "glyph": "ä",
+      "codepoint": "U+00E4",
+      "count": 113
+    },
+    {
+      "glyph": "ෂ",
+      "codepoint": "U+0DC2",
+      "count": 104
+    },
+    {
+      "glyph": "Š",
+      "codepoint": "U+0160",
+      "count": 102
+    },
+    {
+      "glyph": "ﬁ",
+      "codepoint": "U+FB01",
+      "count": 94
+    },
+    {
+      "glyph": "Î",
+      "codepoint": "U+00CE",
+      "count": 88
+    },
+    {
+      "glyph": "Í",
+      "codepoint": "U+00CD",
+      "count": 77
+    },
+    {
+      "glyph": "U+E011",
+      "codepoint": "U+E011",
+      "count": 76
+    },
+    {
+      "glyph": "Ð",
+      "codepoint": "U+00D0",
+      "count": 74
+    },
+    {
+      "glyph": "❀",
+      "codepoint": "U+2740",
+      "count": 74
+    },
+    {
+      "glyph": "†",
+      "codepoint": "U+2020",
+      "count": 65
+    },
+    {
+      "glyph": "∞",
+      "codepoint": "U+221E",
+      "count": 62
+    },
+    {
+      "glyph": "U+E009",
+      "codepoint": "U+E009",
+      "count": 52
+    },
+    {
+      "glyph": "˝",
+      "codepoint": "U+02DD",
+      "count": 49
+    },
+    {
+      "glyph": "Ü",
+      "codepoint": "U+00DC",
+      "count": 39
+    },
+    {
+      "glyph": "♥",
+      "codepoint": "U+2665",
+      "count": 38
+    },
+    {
+      "glyph": "❂",
+      "codepoint": "U+2742",
+      "count": 33
+    },
+    {
+      "glyph": "˘",
+      "codepoint": "U+02D8",
+      "count": 31
+    },
+    {
+      "glyph": "¿",
+      "codepoint": "U+00BF",
+      "count": 27
+    },
+    {
+      "glyph": "ʹ",
+      "codepoint": "U+02B9",
+      "count": 24
+    },
+    {
+      "glyph": "¨",
+      "codepoint": "U+00A8",
+      "count": 21
+    },
+    {
+      "glyph": "Û",
+      "codepoint": "U+00DB",
+      "count": 20
+    },
+    {
+      "glyph": "Ł",
+      "codepoint": "U+0141",
+      "count": 19
+    },
+    {
+      "glyph": "³",
+      "codepoint": "U+00B3",
+      "count": 17
+    },
+    {
+      "glyph": "µ",
+      "codepoint": "U+00B5",
+      "count": 17
+    },
+    {
+      "glyph": "í",
+      "codepoint": "U+00ED",
+      "count": 16
+    },
+    {
+      "glyph": "î",
+      "codepoint": "U+00EE",
+      "count": 16
+    },
+    {
+      "glyph": "ð",
+      "codepoint": "U+00F0",
+      "count": 15
+    },
+    {
+      "glyph": "¶",
+      "codepoint": "U+00B6",
+      "count": 15
+    },
+    {
+      "glyph": "˙",
+      "codepoint": "U+02D9",
+      "count": 15
+    },
+    {
+      "glyph": "ç",
+      "codepoint": "U+00E7",
+      "count": 13
+    },
+    {
+      "glyph": "ï",
+      "codepoint": "U+00EF",
+      "count": 13
+    },
+    {
+      "glyph": "ශ",
+      "codepoint": "U+0DC1",
+      "count": 13
+    },
+    {
+      "glyph": "U+E00C",
+      "codepoint": "U+E00C",
+      "count": 12
+    },
+    {
+      "glyph": "ε",
+      "codepoint": "U+03B5",
+      "count": 12
+    },
+    {
+      "glyph": "Ĩ",
+      "codepoint": "U+0128",
+      "count": 11
+    },
+    {
+      "glyph": "≤",
+      "codepoint": "U+2264",
+      "count": 11
+    },
+    {
+      "glyph": "æ",
+      "codepoint": "U+00E6",
+      "count": 9
+    },
+    {
+      "glyph": "U+E007",
+      "codepoint": "U+E007",
+      "count": 9
+    },
+    {
+      "glyph": "Ú",
+      "codepoint": "U+00DA",
+      "count": 8
+    },
+    {
+      "glyph": "U+E008",
+      "codepoint": "U+E008",
+      "count": 8
+    },
+    {
+      "glyph": "ζ",
+      "codepoint": "U+03B6",
+      "count": 8
+    },
+    {
+      "glyph": "å",
+      "codepoint": "U+00E5",
+      "count": 7
+    },
+    {
+      "glyph": "U+E00A",
+      "codepoint": "U+E00A",
+      "count": 7
+    },
+    {
+      "glyph": "−",
+      "codepoint": "U+2212",
+      "count": 7
+    },
+    {
+      "glyph": "〈",
+      "codepoint": "U+3008",
+      "count": 6
+    },
+    {
+      "glyph": "〉",
+      "codepoint": "U+3009",
+      "count": 6
+    },
+    {
+      "glyph": "ﬂ",
+      "codepoint": "U+FB02",
+      "count": 6
+    },
+    {
+      "glyph": "â",
+      "codepoint": "U+00E2",
+      "count": 5
+    },
+    {
+      "glyph": "·",
+      "codepoint": "U+00B7",
+      "count": 5
+    },
+    {
+      "glyph": "è",
+      "codepoint": "U+00E8",
+      "count": 4
+    },
+    {
+      "glyph": "—",
+      "codepoint": "U+2014",
+      "count": 4
+    },
+    {
+      "glyph": "Ń",
+      "codepoint": "U+0143",
+      "count": 3
+    },
+    {
+      "glyph": "„",
+      "codepoint": "U+201E",
+      "count": 3
+    },
+    {
+      "glyph": "˜",
+      "codepoint": "U+02DC",
+      "count": 3
+    },
+    {
+      "glyph": "U+E006",
+      "codepoint": "U+E006",
+      "count": 2
+    },
+    {
+      "glyph": "Θ",
+      "codepoint": "U+0398",
+      "count": 2
+    },
+    {
+      "glyph": "›",
+      "codepoint": "U+203A",
+      "count": 2
+    },
+    {
+      "glyph": "∩",
+      "codepoint": "U+2229",
+      "count": 2
+    },
+    {
+      "glyph": "ø",
+      "codepoint": "U+00F8",
+      "count": 2
+    },
+    {
+      "glyph": "¸",
+      "codepoint": "U+00B8",
+      "count": 2
+    },
+    {
+      "glyph": "U+E00B",
+      "codepoint": "U+E00B",
+      "count": 1
+    },
+    {
+      "glyph": "‘",
+      "codepoint": "U+2018",
+      "count": 1
+    },
+    {
+      "glyph": "×",
+      "codepoint": "U+00D7",
+      "count": 1
+    },
+    {
+      "glyph": "U+E00F",
+      "codepoint": "U+E00F",
+      "count": 1
+    },
+    {
+      "glyph": "ĩ",
+      "codepoint": "U+0129",
+      "count": 1
+    },
+    {
+      "glyph": "‹",
+      "codepoint": "U+2039",
+      "count": 1
+    },
+    {
+      "glyph": "•",
+      "codepoint": "U+2022",
+      "count": 1
+    },
+    {
+      "glyph": "“",
+      "codepoint": "U+201C",
+      "count": 1
+    }
+  ],
+  "after_counts": {
+    "•": 1530,
+    "Ω": 1308,
+    "Θ": 1074,
+    "’": 1658,
+    "—": 298,
+    "–": 343,
+    "≤": 1242,
+    "←": 808,
+    "−": 1233,
+    "√": 456,
+    "¨": 21,
+    "♥": 38,
+    "≠": 231,
+    "≥": 551,
+    "…": 159,
+    "⌈": 53,
+    "⌉": 53,
+    "⌊": 121,
+    "⌋": 113,
+    "ã": 115,
+    "ä": 113,
+    "ˆ": 185,
+    "˛": 327,
+    "×": 338,
+    "å": 7,
+    "æ": 9,
+    "ç": 13,
+    "è": 4,
+    "˚": 131,
+    "Ĩ": 11,
+    "ˇ": 140,
+    "⊆": 104,
+    "˝": 49,
+    "φ": 2,
+    "Ń": 3,
+    "⊂": 7,
+    "Ú": 8,
+    "≫": 9,
+    "≪": 8,
+    "Ð": 74,
+    "´": 779,
+    "〈": 6,
+    "〉": 6,
+    "í": 16,
+    "î": 16,
+    "˘": 31,
+    "‘": 1,
+    "ï": 13,
+    "ð": 15,
+    "³": 17,
+    "µ": 17,
+    "¶": 15,
+    "ε": 12,
+    "ζ": 8,
+    "ʹ": 24,
+    "Ł": 19,
+    "→": 74,
+    "†": 65,
+    "„": 3,
+    "ĩ": 1,
+    "∞": 62,
+    "â": 5,
+    "ශ": 13,
+    "˙": 15,
+    "‹": 1,
+    "Ü": 39,
+    "·": 5,
+    "›": 2,
+    "❂": 33,
+    "“": 1,
+    "¿": 27,
+    "U+E011": 76,
+    "∩": 2,
+    "˜": 3,
+    "ø": 2,
+    "¸": 2
+  },
+  "remaining_glyphs": [
+    {
+      "glyph": "’",
+      "codepoint": "U+2019",
+      "count": 1658,
+      "note": "U+2019 right single quote / apostrophe — already correct, kept."
+    },
+    {
+      "glyph": "•",
+      "codepoint": "U+2022",
+      "count": 1530,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "Ω",
+      "codepoint": "U+03A9",
+      "count": 1308,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "≤",
+      "codepoint": "U+2264",
+      "count": 1242,
+      "note": "U+2264 already-correct less-or-equal (not the broken Sinhala slot)."
+    },
+    {
+      "glyph": "−",
+      "codepoint": "U+2212",
+      "count": 1233,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "Θ",
+      "codepoint": "U+0398",
+      "count": 1074,
+      "note": "U+0398 already-correct Theta (a few pages had a valid ToUnicode)."
+    },
+    {
+      "glyph": "←",
+      "codepoint": "U+2190",
+      "count": 808,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "´",
+      "codepoint": "U+00B4",
+      "count": 779,
+      "note": "U+00B4 acute accent — math/diacritic, left as-is (legit Unicode)."
+    },
+    {
+      "glyph": "≥",
+      "codepoint": "U+2265",
+      "count": 551,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "√",
+      "codepoint": "U+221A",
+      "count": 456,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "–",
+      "codepoint": "U+2013",
+      "count": 343,
+      "note": "U+2013 en dash — correct, kept."
+    },
+    {
+      "glyph": "×",
+      "codepoint": "U+00D7",
+      "count": 338,
+      "note": "U+00D7 multiplication sign — correct, kept."
+    },
+    {
+      "glyph": "˛",
+      "codepoint": "U+02DB",
+      "count": 327,
+      "note": "U+02DB ogonek — diacritic, left as-is."
+    },
+    {
+      "glyph": "—",
+      "codepoint": "U+2014",
+      "count": 298,
+      "note": "U+2014 em dash — correct, kept."
+    },
+    {
+      "glyph": "≠",
+      "codepoint": "U+2260",
+      "count": 231,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "ˆ",
+      "codepoint": "U+02C6",
+      "count": 185,
+      "note": "U+02C6 circumflex — diacritic, left as-is."
+    },
+    {
+      "glyph": "…",
+      "codepoint": "U+2026",
+      "count": 159,
+      "note": "U+2026 ellipsis — correct, kept."
+    },
+    {
+      "glyph": "ˇ",
+      "codepoint": "U+02C7",
+      "count": 140,
+      "note": "U+02C7 caron — diacritic, left as-is."
+    },
+    {
+      "glyph": "˚",
+      "codepoint": "U+02DA",
+      "count": 131,
+      "note": "U+02DA ring — diacritic, left as-is."
+    },
+    {
+      "glyph": "⌊",
+      "codepoint": "U+230A",
+      "count": 121,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "ã",
+      "codepoint": "U+00E3",
+      "count": 115,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "⌋",
+      "codepoint": "U+230B",
+      "count": 113,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "ä",
+      "codepoint": "U+00E4",
+      "count": 113,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "⊆",
+      "codepoint": "U+2286",
+      "count": 104,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "U+E011",
+      "codepoint": "U+E011",
+      "count": 76,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "Ð",
+      "codepoint": "U+00D0",
+      "count": 74,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "→",
+      "codepoint": "U+2192",
+      "count": 74,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "†",
+      "codepoint": "U+2020",
+      "count": 65,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "∞",
+      "codepoint": "U+221E",
+      "count": 62,
+      "note": "U+221E infinity — correct, kept."
+    },
+    {
+      "glyph": "⌈",
+      "codepoint": "U+2308",
+      "count": 53,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "⌉",
+      "codepoint": "U+2309",
+      "count": 53,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "˝",
+      "codepoint": "U+02DD",
+      "count": 49,
+      "note": "U+02DD double acute — diacritic, left as-is."
+    },
+    {
+      "glyph": "Ü",
+      "codepoint": "U+00DC",
+      "count": 39,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "♥",
+      "codepoint": "U+2665",
+      "count": 38,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "❂",
+      "codepoint": "U+2742",
+      "count": 33,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "˘",
+      "codepoint": "U+02D8",
+      "count": 31,
+      "note": "U+02D8 breve — diacritic, left as-is."
+    },
+    {
+      "glyph": "¿",
+      "codepoint": "U+00BF",
+      "count": 27,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "ʹ",
+      "codepoint": "U+02B9",
+      "count": 24,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "¨",
+      "codepoint": "U+00A8",
+      "count": 21,
+      "note": "U+00A8 diaeresis — diacritic, left as-is."
+    },
+    {
+      "glyph": "Ł",
+      "codepoint": "U+0141",
+      "count": 19,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "³",
+      "codepoint": "U+00B3",
+      "count": 17,
+      "note": "U+00B3 superscript 3 — left as-is (legit)."
+    },
+    {
+      "glyph": "µ",
+      "codepoint": "U+00B5",
+      "count": 17,
+      "note": "U+00B5 mu — Greek mu, left as-is (legit)."
+    },
+    {
+      "glyph": "í",
+      "codepoint": "U+00ED",
+      "count": 16,
+      "note": "U+00ED — display-math delimiter, left unresolved (font-dependent)."
+    },
+    {
+      "glyph": "î",
+      "codepoint": "U+00EE",
+      "count": 16,
+      "note": "U+00EE — display-math delimiter, left unresolved (font-dependent)."
+    },
+    {
+      "glyph": "ð",
+      "codepoint": "U+00F0",
+      "count": 15,
+      "note": "U+00F0 — display-math brace delimiter, left unresolved (font-dependent)."
+    },
+    {
+      "glyph": "¶",
+      "codepoint": "U+00B6",
+      "count": 15,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "˙",
+      "codepoint": "U+02D9",
+      "count": 15,
+      "note": "U+02D9 dot — diacritic, left as-is."
+    },
+    {
+      "glyph": "ç",
+      "codepoint": "U+00E7",
+      "count": 13,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "ï",
+      "codepoint": "U+00EF",
+      "count": 13,
+      "note": "U+00EF — display-math delimiter, left unresolved (font-dependent)."
+    },
+    {
+      "glyph": "ශ",
+      "codepoint": "U+0DC1",
+      "count": 13,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "ε",
+      "codepoint": "U+03B5",
+      "count": 12,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "Ĩ",
+      "codepoint": "U+0128",
+      "count": 11,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "æ",
+      "codepoint": "U+00E6",
+      "count": 9,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "≫",
+      "codepoint": "U+226B",
+      "count": 9,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "Ú",
+      "codepoint": "U+00DA",
+      "count": 8,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "≪",
+      "codepoint": "U+226A",
+      "count": 8,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "ζ",
+      "codepoint": "U+03B6",
+      "count": 8,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "å",
+      "codepoint": "U+00E5",
+      "count": 7,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "⊂",
+      "codepoint": "U+2282",
+      "count": 7,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "〈",
+      "codepoint": "U+3008",
+      "count": 6,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "〉",
+      "codepoint": "U+3009",
+      "count": 6,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "â",
+      "codepoint": "U+00E2",
+      "count": 5,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "·",
+      "codepoint": "U+00B7",
+      "count": 5,
+      "note": "U+00B7 middle dot — correct, kept."
+    },
+    {
+      "glyph": "è",
+      "codepoint": "U+00E8",
+      "count": 4,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "Ń",
+      "codepoint": "U+0143",
+      "count": 3,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "„",
+      "codepoint": "U+201E",
+      "count": 3,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "˜",
+      "codepoint": "U+02DC",
+      "count": 3,
+      "note": "U+02DC small tilde — diacritic, left as-is."
+    },
+    {
+      "glyph": "φ",
+      "codepoint": "U+03C6",
+      "count": 2,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "›",
+      "codepoint": "U+203A",
+      "count": 2,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "∩",
+      "codepoint": "U+2229",
+      "count": 2,
+      "note": "U+2229 set intersection — correct, kept."
+    },
+    {
+      "glyph": "ø",
+      "codepoint": "U+00F8",
+      "count": 2,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "¸",
+      "codepoint": "U+00B8",
+      "count": 2,
+      "note": "U+00B8 cedilla — diacritic, left as-is."
+    },
+    {
+      "glyph": "‘",
+      "codepoint": "U+2018",
+      "count": 1,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "ĩ",
+      "codepoint": "U+0129",
+      "count": 1,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "‹",
+      "codepoint": "U+2039",
+      "count": 1,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "“",
+      "codepoint": "U+201C",
+      "count": 1,
+      "note": "U+201C left double quote — already correct, kept."
+    }
+  ]
+}

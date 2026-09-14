@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>开发自检 · 逐阶段渲染</title>
+    <link rel="stylesheet" href="../assets/theme.css" />
+    <link rel="stylesheet" href="../assets/layout.css" />
+    <link rel="stylesheet" href="../assets/components.css" />
+    <link rel="stylesheet" href="../assets/ui/level.css" />
+  </head>
+  <body>
+    <div class="app">
+      <main class="app-main">
+        <h1 class="lv-title">逐阶段渲染自检</h1>
+        <p class="card__meta">
+          这个页面把某一关的九个阶段逐个渲染一遍，并把异常直接写回 DOM，
+          方便在没有控制台的情况下定位问题。URL 参数 <code>?level=ch02/s01</code> 可切换关卡。
+        </p>
+        <div id="report" class="stack"></div>
+        <div id="stages" class="stack"></div>
+      </main>
+    </div>
+
+    <script type="module">
+      import { renderStage, STAGE_META, STAGE_ORDER } from '../assets/ui/stages.js';
+      import ch02 from '../chapters/ch02-getting-started/chapter.js';
+
+      const params = new URLSearchParams(location.search);
+      const chapter = ch02;
+      const wantKey = params.get('level') || (chapter.levels[0] && chapter.levels[0].key);
+      const level = chapter.levels.find((l) => l.key === wantKey) || chapter.levels[0];
+
+      const report = document.getElementById('report');
+      const host = document.getElementById('stages');
+
+      function line(cls, text) {
+        const p = document.createElement('p');
+        p.className = cls;
+        p.textContent = text;
+        report.appendChild(p);
+      }
+
+      line('card__meta', '章节：' + chapter.chSpan + ' ／ 关卡：' + level.key + ' (' + level.title + ')');
+
+      // 阶段顺序自检
+      const ordered = level.stages
+        .filter((s) => STAGE_META[s.type])
+        .slice()
+        .sort((a, b) => STAGE_META[a.type].no - STAGE_META[b.type].no);
+      line(
+        ordered.length === STAGE_ORDER.length ? 'callout callout--ok' : 'callout callout--warn',
+        '阶段数 ' + ordered.length + ' / ' + STAGE_ORDER.length + '：' + ordered.map((s) => s.type).join(' → ')
+      );
+
+      const ctx = { level, ch: chapter.ch, section: level.key, onStageDone() {} };
+
+      let errors = 0;
+      ordered.forEach((stage, i) => {
+        const box = document.createElement('section');
+        box.className = 'card';
+        box.dataset.stage = stage.type;
+        const tag = document.createElement('p');
+        tag.className = 'drill-badge';
+        tag.dataset.role = 'probe';
+        try {
+          const r = renderStage(stage, ctx);
+          tag.textContent = 'OK 阶段' + i + ' ' + stage.type + '（顶层子节点 ' + r.node.childNodes.length + ' 个）';
+          box.appendChild(tag);
+          box.appendChild(r.node);
+        } catch (e) {
+          errors++;
+          tag.textContent = 'ERROR 阶段' + i + ' ' + stage.type + ' :: ' + e.name + ' :: ' + e.message;
+          tag.dataset.error = e.name;
+          box.appendChild(tag);
+        }
+        host.appendChild(box);
+      });
+
+      const summary = document.createElement('p');
+      summary.id = 'summary';
+      summary.textContent = errors === 0 ? 'ALL_STAGES_OK' : 'ERRORS=' + errors;
+      report.appendChild(summary);
+      document.title = errors === 0 ? 'ALL_STAGES_OK' : 'ERRORS=' + errors;
+    </script>
+  </body>
+</html>

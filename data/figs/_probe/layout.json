@@ -1,0 +1,346 @@
+{
+ "38": {
+  "printed": 17,
+  "rect": [
+   660.0,
+   743.0399780273438
+  ],
+  "nblocks": 10,
+  "figure_refs": []
+ },
+ "39": {
+  "printed": 18,
+  "rect": [
+   660.0,
+   743.0399780273438
+  ],
+  "nblocks": 6,
+  "figure_refs": [
+   {
+    "bbox": [
+     169.0,
+     289.2,
+     563.8,
+     493.4
+    ],
+    "text": "We start with insertion sort, which is an efûcient algorithm for sorting a small  number of elements. Insertion sort wor"
+   }
+  ]
+ },
+ "40": {
+  "printed": 19,
+  "rect": [
+   660.0,
+   743.0399780273438
+  ],
+  "nblocks": 20,
+  "figure_refs": [
+   {
+    "bbox": [
+     170.9,
+     285.8,
+     395.6,
+     302.6
+    ],
+    "text": "Figure 2.1 Sorting a hand of cards using insertion sort.  "
+   },
+   {
+    "bbox": [
+     170.8,
+     495.7,
+     565.8,
+     635.5
+    ],
+    "text": "Figure 2.2 shows how this algorithm works for an array A that starts out with  the sequence h5; 2; 4; 6; 1; 3i. The inde"
+   }
+  ]
+ },
+ "41": {
+  "printed": 20,
+  "rect": [
+   660.0,
+   743.0399780273438
+  ],
+  "nblocks": 17,
+  "figure_refs": [
+   {
+    "bbox": [
+     169.0,
+     194.0,
+     563.2,
+     282.7
+    ],
+    "text": "Figure 2.2 The operation of I NSERTION-SORT.A; n/, where A initially contains the sequence  h5; 2; 4; 6; 1; 3i and n D 6"
+   }
+  ]
+ },
+ "113": {
+  "printed": 92,
+  "rect": [
+   660.0,
+   743.0399780273438
+  ],
+  "nblocks": 14,
+  "figure_refs": []
+ },
+ "114": {
+  "printed": 93,
+  "rect": [
+   660.0,
+   743.0399780273438
+  ],
+  "nblocks": 12,
+  "figure_refs": []
+ },
+ "115": {
+  "printed": 94,
+  "rect": [
+   660.0,
+   743.0399780273438
+  ],
+  "nblocks": 18,
+  "figure_refs": []
+ },
+ "116": {
+  "printed": 95,
+  "rect": [
+   660.0,
+   743.0399780273438
+  ],
+  "nblocks": 10,
+  "figure_refs": [
+   {
+    "bbox": [
+     170.8,
+     589.2,
+     565.8,
+     666.1
+    ],
+    "text": "Figure 4.1 shows how to derive the recursion tree for T .n/ D 3T .n=4/ C cn 2 ,  where the constant c > 0 is the upper-b"
+   }
+  ]
+ },
+ "570": {
+  "printed": 549,
+  "rect": [
+   660.0,
+   743.0399780273438
+  ],
+  "nblocks": 5,
+  "figure_refs": []
+ },
+ "571": {
+  "printed": 550,
+  "rect": [
+   660.0,
+   743.0399780273438
+  ],
+  "nblocks": 61,
+  "figure_refs": [
+   {
+    "bbox": [
+     169.0,
+     210.4,
+     563.3,
+     251.2
+    ],
+    "text": "Figure 20.1 Two representations of an undirected graph. (a) An undirected graph G with 5 vertices  and 7 edges. (b) An a"
+   },
+   {
+    "bbox": [
+     169.0,
+     415.4,
+     563.3,
+     444.2
+    ],
+    "text": "Figure 20.2 Two representations of a directed graph. (a) A directed graph G with 6 vertices and 8  edges. (b) An adjacen"
+   },
+   {
+    "bbox": [
+     169.0,
+     485.8,
+     564.0,
+     633.5
+    ],
+    "text": "The adjacency-list representation of a graph G D .V; E/ consists of an ar-  ray Adj of jV j lists, one for each vertex i"
+   }
+  ]
+ },
+ "572": {
+  "printed": 551,
+  "rect": [
+   660.0,
+   743.0399780273438
+  ],
+  "nblocks": 11,
+  "figure_refs": [
+   {
+    "bbox": [
+     170.8,
+     461.8,
+     565.4,
+     538.7
+    ],
+    "text": "Figures 20.1(c) and 20.2(c) are the adjacency matrices of the undirected and di-  rected graphs in Figures 20.1(a) and 2"
+   }
+  ]
+ },
+ "573": {
+  "printed": 552,
+  "rect": [
+   660.0,
+   743.0399780273438
+  ],
+  "nblocks": 9,
+  "figure_refs": []
+ },
+ "574": {
+  "printed": 553,
+  "rect": [
+   660.0,
+   743.0399780273438
+  ],
+  "nblocks": 11,
+  "figure_refs": []
+ },
+ "575": {
+  "printed": 554,
+  "rect": [
+   660.0,
+   743.0399780273438
+  ],
+  "nblocks": 8,
+  "figure_refs": []
+ },
+ "352": {
+  "printed": 331,
+  "rect": [
+   660.0,
+   743.0399780273438
+  ],
+  "nblocks": 8,
+  "figure_refs": []
+ },
+ "353": {
+  "printed": 332,
+  "rect": [
+   660.0,
+   743.0399780273438
+  ],
+  "nblocks": 11,
+  "figure_refs": [
+   {
+    "bbox": [
+     169.0,
+     133.5,
+     422.5,
+     153.8
+    ],
+    "text": "Figure 13.1(a) shows an example of a red-black tree.  "
+   },
+   {
+    "bbox": [
+     169.0,
+     147.7,
+     563.9,
+     238.6
+    ],
+    "text": "As a matter of convenience in dealing with boundary conditions in red-black  tree code, we use a single sentinel to repr"
+   },
+   {
+    "bbox": [
+     169.0,
+     331.7,
+     563.3,
+     380.3
+    ],
+    "text": "We generally conûne our interest to the internal nodes of a red-black tree, since  they hold the key values. The remaind"
+   }
+  ]
+ },
+ "354": {
+  "printed": 333,
+  "rect": [
+   660.0,
+   743.0399780273438
+  ],
+  "nblocks": 71,
+  "figure_refs": [
+   {
+    "bbox": [
+     170.8,
+     568.2,
+     565.0,
+     656.9
+    ],
+    "text": "Figure 13.1 A red-black tree. Every node in a red-black tree is either red or black, the children  of a red node are bot"
+   }
+  ]
+ },
+ "518": {
+  "printed": 497,
+  "rect": [
+   660.0,
+   743.0399780273438
+  ],
+  "nblocks": 5,
+  "figure_refs": [
+   {
+    "bbox": [
+     170.8,
+     421.0,
+     565.7,
+     526.1
+    ],
+    "text": "B-trees generalize binary search trees in a natural manner. Figure 18.1 shows a  simple B-tree. If an internal B-tree no"
+   }
+  ]
+ },
+ "519": {
+  "printed": 498,
+  "rect": [
+   660.0,
+   743.0399780273438
+  ],
+  "nblocks": 11,
+  "figure_refs": [
+   {
+    "bbox": [
+     169.0,
+     203.8,
+     563.1,
+     244.6
+    ],
+    "text": "Figure 18.1 A B-tree whose keys are the consonants of English. An internal node x containing  x:n keys has x:n C 1 child"
+   },
+   {
+    "bbox": [
+     169.0,
+     448.6,
+     563.7,
+     539.6
+    ],
+    "text": "Figure 18.2 shows a typical disk drive. The drive consists of one or more plat-  ters, which rotate at a constant speed "
+   }
+  ]
+ },
+ "520": {
+  "printed": 499,
+  "rect": [
+   660.0,
+   743.0399780273438
+  ],
+  "nblocks": 11,
+  "figure_refs": [
+   {
+    "bbox": [
+     170.8,
+     258.5,
+     564.6,
+     323.2
+    ],
+    "text": "Figure 18.2 A typical magnetic disk drive. It consists of one or more platters covered with a  magnetizable material (tw"
+   }
+  ]
+ }
+}

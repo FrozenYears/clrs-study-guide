@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# 工具脚本的一次性中间产物（下划线前缀，可由 01/02/03 号脚本重新生成）
+tools/_*
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 本地预览服务日志
+*.log

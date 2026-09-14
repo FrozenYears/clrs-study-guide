@@ -1,0 +1,3266 @@
+[
+ {
+  "fig_id": "2.1",
+  "chapter_key": "2",
+  "number": 1,
+  "caption": "Figure 2.1 Sorting a hand of cards using insertion sort.",
+  "pdf_page": 40,
+  "printed_page": 19,
+  "bbox": [
+   170.85,
+   285.75,
+   395.57,
+   302.62
+  ]
+ },
+ {
+  "fig_id": "2.2",
+  "chapter_key": "2",
+  "number": 2,
+  "caption": "Figure 2.2 The operation of I NSERTION-SORT.A; n/, where A initially contains the sequence h5; 2; 4; 6; 1; 3i and n D 6. Array indices appear above the rectangles, and values stored in the array positions appear within the rectangles. (a)–(e) The iterations of the for loop of lines 138. In each iteration, the blue rectangle holds the key taken from AŒic, which is compared with the values in tan rectangles to its left in the test of line 5. Orange arrows show array values moved one position to the right in line 6, and blue arrows indicate where the key moves to in line 8. (f) The ûnal sorted array.",
+  "pdf_page": 41,
+  "printed_page": 20,
+  "bbox": [
+   168.97,
+   193.95,
+   563.21,
+   282.67
+  ]
+ },
+ {
+  "fig_id": "2.3",
+  "chapter_key": "2",
+  "number": 3,
+  "caption": "Figure 2.3 The operation of the while loop in lines 8318 in the call MERGE.A; 9; 12; 16/, when the subarray AŒ9 W 16c contains the values h2; 4; 6; 7; 1; 2; 3; 5i. After allocating and copying into the arrays L and R, the array L contains h2; 4; 6; 7i, and the array R contains h1; 2; 3; 5i. Tan positions in A contain their ûnal values, and tan positions in L and R contain values that have yet to be copied back into A. Taken together, the tan positions always comprise the values originally in AŒ9 W 16c. Blue positions in A contain values that will be copied over, and dark positions in L and R contain values that have already been copied back into A. (a)–(g) The arrays A, L, and R, and their respective indices k, i , and j prior to each iteration of the loop of lines 12318. At the point in part (g), all values in R have been copied back into A (indicated by j equaling the length of R), and so the while loop in lines 12318 terminates. (h) The arrays and indices at termination. The while loops of lines 20323 and 24327 copied back into A the remaining values in L and R, which are the largest values originally in AŒ9 W 16c. Here, lines 20323 copied LŒ2 W 3c into AŒ15 W 16c, and because all values in R had already been copied back into A, the while loop of lines 24327 iterated 0 times. At this point, the subarray in AŒ9 W 16c is sorted.",
+  "pdf_page": 58,
+  "printed_page": 37,
+  "bbox": [
+   170.85,
+   480.45,
+   565.27,
+   658.17
+  ]
+ },
+ {
+  "fig_id": "2.4",
+  "chapter_key": "2",
+  "number": 4,
+  "caption": "Figure 2.4 The operation of merge sort on the array A with length 8 that initially contains the sequence h12; 3; 7; 9; 14; 6; 11; 2i. The indices p, q, and r into each subarray appear above their values. Numbers in italics indicate the order in which the M ERGE-SORT and MERGE procedures are called following the initial call of MERGE-SORT.A; 1; 8/.",
+  "pdf_page": 61,
+  "printed_page": 40,
+  "bbox": [
+   168.97,
+   491.25,
+   563.24,
+   544.04
+  ]
+ },
+ {
+  "fig_id": "2.5",
+  "chapter_key": "2",
+  "number": 5,
+  "caption": "Figure 2.5 How to construct a recursion tree for the recurrence (2.4). Part (a) shows T .n/, which progressively expands in (b)–(d) to form the recursion tree. The fully expanded tree in part (d) has lg n C 1 levels. Each level above the leaves contributes a total cost of c 2 n, and the leaf level contributes c 1 n. The total cost, therefore, is c 2 n lg n C c 1 n D ‚.n lg n/.",
+  "pdf_page": 64,
+  "printed_page": 43,
+  "bbox": [
+   171.15,
+   593.4,
+   565.4,
+   651.34
+  ]
+ },
+ {
+  "fig_id": "3.1",
+  "chapter_key": "3",
+  "number": 1,
+  "caption": "Figure 3.1 The Y.n 2 / lower bound for insertion sort. If the ûrst n=3 positions contain the n=3 largest values, each of these values must move through each of the middle n=3 positions, one position at a time, to end up somewhere in the last n=3 positions. Since each of n=3 values moves through at least each of n=3 positions, the time taken in this case is at least proportional to .n=3/.n=3/ D n 2 =9, or Y.n 2 /.",
+  "pdf_page": 73,
+  "printed_page": 52,
+  "bbox": [
+   168.97,
+   175.43,
+   563.34,
+   240.22
+  ]
+ },
+ {
+  "fig_id": "3.2",
+  "chapter_key": "3",
+  "number": 2,
+  "caption": "Figure 3.2 Graphic examples of the O, Y, and ‚ notations. In each part, the value of n 0 shown is the minimum possible value, but any greater value also works. (a) O-notation gives an upper bound for a function to within a constant factor. We write f .n/ D O.g.n// if there are positive constants n 0 and c such that at and to the right of n 0 , the value of f .n/ always lies on or be- low cg.n/. (b) Y-notation gives a lower bound for a function to within a constant factor. We write f .n/ D Y.g.n// if there are positive constants n 0 and c such that at and to the right of n 0 , the value of f .n/ always lies on or above cg.n/. (c) ‚-notation bounds a function to within constant factors. We write f .n/ D ‚.g.n// if there exist positive constants n 0 , c 1 , and c 2 such that at and to the right of n 0 , the value of f .n/ always lies between c 1 g.n/ and c 2 g.n/ inclusive.",
+  "pdf_page": 75,
+  "printed_page": 54,
+  "bbox": [
+   168.97,
+   259.5,
+   563.27,
+   372.22
+  ]
+ },
+ {
+  "fig_id": "4.1",
+  "chapter_key": "4",
+  "number": 1,
+  "caption": "Figure 4.1 Constructing a recursion tree for the recurrence T .n/ D 3T .n=4/ C cn 2 . Part (a) shows T .n/, which progressively expands in (b)–(d) to form the recursion tree. The fully expanded tree in (d) has height log 4 n.",
+  "pdf_page": 117,
+  "printed_page": 96,
+  "bbox": [
+   168.97,
+   597.83,
+   563.31,
+   639.31
+  ]
+ },
+ {
+  "fig_id": "4.2",
+  "chapter_key": "4",
+  "number": 2,
+  "caption": "Figure 4.2 A recursion tree for the recurrence T .n/ D T .n=3/ C T .2n=3/ C cn.",
+  "pdf_page": 120,
+  "printed_page": 99,
+  "bbox": [
+   170.85,
+   359.03,
+   499.3,
+   381.05
+  ]
+ },
+ {
+  "fig_id": "4.3",
+  "chapter_key": "4",
+  "number": 3,
+  "caption": "Figure 4.3 The recursion tree generated by T .n/ D aT .n=b/ C f .n/. The tree is a complete a-ary tree with a blog b ncC1 leaves and height blog b nc C 1. The cost of the nodes at each depth is shown at the right, and their sum is given in equation (4.18).",
+  "pdf_page": 130,
+  "printed_page": 109,
+  "bbox": [
+   170.85,
+   369.9,
+   565.18,
+   410.69
+  ]
+ },
+ {
+  "fig_id": "6.1",
+  "chapter_key": "6",
+  "number": 1,
+  "caption": "Figure 6.1 A max-heap viewed as (a) a binary tree and (b) an array. The number within the circle at each node in the tree is the value stored at that node. The number above a node is the corresponding index in the array. Above and below the array are lines showing parent-child relationships, with parents always to the left of their children. The tree has height 3, and the node at index 4 (with value 8) has height 1.",
+  "pdf_page": 183,
+  "printed_page": 162,
+  "bbox": [
+   168.98,
+   231.23,
+   562.9,
+   295.95
+  ]
+ },
+ {
+  "fig_id": "6.2",
+  "chapter_key": "6",
+  "number": 2,
+  "caption": "Figure 6.2 The action of MAX-HEAPIFY.A; 2/, where A: heap-size D 10. The node that poten- tially violates the max-heap property is shown in blue. (a) The initial conûguration, with AŒ2c at node i D 2 violating the max-heap property since it is not larger than both children. The max-heap property is restored for node 2 in (b) by exchanging AŒ2c with AŒ4c, which destroys the max-heap property for node 4. The recursive call MAX-HEAPIFY.A; 4/ now has i D 4. After AŒ4c and AŒ9c are swapped, as shown in (c), node 4 is ûxed up, and the recursive call MAX-HEAPIFY.A; 9/ yields no further change to the data structure.",
+  "pdf_page": 186,
+  "printed_page": 165,
+  "bbox": [
+   170.85,
+   383.17,
+   565.26,
+   471.89
+  ]
+ },
+ {
+  "fig_id": "6.3",
+  "chapter_key": "6",
+  "number": 3,
+  "caption": "Figure 6.3 The operation of BUILD-MAX-HEAP, showing the data structure before the call to MAX-HEAPIFY in line 3 of BUILD-MAX-HEAP. The node indexed by i in each iteration is shown in blue. (a) A 10-element input array A and the binary tree it represents. The loop index i refers to node 5 before the call MAX-HEAPIFY.A; i/. (b) The data structure that results. The loop in- dex i for the next iteration refers to node 4. (c)–(e) Subsequent iterations of the for loop in BUILD-MAX-HEAP. Observe that whenever MAX-HEAPIFY is called on a node, the two subtrees of that node are both max-heaps. (f) The max-heap after BUILD-MAX-HEAP ûnishes.",
+  "pdf_page": 189,
+  "printed_page": 168,
+  "bbox": [
+   168.98,
+   563.85,
+   563.37,
+   652.57
+  ]
+ },
+ {
+  "fig_id": "6.4",
+  "chapter_key": "6",
+  "number": 4,
+  "caption": "Figure 6.4 The operation of HEAPSORT. (a) The max-heap data structure just after BUILD-MAX- HEAP has built it in line 1. (b)–(j) The max-heap just after each call of MAX-HEAPIFY in line 5, showing the value of i at that time. Only blue nodes remain in the heap. Tan nodes contain the largest values in the array, in sorted order. (k) The resulting sorted array A.",
+  "pdf_page": 192,
+  "printed_page": 171,
+  "bbox": [
+   170.85,
+   561.15,
+   565.28,
+   613.94
+  ]
+ },
+ {
+  "fig_id": "6.5",
+  "chapter_key": "6",
+  "number": 5,
+  "caption": "Figure 6.5 The operation of MAX-HEAP-I NCREASE-KEY. Only the key of each element in the priority queue is shown. The node indexed by i in each iteration is shown in blue. (a) The max-heap of Figure 6.4(a) with i indexing the node whose key is about to be increased. (b) This node has its key increased to 15. (c) After one iteration of the while loop of lines 537, the node and its parent have exchanged keys, and the index i moves up to the parent. (d) The max-heap after one more iteration of the while loop. At this point, AŒPARENT.i/c  AŒic. The max-heap property now holds and the procedure terminates.",
+  "pdf_page": 198,
+  "printed_page": 177,
+  "bbox": [
+   170.85,
+   386.33,
+   565.07,
+   475.04
+  ]
+ },
+ {
+  "fig_id": "7.1",
+  "chapter_key": "7",
+  "number": 1,
+  "caption": "Figure 7.1 The operation of PARTITION on a sample array. Array entry AŒrc becomes the pivot element x. Tan array elements all belong to the low side of the partition, with values at most x. Blue elements belong to the high side, with values greater than x. White elements have not yet been put into either side of the partition, and the yellow element is the pivot x. (a) The initial array and variable settings. None of the elements have been placed into either side of the partition. (b) The value 2 is <swapped with itself= and put into the low side. (c)–(d) The values 8 and 7 are placed into to high side. (e) The values 1 and 8 are swapped, and the low side grows. (f) The values 3 and 7 are swapped, and the low side grows. (g)–(h) The high side of the partition grows to include 5 and 6, and the loop terminates. (i) Line 7 swaps the pivot element so that it lies between the two sides of the partition, and line 8 returns the pivot’s new index.",
+  "pdf_page": 206,
+  "printed_page": 185,
+  "bbox": [
+   170.85,
+   427.88,
+   565.22,
+   552.52
+  ]
+ },
+ {
+  "fig_id": "7.2",
+  "chapter_key": "7",
+  "number": 2,
+  "caption": "Figure 7.2 The four regions maintained by the procedure PARTITION on a subarray AŒp W rc. The tan values in AŒp W ic are all less than or equal to x, the blue values in AŒi C 1 W j  1c are all greater than x, the white values in AŒj W r  1c have unknown relationships to x, and AŒrc D x.",
+  "pdf_page": 207,
+  "printed_page": 186,
+  "bbox": [
+   168.97,
+   149.25,
+   563.38,
+   195.12
+  ]
+ },
+ {
+  "fig_id": "7.3",
+  "chapter_key": "7",
+  "number": 3,
+  "caption": "Figure 7.3 The two cases for one iteration of procedure PARTITION. (a) If AŒjc > x, the only action is to increment j , which maintains the loop invariant. (b) If AŒjc හ x, index i is incremented, AŒic and AŒjc are swapped, and then j is incremented. Again, the loop invariant is maintained.",
+  "pdf_page": 207,
+  "printed_page": 186,
+  "bbox": [
+   168.97,
+   459.23,
+   563.09,
+   499.94
+  ]
+ },
+ {
+  "fig_id": "7.4",
+  "chapter_key": "7",
+  "number": 4,
+  "caption": "Figure 7.4 A recursion tree for QUICKSORT in which PARTITION always produces a 9-to-1 split, yielding a running time of O.n lg n/. Nodes show subproblem sizes, with per-level costs on the right.",
+  "pdf_page": 210,
+  "printed_page": 189,
+  "bbox": [
+   170.85,
+   325.05,
+   565.13,
+   353.99
+  ]
+ },
+ {
+  "fig_id": "7.5",
+  "chapter_key": "7",
+  "number": 5,
+  "caption": "Figure 7.5 (a) Two levels of a recursion tree for quicksort. The partitioning at the root costs n and produces a <bad= split: two subarrays of sizes 0 and n  1. The partitioning of the subarray of size n  1 costs n  1 and produces a <good= split: subarrays of size .n  1/=2  1 and .n  1/=2. (b) A single level of a recursion tree that is well balanced. In both parts, the partitioning cost for the subproblems shown with blue shading is ‚.n/. Yet the subproblems remaining to be solved in (a), shown with tan shading, are no larger than the corresponding subproblems remaining to be solved in (b).",
+  "pdf_page": 211,
+  "printed_page": 190,
+  "bbox": [
+   168.97,
+   199.43,
+   563.38,
+   288.22
+  ]
+ },
+ {
+  "fig_id": "8.1",
+  "chapter_key": "8",
+  "number": 1,
+  "caption": "Figure 8.1 The decision tree for insertion sort operating on three elements. An internal node (shown in blue) annotated by i :j indicates a comparison between a i and a j . A leaf annotated by the permutation h .1/; .2/; : : : ; .n/i indicates the ordering a .1/ හ a .2/ හහ a .n/ . The high- lighted path indicates the decisions made when sorting the input sequence ha 1 D 6;a 2 D 8;a 3 D 5i. Going left from the root node, labeled 1:2, indicates that a 1 හ a 2 . Going right from the node labeled 2:3 indicates that a 2 > a 3 . Going right from the node labeled 1:3 indicates that a 1 > a 3 . Therefore, we have the ordering a 3 හ a 1 හ a 2 , as indicated in the leaf labeled h3;1;2i. Because the three input elements have 3Š D 6 possible permutations, the decision tree must have at least 6 leaves.",
+  "pdf_page": 227,
+  "printed_page": 206,
+  "bbox": [
+   168.97,
+   209.33,
+   563.34,
+   315.12
+  ]
+ },
+ {
+  "fig_id": "8.2",
+  "chapter_key": "8",
+  "number": 2,
+  "caption": "Figure 8.2 The operation of COUNTING-SORT on an input array AŒ1 W 8c, where each element of A is a nonnegative integer no larger than k D 5. (a) The array A and the auxiliary array C after line 5. (b) The array C after line 8. (c)–(e) The output array B and the auxiliary array C after one, two, and three iterations of the loop in lines 11313, respectively. Only the tan elements of array B have been ûlled in. (f) The ûnal sorted output array B.",
+  "pdf_page": 231,
+  "printed_page": 210,
+  "bbox": [
+   168.98,
+   291.23,
+   563.4,
+   356.02
+  ]
+ },
+ {
+  "fig_id": "8.3",
+  "chapter_key": "8",
+  "number": 3,
+  "caption": "Figure 8.3 The operation of radix sort on seven 3-digit numbers. The leftmost column is the input. The remaining columns show the numbers after successive sorts on increasingly signiûcant digit positions. Tan shading indicates the digit position sorted on to produce each list from the previous one.",
+  "pdf_page": 233,
+  "printed_page": 212,
+  "bbox": [
+   168.97,
+   185.33,
+   562.8,
+   238.12
+  ]
+ },
+ {
+  "fig_id": "8.4",
+  "chapter_key": "8",
+  "number": 4,
+  "caption": "Figure 8.4 The operation of BUCKET-SORT for n D 10. (a) The input array AŒ1 W 10c. (b) The array BŒ0 W 9c of sorted lists (buckets) after line 7 of the algorithm, with slashes indicating the end of each bucket. Bucket i holds values in the half-open interval Œi=10; .i C 1/=10/. The sorted output consists of a concatenation of the lists BŒ0c; BŒ1c; : : : ; BŒ9c in order.",
+  "pdf_page": 237,
+  "printed_page": 216,
+  "bbox": [
+   168.97,
+   278.18,
+   563.36,
+   330.97
+  ]
+ },
+ {
+  "fig_id": "8.5",
+  "chapter_key": "8",
+  "number": 5,
+  "caption": "Figure 8.5 The steps of columnsort. (a) The input array with 6 rows and 3 columns. (This example does not obey the r  2s 2 requirement, but it works.) (b) After sorting each column in step 1. (c) After transposing and reshaping in step 2. (d) After sorting each column in step 3. (e) After performing step 4, which inverts the permutation from step 2. (f) After sorting each column in step 5. (g) After shifting by half a column in step 6. (h) After sorting each column in step 7. (i) After performing step 8, which inverts the permutation from step 6. Steps 638 sort the bottom half of each column with the top half of the next column. After step 8, the array is sorted in column-major order.",
+  "pdf_page": 245,
+  "printed_page": 224,
+  "bbox": [
+   168.97,
+   284.33,
+   563.32,
+   373.04
+  ]
+ },
+ {
+  "fig_id": "9.1",
+  "chapter_key": "9",
+  "number": 1,
+  "caption": "Figure 9.1 The action of RANDOMIZED-SELECT as successive partitionings narrow the subarray AŒp W rc, showing the values of the parameters p, r , and i at each recursive call. The subarray AŒp W rc in each recursive step is shown in tan, with the dark tan element selected as the pivot for the next partitioning. Blue elements are outside AŒp W rc. The answer is the tan element in the bottom array, where p D r D 5 and i D 1. The array designations A .0/ ; A .1/ ; : : : ; A .5/ , the partitioning numbers, and whether the partitioning is helpful are explained on the following page.",
+  "pdf_page": 252,
+  "printed_page": 231,
+  "bbox": [
+   170.85,
+   324.0,
+   565.16,
+   400.79
+  ]
+ },
+ {
+  "fig_id": "9.2",
+  "chapter_key": "9",
+  "number": 2,
+  "caption": "Figure 9.2 The sets within each generation in the proof of Theorem 9.2. Vertical lines represent the sets, with the height of each line indicating the size of the set, which equals the number of elements in play. Each generation starts with a set A .h k / , which is the result of a helpful partitioning. These sets are drawn in black and are at most 3=4 the size of the sets to their immediate left. Sets drawn in orange are not the ûrst within a generation. A generation may contain just one set. The sets in generation k are A .h k / ; A .h k C1/ ; : : : ; A .h kC1 1/ . The sets A .h k / are deûned so that jA .h k / j හ .3=4/jA .h k1 / j. If the partitioning gets all the way to generation h m , set A .h m / has at most one element in play.",
+  "pdf_page": 255,
+  "printed_page": 234,
+  "bbox": [
+   168.97,
+   285.75,
+   563.34,
+   374.47
+  ]
+ },
+ {
+  "fig_id": "9.3",
+  "chapter_key": "9",
+  "number": 3,
+  "caption": "Figure 9.3 The relationships between elements (shown as circles) immediately after line 17 of the selection algorithm SELECT. There are g D .r  p C 1/=5 groups of 5 elements, each of which oc- cupies a column. For example, the leftmost column contains elements AŒpc, AŒp C gc, AŒp C 2gc, AŒp C 3gc, AŒp C 4gc, and the next column contains AŒp C 1c, AŒp C g C 1c, AŒp C 2g C 1c, AŒp C 3g C 1c, AŒp C 4g C 1c. The medians of the groups are red, and the pivot x is labeled. Arrows go from smaller elements to larger. The elements on the blue background are all known to be less than or equal to x and cannot fall into the high side of the partition around x. The elements on the yellow background are known to be greater than or equal to x and cannot fall into the low side of the partition around x. The pivot x belongs to both the blue and yellow regions and is shown on a green background. The elements on the white background could lie on either side of the partition.",
+  "pdf_page": 259,
+  "printed_page": 238,
+  "bbox": [
+   168.9,
+   310.95,
+   563.34,
+   435.59
+  ]
+ },
+ {
+  "fig_id": "9.4",
+  "chapter_key": "9",
+  "number": 4,
+  "caption": "Figure 9.4 Professor Olay needs to determine the position of the east-west oil pipeline that mini- mizes the total length of the north-south spurs.",
+  "pdf_page": 263,
+  "printed_page": 242,
+  "bbox": [
+   168.97,
+   263.7,
+   561.97,
+   292.49
+  ]
+ },
+ {
+  "fig_id": "10.1",
+  "chapter_key": "10",
+  "number": 1,
+  "caption": "Figure 10.1 Four ways to store the 2  3 matrix M from equation (10.1). (a) In row-major order, in a single array. (b) In column-major order, in a single array. (c) In row-major order, with one array per row (tan) and a single array (blue) of pointers to the row arrays. (d) In column-major order, with one array per column (tan) and a single array (blue) of pointers to the column arrays.",
+  "pdf_page": 274,
+  "printed_page": 253,
+  "bbox": [
+   170.85,
+   168.9,
+   564.91,
+   221.7
+  ]
+ },
+ {
+  "fig_id": "10.2",
+  "chapter_key": "10",
+  "number": 2,
+  "caption": "Figure 10.2 An array implementation of a stack S . Stack elements appear only in the tan positions. (a) Stack S has 4 elements. The top element is 9. (b) Stack S after the calls PUSH.S; 17/ and PUSH.S; 3/. (c) Stack S after the call POP.S/ has returned the element 3, which is the one most recently pushed. Although element 3 still appears in the array, it is no longer in the stack. The top is element 17.",
+  "pdf_page": 276,
+  "printed_page": 255,
+  "bbox": [
+   170.85,
+   188.55,
+   565.2,
+   253.27
+  ]
+ },
+ {
+  "fig_id": "10.3",
+  "chapter_key": "10",
+  "number": 3,
+  "caption": "Figure 10.3 A queue implemented using an array QŒ1 W 12c. Queue elements appear only in the tan positions. (a) The queue has 5 elements, in locations QŒ7 W 11c. (b) The conûguration of the queue after the calls ENQUEUE.Q; 17/, ENQUEUE.Q; 3/, and ENQUEUE.Q; 5/. (c) The conûguration of the queue after the call DEQUEUE.Q/ returns the key value 15 formerly at the head of the queue. The new head has key 6.",
+  "pdf_page": 277,
+  "printed_page": 256,
+  "bbox": [
+   168.98,
+   312.0,
+   563.11,
+   376.8
+  ]
+ },
+ {
+  "fig_id": "10.4",
+  "chapter_key": "10",
+  "number": 4,
+  "caption": "Figure 10.4 (a) A doubly linked list L representing the dynamic set f1; 4; 9; 16g. Each element in the list is an object with attributes for the key and pointers (shown by arrows) to the next and previous objects. The next attribute of the tail and the prev attribute of the head are NIL, indicated by a diagonal slash. The attribute L: head points to the head. (b) Following the execution of LIST-PREPEND.L; x/, where x: key D 25, the linked list has an object with key 25 as the new head. This new object points to the old head with key 9. (c) The result of calling LIST-I NSERT.x;y/, where x: key D 36 and y points to the object with key 9. (d) The result of the subsequent call LIST-DELETE.L; x/, where x points to the object with key 4.",
+  "pdf_page": 280,
+  "printed_page": 259,
+  "bbox": [
+   170.85,
+   254.18,
+   565.22,
+   354.82
+  ]
+ },
+ {
+  "fig_id": "10.5",
+  "chapter_key": "10",
+  "number": 5,
+  "caption": "Figure 10.5 A circular, doubly linked list with a sentinel. The sentinel L: nil, in blue, appears between the head and tail. The attribute L: head is no longer needed, since the head of the list is L: nil: next. (a) An empty list. (b) The linked list from Figure 10.4(a), with key 9 at the head and key 1 at the tail. (c) The list after executing LIST-I NSERT 0 .x; L: nil/, where x: key D 25. The new object becomes the head of the list. (d) The list after deleting the object with key 1. The new tail is the object with key 4. (e) The list after executing LIST-I NSERT 0 .x; y/, where x: key D 36 and y points to the object with key 9.",
+  "pdf_page": 283,
+  "printed_page": 262,
+  "bbox": [
+   168.97,
+   283.65,
+   563.15,
+   372.37
+  ]
+ },
+ {
+  "fig_id": "10.6",
+  "chapter_key": "10",
+  "number": 6,
+  "caption": "Figure 10.6 The representation of a binary tree T . Each node x has the attributes x: p (top), x: left (lower left), and x: right (lower right). The key attributes are not shown.",
+  "pdf_page": 287,
+  "printed_page": 266,
+  "bbox": [
+   168.97,
+   308.93,
+   563.12,
+   337.79
+  ]
+ },
+ {
+  "fig_id": "10.7",
+  "chapter_key": "10",
+  "number": 7,
+  "caption": "Figure 10.7 The left-child, right-sibling representation of a tree T . Each node x has attributes x: p (top), x: left-child (lower left), and x: right-sibling (lower right). The key attributes are not shown.",
+  "pdf_page": 287,
+  "printed_page": 266,
+  "bbox": [
+   168.98,
+   625.28,
+   563.39,
+   654.07
+  ]
+ },
+ {
+  "fig_id": "11.1",
+  "chapter_key": "11",
+  "number": 1,
+  "caption": "Figure 11.1 How to implement a dynamic set by a direct-address table T . Each key in the universe U D f0; 1; : : : ; 9g corresponds to an index into the table. The set K D f2; 3; 5; 8g of actual keys determines the slots in the table that contain pointers to elements. The other slots, in blue, contain",
+  "pdf_page": 294,
+  "printed_page": 273,
+  "bbox": [
+   170.85,
+   583.27,
+   564.99,
+   624.14
+  ]
+ },
+ {
+  "fig_id": "11.2",
+  "chapter_key": "11",
+  "number": 2,
+  "caption": "Figure 11.2 Using a hash function h to map keys to hash-table slots. Because keys k 2 and k 5 map to the same slot, they collide.",
+  "pdf_page": 297,
+  "printed_page": 276,
+  "bbox": [
+   168.97,
+   262.8,
+   563.27,
+   291.74
+  ]
+ },
+ {
+  "fig_id": "11.3",
+  "chapter_key": "11",
+  "number": 3,
+  "caption": "Figure 11.3 Collision resolution by chaining. Each nonempty hash-table slot T Œjc points to a linked list of all the keys whose hash value is j . For example, h.k 1 / D h.k 4 / and h.k 5 / D h.k 2 / D h.k 7 /. The list can be either singly or doubly linked. We show it as doubly linked because deletion may be faster that way when the deletion procedure knows which list element (not just which key) is to be deleted.",
+  "pdf_page": 298,
+  "printed_page": 277,
+  "bbox": [
+   170.85,
+   269.33,
+   565.18,
+   334.19
+  ]
+ },
+ {
+  "fig_id": "11.4",
+  "chapter_key": "11",
+  "number": 4,
+  "caption": "Figure 11.4 The multiply-shift method to compute a hash function. The w-bit representation of the key k is multiplied by the w-bit value a D A  2 w . The ` highest-order bits of the lower w-bit half of the product form the desired hash value h a .k/.",
+  "pdf_page": 306,
+  "printed_page": 285,
+  "bbox": [
+   170.85,
+   222.38,
+   565.19,
+   263.24
+  ]
+ },
+ {
+  "fig_id": "11.5",
+  "chapter_key": "11",
+  "number": 5,
+  "caption": "Figure 11.5 Insertion by double hashing. The hash table has size 13 with h 1 .k/ D k mod 13 and h 2 .k/ D 1 C .k mod 11/. Since 14 D 1 .mod 13/ and 14 D 3 .mod 11/, the key 14 goes into empty slot 9, after slots 1 and 5 are examined and found to be occupied.",
+  "pdf_page": 317,
+  "printed_page": 296,
+  "bbox": [
+   168.98,
+   298.88,
+   563.28,
+   339.74
+  ]
+ },
+ {
+  "fig_id": "11.6",
+  "chapter_key": "11",
+  "number": 6,
+  "caption": "Figure 11.6 Deletion in a hash table that uses linear probing. The hash table has size 10 with h 1 .k/ D k mod 10. (a) The hash table after inserting keys in the order 74, 43, 93, 18, 82, 38, 92. (b) The hash table after deleting the key 43 from slot 3. Key 93 moves up to slot 3 to keep it accessible, and then key 92 moves up to slot 5 just vacated by key 93. No other keys need to be moved.",
+  "pdf_page": 324,
+  "printed_page": 303,
+  "bbox": [
+   170.85,
+   270.53,
+   565.25,
+   335.24
+  ]
+ },
+ {
+  "fig_id": "12.1",
+  "chapter_key": "12",
+  "number": 1,
+  "caption": "Figure 12.1 Binary search trees. For any node x, the keys in the left subtree of x are at most x: key, and the keys in the right subtree of x are at least x: key. Different binary search trees can represent the same set of values. The worst-case running time for most search-tree operations is proportional to the height of the tree. (a) A binary search tree on 6 nodes with height 2. The top ûgure shows how to view the tree conceptually, and the bottom ûgure shows the left, right, and p attributes in each node, in the style of Figure 10.6 on page 266. (b) A less efûcient binary search tree, with height 4, that contains the same keys.",
+  "pdf_page": 334,
+  "printed_page": 313,
+  "bbox": [
+   170.85,
+   463.95,
+   565.22,
+   552.67
+  ]
+ },
+ {
+  "fig_id": "12.2",
+  "chapter_key": "12",
+  "number": 2,
+  "caption": "Figure 12.2 Queries on a binary search tree. Nodes and paths followed in each query are colored blue. (a) A search for the key 13 in the tree follows the path 15 ! 6 ! 7 ! 13 from the root. (b) The minimum key in the tree is 2, which is found by following left pointers from the root. The maximum key 20 is found by following right pointers from the root. (c) The successor of the node with key 15 is the node with key 17, since it is the minimum key in the right subtree of 15. (d) The node with key 13 has no right subtree, and thus its successor is its lowest ancestor whose left child is also an ancestor. In this case, the node with key 15 is its successor.",
+  "pdf_page": 338,
+  "printed_page": 317,
+  "bbox": [
+   170.85,
+   433.28,
+   565.16,
+   521.99
+  ]
+ },
+ {
+  "fig_id": "12.3",
+  "chapter_key": "12",
+  "number": 3,
+  "caption": "Figure 12.3 Inserting a node with key 13 into a binary search tree. The simple path from the root down to the position where the node is inserted is shown in blue. The new node and the link to its parent are highlighted in orange.",
+  "pdf_page": 343,
+  "printed_page": 322,
+  "bbox": [
+   168.98,
+   209.33,
+   562.64,
+   250.19
+  ]
+ },
+ {
+  "fig_id": "12.4",
+  "chapter_key": "12",
+  "number": 4,
+  "caption": "Figure 12.4 Deleting a node ´, in blue, from a binary search tree. Node ´ may be the root, a left child of node q, or a right child of q. The node that will replace node ´ in its position in the tree is colored orange. (a) Node ´ has no left child. Replace ´ by its right child r , which may or may not be NIL. (b) Node ´ has a left child l but no right child. Replace ´ by l . (c) Node ´ has two children. Its left child is node l , its right child is its successor y (which has no left child), and y’s right child is node x. Replace ´ by y, updating y’s left child to become l , but leaving x as y’s right child. (d) Node ´ has two children (left child l and right child r ), and its successor y ¤ r lies within the subtree rooted at r . First replace y by its own right child x, and set y to be r ’s parent. Then set y to be q’s child and the parent of l .",
+  "pdf_page": 344,
+  "printed_page": 323,
+  "bbox": [
+   170.85,
+   537.68,
+   565.27,
+   650.39
+  ]
+ },
+ {
+  "fig_id": "12.5",
+  "chapter_key": "12",
+  "number": 5,
+  "caption": "Figure 12.5 A radix tree storing the bit strings 1011, 10, 011, 100, and 0. To determine each node’s key, traverse the simple path from the root to that node. There is no need, therefore, to store the keys in the nodes. The keys appear here for illustrative purposes only. Keys corresponding to blue nodes are not in the tree. Such nodes are present only to establish a path to other nodes.",
+  "pdf_page": 349,
+  "printed_page": 328,
+  "bbox": [
+   168.98,
+   238.8,
+   562.96,
+   291.59
+  ]
+ },
+ {
+  "fig_id": "13.1",
+  "chapter_key": "13",
+  "number": 1,
+  "caption": "Figure 13.1 A red-black tree. Every node in a red-black tree is either red or black, the children of a red node are both black, and every simple path from a node to a descendant leaf contains the same number of black nodes. (a) Every leaf, shown as a NIL, is black. Each non-NIL node is marked with its black-height, where NILs have black-height 0. (b) The same red-black tree but with each NIL replaced by the single sentinel T: nil, which is always black, and with black-heights omitted. The root’s parent is also the sentinel. (c) The same red-black tree but with leaves and the root’s parent omitted entirely. The remainder of this chapter uses this drawing style.",
+  "pdf_page": 354,
+  "printed_page": 333,
+  "bbox": [
+   170.85,
+   568.2,
+   564.96,
+   656.92
+  ]
+ },
+ {
+  "fig_id": "13.2",
+  "chapter_key": "13",
+  "number": 2,
+  "caption": "Figure 13.2 The rotation operations on a binary search tree. The operation L EFT-ROTATE.T; x/ transforms the conûguration of the two nodes on the right into the conûguration on the left by chang- ing a constant number of pointers. The inverse operation R IGHT-ROTATE.T; y/ transforms the con- ûguration on the left into the conûguration on the right. The letters ˛, ˇ, and \u0003 represent arbitrary subtrees. A rotation operation preserves the binary-search-tree property: the keys in ˛ precede x: key, which precedes the keys in ˇ, which precede y: key, which precedes the keys in \u0003 .",
+  "pdf_page": 357,
+  "printed_page": 336,
+  "bbox": [
+   168.97,
+   169.95,
+   563.39,
+   246.74
+  ]
+ },
+ {
+  "fig_id": "13.3",
+  "chapter_key": "13",
+  "number": 3,
+  "caption": "Figure 13.3 An example of how the procedure LEFT-ROTATE.T; x/ modiûes a binary search tree. Inorder tree walks of the input tree and the modiûed tree produce the same listing of key values.",
+  "pdf_page": 358,
+  "printed_page": 337,
+  "bbox": [
+   170.85,
+   342.68,
+   565.06,
+   371.47
+  ]
+ },
+ {
+  "fig_id": "13.4",
+  "chapter_key": "13",
+  "number": 4,
+  "caption": "Figure 13.4 The operation of RB-I NSERT-FIXUP. (a) A node ´ after insertion. Because both ´ and its parent ´: p are red, a violation of property 4 occurs. Since ´’s uncle y is red, case 1 in the code applies. Node ´’s grandparent ´: p: p must be black, and its blackness transfers down one level to ´’s parent and uncle. Once the pointer ´ moves up two levels in the tree, the tree shown in (b) results. Once again, ´ and its parent are both red, but this time ´’s uncle y is black. Since ´ is the right child of ´: p, case 2 applies. Performing a left rotation results in the tree in (c). Now ´ is the left child of its parent, and case 3 applies. Recoloring and right rotation yield the tree in (d), which is a legal red-black tree.",
+  "pdf_page": 362,
+  "printed_page": 341,
+  "bbox": [
+   170.85,
+   546.83,
+   565.21,
+   647.62
+  ]
+ },
+ {
+  "fig_id": "13.5",
+  "chapter_key": "13",
+  "number": 5,
+  "caption": "Figure 13.5 Case 1 of the procedure RB-I NSERT-FIXUP. Both ´ and its parent ´: p are red, violat- ing property 4. In case 1, ´’s uncle y is red. The same action occurs regardless of whether (a) ´ is a right child or (b) ´ is a left child. Each of the subtrees ˛, ˇ, \u0003 , ı, and \" has a black root4possibly the sentinel4and each has the same black-height. The code for case 1 moves the blackness of ´’s grandparent down to ´’s parent and uncle, preserving property 5: all downward simple paths from a node to a leaf have the same number of blacks. The while loop continues with node ´’s grandpar- ent ´: p: p as the new ´. If the action of case 1 causes a new violation of property 4 to occur, it must be only between the new ´, which is red, and its parent, if it is red as well.",
+  "pdf_page": 364,
+  "printed_page": 343,
+  "bbox": [
+   170.85,
+   289.05,
+   565.12,
+   389.84
+  ]
+ },
+ {
+  "fig_id": "13.6",
+  "chapter_key": "13",
+  "number": 6,
+  "caption": "Figure 13.6 Cases 2 and 3 of the procedure RB-I NSERT-FIXUP. As in case 1, property 4 is violated in either case 2 or case 3 because ´ and its parent ´: p are both red. Each of the subtrees ˛, ˇ, \u0003 , and ı has a black root (˛, ˇ, and \u0003 from property 4, and ı because otherwise case 1 would apply), and each has the same black-height. Case 2 transforms into case 3 by a left rotation, which preserves property 5: all downward simple paths from a node to a leaf have the same number of blacks. Case 3 causes some color changes and a right rotation, which also preserve property 5. The while loop then terminates, because property 4 is satisûed: there are no longer two red nodes in a row.",
+  "pdf_page": 365,
+  "printed_page": 344,
+  "bbox": [
+   168.97,
+   203.78,
+   563.34,
+   292.49
+  ]
+ },
+ {
+  "fig_id": "13.7",
+  "chapter_key": "13",
+  "number": 7,
+  "caption": "Figure 13.7 The cases in lines 3322 of the procedure RB-D ELETE-FIXUP. Brown nodes have color attributes represented by c and c 0 , which may be either RED or BLACK. The letters ˛; ˇ; : : : ; \u0006 represent arbitrary subtrees. Each case transforms the conûguration on the left into the conûguration on the right by changing some colors and/or performing a rotation. Any node pointed to by x has an extra black and is either doubly black or red-and-black. Only case 2 causes the loop to repeat. (a) Case 1 is transformed into case 2, 3, or 4 by exchanging the colors of nodes B and D and performing a left rotation. (b) In case 2, the extra black represented by the pointer x moves up the tree by coloring node D red and setting x to point to node B. If case 2 is entered through case 1, the while loop terminates because the new node x is red-and-black, and therefore the value c of its color attribute is RED. (c) Case 3 is transformed to case 4 by exchanging the colors of nodes C and D and performing a right rotation. (d) Case 4 removes the extra black represented by x by changing some colors and performing a left rotation (without violating the red-black properties), and then the loop terminates.",
+  "pdf_page": 373,
+  "printed_page": 352,
+  "bbox": [
+   168.97,
+   494.48,
+   563.35,
+   655.12
+  ]
+ },
+ {
+  "fig_id": "13.8",
+  "chapter_key": "13",
+  "number": 8,
+  "caption": "Figure 13.8 (a) A binary search tree with keys 2; 3; 4; 7; 8; 10. (b) The persistent binary search tree that results from the insertion of key 5. The most recent version of the set consists of the nodes reachable from the root r 0 , and the previous version consists of the nodes reachable from r . Blue nodes are added when key 5 is inserted.",
+  "pdf_page": 377,
+  "printed_page": 356,
+  "bbox": [
+   168.98,
+   235.95,
+   563.27,
+   288.75
+  ]
+ },
+ {
+  "fig_id": "14.1",
+  "chapter_key": "14",
+  "number": 1,
+  "caption": "Figure 14.1 A sample price table for rods. Each rod of length i inches earns the company p i dollars of revenue.",
+  "pdf_page": 385,
+  "printed_page": 364,
+  "bbox": [
+   168.97,
+   138.75,
+   561.57,
+   167.69
+  ]
+ },
+ {
+  "fig_id": "14.2",
+  "chapter_key": "14",
+  "number": 2,
+  "caption": "Figure 14.2 The 8 possible ways of cutting up a rod of length 4. Above each piece is the value of that piece, according to the sample price chart of Figure 14.1. The optimal strategy is part (c)4 cutting the rod into two pieces of length 24which has total value 10.",
+  "pdf_page": 385,
+  "printed_page": 364,
+  "bbox": [
+   168.97,
+   335.03,
+   563.09,
+   375.89
+  ]
+ },
+ {
+  "fig_id": "14.3",
+  "chapter_key": "14",
+  "number": 3,
+  "caption": "Figure 14.3 The recursion tree showing recursive calls resulting from a call C UT-ROD.p; n/ for n D 4. Each node label gives the size n of the corresponding subproblem, so that an edge from a parent with label s to a child with label t corresponds to cutting off an initial piece of size s  t and leaving a remaining subproblem of size t . A path from the root to a leaf corresponds to one of the 2 n1 ways of cutting up a rod of length n. In general, this recursion tree has 2 n nodes and 2 n1",
+  "pdf_page": 388,
+  "printed_page": 367,
+  "bbox": [
+   170.85,
+   238.8,
+   565.11,
+   303.58
+  ]
+ },
+ {
+  "fig_id": "14.4",
+  "chapter_key": "14",
+  "number": 4,
+  "caption": "Figure 14.4 The subproblem graph for the rod-cutting problem with n D 4. The vertex labels give the sizes of the corresponding subproblems. A directed edge .x; y/ indicates that solving subprob- lem x requires a solution to subproblem y. This graph is a reduced version of the recursion tree of Figure 14.3, in which all nodes with the same label are collapsed into a single vertex and all edges go from parent to child.",
+  "pdf_page": 391,
+  "printed_page": 370,
+  "bbox": [
+   168.97,
+   238.8,
+   563.06,
+   303.52
+  ]
+ },
+ {
+  "fig_id": "14.5",
+  "chapter_key": "14",
+  "number": 5,
+  "caption": "Figure 14.5 The m and s tables computed by MATRIX-CHAIN-ORDER for n D 6 and the follow- ing matrix dimensions:",
+  "pdf_page": 401,
+  "printed_page": 380,
+  "bbox": [
+   168.98,
+   267.23,
+   563.15,
+   296.09
+  ]
+ },
+ {
+  "fig_id": "14.6",
+  "chapter_key": "14",
+  "number": 6,
+  "caption": "Figure 14.6 A directed graph showing that the problem of ûnding a longest simple path in an unweighted directed graph does not have optimal substructure. The path q ! r ! t is a longest simple path from q to t , but the subpath q ! r is not a longest simple path from q to r , nor is the subpath r ! t a longest simple path from r to t .",
+  "pdf_page": 407,
+  "printed_page": 386,
+  "bbox": [
+   168.97,
+   161.18,
+   563.21,
+   213.97
+  ]
+ },
+ {
+  "fig_id": "14.7",
+  "chapter_key": "14",
+  "number": 7,
+  "caption": "Figure 14.7 The recursion tree for the computation of RECURSIVE-MATRIX-CHAIN.p; 1; 4/. Each node contains the parameters i and j . The computations performed in a subtree shaded blue are replaced by a single table lookup in MEMOIZED-MATRIX-CHAIN.",
+  "pdf_page": 409,
+  "printed_page": 388,
+  "bbox": [
+   168.98,
+   247.58,
+   563.34,
+   288.29
+  ]
+ },
+ {
+  "fig_id": "14.8",
+  "chapter_key": "14",
+  "number": 8,
+  "caption": "Figure 14.8 The c and b tables computed by LCS-LENGTH on the sequences X D hA; B; C; B; D;A;Bi and Y D hB;D;C;A;B;Ai. The square in row i and column j contains the value of cŒi; jc and the appropriate arrow for the value of bŒi; jc. The entry 4 in cŒ7; 6c4the lower right-hand corner of the table4is the length of an LCS hB; C; B; Ai of X and Y . For i; j > 0, entry cŒi; jc depends only on whether x i D y j and the values in entries cŒi  1; jc, cŒi; j  1c, and cŒi  1; j  1c, which are computed before cŒi; jc. To reconstruct the elements of an LCS, follow the bŒi; jc arrows from the lower right-hand corner, as shown by the sequence shaded blue. Each <-= on the shaded-blue sequence corresponds to an entry (highlighted) for which x i D y j is a member of an LCS.",
+  "pdf_page": 419,
+  "printed_page": 398,
+  "bbox": [
+   168.97,
+   300.0,
+   563.32,
+   400.72
+  ]
+ },
+ {
+  "fig_id": "14.9",
+  "chapter_key": "14",
+  "number": 9,
+  "caption": "Figure 14.9 Two binary search trees for a set of n D 5 keys with the following probabilities:",
+  "pdf_page": 422,
+  "printed_page": 401,
+  "bbox": [
+   170.85,
+   409.13,
+   542.51,
+   425.99
+  ]
+ },
+ {
+  "fig_id": "14.10",
+  "chapter_key": "14",
+  "number": 10,
+  "caption": "Figure 14.10 The tables eŒi; jc, wŒi; jc, and rootŒi; jc computed by OPTIMAL-BST on the key distribution shown in Figure 14.9. The tables are rotated so that the diagonals run horizontally.",
+  "pdf_page": 427,
+  "printed_page": 406,
+  "bbox": [
+   168.98,
+   351.3,
+   563.13,
+   380.24
+  ]
+ },
+ {
+  "fig_id": "14.11",
+  "chapter_key": "14",
+  "number": 11,
+  "caption": "Figure 14.11 Seven points in the plane, shown on a unit grid. (a) The shortest closed tour, with length approximately 24:89. This tour is not bitonic. (b) The shortest bitonic tour for the same set of points. Its length is approximately 25:58.",
+  "pdf_page": 429,
+  "printed_page": 408,
+  "bbox": [
+   168.98,
+   225.68,
+   563.02,
+   266.54
+  ]
+ },
+ {
+  "fig_id": "14.12",
+  "chapter_key": "14",
+  "number": 12,
+  "caption": "Figure 14.12 A sequence of operations that transforms the source algorithm to the target string altruistic. The underlined characters are xŒic and ´Œjc after the operation.",
+  "pdf_page": 431,
+  "printed_page": 410,
+  "bbox": [
+   168.97,
+   260.03,
+   563.14,
+   288.82
+  ]
+ },
+ {
+  "fig_id": "15.1",
+  "chapter_key": "15",
+  "number": 1,
+  "caption": "Figure 15.1 A set fa 1 ; a 2 ; : : : ; a 11 g of activities. Activity a i has start time s i and ûnish time f i .",
+  "pdf_page": 439,
+  "printed_page": 418,
+  "bbox": [
+   168.97,
+   646.13,
+   557.42,
+   662.99
+  ]
+ },
+ {
+  "fig_id": "15.2",
+  "chapter_key": "15",
+  "number": 2,
+  "caption": "Figure 15.2 The operation of RECURSIVE-ACTIVITY-SELECTOR on the 11 activities from Fig- ure 15.1. Activities considered in each recursive call appear between horizontal lines. The ûctitious activity a 0 ûnishes at time 0, and the initial call RECURSIVE-ACTIVITY-SELECTOR.s; f; 0; 11/, selects activity a 1 . In each recursive call, the activities that have already been selected are blue, and the activity shown in tan is being considered. If the starting time of an activity occurs before the ûnish time of the most recently added activity (the arrow between them points left), it is re- jected. Otherwise (the arrow points directly up or to the right), it is selected. The last recursive call, RECURSIVE-ACTIVITY-SELECTOR.s; f; 11; 11/, returns ;. The resulting set of selected activities is fa 1 ; a 4 ; a 8 ; a 11 g.",
+  "pdf_page": 444,
+  "printed_page": 423,
+  "bbox": [
+   170.84,
+   549.15,
+   565.07,
+   661.79
+  ]
+ },
+ {
+  "fig_id": "15.3",
+  "chapter_key": "15",
+  "number": 3,
+  "caption": "Figure 15.3 An example showing that the greedy strategy does not work for the 0-1 knapsack problem. (a) The thief must select a subset of the three items shown whose weight must not exceed 50 pounds. (b) The optimal subset includes items 2 and 3. Any solution with item 1 is suboptimal, even though item 1 has the greatest value per pound. (c) For the fractional knapsack problem, taking the items in order of greatest value per pound yields an optimal solution.",
+  "pdf_page": 451,
+  "printed_page": 430,
+  "bbox": [
+   168.98,
+   245.33,
+   562.93,
+   310.12
+  ]
+ },
+ {
+  "fig_id": "15.4",
+  "chapter_key": "15",
+  "number": 4,
+  "caption": "Figure 15.4 A character-coding problem. A data ûle of 100,000 characters contains only the char- acters a–f, with the frequencies indicated. With each character represented by a 3-bit codeword, encoding the ûle requires 300,000 bits. With the variable-length code shown, the encoding requires only 224,000 bits.",
+  "pdf_page": 453,
+  "printed_page": 432,
+  "bbox": [
+   168.97,
+   151.95,
+   562.67,
+   204.82
+  ]
+ },
+ {
+  "fig_id": "15.5",
+  "chapter_key": "15",
+  "number": 5,
+  "caption": "Figure 15.5 Trees corresponding to the coding schemes in Figure 15.4. Each leaf is labeled with a character and its frequency of occurrence. Each internal node is labeled with the sum of the frequen- cies of the leaves in its subtree. All frequencies are in thousands. (a) The tree corresponding to the ûxed-length code a = 000, b = 001, c = 010, d = 011, e = 100, f = 101. (b) The tree corresponding to the optimal preûx-free code a = 0, b = 101, c = 100, d = 111, e = 1101, f = 1100.",
+  "pdf_page": 454,
+  "printed_page": 433,
+  "bbox": [
+   170.85,
+   259.5,
+   564.97,
+   324.37
+  ]
+ },
+ {
+  "fig_id": "15.6",
+  "chapter_key": "15",
+  "number": 6,
+  "caption": "Figure 15.6 The steps of Huffman’s algorithm for the frequencies given in Figure 15.4. Each part shows the contents of the queue sorted into increasing order by frequency. Each step merges the two trees with the lowest frequencies. Leaves are shown as rectangles containing a character and its frequency. Internal nodes are shown as circles containing the sum of the frequencies of their children. An edge connecting an internal node with its children is labeled 0 if it is an edge to a left child and 1 if it is an edge to a right child. The codeword for a letter is the sequence of labels on the edges connecting the root to the leaf for that letter. (a) The initial set of n D 6 nodes, one for each letter. (b)–(e) Intermediate stages. (f) The ûnal tree.",
+  "pdf_page": 456,
+  "printed_page": 435,
+  "bbox": [
+   170.85,
+   416.85,
+   565.05,
+   517.64
+  ]
+ },
+ {
+  "fig_id": "15.7",
+  "chapter_key": "15",
+  "number": 7,
+  "caption": "Figure 15.7 An illustration of the key step in the proof of Lemma 15.2. In the optimal tree T , leaves a and b are two siblings of maximum depth. Leaves x and y are the two characters with the lowest frequencies. They appear in arbitrary positions in T . Assuming that x ¤ b, swapping leaves a and x produces tree T 0 , and then swapping leaves b and y produces tree T 00 . Since each swap does not increase the cost, the resulting tree T 00 is also an optimal tree.",
+  "pdf_page": 458,
+  "printed_page": 437,
+  "bbox": [
+   170.85,
+   171.0,
+   565.22,
+   235.87
+  ]
+ },
+ {
+  "fig_id": "16.1",
+  "chapter_key": "16",
+  "number": 1,
+  "caption": "Figure 16.1 The action of MULTIPOP on a stack S , shown initially in (a). The top 4 objects are popped by MULTIPOP.S; 4/, whose result is shown in (b). The next operation is MULTIPOP.S; 7/, which empties the stack4shown in (c)4since fewer than 7 objects remained.",
+  "pdf_page": 471,
+  "printed_page": 450,
+  "bbox": [
+   168.98,
+   195.15,
+   563.34,
+   235.87
+  ]
+ },
+ {
+  "fig_id": "16.2",
+  "chapter_key": "16",
+  "number": 2,
+  "caption": "Figure 16.2 An 8-bit binary counter as its value goes from 0 to 16 by a sequence of 16 I NCREMENT operations. Bits that üip to achieve the next value are shaded in blue. The running cost for üipping bits is shown at the right. The total cost is always less than twice the total number of I NCREMENT operations.",
+  "pdf_page": 473,
+  "printed_page": 452,
+  "bbox": [
+   168.97,
+   316.43,
+   563.11,
+   369.22
+  ]
+ },
+ {
+  "fig_id": "16.3",
+  "chapter_key": "16",
+  "number": 3,
+  "caption": "Figure 16.3 Analysis of table expansion by the accounting method. Each call of TABLE-I NSERT charges $3 as follows: $1 to pay for the elementary insertion, $1 on the item inserted as prepayment for it to be reinserted later, and $1 on an item that was already in the table, also as prepayment for reinsertion. (a) The table immediately after an expansion, with 8 slots, 4 items (tan slots), and no stored credit. (b)–(e) After each of 4 calls to TABLE-I NSERT, the table has one more item, with $1 stored on the new item and $1 stored on one of the 4 items that were present immediately after the expansion. Slots with these new items are blue. (f) Upon the next call to TABLE-I NSERT, the table is full, and so it expands again. Each item had $1 to pay for it to be reinserted. Now the table looks as it did in part (a), with no stored credit but 16 slots and 8 items.",
+  "pdf_page": 484,
+  "printed_page": 463,
+  "bbox": [
+   170.85,
+   266.1,
+   565.19,
+   378.82
+  ]
+ },
+ {
+  "fig_id": "16.4",
+  "chapter_key": "16",
+  "number": 4,
+  "caption": "Figure 16.4 The effect of a sequence of n TABLE-I NSERT operations on the number num i of items in the table (the brown line), the number size i of slots in the table (the blue line), and the potential ˆ i D 2.num i  size i =2/ (the red line), each being measured after the i th operation. Immediately before an expansion, the potential has built up to the number of items in the table, and therefore it can pay for moving all the items to the new table. Afterward, the potential drops to 0, but it immediately increases by 2 upon insertion of the item that caused the expansion.",
+  "pdf_page": 486,
+  "printed_page": 465,
+  "bbox": [
+   170.85,
+   312.0,
+   565.17,
+   388.79
+  ]
+ },
+ {
+  "fig_id": "16.5",
+  "chapter_key": "16",
+  "number": 5,
+  "caption": "Figure 16.5 How to think about the potential function ˆ for table insertion and deletion. When the load factor ˛ is 1=2, the potential is 0. In order to accumulate sufûcient potential to pay for reinserting all T: size items when the table ûlls, the potential needs to increase by 2 upon each insertion when ˛  1=2. Correspondingly, the potential decreases by 2 upon each deletion that leaves ˛  1=2. In order to accrue enough potential to cover the cost of reinserting all T: size=4 items when the table contracts, the potential needs to increase by 1 upon each deletion when ˛ < 1=2, and correspondingly the potential decreases by 1 upon each insertion that leaves ˛ < 1=2. The red area represents load factors less than 1=4, which are not allowed.",
+  "pdf_page": 488,
+  "printed_page": 467,
+  "bbox": [
+   170.85,
+   258.45,
+   565.12,
+   359.17
+  ]
+ },
+ {
+  "fig_id": "16.6",
+  "chapter_key": "16",
+  "number": 6,
+  "caption": "Figure 16.6 The effect of a sequence of n TABLE-I NSERT and TABLE-DELETE operations on the number num i of items in the table (the brown line), the number size i of slots in the table (the blue line), and the potential (the red line)",
+  "pdf_page": 490,
+  "printed_page": 469,
+  "bbox": [
+   170.85,
+   312.0,
+   564.84,
+   352.87
+  ]
+ },
+ {
+  "fig_id": "17.1",
+  "chapter_key": "17",
+  "number": 1,
+  "caption": "Figure 17.1 An order-statistic tree, which is an augmented red-black tree. In addition to its usual attributes, each node x has an attribute x: size, which is the number of nodes, other than the sentinel, in the subtree rooted at x.",
+  "pdf_page": 502,
+  "printed_page": 481,
+  "bbox": [
+   170.85,
+   225.68,
+   564.65,
+   266.54
+  ]
+ },
+ {
+  "fig_id": "17.2",
+  "chapter_key": "17",
+  "number": 2,
+  "caption": "Figure 17.2 Updating subtree sizes during rotations. The updates are local, requiring only the size information stored in x, y, and the roots of the subtrees shown as triangles.",
+  "pdf_page": 506,
+  "printed_page": 485,
+  "bbox": [
+   170.85,
+   183.08,
+   565.15,
+   211.87
+  ]
+ },
+ {
+  "fig_id": "17.3",
+  "chapter_key": "17",
+  "number": 3,
+  "caption": "Figure 17.3 The interval trichotomy for two closed intervals i and i 0 . (a) If i and i 0 overlap, there are four situations, and in each, i: low හ i 0 : high and i 0 : low හ i: high. (b) The intervals do not overlap, and i: high < i 0 : low. (c) The intervals do not overlap, and i 0 : high < i: low.",
+  "pdf_page": 511,
+  "printed_page": 490,
+  "bbox": [
+   168.97,
+   228.98,
+   563.31,
+   269.84
+  ]
+ },
+ {
+  "fig_id": "17.4",
+  "chapter_key": "17",
+  "number": 4,
+  "caption": "Figure 17.4 An interval tree. (a) A set of 10 intervals, shown sorted bottom to top by left endpoint. (b) The interval tree that represents them. Each node x contains an interval, shown above the dashed line, and the maximum value of any interval endpoint in the subtree rooted at x, shown below the dashed line. An inorder tree walk of the tree lists the nodes in sorted order by left endpoint.",
+  "pdf_page": 512,
+  "printed_page": 491,
+  "bbox": [
+   170.85,
+   399.45,
+   564.9,
+   452.24
+  ]
+ },
+ {
+  "fig_id": "17.5",
+  "chapter_key": "17",
+  "number": 5,
+  "caption": "Figure 17.5 Intervals in the proof of Theorem 17.2. The value of x: left: max is shown in each case as a dashed line. (a) The search goes right. No interval i 0 in x’s left subtree can overlap i . (b) The search goes left. The left subtree of x contains an interval that overlaps i (situation not shown), or x’s left subtree contains an interval i 0 such that i 0 : high D x: left: max. Since i does not overlap i 0 , neither does it overlap any interval i 00 in x’s right subtree, since i 0 : low හ i 00 : low.",
+  "pdf_page": 515,
+  "printed_page": 494,
+  "bbox": [
+   168.97,
+   199.43,
+   563.36,
+   264.22
+  ]
+ },
+ {
+  "fig_id": "18.1",
+  "chapter_key": "18",
+  "number": 1,
+  "caption": "Figure 18.1 A B-tree whose keys are the consonants of English. An internal node x containing x:n keys has x:n C 1 children. All leaves are at the same depth in the tree. The blue nodes are examined in a search for the letter R.",
+  "pdf_page": 519,
+  "printed_page": 498,
+  "bbox": [
+   168.97,
+   203.78,
+   563.05,
+   244.64
+  ]
+ },
+ {
+  "fig_id": "18.2",
+  "chapter_key": "18",
+  "number": 2,
+  "caption": "Figure 18.2 A typical magnetic disk drive. It consists of one or more platters covered with a magnetizable material (two platters are shown here) that rotate around a spindle. Each platter is read and written with a head, shown in red, at the end of an arm. Arms rotate around a common pivot axis. A track, drawn in blue, is the surface that passes beneath the read/write head when the head is stationary.",
+  "pdf_page": 520,
+  "printed_page": 499,
+  "bbox": [
+   170.85,
+   258.45,
+   564.65,
+   323.17
+  ]
+ },
+ {
+  "fig_id": "18.3",
+  "chapter_key": "18",
+  "number": 3,
+  "caption": "Figure 18.3 A B-tree of height 2 containing over one billion keys. Shown inside each node x is x:n, the number of keys in x. Each internal node and leaf contains 1000 keys. This B-tree has 1001 nodes at depth 1 and over one million leaves at depth 2.",
+  "pdf_page": 522,
+  "printed_page": 501,
+  "bbox": [
+   170.85,
+   222.38,
+   564.91,
+   263.24
+  ]
+ },
+ {
+  "fig_id": "18.4",
+  "chapter_key": "18",
+  "number": 4,
+  "caption": "Figure 18.4 A B-tree of height 3 containing a minimum possible number of keys. Shown inside each node x is x:n.",
+  "pdf_page": 524,
+  "printed_page": 503,
+  "bbox": [
+   170.85,
+   264.0,
+   564.33,
+   292.79
+  ]
+ },
+ {
+  "fig_id": "18.5",
+  "chapter_key": "18",
+  "number": 5,
+  "caption": "Figure 18.5 Splitting a node with t D 4. Node y D x:c i splits into two nodes, y and ´, and the median key S of y moves up into y’s parent.",
+  "pdf_page": 529,
+  "printed_page": 508,
+  "bbox": [
+   168.98,
+   225.68,
+   563.27,
+   254.47
+  ]
+ },
+ {
+  "fig_id": "18.6",
+  "chapter_key": "18",
+  "number": 6,
+  "caption": "Figure 18.6 Splitting the root with t D 4. Root node r splits in two, and a new root node s is created. The new root contains the median key of r and has the two halves of r as children. The B-tree grows in height by one when the root is split. A B-tree’ s height increases only when the root splits.",
+  "pdf_page": 530,
+  "printed_page": 509,
+  "bbox": [
+   170.85,
+   223.43,
+   565.25,
+   276.22
+  ]
+ },
+ {
+  "fig_id": "18.7",
+  "chapter_key": "18",
+  "number": 7,
+  "caption": "Figure 18.7 Inserting keys into a B-tree. The minimum degree t for this B-tree is 3, so that a node can hold at most 5 keys. Blue nodes are modiûed by the insertion process. (a) The initial tree for this example. (b) The result of inserting B into the initial tree. This case is a simple insertion into a leaf node. (c) The result of inserting Q into the previous tree. The node RST U V splits into two nodes containing RS and U V , the key T moves up to the root, and Q is inserted in the leftmost of the two halves (the RS node). (d) The result of inserting L into the previous tree. The root splits right away, since it is full, and the B-tree grows in height by one. Then L is inserted into the leaf containing JK. (e) The result of inserting F into the previous tree. The node ABCDE splits before F is inserted into the rightmost of the two halves (the DE node).",
+  "pdf_page": 531,
+  "printed_page": 510,
+  "bbox": [
+   168.97,
+   527.33,
+   563.49,
+   640.04
+  ]
+ },
+ {
+  "fig_id": "18.8",
+  "chapter_key": "18",
+  "number": 8,
+  "caption": "Figure 18.8 Deleting keys from a B-tree. The minimum degree for this B-tree is t D 3, so that, other than the root, every node must have at least 2 keys. Blue nodes are those that are modiûed by the deletion process. (a) The B-tree of Figure 18.7(e). (b) Deletion of F , which is case 1: simple deletion from a leaf when all nodes visited during the search (other than the root) have at least t D 3 keys. (c) Deletion of M , which is case 2a: the predecessor L of M moves up to take M ’s position.",
+  "pdf_page": 535,
+  "printed_page": 514,
+  "bbox": [
+   168.97,
+   385.28,
+   563.39,
+   449.99
+  ]
+ },
+ {
+  "fig_id": "18.8-cont",
+  "chapter_key": "18",
+  "number": 8,
+  "caption": "Figure 18.8, continued (d) Deletion of G, which is case 2c: push G down to make node DEGJK and then delete G from this leaf (case 1). (e) Deletion of D, which is case 3b: since the recursion cannot descend to node CL because it has only 2 keys, push P down and merge it with CL and TX to form CLP TX . Then delete D from a leaf (case 1). (e 0 ) After (e), delete the empty root. The tree shrinks in height by 1. (f) Deletion of B, which is case 3a: C moves to ûll B’s position and E moves to ûll C ’s position.",
+  "pdf_page": 536,
+  "printed_page": 515,
+  "bbox": [
+   170.85,
+   428.93,
+   565.22,
+   505.72
+  ],
+  "continued": true
+ },
+ {
+  "fig_id": "19.1",
+  "chapter_key": "19",
+  "number": 1,
+  "caption": "Figure 19.1 (a) A graph with four connected components: fa; b; c; d g, fe; f; gg, fh; i g, and fj g. (b) The collection of disjoint sets after processing each edge.",
+  "pdf_page": 543,
+  "printed_page": 522,
+  "bbox": [
+   168.97,
+   262.8,
+   563.34,
+   291.74
+  ]
+ },
+ {
+  "fig_id": "19.2",
+  "chapter_key": "19",
+  "number": 2,
+  "caption": "Figure 19.2 (a) Linked-list representations of two sets. Set S 1 contains members d , f , and g, with representative f , and set S 2 contains members b, c, e, and h, with representative c. Each object in the list contains a set member, a pointer to the next object in the list, and a pointer back to the set object. Each set object has pointers head and tail to the ûrst and last objects, respectively. (b) The result of UNION.g; e/, which appends the linked list containing e to the linked list containing g. The representative of the resulting set is f . The set object for e’s list, S 2 , is destroyed.",
+  "pdf_page": 545,
+  "printed_page": 524,
+  "bbox": [
+   168.97,
+   298.2,
+   563.36,
+   374.99
+  ]
+ },
+ {
+  "fig_id": "19.3",
+  "chapter_key": "19",
+  "number": 3,
+  "caption": "Figure 19.3 A sequence of 2n  1 operations on n objects that takes ‚.n 2 / time, or ‚.n/ time per operation on average, using the linked-list set representation and the simple implementation of UNION.",
+  "pdf_page": 546,
+  "printed_page": 525,
+  "bbox": [
+   170.85,
+   236.03,
+   565.24,
+   276.89
+  ]
+ },
+ {
+  "fig_id": "19.4",
+  "chapter_key": "19",
+  "number": 4,
+  "caption": "Figure 19.4 A disjoint-set forest. (a) Trees representing the two sets of Figure 19.2. The tree on the left represents the set fb;c; e; hg, with c as the representative, and the tree on the right represents the set fd; f; gg, with f as the representative. (b) The result of UNION.e; g/.",
+  "pdf_page": 549,
+  "printed_page": 528,
+  "bbox": [
+   168.98,
+   224.63,
+   562.74,
+   265.34
+  ]
+ },
+ {
+  "fig_id": "19.5",
+  "chapter_key": "19",
+  "number": 5,
+  "caption": "Figure 19.5 Path compression during the operation FIND-SET. Arrows and self-loops at roots are omitted. (a) A tree representing a set prior to executing F IND-SET.a/. Triangles represent subtrees whose roots are the nodes shown. Each node has a pointer to its parent. (b) The same set after executing FIND-SET.a/. Each node on the ûnd path now points directly to the root.",
+  "pdf_page": 550,
+  "printed_page": 529,
+  "bbox": [
+   170.85,
+   340.43,
+   565.22,
+   393.22
+  ]
+ },
+ {
+  "fig_id": "20.1",
+  "chapter_key": "20",
+  "number": 1,
+  "caption": "Figure 20.1 Two representations of an undirected graph. (a) An undirected graph G with 5 vertices and 7 edges. (b) An adjacency-list representation of G. (c) The adjacency-matrix representation of G.",
+  "pdf_page": 571,
+  "printed_page": 550,
+  "bbox": [
+   168.98,
+   210.38,
+   563.31,
+   251.25
+  ]
+ },
+ {
+  "fig_id": "20.2",
+  "chapter_key": "20",
+  "number": 2,
+  "caption": "Figure 20.2 Two representations of a directed graph. (a) A directed graph G with 6 vertices and 8 edges. (b) An adjacency-list representation of G. (c) The adjacency-matrix representation of G.",
+  "pdf_page": 571,
+  "printed_page": 550,
+  "bbox": [
+   168.97,
+   415.43,
+   563.29,
+   444.22
+  ]
+ },
+ {
+  "fig_id": "20.3",
+  "chapter_key": "20",
+  "number": 3,
+  "caption": "Figure 20.3 The operation of BFS on an undirected graph. Each part shows the graph and the queue Q at the beginning of each iteration of the while loop of lines 10318. Vertex distances appear within each vertex and below vertices in the queue. The tan region surrounds the frontier of the search, consisting of the vertices in the queue. The light blue region surrounds the vertices behind the frontier, which have been dequeued. Each part highlights in orange the vertex dequeued and the breadth-ûrst tree edges added, if any, in the previous iteration. Blue edges belong to the breadth-ûrst tree constructed so far.",
+  "pdf_page": 578,
+  "printed_page": 557,
+  "bbox": [
+   170.85,
+   553.13,
+   564.38,
+   641.85
+  ]
+ },
+ {
+  "fig_id": "20.4",
+  "chapter_key": "20",
+  "number": 4,
+  "caption": "Figure 20.4 The progress of the depth-ûrst-search algorithm DFS on a directed graph. Edges are classiûed as they are explored: tree edges are labeled T, back edges B, forward edges F, and cross edges C. Timestamps within vertices indicate discovery time/ûnish times. Tree edges are highlighted in blue. Orange highlights indicate vertices whose discovery or ûnish times change and edges that are explored in each step.",
+  "pdf_page": 587,
+  "printed_page": 566,
+  "bbox": [
+   168.98,
+   431.18,
+   563.22,
+   496.04
+  ]
+ },
+ {
+  "fig_id": "20.5",
+  "chapter_key": "20",
+  "number": 5,
+  "caption": "Figure 20.5 Properties of depth-ûrst search. (a) The result of a depth-ûrst search of a directed graph. Vertices are timestamped and edge types are indicated as in Figure 20.4. (b) Intervals for the discovery time and ûnish time of each vertex correspond to the parenthesization shown. Each rectangle spans the interval given by the discovery and ûnish times of the corresponding vertex. Only tree edges are shown. If two intervals overlap, then one is nested within the other, and the vertex corresponding to the smaller interval is a descendant of the vertex corresponding to the larger. (c) The graph of part (a) redrawn with all tree and forward edges going down within a depth-ûrst tree and all back edges going up from a descendant to an ancestor.",
+  "pdf_page": 589,
+  "printed_page": 568,
+  "bbox": [
+   168.97,
+   357.08,
+   563.24,
+   457.87
+  ]
+ },
+ {
+  "fig_id": "20.6",
+  "chapter_key": "20",
+  "number": 6,
+  "caption": "Figure 20.6 A directed graph for use in Exercises 20.3-2 and 20.5-2.",
+  "pdf_page": 592,
+  "printed_page": 571,
+  "bbox": [
+   170.85,
+   209.33,
+   449.33,
+   226.19
+  ]
+ },
+ {
+  "fig_id": "20.7",
+  "chapter_key": "20",
+  "number": 7,
+  "caption": "Figure 20.7 (a) Professor Bumstead topologically sorts his clothing when getting dressed. Each directed edge .u;v/ means that garment u must be put on before garment v. The discovery and ûnish times from a depth-ûrst search are shown next to each vertex. (b) The same graph shown topologically sorted, with its vertices arranged from left to right in order of decreasing ûnish time. All directed edges go from left to right.",
+  "pdf_page": 595,
+  "printed_page": 574,
+  "bbox": [
+   168.97,
+   307.65,
+   563.22,
+   372.37
+  ]
+ },
+ {
+  "fig_id": "20.8",
+  "chapter_key": "20",
+  "number": 8,
+  "caption": "Figure 20.8 A dag for topological sorting.",
+  "pdf_page": 596,
+  "printed_page": 575,
+  "bbox": [
+   170.85,
+   208.28,
+   345.89,
+   225.14
+  ]
+ },
+ {
+  "fig_id": "20.9",
+  "chapter_key": "20",
+  "number": 9,
+  "caption": "Figure 20.9 (a) A directed graph G. Each region shaded light blue is a strongly connected com- ponent of G. Each vertex is labeled with its discovery and ûnish times in a depth-ûrst search, and tree edges are dark blue. (b) The graph G T , the transpose of G, with the depth-ûrst forest computed in line 3 of STRONGLY-CONNECTED-COMPONENTS shown and tree edges shaded dark blue. Each strongly connected component corresponds to one depth-ûrst tree. Orange vertices b, c, g, and h are the roots of the depth-ûrst trees produced by the depth-ûrst search of G T . (c) The acyclic component graph G SCC obtained by contracting all edges within each strongly connected component of G so that only a single vertex remains in each component.",
+  "pdf_page": 598,
+  "printed_page": 577,
+  "bbox": [
+   170.85,
+   313.8,
+   565.19,
+   414.44
+  ]
+ },
+ {
+  "fig_id": "20.10",
+  "chapter_key": "20",
+  "number": 10,
+  "caption": "Figure 20.10 The articulation points, bridges, and biconnected components of a connected, undi- rected graph for use in Problem 20-2. The articulation points are the orange vertices, the bridges are the dark blue edges, and the biconnected components are the edges in the light blue regions, with a bcc numbering shown.",
+  "pdf_page": 603,
+  "printed_page": 582,
+  "bbox": [
+   168.98,
+   210.38,
+   562.83,
+   263.17
+  ]
+ },
+ {
+  "fig_id": "21.1",
+  "chapter_key": "21",
+  "number": 1,
+  "caption": "Figure 21.1 A minimum spanning tree for a connected graph. The weights on edges are shown, and the blue edges form a minimum spanning tree. The total weight of the tree shown is 37. This minimum spanning tree is not unique: removing the edge .b;c/ and replacing it with the edge .a; h/ yields another spanning tree with weight 37.",
+  "pdf_page": 607,
+  "printed_page": 586,
+  "bbox": [
+   168.98,
+   179.93,
+   563.31,
+   232.72
+  ]
+ },
+ {
+  "fig_id": "21.2",
+  "chapter_key": "21",
+  "number": 2,
+  "caption": "Figure 21.2 A cut .S; V  S/ of the graph from Figure 21.1. Orange vertices belong to the set S , and tan vertices belong to V  S . The edges crossing the cut are those connecting tan vertices with orange vertices. The edge .d; c/ is the unique light edge crossing the cut. Blue edges form a subset A of the edges. The cut .S; V  S/ respects A, since no edge of A crosses the cut.",
+  "pdf_page": 609,
+  "printed_page": 588,
+  "bbox": [
+   168.97,
+   189.6,
+   563.4,
+   247.55
+  ]
+ },
+ {
+  "fig_id": "21.3",
+  "chapter_key": "21",
+  "number": 3,
+  "caption": "Figure 21.3 The proof of Theorem 21.1. Orange vertices belong to S , and tan vertices belong to V  S . Only edges in the minimum spanning tree T are shown, along with edge .u; v/, which does not lie in T . The edges in A are blue, and .u; v/ is a light edge crossing the cut .S; V  S/. The edge .x;y/ is an edge on the unique simple path p from u to v in T . To form a minimum spanning tree T 0 that contains .u; v/, remove the edge .x; y/ from T and add the edge .u; v/.",
+  "pdf_page": 610,
+  "printed_page": 589,
+  "bbox": [
+   170.85,
+   267.23,
+   565.1,
+   332.02
+  ]
+ },
+ {
+  "fig_id": "21.4",
+  "chapter_key": "21",
+  "number": 4,
+  "caption": "Figure 21.4 The execution of Kruskal9s algorithm on the graph from Figure 21.1. Blue edges belong to the forest A being grown. The algorithm considers each edge in sorted order by weight. A red arrow points to the edge under consideration at each step of the algorithm. If the edge joins two distinct trees in the forest, it is added to the forest, thereby merging the two trees.",
+  "pdf_page": 613,
+  "printed_page": 592,
+  "bbox": [
+   168.97,
+   495.52,
+   563.08,
+   548.32
+  ]
+ },
+ {
+  "fig_id": "21.4-cont",
+  "chapter_key": "21",
+  "number": 4,
+  "caption": "Figure 21.4, continued Further steps in the execution of Kruskal9s algorithm.",
+  "pdf_page": 614,
+  "printed_page": 593,
+  "bbox": [
+   170.85,
+   400.5,
+   484.94,
+   417.37
+  ],
+  "continued": true
+ },
+ {
+  "fig_id": "21.5",
+  "chapter_key": "21",
+  "number": 5,
+  "caption": "Figure 21.5 The execution of Prim9s algorithm on the graph from Figure 21.1. The root vertex is a. Blue vertices and edges belong to the tree being grown, and tan vertices have yet to be added to the tree. At each step of the algorithm, the vertices in the tree determine a cut of the graph, and a light edge crossing the cut is added to the tree. The edge and vertex added to the tree are highlighted in orange. In the second step (part (c)), for example, the algorithm has a choice of adding either edge .b; c/ or edge .a; h/ to the tree since both are light edges crossing the cut.",
+  "pdf_page": 616,
+  "printed_page": 595,
+  "bbox": [
+   170.85,
+   583.28,
+   564.34,
+   660.07
+  ]
+ },
+ {
+  "fig_id": "22.1",
+  "chapter_key": "22",
+  "number": 1,
+  "caption": "Figure 22.1 Negative edge weights in a directed graph. The shortest-path weight from source s appears within each vertex. Because vertices e and f form a negative-weight cycle reachable from s , they have shortest-path weights of 1. Because vertex g is reachable from a vertex whose shortest- path weight is 1, it, too, has a shortest-path weight of 1. Vertices such as h, i , and j are not reachable from s , and so their shortest-path weights are 1, even though they lie on a negative-weight cycle.",
+  "pdf_page": 628,
+  "printed_page": 607,
+  "bbox": [
+   170.85,
+   230.03,
+   565.22,
+   306.82
+  ]
+ },
+ {
+  "fig_id": "22.2",
+  "chapter_key": "22",
+  "number": 2,
+  "caption": "Figure 22.2 (a) A weighted, directed graph with shortest-path weights from source s . (b) The blue edges form a shortest-paths tree rooted at the source s . (c) Another shortest-paths tree with the same root.",
+  "pdf_page": 630,
+  "printed_page": 609,
+  "bbox": [
+   170.85,
+   210.38,
+   565.1,
+   251.24
+  ]
+ },
+ {
+  "fig_id": "22.3",
+  "chapter_key": "22",
+  "number": 3,
+  "caption": "Figure 22.3 Relaxing an edge .u; v/ with weight w.u;v/ D 2. The shortest-path estimate of each vertex appears within the vertex. (a) Because v: d > u: d C w.u; v/ prior to relaxation, the value of v: d decreases. (b) Since we have v: d හ u: d C w.u; v/ before relaxing the edge, the relaxation step leaves v: d unchanged.",
+  "pdf_page": 631,
+  "printed_page": 610,
+  "bbox": [
+   168.98,
+   203.78,
+   563.06,
+   256.57
+  ]
+ },
+ {
+  "fig_id": "22.4",
+  "chapter_key": "22",
+  "number": 4,
+  "caption": "Figure 22.4 The execution of the Bellman-Ford algorithm. The source is vertex s . The d values appear within the vertices, and blue edges indicate predecessor values: if edge .u; v/ is blue, then v: D u. In this particular example, each pass relaxes the edges in the order .t; x/; .t; y/; .t; ´/; .x; t/; .y; x/; .y; ´/; .´; x/; .´; s/;.s; t/; .s; y/. (a) The situation just before the ûrst pass over the edges. (b)–(e) The situation after each successive pass over the edges. Vertices whose shortest-path estimates and predecessors have changed due to a pass are highlighted in orange. The d and values in part (e) are the ûnal values. The Bellman-Ford algorithm returns TRUE in this example.",
+  "pdf_page": 634,
+  "printed_page": 613,
+  "bbox": [
+   170.85,
+   349.2,
+   565.19,
+   449.84
+  ]
+ },
+ {
+  "fig_id": "22.5",
+  "chapter_key": "22",
+  "number": 5,
+  "caption": "Figure 22.5 The execution of the algorithm for shortest paths in a directed acyclic graph. The vertices are topologically sorted from left to right. The source vertex is s . The d values appear within the vertices, and blue edges indicate the values. (a) The situation before the ûrst iteration of the for loop of lines 335. (b)–(g) The situation after each iteration of the for loop of lines 335. Blue vertices have had their outgoing edges relaxed. The vertex highlighted in orange was used as u in that iteration. Each edge highlighted in orange caused a d value to change when it was relaxed in that iteration. The values shown in part (g) are the ûnal values.",
+  "pdf_page": 639,
+  "printed_page": 618,
+  "bbox": [
+   168.98,
+   441.0,
+   563.36,
+   529.72
+  ]
+ },
+ {
+  "fig_id": "22.6",
+  "chapter_key": "22",
+  "number": 6,
+  "caption": "Figure 22.6 The execution of Dijkstra9s algorithm. The source s is the leftmost vertex. The shortest-path estimates appear within the vertices, and blue edges indicate predecessor values. Blue vertices belong to the set S , and tan vertices are in the min-priority queue Q D V  S . (a) The situation just before the ûrst iteration of the while loop of lines 6312. (b)–(f) The situation after each successive iteration of the while loop. In each part, the vertex highlighted in orange was chosen as vertex u in line 7, and each edge highlighted in orange caused a d value and a predecessor to change when the edge was relaxed. The d values and predecessors shown in part (f) are the ûnal values.",
+  "pdf_page": 642,
+  "printed_page": 621,
+  "bbox": [
+   170.85,
+   329.55,
+   565.16,
+   418.27
+  ]
+ },
+ {
+  "fig_id": "22.7",
+  "chapter_key": "22",
+  "number": 7,
+  "caption": "Figure 22.7 The proof of Theorem 22.6. Vertex u is selected to be added into set S in line 7 of DIJKSTRA. Vertex y is the ûrst vertex on a shortest path from the source s to vertex u that is not in set S , and x 2 S is y9s predecessor on that shortest path. The subpath from y to u may or may not re-enter set S .",
+  "pdf_page": 643,
+  "printed_page": 622,
+  "bbox": [
+   168.97,
+   187.43,
+   563.22,
+   240.22
+  ]
+ },
+ {
+  "fig_id": "22.8",
+  "chapter_key": "22",
+  "number": 8,
+  "caption": "Figure 22.8 The constraint graph corresponding to the system (22.2)–(22.9) of difference con- straints. The value of ı.v 0 ; v i / appears in each vertex v i . One feasible solution to the system is x D .5; 3; 0; 1; 4/.",
+  "pdf_page": 650,
+  "printed_page": 629,
+  "bbox": [
+   170.85,
+   260.7,
+   564.92,
+   306.57
+  ]
+ },
+ {
+  "fig_id": "22.9",
+  "chapter_key": "22",
+  "number": 9,
+  "caption": "Figure 22.9 Showing that a simple path in G  from source vertex s to vertex v is unique. If G  contains two paths p 1 (s ❀ u ❀ x ! ´ ❀ v) and p 2 (s ❀ u ❀ y ! ´ ❀ v), where x ¤ y, then ´: D x and ´: D y, a contradiction.",
+  "pdf_page": 658,
+  "printed_page": 637,
+  "bbox": [
+   170.85,
+   151.35,
+   565.16,
+   197.37
+  ]
+ },
+ {
+  "fig_id": "23.1",
+  "chapter_key": "23",
+  "number": 1,
+  "caption": "Figure 23.1 A directed graph and the sequence of matrices L .r/ computed by SLOW-APSP. You might want to verify that L .5/ , deûned as L .4/  W , equals L .4/ , and thus L .r/ D L .4/ for all r  4.",
+  "pdf_page": 673,
+  "printed_page": 652,
+  "bbox": [
+   168.98,
+   232.13,
+   563.35,
+   266.22
+  ]
+ },
+ {
+  "fig_id": "23.2",
+  "chapter_key": "23",
+  "number": 2,
+  "caption": "Figure 23.2 A weighted, directed graph for use in Exercises 23.1-1, 23.2-1, and 23.3-1.",
+  "pdf_page": 675,
+  "printed_page": 654,
+  "bbox": [
+   168.98,
+   182.03,
+   520.68,
+   198.9
+  ]
+ },
+ {
+  "fig_id": "23.3",
+  "chapter_key": "23",
+  "number": 3,
+  "caption": "Figure 23.3 Optimal substructure used by the Floyd-Warshall algorithm. Path p is a shortest path from vertex i to vertex j , and k is the highest-numbered intermediate vertex of p. Path p 1 , the portion of path p from vertex i to vertex k, has all intermediate vertices in the set f1; 2; : : : ; k  1g. The same holds for path p 2 from vertex k to vertex j .",
+  "pdf_page": 677,
+  "printed_page": 656,
+  "bbox": [
+   168.97,
+   204.98,
+   563.34,
+   257.77
+  ]
+ },
+ {
+  "fig_id": "23.4",
+  "chapter_key": "23",
+  "number": 4,
+  "caption": "Figure 23.4 The sequence of matrices D .k/ and … .k/ computed by the Floyd-Warshall algorithm for the graph in Figure 23.1.",
+  "pdf_page": 679,
+  "printed_page": 658,
+  "bbox": [
+   168.98,
+   514.05,
+   562.78,
+   542.85
+  ]
+ },
+ {
+  "fig_id": "23.5",
+  "chapter_key": "23",
+  "number": 5,
+  "caption": "Figure 23.5 A directed graph and the matrices T .k/ computed by the transitive-closure algorithm.",
+  "pdf_page": 681,
+  "printed_page": 660,
+  "bbox": [
+   168.98,
+   204.68,
+   562.73,
+   221.55
+  ]
+ },
+ {
+  "fig_id": "23.6",
+  "chapter_key": "23",
+  "number": 6,
+  "caption": "Figure 23.6 Johnson9s all-pairs shortest-paths algorithm run on the graph of Figure 23.1. Ver- tex numbers appear outside the vertices. (a) The graph G 0 with the original weight function w. The new vertex s is blue. Within each vertex v is h.v/ D ı.s; v/. (b) After reweighting each edge .u; v/ with weight function y w.u; v/ D w.u; v/ C h.u/  h.v/. (c)–(g) The result of running Dijkstra9s algorithm on each vertex of G using weight function y w. In each part, the source vertex u is blue, and blue edges belong to the shortest-paths tree computed by the algorithm. Within each vertex v are the values y ı.u; v/ and ı.u; v/, separated by a slash. The value d uv D ı.u; v/ is equal to y ı.u; v/ C h.v/  h.u/.",
+  "pdf_page": 686,
+  "printed_page": 665,
+  "bbox": [
+   170.85,
+   559.65,
+   565.26,
+   665.52
+  ]
+ },
+ {
+  "fig_id": "24.1",
+  "chapter_key": "24",
+  "number": 1,
+  "caption": "Figure 24.1 (a) A üow network G D .V; E/ for the Lucky Puck Company9s trucking problem. The Vancouver factory is the source s , and the Winnipeg warehouse is the sink t . The company ships pucks through intermediate cities, but only c.u; v/ crates per day can go from city u to city v. Each edge is labeled with its capacity. (b) A üow f in G with value jf j D 19. Each edge .u; v/ is labeled by f .u;v/=c.u; v/. The slash notation merely separates the üow and capacity and does not indicate division.",
+  "pdf_page": 692,
+  "printed_page": 671,
+  "bbox": [
+   170.85,
+   587.48,
+   565.24,
+   664.27
+  ]
+ },
+ {
+  "fig_id": "24.2",
+  "chapter_key": "24",
+  "number": 2,
+  "caption": "Figure 24.2 Converting a network with antiparallel edges to an equivalent one with no antiparallel edges. (a) A üow network containing both the edges .v 1 ; v 2 / and .v 2 ; v 1 /. (b) An equivalent network with no antiparallel edges. A new vertex v 0 was added, and edge .v 1 ; v 2 / was replaced by the pair of edges .v 1 ; v 0 / and .v 0 ; v 2 /, both with the same capacity as .v 1 ; v 2 /.",
+  "pdf_page": 694,
+  "printed_page": 673,
+  "bbox": [
+   170.85,
+   213.6,
+   564.94,
+   266.39
+  ]
+ },
+ {
+  "fig_id": "24.3",
+  "chapter_key": "24",
+  "number": 3,
+  "caption": "Figure 24.3 Converting a multiple-source, multiple-sink maximum-üow problem into a problem with a single source and a single sink. (a) A üow network with three sources S D fs 1 ; s 2 ; s 3 g and two sinks T D ft 1 ; t 2 g. (b) An equivalent single-source, single-sink üow network. Add a supersource s and an edge with inûnite capacity from s to each of the multiple sources. Also add a supersink t and an edge with inûnite capacity from each of the multiple sinks to t .",
+  "pdf_page": 695,
+  "printed_page": 674,
+  "bbox": [
+   168.97,
+   270.53,
+   563.35,
+   335.24
+  ]
+ },
+ {
+  "fig_id": "24.4",
+  "chapter_key": "24",
+  "number": 4,
+  "caption": "Figure 24.4 (a) The üow network G and üow f of Figure 24.1(b). (b) The residual network G f with augmenting path p, having residual capacity c f .p/ D c f .v 2 ; v 3 / D 4, in blue. Edges with residual capacity equal to 0, such as .v 1 ; v 3 /, are not shown, a convention we follow in the remainder of this section. (c) The üow in G that results from augmenting along path p by its residual capacity 4. Edges carrying no üow, such as .v 3 ; v 2 /, are labeled only by their capacity, another convention we follow throughout. (d) The residual network induced by the üow in (c).",
+  "pdf_page": 699,
+  "printed_page": 678,
+  "bbox": [
+   168.97,
+   325.05,
+   563.34,
+   401.84
+  ]
+ },
+ {
+  "fig_id": "24.5",
+  "chapter_key": "24",
+  "number": 5,
+  "caption": "Figure 24.5 A cut .S; T / in the üow network of Figure 24.1(b), where S D fs; v 1 ; v 2 g and T D fv 3 ; v 4 ; t g. The vertices in S are orange, and the vertices in T are tan. The net üow across .S; T / is f .S; T / D 19, and the capacity is c.S; T / D 26.",
+  "pdf_page": 704,
+  "printed_page": 683,
+  "bbox": [
+   170.85,
+   208.28,
+   565.28,
+   254.14
+  ]
+ },
+ {
+  "fig_id": "24.6",
+  "chapter_key": "24",
+  "number": 6,
+  "caption": "Figure 24.6 The execution of the basic Ford-Fulkerson algorithm. (a)–(e) Successive iterations of the while loop. The left side of each part shows the residual network G f from line 3 with a blue augmenting path p. The right side of each part shows the new üow f that results from augmenting f by f p . The residual network in (a) is the input üow network G. (f) The residual network at the last while loop test. It has no augmenting paths, and the üow f shown in (e) is therefore a maximum üow. The value of the maximum üow found is 23.",
+  "pdf_page": 708,
+  "printed_page": 687,
+  "bbox": [
+   170.83,
+   586.58,
+   564.95,
+   663.37
+  ]
+ },
+ {
+  "fig_id": "24.7",
+  "chapter_key": "24",
+  "number": 7,
+  "caption": "Figure 24.7 (a) A üow network for which FORD-FULKERSON can take ‚.E jf  j/ time, where f  is a maximum üow, shown here with jf  j D 2,000,000. The blue path is an augmenting path with residual capacity 1. (b) The resulting residual network, with another augmenting path whose residual capacity is 1. (c) The resulting residual network.",
+  "pdf_page": 709,
+  "printed_page": 688,
+  "bbox": [
+   168.98,
+   210.6,
+   563.29,
+   263.39
+  ]
+ },
+ {
+  "fig_id": "24.8",
+  "chapter_key": "24",
+  "number": 8,
+  "caption": "Figure 24.8 A bipartite graph G D .V; E/ with vertex partition V D L [ R. (a) A matching with cardinality 2, indicated by blue edges. (b) A maximum matching with cardinality 3. (c) The corresponding üow network G 0 with a maximum üow shown. Each edge has unit capacity. Blue edges have a üow of 1, and all other edges carry no üow. The blue edges from L to R correspond to those in the maximum matching from (b).",
+  "pdf_page": 715,
+  "printed_page": 694,
+  "bbox": [
+   168.97,
+   277.13,
+   563.36,
+   341.84
+  ]
+ },
+ {
+  "fig_id": "24.9",
+  "chapter_key": "24",
+  "number": 9,
+  "caption": "Figure 24.9 Grids for the escape problem. Starting points are blue, and other grid vertices are tan. (a) A grid with an escape, shown by blue paths. (b) A grid with no escape.",
+  "pdf_page": 718,
+  "printed_page": 697,
+  "bbox": [
+   170.85,
+   613.58,
+   564.91,
+   642.37
+  ]
+ },
+ {
+  "fig_id": "25.1",
+  "chapter_key": "25",
+  "number": 1,
+  "caption": "Figure 25.1 A bipartite graph, where V D L [ R, L D fl 1 ; l 2 ; : : : ; l 7 g, and R D fr 1 ; r 2 ; : : : ; r 8 g. (a) A matching M with cardinality 4, highlighted in blue. Matched vertices are blue, and unmatched vertices are tan. (b) The ûve edges highlighted in orange form an M -augmenting path P going between vertices l 6 and r 8 . (c) The set of edges M 0 D M ˚ P highlighted in blue is a matching containing one more edge than M and adding l 6 and r 8 to the matched vertices. This matching is not a maximum matching (see Exercise 25.1-1).",
+  "pdf_page": 727,
+  "printed_page": 706,
+  "bbox": [
+   168.98,
+   364.42,
+   563.34,
+   441.22
+  ]
+ },
+ {
+  "fig_id": "25.2",
+  "chapter_key": "25",
+  "number": 2,
+  "caption": "Figure 25.2 (a) The directed graph G M created in the ûrst phase for the undirected bipartite graph G and matching M in Figure 25.1(a). Breadth-ûrst distances from any unmatched vertex in L appear next to each vertex. (b) The dag H created from G M in the second phase. Because the smallest distance to an unmatched vertex in R is 3, vertices l 7 and r 8 , with distances greater than 3, are not in H .",
+  "pdf_page": 731,
+  "printed_page": 710,
+  "bbox": [
+   168.97,
+   363.38,
+   563.35,
+   428.09
+  ]
+ },
+ {
+  "fig_id": "25.3",
+  "chapter_key": "25",
+  "number": 3,
+  "caption": "Figure 25.3 The transpose H T of the dag H created in the third phase. The ûrst depth-ûrst search, starting from vertex r 1 , identiûes the M -augmenting path h.r 1 ; l 3 /; .l 3 ; r 3 /; .r 3 ; l 1 /i highlighted in orange, and it discovers vertices r 1 ; l 3 ; r 3 ; l 1 . The second depth-ûrst search, starting from vertex r 4 , identiûes the M -augmenting path h.r 4 ; l 5 /; .l 5 ; r 7 /; .r 7 ; l 6 /i highlighted in yellow, discovering vertices r 4 ; l 5 ; r 7 ; l 6 .",
+  "pdf_page": 733,
+  "printed_page": 712,
+  "bbox": [
+   168.97,
+   272.09,
+   563.34,
+   337.49
+  ]
+ },
+ {
+  "fig_id": "25.4",
+  "chapter_key": "25",
+  "number": 4,
+  "caption": "Figure 25.4 The start of the Hungarian algorithm. (a) The matrix of edge weights for a bipartite graph with L D fl 1 ; l 2 ; : : : ; l 7 g and R D fr 1 ; r 2 ; : : : ; r 7 g. The value in row i and column j indi- cates w.l i ; r j /. Feasible vertex labels appear above and next to the matrix. Red entries correspond to edges in the equality subgraph. (b) The equality subgraph G h . Edges highlighted in blue belong to the initial greedy maximal matching M . Blue vertices are matched, and tan vertices are unmatched. (c) The directed equality subgraph G M;h created from G h by directing edges in M from R to L and all other edges from L to R.",
+  "pdf_page": 748,
+  "printed_page": 727,
+  "bbox": [
+   170.85,
+   345.9,
+   565.2,
+   434.69
+  ]
+ },
+ {
+  "fig_id": "25.5",
+  "chapter_key": "25",
+  "number": 5,
+  "caption": "Figure 25.5 Finding an M -augmenting path in G M;h by breadth-ûrst search. (a) The directed equality subgraph G M;h from Figure 25.4(c). (b)–(g) Successive versions of the breadth-ûrst for- est F , shown as the vertices at each distance from the roots4the unmatched vertices in L4are dis- covered. In parts (b)–(f), the layer of vertices closest to the bottom of the ûgure are those in the ûrst- in, ûrst-out queue. For example, in part (b), the queue contains the roots hl 4 ; l 5 ; l 7 i, and in part (e), the queue contains hr 3 ; r 4 i, at distance 3 from the roots. In part (g), the unmatched vertex r 5 is dis- covered, so the breadth-ûrst search terminates. The path h.l 4 ; r 2 /; .r 2 ; l 1 /; .l 1 ; r 3 /; .r 3 ; l 6 /; .l 6 ; r 5 /i, highlighted in orange in parts (a) and (g), is an M -augmenting path. Taking its symmetric difference with the matching M yields a new matching with one more edge than M .",
+  "pdf_page": 750,
+  "printed_page": 729,
+  "bbox": [
+   170.85,
+   521.93,
+   565.22,
+   634.49
+  ]
+ },
+ {
+  "fig_id": "25.6",
+  "chapter_key": "25",
+  "number": 6,
+  "caption": "Figure 25.6 (a) The new matching M and the new directed equality subgraph G M:h after updating the matching in Figure 25.5(a) with the M -augmenting path in Figure 25.5(g). (b)–(d) Successive versions of the breadth-ûrst forest F in a new breadth-ûrst search with roots l 5 and l 7 . After the vertices l 4 and l 3 in part (d) have been removed from the queue, the queue becomes empty before the search can discover an unmatched vertex in R.",
+  "pdf_page": 751,
+  "printed_page": 730,
+  "bbox": [
+   168.97,
+   342.68,
+   563.33,
+   407.39
+  ]
+ },
+ {
+  "fig_id": "25.7",
+  "chapter_key": "25",
+  "number": 7,
+  "caption": "Figure 25.7 Updating the feasible vertex labeling and the directed equality subgraph G M;h when the queue becomes empty before ûnding an M -augmenting path. (a) With ı D 1, the values of l 3 : h, l 4 : h, l 5 : h, and l 7 : h decreased by 1 and r 2 : h and r 7 : h increased by 1. Edges .l 1 ; r 2 / and .l 6 ; r 7 / leave G M;h , and edge .l 5 ; r 3 / enters. These changes are highlighted in yellow. (b) The resulting directed equality subgraph G M;h . (c)–(f) With edge .l 5 ; r 3 / added to the breadth-ûrst forest and r 3 added to the queue, the breadth-ûrst search continues until the queue once again becomes empty in part (f).",
+  "pdf_page": 754,
+  "printed_page": 733,
+  "bbox": [
+   170.85,
+   373.35,
+   565.23,
+   462.07
+  ]
+ },
+ {
+  "fig_id": "25.8",
+  "chapter_key": "25",
+  "number": 8,
+  "caption": "Figure 25.8 Another update to the feasible vertex labeling and directed equality subgraph G M;h because the queue became empty before ûnding an M -augmenting path. (a) With ı D 1, the values of l 1 : h, l 2 : h, l 3 : h, l 4 : h, l 5 : h, and l 7 : h decrease by 1, and r 2 : h, r 3 : h, r 4 : h, and r 7 : h increase by 1. Edge .l 6 ; r 3 / leaves G M;h , and edges .l 1 ; r 6 /, .l 5 ; r 6 / and .l 7 ; r 6 / enter. (b) The resulting directed equality subgraph G M;h . (c) With edge .l 1 ; r 6 / added to the breadth-ûrst forest and r 6 unmatched, the search terminates, having found the M -augmenting path h.l 5 ; r 3 /; .r 3 ; l 1 /; .l 1 ; r 6 /i, highlighted in orange in parts (b) and (c).",
+  "pdf_page": 755,
+  "printed_page": 734,
+  "bbox": [
+   168.97,
+   343.73,
+   563.34,
+   432.44
+  ]
+ },
+ {
+  "fig_id": "25.9",
+  "chapter_key": "25",
+  "number": 9,
+  "caption": "Figure 25.9 (a) The new matching M and the new directed equality subgraph G M;h after up- dating the matching in Figure 25.8 with the M -augmenting path in Figure 25.8 parts (b) and (c). (b)–(h) Successive versions of the breadth-ûrst forest F in a new breadth-ûrst search with root l 7 . After the vertex l 4 in part (h) has been removed from the queue, the queue becomes empty before the search discovers an unmatched vertex in R.",
+  "pdf_page": 756,
+  "printed_page": 735,
+  "bbox": [
+   170.85,
+   454.13,
+   565.22,
+   518.84
+  ]
+ },
+ {
+  "fig_id": "25.10",
+  "chapter_key": "25",
+  "number": 10,
+  "caption": "Figure 25.10 Updating the feasible vertex labeling and directed equality subgraph G M;h . (a) Here, ı D 2, so the values of l 1 : h, l 2 : h, l 3 : h, l 4 : h, l 5 : h, and l 7 : h decreased by 2, and the values of r 2 : h, r 3 : h, r 4 : h, r 6 : h, and r 7 : h increased by 2. Edges .l 2 ; r 5 /, .l 3 ; r 1 /, .l 4 ; r 5 /, .l 5 ; r 1 /, and .l 5 ; r 5 / enter G M;h . (b) The resulting directed graph G M;h . (c) With edge .l 3 ; r 1 / added to the breadth- ûrst forest and r 1 unmatched, the search terminates, having found the M -augmenting path h.l 7 ; r 7 /; .r 7 ; l 3 /; .l 3 ; r 1 /i, highlighted in orange in parts (b) and (c).",
+  "pdf_page": 757,
+  "printed_page": 736,
+  "bbox": [
+   168.97,
+   344.78,
+   563.35,
+   426.72
+  ]
+ },
+ {
+  "fig_id": "25.11",
+  "chapter_key": "25",
+  "number": 11,
+  "caption": "Figure 25.11 The ûnal matching, shown for the equality subgraph G h with blue edges and blue entries in the matrix. The weights of the edges in the matching sum to 65, which is the maximum for any matching in the original complete bipartite graph G, as well as the sum of all the ûnal feasible vertex labels.",
+  "pdf_page": 758,
+  "printed_page": 737,
+  "bbox": [
+   170.85,
+   351.45,
+   564.81,
+   404.24
+  ]
+ },
+ {
+  "fig_id": "26.1",
+  "chapter_key": "26",
+  "number": 1,
+  "caption": "Figure 26.1 The invocation tree for FIB.6/. Each node in the tree represents a procedure instance whose children are the procedure instances it calls during its execution. Since each instance of F IB with the same argument does the same work to produce the same result, the inefûciency of this algorithm for computing the Fibonacci numbers can be seen by the vast number of repeated calls to compute the same thing. The portion of the tree shaded blue appears in task-parallel form in Figure 26.2.",
+  "pdf_page": 773,
+  "printed_page": 752,
+  "bbox": [
+   168.97,
+   295.05,
+   563.09,
+   371.85
+  ]
+ },
+ {
+  "fig_id": "26.2",
+  "chapter_key": "26",
+  "number": 2,
+  "caption": "Figure 26.2 The trace of P-FIB.4/ corresponding to the shaded portion of Figure 26.1. Each circle represents one strand, with blue circles representing any instructions executed in the part of the procedure (instance) up to the spawn of P-F IB.n  1/ in line 3; orange circles representing the instructions executed in the part of the procedure that calls P-FIB.n  2/ in line 4 up to the sync in line 5, where it suspends until the spawn of P-F IB.n  1/ returns; and white circles representing the instructions executed in the part of the procedure after the sync, where it sums x and y, up to the point where it returns the result. Strands belonging to the same procedure are grouped into a rounded rectangle, blue for spawned procedures and tan for called procedures. Assuming that each strand takes unit time, the work is 17 time units, since there are 17 strands, and the span is 8 time units, since the critical path4shown with blue edges4contains 8 strands.",
+  "pdf_page": 776,
+  "printed_page": 755,
+  "bbox": [
+   170.85,
+   295.58,
+   565.15,
+   420.22
+  ]
+ },
+ {
+  "fig_id": "26.3",
+  "chapter_key": "26",
+  "number": 3,
+  "caption": "Figure 26.3 Series-parallel composition of parallel traces. (a) When two traces are joined in series, the work of the composition is the sum of their work, and the span of the composition is the sum of their spans. (b) When two traces are joined in parallel, the work of the composition remains the sum of their work, but the span of the composition is only the maximum of their spans.",
+  "pdf_page": 783,
+  "printed_page": 762,
+  "bbox": [
+   168.98,
+   226.88,
+   562.97,
+   279.67
+  ]
+ },
+ {
+  "fig_id": "26.4",
+  "chapter_key": "26",
+  "number": 4,
+  "caption": "Figure 26.4 A trace for the computation of P-MAT-VEC-RECURSIVE.A; x; y; 8; 1; 8/. The two numbers within each rounded rectangle give the values of the last two parameters (i and i 0 in the procedure header) in the invocation (spawn, in blue, or call, in tan) of the procedure. The blue circles represent strands corresponding to the part of the procedure up to the spawn of P-MAT-VEC-RECURSIVE in line 5. The orange circles represent strands corresponding to the part of the procedure that calls P-MAT-VEC-RECURSIVE in line 6 up to the sync in line 7, where it suspends until the spawned subroutine in line 5 returns. The white circles represent strands corresponding to the (negligible) part of the procedure after the sync up to the point where it returns.",
+  "pdf_page": 785,
+  "printed_page": 764,
+  "bbox": [
+   168.97,
+   292.28,
+   563.44,
+   393.07
+  ]
+ },
+ {
+  "fig_id": "26.5",
+  "chapter_key": "26",
+  "number": 5,
+  "caption": "Figure 26.5 Illustration of the determinacy race in RACE-EXAMPLE. (a) A trace showing the dependencies among individual instructions. The processor registers are r 1 and r 2 . Instructions unrelated to the race, such as the implementation of loop control, are omitted. (b) An execution sequence that elicits the bug, showing the values of x in memory and registers r 1 and r 2 for each step in the execution sequence.",
+  "pdf_page": 787,
+  "printed_page": 766,
+  "bbox": [
+   168.98,
+   246.83,
+   563.2,
+   311.54
+  ]
+ },
+ {
+  "fig_id": "26.6",
+  "chapter_key": "26",
+  "number": 6,
+  "caption": "Figure 26.6 The idea behind P-MERGE-AUX, which merges two sorted subarrays AŒp 1 W r 1 c and AŒp 2 W r 2 c into the subarray BŒp 3 W r 3 c in parallel. Letting x D AŒq 1 c (shown in yellow) be a median of AŒp 1 W r 1 c and q 2 be a place in AŒp 2 W r 2 c such that x would fall between AŒq 2  1c and AŒq 2 c, every element in the subarrays AŒp 1 W q 1  1c and AŒp 2 W q 2  1c (shown in orange) is at most x, and every element in the subarrays AŒq 1 C 1 W r 1 c and AŒq 2 C 1 W r 2 c (shown in blue) is at least x. To merge, compute the index q 3 where x belongs in BŒp 3 W r 3 c, copy x into BŒq 3 c, and then recursively merge AŒp 1 W q 1  1c with AŒp 2 W q 2  1c into BŒp 3 W q 3  1c and AŒq 1 C 1 W r 1 c with AŒq 2 W r 2 c into BŒq 3 C 1 W r 3 c.",
+  "pdf_page": 798,
+  "printed_page": 777,
+  "bbox": [
+   170.85,
+   232.28,
+   565.22,
+   338.07
+  ]
+ },
+ {
+  "fig_id": "27.1",
+  "chapter_key": "27",
+  "number": 1,
+  "caption": "Figure 27.1 The costs incurred by the procedures FORESEE and MOVE-TO-FRONT when search- ing for the elements 5, 3, 4, and 4, starting with the list L D h1; 2; 3; 4; 5i. If FORESEE instead moved 3 to the front after the search for 5, the cumulative cost would not change, nor would the cumulative cost change if 4 moved to the second position after the search for 5.",
+  "pdf_page": 818,
+  "printed_page": 797,
+  "bbox": [
+   170.85,
+   198.98,
+   565.14,
+   251.69
+  ]
+ },
+ {
+  "fig_id": "28.1",
+  "chapter_key": "28",
+  "number": 1,
+  "caption": "Figure 28.1 The operation of LU-DECOMPOSITION. (a) The matrix A. (b) The result of the ûrst iteration of the outer for loop of lines 4311. The element a 11 D 2 highlighted in blue is the pivot, the tan column is v=a 11 , and the tan row is w T . The elements of U computed thus far are above the horizontal line, and the elements of L are to the left of the vertical line. The Schur complement matrix A 0  vw T =a 11 occupies the lower right. (c) The result of the next iteration of the outer for loop, on the Schur complement matrix from part (b). The element a 22 D 4 highlighted in blue is the pivot, and the tan column and row are v=a 22 and w T (in the partitioning of the Schur complement), respectively. Lines divide the matrix into the elements of U computed so far (above), the elements of L computed so far (left), and the new Schur complement (lower right). (d) After the next iteration, the matrix A is factored. The element 3 in the new Schur complement becomes part of U when the recursion terminates.) (e) The factorization A D LU .",
+  "pdf_page": 849,
+  "printed_page": 828,
+  "bbox": [
+   168.97,
+   272.63,
+   563.34,
+   414.49
+  ]
+ },
+ {
+  "fig_id": "28.2",
+  "chapter_key": "28",
+  "number": 2,
+  "caption": "Figure 28.2 The operation of LUP-DECOMPOSITION. (a) The input matrix A with the identity permutation of the rows in yellow on the left. The ûrst step of the algorithm determines that the element 5 highlighted in blue in the third row is the pivot for the ûrst column. (b) Rows 1 and 3 are swapped and the permutation is updated. The tan column and row represent v and w T . (c) The vector v is replaced by v=5, and the lower right of the matrix is updated with the Schur complement. Lines divide the matrix into three regions: elements of U (above), elements of L (left), and elements of the Schur complement (lower right). (d)–(f) The second step. (g)–(i) The third step. No further changes occur on the fourth (ûnal) step. (j) The LUP decomposition PA D LU .",
+  "pdf_page": 852,
+  "printed_page": 831,
+  "bbox": [
+   170.85,
+   508.65,
+   565.19,
+   614.59
+  ]
+ },
+ {
+  "fig_id": "28.3",
+  "chapter_key": "28",
+  "number": 3,
+  "caption": "Figure 28.3 The least-squares ût of a quadratic polynomial to the set of ûve data points f.1; 2/; .1; 1/; .2; 1/; .3; 0/; .5; 3/g. The orange dots are the data points, and the blue dots are their estimated values predicted by the polynomial F.x/ D 1:2  0:757x C 0:214x 2 , the quadratic poly- nomial that minimizes the sum of the squared errors, plotted in blue. Each orange line shows the error for one data point.",
+  "pdf_page": 865,
+  "printed_page": 844,
+  "bbox": [
+   168.97,
+   336.08,
+   562.97,
+   400.79
+  ]
+ },
+ {
+  "fig_id": "28.4",
+  "chapter_key": "28",
+  "number": 4,
+  "caption": "Figure 28.4 A least-squares ût of a curve of the form",
+  "pdf_page": 866,
+  "printed_page": 845,
+  "bbox": [
+   170.85,
+   379.88,
+   388.61,
+   396.74
+  ]
+ },
+ {
+  "fig_id": "29.1",
+  "chapter_key": "29",
+  "number": 1,
+  "caption": "Figure 29.1 The effects of policies on voters. Each entry describes the number of thousands of urban, suburban, or rural voters who could be won over by spending $1,000 on advertising support of a policy on a particular issue. Negative entries denote votes that would be lost.",
+  "pdf_page": 872,
+  "printed_page": 851,
+  "bbox": [
+   170.85,
+   163.95,
+   564.41,
+   204.82
+  ]
+ },
+ {
+  "fig_id": "29.2",
+  "chapter_key": "29",
+  "number": 2,
+  "caption": "Figure 29.2 (a) The linear program given in (29.18)3(29.21). Each constraint is represented by a line and a direction. The intersection of the constraints, which is the feasible region, is highlighted in blue. (b) The red lines show, respectively, the points for which the objective value is 0, 4, and 8. The optimal solution to the linear program is x 1 D 2 and x 2 D 6 with objective value 8.",
+  "pdf_page": 877,
+  "printed_page": 856,
+  "bbox": [
+   168.98,
+   301.05,
+   563.34,
+   359.07
+  ]
+ },
+ {
+  "fig_id": "29.3",
+  "chapter_key": "29",
+  "number": 3,
+  "caption": "Figure 29.3 (a) An example of a minimum-cost-üow problem. Capacities are denoted by c and costs by a. Vertex s is the source, and vertex t is the sink. The goal is to send 4 units of üow from s to t . (b) A solution to the minimum-cost üow problem in which 4 units of üow are sent from s to t . For each edge, the üow and capacity are written as üow/capacity.",
+  "pdf_page": 884,
+  "printed_page": 863,
+  "bbox": [
+   170.85,
+   197.25,
+   565.22,
+   250.05
+  ]
+ },
+ {
+  "fig_id": "30.1",
+  "chapter_key": "30",
+  "number": 1,
+  "caption": "Figure 30.1 A graphical outline of an efûcient polynomial-multiplication process. Representations on the top are in coefûcient form, and those on the bottom are in point-value form. The arrows from left to right correspond to the multiplication operation. The ! 2n terms are complex .2n/th roots of unity.",
+  "pdf_page": 904,
+  "printed_page": 883,
+  "bbox": [
+   170.85,
+   262.8,
+   564.9,
+   315.59
+  ]
+ },
+ {
+  "fig_id": "30.2",
+  "chapter_key": "30",
+  "number": 2,
+  "caption": "Figure 30.2 The values of ! 0",
+  "pdf_page": 907,
+  "printed_page": 886,
+  "bbox": [
+   168.97,
+   254.17,
+   295.94,
+   271.04
+  ]
+ },
+ {
+  "fig_id": "30.3",
+  "chapter_key": "30",
+  "number": 3,
+  "caption": "Figure 30.3 A circuit for a butterüy operation. (a) The two input values enter from the left, the twiddle factor ! k",
+  "pdf_page": 915,
+  "printed_page": 894,
+  "bbox": [
+   168.97,
+   603.23,
+   562.67,
+   632.02
+  ]
+ },
+ {
+  "fig_id": "30.4",
+  "chapter_key": "30",
+  "number": 4,
+  "caption": "Figure 30.4 The schema for the conquer and combine steps of an n-input, n-output FFT circuit, FFT n , shown for n D 8. Inputs enter from the left, and outputs exit from the right. The input values ûrst go through two FFT n=2 circuits, and then n=2 butterüy circuits combine the results. Only the top and bottom wires entering a butterüy interact with it: wires that pass through the middle of a butterüy do not affect that butterüy, nor are their values changed by that butterüy.",
+  "pdf_page": 916,
+  "printed_page": 895,
+  "bbox": [
+   170.85,
+   338.18,
+   564.86,
+   403.04
+  ]
+ },
+ {
+  "fig_id": "30.5",
+  "chapter_key": "30",
+  "number": 5,
+  "caption": "Figure 30.5 The tree of input vectors to the recursive calls of the FFT procedure. The initial invocation is for n D 8.",
+  "pdf_page": 917,
+  "printed_page": 896,
+  "bbox": [
+   168.98,
+   214.8,
+   563.29,
+   248.75
+  ]
+ },
+ {
+  "fig_id": "30.6",
+  "chapter_key": "30",
+  "number": 6,
+  "caption": "Figure 30.6 A full circuit that computes the FFT in parallel, here shown for n D 8 inputs. It has lg n stages, and each stage comprises n=2 butterüies that can operate in parallel. As in Figure 30.4, only the top and bottom wires entering a butterüy interact with it. For example, the top butterüy in stage 2 has inputs and outputs only on wires 0 and 2 (the wires with outputs y 0 and y 2 , respectively). This circuit has depth ‚.lg n/ and performs ‚.n lg n/ butterüy operations altogether.",
+  "pdf_page": 919,
+  "printed_page": 898,
+  "bbox": [
+   168.97,
+   337.13,
+   563.12,
+   401.84
+  ]
+ },
+ {
+  "fig_id": "31.1",
+  "chapter_key": "31",
+  "number": 1,
+  "caption": "Figure 31.1 How EXTENDED-EUCLID computes gcd.99; 78/. Each line shows one level of the recursion: the values of the inputs a and b, the computed value ba=bc, and the values d , x, and y returned. The triple .d; x; y/ returned becomes the triple .d 0 ; x 0 ; y 0 / used at the next higher level of recursion. The call EXTENDED-EUCLID.99; 78/ returns .3; 11; 14/, so that gcd.99; 78/ D 3 D 99  .11/ C 78  14.",
+  "pdf_page": 936,
+  "printed_page": 915,
+  "bbox": [
+   170.85,
+   189.53,
+   565.18,
+   259.47
+  ]
+ },
+ {
+  "fig_id": "31.2",
+  "chapter_key": "31",
+  "number": 2,
+  "caption": "Figure 31.2 Two ûnite groups. Equivalence classes are denoted by their representative elements. (a) The group .Z 6 ; C 6 /. (b) The group .Z ",
+  "pdf_page": 939,
+  "printed_page": 918,
+  "bbox": [
+   168.97,
+   257.4,
+   563.16,
+   291.5
+  ]
+ },
+ {
+  "fig_id": "31.3",
+  "chapter_key": "31",
+  "number": 3,
+  "caption": "Figure 31.3 An illustration of the Chinese remainder theorem for n 1 D 5 and n 2 D 13. For this example, c 1 D 26 and c 2 D 40. In row i , column j is shown the value of a, modulo 65, such that a mod 5 D i and a mod 13 D j . Note that row 0, column 0 contains a 0. Similarly, row 4, column 12 contains a 64 (equivalent to 1). Since c 1 D 26, moving down a row increases a by 26. Similarly, c 2 D 40 means that moving right by a column increases a by 40. Increasing a by 1 corresponds to moving diagonally downward and to the right, wrapping around from the bottom to the top and from the right to the left.",
+  "pdf_page": 952,
+  "printed_page": 931,
+  "bbox": [
+   170.85,
+   186.75,
+   565.2,
+   275.47
+  ]
+ },
+ {
+  "fig_id": "31.4",
+  "chapter_key": "31",
+  "number": 4,
+  "caption": "Figure 31.4 The values of the parameter b, the local variable d , and the value returned for recursive calls of MODULAR-EXPONENTIATION with parameter values a D 7, b D 560, and n D 561. The value returned by each recursive call is assigned directly to d . The result of the call with a D 7, b D 560, and n D 561 is 1.",
+  "pdf_page": 956,
+  "printed_page": 935,
+  "bbox": [
+   170.85,
+   139.95,
+   565.1,
+   197.89
+  ]
+ },
+ {
+  "fig_id": "31.5",
+  "chapter_key": "31",
+  "number": 5,
+  "caption": "Figure 31.5 Encryption in a public key system. Bob encrypts the message M using Alice’s public key P A and transmits the resulting ciphertext C D P A .M/ over a communication channel to Al- ice. An eavesdropper who captures the transmitted ciphertext gains no information about M . Alice receives C and decrypts it using her secret key to obtain the original message M D S A .C/.",
+  "pdf_page": 958,
+  "printed_page": 937,
+  "bbox": [
+   170.85,
+   201.68,
+   565.23,
+   259.62
+  ]
+ },
+ {
+  "fig_id": "31.6",
+  "chapter_key": "31",
+  "number": 6,
+  "caption": "Figure 31.6 Digital signatures in a public-key system. Alice signs the message M 0 by appending her digital signature D S A .M 0 / to it. She transmits the message/signature pair .M 0 ; / to Bob, who veriûes it by checking the equation M 0 D P A . /. If the equation holds, he accepts .M 0 ; / as a message that Alice has signed.",
+  "pdf_page": 959,
+  "printed_page": 938,
+  "bbox": [
+   168.98,
+   211.5,
+   563.43,
+   264.29
+  ]
+ },
+ {
+  "fig_id": "32.1",
+  "chapter_key": "32",
+  "number": 1,
+  "caption": "Figure 32.1 An example of the string-matching problem to ûnd all occurrences of the pattern P D abaa in the text T D abcabaabcabac. The pattern occurs only once in the text, at shift s D 3, which is a valid shift. A vertical line connects each character of the pattern to its matching character in the text, and all matched characters are shaded blue.",
+  "pdf_page": 978,
+  "printed_page": 957,
+  "bbox": [
+   170.85,
+   591.68,
+   564.95,
+   644.47
+  ]
+ },
+ {
+  "fig_id": "32.2",
+  "chapter_key": "32",
+  "number": 2,
+  "caption": "Figure 32.2 A graphical proof of Lemma 32.1. Suppose that x ❂ ´ and y ❂ ´. The three parts of the ûgure illustrate the three cases of the lemma. Vertical lines connect matching regions (shown in blue) of the strings. (a) If jxj හjyj, then x ❂ y. (b) If jxj jyj, then y ❂ x. (c) If jxj D jyj, then x D y.",
+  "pdf_page": 980,
+  "printed_page": 959,
+  "bbox": [
+   170.85,
+   281.55,
+   565.22,
+   339.5
+  ]
+ },
+ {
+  "fig_id": "32.3",
+  "chapter_key": "32",
+  "number": 3,
+  "caption": "Figure 32.3 The operation of the NAIVE-STRING-MATCHER procedure for the pattern P D aab and the text T D acaabc. Imagine the pattern P as a template that slides next to the text. (a)–(d) The four successive alignments tried by the naive string matcher. In each part, vertical lines connect corresponding regions found to match (shown in blue), and a red jagged line connects the ûrst mismatched character found, if any. The algorithm ûnds one occurrence of the pattern, at shift s D 2, shown in part (c).",
+  "pdf_page": 982,
+  "printed_page": 961,
+  "bbox": [
+   170.85,
+   161.4,
+   565.18,
+   243.27
+  ]
+ },
+ {
+  "fig_id": "32.4",
+  "chapter_key": "32",
+  "number": 4,
+  "caption": "Figure 32.4 The Rabin-Karp algorithm. Each character is a decimal digit. Values are computed modulo 13. (a) A text string. A window of length 5 is shaded blue. The numerical value of the blue number, computed modulo 13, yields the value 7. (b) The same text string with values computed modulo 13 for each possible position of a length-5 window. Assuming the pattern P D 31415, look for windows whose value modulo 13 is 7, since 31415 D 7 .mod 13/. The algorithm ûnds two such windows, shaded blue in the ûgure. The ûrst, beginning at text position 7, is indeed an occurrence of the pattern. The second window, beginning at text position 13, is a spurious hit. (c) How to compute the value for a window in constant time, given the value for the previous window. The ûrst window has value 31415. Dropping the high-order digit 3, shifting left (multiplying by 10), and then adding in the low-order digit 2 gives the new value 14152. Because all computations are performed modulo 13, the value for the ûrst window is 7, and the value for the new window is 8.",
+  "pdf_page": 985,
+  "printed_page": 964,
+  "bbox": [
+   168.97,
+   508.65,
+   563.36,
+   645.29
+  ]
+ },
+ {
+  "fig_id": "32.5",
+  "chapter_key": "32",
+  "number": 5,
+  "caption": "Figure 32.5 A simple two-state ûnite automaton with state set Q D f0; 1g, start state q 0 D 0, and input alphabet † D fa; bg. (a) A tabular representation of the transition function ı. (b) An equivalent state-transition diagram. State 1, in orange, is the only accepting state. Directed edges represent transitions. For example, the edge from state 1 to state 0 labeled b indicates that ı.1; b/ D 0. This automaton accepts those strings that end in an odd number of a’s. More precisely, it accepts a string x if and only if x D y´, where y D \" or y ends with a b, and ´ D a k , where k is odd. For example, on input abaaa, including the start state, this automaton enters the sequence of states h0; 1; 0; 1; 0; 1i, and so it accepts this input. For input abbaa, it enters the sequence of states h0; 1; 0; 0; 1; 0i, and so it rejects this input.",
+  "pdf_page": 989,
+  "printed_page": 968,
+  "bbox": [
+   168.97,
+   182.03,
+   563.39,
+   294.59
+  ]
+ },
+ {
+  "fig_id": "32.6",
+  "chapter_key": "32",
+  "number": 6,
+  "caption": "Figure 32.6 (a) A state-transition diagram for the string-matching automaton that accepts all strings ending in the string ababaca. State 0 is the start state, and state 7 (in orange) is the only ac- cepting state. The transition function ı is deûned by equation (32.4), and a directed edge from state i to state j labeled a represents ı.i; a/ D j . The right-going edges forming the <spine= of the automa- ton, shown in blue, correspond to successful matches between pattern and input characters. Except for the edges from state 7 to states 1 and 2, the left-going edges correspond to mismatches. Some edges corresponding to mismatches are omitted: by convention, if a state i has no outgoing edge la- beled a for some a 2 †, then ı.i; a/ D 0. (b) The corresponding transition function ı, and the pattern string P D ababaca. The entries corresponding to successful matches between pattern and input characters are shown in blue. (c) The operation of the automaton on the text T D abababacaba. Under each text character T Œic appears the state \u000e.T Œ W ic/ that the automaton is in after processing the preûx T Œ W ic. The substring of the pattern that occurs in the text is highlighted in blue. The automaton ûnds this one occurrence of the pattern, ending in position 9.",
+  "pdf_page": 990,
+  "printed_page": 969,
+  "bbox": [
+   170.85,
+   378.75,
+   565.22,
+   539.17
+  ]
+ },
+ {
+  "fig_id": "32.7",
+  "chapter_key": "32",
+  "number": 7,
+  "caption": "Figure 32.7 An illustration for the proof of Lemma 32.2. The ûgure shows that r හ .x/ C 1, where r D .xa/.",
+  "pdf_page": 993,
+  "printed_page": 972,
+  "bbox": [
+   168.98,
+   172.2,
+   563.34,
+   206.14
+  ]
+ },
+ {
+  "fig_id": "32.8",
+  "chapter_key": "32",
+  "number": 8,
+  "caption": "Figure 32.8 An illustration for the proof of Lemma 32.3. The ûgure shows that r D .P Œ W qca/, where q D .x/ and r D .xa/.",
+  "pdf_page": 993,
+  "printed_page": 972,
+  "bbox": [
+   168.97,
+   342.15,
+   563.34,
+   376.09
+  ]
+ },
+ {
+  "fig_id": "32.9",
+  "chapter_key": "32",
+  "number": 9,
+  "caption": "Figure 32.9 The preûx function . (a) The pattern P D ababaca aligns with a text T so that the ûrst q D 5 characters match. Matching characters, in blue, are connected by blue lines. (b) Knowing these particular 5 matched characters (P Œ W 5c) sufûces to deduce that a shift of s C 1 is invalid, but that a shift of s 0 D s C 2 is consistent with everything known about the text and therefore is potentially valid. The preûx P Œ W kc, where k D 3, aligns with the text seen so far. (c) A shift of s C 4 is also potentially valid, but it leaves only the preûx P Œ W 1c aligned with the text seen so far. (d) To precompute useful information for such deductions, compare the pattern with itself. Here, the longest preûx of P that is also a proper sufûx of P Œ W 5c is P Œ W 3c. The array represents this precomputed information, so that Œ5c D 3. Given that q characters have matched successfully at shift s , the next potentially valid shift is at s 0 D s C .q  Œqc/ as shown in part (b).",
+  "pdf_page": 998,
+  "printed_page": 977,
+  "bbox": [
+   170.85,
+   249.45,
+   565.17,
+   379.09
+  ]
+ },
+ {
+  "fig_id": "32.10",
+  "chapter_key": "32",
+  "number": 10,
+  "caption": "Figure 32.10 An illustration of Lemma 32.5 for the pattern P D ababaca and q D 5. (a) The function for the given pattern. Since Œ5c D 3, Œ3c D 1, and Œ1c D 0, iterating gives  Œ5c D f3; 1; 0g. (b) Sliding the template containing the pattern P to the right and noting when some preûx P Œ W kc of P matches up with some proper sufûx of P Œ W 5c. Matches occur when k D 3, 1, and 0. In the ûgure, the ûrst row gives P , and the vertical red line is drawn just after P Œ W 5c. Successive rows show all the shifts of P that cause some preûx P Œ W kc of P to match some sufûx of P Œ W 5c. Successfully matched characters are shown in blue. Blue lines connect aligned matching characters. Thus, fk W k < 5 and P Œ W kc ❂ P Œ W 5cg D f3; 1; 0g. Lemma 32.5 claims that  Œqc D fk W k < q and P Œ W kc ❂ P Œ W qcg for all q.",
+  "pdf_page": 1000,
+  "printed_page": 979,
+  "bbox": [
+   170.85,
+   243.15,
+   565.2,
+   361.09
+  ]
+ },
+ {
+  "fig_id": "32.11",
+  "chapter_key": "32",
+  "number": 11,
+  "caption": "Figure 32.11 The sufûx array SA, rank array rank, longest common preûx array LCP, and lexi- cographically sorted sufûxes of the text T D ratatat with length n D 7. The value of rankŒic indicates the position of the sufûx T Œi W c in the lexicographically sorted order: rankŒSAŒicc D i for i D 1; 2; : : : ; n. The rank array is used to compute the LCP array.",
+  "pdf_page": 1007,
+  "printed_page": 986,
+  "bbox": [
+   168.98,
+   191.1,
+   563.31,
+   249.04
+  ]
+ },
+ {
+  "fig_id": "32.12",
+  "chapter_key": "32",
+  "number": 12,
+  "caption": "Figure 32.12 The substr-rank array for indices i D 1; 2; : : : ; 7 after the for loop of lines 237 and after the sorting step in line 8 for input string T D ratatat.",
+  "pdf_page": 1010,
+  "printed_page": 989,
+  "bbox": [
+   170.93,
+   198.38,
+   564.84,
+   232.4
+  ]
+ },
+ {
+  "fig_id": "32.13",
+  "chapter_key": "32",
+  "number": 13,
+  "caption": "Figure 32.13 The rank array after line 11 and the substr-rank array after lines 12317 and after line 18 in the ûrst iteration of the while loop of lines 10319, where l D 2.",
+  "pdf_page": 1011,
+  "printed_page": 990,
+  "bbox": [
+   168.98,
+   198.38,
+   562.99,
+   232.39
+  ]
+ },
+ {
+  "fig_id": "32.14",
+  "chapter_key": "32",
+  "number": 14,
+  "caption": "Figure 32.14 The rank array after line 11 and the substr-rank array after lines 12317 and after line 18 in the second4and ûnal4iteration of the while loop of lines 10319, where l D 4.",
+  "pdf_page": 1012,
+  "printed_page": 991,
+  "bbox": [
+   170.85,
+   198.38,
+   564.94,
+   232.39
+  ]
+ },
+ {
+  "fig_id": "32.15",
+  "chapter_key": "32",
+  "number": 15,
+  "caption": "Figure 32.15 Computed values when sorting the sample sufûxes of the linear-time sufûx-array algorithm for the text T D bippityboppityboo.",
+  "pdf_page": 1019,
+  "printed_page": 998,
+  "bbox": [
+   168.97,
+   194.1,
+   562.33,
+   228.05
+  ]
+ },
+ {
+  "fig_id": "32.16",
+  "chapter_key": "32",
+  "number": 16,
+  "caption": "Figure 32.16 The ranks r 1 through r nC3 for the text T D bippityboppityboo with n D 17.",
+  "pdf_page": 1020,
+  "printed_page": 999,
+  "bbox": [
+   170.85,
+   137.7,
+   563.94,
+   159.73
+  ]
+ },
+ {
+  "fig_id": "33.1",
+  "chapter_key": "33",
+  "number": 1,
+  "caption": "Figure 33.1 The iterations of Lloyd’s procedure when clustering the capitals of the lower 48 states and the District of Columbia into k D 4 clusters. Each capital has two attributes: latitude and longitude. Each iteration reduces the value f , measuring the sum of squares of distances of all capitals to their cluster centers, until the value of f does not change. (a) The initial four clusters, with the capitals of Arkansas, Kansas, Louisiana, and Tennessee chosen as centers. (b)–(k) Iterations of Lloyd’s procedure. (l) The 11th iteration results in the same value of f as the 10th iteration in part (k), and so the procedure terminates.",
+  "pdf_page": 1028,
+  "printed_page": 1007,
+  "bbox": [
+   170.85,
+   571.65,
+   565.16,
+   660.37
+  ]
+ },
+ {
+  "fig_id": "33.2",
+  "chapter_key": "33",
+  "number": 2,
+  "caption": "Figure 33.2 Using Lloyd’s procedure for vector quantization to compress a photo by using fewer colors. (a) The original photo has 350,000 pixels (700  500), each a 24-bit RGB (red/blue/green) triple of 8-bit values; these pixels (colors) are the <points= to be clustered. Points repeat, so there are only 79,083 distinct colors (less than 2 24 ). After compression, only k distinct colors are used, so each pixel is represented by only dlg ke bits instead of 24. A <palette= maps these values back to 24-bit RGB values (the cluster centers). (b)–(e) The same photo with k D 4, 16, 64, and 256 colors. (Photo from standuppaddle, pixabay.com.)",
+  "pdf_page": 1035,
+  "printed_page": 1014,
+  "bbox": [
+   168.98,
+   573.3,
+   563.18,
+   662.02
+  ]
+ },
+ {
+  "fig_id": "33.3",
+  "chapter_key": "33",
+  "number": 3,
+  "caption": "Figure 33.3 A function f W R ! R, shown in blue. Its gradient at point x .0/ , in orange, has a negative slope, and so a small increase in x from x .0/ to x 0 results in f .x 0 / < f .x .0/ /. Small increases in x from x .0/ head toward y x, which gives a local minimum. Too large an increase in x can end up at x 00 , where f .x 00 / > f .x .0/ /. Small steps starting from x .0/ and going only in the direction of decreasing values of f cannot end up at the global minimizer x  .",
+  "pdf_page": 1045,
+  "printed_page": 1024,
+  "bbox": [
+   168.98,
+   260.7,
+   563.5,
+   325.48
+  ]
+ },
+ {
+  "fig_id": "33.4",
+  "chapter_key": "33",
+  "number": 4,
+  "caption": "Figure 33.4 An example of running gradient descent on a convex function f W R ! R, shown in blue. Beginning at point x .0/ , each iteration moves in the direction opposite to the gradient, and the distance moved is proportional to the magnitude of the gradient. Orange lines represent the negative of the gradient at each point, scaled by the step size \u0003 . As the iterations proceed, the magnitude of the gradient decreases, and the distance moved decreases correspondingly. After each iteration, the distance to the optimal point x  decreases.",
+  "pdf_page": 1047,
+  "printed_page": 1026,
+  "bbox": [
+   168.98,
+   291.38,
+   563.3,
+   368.23
+  ]
+ },
+ {
+  "fig_id": "33.5",
+  "chapter_key": "33",
+  "number": 5,
+  "caption": "Figure 33.5 A convex function f W R ! R, shown in blue, with local and global minimizer x  . Because f is convex, f . x C .1  /y / හ f . x/ C .1  /f . y / for any two values x and y and all 0 හ හ 1, shown for a particular value of . Here, the orange line segment represents all values f . x/ C .1  /f . y / for 0 හ හ 1, and it is above the blue line.",
+  "pdf_page": 1047,
+  "printed_page": 1026,
+  "bbox": [
+   168.9,
+   486.0,
+   563.35,
+   543.94
+  ]
+ },
+ {
+  "fig_id": "33.6",
+  "chapter_key": "33",
+  "number": 6,
+  "caption": "Figure 33.6 Projecting a point b 0 outside the convex body K to the closest point b D … K .b 0 / in K. Line ` is the line containing b and b 0 , and point c is the projection of a onto `. (a) When c is in K. (b) When c is not in K. (c) When a is on the boundary of K and c coincides with b.",
+  "pdf_page": 1054,
+  "printed_page": 1033,
+  "bbox": [
+   170.85,
+   209.33,
+   565.25,
+   250.19
+  ]
+ },
+ {
+  "fig_id": "34.1",
+  "chapter_key": "34",
+  "number": 1,
+  "caption": "Figure 34.1 How to use a polynomial-time reduction algorithm to solve a decision problem A in polynomial time, given a polynomial-time decision algorithm for another problem B. In polynomial time, transform an instance ˛ of A into an instance ˇ of B, solve B in polynomial time, and use the answer for ˇ as the answer for ˛.",
+  "pdf_page": 1067,
+  "printed_page": 1046,
+  "bbox": [
+   168.97,
+   159.08,
+   563.41,
+   211.87
+  ]
+ },
+ {
+  "fig_id": "34.2",
+  "chapter_key": "34",
+  "number": 2,
+  "caption": "Figure 34.2 (a) A graph representing the vertices, edges, and faces of a dodecahedron, with a hamiltonian cycle shown by edges highlighted in blue. (b) A bipartite graph with an odd number of vertices. Any such graph is nonhamiltonian.",
+  "pdf_page": 1078,
+  "printed_page": 1057,
+  "bbox": [
+   170.85,
+   297.83,
+   564.53,
+   338.7
+  ]
+ },
+ {
+  "fig_id": "34.3",
+  "chapter_key": "34",
+  "number": 3,
+  "caption": "Figure 34.3 Four possibilities for relationships among complexity classes. In each diagram, one region enclosing another indicates a proper-subset relation. (a) P D NP D co-NP. Most researchers regard this possibility as the most unlikely. (b) If NP is closed under complement, then NP D co-NP, but it need not be the case that P D NP. (c) P D NP \\ co-NP, but NP is not closed under complement. (d) NP ¤ co-NP and P ¤ NP \\ co-NP. Most researchers regard this possibility as the most likely.",
+  "pdf_page": 1080,
+  "printed_page": 1059,
+  "bbox": [
+   170.85,
+   274.88,
+   565.17,
+   344.75
+  ]
+ },
+ {
+  "fig_id": "34.4",
+  "chapter_key": "34",
+  "number": 4,
+  "caption": "Figure 34.4 A function f that reduces language L 1 to language L 2 . For any input x 2 f0; 1g  , the question of whether x 2 L 1 has the same answer as the question of whether f .x/ 2 L 2 .",
+  "pdf_page": 1083,
+  "printed_page": 1062,
+  "bbox": [
+   168.98,
+   232.28,
+   563.34,
+   266.22
+  ]
+ },
+ {
+  "fig_id": "34.5",
+  "chapter_key": "34",
+  "number": 5,
+  "caption": "Figure 34.5 The proof of Lemma 34.3. The algorithm F is a reduction algorithm that computes the reduction function f from L 1 to L 2 in polynomial time, and A 2 is a polynomial-time algorithm that decides L 2 . Algorithm A 1 decides whether x 2 L 1 by using F to transform any input x into f .x/ and then using A 2 to decide whether f .x/ 2 L 2 .",
+  "pdf_page": 1084,
+  "printed_page": 1063,
+  "bbox": [
+   170.85,
+   168.9,
+   565.34,
+   226.85
+  ]
+ },
+ {
+  "fig_id": "34.6",
+  "chapter_key": "34",
+  "number": 6,
+  "caption": "Figure 34.6 How most theoretical computer scientists view the relationships among P, NP, and NPC. Both P and NPC are wholly contained within NP, and P \\ NPC D ;.",
+  "pdf_page": 1085,
+  "printed_page": 1064,
+  "bbox": [
+   168.97,
+   188.55,
+   562.52,
+   222.49
+  ]
+ },
+ {
+  "fig_id": "34.7",
+  "chapter_key": "34",
+  "number": 7,
+  "caption": "Figure 34.7 Three basic logic gates, with binary inputs and outputs. Under each gate is the truth table that describes the gate’s operation. (a) The NOT gate. (b) The AND gate. (c) The OR gate.",
+  "pdf_page": 1086,
+  "printed_page": 1065,
+  "bbox": [
+   170.85,
+   224.63,
+   563.9,
+   253.42
+  ]
+ },
+ {
+  "fig_id": "34.8",
+  "chapter_key": "34",
+  "number": 8,
+  "caption": "Figure 34.8 Two instances of the circuit-satisûability problem. (a) The assignment hx 1 D 1; x 2 D 1; x 3 D 0i to the inputs of this circuit causes the output of the circuit to be 1. The circuit is therefore satisûable. (b) No assignment to the inputs of this circuit can cause the output of the circuit to be 1. The circuit is therefore unsatisûable.",
+  "pdf_page": 1087,
+  "printed_page": 1066,
+  "bbox": [
+   168.98,
+   244.28,
+   563.14,
+   297.07
+  ]
+ },
+ {
+  "fig_id": "34.9",
+  "chapter_key": "34",
+  "number": 9,
+  "caption": "Figure 34.9 The sequence of conûgurations produced by an algorithm A running on an input x and certiûcate y. Each conûguration represents the state of the computer for one step of the computation and, besides A, x, and y, includes the program counter (PC), auxiliary machine state, and working storage. Except for the certiûcate y, the initial conûguration c 0 is constant. A boolean combinational circuit M maps each conûguration to the next conûguration. The output is a distinguished bit in the working storage.",
+  "pdf_page": 1090,
+  "printed_page": 1069,
+  "bbox": [
+   170.85,
+   478.13,
+   565.2,
+   554.92
+  ]
+ },
+ {
+  "fig_id": "34.10",
+  "chapter_key": "34",
+  "number": 10,
+  "caption": "Figure 34.10 Reducing circuit satisûability to formula satisûability. The formula produced by the reduction algorithm has a variable for each wire in the circuit and a clause for each logic gate.",
+  "pdf_page": 1096,
+  "printed_page": 1075,
+  "bbox": [
+   170.85,
+   220.2,
+   564.77,
+   249.14
+  ]
+ },
+ {
+  "fig_id": "34.11",
+  "chapter_key": "34",
+  "number": 11,
+  "caption": "Figure 34.11 The tree corresponding to the formula \u000e D ..x 1 !x 2 /_:..:x 1 $x 3 /_x 4 //^:x 2 :",
+  "pdf_page": 1098,
+  "printed_page": 1077,
+  "bbox": [
+   170.85,
+   294.53,
+   565.2,
+   316.54
+  ]
+ },
+ {
+  "fig_id": "34.12",
+  "chapter_key": "34",
+  "number": 12,
+  "caption": "Figure 34.12 The truth table for the clause .y 1 $ .y 2 ^ :x 2 //.",
+  "pdf_page": 1099,
+  "printed_page": 1078,
+  "bbox": [
+   168.97,
+   222.9,
+   431.05,
+   244.92
+  ]
+ },
+ {
+  "fig_id": "34.13",
+  "chapter_key": "34",
+  "number": 13,
+  "caption": "Figure 34.13 The structure of NP-completeness proofs in Sections 34.4 and 34.5. All proofs ulti- mately follow by reduction from the NP-completeness of CIRCUIT-SAT.",
+  "pdf_page": 1102,
+  "printed_page": 1081,
+  "bbox": [
+   170.85,
+   296.78,
+   563.94,
+   325.57
+  ]
+ },
+ {
+  "fig_id": "34.14",
+  "chapter_key": "34",
+  "number": 14,
+  "caption": "Figure 34.14 The graph G derived from the 3-CNF formula \u000e D C 1 ^ C 2 ^ C 3 , where C 1 D .x 1 _ :x 2 _ :x 3 /, C 2 D .:x 1 _ x 2 _ x 3 /, and C 3 D .x 1 _ x 2 _ x 3 /, in reducing 3-CNF-SAT to CLIQUE. A satisfying assignment of the formula has x 2 D 0, x 3 D 1, and x 1 set to either 0 or 1. This assignment satisûes C 1 with :x 2 , and it satisûes C 2 and C 3 with x 3 , corresponding to the clique with blue vertices.",
+  "pdf_page": 1104,
+  "printed_page": 1083,
+  "bbox": [
+   170.85,
+   298.87,
+   565.19,
+   363.74
+  ]
+ },
+ {
+  "fig_id": "34.15",
+  "chapter_key": "34",
+  "number": 15,
+  "caption": "Figure 34.15 Reducing CLIQUE to VERTEX-COVER. (a) An undirected graph G D .V; E/ with clique V 0 D fu; v; x; yg, shown in blue. (b) The graph G produced by the reduction algorithm that has vertex cover V  V 0 D fw; ´g, in blue.",
+  "pdf_page": 1105,
+  "printed_page": 1084,
+  "bbox": [
+   168.97,
+   234.45,
+   563.3,
+   280.47
+  ]
+ },
+ {
+  "fig_id": "34.16",
+  "chapter_key": "34",
+  "number": 16,
+  "caption": "Figure 34.16 The gadget used in reducing the vertex-cover problem to the hamiltonian-cycle prob- lem. An edge .u; v/ of graph G corresponds to gadget Z uv in the graph G 0 created in the reduction. (a) The gadget, with individual vertices labeled. (b)–(d) The paths highlighted in blue are the only possible ones through the gadget that include all vertices, assuming that the only connections from the gadget to the remainder of G 0 are through vertices Œu; v; 1c, Œu; v; 6c, Œv; u; 1c, and Œv; u; 6c.",
+  "pdf_page": 1107,
+  "printed_page": 1086,
+  "bbox": [
+   168.97,
+   222.38,
+   562.89,
+   287.17
+  ]
+ },
+ {
+  "fig_id": "34.17",
+  "chapter_key": "34",
+  "number": 17,
+  "caption": "Figure 34.17 Reducing an instance of the vertex-cover problem to an instance of the hamiltonian- cycle problem. (a) An undirected graph G with a vertex cover of size 2, consisting of the blue vertices w and y. (b) The undirected graph G 0 produced by the reduction, with the hamiltonian cycle corresponding to the vertex cover highlighted in blue. The vertex cover fw; yg corresponds to edges .s 1 ; Œw; x; 1c/ and .s 2 ; Œy; x; 1c/ appearing in the hamiltonian cycle.",
+  "pdf_page": 1109,
+  "printed_page": 1088,
+  "bbox": [
+   168.98,
+   405.98,
+   563.26,
+   470.69
+  ]
+ },
+ {
+  "fig_id": "34.18",
+  "chapter_key": "34",
+  "number": 18,
+  "caption": "Figure 34.18 An instance of the traveling-salesperson problem. Edges highlighted in blue repre- sent a minimum-cost tour, with cost 7.",
+  "pdf_page": 1112,
+  "printed_page": 1091,
+  "bbox": [
+   170.85,
+   182.03,
+   563.96,
+   210.82
+  ]
+ },
+ {
+  "fig_id": "34.19",
+  "chapter_key": "34",
+  "number": 19,
+  "caption": "Figure 34.19 The reduction of 3-CNF-SAT to SUBSET-SUM. The formula in 3-CNF is \u000e D C 1 ^C 2 ^C 3 ^C 4 , where C 1 D .x 1 _:x 2 _:x 3 /, C 2 D .:x 1 _:x 2 _:x 3 /, C 3 D .:x 1 _:x 2 _x 3 /, and C 4 D .x 1 _ x 2 _ x 3 /. A satisfying assignment of \u000e is hx 1 D 0; x 2 D 0; x 3 D 1i. The set S produced by the reduction consists of the base-10 numbers shown: reading from top to bottom, S D f1001001; 1000110; 100001; 101110; 10011; 11100; 1000; 2000; 100; 200; 10; 20; 1; 2 g. The target t is 1114444. The subset S 0 ෂ S is shaded blue, and it contains v 0",
+  "pdf_page": 1114,
+  "printed_page": 1093,
+  "bbox": [
+   170.85,
+   344.78,
+   565.22,
+   426.72
+  ]
+ },
+ {
+  "fig_id": "34.20",
+  "chapter_key": "34",
+  "number": 20,
+  "caption": "Figure 34.20 The subgraph of G in Problem 34-3 formed by the literal edges. The special vertices",
+  "pdf_page": 1122,
+  "printed_page": 1101,
+  "bbox": [
+   170.85,
+   195.15,
+   565.16,
+   212.02
+  ]
+ },
+ {
+  "fig_id": "34.21",
+  "chapter_key": "34",
+  "number": 21,
+  "caption": "Figure 34.21 The gadget corresponding to a clause .x _ y _ ´/, used in Problem 34-3.",
+  "pdf_page": 1122,
+  "printed_page": 1101,
+  "bbox": [
+   170.85,
+   373.05,
+   521.64,
+   395.07
+  ]
+ },
+ {
+  "fig_id": "35.1",
+  "chapter_key": "35",
+  "number": 1,
+  "caption": "Figure 35.1 The operation of APPROX-VERTEX-COVER. (a) The input graph G, which has 7 vertices and 8 edges. (b) The highlighted edge .b; c/ is the ûrst edge chosen by APPROX-VERTEX- COVER. Vertices b and c, in blue, are added to the set C containing the vertex cover being created. Dashed edges .a; b/, .c; e/, and .c; d/ are removed since they are now covered by some vertex in C . (c) Edge .e; f / is chosen, and vertices e and f are added to C . (d) Edge .d; g/ is cho- sen, and vertices d and g are added to C . (e) The set C , which is the vertex cover produced by APPROX-VERTEX-COVER, contains the six vertices b; c; d; e; f; g. (f) The optimal vertex cover for this problem contains only three vertices: b, d , and e.",
+  "pdf_page": 1129,
+  "printed_page": 1108,
+  "bbox": [
+   168.97,
+   353.55,
+   563.86,
+   454.19
+  ]
+ },
+ {
+  "fig_id": "35.2",
+  "chapter_key": "35",
+  "number": 2,
+  "caption": "Figure 35.2 The operation of APPROX-TSP-TOUR. (a) A complete undirected graph. Vertices lie on intersections of integer grid lines. For example, f is one unit to the right and two units up from h. The cost function between two points is the ordinary euclidean distance. (b) A minimum spanning tree T of the complete graph, as computed by MST-PRIM. Vertex a is the root vertex. Only edges in the minimum spanning tree are shown. The vertices happen to be labeled in such a way that they are added to the main tree by MST-PRIM in alphabetical order. (c) A walk of T , starting at a. A full walk of the tree visits the vertices in the order a; b; c; b; h; b; a; d; e; f; e; g; e; d; a. A preorder walk of T lists a vertex just when it is ûrst encountered, as indicated by the dot next to each vertex, yielding the ordering a; b; c; h; d; e; f; g. (d) A tour obtained by visiting the vertices in the order given by the preorder walk, which is the tour H returned by APPROX-TSP-TOUR. Its total cost is approximately 19:074. (e) An optimal tour H  for the original complete graph. Its total cost is approximately 14:715.",
+  "pdf_page": 1132,
+  "printed_page": 1111,
+  "bbox": [
+   170.85,
+   371.48,
+   565.24,
+   520.19
+  ]
+ },
+ {
+  "fig_id": "35.3",
+  "chapter_key": "35",
+  "number": 3,
+  "caption": "Figure 35.3 An instance .X; F / of the set-covering problem, where X consists of the 12 tan points and F D fS 1 ; S 2 ; S 3 ; S 4 ; S 5 ; S 6 g. Each set S i 2 F is outlined in blue. A minimum-size set cover is C D fS 3 ; S 4 ; S 5 g, with size 3. The greedy algorithm produces a cover of size 4 by selecting either the sets S 1 , S 4 , S 5 , and S 3 or the sets S 1 , S 4 , S 5 , and S 6 , in order.",
+  "pdf_page": 1138,
+  "printed_page": 1117,
+  "bbox": [
+   170.85,
+   237.75,
+   564.95,
+   290.54
+  ]
+ },
+ {
+  "fig_id": "A.1",
+  "chapter_key": "A",
+  "number": 1,
+  "caption": "Figure A.1 Approximation of P n",
+  "pdf_page": 1172,
+  "printed_page": 1151,
+  "bbox": [
+   170.85,
+   560.15,
+   319.26,
+   598.94
+  ]
+ },
+ {
+  "fig_id": "B.1",
+  "chapter_key": "B",
+  "number": 1,
+  "caption": "Figure B.1 A Venn diagram illustrating the ûrst of DeMorgan’s laws (B.2). Each of the sets A, B, and C is represented as a circle.",
+  "pdf_page": 1176,
+  "printed_page": 1155,
+  "bbox": [
+   170.85,
+   183.08,
+   565.14,
+   211.87
+  ]
+ },
+ {
+  "fig_id": "B.2",
+  "chapter_key": "B",
+  "number": 2,
+  "caption": "Figure B.2 Directed and undirected graphs. (a) A directed graph G D .V; E/, where V D f1; 2; 3; 4; 5; 6g and E D f.1; 2/; .2; 2/; .2; 4/; .2; 5/; .4; 1/; .4; 5/; .5; 4/; .6; 3/g. The edge .2; 2/ is a self-loop. (b) An undirected graph G D .V; E/, where V D f1; 2; 3; 4; 5; 6g and E D f.1; 2/; .1; 5/; .2; 5/; .3; 6/g. The vertex 4 is isolated. (c) The subgraph of the graph in part (a) induced by the vertex set f1; 2; 3; 6g.",
+  "pdf_page": 1185,
+  "printed_page": 1164,
+  "bbox": [
+   168.98,
+   586.42,
+   563.45,
+   656.44
+  ]
+ },
+ {
+  "fig_id": "B.3",
+  "chapter_key": "B",
+  "number": 3,
+  "caption": "Figure B.3 (a) A pair of isomorphic graphs. The vertices of the top graph are mapped to the vertices of the bottom graph by f .1/ D u; f .2/ D v; f .3/ D w; f .4/ D x; f .5/ D y; f .6/ D ´. (b) Two graphs that are not isomorphic. The top graph has a vertex of degree 4, and the bottom graph does not.",
+  "pdf_page": 1188,
+  "printed_page": 1167,
+  "bbox": [
+   170.85,
+   274.88,
+   565.07,
+   327.67
+  ]
+ },
+ {
+  "fig_id": "B.4",
+  "chapter_key": "B",
+  "number": 4,
+  "caption": "Figure B.4 (a) A free tree. (b) A forest. (c) A graph that contains a cycle and is therefore neither a tree nor a forest.",
+  "pdf_page": 1190,
+  "printed_page": 1169,
+  "bbox": [
+   170.85,
+   627.45,
+   564.41,
+   656.24
+  ]
+ },
+ {
+  "fig_id": "B.5",
+  "chapter_key": "B",
+  "number": 5,
+  "caption": "Figure B.5 A step in the proof of Theorem B.2: if (1) G is a free tree, then (2) any two vertices in G are connected by a unique simple path. Assume for the sake of contradiction that vertices u and v are connected by two distinct simple paths. These paths ûrst diverge at vertex w, and they ûrst reconverge at vertex ´. The path p 0 concatenated with the reverse of the path p 00 forms a cycle, which yields the contradiction.",
+  "pdf_page": 1191,
+  "printed_page": 1170,
+  "bbox": [
+   168.98,
+   191.85,
+   563.31,
+   256.57
+  ]
+ },
+ {
+  "fig_id": "B.6",
+  "chapter_key": "B",
+  "number": 6,
+  "caption": "Figure B.6 Rooted and ordered trees. (a) A rooted tree with height 4. The tree is drawn in a standard way: the root (node 7) is at the top, its children (nodes with depth 1) are beneath it, their children (nodes with depth 2) are beneath them, and so forth. If the tree is ordered, the relative left- to-right order of the children of a node matters; otherwise, it doesn’t. (b) Another rooted tree. As a rooted tree, it is identical to the tree in (a), but as an ordered tree it is different, since the children of node 3 appear in a different order.",
+  "pdf_page": 1193,
+  "printed_page": 1172,
+  "bbox": [
+   168.97,
+   256.28,
+   563.35,
+   333.07
+  ]
+ },
+ {
+  "fig_id": "B.7",
+  "chapter_key": "B",
+  "number": 7,
+  "caption": "Figure B.7 Binary trees. (a) A binary tree drawn in a standard way. The left child of a node is drawn beneath the node and to the left. The right child is drawn beneath and to the right. (b) A binary tree different from the one in (a). In (a), the left child of node 7 is 5 and the right child is absent. In (b), the left child of node 7 is absent and the right child is 5. As ordered trees, these trees are the same, but as binary trees, they are distinct. (c) The binary tree in (a) represented by the internal nodes of a full binary tree: an ordered tree in which each internal node has degree 2. The leaves in the tree are shown as squares.",
+  "pdf_page": 1195,
+  "printed_page": 1174,
+  "bbox": [
+   168.97,
+   235.5,
+   563.28,
+   324.22
+  ]
+ },
+ {
+  "fig_id": "B.8",
+  "chapter_key": "B",
+  "number": 8,
+  "caption": "Figure B.8 A complete binary tree of height 3 with 8 leaves and 7 internal nodes.",
+  "pdf_page": 1196,
+  "printed_page": 1175,
+  "bbox": [
+   170.85,
+   208.28,
+   499.41,
+   225.14
+  ]
+ },
+ {
+  "fig_id": "C.1",
+  "chapter_key": "C",
+  "number": 1,
+  "caption": "Figure C.1 A geometric distribution with probability p D 1=3 of success and a probability q D 1  p of failure. The expectation of the distribution is 1=p D 3.",
+  "pdf_page": 1218,
+  "printed_page": 1197,
+  "bbox": [
+   170.85,
+   369.9,
+   564.89,
+   403.92
+  ]
+ },
+ {
+  "fig_id": "C.2",
+  "chapter_key": "C",
+  "number": 2,
+  "caption": "Figure C.2 The binomial distribution b.kI 15; 1=3/ resulting from n D 15 Bernoulli trials, each with probability p D 1=3 of success. The expectation of the distribution is np D 5.",
+  "pdf_page": 1220,
+  "printed_page": 1199,
+  "bbox": [
+   170.85,
+   292.28,
+   564.99,
+   326.37
+  ]
+ }
+]

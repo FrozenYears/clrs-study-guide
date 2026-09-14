@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>运行时自测 · smoke</title>
+    <link rel="stylesheet" href="../assets/theme.css" />
+    <link rel="stylesheet" href="../assets/layout.css" />
+    <link rel="stylesheet" href="../assets/components.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="app-header">
+        <a class="brand" href="../index.html">← 地图</a>
+        <span class="spacer"></span>
+        <button id="theme-toggle" class="btn btn--sm" type="button">主题：自动</button>
+      </header>
+
+      <main class="app-main stack" id="main">
+        <h1 class="card__title">运行时自测页（smoke）</h1>
+        <p class="card__meta">验证 core 四个模块：router / store / stepper / katex。不引用 viz/ 或 algorithms/。</p>
+
+        <!-- 1. stepper -->
+        <section class="card">
+          <h2 class="card__title">① 步进引擎 stepper</h2>
+          <div id="stepper-mount" style="outline: var(--bd-w) solid var(--bd-0); border-radius: var(--radius-md); padding: var(--sp-3);">
+            <div id="stepper-bars" style="display:flex; gap:4px; height:64px; align-items:flex-end;"></div>
+            <p id="stepper-note" class="card__meta" style="margin-top: var(--sp-2);"></p>
+            <p id="stepper-counter" class="card__meta"></p>
+          </div>
+          <div class="row" style="margin-top: var(--sp-3);">
+            <button class="btn" id="btn-play" type="button">▶ 播放</button>
+            <button class="btn" id="btn-step" type="button">→ 单步</button>
+            <button class="btn" id="btn-back" type="button">← 回退</button>
+            <button class="btn" id="btn-reset" type="button">⟲ 重置</button>
+            <label class="card__meta">速度
+              <input id="speed" type="range" min="100" max="2000" step="50" value="650" />
+              <span id="speed-val">650</span> ms
+            </label>
+          </div>
+          <p class="card__meta">焦点在上方可视化框内时：← / → 单步，空格 播放/暂停，Home / End 跳首尾。</p>
+        </section>
+
+        <!-- 2. router -->
+        <section class="card">
+          <h2 class="card__title">② 路由 router</h2>
+          <div class="row">
+            <a class="btn btn--sm" href="#/">#/ 首页</a>
+            <a class="btn btn--sm" href="#/ch02/s01/s04">#/ch02/s01/s04</a>
+            <a class="btn btn--sm" href="#/appendix/a/s01">#/appendix/a/s01</a>
+            <a class="btn btn--sm" href="#/ch99/zzz">#/ch99/zzz（404）</a>
+          </div>
+          <pre id="route-info" class="code" style="margin-top: var(--sp-3);"></pre>
+        </section>
+
+        <!-- 3. store -->
+        <section class="card">
+          <h2 class="card__title">③ 存储 store（刷新后仍在）</h2>
+          <div class="row">
+            <button class="btn btn--sm" id="st-mark" type="button">标记 visualize 完成</button>
+            <button class="btn btn--sm" id="st-quiz" type="button">记录测验 0.8</button>
+            <button class="btn btn--sm" id="st-wrong" type="button">加一道错题</button>
+            <button class="btn btn--sm" id="st-clear" type="button">清空进度</button>
+          </div>
+          <pre id="store-info" class="code" style="margin-top: var(--sp-3);"></pre>
+        </section>
+
+        <!-- 4. katex -->
+        <section class="card">
+          <h2 class="card__title">④ 数学渲染 katex（极简离线版）</h2>
+          <div id="katex-box" class="stack"></div>
+          <p id="katex-mixed" class="card__meta"></p>
+        </section>
+      </main>
+    </div>
+
+    <script type="module">
+      import { h, $, on } from "../assets/core/dom.js";
+      import * as store from "../assets/core/store.js";
+      import * as router from "../assets/core/router.js";
+      import * as katex from "../assets/core/katex.js";
+      import { createStepper } from "../assets/core/stepper.js";
+
+      /* ---------- 主题 ---------- */
+      const THEME_ORDER = ["auto", "light", "dark"];
+      const THEME_LABEL = { auto: "自动", light: "明色", dark: "暗色" };
+      const toggleBtn = $("#theme-toggle");
+      function refreshTheme() {
+        toggleBtn.textContent = "主题：" + (THEME_LABEL[store.getThemePref()] || store.getThemePref());
+      }
+      on(toggleBtn, "click", () => {
+        const cur = store.getThemePref();
+        store.setThemePref(THEME_ORDER[(THEME_ORDER.indexOf(cur) + 1) % 3]);
+        refreshTheme();
+      });
+      store.applyTheme();
+      refreshTheme();
+
+      /* ---------- ① stepper：12 帧计数器 ---------- */
+      function* counter() {
+        for (let i = 0; i < 12; i++) {
+          yield { value: i, note: `第 ${i} 帧：计数 = ${i}` };
+        }
+      }
+      const barsEl = $("#stepper-bars");
+      const noteEl = $("#stepper-note");
+      const counterEl = $("#stepper-counter");
+
+      function paintBars(v) {
+        barsEl.replaceChildren();
+        for (let k = 0; k < 12; k++) {
+          const cell = h("div", {
+            style: {
+              flex: "1 1 0",
+              height: `${20 + k * 3}px`,
+              background: k <= v ? "var(--viz-done)" : "var(--viz-idle)",
+              borderRadius: "var(--radius-sm)",
+            },
+          });
+          barsEl.appendChild(cell);
+        }
+      }
+
+      const stepper = createStepper(counter(), { total: 12, mount: $("#stepper-mount") });
+      stepper.onFrame((frame, state) => {
+        paintBars(frame ? frame.value : 0);
+        noteEl.textContent = frame ? frame.note : "（无帧）";
+        counterEl.textContent = `帧 ${state.index + 1} / ${state.total ?? "?"} · 播放中：${state.playing}`;
+      });
+
+      $("#btn-play").addEventListener("click", () => stepper.toggle());
+      $("#btn-step").addEventListener("click", () => stepper.step());
+      $("#btn-back").addEventListener("click", () => stepper.stepBack());
+      $("#btn-reset").addEventListener("click", () => stepper.reset());
+      const speed = $("#speed");
+      speed.addEventListener("input", () => {
+        stepper.setSpeed(Number(speed.value));
+        $("#speed-val").textContent = speed.value;
+      });
+
+      /* ---------- ② router ---------- */
+      const routeInfo = $("#route-info");
+      router.onChange((route) => {
+        routeInfo.textContent = JSON.stringify(route, null, 2);
+      });
+      router.start();
+
+      /* ---------- ③ store ---------- */
+      const storeInfo = $("#store-info");
+      function refreshStore() {
+        storeInfo.textContent = JSON.stringify(store.getState(), null, 2);
+      }
+      $("#st-mark").addEventListener("click", () => {
+        store.markStage("ch02", "s01", "visualize");
+        refreshStore();
+      });
+      $("#st-quiz").addEventListener("click", () => {
+        store.setQuiz("ch02", "s01", 0.8);
+        refreshStore();
+      });
+      $("#st-wrong").addEventListener("click", () => {
+        store.addWrong({ ch: "ch02", sec: "s01", q: "2.1-3" });
+        refreshStore();
+      });
+      $("#st-clear").addEventListener("click", () => {
+        localStorage.removeItem("clrs:state");
+        location.reload();
+      });
+      refreshStore();
+
+      /* ---------- ④ katex ---------- */
+      const kbox = $("#katex-box");
+      kbox.appendChild(katex.renderBlock("\\Theta(n\\lg n)\\;\\le\\;\\mathcal{O}(n^2)"));
+      kbox.appendChild(katex.renderBlock("T(n)=\\sum_{i=1}^{n} i = \\frac{n(n+1)}{2}"));
+      kbox.appendChild(katex.renderBlock("a=\\sqrt{b^2+c^2}"));
+      kbox.appendChild(katex.renderInline("\\lfloor x\\rfloor\\;,\\;\\lceil y\\rceil\\;,\\;x\\in A\\cap B"));
+      $("#katex-mixed").appendChild(
+        katex.renderMixed("插入排序最坏情况为 $\\Theta(n^2)$，最好情况为 $\\Theta(n)$，其中 $n$ 是数组长度。")
+      );
+    </script>
+  </body>
+</html>
