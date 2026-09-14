@@ -1,12 +1,15 @@
-// merge-sort.js — MERGE-SORT(A, p, r) 原书 7 行（pdf_index 60 / printed 39，已核对）
+// merge-sort.js — MERGE-SORT(A, p, r) 原书 7 行（pdf_index 60 / printed 39，已核对印刷页图）
 //
-//  1 if p ≥ r
+//  1 if p ≥ r                          // zero or one element?
 //  2     return
-//  3 q = ⌊(p + r) / 2⌋                  // midpoint of A[p .. r]
-//  4 MERGE-SORT(A, p, q)               // recursively sort A[p .. q]
-//  5 MERGE-SORT(A, q + 1, r)           // recursively sort A[q + 1 .. r]
-//  6 // Merge A[p .. q] and A[q + 1 .. r] into A[p .. r].   （注释）
+//  3 q = ⌊(p + r)/2⌋                   // midpoint of A[p : r]
+//  4 MERGE-SORT(A, p, q)               // recursively sort A[p : q]
+//  5 MERGE-SORT(A, q + 1, r)           // recursively sort A[q + 1 : r]
+//  6 // Merge A[p : q] and A[q + 1 : r] into A[p : r].
 //  7 MERGE(A, p, q, r)
+//
+// 第 4 版的排版约定（与第 3 版不同，本站严格照抄）：子数组写 A[p : q]（冒号）；
+// 伪代码用 = 表示赋值；注释用 //。
 //
 // 「一条代码两种用途」：本生成器既可在 node 中断言测试（跑完得排序结果），
 // 也可由 stepper 把每一帧映射成动画。divide 阶段 yield 帧显示 p/q/r 子树，
@@ -29,7 +32,7 @@ function* mergeSortRec(a, p, r, counts) {
   if (p >= r) {
     yield {
       line: 1, array: a.slice(), pointers: { p, r }, highlight: {},
-      note: p > r ? `空区间 [${p}..${r}]` : `A[${p}] 单元素，已有序`,
+      note: p > r ? `空区间 A[${p}:${r}]` : `A[${p}] 单元素，已有序`,
       counts: { cmp: counts.cmp, move: counts.move }, invariantHolds: true, done: false,
     };
     return;
@@ -38,16 +41,16 @@ function* mergeSortRec(a, p, r, counts) {
   const q = Math.floor((p + r) / 2);
   yield {
     line: 3, array: a.slice(), pointers: { p, q, r }, highlight: { pivot: [q] },
-    note: `q = ⌊(p+r)/2⌋ = ${q}：划分 [${p}..${q}] 与 [${q + 1}..${r}]`,
+    note: `q = ⌊(p+r)/2⌋ = ${q}：划分 A[${p}:${q}] 与 A[${q + 1}:${r}]`,
     counts: { cmp: counts.cmp, move: counts.move }, invariantHolds: true, done: false,
   };
   // 第 4 行：MERGE-SORT(A, p, q)
-  yield { line: 4, array: a.slice(), pointers: { p, q, r }, highlight: {}, note: `递归排序左半 [${p}..${q}]`, counts: { cmp: counts.cmp, move: counts.move }, invariantHolds: true, done: false };
+  yield { line: 4, array: a.slice(), pointers: { p, q, r }, highlight: {}, note: `递归排序左半 A[${p}:${q}]`, counts: { cmp: counts.cmp, move: counts.move }, invariantHolds: true, done: false };
   yield* mergeSortRec(a, p, q, counts);
   // 第 5 行：MERGE-SORT(A, q + 1, r)
-  yield { line: 5, array: a.slice(), pointers: { p, q, r }, highlight: {}, note: `递归排序右半 [${q + 1}..${r}]`, counts: { cmp: counts.cmp, move: counts.move }, invariantHolds: true, done: false };
+  yield { line: 5, array: a.slice(), pointers: { p, q, r }, highlight: {}, note: `递归排序右半 A[${q + 1}:${r}]`, counts: { cmp: counts.cmp, move: counts.move }, invariantHolds: true, done: false };
   yield* mergeSortRec(a, q + 1, r, counts);
   // 第 7 行：MERGE(A, p, q, r)
-  yield { line: 7, array: a.slice(), pointers: { p, q, r }, highlight: {}, note: `合并 [${p}..${q}] 与 [${q + 1}..${r}]`, counts: { cmp: counts.cmp, move: counts.move }, invariantHolds: true, done: false };
+  yield { line: 7, array: a.slice(), pointers: { p, q, r }, highlight: {}, note: `合并 A[${p}:${q}] 与 A[${q + 1}:${r}]`, counts: { cmp: counts.cmp, move: counts.move }, invariantHolds: true, done: false };
   yield* merge(a, p, q, r, counts);
 }

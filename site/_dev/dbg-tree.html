@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>树引擎逐帧自检</title>
+<style>
+  body { font: 14px/1.6 system-ui, sans-serif; margin: 16px; }
+  .ok   { color: #157f3b; }
+  .fail { color: #b3261e; }
+  li { font-family: ui-monospace, monospace; font-size: 12.5px; }
+</style>
+</head>
+<body>
+<h1>树引擎逐帧自检</h1>
+<p>验证 <code>viz/tree.js</code> 能把「静态树序列」的每一帧都渲染出来，且节点数符合预期。
+   数据取自 2.3 关卡里原书 Figure 2.4 / Figure 2.5 的两组序列。</p>
+<ul id="log"></ul>
+<p id="verdict">…</p>
+
+<script type="module">
+import { create as createTreeViz } from '../assets/viz/tree.js';
+import level from '../chapters/ch02-getting-started/s02-merge-sort.js';
+
+const log = document.getElementById('log');
+const el = (t, c, s) => { const n = document.createElement(t); if (c) n.className = c; if (s != null) n.textContent = s; return n; };
+let pass = 0, fail = 0;
+function ok(cond, msg) {
+  if (cond) { pass++; log.appendChild(el('li', 'ok', 'PASS  ' + msg)); }
+  else { fail++; log.appendChild(el('li', 'fail', 'FAIL  ' + msg)); }
+}
+
+/* 数一棵树里的节点数（矩形数）。 */
+function countNodes(svg) { return svg.querySelectorAll('rect').length; }
+
+/* 从关卡文件里收集所有声明了 trees 的面板（阶段 4 两块 + 阶段 6 一块）。 */
+const specs = [];
+level.stages.forEach((st, si) => {
+  const list = Array.isArray(st.panels) && st.panels.length ? st.panels : [st];
+  list.forEach((spec, pi) => {
+    if (Array.isArray(spec.trees) && spec.trees.length) {
+      specs.push({ name: `阶段 ${si} · 面板 ${pi + 1}`, trees: spec.trees, notes: spec.treeNotes || [] });
+    }
+  });
+});
+ok(specs.length === 2, `关卡里共找到 ${specs.length} 组树序列（期望 2：阶段 4 的 Figure 2.4、阶段 6 的 Figure 2.5）`);
+
+specs.forEach((s) => {
+  const box = document.createElement('div');
+  document.body.appendChild(box);
+  const v = createTreeViz(box, {});
+  const svg = box.querySelector('svg');
+  const counts = [];
+  s.trees.forEach((t) => {
+    v.render(t);
+    counts.push(countNodes(svg));
+  });
+
+  ok(counts.every((c) => c >= 1), `${s.name}：${counts.length} 帧全部渲染出至少 1 个节点（节点数 ${counts.join(' → ')}）`);
+  ok(counts[0] === 1, `${s.name}：第 0 帧只画根节点（实际 ${counts[0]}）`);
+  ok(Math.max(...counts) <= 15, `${s.name}：节点数峰值 ${Math.max(...counts)} ≤ 15`);
+  ok(s.trees.every((t) => t && t.root && t.root.label),
+     `${s.name}：每一帧的根节点都有 label`);
+  v.destroy();
+});
+
+// 幂等性：同一帧渲染两次，节点数不变（render 必须幂等，见开发规范 4.4）
+{
+  const box = document.createElement('div');
+  document.body.appendChild(box);
+  const v = createTreeViz(box, {});
+  const svg = box.querySelector('svg');
+  const t = specs[0].trees[3];
+  v.render(t); const a = countNodes(svg);
+  v.render(t); const b = countNodes(svg);
+  ok(a === b && a === 15, `render 幂等：同一帧连续渲染两次节点数不变且为 15（实际 ${a} / ${b}）`);
+  v.destroy();
+}
+
+document.getElementById('verdict').textContent =
+  (fail === 0 ? 'TREE_ALL_OK' : 'TREE_HAS_FAILURES') + ` — ${pass} passed, ${fail} failed`;
+</script>
+</body>
+</html>

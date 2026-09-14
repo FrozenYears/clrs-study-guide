@@ -121,6 +121,26 @@ console.log('\n[4] MERGE 单独测试（原书 Figure 2.3：L=[2,4,6,7], R=[1,2,
   const c = { cmp: 0, move: 0 };
   for (const _ of merge(A, 1, 4, 8, c)) void _;
   ok(JSON.stringify(A) === JSON.stringify([1, 2, 2, 3, 4, 5, 6, 7]), `merge(A,1,4,8) -> [${A}]`);
+  // 每次把值写回 A（第 14/16/21/25 行）都要计一次 move；两段共 nL+nR 个元素，
+  // 每个恰好写回一次，故 move 必须精确等于 r−p+1 = 8。
+  ok(c.move === 8, `merge(A,1,4,8) 写回次数 move=${c.move}（期望 8 = r−p+1）`);
+  ok(c.cmp <= 7, `merge(A,1,4,8) 比较次数 cmp=${c.cmp} ≤ nL+nR−1 = 7`);
+}
+// 每个元素恰好写回一次 —— 用穷举交叉段验证
+{
+  let allExact = true, checked = 0;
+  for (let t = 0; t < 200; t++) {
+    const nL = 1 + (t * 7) % 6, nR = 1 + (t * 5) % 7;
+    const n = nL + nR;
+    const a = new Array(n);
+    for (let i = 0; i < nL; i++) a[i] = (i + 1) * 2;
+    for (let j = 0; j < nR; j++) a[nL + j] = (j + 1) * 2 - 1;
+    const c = { cmp: 0, move: 0 };
+    for (const _ of merge(a, 1, nL, n, c)) void _;
+    checked++;
+    if (c.move !== n) allExact = false;
+  }
+  ok(allExact, `200 组合并的写回次数均恰好等于区间长度 r−p+1（共校验 ${checked} 组）`);
 }
 
 console.log(`\n==== 结果：${passed} passed, ${failed} failed ====`);

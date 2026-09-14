@@ -402,38 +402,83 @@ function rSource(stage) {
   return { node: h('div', { class: 'stack' }, ...kids), destroy() {} };
 }
 
-function rPseudocode(stage) {
-  const kids = [stageHead(stage)];
+/**
+ * 渲染「一段伪代码」：标题行 + 可点行的代码表。
+ * 单独抽出来，是因为分治类章节一关里常有两段配套伪代码
+ * （如 2.3 的 MERGE-SORT 与它调用的 MERGE），用 stage.more 追加。
+ */
+function pseudoListing(listing) {
+  const kids = [];
   kids.push(h('div', { class: 'row' },
-    h('span', { class: 'pc-ref' }, stage.signature || stage.algo),
-    pageRef(stage.page)
+    h('span', { class: 'pc-ref' }, listing.signature || listing.algo),
+    pageRef(listing.page)
   ));
-  const table = pseudocodeTable(stage.lines, { interactive: true });
+  const table = pseudocodeTable(listing.lines, { interactive: true });
   kids.push(table.node);
   kids.push(h('p', { class: 'card__meta' },
-    '点任意一行，看它到底在做什么。'));
-  if (stage.vars && stage.vars.length) {
-    kids.push(kvTable('变量表', stage.vars.map((v) => [v.name, katex.renderMixed(v.meaning)])));
+    listing.hint || '点任意一行，看它到底在做什么。'));
+  if (listing.vars && listing.vars.length) {
+    kids.push(kvTable('变量表', listing.vars.map((v) => [v.name, katex.renderMixed(v.meaning)])));
   }
-  if (stage.note) kids.push(noteBlock(h('p', { style: { margin: '0' } }, katex.renderMixed(stage.note))));
+  if (listing.note) {
+    kids.push(noteBlock(h('p', { style: { margin: '0' } }, katex.renderMixed(listing.note))));
+  }
   return { node: h('div', { class: 'stack' }, ...kids), destroy: table.destroy };
 }
 
-function rVisualize(stage, ctx) {
+function rPseudocode(stage) {
+  const kids = [stageHead(stage)];
+  if (stage.lead) {
+    kids.push(noteBlock(h('p', { style: { margin: '0' } }, katex.renderMixed(stage.lead))));
+  }
+
+  const listings = [stage].concat(Array.isArray(stage.more) ? stage.more : []);
+  const rendered = listings.map(pseudoListing);
+  rendered.forEach((r, i) => {
+    if (rendered.length > 1) {
+      const sub = listings[i].subtitle || listings[i].signature || listings[i].algo;
+      kids.push(h('h3', { class: 'card__title' }, (i + 1) + ' · ' + sub));
+    }
+    kids.push(r.node);
+  });
+
+  return {
+    node: h('div', { class: 'stack' }, ...kids),
+    destroy() { rendered.forEach((r) => r.destroy()); },
+  };
+}
+
+/**
+ * 渲染一个「可视化面板」：一个引擎 + 一个驱动源 + 一套控制条。
+ *
+ * 为什么单独抽出来：分治类关卡一关里常要并排看两个动作
+ * （2.3 既要看 MERGE-SORT 的整体递归，也要看 MERGE 合并这一步）。
+ * 上层用 stage.panels = [spec, spec] 声明；不写 panels 时，
+ * stage 自身就是唯一的面板，老关卡完全不受影响。
+ */
+function makeVizPanel(stage, ctx) {
   const vizMod = getViz(stage.viz);
   const algoFn = getAlgorithm(stage.algorithm);
-  if (!vizMod || !algoFn) {
+  // 三种驱动方式：
+  //   1) algorithm：由算法生成器产帧（最常用）
+  //   2) trees：给一串「逐层展开」的静态树，帧 0..n-1 依次渲染 —— 用于递归树的
+  //      逐步展开（Figure 2.4 / 2.5），不需要算法生成器
+  //   3) 两者都没有 -> 提示未注册
+  const treeSeq = Array.isArray(stage.trees) && stage.trees.length ? stage.trees : null;
+  if (!vizMod || (!algoFn && !treeSeq)) {
     return {
-      node: h('div', { class: 'stack' }, stageHead(stage),
+      node: h('div', null,
         noteBlock(h('p', { style: { margin: '0' } },
           `可视化引擎「${stage.viz}」或算法「${stage.algorithm}」尚未注册。`))),
       destroy() {},
     };
   }
 
-  const presets = stage.presets && stage.presets.length
-    ? stage.presets
-    : [{ name: '默认输入', array: (stage.input && stage.input.array) || [] }];
+  const presets = !treeSeq
+    ? (stage.presets && stage.presets.length
+        ? stage.presets
+        : [{ name: '默认输入', array: (stage.input && stage.input.array) || [] }])
+    : [];
 
   const pseudoMod = findPseudocodeStage(ctx.level, stage.pseudocodeRef);
   const pseudo = pseudoMod
@@ -465,9 +510,16 @@ function rVisualize(stage, ctx) {
   // 预跑一遍数帧数（n 很小，成本可忽略）
   function countFrames(arr) {
     let n = 0;
-    const it = algoFn(arr.slice());
+    const it = algoFn(arr.slice(), ...(stage.algoArgs || []));
     for (let r = it.next(); !r.done; r = it.next()) n++;
     return n;
+  }
+
+  /** 静态树序列：把它包装成一个「每帧一棵树」的生成器，复用同一套步进控制。 */
+  function* treeSeqGen() {
+    for (let i = 0; i < treeSeq.length; i++) {
+      yield { line: null, note: (stage.treeNotes && stage.treeNotes[i]) || `展开第 ${i} 步` };
+    }
   }
 
   function build(idx) {
@@ -477,16 +529,17 @@ function rVisualize(stage, ctx) {
     host.replaceChildren();
     viz = vizMod.create(host, { mode: stage.vizMode || 'bars' });
 
-    const arr = presets[idx].array.slice();
     const speedMs = Number(speed.value) || 650;
-    stepper = createStepper(algoFn(arr.slice()), {
-      mount: host,
-      speed: speedMs,
-      total: countFrames(arr),
-    });
+    const arr = treeSeq ? [] : presets[idx].array.slice();
+    stepper = createStepper(
+      treeSeq ? treeSeqGen() : algoFn(arr.slice(), ...(stage.algoArgs || [])),
+      { mount: host, speed: speedMs, total: treeSeq ? treeSeq.length : countFrames(arr) }
+    );
 
     stepper.onFrame((frame, state) => {
-      viz.render(frame);
+      // 递归树类帧把树放在 frame.tree 上；静态树序列直接取第 index 棵。
+      if (treeSeq) viz.render(treeSeq[Math.min(state.index, treeSeq.length - 1)]);
+      else viz.render(frame && frame.tree ? frame.tree : frame);
       if (pseudo) pseudo.setActive(frame.line);
       counterEl.textContent = `帧 ${state.index} / ${Math.max(0, (state.total || 0) - 1)}` +
         (state.playing ? ' · 播放中' : state.done ? ' · 已结束' : '');
@@ -500,8 +553,8 @@ function rVisualize(stage, ctx) {
               title: '书中 2.2 的 Σtᵢ：第 5 行被求值的次数，含每轮最后一次为假的那次判断',
             }, '第 5 行求值 Σtᵢ = ' + c.line5)
           : null,
-        h('span', { class: 'badge' }, '触发搬移 ' + (c.cmp ?? 0) + ' 次'),
-        h('span', { class: 'badge' }, '搬移 ' + (c.move ?? 0) + ' 次'),
+        h('span', { class: 'badge' }, '比较 ' + (c.cmp ?? 0) + ' 次'),
+        h('span', { class: 'badge' }, '写回 ' + (c.move ?? 0) + ' 次'),
         h('span', { class: 'badge' }, '当前行 ' + (frame.line ?? '—'))
       );
       const ok = frame.invariantHolds !== false;
@@ -524,8 +577,10 @@ function rVisualize(stage, ctx) {
     counterEl
   );
   const controls2 = h('div', { class: 'viz-controls' },
-    h('label', { class: 'card__meta' }, '输入 '),
-    presetSel,
+    presets.length
+      ? h('label', { class: 'card__meta' }, '输入 ')
+      : null,
+    presets.length ? presetSel : null,
     h('label', { class: 'card__meta' }, '速度 '),
     speed
   );
@@ -535,7 +590,7 @@ function rVisualize(stage, ctx) {
   const vizPanel = h('div', { class: 'viz-panel' },
     host, controls, controls2, noteEl, readoutEl, invEl);
 
-  const kids = [stageHead(stage)];
+  const kids = [];
   kids.push(pseudo
     ? h('div', { class: 'layout-level' },
         h('div', { class: 'col-left' },
@@ -563,12 +618,45 @@ function rVisualize(stage, ctx) {
   };
 }
 
+/** 可视化阶段。默认一块面板；stage.panels 可声明多块。 */
+function rVisualize(stage, ctx) {
+  const specs = Array.isArray(stage.panels) && stage.panels.length
+    ? stage.panels.map((p) => Object.assign({}, p, { viz: p.viz || stage.viz }))
+    : [stage];
+
+  const kids = [stageHead(stage)];
+  if (stage.lead) {
+    kids.push(noteBlock(h('p', { style: { margin: '0' } }, katex.renderMixed(stage.lead))));
+  }
+
+  const panels = specs.map((spec) => makeVizPanel(spec, ctx));
+  panels.forEach((p, i) => {
+    if (panels.length > 1) {
+      kids.push(h('h3', { class: 'card__title' }, '（' + (i + 1) + '）' + (specs[i].title || '')));
+    }
+    kids.push(p.node);
+  });
+  if (stage.tail) {
+    kids.push(noteBlock(h('p', { style: { margin: '0' } }, katex.renderMixed(stage.tail))));
+  }
+
+  return {
+    node: h('div', { class: 'stack' }, ...kids),
+    destroy() { panels.forEach((p) => p.destroy()); },
+  };
+}
+
 function findPseudocodeStage(level, ref) {
   if (!level || !level.stages) return null;
-  const pcs = level.stages.filter((s) => s.type === 'pseudocode');
-  if (!pcs.length) return null;
-  if (!ref) return pcs[0];
-  return pcs.find((s) => s.algo === ref) || pcs[0];
+  // 一个阶段里可能有主伪代码 + stage.more 的配套伪代码（如 MERGE-SORT 与 MERGE），
+  // 所以要一并检索，动画才能按算法名找对高亮的那张表。
+  const all = [];
+  level.stages
+    .filter((s) => s.type === 'pseudocode')
+    .forEach((s) => { all.push(s); (s.more || []).forEach((m) => all.push(m)); });
+  if (!all.length) return null;
+  if (!ref) return all[0];
+  return all.find((s) => s.algo === ref) || all[0];
 }
 
 function rCode(stage) {
@@ -686,9 +774,32 @@ function rAnalyze(stage) {
       h('summary', null, d.title || '推导'), body));
   });
 
+  // 有的分析阶段需要用**递归树**把推导画出来（如 2.3 的 Figure 2.5）。
+  // 直接复用可视化面板，避免再写一套控制器。
+  let treePanel = null;
+  if (stage.trees || stage.algorithm) {
+    treePanel = makeVizPanel({
+      viz: stage.viz || 'tree',
+      vizMode: stage.vizMode,
+      algorithm: stage.algorithm,
+      trees: stage.trees,
+      treeNotes: stage.treeNotes,
+      presets: stage.presets,
+      input: stage.input,
+      algoArgs: stage.algoArgs,
+      pseudocodeRef: stage.pseudocodeRef,
+      invariants: stage.invariants,
+    }, {});
+    kids.push(h('h3', { class: 'card__title' }, stage.figureTitle || '递归树'));
+    kids.push(treePanel.node);
+  }
+
   if (stage.note) kids.push(noteBlock(h('p', { style: { margin: '0' } }, katex.renderMixed(stage.note))));
 
-  return { node: h('div', { class: 'stack' }, ...kids), destroy() {} };
+  return {
+    node: h('div', { class: 'stack' }, ...kids),
+    destroy() { if (treePanel) treePanel.destroy(); },
+  };
 }
 
 function rProve(stage) {

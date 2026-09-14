@@ -32,6 +32,10 @@
 // 帧下标全部 1 基（与书一致）。counts.cmp 在第 13 行 `L[i] ≤ R[j]` 处 +1；
 // counts.move 在每次把值写回 A 时 +1（第 14/16/21/25 行）。
 // 注意：4 版 MERGE 不用 ∞ 哨兵，故无 Infinity；若后续章节的 3 版材料需要哨兵，另行实现。
+//
+// 关于 pointers：只放 **A 的下标**（p / q / r / k）。i 与 j 是临时数组 L、R 的下标，
+// 它们不是 A 的位置 —— 画到 A 上会指向无意义的格子，所以只写进 note 供阅读。
+// 原因见 2.3 关卡阶段 4 的面板说明：可视化引擎画的是 A，不是 L/R。
 
 export function* merge(A, p, q, r, counts) {
   counts = counts || { cmp: 0, move: 0 };
@@ -60,7 +64,7 @@ export function* merge(A, p, q, r, counts) {
   yield frame(4, {
     pointers: { p, q, r },
     highlight: { frontier: seg },
-    note: `复制 A[${p}..${q}]→L，A[${q + 1}..${r}]→R（第 4–7 行）`,
+    note: `复制 A[${p}:${q}]→L，A[${q + 1}:${r}]→R（第 4–7 行）`,
   });
 
   let i = 0, j = 0, k = p;           // k 1 基
@@ -68,27 +72,27 @@ export function* merge(A, p, q, r, counts) {
     counts.cmp++;
     const takeLeft = L[i] <= R[j];
     yield frame(13, {
-      pointers: { i: i + 1, j: j + 1, k, p, q, r },
+      pointers: { k, p, q, r },
       highlight: { compare: [k] },
       note: `比较 L[${i + 1}]=${L[i]} 与 R[${j + 1}]=${R[j]}：取 ${takeLeft ? 'L' : 'R'}`,
     });
     if (takeLeft) {
-      a[k - 1] = L[i]; i++;
-      yield frame(14, { pointers: { i: i + 1, j: j + 1, k, p, q, r }, highlight: { move: [k] }, note: `A[${k}] = L[${i}]` });
+      a[k - 1] = L[i]; counts.move++; i++;
+      yield frame(14, { pointers: { k, p, q, r }, highlight: { move: [k] }, note: `A[${k}] = L[${i}]` });
     } else {
-      a[k - 1] = R[j]; j++;
-      yield frame(16, { pointers: { i: i + 1, j: j + 1, k, p, q, r }, highlight: { move: [k] }, note: `A[${k}] = R[${j}]` });
+      a[k - 1] = R[j]; counts.move++; j++;
+      yield frame(16, { pointers: { k, p, q, r }, highlight: { move: [k] }, note: `A[${k}] = R[${j}]` });
     }
     k++;
-    yield frame(18, { pointers: { i: i + 1, j: j + 1, k, p, q, r }, highlight: {}, note: `k = k + 1 = ${k}` });
+    yield frame(18, { pointers: { k, p, q, r }, highlight: {}, note: `k = k + 1 = ${k}` });
   }
   while (i < nL) {
     a[k - 1] = L[i]; i++; k++; counts.move++;
-    yield frame(21, { pointers: { i: i + 1, k, p, q, r }, highlight: { move: [k - 1] }, note: `复制 L 剩余：A[${k - 1}] = L[${i}]` });
+    yield frame(21, { pointers: { k, p, q, r }, highlight: { move: [k - 1] }, note: `L 还有剩，直接抄回：A[${k - 1}] = L[${i}]` });
   }
   while (j < nR) {
     a[k - 1] = R[j]; j++; k++; counts.move++;
-    yield frame(25, { pointers: { j: j + 1, k, p, q, r }, highlight: { move: [k - 1] }, note: `复制 R 剩余：A[${k - 1}] = R[${j}]` });
+    yield frame(25, { pointers: { k, p, q, r }, highlight: { move: [k - 1] }, note: `R 还有剩，直接抄回：A[${k - 1}] = R[${j}]` });
   }
-  yield frame(null, { pointers: { p, q, r }, note: `A[${p}..${r}] 已合并有序`, highlight: {} });
+  yield frame(null, { pointers: { p, q, r }, note: `A[${p}:${r}] 已合并有序`, highlight: {} });
 }
