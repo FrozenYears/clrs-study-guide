@@ -55,11 +55,16 @@ CASES = [
     ("#/ch02/s03/s07", ["2T(n/2)", "growth-legend", "递归树", "lg n + 1"], [NOT_PENDING]),
     ("#/ch02/s03/s08", ["要证的不变量", "第一步", "终止", "习题 2.3-3"], [NOT_PENDING]),
     ("#/ch02/s03/s09", ["2.3-1", "2.3-3", "2-1", "原书习题"], [NOT_PENDING]),
-    # ---- 3.1（骨架：引述/伪代码/习题已就位，正文待填。由 tools/05_new_level.py 生成）----
-    ("#/ch03/s01/s01", ["【TODO"], [NOT_PENDING]),
-    ("#/ch03/s01/s03", ["O-notation", 'data-kind="source"', "for example"], [NOT_PENDING]),
-    ("#/ch03/s01/s04", ["for i = 2 to n", "pc-line"], [NOT_PENDING]),
-    ("#/ch03/s01/s09", ["3.1-1", "3.1-3", "原书习题"], [NOT_PENDING]),
+    # ---- 3.1 三种渐进记号（九段式，已建成）----
+    ("#/ch03/s01/s01", ["先看清这一关的位置", "最高阶项", "3.2 渐进记号"], [NOT_PENDING, "【TODO"]),
+    ("#/ch03/s01/s02", ["三种说法，三种承诺", "不超过 2 米"], [NOT_PENDING, "【TODO"]),
+    ("#/ch03/s01/s03", ["O-notation", 'data-kind="source"', "rate of growth"], [NOT_PENDING, "【TODO"]),
+    ("#/ch03/s01/s04", ["for i = 2 to n", "pc-line", "重读这 8 行"], [NOT_PENDING, "【TODO"]),
+    ("#/ch03/s01/s05", ["viz-stage", "growth", "c·n³"], [NOT_PENDING, "【TODO"]),
+    ("#/ch03/s01/s06", ["asymptotic_check.c", "part 1", "all checks passed"], [NOT_PENDING, "【TODO"]),
+    ("#/ch03/s01/s07", ["三种记号的分工", "polyline", "n²/9"], [NOT_PENDING, "【TODO"]),
+    ("#/ch03/s01/s08", ["凭什么说最坏情况是 Ω(n²)", "第一步", "n/3"], [NOT_PENDING, "【TODO"]),
+    ("#/ch03/s01/s09", ["检验一下", "3.1-1", "原书习题"], [NOT_PENDING, "【TODO"]),
     # ---- 3.2 渐进记号的形式定义（九段式，已建成）----
     ("#/ch03/s02/s01", ["这一关要把「差不多」说精确", "第 3 章第 2 节", "集合记号"], [NOT_PENDING]),
     ("#/ch03/s02/s03", ['data-kind="source"', "n/3 positions", "at and to the right of n 0"], [NOT_PENDING]),
