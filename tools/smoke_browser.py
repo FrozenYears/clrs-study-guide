@@ -76,6 +76,17 @@ CASES = [
     ("#/ch03/s03/s05", ["viz-stage", "growth", "lg n &lt; √n"], [NOT_PENDING]),
     ("#/ch03/s03/s09", ["检验一下", "3.3-1", "原书习题", "Stirling"], [NOT_PENDING]),
 
+    # ---- 4.4 递归树法（九段式，已建成）----
+    ("#/ch04/s04/s01", ["递归树：从「猜」到「证」的桥", "几何级数"], [NOT_PENDING]),
+    ("#/ch04/s04/s02", ["一棵树就是一本成本账", "部门"], [NOT_PENDING]),
+    ("#/ch04/s04/s03", ['data-kind="source"', "recursion tree", "per-level costs"], [NOT_PENDING]),
+    ("#/ch04/s04/s04", ["T(n) = 3·T(n/4) + c·n²", "不规则例"], [NOT_PENDING]),
+    ("#/ch04/s04/s05", ["viz-tree", "两本成本账", "3/16"], [NOT_PENDING]),
+    ("#/ch04/s04/s06", ["recursion_tree_sum.c", "part 1", "all checks passed"], [NOT_PENDING]),
+    ("#/ch04/s04/s07", ["两本账的结局", "16/13", "polyline"], [NOT_PENDING]),
+    ("#/ch04/s04/s08", ["猜测要盖章", "归纳假设", "d"], [NOT_PENDING]),
+    ("#/ch04/s04/s09", ["检验一下", "4.4-1", "原书习题"], [NOT_PENDING]),
+
     # 不带阶段号：应落到第一个阶段
     ("#/ch02/s01", ["为什么学这一关"], [NOT_PENDING]),
     ("#/ch02/s02", ["为什么学这一关"], [NOT_PENDING]),

@@ -554,7 +554,7 @@ function makeVizPanel(stage, ctx) {
       counterEl.textContent = `帧 ${state.index} / ${Math.max(0, (state.total || 0) - 1)}` +
         (state.playing ? ' · 播放中' : state.done ? ' · 已结束' : '');
       btnPlay.textContent = state.playing ? '暂停' : '播放';
-      if (frame.note) noteEl.textContent = frame.note;
+      if (frame.note) noteEl.replaceChildren(katex.renderMixed(frame.note));
       const c = frame.counts || {};
       readoutEl.replaceChildren(
         c.line5 != null
