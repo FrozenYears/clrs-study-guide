@@ -23,6 +23,7 @@ import { mergeSort } from '../algorithms/merge-sort.js';
 import { merge } from '../algorithms/merge.js';
 import { strassenDemo } from '../algorithms/strassen-demo.js';
 import { matrixMultiplyDemo } from '../algorithms/matrix-multiply-demo.js';
+import { hireAssistant } from '../algorithms/hire-assistant.js';
 
 const VIZ = new Map();
 const ALGO = new Map();
@@ -79,3 +80,4 @@ registerAlgorithm('merge-sort', mergeSort);
 registerAlgorithm('merge', merge);
 registerAlgorithm('strassen-demo', strassenDemo);
 registerAlgorithm('matrix-multiply-demo', matrixMultiplyDemo);
+registerAlgorithm('hire-assistant', hireAssistant);

@@ -6,6 +6,7 @@ import { mergeSort } from './merge-sort.js';
 import { merge } from './merge.js';
 import { strassenDemo } from './strassen-demo.js';
 import { matrixMultiplyDemo } from './matrix-multiply-demo.js';
+import { hireAssistant } from './hire-assistant.js';
 
 let passed = 0, failed = 0;
 function ok(cond, msg) {
@@ -173,6 +174,19 @@ console.log('\n[6] MATRIX-MULTIPLY 教学帧（原书 4.1 的三重循环）');
     '2×2 示例恰有 8 次标量乘加');
   ok(last.phase === 'done' && last.c.flat().join(',') === '19,22,43,50',
     '最后一帧明确结束且 C = A · B');
+}
+
+console.log('\n[7] HIRE-ASSISTANT 教学帧（原书 5.1 的当前最佳策略）');
+{
+  const increasing = [...hireAssistant([1, 2, 3, 4])].at(-1);
+  const decreasing = [...hireAssistant([4, 3, 2, 1])].at(-1);
+  const mixed = [...hireAssistant([3, 1, 4, 2, 5])].at(-1);
+  ok(increasing.counts.interview === 4 && increasing.counts.hire === 4,
+    '严格递增：面试 4 次、招聘 4 次（最坏情况）');
+  ok(decreasing.counts.interview === 4 && decreasing.counts.hire === 1,
+    '严格递减：面试 4 次、只招聘首位候选人');
+  ok(mixed.pointers.best === 5 && mixed.counts.hire === 3,
+    '混合序列：最终候选人是资格最高的第 5 位，招聘 3 次');
 }
 
 console.log(`\n==== 结果：${passed} passed, ${failed} failed ====`);
