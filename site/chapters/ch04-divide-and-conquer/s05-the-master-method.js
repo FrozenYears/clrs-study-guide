@@ -22,6 +22,7 @@ export default {
   source: { printed: [101, 106], pdf: [122, 127] },
   sourceNote: '本关对应原书 4.5 节（印刷页 101–106）。',
   prerequisites: [
+    { label: '4.3 代入法', url: '#/ch04/s03' },
     { label: '4.4 The recursion-tree method for solving recurrences', url: '#/ch04/s04' },
   ],
   stages: [

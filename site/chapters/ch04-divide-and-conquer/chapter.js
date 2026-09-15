@@ -9,8 +9,7 @@
 // import s01 from './s01-<slug>.js';
 // s02 还没建：建好后把下面这行打开 ——
 // import s02 from './s02-<slug>.js';
-// s03 还没建：建好后把下面这行打开 ——
-// import s03 from './s03-<slug>.js';
+import s03 from './s03-the-substitution-method.js';
 import s04 from './s04-the-recursion-tree.js';
 import s05 from './s05-the-master-method.js';
 // s06 还没建：建好后把下面这行打开 ——
@@ -25,5 +24,5 @@ export default {
   title: 'Divide-and-Conquer',
   titleZh: '分治法',
   source: { printed: [76, 125], pdf: [97, 146] },
-  levels: [s04, s05],   // 只登记已建好的关卡
+  levels: [s03, s04, s05],   // 只登记已建好的关卡
 };
