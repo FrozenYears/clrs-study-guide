@@ -18,7 +18,7 @@ function ledger(title, items, phase, activeIndex) {
   return h('section', { class: 'matrix-viz__ledger' },
     h('h4', null, title),
     h('ol', null, items.map((item, index) => h('li', {
-      dataset: { active: phase === title && index === activeIndex ? '1' : '0' },
+      dataset: { active: phase === title.toLowerCase() && index === activeIndex ? '1' : '0' },
     }, item))));
 }
 
