@@ -22,7 +22,19 @@
 - 技术栈：**零构建、零依赖、零网络请求**的静态站。纯原生 ES Module + SVG + CSS。
 - 站点：`https://clrs-algo-quest.app.workbuddy.host/`
 - 仓库：`E:\Projects\Mid\Introduction to Algorithms`（Git，LF 行尾）
-- PDF：`Introduction to Algorithms (...).pdf`（根目录，11 MB）
+- PDF：`Introduction to Algorithms (TOMAS H.CORMEN, ...).pdf`（根目录，11 MB）
+
+### 新 agent 上手清单（按顺序做）
+
+1. **读完本文件**（约 15 分钟）——十一章覆盖全流程；
+2. **跑一遍测试基线**（第九章那张表的 7 条命令）——确认你拿到的代码是全绿的，
+   如果不是，先弄清是谁改坏了什么，**不要**带着红色的基线往前走；
+3. **看第九章「待建」表**——确定本轮要写哪一节；
+4. **按第三章三步法开工**：生成骨架 → 填 TODO → 过闸门；
+5. **改动前先 git 提交存档，改完再提交**（提交规范见第七章·流程原则）。
+
+> ⚠️ 本机环境有坑（Git Bash PATH 损坏、PowerShell 不回显），
+> 第十章的绝对路径与替代方案**先读再动手**。
 
 ---
 
@@ -106,8 +118,21 @@ python tools/05_new_level.py <章号> <节号> --register
 # 3) 验收
 node tools/dump_levels.mjs && python tools/04_verify_level.py
 cd site && node tools/check-syntax.mjs .
-python tools/smoke_browser.py 8317     # 需先起本地服务
+python tools/smoke_browser.py 8317     # 需先起本地服务（见第十章）
 ```
+
+> ⚠️ 上面的 `python` / `node` 是**通用写法**。本机 Git Bash 的 PATH 是坏的，
+> 实际执行必须用第十章的绝对路径，例如：
+> `C:/Users/FrozenYears/.workbuddy/binaries/python/versions/3.13.12/python.exe tools/05_new_level.py 4 4.4 --register`
+
+### 并行开发约定
+
+- 关卡文件一章一个目录（`site/chapters/ch<NN>-<slug>/`），语料一章一个文件
+  （`data/blocks/<part-slug>__ch<NN>.json`）；
+- **多 agent 并行时，一个 agent 只碰自己那一章**——`site/assets/chapters.js` 的
+  注册行是公共文件，追加自己的注册时不要动别人的行；
+- 4.4 关曾出现过两个 agent 先后写同一关的情况：后写的必须先读已提交版本，
+  在其基础上续写，不许整文件覆盖丢失对方内容。
 
 ### 九段式关卡模型
 
@@ -293,6 +318,12 @@ python tools/smoke_browser.py 8317          # 无头 Chrome 逐路由渲染
 2. **闸门是唯一的裁判** —— 不要凭感觉说「应该没问题」，跑一下闸门。
 3. **浏览器自检不能省** —— 语法通过不等于渲染正确。
 4. **审计在原文上做** —— 修复后的语料里伪影已消失，拿它当依据会得出错误结论。
+5. **提交信息用英文**，格式 `类型: 简述`（如 `feat(ch04): build level 4.5 ...`、
+   `fix(tools): ...`、`docs: ...`）。正文可多段，说明「为什么」而不只是「做了什么」。
+6. **动手前先提交存档** —— 改代码前后都要有 git 提交点，出问题能回退。
+7. **临时探针脚本统一 `tools/_*` 前缀**（已在 `.gitignore` 里，不进版本库）；
+   工作结束要清理，但**删除前先问用户**（说明类别、作用与影响）。
+8. **发布同意不跨轮次** —— 同步线上必须用户在新消息里明确要求（详见第十章）。
 
 ---
 
@@ -312,8 +343,8 @@ python tools/smoke_browser.py 8317          # 无头 Chrome 逐路由渲染
 │   ├── repair_report.json         # 修复规则报告
 │   ├── figures.json               # 插图索引
 │   ├── figures_suspect.json       # 可疑插图
-│   ├── figs/                      # 237 张插图 PNG + contact-sheet.html
-│   └── blocks/                    # 39 个章级 JSON（结构化知识块）
+│   ├── figs/                      # 233 张插图 PNG + contact-sheet.html
+│   └── blocks/                    # 40 个章级 JSON（35 章 + 4 附录 + 1 索引）
 │
 ├── tools/                         # 流水线与验证脚本
 │   ├── 01_extract.py              # PDF → 原始文本
