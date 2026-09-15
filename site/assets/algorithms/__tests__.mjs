@@ -5,6 +5,7 @@ import { insertionSort } from './insertion-sort.js';
 import { mergeSort } from './merge-sort.js';
 import { merge } from './merge.js';
 import { strassenDemo } from './strassen-demo.js';
+import { matrixMultiplyDemo } from './matrix-multiply-demo.js';
 
 let passed = 0, failed = 0;
 function ok(cond, msg) {
@@ -158,6 +159,20 @@ console.log('\n[5] Strassen 教学帧顺序（原书 4.2 的四步）');
     pFrames.every((frame) => frame.line === 3) && frames[18].line === 4,
   '教学步骤行号依次为 1、2、3、4');
   ok(frames.at(-1).done === true && frames.at(-1).phase === 'done', '最后一帧明确结束');
+}
+
+console.log('\n[6] MATRIX-MULTIPLY 教学帧（原书 4.1 的三重循环）');
+{
+  const frames = [...matrixMultiplyDemo([1, 2, 3, 4, 5, 6, 7, 8])];
+  const last = frames.at(-1);
+  const cells = frames.filter((frame) => frame.phase === 'complete-cell');
+  ok(cells.length === 4, `四个 cᵢⱼ 各有一个完成帧（${cells.length} 个）`);
+  ok(cells.map((frame) => frame.partial).join(',') === '19,22,43,50',
+    '2×2 示例的四个结果依次为 19、22、43、50');
+  ok(frames.filter((frame) => frame.phase === 'accumulate').length === 8,
+    '2×2 示例恰有 8 次标量乘加');
+  ok(last.phase === 'done' && last.c.flat().join(',') === '19,22,43,50',
+    '最后一帧明确结束且 C = A · B');
 }
 
 console.log(`\n==== 结果：${passed} passed, ${failed} failed ====`);

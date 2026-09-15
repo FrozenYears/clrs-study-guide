@@ -16,11 +16,13 @@ import * as vizArray from '../viz/array.js';
 import * as vizTree from '../viz/tree.js';
 import * as vizGrowth from '../viz/growth.js';
 import * as vizMatrix from '../viz/matrix.js';
+import * as vizMatrixProduct from '../viz/matrix-product.js';
 
 import { insertionSort } from '../algorithms/insertion-sort.js';
 import { mergeSort } from '../algorithms/merge-sort.js';
 import { merge } from '../algorithms/merge.js';
 import { strassenDemo } from '../algorithms/strassen-demo.js';
+import { matrixMultiplyDemo } from '../algorithms/matrix-multiply-demo.js';
 
 const VIZ = new Map();
 const ALGO = new Map();
@@ -70,8 +72,10 @@ registerViz('tree', vizTree);
 // growth：不跑算法，画增长曲线 + c·g(n) 上界 + n₀（讲 O/Ω/Θ 用，见 viz/growth.js）
 registerViz('growth', vizGrowth);
 registerViz('matrix', vizMatrix);
+registerViz('matrix-product', vizMatrixProduct);
 
 registerAlgorithm('insertion-sort', insertionSort);
 registerAlgorithm('merge-sort', mergeSort);
 registerAlgorithm('merge', merge);
 registerAlgorithm('strassen-demo', strassenDemo);
+registerAlgorithm('matrix-multiply-demo', matrixMultiplyDemo);

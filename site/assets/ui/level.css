@@ -688,6 +688,23 @@ details.kit > summary {
   }
 }
 
+/* ---------- 普通矩阵乘法动画 ---------- */
+.matrix-product { display: grid; gap: var(--sp-3); }
+.matrix-product__matrices { display: flex; align-items: center; gap: var(--sp-3); flex-wrap: wrap; }
+.matrix-product__matrix { margin: 0; min-width: 8rem; }
+.matrix-product__matrix h4 { margin: 0 0 var(--sp-1); font-size: var(--fs-sm); }
+.matrix-product__grid { display: grid; grid-template-columns: repeat(2, minmax(3rem, 1fr)); border: var(--bd-w) solid var(--bd-1); }
+.matrix-product__cell { min-height: 2.25rem; padding: var(--sp-2); border: var(--bd-w) solid var(--bd-0); font-family: var(--font-mono); text-align: center; }
+.matrix-product__cell[data-active="1"] { background: var(--viz-active); color: var(--bg-0); font-weight: 700; }
+.matrix-product__operator { color: var(--accent); font-family: var(--font-display); font-size: var(--fs-xl); }
+.matrix-product__formula { margin: 0; font-family: var(--font-mono); font-size: var(--fs-sm); color: var(--fg-1); }
+.matrix-product__status { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
+@media (max-width: 560px) {
+  .matrix-product__matrices { gap: var(--sp-2); }
+  .matrix-product__matrix { min-width: 6.5rem; }
+  .matrix-product__operator { font-size: var(--fs-lg); }
+}
+
 /* 视觉惯例提示：原文块用衬线体，已由 components.css 的 [data-kind] 承担 */
 .src-block__en[data-kind="source"],
 .map-card[data-kind="note"] {
