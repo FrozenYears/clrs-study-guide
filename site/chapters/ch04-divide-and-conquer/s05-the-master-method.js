@@ -6,7 +6,7 @@
  * 本文件由 tools/05_new_level.py 生成骨架：
  *   「原文引述」「伪代码逐行」「书后习题」三处已从 data/blocks 逐字填入，
  *   并且每一条都已通过 tools/04 的溯源判据 —— **请勿改写 en**，
- *   要删就整条删。其余 `【TODO …】` 处需人工填写。
+ *   要删就整条删。其余教学内容已人工补全。
  *
  * 交付前必跑：node tools/dump_levels.mjs && python tools/04_verify_level.py
  * ========================================================================== */
@@ -150,9 +150,95 @@ export default {
       pseudocodeRef: 'MASTER-THEOREM',
       c: {
         file: 'master_method_check.c',
-        code: "/* master_method_check.c -- 4.5 \u8282\u7684\u6570\u503c\u5b9e\u9a8c\uff1a\u7528\u6570\u503c\u9a8c\u8bc1\u4e3b\u65b9\u6cd5\u4e09\u79cd\u60c5\u51b5\u3002\n *\n * \u4e66\u4e2d\u5bf9\u5e94\uff08\u7b2c 4 \u7248\uff09\uff1a\n *   p.101-102  \u4e3b\u65b9\u6cd5\u63cf\u8ff0 T(n) = aT(n/b) + f(n)\uff08\u9012\u5f52\u5f0f 4.16\uff09\n *   p.103      \u4e3b\u5b9a\u7406\uff08Theorem 4.1\uff09\u4e09\u79cd\u60c5\u51b5\n *   p.104      \u4f8b\uff1a9T(n/3)+n\uff08\u60c5\u51b5 1\uff09\u3001T(2n/3)+1\uff08\u60c5\u51b5 2\uff09\u30013T(n/4)+n lg n\uff08\u60c5\u51b5 3\uff09\n *   p.105      \u5f52\u5e76\u6392\u5e8f 2T(n/2)+\u0398(n)\uff08\u60c5\u51b5 2\uff09\u3001\u77e9\u9635\u4e58\u6cd5 8T(n/2)+\u0398(1)\uff08\u60c5\u51b5 1\uff09\u3001\n *              Strassen 7T(n/2)+\u0398(n\u00b2)\uff08\u60c5\u51b5 1\uff09\n *\n * \u53d6 a=2, b=2\uff08\u5373\u5f52\u5e76\u6392\u5e8f\u7684\u5f62\u72b6\uff09\uff0c\u5206\u6bcd\u51fd\u6570\u5206\u522b\u53d6\u4e09\u79cd\u60c5\u51b5\uff0c\u9010\u5c42\u6c42\u548c\uff1a\n *   \u60c5\u51b5 1  f(n)=1   \u53f6\u5b50\u4e3b\u5bfc   ->  T(n) = \u0398(n)\n *   \u60c5\u51b5 2  f(n)=n   \u6bcf\u5c42\u5e73\u644a   ->  T(n) = \u0398(n lg n)\n *   \u60c5\u51b5 3  f(n)=n\u00b2  \u6839\u4e3b\u5bfc     ->  T(n) = \u0398(n\u00b2)\n *\n * \u4e0e 4.4 \u8282\u9012\u5f52\u6811\u7684\u5bf9\u5e94\uff1a\u5206\u6bcd\u5728\u53f6\u5b50\u5904\u88ab\u541e\uff08\u60c5\u51b5 1\uff09\u3001\u9010\u5c42\u5e73\u644a\uff08\u60c5\u51b5 2\uff09\u3001\n * \u6839\u5904\u538b\u5012\uff08\u60c5\u51b5 3\uff09\u3002C \u7a0b\u5e8f\u628a\u4e09\u79cd\u7ed3\u5c40\u90fd\u7b97\u6210\u5177\u4f53\u7684\u6570\u3002\n *\n * \u7f16\u8bd1\uff1agcc -std=c99 -Wall -Wextra -Werror -O0 -o master_method_check master_method_check.c\n */\n#include <assert.h>\n#include <math.h>\n#include <stdio.h>\n\n/* \u60c5\u51b5 k \u7684\u603b\u4ee3\u4ef7\uff1a\u9012\u5f52\u6811\u7684\u9010\u5c42\u6c42\u548c\u3002\n * a=b=2 \u65f6\u6811\u9ad8 floor(lg n)\uff0c\u7b2c d \u5c42\u6709 2^d \u4e2a\u7ed3\u70b9\u3001\u6bcf\u4e2a\u4ee3\u4ef7 f(n / 2^d)\u3002\n * \u9012\u5f52\u5230\u5e95\u5c42 n=1 \u65f6\u53f6\u5b50\u4ee3\u4ef7 T(1)=1\u3002 */\nstatic long total_cost(long n, int kase)\n{\n    if (n <= 1) {\n        return 1;\n    }\n    long here;\n    switch (kase) {\n    case 1:  here = 1;         break;   /* f(n) = Theta(1)  */\n    case 2:  here = n;         break;   /* f(n) = Theta(n)  */\n    case 3:  here = n * n;     break;   /* f(n) = Theta(n^2)*/\n    default: here = 0;         break;\n    }\n    return here + total_cost(n / 2, kase) + total_cost(n - n / 2, kase);\n}\n\nint main(void)\n{\n    const long n = 1024;   /* 2^10\uff0c\u6811\u9ad8 10 */\n    double lg_n = log2((double)n);\n    printf(\"master recurrence: T(n) = 2T(n/2) + f(n),  n = %ld = 2^10\\n\\n\", n);\n\n    /* ---- \u60c5\u51b5 1\uff1af(n) = \u0398(1)\uff0c\u53f6\u5b50\u4e3b\u5bfc ---- */\n    long t1 = total_cost(n, 1);\n    printf(\"case 1:  f(n) = Theta(1)\\n\");\n    printf(\"  total = %ld,  n = %ld,  total/n = %.4f  ->  Theta(n)\\n\\n\",\n           t1, n, (double)t1 / (double)n);\n    assert(t1 == n * 2 - 1);  /* \u6ee1\u4e8c\u53c9\u6811\u7ed3\u70b9\u603b\u6570 = 2n - 1 */\n    assert(t1 / n == 2 || t1 / n == 1);  /* \u6e10\u8fd1 O(n) \u4e14 Omega(n) */\n\n    /* ---- \u60c5\u51b5 2\uff1af(n) = \u0398(n)\uff0c\u9010\u5c42\u5e73\u644a ---- */\n    long t2 = total_cost(n, 2);\n    printf(\"case 2:  f(n) = Theta(n)\\n\");\n    printf(\"  total = %ld,  n lg n = %.0f,  total/(n lg n) = %.4f  ->  Theta(n lg n)\\n\\n\",\n           t2, n * lg_n, (double)t2 / (double)(n * lg_n));\n    assert(t2 > n && t2 < 3L * n * (long)lg_n);\n\n    /* ---- \u60c5\u51b5 3\uff1af(n) = \u0398(n\u00b2)\uff0c\u6839\u4e3b\u5bfc ---- */\n    long t3 = total_cost(n, 3);\n    printf(\"case 3:  f(n) = Theta(n^2)\\n\");\n    printf(\"  total = %ld,  n^2 = %ld,  total/n^2 = %.4f  ->  Theta(n^2)\\n\\n\",\n           t3, n * n, (double)t3 / ((double)n * n));\n    assert(t3 > (long)(0.9 * n * n) && t3 < (long)(4.0 * n * n));\n\n    /* ---- \u4e0e\u4e66\u4e0a\u4f8b\u5b50\u7684\u5bf9\u5e94\uff08p.104-105\uff09----\n     * \u5f52\u5e76\u6392\u5e8f  2T(n/2)+\u0398(n)   -> \u60c5\u51b5 2 -> \u0398(n lg n)    (p.104)\n     * \u77e9\u9635\u4e58\u6cd5  8T(n/2)+\u0398(1)   -> \u60c5\u51b5 1 -> \u0398(n^3)       (p.105)\n     * Strassen  7T(n/2)+\u0398(n\u00b2)  -> \u60c5\u51b5 1 -> \u0398(n^lg7)     (p.105)\n     * \uff08a,b \u4e0d\u540c\u6240\u4ee5\u672c\u7a0b\u5e8f\u53d6 a=b=2 \u7edf\u4e00\u6f14\u793a\uff1b\u4e09\u79cd\u7ed3\u5c40\u7684\u5f62\u72b6\u4e00\u81f4\u3002\uff09 */\n    printf(\"book examples (p.104-105):\\n\");\n    printf(\"  merge sort   2T(n/2)+Theta(n)   case 2  -> Theta(n lg n)\\n\");\n    printf(\"  matrix mult  8T(n/2)+Theta(1)   case 1  -> Theta(n^3)\\n\");\n    printf(\"  Strassen     7T(n/2)+Theta(n^2) case 1  -> Theta(n^lg7)\\n\");\n\n    printf(\"\\nall checks passed.\\n\");\n    return 0;\n}\n",
+        code: String.raw`/* master_method_check.c -- 4.5 节的数值实验：用数值验证主方法三种情况。
+ *
+ * 书中对应（第 4 版）：
+ *   p.101-102  主方法描述 T(n) = aT(n/b) + f(n)（递归式 4.16）
+ *   p.103      主定理（Theorem 4.1）三种情况
+ *   p.104      例：9T(n/3)+n（情况 1）、T(2n/3)+1（情况 2）、3T(n/4)+n lg n（情况 3）
+ *   p.105      归并排序 2T(n/2)+Θ(n)（情况 2）、矩阵乘法 8T(n/2)+Θ(1)（情况 1）、
+ *              Strassen 7T(n/2)+Θ(n²)（情况 1）
+ *
+ * 取 a=2, b=2（即归并排序的形状），分母函数分别取三种情况，逐层求和：
+ *   情况 1  f(n)=1   叶子主导   ->  T(n) = Θ(n)
+ *   情况 2  f(n)=n   每层平摊   ->  T(n) = Θ(n lg n)
+ *   情况 3  f(n)=n²  根主导     ->  T(n) = Θ(n²)
+ *
+ * 与 4.4 节递归树的对应：分母在叶子处被吞（情况 1）、逐层平摊（情况 2）、
+ * 根处压倒（情况 3）。C 程序把三种结局都算成具体的数。
+ *
+ * 编译：gcc -std=c99 -Wall -Wextra -Werror -O0 -o master_method_check master_method_check.c
+ */
+#include <assert.h>
+#include <math.h>
+#include <stdio.h>
+
+/* 情况 k 的总代价：递归树的逐层求和。
+ * a=b=2 时树高 floor(lg n)，第 d 层有 2^d 个结点、每个代价 f(n / 2^d)。
+ * 递归到底层 n=1 时叶子代价 T(1)=1。 */
+static long total_cost(long n, int kase)
+{
+    if (n <= 1) {
+        return 1;
+    }
+    long here;
+    switch (kase) {
+    case 1:  here = 1;         break;   /* f(n) = Theta(1)  */
+    case 2:  here = n;         break;   /* f(n) = Theta(n)  */
+    case 3:  here = n * n;     break;   /* f(n) = Theta(n^2)*/
+    default: here = 0;         break;
+    }
+    return here + total_cost(n / 2, kase) + total_cost(n - n / 2, kase);
+}
+
+int main(void)
+{
+    const long n = 1024;   /* 2^10，树高 10 */
+    double lg_n = log2((double)n);
+    printf("master recurrence: T(n) = 2T(n/2) + f(n),  n = %ld = 2^10\n\n", n);
+
+    /* ---- 情况 1：f(n) = Θ(1)，叶子主导 ---- */
+    long t1 = total_cost(n, 1);
+    printf("case 1:  f(n) = Theta(1)\n");
+    printf("  total = %ld,  n = %ld,  total/n = %.4f  ->  Theta(n)\n\n",
+           t1, n, (double)t1 / (double)n);
+    assert(t1 == n * 2 - 1);  /* 满二叉树结点总数 = 2n - 1 */
+    assert(t1 / n == 2 || t1 / n == 1);  /* 渐近 O(n) 且 Omega(n) */
+
+    /* ---- 情况 2：f(n) = Θ(n)，逐层平摊 ---- */
+    long t2 = total_cost(n, 2);
+    printf("case 2:  f(n) = Theta(n)\n");
+    printf("  total = %ld,  n lg n = %.0f,  total/(n lg n) = %.4f  ->  Theta(n lg n)\n\n",
+           t2, n * lg_n, (double)t2 / (double)(n * lg_n));
+    assert(t2 > n && t2 < 3L * n * (long)lg_n);
+
+    /* ---- 情况 3：f(n) = Θ(n²)，根主导 ---- */
+    long t3 = total_cost(n, 3);
+    printf("case 3:  f(n) = Theta(n^2)\n");
+    printf("  total = %ld,  n^2 = %ld,  total/n^2 = %.4f  ->  Theta(n^2)\n\n",
+           t3, n * n, (double)t3 / ((double)n * n));
+    assert(t3 > (long)(0.9 * n * n) && t3 < (long)(4.0 * n * n));
+
+    /* ---- 与书上例子的对应（p.104-105）----
+     * 归并排序  2T(n/2)+Θ(n)   -> 情况 2 -> Θ(n lg n)    (p.104)
+     * 矩阵乘法  8T(n/2)+Θ(1)   -> 情况 1 -> Θ(n^3)       (p.105)
+     * Strassen  7T(n/2)+Θ(n²)  -> 情况 1 -> Θ(n^lg7)     (p.105)
+     * （a,b 不同所以本程序取 a=b=2 统一演示；三种结局的形状一致。） */
+    printf("book examples (p.104-105):\n");
+    printf("  merge sort   2T(n/2)+Theta(n)   case 2  -> Theta(n lg n)\n");
+    printf("  matrix mult  8T(n/2)+Theta(1)   case 1  -> Theta(n^3)\n");
+    printf("  Strassen     7T(n/2)+Theta(n^2) case 1  -> Theta(n^lg7)\n");
+
+    printf("\nall checks passed.\n");
+    return 0;
+}
+`,
       },
-      mapping: [],     // 【TODO 伪代码行 ↔ C 行的对应表：{ line: 1, c: 'for (int i = 1; …)' }】
+      mapping: [
+        { line: 1, c: 'total_cost(n, 1)：令 f(n) = 1，递归树逐层累加，数值观察叶子主导的 Θ(n)。' },
+        { line: 2, c: 'total_cost(n, 2)：令 f(n) = n，两个 n/2 子问题合起来仍为 n，逐层平摊得到 Θ(n lg n)。' },
+        { line: 3, c: 'total_cost(n, 3)：令 f(n) = n²，根层最大，断言总成本仍与 n² 同阶。' },
+      ],
     },
 
     // ——— 阶段 7 复杂度 —————————————————————————————————————————
@@ -161,9 +247,12 @@ export default {
       title: '书上六个例子的查表实录',
       intro: '书上 p.104–105 连给了六个例子，把它们全列出来——每个只看一行：算分水岭、比大小、写结论。',
       claims: [
-        // 【TODO 每条复杂度断言都要给 page 出处；自己推导的写 source: 'instructor'】
-        // 引用本关范围之外的页码（如本节结论在第 4 章）必须加 preview: true。
-        // { expr: '\\Theta(n \\lg n)', when: '最坏情况', page: [101], source: 'book' },
+        { expr: 'f(n) = O(n^{\\log_b a - \\epsilon}) \\Rightarrow T(n) = \\Theta(n^{\\log_b a})', when: '情况 1：分水岭多项式级快于驱动函数，叶子总代价主导', page: 103, source: 'book' },
+        { expr: 'f(n) = \\Theta(n^{\\log_b a} \\lg^k n) \\Rightarrow T(n) = \\Theta(n^{\\log_b a} \\lg^{k+1} n)', when: '情况 2：每层代价近似相同，共有 Θ(lg n) 层', page: 103, source: 'book' },
+        { expr: 'f(n) = \\Omega(n^{\\log_b a + \\epsilon}) \\Rightarrow T(n) = \\Theta(f(n))', when: '情况 3：还必须满足正则条件，根总代价主导', page: [103, 104], source: 'book' },
+        { expr: '8T(n/2) + \\Theta(1) = \\Theta(n^3)', when: '简单递归矩阵乘法：分水岭 n³ 多项式级快于常数项', page: 105, source: 'book' },
+        { expr: '7T(n/2) + \\Theta(n^2) = \\Theta(n^{\\lg 7})', when: 'Strassen：n^(lg 7) 约为 n^2.807355，情况 1', page: 105, source: 'book' },
+        { expr: '2T(n/2) + n/\\lg n', when: '驱动函数只比 n 对数级慢，落在情况 1 与 2 的间隙；不能套主方法', page: 105, source: 'book' },
       ],
       tables: [
         { caption: '书上六个例子的查表实录', rows: [
@@ -200,31 +289,40 @@ export default {
     // statement / en 也要逐字取自原书（去 data/blocks 里找，别凭记忆写）。
     {
       type: 'prove',
-      title: '凭什么说它一定对',
-      statement: 'If there exists a constant ε>0 such that f(n) = Ω(n^(log_b a+ε)), and if f(n) additionally satisfies the regularity condition af(n/b) ≤ cf(n) for some constant c<1, then T(n) = Θ(f(n)).',
-      page: 101,
-      intro: '情况 3 有两个条件：① f(n) 多项式级快于分水岭；② 正则条件 af(n/b) ≤ cf(n)。★ 为什么需要正则条件：它保证递归树上父结点的代价比所有孩子加起来还大——这样根才主导。',
+      title: '三种情况的判定证据',
+      statement: 'Before applying the master theorem to some examples, let’s spend a few moments to understand broadly what it says.',
+      page: 103,
+      intro: '主方法不是看到 $aT(n/b)+f(n)$ 就能机械代入。每一种结论都要先核对增长比较；情况 3 还多了一条正则条件。下面三段原文对应三张判定卡，正是阶段 7 每一行结论的依据。',
       steps: [
         {
-          title: '第一步 · 初始化（Initialization）',
-          en: '【TODO 原书这一段的原文（逐字）】',
-          page: 101,
-          body: ['【TODO 中文展开与补白】'],
-        },
-        {
-          title: '第二步 · 保持（Maintenance）',
-          en: '【TODO 原书这一段的原文（逐字）】',
-          page: 102,
-          body: ['【TODO 中文展开与补白】'],
-        },
-        {
-          title: '第三步 · 终止（Termination）',
-          en: '【TODO 原书这一段的原文（逐字）】',
+          title: '情况 1 · 叶子为何主导',
+          en: 'In case 1, not only must the watershed function grow asymptotically faster than the driving function, it must grow polynomially faster.',
           page: 103,
-          body: ['【TODO 中文展开与补白】'],
+          body: [
+            '只说「$f(n)$ 比分水岭小」不够。必须存在常数 $\\epsilon > 0$，使 $f(n)$ 至少差一个 $n^\\epsilon$ 因子。这样递归树从根到叶的层代价至少几何增长，叶子才会压过所有内部结点。',
+            '★ 这正好解释了 $8T(n/2)+\\Theta(1)$：分水岭是 $n^3$，常数项足足慢三个多项式阶，因此结论是 $\\Theta(n^3)$。',
+          ],
+        },
+        {
+          title: '情况 2 · 为什么会多出一个 lg n',
+          en: 'In case 2, the watershed and driving functions grow at nearly the same asymptotic rate.',
+          page: 103,
+          body: [
+            '这里的“nearly”有精确定义：$f(n)=\\Theta(n^{\\log_b a}\\lg^k n)$，其中 $k\\ge0$。每层成本都近似同阶，而树高是 $\\Theta(\\lg n)$，于是总和比单层多一个 $\\lg n$。',
+            '★ 归并排序 $2T(n/2)+\\Theta(n)$ 是 $k=0$：单层是 $\\Theta(n)$，总共 $\\Theta(\\lg n)$ 层，所以得到 $\\Theta(n\\lg n)$。',
+          ],
+        },
+        {
+          title: '情况 3 · 根为何主导',
+          en: 'Case 3 mirrors case 1. Not only must the driving function grow asymptotically faster than the watershed function, it must grow polynomially faster.',
+          page: 103,
+          body: [
+            '方向反过来：$f(n)$ 要至少快 $n^\\epsilon$ 倍。但还不能漏看正则条件 $af(n/b)\\le cf(n)$（$c<1$）：它保证所有孩子的总代价比父结点小固定比例，层代价才能向下几何衰减。',
+            '★ $3T(n/4)+n\\lg n$ 属于此例。虽然 $n\\lg n$ 只比 $n^{\\log_4 3}$ 高一点，看似微弱，但差距仍包含正的多项式因子，且正则条件成立。',
+          ],
         },
       ],
-      conclusion: '★ 递归树给猜测、代入法盖章——两件工具是一套流程的两半。4.5 的主方法把这套流程编成查表公式。',
+      conclusion: '★ 先算分水岭，再核对多项式分离；只有情况 3 再核对正则条件。任何一步不满足，就不能硬套主方法，应该回到 4.3 的代入法或 4.4 的递归树。',
     },
 
     // ——— 阶段 9 闯关测验 ———————————————————————————————————————
@@ -234,7 +332,53 @@ export default {
       type: 'drill',
       title: '检验一下',
       items: [
-        // 【TODO 6–8 道。题目要能一眼看出是本节的内容，但答案必须能从原文/动画推出来】
+        {
+          kind: 'single',
+          q: '对递归式 $8T(n/2)+\\Theta(1)$，分水岭函数 $n^{\\log_b a}$ 是什么？',
+          options: ['$n$', '$n^2$', '$n^3$', '$n^8$'],
+          answer: 2,
+          why: '$a=8, b=2$，所以 $\\log_2 8=3$，分水岭是 $n^3$（p.105）。常数驱动函数多项式级慢，因此属于情况 1。',
+        },
+        {
+          kind: 'single',
+          q: '归并排序的递归式 $2T(n/2)+\\Theta(n)$ 属于主方法的哪一种情况？',
+          options: ['情况 1：叶子主导', '情况 2：每层平摊', '情况 3：根主导', '三种都不适用'],
+          answer: 1,
+          why: '$a=b=2$ 时分水岭是 $n$，驱动函数也是 $\\Theta(n)$，即情况 2（p.104）。所以结果多一个 $\\lg n$，为 $\\Theta(n\\lg n)$。',
+        },
+        {
+          kind: 'judge',
+          q: '只要 $f(n)$ 比分水岭增长得快，情况 3 一定可以使用。',
+          answer: false,
+          why: '错。除多项式级快外，情况 3 还要求正则条件 $af(n/b)\\le cf(n)$，其中 $c<1$。否则根不一定主导（p.103–104）。',
+        },
+        {
+          kind: 'single',
+          q: 'Strassen 的递归式 $7T(n/2)+\\Theta(n^2)$ 的正确结论是？',
+          options: ['$\\Theta(n^2)$', '$\\Theta(n^3)$', '$\\Theta(n^{\\lg 7})$', '$\\Theta(n^2\\lg n)$'],
+          answer: 2,
+          why: '分水岭是 $n^{\\lg 7}$，而 $\\lg 7=2.807355\\ldots$；$n^2$ 多项式级慢于它，故情况 1 给出 $\\Theta(n^{\\lg 7})$（p.105）。',
+        },
+        {
+          kind: 'judge',
+          q: '$T(n)=2T(n/2)+n/\\lg n$ 可以直接套情况 1，因为 $n/\\lg n=o(n)$。',
+          answer: false,
+          why: '错。它只比 $n$ 对数级慢，不是多项式级慢；书上把它列为情况 1 与情况 2 之间的间隙（p.105）。',
+        },
+        {
+          kind: 'single',
+          q: '使用主方法时，最可靠的第一步是什么？',
+          options: ['先猜最终复杂度', '先算 $n^{\\log_b a}$，再把 f(n) 与它比较', '先验证正则条件', '先把 n 代成 1024'],
+          answer: 1,
+          why: '书上把 $n^{\\log_b a}$ 称为 watershed function（分水岭函数）。三种情况全都从比较 $f(n)$ 与它开始（p.103）。',
+        },
+        {
+          kind: 'simulate',
+          q: '对 $8T(n/2)+\\Theta(1)$，请填入分水岭函数的 n 的指数。',
+          expect: [3],
+          placeholder: '例如：3',
+          why: '$\\log_2 8=3$，因此分水岭为 $n^3$（p.105）。',
+        },
       ],
       bookExercises: [
         { id: '4.5-1', page: 106, star: 0,

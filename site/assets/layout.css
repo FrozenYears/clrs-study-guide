@@ -467,11 +467,14 @@ p:last-child {
 
 /* ---------- 顶栏右侧的全局进度读数 ---------- */
 .header-progress {
+  min-width: 0;
   font-size: var(--fs-xs);
   letter-spacing: 0.04em;
   color: var(--fg-2);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* ---------- 「待建」标记：真实语义状态，不是一个装饰圆点 ---------- */
@@ -607,6 +610,13 @@ p:last-child {
   .app-header {
     padding: 0 var(--sp-3);
     gap: var(--sp-2);
+  }
+  .app-header .spacer {
+    display: none;
+  }
+  .header-progress {
+    flex: 1 1 auto;
+    text-align: right;
   }
   .app-main {
     padding: var(--sp-5) var(--sp-3) var(--sp-6);
