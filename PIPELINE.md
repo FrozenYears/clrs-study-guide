@@ -439,7 +439,29 @@ python tools/smoke_browser.py 8317          # 无头 Chrome 逐路由渲染
 | 截图核对 | Chrome `--screenshot=<绝对路径>`（相对路径会写到别处）+ pymupdf 裁剪放大 |
 | 行尾 | `.gitattributes` 已锁 LF；Python writer 必须加 `newline='\n'` |
 | C 编译验证 | 必须加 `-Wall -Wextra -Werror`，零警告才算过 |
-| 线上部署 | `workbuddy_sites_deploy` 工具，`directory` 指向 `site/`，`userAskedToPublish: true` |
+| 线上部署 | `workbuddy_sites_deploy` 工具（完整规程见下方「线上发布与同步」） |
+
+### 线上发布与同步
+
+**站点**：`https://clrs-algo-quest.app.workbuddy.host/`（域名固定，重复发布不变）
+**管理入口**：WorkBuddy 「设置 → 数据管理 → 应用」
+
+**⇢ 铁律：发布同意不跨轮次。** 改完内容要同步线上，必须**用户在新消息里明确要求**——
+不许在同一轮里自作主张发布，也不许把「上次同意过」当作这次的授权。
+
+**同步步骤**（用户明确要求后执行）：
+
+1. 确认本地工作已提交（`git status` 干净、闸门全绿）——别把半成品发上线；
+2. 调用 `workbuddy_sites_deploy` 工具，参数固定为：
+   - `directory` = `E:\Projects\Mid\Introduction to Algorithms\site`（注意指向 `site/`，不是仓库根）
+   - `domainPrefix` = `clrs-algo-quest`（保持域名不变）
+   - `language` = `static`
+   - `updateExistingApp` = `true`
+   - `userAskedToPublish` = `true`
+3. 看返回结果：`verified: true` 才算成功；域名若意外变化要立即告知用户；
+4. 在回复里附上线上链接，并说明本次同步覆盖了哪些提交。
+
+**历史模式**：本项目已多次同步，每次都是同一域名覆盖更新——不需要用户重新记链接。
 
 ---
 
