@@ -159,6 +159,15 @@ const SYM = {
   arg: "arg",
   gcd: "gcd",
   lcm: "lcm",
+  lim: "lim",
+  sup: "sup",
+  inf: "inf",
+    varphi: "φ",
+  varepsilon: "ε",
+  vartheta: "ϑ",
+  varpi: "ϖ",
+  varrho: "ϱ",
+  varsigma: "ς",
 };
 
 /** 只影响排版、不产生字符的命令（\left( 、\displaystyle 之类） */
@@ -172,6 +181,13 @@ function mathcalMap(text) {
   if (text === "o") return "ℴ";
   return text;
 }
+
+/** \mathbb{N} 之类的黑板粗体：数集 ℕ/ℤ/ℚ/ℝ/ℂ 在第 3 章的定义里大量出现 */
+const MATHBB = { N: "ℕ", Z: "ℤ", Q: "ℚ", R: "ℝ", C: "ℂ", P: "ℙ", H: "ℍ", E: "𝔼" };
+
+/** 重音符：\hat{x} → x̂、\tilde{x} → x̃、\bar{x} → x̄、\vec{x} → x⃗（组合字符追加） */
+const ACCENTS = { hat: "\u0302", tilde: "\u0303", bar: "\u0304",
+                  vec: "\u20D7", dot: "\u0307", ddot: "\u0308" };
 
 /* ---------- 极简解析器 ---------- */
 function parse(src) {
@@ -399,6 +415,28 @@ function parse(src) {
           continue;
         }
         buf += "\\mathcal";
+        continue;
+      }
+      // \mathbb{N} -> ℕ（数集；不认识的字母原样保留）
+      if (name === "mathbb") {
+        const a = readGroup();
+        if (a) {
+          out.push(document.createTextNode(MATHBB[a.text] || a.text));
+          continue;
+        }
+        buf += "\\mathbb";
+        continue;
+      }
+      // \hat{x} / \tilde{x} / \bar{x} / \vec{x} / \dot{x} / \ddot{x} -> 组合重音符
+      if (name in ACCENTS) {
+        const a = readGroup();
+        if (a) {
+          // 组合字符追加在基字符后；相邻文本节点在渲染上等价于同一文本
+          parse(a.text).forEach((c) => out.push(c));
+          out.push(textNode(ACCENTS[name]));
+          continue;
+        }
+        buf += "\\" + name;
         continue;
       }
       // \text{...}：文本模式，内容原样输出

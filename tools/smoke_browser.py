@@ -66,9 +66,9 @@ CASES = [
     ("#/ch03/s02/s05", ["viz-stage", "growth", "n²+10n"], [NOT_PENDING]),
     ("#/ch03/s02/s09", ["检验一下", "3.2-1", "原书习题", "Theorem 3.1"], [NOT_PENDING]),
     # ---- 3.3 标准记号与常用函数（九段式，已建成）----
-    ("#/ch03/s03/s01", ["这一关是一张「函数速查表」", "第 3 章第 3 节", "取整与取模"], [NOT_PENDING]),
+    ("#/ch03/s03/s01", ["函数速查表", "第 3 章第 3 节", "取整与取模"], [NOT_PENDING]),
     ("#/ch03/s03/s03", ['data-kind="source"', "monotonically increasing", "floor function"], [NOT_PENDING]),
-    ("#/ch03/s03/s05", ["viz-stage", "growth", "lg n < √n"], [NOT_PENDING]),
+    ("#/ch03/s03/s05", ["viz-stage", "growth", "lg n &lt; √n"], [NOT_PENDING]),
     ("#/ch03/s03/s09", ["检验一下", "3.3-1", "原书习题", "Stirling"], [NOT_PENDING]),
 
     # 不带阶段号：应落到第一个阶段

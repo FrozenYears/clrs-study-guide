@@ -253,7 +253,8 @@ export function chartLegend(spec = {}) {
     rows.push(key(s.color || PALETTE[i % PALETTE.length], s.dash || '', s.name));
   });
   if (spec.band) {
-    rows.push(key('--viz-mark', '9 5', (spec.band.label || 'c·g(n)') + '（上界）'));
+    const bl = spec.band.label || 'c·g(n)';
+    rows.push(key('--viz-mark', '9 5', bl.endsWith('（上界）') ? bl : bl + '（上界）'));
   }
   return h('div', { class: 'growth-legend' }, rows);
 }

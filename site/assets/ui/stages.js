@@ -434,7 +434,7 @@ function makeChartPanel(stage) {
         ? '✓ 所有 n ≥ n₀ 都满足 f(n) ≤ c·g(n)'
         : '✗ 在 n = ' + v.n + ' 处不成立（' + Math.round(v.lhs) + ' > ' + Math.round(v.rhs) + '）'));
     }
-    readout.replaceChildren(kids);
+    readout.replaceChildren(...kids);   // kids 是数组，必须展开，否则 DOM 里出现 [object HTMLSpanElement]
   }
 
   const controls = h('div', { class: 'chart-controls' });
