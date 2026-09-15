@@ -14,6 +14,7 @@ export default {
   source: { printed: [90, 94], pdf: [111, 115] },
   sourceNote: '本关对应原书 4.3 节（印刷页 90–94）。',
   prerequisites: [
+    { label: '4.2 Strassen 矩阵乘法', url: '#/ch04/s02' },
     { label: '3.2 渐进记号的形式化定义', url: '#/ch03/s02' },
     { label: '2.3 归并排序', url: '#/ch02/s03' },
   ],

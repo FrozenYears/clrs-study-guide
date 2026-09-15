@@ -4,6 +4,7 @@
 import { insertionSort } from './insertion-sort.js';
 import { mergeSort } from './merge-sort.js';
 import { merge } from './merge.js';
+import { strassenDemo } from './strassen-demo.js';
 
 let passed = 0, failed = 0;
 function ok(cond, msg) {
@@ -141,6 +142,22 @@ console.log('\n[4] MERGE 单独测试（原书 Figure 2.3：L=[2,4,6,7], R=[1,2,
     if (c.move !== n) allExact = false;
   }
   ok(allExact, `200 组合并的写回次数均恰好等于区间长度 r−p+1（共校验 ${checked} 组）`);
+}
+
+console.log('\n[5] Strassen 教学帧顺序（原书 4.2 的四步）');
+{
+  const frames = [...strassenDemo()];
+  const sFrames = frames.filter((frame) => frame.phase === 's');
+  const pFrames = frames.filter((frame) => frame.phase === 'p');
+  ok(frames.length === 20, `共 ${frames.length} 帧（分块 + 10 个 S + 7 个 P + 合并 + 完成）`);
+  ok(sFrames.length === 10 && sFrames.every((frame, index) => frame.index === index),
+    'S1…S10 按原书顺序各出现一次');
+  ok(pFrames.length === 7 && pFrames.every((frame, index) => frame.index === index),
+    'P1…P7 按原书顺序各出现一次');
+  ok(frames[0].line === 1 && sFrames.every((frame) => frame.line === 2) &&
+    pFrames.every((frame) => frame.line === 3) && frames[18].line === 4,
+  '教学步骤行号依次为 1、2、3、4');
+  ok(frames.at(-1).done === true && frames.at(-1).phase === 'done', '最后一帧明确结束');
 }
 
 console.log(`\n==== 结果：${passed} passed, ${failed} failed ====`);

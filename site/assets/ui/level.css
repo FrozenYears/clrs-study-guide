@@ -7,6 +7,7 @@
 
 /* ---------- 章节头 ---------- */
 .lv-header {
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: var(--sp-3);
@@ -21,6 +22,8 @@
   grid-template-columns: minmax(0, auto) minmax(0, 1fr);
   gap: var(--sp-5);
   align-items: baseline;
+  min-width: 0;
+  width: 100%;
 }
 .lv-heading__no {
   font-family: var(--font-display);
@@ -42,6 +45,12 @@
   .lv-heading__no {
     font-size: var(--fs-3xl);
   }
+  .lv-title {
+    font-size: var(--fs-xl);
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-all;
+  }
 }
 
 .lv-crumbs {
@@ -53,12 +62,16 @@
 }
 
 .lv-title {
+  min-width: 0;
+  max-width: 100%;
   font-family: var(--font-sans);
   font-size: var(--fs-2xl);
   font-weight: 700;
   letter-spacing: -0.01em;
   margin: 0;
   line-height: var(--lh-tight);
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 .lv-subtitle {
   font-family: var(--font-serif);
@@ -69,6 +82,7 @@
 }
 
 .lv-meta {
+  min-width: 0;
   display: flex;
   flex-wrap: wrap;
   gap: var(--sp-3);
@@ -81,6 +95,7 @@
 
 /* ---------- 关卡与阶段导航 ---------- */
 .lv-body {
+  min-width: 0;
   display: grid;
   grid-template-columns: 15rem minmax(0, 1fr);
   gap: var(--sp-5);
@@ -98,6 +113,9 @@
   display: flex;
   flex-direction: column;
   gap: var(--sp-4);
+}
+.lv-body > .stack {
+  min-width: 0;
 }
 @media (max-width: 960px) {
   .lv-rail {
@@ -622,6 +640,52 @@ details.kit > summary {
 }
 .stage-foot .spacer {
   flex: 1 1 auto;
+}
+
+/* ---------- Strassen 块矩阵 ---------- */
+.matrix-viz {
+  display: grid;
+  gap: var(--sp-3);
+  padding: var(--sp-3);
+  border: var(--bd-w) solid var(--bd-0);
+  background: var(--bg-1);
+  min-width: 0;
+  max-width: 100%;
+}
+.matrix-viz__matrices,
+.matrix-viz__ledgers {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-3);
+  min-width: 0;
+  max-width: 100%;
+}
+.matrix-viz__matrix { margin: 0; }
+.matrix-viz h4 { margin: 0 0 var(--sp-1); font-size: var(--fs-sm); }
+.matrix-viz__grid { display: grid; grid-template-columns: repeat(2, minmax(3.5rem, 1fr)); border: var(--bd-w) solid var(--bd-1); }
+.matrix-viz__cell { padding: var(--sp-2); border: var(--bd-w) solid var(--bd-0); font-family: var(--font-mono); font-size: var(--fs-sm); text-align: center; }
+.matrix-viz__cell[data-active="1"] { background: var(--viz-compare); }
+.matrix-viz__operator { color: var(--accent); font-family: var(--font-display); font-size: var(--fs-xl); }
+.matrix-viz__formula { margin: 0; font-family: var(--font-mono); font-size: var(--fs-sm); color: var(--fg-1); }
+.matrix-viz__ledger { flex: 1 1 16rem; min-width: 0; }
+.matrix-viz__ledger ol { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2px; margin: 0; padding-left: 1.4em; font-family: var(--font-mono); font-size: var(--fs-xs); }
+.matrix-viz__ledger li { padding: var(--sp-1); }
+.matrix-viz__ledger li[data-active="1"] { background: var(--viz-active); color: var(--bg-0); font-weight: 700; }
+@media (max-width: 560px) {
+  .matrix-viz__matrices { gap: var(--sp-2); }
+  .matrix-viz__operator { font-size: var(--fs-lg); }
+  .matrix-viz__ledger ol { grid-template-columns: minmax(0, 1fr); }
+  .matrix-viz__matrices .matrix-viz__matrix {
+    flex: 0 0 7rem;
+  }
+  .matrix-viz__matrices .matrix-viz__matrix:last-child {
+    flex-basis: 100%;
+  }
+  .matrix-viz__grid {
+    grid-template-columns: repeat(2, 3.5rem);
+    width: max-content;
+  }
 }
 
 /* 视觉惯例提示：原文块用衬线体，已由 components.css 的 [data-kind] 承担 */
