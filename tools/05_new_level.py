@@ -181,10 +181,9 @@ class Checker(object):
         self.pages = self.ver.load_pages()
 
     def ok(self, en, page):
-        hay = self.ver.qwindow_text(self.pages, page)
-        if not hay:
-            return False, "印刷页 %s 在语料里取不到文本" % (page,)
-        good, diag = self.ver.quote_match_seq(en, hay)
+        # ★ 与关卡闸门同一条判据（v3 的 verify_quote：连续命中 + 四条结构化豁免）。
+        #   生成即合规 —— 生成器放行的引述，闸门不会再打回。
+        good, diag = self.ver.verify_quote(en, page)
         return good, diag
 
 

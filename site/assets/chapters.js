@@ -11,10 +11,12 @@
 
 import ch02 from '../chapters/ch02-getting-started/chapter.js';
 import ch3 from '../chapters/ch03-characterizing-running-times/chapter.js';
+import ch4 from '../chapters/ch04-divide-and-conquer/chapter.js';
 
 const CHAPTERS = new Map([
   ['2', ch02],
   ['3', ch3],
+  ['4', ch4],
 ]);
 
 /**
