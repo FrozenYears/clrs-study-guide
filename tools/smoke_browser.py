@@ -60,6 +60,16 @@ CASES = [
     ("#/ch03/s01/s03", ["O-notation", 'data-kind="source"', "for example"], [NOT_PENDING]),
     ("#/ch03/s01/s04", ["for i = 2 to n", "pc-line"], [NOT_PENDING]),
     ("#/ch03/s01/s09", ["3.1-1", "3.1-3", "原书习题"], [NOT_PENDING]),
+    # ---- 3.2 渐进记号的形式定义（九段式，已建成）----
+    ("#/ch03/s02/s01", ["这一关要把「差不多」说精确", "第 3 章第 2 节", "集合记号"], [NOT_PENDING]),
+    ("#/ch03/s02/s03", ['data-kind="source"', "n/3 positions", "at and to the right of n 0"], [NOT_PENDING]),
+    ("#/ch03/s02/s05", ["viz-stage", "growth", "n²+10n"], [NOT_PENDING]),
+    ("#/ch03/s02/s09", ["检验一下", "3.2-1", "原书习题", "Theorem 3.1"], [NOT_PENDING]),
+    # ---- 3.3 标准记号与常用函数（九段式，已建成）----
+    ("#/ch03/s03/s01", ["这一关是一张「函数速查表」", "第 3 章第 3 节", "取整与取模"], [NOT_PENDING]),
+    ("#/ch03/s03/s03", ['data-kind="source"', "monotonically increasing", "floor function"], [NOT_PENDING]),
+    ("#/ch03/s03/s05", ["viz-stage", "growth", "lg n < √n"], [NOT_PENDING]),
+    ("#/ch03/s03/s09", ["检验一下", "3.3-1", "原书习题", "Stirling"], [NOT_PENDING]),
 
     # 不带阶段号：应落到第一个阶段
     ("#/ch02/s01", ["为什么学这一关"], [NOT_PENDING]),

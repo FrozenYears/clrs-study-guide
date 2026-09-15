@@ -6,17 +6,15 @@
  * ========================================================================== */
 
 import s01 from './s01-o-notation-and.js';
-// s02 还没建：建好后把下面这行打开 ——
-// import s02 from './s02-<slug>.js';
-// s03 还没建：建好后把下面这行打开 ——
-// import s03 from './s03-<slug>.js';
+import s02 from './s02-asymptotic-notation-formal.js';
+import s03 from './s03-standard-notations-and.js';
 
 export default {
   ch: 3,
-  chSpan: '第 3 章 · Characterizing Running Times（【TODO 中文章名】）',
+  chSpan: '第 3 章 · Characterizing Running Times（刻画运行时间）',
   slug: 'ch03-characterizing-running-times',
   title: 'Characterizing Running Times',
-  titleZh: '【TODO 中文章名】',
+  titleZh: '刻画运行时间',
   source: { printed: [49, 75], pdf: [70, 96] },
-  levels: [s01],   // 只登记已建好的关卡
+  levels: [s01, s02, s03],   // 只登记已建好的关卡
 };

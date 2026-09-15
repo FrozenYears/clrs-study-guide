@@ -228,11 +228,11 @@ export default {
         },
         {
           kind: 'remark',
-          page: 22,
+          page: [21, 22],
           en:
             'Indentation indicates block structure. For example, the body of the for loop ' +
             'that begins on line 1 consists of lines 2–8, and the body of the while loop that ' +
-            'begins on line 5 contains lines 6–7 but not line 8.',
+            '… begins on line 5 contains lines 6–7 but not line 8.',
           zh:
             '这是阅读全书伪代码的第一条规矩：**缩进就是花括号**。' +
             '因此下面那张伪代码表里，第 2–8 行在 for 里面，第 6–7 行在 while 里面，' +
@@ -245,7 +245,7 @@ export default {
             'Although many programming languages enforce 0-origin indexing for arrays ' +
             '(0 is the smallest valid index), we choose whichever indexing scheme is clearest ' +
             'for human readers to understand. Because people usually start counting at 1, not ' +
-            '0, most—but not all—of the arrays in this book use 1-origin indexing.\n' +
+            '0, most—but not all—of the arrays in this book use 1-origin indexing. …\n' +
             'If you are implementing an algorithm that we specify using 1-origin indexing, ' +
             'but you’re writing in a programming language that enforces 0-origin indexing ' +
             '(such as C, C++, Java, Python, or JavaScript), then give yourself credit for ' +
