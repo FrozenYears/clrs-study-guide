@@ -266,6 +266,16 @@ CASES = [
     ("#/ch11/s01/s08", ["下标", "第一步"], [NOT_PENDING, "【TODO"]),
     ("#/ch11/s01/s09", ["检验一下", "11.1-1"], [NOT_PENDING, "【TODO"]),
 
+    # ---- 11.2 散列表 · 链接法（九段式）----
+    ("#/ch11/s02/s01", ["链接法", "数学急救包"], [NOT_PENDING, "【TODO"]),
+    ("#/ch11/s02/s03", ['data-kind="source"', "collision"], [NOT_PENDING, "【TODO"]),
+    ("#/ch11/s02/s04", ["CHAINED-HASH-SEARCH(T, k)", "pc-line"], [NOT_PENDING, "【TODO"]),
+    ("#/ch11/s02/s05", ["viz-stage", "viz-hash"], [NOT_PENDING, "【TODO"]),
+    ("#/ch11/s02/s06", ["chained_hash.c", "ht_search"], [NOT_PENDING, "【TODO"]),
+    ("#/ch11/s02/s07", ["负载因子"], [NOT_PENDING, "【TODO"]),
+    ("#/ch11/s02/s08", ["独立均匀散列", "第一步"], [NOT_PENDING, "【TODO"]),
+    ("#/ch11/s02/s09", ["检验一下", "11.2-1"], [NOT_PENDING, "【TODO"]),
+
     # ---- 2.3 归并排序（九段式）----
     ("#/ch02/s03/s01", ["为什么学这一关", "递归式", "lg n"], [NOT_PENDING]),
     ("#/ch02/s03/s02", ["两叠牌", "正面朝上"], [NOT_PENDING]),
