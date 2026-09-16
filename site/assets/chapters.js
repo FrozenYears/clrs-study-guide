@@ -14,6 +14,7 @@ import ch3 from '../chapters/ch03-characterizing-running-times/chapter.js';
 import ch4 from '../chapters/ch04-divide-and-conquer/chapter.js';
 import ch5 from '../chapters/ch05-probabilistic-analysis-and-randomized/chapter.js';
 import ch6 from '../chapters/ch06-heapsort/chapter.js';
+import ch7 from '../chapters/ch07-quicksort/chapter.js';
 
 const CHAPTERS = new Map([
   ['2', ch02],
@@ -21,6 +22,7 @@ const CHAPTERS = new Map([
   ['4', ch4],
   ['5', ch5],
   ['6', ch6],
+  ['7', ch7],
 ]);
 
 /**

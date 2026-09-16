@@ -538,7 +538,12 @@ function makeVizPanel(stage, ctx) {
     if (stepper) { stepper.destroy(); stepper = null; }
     if (viz) { viz.destroy(); viz = null; }
     host.replaceChildren();
-    viz = vizMod.create(host, { mode: stage.vizMode || 'bars' });
+    viz = vizMod.create(host, {
+      mode: stage.vizMode || 'bars',
+      // 有些算法的状态说法与引擎内置的通用标签不同（PARTITION 的两侧是「≤ x / > x」），
+      // 关卡可以覆写标签文字；不写就沿用引擎默认。
+      stateLabels: stage.stateLabels,
+    });
 
     const speedMs = Number(speed.value) || 650;
     const arr = treeSeq ? [] : presets[idx].array.slice();

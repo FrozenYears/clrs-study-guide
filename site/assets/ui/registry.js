@@ -39,6 +39,9 @@ import { heapsort } from '../algorithms/heapsort.js';
 import { heapExtractMax } from '../algorithms/heap-extract-max.js';
 import { heapIncreaseKey } from '../algorithms/heap-increase-key.js';
 import { heapInsert } from '../algorithms/heap-insert.js';
+// 第 7 章快速排序：分区（7.1）与整体递归（7.1 / 7.2）
+import { partition } from '../algorithms/partition.js';
+import { quicksort } from '../algorithms/quicksort.js';
 
 const VIZ = new Map();
 const ALGO = new Map();
@@ -110,3 +113,5 @@ registerAlgorithm('heapsort', heapsort);
 registerAlgorithm('heap-extract-max', heapExtractMax);
 registerAlgorithm('heap-increase-key', heapIncreaseKey);
 registerAlgorithm('heap-insert', heapInsert);
+registerAlgorithm('partition', partition);
+registerAlgorithm('quicksort', quicksort);

@@ -118,6 +118,16 @@ CASES = [
     ("#/ch06/s05/s08", ["要证的不变量", "第一步", "上浮"], [NOT_PENDING, "【TODO"]),
     ("#/ch06/s05/s09", ["检验一下", "6.5-5", "6.5-7", "原书习题"], [NOT_PENDING, "【TODO"]),
 
+    # ---- 7.1 快速排序的描述（九段式）----
+    ("#/ch07/s01/s01", ["与归并排序同门", "数学急救包"], [NOT_PENDING, "【TODO"]),
+    ("#/ch07/s01/s03", ['data-kind="source"', "low side", "cannot help but be sorted"], [NOT_PENDING, "【TODO"]),
+    ("#/ch07/s01/s04", ["QUICKSORT(A, p, r)", "PARTITION(A, p, r)", "pc-line", "变量表"], [NOT_PENDING, "【TODO"]),
+    ("#/ch07/s01/s05", ["viz-stage", "viz-array", "帧 0", "轴", "PARTITION"], [NOT_PENDING, "【TODO"]),
+    ("#/ch07/s01/s06", ["quicksort.c", "partition", "伪代码 ↔ C 对应表"], [NOT_PENDING, "【TODO"]),
+    ("#/ch07/s01/s07", ["分治三步", "PARTITION 的四个区", "Θ(n)"], [NOT_PENDING, "【TODO"]),
+    ("#/ch07/s01/s08", ["要证的不变量", "第一步", "Termination"], [NOT_PENDING, "【TODO"]),
+    ("#/ch07/s01/s09", ["检验一下", "7.1-2", "7.1-4", "原书习题"], [NOT_PENDING, "【TODO"]),
+
     # ---- 2.3 归并排序（九段式）----
     ("#/ch02/s03/s01", ["为什么学这一关", "递归式", "lg n"], [NOT_PENDING]),
     ("#/ch02/s03/s02", ["两叠牌", "正面朝上"], [NOT_PENDING]),

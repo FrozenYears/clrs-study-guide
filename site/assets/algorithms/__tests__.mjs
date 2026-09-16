@@ -19,6 +19,8 @@ import { heapExtractMax } from './heap-extract-max.js';
 import { heapIncreaseKey } from './heap-increase-key.js';
 import { heapInsert } from './heap-insert.js';
 import { randomlyPermute } from './randomly-permute.js';
+import { partition } from './partition.js';
+import { quicksort } from './quicksort.js';
 
 let passed = 0, failed = 0;
 function ok(cond, msg) {
@@ -663,6 +665,117 @@ console.log('\n[10] RANDOMLY-PERMUTE（原书 5.3）：既是合法排列，也�
     }
     ok(bound, '洗牌：200 个种子下有效交换次数都不超过 n（原地、Θ(n)）');
     ok(nz > 190, `洗牌：${nz}/200 个种子确实发生了交换（不是空转）`);
+  }
+}
+
+console.log('\n[11] 第 7 章 QUICKSORT / PARTITION（原书 7.1）');
+{
+  const sorted = (a) => [...a].sort((x, y) => x - y);
+
+  // ---- 11a PARTITION：四个区的三条性质（原书 Figure 7.2 的循环不变量的结论）----
+  // 返回 { q, out, counts }；out 是分区后的数组
+  const runPartition = (a, p = 1, r = null) => {
+    const frames = [...partition(a, p, r)];
+    return { last: frames.at(-1), frames };
+  };
+
+  {
+    let allOk = true, checked = 0;
+    for (let t = 1; t <= 200; t++) {
+      const n = 1 + (t % 24);
+      const a = lcg(t + 501, n).map((v) => v % 60);
+      const { last } = runPartition(a, 1, n);
+      const out = last.array;
+      const q = last.pointers.q;
+      checked++;
+      // A[q] 是轴（原数组的最后一个元素）
+      if (out[q - 1] !== a[n - 1]) allOk = false;
+      // 左侧全部 ≤ 轴，右侧全部 > 轴
+      for (let k = 1; k <= q - 1; k++) { if (out[k - 1] > out[q - 1]) allOk = false; }
+      for (let k = q + 1; k <= n; k++) { if (out[k - 1] <= out[q - 1]) allOk = false; }
+      // 元素集合不变
+      if (JSON.stringify(sorted(out)) !== JSON.stringify(sorted(a))) allOk = false;
+      // 比较次数恰好是 r − p（原书 Termination 那句话："the loop makes exactly r − p iterations"）
+      if (last.counts.cmp !== n - 1) allOk = false;
+    }
+    ok(allOk, `PARTITION：${checked} 组都满足「A[q] 是轴、左侧 ≤ 轴、右侧 > 轴」，` +
+      `元素集合不变，且比较次数恰好等于 r − p（循环轮数）`);
+  }
+
+  // 原书 Figure 7.1 的 8 元素数组 ⟨2,8,7,1,3,5,6,4⟩：轴是 4，应当落在下标 4
+  {
+    const { last } = runPartition([2, 8, 7, 1, 3, 5, 6, 4], 1, 8);
+    ok(last.pointers.q === 4 && last.array[3] === 4,
+      `Figure 7.1：PARTITION 后轴 4 落在下标 ${last.pointers.q}（期望 4），得到 [${last.array}]`);
+    // 图注说：2 与自身交换进低侧，然后 8、7 进高侧，1 换 8、3 换 7，5、6 进高侧
+    ok(last.counts.swap === 4,
+      `Figure 7.1：共 ${last.counts.swap} 次交换（2↔2、1↔8、3↔7、最后轴归位 = 4 次）`);
+  }
+
+  // 习题 7.1-2：全部元素相同时，PARTITION 返回 r
+  {
+    const { last } = runPartition([5, 5, 5, 5, 5], 1, 5);
+    ok(last.pointers.q === 5, `习题 7.1-2：全部相同时 q = ${last.pointers.q}（期望 r = 5）—— 这正是"最坏情况"的成因`);
+  }
+
+  // 子数组版本：只处理 A[p : r]，区间之外的元素一个都不许动
+  {
+    const a = [99, 2, 8, 7, 1, 88];
+    const { last } = runPartition(a, 2, 5);
+    ok(last.array[0] === 99 && last.array[5] === 88,
+      `子数组分区：区间外的 A[1] = ${last.array[0]}、A[6] = ${last.array[5]} 原封不动`);
+    ok(last.pointers.q >= 2 && last.pointers.q <= 5, `子数组分区：q = ${last.pointers.q} 落在 [p, r] 内`);
+  }
+
+  // ---- 11b QUICKSORT：排序正确性 + 它是"原地"的 ----
+  {
+    let allOk = true, checked = 0;
+    for (let t = 1; t <= 120; t++) {
+      const n = t % 30;
+      const a = lcg(t + 701, n).map((v) => (v % 80) - 40);
+      const last = [...quicksort(a, 1, n)].at(-1);
+      checked++;
+      if (JSON.stringify(last.array) !== JSON.stringify(sorted(a))) allOk = false;
+    }
+    ok(allOk, `QUICKSORT：${checked} 组随机输入（含负数）都排好序，与 Array.sort 一致`);
+
+    // 每个元素都必须被搬进最终位置：排完之后 pivot 位置不再变动（用"两个不同输入
+    // 得到同一有序序列"不足以说明；这里用小规模穷举验证与参照实现一致）
+    let allOk2 = true;
+    const perms = (arr) => (arr.length <= 1 ? [arr] : arr.flatMap(
+      (v, i) => perms([...arr.slice(0, i), ...arr.slice(i + 1)]).map((p) => [v, ...p])));
+    let c = 0;
+    for (const p of perms([1, 2, 3, 4])) {
+      const last = [...quicksort(p, 1, 4)].at(-1);
+      c++;
+      if (JSON.stringify(last.array) !== JSON.stringify([1, 2, 3, 4])) allOk2 = false;
+    }
+    ok(allOk2, `QUICKSORT：4 个元素的全排列（${c} 组）都排成 [1,2,3,4]`);
+  }
+
+  // ---- 11c Divide 之后 "Combine by doing nothing"：单元素区间不做任何比较 ----
+  {
+    const last = [...quicksort([7], 1, 1)].at(-1);
+    ok(last.counts.cmp === 0 && last.counts.swap === 0,
+      `QUICKSORT：n = 1 时比较 0 次、交换 0 次（p ≥ r 直接返回）`);
+    const empty = [...quicksort([], 1, 0)].at(-1);
+    ok(empty.done === true && empty.counts.cmp === 0, 'QUICKSORT：空数组直接结束');
+  }
+
+  // ---- 11d 最坏情况：已排序输入 + 固定取末元素当轴 → 递归深度退化成 n ----
+  // （这是 7.2 的主题；这里只把"为什么会退化"钉成数字：每层只切掉一个元素）
+  {
+    const n = 24;
+    const asc = Array.from({ length: n }, (_, i) => i + 1);
+    const last = [...quicksort(asc, 1, n)].at(-1);
+    ok(last.array.join(',') === asc.join(','), '最坏情况：递增输入仍然排得对');
+    // 轴每次都取末元素（最大值），于是 q = r：左段长度 r−p、右段为空
+    // 调用次数 = 非空 n 次（每层切掉一个元素）+ 空调用 n−1 次 = 2n − 1
+    // （空调用也要付出"进函数、判 p ≥ r、返回"的代价 —— 这正是原书 7.2 说最坏情况
+    //   是 Θ(n²) 的形态：递归树退化成一条链，深度 n。）
+    ok(last.counts.calls === 2 * n - 1,
+      `最坏情况：递增输入下 QUICKSORT 被调用 ${last.counts.calls} 次（= 2n − 1 = ${2 * n - 1}：` +
+      `非空 ${n} 次 + 空 ${n - 1} 次，每一层只切掉一个元素 —— 7.2 的"Θ(n²)"就是这个形态）`);
   }
 }
 

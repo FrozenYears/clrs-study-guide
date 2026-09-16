@@ -36,6 +36,11 @@ function setStroke(node, varName, w) {
 
 export function create(container, opts = {}) {
   const mode = opts.mode === 'cards' ? 'cards' : 'bars';
+  // 状态标签可以被关卡覆写：引擎内置的「已访问 / 结果 / 待处理」是按通用语义起的，
+  // 而具体算法有自己的说法（如 PARTITION 的两侧是「≤ x / > x」）。
+  // 只覆写文字，**颜色与纹理仍由 STATES 决定** —— 设计规范要求状态不能只靠颜色区分，
+  // 而文字正好是最可靠的那一重通道，让关卡把它说准反而更符合规范。
+  const stateLabels = opts.stateLabels || {};
 
   const svg = el('svg', {
     'class': 'viz-array',
@@ -129,7 +134,9 @@ export function create(container, opts = {}) {
     // 柱子 / 卡片
     for (let pos = 0; pos < n; pos++) {
       const x = marginX + pos * (colW + gap);
-      const st = STATES[stateOf(pos, hl)];
+      const stName = stateOf(pos, hl);
+      const st = STATES[stName];
+      const stLabel = stateLabels[stName] !== undefined ? stateLabels[stName] : st.label;
       let barTop, barH;
       if (mode === 'cards') {
         barH = cardH;
@@ -161,13 +168,13 @@ export function create(container, opts = {}) {
       vtxt.textContent = String(a[pos]);
       svg.appendChild(vtxt);
       // 状态文字标签（非颜色通道，置于柱下）
-      if (st.label) {
+      if (stLabel) {
         const lab = el('text', {
           x: String(x + colW / 2), y: String(marginTop + barAreaH + 16),
           'text-anchor': 'middle',
           style: `fill:var(--fg-1);font:11px var(--font-sans)`,
         });
-        lab.textContent = st.label;
+        lab.textContent = stLabel;
         svg.appendChild(lab);
       }
     }
