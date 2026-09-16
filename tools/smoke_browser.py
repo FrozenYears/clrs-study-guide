@@ -72,7 +72,7 @@ CASES = [
     ("#/ch06/s01/s01", ["先把「堆」这个词从内存管理里抢回来", "数学急救包"], [NOT_PENDING, "【TODO"]),
     ("#/ch06/s01/s03", ['data-kind="source"', "nearly complete binary tree", "max-heap property"], [NOT_PENDING, "【TODO"]),
     ("#/ch06/s01/s04", ["PARENT", "LEFT", "RIGHT", "pc-line", "变量表"], [NOT_PENDING, "【TODO"]),
-    ("#/ch06/s01/s05", ["viz-stage", "viz-heap", "帧 0", "已走到的结点"], [NOT_PENDING, "【TODO"]),
+    ("#/ch06/s01/s05", ["viz-stage", "viz-heap", "帧 0", "当前结点"], [NOT_PENDING, "【TODO"]),
     ("#/ch06/s01/s06", ["heap_index.c", "is_max_heap", "伪代码 ↔ C 对应表"], [NOT_PENDING, "【TODO"]),
     ("#/ch06/s01/s07", ["polyline", "growth-legend", "三条下标算式"], [NOT_PENDING, "【TODO"]),
     ("#/ch06/s01/s08", ["要证的不变量", "第一步", "两个推论"], [NOT_PENDING, "【TODO"]),
