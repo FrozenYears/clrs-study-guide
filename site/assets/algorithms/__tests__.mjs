@@ -21,6 +21,7 @@ import { heapInsert } from './heap-insert.js';
 import { randomlyPermute } from './randomly-permute.js';
 import { partition } from './partition.js';
 import { quicksort } from './quicksort.js';
+import { countingSort } from './counting-sort.js';
 
 let passed = 0, failed = 0;
 function ok(cond, msg) {
@@ -776,6 +777,54 @@ console.log('\n[11] 第 7 章 QUICKSORT / PARTITION（原书 7.1）');
     ok(last.counts.calls === 2 * n - 1,
       `最坏情况：递增输入下 QUICKSORT 被调用 ${last.counts.calls} 次（= 2n − 1 = ${2 * n - 1}：` +
       `非空 ${n} 次 + 空 ${n - 1} 次，每一层只切掉一个元素 —— 7.2 的"Θ(n²)"就是这个形态）`);
+  }
+}
+
+console.log('\n[12] 第 8 章 COUNTING-SORT（原书 8.2）');
+{
+  // ---- 12a 排序正确性（含 Figure 8.2 的原书输入）----
+  {
+    const fig = [2, 5, 3, 0, 2, 3, 0, 3];   // 原书 Figure 8.2 的输入，k = 5
+    const { result, frames } = run(countingSort(fig, 5));
+    ok(result.join(',') === sorted(fig).join(','), 'Figure 8.2 的输入 ⟨2,5,3,0,2,3,0,3⟩ 排对');
+    ok(frames > 15, `帧数 ${frames} 覆盖三个阶段（计数/前缀和/放置）`);
+  }
+
+  // ---- 12b 稳定性：反向扫描的落位次序 ----
+  {
+    const a = [1, 0, 1, 0, 1];
+    const frames = [...countingSort(a, 1)];
+    const place = frames.filter((f) => f.phase === '放置');
+    const b = place.at(-1).array;
+    ok(b.join(',') === '0,0,1,1,1', '相同值的相对次序在输出中保持（稳定）');
+    // 值 1 的三次放置落位（highlight.result，1 基）应依次是 B[5]、B[4]、B[3]
+    // —— 相同值从右往左放，先放的占高位，输出时保持原始次序：这就是稳定性的机制
+    const oneFrames = place.filter((f, i) => a[4 - i] === 1);
+    const slots = oneFrames.map((f) => f.highlight.result[0]);
+    ok(slots.join(',') === '5,4,3',
+      `值 1 的落位次序 ${slots.join(',')}（从右往左）：反向扫描保证稳定`);
+  }
+
+  // ---- 12c C 数组的前缀和语义：C[i] = ≤ i 的元素个数 ----
+  {
+    const a = [2, 5, 3, 0, 2, 3, 0, 3];
+    const frames = [...countingSort(a, 5)];
+    const afterPrefix = frames.filter((f) => f.phase === '前缀和').at(-1).array;
+    const lessEq = (v) => a.filter((x) => x <= v).length;
+    let allMatch = true;
+    for (let i = 0; i <= 5; i++) { if (afterPrefix[i] !== lessEq(i)) allMatch = false; }
+    ok(allMatch, '前缀和后 C[i] = ≤ i 的元素个数（原书第 9 行注释的语义）');
+  }
+
+  // ---- 12d 随机输入正确性（k = 99）----
+  {
+    let bad = false;
+    for (let s = 1; s <= 50; s++) {
+      const a = lcg(s, 40);
+      const { result } = run(countingSort(a, 99));
+      if (result.join(',') !== sorted(a).join(',')) bad = true;
+    }
+    ok(!bad, '50 组随机输入（k = 99）都排对');
   }
 }
 
