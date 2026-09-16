@@ -25,6 +25,8 @@ import { countingSort } from './counting-sort.js';
 import { radixSort } from './radix-sort.js';
 import { bucketSort } from './bucket-sort.js';
 import { minMax } from './min-max.js';
+import { stackDemo } from './stack.js';
+import { queueDemo } from './queue.js';
 
 let passed = 0, failed = 0;
 function ok(cond, msg) {
@@ -941,6 +943,43 @@ console.log('\n[15] 第 9 章 成对法找 min/max（原书 9.1）');
     const perPair = frames.filter((f) => f.phase === '对 max').length;
     ok(perPair === 2 && frames.at(-1).counts.cmp === 1 + 3 * 2,
       `2 对配对 × 3 次 + 首对 1 次 = ${frames.at(-1).counts.cmp}`);
+  }
+}
+
+
+console.log('\n[16] 第 10 章 栈与队列（原书 10.1）');
+{
+  // ---- 16a 栈：LIFO 与边界 ----
+  {
+    const P = (v) => ({ kind: 'push', v });
+    const frames = [...stackDemo([], 6, [P(4), P(1), P(3), { kind: 'pop' }, P(8), { kind: 'pop' }])];
+    const last = frames.at(-1);
+    ok(last.array.slice(0, 2).join(',') === '4,1', 'PUSH 4,1,3 → POP → PUSH 8 → POP：栈内 = ⟨4,1⟩（原书习题 10.1-2 的答案）');
+    ok(last.pointers.top === 2, `S.top = ${last.pointers.top}（栈内 2 个元素，前缀 S[1:2]）`);
+    const of = [...stackDemo([], 6, [1, 2, 3, 4, 5, 6, 7].map(P))].find((f) => f.note.includes('overflow'));
+    ok(!!of, '压满后再 PUSH 触发 overflow');
+    const uf = [...stackDemo([], 4, [{ kind: 'pop' }])].find((f) => f.note.includes('underflow'));
+    ok(!!uf, '空栈 POP 触发 underflow');
+  }
+
+  // ---- 16b 队列：FIFO 与回绕 ----
+  {
+    const E = (v) => ({ kind: 'enqueue', v });
+    const Q = (v) => ({ kind: 'dequeue', v });
+    const frames = [...queueDemo(4, [E(1), E(2), E(3), { kind: 'dequeue' }, { kind: 'dequeue' }, E(5), E(6)])];
+    const wrap = frames.filter((f) => f.note.includes('回绕'));
+    ok(wrap.length >= 1, `出现 ${wrap.length} 次回绕（tail 或 head 到 size 后回到 1）`);
+    const last = frames.at(-1);
+    ok(last.pointers.tail === 2, `容量 4 入 1,2,3 → 出 2 个 → 入 5,6 后 tail = ${last.pointers.tail}（回绕过 1）`);
+    ok(last.note.includes('队内 3 个元素'), '队内元素数由 (tail − head + n) mod n 得出 = (2−3+4) mod 4 = 3');
+  }
+
+  // ---- 16c 环形复用：容量 n 的队列可长期工作 ----
+  {
+    const ops = [];
+    for (let i = 0; i < 30; i++) { ops.push({ kind: 'enqueue', v: i }, { kind: 'dequeue' }); }
+    const last = [...queueDemo(4, ops)].at(-1);
+    ok(last.done === true, '容量 4 的队列跑 30 轮入出后正常结束（指针一直在环上转）');
   }
 }
 
