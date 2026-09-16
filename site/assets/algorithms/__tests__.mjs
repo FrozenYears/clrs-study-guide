@@ -23,6 +23,7 @@ import { partition } from './partition.js';
 import { quicksort } from './quicksort.js';
 import { countingSort } from './counting-sort.js';
 import { radixSort } from './radix-sort.js';
+import { bucketSort } from './bucket-sort.js';
 
 let passed = 0, failed = 0;
 function ok(cond, msg) {
@@ -865,6 +866,47 @@ console.log('\n[13] 第 8 章 RADIX-SORT（原书 8.3，Figure 8.3 数据已核�
       if (result.join(',') !== sorted(a).join(',')) bad = true;
     }
     ok(!bad, '50 组随机三位数都排对');
+  }
+}
+
+
+console.log('\n[14] 第 8 章 BUCKET-SORT（原书 8.4，Figure 8.4 数据已核实）');
+{
+  // ---- 14a Figure 8.4 的输入排对 ----
+  {
+    const fig = [0.78, 0.17, 0.39, 0.26, 0.72, 0.94, 0.21, 0.12, 0.23, 0.68];
+    const frames = [...bucketSort([...fig])];
+    const last = frames.at(-1);
+    ok(last.array.join(',') === sorted(fig).join(','), 'Figure 8.4 的 10 个数排对');
+    const alloc = frames.filter((f) => f.phase === '分配');
+    ok(alloc.length === 10, `分配帧 ${alloc.length} 帧 = n`);
+  }
+
+  // ---- 14b 桶号语义：0.78 → 桶 7（n = 10）----
+  {
+    const frames = [...bucketSort([0.78, 0.17, 0.39, 0.26, 0.72, 0.94, 0.21, 0.12, 0.23, 0.68])];
+    const first = frames.filter((f) => f.phase === '分配')[0];
+    ok(first.note.includes('桶 7'), '⌊10 × 0.78⌋ = 7：桶号公式逐字核验');
+  }
+
+  // ---- 14c 均匀输入 Σ n_i² 线性 ----
+  {
+    let worst = 0;
+    for (let s = 1; s <= 50; s++) {
+      const a = lcg(s, 40).map((v) => v / 100);   // [0,1) 均匀
+      const frames = [...bucketSort(a)];
+      const sq = frames.filter((f) => f.phase === '桶内排序').at(-1);
+      const m = sq.note.match(/Σ n_i² = (\d+)/);
+      if (m) { worst = Math.max(worst, Number(m[1])); }
+    }
+    ok(worst < 160, `50 组均匀输入中 Σ n_i² 最大 ${worst}（远小于 n² = 1600）—— 线性`);
+  }
+
+  // ---- 14d 集中输入仍然排对（只是慢）----
+  {
+    const a = [0.11, 0.13, 0.12, 0.19, 0.14, 0.18, 0.15, 0.17];
+    const lastF = [...bucketSort([...a])].at(-1);
+    ok(lastF.array.join(',') === sorted(a).join(','), '集中（非均匀）输入仍排对 —— 只是桶内更挤');
   }
 }
 
