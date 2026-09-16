@@ -468,7 +468,9 @@ function makeVizPanel(stage, ctx) {
   if (stage.viz === 'growth' && stage.chart) return makeChartPanel(stage);
 
   const vizMod = getViz(stage.viz);
-  const algoFn = getAlgorithm(stage.algorithm);
+  // 静态帧面板（只给 trees，不给 algorithm）不该去查算法表 —— 否则 registry 会打一条
+  // 无害但扰人的「找不到算法 undefined」警告。
+  const algoFn = stage.algorithm ? getAlgorithm(stage.algorithm) : null;
   // 三种驱动方式：
   //   1) algorithm：由算法生成器产帧（最常用）
   //   2) trees：给一串「逐层展开」的静态树，帧 0..n-1 依次渲染 —— 用于递归树的

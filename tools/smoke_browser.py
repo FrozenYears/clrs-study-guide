@@ -276,6 +276,16 @@ CASES = [
     ("#/ch11/s02/s08", ["独立均匀散列", "第一步"], [NOT_PENDING, "【TODO"]),
     ("#/ch11/s02/s09", ["检验一下", "11.2-1"], [NOT_PENDING, "【TODO"]),
 
+    # ---- 11.5 散列表的工程实践（九段式）----
+    ("#/ch11/s05/s01", ["工程实践"], [NOT_PENDING, "【TODO"]),
+    ("#/ch11/s05/s03", ['data-kind="source"', "sentinel"], [NOT_PENDING, "【TODO"]),
+    ("#/ch11/s05/s04", ["pc-line"], [NOT_PENDING, "【TODO"]),
+    ("#/ch11/s05/s05", ["viz-stage", "viz-hash"], [NOT_PENDING, "【TODO"]),
+    ("#/ch11/s05/s06", ["hash_practical.c"], [NOT_PENDING, "【TODO"]),
+    ("#/ch11/s05/s07", ["负载因子"], [NOT_PENDING, "【TODO"]),
+    ("#/ch11/s05/s08", ["第一步"], [NOT_PENDING, "【TODO"]),
+    ("#/ch11/s05/s09", ["检验一下"], [NOT_PENDING, "【TODO"]),
+
     # ---- 2.3 归并排序（九段式）----
     ("#/ch02/s03/s01", ["为什么学这一关", "递归式", "lg n"], [NOT_PENDING]),
     ("#/ch02/s03/s02", ["两叠牌", "正面朝上"], [NOT_PENDING]),
