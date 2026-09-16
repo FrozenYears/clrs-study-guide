@@ -22,6 +22,7 @@ import { randomlyPermute } from './randomly-permute.js';
 import { partition } from './partition.js';
 import { quicksort } from './quicksort.js';
 import { countingSort } from './counting-sort.js';
+import { radixSort } from './radix-sort.js';
 
 let passed = 0, failed = 0;
 function ok(cond, msg) {
@@ -825,6 +826,45 @@ console.log('\n[12] 第 8 章 COUNTING-SORT（原书 8.2）');
       if (result.join(',') !== sorted(a).join(',')) bad = true;
     }
     ok(!bad, '50 组随机输入（k = 99）都排对');
+  }
+}
+
+console.log('\n[13] 第 8 章 RADIX-SORT（原书 8.3，Figure 8.3 数据已核实）');
+{
+  // ---- 13a Figure 8.3 的三趟逐帧核验（按渲染页坐标逐字核对）----
+  {
+    const fig = [329, 457, 657, 839, 436, 720, 355];
+    const frames = [...radixSort([...fig])];
+    const afterPass = (p) => frames.filter((f) => f.phase && f.phase.startsWith(`第 ${p} 趟·`)).at(-1).array;
+    ok(afterPass(1).join(',') === '720,355,436,457,657,329,839',
+      'Figure 8.3 第 1 趟（个位）= ⟨720,355,436,457,657,329,839⟩');
+    ok(afterPass(2).join(',') === '720,329,436,839,355,457,657',
+      'Figure 8.3 第 2 趟（十位）= ⟨720,329,436,839,355,457,657⟩');
+    ok(afterPass(3).join(',') === '329,355,436,457,657,720,839',
+      'Figure 8.3 第 3 趟（百位）= ⟨329,355,436,457,657,720,839⟩（完全有序）');
+  }
+
+  // ---- 13b 逐趟积累的正确性：第 2 趟后"按低 2 位有序"而非全序 ----
+  {
+    const a = [720, 355, 436, 457, 657, 329, 839];
+    const frames = [...radixSort(a)];
+    const pass2 = frames.filter((f) => f.phase && f.phase.startsWith('第 2 趟·')).at(-1).array;
+    const low2 = (v) => v % 100;
+    let okOrder = true;
+    for (let i = 1; i < pass2.length; i++) { if (low2(pass2[i - 1]) > low2(pass2[i])) okOrder = false; }
+    ok(okOrder && pass2[0] === 720,
+      '第 2 趟后按低 2 位有序（720 的低 2 位 = 20 最小，尽管百位最大）—— 归纳命题 P(2)');
+  }
+
+  // ---- 13c 随机输入正确性 ----
+  {
+    let bad = false;
+    for (let s = 1; s <= 50; s++) {
+      const a = lcg(s, 30).map((v) => v % 1000);
+      const { result } = run(radixSort([...a]));
+      if (result.join(',') !== sorted(a).join(',')) bad = true;
+    }
+    ok(!bad, '50 组随机三位数都排对');
   }
 }
 
