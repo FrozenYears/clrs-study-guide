@@ -78,6 +78,16 @@ CASES = [
     ("#/ch06/s01/s08", ["要证的不变量", "第一步", "两个推论"], [NOT_PENDING, "【TODO"]),
     ("#/ch06/s01/s09", ["检验一下", "6.1-7", "6.1-8", "原书习题"], [NOT_PENDING, "【TODO"]),
 
+    # ---- 6.2 维持堆性质（九段式）----
+    ("#/ch06/s02/s01", ["整个第 6 章都在调用这个十行过程", "数学急救包"], [NOT_PENDING, "【TODO"]),
+    ("#/ch06/s02/s03", ['data-kind="source"', "MAX-HEAPIFY assumes", "just had its value decreased"], [NOT_PENDING, "【TODO"]),
+    ("#/ch06/s02/s04", ["MAX-HEAPIFY(A, i)", "largest", "pc-line", "变量表"], [NOT_PENDING, "【TODO"]),
+    ("#/ch06/s02/s05", ["viz-stage", "viz-heap", "帧 0", "交换"], [NOT_PENDING, "【TODO"]),
+    ("#/ch06/s02/s06", ["max_heapify.c", "max_heapify_iter", "伪代码 ↔ C 对应表"], [NOT_PENDING, "【TODO"]),
+    ("#/ch06/s02/s07", ["递归几项", "主方法", "2047"], [NOT_PENDING, "【TODO"]),
+    ("#/ch06/s02/s08", ["要证的不变量", "第一步", "只递归一边"], [NOT_PENDING, "【TODO"]),
+    ("#/ch06/s02/s09", ["检验一下", "6.2-2", "6.2-7", "原书习题"], [NOT_PENDING, "【TODO"]),
+
     # ---- 2.3 归并排序（九段式）----
     ("#/ch02/s03/s01", ["为什么学这一关", "递归式", "lg n"], [NOT_PENDING]),
     ("#/ch02/s03/s02", ["两叠牌", "正面朝上"], [NOT_PENDING]),
