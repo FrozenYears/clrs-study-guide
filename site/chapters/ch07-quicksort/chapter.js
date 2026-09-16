@@ -6,8 +6,7 @@
  * ========================================================================== */
 
 import s01 from './s01-description-of-quicksort.js';
-// s02 还没建：建好后把下面这行打开 ——
-// import s02 from './s02-performance-of-quicksort.js';
+import s02 from './s02-performance-of-quicksort.js';
 // s03 还没建：建好后把下面这行打开 ——
 // import s03 from './s03-a-randomized-version-of-quicksort.js';
 // s04 还没建：建好后把下面这行打开 ——
@@ -20,5 +19,5 @@ export default {
   title: 'Quicksort',
   titleZh: '快速排序',
   source: { printed: [182, 204], pdf: [203, 225] },
-  levels: [s01],
+  levels: [s01, s02],
 };

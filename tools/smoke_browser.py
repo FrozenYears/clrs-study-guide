@@ -128,6 +128,14 @@ CASES = [
     ("#/ch07/s01/s08", ["要证的不变量", "第一步", "Termination"], [NOT_PENDING, "【TODO"]),
     ("#/ch07/s01/s09", ["检验一下", "7.1-2", "7.1-4", "原书习题"], [NOT_PENDING, "【TODO"]),
 
+    # ---- 7.2 快速排序的性能（九段式）----
+    ("#/ch07/s02/s01", ["同一个算法，最好最差差一个 n 倍", "数学急救包"], [NOT_PENDING, "【TODO"]),
+    ("#/ch07/s02/s03", ['data-kind="source"', "balanced", "already completely sorted"], [NOT_PENDING, "【TODO"]),
+    ("#/ch07/s02/s05", ["viz-stage", "viz-tree", "递归树", "已排序"], [NOT_PENDING, "【TODO"]),
+    ("#/ch07/s02/s07", ["polyline", "growth-legend", "三种分区形态"], [NOT_PENDING, "【TODO"]),
+    ("#/ch07/s02/s08", ["第一步", "arithmetic series", "递归栈"], [NOT_PENDING, "【TODO"]),
+    ("#/ch07/s02/s09", ["检验一下", "7.2-2", "原书习题"], [NOT_PENDING, "【TODO"]),
+
     # ---- 2.3 归并排序（九段式）----
     ("#/ch02/s03/s01", ["为什么学这一关", "递归式", "lg n"], [NOT_PENDING]),
     ("#/ch02/s03/s02", ["两叠牌", "正面朝上"], [NOT_PENDING]),
