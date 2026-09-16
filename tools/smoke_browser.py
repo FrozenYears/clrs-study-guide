@@ -137,7 +137,7 @@ CASES = [
     ("#/ch07/s02/s09", ["检验一下", "7.2-2", "原书习题"], [NOT_PENDING, "【TODO"]),
 
     # ---- 7.3 随机化版本（九段式）----
-    ("#/ch07/s03/s01", ["把"最坏情况"从"确定的"变成"不太可能的"", "数学急救包"], [NOT_PENDING, "【TODO"]),
+    ('#/ch07/s03/s01', ['把「最坏情况」从「确定的」变成「不太可能的」', '数学急救包'], [NOT_PENDING, "【TODO"]),
     ("#/ch07/s03/s03", ['data-kind="source"', "randomly chooses the pivot", "Many software libraries"], [NOT_PENDING, "【TODO"]),
     ("#/ch07/s03/s04", ["RANDOMIZED-PARTITION", "RANDOMIZED-QUICKSORT", "pc-line"], [NOT_PENDING, "【TODO"]),
     ("#/ch07/s03/s05", ["viz-stage", "viz-array", "帧 0"], [NOT_PENDING, "【TODO"]),
@@ -155,6 +155,46 @@ CASES = [
     ("#/ch07/s04/s07", ["推导链", "调和数", "Θ(n²)"], [NOT_PENDING, "【TODO"]),
     ("#/ch07/s04/s08", ["Lemma 7.2", "第一步", "概率计算"], [NOT_PENDING, "【TODO"]),
     ("#/ch07/s04/s09", ["检验一下", "7.4-1", "原书习题"], [NOT_PENDING, "【TODO"]),
+
+    # ---- 8.1 排序的下界（九段式）----
+    ("#/ch08/s01/s01", ["排序的下界", "数学急救包"], [NOT_PENDING, "【TODO"]),
+    ("#/ch08/s01/s03", ['data-kind="source"', "comparison sorts", "decision tree"], [NOT_PENDING, "【TODO"]),
+    ("#/ch08/s01/s04", ["INSERTION-SORT(A, n)", "pc-line"], [NOT_PENDING, "【TODO"]),
+    ("#/ch08/s01/s05", ["viz-stage", "polyline", "growth-legend"], [NOT_PENDING, "【TODO"]),
+    ("#/ch08/s01/s06", ["lower_bounds.c", "lg_factorial"], [NOT_PENDING, "【TODO"]),
+    ("#/ch08/s01/s07", ["推导链", "Stirling"], [NOT_PENDING, "【TODO"]),
+    ("#/ch08/s01/s08", ["Theorem 8.1", "第一步"], [NOT_PENDING, "【TODO"]),
+    ("#/ch08/s01/s09", ["检验一下", "8.1-1"], [NOT_PENDING, "【TODO"]),
+
+    # ---- 8.2 计数排序（九段式）----
+    ("#/ch08/s02/s01", ["数个数，而不是比大小", "数学急救包"], [NOT_PENDING, "【TODO"]),
+    ("#/ch08/s02/s03", ['data-kind="source"', "stable"], [NOT_PENDING, "【TODO"]),
+    ("#/ch08/s02/s04", ["COUNTING-SORT(A, n, k)", "pc-line"], [NOT_PENDING, "【TODO"]),
+    ("#/ch08/s02/s05", ["viz-stage", "帧 0"], [NOT_PENDING, "【TODO"]),
+    ("#/ch08/s02/s06", ["counting_sort.c", "is_stable"], [NOT_PENDING, "【TODO"]),
+    ("#/ch08/s02/s07", ["代价表", "前缀和"], [NOT_PENDING, "【TODO"]),
+    ("#/ch08/s02/s08", ["稳定", "第一步"], [NOT_PENDING, "【TODO"]),
+    ("#/ch08/s02/s09", ["检验一下", "8.2-1"], [NOT_PENDING, "【TODO"]),
+
+    # ---- 8.3 基数排序（九段式）----
+    ("#/ch08/s03/s01", ["从最低位开始", "数学急救包"], [NOT_PENDING, "【TODO"]),
+    ("#/ch08/s03/s03", ['data-kind="source"', "least significant digit"], [NOT_PENDING, "【TODO"]),
+    ("#/ch08/s03/s04", ["RADIX-SORT(A, d)", "pc-line"], [NOT_PENDING, "【TODO"]),
+    ("#/ch08/s03/s05", ["viz-stage", "帧 0"], [NOT_PENDING, "【TODO"]),
+    ("#/ch08/s03/s06", ["radix_sort.c", "counting_sort_by_digit"], [NOT_PENDING, "【TODO"]),
+    ("#/ch08/s03/s07", ["位宽"], [NOT_PENDING, "【TODO"]),
+    ("#/ch08/s03/s08", ["归纳", "第一步"], [NOT_PENDING, "【TODO"]),
+    ("#/ch08/s03/s09", ["检验一下", "8.3-1"], [NOT_PENDING, "【TODO"]),
+
+    # ---- 8.4 桶排序（九段式）----
+    ("#/ch08/s04/s01", ["均匀分布换线性时间", "数学急救包"], [NOT_PENDING, "【TODO"]),
+    ("#/ch08/s04/s03", ['data-kind="source"', "uniform distribution"], [NOT_PENDING, "【TODO"]),
+    ("#/ch08/s04/s04", ["BUCKET-SORT(A)", "pc-line"], [NOT_PENDING, "【TODO"]),
+    ("#/ch08/s04/s05", ["viz-stage", "帧 0"], [NOT_PENDING, "【TODO"]),
+    ("#/ch08/s04/s06", ["bucket_sort.c", "insertion_sort"], [NOT_PENDING, "【TODO"]),
+    ("#/ch08/s04/s07", ["期望分析"], [NOT_PENDING, "【TODO"]),
+    ("#/ch08/s04/s08", ["二项", "第一步"], [NOT_PENDING, "【TODO"]),
+    ("#/ch08/s04/s09", ["检验一下", "8.4-1"], [NOT_PENDING, "【TODO"]),
 
     # ---- 2.3 归并排序（九段式）----
     ("#/ch02/s03/s01", ["为什么学这一关", "递归式", "lg n"], [NOT_PENDING]),
