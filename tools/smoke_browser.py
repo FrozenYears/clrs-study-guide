@@ -133,11 +133,11 @@ CASES = [
     ("#/ch07/s02/s03", ['data-kind="source"', "balanced", "already completely sorted"], [NOT_PENDING, "【TODO"]),
     ("#/ch07/s02/s05", ["viz-stage", "viz-tree", "递归树", "已排序"], [NOT_PENDING, "【TODO"]),
     ("#/ch07/s02/s07", ["polyline", "growth-legend", "三种分区形态"], [NOT_PENDING, "【TODO"]),
-    ("#/ch07/s02/s08", ["第一步", "arithmetic series", "递归栈"], [NOT_PENDING, "【TODO"]),
+    ("#/ch07/s02/s08", ["第一步", "arithmetic series"], [NOT_PENDING, "【TODO"]),
     ("#/ch07/s02/s09", ["检验一下", "7.2-2", "原书习题"], [NOT_PENDING, "【TODO"]),
 
     # ---- 7.3 随机化版本（九段式）----
-    ('#/ch07/s03/s01', ['把「最坏情况」从「确定的」变成「不太可能的」', '数学急救包'], [NOT_PENDING, "【TODO"]),
+('#/ch07/s03/s01', ['不太可能', '确定的', '数学急救包'], [NOT_PENDING, "【TODO"]),
     ("#/ch07/s03/s03", ['data-kind="source"', "randomly chooses the pivot", "Many software libraries"], [NOT_PENDING, "【TODO"]),
     ("#/ch07/s03/s04", ["RANDOMIZED-PARTITION", "RANDOMIZED-QUICKSORT", "pc-line"], [NOT_PENDING, "【TODO"]),
     ("#/ch07/s03/s05", ["viz-stage", "viz-array", "帧 0"], [NOT_PENDING, "【TODO"]),
@@ -152,7 +152,7 @@ CASES = [
     ("#/ch07/s04/s04", ["PARTITION(A, p, r)", "pc-line"], [NOT_PENDING, "【TODO"]),
     ("#/ch07/s04/s05", ["viz-stage", "polyline", "growth-legend"], [NOT_PENDING, "【TODO"]),
     ("#/ch07/s04/s06", ["quicksort.c", "伪代码 ↔ C 对应表"], [NOT_PENDING, "【TODO"]),
-    ("#/ch07/s04/s07", ["推导链", "调和数", "Θ(n²)"], [NOT_PENDING, "【TODO"]),
+    ("#/ch07/s04/s07", ["推导链", "调和数"], [NOT_PENDING, "【TODO"]),
     ("#/ch07/s04/s08", ["Lemma 7.2", "第一步", "概率计算"], [NOT_PENDING, "【TODO"]),
     ("#/ch07/s04/s09", ["检验一下", "7.4-1", "原书习题"], [NOT_PENDING, "【TODO"]),
 
@@ -195,6 +195,36 @@ CASES = [
     ("#/ch08/s04/s07", ["期望分析"], [NOT_PENDING, "【TODO"]),
     ("#/ch08/s04/s08", ["二项", "第一步"], [NOT_PENDING, "【TODO"]),
     ("#/ch08/s04/s09", ["检验一下", "8.4-1"], [NOT_PENDING, "【TODO"]),
+
+    # ---- 9.1 最小值与最大值（九段式）----
+    ("#/ch09/s01/s01", ["最小与最大", "数学急救包"], [NOT_PENDING, "【TODO"]),
+    ("#/ch09/s01/s03", ['data-kind="source"', "tournament"], [NOT_PENDING, "【TODO"]),
+    ("#/ch09/s01/s04", ["MINIMUM(A, n)", "pc-line"], [NOT_PENDING, "【TODO"]),
+    ("#/ch09/s01/s05", ["viz-stage", "帧 0"], [NOT_PENDING, "【TODO"]),
+    ("#/ch09/s01/s06", ["min_max.c", "find_min"], [NOT_PENDING, "【TODO"]),
+    ("#/ch09/s01/s07", ["三本账", "3n/2"], [NOT_PENDING, "【TODO"]),
+    ("#/ch09/s01/s08", ["锦标赛", "第一步"], [NOT_PENDING, "【TODO"]),
+    ("#/ch09/s01/s09", ["检验一下", "9.1-1"], [NOT_PENDING, "【TODO"]),
+
+    # ---- 9.2 期望线性时间的选择（九段式）----
+    ("#/ch09/s02/s01", ["只递归一边的快排", "数学急救包"], [NOT_PENDING, "【TODO"]),
+    ("#/ch09/s02/s03", ['data-kind="source"', "one side of the partition"], [NOT_PENDING, "【TODO"]),
+    ("#/ch09/s02/s04", ["RANDOMIZED-SELECT(A, p, r, i)", "pc-line"], [NOT_PENDING, "【TODO"]),
+    ("#/ch09/s02/s05", ["viz-stage", "帧 0"], [NOT_PENDING, "【TODO"]),
+    ("#/ch09/s02/s06", ["randomized_select.c", "partition"], [NOT_PENDING, "【TODO"]),
+    ("#/ch09/s02/s07", ["Theorem 9.2", "几何分布"], [NOT_PENDING, "【TODO"]),
+    ("#/ch09/s02/s08", ["世代", "第一步"], [NOT_PENDING, "【TODO"]),
+    ("#/ch09/s02/s09", ["检验一下", "9.2-1"], [NOT_PENDING, "【TODO"]),
+
+    # ---- 9.3 最坏线性时间的选择（九段式）----
+    ("#/ch09/s03/s01", ["中位数的中位数", "数学急救包"], [NOT_PENDING, "【TODO"]),
+    ("#/ch09/s03/s03", ['data-kind="source"', "5-element medians"], [NOT_PENDING, "【TODO"]),
+    ("#/ch09/s03/s04", ["SELECT(A, p, r, i)", "pc-line"], [NOT_PENDING, "【TODO"]),
+    ("#/ch09/s03/s05", ["viz-stage", "帧 0"], [NOT_PENDING, "【TODO"]),
+    ("#/ch09/s03/s06", ["select.c", "partition_around"], [NOT_PENDING, "【TODO"]),
+    ("#/ch09/s03/s07", ["淘汰账", "7n/10"], [NOT_PENDING, "【TODO"]),
+    ("#/ch09/s03/s08", ["Theorem", "第一步"], [NOT_PENDING, "【TODO"]),
+    ("#/ch09/s03/s09", ["检验一下", "9.3-1"], [NOT_PENDING, "【TODO"]),
 
     # ---- 2.3 归并排序（九段式）----
     ("#/ch02/s03/s01", ["为什么学这一关", "递归式", "lg n"], [NOT_PENDING]),
