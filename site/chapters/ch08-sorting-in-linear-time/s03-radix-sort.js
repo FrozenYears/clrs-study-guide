@@ -17,7 +17,7 @@ export default {
     unlocks:[{label:'8.4 Bucket sort（桶排序）',url:'#/ch08/s04'}],
     mathKit:[
      {title:'总时间 Θ(d(n + k))',body:'$d$ 趟，每趟稳定排序 $\\Theta(n+k)$。用计数排序时 $k$ 是**单个位**的取值数。'},
-     {title:'位宽 r 的选择',body:'把 $b$ 位键拆成 $d = b/r$ 个 $r$ 位：$\\Theta\\bigl(\\frac{b}{r}(n+2^r)\\bigr)$。$b < \\lg n$ 时取 $r = b$ → $\\Theta(n)$；$b \\ge \\lg n$ 时取 $r = \\lfloor\\lg n\\rfloor$ → $\\Theta\\bigl(\\frac{bn}{\\lg n}\\bigr)$。'},
+     {title:'位宽 r 的选择',body:'把 $b$ 位键拆成 $d = b/r$ 个 $r$ 位：$\\Theta\(\\frac{b}{r}(n+2^r)\)$。$b < \\lg n$ 时取 $r = b$ → $\\Theta(n)$；$b \\ge \\lg n$ 时取 $r = \\lfloor\\lg n\\rfloor$ → $\\Theta\(\\frac{bn}{\\lg n}\)$。'},
      {title:'归纳论证',body:'对"已排序的列"归纳：若第 $i-1$ 趟后按低 $i-1$ 位有序，且第 $i$ 趟**稳定**，则第 $i$ 趟后按低 $i$ 位有序。稳定只用一次，但缺它全塌。'},
     ]},
    {type:'intuition',title:'为什么从最低位开始反而对',
@@ -224,8 +224,8 @@ int main(void)
     claims:[
      {expr:'\\Theta(d(n+k))',when:'d 趟稳定排序的总代价（Theorem 8.3）',page:213,source:'book'},
      {expr:'\\Theta(n)',when:'d 为常数且 k = O(n) 时',page:213,source:'book'},
-     {expr:'\\Theta\\!\\bigl(\\frac{b}{r}(n+2^r)\\bigr)',when:'b 位键、r 位一组',page:214,source:'book'},
-     {expr:'\\Theta\\!\\bigl(\\frac{bn}{\\lg n}\\bigr)',when:'b ≥ lg n 时取 r = ⌊lg n⌋（最优到常数因子）',page:214,source:'book'},
+     {expr:'\\Theta\\!\(\\frac{b}{r}(n+2^r)\)',when:'b 位键、r 位一组',page:214,source:'book'},
+     {expr:'\\Theta\\!\(\\frac{bn}{\\lg n}\)',when:'b ≥ lg n 时取 r = ⌊lg n⌋（最优到常数因子）',page:214,source:'book'},
     ],
     tables:[{caption:'位宽 r 的权衡（b 位键、n 个数）',rows:[
       ['r 变化','d = b/r','k = 2^r','单趟代价','总代价'],
@@ -249,10 +249,10 @@ int main(void)
       {tex:'d \\times \\Theta(n + k) = \\Theta(d(n+k))',zh:'每趟对 $n$ 个数按一位稳定排序，位取值 $k$ 种。'},
       {zh:'$d$ 为常数、$k = O(n)$ → $\\Theta(n)$。★ 这就是"32 位整数、拆 4 个字节、每字节计数排序"跑线性时间的理论根据。'}]},
      {kind:'summation',title:'位宽 r：把 b 位键拆成 b/r 组',steps:[
-      {tex:'\\Theta\\bigl(\\tfrac{b}{r}(n + 2^r)\\bigr)',zh:'$d = b/r$ 趟、每趟 $k = 2^r - 1$。'},
+      {tex:'\\Theta\(\\tfrac{b}{r}(n + 2^r)\)',zh:'$d = b/r$ 趟、每趟 $k = 2^r - 1$。'},
       {zh:'$r$ 太小：趟数 $b/r$ 多；$r$ 太大：$2^r$ 项爆掉。**权衡点在 $r \\approx \\lg n$**（此时 $2^r \\approx n$，两杯水一样满）。'},
       {tex:'b < \\lceil\\lg n\\rceil \\Rightarrow r = b \\Rightarrow \\Theta(n)',zh:'键太短，一趟搞定。'},
-      {tex:'b \\ge \\lceil\\lg n\\rceil \\Rightarrow r = \\lfloor\\lg n\\rfloor \\Rightarrow \\Theta\\bigl(\\tfrac{bn}{\\lg n}\\bigr)',zh:'★ 注意这不是 $O(n)$：$b$ 随 $n$ 增长时（如 $b = \\lg^2 n$），线性就没了。'}]},
+      {tex:'b \\ge \\lceil\\lg n\\rceil \\Rightarrow r = \\lfloor\\lg n\\rfloor \\Rightarrow \\Theta\(\\tfrac{bn}{\\lg n}\)',zh:'★ 注意这不是 $O(n)$：$b$ 随 $n$ 增长时（如 $b = \\lg^2 n$），线性就没了。'}]},
     ],
     note:'★ 中心图：绿线（r=8 固定）是真正的线性（常数 4 倍）；红线（r = lg n 自适应）渐近仍是 n lg n 形状 —— 位宽策略决定基数排序是"线性"还是"近线性"。'},
    {type:'prove',title:'Theorem 8.3 的正确性：归纳 + 稳定性',

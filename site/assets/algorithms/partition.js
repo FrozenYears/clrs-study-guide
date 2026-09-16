@@ -55,7 +55,7 @@ export function* partition(A, p = 1, r = null) {
   yield frame(1, {
     pointers: {},
     highlight: { pivot: [hi] },
-    note: `x = A[${hi}] = ${x}：**轴选定为最后一个元素**。这一步决定了后面所有比较的对象。`,
+    note: `x = A[${hi}] = ${x}：轴选定为最后一个元素。这一步决定了后面所有比较的对象。`,
   });
 
   yield frame(2, {
