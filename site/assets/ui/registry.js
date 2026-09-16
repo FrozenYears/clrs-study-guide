@@ -19,6 +19,7 @@ import * as vizMatrix from '../viz/matrix.js';
 import * as vizMatrixProduct from '../viz/matrix-product.js';
 import * as vizHeap from '../viz/heap.js';
 import * as vizLinked from '../viz/linked-list.js';
+import * as vizHash from '../viz/hash-table.js';
 
 import { insertionSort } from '../algorithms/insertion-sort.js';
 import { mergeSort } from '../algorithms/merge-sort.js';
@@ -50,6 +51,7 @@ import { minMax } from '../algorithms/min-max.js';
 import { stackDemo } from '../algorithms/stack.js';
 import { queueDemo } from '../algorithms/queue.js';
 import { linkedListDemo } from '../algorithms/linked-list.js';
+import { chainedHash } from '../algorithms/chained-hash.js';
 
 const VIZ = new Map();
 const ALGO = new Map();
@@ -103,6 +105,7 @@ registerViz('matrix-product', vizMatrixProduct);
 // heap：同一个下标同时画在数组格子与树结点上（6.1 的全部内容就是这个对应关系）
 registerViz('heap', vizHeap);
 registerViz('linked-list', vizLinked);
+registerViz('hash-table', vizHash);
 
 registerAlgorithm('insertion-sort', insertionSort);
 registerAlgorithm('merge-sort', mergeSort);
@@ -131,3 +134,4 @@ registerAlgorithm('min-max', minMax);
 registerAlgorithm('stack', stackDemo);
 registerAlgorithm('queue', queueDemo);
 registerAlgorithm('linked-list', linkedListDemo);
+registerAlgorithm('chained-hash', chainedHash);

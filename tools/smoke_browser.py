@@ -256,6 +256,16 @@ CASES = [
     ("#/ch10/s03/s08", ["双射", "第一步"], [NOT_PENDING, "【TODO"]),
     ("#/ch10/s03/s09", ["检验一下", "10.3-1"], [NOT_PENDING, "【TODO"]),
 
+    # ---- 11.1 直接寻址表（九段式）----
+    ("#/ch11/s01/s01", ["直接寻址表", "数学急救包"], [NOT_PENDING, "【TODO"]),
+    ("#/ch11/s01/s03", ['data-kind="source"', "direct-address table"], [NOT_PENDING, "【TODO"]),
+    ("#/ch11/s01/s04", ["DIRECT-ADDRESS-SEARCH(T, k)", "pc-line"], [NOT_PENDING, "【TODO"]),
+    ("#/ch11/s01/s05", ["viz-stage", "viz-hash"], [NOT_PENDING, "【TODO"]),
+    ("#/ch11/s01/s06", ["direct_address.c", "da_search"], [NOT_PENDING, "【TODO"]),
+    ("#/ch11/s01/s07", ["三种"], [NOT_PENDING, "【TODO"]),
+    ("#/ch11/s01/s08", ["下标", "第一步"], [NOT_PENDING, "【TODO"]),
+    ("#/ch11/s01/s09", ["检验一下", "11.1-1"], [NOT_PENDING, "【TODO"]),
+
     # ---- 2.3 归并排序（九段式）----
     ("#/ch02/s03/s01", ["为什么学这一关", "递归式", "lg n"], [NOT_PENDING]),
     ("#/ch02/s03/s02", ["两叠牌", "正面朝上"], [NOT_PENDING]),
