@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>链表 viz 自检</title>
+<link rel="stylesheet" href="../assets/styles/base.css" />
+<link rel="stylesheet" href="../assets/styles/components.css" />
+<style>
+  body { padding: 24px; }
+  #host { max-width: 900px; margin: 0 auto; border: 1px solid var(--bd-0); padding: 8px; }
+</style>
+</head>
+<body>
+  <h1>链表 viz 自检（linked-list 引擎）</h1>
+  <p>下面依次渲染：① 双向链表 ⟨1,4,9,16⟩；② 高亮 x 指针；③ 哨兵链表。</p>
+  <div id="host"></div>
+  <script type="module">
+    import * as viz from '../assets/viz/linked-list.js';
+
+    const host = document.getElementById('host');
+    const inst = viz.create(host, {});
+
+    // ① 双向链表 L = ⟨1,4,9,16⟩：id 用 1..4
+    const nodes = [
+      { id: 1, key: 1, next: 2, prev: null },
+      { id: 2, key: 4, next: 3, prev: 1 },
+      { id: 3, key: 9, next: 4, prev: 2 },
+      { id: 4, key: 16, next: null, prev: 3 },
+    ];
+    inst.render({
+      nodes, pointers: { 'L.head': 1 }, phase: '初始',
+      note: '双向链表：next 实线向右、prev 虚线向左；NIL 在两端',
+    });
+
+    // 打印第一帧的绘制结果供无头验证
+    const svg = document.querySelector('svg.viz-linked');
+    window.__probe1 = {
+      rects: svg.querySelectorAll('rect').length,
+      lines: svg.querySelectorAll('line').length,
+      texts: svg.querySelectorAll('text').length,
+      labels: Array.from(svg.querySelectorAll('text')).map((t) => t.textContent).join('|'),
+    };
+
+    // ② 高亮 x
+    setTimeout(() => {
+      inst.render({
+        nodes, pointers: { 'L.head': 1, x: 3 }, highlight: { active: [3] }, phase: 'LIST-DELETE',
+        note: '已给指针 x 指向节点 9：删除只需 O(1)',
+      });
+      const s2 = document.querySelector('svg.viz-linked');
+      window.__probe2 = {
+        activeRect: s2.querySelectorAll('rect[stroke-width="2"]').length,
+        labels: Array.from(s2.querySelectorAll('text')).map((t) => t.textContent).join('|'),
+      };
+
+      // ③ 哨兵链表
+      inst.render({
+        nodes: [
+          { id: 'nil', key: 'nil', next: 1, prev: 4 },
+          { id: 1, key: 1, next: 2, prev: 'nil' },
+          { id: 2, key: 4, next: 3, prev: 1 },
+          { id: 3, key: 9, next: 4, prev: 2 },
+          { id: 4, key: 16, next: 'nil', prev: 3 },
+        ],
+        sentinelId: 'nil', order: ['nil', 1, 2, 3, 4], phase: '哨兵',
+        note: '哨兵 L.nil：环形、无边界条件',
+      });
+      const s3 = document.querySelector('svg.viz-linked');
+      window.__probe3 = {
+        rects: s3.querySelectorAll('rect').length,
+        labels: Array.from(s3.querySelectorAll('text')).map((t) => t.textContent).join('|'),
+      };
+      window.__done = true;
+    }, 50);
+  </script>
+</body>
+</html>

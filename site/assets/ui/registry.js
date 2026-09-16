@@ -18,6 +18,7 @@ import * as vizGrowth from '../viz/growth.js';
 import * as vizMatrix from '../viz/matrix.js';
 import * as vizMatrixProduct from '../viz/matrix-product.js';
 import * as vizHeap from '../viz/heap.js';
+import * as vizLinked from '../viz/linked-list.js';
 
 import { insertionSort } from '../algorithms/insertion-sort.js';
 import { mergeSort } from '../algorithms/merge-sort.js';
@@ -100,6 +101,7 @@ registerViz('matrix', vizMatrix);
 registerViz('matrix-product', vizMatrixProduct);
 // heap：同一个下标同时画在数组格子与树结点上（6.1 的全部内容就是这个对应关系）
 registerViz('heap', vizHeap);
+registerViz('linked-list', vizLinked);
 
 registerAlgorithm('insertion-sort', insertionSort);
 registerAlgorithm('merge-sort', mergeSort);
