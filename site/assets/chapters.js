@@ -16,6 +16,7 @@ import ch5 from '../chapters/ch05-probabilistic-analysis-and-randomized/chapter.
 import ch6 from '../chapters/ch06-heapsort/chapter.js';
 import ch7 from '../chapters/ch07-quicksort/chapter.js';
 import ch8 from '../chapters/ch08-sorting-in-linear-time/chapter.js';
+import ch9 from '../chapters/ch09-medians-and-order-statistics/chapter.js';
 
 const CHAPTERS = new Map([
   ['2', ch02],
@@ -25,6 +26,7 @@ const CHAPTERS = new Map([
   ['6', ch6],
   ['7', ch7],
   ['8', ch8],
+  ['9', ch9],
 ]);
 
 /**

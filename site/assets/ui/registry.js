@@ -45,6 +45,7 @@ import { quicksort } from '../algorithms/quicksort.js';
 import { countingSort } from '../algorithms/counting-sort.js';
 import { radixSort } from '../algorithms/radix-sort.js';
 import { bucketSort } from '../algorithms/bucket-sort.js';
+import { minMax } from '../algorithms/min-max.js';
 
 const VIZ = new Map();
 const ALGO = new Map();
@@ -121,3 +122,4 @@ registerAlgorithm('quicksort', quicksort);
 registerAlgorithm('counting-sort', countingSort);
 registerAlgorithm('radix-sort', radixSort);
 registerAlgorithm('bucket-sort', bucketSort);
+registerAlgorithm('min-max', minMax);

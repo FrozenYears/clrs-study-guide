@@ -24,6 +24,7 @@ import { quicksort } from './quicksort.js';
 import { countingSort } from './counting-sort.js';
 import { radixSort } from './radix-sort.js';
 import { bucketSort } from './bucket-sort.js';
+import { minMax } from './min-max.js';
 
 let passed = 0, failed = 0;
 function ok(cond, msg) {
@@ -907,6 +908,39 @@ console.log('\n[14] 第 8 章 BUCKET-SORT（原书 8.4，Figure 8.4 数据已核
     const a = [0.11, 0.13, 0.12, 0.19, 0.14, 0.18, 0.15, 0.17];
     const lastF = [...bucketSort([...a])].at(-1);
     ok(lastF.array.join(',') === sorted(a).join(','), '集中（非均匀）输入仍排对 —— 只是桶内更挤');
+  }
+}
+
+
+console.log('\n[15] 第 9 章 成对法找 min/max（原书 9.1）');
+{
+  // ---- 15a 比较次数精确对账 ----
+  {
+    const a = [3, 41, 52, 26, 38, 57, 9, 49];   // n = 8（偶数）
+    const frames = [...minMax([...a])];
+    const last = frames.at(-1);
+    ok(last.array[0] === 3 && last.array[7] === 49, '输入未被改动');
+    ok(last.counts.cmp === 1 + 3 * 3,
+      `偶数 n = 8：比较 ${last.counts.cmp} 次 = 1 + 3(n−2)/2 = 10（书上 3n/2 − 2）`);
+    ok(last.note.includes('min = 3') && last.note.includes('max = 57'), '找到 min = 3、max = 57');
+  }
+
+  // ---- 15b 奇数情况 ----
+  {
+    const a = [5, 1, 9, 3, 7];                  // n = 5（奇数）
+    const last = [...minMax([...a])].at(-1);
+    ok(last.counts.cmp === 3 * 2,
+      `奇数 n = 5：比较 ${last.counts.cmp} 次 = 3⌊n/2⌋ = 6`);
+    ok(last.note.includes('min = 1') && last.note.includes('max = 9'), '找到 min = 1、max = 9');
+  }
+
+  // ---- 15c 每对恰好 3 次（对内 1 + min 1 + max 1）----
+  {
+    const a = [4, 2, 6, 1, 8, 3];
+    const frames = [...minMax([...a])];
+    const perPair = frames.filter((f) => f.phase === '对 max').length;
+    ok(perPair === 2 && frames.at(-1).counts.cmp === 1 + 3 * 2,
+      `2 对配对 × 3 次 + 首对 1 次 = ${frames.at(-1).counts.cmp}`);
   }
 }
 
