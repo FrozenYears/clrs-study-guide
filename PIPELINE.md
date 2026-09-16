@@ -528,7 +528,7 @@ python tools/smoke_browser.py 8317          # 无头 Chrome 逐路由渲染
 | 语料修复 | 184 passed | `python tools/test_repair.py` |
 | 语料分块 | 42 passed | `python tools/test_segment.py` |
 | 关卡闸门 | 0 ERROR / 3 WARN / 0 TODO，25 关 409 条引述 | `node tools/dump_levels.mjs && python tools/04_verify_level.py` |
-| 浏览器路由 | 204 / 204 | `python tools/smoke_browser.py 8317` |
+| 浏览器路由 | 203 / 203 | `python tools/smoke_browser.py 8317` |
 | 引述工具自检 | 6 / 6 | `python tools/07_pick_quotes.py selftest` |
 
 3 个 WARN 都是「解锁预告链接指向尚未构建的关卡」（`#/appendix/a/s01` ×2、`#/ch07/s01` ×1），
