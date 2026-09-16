@@ -522,13 +522,13 @@ python tools/smoke_browser.py 8317          # 无头 Chrome 逐路由渲染
 
 | 测试 | 读数 | 命令 |
 |---|---|---|
-| 语法（ES Module） | 87 / 87 | `cd site && node tools/check-syntax.mjs .` |
-| 算法正确性 | 153 passed | `node site/assets/algorithms/__tests__.mjs` |
+| 语法（ES Module） | 95 / 95 | `cd site && node tools/check-syntax.mjs .` |
+| 算法正确性 | 167 passed | `node site/assets/algorithms/__tests__.mjs` |
 | 数学渲染器 | 83 passed | `cd site && node assets/core/__tests-katex__.mjs` |
 | 语料修复 | 184 passed | `python tools/test_repair.py` |
 | 语料分块 | 42 passed | `python tools/test_segment.py` |
 | 关卡闸门 | 0 ERROR / 3 WARN / 0 TODO，25 关 409 条引述 | `node tools/dump_levels.mjs && python tools/04_verify_level.py` |
-| 浏览器路由 | 203 / 203 | `python tools/smoke_browser.py 8317` |
+| 浏览器路由 | 235 / 235 | `python tools/smoke_browser.py 8317` |
 | 引述工具自检 | 6 / 6 | `python tools/07_pick_quotes.py selftest` |
 
 3 个 WARN 都是「解锁预告链接指向尚未构建的关卡」（`#/appendix/a/s01` ×2、`#/ch07/s01` ×1），

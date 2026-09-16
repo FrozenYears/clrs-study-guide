@@ -246,6 +246,16 @@ CASES = [
     ("#/ch10/s02/s08", ["边界", "第一步"], [NOT_PENDING, "【TODO"]),
     ("#/ch10/s02/s09", ["检验一下", "10.2-1"], [NOT_PENDING, "【TODO"]),
 
+    # ---- 10.3 有根树的表示（九段式）----
+    ("#/ch10/s03/s01", ["有根树", "数学急救包"], [NOT_PENDING, "【TODO"]),
+    ("#/ch10/s03/s03", ['data-kind="source"', "right-sibling"], [NOT_PENDING, "【TODO"]),
+    ("#/ch10/s03/s04", ["COMPACT-LIST-SEARCH", "pc-line"], [NOT_PENDING, "【TODO"]),
+    ("#/ch10/s03/s05", ["viz-stage", "viz-tree"], [NOT_PENDING, "【TODO"]),
+    ("#/ch10/s03/s06", ["tree_rep.c", "left_child"], [NOT_PENDING, "【TODO"]),
+    ("#/ch10/s03/s07", ["三种表示法"], [NOT_PENDING, "【TODO"]),
+    ("#/ch10/s03/s08", ["双射", "第一步"], [NOT_PENDING, "【TODO"]),
+    ("#/ch10/s03/s09", ["检验一下", "10.3-1"], [NOT_PENDING, "【TODO"]),
+
     # ---- 2.3 归并排序（九段式）----
     ("#/ch02/s03/s01", ["为什么学这一关", "递归式", "lg n"], [NOT_PENDING]),
     ("#/ch02/s03/s02", ["两叠牌", "正面朝上"], [NOT_PENDING]),
