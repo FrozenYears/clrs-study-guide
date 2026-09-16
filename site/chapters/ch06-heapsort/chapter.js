@@ -8,8 +8,7 @@
 import s01 from './s01-heaps.js';
 import s02 from './s02-maintaining-the-heap-property.js';
 import s03 from './s03-building-a-heap.js';
-// s04 还没建：建好后把下面这行打开 ——
-// import s04 from './s04-the-heapsort-algorithm.js';
+import s04 from './s04-the-heapsort-algorithm.js';
 // s05 还没建：建好后把下面这行打开 ——
 // import s05 from './s05-priority-queues.js';
 
@@ -20,5 +19,5 @@ export default {
   title: 'Heapsort',
   titleZh: '堆排序',
   source: { printed: [161, 180], pdf: [182, 201] },
-  levels: [s01, s02, s03],
+  levels: [s01, s02, s03, s04],
 };
