@@ -485,6 +485,7 @@ python tools/smoke_browser.py 8317          # 无头 Chrome 逐路由渲染
 | 第 4 章 Divide-and-Conquer | 7 | 4.1–4.7 全 |
 | 第 5 章 Probabilistic Analysis | 7 | 5.1 / 5.2 / 5.3 + **5.4 拆成的 s04–s07** |
 | 第 6 章 Heapsort | 5 | 6.1–6.5 全（含新的 `viz/heap.js` 引擎） |
+| 第 7 章 Quicksort | 4 | 7.1–7.4 全（含 `partition` / `quicksort` 生成器） |
 
 > ★ **第 5 章为什么有 7 关而不是 4 关**：原书 5.4 一节正文 38.5K 字符（第二长的 2.3 只有
 > 25K），且由四个彼此独立的例子组成（生日悖论 / 球与箱 / 连续正面 / 在线招聘）。
@@ -521,13 +522,13 @@ python tools/smoke_browser.py 8317          # 无头 Chrome 逐路由渲染
 
 | 测试 | 读数 | 命令 |
 |---|---|---|
-| 语法（ES Module） | 67 / 67 | `cd site && node tools/check-syntax.mjs .` |
-| 算法正确性 | 119 passed | `node site/assets/algorithms/__tests__.mjs` |
+| 语法（ES Module） | 74 / 74 | `cd site && node tools/check-syntax.mjs .` |
+| 算法正确性 | 131 passed | `node site/assets/algorithms/__tests__.mjs` |
 | 数学渲染器 | 83 passed | `cd site && node assets/core/__tests-katex__.mjs` |
 | 语料修复 | 184 passed | `python tools/test_repair.py` |
 | 语料分块 | 42 passed | `python tools/test_segment.py` |
 | 关卡闸门 | 0 ERROR / 3 WARN / 0 TODO，25 关 409 条引述 | `node tools/dump_levels.mjs && python tools/04_verify_level.py` |
-| 浏览器路由 | 121 / 121 | `python tools/smoke_browser.py 8317` |
+| 浏览器路由 | 137 / 137 | `python tools/smoke_browser.py 8317` |
 | 引述工具自检 | 6 / 6 | `python tools/07_pick_quotes.py selftest` |
 
 3 个 WARN 都是「解锁预告链接指向尚未构建的关卡」（`#/appendix/a/s01` ×2、`#/ch07/s01` ×1），
