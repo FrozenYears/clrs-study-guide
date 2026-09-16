@@ -88,6 +88,16 @@ CASES = [
     ("#/ch06/s02/s08", ["要证的不变量", "第一步", "只递归一边"], [NOT_PENDING, "【TODO"]),
     ("#/ch06/s02/s09", ["检验一下", "6.2-2", "6.2-7", "原书习题"], [NOT_PENDING, "【TODO"]),
 
+    # ---- 6.3 建堆（九段式）----
+    ("#/ch06/s03/s01", ["这句话看紧一点", "数学急救包"], [NOT_PENDING, "【TODO"]),
+    ("#/ch06/s03/s03", ['data-kind="source"', "bottom-up manner", "loop invariant"], [NOT_PENDING, "【TODO"]),
+    ("#/ch06/s03/s04", ["BUILD-MAX-HEAP(A, n)", "downto", "pc-line", "变量表"], [NOT_PENDING, "【TODO"]),
+    ("#/ch06/s03/s05", ["viz-stage", "viz-heap", "帧 0", "MAX-HEAPIFY 调用"], [NOT_PENDING, "【TODO"]),
+    ("#/ch06/s03/s06", ["build_max_heap.c", "max_heapify", "伪代码 ↔ C 对应表"], [NOT_PENDING, "【TODO"]),
+    ("#/ch06/s03/s07", ["polyline", "growth-legend", "按高度分层"], [NOT_PENDING, "【TODO"]),
+    ("#/ch06/s03/s08", ["要证的不变量", "第一步", "Termination"], [NOT_PENDING, "【TODO"]),
+    ("#/ch06/s03/s09", ["检验一下", "6.3-3", "6.3-4", "原书习题"], [NOT_PENDING, "【TODO"]),
+
     # ---- 2.3 归并排序（九段式）----
     ("#/ch02/s03/s01", ["为什么学这一关", "递归式", "lg n"], [NOT_PENDING]),
     ("#/ch02/s03/s02", ["两叠牌", "正面朝上"], [NOT_PENDING]),
