@@ -7,6 +7,10 @@ import { merge } from './merge.js';
 import { strassenDemo } from './strassen-demo.js';
 import { matrixMultiplyDemo } from './matrix-multiply-demo.js';
 import { hireAssistant } from './hire-assistant.js';
+import { birthdayCollisions } from './birthday-collisions.js';
+import { ballsBins } from './balls-bins.js';
+import { streaks } from './streaks.js';
+import { onlineMaximum } from './online-maximum.js';
 
 let passed = 0, failed = 0;
 function ok(cond, msg) {
@@ -187,6 +191,108 @@ console.log('\n[7] HIRE-ASSISTANT 教学帧（原书 5.1 的当前最佳策略�
     '严格递减：面试 4 次、只招聘首位候选人');
   ok(mixed.pointers.best === 5 && mixed.counts.hire === 3,
     '混合序列：最终候选人是资格最高的第 5 位，招聘 3 次');
+}
+
+console.log('\n[8] 第 5 章 5.4 的四个概率实验生成器');
+{
+  // ---- 8a 生日悖论：命中对数、比较次数、输入不被改动 ----
+  const bdays = [5, 12, 5, 200, 7, 12];
+  const bFrames = [...birthdayCollisions(bdays)];
+  const bLast = bFrames.at(-1);
+  ok(bLast.done === true, '生日悖论：最后一帧明确结束');
+  ok(bLast.counts.collisions === 2, `生日悖论：6 人里命中 ${bLast.counts.collisions} 对（期望 2 对）`);
+  // 比较次数 = Σ(i−1) = C(6,2) = 15，正好等于「对数」
+  ok(bLast.counts.cmp === 15, `生日悖论：比较次数 ${bLast.counts.cmp} = C(6,2) = 15`);
+  ok(JSON.stringify(bLast.array) === JSON.stringify(bdays), '生日悖论：输入数组未被改动');
+  // 无重复时必须报 0 对
+  {
+    const none = [...birthdayCollisions([1, 2, 3, 4, 5])].at(-1);
+    ok(none.counts.collisions === 0 && none.counts.cmp === 10,
+      '生日悖论：5 个互不相同 -> 0 对、10 次比较');
+  }
+
+  // ---- 8b 球与箱：装载量守恒、命中空箱次数、最高箱 ----
+  const throws = [1, 2, 1, 3, 3, 1];
+  const bbLast = [...ballsBins(throws, 3)].at(-1);
+  ok(bbLast.done === true, '球与箱：最后一帧明确结束');
+  ok(JSON.stringify(bbLast.array) === JSON.stringify([3, 1, 2]),
+    `球与箱：3 个箱子的装载量 = [${bbLast.array}]（期望 [3,1,2]）`);
+  ok(bbLast.counts.throws === 6, `球与箱：投掷次数 ${bbLast.counts.throws} = 输入长度 6`);
+  ok(bbLast.counts.hits === 3, `球与箱：命中空箱 ${bbLast.counts.hits} 次（3 个箱子各首次命中一次）`);
+  ok(bbLast.counts.maxLoad === 3, `球与箱：最高箱装载 ${bbLast.counts.maxLoad}（期望 3）`);
+  // 守恒：所有箱子的球数之和 = 投掷数
+  {
+    let allOk = true;
+    for (let t = 0; t < 50; t++) {
+      const b = 2 + (t % 5);
+      const seq = lcg(t + 1, 12 + (t % 7)).map((v) => (v % b) + 1);
+      const last = [...ballsBins(seq, b)].at(-1);
+      const sum = last.array.reduce((x, y) => x + y, 0);
+      if (sum !== seq.length) allOk = false;
+    }
+    ok(allOk, '球与箱：50 组随机输入的装载量之和都等于投掷数（守恒）');
+  }
+
+  // ---- 8c 连续正面：最长连续段 ----
+  const flips = [1, 1, 0, 1, 1, 1, 0, 1];
+  const sLast = [...streaks(flips)].at(-1);
+  ok(sLast.done === true, '连续正面：最后一帧明确结束');
+  ok(sLast.counts.best === 3, `连续正面：最长连续 ${sLast.counts.best} 次（期望 3）`);
+  ok(sLast.counts.flips === 8, `连续正面：抛掷次数 ${sLast.counts.flips} = 输入长度 8`);
+  // 与暴力法逐例比对
+  {
+    const brute = (a) => {
+      let best = 0, cur = 0;
+      for (const v of a) { cur = v === 1 ? cur + 1 : 0; if (cur > best) best = cur; }
+      return best;
+    };
+    let allOk = true;
+    for (let t = 0; t < 60; t++) {
+      const a = lcg(t + 7, 6 + (t % 30)).map((v) => v % 2);
+      if ([...streaks(a)].at(-1).counts.best !== brute(a)) allOk = false;
+    }
+    ok(allOk, '连续正面：60 组随机串与暴力法结果一致');
+  }
+
+  // ---- 8d 在线招聘：与暴力策略逐例比对（全排列 × 全部 k）----
+  {
+    const bruteOnline = (ranks, k) => {
+      const n = ranks.length;
+      const observe = Math.max(0, Math.min(k, n));
+      let best = -1;
+      for (let i = 0; i < observe; i++) best = Math.max(best, ranks[i]);
+      for (let i = observe; i < n; i++) if (ranks[i] > best) return i + 1;
+      return n;
+    };
+    const perms = (a) => (a.length <= 1 ? [a] : a.flatMap(
+      (v, i) => perms([...a.slice(0, i), ...a.slice(i + 1)]).map((p) => [v, ...p])));
+    let allOk = true, checked = 0;
+    for (const p of perms([1, 2, 3, 4, 5])) {
+      for (let k = 0; k <= 5; k++) {
+        const last = [...onlineMaximum(p, k)].at(-1);
+        checked++;
+        if (last.line !== 7 && last.line !== 8) allOk = false;
+        const got = last.pointers.i;
+        if (got !== bruteOnline(p, k)) allOk = false;
+        // 面试次数必须恰好等于「雇到那一位」的位置
+        if (last.counts.interviews !== got) allOk = false;
+      }
+    }
+    ok(allOk, `在线招聘：5!×6 = ${checked} 种情形与暴力策略完全一致`);
+    // 经典结论：k = n/e 时约 1/e 的概率雇到最佳（用 4 万次枚举近似）
+    {
+      const perms4 = perms([1, 2, 3, 4, 5, 6]);
+      const k = Math.round(6 / Math.E);
+      let hit = 0;
+      for (const p of perms4) {
+        const last = [...onlineMaximum(p, k)].at(-1);
+        if (p[last.pointers.i - 1] === 6) hit++;
+      }
+      const ratio = hit / perms4.length;
+      ok(ratio > 0.3 && ratio < 0.5,
+        `在线招聘：n=6、k=round(n/e)=${k} 时雇到最佳的比例 ${ratio.toFixed(3)}，落在 1/e ≈ 0.368 附近`);
+    }
+  }
 }
 
 console.log(`\n==== 结果：${passed} passed, ${failed} failed ====`);

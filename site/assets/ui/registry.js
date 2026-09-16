@@ -24,6 +24,11 @@ import { merge } from '../algorithms/merge.js';
 import { strassenDemo } from '../algorithms/strassen-demo.js';
 import { matrixMultiplyDemo } from '../algorithms/matrix-multiply-demo.js';
 import { hireAssistant } from '../algorithms/hire-assistant.js';
+// 第 5 章 5.4 的四个概率实验：都用 array 引擎画，序列由预设输入给定（确定性，可单步）
+import { birthdayCollisions } from '../algorithms/birthday-collisions.js';
+import { ballsBins } from '../algorithms/balls-bins.js';
+import { streaks } from '../algorithms/streaks.js';
+import { onlineMaximum } from '../algorithms/online-maximum.js';
 
 const VIZ = new Map();
 const ALGO = new Map();
@@ -81,3 +86,7 @@ registerAlgorithm('merge', merge);
 registerAlgorithm('strassen-demo', strassenDemo);
 registerAlgorithm('matrix-multiply-demo', matrixMultiplyDemo);
 registerAlgorithm('hire-assistant', hireAssistant);
+registerAlgorithm('birthday-collisions', birthdayCollisions);
+registerAlgorithm('balls-bins', ballsBins);
+registerAlgorithm('streaks', streaks);
+registerAlgorithm('online-maximum', onlineMaximum);

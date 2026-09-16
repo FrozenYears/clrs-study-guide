@@ -555,7 +555,12 @@ function makeVizPanel(stage, ctx) {
         (state.playing ? ' · 播放中' : state.done ? ' · 已结束' : '');
       btnPlay.textContent = state.playing ? '暂停' : '播放';
       if (frame.note) noteEl.replaceChildren(katex.renderMixed(frame.note));
+      // 计数读数：cmp / move 有默认中文标签（沿用第 2 章的「比较 / 写回」说法）。
+      // 需要别的计数项时，关卡在 visualize 阶段声明 countLabels，
+      // 例如 countLabels: { throws: '已投掷', maxLoad: '最高箱装载' }
+      // —— 键名必须出现在帧的 counts 里，值是一律后接「次」的中文前缀。
       const c = frame.counts || {};
+      const labels = Object.assign({ cmp: '比较', move: '写回' }, stage.countLabels || {});
       const readout = [];
       if (c.line5 != null) {
         readout.push(h('span', {
@@ -563,8 +568,10 @@ function makeVizPanel(stage, ctx) {
           title: '书中 2.2 的 Σtᵢ：第 5 行被求值的次数，含每轮最后一次为假的那次判断',
         }, '第 5 行求值 Σtᵢ = ' + c.line5));
       }
-      if (c.cmp != null) readout.push(h('span', { class: 'badge' }, '比较 ' + c.cmp + ' 次'));
-      if (c.move != null) readout.push(h('span', { class: 'badge' }, '写回 ' + c.move + ' 次'));
+      Object.keys(labels).forEach((k) => {
+        if (c[k] == null) return;
+        readout.push(h('span', { class: 'badge' }, labels[k] + ' ' + c[k] + ' 次'));
+      });
       readout.push(h('span', { class: 'badge' }, '当前行 ' + (frame.line ?? '—')));
       readoutEl.replaceChildren(...readout);
       const ok = frame.invariantHolds !== false;
