@@ -82,7 +82,7 @@ export default {
     { type: 'visualize', title: '逐人进场，看第一次撞生日', viz: 'array', vizMode: 'cards',
       algorithm: 'birthday-collisions', pseudocodeRef: 'BIRTHDAY-PAIRS',
       input: { array: [101, 222, 34, 56, 77, 12, 300, 88, 145, 200, 33, 67, 190, 250, 41, 99, 180, 5, 265, 130, 18, 310, 77] },
-      countLabels: { collisions: '撞生日' },
+      countLabels: { collisions: { label: '撞生日', unit: '对' } },
       invariants: [{ label: '已确认的撞生日对数 X 等于前面出现过重复的次数' }],
       presets: [
         { name: '经典 23 人（约 50%）', array: [101, 222, 34, 56, 77, 12, 300, 88, 145, 200, 33, 67, 190, 250, 41, 99, 180, 5, 265, 130, 18, 310, 77] },

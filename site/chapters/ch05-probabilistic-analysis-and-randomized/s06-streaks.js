@@ -80,7 +80,7 @@ export default {
     { type: 'visualize', title: '看见「边走边记最长连续」', viz: 'array', vizMode: 'cards',
       algorithm: 'streaks', pseudocodeRef: 'LONGEST-STREAK',
       input: { array: [1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0] },
-      countLabels: { flips: '已抛掷', cur: '当前连续正面', best: '最长连续正面' },
+      countLabels: { flips: { label: '已抛掷', unit: '次' }, cur: { label: '当前连续正面', unit: '次' }, best: { label: '最长连续正面', unit: '次' } },
       invariants: [
         { label: 'best 始终是已经出现过的最长连续正面长度' },
         { label: 'cur 只在翻到反面时清零' },

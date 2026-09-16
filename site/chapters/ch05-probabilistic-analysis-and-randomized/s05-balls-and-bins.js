@@ -45,7 +45,7 @@ export default {
     { type: 'visualize', title: '看柱高怎么涨、hits 怎么爬到 b', viz: 'array',
       algorithm: 'balls-bins', pseudocodeRef: 'BALLS-AND-BINS',
       input: { array: [1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7, 8, 1, 2] },
-      countLabels: { throws: '已投掷', hits: '命中空箱', maxLoad: '最高箱装载' },
+      countLabels: { throws: { label: '已投掷', unit: '次' }, hits: { label: '命中空箱', unit: '次' }, maxLoad: { label: '最高箱装载', unit: '个' } },
       invariants: [{ label: '累计命中次数 hits 始终等于当前非空箱子的个数' }],
       presets: [
         { name: 'b=8 投 17 个（看箱箱有球约几次）', array: [1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7, 8, 1, 2] },

@@ -263,9 +263,9 @@ export default {
    "algoArgs": [
     3
    ],
-   "countLabels": {
-    "interviews": "已面试"
-   },
+    "countLabels": {
+     "interviews": { "label": "已面试", "unit": "人" }
+    },
    "invariants": [
     {
      "label": "观察期内不雇人，只记 best-score；决策期只雇第一个超过 best-score 的人"

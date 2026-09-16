@@ -565,8 +565,10 @@ function makeVizPanel(stage, ctx) {
       if (frame.note) noteEl.replaceChildren(katex.renderMixed(frame.note));
       // 计数读数：cmp / move 有默认中文标签（沿用第 2 章的「比较 / 写回」说法）。
       // 需要别的计数项时，关卡在 visualize 阶段声明 countLabels，
-      // 例如 countLabels: { throws: '已投掷', maxLoad: '最高箱装载' }
-      // —— 键名必须出现在帧的 counts 里，值是一律后接「次」的中文前缀。
+      //   countLabels: { throws: '已投掷' }                          → 已投掷 7 次
+      //   countLabels: { leaves: { label: '叶子结点', unit: '个' } }   → 叶子结点 5 个
+      // 写字符串时单位默认「次」；要「个 / 人 / 对 / 号」这类量词就写对象。
+      // —— 不是洁癖：把「叶子结点 5 个」写成「叶子结点 5 次」会让读数读起来是错的。
       const c = frame.counts || {};
       const labels = Object.assign({ cmp: '比较', move: '写回' }, stage.countLabels || {});
       const readout = [];
@@ -578,7 +580,10 @@ function makeVizPanel(stage, ctx) {
       }
       Object.keys(labels).forEach((k) => {
         if (c[k] == null) return;
-        readout.push(h('span', { class: 'badge' }, labels[k] + ' ' + c[k] + ' 次'));
+        const spec = labels[k];
+        const label = typeof spec === 'string' ? spec : spec.label;
+        const unit = typeof spec === 'string' ? '次' : (spec.unit || '次');
+        readout.push(h('span', { class: 'badge' }, label + ' ' + c[k] + ' ' + unit));
       });
       readout.push(h('span', { class: 'badge' }, '当前行 ' + (frame.line ?? '—')));
       readoutEl.replaceChildren(...readout);
