@@ -4,7 +4,9 @@
 // 节点 id 用创建序号（1,2,3…），稳定不变；链的次序由 next/prev 决定。
 // 每次操作后重建帧里的 nodes 数组（next/prev 用 id 表示），frames 交给 linked-list viz 渲染。
 
-export function* linkedListDemo(keys, ops) {
+// ★ 引擎约定：第一个参数固定是面板的输入数组（本生成器用 keys 与 ops 建链）
+export function* linkedListDemo(arr, keys, ops) {
+  void arr;
   // 内部表示：{ id, key, prevId, nextId }
   const nodes = [];
   let headId = null;

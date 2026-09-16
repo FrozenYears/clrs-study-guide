@@ -3,7 +3,9 @@
 // 定长数组 Q[1 : size]，head 指向队首、tail 指向"下一个入队位置"。
 // 指针回绕：head/tail 到 size 后回到 1（不是 0）—— 环形队列的核心。
 
-export function* queueDemo(size, ops) {
+// ★ 引擎约定：第一个参数固定是面板的输入数组（本生成器只用 size 与 ops）
+export function* queueDemo(arr, size, ops) {
+  void arr;
   const n = size;
   const Q = new Array(n).fill(0);
   let head = 1, tail = 1;

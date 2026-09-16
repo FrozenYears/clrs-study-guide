@@ -3,7 +3,9 @@
 // 定长数组 S[1 : size]：S.top 指向栈顶（0 表示空）。帧里的 array 就是这块数组，
 // 空槽用 0 表示；pointers 里的 top 用 1 基下标显示（top = 0 时不画箭头）。
 
-export function* stackDemo(initial, size, ops) {
+// ★ 引擎约定：第一个参数固定是面板的输入数组（本生成器只用 size 与 ops，故忽略 arr）
+export function* stackDemo(arr, size, ops) {
+  void arr;
   const n = size;
   const S = new Array(n).fill(0);
   let top = 0;

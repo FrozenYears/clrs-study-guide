@@ -27,6 +27,7 @@ import { bucketSort } from './bucket-sort.js';
 import { minMax } from './min-max.js';
 import { stackDemo } from './stack.js';
 import { queueDemo } from './queue.js';
+import { linkedListDemo } from './linked-list.js';
 
 let passed = 0, failed = 0;
 function ok(cond, msg) {
@@ -966,7 +967,7 @@ console.log('\n[16] 第 10 章 栈与队列（原书 10.1）');
   {
     const E = (v) => ({ kind: 'enqueue', v });
     const Q = (v) => ({ kind: 'dequeue', v });
-    const frames = [...queueDemo(4, [E(1), E(2), E(3), { kind: 'dequeue' }, { kind: 'dequeue' }, E(5), E(6)])];
+    const frames = [...queueDemo([], 4, [E(1), E(2), E(3), { kind: 'dequeue' }, { kind: 'dequeue' }, E(5), E(6)])];
     const wrap = frames.filter((f) => f.note.includes('回绕'));
     ok(wrap.length >= 1, `出现 ${wrap.length} 次回绕（tail 或 head 到 size 后回到 1）`);
     const last = frames.at(-1);
@@ -978,8 +979,55 @@ console.log('\n[16] 第 10 章 栈与队列（原书 10.1）');
   {
     const ops = [];
     for (let i = 0; i < 30; i++) { ops.push({ kind: 'enqueue', v: i }, { kind: 'dequeue' }); }
-    const last = [...queueDemo(4, ops)].at(-1);
+    const last = [...queueDemo([], 4, ops)].at(-1);
     ok(last.done === true, '容量 4 的队列跑 30 轮入出后正常结束（指针一直在环上转）');
+  }
+}
+
+
+console.log('\n[17] 第 10 章 双向链表（原书 10.2）');
+{
+  // ---- 17a LIST-SEARCH：命中与未命中的比较次数 ----
+  {
+    const frames = [...linkedListDemo([], [1, 4, 9, 16], [{ kind: 'search', k: 9 }])];
+    const hit = frames.find((f) => f.note.includes('命中'));
+    ok(!!hit, 'LIST-SEARCH(9) 命中（第 3 个节点）');
+    const miss = [...linkedListDemo([], [1, 4, 9, 16], [{ kind: 'search', k: 7 }])].find((f) => f.note.includes('未找到'));
+    ok(!!miss, 'LIST-SEARCH(7) 走到底返回 NIL（Θ(n) 最坏情形）');
+  }
+
+  // ---- 17b PREPEND / INSERT / DELETE 的链序变化 ----
+  {
+    const chainOf = (f) => {
+      const byId = new Map(f.nodes.map((n) => [n.id, n]));
+      let cur = f.pointers['L.head'];
+      const out = [];
+      while (cur != null && byId.has(cur)) { out.push(byId.get(cur).key); cur = byId.get(cur).next; }
+      return out.join(',');
+    };
+    const f = [...linkedListDemo([], [1, 4, 9], [
+      { kind: 'prepend', v: 25 },
+      { kind: 'insertAfter', target: 4, v: 16 },
+      { kind: 'delete', v: 4 },
+    ])];
+    ok(chainOf(f.at(-1)) === '25,1,16,9', `最终链序 = ${chainOf(f.at(-1))}（prepend 25 → insert 16 → delete 4）`);
+  }
+
+  // ---- 17c 删除表头会改 L.head；删除表尾不会 ----
+  {
+    const f = [...linkedListDemo([], [1, 4, 9], [{ kind: 'delete', v: 1 }])].at(-1);
+    const headKey = f.nodes.find((n) => n.id === f.pointers['L.head']).key;
+    ok(headKey === 4, `删除表头 1 后 L.head 指向 key=${headKey}（改的是 L.head 本身）`);
+    const g = [...linkedListDemo([], [1, 4, 9], [{ kind: 'delete', v: 9 }])].at(-1);
+    const tailNode = g.nodes.find((n) => n.next == null);
+    ok(tailNode.key === 4, `删除表尾 9 后链尾是 key=${tailNode.key}（表尾的 next 本来就是 NIL，无需改后继）`);
+  }
+
+  // ---- 17d 节点 id 稳定：删除中间节点不改变其他节点的身份 ----
+  {
+    const f = [...linkedListDemo([], [1, 4, 9, 16], [{ kind: 'delete', v: 9 }])].at(-1);
+    const ids = f.nodes.map((n) => n.id).sort((a, b) => a - b).join(',');
+    ok(ids === '1,2,4', `删除节点后剩余节点 id = ${ids}（身份不变，只是链上的连接被改写）`);
   }
 }
 

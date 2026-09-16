@@ -226,6 +226,26 @@ CASES = [
     ("#/ch09/s03/s08", ["Theorem", "第一步"], [NOT_PENDING, "【TODO"]),
     ("#/ch09/s03/s09", ["检验一下", "9.3-1"], [NOT_PENDING, "【TODO"]),
 
+    # ---- 10.1 数组、栈与队列（九段式）----
+    ("#/ch10/s01/s01", ["栈与队列", "数学急救包"], [NOT_PENDING, "【TODO"]),
+    ("#/ch10/s01/s03", ['data-kind="source"', "LIFO"], [NOT_PENDING, "【TODO"]),
+    ("#/ch10/s01/s04", ["PUSH(S, x)", "pc-line"], [NOT_PENDING, "【TODO"]),
+    ("#/ch10/s01/s05", ["viz-stage", "帧 0"], [NOT_PENDING, "【TODO"]),
+    ("#/ch10/s01/s06", ["stack_queue.c", "push"], [NOT_PENDING, "【TODO"]),
+    ("#/ch10/s01/s07", ["栈 vs 队列"], [NOT_PENDING, "【TODO"]),
+    ("#/ch10/s01/s08", ["锦标赛", "第一步"], [NOT_PENDING, "【TODO"]),
+    ("#/ch10/s01/s09", ["检验一下", "10.1-1"], [NOT_PENDING, "【TODO"]),
+
+    # ---- 10.2 链表（九段式）----
+    ("#/ch10/s02/s01", ["链表", "数学急救包"], [NOT_PENDING, "【TODO"]),
+    ("#/ch10/s02/s03", ['data-kind="source"', "sentinel"], [NOT_PENDING, "【TODO"]),
+    ("#/ch10/s02/s04", ["LIST-SEARCH(L, k)", "pc-line"], [NOT_PENDING, "【TODO"]),
+    ("#/ch10/s02/s05", ["viz-stage", "viz-linked"], [NOT_PENDING, "【TODO"]),
+    ("#/ch10/s02/s06", ["linked_list.c", "list_search"], [NOT_PENDING, "【TODO"]),
+    ("#/ch10/s02/s07", ["哨兵"], [NOT_PENDING, "【TODO"]),
+    ("#/ch10/s02/s08", ["边界", "第一步"], [NOT_PENDING, "【TODO"]),
+    ("#/ch10/s02/s09", ["检验一下", "10.2-1"], [NOT_PENDING, "【TODO"]),
+
     # ---- 2.3 归并排序（九段式）----
     ("#/ch02/s03/s01", ["为什么学这一关", "递归式", "lg n"], [NOT_PENDING]),
     ("#/ch02/s03/s02", ["两叠牌", "正面朝上"], [NOT_PENDING]),

@@ -49,6 +49,7 @@ import { bucketSort } from '../algorithms/bucket-sort.js';
 import { minMax } from '../algorithms/min-max.js';
 import { stackDemo } from '../algorithms/stack.js';
 import { queueDemo } from '../algorithms/queue.js';
+import { linkedListDemo } from '../algorithms/linked-list.js';
 
 const VIZ = new Map();
 const ALGO = new Map();
@@ -129,3 +130,4 @@ registerAlgorithm('bucket-sort', bucketSort);
 registerAlgorithm('min-max', minMax);
 registerAlgorithm('stack', stackDemo);
 registerAlgorithm('queue', queueDemo);
+registerAlgorithm('linked-list', linkedListDemo);
