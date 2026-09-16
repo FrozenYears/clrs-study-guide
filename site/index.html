@@ -51,8 +51,13 @@
 
       /* ----------------------------------------------------------------------
        * 全书结构（硬编码自 data/structure.json，不 fetch —— file:// 下 CORS 会拦截）。
-       * 8 部分 / 35 章 + 附录 A–D / 149 节。
+       * 8 部分 / 35 章 + 附录 A–D。
        * zh 是通行中文译名，只用于目录导航；英文 title 是原书章名。
+       *
+       * ★ count 是**关卡数**，不是节数：绝大多数章两者相等（一节一关），
+       *   但当某一节长到装不下一关时会被拆开 —— 目前只有第 5 章的 5.4 一节
+       *   （38.5K 字符，含四个独立例子）拆成了 4 关，所以第 5 章 count = 7 而节数是 4。
+       *   首页的离散刻度与「N 关」标签都读这个字段，进度则以实际已建关卡数为分母。
        * -------------------------------------------------------------------- */
       const STRUCTURE = [
         { no: "I", title: "Part I Foundations", zh: "基础", chapters: [
@@ -60,7 +65,7 @@
           { n: 2, title: "Getting Started", zh: "算法基础", count: 3 },
           { n: 3, title: "Characterizing Running Times", zh: "刻画运行时间", count: 3 },
           { n: 4, title: "Divide-and-Conquer", zh: "分治策略", count: 7 },
-          { n: 5, title: "Probabilistic Analysis and Randomized Algorithms", zh: "概率分析与随机化算法", count: 4 },
+          { n: 5, title: "Probabilistic Analysis and Randomized Algorithms", zh: "概率分析与随机化算法", count: 7 },
         ]},
         { no: "II", title: "Part II Sorting and Order Statistics", zh: "排序与顺序统计", chapters: [
           { n: 6, title: "Heapsort", zh: "堆排序", count: 5 },

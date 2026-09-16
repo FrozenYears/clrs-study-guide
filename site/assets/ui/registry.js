@@ -30,6 +30,7 @@ import { birthdayCollisions } from '../algorithms/birthday-collisions.js';
 import { ballsBins } from '../algorithms/balls-bins.js';
 import { streaks } from '../algorithms/streaks.js';
 import { onlineMaximum } from '../algorithms/online-maximum.js';
+import { randomlyPermute } from '../algorithms/randomly-permute.js';
 // 第 6 章堆排序：数组与二叉树双视图，全部过程共用一个 heap 引擎
 import { heapIndexDemo } from '../algorithms/heap-index-demo.js';
 import { maxHeapify } from '../algorithms/max-heapify.js';
@@ -101,6 +102,7 @@ registerAlgorithm('birthday-collisions', birthdayCollisions);
 registerAlgorithm('balls-bins', ballsBins);
 registerAlgorithm('streaks', streaks);
 registerAlgorithm('online-maximum', onlineMaximum);
+registerAlgorithm('randomly-permute', randomlyPermute);
 registerAlgorithm('heap-index-demo', heapIndexDemo);
 registerAlgorithm('max-heapify', maxHeapify);
 registerAlgorithm('build-max-heap', buildMaxHeap);

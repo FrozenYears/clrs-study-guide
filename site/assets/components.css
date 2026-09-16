@@ -420,6 +420,29 @@
   padding: 0 0.3em;
   line-height: 1.1;
 }
+/* \binom{n}{k}：两层堆叠 + 包住的大括号，与 .frac 的关键区别是**不画横线** */
+.binom {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  margin: 0 0.15em;
+}
+.binom__stack {
+  display: inline-flex;
+  flex-direction: column;
+  text-align: center;
+  line-height: 1.15;
+  padding: 0 0.15em;
+}
+.binom__paren {
+  font-size: 2em;
+  line-height: 1;
+}
+/* \overline{X}：整段内容加顶线（组合字符只能盖住最后一个字符，所以用 span） */
+.overline {
+  text-decoration: overline;
+  padding: 0 0.05em;
+}
 .sqrt-arg {
   border-top: var(--bd-w) solid currentColor;
   padding: 0 0.15em;

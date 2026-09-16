@@ -277,6 +277,38 @@ console.log("\n[10] \\text / 箭头族 / cases / underbrace / xrightarrow（曾�
   ok(el.textContent.indexOf("→") >= 0, "箭头本身被渲染");
 }
 
+{
+  // 第 5 章新关卡的文案引入了四条命令：\land \Pr \binom \overline
+  // 桩 DOM 没有 querySelector，所以自己走一遍子树按 className 找节点。
+  const hasClass = (node, cls) => {
+    let hit = false;
+    (function walk(x) {
+      if (x.nodeType === 1 && x.className === cls) hit = true;
+      (x.childNodes || []).forEach(walk);
+    })(node);
+    return hit;
+  };
+  const land = renderInline("a \\land b");
+  ok(land.textContent === "a ∧ b", `\\land → ∧（得到 ${JSON.stringify(land.textContent)}）`);
+  const lor = renderInline("a \\lor b");
+  ok(lor.textContent === "a ∨ b", `\\lor → ∨（得到 ${JSON.stringify(lor.textContent)}）`);
+  const pr = renderInline("\\Pr\\{A\\}");
+  ok(pr.textContent.indexOf("\\") < 0 && /Pr/.test(pr.textContent),
+     `\\Pr → Pr 且不残留反斜杠（得到 ${JSON.stringify(pr.textContent)}）`);
+  const binom = renderInline("\\binom{23}{2} = 253");
+  ok(binom.textContent.indexOf("\\") < 0 && /23/.test(binom.textContent) && /253/.test(binom.textContent),
+     `\\binom 不残留命令且两层内容都在（得到 ${JSON.stringify(binom.textContent)}）`);
+  ok(hasClass(binom, "binom__top") && hasClass(binom, "binom__bottom"),
+     "\\binom 渲染成 .binom 的上下两层结构（不是分式的横线结构）");
+  const ovl = renderInline("P(\\overline{A}) = 1 - P(A)");
+  ok(ovl.textContent.indexOf("\\") < 0 && /A/.test(ovl.textContent),
+     `\\overline 不残留命令（得到 ${JSON.stringify(ovl.textContent)}）`);
+  ok(hasClass(ovl, "overline"), "\\overline 渲染成 .overline 顶线结构");
+  // 参数缺失也不能把反斜杠漏到页面上（静态扫描会这么探）
+  const binom1 = renderInline("\\binom{x}");
+  ok(binom1.textContent.indexOf("\\") < 0, `\\binom{x} 缺第二个参数时不残留命令（得到 ${JSON.stringify(binom1.textContent)}）`);
+}
+
 console.log("\n[11] 静态扫描：关卡文案里用到的每条 \\命令都必须是渲染器认识的");
 {
   // ★ 存在意义：这份 PDF 转写的关卡文案会不断引入新的数学命令，

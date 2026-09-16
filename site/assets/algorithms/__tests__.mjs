@@ -18,6 +18,7 @@ import { heapsort } from './heapsort.js';
 import { heapExtractMax } from './heap-extract-max.js';
 import { heapIncreaseKey } from './heap-increase-key.js';
 import { heapInsert } from './heap-insert.js';
+import { randomlyPermute } from './randomly-permute.js';
 
 let passed = 0, failed = 0;
 function ok(cond, msg) {
@@ -525,6 +526,143 @@ console.log('\n[9] 第 6 章堆生成器');
       }
       ok(allOk, 'INSERT：反复插入 30 组数据都建出合法的最大堆（习题 6-1 的 BUILD-MAX-HEAP′）');
     }
+  }
+}
+
+console.log('\n[10] RANDOMLY-PERMUTE（原书 5.3）：既是合法排列，也是均匀随机的');
+{
+  // 与生成器内部同一套 PRNG，用来在测试里实现「错误版本的洗牌」做对照
+  const makeRand = (seed) => {
+    let s = (seed >>> 0) || 0x9e3779b9;
+    s = (s + 0x9e3779b9) >>> 0;
+    s = Math.imul(s ^ (s >>> 16), 0x21f0aaad) >>> 0;
+    s = Math.imul(s ^ (s >>> 15), 0x735a2d97) >>> 0;
+    s = (s ^ (s >>> 15)) >>> 0;
+    if (s === 0) s = 0x9e3779b9;
+    return (bound) => {
+      s ^= s << 13; s >>>= 0;
+      s ^= s >>> 17;
+      s ^= s << 5; s >>>= 0;
+      return Math.floor((s / 4294967296) * bound);
+    };
+  };
+  /** 习题 5.3-3 的 PERMUTE-WITH-ALL：第 i 轮从 A[1 : n] 里挑，而不是从 A[i : n] 里挑。 */
+  const biasedPermute = (arr, seed) => {
+    const a = arr.slice();
+    const rnd = makeRand(seed);
+    for (let i = 1; i <= a.length; i++) {
+      const j = 1 + rnd(a.length);
+      const t = a[i - 1]; a[i - 1] = a[j - 1]; a[j - 1] = t;
+    }
+    return a;
+  };
+  const shuffle = (arr, seed) => [...randomlyPermute(arr, seed)].at(-1).array;
+
+  // ---- 10a 是合法排列：长度、元素集合、互异性 ----
+  {
+    let allOk = true, checked = 0;
+    for (let t = 0; t < 200; t++) {
+      // 用互不相同的值，这样「互异性」才是有意义的断言
+      const len = 1 + (t % 12);
+      const a = Array.from({ length: len }, (_, i) => (t + 1) * 7 + i * 13);
+      const out = shuffle(a, t + 1);
+      checked++;
+      if (out.length !== a.length) allOk = false;
+      if (JSON.stringify([...out].sort((x, y) => x - y)) !== JSON.stringify([...a].sort((x, y) => x - y))) allOk = false;
+      if (new Set(out).size !== a.length) allOk = false; // 无重复
+    }
+    ok(allOk, `洗牌：${checked} 组（值互不相同）结果都是原数组的一个排列`);
+  }
+
+  // ---- 10b 确定性：同种子同结果；不同种子会给出不同结果 ----
+  {
+    const a = [1, 2, 3, 4, 5, 6, 7, 8];
+    const r1 = shuffle(a, 7).join(',');
+    const r2 = shuffle(a, 7).join(',');
+    ok(r1 === r2, `洗牌：同一种子（7）两次结果一致 —— ${r1}`);
+    const seen = new Set();
+    for (let s = 1; s <= 50; s++) seen.add(shuffle(a, s).join(','));
+    ok(seen.size >= 20, `洗牌：50 个种子产生 ${seen.size} 种不同排列（说明真的在动，不是恒等）`);
+  }
+
+  // ---- 10c 均匀性：用卡方检验，而不是拍一个「偏差小于 x%」的阈值 ----
+  // 阈值必须与样本量挂钩：「频率偏差 < 1%」这种写法在 N 小的时候必然通过、在 N 大的
+  // 时候必然失败（因为抽样噪声本身就大于 1%）。卡方统计量的期望恰好等于自由度，
+  // 所以「χ² 不超过 3 倍自由度」是一个与 N 无关的合理判据。
+  {
+    const N = 24000;
+    const n = 4;
+    const base = [10, 20, 30, 40];
+
+    // (1) 16 个「位置×值」格子，每个的期望都是 N/n = 6000，自由度 15
+    const pos = Array.from({ length: n }, () => new Map());
+    // (2) 24 种完整排列，每种期望 N/24 = 1000，自由度 23
+    const perms = new Map();
+    for (let s = 1; s <= N; s++) {
+      const out = shuffle(base, s);
+      out.forEach((v, idx) => pos[idx].set(v, (pos[idx].get(v) || 0) + 1));
+      const key = out.join('|');
+      perms.set(key, (perms.get(key) || 0) + 1);
+    }
+    const exp = N / n;
+    let chi2pos = 0;
+    for (let idx = 0; idx < n; idx++) {
+      for (const v of base) {
+        const d = (pos[idx].get(v) || 0) - exp;
+        chi2pos += (d * d) / exp;
+      }
+    }
+    ok(chi2pos < 3 * (n * n - 1),
+      `洗牌均匀性（位置×值）：χ² = ${chi2pos.toFixed(1)}，自由度 15，判据 < 45`);
+
+    const exp2 = N / 24;
+    let chi2perm = 0;
+    for (const cnt of perms.values()) {
+      const d = cnt - exp2;
+      chi2perm += (d * d) / exp2;
+    }
+    ok(perms.size === 24 && chi2perm < 3 * 23,
+      `洗牌均匀性（完整排列）：24 种排列全部出现，χ² = ${chi2perm.toFixed(1)}，自由度 23，判据 < 69`);
+  }
+
+  // ---- 10d 反例：从 A[1 : n] 里挑的版本**不是**均匀的（原书习题 5.3-3）----
+  // 把「为什么必须从 A[i : n] 里挑」变成可执行的证据，而不是一句「书上说这样不对」。
+  {
+    const N = 24000;
+    const n = 4;
+    const base = [10, 20, 30, 40];
+    const cntP = new Map();
+    const cntB = new Map();
+    for (let s = 1; s <= N; s++) {
+      const a = shuffle(base, s)[0];
+      const b = biasedPermute(base, s)[0];
+      cntP.set(a, (cntP.get(a) || 0) + 1);
+      cntB.set(b, (cntB.get(b) || 0) + 1);
+    }
+    const chi2 = (cnt) => {
+      const e = N / n;
+      let c = 0;
+      for (const v of base) { const d = (cnt.get(v) || 0) - e; c += (d * d) / e; }
+      return c;
+    };
+    const cp = chi2(cntP);
+    const cb = chi2(cntB);
+    ok(cb > 20 * cp && cb > 3 * (n - 1),
+      `偏斜版本（习题 5.3-3）：A[1] 的 χ² = ${cb.toFixed(0)}，而正确版本只有 ${cp.toFixed(1)}`
+      + `（自由度 3，判据 < 9）—— 差了两个数量级，这就是「必须从 A[i : n] 里挑」的原因`);
+  }
+
+  // ---- 10e 交换次数：最多 n 次（它本身就是 Θ(n) 的）----
+  {
+    const a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    let bound = true, nz = 0;
+    for (let s = 1; s <= 200; s++) {
+      const last = [...randomlyPermute(a, s)].at(-1);
+      if (last.counts.move > a.length) bound = false;
+      if (last.counts.move > 0) nz++;
+    }
+    ok(bound, '洗牌：200 个种子下有效交换次数都不超过 n（原地、Θ(n)）');
+    ok(nz > 190, `洗牌：${nz}/200 个种子确实发生了交换（不是空转）`);
   }
 }
 

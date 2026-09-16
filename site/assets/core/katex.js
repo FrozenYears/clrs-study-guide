@@ -82,6 +82,11 @@ const SYM = {
   emptyset: "∅",
   forall: "∀",
   exists: "∃",
+  land: "∧",
+  lor: "∨",
+  // \Pr A：概率算子。KaTeX 会排成正体；这里退一步只保证字形与间距正确
+  // （正体靠 .tex-text 做不到，所以直接给字母，不引入额外的样式类）。
+  Pr: "Pr",
   to: "→",
   rightarrow: "→",
   leftarrow: "←",
@@ -269,6 +274,44 @@ function parse(src) {
     return el;
   }
 
+  /** `\binom{n}{k}` → 带大括号的两层堆叠（样式见 components.css 的 .binom）。
+   *  本来可以复用 .frac，但分式画横线、组合数不画 —— 复用会画出错误记号。 */
+  function binomNode(a, b) {
+    const el = document.createElement("span");
+    el.className = "binom";
+    // ★ 一律用 createTextNode 而不是赋 textContent：测试跑在极简 DOM 垫片上，
+    //   那里的 textContent 只有 getter（节点环境的差异不能带进实现）。
+    const open = document.createElement("span");
+    open.className = "binom__paren";
+    open.appendChild(document.createTextNode("("));
+    const stack = document.createElement("span");
+    stack.className = "binom__stack";
+    const num = document.createElement("span");
+    num.className = "binom__top";
+    parse(a || "").forEach((c) => num.appendChild(c));
+    const den = document.createElement("span");
+    den.className = "binom__bottom";
+    parse(b || "").forEach((c) => den.appendChild(c));
+    stack.appendChild(num);
+    stack.appendChild(den);
+    const close = document.createElement("span");
+    close.className = "binom__paren";
+    close.appendChild(document.createTextNode(")"));
+    el.appendChild(open);
+    el.appendChild(stack);
+    el.appendChild(close);
+    return el;
+  }
+
+  /** `\overline{A}` → 顶部加一横线。用 span + text-decoration 而不是组合字符：
+   *  组合字符只会盖住参数的**最后一个**字符，`\overline{B_k}` 那样的写法会画错位置。 */
+  function overlineNode(a) {
+    const el = document.createElement("span");
+    el.className = "overline";
+    parse(a || "").forEach((c) => el.appendChild(c));
+    return el;
+  }
+
   /** 按顶层分隔符切分（跳过 {} 内部），供 cases 环境拆行/拆列。 */
   function splitTop(src, sep) {
     const parts = [];
@@ -437,6 +480,27 @@ function parse(src) {
           continue;
         }
         buf += "\\" + name;
+        continue;
+      }
+      // \binom{n}{k}：两个参数都要读；只给一个时按空分母渲染（不能让反斜杠漏到页面上）
+      if (name === "binom") {
+        const a = readGroup();
+        if (a) {
+          const b = readGroup();
+          out.push(binomNode(a.text, b ? b.text : ""));
+          continue;
+        }
+        buf += "\\binom";
+        continue;
+      }
+      // \overline{X}：整段内容加顶线
+      if (name === "overline") {
+        const a = readGroup();
+        if (a) {
+          out.push(overlineNode(a.text));
+          continue;
+        }
+        buf += "\\overline";
         continue;
       }
       // \text{...}：文本模式，内容原样输出

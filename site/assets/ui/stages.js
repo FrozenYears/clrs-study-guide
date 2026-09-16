@@ -517,10 +517,11 @@ function makeVizPanel(stage, ctx) {
     presets.map((p, i) => h('option', { value: String(i) }, p.name))
   );
 
-  // 预跑一遍数帧数（n 很小，成本可忽略）
-  function countFrames(arr) {
+  // 预跑一遍数帧数（n 很小，成本可忽略）。args 必须和真正跑动画时一致，
+  // 否则步进器的总帧数会与预设不匹配（帧计数显示就会错）。
+  function countFrames(arr, args) {
     let n = 0;
-    const it = algoFn(arr.slice(), ...(stage.algoArgs || []));
+    const it = algoFn(arr.slice(), ...(args || []));
     for (let r = it.next(); !r.done; r = it.next()) n++;
     return n;
   }
@@ -541,9 +542,16 @@ function makeVizPanel(stage, ctx) {
 
     const speedMs = Number(speed.value) || 650;
     const arr = treeSeq ? [] : presets[idx].array.slice();
+    // 生成器的额外参数：预设自带 args 时优先用它 —— 同一块面板就能演示
+    // 「换个输入数组」之外的「换个起点」（如 MAX-HEAPIFY 的 i）或「换个容量」。
+    // 预设没写 args 时沿用面板级的 stage.algoArgs，已有关卡的行为不受影响。
+    // ★ treeSeq（静态树序列）时 presets 是空数组，presets[idx] 不存在，必须先判空，
+    //   否则 tree 面板会在这里抛 TypeError、整页空白（冒烟测试会抓到，但肉眼很难看出原因）。
+    const preset = treeSeq ? null : presets[idx];
+    const algoArgs = preset && Array.isArray(preset.args) ? preset.args : (stage.algoArgs || []);
     stepper = createStepper(
-      treeSeq ? treeSeqGen() : algoFn(arr.slice(), ...(stage.algoArgs || [])),
-      { mount: host, speed: speedMs, total: treeSeq ? treeSeq.length : countFrames(arr) }
+      treeSeq ? treeSeqGen() : algoFn(arr.slice(), ...algoArgs),
+      { mount: host, speed: speedMs, total: treeSeq ? treeSeq.length : countFrames(arr, algoArgs) }
     );
 
     stepper.onFrame((frame, state) => {
