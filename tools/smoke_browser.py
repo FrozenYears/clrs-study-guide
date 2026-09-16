@@ -108,6 +108,16 @@ CASES = [
     ("#/ch06/s04/s08", ["要证的不变量", "第一步", "已排序区"], [NOT_PENDING, "【TODO"]),
     ("#/ch06/s04/s09", ["检验一下", "6.4-2", "6.4-4", "原书习题"], [NOT_PENDING, "【TODO"]),
 
+    # ---- 6.5 优先队列（九段式）----
+    ("#/ch06/s05/s01", ["堆的第二次生命", "数学急救包"], [NOT_PENDING, "【TODO"]),
+    ("#/ch06/s05/s03", ['data-kind="source"', "max-priority queue", "handles"], [NOT_PENDING, "【TODO"]),
+    ("#/ch06/s05/s04", ["MAX-HEAP-EXTRACT-MAX", "MAX-HEAP-INSERT", "MAX-HEAP-INCREASE-KEY", "变量表"], [NOT_PENDING, "【TODO"]),
+    ("#/ch06/s05/s05", ["viz-stage", "viz-heap", "帧 0", "已摘出"], [NOT_PENDING, "【TODO"]),
+    ("#/ch06/s05/s06", ["heap_priority_queue.c", "max_heap_insert", "伪代码 ↔ C 对应表"], [NOT_PENDING, "【TODO"]),
+    ("#/ch06/s05/s07", ["polyline", "growth-legend", "两个"], [NOT_PENDING, "【TODO"]),
+    ("#/ch06/s05/s08", ["要证的不变量", "第一步", "上浮"], [NOT_PENDING, "【TODO"]),
+    ("#/ch06/s05/s09", ["检验一下", "6.5-5", "6.5-7", "原书习题"], [NOT_PENDING, "【TODO"]),
+
     # ---- 2.3 归并排序（九段式）----
     ("#/ch02/s03/s01", ["为什么学这一关", "递归式", "lg n"], [NOT_PENDING]),
     ("#/ch02/s03/s02", ["两叠牌", "正面朝上"], [NOT_PENDING]),
