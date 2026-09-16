@@ -77,6 +77,19 @@
    出来 —— 所以新引入命令时**先补实现**：`\binom` 要两层堆叠（复用 `.frac` 会画出除号横线），
    `\overline` 要用 span 顶线（组合字符只盖得住最后一个字符）。
    注意测试跑在极简 DOM 垫片上，`textContent` **只有 getter**，新节点一律用 `createTextNode`。
+20. **纯文本渲染的字段不能放 LaTeX**：`stage.title` 与 `pseudocode.more[].subtitle`
+   走的是 `h('h3', {}, '…' + sub)`，**没有** renderMixed —— 放了 `$\Theta(1)$`
+   页面就原样显示反斜杠。可以放 LaTeX 的是 `mathKit[].title`、表格单元格、
+   `claims[].when`、`zh`、`body`、`note`。新增字段前先确认它走不走 renderMixed。
+21. **闸门把「被 import 的关卡有语法错」报成 `chapter.js 加载失败`**。
+   看到这条 ERROR 要顺着 import 链去找真正的坏文件，别盯着 chapter.js 看。
+   容易触发的一类写法：在单引号字符串里写 `BUILD-MAX-HEAP$\'$` ——
+   `\'` 会提前结束字符串。撇号请用 Unicode `′`。
+22. **要拿去支撑结论的统计量，实验里必须先 printf 出原始数字**。
+   教训：`INCREASE-KEY` / `INSERT` 的上浮循环漏了比较计数，"反复插入建堆"的比较次数
+   恒为 0，而**没有任何断言覆盖这个量** —— 是打印出来的数字暴露的。
+   另外别凭直觉写不等式：关于两种建堆法比较次数的两条断言实测都不成立，
+   改成「先打印、看清数字再写断言」后才留下真正成立的三条。
 
 ## 环境坑（本机）
 
