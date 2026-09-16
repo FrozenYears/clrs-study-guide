@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>smoke-heap · 堆引擎单步演示</title>
+<!-- 设计令牌回退值：生产中由 site/assets/theme.css 提供，这里仅让 smoke 页可独立预览。
+     引擎本身只引用 var(--viz-*) / var(--bg-*) 名字，不定义任何颜色。 -->
+<style>
+  :root{
+    --bg-0:#ffffff; --bg-1:#f1f3f5; --bg-2:#e9ecef;
+    --fg-0:#212529; --fg-1:#495057; --fg-2:#868e96;
+    --bd-0:#adb5bd; --bd-1:#dee2e6;
+    --viz-idle:#ced4da; --viz-compare:#f08c00; --viz-active:#7048e8;
+    --viz-done:#1c7ed6; --viz-result:#0ca678; --viz-mark:#495057; --viz-violation:#e03131;
+    --viz-move:#9775fa;
+    --font-sans:system-ui,"Microsoft YaHei",sans-serif;
+    --font-mono:"Cascadia Code",Consolas,monospace;
+  }
+  body{font-family:var(--font-sans);color:var(--fg-0);background:var(--bg-0);margin:0;padding:16px;}
+  h1{font-size:16px;margin:0 0 8px}
+  #stage{background:var(--bg-1);border:1px solid var(--bd-1);border-radius:8px;padding:8px;max-width:760px;}
+  .bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px;max-width:760px;}
+  button,select{font:14px var(--font-sans);padding:6px 12px;border:1px solid var(--bd-0);background:var(--bg-0);color:var(--fg-0);border-radius:6px;cursor:pointer;}
+  button:disabled{opacity:.4;cursor:default;}
+  .meta{font:13px var(--font-mono);color:var(--fg-1);margin-top:8px;max-width:760px;word-break:break-word;}
+  .note{font:13px var(--font-sans);color:var(--fg-0);margin-top:6px;max-width:760px;}
+  input{font:14px var(--font-mono);padding:5px 8px;border:1px solid var(--bd-0);border-radius:6px;width:200px;}
+  .hint{font-size:12px;color:var(--fg-2);margin-top:6px}
+  @media (prefers-reduced-motion: reduce){ * { animation:none !important; transition:none !important; } }
+</style>
+</head>
+<body>
+  <h1>smoke-heap：堆可视化引擎（数组 + 二叉树双视图）+ 第 6 章七个生成器</h1>
+  <div id="stage" aria-live="polite"></div>
+
+  <div class="bar">
+    <select id="algo" aria-label="选择生成器">
+      <option value="heap-index-demo">heap-index-demo（6.1 下标算术）</option>
+      <option value="max-heapify">max-heapify（6.2 MAX-HEAPIFY）</option>
+      <option value="build-max-heap">build-max-heap（6.3 建堆）</option>
+      <option value="heapsort">heapsort（6.4 堆排序）</option>
+      <option value="heap-extract-max">heap-extract-max（6.5 取最大）</option>
+      <option value="heap-increase-key">heap-increase-key（6.5 增大键）</option>
+      <option value="heap-insert">heap-insert（6.5 插入）</option>
+    </select>
+    <input id="arr" value="16,4,10,14,7,9,3,2,8,1" aria-label="输入数组">
+    <input id="args" value="2" aria-label="附加参数（逗号分隔）" title="生成器的第二、三个参数，如 max-heapify 的 i">
+    <button id="load">载入</button>
+  </div>
+
+  <div class="bar">
+    <button id="prev" title="上一步 (←)">◀ 上一步</button>
+    <button id="next" title="下一步 (→)">下一步 ▶</button>
+    <button id="play" title="播放/暂停 (空格)">▶ 播放</button>
+    <button id="reset" title="重置">⟲ 重置</button>
+  </div>
+
+  <div class="meta" id="meta"></div>
+  <div class="note" id="note"></div>
+  <div class="hint">键盘：←/→ 单步，空格 播放/暂停，R 重置。独立预览请通过 http 服务打开（ES Module 需同源）。</div>
+
+<script type="module">
+import { create as createHeap } from '../assets/viz/heap.js';
+import { heapIndexDemo } from '../assets/algorithms/heap-index-demo.js';
+import { maxHeapify } from '../assets/algorithms/max-heapify.js';
+import { buildMaxHeap } from '../assets/algorithms/build-max-heap.js';
+import { heapsort } from '../assets/algorithms/heapsort.js';
+import { heapExtractMax } from '../assets/algorithms/heap-extract-max.js';
+import { heapIncreaseKey } from '../assets/algorithms/heap-increase-key.js';
+import { heapInsert } from '../assets/algorithms/heap-insert.js';
+
+const GEN = {
+  'heap-index-demo': heapIndexDemo,
+  'max-heapify': maxHeapify,
+  'build-max-heap': buildMaxHeap,
+  'heapsort': heapsort,
+  'heap-extract-max': heapExtractMax,
+  'heap-increase-key': heapIncreaseKey,
+  'heap-insert': heapInsert,
+};
+
+const stage = document.getElementById('stage');
+const meta = document.getElementById('meta');
+const note = document.getElementById('note');
+let frames = [], i = 0, playing = null, engine = null;
+
+function build() {
+  const name = document.getElementById('algo').value;
+  const arr = document.getElementById('arr').value.split(',').map((s) => parseInt(s.trim(), 10)).filter((n) => !Number.isNaN(n));
+  const args = document.getElementById('args').value.split(',').map((s) => s.trim()).filter((s) => s !== '').map((s) => Number(s));
+  frames = [...GEN[name](arr, ...args)];
+  i = 0;
+  if (engine) engine.destroy();
+  engine = createHeap(stage, {});
+  render();
+}
+
+function render() {
+  const f = frames[i];
+  engine.render(f);
+  meta.textContent = `帧 ${i + 1}/${frames.length} · 第 ${f.line ?? '—'} 行 · `
+    + `heapSize=${f.heapSize} · ` + JSON.stringify(f.counts)
+    + (f.done ? ' · 完成 ✓' : '');
+  note.textContent = f.note || '';
+  document.getElementById('prev').disabled = i === 0;
+  document.getElementById('next').disabled = i === frames.length - 1;
+}
+
+function step(d) { i = Math.max(0, Math.min(frames.length - 1, i + d)); render(); }
+function play() {
+  if (playing) { clearInterval(playing); playing = null; document.getElementById('play').textContent = '▶ 播放'; }
+  else {
+    playing = setInterval(() => {
+      if (i >= frames.length - 1) { clearInterval(playing); playing = null; document.getElementById('play').textContent = '▶ 播放'; }
+      else step(1);
+    }, 400);
+    document.getElementById('play').textContent = '⏸ 暂停';
+  }
+}
+
+document.getElementById('prev').onclick = () => step(-1);
+document.getElementById('next').onclick = () => step(1);
+document.getElementById('play').onclick = play;
+document.getElementById('reset').onclick = build;
+document.getElementById('load').onclick = build;
+document.getElementById('algo').onchange = build;
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowLeft') step(-1);
+  else if (e.key === 'ArrowRight') step(1);
+  else if (e.key === ' ') { e.preventDefault(); play(); }
+  else if (e.key === 'r' || e.key === 'R') build();
+});
+
+// URL 参数：?algo=heapsort&arr=...&args=...&frame=5
+// 让无头自检可以逐个生成器、逐个帧地渲染（页面本身还是交互的）。
+const Q = new URLSearchParams(location.search);
+if (Q.get('algo') && GEN[Q.get('algo')]) document.getElementById('algo').value = Q.get('algo');
+if (Q.get('arr')) document.getElementById('arr').value = Q.get('arr');
+if (Q.get('args') != null) document.getElementById('args').value = Q.get('args');
+
+build();
+if (Q.get('frame')) {
+  i = Math.max(0, Math.min(frames.length - 1, parseInt(Q.get('frame'), 10) || 0));
+  render();
+}
+
+// 供无头自检读取：把「当前帧摘要」挂到 window 上，--dump-dom 也能从 #meta 读到
+window.__heapSmoke = () => ({
+  frames: frames.length,
+  index: i,
+  line: frames[i].line,
+  heapSize: frames[i].heapSize,
+  note: frames[i].note,
+  svgNodes: stage.querySelectorAll('svg *').length,
+  last: frames[frames.length - 1],
+});
+</script>
+</body>
+</html>

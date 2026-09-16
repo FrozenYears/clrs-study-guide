@@ -17,6 +17,7 @@ import * as vizTree from '../viz/tree.js';
 import * as vizGrowth from '../viz/growth.js';
 import * as vizMatrix from '../viz/matrix.js';
 import * as vizMatrixProduct from '../viz/matrix-product.js';
+import * as vizHeap from '../viz/heap.js';
 
 import { insertionSort } from '../algorithms/insertion-sort.js';
 import { mergeSort } from '../algorithms/merge-sort.js';
@@ -29,6 +30,14 @@ import { birthdayCollisions } from '../algorithms/birthday-collisions.js';
 import { ballsBins } from '../algorithms/balls-bins.js';
 import { streaks } from '../algorithms/streaks.js';
 import { onlineMaximum } from '../algorithms/online-maximum.js';
+// 第 6 章堆排序：数组与二叉树双视图，全部过程共用一个 heap 引擎
+import { heapIndexDemo } from '../algorithms/heap-index-demo.js';
+import { maxHeapify } from '../algorithms/max-heapify.js';
+import { buildMaxHeap } from '../algorithms/build-max-heap.js';
+import { heapsort } from '../algorithms/heapsort.js';
+import { heapExtractMax } from '../algorithms/heap-extract-max.js';
+import { heapIncreaseKey } from '../algorithms/heap-increase-key.js';
+import { heapInsert } from '../algorithms/heap-insert.js';
 
 const VIZ = new Map();
 const ALGO = new Map();
@@ -79,6 +88,8 @@ registerViz('tree', vizTree);
 registerViz('growth', vizGrowth);
 registerViz('matrix', vizMatrix);
 registerViz('matrix-product', vizMatrixProduct);
+// heap：同一个下标同时画在数组格子与树结点上（6.1 的全部内容就是这个对应关系）
+registerViz('heap', vizHeap);
 
 registerAlgorithm('insertion-sort', insertionSort);
 registerAlgorithm('merge-sort', mergeSort);
@@ -90,3 +101,10 @@ registerAlgorithm('birthday-collisions', birthdayCollisions);
 registerAlgorithm('balls-bins', ballsBins);
 registerAlgorithm('streaks', streaks);
 registerAlgorithm('online-maximum', onlineMaximum);
+registerAlgorithm('heap-index-demo', heapIndexDemo);
+registerAlgorithm('max-heapify', maxHeapify);
+registerAlgorithm('build-max-heap', buildMaxHeap);
+registerAlgorithm('heapsort', heapsort);
+registerAlgorithm('heap-extract-max', heapExtractMax);
+registerAlgorithm('heap-increase-key', heapIncreaseKey);
+registerAlgorithm('heap-insert', heapInsert);

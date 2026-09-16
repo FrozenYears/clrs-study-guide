@@ -11,6 +11,13 @@ import { birthdayCollisions } from './birthday-collisions.js';
 import { ballsBins } from './balls-bins.js';
 import { streaks } from './streaks.js';
 import { onlineMaximum } from './online-maximum.js';
+import { heapIndexDemo } from './heap-index-demo.js';
+import { maxHeapify } from './max-heapify.js';
+import { buildMaxHeap } from './build-max-heap.js';
+import { heapsort } from './heapsort.js';
+import { heapExtractMax } from './heap-extract-max.js';
+import { heapIncreaseKey } from './heap-increase-key.js';
+import { heapInsert } from './heap-insert.js';
 
 let passed = 0, failed = 0;
 function ok(cond, msg) {
@@ -291,6 +298,232 @@ console.log('\n[8] 第 5 章 5.4 的四个概率实验生成器');
       const ratio = hit / perms4.length;
       ok(ratio > 0.3 && ratio < 0.5,
         `在线招聘：n=6、k=round(n/e)=${k} 时雇到最佳的比例 ${ratio.toFixed(3)}，落在 1/e ≈ 0.368 附近`);
+    }
+  }
+}
+
+console.log('\n[9] 第 6 章堆生成器');
+{
+  const isSorted = (a) => a.every((v, i) => i === 0 || a[i - 1] <= v);
+  const sameBag = (x, y) => JSON.stringify([...x].sort((p, q) => p - q)) === JSON.stringify([...y].sort((p, q) => p - q));
+
+  /** 最大堆性质：A[1 : heapSize] 里每个非根结点都不大于它的父。 */
+  const isMaxHeap = (a, heapSize = a.length) => {
+    for (let i = 2; i <= heapSize; i++) if (a[Math.floor(i / 2) - 1] < a[i - 1]) return false;
+    return true;
+  };
+
+  /** 以 root 为根的子树内是否满足最大堆性质（6.2 只保证这一棵子树）。 */
+  const subtreeOk = (a, root, heapSize = a.length) => {
+    for (let i = root; i <= heapSize; i++) {
+      const l = 2 * i, r = l + 1;
+      if (l <= heapSize && a[i - 1] < a[l - 1]) return false;
+      if (r <= heapSize && a[i - 1] < a[r - 1]) return false;
+    }
+    return true;
+  };
+
+  // ---- 9a 下标演示：帧数、叶子数、父/子关系 ----
+  {
+    const A = [16, 14, 10, 8, 7, 9, 3, 2, 4, 1]; // 原书 Figure 6.1 的堆
+    const frames = [...heapIndexDemo(A)];
+    ok(frames.length === 2 + 3 * A.length,
+      `下标演示：n=10 产 ${frames.length} 帧（期望 2 + 3n = 32：首帧 + 每结点三帧 + 收尾帧）`);
+    ok(frames.at(-1).done === true, '下标演示：最后一帧明确结束');
+    ok(frames.at(-1).counts.leaves === 5, `下标演示：叶子 ${frames.at(-1).counts.leaves} 个（n=10 时下标 6..10）`);
+    // 第 2 帧应是 i=1 的 PARENT 帧，说明根没有父
+    ok(frames[1].line === 2 && /PARENT\(1\)/.test(frames[1].note), '下标演示：i=1 的第一帧讲 PARENT(1)=0');
+  }
+
+  // ---- 9b MAX-HEAPIFY ----
+  // ★ 书里的前提必须照抄：MAX-HEAPIFY(A, i) 只保证「当 LEFT(i) 与 RIGHT(i) 各自已经是
+  //   最大堆时」，以 i 为根的子树被修成最大堆。对**任意**数组调用一次并不保证整棵子树
+  //   都合规（孩子那边的堆可能本来就是坏的）—— 所以这里的用例先把数组建成最大堆，
+  //   再把 A[i] 改小制造一处违规，与 Figure 6.2 的情形完全一致。
+  {
+    let allOk = true, checked = 0;
+    for (let t = 0; t < 30; t++) {
+      const raw = lcg(t + 3, 2 + (t % 12)).map((v) => (v % 90) + 1);
+      const heap = [...buildMaxHeap(raw)].at(-1).array;
+      for (let i = 1; i <= heap.length; i++) {
+        const broken = heap.slice();
+        // 把 A[i] 改到比全体都小 —— 制造唯一的违规点（孩子各自仍是最大堆）
+        broken[i - 1] = Math.min(...heap) - 1000;
+        const last = [...maxHeapify(broken, i)].at(-1);
+        checked++;
+        if (!subtreeOk(last.array, i)) allOk = false;
+        if (!sameBag(last.array, broken)) allOk = false;
+      }
+    }
+    ok(allOk, `MAX-HEAPIFY：${checked} 组「已建好的堆 + 一处违规」调用后子树恢复为最大堆，且元素集合不变`);
+    // 任意输入：即使修不好整棵子树，也绝不能丢元素或改值
+    {
+      let bagOk = true;
+      for (let t = 0; t < 40; t++) {
+        const a = lcg(t + 7, 1 + (t % 10)).map((v) => (v % 55) + 1);
+        const last = [...maxHeapify(a, 1)].at(-1);
+        if (!sameBag(last.array, a)) bagOk = false;
+      }
+      ok(bagOk, 'MAX-HEAPIFY：40 组随机输入下元素集合始终不变（只搬动、不丢不造）');
+    }
+    // 原书 Figure 6.2：A[2] = 4 违反性质，修正后 A[2] = 14
+    {
+      const f62 = [16, 4, 10, 14, 7, 9, 3, 2, 8, 1];
+      const last = [...maxHeapify(f62, 2)].at(-1);
+      ok(last.array[1] === 14 && isMaxHeap(last.array),
+        `Figure 6.2：MAX-HEAPIFY(A,2) 之后 A[2] = ${last.array[1]}（期望 14），全数组成为最大堆`);
+    }
+    // 叶子结点：一次比较都不该发生
+    {
+      const a = [16, 14, 10, 8, 7, 9, 3];
+      const last = [...maxHeapify(a, 7)].at(-1);
+      // 叶子调用会产生 1 帧(行1) + 1 帧(行2) + 行3 叶子帧 + 行5 帧 + 最后收尾
+      ok(last.counts.cmp === 0, `MAX-HEAPIFY(A, 7)（下标 7 是叶子）比较 0 次，实测 ${last.counts.cmp}`);
+    }
+    // 路径长度：MAX-HEAPIFY 的交换次数不超过树高 ⌊lg n⌋
+    {
+      let bound = true;
+      for (let t = 0; t < 60; t++) {
+        const a = lcg(t + 11, 1 + (t % 16)).map((v) => v % 100);
+        const last = [...maxHeapify(a, 1)].at(-1);
+        const h = a.length <= 1 ? 0 : Math.floor(Math.log2(a.length));
+        if (last.counts.move > h) bound = false;
+      }
+      ok(bound, 'MAX-HEAPIFY：60 组输入的交换次数都不超过树高 ⌊lg n⌋ —— 这正是 O(lg n) 的来源');
+    }
+  }
+
+  // ---- 9c BUILD-MAX-HEAP：结果必须是合法的最大堆 ----
+  {
+    let allOk = true, checked = 0;
+    for (let t = 0; t < 60; t++) {
+      const a = lcg(t + 5, (t % 20) + 1).map((v) => v % 80);
+      const last = [...buildMaxHeap(a)].at(-1);
+      checked++;
+      if (!isMaxHeap(last.array)) allOk = false;
+      if (!sameBag(last.array, a)) allOk = false;
+    }
+    ok(allOk, `BUILD-MAX-HEAP：${checked} 组输入的结果都是合法最大堆且元素集合不变`);
+    ok([...buildMaxHeap([])].at(-1).done === true, 'BUILD-MAX-HEAP：空数组直接结束');
+    // Figure 6.1 的数组本来就是最大堆，建堆后不应发生任何交换
+    {
+      const last = [...buildMaxHeap([16, 14, 10, 8, 7, 9, 3, 2, 4, 1])].at(-1);
+      ok(last.counts.move === 0, `已经是最大堆的输入：建堆交换 ${last.counts.move} 次（期望 0）`);
+    }
+  }
+
+  // ---- 9d HEAPSORT：排好序 + 是原数组的重排 ----
+  {
+    let allOk = true, checked = 0;
+    for (let t = 0; t < 60; t++) {
+      const a = lcg(t + 13, (t % 18) + 1).map((v) => (v % 60) - 20); // 含负数
+      const last = [...heapsort(a)].at(-1);
+      checked++;
+      if (!isSorted(last.array)) allOk = false;
+      if (!sameBag(last.array, a)) allOk = false;
+    }
+    ok(allOk, `HEAPSORT：${checked} 组输入（含负数）结果都有序且元素集合不变`);
+    // 与插入排序/归并排序对照
+    let agree = true;
+    for (const a of cases) {
+      const h = [...heapsort(a)].at(-1).array;
+      if (JSON.stringify(h) !== JSON.stringify(sorted(a))) agree = false;
+    }
+    ok(agree, 'HEAPSORT：与 Array.sort 在全部标准用例上结果一致');
+    // 逆序输入下也不该少于 O(n lg n)：粗略下界用 n·lg n / 4
+    {
+      const n = 32;
+      const rev = Array.from({ length: n }, (_, i) => n - i);
+      const last = [...heapsort(rev)].at(-1);
+      ok(last.counts.cmp >= (n * Math.log2(n)) / 4,
+        `HEAPSORT：n=32 逆序输入比较 ${last.counts.cmp} 次，不低于 n lg n / 4 = ${((n * Math.log2(n)) / 4).toFixed(0)}`);
+    }
+  }
+
+  // ---- 9e EXTRACT-MAX：取出最大值，剩下的仍是最大堆 ----
+  {
+    let allOk = true, checked = 0;
+    for (let t = 0; t < 40; t++) {
+      const raw = lcg(t + 17, 1 + (t % 15)).map((v) => v % 70);
+      const heap = [...buildMaxHeap(raw)].at(-1).array;
+      const last = [...heapExtractMax(heap)].at(-1);
+      checked++;
+      const expectedMax = Math.max(...heap);
+      // 最后一帧：返回的 max 应该出现在堆外区域的末尾
+      if (last.array[last.array.length - 1] !== expectedMax) allOk = false;
+      if (!isMaxHeap(last.array, heap.length - 1)) allOk = false;
+    }
+    ok(allOk, `EXTRACT-MAX：${checked} 组都取出了最大值，且剩下的 A[1 : heap-size] 仍是最大堆`);
+    ok([...heapExtractMax([])].at(-1).invariantHolds === false,
+      'EXTRACT-MAX：空堆时报 heap underflow（invariantHolds = false）');
+  }
+
+  // ---- 9f INCREASE-KEY：变大之后仍是最大堆；变小必须报错 ----
+  {
+    let allOk = true, checked = 0;
+    for (let t = 0; t < 40; t++) {
+      const raw = lcg(t + 19, 2 + (t % 14)).map((v) => v % 50);
+      const heap = [...buildMaxHeap(raw)].at(-1).array;
+      const i = 1 + (t % heap.length);
+      const bigger = heap[i - 1] + 5;
+      const last = [...heapIncreaseKey(heap, i, bigger)].at(-1);
+      checked++;
+      if (!isMaxHeap(last.array)) allOk = false;
+      if (last.array.indexOf(bigger) < 0) allOk = false;
+    }
+    ok(allOk, `INCREASE-KEY：${checked} 组把某个键调大后，结果仍是合法最大堆`);
+    // 键变小：必须在第 2 行报错、不改动数组
+    {
+      const heap = [...buildMaxHeap([16, 14, 10, 8, 7, 9, 3, 2, 4, 1])].at(-1).array;
+      const last = [...heapIncreaseKey(heap, 5, 0)].at(-1);
+      ok(last.line === 2 && last.invariantHolds === false && JSON.stringify(last.array) === JSON.stringify(heap),
+        'INCREASE-KEY：新键更小时在第 2 行报错，数组原样不动');
+    }
+    // 路径上浮：交换次数不超过树高
+    {
+      let bound = true;
+      for (let t = 0; t < 40; t++) {
+        const raw = lcg(t + 23, 4 + (t % 12)).map((v) => v % 40);
+        const heap = [...buildMaxHeap(raw)].at(-1).array;
+        const last = [...heapIncreaseKey(heap, heap.length, 9999)].at(-1);
+        const h = Math.floor(Math.log2(heap.length));
+        if (last.counts.move > h + 1) bound = false;
+      }
+      ok(bound, 'INCREASE-KEY：40 组「把最后一个键抬到最大」的交换次数不超过树高 + 1');
+    }
+  }
+
+  // ---- 9g INSERT：插入后元素多一个，且仍是最大堆 ----
+  {
+    let allOk = true, checked = 0;
+    for (let t = 0; t < 40; t++) {
+      const raw = lcg(t + 29, 1 + (t % 14)).map((v) => v % 45);
+      const heap = [...buildMaxHeap(raw)].at(-1).array;
+      const key = (t * 7) % 60;
+      const last = [...heapInsert(heap, key, heap.length + 1)].at(-1);
+      checked++;
+      if (last.array.length !== heap.length + 1) allOk = false;
+      if (!isMaxHeap(last.array)) allOk = false;
+      if (last.array.indexOf(key) < 0) allOk = false;
+      if (!sameBag(last.array, [...heap, key])) allOk = false;
+    }
+    ok(allOk, `INSERT：${checked} 组插入后长度 +1、仍是合法最大堆、元素集合正确`);
+    // 溢出：容量已满必须在第 2 行报错
+    {
+      const heap = [...buildMaxHeap([16, 14, 10, 8, 7])].at(-1).array;
+      const last = [...heapInsert(heap, 5, heap.length)].at(-1);
+      ok(last.line === 2 && last.invariantHolds === false, 'INSERT：容量已满时报 heap overflow');
+    }
+    // 与原书 BUILD-MAX-HEAP′（习题 6-1）等价：逐个插入也能建出最小最大堆（可能不同但合法）
+    {
+      let allOk = true;
+      for (let t = 0; t < 30; t++) {
+        const raw = lcg(t + 31, 1 + (t % 12)).map((v) => v % 40);
+        let heap = [];
+        for (const v of raw) heap = [...heapInsert(heap, v, raw.length)].at(-1).array;
+        if (!isMaxHeap(heap) || !sameBag(heap, raw)) allOk = false;
+      }
+      ok(allOk, 'INSERT：反复插入 30 组数据都建出合法的最大堆（习题 6-1 的 BUILD-MAX-HEAP′）');
     }
   }
 }

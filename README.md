@@ -102,6 +102,7 @@ http://127.0.0.1:8317/_dev/shot.html?t=light&r=%23/ch02/s01/s03&w=375&h=2000
 |---|---|
 | `smoke.html` | 路由 / 存档 / 步进引擎 / 数学渲染联通性 |
 | `smoke-array.html` | 数组可视化引擎 + 插入排序生成器单步 |
+| `smoke-heap.html` | 堆可视化引擎（数组 + 二叉树双视图）+ 第 6 章七个生成器，支持 `?algo=&arr=&args=&frame=` 指定用例 |
 | `dbg-stages.html` | 九段式各阶段逐个渲染，异常直接打在页面上 |
 | `dbg-func.html` | 步进语义、测验、进度落盘的功能断言 |
 | `dbg-tree.html` | 树/递归树引擎逐帧校验 |
