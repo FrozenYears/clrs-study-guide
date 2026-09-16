@@ -352,7 +352,7 @@ int main(void)
               {in:'从叶子沿 p 上溯',out:'3 个节点到根（O(1)/步）'},
               {in:'数组链表搜 30',out:'比较 3 次命中；compact 占满 1..5'}]},
     mapping:[{pc:3,pcCode:'j = RANDOM(1, n)',c:'C 程序里未实现随机版（那是问题 10-3(b) 的分析题），part 6 演示的是**去掉第 3–7 行的普通扫描**。'},
-             {pc:8,pcCode:'i = next[i]',c:'`i = nxt[i];`（第 201 行）—— 数组链表的"沿指针走"'}]},
+             {pc:8,pcCode:'i = next[i]',c:'`i = nxt[i];`（第 176 行）—— 数组链表的"沿指针走"'}]},
    {type:'analyze',title:'三本账：空间、可达方向、以及随机的回报',
     intro:'表示法的取舍有三个维度：**空间**（给几个指针）、**可达方向**（能不能找父、能不能列孩子）、**查询代价**（顺带看看问题 10-3 的随机化收益）。',
     claims:[
@@ -443,11 +443,13 @@ int main(void)
       why:'第一个孩子由 `left-child` 直接拿到，剩下 3 个各走一步 `right-sibling` → 3 步（连同起点共访问 4 个节点）。'},
     ],
     bookExercises:[
-     {id:'10.3-1',page:268,star:0,statement:'Write an O(n)-time nonrecursive procedure that, given an n-node binary tree, prints out the key of e',hint:'书上是半截题干（要求**非递归**遍历）。用一个显式栈（10.1 的栈！）：压根，循环弹栈、访问、先压右孩子再压左孩子 → 先序输出。$O(n)$、栈空间 $O(h)$。'},
-     {id:'10.3-2',page:268,star:0,statement:'The left-child, right-sibling representation of an arbitrary rooted tree uses three pointers in each node: left-child , right-sibling, and parent . From any node, its parent can be accessed in constant time and all its children can be accessed in time linear in the number of children. Show how to use only two pointers and one boolean value in each node x so that x ’s parent or all of x ’s children',hint:'书上是半截题干。思路（原书给的提示方向）：两个指针分别存 `left-child` 与 `right-sibling` 的**异或**，再用一个布尔值标记"我当前是某人的孩子链头还是兄弟链上的一员"，从而解码时要往哪边走。本质是用"位置信息"顶掉一个指针。'},
-     {id:'10.3-3',page:268,star:0,statement:'For each of the four types of lists in the following table, what is the asymptotic worst-case runnin',hint:'书上是半截题干（表格列出四种链表：单链/双链 × 有序/无序，问 SEARCH/INSERT/DELETE 的最坏时间）。要点：无序单链删除是 $\\Theta(n)$（要先前驱），有序插入是 $\\Theta(n)$（要找到位置）。'},
-     {id:'10.3-4',page:268,star:0,statement:'A mergeable heap supports the following operations: MAKE-HEAP (which creates an empty mergeable heap), INSERT , MINIMUM , EXTRACT-MIN, and UNION .',hint:'书上是半截题干（问题 10-2：用链表实现可合并堆）。a. 有序链：UNION 可 $O(1)$（接起来再归并）；b. 无序：INSERT $O(1)$、EXTRACT-MIN $\\Theta(n)$；c. 无序且不相交：UNION 直接拼接 $O(1)$。第 19 章会用更聪明的结构把两项都压到 $O(\\lg n)$。'},
-     {id:'10.3-5',page:269,star:0,statement:'Show how to implement mergeable heaps using linked lists in each of the following cases. Try to make each operation as efficient as possible. Analyze the running time of each operation in terms of the size of the dynamic set(s) being operated on.',hint:'这一条与上一条同属问题 10-2 的子问：关键是"排序"与"是否不相交"如何影响 UNION 的代价 —— 见上条 hint 的分情况讨论。'},
+     {id:'10.3-1',page:267,star:0,statement:'Draw the binary tree rooted at index 6 that is represented by the following attributes: index key left right',hint:'题干后面接一张属性表（每行 = index / key / left / right）。逐行读表、按 left/right 连边即可。★ 注意题目给的是"属性数组"而不是指针图 —— 这正是本关讲的表示法。'},
+     {id:'10.3-2',page:267,star:0,statement:'Write an O(n)-time recursive procedure that, given an n-node binary tree, prints out the key of each node in the tree.',hint:'递归版最简：`PRINT(x)` 为 null 就返回，否则访问 `x.key` 再递归左右。$O(n)$（每个节点恰好进一次）。这个写法依赖**调用栈**，栈深度 $O(h)$。'},
+     {id:'10.3-3',page:267,star:0,statement:'Write an O(n)-time nonrecursive procedure that, given an n-node binary tree, prints out the key of each node in the tree. Use a stack as an auxiliary data structure.',hint:'把递归版里的"调用栈"换成 10.1 的显式栈：压根 → 循环弹栈 → 访问 → **先压右孩子、再压左孩子**（这样左孩子先出栈）。$O(n)$ 时间、$O(h)$ 额外空间。'},
+     {id:'10.3-4',page:267,star:0,statement:'Write an O(n)-time procedure that prints out all the keys of an arbitrary rooted tree with n nodes, where the tree is stored using the left-child, right-sibling representation.',hint:'对每个节点：先输出自己的 key，然后沿 `right-sibling` 遍历**所有兄弟**，每个兄弟再递归 `left-child`。这条"双链交错"的遍历正是 Figure 10.7 表示的用途。'},
+     {id:'10-1',page:268,star:0,statement:'10-1 Comparisons among lists',hint:'章末问题（Boss 区）：比较单链/双链 × 有序/无序四种链表的 SEARCH / INSERT / DELETE 最坏时间。要点：无序单链的 DELETE 与有序单链的 INSERT 都是 $\\Theta(n)$ —— 因为要先找到位置（10.2-1 的结论）。'},
+     {id:'10-2',page:268,star:0,statement:'10-2 Mergeable heaps using linked lists',hint:'章末问题：用链表实现可合并堆（MAKE-HEAP / INSERT / MINIMUM / EXTRACT-MIN / UNION）。关键在"排序"与"是否不相交"如何影响 UNION 的代价 —— 第 19 章会用更聪明的结构把两项都压到 $O(\\lg n)$。'},
+     {id:'10-3',page:269,star:0,statement:'10-3 Searching a sorted compact list',hint:'章末问题，也是本关伪代码段的出处：`key[]`/`next[]` 两个数组表示**紧凑有序**的链表，用"随机跳到位置 $j$"把查找期望时间降到 $O(\\sqrt n)$。C 程序 part 6–7 演示了普通扫描与 compact 性质。'},
     ]},
   ],
 };

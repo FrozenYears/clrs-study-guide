@@ -367,7 +367,7 @@ int main(void)
               {in:'删除表头 / 中间 / 表尾',out:'三种边界都只改 2 条指针'},
               {in:'哨兵版删表头与表尾',out:'2 行代码、0 个边界判断；链表保持环形'},
               {in:'数组删第 9 个元素 n = 32',out:'搬动 23 个元素'}]},
-    mapping:[{pc:3,pcCode:'x = x.next',c:'`x = x->next;`（第 41 行）—— 唯一的"前进"方式'},
+    mapping:[{pc:3,pcCode:'x = x.next',c:'`x = x->next;`（第 42 行）—— 唯一的"前进"方式'},
              {pc:1,pcCode:'x.prev.next = x.next',c:'`x->prev->next = x->next;`（第 113 行，哨兵版）'},
              {pc:2,pcCode:'x.next.prev = x.prev',c:'`x->next->prev = x->prev;`（第 114 行，哨兵版）'}]},
    {type:'analyze',title:'两本账：链表 vs 数组，以及哨兵值不值得用',
