@@ -136,6 +136,26 @@ CASES = [
     ("#/ch07/s02/s08", ["第一步", "arithmetic series", "递归栈"], [NOT_PENDING, "【TODO"]),
     ("#/ch07/s02/s09", ["检验一下", "7.2-2", "原书习题"], [NOT_PENDING, "【TODO"]),
 
+    # ---- 7.3 随机化版本（九段式）----
+    ("#/ch07/s03/s01", ["把"最坏情况"从"确定的"变成"不太可能的"", "数学急救包"], [NOT_PENDING, "【TODO"]),
+    ("#/ch07/s03/s03", ['data-kind="source"', "randomly chooses the pivot", "Many software libraries"], [NOT_PENDING, "【TODO"]),
+    ("#/ch07/s03/s04", ["RANDOMIZED-PARTITION", "RANDOMIZED-QUICKSORT", "pc-line"], [NOT_PENDING, "【TODO"]),
+    ("#/ch07/s03/s05", ["viz-stage", "viz-array", "帧 0"], [NOT_PENDING, "【TODO"]),
+    ("#/ch07/s03/s06", ["randomized_quicksort.c", "randomized_partition", "伪代码 ↔ C 对应表"], [NOT_PENDING, "【TODO"]),
+    ("#/ch07/s03/s07", ["polyline", "growth-legend"], [NOT_PENDING, "【TODO"]),
+    ("#/ch07/s03/s08", ["第一步", "继承", "PARTITION"], [NOT_PENDING, "【TODO"]),
+    ("#/ch07/s03/s09", ["检验一下", "7.3-1", "原书习题"], [NOT_PENDING, "【TODO"]),
+
+    # ---- 7.4 快速排序的分析（九段式）----
+    ("#/ch07/s04/s01", ["用指示器随机变量算出期望 O(n lg n)", "数学急救包"], [NOT_PENDING, "【TODO"]),
+    ("#/ch07/s04/s03", ['data-kind="source"', "compared is 2", "no two elements"], [NOT_PENDING, "【TODO"]),
+    ("#/ch07/s04/s04", ["PARTITION(A, p, r)", "pc-line"], [NOT_PENDING, "【TODO"]),
+    ("#/ch07/s04/s05", ["viz-stage", "polyline", "growth-legend"], [NOT_PENDING, "【TODO"]),
+    ("#/ch07/s04/s06", ["quicksort.c", "伪代码 ↔ C 对应表"], [NOT_PENDING, "【TODO"]),
+    ("#/ch07/s04/s07", ["推导链", "调和数", "Θ(n²)"], [NOT_PENDING, "【TODO"]),
+    ("#/ch07/s04/s08", ["Lemma 7.2", "第一步", "概率计算"], [NOT_PENDING, "【TODO"]),
+    ("#/ch07/s04/s09", ["检验一下", "7.4-1", "原书习题"], [NOT_PENDING, "【TODO"]),
+
     # ---- 2.3 归并排序（九段式）----
     ("#/ch02/s03/s01", ["为什么学这一关", "递归式", "lg n"], [NOT_PENDING]),
     ("#/ch02/s03/s02", ["两叠牌", "正面朝上"], [NOT_PENDING]),
