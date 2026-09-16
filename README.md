@@ -74,12 +74,15 @@ http://127.0.0.1:8317/_dev/shot.html?t=light&r=%23/ch02/s01/s03&w=375&h=2000
 
 | 用途 | 命令 |
 |---|---|
+| **挑引述（第一步）** | `<py> tools/07_pick_quotes.py pick <章> <节>` |
+| 预检手写引述 | `<py> tools/07_pick_quotes.py check quotes.json` |
+| 看某块的完整正文 | `<py> tools/07_pick_quotes.py show <章> <节> <块下标…>` |
 | 生成关卡骨架 | `<py> tools/05_new_level.py 3 3.1 --register` |
 | 导出关卡数据 | `<node> tools/dump_levels.mjs` |
 | **关卡合规闸门** | `<py> tools/04_verify_level.py`（要求 0 ERROR） |
 | 两步一起（改完必跑） | `<node> tools/dump_levels.mjs && <py> tools/04_verify_level.py` |
 
-写一关的标准流程 = **生成骨架 → 填掉所有 `【TODO …】` → 跑闸门直到 0 ERROR / 0 TODO**。
+写一关的标准流程 = **挑引述 → 生成骨架 → 填掉所有 `【TODO …】` → 跑闸门直到 0 ERROR / 0 TODO**。
 细节与全部已知坑见 `docs/关卡编写手册.md`。
 
 ### 语料流水线（只有改 PDF 解析规则时才需要）

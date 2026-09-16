@@ -105,9 +105,14 @@ PDF ──→ 01_extract.py ──→ data/pages.jsonl (原始逐页文本)
 
 ## 三、关卡编写流程
 
-### 三步法
+### 四步法
 
 ```bash
+# 0) 先把引述挑好（闸门对引述没有相似度阈值，这一步能省掉大量返工）
+python tools/07_pick_quotes.py pick <章号> <节号>          # 列出能通过闸门的引述候选
+python tools/07_pick_quotes.py check my_quotes.json       # 自己拼/改过的引述逐条预检
+python tools/07_pick_quotes.py show <章号> <节号> 7 8 12   # 按块下标看完整正文
+
 # 1) 生成骨架
 python tools/05_new_level.py <章号> <节号> --register
 # 例: python tools/05_new_level.py 4 4.4 --register
@@ -125,30 +130,71 @@ python tools/smoke_browser.py 8317     # 需先起本地服务（见第十章）
 > 实际执行必须用第十章的绝对路径，例如：
 > `C:/Users/FrozenYears/.workbuddy/binaries/python/versions/3.13.12/python.exe tools/05_new_level.py 4 4.4 --register`
 
+### ★ 三条硬约束（第 5、6 章踩出来的）
+
+1. **闸门只看得见 `chapter.js` 的 `levels` 数组里登记过的关卡。**
+   `dump_levels.mjs` 逐章 `import chapter.js` 再取 `ch.levels`，**没登记的关卡文件
+   根本不会被检查**，跑出来的「0 ERROR」是假的。
+   自己写单关时：先在 `chapter.js` 里临时登记，验收完由协调者收口重写。
+2. **新关卡必须同时加进 `tools/smoke_browser.py` 的 `CASES`**，否则等于没做渲染验证。
+   写单关时可以只跑自己那几条路由，**每章收口时跑一次全量**（第 6 章收口时正是全量
+   扫描抓出一条过期期望）。
+3. **纯文本渲染的字段不能放 LaTeX**（`stage.title`、`pseudocode.more[].subtitle`）。
+   详见 `docs/关卡编写手册.md` 坑 17。
+
 ### 并行开发约定
 
 - 关卡文件一章一个目录（`site/chapters/ch<NN>-<slug>/`），语料一章一个文件
   （`data/blocks/<part-slug>__ch<NN>.json`）；
 - **多 agent 并行时，一个 agent 只碰自己那一章**——`site/assets/chapters.js` 的
   注册行是公共文件，追加自己的注册时不要动别人的行；
+- **子代理可能死于限流（429）而没有任何报告**，但文件已经写完。
+  一律**以磁盘文件为准**重新验收：既不要把「没报告」当成「没干活」，
+  也不要把代理的汇报当成验收结果。
+- 完整的分工与指令模板见 `docs/关卡编写手册.md` 第四·五节。
 - 4.4 关曾出现过两个 agent 先后写同一关的情况：后写的必须先读已提交版本，
   在其基础上续写，不许整文件覆盖丢失对方内容。
 
 ### 九段式关卡模型
 
-每关对应原书一节，按九段式组织：
+每关对应原书一节，按九段式组织（**一节一关是默认，不是铁律**：某一节长到装不下时会按
+原书自己的小节号拆开 —— 目前只有 5.4 拆成了 s04–s07 四关，见第九章）：
 
 | 段 | type | 内容 | 关键要求 |
 |---|---|---|---|
 | 1 | `map` | 位置感：为什么学、知识地图 | mathKit 2–3 条 |
 | 2 | `intuition` | 直觉入口：生活场景 + 类比 | 场景要具体 |
 | 3 | `source` | 原文精读：英文逐字 + 中文解读 | en 不可改写，zh 瞄准易错点 |
-| 4 | `pseudocode` | 伪代码逐行 + 变量表 | 行号与原书一致 |
+| 4 | `pseudocode` | 伪代码逐行 + 变量表 | 行号与原书一致；`more` 可挂配套过程 |
 | 5 | `visualize` | 动手看见：算法动画或函数曲线 | 见下方三种驱动方式 |
 | 6 | `code` | 双轨实现：C 代码 + 对照表 | c.code 与 c/*.c 逐字节一致 |
 | 7 | `analyze` | 复杂度：每条结论带页码 | 自己推导的标 `source:'instructor'` |
 | 8 | `prove` | 正确性：不变量或下界论证 | en 逐字取自原书 |
 | 9 | `drill` | 闯关测验 + 原书习题 | 6–8 道，覆盖本节核心 |
+
+#### 阶段 5 可以有多块面板（`panels`）
+
+一节里若有多个过程要演示（6.5 的 EXTRACT-MAX / INCREASE-KEY / INSERT 三个），
+用 `panels: [{…}, {…}, {…}]` 声明多块面板，**每块自带 `pseudocodeRef`**，
+于是各面板的伪代码高亮互不干扰。`panels` 里每一项的字段与 panel 外层的用法一致
+（`algorithm` / `viz` / `presets` / `input` / `countLabels` / `invariants`）。
+
+#### 帧读数的计数项（`countLabels`）
+
+面板右侧"读数"默认只显示 `cmp`（比较）与 `move`（写回）。要显示别的计数项时声明：
+
+```js
+countLabels: { throws: '已投掷' }                            // → 已投掷 7 次
+countLabels: { leaves: { label: '叶子结点', unit: '个' } }    // → 叶子结点 5 个
+```
+
+写字符串时量词默认「次」；要「个 / 人 / 对 / 号」就写对象。
+**别用错量词**：「叶子结点 5 次」读起来是错的。
+
+#### 预设可以自带生成器参数（`presets[i].args`）
+
+生成器参数默认取面板级的 `algoArgs`；若某个预设需要不同的参数（如 MAX-HEAPIFY 换个起点、
+洗牌换个种子），在预设里写 `args: [...]` 覆盖即可 —— 同一块面板就能演示多种情形。
 
 ### 阶段 5 的三种驱动方式
 
@@ -205,6 +251,10 @@ python tools/04_verify_level.py      # 闸门：引述溯源 + C 一致性 + 链
 > ⚠️ 旧版用「带隙子序列 + 单段夹带 ≤800」，实测 8 种篡改漏报 6 种。
 > v3 的容忍度收紧后，篡改（插词/删词/对调/换词）全部拦住；
 > 仅 ≤2 字符的单点编辑仍可能漏（已知边界，见 `docs/reports/Q1-质量审计.md`）。
+
+**挑引述就去用 `tools/07_pick_quotes.py`**：它 `import` 的就是本节的 `verify_quote`
+（**不另造第二套判据** —— 项目曾因两套归一化并存而白跑一轮），把判定前移到动笔之前。
+它的 `selftest` 子命令把上面那条「≤2 字符边界」写成了可执行记录。
 
 ### 站点自检
 
@@ -353,6 +403,7 @@ python tools/smoke_browser.py 8317          # 无头 Chrome 逐路由渲染
 │   ├── 04_figures.py              # 插图切图
 │   ├── 04_verify_level.py         # ★ 关卡合规闸门
 │   ├── 05_new_level.py            # ★ 关卡骨架生成器
+│   ├── 07_pick_quotes.py          # ★ 引述挑选 / 预检（写关卡的第一步；复用 04 的判据）
 │   ├── dump_levels.mjs            # 关卡 JS → JSON（闸门的输入）
 │   ├── smoke_browser.py           # 无头 Chrome 逐路由自检
 │   ├── test_repair.py             # 修复回归测试 (184)
@@ -388,7 +439,10 @@ python tools/smoke_browser.py 8317          # 无头 Chrome 逐路由渲染
 │   │   ├── viz/                   # 可视化引擎
 │   │   │   ├── array.js           # 数组动画
 │   │   │   ├── tree.js            # 树 / 递归树
-│   │   │   └── growth.js          # 增长曲线 + c·g(n) + n₀ 滑杆
+│   │   │   ├── growth.js          # 增长曲线 + c·g(n) + n₀ 滑杆
+│   │   │   ├── matrix.js          # 矩阵
+│   │   │   ├── matrix-product.js  # 矩阵乘法逐格填值
+│   │   │   └── heap.js            # 堆：数组格与树结点共用同一批下标（第 6 章）
 │   │   └── algorithms/            # 算法生成器（JS generator）
 │   │       ├── insertion-sort.js  # 插入排序（逐帧 yield）
 │   │       ├── merge-sort.js      # 归并排序
@@ -419,40 +473,65 @@ python tools/smoke_browser.py 8317          # 无头 Chrome 逐路由渲染
 
 ## 九、当前进度与下一步
 
-### 已完成
+**共 25 关 / 5 章**（第 2–6 章全部完成）。完整清单跑
+`node tools/dump_levels.mjs` 之后看 `tools/_levels.json`，或直接跑闸门看首行。
 
-| 章 | 节 | 状态 | 文件 |
-|---|---|---|---|
-| 第 2 章 | 2.1 插入排序 | ✅ 完整（金标准） | s01-insertion-sort.js (37.7 KB) |
-| 第 2 章 | 2.2 分析算法 | ✅ 完整 | s02-analyzing-algorithms.js (68.5 KB) |
-| 第 2 章 | 2.3 归并排序 | ✅ 完整 | s03-merge-sort.js (80.2 KB) |
-| 第 3 章 | 3.1 三种渐进记号 | ✅ 完整 | s01-o-notation-and.js (34.2 KB) |
-| 第 3 章 | 3.2 形式定义 | ✅ 完整 | s02-asymptotic-notation-formal.js (33.0 KB) |
-| 第 3 章 | 3.3 标准记号与常用函数 | ✅ 完整 | s03-standard-notations-and.js (31.0 KB) |
-| 第 4 章 | 4.4 递归树法 | ✅ 完整 | s04-the-recursion-tree.js (40.8 KB) |
-| 第 4 章 | 4.5 主方法 | ✅ 完整 | s05-the-master-method.js (24.4 KB) |
+### 已完成（25 关，闸门 0 ERROR / 0 TODO）
+
+| 章 | 关数 | 说明 |
+|---|---|---|
+| 第 2 章 Getting Started | 3 | 2.1 / 2.2 / 2.3 —— 整套流程的**金标准** |
+| 第 3 章 Characterizing Running Times | 3 | 3.1 / 3.2 / 3.3 |
+| 第 4 章 Divide-and-Conquer | 7 | 4.1–4.7 全 |
+| 第 5 章 Probabilistic Analysis | 7 | 5.1 / 5.2 / 5.3 + **5.4 拆成的 s04–s07** |
+| 第 6 章 Heapsort | 5 | 6.1–6.5 全（含新的 `viz/heap.js` 引擎） |
+
+> ★ **第 5 章为什么有 7 关而不是 4 关**：原书 5.4 一节正文 38.5K 字符（第二长的 2.3 只有
+> 25K），且由四个彼此独立的例子组成（生日悖论 / 球与箱 / 连续正面 / 在线招聘）。
+> 九段式「一伪代码、一动画、一 C 程序」套在含四个主题的巨节上会失焦，所以按原书自己的
+> 小节号 5.4.1–5.4.4 拆开。**副作用**：`site/index.html` 的 `STRUCTURE[].count` 语义是
+> 「**关卡数**」而不是「节数」（第 5 章 count = 7，节数是 4），新增章节时要按关卡数填。
 
 ### 待建
 
 | 章 | 节 | 难点 |
 |---|---|---|
-| 第 4 章 | 4.1 矩阵乘法 | 需要新做矩阵可视化引擎（现有 array 是一维的） |
-| 第 4 章 | 4.2 Strassen | 纯数学，无动画可跑；重点在分治思想与递归式推导 |
-| 第 4 章 | 4.3 代入法 | 证明技术；prove 阶段是核心，不需要新引擎 |
-| 第 4 章 | 4.6–4.7 | 进阶证明，可延后 |
-| 第 5 章–第 35 章 | … | 按第 2–4 章的模式复制 |
+| 第 1 章 The Role of Algorithms | 1.1 / 1.2 | 没有算法可跑，全靠概念组织；需要拿捏「不注水」 |
+| 第 7 章 Quicksort | 7.1–7.4 | 预计可直接复用 `array` 引擎 + 5.3 的 `randomly-permute`，不需要新引擎 |
+| 第 8 章 Sorting in Linear Time | 8.1–8.4 | 8.1 的下界证明要靠决策树（`tree` 引擎可用）；计数/基数/桶排序需要新的"桶"视图 |
+| 第 9 章 Medians and Order Statistics | 9.1–9.3 | 9.3 的 SELECT 递归结构较绕 |
+| 第 10 章起 | … | 数据结构篇需要新引擎：链表 / 散列 / 红黑树 / B 树 / 图（图引擎是最大的一块） |
+| 附录 A–D | — | 数学基础，`growth` 引擎基本够用 |
+
+### 新增能力（2026-09-16 起可用）
+
+| 能力 | 位置 | 用在 |
+|---|---|---|
+| 堆可视化（数组格 + 树结点共用下标；`heapSize` 表现"堆外"） | `site/assets/viz/heap.js` | 第 6 章 5 关 |
+| 概率实验生成器（生日命中 / 球与箱 / 连续正面 / 在线招聘） | `site/assets/algorithms/*.js` | 第 5 章 5.4 |
+| 洗牌生成器（确定性 PRNG，可单步回退） | `site/assets/algorithms/randomly-permute.js` | 5.3 |
+| 帧读数自定义计数项（`countLabels`，支持量词） | `site/assets/ui/stages.js` | 5.4 / 6.x |
+| 预设自带生成器参数（`presets[i].args`） | `site/assets/ui/stages.js` | 6.2–6.5 |
+| 多面板可视化（`panels: [...]`，各挂各的伪代码表） | `site/assets/ui/stages.js` | 6.5 |
+| 数学命令 `\land` `\lor` `\Pr` `\binom` `\overline` | `site/assets/core/katex.js` | 5.x / 6.x |
+| 引述挑选 / 预检工具 | `tools/07_pick_quotes.py` | 写每一关的第一步 |
+| 堆引擎自检页（支持 `?algo=&arr=&args=&frame=`） | `site/_dev/smoke-heap.html` | 调堆动画时 |
 
 ### 测试基线（当前全绿）
 
-| 测试 | 数量 | 命令 |
+| 测试 | 读数 | 命令 |
 |---|---|---|
-| 语法（ES Module） | 30/30 | `cd site && node tools/check-syntax.mjs .` |
-| 算法正确性 | 59 passed | `node site/assets/algorithms/__tests__.mjs` |
-| 数学渲染器 | 74 passed | `cd site && node assets/core/__tests-katex__.mjs` |
+| 语法（ES Module） | 67 / 67 | `cd site && node tools/check-syntax.mjs .` |
+| 算法正确性 | 119 passed | `node site/assets/algorithms/__tests__.mjs` |
+| 数学渲染器 | 83 passed | `cd site && node assets/core/__tests-katex__.mjs` |
 | 语料修复 | 184 passed | `python tools/test_repair.py` |
 | 语料分块 | 42 passed | `python tools/test_segment.py` |
-| 关卡闸门 | 0 ERROR / 7 WARN | `node tools/dump_levels.mjs && python tools/04_verify_level.py` |
-| 浏览器路由 | 62/62 | `python tools/smoke_browser.py 8317` |
+| 关卡闸门 | 0 ERROR / 3 WARN / 0 TODO，25 关 409 条引述 | `node tools/dump_levels.mjs && python tools/04_verify_level.py` |
+| 浏览器路由 | 121 / 121 | `python tools/smoke_browser.py 8317` |
+| 引述工具自检 | 6 / 6 | `python tools/07_pick_quotes.py selftest` |
+
+3 个 WARN 都是「解锁预告链接指向尚未构建的关卡」（`#/appendix/a/s01` ×2、`#/ch07/s01` ×1），
+属预期的前向引导。
 
 ---
 
