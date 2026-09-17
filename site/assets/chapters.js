@@ -36,6 +36,7 @@ import ch25 from '../chapters/ch25-matchings/chapter.js';
 import ch26 from '../chapters/ch26-parallel-algorithms/chapter.js';
 import ch27 from '../chapters/ch27-online-algorithms/chapter.js';
 import ch28 from '../chapters/ch28-matrix-operations/chapter.js';
+import ch29 from '../chapters/ch29-linear-programming/chapter.js';
 
 const CHAPTERS = new Map([
   ['2', ch02],
@@ -65,6 +66,7 @@ const CHAPTERS = new Map([
   ['26', ch26],
   ['27', ch27],
   ['28', ch28],
+  ['29', ch29],
 ]);
 
 /**
