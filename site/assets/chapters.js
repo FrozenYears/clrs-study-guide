@@ -19,6 +19,7 @@ import ch8 from '../chapters/ch08-sorting-in-linear-time/chapter.js';
 import ch9 from '../chapters/ch09-medians-and-order-statistics/chapter.js';
 import ch10 from '../chapters/ch10-elementary-data-structures/chapter.js';
 import ch11 from '../chapters/ch11-hash-tables/chapter.js';
+import ch12 from '../chapters/ch12-binary-search-trees/chapter.js';
 
 const CHAPTERS = new Map([
   ['2', ch02],
@@ -31,6 +32,7 @@ const CHAPTERS = new Map([
   ['9', ch9],
   ['10', ch10],
   ['11', ch11],
+  ['12', ch12],
 ]);
 
 /**

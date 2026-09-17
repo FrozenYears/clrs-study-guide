@@ -52,6 +52,7 @@ import { stackDemo } from '../algorithms/stack.js';
 import { queueDemo } from '../algorithms/queue.js';
 import { linkedListDemo } from '../algorithms/linked-list.js';
 import { chainedHash } from '../algorithms/chained-hash.js';
+import * as bst from '../algorithms/bst.js';
 import { openAddress } from '../algorithms/open-address.js';
 
 const VIZ = new Map();
@@ -136,4 +137,13 @@ registerAlgorithm('stack', stackDemo);
 registerAlgorithm('queue', queueDemo);
 registerAlgorithm('linked-list', linkedListDemo);
 registerAlgorithm('chained-hash', chainedHash);
+// 第 12 章：BST 的各类操作动画（同一个引擎，不同入口）
+registerAlgorithm('bst-inorder', bst.bstInorder);
+registerAlgorithm('bst-search', bst.bstSearch);
+registerAlgorithm('bst-min', (a, k) => bst.bstMinMax(a, k, 'min'));
+registerAlgorithm('bst-max', (a, k) => bst.bstMinMax(a, k, 'max'));
+registerAlgorithm('bst-successor', bst.bstSuccessor);
+registerAlgorithm('bst-insert', bst.bstInsertFrames);
+registerAlgorithm('bst-delete', bst.bstDeleteFrames);
+registerAlgorithm('bst-shape', bst.bstShape);
 registerAlgorithm('open-address', openAddress);

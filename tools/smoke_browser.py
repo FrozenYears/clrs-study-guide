@@ -296,6 +296,16 @@ CASES = [
     ("#/ch11/s04/s08", ["第一步"], [NOT_PENDING, "【TODO"]),
     ("#/ch11/s04/s09", ["检验一下"], [NOT_PENDING, "【TODO"]),
 
+    # ---- 12.1 什么是 BST（九段式）----
+    ("#/ch12/s01/s01", ["二叉搜索树", "数学急救包"], [NOT_PENDING, "【TODO"]),
+    ("#/ch12/s01/s03", ['data-kind="source"', "binary-search-tree property"], [NOT_PENDING, "【TODO"]),
+    ("#/ch12/s01/s04", ["INORDER-TREE-WALK(x)", "pc-line"], [NOT_PENDING, "【TODO"]),
+    ("#/ch12/s01/s05", ["viz-stage", "viz-tree"], [NOT_PENDING, "【TODO"]),
+    ("#/ch12/s01/s06", ["bst_basics.c", "inorder"], [NOT_PENDING, "【TODO"]),
+    ("#/ch12/s01/s07", ["Theorem 12.1"], [NOT_PENDING, "【TODO"]),
+    ("#/ch12/s01/s08", ["替换法", "第一步"], [NOT_PENDING, "【TODO"]),
+    ("#/ch12/s01/s09", ["检验一下", "12.1-1"], [NOT_PENDING, "【TODO"]),
+
     # ---- 2.3 归并排序（九段式）----
     ("#/ch02/s03/s01", ["为什么学这一关", "递归式", "lg n"], [NOT_PENDING]),
     ("#/ch02/s03/s02", ["两叠牌", "正面朝上"], [NOT_PENDING]),
