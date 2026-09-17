@@ -26,7 +26,7 @@ export default {
      {kind:'body',page:1025,en:'Figure 33.4 depicts how gradient descent ideally runs on a convex 1-dimensional function.',zh:'★ 算法 6 行的结构。'},
      {kind:'body',page:1027,en:'Thus, letting Ω approach 1, we see that there is another point near x, say x 0 , such that f.',zh:'★★ 凸性（引理 33.6）是收敛证明的地基。'},
     ],terms:[{en:'convex function',zh:'凸函数',page:1026},
-              {en:'learning rate',zh:'步长 η',page:1025}]},
+              {en:'step size',zh:'步长 η',page:1025}]},
    {type:'pseudocode',title:'GRADIENT-DESCENT（原书 p.1025，6 行）',algo:'GRADIENT-DESCENT',signature:'GRADIENT-DESCENT(f, ∇f, w, η)',
     page:1025,
     lines:[
