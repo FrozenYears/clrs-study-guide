@@ -125,3 +125,15 @@
   （后者依赖前者产出的 `pages_fixed.jsonl`），再重跑 `tools/03_segment.py`。
 - 临时探针脚本统一 `tools/_*` 前缀，已在 `.gitignore` 中；工作结束时清理。
 - 提交信息用英文，格式 `类型: 简述`。
+
+26. **静态树帧用 json.dumps 生成，不要手写括号**。viz:'tree' 的嵌套闭合
+   （叶 } → children ] → 结点 } → 外层 } → trees ]）手写极易错一环，
+   node --check 只报"Unexpected token"不告诉你是哪层。解法：
+   Python 里建 dict，`"trees:[{root:" + json.dumps(tree, ensure_ascii=False) + "}],"`
+   —— JS 对象字面量兼容 JSON 的双引号字符串。
+27. **伪代码下标是 1 基，C 数组是 0 基**。CLRS 的 B-TREE-SPLIT-CHILD(s,1)
+   在 0 基实现里是 child[0] —— 直接照抄伪代码下标会段错误。照搬任何
+   "第 i 个孩子/第 i 个键"的伪代码行时先换算。
+28. **渲染器符号表现在有**：\setminus \uparrow \downarrow \backslash \Phi \Xi \odot；
+   仍不支持 \pmod（带参数）与 \mathrel。新命令先跑
+   `node site/assets/core/__tests-katex__.mjs`（[11] 段全站扫描）。
