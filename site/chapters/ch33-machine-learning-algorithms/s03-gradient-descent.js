@@ -204,8 +204,8 @@ int main(void)
      {name:'指数下降 (0.49)^t',expr:'15.9 * Math.pow(0.49, n)',color:'--viz-done'},
      {name:'次线性 1/t',expr:'15.9 / n',color:'--viz-compare'}]},
     derivations:[{kind:'line',title:'二次目标的收缩率是恒等式',steps:[
-      {zh:'$f(w) = \\tfrac12\\lVert w - w^{*}\\rVert^{2}$，$\\nabla f = w - w^{*}$。',
-        '更新后 $w - w^{*} = (1-\\eta)(w_{old} - w^{*})$ —— 误差向量精确乘 $(1-\\eta)$。'},
+      {zh:'$f(w) = \\tfrac12\\lVert w - w^{*}\\rVert^{2}$，$\\nabla f = w - w^{*}$。'},
+      {zh:'更新后 $w - w^{*} = (1-\\eta)(w_{old} - w^{*})$ —— 误差向量精确乘 $(1-\\eta)$。'},
       {zh:'于是 $f_{t+1} = (1-\\eta)^{2} f_{t}$ —— 不是界，是**恒等式**（C 程序逐步断言）。'},
       {tex:'f_{30} = 15.9 \\times 0.49^{30} \\approx 1.6\\text{e-}08',zh:'★★ 这解释了为什么"学习率"是机器学习的第一旋钮：它直接出现在收敛率的指数里。∎'}]},
      ],
