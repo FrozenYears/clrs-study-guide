@@ -5,7 +5,7 @@
 import s01 from './s01-properties-of-red-black-trees.js';
 // 13.2 / 13.3 / 13.4 还没建：建好后依次打开 ——
 import s02 from './s02-rotations.js';
-// import s03 from './s03-insertion.js';
+import s03 from './s03-insertion.js';
 // import s04 from './s04-deletion.js';
 
 export default {
@@ -15,5 +15,5 @@ export default {
   title: 'Red-Black Trees',
   titleZh: '红黑树',
   source: { printed: [331, 362], pdf: [352, 383] },
-  levels: [s01, s02],
+  levels: [s01, s02, s03],
 };
