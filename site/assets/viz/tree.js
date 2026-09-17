@@ -14,6 +14,8 @@ const SVGNS = 'http://www.w3.org/2000/svg';
 
 const TREE_STATES = {
   idle:      { fill: '--viz-idle',      border: '--bd-1' },
+  'rb-red':  { fill: '--viz-violation', border: '--fg-1' },
+  'rb-black':{ fill: '--viz-fg',        border: '--fg-1' },
   path:      { fill: '--viz-result',    border: '--bd-0' },
   active:    { fill: '--viz-active',    border: '--fg-1' },
   compare:   { fill: '--viz-compare',   border: '--bd-0' },

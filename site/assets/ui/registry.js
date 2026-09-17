@@ -53,6 +53,7 @@ import { queueDemo } from '../algorithms/queue.js';
 import { linkedListDemo } from '../algorithms/linked-list.js';
 import { chainedHash } from '../algorithms/chained-hash.js';
 import * as bst from '../algorithms/bst.js';
+import * as rbtree from '../algorithms/rbtree.js';
 import { openAddress } from '../algorithms/open-address.js';
 
 const VIZ = new Map();
@@ -146,4 +147,6 @@ registerAlgorithm('bst-successor', bst.bstSuccessor);
 registerAlgorithm('bst-insert', bst.bstInsertFrames);
 registerAlgorithm('bst-delete', bst.bstDeleteFrames);
 registerAlgorithm('bst-shape', bst.bstShape);
+// 第 13 章：红黑树（13.4 的删除动画待扩展）
+registerAlgorithm('rb-insert', rbtree.rbInsertFrames);
 registerAlgorithm('open-address', openAddress);
