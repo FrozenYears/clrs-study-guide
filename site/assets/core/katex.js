@@ -141,6 +141,7 @@ const SYM = {
   star: "⋆",
   bullet: "·",
   oplus: "⊕",
+  odot: "⊙",
   otimes: "⊗",
   wedge: "∧",
   vee: "∨",
