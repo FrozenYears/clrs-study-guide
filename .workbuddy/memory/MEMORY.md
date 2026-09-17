@@ -151,3 +151,10 @@
     `pseudocode.more[].subtitle` 都**不走** renderMixed，放 `$...$` 会把反斜杠
     原样印在页面上。闸门已加 WARN 级检查（第 3b 段）；渲染器符号表已扩到
     `\det \odot \Phi \Xi \leadsto \rightsquigarrow \cos \sin \tan \nmid`。
+
+32. **占位符引述的三件套**：08_fill_quotes.py（语料切片，主力）→ 08 的兜底不足时
+    _probe/autofill2.py（声明页 ±1 自动选句，保证闸门过但 zh 未必贴切）→
+    _probe/fixquote.py（修 statement/en 外层引号误包）。
+    另外 derivations/steps 里 `{zh:'…', '…'}` 坏对象用 autofix.py 的 BROKEN 正则拆分。
+33. **ch34/35 交接**：c/np.c 与 c/approx.c 已全绿待接关卡；index.html 条目已就位
+    （34:5、35:5）；生成器半成品在 _probe/gen34.py + gen34data.py（勿直接跑）。
