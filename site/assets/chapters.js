@@ -30,6 +30,7 @@ import ch19 from '../chapters/ch19-disjoint-sets/chapter.js';
 import ch20 from '../chapters/ch20-graph-algorithms/chapter.js';
 import ch21 from '../chapters/ch21-mst/chapter.js';
 import ch22 from '../chapters/ch22-sssp/chapter.js';
+import ch23 from '../chapters/ch23-apsp/chapter.js';
 
 const CHAPTERS = new Map([
   ['2', ch02],
@@ -53,6 +54,7 @@ const CHAPTERS = new Map([
   ['20', ch20],
   ['21', ch21],
   ['22', ch22],
+  ['23', ch23],
 ]);
 
 /**
