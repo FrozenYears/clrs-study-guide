@@ -28,6 +28,7 @@ import ch17 from '../chapters/ch17-augmenting-data-structures/chapter.js';
 import ch18 from '../chapters/ch18-b-trees/chapter.js';
 import ch19 from '../chapters/ch19-disjoint-sets/chapter.js';
 import ch20 from '../chapters/ch20-graph-algorithms/chapter.js';
+import ch21 from '../chapters/ch21-mst/chapter.js';
 
 const CHAPTERS = new Map([
   ['2', ch02],
@@ -49,6 +50,7 @@ const CHAPTERS = new Map([
   ['18', ch18],
   ['19', ch19],
   ['20', ch20],
+  ['21', ch21],
 ]);
 
 /**
