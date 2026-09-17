@@ -137,3 +137,17 @@
 28. **渲染器符号表现在有**：\setminus \uparrow \downarrow \backslash \Phi \Xi \odot；
    仍不支持 \pmod（带参数）与 \mathrel。新命令先跑
    `node site/assets/core/__tests-katex__.mjs`（[11] 段全站扫描）。
+
+29. **引述一律用占位符 + `tools/_probe/qfill.py` 填充，不要手抄**。写法
+    `en:'@@Q|页码|起始片段|结束片段@@'`，脚本会从 `data/blocks/*.json` 取出
+    **语料原文切片**替换它。三个边界：① 结束片段可能落在起始片段**内部**，
+    所以查找要从 `txt.find(end, i)` 起；② 占位符里**不能出现 `|`**
+    （`|V|` 会让正则失效，改用别的片段）；③ 忘了写结束字段（只有两个竖线）
+    会被脚本自动规范，但最好一次写全。跑完看输出里的「未命中」与「仍有未替换」。
+30. **闸门读的是 `tools/_levels.json`**：改了关卡文件必须先跑
+    `node tools/dump_levels.mjs` 再跑 `04_verify_level.py`，否则验的是上一版
+    （这一轮因此白查过一次"引述找不到"）。
+31. **纯文本字段的完整清单**：`stage.title`、`prove.steps[].title`、
+    `pseudocode.more[].subtitle` 都**不走** renderMixed，放 `$...$` 会把反斜杠
+    原样印在页面上。闸门已加 WARN 级检查（第 3b 段）；渲染器符号表已扩到
+    `\det \odot \Phi \Xi \leadsto \rightsquigarrow \cos \sin \tan \nmid`。
