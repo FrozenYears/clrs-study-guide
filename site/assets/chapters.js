@@ -25,6 +25,7 @@ import ch14 from '../chapters/ch14-dynamic-programming/chapter.js';
 import ch15 from '../chapters/ch15-greedy-algorithms/chapter.js';
 import ch16 from '../chapters/ch16-amortized-analysis/chapter.js';
 import ch17 from '../chapters/ch17-augmenting-data-structures/chapter.js';
+import ch18 from '../chapters/ch18-b-trees/chapter.js';
 
 const CHAPTERS = new Map([
   ['2', ch02],
@@ -43,6 +44,7 @@ const CHAPTERS = new Map([
   ['15', ch15],
   ['16', ch16],
   ['17', ch17],
+  ['18', ch18],
 ]);
 
 /**
