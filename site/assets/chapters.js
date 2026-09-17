@@ -40,6 +40,7 @@ import ch29 from '../chapters/ch29-linear-programming/chapter.js';
 import ch30 from '../chapters/ch30-polynomials-and-the-fft/chapter.js';
 import ch31 from '../chapters/ch31-number-theoretic-algorithms/chapter.js';
 import ch32 from '../chapters/ch32-string-matching/chapter.js';
+import ch33 from '../chapters/ch33-machine-learning-algorithms/chapter.js';
 
 const CHAPTERS = new Map([
   ['2', ch02],
@@ -73,6 +74,7 @@ const CHAPTERS = new Map([
   ['30', ch30],
   ['31', ch31],
   ['32', ch32],
+  ['33', ch33],
 ]);
 
 /**
