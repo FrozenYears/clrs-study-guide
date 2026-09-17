@@ -138,7 +138,7 @@
    仍不支持 \pmod（带参数）与 \mathrel。新命令先跑
    `node site/assets/core/__tests-katex__.mjs`（[11] 段全站扫描）。
 
-29. **引述一律用占位符 + `tools/_probe/qfill.py` 填充，不要手抄**。写法
+29. **引述一律用占位符 + `tools/08_fill_quotes.py` 填充，不要手抄**。写法
     `en:'@@Q|页码|起始片段|结束片段@@'`，脚本会从 `data/blocks/*.json` 取出
     **语料原文切片**替换它。三个边界：① 结束片段可能落在起始片段**内部**，
     所以查找要从 `txt.find(end, i)` 起；② 占位符里**不能出现 `|`**
