@@ -33,6 +33,7 @@ import ch22 from '../chapters/ch22-sssp/chapter.js';
 import ch23 from '../chapters/ch23-apsp/chapter.js';
 import ch24 from '../chapters/ch24-maximum-flow/chapter.js';
 import ch25 from '../chapters/ch25-matchings/chapter.js';
+import ch26 from '../chapters/ch26-parallel-algorithms/chapter.js';
 
 const CHAPTERS = new Map([
   ['2', ch02],
@@ -59,6 +60,7 @@ const CHAPTERS = new Map([
   ['23', ch23],
   ['24', ch24],
   ['25', ch25],
+  ['26', ch26],
 ]);
 
 /**
