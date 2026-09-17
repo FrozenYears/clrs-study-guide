@@ -316,6 +316,16 @@ CASES = [
     ("#/ch12/s02/s08", ["第一步"], [NOT_PENDING, "【TODO"]),
     ("#/ch12/s02/s09", ["检验一下", "12.2-1"], [NOT_PENDING, "【TODO"]),
 
+    # ---- 12.3 插入与删除（九段式）----
+    ("#/ch12/s03/s01", ["插入与删除"], [NOT_PENDING, "【TODO"]),
+    ("#/ch12/s03/s03", ['data-kind="source"', "TRANSPLANT"], [NOT_PENDING, "【TODO"]),
+    ("#/ch12/s03/s04", ["pc-line"], [NOT_PENDING, "【TODO"]),
+    ("#/ch12/s03/s05", ["viz-stage", "viz-tree"], [NOT_PENDING, "【TODO"]),
+    ("#/ch12/s03/s06", ["bst_delete.c", "transplant"], [NOT_PENDING, "【TODO"]),
+    ("#/ch12/s03/s07", ["Theorem 12.3"], [NOT_PENDING, "【TODO"]),
+    ("#/ch12/s03/s08", ["第一步"], [NOT_PENDING, "【TODO"]),
+    ("#/ch12/s03/s09", ["检验一下", "12.3-1"], [NOT_PENDING, "【TODO"]),
+
     # ---- 2.3 归并排序（九段式）----
     ("#/ch02/s03/s01", ["为什么学这一关", "递归式", "lg n"], [NOT_PENDING]),
     ("#/ch02/s03/s02", ["两叠牌", "正面朝上"], [NOT_PENDING]),
