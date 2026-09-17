@@ -214,7 +214,7 @@ int main(void)
         assert(strcmp(codes[i], expect[i]) == 0);
     }
 
-    /* 固定长度编码需要 dlg n e = 3 位/字符，100000 字符共 300000 位；
+    /* 固定长度编码需要 3 位/字符，100000 字符共 300000 位；
      * 可变长编码共 224000 位，节省约 25%（原书 p.432）。 */
     printf("part 3: 固定长度 3 位/字符需 300000 位；可变长哈夫曼编码需 224000 位（省约 25%%）\n");
     assert(N == 6);
@@ -224,18 +224,18 @@ int main(void)
 }
 `,
     notes:[{line:1,zh:'★ 文件开头写明关键数字：$B(T) = 224$，以及六个码字。'},
-           {line:31,zh:'`heap_push` / `heap_pop`：二叉最小堆 —— 对应原书的 $Q$。'},
+           {line:31,zh:'`heap_push` / `heap_pop`：二叉最小堆 —— 对应原书的 $Q$（定义分别在第 31、43 行）。'},
            {line:62,zh:'`dfs_wpl`：按式 (15.4) 累加加权路径长。'},
            {line:71,zh:'`dfs_code`：顺带把每个叶子的码字记录下来（左 0 右 1）。'},
-           {line:101,zh:'★★ 第 101–110 行就是 HUFFMAN 的主循环：$n-1$ 次合并，每次取两个最小者。'},
+           {line:101,zh:'★★ 第 101 行起就是 HUFFMAN 的主循环：$n-1$ 次合并，每次取两个最小者。'},
            {line:115,zh:'★★ part 1：$B(T) = 224$ —— 与原书 p.434 的答案一致。'},
-           {line:124,zh:'★★ part 2：码字逐个与 expect 数组比对（a=0 b=101 c=100 d=111 e=1101 f=1100）。'}]},
+           {line:120,zh:'★★ part 2：码字逐个与 expect 数组比对（a=0 b=101 c=100 d=111 e=1101 f=1100）。'}]},
     tests:[{in:'频率 a:45 b:13 c:12 d:16 e:9 f:5（千次）',out:'$B(T) = 224$（千位）'},
            {in:'码字',out:'a=0 b=101 c=100 d=111 e=1101 f=1100'},
            {in:'100,000 字符的文件',out:'固定长度 300,000 位 vs 哈夫曼 224,000 位'}],
     mapping:[{pc:5,pcCode:'x = EXTRACT-MIN(Q)',c:'`int x = heap_pop();`（第 102 行）'},
              {pc:9,pcCode:'z.freq = x.freq + y.freq',c:'`nodes[nn].freq = nodes[x].freq + nodes[y].freq;`（第 104 行）'}]},
-   {type:'analyze',title:'一本账：为什么是 $O(n\\lg n)$',claims:[
+   {type:'analyze',title:'一本账：为什么是 O(nlg n)',claims:[
      {expr:'O(n\\lg n)',when:'HUFFMAN 的时间（二叉最小堆实现 $Q$）',page:436,source:'book'},
      {expr:'\sum_{z}(f_{left}+f_{right})',when:'$B(T)$ 的等价算法（对每个内部节点累加两个孩子的频率，习题 15.3-4）',page:439,source:'book'},
      {expr:'224',when:'Figure 15.4 例子的最优加权路径长（千位）',page:432,source:'book'},
@@ -263,7 +263,7 @@ int main(void)
    {type:'prove',title:'引理 15.2 / 15.3：贪心选择 + 最优子结构',statement:'Let C be an alphabet in which each character c 2 C has frequency c: freq. Let x and y be two characters in C having the lowest frequencies. Then there exists an optimal prefix-free code for C in which the codewords for x and y have the same length and differ only in the last bit.',page:436,
     intro:'★ 两步：先把"频率最小的两个"搬到树的**最深处且互为兄弟**（贪心选择），再把它们合并成一个字符继续（最优子结构）。',
     steps:[
-     {title:'第一步：$x,y$ 可以放在最深、且互为兄弟',en:'To prove that the greedy algorithm HUFFMAN is correct, we\u2019ll show that the problem of determining an optimal prefix-free code exhibits the greedy-choice and optimal-substructure properties.',page:436,
+     {title:'第一步：x,y 可以放在最深、且互为兄弟',en:'To prove that the greedy algorithm HUFFMAN is correct, we\u2019ll show that the problem of determining an optimal prefix-free code exhibits the greedy-choice and optimal-substructure properties.',page:436,
       body:['任意最优树 $T$ 里，深度最大的两个叶子记为 $a,b$，其中 $f_a, f_b$ 是最深叶子中最小的。',
         '因为 $f_x \\le f_a$、$f_y \\le f_b$（$x,y$ 全局频率最小），可以**交换** $x$ 与 $a$、$y$ 与 $b$ 的位置。',
         '**逐项算代价**：交换后只有 $x,a$ 两项的贡献变化：$f_x d(b) + f_a d(a) \\to f_x d(a) + f_a d(b)$，由于 $d(a) \\ge d(b)$ 且 $f_x \\le f_a$，新代价 $\\le$ 旧代价 —— 不会变大。',
@@ -295,7 +295,7 @@ int main(void)
      {id:'15.3-2',page:439,star:0,statement:'Prove that a non-full binary tree cannot correspond to an optimal prefix-free code.',hint:'若某个内部节点只有**一个**孩子，把这个节点"短路"掉（让孙子直接接上）能让该子树全部叶子深度 −1，$B(T)$ 严格下降 —— 与最优矛盾。'},
      {id:'15.3-3',page:439,star:0,statement:'What is an optimal Huffman code for the following set of frequencies, based on the first 8 Fibonacci numbers? a:1 b:1 c:2 d:3 e:5 f:8 g:13 h:21',hint:'合并过程：1+1=2(a,b) → 2+2=4(c 与新节点) → 3+4=7(d 与它) → 5+7=12 → 8+12=20 → 13+20=33 → 21+33=54。斐波那契频率下码长恰为 1,2,3,4,5,6,7,7（可用 C 程序改数据验证）。'},
      {id:'15.3-4',page:439,star:0,statement:'Prove that the total cost B(T) of a full binary tree T for a code equals the sum, over all internal nodes, of the combined frequencies of the two children of the node.',hint:'对每个内部节点 $z$，它的两个孩子的频率和 = 该子树里全部叶子的频率之和。一个叶子 $c$ 在它的每个祖先处被计一次，共 $d(c)$ 次 —— 求和后恰好得到 $\\sum_c f_c \\, d(c) = B(T)$。'},
-     {id:'15.3-6',page:439,star:0,statement:'Generalize Huffman\u2019s algorithm to ternary codewords (i.e., codewords using the symbols 0, 1, and 2), and prove that it yields optimal ternary codes.',hint:'每次合并**三个**最小者；注意叶子数必须满足 $n \\equiv 1 \\pmod 2$（三叉满树内部节点数 = $(n-1)/2$），否则先补频率为 0 的哑字符凑齐。'},
+     {id:'15.3-6',page:439,star:0,statement:'Generalize Huffman\u2019s algorithm to ternary codewords (i.e., codewords using the symbols 0, 1, and 2), and prove that it yields optimal ternary codes.',hint:'每次合并**三个**最小者；注意叶子数必须满足 $n \\equiv 1$（mod 2）（三叉满树内部节点数 = $(n-1)/2$），否则先补频率为 0 的哑字符凑齐。'},
      {id:'15.3-7',page:439,star:0,statement:'A data file contains a sequence of 8-bit characters such that all 256 characters are about equally common: the maximum character frequency is less than twice the minimum character frequency. Pr',hint:'近似均匀时哈夫曼几乎不省：256 个字符需要 8 位，变长码最优也接近 8 位/字符 —— 可算出最坏情形最多省几个百分点，结论是"这文件基本压不动"。'},
     ]},
   ],

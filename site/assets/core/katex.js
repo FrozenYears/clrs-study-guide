@@ -84,6 +84,9 @@ const SYM = {
   exists: "∃",
   land: "∧",
   lor: "∨",
+  // 集合差与集合记法（15 章的交换论证里大量出现 A \ B）
+  setminus: "∖",
+  backslash: "\\",
   // \Pr A：概率算子。KaTeX 会排成正体；这里退一步只保证字形与间距正确
   // （正体靠 .tex-text 做不到，所以直接给字母，不引入额外的样式类）。
   Pr: "Pr",
@@ -91,6 +94,11 @@ const SYM = {
   rightarrow: "→",
   leftarrow: "←",
   leftrightarrow: "↔",
+  uparrow: "↑",
+  downarrow: "↓",
+  updownarrow: "↕",
+  Uparrow: "⇑",
+  Downarrow: "⇓",
   times: "×",
   cdot: "·",
   div: "÷",

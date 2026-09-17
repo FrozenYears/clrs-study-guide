@@ -225,9 +225,9 @@ int main(void)
      tests:[{in:'原书 Figure 14.9 的键分布（n = 5）',out:'$e[1,5] = 2.75$，根 $k_2$'},
            {in:'Figure 14.9(a) 的树',out:'期望代价 2.80（非最优）'},
            {in:'试根总次数',out:'35 次（n = 5）'}],
-    mapping:[{pc:11,pcCode:'t = e[i,r − 1] + e[r + 1,j] + w[i,j]',c:'`double t = e[i][r - 1] + e[r + 1][j] + w[i][j];`（第 32 行）'},
-             {pc:9,pcCode:'w[i,j] = w[i,j − 1] + p_j + q_j',c:'`w[i][j] = w[i][j - 1] + p[j - 1] + q[j];`（第 30 行）'}]},
-   {type:'analyze',title:'一本账：$\Theta(n^3)$ 与 Knuth 的 $\Theta(n^2)$',claims:[
+    mapping:[{pc:11,pcCode:'t = e[i,r − 1] + e[r + 1,j] + w[i,j]',c:'`double t = e[i][r - 1] + e[r + 1][j] + w[i][j];`（第 30 行）'},
+             {pc:9,pcCode:'w[i,j] = w[i,j − 1] + p_j + q_j',c:'`w[i][j] = w[i][j - 1] + p[j - 1] + q[j];`（第 28 行）'}]},
+   {type:'analyze',title:'一本账：Θ(n³) 与 Knuth 的 Θ(n²)',claims:[
      {expr:'\\Theta(n^2)',when:'子问题个数（区间 $[i,j]$，$1 \\le i \\le j \\le n$）',page:404,source:'book'},
      {expr:'\\Theta(n^3)',when:'OPTIMAL-BST 的总时间（每格 $O(n)$ 试根）',page:405,source:'book'},
      {expr:'\\Theta(n^2)',when:'用 Knuth 的根单调性优化后（习题 14.5-3 的相关结论）',page:407,source:'book'},

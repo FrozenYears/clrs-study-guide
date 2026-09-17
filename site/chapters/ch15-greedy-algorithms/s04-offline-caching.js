@@ -80,7 +80,7 @@ export default {
  *
  * 三件事：
  *   part 1–3：在手造序列 1,2,3,1,2,3（k = 2）上对比 FFU / LRU / FIFO / LIFO。
- *   part 4   ：用**暴力最优**（对缓存配置做精确 DP）验证 FFU 就是 OPT。
+ *   part 4   ：用暴力最优（对缓存配置做精确 DP）验证 FFU 就是 OPT。
  *   part 5   ：随机序列大批量对照 —— FFU 恒等于 OPT；LRU / FIFO 不超过 k 倍。
  *
  * 关键数字：k = 2、序列 1,2,3,1,2,3 时 FFU 缺失 4 次，LRU 与 FIFO 各 6 次。
@@ -301,17 +301,17 @@ int main(void)
 `,
     notes:[{line:1,zh:'★ 文件开头写明实验设计与关键数字（FFU 4 / LRU 6 / FIFO 6）。'},
            {line:26,zh:'`furthest_in_future`：定理 15.5 的贪心 —— 换出下次访问最远者。'},
-           {line:46,zh:'`lru` / `fifo` / `lifo`：三个在线策略，只看过去。'},
-           {line:107,zh:'`opt_dp`：**暴力最优** —— 在"缓存配置"上做精确 DP，与贪心完全独立。'},
+           {line:46,zh:'`lru`（第 46 行） / `fifo`（第 70 行） / `lifo`（第 87 行）：三个在线策略，只看过去。'},
+           {line:107,zh:'`opt_dp`：暴力最优 —— 在"缓存配置"上做精确 DP，与贪心完全独立。'},
            {line:141,zh:'`rng_seed`：种子先做乘法混合，避免连续种子产生相关序列。'},
-           {line:165,zh:'★★ part 1：序列 1,2,3,1,2,3 上 FFU 缺失 4 次。'},
-           {line:196,zh:'★★ part 4：3000 组随机序列，FFU 与暴力最优不符 **0** 次；LRU/FIFO 最坏 1.83 倍。'},
+           {line:165,zh:'★★ part 1：序列 1,2,3,1,2,3 上 FFU 缺失 4 次（第 165 行起）。'},
+           {line:196,zh:'★★ part 4：3000 组随机序列，FFU 与暴力最优不符 0 次；LRU/FIFO 最坏 1.83 倍。'},
            {line:212,zh:'★★ part 5：1,2,3 循环时 LIFO 缺 9 次 vs 最优 7 次 —— 它没有 k-竞争保证。'}]},
     tests:[{in:'序列 1,2,3,1,2,3，k = 2',out:'FFU 4 / LRU 6 / FIFO 6 / LIFO 5，暴力最优 4'},
            {in:'3000 组随机序列（k = 2/3，n = 8..20）',out:'FFU ≡ OPT；LRU、FIFO ≤ k·OPT（最坏 1.83 倍）'},
            {in:'序列 1,2,3 重复 4 次，k = 2',out:'最优 7 次 vs LIFO 9 次（多 29%）'}],
-    mapping:[{pc:7,pcCode:'´ = argmax NEXT-USE(b, i)',c:'`if (next > furthest) { furthest = next; evict = j; }`（第 34 行）'},
-             {pc:8,pcCode:'C = (C − {´}) ∪ {b_i}',c:'`cache[evict] = seq[i];`（第 36 行）'}]},
+    mapping:[{pc:7,pcCode:'´ = argmax NEXT-USE(b, i)',c:'`if (next > furthest) { furthest = next; evict = j; }`（第 38 行）'},
+             {pc:8,pcCode:'C = (C − {´}) ∪ {b_i}',c:'`cache[evict] = seq[i];`（第 40 行）'}]},
    {type:'analyze',title:'一本账：离线最优 vs 在线竞争比',claims:[
      {expr:'\\Theta(nk)',when:'离线最优的求解时间（每个请求扫一遍缓存找最远者）',page:442,source:'book'},
      {expr:'k',when:'LRU / FIFO 的竞争比上界：miss ≤ k · miss(OPT)',page:445,source:'book'},

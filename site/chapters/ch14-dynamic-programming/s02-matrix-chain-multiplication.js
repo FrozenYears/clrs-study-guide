@@ -148,7 +148,7 @@ int main(void)
 }
 `,
     notes:[{line:14,zh:'★ `matrix_chain_order`：13 行直译，三层循环 = $\\Theta(n^3)$。'},
-           {line:31,zh:'`print_parens`：6 行递归输出括号方案。'},
+           {line:32,zh:'`print_parens`：6 行递归输出括号方案。'},
            {line:48,zh:'★★ part 1：$m[1,6]$ = **15125** —— 与原书 p.378 的答案逐位一致。'},
            {line:51,zh:'★ part 2：方案还原 = ((A1(A2A3))((A4A5)A6))（Figure 14.5）。'},
            {line:60,zh:'★ part 3：三矩阵例 7500 vs 75000（差 10 倍）。'},
@@ -156,8 +156,8 @@ int main(void)
     tests:[{in:'⟨30,35,15,5,10,20,25⟩（6 个矩阵）',out:'m[1,6] = 15125，方案 ((A1(A2A3))((A4A5)A6))'},
            {in:'⟨10,100,5,50⟩（3 个矩阵）',out:'7500 vs 75000（括号差 10 倍）'},
            {in:'子问题数',out:'21 = n(n+1)/2'}]},
-    mapping:[{pc:9,pcCode:'q = m[i,k] + m[k + 1,j] + p_{i−1} p_k p_j',c:'`int q = m[i][k] + m[k + 1][j] + p[i - 1] * p[k] * p[j];`（第 24 行）'},
-             {pc:12,pcCode:'s[i,j] = k',c:'`s[i][j] = k;`（第 26 行）'}]},
+    mapping:[{pc:9,pcCode:'q = m[i,k] + m[k + 1,j] + p_{i−1} p_k p_j',c:'`int q = m[i][k] + m[k + 1][j] + p[i - 1] * p[k] * p[j];`（第 22 行）'},
+             {pc:12,pcCode:'s[i,j] = k',c:'`s[i][j] = k;`（第 24 行）'}]},
    {type:'analyze',title:'一本账：为什么是 Θ(n³)',claims:[
      {expr:'\\Omega(4^n/n^{3/2})',when:'括号化方案的总数（Catalan 数）—— 暴力不可行',page:376,source:'book'},
      {expr:'\\Theta(n^2)',when:'子问题个数（区间 $m[i,j]$）',page:379,source:'book'},

@@ -175,16 +175,16 @@ int main(void)
     return 0;
 }
 `,
-    notes:[{line:19,zh:'★ `cut_rod`：朴素递归（6 行直译），带调用计数。'},
-           {line:31,zh:'`memo_aux`：备忘版 —— 查表命中就返回。'},
-           {line:48,zh:'`bottom_up`：自底向上，按长度递增填表。'},
+    notes:[{line:20,zh:'★ `cut_rod`：朴素递归（6 行直译），带调用计数。'},
+           {line:33,zh:'`memo_aux`：备忘版 —— 查表命中就返回。'},
+           {line:40,zh:'`bottom_up`：自底向上，按长度递增填表。'},
            {line:105,zh:'★ part 2：$n=10$ 时朴素递归调用 **1024** 次。'},
            {line:100,zh:'★★ part 3：备忘版同样答案只要 **56** 次 —— 重叠子问题被消除了。'}],
     tests:[{in:'CUT-ROD(4)',out:'10（2+2），16 次调用'},
            {in:'CUT-ROD(10)',out:'30，1024 次调用（2^9）'},
            {in:'MEMOIZED-CUT-ROD(10)',out:'30，56 次调用'},
            {in:'最优收益表 r[1..10]',out:'1,5,8,10,13,17,18,22,25,30（与原书 Figure 14.1 对应）'}]},
-    mapping:[{pc:5,pcCode:'q = max {q, p[i] + CUT-ROD(p, n − i)}',c:'`q = imax(q, p[i] + cut_rod(n - i));`（第 25 行）'},
+    mapping:[{pc:5,pcCode:'q = max {q, p[i] + CUT-ROD(p, n − i)}',c:'`q = imax(q, p[i] + cut_rod(n - i));`（第 20 行）'},
              {pc:6,pcCode:'q = max {q, p[i] + r[j − i]}',c:'`q = imax(q, p[i] + r[j - i]);`（第 55 行，自底向上版）'}]},
    {type:'analyze',title:'一本账：朴素 vs 备忘 vs 自底向上',claims:[
      {expr:'2^{n-1}',when:'切法的总数（暴力枚举的上界）',page:363,source:'book'},

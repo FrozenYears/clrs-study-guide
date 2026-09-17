@@ -64,7 +64,7 @@ export default {
         {n:6,code:'elseif b[i,j] == "↑"',zh:''},{n:7,code:'    PRINT-LCS(b, X, i − 1, j)',zh:''},
         {n:8,code:'else PRINT-LCS(b, X, i, j − 1)',zh:''}],
       vars:[{name:'b',meaning:'LCS-LENGTH 返回的方向表'}],note:'★ 重建耗时 $O(m+n)$：每步至少让 $i$ 或 $j$ 减一。'}]},
-   {type:'visualize',title:'指数与 $\Theta(mn)$ 的距离',panels:[
+   {type:'visualize',title:'指数与 Θ(mn) 的距离',panels:[
      {title:'暴力枚举所有子序列 vs DP 填表（C 程序实测）',viz:'growth',
       chart:{xMax:24,series:[
        {name:'枚举子序列 ≈ 2^n / 64',expr:'Math.pow(2, n) / 64',color:'--viz-violation'},
@@ -225,22 +225,22 @@ int main(void)
     notes:[{line:1,zh:'★ 文件开头写明关键数字：$c[7,6] = 4$，序列 BCBA。'},
            {line:15,zh:'`lcs_length`：16 行直译，行主序双层循环 = $\\Theta(mn)$。'},
            {line:38,zh:'`print_lcs`：8 行递归重建。'},
-           {line:49,zh:'`rebuild_without_b`：习题 14.4-2 的做法（只用 $c$ 表，$O(m+n)$）。'},
-           {line:66,zh:'`lcs_memo`：习题 14.4-3 的记忆化版本。'},
+           {line:50,zh:'`rebuild_without_b`：习题 14.4-2 的做法（只用 $c$ 表，$O(m+n)$）。'},
+           {line:67,zh:'`lcs_memo`：习题 14.4-3 的记忆化版本。'},
            {line:97,zh:'★★ part 2：$c[7,6] = 4$、LCS = BCBA —— 与原书 Figure 14.8 逐格一致。'},
            {line:111,zh:'★ part 4：打印完整的 $c$ 表（$8 \\times 7$）—— 也就是 Figure 14.8 的那张表。'},
            {line:129,zh:'★ part 6：习题 14.4-1 的两组 01 序列，实测 LCS 长度 6。'}]},
     tests:[{in:'X = ⟨A,B,C,B,D,A,B⟩、Y = ⟨B,D,C,A,B,A⟩',out:'LCS = BCBA，长度 4'},
            {in:'习题 14.4-2 的做法（只用 c 表）',out:'同样得到 BCBA'},
            {in:'习题 14.4-1 的 01 序列',out:'长度 6（如 100110）'}],
-    mapping:[{pc:8,pcCode:'if x_i == y_j',c:'`if (x[i - 1] == y[j - 1])`（第 20 行）'},
-             {pc:11,pcCode:'elseif c[i − 1,j] ≥ c[i,j − 1]',c:'`else if (c[i - 1][j] >= c[i][j - 1])`（第 26 行）'}]},
-   {type:'analyze',title:'一本账：为什么是 $\Theta(mn)$',claims:[
+    mapping:[{pc:8,pcCode:'if x_i == y_j',c:'`if (x[i - 1] == y[j - 1])`（第 21 行）'},
+             {pc:11,pcCode:'elseif c[i − 1,j] ≥ c[i,j − 1]',c:'`else if (c[i - 1][j] >= c[i][j - 1])`（第 25 行）'}]},
+   {type:'analyze',title:'一本账：为什么是 Θ(mn)',claims:[
      {expr:'\\Theta(mn)',when:'不同的子问题个数（$0 \\le i \\le m$、$0 \\le j \\le n$）',page:396,source:'book'},
      {expr:'\\Theta(mn)',when:'LCS-LENGTH 的总时间（每格 $O(1)$）',page:397,source:'book'},
      {expr:'O(\\min(m,n))',when:'只求长度时的空间（习题 14.4-4）',page:399,source:'book'},
     ],tables:[{caption:'$X = \\langle A,B,C,B,D,A,B\\rangle$、$Y = \\langle B,D,C,A,B,A\\rangle$ 的 $c$ 表（C 程序实测，= Figure 14.8）',rows:[
-      ['$i \\backslash j$','—','B','D','C','A','B','A'],
+      ['i \\ j','—','B','D','C','A','B','A'],
       ['0','0','0','0','0','0','0','0'],
       ['A','0','0','0','0','1','1','1'],
       ['B','0','1','1','1','1','2','2'],
@@ -267,11 +267,11 @@ int main(void)
    {type:'prove',title:'Theorem 14.1：三种情况覆盖了全部可能',statement:'The way that Theorem 14.1 characterizes longest common subsequences says that an LCS of two sequences contains within it an LCS of prefixes of the two sequences.',page:395,
     intro:'★ Theorem 14.1 (Optimal substructure of an LCS) 把"匹配 / 不匹配"分成三种情况，正好对应递推式的三行。',
     steps:[
-     {title:'情况 1：$x_m = y_n$',en:'Theorem 14.1 implies that you should examine either one or two subproblems when finding an LCS of X = \u27e8x 1 ,x 2 ,\u2026,x m\u27e9 and Y = \u27e8y 1 ,y 2 ,\u2026,y n\u27e9.',page:395,
+     {title:'情况 1：x_m = y_n',en:'Theorem 14.1 implies that you should examine either one or two subproblems when finding an LCS of X = \u27e8x 1 ,x 2 ,\u2026,x m\u27e9 and Y = \u27e8y 1 ,y 2 ,\u2026,y n\u27e9.',page:395,
       body:['**结论**：$x_m = y_n$ 时，LCS 一定以这一对相同字符**结尾**，于是 $c[m,n] = c[m-1,n-1] + 1$。',
         '**证明**：设 $Z$ 是 $X_m$ 与 $Y_n$ 的一个 LCS。若 $z_k \\ne x_m$，则把 $x_m(=y_n)$ 接到 $Z$ 后面会得到更长的公共子序列，矛盾 —— 所以 $z_k = x_m = y_n$，且 $Z_{k-1}$ 必是 $X_{m-1}$ 与 $Y_{n-1}$ 的 LCS。∎',
         '★ C 程序 part 2 实测：$X$ 的第 7 个字符 B 与 $Y$ 的第 6 个字符 A 不同 —— 走情况 2/3。']},
-     {title:'情况 2/3：$x_m \\ne y_n$',en:'A subsequence of a given sequence is just the given sequence with 0 or more elements left out.',page:394,
+     {title:'情况 2/3：x_m ≠ y_n',en:'A subsequence of a given sequence is just the given sequence with 0 or more elements left out.',page:394,
       body:['若 $z_k \\ne x_m$，则 $Z$ 是 $X_{m-1}$ 与 $Y_n$ 的公共子序列；若 $z_k \\ne y_n$，则 $Z$ 是 $X_m$ 与 $Y_{n-1}$ 的公共子序列。',
         '两者至少有一个成立，于是只需看**其中一个或两个**子问题 —— 这就解释了两条分支（$\\uparrow$ 与 $\\leftarrow$）。',
         '★ 原书强调 "either one or two subproblems"：$x_m = y_n$ 时**一个**（左上），否则**两个**（上、左）。∎']},

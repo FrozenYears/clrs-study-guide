@@ -245,7 +245,7 @@ int main(void)
       body:['把活动按结束时间排好序，于是 $f_1 \\le f_2 \\le \\cdots \\le f_n$，$a_1$ 结束最早。',
         '设 $S_k$ 非空，$a_m$ 是其中结束最早者；设 $A$ 是 $S_k$ 的一个**最大**相容子集。',
         '若 $a_m \\in A$ 则已证；否则设 $A$ 中最早结束的活动是 $a_j$。']},
-     {title:'交换：把 $a_j$ 换成 $a_m$',en:'This way of characterizing optimal substructure suggests that you can solve the activity-selection problem by dynamic programming.',page:419,
+     {title:'交换：把 a_j 换成 a_m',en:'This way of characterizing optimal substructure suggests that you can solve the activity-selection problem by dynamic programming.',page:419,
       body:['因为 $a_m$ 是 $S_k$ 中结束最早者，所以 $f_m \\le f_j$。',
         '$A$ 里其余活动都满足 $s \\ge f_j \\ge f_m$ —— 说明它们与 $a_m$ **也**相容。',
         '于是 $A^{\\prime} = (A \\setminus \\{a_j\\}) \\cup \\{a_m\\}$ 仍是相容子集，且 $|A^{\\prime}| = |A|$（仍是最大）。',
