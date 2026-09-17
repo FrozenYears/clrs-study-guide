@@ -176,6 +176,7 @@ const SYM = {
   max: "max",
   arg: "arg",
   gcd: "gcd",
+  det: "det",
   lcm: "lcm",
   lim: "lim",
   sup: "sup",
