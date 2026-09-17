@@ -3,13 +3,9 @@
  * ========================================================================== */
 
 import s01 from './s01-direct-address-tables.js';
-// s02 还没建：建好后把下面这行打开 ——
 import s02 from './s02-hash-tables.js';
-// s03 还没建：建好后把下面这行打开 ——
 import s03 from './s03-hash-functions.js';
-// s04 还没建：建好后把下面这行打开 ——
-// import s04 from './s04-open-addressing.js';
-// s05 还没建：建好后把下面这行打开 ——
+import s04 from './s04-open-addressing.js';
 import s05 from './s05-practical-considerations.js';
 
 export default {
@@ -19,5 +15,5 @@ export default {
   title: 'Hash Tables',
   titleZh: '散列表',
   source: { printed: [272, 312], pdf: [293, 333] },
-  levels: [s01, s02, s03, s05],
+  levels: [s01, s02, s03, s04, s05],
 };

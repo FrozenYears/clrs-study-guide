@@ -52,6 +52,7 @@ import { stackDemo } from '../algorithms/stack.js';
 import { queueDemo } from '../algorithms/queue.js';
 import { linkedListDemo } from '../algorithms/linked-list.js';
 import { chainedHash } from '../algorithms/chained-hash.js';
+import { openAddress } from '../algorithms/open-address.js';
 
 const VIZ = new Map();
 const ALGO = new Map();
@@ -135,3 +136,4 @@ registerAlgorithm('stack', stackDemo);
 registerAlgorithm('queue', queueDemo);
 registerAlgorithm('linked-list', linkedListDemo);
 registerAlgorithm('chained-hash', chainedHash);
+registerAlgorithm('open-address', openAddress);

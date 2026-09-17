@@ -286,6 +286,16 @@ CASES = [
     ("#/ch11/s05/s08", ["第一步"], [NOT_PENDING, "【TODO"]),
     ("#/ch11/s05/s09", ["检验一下"], [NOT_PENDING, "【TODO"]),
 
+    # ---- 11.4 开放寻址（九段式）----
+    ("#/ch11/s04/s01", ["开放寻址"], [NOT_PENDING, "【TODO"]),
+    ("#/ch11/s04/s03", ['data-kind="source"'], [NOT_PENDING, "【TODO"]),
+    ("#/ch11/s04/s04", ["pc-line"], [NOT_PENDING, "【TODO"]),
+    ("#/ch11/s04/s05", ["viz-stage", "viz-hash"], [NOT_PENDING, "【TODO"]),
+    ("#/ch11/s04/s06", ["open_addressing.c"], [NOT_PENDING, "【TODO"]),
+    ("#/ch11/s04/s07", ["探测"], [NOT_PENDING, "【TODO"]),
+    ("#/ch11/s04/s08", ["第一步"], [NOT_PENDING, "【TODO"]),
+    ("#/ch11/s04/s09", ["检验一下"], [NOT_PENDING, "【TODO"]),
+
     # ---- 2.3 归并排序（九段式）----
     ("#/ch02/s03/s01", ["为什么学这一关", "递归式", "lg n"], [NOT_PENDING]),
     ("#/ch02/s03/s02", ["两叠牌", "正面朝上"], [NOT_PENDING]),
