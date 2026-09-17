@@ -13,13 +13,13 @@ export default {
     mathKit:[
      {title:'推论 31.21',body:'$ax \\equiv b \\ (\\text{mod } n)$ 可解 $\\iff d \\mid b$，$d = \\gcd(a,n)$。'},
      {title:'推论 31.22',body:'有解时恰有 $d$ 个模 $n$ 的解；无解时 0 个。'},
-     {title:'定理 31.23',body:'若 $d = ax_0 + ny_0$ 且 $d \\mid b$，则 $x_0 = x_0(b/d) \\bmod n$ 是一个特解。'},
+     {title:'定理 31.23',body:'若 $d = ax_0 + ny_0$ 且 $d \\mid b$，则 $x_0 = x_0(b/d) \\text{ mod }n$ 是一个特解。'},
      {title:'定理 31.24',body:'全部解为 $x_i = x_0 + i(n/d)$，$i = 0, \\dots, d-1$。'},
     ]},
    {type:'intuition',title:'习题 31.4-1 的原题实测：5 个解一个不少',scene:'C 程序 Part 4',body:[
-     '★★ C 程序 part 4 解的就是习题 31.4-1：$35x \\equiv 10 \\ (\\text{mod } 50)$。扩展 Euclid 给出 $\\gcd(35, 50) = 5$，于是恰有 **5 个解** $\\{6, 16, 26, 36, 46\\}$ —— 程序对每个候选做**回代验证**：$35x_i \\bmod 50 = 10$ 逐个成立。',
+     '★★ C 程序 part 4 解的就是习题 31.4-1：$35x \\equiv 10 \\ (\\text{mod } 50)$。扩展 Euclid 给出 $\\gcd(35, 50) = 5$，于是恰有 **5 个解** $\\{6, 16, 26, 36, 46\\}$ —— 程序对每个候选做**回代验证**：$35x_i \\text{ mod }50 = 10$ 逐个成立。',
      '★ 反例（推论 31.21 的另一半）：$35x \\equiv 11 \\ (\\text{mod } 50)$ —— $d = 5$ 不整除 11 → **无解**。',
-     '★ 直观图像：$35x \\bmod 50$ 的取值集合是 $\\{0, 5, 10, \\dots, 45\\}$（步长 $d = 5$ 的子群 $\\langle 35 \\rangle = \\langle 5 \\rangle$）；$b = 10$ 落在这个集合里所以有解，$b = 11$ 不在所以无解。这正是定理 31.20 的 $\\langle a \\rangle = \\langle d \\rangle$。',
+     '★ 直观图像：$35x \\text{ mod }50$ 的取值集合是 $\\{0, 5, 10, \\dots, 45\\}$（步长 $d = 5$ 的子群 $\\langle 35 \\rangle = \\langle 5 \\rangle$）；$b = 10$ 落在这个集合里所以有解，$b = 11$ 不在所以无解。这正是定理 31.20 的 $\\langle a \\rangle = \\langle d \\rangle$。',
      '⚠ 解的"个数"是 $d$ 不是 1：$d = 1$（$a$ 与 $n$ 互素）时才有唯一解 —— 这也是 31.5 CRT 要求模数两两互素的影子。',
     ],interactive:{text:''}},
    {type:'source',title:'书上是怎么说的',lead:'原书英文原文（含语料排版形式，如 = 代表 ≡、j 代表 ∣）。',blocks:[
@@ -57,7 +57,7 @@ export default {
        {name:'⟨35⟩ = ⟨5⟩：步长 5 的子群',expr:'5 * Math.floor(n / 5)',color:'--viz-done'},
        {name:'b = 10（在子群里，有解）',expr:'10',color:'--viz-result'},
        {name:'b = 11（不在，无解）',expr:'11',color:'--viz-violation'}]},
-      note:'★ $35x \\bmod 50$ 只能取 $5$ 的倍数（定理 31.20：$\\langle 35 \\rangle = \\langle 5 \\rangle$）—— $b$ 在不在集合里一眼可判。'},
+      note:'★ $35x \\text{ mod }50$ 只能取 $5$ 的倍数（定理 31.20：$\\langle 35 \\rangle = \\langle 5 \\rangle$）—— $b$ 在不在集合里一眼可判。'},
     ],tasks:['对照 C 程序 part 4 的 5 个解与逐个回代。'],note:''},
    {type:'code',title:'实测：习题 31.4-1 的 5 个解',c:{file:'number_theory.c',code:String.raw`/* number_theory.c -- 31 章：数论算法（欧几里得 / 模运算 / CRT / RSA / Miller-Rabin）。
  *
@@ -458,13 +458,13 @@ int main(void)
         '所以 $d$ 是 $a$ 的某个幂的余数，即 $d \\in \\langle a \\rangle$ → 它的所有倍数都在 $\\langle a \\rangle$ 里。']},
      {title:'② ⟨a⟩ ⊆ ⟨d⟩',en:'The equation ax = b (mod n) either has d distinct solutions modulo n, where d = gcd(a,n) , or it has no solutions.',
       page:925,
-      body:['若 $m \\in \\langle a \\rangle$，则 $m = ax \\bmod n$，即 $m = ax + ny$。',
+      body:['若 $m \\in \\langle a \\rangle$，则 $m = ax \\text{ mod }n$，即 $m = ax + ny$。',
         '$d$ 同时整除 $a$ 与 $n$ → $d \\mid m$ → $m$ 是 $d$ 的倍数，即 $m \\in \\langle d \\rangle$。']},
      {title:'③ 相等 → 一切推论',en:'Suppose that the equation ax = b (mod n) is solvable (that is, d j b, where d = gcd(a,n) ) and that x 0 is any solution to this equation. Then, this equation has exactly d distinct solutions, modulo n, given by x i = x 0 + i(n/d) for i = 0,1,…,d − 1.',
       page:925,
       body:['两个子群相等 → 方程有解 $\\iff b \\in \\langle d \\rangle \\iff d \\mid b$（推论 31.21）。',
         '子群 $\\langle d \\rangle$ 的大小是 $n/d$，于是每个余数恰好被 $d$ 个 $x$ 命中 → 恰有 $d$ 个解（推论 31.22）。',
-        '★ C 程序 part 4 的 $d = 5$：$35x \\bmod 50$ 的值域正是 10 个 $5$ 的倍数，每个被 5 个 $x$ 命中。∎']},
+        '★ C 程序 part 4 的 $d = 5$：$35x \\text{ mod }50$ 的值域正是 10 个 $5$ 的倍数，每个被 5 个 $x$ 命中。∎']},
     ],conclusion:'★ 结论：一条方程的"可解性、解的个数、解的公式"全部由 $\\gcd(a,n)$ 一个量决定。',note:''},
    {type:'drill',title:'检验一下',items:[
      {kind:'single',q:'$ax \\equiv b \\ (\\text{mod } n)$ 何时有解？',options:['$a \\mid b$','**$\\gcd(a,n) \\mid b$**','$b \\mid n$','总是有解'],answer:1,
@@ -480,7 +480,7 @@ int main(void)
     ],bookExercises:[
      {id:'31.4-1',page:927,star:0,statement:'31.4-1 Find all solutions to the equation 35x = 10 . mod 50/.',hint:'就是 C 程序 part 4：$d = \\gcd(35,50) = 5$，$x_0 = 6$，解集 $\\{6 + 10i\\} = \\{6,16,26,36,46\\}$。'},
      {id:'31.4-2',page:927,star:0,statement:'31.4-2 Prove that the equation ax = ay . mod n/ implies x = y (mod n) whenever gcd(a,n) = 1. Show that the con',hint:'正向用"消去律等价于可逆"：$a$ 与 $n$ 互素时 $a^{-1}$ 存在；反例用 $n$ 有平方因子或两个素因子不互素的情形。'},
-     {id:'31.4-3',page:928,star:0,statement:'31.4-3 Consider the following change to line 3 of the procedure MODULAR-LINEAR- EQUATION-SOLVER :',hint:'改 $x_0 = x_0(b/d) \\bmod n$ 为 $x_0(b/d) \\bmod (n/d)$ 会让解落进更小的剩余系 —— 用定理 31.24 的步长论证它破坏了 $d$ 个解的等距性。'},
+     {id:'31.4-3',page:928,star:0,statement:'31.4-3 Consider the following change to line 3 of the procedure MODULAR-LINEAR- EQUATION-SOLVER :',hint:'改 $x_0 = x_0(b/d) \\text{ mod }n$ 为 $x_0(b/d) \\text{ mod }(n/d)$ 会让解落进更小的剩余系 —— 用定理 31.24 的步长论证它破坏了 $d$ 个解的等距性。'},
     ]},
   ],
 };

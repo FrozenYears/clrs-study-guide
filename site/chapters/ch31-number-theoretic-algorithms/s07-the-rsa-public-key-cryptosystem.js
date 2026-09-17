@@ -7,17 +7,17 @@ export default {
   prerequisites:[{label:'31.6 元素的幂',url:'#/ch31/s06'}],
   stages:[
    {type:'map',title:'公钥加密，私钥解密',
-    why:'生成密钥：取大素数 $p, q$，$n = pq$，$\\varphi(n) = (p-1)(q-1)$，选 $e$ 与 $\\varphi(n)$ 互素，用扩展 Euclid 求 $d = e^{-1} \\bmod \\varphi(n)$。公开 $(e, n)$，保守 $(d, n)$。加密 $M^{e} \\bmod n$、解密 $C^{d} \\bmod n$；正确性来自 $ed \\equiv 1 \\ (\\text{mod } \\varphi(n))$ 使 $M^{ed} \\equiv M$。**安全性押在"分解 $n$ 很难"上** —— 有 $n$ 没有分解就求不出 $d$。',
+    why:'生成密钥：取大素数 $p, q$，$n = pq$，$\\varphi(n) = (p-1)(q-1)$，选 $e$ 与 $\\varphi(n)$ 互素，用扩展 Euclid 求 $d = e^{-1} \\text{ mod }\\varphi(n)$。公开 $(e, n)$，保守 $(d, n)$。加密 $M^{e} \\text{ mod }n$、解密 $C^{d} \\text{ mod }n$；正确性来自 $ed \\equiv 1 \\ (\\text{mod } \\varphi(n))$ 使 $M^{ed} \\equiv M$。**安全性押在"分解 $n$ 很难"上** —— 有 $n$ 没有分解就求不出 $d$。',
     position:'本章前三节的收官演出：Euclid（求 $d$）、快速幂（加解密运算）、欧拉定理（正确性）同时上场。',
     unlocks:[{label:'31.8 素性测试',url:'#/ch31/s08'}],
     mathKit:[
      {title:'密钥生成',body:'$n = pq$，$\\varphi(n) = (p-1)(q-1)$；$e \\cdot d \\equiv 1 \\ (\\text{mod } \\varphi(n))$；公开 $(e,n)$，私藏 $(d,n)$。'},
-     {title:'加密 / 解密',body:'$C = M^{e} \\bmod n$；$M = C^{d} \\bmod n$。签名/验证反过来用。'},
+     {title:'加密 / 解密',body:'$C = M^{e} \\text{ mod }n$；$M = C^{d} \\text{ mod }n$。签名/验证反过来用。'},
      {title:'正确性',body:'$ed = 1 + k\\varphi(n)$ → $M^{ed} = M \\cdot (M^{\\varphi(n)})^{k} \\equiv M \\ (\\text{mod } n)$。'},
      {title:'安全假设',body:'已知 $(e, n)$ 求 $d$ 需要分解 $n$；大整数的分解没有已知多项式时间算法。'},
     ]},
    {type:'intuition',title:'一个真实尺寸的 RSA 全流程',scene:'C 程序 Part 7',body:[
-     '★ C 程序 part 7 用 $p = 61, q = 53$：$n = 3233$，$\\varphi(n) = 3120$，取 $e = 17$，扩展 Euclid 求出 **d = 2753**，并断言 $17 \\times 2753 \\bmod 3120 = 1$。',
+     '★ C 程序 part 7 用 $p = 61, q = 53$：$n = 3233$，$\\varphi(n) = 3120$，取 $e = 17$，扩展 Euclid 求出 **d = 2753**，并断言 $17 \\times 2753 \\text{ mod }3120 = 1$。',
      '★ 四个消息的往返：$65 \\to 2790 \\to 65$、$123 \\to 855 \\to 123$、$2345 \\to 1955 \\to 2345$ 全部解密回原值；签名方向 $65 \\to 588 \\to 65$ 同样成立 —— 加密与签名用的是同一对幂，只是**指数互换**。',
      '★★ 正确性不只是"跑通了"：$ed = 17 \\times 2753 = 46801 = 1 + 15 \\times 3120$，于是 $M^{ed} = M \\cdot (M^{\\varphi(n)})^{15} \\equiv M$ —— 欧拉定理逐字兑现。',
      '★ 习题 31.7-1 也实测了：$n = 319$（11×29）、$e = 3$ → **d = 187**（$3 \\times 187 = 561 = 2 \\times 280 + 1$）。',
@@ -47,7 +47,7 @@ export default {
      {n:5,code:'    4. 选 e 与 φ(n) 互素',zh:'★ 常取 65537。'},
      {n:6,code:'    5. d = e^{-1} mod φ(n)   // EXTENDED-EUCLID',zh:'★★ 31.2/31.4 的产出在这里消费。'},
      {n:7,code:'    6. 公开 (e, n)，私藏 (d, n)',zh:''}],
-    vars:[{name:'d',meaning:'私钥指数，$e$ 在 $\\bmod\\ \\varphi(n)$ 下的逆'}],
+    vars:[{name:'d',meaning:'私钥指数，$e$ 在 $\\text{ mod }\\ \\varphi(n)$ 下的逆'}],
     note:'★ 原书 31.7 用编号步骤（p.939 的 procedure）描述密钥生成，没有伪代码框；本段照那六步整理。',
     more:[{algo:'RSA-CRYPT',subtitle:'RSA 加密 / 解密 / 签名 / 验证 —— 四个方向同一对幂',signature:'RSA(P = (e,n), M)',page:940,
       lines:[{n:1,code:'加密（Bob 用 Alice 的公钥）：C = M^e mod n',zh:'★ 只有持有 $d$ 的人能逆。'},
@@ -431,7 +431,7 @@ int main(void)
     mapping:[{pc:6,pcCode:'d = e^{-1} mod φ(n)',c:'`ll g = extended_euclid(e, phi, &d, &y);`（第 289 行）'},
              {pc:1,pcCode:'C = M^e mod n',c:'`ll s = (ll)powmod_count((ull)m, (ull)e, (ull)n, &c);`（第 301 行）'}]},
    {type:'analyze',title:'一本账：RSA 的每一环来自哪一节',claims:[
-     {expr:'d = e^{-1} \\bmod \\varphi(n)',when:'私钥 = 扩展 Euclid 的输出',page:939,source:'book'},
+     {expr:'d = e^{-1} \\text{ mod }\\varphi(n)',when:'私钥 = 扩展 Euclid 的输出',page:939,source:'book'},
      {expr:'M^{ed} \\equiv M',when:'正确性：欧拉定理的直接推论',page:940,source:'book'},
      {expr:'\\Theta(\\lg e) + \\Theta(\\lg d)',when:'加解密各一次模幂',page:940,source:'book'},
      {expr:'\\text{分解 } n',when:'从公钥求私钥的已知唯一路线（无多项式算法）',page:941,source:'book'},
@@ -478,7 +478,7 @@ int main(void)
         '★ 现实约束：2048 位 $n$ 的分解远超算力；本教学例的 3233 只是演示尺寸。∎']},
     ],conclusion:'★ 结论：RSA 的锁芯是"分解很难"这条计算复杂性假设 —— 数论算法（31.2/31.6）负责造锁，复杂性负责上锁。',note:''},
    {type:'drill',title:'检验一下',items:[
-     {kind:'single',q:'RSA 里 $d$ 是怎么算出来的？',options:['随机猜','$d = e^{-1} \\bmod \\varphi(n)$（扩展 Euclid）','$d = e + \\varphi(n)$','$d = n - e$'],answer:1,
+     {kind:'single',q:'RSA 里 $d$ 是怎么算出来的？',options:['随机猜','$d = e^{-1} \\text{ mod }\\varphi(n)$（扩展 Euclid）','$d = e + \\varphi(n)$','$d = n - e$'],answer:1,
       why:'★ 需要 $\u03c6(n) = (p-1)(q-1)$，所以只有会分解 $n$ 的人能算。'},
      {kind:'single',q:'习题 31.7-1（p=11, q=29, e=3）的 d 是多少？',options:['**187**','113','17','3'],answer:0,
       why:'★ $3 \\times 187 = 561 = 2 \\times 280 + 1$（C 程序断言）。'},

@@ -11,16 +11,16 @@ export default {
     position:'两千年前的《孙子算经》问题："今有物不知其数，三三数之剩二……" 答案 23。本章里它是模线性方程的直接应用。',
     unlocks:[{label:'31.6 元素的幂',url:'#/ch31/s06'}],
     mathKit:[
-     {title:'定理 31.27（CRT）',body:'对应 $a \\leftrightarrow (a_1, \\dots, a_k)$（$a_i = a \\bmod n_i$）是 $\\mathbb{Z}_n$ 与 $\\mathbb{Z}_{n_1} \\times \\cdots \\times \\mathbb{Z}_{n_k}$ 之间的一一对应。'},
+     {title:'定理 31.27（CRT）',body:'对应 $a \\leftrightarrow (a_1, \\dots, a_k)$（$a_i = a \\text{ mod }n_i$）是 $\\mathbb{Z}_n$ 与 $\\mathbb{Z}_{n_1} \\times \\cdots \\times \\mathbb{Z}_{n_k}$ 之间的一一对应。'},
      {title:'推论 31.28',body:'两两互素时，方程组 $x \\equiv a_i \\ (\\text{mod } n_i)$ 在模 $n$ 下**有唯一解**。'},
      {title:'推论 31.29',body:'$x \\equiv a \\ (\\text{mod } n_i)$ 对所有 $i$ 成立 $\\iff x \\equiv a \\ (\\text{mod } n)$。'},
-     {title:'构造法',body:'两两合并：$x = a_1 + n_1 \\cdot ((a_2 - a_1) \\cdot n_1^{-1} \\bmod n_2)$，模 $n_1 n_2$。'},
+     {title:'构造法',body:'两两合并：$x = a_1 + n_1 \\cdot ((a_2 - a_1) \\cdot n_1^{-1} \\text{ mod }n_2)$，模 $n_1 n_2$。'},
     ]},
    {type:'intuition',title:'孙子定理的 23，与两个习题的实测',scene:'C 程序 Part 5',body:[
-     '★★ C 程序 part 5 解经典方程组 $x \\equiv 2 \\ (\\text{mod } 3)$、$x \\equiv 3 \\ (\\text{mod } 5)$、$x \\equiv 2 \\ (\\text{mod } 7)$：逐对合并（每次用扩展 Euclid 求 $n_1^{-1} \\bmod n_2$），得到 **x = 23 (mod 105)** —— 正是《孙子算经》的答案。',
+     '★★ C 程序 part 5 解经典方程组 $x \\equiv 2 \\ (\\text{mod } 3)$、$x \\equiv 3 \\ (\\text{mod } 5)$、$x \\equiv 2 \\ (\\text{mod } 7)$：逐对合并（每次用扩展 Euclid 求 $n_1^{-1} \\text{ mod }n_2$），得到 **x = 23 (mod 105)** —— 正是《孙子算经》的答案。',
      '★ 与暴力互证：枚举 0..104，**唯一**满足三条同余的数是 23 —— 推论 31.28 的"唯一"在这里被穷举确认。',
      '★★ 两个习题实测：31.5-1 的 $x \\equiv 4 \\ (\\text{mod } 5), x \\equiv 5 \\ (\\text{mod } 11) \\Rightarrow x = 49 \\ (\\text{mod } 55)$；31.5-2 的"除 9 余 1、除 8 余 2、除 7 余 3" $\\Rightarrow x = 10$。',
-     '⚠ 实现陷阱（本站真实踩过）：合并公式里的 Bezout 系数**可能是负的**（$5^{-1} \\bmod 11$：扩展 Euclid 直接给 $-2$，必须先规范成 9），否则解出 $-6$ 这种"负答案"。',
+     '⚠ 实现陷阱（本站真实踩过）：合并公式里的 Bezout 系数**可能是负的**（$5^{-1} \\text{ mod }11$：扩展 Euclid 直接给 $-2$，必须先规范成 9），否则解出 $-6$ 这种"负答案"。',
     ],interactive:{text:''}},
    {type:'source',title:'书上是怎么说的',lead:'原书英文原文（含语料排版形式，如 $ 代表 ≡、× 代表 φ）。',blocks:[
      {kind:'body',page:928,en:'Let n = n 1 n 2 • • • n k , where the n i are pairwise relatively prime.',
@@ -427,7 +427,7 @@ int main(void)
    {type:'analyze',title:'一本账：为什么唯一',claims:[
      {expr:'\\mathbb{Z}_n \\cong \\mathbb{Z}_{n_1} \\times \\cdots',when:'定理 31.27 的对应（环同构）',page:928,source:'book'},
      {expr:'\\text{唯一解}',when:'推论 31.28：两两互素时方程组的解',page:930,source:'book'},
-     {expr:'n_1^{-1} \\bmod n_2',when:'合并步骤里唯一的"新计算"（扩展 Euclid）',page:930,source:'book'},
+     {expr:'n_1^{-1} \\text{ mod }n_2',when:'合并步骤里唯一的"新计算"（扩展 Euclid）',page:930,source:'book'},
      {expr:'23',when:'孙子定理经典组 (2 mod 3, 3 mod 5, 2 mod 7) 的解',page:930,source:'book'},
     ],tables:[{caption:'C 程序 Part 5 的实测',rows:[
       ['方程组','解'],
@@ -445,8 +445,8 @@ int main(void)
     derivations:[{kind:'line',title:'两两合并为什么保持正确',steps:[
       {zh:'合并 $x \\equiv a_1 \\ (\\text{mod } n_1)$ 与 $x \\equiv a_2 \\ (\\text{mod } n_2)$：设 $x = a_1 + n_1 t$。'},
       {zh:'代入第二条：$a_1 + n_1 t \\equiv a_2 \\ (\\text{mod } n_2)$ → $t \\equiv (a_2 - a_1) \\cdot n_1^{-1} \\ (\\text{mod } n_2)$。'},
-      {zh:'$n_1^{-1} \\bmod n_2$ 存在正因为两模数互素（扩展 Euclid 算出）；合并后 $x$ 模 $n_1 n_2$ 唯一。'},
-      {tex:'x = a_1 + n_1\\big((a_2 - a_1)\\,n_1^{-1} \\bmod n_2\\big)',zh:'★★ 归纳 $k$ 步即得唯一解 —— C 程序 part 5 的循环体就是这条公式，并已用负系数规范化的修正。∎'}]},
+      {zh:'$n_1^{-1} \\text{ mod }n_2$ 存在正因为两模数互素（扩展 Euclid 算出）；合并后 $x$ 模 $n_1 n_2$ 唯一。'},
+      {tex:'x = a_1 + n_1\\big((a_2 - a_1)\\,n_1^{-1} \\text{ mod }n_2\\big)',zh:'★★ 归纳 $k$ 步即得唯一解 —— C 程序 part 5 的循环体就是这条公式，并已用负系数规范化的修正。∎'}]},
      ],
     note:''},
    {type:'prove',title:'定理 31.27：对应是一一映射',statement:"Let n = n 1 n 2 • • • n k , where the n i are pairwise relatively prime.",
@@ -463,7 +463,7 @@ int main(void)
         '单射 + 大小相等 → 双射 —— "另一个方向"的变换因此必然存在。']},
      {title:'③ 反方向的构造',en:"If n 1 ,n 2 ,…,n k are pairwise relatively prime and n = n 1 n 2 • • • n k , then for any integers a 1 ,a 2 ,…,a k , the set of simultaneous equations x = a i (mod n i ); for i = 1,2,…,k , has a unique solution modulo n for the unknown x .",
       page:930,
-      body:['给定 $(a_1, \\dots, a_k)$，用逐对合并（或加权求和 $\\sum a_i M_i (M_i^{-1} \\bmod n_i)$）显式造出 $x$。',
+      body:['给定 $(a_1, \\dots, a_k)$，用逐对合并（或加权求和 $\\sum a_i M_i (M_i^{-1} \\text{ mod }n_i)$）显式造出 $x$。',
         '★ C 程序 part 5 走的是合并版：两次扩展 Euclid，$x = 23$；习题 31.5-1/2 的两个系统也一并算出。∎']},
     ],conclusion:'★ 结论：CRT 把"一个大模数"无损拆成"一组小模数" —— 数学上是同构，工程上是并行。',note:''},
    {type:'drill',title:'检验一下',items:[

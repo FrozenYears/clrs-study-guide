@@ -7,7 +7,7 @@ export default {
   prerequisites:[{label:'31.5 中国余数定理',url:'#/ch31/s05'}],
   stages:[
    {type:'map',title:'a^k mod n 的周期与速度',
-    why:'在 $\\mathbb{Z}_n^*$ 里反复乘 $a$ 必然回到 1 —— 回到的步数就是**阶** $\\text{ord}(a)$，它整除 $\\varphi(n)$（Lagrange）。于是得到**欧拉定理** $a^{\\varphi(n)} \\equiv 1$（素数模时即费马小定理）。计算 $a^b \\bmod n$ 不需要 $b$ 次乘法：**反复平方**只要 $\\Theta(\\lg b)$ 次 —— 这就是 MODULAR-EXPONENTIATION，RSA 的全部运算量所在。',
+    why:'在 $\\mathbb{Z}_n^*$ 里反复乘 $a$ 必然回到 1 —— 回到的步数就是**阶** $\\text{ord}(a)$，它整除 $\\varphi(n)$（Lagrange）。于是得到**欧拉定理** $a^{\\varphi(n)} \\equiv 1$（素数模时即费马小定理）。计算 $a^b \\text{ mod }n$ 不需要 $b$ 次乘法：**反复平方**只要 $\\Theta(\\lg b)$ 次 —— 这就是 MODULAR-EXPONENTIATION，RSA 的全部运算量所在。',
     position:'承上（Lagrange → 欧拉定理）启下：31.7 的 RSA 正确性 = $m^{ed} \\equiv m$；31.8 的 Miller-Rabin = 快速幂的副产品（非平凡平方根）。',
     unlocks:[{label:'31.7 RSA 公钥密码系统',url:'#/ch31/s07'}],
     mathKit:[
@@ -18,8 +18,8 @@ export default {
     ]},
    {type:'intuition',title:'阶表、欧拉定理与 561 的第一课',scene:'C 程序 Part 6',body:[
      '★ C 程序 part 6 打出 $\\mathbb{Z}_7^*$ 的整张阶表：**ord(3) = 6**（3 是本原根，它的幂跑遍全群）、**ord(2) = 3**、ord(6) = 2 —— 全部整除 $\\varphi(7) = 6$。',
-     '★ 欧拉定理的实例化验证：对 6 个元素逐一计算 $a^{6} \\bmod 7 = 1$，全部成立。',
-     '★★ 最后一击：$7^{560} \\bmod 561 = 1$（561 = 3·11·17 是合数！）—— 反复平方只用了 **13 次模乘**。这就是"伪素数"骗过费马测试的机制，31.8 的主角在此登场。',
+     '★ 欧拉定理的实例化验证：对 6 个元素逐一计算 $a^{6} \\text{ mod }7 = 1$，全部成立。',
+     '★★ 最后一击：$7^{560} \\text{ mod }561 = 1$（561 = 3·11·17 是合数！）—— 反复平方只用了 **13 次模乘**。这就是"伪素数"骗过费马测试的机制，31.8 的主角在此登场。',
      '⚠ $\\text{ord}(2) = 3$ 说明 2 不是本原根：$2, 4, 1$ 循环，永远到不了 5 —— 阶小的元素生成的只是子群。',
     ],interactive:{text:''}},
    {type:'source',title:'书上是怎么说的',lead:'原书英文原文（含语料排版形式，如 × 代表 φ、Z − n 代表 Z*_n）。',blocks:[
@@ -417,7 +417,7 @@ int main(void)
     notes:[{line:1,zh:'★ 八关共用本文件；本关注释聚焦 part 6（阶与模幂）。'},
            {line:55,zh:'`powmod_count`：迭代版快速幂，顺带数模乘次数。'},
            {line:247,zh:'★★ part 6：$\\mathbb{Z}_7^*$ 阶表（ord(3)=6 本原根、ord(2)=3）；欧拉定理 6 个元素全过。'},
-           {line:258,zh:'★★ $7^{560} \\bmod 561 = 1$，模乘 13 次 —— 561 骗过费马测试（31.8 的引子）。'}]},
+           {line:258,zh:'★★ $7^{560} \\text{ mod }561 = 1$，模乘 13 次 —— 561 骗过费马测试（31.8 的引子）。'}]},
     tests:[{in:'Z_7* 阶表',out:'ord(3)=6、ord(2)=3、ord(6)=2'},
            {in:'欧拉定理 a^6 mod 7',out:'6 个元素全为 1'},
            {in:'7^560 mod 561',out:'1（模乘 13 次）'}],
@@ -468,9 +468,9 @@ int main(void)
         '★ 31.8 的 WITNESS 过程做的正是这件事：在快速幂的平方链上搜非平凡平方根。∎']},
     ],conclusion:'★ 结论：素数模的世界里平方根整齐得像钟表；一旦出现"第 ±1 之外的平方根"，合数当场现形。',note:''},
    {type:'drill',title:'检验一下',items:[
-     {kind:'single',q:'$7^{560} \\bmod 561 = 1$，但 561 = 3·11·17 —— 这说明 561 是什么？',options:['素数','**合数但骗过费马测试**','完全平方数','本原根'],answer:1,
+     {kind:'single',q:'$7^{560} \\text{ mod }561 = 1$，但 561 = 3·11·17 —— 这说明 561 是什么？',options:['素数','**合数但骗过费马测试**','完全平方数','本原根'],answer:1,
       why:'★ 基 7（事实上对所有互素的基）的伪素数 —— Carmichael 数（C 程序 part 6/8）。'},
-     {kind:'single',q:'计算 $a^b \\bmod n$，反复平方需要多少次模乘？',options:['$b$','**$\\le 2\\lg b$**','$\\lg n$','$\\varphi(n)$'],answer:1,
+     {kind:'single',q:'计算 $a^b \\text{ mod }n$，反复平方需要多少次模乘？',options:['$b$','**$\\le 2\\lg b$**','$\\lg n$','$\\varphi(n)$'],answer:1,
       why:'★ 每位一次平方 + 为 1 的位一次乘；b = 560 实测 13 次。'},
      {kind:'judge',q:'ord(3) = 6 说明 3 是 Z_7* 的本原根。',answer:true,
       why:'★ ord 等于群阶 → 3 的幂遍历全群。'},

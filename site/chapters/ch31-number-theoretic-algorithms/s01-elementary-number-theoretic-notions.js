@@ -32,7 +32,7 @@ export default {
      {kind:'theorem',page:905,en:'For any integer a and any positive integer n, there exist unique integers q and r such that 0 ≤ r <n and a = qn + r .',
       zh:'★★ 定理 31.1（除法定理）：商与余数**唯一**。'},
      {kind:'body',page:905,en:'The value q = ⌊a/n⌋ is the quotient of the division. The value r = a mod n is the remainder (or residue) of the division, so that n j a if and only if a mod n = 0.',
-      zh:'★★ mod 就是余数：$n \\mid a \\iff a \\bmod n = 0$。'},
+      zh:'★★ mod 就是余数：$n \\mid a \\iff a \\text{ mod }n = 0$。'},
      {kind:'body',page:904,en:'puts a 1 ,a 2 ,…,a k is a polynomial-time algorithm if it runs in time polynomial in lg a 1 ; lg a 2 ,…; lg a k , that is, polynomial in the lengths of its binary-encoded inputs.',
       zh:'★★ 数论里的"多项式时间"按**位长**计 —— 这是本章一切复杂度断言的前提。'},
     ],terms:[{en:'divides',zh:'整除（d∣a）',page:904},
@@ -464,8 +464,8 @@ int main(void)
         '★ 这一步只用到 $|r′ - r| < n$ 与 $n$ 的整除性 —— 除法定理的"唯一"二字由此而来。']},
      {title:'③ mod 的定义与用途',en:'The notation d j a (read <⌈ divides a/) means that a = kd for som⌉ integer k.',
       page:904,
-      body:['$a \\bmod n := r$（除法定理给出的那个唯一余数）。',
-        '$n \\mid a \\iff a \\bmod n = 0$：整除性判断变成一次取模。',
+      body:['$a \\text{ mod }n := r$（除法定理给出的那个唯一余数）。',
+        '$n \\mid a \\iff a \\text{ mod }n = 0$：整除性判断变成一次取模。',
         '★ 后续所有章节（模幂、CRT、RSA）里的 mod 都继承这条定义与它的唯一性。∎']},
     ],conclusion:'★ 结论：mod 不是"取余运算符"，而是除法定理承诺的唯一余数 —— 这就是它能一致地参与模运算的原因。',note:''},
    {type:'drill',title:'检验一下',items:[
@@ -480,7 +480,7 @@ int main(void)
      {kind:'simulate',q:'C 程序 part 1 在 10000 以内筛出多少个素数？（填整数）',expect:[1229],placeholder:'例如：1200',
       why:'1229 —— 与素数定理 $n/\\ln n \\approx 1086$ 同一量级。'},
     ],bookExercises:[
-     {id:'31.1-1',page:909,star:0,statement:'31.1-1 Prove that if a>b>0 and c = a + b, then c mod a = b.',hint:'直接算 $c \\bmod a = (a + b) \\bmod a = b \\bmod a$，再用 $0 \\le b < a$ —— 除法定理的唯一性一步收尾。'},
+     {id:'31.1-1',page:909,star:0,statement:'31.1-1 Prove that if a>b>0 and c = a + b, then c mod a = b.',hint:'直接算 $c \\text{ mod }a = (a + b) \\text{ mod }a = b \\text{ mod }a$，再用 $0 \\le b < a$ —— 除法定理的唯一性一步收尾。'},
      {id:'31.1-2',page:909,star:0,statement:'31.1-2 Prove that there are infinitely many primes. (Hint: Show that none of the primes',hint:'构造 $N = (2,3,5,\dots,p_k)$ 的乘积加 1：$N \bmod p_i = 1$ 对每个 $p_i$ 成立，所以 $N$ 的素因子不在列表里。'},
      {id:'31.1-10',page:910,preview:true,star:0,statement:'31.1-10 Show that the gcd operator is associative. That is, prove that for all integers a, b, and c , we have ',hint:'用"素因子取最小幂"的刻画（式 31.13）：$\gcd$ 的结合律归结为 $\min$ 的结合律 $\min(e, \min(f, g)) = \min(\min(e, f), g)$。'},
     ]},

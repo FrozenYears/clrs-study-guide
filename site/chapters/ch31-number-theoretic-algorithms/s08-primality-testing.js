@@ -7,7 +7,7 @@ export default {
   prerequisites:[{label:'31.7 RSA',url:'#/ch31/s07'}],
   stages:[
    {type:'map',title:'从"几乎正确"到 $2^{-s}$ 的错误率',
-    why:'费马测试：$a^{n-1} \\not\\equiv 1 \\Rightarrow n$ 合数。但 **Carmichael 数**（561, 1105, 1729, …）对所有互素的基都伪装成素数。Miller-Rabin 的补丁：在快速幂的**平方链上搜"1 的非平凡平方根"** —— 一旦出现，$n$ 当场暴露。原书定理 31.39：奇合数的见证者**至少占一半**；取 $s$ 个随机基，错误率 $\\le 2^{-s}$（定理 31.40）。',
+    why:'费马测试：$a^{n-1} \\neq 1 \\Rightarrow n$ 合数。但 **Carmichael 数**（561, 1105, 1729, …）对所有互素的基都伪装成素数。Miller-Rabin 的补丁：在快速幂的**平方链上搜"1 的非平凡平方根"** —— 一旦出现，$n$ 当场暴露。原书定理 31.39：奇合数的见证者**至少占一半**；取 $s$ 个随机基，错误率 $\\le 2^{-s}$（定理 31.40）。',
     position:'本章收官。RSA 密钥生成（31.7 第 1 步）靠它找大素数 —— 找一个 1024 位素数大约要试 $\\ln 2^{1024} \\approx 710$ 个奇数。',
     unlocks:[],
     mathKit:[
@@ -18,7 +18,7 @@ export default {
     ]},
    {type:'intuition',title:'561 的三重身份，全部实测',scene:'C 程序 Part 8',body:[
      '★★ C 程序 part 8 的三条实验线：',
-     '① **341 是基 2 伪素数**：$2^{340} \\bmod 341 = 1$，而 $341 = 11 \\times 31$ 是合数 —— 费马测试第一次翻车（原书习题的例子）。',
+     '① **341 是基 2 伪素数**：$2^{340} \\text{ mod }341 = 1$，而 $341 = 11 \\times 31$ 是合数 —— 费马测试第一次翻车（原书习题的例子）。',
      '② **561 是 Carmichael 数**：与它互素的 $a$ 共 319 个，费马测试**全部通过**；但 Miller-Rabin 的见证者有 **310 个（97.2%）** —— 合数性被当场抓住（原书定理 31.39 只保证 ≥ 3/4，实测 97.2%）。',
      '③ **零误报**：100 以内的全部奇素数，任何 $a$ 都不是见证者 —— 该抓的没漏抓，不该抓的没乱抓。',
      '★ 直观：费马测试只看"链的终点是否为 1"；Miller-Rabin 还检查"链上是否从非 1 的值平方跳到 1" —— 那样的值是 1 的非平凡平方根，素数模下不可能出现（31.6 定理 31.34）。',
@@ -423,7 +423,7 @@ int main(void)
     notes:[{line:1,zh:'★ 八关共用本文件；本关注释聚焦 part 8（素性测试）。'},
            {line:55,zh:'`powmod_count`：快速幂（WITNESS 的引擎）。'},
            {line:70,zh:'★★ `witness`：原书 WITNESS 的直译 —— 平方链上搜 1 的非平凡平方根。'},
-           {line:296,zh:'★★ 341：$2^{340} \\bmod 341 = 1$ 而它是合数 → 基 2 伪素数。'},
+           {line:296,zh:'★★ 341：$2^{340} \\text{ mod }341 = 1$ 而它是合数 → 基 2 伪素数。'},
            {line:303,zh:'★★ 561：319 个互素基全部通过费马测试，但 310 个（97.2%）是 Miller-Rabin 见证者。'},
            {line:313,zh:'★ 100 以内奇素数：见证者为 0 —— 零误报。'}]},
     tests:[{in:'2^340 mod 341',out:'1（341 = 11·31 合数）→ 基 2 伪素数'},
@@ -464,7 +464,7 @@ int main(void)
     steps:[
      {title:'① 铁证的含义',en:'The call of the auxiliary procedure WITNESS (a,n) returns TRUE if and only if a is a "witness" to the compositeness of n',
       page:946,
-      body:['若 $x^{2} \\equiv 1 \\ (\\text{mod } n)$ 且 $x \\not\\equiv \\pm 1$，则 $n$ **必然**合数（推论 31.35 的逆否）。',
+      body:['若 $x^{2} \\equiv 1 \\ (\\text{mod } n)$ 且 $x \\neq \\pm 1$，则 $n$ **必然**合数（推论 31.35 的逆否）。',
         '这是"能用 $a$ 证明 $n$ 是合数"的含义：证据可以被独立复核。']},
      {title:'② 证据还能直接给出因子',en:'The first three Carmichael numbers are 561, 1105, and 1729. Carmichael numbers are extremely rare. For example, only 255 of them are less than 100,000,000.',
       page:945,
@@ -489,7 +489,7 @@ int main(void)
      {kind:'simulate',q:'C 程序 part 8 里 561 的见证者比例（百分数，取整数）是多少？',expect:[97],placeholder:'例如：50',
       why:'97% —— 310/319；定理 31.39 只保证 ≥ 50%，实测远超。'},
     ],bookExercises:[
-     {id:'31.8-1',page:953,star:0,statement:'31.8-1 Prove that if an odd integer n>1 is not a prime or a prime power, then there exists a nontrivial square',hint:'按素因子分解配对选 ±1 用 CRT 造出 $x$：$x^{2} \\equiv 1$ 但 $x \\not\\equiv \\pm 1$ —— 定理 31.34 的反向构造。'},
+     {id:'31.8-1',page:953,star:0,statement:'31.8-1 Prove that if an odd integer n>1 is not a prime or a prime power, then there exists a nontrivial square',hint:'按素因子分解配对选 ±1 用 CRT 造出 $x$：$x^{2} \\equiv 1$ 但 $x \\neq \\pm 1$ —— 定理 31.34 的反向构造。'},
      {id:'31.8-3',page:953,star:0,statement:'31.8-3 Prove that if x is a nontrivial square root of 1, modulo n, then gcd(x − 1,n) and gcd(x + 1,n) are both',hint:'$n \\mid (x-1)(x+1)$ 但 $n \\nmid (x-1)$ 且 $n \\nmid (x+1)$ → 两个 gcd 都落在中间，必然是非平凡因子 —— 这也是 Miller-Rabin"顺手分解"的原理。'},
      {id:'31.8-3',page:953,star:0,statement:'31.8-3 Prove that if x is a nontrivial square root of 1, modulo n, then gcd(x − 1,n) and gcd(x + 1,n) are both',hint:'找 341 的分解 11·31，再用 CRT 说明 $2^{340} \\equiv 1$ 对两个素因子分别成立 —— 基 2 伪素数的完整机制。'},
     ]},

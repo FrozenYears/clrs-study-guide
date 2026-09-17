@@ -486,7 +486,7 @@ int main(void)
     ],bookExercises:[
      {id:'31.3-1',page:923,star:0,statement:'31.3-1 Draw the group operation tables for the groups (Z 4 ; C 4 ) and (Z −',hint:'把群表画成 4×4 / 6×6 方阵：每行每列都是群元素的一个排列（拉丁方性质）—— 逆元存在的直观体现。'},
      {id:'31.3-2',page:923,star:0,statement:'31.3-2 List all subgroups of Z 9 and of Z −',hint:'子群由生成元给出：$\\mathbb{Z}_9$ 的加法子群是 $\\langle 0 \\rangle, \\langle 3 \\rangle, \\langle 1 \\rangle$；$\\mathbb{Z}_9^*$（={1,2,4,5,7,8}）的子群用阶的因子枚举。'},
-     {id:'31.3-5',page:923,star:0,statement:'31.3-5 Show that for any integer n>1 and for any a 2 Z − n , the function f a W Z − n ! Z − n defined by f a (',hint:'$f_a(x) = ax \\bmod n$ 的逆映射是 $f_{a^{-1}}$ —— 而 $a^{-1}$ 存在恰恰因为 $a \\in \\mathbb{Z}_n^*$（扩展 Euclid 可算出它）。'},
+     {id:'31.3-5',page:923,star:0,statement:'31.3-5 Show that for any integer n>1 and for any a 2 Z − n , the function f a W Z − n ! Z − n defined by f a (',hint:'$f_a(x) = ax \\text{ mod }n$ 的逆映射是 $f_{a^{-1}}$ —— 而 $a^{-1}$ 存在恰恰因为 $a \\in \\mathbb{Z}_n^*$（扩展 Euclid 可算出它）。'},
     ]},
   ],
 };
