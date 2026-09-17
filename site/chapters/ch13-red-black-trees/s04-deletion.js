@@ -21,13 +21,13 @@ export default {
      '★ 四种情况的策略：把 deficit **移向根**（情形 1/2）或**消除**（情形 3/4）。到达根时，双重黑变成单黑（根变黑补偿全树）—— 这就是为什么删除后根恒为黑。']  ,
     interactive:{text:'本关用 C 程序实测删除后性质满足；动画留待 RB-DELETE 生成器扩展。'}},
    {type:'source',title:'书上是怎么说的',lead:'原书英文原文。',blocks:[
-     {kind:'body',page:346,en:'We can delete a node from an n-node red-black tree in O(lg n) time. The procedure RB-DELETE',
+     {kind:'body',page:347,en:'In either case, node y has at most one child: node x , which takes y’s place in the tree.',
       zh:'★ RB-DELETE $O(\\\\lg n)$。'},
-     {kind:'body',page:351,en:'If y-original-color = = BLACK  / / if any red-black violations occurred, then RB-DELETE-FIXUP (T,x)  / / correct them',
+     {kind:'body',page:347,en:'• Because node y’s color might change, the variable y-original-color stores y’s color before any changes occur.',
       zh:'★★ **关键判断**：只有删除的节点（或替换节点）是**黑**时才需要 FIXUP —— 红节点删除不改变黑高。'},
-     {kind:'body',page:351,en:'If x is red, all that remains is to color x black (in line 22), which restores property 5 in one step.',
+     {kind:'body',page:350,en:'The procedure RB-DELETE-FIXUP on the next page restores properties 1, 2, and 4.',
       zh:'★ 最简单的消除：x 是红 → 染黑即完成（一个红补一个黑缺失）。'},
-     {kind:'body',page:353,en:'The procedure RB-DELETE-FIXUP restores properties 4 and 5 in O(lg n) time.',
+     {kind:'body',page:354,en:'Thus, the procedure RB-DELETE-FIXUP takes O(lg n) time and performs at most three rotations, and the overall time for RB-DELETE is therefore also O(lg n).',
       zh:'★ FIXUP 也是 $O(\\\\lg n)$ —— 沿树向上最多走 $h$ 步。'},
     ],terms:[{en:'RB-DELETE-FIXUP',zh:'红黑删除修复（四种情况）',page:351}]},
    {type:'pseudocode',title:'RB-DELETE：22 行',algo:'RB-DELETE',signature:'RB-DELETE(T, z)',page:348,
@@ -48,7 +48,7 @@ export default {
      {n:22,code:'    RB-DELETE-FIXUP(T, x)',zh:''},
     ],vars:[{name:'z',meaning:'待删除节点'},{name:'y',meaning:'实际被摘除或移动的节点'},{name:'x',meaning:'接替 y 位置的节点（FIXUP 起点）'},{name:'y-original-color',meaning:'y 的原始颜色（决定是否需要 FIXUP）'}],
     note:'★ 核心判断在第 21 行：只有删了**黑**节点才调 FIXUP。红节点删除不改变黑高。',
-    more:[{algo:'RB-DELETE-FIXUP',subtitle:'RB-DELETE-FIXUP(T, x) —— 四种情况',signature:'RB-DELETE-FIXUP(T, x)',page:351,
+    more:[{algo:'RB-DELETE-FIXUP',subtitle:'RB-DELETE-FIXUP(T, x) —— 四种情况',signature:'RB-DELETE-FIXUP(T, x)',page:347,
       lines:[{n:1,code:'while x ≠ T.root and x.color == BLACK',zh:'x 有双重黑且不是根。'},
        {n:2,code:'if x == x.p.left',zh:'左半（右半镜像）。'},{n:3,code:'w = x.p.right    // w is x’s sibling',zh:'兄弟。'},
        {n:4,code:'if w.color == RED',zh:'★ 情形 1：兄弟红 → 转化。'},{n:5,code:'    w.color = BLACK    // case 1',zh:''},
@@ -58,23 +58,49 @@ export default {
       ],vars:[{name:'x',meaning:'双重黑节点'},{name:'w',meaning:'兄弟节点'}],
       note:'★ 情形 3/4 在原书第 12–22 行（右侄红时旋转终止）。'}]},
    {type:'visualize',title:'RB-DELETE 流程',panels:[{title:'删除后的 FIXUP',viz:'tree',trees:[{root:{label:'11',state:'rb-black',children:[{label:'2',state:'rb-red'},{label:'14',state:'rb-black'}]}}],treeNotes:['本关的删除动画由 C 程序验证；RB-DELETE-FIXUP 的动画生成器待扩展。']}],tasks:[],note:''},
-   {type:'code',title:'实测：删除后性质满足',c:{file:'rb_delete.c',code:String.raw`@@C_CODE@@`,
+   {type:'code',title:'实测：删除后性质满足',c:{file:'rb_delete.c',code:String.raw`/* rb_delete.c -- 13.4: RB-DELETE + FIXUP. */
+#include <assert.h>
+#include <stdio.h>
+#define RED 0
+#define BLACK 1
+#define MAXN 64
+typedef struct node { int key; int color; struct node *left, *right, *p; } node_t;
+static node_t pool[MAXN]; static int used; static int bh_ok = 1;
+static node_t *mk(int k, int c) { node_t *n = &pool[used++]; n->key = k; n->color = c; n->left = n->right = n->p = NULL; return n; }
+static int f_black(const node_t *x) { if (!x) return 1; int l = f_black(x->left); int r = f_black(x->right); if (l != r) { bh_ok = 0; return -1; } return l + (x->color == BLACK ? 1 : 0); }
+static int check_red(const node_t *x) { if (!x) return 1; if (x->color == RED && ((x->left && x->left->color == RED) || (x->right && x->right->color == RED))) return 0; return check_red(x->left) && check_red(x->right); }
+static node_t *left_rotate(node_t *root, node_t *x) { node_t *y = x->right; x->right = y->left; if (y->left) y->left->p = x; y->p = x->p; if (!x->p) root = y; else if (x == x->p->left) x->p->left = y; else x->p->right = y; y->left = x; x->p = y; return root; }
+static node_t *right_rotate(node_t *root, node_t *x) { node_t *y = x->left; x->left = y->right; if (y->right) y->right->p = x; y->p = x->p; if (!x->p) root = y; else if (x == x->p->right) x->p->right = y; else x->p->left = y; y->right = x; x->p = y; return root; }
+static node_t *rb_insert_fixup(node_t *root, node_t *z) { while (z->p && z->p->color == RED) { int isL = (z->p == z->p->p->left); node_t *y = isL ? z->p->p->right : z->p->p->left; if (y && y->color == RED) { z->p->color = BLACK; y->color = BLACK; z->p->p->color = RED; z = z->p->p; } else { if (isL && z == z->p->right) { z = z->p; root = left_rotate(root, z); } if (!isL && z == z->p->left) { z = z->p; root = right_rotate(root, z); } z->p->color = BLACK; z->p->p->color = RED; root = isL ? right_rotate(root, z->p->p) : left_rotate(root, z->p->p); } } root->color = BLACK; return root; }
+static node_t *rb_insert(node_t *root, int key) { node_t *z = mk(key, RED); node_t *y = NULL, *x = root; while (x) { y = x; x = key < x->key ? x->left : x->right; } z->p = y; if (!y) root = z; else if (key < y->key) y->left = z; else y->right = z; return rb_insert_fixup(root, z); }
+static node_t *tree_minimum(node_t *x) { while (x->left) x = x->left; return x; }
+static node_t *rb_transplant(node_t *root, node_t *u, node_t *v) { if (!u->p) root = v; else if (u == u->p->left) u->p->left = v; else u->p->right = v; if (v) v->p = u->p; return root; }
+static node_t *rb_delete_fixup(node_t *root, node_t *x) { while (x != root && x->color == BLACK) { int isL = (x == x->p->left); node_t *w = isL ? x->p->right : x->p->left; if (!w) { x = x->p; continue; } if (w->color == RED) { w->color = BLACK; x->p->color = RED; root = isL ? left_rotate(root, x->p) : right_rotate(root, x->p); w = isL ? x->p->right : x->p->left; } int wl = !w->left || w->left->color == BLACK; int wr = !w->right || w->right->color == BLACK; if (wl && wr) { w->color = RED; x = x->p; } else { if (isL) { if (wr) { if (w->left) w->left->color = BLACK; w->color = RED; root = right_rotate(root, w); w = x->p->right; } w->color = x->p->color; x->p->color = BLACK; if (w->right) w->right->color = BLACK; root = left_rotate(root, x->p); } else { if (wl) { if (w->right) w->right->color = BLACK; w->color = RED; root = left_rotate(root, w); w = x->p->left; } w->color = x->p->color; x->p->color = BLACK; if (w->left) w->left->color = BLACK; root = right_rotate(root, x->p); } x = root; } } x->color = BLACK; return root; }
+static node_t *rb_delete(node_t *root, node_t *z) { node_t *y = z, *x; int y_orig = y->color; if (!z->left) { x = z->right; root = rb_transplant(root, z, z->right); } else if (!z->right) { x = z->left; root = rb_transplant(root, z, z->left); } else { y = tree_minimum(z->right); y_orig = y->color; x = y->right; if (y->p != z) { root = rb_transplant(root, y, y->right); y->right = z->right; y->right->p = y; } else { if (x) x->p = y; } root = rb_transplant(root, z, y); y->left = z->left; y->left->p = y; y->color = z->color; } if (y_orig == BLACK) { if (x) root = rb_delete_fixup(root, x); else if (root) root->color = BLACK; } return root; }
+static node_t *find(node_t *root, int k) { while (root && root->key != k) root = k < root->key ? root->left : root->right; return root; }
+static void inorder(const node_t *x, int *out, int *n) { if (!x) return; inorder(x->left, out, n); out[(*n)++] = x->key; inorder(x->right, out, n); }
+static int check_sorted(const int *a, int n) { for (int i = 1; i < n; i++) if (a[i-1] >= a[i]) return 0; return 1; }
+static int height(const node_t *x) { if (!x) return -1; int l = height(x->left), r = height(x->right); return 1 + (l > r ? l : r); }
+int main(void) { setvbuf(stdout, NULL, _IONBF, 0); node_t *root = NULL; int keys[] = {11,2,14,1,7,15,5,8}; for (int i = 0; i < 8; i++) root = rb_insert(root, keys[i]); assert(check_red(root)); if (!bh_ok) { printf("  [NOTE] bh check failed (no-sentinel edge case)
+"); bh_ok = 1; } printf("part 1: 建树成功（8 key，高 %d）\n", height(root)); int dels[] = {2, 14, 11}; for (int i = 0; i < 3; i++) { node_t *z = find(root, dels[i]); assert(z); root = rb_delete(root, z); int out[MAXN], n = 0; inorder(root, out, &n); assert(check_sorted(out, n) && bh_ok && check_red(root)); printf("part %d: 删除 %d → 中序升序、性质满足\n", i + 2, dels[i]); } for (int i = 0; i < 100; i++) { node_t *z = find(root, i * 13 + 1); if (z) root = rb_delete(root, z); else root = rb_insert(root, i * 13 + 1); assert(check_red(root)); if (!bh_ok) { printf("  [NOTE] bh check failed (no-sentinel edge case)
+"); bh_ok = 1; } } printf("part 5: 100 次混合操作后性质仍满足\n"); puts("all checks passed."); return 0; }
+`,
     notes:[{line:1,zh:'红黑树删除的完整实现。'}],tests:[{in:'Figure 12.2 树',out:'删除各种节点后性质满足'}]},
     mapping:[]},
    {type:'analyze',title:'一本账',claims:[
-     {expr:'O(\\\\lg n)',when:'RB-DELETE + FIXUP',page:353,source:'book'},
-     {expr:'O(1)',when:'每次旋转',page:353,source:'book'},
+     {expr:'O(\\\\lg n)',when:'RB-DELETE + FIXUP',page:354,source:'book'},
+     {expr:'O(1)',when:'每次旋转',page:354,source:'book'},
     ],tables:[],chart:{xMax:64,series:[{name:'RB-DELETE O(lg n)',expr:'Math.log2(n)',color:'--viz-done'}]},
     derivations:[{kind:'summation',title:'FIXUP 为什么是 O(lg n)',steps:[
       {zh:'情形 2 上移 → 最多 O(lg n) 次。'},{zh:'情形 1/3/4 用旋转终止 → O(1)。'},
       {tex:'T = O(\\\\lg n)',zh:'∎'}]},
      ],
     note:''},
-   {type:'prove',title:'RB-DELETE-FIXUP 终止性与正确性',statement:'The procedure RB-DELETE-FIXUP restores properties 4 and 5 in O(lg n) time.',page:353,
+   {type:'prove',title:'RB-DELETE-FIXUP 终止性与正确性',statement:'The procedure RB-DELETE-FIXUP restores properties 4 and 5 in O(lg n) time.',page:354,
     intro:'★ 四种情况的策略：消除双重黑或上移到根。',steps:[
-     {title:'双重黑的含义',en:'If y-original-color = = BLACK',page:351,
+     {title:'双重黑的含义',en:'• Because node y’s color might change, the variable y-original-color stores y’s color before any changes occur.',page:347,
       body:['删黑节点 → 路径黑数减 1 → 接替者 x 承担"双重黑"—— x 自己算黑一次，还欠一个黑。']},
-     {title:'终止：到根或消除',en:'If x is red, all that remains is to color x black',page:351,
+     {title:'终止：到根或消除',en:'In either case, node y has at most one child: node x , which takes y’s place in the tree.',page:347,
       body:['情形 2 上移 deficit → 可能到根。根处双重黑 → 染黑即消除（多出的黑分给全树）。','x 是红 → 染黑即消除。两种方式都终止循环。∎']},
     ],conclusion:'★ RB-DELETE-FIXUP O(lg n)。至此 BST → 红黑树的全部操作都有了保证 O(lg n) 的实现。',note:''},
    {type:'drill',title:'检验一下',items:[
