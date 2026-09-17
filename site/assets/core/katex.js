@@ -43,6 +43,8 @@ const SYM = {
   Delta: "Δ",
   Gamma: "Γ",
   Lambda: "Λ",
+  Phi: "Φ",
+  Xi: "Ξ",
   alpha: "α",
   beta: "β",
   gamma: "γ",

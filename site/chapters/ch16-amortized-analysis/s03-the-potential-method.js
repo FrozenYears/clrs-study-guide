@@ -1,0 +1,242 @@
+/* 第 16 章 16.3：势能法（The potential method）。印刷页 456–460（pdf 477–481）。 */
+export default {
+  key:'s03',id:'ch16/s03',chapter:16,section:'16.3',
+  title:'势能法：把存款写成函数 Φ(D)',shortTitle:'16.3 势能法',
+  titleEn:'The potential method',
+  source:{printed:[456,460],pdf:[477,481]},
+  prerequisites:[{label:'16.2 The accounting method',url:'#/ch16/s02'}],
+  stages:[
+   {type:'map',title:'记账法的连续版本',
+    why:'记账法把钱记在**一个个对象**上；势能法把全部存款打包成一个**数据结构状态的函数** $\\Phi(D_i)$ —— 不用追着每个对象算，只需挑一个漂亮的势函数。',
+    position:'三种方法的最后一种，也是最强大的（16.4 的动态表靠它分析收缩）。它把"信用总额"换成了 $\\Phi(D_i) - \\Phi(D_0)$。',
+    unlocks:[{label:'16.4 Dynamic tables',url:'#/ch16/s04'}],
+    mathKit:[
+     {title:'摊还代价 (16.2)',body:'$\\hat{c}_i = c_i + \\Phi(D_i) - \\Phi(D_{i-1})$：实际代价 + 势能变化。'},
+     {title:'望远镜求和',body:'$\\sum \\hat{c}_i = \\sum c_i + \\Phi(D_n) - \\Phi(D_0)$ —— 中间项全部相消。'},
+     {title:'上界条件',body:'只要 $\\Phi(D_n) \\ge \\Phi(D_0)$，总摊还就是总实际的上界。'},
+    ]},
+   {type:'intuition',title:'Φ = s：栈的三种操作定价',scene:'MULTIPOP 栈',body:[
+     '取势函数 $\\Phi(D) = s$（栈内对象数），起始空栈 $\\Phi(D_0) = 0$。',
+     '★ **PUSH**：实际 1，$\\Delta\\Phi = (s+1) - s = 1$ → 摊还 $2$（与记账法的定价一致！）',
+     '★ **POP**：实际 1，$\\Delta\\Phi = -1$ → 摊还 $0$。**MULTIPOP(k)**：实际 $k^{\\prime}$，$\\Delta\\Phi = -k^{\\prime}$ → 摊还 $0$。',
+     '★ 恒等式逐次精确成立（C 程序 part 2）：3000 个随机操作 $\\sum \\hat{c} = 3142 = 3136 + 6$ —— 尾项就是 $\\Delta\\Phi$。',
+     '★ 势函数挑得越"贴合"，上界越紧：换成 $\\Phi = s^2$，上界依然成立（part 3 实测 104 ≥ 100），但松了。',
+    ],interactive:{text:''}},
+   {type:'source',title:'书上是怎么说的',lead:'原书英文原文（含语料排版形式，如 y c i 代表 ĉᵢ、C 代表 +）。',blocks:[
+     {kind:'body',page:456,en:'The amortized cost y c i of the i th operation with respect to potential function \u02c6 is defined by y c i = c i C \u02c6(D i ) \u2212 \u02c6(D i \u22121 ): (16.2)',
+      zh:'★★ 定义式 (16.2)：摊还 = 实际 + 势能变化（语料把 ĉᵢ 抽成 y c i、+ 抽成 C）。'},
+     {kind:'body',page:456,en:'The amortized cost of each operation is therefore its actual cost plus the change in potential due to the operation. By equation (16.2), the total amortized cost of the n operations is n X i D1 y c i = n X i D1',
+      zh:'★ 每个操作的摊还 = 实际 + 势能变化；总摊还的望远镜求和从此式出发。'},
+     {kind:'body',page:457,en:'If you can define a potential function \u02c6 so that \u02c6(D n ) \u2265 \u02c6(D 0 ), then the total amortized cost P n i D1 y c i gives an upper bound on the total actual cost P n i D1 c i .',
+      zh:'★★ 上界条件：$\\Phi(D_n) \\ge \\Phi(D_0)$（语料的 P n i D1 就是 Σᵢ₌₁ⁿ）。'},
+     {kind:'body',page:457,en:'The total amortized cost of n operations with respect to \u02c6 therefore represents an upper bound on the actual cost.',
+      zh:'★ 上界结论。'},
+     {kind:'body',page:457,en:'Now let\u2019s compute the amortized costs of the various stack operations. If the i th operation on a stack containing s objects is a PUSH operation, then the potential difference is \u02c6(D i ) \u2212 \u02c6(D i \u22121 ) = (s + 1) \u2212 s',
+      zh:'★ 栈例子的第一步：PUSH 的势能差 = 1。'},
+    ],terms:[{en:'potential method',zh:'势能法',page:456},
+              {en:'potential function',zh:'势函数 Φ(D)',page:456}]},
+   {type:'pseudocode',title:'势能法的三步',algo:'POTENTIAL-METHOD',signature:'用势函数做摊还分析（本站按原书整理）',page:457,
+    lines:[
+     {n:1,code:'1. 选势函数 Φ(D)，且 Φ(D0) = 0',zh:'★ 初始势归零是最常见的归一化。'},
+     {n:2,code:'2. 每个操作算 ĉi = ci + Φ(Di) − Φ(Di−1)',zh:'★ 按 (16.2) 逐操作算摊还价。'},
+     {n:3,code:'3. 验证 Φ(Dn) >= Φ(D0)',zh:'★★ 这一步给出上界的合法性。'},
+     {n:4,code:'结论: Σĉi = Σci + Φ(Dn) − Φ(D0)',zh:'望远镜求和 —— 精确恒等式，不是近似。'}],
+    vars:[{name:'Dᵢ',meaning:'第 i 次操作后的数据结构状态'},{name:'Φ',meaning:'从状态到非负实数的函数'}],
+    note:'★ 记账法把存款记在对象上；势能法把它折算成"整个状态"的函数 —— 对象级明细换全局视角。',
+    more:[]},
+   {type:'visualize',title:'势能曲线与三种方法的统一',panels:[
+     {title:'① 同一序列，两个势函数（C 程序 part 2/3）',viz:'growth',
+      chart:{xMax:120,series:[
+       {name:'Φ = s：Σ摊还 = 3142（n=3000 段内）',expr:'2 * n',color:'--viz-done'},
+       {name:'Φ = s²：上界更陡',expr:'n * n / 96',color:'--viz-violation'}]},
+      note:'★ 两个势函数都满足 Φ(Dn) ≥ Φ(D0)，都是合法上界；线性势的上界紧得多。'},
+     {title:'② 三种方法同框',viz:'growth',
+      chart:{xMax:24,series:[
+       {name:'聚合：总账/n（平价）',expr:'2',color:'--viz-compare'},
+       {name:'记账：PUSH=2 其余 0（平均 2）',expr:'2',color:'--viz-done'},
+       {name:'势能：Φ=s 时 PUSH=2 其余 0',expr:'2',color:'--viz-violation'}]},
+      note:'★ 对栈而言三种方法给出同一个答案 —— 摊还代价 2 / 0 / 0。方法不同，数字一致。'},
+    ],tasks:['对照 C 程序 part 2 的恒等式与 part 3 的反事实。'],note:''},
+   {type:'code',title:'实测：恒等式逐次成立',c:{file:'potential_stack.c',code:String.raw`/* potential_stack.c -- 16.3 势能法：Φ(D) = 栈内对象数 s。
+ * 关键数字：PUSH 摊还代价 2，POP 摊还代价 0，MULTIPOP 摊还代价 0；
+ *           恒等式 Σĉ = Σc + Φ(Dn) − Φ(D0) 逐次成立（ telescope 精确成立，不是近似）。
+ * 另外演示：换一个更陡的势函数 Φ = s²，上界依然成立但更松。 */
+#include <assert.h>
+#include <stdio.h>
+
+#define NMAX 64
+
+static int stack[NMAX];
+static int top;                       /* s = 栈内对象数 = 势 Φ(D) */
+
+static int op_push(int x) { stack[top++] = x; return 1; }
+static int op_pop(void) { top--; return 1; }
+static int op_multipop(int k)
+{
+    int cost = 0;
+    while (top > 0 && k > 0) { top--; cost++; k--; }
+    return cost;
+}
+
+static unsigned int rng_s;
+static void rng_seed(unsigned int s) { rng_s = s * 2654435761u; if (!rng_s) { rng_s = 0x9E3779B9u; } }
+static unsigned int rng_next(void)
+{
+    rng_s ^= rng_s << 13; rng_s ^= rng_s >> 17; rng_s ^= rng_s << 5;
+    return rng_s;
+}
+
+int main(void)
+{
+    setvbuf(stdout, NULL, _IONBF, 0);
+
+    /* part 1：三种操作的摊还代价（Φ = s） */
+    printf("part 1: 势函数 Φ(D) = s（栈内对象数）时的逐操作摊还代价：\n");
+    {
+        int s = 7;
+        /* PUSH：实际 1 + ΔΦ(= (s+1) - s = 1) = 2 */
+        int c1 = op_push(42);
+        int dh = (s + 1) - s;
+        printf("        PUSH：实际 %d + ΔΦ %d = %d\n", c1, dh, c1 + dh);
+        assert(c1 + dh == 2);
+        s = s + 1;
+        /* POP：实际 1 + ΔΦ(= -1) = 0 */
+        int c2 = op_pop();
+        int dh2 = (s - 1) - s;
+        printf("        POP ：实际 %d + ΔΦ %d = %d\n", c2, dh2, c2 + dh2);
+        assert(c2 + dh2 == 0);
+        s = s - 1;
+        /* MULTIPOP(k)：实际 k' + ΔΦ(= -k') = 0 */
+        int kk = 3, mk = (kk < s) ? kk : s;
+        int c3 = op_multipop(mk);
+        int dh3 = (s - c3) - s;
+        printf("        MULTIPOP(%d)：实际 %d + ΔΦ %d = %d\n", mk, c3, dh3, c3 + dh3);
+        assert(c3 + dh3 == 0);
+        top = 0;                          /* 清场，供 part 2 使用 */
+    }
+
+    /* part 2：随机序列 —— Σĉ = Σc + Φ(Dn) − Φ(D0) 精确成立 */
+    {
+        long sum_actual = 0, sum_amort = 0;
+        int n = 3000, s0, sn;
+        top = 0; s0 = top;
+        rng_seed(20260917);
+        for (int i = 0; i < n; i++) {
+            int r = (int)(rng_next() % 3);
+            int c;
+            if (r == 0 || top == 0) { c = op_push(i); sum_amort += c + 1; }
+            else if (r == 1) { c = op_pop(); sum_amort += c - 1; }
+            else { int k = (int)(rng_next() % 5); c = op_multipop(k); sum_amort += c - c; }
+            sum_actual += c;
+        }
+        sn = top;
+        printf("part 2: %d 个操作（起始势 %d，结束势 %d）：\n", n, s0, sn);
+        printf("        Σ实际 = %ld；Σ摊还 = %ld；ΔΦ = %d\n", sum_actual, sum_amort, sn - s0);
+        printf("        恒等式 Σ摊还 = Σ实际 + ΔΦ -> %ld = %ld + %d\n",
+               sum_amort, sum_actual, sn - s0);
+        assert(sum_amort == sum_actual + (sn - s0));
+        printf("        又 Φ(Dn) = %d >= Φ(D0) = %d，所以 Σ摊还 >= Σ实际 —— 上界成立\n", sn, s0);
+    }
+
+    /* part 3：势函数换成 Φ = s²，上界更松但依然成立 */
+    {
+        long sum_actual = 0, sum_amort = 0;
+        int n = 100, prev_phi;
+        top = 0; prev_phi = 0;
+        rng_seed(7);
+        for (int i = 0; i < n; i++) {
+            int c;
+            if (i % 3 == 0 || top == 0) { c = op_push(i); }
+            else if (top > 0) { c = op_pop(); }
+            else { c = 0; }
+            int phi = top * top;
+            sum_actual += c;
+            sum_amort += c + (phi - prev_phi);
+            prev_phi = phi;
+        }
+        printf("part 3: 换势函数 Φ = s²（n = %d）：Σ实际 = %ld，Σ摊还 = %ld\n",
+               n, sum_actual, sum_amort);
+        printf("        ΔΦ = %d -> Σ摊还 = Σ实际 + ΔΦ 仍精确成立，且 Φ(Dn) >= Φ(D0) = 0\n",
+               top * top);
+        assert(sum_amort == sum_actual + (long)top * top);
+        assert(top * top >= 0);
+        printf("        结论：势函数只要满足 Φ(Dn) >= Φ(D0)，摊还和就是实际和的上界；\n");
+        printf("        选得越贴合（线性 vs 平方），上界越紧。\n");
+    }
+
+    puts("all checks passed.");
+    return 0;
+}
+`,
+    notes:[{line:1,zh:'★ 文件开头写明关键数字：PUSH 摊还 2、POP/MULTIPOP 摊还 0。'},
+           {line:50,zh:'★★ part 1：逐操作算 ĉ = c + ΔΦ（PUSH 2 / POP 0 / MULTIPOP 0）。'},
+           {line:74,zh:'★★ part 2：3000 个随机操作 Σĉ = 3142 = 3136 + 6（ΔΦ），精确成立。'},
+           {line:96,zh:'★ part 3：Φ = s² 的上界更松（104 vs 100）但依然合法。'}]},
+    tests:[{in:'PUSH（Φ = s）',out:'实际 1 + ΔΦ 1 = 摊还 2'},
+           {in:'3000 个随机操作',out:'Σĉ 3142 = Σc 3136 + ΔΦ 6'},
+           {in:'Φ = s² 的对照',out:'Σĉ 104 ≥ Σc 100，上界更松'}],
+    mapping:[{pc:2,pcCode:'ĉi = ci + Φ(Di) − Φ(Di−1)',c:'`sum_amort += c + (phi - prev_phi);`（第 68 行）'},
+             {pc:3,pcCode:'验证 Φ(Dn) >= Φ(D0)',c:'`assert(top * top >= 0);`（第 92 行，Φ = s² 的终态判据）'}]},
+   {type:'analyze',title:'一本账：三种方法一张表',claims:[
+     {expr:'2',when:'PUSH 的摊还代价（Φ = s）',page:457,source:'book'},
+     {expr:'0',when:'POP / MULTIPOP 的摊还代价（Φ = s）',page:457,source:'book'},
+     {expr:'\\Phi(D_n) \\ge \\Phi(D_0)',when:'势函数合法的充要条件（给出上界）',page:457,source:'book'},
+    ],tables:[{caption:'三种摊还分析方法的对照',rows:[
+      ['','聚合','记账','势能'],
+      ['视角','n 次总账 ÷ n','钱记在每个对象上','存款 = 全局函数 Φ(D)'],
+      ['各操作摊还价','全部相同','可以不同','可以不同（由 ΔΦ 决定）'],
+      ['关键动作','算总账','验证信用 ≥ 0','验证 Φ(Dn) ≥ Φ(D0)'],
+      ['适合场景','代价均匀','付费对象明确','状态变化平滑（如动态表）'],
+     ]},{caption:'栈例子的三个视角（同一答案）',rows:[
+      ['','PUSH','POP','MULTIPOP'],
+      ['聚合','O(1)','O(1)','O(1)'],
+      ['记账','2 元','0 元','0 元'],
+      ['势能 Φ=s','2','0','0'],
+     ]}],chart:{xMax:16,series:[
+     {name:'Φ = s（线性，贴合）',expr:'n',color:'--viz-done'},
+     {name:'Φ = s²（过陡，上界松）',expr:'n * n / 8',color:'--viz-violation'}]},
+    derivations:[{kind:'summation',title:'望远镜求和的推导',steps:[
+      {zh:'按 (16.2) 逐项写出：$\\hat{c}_i = c_i + \\Phi(D_i) - \\Phi(D_{i-1})$。'},
+      {zh:'对 $i$ 求和，中间的 $\\Phi$ 项两两相消（telescope）。'},
+      {tex:'\\sum_{i=1}^{n} \\hat{c}_i = \\sum_{i=1}^{n} c_i + \\Phi(D_n) - \\Phi(D_0)',zh:'★ C 程序 part 2 的断言正是这条恒等式：3142 = 3136 + 6。'}]},
+     ],
+    note:''},
+   {type:'prove',title:'上界的成立条件',statement:'If you can define a potential function \u02c6 so that \u02c6(D n ) \u2265 \u02c6(D 0 ), then the total amortized cost P n i D1 y c i gives an upper bound on the total actual cost P n i D1 c i .',page:457,
+    intro:'★ 势能法的正确性只有一步：望远镜求和 + 终态条件。',
+    steps:[
+     {title:'望远镜求和（恒等式）',en:'The amortized cost of each operation is therefore its actual cost plus the change in potential due to the operation.',page:456,
+      body:['按定义 $\\hat{c}_i = c_i + \\Phi(D_i) - \\Phi(D_{i-1})$ 对每个操作求和：',
+        '$\\sum_{i=1}^{n} \\hat{c}_i = \\sum_{i=1}^{n} c_i + \\big(\\Phi(D_n) - \\Phi(D_{n-1})\\big) + \\cdots + \\big(\\Phi(D_1) - \\Phi(D_0)\\big)$。',
+        '中间项全部相消，得 $\\sum \\hat{c}_i = \\sum c_i + \\Phi(D_n) - \\Phi(D_0)$ —— **精确恒等式**。∎']},
+     {title:'加终态条件得上界',en:'The total amortized cost of n operations with respect to \u02c6 therefore represents an upper bound on the actual cost.',page:457,
+      body:['若 $\\Phi(D_n) \\ge \\Phi(D_0)$，则 $\\sum \\hat{c}_i \\ge \\sum c_i$。',
+        '通常把 $\\Phi(D_0) = 0$ 与"$\\Phi \\ge 0$ 对一切状态成立"作为设计目标 —— 这样无论序列多长终态条件自动满足。',
+        '★ C 程序 part 2/3 两条断言分别验证了恒等式与 $\\Phi(D_n) \\ge 0$。∎']},
+     {title:'与记账法的对应',en:'Now let\u2019s compute the amortized costs of the various stack operations. If the i th operation on a stack containing s objects is a PUSH operation, then the potential difference is \u02c6(D i ) \u2212 \u02c6(D i \u22121 ) = (s + 1) \u2212 s',page:457,
+      body:['势能 $\\Phi(D_i) - \\Phi(D_0)$ 恰好就是记账法里的**信用总额**（栈：$s$ 元）。',
+        '所以"信用 ≥ 0"与"$\\Phi \\ge 0$"是同一条不变量的两种记法 —— 记账是离散逐对象、势能是全局函数。',
+        '★ 栈例子两种方法都给出 PUSH 摊还 2、POP/MULTIPOP 摊还 0（C 程序 part 1）。∎']},
+    ],conclusion:'★ 结论：势能法 = 选一个非负且初始为 0 的 Φ，摊还代价自动带上"预付/透支"的语义；16.4 的动态表是它最重要的应用。',note:''},
+   {type:'drill',title:'检验一下',items:[
+     {kind:'single',q:'势能法中摊还代价的定义式是？',options:['$\\hat{c}_i = c_i$','$\\hat{c}_i = c_i + \\Phi(D_i) - \\Phi(D_{i-1})$','$\\hat{c}_i = \\Phi(D_i)$','$\\hat{c}_i = c_i \\cdot \\Phi(D_i)$'],answer:1,
+      why:'★ 式 (16.2)：实际代价加势能变化。'},
+     {kind:'single',q:'总摊还 ≥ 总实际 成立的条件是？',options:['Φ 处处为 0','$\\Phi(D_n) \\ge \\Phi(D_0)$','$\\Phi$ 单调递减','操作序列随机'],answer:1,
+      why:'★ 由望远镜求和：Σĉ = Σc + Φ(Dn) − Φ(D0)。'},
+     {kind:'judge',q:'势能法给出的 Σĉ = Σc + ΔΦ 是近似式。',answer:false,
+      why:'★ 是精确恒等式 —— 中间势能项两两相消。'},
+     {kind:'judge',q:'对栈取 Φ = s² 仍然是合法的势函数（只是上界更松）。',answer:true,
+      why:'★ 只要 Φ ≥ 0 且 Φ(D0)=0，上界就成立；C 程序 part 3 实测 104 ≥ 100。'},
+     {kind:'simulate',q:'Φ = s 时 PUSH 的摊还代价是多少？（填数字）',expect:[2],placeholder:'例如：1',
+      why:'实际 1 + ΔΦ 1 = 2（原书 p.457 与 C 程序 part 1）。'},
+     {kind:'simulate',q:'3000 个随机操作中 Σĉ − Σc = ？（C 程序 part 2，填数字）',expect:[6],placeholder:'例如：0',
+      why:'= Φ(Dn) − Φ(D0) = 6 − 0 = 6（结束时栈里剩 6 件对象）。'},
+    ],bookExercises:[
+     {id:'16.3-1',page:459,star:0,statement:'Suppose you have a potential function \u02c6 such that \u02c6(D i ) \u2265 \u02c6(D 0 ) for all i , but',hint:'若 $\\Phi(D_{i-1}) > \\Phi(D_i)$（某一步势能下降），那一步的 $\\hat{c}_i < c_i$；结论仍由望远镜求和保证 —— 总摊还 ≥ 总实际只依赖**终态**条件，不需要每一步单调。'},
+     {id:'16.3-2',page:459,star:0,statement:'Redo Exercise 16.1-3 using a potential method of analysis.',hint:'16.1-3（i 为 2 的幂时代价 i）：取 Φ(D) = 2i′（i′ 为已执行操作数中"未来最近的 2 的幂"距离）不好直接写；标准做法是 Φ(D) = 2e，e 为自上次 2 的幂以来的操作计数，保证每次操作的 ĉ ≤ 3。'},
+     {id:'16.3-3',page:459,star:0,statement:'Consider an ordinary binary min-heap data structure supporting the instructions',hint:'插入摊还 O(1)：取 Φ = 树中"右链"长度（沿右孩子路径的结点数）。插入代价 = 链长 +1，但插入后链长增加至多 1 → ĉ ≤ 2；EXTRACT-MIN 摊还 O(lg n)。'},
+     {id:'16.3-4',page:460,star:0,statement:'What is the total cost of executing n of the stack operations PUSH, POP, and MULTIPOP , assuming that the stack begins with s 0 objects and finishes with s n objects?',hint:'总代价 = 实际总代价 = n +（s_n − s_0）？不：每个操作至少代价 1（操作本身），弹出另计。总代价 = n + (s_0 − s_n) + 弹出数……直接算：总代价 ≤ 2n + (s_0 − s_n)，用势能 Φ = s 立即得到 n + s_0 − s_n + 2s_n 的界。'},
+     {id:'16.3-5',page:460,star:0,statement:'Show how to implement a queue with two ordinary stacks (Exercise 10.1-7) so that the amortized cost of each ENQUEUE and each DEQUEUE operation is O(1).',hint:'两个栈 in/out：ENQUEUE 压入 in（O(1)）；DEQUEUE 从 out 弹，out 空时把 in 整体倒入 out。取 Φ = in 栈的对象数：倒栈的代价 k 恰被这 k 个对象攒下的势能支付 → 两操作摊还 O(1)。'},
+     {id:'16.3-6',page:460,star:0,statement:'Design a data structure to support the following two operations for a dynamic multiset S of integers, which allows duplicate values:',hint:'SEARCH/MIN/MAX 用平衡 BST；对中序后驱/前驱额外维护（或用红黑树 + 链表）。关键在 DELETE-MALLER-THAN(k)：一次删一段的代价由被删对象攒下的势能支付（与 16.1 的 MULTIPOP 同型）。'},
+    ]},
+  ],
+};
