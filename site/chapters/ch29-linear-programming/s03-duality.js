@@ -519,7 +519,7 @@ int main(void)
       body:['Farkas 引理（引理 29.3）：以下两个条件恰有一个成立 —— ① 存在 $x$ 使 $Ax \\le 0$ 且 $c^{T}x > 0$；② 存在 $y \\ge 0$ 使 $A^{T}y = c$。',
         '几何解读：① 说"目标方向在可行锥里有正分量"，② 说"目标方向能用约束法向量非负地拼出来"。两者不可能同时成立，也不可能同时不成立。',
         '★ 把增广原始问题的不可行性代入引理的条件 1（不成立），就得到条件 2：存在一组非负乘子 $w$ 满足 $w^{T}M = 0$ 与 $w^{T}g < 0$。']},
-     {title:'④ 用乘子 $w$ 与对偶最优性冲突',en:'Given a linear program in standard form in which the objective is to maximize, let’s see how to formulate a dual linear program in which the objective is to minimize and whose optimal value is identical to that of the original linear program.',
+     {title:'④ 用乘子 w 与对偶最优性冲突',en:'Given a linear program in standard form in which the objective is to maximize, let’s see how to formulate a dual linear program in which the objective is to minimize and whose optimal value is identical to that of the original linear program.',
       page:866,
       body:['把 $w$ 拆成两部分，那两个式子分别给出"$\\Omega$ 不是对偶最优值"的不同反例，逐一与 $\\Omega$ 的定义矛盾。',
         '于是反设不成立 → 原始最优值不低于 $\\Omega$；结合弱对偶 $\\le \\Omega$，只能是相等。',

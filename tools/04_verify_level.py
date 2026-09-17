@@ -570,6 +570,26 @@ def verify():
                 if not s.get("title"):
                     err("%s 阶段 %s 缺 title" % (tag, s.get("type")))
 
+            # --- 3b. 纯文本字段里不许出现 LaTeX ---
+            # stage.title / prove.steps[].title / pseudocode.more[].subtitle 走的是
+            # 纯文本渲染（没有 renderMixed），放了 $...$ 会原样把反斜杠印在页面上。
+            # 教训：29.1 的 map 标题写成 "$\max c^{T}x$ 满足 $Ax \le b$"，
+            # 页面标题上就出现了 "\max" 碎片（DOM 抽查才抓到）。
+            for s in stages:
+                ttl = s.get("title") or ""
+                if "$" in ttl:
+                    warn("%s 的阶段标题含 $（纯文本字段，会原样显示）：%s" % (tag, ttl[:44]))
+                if s.get("type") == "pseudocode":
+                    for mr in s.get("more") or []:
+                        sub = mr.get("subtitle") or ""
+                        if "$" in sub:
+                            warn("%s 的 pseudocode.more.subtitle 含 $：%s" % (tag, sub[:44]))
+                if s.get("type") == "prove":
+                    for st in s.get("steps") or []:
+                        sttl = st.get("title") or ""
+                        if "$" in sttl:
+                            warn("%s 的 prove 步骤标题含 $：%s" % (tag, sttl[:44]))
+
             # --- 4. 章节号与节号对得上 structure.json ---
             sec = lv.get("section")
             src = lv.get("source") or {}

@@ -341,7 +341,7 @@ int main(void)
       {tex:'\\frac{E[\\text{miss}(RM)]}{\\text{miss}(OPT)} \\le 2H_k',zh:'★ $H_k = \\sum_{i=1}^{k} 1/i \\approx \\ln k$：随机化的收益是指数级的。∎'}]},
      ],
     note:''},
-   {type:'prove',title:'随机标记的 $2H_k$ 界（证明骨架）',statement:'There are many online caching policies to determine which block to evict, in- cluding the following:',page:803,
+   {type:'prove',title:'随机标记的 2H_k 界（证明骨架）',statement:'There are many online caching policies to determine which block to evict, in- cluding the following:',page:803,
     intro:'★ 原书给出完整的势能/分块证明；这里给出可核查的骨架与实测印证。',
     steps:[
      {title:'在线策略的两种失败模式',en:'\u2022 Least Recently Used (LRU): evict the block whose la st use is furthest in the past.',page:803,

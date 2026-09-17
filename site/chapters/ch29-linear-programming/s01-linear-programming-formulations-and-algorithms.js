@@ -7,7 +7,7 @@ export default {
   source:{printed:[850,859],pdf:[871,880]},
   prerequisites:[{label:'28.3 对称正定与最小二乘',url:'#/ch28/s03'}],
   stages:[
-   {type:'map',title:'把问题写成 $\\max c^{T}x$ 满足 $Ax \\le b$',
+   {type:'map',title:'把问题写成 max cᵀx 满足 Ax ≤ b',
     why:'**标准形**：求 $x \\in \\mathbb{R}^{n}$ 使 $c^{T}x$ 最大，满足 $Ax \\le b$ 与 $x \\ge 0$。加上**松弛变量** $s$ 得到**松弛形** $[A \\mid I]\\begin{bmatrix} x \\\\ s \\end{bmatrix} = b$；令 $n$ 个非基变量为 0 得到一个**基本解**，可行的那一个对应可行区域的一个**顶点**。单纯形法每次转轴就是沿一条棱走到相邻顶点。',
     position:'第 VIII 部分最后一章。它是"优化"这条线的收口：前面几章的问题（最短路、最大流、匹配、指派）都能写成线性规划，而 29.3 的对偶又反过来解释了最大流最小割定理。',
     unlocks:[{label:'29.2 把问题写成线性规划',url:'#/ch29/s02'}],
