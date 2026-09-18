@@ -6,7 +6,7 @@ export default {
   source:{printed:[943,953],pdf:[964,974]},
   prerequisites:[{label:'31.7 RSA',url:'#/ch31/s07'}],
   stages:[
-   {type:'map',title:'从"几乎正确"到 $2^{-s}$ 的错误率',
+   {type:'map',title:'从"几乎正确"到 2^(−s) 的错误率',
     why:'费马测试：$a^{n-1} \\neq 1 \\Rightarrow n$ 合数。但 **Carmichael 数**（561, 1105, 1729, …）对所有互素的基都伪装成素数。Miller-Rabin 的补丁：在快速幂的**平方链上搜"1 的非平凡平方根"** —— 一旦出现，$n$ 当场暴露。原书定理 31.39：奇合数的见证者**至少占一半**；取 $s$ 个随机基，错误率 $\\le 2^{-s}$（定理 31.40）。',
     position:'本章收官。RSA 密钥生成（31.7 第 1 步）靠它找大素数 —— 找一个 1024 位素数大约要试 $\\ln 2^{1024} \\approx 710$ 个奇数。',
     unlocks:[],

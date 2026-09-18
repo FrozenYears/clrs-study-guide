@@ -13,7 +13,7 @@
 
 export default {
   key: 's02',
-  id: 'appendix/a/s02',
+  id:'chA/s02',
   chapter: 'A',
   section: 'A.2',
   title: '定和式的界',

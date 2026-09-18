@@ -29,7 +29,7 @@ export default {
      {kind:'body',page:587,en:'Each step determines an edge (u,v) that the procedure can add to A without violating this invariant, in the sense that A [ f(u,v) g is also a subset of a minimum spanning tree. We call such an edge a safe edge for A, since it can be added safely to A while maintaining the invariant.',
       zh:'★★ **安全边**的定义：加入后不破坏不变量。'},
      {kind:'body',page:587,en:'Termination: All edges added to A belong to a minimum spanning tree, and the loop must terminate by the time it has considered all edges. Therefore, the set A returned in line 5 must be a minimum spanning tree.',
-      zh:'★ 终止论证。'},
+      zh:'★★ 循环不变量的终止情形：由保持性，A 里每条边都属于某棵最小生成树；而循环最多把每条边各考虑一遍就会停 —— 所以第 5 行返回的 A 正是一棵最小生成树。'},
      {kind:'body',page:588,en:'We first need some definitions. A cut (S,V \u2212 S) of an undirected graph G =',
       zh:'★ 切割的定义（后半句接 (V, E)）。'},
      {kind:'body',page:588,en:'But T is a minimum spanning tree, so that w(T) \u2264 w(T 0 ), and thus, T 0 must be a minimum spanning tree as well.',

@@ -13,7 +13,7 @@
 
 export default {
   key: 's03',
-  id: 'appendix/c/s03',
+  id:'chC/s03',
   chapter: 'C',
   section: 'C.3',
   title: '离散随机变量',

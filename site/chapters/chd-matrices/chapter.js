@@ -6,8 +6,7 @@
  * ========================================================================== */
 
 import s01 from './s01-matrices-and-matrix-operations.js';
-// s02 还没建：建好后把下面这行打开 ——
-// import s02 from './s02-<slug>.js';
+import s02 from './s02-basic-matrix-properties.js';
 
 export default {
   ch: 'D',
@@ -16,5 +15,5 @@ export default {
   title: 'Matrices',
   titleZh: '矩阵',
   source: { printed: [1214, 1290], pdf: [1235, 1311] },
-  levels: [s01],   // 只登记已建好的关卡
+  levels: [s01, s02],   // 只登记已建好的关卡
 };

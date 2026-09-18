@@ -13,7 +13,7 @@
 
 export default {
   key: 's02',
-  id: 'appendix/b/s02',
+  id:'chB/s02',
   chapter: 'B',
   section: 'B.2',
   title: '关系',

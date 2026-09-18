@@ -13,7 +13,7 @@
 
 export default {
   key: 's01',
-  id: 'appendix/a/s01',
+  id:'chA/s01',
   chapter: 'A',
   section: 'A.1',
   title: '求和公式与性质',

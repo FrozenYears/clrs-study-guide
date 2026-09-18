@@ -13,7 +13,7 @@
 
 export default {
   key: 's04',
-  id: 'appendix/b/s04',
+  id:'chB/s04',
   chapter: 'B',
   section: 'B.4',
   title: '图',

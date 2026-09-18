@@ -13,7 +13,7 @@
 
 export default {
   key: 's04',
-  id: 'appendix/c/s04',
+  id:'chC/s04',
   chapter: 'C',
   section: 'C.4',
   title: '几何与二项分布',

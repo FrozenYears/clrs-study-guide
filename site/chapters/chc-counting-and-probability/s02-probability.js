@@ -13,7 +13,7 @@
 
 export default {
   key: 's02',
-  id: 'appendix/c/s02',
+  id:'chC/s02',
   chapter: 'C',
   section: 'C.2',
   title: '概率',

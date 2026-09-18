@@ -723,6 +723,11 @@ def verify():
                 parts = [p for p in u[2:].split("/") if p]
                 if not parts:
                     continue
+                # ★ 附录 URL 归一化：#/appendix/<letter>/<关卡>[/<阶段>]
+                #   路由（core/router.js）对附录走 letter 形态，闸门按 chX/sNN
+                #   记关卡 id —— 在这里把两种形态对齐，后面统一按 ch 判断。
+                if parts[0] == "appendix" and len(parts) >= 3:
+                    parts = ["ch" + parts[1].upper()] + parts[2:]
                 two = "/".join(parts[:2])
                 if u.count("/") >= 2:
                     if two not in all_ids:

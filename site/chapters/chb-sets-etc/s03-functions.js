@@ -13,7 +13,7 @@
 
 export default {
   key: 's03',
-  id: 'appendix/b/s03',
+  id:'chB/s03',
   chapter: 'B',
   section: 'B.3',
   title: '函数',

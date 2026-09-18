@@ -13,7 +13,7 @@
 
 export default {
   key: 's01',
-  id: 'appendix/c/s01',
+  id:'chC/s01',
   chapter: 'C',
   section: 'C.1',
   title: '计数',

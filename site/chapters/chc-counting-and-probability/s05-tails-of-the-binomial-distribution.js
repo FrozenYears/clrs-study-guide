@@ -13,7 +13,7 @@
 
 export default {
   key: 's05',
-  id: 'appendix/c/s05',
+  id:'chC/s05',
   chapter: 'C',
   section: 'C.5',
   title: '二项分布的尾部',
