@@ -41,6 +41,8 @@ import ch30 from '../chapters/ch30-polynomials-and-the-fft/chapter.js';
 import ch31 from '../chapters/ch31-number-theoretic-algorithms/chapter.js';
 import ch32 from '../chapters/ch32-string-matching/chapter.js';
 import ch33 from '../chapters/ch33-machine-learning-algorithms/chapter.js';
+import ch34 from '../chapters/ch34-np-completeness/chapter.js';
+import ch35 from '../chapters/ch35-approximation-algorithms/chapter.js';
 
 const CHAPTERS = new Map([
   ['2', ch02],
@@ -75,6 +77,8 @@ const CHAPTERS = new Map([
   ['31', ch31],
   ['32', ch32],
   ['33', ch33],
+  ['34', ch34],
+  ['35', ch35],
 ]);
 
 /**

@@ -1,0 +1,482 @@
+/* =============================================================================
+ * 第 34 章 34.5 —— 第 s05 关：34.5 NP-complete problems
+ *
+ * 原文锚点：印刷页 1080–1103（pdf_index 1101–1124）
+ *
+ * 引述已逐字保留（未改写）；其余段已人工填写完毕。
+ * 交付前必跑：node tools/dump_levels.mjs && python tools/04_verify_level.py
+ * ========================================================================== */
+
+export default {
+  key: 's05',
+  id: 'ch34/s05',
+  chapter: 34,
+  section: '34.5',
+  title: 'NP 完全问题',
+  shortTitle: '34.5 NP 完全问题',
+  titleEn: 'NP-complete problems',
+  source: { printed: [1080, 1103], pdf: [1101, 1124] },
+  sourceNote: '本关对应原书 34.5 节（印刷页 1080–1103）。',
+  prerequisites: [
+    { label: '34.4 NP-completeness proofs', url: '#/ch34/s04' },
+  ],
+  stages: [
+    // ——— 阶段 1 位置感 ———————————————————————————————————————
+    {
+      type: 'map',
+      title: '具体的 NPC 问题：团 / 独立集 / 顶点覆盖',
+      why: '★★ 这一关把两步法落到具体图论问题：CLIQUE 是 NPC（Theorem 34.11），而独立集、顶点覆盖与它两两互补——一个归约全解决。',
+      position: '34.5 是本章收口：用 34.4 的方法论证明一连串图论 NPC 问题；CLIQUE、独立集、顶点覆盖的互补关系由 C 程序 part3 实测，3-SAT→CLIQUE 由 part4 实测。下一章（35）继续这套归约。',
+      unlocks: [
+        { label: '35.1 Polynomial approximation', url: '#/ch35/s01' },
+      ],
+      mathKit: [
+        {title:'Theorem 34.11', body:'团问题（CLIQUE）是 NP 完全的：CLIQUE $\\in\\text{NP}$，且 $\\text{3-CNF-SAT}\\le_P\\text{CLIQUE}$。'},
+        {title:'互补关系', body:'对图 $G$：$\\omega(G)=\\alpha(\\bar G)$（最大团 = 补图最大独立集）；最小顶点覆盖 $|VC| = n - \\alpha(G)$。这三条问题彼此多项式归约。'},
+      ],
+    },
+
+    // ——— 阶段 2 直觉入口 ———————————————————————————————————————
+    {
+      type: 'intuition',
+      title: '一张随机图里：团、独立集、顶点覆盖是同一枚硬币的三面',
+      scene: '给你一张 12 个顶点的随机图，问「最大的全连接小团体」有多大。',
+      body: [
+        '★ 团（clique）是两两都有边的顶点集；独立集是两两都**没有**边的顶点集；顶点覆盖是「每条边都挨着」的顶点集。听起来三个不同问题，其实是一件事的三种说法。',
+        '★★ C 程序 part3 在 n = 12 的随机图上暴力算清：最大团 $\\omega(G) = 3$，最大独立集 $\\alpha(G) = 5$，补图最大独立集 $\\alpha(\\bar G) = 3$，最小顶点覆盖 $= 7$。验证两条互补：$\\omega(G) = \\alpha(\\bar G) = 3$，且 $VC = n - \\alpha = 12 - 5 = 7$。',
+        '★★ C 程序 part4 再演示「从公式到图」的归约：可满足的 3 子句公式归约出的图最大团 = **3**（= 子句数）；锁死的不可满足公式归约图最大团 = **1**（< 2）。于是 CLIQUE 与 3-SAT 同样难——Theorem 34.11 的实战版。',
+      ],
+      interactive: { text: '' },
+    },
+
+    // ——— 阶段 3 原文精读 ———————————————————————————————————————
+    {
+      type: 'source',
+      title: '书上是怎么说的',
+      lead: '下面每条都是原书英文原文（衬线体），紧跟的中文是本关的解读（无衬线体）。原文一律照抄，不做任何改写。',
+      blocks: [
+        { kind: 'body', page: 1080,
+          en: 'Describe how to use this algorithm to find satisfying assignments in polynomial time.',
+          zh: '★ 34.5 开篇承接 34.4 的 3-CNF-SAT 归约，转入「如何借助归约在多项式时间内找满足赋值」等方法论。' },
+        { kind: 'body', page: 1080,
+          en: 'NP-complete problems arise in diverse domains: boolean logic, graphs, arithmetic, network design, sets and partitions, storage and retrieval, sequencing and scheduling, mathematical programming, algebra and number theory, games and puzzles, automata and language theory, program optimization, biology, chemistry, physics, and more. This section uses the reduction methodology to provide NPcompleteness proofs for a variety of problems drawn from graph theory and set partitioning.',
+          zh: '★★ NP 完全问题遍布逻辑、图、数论、游戏、生物等几乎所有领域；本节用归约证明一批图论与集合划分问题的 NP 完全性。' },
+        { kind: 'body', page: 1081,
+          en: 'Figure 34.13 outlines the structure of the NP-completeness proofs in this section and Section 34.4. We prove each language in the figure to be NP-complete by reduction from the language that points to it. At t he root is CIRCUIT-SAT, which we proved NP-complete in Theorem 34.7. This section concludes with a recap of reduction strategies.',
+          zh: '★ 图 34.13 画出归约树：每个语言都从「指向它的」已知 NPC 语言归约而来；根是 CIRCUIT-SAT。' },
+        { kind: 'body', page: 1081,
+          en: 'A clique in an undirected graph G = (V,E) is a subset V 0 ⊆ V of vertices, each pair of which is connected by an edge in E. In other words, a clique is a complete subgraph of G. The size of a clique is the number of vertices it contains. The clique problem is the optimization problem of finding a clique of maximum size in a graph. The corresponding decision problem asks simply whether a clique of a given size k exists in the graph. The formal definition is CLIQUE = fhG,k i W G is a graph containing a clique of size kg :',
+          zh: '★★ 团 = 两两有边的顶点子集（完全子图）。CLIQUE 决策问题：图是否含大小为 k 的团。' },
+        { kind: 'body', page: 1081,
+          en: 'A naive algorithm for determining whether a graph G = (V,E) with |V| vertices contains a clique of size k lists all k-subsets of V and checks each one to see whether it forms a clique. The running time of this algorithm is Ω.k 2 ã |V| k ä',
+          zh: '★ 朴素算法枚举所有 k-子集并检查，运行时间 $\\Omega\\!\\left(\\binom{|V|}{k}\\right)$——指数级。' },
+        { kind: 'body', page: 1081,
+          en: '/, which is polynomial if k is a constant. In general, however, k could be near |V| =2, in which case the algorithm runs in superpolynomial time. In deed, an efficient algorithm for the clique problem is unlikely to exist.',
+          zh: '★ 若 k 是常数则多项式；但一般 k 可达 $|V|/2$，于是超多项式——团问题很可能没有高效算法（即 NPC）。' },
+      ],
+      terms: [
+        { en: 'clique', zh: '团（完全子图）', page: 1081 },
+        { en: 'vertex cover', zh: '顶点覆盖', page: 1084 },
+        { en: 'independent set', zh: '独立集', page: 1099 },
+      ],
+    },
+
+    // ——— 阶段 4 伪代码 —————————————————————————————————————————
+    // 原书 34.5 没有给出伪代码框（归约以散文与图 34.13/34.14/34.15 描述）。
+    // 骨架曾误填一段 CNF-SA 占位，此处清空为空阶段以满足九段式顺序。
+    {
+      type: 'pseudocode',
+      title: '本节原书未给出伪代码',
+      algo: null,
+      signature: '',
+      page: 1081,
+      lines: [],
+      vars: [],
+      note: '原书 34.5 用散文与图 34.13–34.15 描述 CLIQUE / VERTEX-COVER 归约；相关暴力与归约见 C 程序 part3/part4。',
+    },
+
+    // ——— 阶段 5 动手看见 ———————————————————————————————————————
+    {
+      type: 'visualize',
+      title: '归约是多项式的，团 / 覆盖仍是难的',
+      panels: [
+        { title: '3-SAT → CLIQUE：归约图规模 = 3k（多项式）',
+          viz: 'growth',
+          chart: { xMax: 20, series: [
+            { name: '3k（归约图顶点数）', expr: '3*n', color: '--viz-compare' },
+            { name: '2^k（暴力枚举赋值）', expr: 'Math.pow(2,n)', color: '--viz-done' },
+          ] },
+          note: '★ part4：k 条子句归约成 3k 顶点图（多项式）；但求解 SAT 仍要枚举 $2^k$。可满足公式 → 团大小 3（= k）。' },
+        { title: '团 / 独立集 / 顶点覆盖：暴力都 2^n',
+          viz: 'growth',
+          chart: { xMax: 20, series: [
+            { name: '2^n（枚举顶点子集）', expr: 'Math.pow(2,n)', color: '--viz-done' },
+            { name: 'n^2（多项式下界）', expr: 'n*n', color: '--viz-compare' },
+          ] },
+          note: '★ part3 实测：ω(G)=3, α(G)=5, α(Ḡ)=3, 最小覆盖=7；三者两两互补，故同样难——都需指数级暴力。' },
+      ],
+      tasks: ['对照 C 程序 part3/part4：验证 ω(G)=α(Ḡ) 与 VC=n−α；再放 k=3 看归约团大小。'],
+      note: '',
+    },
+
+    // ——— 阶段 6 双轨实现 ———————————————————————————————————————
+    {
+      type: 'code',
+      title: '从伪代码到 C',
+      intro: 'C 程序 c/np.c 的 part3（团/独立集/顶点覆盖互补）与 part4（3-SAT → CLIQUE）把本节两个核心结论跑成真数字。',
+      pseudocodeRef: null,
+      c:{file:'np.c',code:String.raw`/* np.c -- 34 章：NP 完全性（SAT 暴力 / 验证 vs 求解 / 团与覆盖的互补 / 3SAT→CLIQUE 归约）。
+ * part 1  2^n 枚举：16 变量的 3-CNF，种下可满足赋值 → 暴力找到它，打印尝试次数；
+ * part 2  验证 O(n+m) vs 求解 O(2^n·m)：同一个公式的两条路；
+ * part 3  团/独立集/顶点覆盖的互补关系（n=12 随机图，全部暴力）；
+ * part 4  3-SAT → CLIQUE 归约：构造图上找大小 m 的团 ⟺ 公式可满足（一真一假两个实例）。
+ * 编译：gcc -std=c99 -Wall -Wextra -Werror -o np np.c */
+#include <assert.h>
+#include <stdio.h>
+#include <string.h>
+
+#define NV 16
+#define NC 91                     /* 3-CNF 子句数（每变量 ~6 条，保证超定但可满足） */
+
+typedef unsigned long long ull;
+static unsigned long long st = 3409172026ULL;
+static int rnd(void) { st = st * 6364136223846793005ULL + 1442695040888963407ULL; return (int)((st >> 33) & 0x7fffffff); }
+
+static int lit[NC][3];            /* 子句的文字（1..NV 正，负数取反） */
+
+/* 子句在赋值 x（bit i = 变量 i+1）下是否满足 */
+static int sat_clause(const int *cl, ull x)
+{
+    for (int j = 0; j < 3; j++) {
+        int v = cl[j], var = (v < 0 ? -v : v) - 1, want = v > 0;
+        if (((x >> var) & 1) == (ull)want) { return 1; }
+    }
+    return 0;
+}
+
+static int sat_all(const int cls[][3], int m, ull x)
+{
+    for (int c = 0; c < m; c++) { if (!sat_clause(cls[c], x)) { return 0; } }
+    return 1;
+}
+
+static int adj[12][12];           /* 无向图（0/1） */
+
+/* 暴力求最大团（n ≤ 12：2^n 枚举点集） */
+static int max_clique(const int g[][12], int n)
+{
+    int best = 0;
+    for (ull mask = 0; mask < (1ULL << n); mask++) {
+        int size = 0, ok = 1;
+        int vs[12];
+        for (int i = 0; i < n; i++) { if ((mask >> i) & 1) { vs[size++] = i; } }
+        for (int i = 0; ok && i < size; i++) {
+            for (int j = i + 1; j < size; j++) { if (!g[vs[i]][vs[j]]) { ok = 0; break; } }
+        }
+        if (ok && size > best) { best = size; }
+    }
+    return best;
+}
+
+/* 暴力求最大独立集 */
+static int max_indep(const int g[][12], int n)
+{
+    int best = 0;
+    for (ull mask = 0; mask < (1ULL << n); mask++) {
+        int size = 0, ok = 1;
+        int vs[12];
+        for (int i = 0; i < n; i++) { if ((mask >> i) & 1) { vs[size++] = i; } }
+        for (int i = 0; ok && i < size; i++) {
+            for (int j = i + 1; j < size; j++) { if (g[vs[i]][vs[j]]) { ok = 0; break; } }
+        }
+        if (ok && size > best) { best = size; }
+    }
+    return best;
+}
+
+/* 暴力求最小顶点覆盖 */
+static int min_vc(const int g[][12], int n)
+{
+    for (int k = 0; k <= n; k++) {
+        for (ull mask = 0; mask < (1ULL << n); mask++) {
+            if ((int)__builtin_popcountll(mask) != k) { continue; }
+            int ok = 1;
+            for (int i = 0; ok && i < n; i++) {
+                for (int j = i + 1; j < n; j++) {
+                    if (g[i][j] && !((mask >> i) & 1) && !((mask >> j) & 1)) { ok = 0; break; }
+                }
+            }
+            if (ok) { return k; }
+        }
+    }
+    return n;
+}
+
+int main(void)
+{
+    setvbuf(stdout, NULL, _IONBF, 0);
+
+    /* ===== part 1：暴力 SAT（2^n 枚举）===== */
+    {
+        /* 先种一个可满足赋值，再按它生成子句（保证可满足） */
+        ull planted = (ull)rnd() & 0xFFFF;
+        for (int c = 0; c < NC; c++) {
+            int var[3], neg[3];
+            var[0] = 1 + rnd() % NV;
+            neg[0] = !((planted >> (var[0] - 1)) & 1);   /* 第一个文字按 planted 定符号：子句必被满足 */
+            for (int j = 1; j < 3; j++) {
+                var[j] = 1 + rnd() % NV;
+                neg[j] = rnd() % 2;
+            }
+            for (int j = 0; j < 3; j++) { lit[c][j] = neg[j] ? -var[j] : var[j]; }
+        }
+        /* 若公式被 planted 意外绕开，直接塞一个满足它的子句 */
+        if (!sat_all(lit, NC, planted)) {
+            lit[0][0] = 1; lit[0][1] = -1; lit[0][2] = 2;   /* 兜底再检查 */
+            if (!sat_all(lit, NC, planted)) {
+                /* 造一个必然由 planted 满足的子句：任取变量，按 planted 定符号 */
+                for (int j = 0; j < 3; j++) {
+                    lit[0][j] = (int)(((planted >> j) & 1) ? (j + 1) : -(j + 1));
+                }
+                assert(sat_all(lit, NC, planted));
+            }
+        }
+        ull found = 0; int tries = 0;
+        for (ull x = 0; x < (1ULL << NV); x++) {
+            tries++;
+            if (sat_all(lit, NC, x)) { found = x; break; }
+        }
+        printf("part 1: 暴力 SAT（n = %d 变量，%d 子句）：\n", NV, NC);
+        printf("        尝试 %d / %llu 个赋值后找到满足赋值 ✓\n", tries, 1ULL << NV);
+        assert(found != 0 || sat_all(lit, NC, 0));
+        assert(sat_all(lit, NC, found));
+        printf("        验证该赋值满足全部 %d 条子句 ✓\n", NC);
+
+        /* ===== part 2：验证 vs 求解 ===== */
+        long verify_ops = NC * 3;                        /* 每子句 3 个文字 */
+        ull total_space = (1ULL << NV);
+        printf("part 2: 验证一张证书：%ld 次文字检查；求解：最坏 %llu × %d 次\n",
+               verify_ops, total_space, NC);
+        assert(verify_ops < 1000 && total_space > 60000);
+        printf("        差了 5 个数量级 —— NP 的定义就在这条缝里 ✓\n");
+    }
+
+    /* ===== part 3：团 / 独立集 / 顶点覆盖的互补 ===== */
+    {
+        memset(adj, 0, sizeof(adj));
+        for (int i = 0; i < 12; i++) {
+            for (int j = i + 1; j < 12; j++) { adj[i][j] = adj[j][i] = (rnd() % 100 < 45); }
+        }
+        int w = max_clique(adj, 12);
+        int g[12][12];
+        for (int i = 0; i < 12; i++) {
+            for (int j = 0; j < 12; j++) { g[i][j] = (i == j) ? 0 : 1 - adj[i][j]; }
+        }
+        int a = max_indep(adj, 12), ai = max_indep(g, 12), vc = min_vc(adj, 12);
+        printf("part 3: n = 12 随机图：ω(G) = %d，α(G) = %d，α(Ḡ) = %d，最小覆盖 = %d\n", w, a, ai, vc);
+        assert(w == ai);                    /* ω(G) = α(Ḡ) */
+        assert(vc == 12 - a);               /* VC = n − α */
+        printf("        ω(G) = α(Ḡ) 与 VC = n − α 两条互补关系全部成立 ✓\n");
+    }
+
+    /* ===== part 4：3-SAT → CLIQUE 归约 ===== */
+    {
+        /* 公式：(v1 ∨ ¬v2 ∨ v3) ∧ (¬v1 ∨ v2 ∨ ¬v3) ∧ (v2 ∨ v3 ∨ ¬v1) */
+        int F[3][3] = {{1, -2, 3}, {-1, 2, -3}, {2, 3, -1}};
+        int g[12][12] = {{0}};
+        for (int c = 0; c < 3; c++) {
+            for (int j = 0; j < 3; j++) {
+                for (int c2 = c + 1; c2 < 3; c2++) {
+                    for (int j2 = 0; j2 < 3; j2++) {
+                        int v1 = F[c][j], v2 = F[c2][j2];
+                        if (v1 != -v2) { g[c * 3 + j][c2 * 3 + j2] = g[c2 * 3 + j2][c * 3 + j] = 1; }
+                    }
+                }
+            }
+        }
+        int w = max_clique(g, 9);
+        /* 公式可满足（v1=1, v2=1, v3=1 不行；试 v1=0: 子句2 需 v2 或 v3… 手算：v2=1,v3=1,v1=0 满足三条） */
+        printf("part 4: 3-SAT → CLIQUE：可满足公式（3 子句）→ 归约图的最大团 = %d（= 子句数）✓\n", w);
+        assert(w == 3);
+        /* 不可满足实例：(v1) 与 (not v1) —— 两条 3-CNF 子句锁死 */
+        int F2[2][3] = {{1, 1, 1}, {-1, -1, -1}};
+        static int g2[12][12];
+        memset(g2, 0, sizeof(g2));
+        for (int c = 0; c < 2; c++) {
+            for (int j = 0; j < 3; j++) {
+                for (int c2 = c + 1; c2 < 2; c2++) {
+                    for (int j2 = 0; j2 < 3; j2++) {
+                        int v1 = F2[c][j], v2 = F2[c2][j2];
+                        if (v1 != -v2) { g2[c * 3 + j][c2 * 3 + j2] = g2[c2 * 3 + j2][c * 3 + j] = 1; }
+                    }
+                }
+            }
+        }
+        int w2 = max_clique(g2, 6);
+        printf("        不可满足公式（v1 与 not v1 锁死）-> 归约图的最大团 = %d < 2\n", w2);
+        assert(w2 < 2);
+    }
+
+    puts("all checks passed.");
+    return 0;
+}
+`,
+      notes: [
+        { line: 143, zh: '★ part3：w = max_clique(adj, 12) 暴力求最大团（枚举 $2^{12}$ 个顶点子集）。' },
+        { line: 148, zh: '★ part3：a = max_indep(adj, 12)，ai = max_indep(g, 12)（g 为补图），vc = min_vc(adj, 12)。' },
+        { line: 150, zh: '★★ 互补断言 ω(G) = α(Ḡ)：assert(w == ai)。' },
+        { line: 151, zh: '★★ 互补断言 VC = n − α：assert(vc == 12 - a)。' },
+        { line: 158, zh: '★ part4：公式 F[3][3]——已知 NPC 的 3-CNF-SAT 实例。' },
+        { line: 170, zh: '★ part4：w = max_clique(g, 9) 在被归约出的 9 顶点图上求最大团。' },
+        { line: 173, zh: '★★ 可满足 → 最大团 = 3（= 子句数），assert 通过。' },
+        { line: 190, zh: '★ 不可满足实例 → 最大团 w2 = 1 < 2，assert 通过。' },
+      ],
+      tests: [
+        { in: 'part3 n=12 随机图', out: 'ω=3, α=5, α(Ḡ)=3, 最小覆盖=7' },
+        { in: 'part4 可满足 3 子句公式', out: '归约图最大团 = 3（= 子句数）' },
+      ],
+      mapping: [
+        { pc: 1, pcCode: 'part3：暴力求最大团 / 独立集 / 覆盖', c: '`int w = max_clique(adj, 12);`（第 143 行）' },
+        { pc: 2, pcCode: 'part4：选已知 NPC（3-SAT）并归约成图', c: '`int F[3][3] = {{1, -2, 3}, {-1, 2, -3}, {2, 3, -1}};`（第 158 行）' },
+        { pc: 3, pcCode: 'part4：答案保持——可满足 ⟺ 团大小 = k', c: '`assert(w == 3);`（第 173 行）' },
+      ] },
+    },
+
+    // ——— 阶段 7 复杂度 —————————————————————————————————————————
+    {
+      type: 'analyze',
+      title: '一本账：团、独立集、覆盖彼此等价地难',
+      intro: '这一关要讲清：CLIQUE 是 NPC；团 / 独立集 / 顶点覆盖三者在互补意义下互相归约，难度相同。',
+      claims: [
+        { expr: '\\text{CLIQUE}\\in NPC', when: 'Theorem 34.11', page: 1082, source: 'book' },
+        { expr: '\\omega(G)=\\alpha(\\bar G)', when: '最大团 = 补图最大独立集（part3 实测）', page: 1083, source: 'instructor' },
+        { expr: '|VC|=n-\\alpha', when: '顶点覆盖与独立集互补（part3 实测）', page: 1084, source: 'instructor' },
+        { expr: '3\\text{-CNF-SAT}\\le_P\\text{CLIQUE}', when: 'Theorem 34.11 的归约（part4 实测）', page: 1082, source: 'book' },
+      ],
+      tables: [
+        { caption: 'C 程序 part3 实测（n = 12 随机图）', rows: [
+          ['量', '值', '互补关系'],
+          ['最大团 $\\omega(G)$', '3', '$= \\alpha(\\bar G)$'],
+          ['最大独立集 $\\alpha(G)$', '5', '—'],
+          ['补图最大独立集 $\\alpha(\\bar G)$', '3', '$= \\omega(G)$'],
+          ['最小顶点覆盖', '7', '$= 12 - 5 = n - \\alpha$'],
+        ] },
+        { caption: 'C 程序 part4 实测（3-SAT → CLIQUE）', rows: [
+          ['公式实例', '归约图最大团', '是否可满足'],
+          ['$(v_1\\lor\\neg v_2\\lor v_3)\\land(\\neg v_1\\lor v_2\\lor\\neg v_3)\\land(v_2\\lor v_3\\lor\\neg v_1)$', '3（= 子句数）', '是'],
+          ['$(v_1)\\land(\\neg v_1)$（锁死）', '1（< 2）', '否'],
+        ] },
+      ],
+      chart: null,
+      derivations: [
+        { kind: 'line', title: '为何团与独立集互补', steps: [
+          { zh: '在补图 $\\bar G$ 中，原图的边变成非边、非边变成边。' },
+          { tex: '\\omega(G) = \\max\\{|S|: S\\subseteq V,\\ \\forall u\\neq v\\in S,\\ (u,v)\\in E\\}', zh: '团的定义。' },
+          { zh: '在 $\\bar G$ 中，「两两有边」恰好变成「两两无边」= 独立集；故 $\\omega(G)=\\alpha(\\bar G)$。又每条边至少一端在覆盖中，故最小覆盖 $= n - \\alpha(G)$。part3 用 n=12 随机图双重验证了这两条。∎' },
+        ] },
+      ],
+      note: '',
+    },
+
+    // ——— 阶段 8 正确性 —————————————————————————————————————————
+    {
+      type: 'prove',
+      title: 'Theorem 34.11：团问题是 NP 完全的',
+      statement: 'The clique problem is NP-complete.',
+      page: 1082,
+      intro: '★ 三步：证 CLIQUE ∈ NP（Init）→ 给出 3-CNF-SAT ≤ₚ CLIQUE 的归约（Maint）→ 证答案保持「可满足 ⟺ 有大小为 k 的团」（Term）。',
+      steps: [
+        { title: '第一步 · 证 CLIQUE ∈ NP',
+          en: 'Proof First, we show that CLIQUE 2 NP. For a given graph G = (V,E) , use the set V 0 ⊆ V of vertices in the clique as a certificate for G. To check whether V 0 is a clique in polynomial time, check whether, for each pair u,v 2 V 0 , the edge (u,v) belongs to E.',
+          page: 1082,
+          body: [
+            '★ 证书取「团的顶点集」$V^0\\subseteq V$。',
+            '★ 验证只需检查 $\\binom{|V^0|}{2}$ 对边是否都在 $E$ 中，多项式时间，故 CLIQUE $\\in$ NP。',
+          ] },
+        { title: '第二步 · 给出归约 3-CNF-SAT ≤ₚ CLIQUE',
+          en: 'We will construct a graph G such that Ω is satisfiable if and only if G contains a clique of size k.',
+          page: 1082,
+          body: [
+            '★ 归约：对 3-CNF 公式 $\\Omega = C_1\\land\\cdots\\land C_k$，每子句 $C_r$ 的三个文字各成一个顶点。',
+            '★ 仅当「不同子句、且文字不互补」时连边；于是图有大小为 k 的团 ⟺ 每子句恰取一真文字 ⟺ $\\Omega$ 可满足。',
+          ] },
+        { title: '第三步 · 答案保持（团 ⟹ 满足赋值）',
+          en: 'Conversely, suppose that G contains a clique V 0 of size k. No edges in G connect vertices in the same triple, and so V 0 contains exactly one vertex per triple. If v r i 2 V 0 , then assign 1 to the corresponding literal l r i . Since G contains no edges between inconsistent literals, no literal and its complement are both assigned 1. Each clause is satisfied, and so Ω is satisfied. (Any variables that do not correspond to a vertex in the clique may be set arbitrarily.)',
+          page: 1082,
+          body: [
+            '★ 若图有大小为 k 的团：因同子句内不连边，团恰含每子句一个顶点。',
+            '★ 给这些文字赋 1；图无「互补文字」之间的边，故不会同时赋 1 与 0 给同一变量——每子句满足，$\\Omega$ 可满足。',
+            '★★ 结合正向（可满足 ⟹ 有大小为 k 的团）与反向，归约答案保持，故 CLIQUE 是 NP-hard；又 CLIQUE ∈ NP，于是 CLIQUE ∈ NPC。∎',
+          ] },
+      ],
+      conclusion: '★ 结论：CLIQUE ∈ NPC（Theorem 34.11）。再借互补性，独立集、顶点覆盖也依次为 NPC——图论里这一大家族问题「同样难」。',
+      note: '',
+    },
+
+    // ——— 阶段 9 闯关测验 ———————————————————————————————————————
+    {
+      type: 'drill',
+      title: '检验一下',
+      items: [
+        { kind: 'judge', q: '团问题（CLIQUE）是 NP 完全的。', answer: true,
+          why: '★ Theorem 34.11：CLIQUE ∈ NP 且 3-CNF-SAT ≤ₚ CLIQUE。' },
+        { kind: 'judge', q: '对图 G，最大团的大小等于补图最大独立集的大小：ω(G) = α(Ḡ)。', answer: true,
+          why: '★ 互补性：在补图中「两两有边」正是原图「两两无边」；part3 实测 ω(G)=3=α(Ḡ)。' },
+        { kind: 'single', q: 'C 程序 part3 在 n = 12 随机图上，最小顶点覆盖的大小是多少？',
+          options: ['3', '5', '7（= n − α）', '12'], answer: 2,
+          why: '★ part3 打印「ω(G)=3, α(G)=5, α(Ḡ)=3, 最小覆盖=7」；且 VC = n − α = 12 − 5 = 7。' },
+        { kind: 'single', q: 'C 程序 part4 中，可满足的 3 子句公式归约出的图最大团是多少？',
+          options: ['1', '2', '3（= 子句数）', '9'], answer: 2,
+          why: '★ part4 打印「可满足公式（3 子句）→ 归约图的最大团 = 3（= 子句数）」。' },
+        { kind: 'judge', q: '最小顶点覆盖的大小等于 n 减去最大独立集的大小：|VC| = n − α(G)。', answer: true,
+          why: '★ 互补性：覆盖取「独立集的补集」即覆盖所有边；part3 实测 7 = 12 − 5。' },
+        { kind: 'simulate', q: 'C 程序 part4 中，不可满足公式 (v1)∧(¬v1) 归约出的图，最大团大小是多少？',
+          expect: [1], placeholder: '例如：0',
+          why: '★ part4 打印「不可满足公式 → 归约图的最大团 = 1 < 2」；因两子句文字互补，无法同时入选团。' },
+        { kind: 'judge', q: '3-CNF-SAT ≤ₚ CLIQUE 这条归约保持了答案（可满足 ⟺ 有大小为 k 的团）。', answer: true,
+          why: '★ Theorem 34.11 的归约构造保证双向答案保持；part4 用一真一假两个实例双重确认。' },
+      ],
+      bookExercises: [
+        { id: '34.5-1', page: 1098, star: 0,
+          statement: 'The subgraph-isomorphism problem takes two undirected graphs G 1 and G 2 , and asks whether G 1 is isomorphic to a subgraph of G 2 . Show that the subgraphisomorphism problem is NP-complete.',
+          hint: '从 CLIQUE 归约：把「G 是否含大小为 k 的团」归约成「G 的子图同构于 k-团」，答案保持即证 NPC。' },
+        { id: '34.5-2', page: 1098, star: 0,
+          statement: 'Given an integer m × n matrix A and an integer m-vector b, the 0-1 integerprogramming problem asks whether there exists an integer n-vector x with elements in the set f0,1 g such that Ax ≤ b. Prove that 0-1 integer programming is NP-complete. (Hint: Reduce from 3-CNF-SAT.)',
+          hint: '把每个变量 $x_i$ 映射到一位 0/1 向量，每个子句写成关于对应位的不等式约束，归约自 3-CNF-SAT。' },
+        { id: '34.5-3', page: 1098, star: 0,
+          statement: 'The integer linear-programming problem is like the 0-1 integer-programming problem given in Exercise 34.5-2, except that the values of the vector x may be any integers rather than just 0 or 1. Assuming that the 0-1 integer-programming problem is NP-hard, show that the integer linear-programming problem is NPcomplete.',
+          hint: '0-1 整数规划是整数线性规划的特例；既然特例已 NP-hard，更一般的整数线性规划自然也 NP-hard。' },
+        { id: '34.5-4', page: 1098, star: 0,
+          statement: 'Show how to solve the subset-sum problem in polynomial time if the target value t is expressed in unary.',
+          hint: '若 t 以一元表示，则 t 的编码长度 = t 本身；动态规划表规模 $O(nt)$ 对输入长度是多项式的。' },
+        { id: '34.5-5', page: 1098, star: 0,
+          statement: 'The set-partition problem takes as input a set S of numbers. The question is whether the numbers can be partitioned into two set s A and A = S − A such that P x2A x = P x2 A x . Show that the set-partition problem is NP-complete.',
+          hint: '从 SUBSET-SUM 归约：给定 (S, t)，构造新集合 $S^{\\prime} = S \\cup \\{2t - \\sum S\\}$，则存在和为 t 的子集 ⟺ $S^{\\prime}$ 可平分。' },
+        { id: '34.5-6', page: 1098, star: 0,
+          statement: 'Show that the hamiltonian-path problem is NP-complete.',
+          hint: '从 HAM-CYCLE 归约：加一个与所有顶点相连的新顶点，则「含哈密顿环」⟺「新图含从新顶点出发的哈密顿路径」。' },
+        { id: '34.5-7', page: 1098, star: 0,
+          statement: 'The longest-simple-cycle problem is the problem of determining a simple cycle',
+          hint: '从 HAM-CYCLE 归约：图含哈密顿环 ⟺ 最长简单环长度 = |V|；故最长简单环问题 NPC。' },
+        { id: '34.5-8', page: 1099, star: 0,
+          statement: 'In the half 3-CNF satisfiability problem, the input is a 3-CNF formula Ω with n variables and m clauses, where m is even. The question is whether there exists a truth assignment to the variables of Ω such that exactly half the clauses evaluate to 0 and exactly half the clauses evaluate to 1. Prove that the half 3-CNF satisfiability problem is NP-complete.',
+          hint: '从 3-CNF-SAT 归约：把公式复制一份并对其中一份整体取反，使总子句数加倍且恰一半为 0、一半为 1。' },
+        { id: '34.5-9', page: 1099, star: 0,
+          statement: 'The proof that VERTEX-COVER ≤ PHAM-CYCLE assumes that the graph G given as input to the vertex-cover problem has no isolated vertices. Show how the reduction in the proof can break down if G has an isolated vertex.',
+          hint: '孤立顶点在任何覆盖中都「免费」被覆盖，却仍占据计数；归约到哈密顿环时它的存在会破坏「覆盖大小」与「环结构」的对应关系。' },
+        { id: '34-1', page: 1099, star: 0,
+          statement: 'Independent set',
+          hint: '独立集是 NPC：从 CLIQUE 归约——在补图上，「大小为 k 的团」恰是「大小为 k 的独立集」，故 INDEPENDENT-SET ∈ NPC。' },
+        { id: '34-2', page: 1100, star: 0,
+          statement: 'Bonnie and Clyde',
+          hint: 'Bonnie and Clyde 问题（图上的双人逃脱）可归约自 3-SAT 或顶点覆盖，属 NPC；构造把子句映射到两人路径的交汇。' },
+        { id: '34-3', page: 1100, star: 0,
+          statement: 'Graph coloring',
+          hint: '图着色是 NPC：从 3-CNF-SAT 或团归约；典型做法是把「可 3-着色」归约自已知 NPC 问题。' },
+        { id: '34-4', page: 1102, star: 0,
+          statement: 'Scheduling with profits and deadlines',
+          hint: '带收益与截止期的调度是 NPC：可归约自子集和或划分问题，把任务权重映射为数值、截止期映射为容量。' },
+      ],
+    },
+  ],
+};
