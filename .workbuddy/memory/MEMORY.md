@@ -168,3 +168,14 @@
 36. **后台 http.server 会被前台命令结束杀掉**：用 Bash 工具的 run_in_background
     起服务；同一条命令里探活不代表下一条命令它还活着（ERR_CONNECTION_REFUSED
     页会被 --dump-dom 当成「渲染结果」，hygiene 全过但内容是错误页）。
+
+37. **05_new_level.py 的附录 id 与闸门不一致**：附录骨架写 id:'appendix/a/sNN'，
+    闸门要求 'chA/sNN' —— 生成即错，批量修正；闸门已补附录 URL 归一化
+    （#/appendix/<letter>/<关卡>/<阶段> → chX/sNN，tools/04_verify_level.py）。
+38. **pseudocode 段不能整段删**：闸门要求九段齐全；原书无伪代码的节保留空段
+    （algo:null + lines:[] + note 说明），ch34/35/附录都这么处理。
+39. **语料伪影逐字照抄，撇号码点也对齐**：(AB)C 在附录 D 语料里是 .AB/C；
+    语料撇号是 U+2019（'），worker 手写 U+2032（′）会被闸门拒——两处都要照抄。
+40. **expr 是要 eval 的 JS，变量是 n 不是 x**：growth 渲染器 new Function('n',...)
+    （viz/growth.js:56）；写 x 会 ReferenceError 且 router 吞掉后页面空白——
+    图表段必须过一遍无头 Chrome 抓 console。
