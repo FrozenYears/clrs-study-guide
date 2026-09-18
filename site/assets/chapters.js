@@ -43,6 +43,10 @@ import ch32 from '../chapters/ch32-string-matching/chapter.js';
 import ch33 from '../chapters/ch33-machine-learning-algorithms/chapter.js';
 import ch34 from '../chapters/ch34-np-completeness/chapter.js';
 import ch35 from '../chapters/ch35-approximation-algorithms/chapter.js';
+import cha from '../chapters/cha-summations/chapter.js';
+import chb from '../chapters/chb-sets-etc/chapter.js';
+import chc from '../chapters/chc-counting-and-probability/chapter.js';
+import chd from '../chapters/chd-matrices/chapter.js';
 
 const CHAPTERS = new Map([
   ['2', ch02],
@@ -79,6 +83,10 @@ const CHAPTERS = new Map([
   ['33', ch33],
   ['34', ch34],
   ['35', ch35],
+  ['A', cha],
+  ['B', chb],
+  ['C', chc],
+  ['D', chd],
 ]);
 
 /**
