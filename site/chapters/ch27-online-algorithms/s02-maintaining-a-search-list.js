@@ -357,6 +357,9 @@ int main(void)
       why:'★ 否则势能初值不为 0 —— 这是我的程序第一版的实际教训。'},
      {kind:'simulate',q:'C 程序 part 2 中 MTF 相对精确最优的最大比值是多少？（填两位小数）',expect:[2.25],placeholder:'例如：3.0',
       why:'2.250（100 组随机请求；上界为 4）。'},
+     {kind:'simulate',q:'C 程序 part 2 中离线最优（OPT）在 100 组请求上的总代价是多少？',expect:[4579],placeholder:'例如：5000',why:'★ code 段实测：MTF 总代价 7872，OPT 只有 4579 —— 差距来自 MTF 的盲目性。'},
+     {kind:'judge',q:'实测中 MTF 的总代价约为 OPT 的 1.7 倍，远低于定理 27.1 保证的上界 4 倍。',answer:true,why:'★ 7872 / 4579 ≈ 1.72，最大单例比值也只有 2.250 —— 定理 27.1 是最坏情况保证，实测通常宽松得多。'},
+     {kind:'single',q:'竞争比为什么恰好落在 4 这个常数上？',options:['因为表里最多 4 个元素','**因为每对逆序对各贡献 2（1 次搜索 + 1 次交换），势能法再乘 2**','因为每次最多移动 4 步','因为是人为取的方便常数'],answer:1,why:'★ analyze 第三、四条把 4 拆成 $2 \\times 2$：逆序对代价 2，势能差的上界再翻一倍。'},
     ],bookExercises:[
      {id:'27.2-2',page:802,star:0,statement:'Professor Carnac claims that since FORESEE is an optimal algorithm that knows the future, then at each step it must incur no more cost than MOVE-TO-FRONT .',hint:'反例：FORESEE 为未来"提前搬移"（如原书 Figure 27.1 把 4 提前移到表头），那一步它的代价高于 MTF —— 但总代价更低。逐例核对原书 Figure 27.1 即可否定。'},
      {id:'27.2-4',page:802,star:0,statement:'The model in this section charged a cost of 1 for each swap. We can consider an alternative cost model in which, after accessing x , you can move x anywhere earlier in the list, and there is no cost for doing so.',hint:'免费移动下势函数只需 $\\Phi = I(L^M, L^F)$（去掉因子 2），摊还成本 $\\le 2 c^F$ —— 这就是 2-竞争的来源。'},

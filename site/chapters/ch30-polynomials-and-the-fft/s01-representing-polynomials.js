@@ -443,6 +443,8 @@ int main(void)
       why:'★ 定理 30.1；关键是 Vandermonde 行列式 $\\prod_{j<k}(x_k - x_j) \\ne 0$。'},
      {kind:'simulate',q:'C 程序 part 1 算出的乘积里 $x^{6}$ 的系数是多少？（填整数）',expect:[56],placeholder:'例如：12',
       why:'56 —— $7x^{3} \\cdot 8x^{3} = 56x^{6}$，程序逐系数断言了全部 7 个系数。'},
+     {kind:'single',q:'**系数表示**下把两个多项式相加要多少时间？',options:['$\Theta(1)$','$\Theta(\lg n)$','**$\Theta(n)$**','$\Theta(n \lg n)$'],answer:2,why:'★ 逐分量相加：本关 analyze 表里「系数表示下的加法（逐分量相加）」标的正是 $\Theta(n)$ —— 与点值表示的加法同阶，这才是两种表示的差别只在「乘法」上的原因。'},
+     {kind:'judge',q:'把一个次数界为 $n$ 的多项式从系数表示转成点值表示，朴素做法要 $\Theta(n^{2})$。',answer:true,why:'★ 选 $n$ 个互异点，每点用 Horner 法则 $\Theta(n)$，合起来 $\Theta(n^{2})$；本节 analyze 表里「$n$ 个点上求值（先用 Horner 各算一遍）」标的正是它，FFT 要削的就是这一项。'},
     ],bookExercises:[
      {id:'30.1-1',page:884,star:0,statement:'30.1-1 Multiply the polynomials A(x) = 7x 3 − x 2 + x − 10 and B(x) = 8x 3 − 6x + 3 using equations (30.1) and (30.2).',hint:'就是 C 程序 part 1：按 $c_k = \\sum_{i+j=k} a_i b_j$ 逐项累加。结果应为 $56x^{6} - 8x^{5} - 34x^{4} - 53x^{3} - 9x^{2} + 63x - 30$。'},
      {id:'30.1-2',page:884,star:0,statement:'30.1-2 Another way to evaluate a polynomial A(x) of degree-bound n at a given point x 0',hint:'把 $x^{k}$ 反复乘出来（$\\Theta(n^{2})$），或按 Horner 从高次往低次做（$\\Theta(n)$）—— 后者的关键是不显式计算任何幂。'},

@@ -488,6 +488,8 @@ int main(void)
       why:'★ 定理 31.40：≤ 2^{−s}。'},
      {kind:'simulate',q:'C 程序 part 8 里 561 的见证者比例（百分数，取整数）是多少？',expect:[97],placeholder:'例如：50',
       why:'97% —— 310/319；定理 31.39 只保证 ≥ 50%，实测远超。'},
+     {kind:'single',q:'要找 $b$ 位的素数，按素数定理大约要试多少个奇数？',options:['约 $b$ 个','**约 $\ln 2^{b}$ 个**','约 $2^{b}$ 个','约 $b^{2}$ 个'],answer:1,why:'★ analyze 表把「找 b 位素数大约要试的奇数个数」标成 $\ln 2^{b}$。本关 map 段给出实例：找 1024 位素数约试 710 个奇数 —— 所以 RSA 生成密钥必须先有 Miller-Rabin 这样的快速判素。'},
+     {kind:'simulate',q:'C 程序 part 8 里 $2^{340} \text{ mod }341$ 等于多少？（填整数）',expect:[1],placeholder:'例如：0',why:'1 —— $341 = 11 \times 31$ 是合数，但基 2 的费马测试照样通过，这就是「伪素数」；而同一 part 里 561 的见证者比例是 310/319 ≈ 97.2%。'},
     ],bookExercises:[
      {id:'31.8-1',page:953,star:0,statement:'31.8-1 Prove that if an odd integer n>1 is not a prime or a prime power, then there exists a nontrivial square',hint:'按素因子分解配对选 ±1 用 CRT 造出 $x$：$x^{2} \\equiv 1$ 但 $x \\neq \\pm 1$ —— 定理 31.34 的反向构造。'},
      {id:'31.8-3',page:953,star:0,statement:'31.8-3 Prove that if x is a nontrivial square root of 1, modulo n, then gcd(x − 1,n) and gcd(x + 1,n) are both',hint:'$n \\mid (x-1)(x+1)$ 但 $n \\nmid (x-1)$ 且 $n \\nmid (x+1)$ → 两个 gcd 都落在中间，必然是非平凡因子 —— 这也是 Miller-Rabin"顺手分解"的原理。'},

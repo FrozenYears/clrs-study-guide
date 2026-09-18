@@ -524,6 +524,9 @@ int main(void)
       why:'★ 给出 1.5（每条边 0.5），整数匹配最多 1 —— 这就是对照实验的意义。'},
      {kind:'simulate',q:'C 程序 part 4 的最大流 LP 最优值是多少？（填整数）',expect:[23],placeholder:'例如：20',
       why:'23 —— 与原书 Figure 24.1 的答案一致，且暴力枚举 16 个割得最小割同为 23。'},
+     {kind:'simulate',q:'C 程序 part 5 里二分图匹配的 LP 松弛最优值是多少？（填整数）',expect:[3],placeholder:'例如：2',why:'★ code 段实测 3，而且解本身是 0/1 —— 松弛恰好紧。'},
+     {kind:'simulate',q:'同一个匹配松弛用在三角形 $K_3$ 上的最优值是多少（填一位小数）？',expect:[1.5],placeholder:'例如：1.0',why:'★ code 段实测 1.5（非整）—— 所以匹配的 LP 松弛只对二分图紧，这正是 24.3 归约能成立的关键。'},
+     {kind:'single',q:'多商品流写法的约束条数是多少？',options:['$|E| + 1$','**$2|V|^{2} + |V| - 2$**','$|V| + |E| + 1$','$|V|^{2}$'],answer:1,why:'★ analyze 第二条：变量与约束规模随商品数放大，所以目前只有「直接解 LP」这条多项式路线。'},
     ],bookExercises:[
      {id:'29.2-1',page:865,star:0,statement:'29.2-1 Write out explicitly the linear program corresponding to finding the shortest path from vertex s to vertex x in Figure 22.2(a) on page 609.',hint:'照 C 程序 part 4 的建表法：每条边一个约束行 $d_v \\le d_u + w$，$d_s = 0$ 用两条反向不等式；决策变量取 $d_v$ 的自由部分。'},
      {id:'29.2-3',page:865,star:0,statement:'29.2-3 Write out explicitly the linear program corresponding to finding the maximum flow in Figure 24.1(a).',hint:'把 C 程序 part 4 的 9 条容量行按图抄出来（16,13,12,4,14,9,20,7,4），守恒行四个中间顶点各两条 —— 解出来应该是 23。'},

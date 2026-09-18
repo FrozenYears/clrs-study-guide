@@ -526,6 +526,9 @@ int main(void)
       why:'★ 原书 p.821 的三条性质之一。'},
      {kind:'simulate',q:'C 程序 part 1 的残差 max|Ax−b| 是多少？（填 0）',expect:[0],placeholder:'例如：0.001',
       why:'0（整数构造的方程组；同时 $PA = LU$ 重构误差也是 0）。'},
+     {kind:'simulate',q:'C 程序 part 1 的 $PA = LU$ 重构残差 $\\max|PA - LU|$ 是多少？（填数字）',expect:[0],placeholder:'例如：0.001',why:'★ code 段实测重构残差为 0 —— 3$\\times$3 尺度下浮点恰好精确。'},
+     {kind:'single',q:'LUP 分解本身（不含前代回代）的时间是？',options:['$\\Theta(n^2)$','**$\\Theta(n^3)$**','$\\Theta(n^2 \\lg n)$','$\\Theta(n!)$'],answer:1,why:'★ analyze 前三条：消元是三重循环 $\\Theta(n^3)$，而前代、回代各 $\\Theta(n^2)$。'},
+     {kind:'judge',q:'任何非奇异矩阵都存在 LUP 分解 —— 这正是「必须选主元」的数学保证。',answer:true,why:'★ analyze 第三条「都存在 LUP 分解（选主元的保证）」；不选主元的朴素 LU 分解则可能中途失败。'},
     ],bookExercises:[
      {id:'28.1-1',page:833,star:0,statement:'Solve equation Ax = b by using an LU decomposition for the matrices...',hint:'照 C 程序 part 1：写 $A$（无置换版）、逐列消元得 $L$、$U$，再前代回代 —— 与 LUP 版的结果应一致（本例无行交换需求）。'},
      {id:'28.1-2',page:833,star:0,statement:'Find an LU decomposition of the matrix... ',hint:'若某步主元为 0，说明该矩阵没有无置换的 LU 分解 —— 这正好说明 LUP 的必要性（把 $P$ 加进来即可）。'},

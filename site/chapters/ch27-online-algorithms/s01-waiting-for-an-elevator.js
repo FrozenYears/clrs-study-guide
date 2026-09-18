@@ -352,6 +352,9 @@ int main(void)
       why:'★ 离线最优是所有算法下界 → $c \\ge 1$。'},
      {kind:'simulate',q:'C 程序 k=10 时最优竞争比是多少？（填两位小数）',expect:[1.9],placeholder:'例如：2.0',
       why:'1.900 = 19/10（m = 9）。'},
+     {kind:'simulate',q:'用「永远走楼梯」（m=0）在 k=10 时的竞争比是多少？（填数字）',expect:[10],placeholder:'例如：2',why:'★ code 段实测：m=0 时比值 10 —— 楼梯固定耗 10 分钟，而电梯最优情况只需 1 分钟。'},
+     {kind:'single',q:'「等 m 分钟」策略的最坏竞争比公式是？',options:['$(m+k)/(m+1)$','**$\\max(1,\\ (m+k)/(m+1))$**','$k/m$','$m/(m+k)$'],answer:1,why:'★ analyze 第二条：外层取 $\\max$ 是因为竞争比不可能小于 1（prove 段的命题）。'},
+     {kind:'judge',q:'竞争比 $c \\ge 1$ 恒成立，因为在线算法不可能比知道全部未来的先知更省。',answer:true,why:'★ analyze 第一条与 prove 段的命题：所以我们只求 $c$ 尽量接近 1，而不是等于 1。'},
     ],bookExercises:[
      {id:'27.1-1',page:795,star:0,statement:'Consider the online ski-rental problem... Give and analyze an algorithm that has a competitive ratio of 2',hint:'滑雪租赁：每次租 $1$ 或一次买 $r$；策略"租 $r$ 次后买"给出竞争比 2（与电梯问题同型：都是"等多久就放弃"）。'},
     ]},

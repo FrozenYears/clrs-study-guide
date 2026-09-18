@@ -541,6 +541,9 @@ int main(void)
       why:'★ $A^{-1} = (A^{T}A)^{-1}A^{T}$，而 $A^{T}A$ 对称正定。'},
      {kind:'simulate',q:'C 程序 part 2b 里 $4 \\times 4$ 分治求逆的递归乘加次数是多少？（填整数）',expect:[70],placeholder:'例如：84',
       why:'70 = 2·7 + 7·8，与递推 $T(n) = 2T(n/2) + 7(n/2)^3$ 一致。'},
+     {kind:'single',q:'定理 28.2 说：给定 $O(M(n))$ 的乘法算法，求逆能在多久内完成？',options:['$O(M(n) \\lg n)$','**$O(M(n))$**','$O(M(n)\\, n)$','$O(n^3)$'],answer:1,why:'★ prove 段的命题就是这个结论；与定理 28.1 合起来才有「求逆 = $\\Theta$(乘法)」。'},
+     {kind:'simulate',q:'C 程序里分治求逆在 $n=2$ 时的递归乘加次数 $T(2)$ 是多少？',expect:[7],placeholder:'例如：8',why:'★ code 段实测 $T(2) = 7$，于是 $T(4) = 2 \\cdot 7 + 7 \\cdot 8 = 70$。'},
+     {kind:'judge',q:'分治求逆与 LUP 求逆在 $4 \\times 4$ 矩阵上的结果差约 $5.55 \\times 10^{-15}$，说明两条路数值上一致。',answer:true,why:'★ code 段实测：各自残差 6.38e-15、两者之差 5.55e-15 —— 都在浮点误差量级，不是算法差异。'},
     ],bookExercises:[
      {id:'28.2-1',page:837,star:0,statement:'28.2-1 Let M(n) be the time to multiply two n × n matrices, and let S(n) denote the time required to square an n × n matrix. Show that multiplying and squaring matrices have essentially the same difficulty: an M(n)-time matrix-multiplication al-',hint:'把 S(n) 的平方算法代入 M(n) 的递归（或反过来）—— 与本节"互相归约"的思路相同：两边各给对方一条上界。'},
      {id:'28.2-2',page:838,star:0,statement:'28.2-2 Let M(n) be the time to multiply two n × n matrices. Show that an M(n)-time',hint:'用 $M(n)$ 时间的乘法构造块矩阵乘法（分块递归），再反推乘法的下界形状 —— 与定理 28.1/28.2 的写法一致。'},

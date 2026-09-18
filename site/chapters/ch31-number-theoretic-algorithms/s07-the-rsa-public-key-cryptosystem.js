@@ -488,6 +488,8 @@ int main(void)
       why:'★ 3233 秒级可分解；教学尺寸只演示机制，安全假设靠大素数。'},
      {kind:'simulate',q:'C 程序 part 7 里 d 的值是多少？（p=61, q=53, e=17）',expect:[2753],placeholder:'例如：17',
       why:'2753 —— 17×2753 = 46801 = 1 + 15×3120。'},
+     {kind:'single',q:'本教学例（$p = 61, q = 53, e = 17$）的 $\varphi(n)$ 是多少？',options:['3233','**3120**','3121','3234'],answer:1,why:'★ $\varphi(n) = (p-1)(q-1) = 60 \times 52 = 3120$。C 程序打印 $17 \times 2753 \equiv 1 \ (\text{mod } 3120)$ —— $d = 2753$ 正是 $e$ 在这个模下的逆。'},
+     {kind:'simulate',q:'C 程序 part 7 里明文 $m = 65$ 加密后的密文是多少？（填整数）',expect:[2790],placeholder:'例如：1234',why:'2790 —— $65^{17} \text{ mod } 3233$；程序随后用 $C^{d}$ 解回 65，往返成立。签名往返那条则是 $m = 123 \to 2746 \to 123$。'},
     ],bookExercises:[
      {id:'31.7-1',page:942,star:0,statement:'31.7-1 Cons',hint:'$\u03c6(319) = 10 \\times 28 = 280$；解 $3d \u2261 1 \\ (\\text{mod } 280)$：$d = 187$（C 程序 part 7 的 31.7-1 段已验证）。'},
      {id:'31.7-2',page:942,star:0,statement:'31.7-2 Prove that if Alice’s public exponent e is 3 and an adversary obtains Alice’s secret exponent d , where',hint:'从 $ed - 1 = k\u03c6(n)$ 出发：$\u03c6(n) = n - p - q + 1$，与 $n = pq$ 联立解二次方程得 $p, q$ —— 所以"知道 d"等于"会分解 n"。'},

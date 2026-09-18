@@ -315,6 +315,9 @@ int main(void)
       why:'★ 数组 O(V²) 与 E=Θ(V²) 同阶；堆的 lg V 因子反而多余。'},
      {kind:'simulate',q:'C 程序 G2 上 Dijkstra 的 d[x] = ？（填数字）',expect:[13],placeholder:'例如：14',
       why:'x = min(y+9=14, z+6=13) = 13（C 程序 part 4 与 Bellman-Ford 交叉验证）。'},
+     {kind:'single',q:'用斐波那契堆实现 Dijkstra 的时间是？',options:['$O(V^2)$','**$O(V \\lg V + E)$**','$O(E \\lg V)$','$O(VE)$'],answer:1,why:'★ 本关复杂度账的三行对照：二叉堆 $O((V+E)\\lg V)$、斐波那契堆 $O(V \\lg V + E)$、数组 $O(V^2)$。'},
+     {kind:'judge',q:'C 程序在 G2 上跑出的 Dijkstra 结果与 Bellman-Ford 逐点一致。',answer:true,why:'★ 本关 code 段的交叉验证条目写着与 Bellman-Ford 逐点一致 —— 非负权图上两种算法必须同解。'},
+     {kind:'judge',q:'Dijkstra 每轮从队列取出 $d$ 最小的结点时，它的 $d$ 已经是最终最短距离。',answer:true,why:'★ 这正是本关 prove 段的命题 $u.d = \\delta(s,u)$：边权非负保证后取的结点不可能再把它改小。'},
     ],bookExercises:[
      {id:'22.3-1',page:624,star:0,statement:'Run Dijkstra\u2019s algorithm on the directed graph of Figure 22.2, first using vertex s as the source...',hint:'照 C 程序 Part 4 的轮次表手工模拟：每轮记 EXTRACT-MIN 的结点与松弛后的 d。'},
      {id:'22.3-2',page:624,star:0,statement:'Give a simple example of a directed graph with negative-weight edges... ',hint:'构造：s→a 1, a→b −10, s→b 1 —— Dijkstra 先取 a 再取 b，d[b]=1 而真实 −9。负边让贪心"提前锁死"错误答案。'},

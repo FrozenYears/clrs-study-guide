@@ -477,6 +477,8 @@ int main(void)
       why:'★ extended_euclid(5,11) 给出 −2；不规范化会解出负的"答案"（本站真实踩坑）。'},
      {kind:'simulate',q:'C 程序 part 5 里习题 31.5-2 的答案 x 是多少？（除 9 余 1、除 8 余 2、除 7 余 3）',expect:[10],placeholder:'例如：59',
       why:'10 —— 10 = 9+1 = 8+2 = 7+3，三条同余同时满足。'},
+     {kind:'judge',q:'CRT 合并两个方程时，唯一需要真正「新算」的一步是求一个模逆。',answer:true,why:'★ 本关 analyze 表把 $n_1^{-1} \text{ mod }n_2$ 单独列出来，注解就是「合并步骤里唯一的新计算」—— 其余都是代入与取模。C 程序对三组方程组都暴力枚举验证了唯一解。'},
+     {kind:'simulate',q:'C 程序 part 5 里习题 31.5-1（模 55）的答案 $x$ 是多少？（填整数）',expect:[49],placeholder:'例如：23',why:'49 —— 程序打印 $x = 49 \ (\text{mod }55)$；同一 part 里孙子定理经典组得到 23（模 105），习题 31.5-2 得到 10。'},
     ],bookExercises:[
      {id:'31.5-1',page:931,star:0,statement:'31.5-1 Find all solutions to the equations x = 4 (mod 5) and x = 5 (mod 11).',hint:'合并：$x = 4 + 5t$，$5t \\equiv 1 \\ (\\text{mod } 11)$，$t \\equiv 9$（$5^{-1} = 9$）→ $x = 49 \\ (\\text{mod } 55)$（C 程序已验证）。'},
      {id:'31.5-2',page:931,star:0,statement:'31.5-2 Find all integers x that leave remainders 1, 2, and 3 when divided by 9, 8, and 7, respectively.',hint:'从 $x \\equiv 1 \\ (\\text{mod } 9)$ 出发逐条合并；或注意 $x - 3$ 被 9,8,7 整除且 $x - 3 = 7$ —— 答案 $x = 10$。'},

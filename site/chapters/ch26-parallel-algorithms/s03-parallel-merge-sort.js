@@ -289,6 +289,9 @@ int main(void)
       why:'★ 瓶颈在串行归并的 $\\Theta(n)$ span（原书 p.782）。'},
      {kind:'simulate',q:'C 程序 part 3 中 P-MERGE 的二分比较次数是多少？（填数字）',expect:[1271],placeholder:'例如：1000',
       why:'1271 次（串行为 1023 次；搬动都是 n = 1024）。'},
+     {kind:'simulate',q:'C 程序里 n=1024 时串行归并的比较次数是多少？',expect:[1023],placeholder:'例如：1024',why:'★ code 段实测：串行归并只需 $n-1 = 1023$ 次比较。'},
+     {kind:'judge',q:'P-MERGE 的 work 仍是 $\\Theta(n)$，只是常数更大（多出二分搜索的比较）。',answer:true,why:'★ n=1024 时比较次数由 1023 涨到 1271，搬动次数两者都是 1024 —— 这就是换来小 span 的代价。'},
+     {kind:'single',q:'P-MERGE-SORT 的并行度是多少？',options:['$\\Theta(\\lg n)$','**$\\Theta(n/\\lg^3 n)$**','$\\Theta(n)$','$\\Theta(\\lg^2 n)$'],answer:1,why:'★ analyze 第三条：$\\Theta(n\\lg n) / \\Theta(\\lg^3 n)$，比串行归并版的 $\\Theta(\\lg n)$ 高出好几个量级。'},
     ],bookExercises:[
      {id:'26.3-1',page:791,star:0,statement:'Show how to parallelize SELECT from Section 9.3. Make your implementation as parallel as possible. Analyze your algorithm.',hint:'分区步骤可并行（每个元素独立比较），但"找中位的中位"需要递归 —— span 递推类似 P-MERGE，最终给出 work $\\Theta(n)$、span $\\Theta(\\lg^2 n)$ 的实现。'},
      {id:'26.3-2',page:791,star:0,statement:'(Hint: You might need an auxiliary array and might need to make more than one pass over the input elements.)',hint:'提示指向"多趟扫描 + 辅助数组"：先把分区计数并行算出（各元素独立判定落区），再前缀和定位写入 —— 这就是并行 partition 的标准做法。'},

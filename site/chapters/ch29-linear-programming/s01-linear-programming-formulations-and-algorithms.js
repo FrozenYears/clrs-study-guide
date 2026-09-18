@@ -528,6 +528,9 @@ int main(void)
       why:'★ 原书 p.854 紧接着指出：可以无界但最优值有限（习题 29.1-5）。'},
      {kind:'simulate',q:'C 程序 part 1 里最优值是多少？（填数值，如 30.75）',expect:[30.75],placeholder:'例如：28',
       why:'30.75 —— 原书 (29.37)–(29.41) 的 LP 的最优值，且由对偶证书证明。'},
+     {kind:'simulate',q:'C 程序 part 1 的单纯形法一共转轴了几次？',expect:[3],placeholder:'例如：5',why:'★ code 段实测 3 次转轴 —— 每次转轴 = 沿一条棱走到相邻顶点。'},
+     {kind:'single',q:'若线性规划有有限最优值，它在可行区域的什么位置取得？',options:['可行区域内部','**可行区域的某个顶点上**','任意约束交点','原点'],answer:1,why:'★ analyze 第三条：所以单纯形法只需在顶点间游走，而不必扫遍整个可行区域。'},
+     {kind:'judge',q:'把变量限制为整数后，问题不再是多项式时间可解的（原书 29-3）。',answer:true,why:'★ analyze 第四条：整数规划是 NP 难的 —— 这正是「先做 LP 松弛」这套做法的价值来源。'},
     ],bookExercises:[
      {id:'29.1-1',page:858,star:0,statement:'29.1-1 Consider the linear program minimize −2x 1 + 3x 2 subject to x 1 + x 2 = 7 x 1 − 2x 2 ≤ 4 x 1 ≥ 0 :',hint:'把等式约束拆成两个不等式、把 $x_1 \\ge 0$ 之外的符号限制都用两个非负变量之差表示 —— 这就是"化成标准形"的标准三步。'},
      {id:'29.1-3',page:858,star:0,statement:'29.1-3 Show that the following linear program is infeasible:',hint:'把所有约束两两相加试试：若推出 $0 \\le$ 负数就说明无解（对偶方向的"不可行证书"）。'},

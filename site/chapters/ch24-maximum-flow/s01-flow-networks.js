@@ -222,7 +222,7 @@ int main(void)
            {line:70,zh:'★★ part 1：最大流 23（增广 3 次、BFS 4 次）。'},
            {line:82,zh:'★★ part 2：最小割 {s,v1,v2,v4} 的容量 = 23 = 最大流。'}]},
     tests:[{in:'Figure 24.1 的网络',out:'|f| = 23（原书答案）'},
-           {in:'最小割',out:'割容量 23；S = {s,v1,v2,v4}}'}],
+           {in:'最小割',out:'割容量 23；S = {s,v1,v2,v4}'}],
     mapping:[{pc:3,pcCode:'0 <= f(u,v) <= c(u,v)',c:'`static int residual(int u, int v) { return cap[u][v] - flow[u][v]; }`（第 21 行）'}]},
    {type:'analyze',title:'一本账：两条约束的分工',claims:[
      {expr:'0 \\le f(u,v) \\le c(u,v)',when:'容量约束（对流的下界与上界）',page:672,source:'book'},
@@ -270,6 +270,9 @@ int main(void)
       why:'★ 容量约束的两半；负流只用于表示反向抵消。'},
      {kind:'simulate',q:'C 程序中 Figure 24.1 网络的最大流是多少？（填数字）',expect:[23],placeholder:'例如：29',
       why:'23（原书答案；C 程序 part 1 实测，最小割容量同为 23）。'},
+     {kind:'single',q:'一个流网络必须指定哪些要素？',options:['只需顶点和边','**源 $s$、汇 $t$ 与容量函数 $c$**','只需容量函数','源、汇、容量与每条边的费用'],answer:1,why:'★ 本关 map 的定义：流网络是一张**有源 $s$、有汇 $t$、每条边带非负容量 $c(u,v)$** 的有向图 —— 费用不在定义里。'},
+     {kind:'single',q:'C 程序里 Figure 24.1 网络的最小割容量是？',options:['**23**','29','17','46'],answer:0,why:'★ 本关 code 段的实测：割容量 23，$S = \\{s, v_1, v_2, v_4\\}$ —— 与最大流值相等，正是最小割定理。'},
+     {kind:'simulate',q:'C 程序里最小割的 $S$ 侧共包含几个顶点（含源 $s$）？',expect:[4],placeholder:'例如：3',why:'★ 实测 $S = \\{s, v_1, v_2, v_4\\}$，恰好 4 个顶点。'},
     ],bookExercises:[
      {id:'24.1-1',page:676,star:0,statement:'For the flow network G = (V,E) and flow f in Figure 24.1, find two different minimum cuts.',hint:'按最大流最小割定理：残量网络中从 s 可达的点集给出一个最小割；换一条等价的最大流可能给出另一个 —— 手工枚举割即可。'},
      {id:'24.1-2',page:676,star:0,statement:'Show that the flows in Figure 24.1(b) satisfy the capacity constraints... ',hint:'逐边核对 $0 \\le f \\le c$：例 (v1,v3) 流 12 = 容量 12，(s,v2) 流 11 < 13。再做逐点的守恒求和。'},

@@ -536,6 +536,9 @@ int main(void)
       why:'★ 原书 p.866 明确这么说（第 24 章定理 24.6）。'},
      {kind:'simulate',q:'C 程序 part 2 里 $c^{T}x - b^{T}y$ 的最大值是多少？（填负数，保留两位小数）',expect:[-8.48,-8.5],placeholder:'例如：-0.50',
       why:'−8.48 —— 最大值仍然 ≤ 0，弱对偶在 2.6 万对随机可行样本上没有一次被违反。'},
+     {kind:'simulate',q:'原书 p.868 的乘子 $y = (1,1,0)$ 给出的上界 $b^{T}y$ 是多少？',expect:[54],placeholder:'例如：40',why:'★ code 段实测 54 —— 对偶可行但很松（真正的最优值是 30.75）。'},
+     {kind:'simulate',q:'强对偶证书里对偶最优值 $b^{T}y$ 等于多少（保留两位小数）？',expect:[30.75],placeholder:'例如：10.00',why:'★ code 段实测 $|z - b^{T}y| = 0$，两边同为 30.75 —— 这就是定理 29.4。'},
+     {kind:'judge',q:'互补松弛在最优处表现为「六个乘子与松弛的乘积全为 0」。',answer:true,why:'★ code 段实测六个乘积都是 0（最大 1.8e-15）：紧约束配正乘子，松约束配零乘子。'},
     ],bookExercises:[
      {id:'29.3-1',page:872,star:0,statement:'29.3-1 Formulate the dual of the linear program given in lines (29.6)3(29.10) on page 852.',hint:'照本关的 TAKE-DUAL 三步：$\max \\to \\min$、$c$ 与 $b$ 互换、$A \\to A^{T}$ 且 $\\le \\to \\ge$。写成对偶后可以用 C 程序设计成两个 LP 分别求解，比较两边最优值。'},
      {id:'29.3-5',page:872,star:0,statement:'29.3-5 Show that the dual of the dual of a linear program is the primal linear program.',hint:'对 $(A, b, c)$ 的原始做两次机械变换：第一次得 $(A^{T}, c, b)$ 的对偶，第二次再变换一次就回到 $\\max c^{T}x$ s.t. $Ax \\le b$ —— 注意两次变换都保持 $\\ge 0$ 与非负约束的对应关系。'},

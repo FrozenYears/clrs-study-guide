@@ -385,6 +385,8 @@ int main(void)
       why:'★ C 的 % 对负数给负余数；不修正是真实 bug（part 3 抓到）。'},
      {kind:'simulate',q:'C 程序 part 2 的虚假命中个数是多少？（填整数）',expect:[3],placeholder:'例如：1',
       why:'3 —— 习题 32.2-1 的原题答案。'},
+     {kind:'single',q:'指纹不等的两个窗口，还有必要逐字符验证吗？',options:['需要，指纹本来就可能碰撞','**不需要，指纹不等必然不匹配**','只有当 $q$ 是素数时才不需要','只有当 $d$ 是 $2$ 的幂时才不需要'],answer:1,why:'★ 指纹是匹配的**必要条件**：哈希不同则窗口内容必不同，可以直接跳过。这正是它把最坏 $\Theta((n-m+1)m)$ 降到期望 $O(n+m)$ 的全部来源。'},
+     {kind:'judge',q:'取模的 $q$ 越小，虚假命中就越多。',answer:true,why:'★ 习题 32.2-1 取 $q = 11$ 产生了 3 个虚假命中（C 程序完整复现）；同一程序改用 $q = 97$ 跑 200 组随机测试，位移集合与朴素法完全一致 —— 期望时间 $O(n+m)$ 的前提就是 $q$ 够大且随机。'},
     ],bookExercises:[
      {id:'32.2-1',page:966,star:0,statement:'32.2-1 Working modulo q = 11, how many spurious hits does the Rabin-Karp matcher encounter in the text T = 314',hint:'按 C 程序 part 2 的方式逐窗口算 mod 11：指纹 4 的窗口有 4 个，其中 "26" 是真命中 —— 虚假命中 3 个。'},
      {id:'32.2-4',page:967,star:0,statement:'most one chance in 1000 that A(x) = B(x), whereas if the two files are the same,',hint:'把 $n$ 位文件按 $d = 2$、模大素数做指纹：指纹相等（大概率）则 $A = B$ —— 这是"指纹术"（fingerprinting）思想的直接应用。'},

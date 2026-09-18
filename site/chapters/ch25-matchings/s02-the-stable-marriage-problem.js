@@ -411,6 +411,9 @@ int main(void)
       why:'★ 原书 p.721 给出 3 女 3 男有多个稳定匹配的例子；但**GS 的输出**唯一（本关例子恰好只有 1 个稳定匹配）。'},
      {kind:'simulate',q:'C 程序 part 2 枚举出的稳定匹配数是多少？（填数字）',expect:[1],placeholder:'例如：2',
       why:'1 个（原书：本例稳定匹配唯一）。'},
+     {kind:'single',q:'为什么 Gale-Shapley 的时间由 $n^2$ 而非更高次幂决定？',options:['因为只有 $n$ 个人','**因为每对（男,女）至多被求婚一次，最多 $n^2$ 次求婚**','因为每轮至少匹配一对','因为偏好表是 $n \\times n$ 的'],answer:1,why:'★ analyze 第一条：求婚单调前进（男方从最喜欢的开始往下走），次数上界 $n^2$。'},
+     {kind:'simulate',q:'原书 4$\\times$4 偏好表共有多少种完美匹配（填数字）？',expect:[24],placeholder:'例如：16',why:'★ analyze 段标了 24 = $4!$；C 程序暴力枚举全部 24 种，其中稳定的只有 1 个。'},
+     {kind:'judge',q:'女方求婚版 Gale-Shapley 的结果，对每个女方都是最优稳定伴侣，对每个男方都是最差稳定伴侣。',answer:true,why:'★ analyze 第二、三条：所以「谁求婚谁占优」—— 这也是住院医师匹配里申请方主动的原因。'},
     ],bookExercises:[
      {id:'25.2-1',page:723,star:0,statement:'Suppose that we have n women and n men... ',hint:'按本关 algorithm 手工模拟：每个女方按偏好表依次求婚，男方择优；记录每次求婚与被拒/换人。'},
      {id:'25.2-2',page:723,star:0,statement:'Verify that there are no blocking pairs in the stable matching...',hint:'对每一对未配对的 (w,m) 检查是否双方都更喜欢对方 —— 这正是 C 程序 `has_blocking_pair` 的实现（全对扫描）。'},

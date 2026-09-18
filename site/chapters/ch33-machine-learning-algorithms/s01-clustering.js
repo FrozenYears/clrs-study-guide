@@ -218,6 +218,9 @@ int main(void)
       why:'★ 只保证局部最优；对初始化敏感（习题 33.1-2）。'},
      {kind:'simulate',q:'C 程序 part 1 在第几轮收敛（零移动）？',expect:[2],placeholder:'例如：5',
       why:'第 2 轮 —— 三个自然簇分得开，第 1 轮移动 15 个点后即稳定。'},
+     {kind:'single',q:'Lloyd 迭代的每一步里，目标函数 $f$ 会怎样变化？',options:['**单调不增**','单调不减','先增后减','可能大幅震荡'],answer:0,why:'★ 分配步（每点归最近中心）与更新步（中心取簇内均值）各自都不增加 $f$ —— 这就是它每一步都不「更差」的原因。C 程序对每轮都断言了单调不增。'},
+     {kind:'judge',q:'$k$-means 的最终结果可能因初始化不同而不同。',answer:true,why:'★ 单调不增只保证降到局部最优（analyze 表第三行明写「收敛点不保证全局最优（对初始化敏感）」）。C 程序 30 个点、3 簇的例子 2 轮收敛到 $f = 462.7$，但换个初始化会落到别的局部解。'},
+     {kind:'simulate',q:'C 程序 part 1 收敛时的目标函数 $f$ 是多少？（填一位小数）',expect:[462.7],placeholder:'例如：100.0',why:'462.7 —— 程序打印在第 2 轮（零移动）收敛时的 $f$ 值；analyze 表里也把这个数字存成了曲线基准。'},
     ],bookExercises:[
      {id:'33.1-1',page:1013,star:0,statement:'As Figure 33.2 shows, Lloyd’s procedure can also apply to "vector quantization."',hint:'把 $\\lVert x_i - c_{S(i)}\\rVert^{2}$ 展开，用"每个点恰属一个簇"把双重求和换成按簇分组的形式。'},
      {id:'33.1-4',page:1013,star:0,statement:'As Figure 33.2 shows, Lloyd’s procedure can also apply to "vector quantization."',hint:'一维时把点排序，最优 k-聚类必然是"切 k−1 刀"的连续段 —— 动态规划即可多项式求解。'},

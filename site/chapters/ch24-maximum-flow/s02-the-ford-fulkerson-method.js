@@ -287,6 +287,9 @@ int main(void)
       why:'★ BFS 选最短增广路后，次数被证明为 O(VE)，**与容量无关** —— 这正是它优于一般 FF 之处。'},
      {kind:'simulate',q:'C 程序里 Edmonds-Karp 实际增广了几次？（填数字）',expect:[3],placeholder:'例如：5',
       why:'3 次（瓶颈 12、4、7），|f| = 23。'},
+     {kind:'simulate',q:'C 程序里第一条增广路 $s \\to v_1 \\to v_3 \\to t$ 的瓶颈值是多少？',expect:[12],placeholder:'例如：4',why:'★ code 段第 1 条实测：瓶颈 12 —— 瓶颈值取增广路上最小的残量。'},
+     {kind:'judge',q:'第三条增广路 $s \\to v_2 \\to v_4 \\to v_3 \\to t$ 用到了反向边来撤销已有的流。',answer:true,why:'★ code 段明标「含反向调整」：残量网络里的反向边正是 Ford-Fulkerson 能改主意的机制。'},
+     {kind:'single',q:'为什么这一节叫 Ford-Fulkerson **method** 而不是 algorithm？',options:['**因为「怎么找增广路」留给了实现（BFS → Edmonds-Karp）**','因为它不是贪心算法','因为它不是多项式时间','因为它只能处理整数容量'],answer:0,why:'★ map 段的原话：找路方式未指定所以是方法；一旦规定用 BFS 选路就得到 Edmonds-Karp 算法。'},
     ],bookExercises:[
      {id:'24.2-1',page:692,star:0,statement:'Prove that the summations in equation (24.5) can be extended to sum over all vertices V...',hint:'补上零项：$f(u,v)=0$ 当 $(u,v) \\notin E$；以及 $f^\\prime$ 在各点上的守恒式 —— 逐项验证扩展后不改变值。'},
      {id:'24.2-2',page:692,star:0,statement:'Show how to convert the problem of finding a flow f that obeys these additional constraints into the problem of finding a maximum flow...',hint:'点容量 $l(v) \\le f_{in}(v) \\le c(v)$：把每个点拆成 $v_{in} \\to v_{out}$ 带该容量，原入边接 $v_{in}$、出边接 $v_{out}$ —— 结点容量变边容量。'},

@@ -408,6 +408,9 @@ int main(void)
       why:'★ √V 轮 × 每轮 O(E)。'},
      {kind:'simulate',q:'C 程序 part 1 中 HK 与 Kuhn 不一致的次数是多少？（填数字）',expect:[0],placeholder:'例如：1',
       why:'0 次（300 组随机图）—— 两种独立算法的互证。'},
+     {kind:'single',q:'Hopcroft-Karp 每一轮的实现代价是多少（三阶段合起来）？',options:['$O(E \\sqrt{V})$','**$O(E)$**','$O(V^2)$','$O(E \\lg V)$'],answer:1,why:'★ analyze 条的对照：每轮 $O(E)$、轮数 $O(\\sqrt V)$，乘积才是 $O(E\\sqrt V)$。'},
+     {kind:'simulate',q:'C 程序里 300 组随机二分图的平均最大匹配是多大（保留一位小数）？',expect:[6.6],placeholder:'例如：5.0',why:'★ code 段实测平均 6.6 —— 被 $|L|=7$ 卡住：匹配数不可能超过较小的一侧。'},
+     {kind:'judge',q:'把「一次一条增广路」改成「一轮一批互不相交的最短增广路」，复杂度就从 $O(VE)$ 降到 $O(E\\sqrt{V})$。',answer:true,why:'★ map 段原话：这就是复杂度的全部来源 —— 批处理让轮数从 $O(V)$ 降到 $O(\\sqrt V)$。'},
     ],bookExercises:[
      {id:'25.1-1',page:715,star:0,statement:'Use the Hopcroft-Karp algorithm to find a maximum matching for the graph in Figure 25.1.',hint:'照 C 程序 part 1 的思路手工做：先贪心得一个匹配，再分层找等长增广路批次 —— 每轮记录匹配大小直到不再增大。'},
      {id:'25.1-4',page:715,star:0,statement:'Show how to bound the number of iterations of the the repeat loop of lines 2\u20135 of HOPCROFT-KARP by \u02d9 p',hint:'两段论证（见本关 derivations）：路长 ≤ √V 的轮数 O(√V)；路长 > √V 后剩余增广次数也 O(√V)。'},

@@ -479,6 +479,8 @@ int main(void)
       why:'★ 试除跑 $\\Theta(\\sqrt{a})$ 次循环 = 输入位长的指数；多项式时间必须按 $\\lg a$ 计（p.904）。'},
      {kind:'simulate',q:'C 程序 part 1 在 10000 以内筛出多少个素数？（填整数）',expect:[1229],placeholder:'例如：1200',
       why:'1229 —— 与素数定理 $n/\\ln n \\approx 1086$ 同一量级。'},
+     {kind:'single',q:'数论算法的「多项式时间」是按什么尺度计的？',options:['按整数 $a$ 本身的大小','**按输入的位长 $\lg a$**','按 $a$ 的素因子个数','按模数 $n$ 的大小'],answer:1,why:'★ 本关 map 段点明：数论算法的时间按输入的**位数**计，不是按 $a$ 本身；analyze 表把「多项式时间」标成 $\text{poly}(\lg a)$。所以试除法（要试到 $\sqrt{a}$）是指数级的。'},
+     {kind:'judge',q:'除法定理里的商 $q$ 与余数 $r$ 是唯一的。',answer:true,why:'★ 定理 31.1（本关 prove 段逐字陈述的那条）：$a = qn + r$ 且 $0 \le r < n$ 时 $q, r$ 唯一。C 程序对 $a = -17, n = 5$ 得 $q = -4, r = 3$ —— 注意 $r$ 不是 $-2$。'},
     ],bookExercises:[
      {id:'31.1-1',page:909,star:0,statement:'31.1-1 Prove that if a>b>0 and c = a + b, then c mod a = b.',hint:'直接算 $c \\text{ mod }a = (a + b) \\text{ mod }a = b \\text{ mod }a$，再用 $0 \\le b < a$ —— 除法定理的唯一性一步收尾。'},
      {id:'31.1-2',page:909,star:0,statement:'31.1-2 Prove that there are infinitely many primes. (Hint: Show that none of the primes',hint:'构造 $N = (2,3,5,\dots,p_k)$ 的乘积加 1：$N \bmod p_i = 1$ 对每个 $p_i$ 成立，所以 $N$ 的素因子不在列表里。'},

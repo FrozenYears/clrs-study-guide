@@ -413,6 +413,9 @@ int main(void)
       why:'★ n−1 次 EXTEND × 每次 Θ(n³)。'},
      {kind:'simulate',q:'C 程序中 Figure 23.1 的图（n=5）需要几次 EXTEND？（SLOW，填数字）',expect:[4],placeholder:'例如：5',
       why:'n − 1 = 4（C 程序 s01 段的计数）。'},
+     {kind:'single',q:'重复平方（FASTER-APSP）的运行时间是？',options:['$\\Theta(n^4)$','**$\\Theta(n^3 \\lg n)$**','$\\Theta(n^3)$','$\\Theta(n^2 \\lg n)$'],answer:1,why:'★ 本关 analyze 的两条对照：SLOW-APSP 是 $\\Theta(n^4)$，重复平方是 $\\Theta(n^3 \\lg n)$。'},
+     {kind:'single',q:'单次 EXTEND（一次「最短路矩阵乘法」）的时间是？',options:['$\\Theta(n^2)$','**$\\Theta(n^3)$**','$\\Theta(n^4)$','$\\Theta(n \\lg n)$'],answer:1,why:'★ 三重循环 $i,j,k$ 各走一遍 → 单次 $\\Theta(n^3)$；SLOW-APSP 要做 $n-1$ 次，所以总共 $\\Theta(n^4)$。'},
+     {kind:'judge',q:'重复平方把矩阵自乘次数从 $n-1$ 压到了 $\\lceil \\lg(n-1) \\rceil$。',answer:true,why:'★ 用倍增代替逐个相乘：n=5 时 $\\lceil \\lg 4 \\rceil = 2$，C 程序实测两条路结果一致。'},
     ],bookExercises:[
      {id:'23.1-1',page:692,star:0,statement:'Run SLOW-ALL-PAIRS-SHORTEST-PATHS on the weighted, directed graph of Figure 23.1...',hint:'照 C 程序 s01 段的打印逐矩阵抄：L^(1) = W，L^(2)、L^(3)、L^(4) 依次收敛。'},
      {id:'23.1-2',page:692,star:0,statement:'Show that matrix L(0) ... ',hint:'$L^{(0)}$ 的定义：0 条边的最短路 = 对角线 0、其余 ∞ —— 它是 min-+ 代数下的"乘法单位元"。'},

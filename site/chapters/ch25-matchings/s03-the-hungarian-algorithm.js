@@ -404,6 +404,9 @@ int main(void)
       why:'★ 贪心会掉进局部最优（C 程序对照给出次优值）；需要全局对偶论证。'},
      {kind:'simulate',q:'C 程序 part 3 的最优代价是多少？（填数字）',expect:[13],placeholder:'例如：15',
       why:'13（匈牙利与 24 种暴力枚举一致）。'},
+     {kind:'single',q:'匈牙利算法的时间是多少？',options:['$O(n!)$','**$O(n^3)$**','$O(n^2)$','$O(2^n)$'],answer:1,why:'★ analyze 第一条：$O(n^3)$ 对 $n!$ 的差别在 4$\\times$4 时还只是 24，规模一大就天差地别。'},
+     {kind:'single',q:'C 程序 part 3 的最优指派中，1 号工人分到哪个任务？',options:['任务 1','**任务 2**','任务 3','任务 4'],answer:1,why:'★ code 段实测的指派是 1→2、2→1、3→3、4→4，总代价 13。'},
+     {kind:'judge',q:'对偶势函数满足 $u_i + v_j \\ge w(i,j)$ 时，势和给出任何完美匹配权重的上界，等号成立即为最优。',answer:true,why:'★ analyze 第三条「对偶可行性」—— 这就是 26 章线性规划对偶思想的雏形。'},
     ],bookExercises:[
      {id:'25.3-1',page:748,star:0,statement:'Use the Hungarian algorithm to find a maximum-weight perfect matching... ',hint:'照本关 pseudocode：初始化势 → 紧边图上增广 → 不完美就调势；每轮记录匹配与势值，直到紧边完美匹配出现。'},
      {id:'25.3-2',page:748,star:0,statement:'How can you solve the assignment problem... ',hint:'若目标是最小化成本：把 $w$ 换成 $-w$（或对最大权重 $W$ 用 $W-w$），同一算法即可 —— 对偶势的可行方向相应翻转。'},

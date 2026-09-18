@@ -481,6 +481,8 @@ int main(void)
       why:'★ 系数一正一负是常态：$3 = 30·(-2) + 21·3$。'},
      {kind:'simulate',q:'EXTENDED-EUCLID(30, 21) 返回的 d 是多少？（填整数）',expect:[3],placeholder:'例如：7',
       why:'3 —— 且 3 = 30×(−2) + 21×3（C 程序打印并断言）。'},
+     {kind:'single',q:'EUCLID 在最坏情形下的模运算次数由什么刻画？',options:['素数分布','**连续 Fibonacci 数**','$\varphi(a)$ 的大小','$\lg \lg a$'],answer:1,why:'★ 定理 31.11：最坏输入就是连续 Fibonacci 数。C 程序里 $\gcd(F_{21}, F_{20}) = \gcd(10946, 6765)$ 恰好递归 20 次，一次不多一次不少。'},
+     {kind:'simulate',q:'C 程序里 EXTENDED-EUCLID$(899, 493)$ 返回的 Bezout 系数 $x$ 是多少？（填整数，带正负号）',expect:[-6],placeholder:'例如：-6',why:'-6 —— 程序打印 $(d, x, y) = (29, -6, 11)$，回代 $899 \times (-6) + 493 \times 11 = 29 = \gcd$；系数带负号，正是「Bezout 系数不一定非负」的现成反例。'},
     ],bookExercises:[
      {id:'31.2-2',page:915,star:0,statement:'31.2-2 Compute the values (d,x,y) that the call EXTENDED-EUCLID .899,493/ returns.',hint:'手工追一遍递归（899 mod 493 = 406 → 87 → 58 → 29 → 0），再回代拼系数 —— 答案 (29, −6, 11) 已由 C 程序验证。'},
      {id:'31.2-4',page:915,star:0,statement:'31.2-4 Rewrite EUCLID in an iterative form that uses only a constant amount of memory',hint:'递归只有一层依赖（tail call）：用 while (b != 0) { (a, b) = (b, a % b); } 即可 —— 需要的正是扩展版时多带两个变量的滚动更新。'},

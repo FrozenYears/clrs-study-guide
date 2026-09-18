@@ -540,6 +540,9 @@ int main(void)
       why:'★ 原书 p.841：精确穿点等于把测量误差也拟合进去；最小二乘的意义在过定系统。'},
      {kind:'simulate',q:'C 程序 part 3c 用原书五点数据拟合出的二次项系数 $c_2$ 是多少？（填数值，保留三位小数）',expect:[0.214,0.2135,0.2145],placeholder:'例如：0.500',
       why:'0.214 —— 与原书 $F(x) = 1.200 - 0.757x + 0.214x^{2}$ 一致（阈值 1e-3）。'},
+     {kind:'simulate',q:'原书五点数据拟合出的常数项系数 $c_0$ 是多少（保留三位小数）？',expect:[1.2],placeholder:'例如：0.500',why:'★ code 段实测 $F(x) = 1.200 - 0.757x + 0.214x^2$，与原书 Figure 28.3 一致。'},
+     {kind:'single',q:'为什么最小二乘的正规方程一定有唯一解？',options:['因为 $A$ 是方阵','**因为系数矩阵 $A^{T}A$ 对称正定**','因为方程个数等于未知数个数','因为残差恰好为 0'],answer:1,why:'★ map 段第三条：正规方程 $A^{T}Ac = A^{T}y$ 的系数矩阵恰是 $A^{T}A$ —— 正定，所以可逆。'},
+     {kind:'single',q:'对称正定的定义要求 $x^{T}Ax > 0$ 对哪些 $x$ 成立？',options:['所有 $x$','**一切 $x \\neq 0$**','只有单位向量','只有分量全正的向量'],answer:1,why:'★ analyze 第一条定义：$x = 0$ 时必然等于 0，所以条件只对非零向量提。'},
     ],bookExercises:[
      {id:'28.3-4',page:846,star:0,statement:'28.3-4 Prove that the determinant of each leading submatrix of a symmetric positivedefinite matrix is positive.',hint:'对前导子矩阵 $A_k$ 用定义：取 $x = (x_k, 0)$ 代入 $x^{T}Ax$，立刻看出 $A_k$ 必须正定（这个构造在引理 28.4 的证明里就用了）。'},
      {id:'28.3-5',page:846,star:0,statement:'28.3-5 Let A k denote the kth leading submatrix of a symmetric positive-definite matrix A.',hint:'把 $\\det(A_k)/\\det(A_{k-1})$ 与第 $k$ 个主元联系起来（提示里给的就是这个比率）—— 正定性 ⟺ 所有前导行列式为正（Sylvester 判据）。'},

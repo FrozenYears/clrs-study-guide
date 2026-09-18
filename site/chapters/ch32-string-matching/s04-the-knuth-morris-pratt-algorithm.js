@@ -400,6 +400,8 @@ int main(void)
       why:'★ 命中后 q = π[m]，可以继续找重叠匹配（如 a^30 里的连续匹配）。'},
      {kind:'simulate',q:'C 程序 part 5 里 KMP 的比较次数是多少？（填整数）',expect:[57],placeholder:'例如：108',
       why:'57 —— 同一输入下朴素要 108 次。'},
+     {kind:'single',q:'KMP 相对 32.3 的自动机，把额外空间压到了多少？',options:['$O(m|\Sigma|)$','**$O(m)$**','$O(n)$','$O(m^{2})$'],answer:1,why:'★ 只存 $m$ 个整数的前缀函数 $\pi$（例：$\pi(\text{ababaca}) = (0,0,1,2,3,0,1)$），而自动机要一整张 $O(m|\Sigma|)$ 的转移表。时间两者同为 $\Theta(n+m)$ —— KMP 用最少的空间拿到线性时间。'},
+     {kind:'judge',q:'在 $T = a^{30}$、$P = aaab$ 上 KMP 的比较次数明显少于朴素匹配。',answer:true,why:'★ C 程序实测 KMP 57 次 vs 朴素 108 次。朴素法在每个位移都白比到第 4 位才失配，KMP 沿 $\pi$ 链回退、不回退文本指针，所以省掉了重复比较。'},
     ],bookExercises:[
      {id:'32.4-1',page:984,star:0,statement:'32.4-1 Compute the prefix function Ω for the pattern ababbabbabbababbabb .',hint:'照 C 程序 compute_prefix 的递推逐位算：每一步沿失败链回退后看能否延长。'},
      {id:'32.4-4',page:985,star:0,statement:'32.4-4 Use an aggregate analysis to show that the running time of KMP-MATCHER is Θ(n).',hint:'聚集分析：q 的每次上升 ≤ 1 且非负 → 总回退 ≤ n —— 本关"收支账本"的推导就是答案。'},

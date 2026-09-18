@@ -236,6 +236,8 @@ int main(void)
       why:'★ GRADIENT-DESCENT-CONSTRAINED 的第 7 行；投影非扩张，不破坏收敛。'},
      {kind:'simulate',q:'C 程序 part 3 里 30 步后的 f 量级是多少？（填 1.6e-08 形式的指数）',expect:[8],placeholder:'例如：6',
       why:'1.64e-08 —— 指数 8；15.9 × 0.49^30。'},
+     {kind:'single',q:'本关的二次目标上，步长要满足什么条件才不会发散？',options:['$\eta > 0$ 随意取值','**$\eta < 2/L$**','$\eta < 1$ 且与 $L$ 无关','必须取 $\eta = 1$'],answer:1,why:'★ analyze 表把「二次目标的稳定域」标成 $\eta < 2/L$。本节二次目标的 $L = 2$，所以要求 $\eta < 1$；C 程序取 $\eta = 0.3$，每步严格乘 $(1-\eta)^2 = 0.49$，30 步后 $f$ 降到 1.6e-08。'},
+     {kind:'simulate',q:'C 程序 part 4 里投影版 30 步后的 $f$ 量级是多少？（填 1.2e-09 形式的指数）',expect:[9],placeholder:'例如：-3',why:'9 —— 程序打印投影版 30 步后 $f = 1.2\text{e-}09$、$w = (1.200, -0.700)$（投影到 $|w|_\infty \le 2$ 内）。与无约束版的 1.6e-08 相比，投影并没有拖慢收敛。'},
     ],bookExercises:[
      {id:'33.3-1',page:1037,star:0,statement:'In order to run GRADIENT-DESCENT-CONSTRAINED for any problem, you need to implement the projection step, as well as t o compute bounds on R and L.',hint:'从凸性的定义不等式出发，用"两点连线在函数图象上方"的几何意义推出一阶下界（切线在图象下方）。'},
      {id:'33.3-4',page:1037,star:0,statement:'In order to run GRADIENT-DESCENT-CONSTRAINED for any problem, you need to implement the projection step, as well as t o compute bounds on R and L.',hint:'逐项看式 (33.32)：平方项是凸的、交叉项写成二次型后半正定 —— Hessian 半正定即凸。'},

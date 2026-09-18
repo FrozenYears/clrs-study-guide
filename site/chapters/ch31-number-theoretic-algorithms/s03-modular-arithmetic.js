@@ -483,6 +483,8 @@ int main(void)
       why:'★ ord = φ(7) → 3 的幂跑遍全群；C 程序的阶表确认。'},
      {kind:'simulate',q:'C 程序 part 3 里 |Z_7*| 是多少？（填整数）',expect:[6],placeholder:'例如：7',
       why:'6 —— 与 7 互素的元素个数，等于 φ(7)。'},
+     {kind:'single',q:'有限群 $(S, \circ)$ 的子群 $(S\prime, \circ)$ 的阶与 $|S|$ 是什么关系？',options:['$|S\prime|$ 是 $|S|$ 的倍数','**$|S\prime|$ 整除 $|S|$**','两者必然相等','没有必然关系'],answer:1,why:'★ Lagrange 定理（本关 prove 段逐字陈述的那条）：子群的阶整除群阶。C 程序对 $\mathbb{Z}_7^*$ 验出每个元素的阶都整除 6 —— 这是 31.6 与 31.8 的地基。'},
+     {kind:'judge',q:'穷举两两相乘就能验证 $\mathbb{Z}_7^*$ 的封闭性，并逐个求出每个元素的逆元。',answer:true,why:'★ C 程序 part 3 对 $\mathbb{Z}_7^* = \{1,2,3,4,5,6\}$ 做了这件事：两两相乘全落在集合内（封闭），每个元素都有逆（$6 \times 6 \equiv 1$ 等），四公理逐条可查。'},
     ],bookExercises:[
      {id:'31.3-1',page:923,star:0,statement:'31.3-1 Draw the group operation tables for the groups (Z 4 ; C 4 ) and (Z −',hint:'把群表画成 4×4 / 6×6 方阵：每行每列都是群元素的一个排列（拉丁方性质）—— 逆元存在的直观体现。'},
      {id:'31.3-2',page:923,star:0,statement:'31.3-2 List all subgroups of Z 9 and of Z −',hint:'子群由生成元给出：$\\mathbb{Z}_9$ 的加法子群是 $\\langle 0 \\rangle, \\langle 3 \\rangle, \\langle 1 \\rangle$；$\\mathbb{Z}_9^*$（={1,2,4,5,7,8}）的子群用阶的因子枚举。'},

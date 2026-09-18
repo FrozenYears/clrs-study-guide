@@ -275,6 +275,9 @@ int main(void)
       why:'★ 匹配边需两端各异 → 上界 min(|L|,|R|)；C 程序 part 3 正是被 |R|=3 卡住。'},
      {kind:'simulate',q:'C 程序 part 3 的图最大匹配是多少？（填数字）',expect:[3],placeholder:'例如：4',
       why:'3（|R| = 3 的上限；实测匹配对 3 组）。'},
+     {kind:'single',q:'C 程序 part 3 得到的匹配包含哪一对？',options:['$(u_1,v_2)$','**$(u_1,v_1)$**','$(u_2,v_3)$','$(u_3,v_1)$'],answer:1,why:'★ code 段实测的匹配对是 $(u_1,v_1)$、$(u_3,v_3)$、$(u_4,v_2)$。'},
+     {kind:'judge',q:'归约后网络的规模仍是 $\\Theta(E)$ —— 因为 $|E| + |V| \\le 3|E|$。',answer:true,why:'★ analyze 段第一条：往里加源、加汇只增加线性条数的边，不改变量级。'},
+     {kind:'simulate',q:'C 程序 part 3 的图左右两侧共几个顶点（$|L| + |R|$）？',expect:[7],placeholder:'例如：6',why:'★ code 段标了 $|L|=4$、$|R|=3$，合计 7 个顶点、6 条边。'},
     ],bookExercises:[
      {id:'24.3-1',page:704,star:0,statement:'Run the Ford-Fulkerson method on the flow network of Figure 24.8...',hint:'先按归约画 G′（单位容量），再手工跑 FF：每次找增广路 +1，直到无路可走 —— 匹配大小即 |f|。'},
      {id:'24.3-2',page:704,star:0,statement:'Let G = (V,E) be a bipartite graph with vertex partition V = L \u222a R... ',hint:'教材里的引理 24.9 证明：两个方向各自构造映射，再用引理 24.4 的净流等式对齐大小。'},

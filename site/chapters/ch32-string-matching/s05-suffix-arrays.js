@@ -391,6 +391,8 @@ int main(void)
       why:'★ 在未排序的 sa 上检查毫无意义（本站踩过的坑：k 溢出 → 段错误）。'},
      {kind:'simulate',q:'C 程序 part 6 的倍增轮数是多少？（填整数）',expect:[2],placeholder:'例如：3',
       why:'2 —— k=1 与 k=2 两轮后 6 个后缀的秩已全异（上界 ⌈lg 6⌉ = 3）。'},
+     {kind:'single',q:'C 程序算出的 "banana" 的 LCP 数组是哪一个？',options:['[0, 1, 3, 0, 0, 2]','**[1, 3, 0, 0, 2]**','[1, 2, 3, 0, 0]','[3, 3, 0, 0, 2]'],answer:1,why:'★ 程序打印 LCP = [1, 3, 0, 0, 2]，与暴力法一致。它按 $SA = [5,3,1,0,4,2]$ 的相邻后缀 ($,$a,$ana,$anana,$na,$nana) 求公共前缀长度；最大值 3 对应的就是最长重复子串 "ana"。'},
+     {kind:'judge',q:'倍增法建后缀数组的轮数有一个 $\lceil \lg n \rceil$ 的上界。',answer:true,why:'★ 每轮把参与比较的子串长度翻倍，所以至多 $\lceil \lg n \rceil$ 轮就全部区分开。"banana"（$n = 6$）实测只用 2 轮，上界是 $\lceil \lg 6 \rceil = 3$，与 C 程序打印一致。'},
     ],bookExercises:[
      {id:'32.5-1',page:994,star:0,statement:'32.5-1 Show the substr-rank and rank arrays before each iteration of the while loop of lines 10–19',hint:'照 C 程序 suffix_array 的每轮打印 substr-rank 与 rank 数组（本站调试时打印过中间轮次，可直接参照）。'},
      {id:'32.5-3',page:995,star:0,statement:'32.5-3 Given two texts, T 1 of length n 1 and T 2 of length n 2 , show how to use the suffix array and longest',hint:'把 $T_1\\#T_2$（分隔符）建后缀数组：跨过分隔符且 LCP 大的相邻对给出两串的最长公共子串。'},

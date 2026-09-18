@@ -281,6 +281,9 @@ int main(void)
       why:'★ 删掉 spawn/sync 得到的串行投影与并行版 work 相同。'},
      {kind:'simulate',q:'C 程序里 FIB(20) 的调用次数是多少？（填数字）',expect:[21891],placeholder:'例如：10000',
       why:'21891 = 2·F(21) − 1（C 程序 part 1 与迭代 Fibonacci 对照）。'},
+     {kind:'single',q:'贪心调度定理 26.1 给出的运行时间上界是？',options:['$T_P \\le T_1/P$','**$T_P \\le T_1/P + T_\\infty$**','$T_P \\le T_\\infty$','$T_P \\le 2T_1/P$'],answer:1,why:'★ analyze 第二条：把工作均摊到 $P$ 个处理器之外，还要再加一条关键路径 $T_\\infty$。'},
+     {kind:'simulate',q:'C 程序里 P-FIB(20) 的并行度约为多少（取整）？',expect:[1095],placeholder:'例如：1000',why:'★ code 段实测：span 20（$\\Theta(n)$）、work 21891，21891 / 20 ≈ 1095。'},
+     {kind:'judge',q:'贪心调度的运行时间与最优调度最多差 2 倍（推论 26.2）。',answer:true,why:'★ analyze 第三条「近似因子 2」，本关 prove 段的命题正是这条定理。'},
     ],bookExercises:[
      {id:'26.1-1',page:769,star:0,statement:'The text says that a deterministic race occurs... ',hint:'按 RACE-EXAMPLE 的 8 条指令手工交错：列出能让 x 最终为 1 与为 2 的两种交错序列。'},
      {id:'26.1-2',page:769,star:0,statement:'Draw the computation dag for P-FIB(4)... ',hint:'DAG 的节点是 strand（一段无并行指令），边是依赖；标出关键路径（长度 = span）。'},

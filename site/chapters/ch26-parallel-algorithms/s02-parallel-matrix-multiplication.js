@@ -276,6 +276,9 @@ int main(void)
       why:'★ 递归版 span 更大 → 并行度更小（C 程序实测 6096 vs 21845）。'},
      {kind:'simulate',q:'C 程序里 n=64 时循环版的 span 是多少？（填数字）',expect:[12],placeholder:'例如：8',
       why:'12 = 2·lg 64（两层并行循环）。'},
+     {kind:'simulate',q:'C 程序里 n=64 时递归版的 span 是多少？（填数字）',expect:[43],placeholder:'例如：20',why:'★ code 段实测：递归版 span 43，循环版只有 12 —— 递归多付了一个 $\\lg$ 因子。'},
+     {kind:'simulate',q:'C 程序里 n=64 时循环版的并行度约为多少（取整）？',expect:[21845],placeholder:'例如：10000',why:'★ 262144 / 12 ≈ 21845 —— work 相同而 span 小 3 倍多，并行度就高出 3 倍多。'},
+     {kind:'single',q:'两种写法的 work 相同，为什么递归版的 span 反而更大？',options:['因为递归版 work 更大','**因为递归版在外层 parallel for 里再套递归，span 从 $\\Theta(\\lg n)$ 变成 $\\Theta(\\lg^2 n)$**','因为函数调用有额外开销','因为递归版用了不同的算法'],answer:1,why:'★ analyze 第二、三条的对照：多一层对数因子，span 由 12 变成 43。'},
     ],bookExercises:[
      {id:'26.2-1',page:774,star:0,statement:'A parallel algorithm for matrix multiplication using parallel loops... ',hint:'按 P-MATRIX-MULTIPLY 的伪代码分析：两个 parallel for 各 Θ(lg n)、内层 n 次串行 → work Θ(n³)、span Θ(lg n)。'},
      {id:'26.2-2',page:774,star:0,statement:'\u0398(n 3 = lg 2 n), which is huge. (Problem 26-2 asks you to simplify this parallel algorithm at the expense of just a little less parallelism.)',hint:'习题 26-2：把 8 次 spawn 减少到更少（例如复用临时矩阵、合并累加），span 的递推会变成 $M_\\infty(n) = M_\\infty(n/2) + \\Theta(\\lg n)$ 的不同形式 —— 试给出常数更小的写法并比较并行度。'},

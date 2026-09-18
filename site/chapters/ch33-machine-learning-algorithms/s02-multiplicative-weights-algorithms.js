@@ -235,6 +235,8 @@ int main(void)
       why:'★ 对任意（甚至对抗的）序列，界都成立 —— 无统计假设。'},
      {kind:'simulate',q:'C 程序 part 2 里算法犯错多少次？（填整数）',expect:[133],placeholder:'例如：100',
       why:'133 —— 落在界 358.8 内，比最优专家（77）多 73%。'},
+     {kind:'single',q:'引理 33.3 的上界 $4.6\,m_{best} + 2\ln n$ 里，$2\ln n$ 这一项从哪来？',options:['专家个数乘某个常数','**势函数里 $n$ 个专家的初始权重贡献**','随机噪声','最优专家的犯错数'],answer:1,why:'★ 势函数从 $\sum_i w_i = n$ 出发（每人初始权重 1），每次犯错至少砍掉因子 $3/4$，取对数就把 $\ln n$ 带进上界。C 程序 $T = 200, n = 10$ 实测 $133 \le 4.6 \times 77 + 2\ln 10 = 358.8$。'},
+     {kind:'judge',q:'加权多数对任意专家序列都能给出与最优专家成比例的犯错上界。',answer:true,why:'★ analyze 表里「统计假设的个数」标的就是 0 —— 不需要任何分布假设，纯靠「犯错就乘 $1/2$」的降权。C 程序 $T = 200$ 实测算法 133 次、最优专家 77 次，稳稳落在 4.6 倍界内。'},
     ],bookExercises:[
      {id:'33.2-1',page:1021,star:0,statement:'D 2m − C 4 p m − ln n; and so the number of errors is at most twice the number of errors made by the best expert plus a term that is often slower growing than m − .',hint:'若有专家零犯错，势函数论证给出算法犯错 ≤ 2 ln n（加性项单独起作用）—— 用 Φ ≥ w_best = 1 直接读出。'},
      {id:'33.2-4',page:1022,star:0,statement:'Show that the expected number of mistakes made by this algorithm is dlg ne.',hint:'把"加权多数"换成"按权重抽样"：期望犯错数的界同样成立，且对手无法针对确定性行为设计序列 —— 随机化让上界对"自适应对手"也成立。'},
