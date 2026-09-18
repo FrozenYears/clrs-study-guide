@@ -95,7 +95,7 @@ export default {
     ],
     note:'★ 面板 ① 的三趟结果逐帧对应原书 Figure 8.3 的后三列（数据按渲染页坐标逐字核实）。'},
    {type:'code',title:'实测：不稳定真的会排错',
-    intro:'`c/radix_sort.c` 实现了稳定版与**故意不稳定**的版本（唯一区别：放置循环从反向改成正向），后者对特定输入给出**错误**的排序结果 —— 稳定性不是锦上添花，是正确性本身。',
+    intro:'`c/radix_sort.c` 实现了稳定版与**故意不稳定**的版本（唯一区别：放置循环的扫描方向 —— 稳定版从后往前扫；不稳定版从前往后扫、仍从桶尾往前填），后者对特定输入给出**错误**的排序结果 —— 稳定性不是锦上添花，是正确性本身。',
     pseudocodeRef:'RADIX-SORT',
     c:{file:'radix_sort.c',code:String.raw`/* radix_sort.c -- 8.3 节 RADIX-SORT 的实现与稳定性依赖验证。
  * 编译：gcc -std=c99 -Wall -Wextra -Werror -o radix_sort radix_sort.c
@@ -149,15 +149,17 @@ static int same_bag(const int *x, const int *y, int n)
     return memcmp(xs, ys, (size_t)n * sizeof(int)) == 0;
 }
 
-/* 不稳定版（从前往后扫）—— 用来证明稳定性是必要的 */
+/* 不稳定版 —— 用来证明稳定性是必要的。
+ * 仍然是 count[] 存「结束位置」，但正向扫描时从每个桶的**右端往前**填，
+ * 于是同一个桶里的元素相对次序被反转 —— 排序本身没有越界，只是不再稳定。 */
 static void counting_sort_by_digit_unstable(int *a, int n, int exp)
 {
     int out[MAXN], count[10] = {0};
     for (int i = 0; i < n; i++) count[(a[i] / exp) % 10]++;
     for (int i = 1; i < 10; i++) count[i] += count[i - 1];
-    for (int i = 0; i < n; i++) {   /* ★ 从前往后 → 不稳定 */
-        out[count[(a[i] / exp) % 10] - 1] = a[i];
-        count[(a[i] / exp) % 10]++;
+    for (int i = 0; i < n; i++) {   /* ★ 从前往后扫，却填在桶尾 → 桶内逆序 */
+        int d = (a[i] / exp) % 10;
+        out[--count[d]] = a[i];
     }
     memcpy(a, out, (size_t)n * sizeof(int));
 }
@@ -210,7 +212,7 @@ int main(void)
 `,
        notes:[{line:12,zh:'`counting_sort_by_digit`：第 2 行的展开 —— 按当前位（exp = 1/10/100…）做一次**稳定**计数排序（反向放置）。'},
               {line:24,zh:'`radix_sort`：第 1 行的循环。$d$ 由 `max_val` 的位数决定。'},
-              {line:54,zh:'★ `counting_sort_by_digit_unstable`：**正向**放置。排序仍有序，但相同位的相对次序被反转 —— 作为基数排序的一趟时会把上一趟的成果毁掉。'},
+              {line:54,zh:'★ `counting_sort_by_digit_unstable`：扫描方向反过来（从前往后），却仍从桶尾往前填 —— 同一个桶里的相对次序被**反转**。单看一趟，每个桶内部仍有序；但作为基数排序的一趟，它会把上一趟攒下的次序毁掉。'},
               {line:87,zh:'part 1：100 组三位数输入，稳定版全对。'},
               {line:92,zh:'★ part 2：不稳定版对 ⟨21,11,32,12⟩ 的输出**不是有序的**！个位趟（稳定必须）先按 1,1,2,2 分组时打乱了十位信息…… 正确性链条在这里断裂。'},
               {line:102,zh:'part 3：稳定版对同一输入给出正确结果。'}],

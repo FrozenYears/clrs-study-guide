@@ -388,7 +388,7 @@ int main(void)
       why:'★ TREE-MINIMUM：一路向左直到没有左孩子。它的正确性由 BST 性质两句话归纳保证。'},
      {kind:'judge',q:'SUCCESSOR 在最坏情况下可能需要 Ω(n) 时间。',answer:false,
       why:'★ 在一棵 $h$ 高的树里，SUCCESSOR 的两种情况都只走一条路径 → $O(h)$。当然若树退化成链（$h = n-1$），$O(h) = O(n)$ —— 但那是"树形"的锅，不是算法的锅。'},
-     {kind:'simulate',q:'从最小元开始，在 n 节点的 BST 上连续调用 n 次 TREE-SUCCESSOR，每条树边恰好被向上走一次。总代价是多少阶？（填：Θ 后跟表达式，如 Θ(n)）',expect:['Θ(n)','Θ(n)'],placeholder:'例如：Θ(n lg n)',
+     {kind:'single',q:'从最小元开始，在 n 节点的 BST 上连续调用 n 次 TREE-SUCCESSOR，每条树边恰好被向上走一次。总代价是多少阶？',options:['$\Theta(1)$','$\Theta(\lg n)$','**$\Theta(n)$**','$\Theta(n \lg n)$'],answer:2,
       why:'★ 习题 12.2-7：每条边恰好走一次 → 总代价 $\\Theta(n)$，摊还每次 $O(1)$ —— 单次最坏 $O(h)$ 与总代价 $\\Theta(n)$ 并不矛盾。'},
     ],
     bookExercises:[

@@ -539,7 +539,7 @@ int main(void) {
         { kind: 'judge', q: '无向图的 DFS 里可能出现前向边和横向边。', answer: false, why: '★★ 定理 20.10：无向图每条边非树即后向边，没有前向/横向边。' },
         { kind: 'judge', q: '若一条边 (u,v) 第一次被探索时 v 是灰色，则它是后向边（指向祖先）。', answer: true, why: '★★ 灰色顶点恰是当前 DFS-VISIT 递归栈里的祖先链。' },
         { kind: 'simulate', q: '原书 Figure 20.2 上 DFS，顶点 4（0 基 index 3，书顶点 4）的完成时间 f 是多少？填数字', expect: [5], placeholder: '例如：6', why: '★★ Part 3 实测 f[3]=5（区间 [4,5]）。' },
-        { kind: 'simulate', q: '同一 DFS 中，边 6→6（自环）被分类成哪种边？填：树/后向/前向/横向', expect: ['后向'], placeholder: '例如：树', why: '★★ 自环视为后向边（C 程序 Part 3 实测）。' },
+        { kind: 'single', q: '同一 DFS 中，边 6→6（自环）被分类成哪种边？', options: ['树边', '**后向边**', '前向边', '横向边'], answer: 1, why: '★★ 自环视为后向边（C 程序 Part 3 实测）。' },
       ],
       bookExercises: [
         { id: '20.3-2', page: 571, star: 0, statement: 'Show how to determine whether a directed graph G contains a cycle, and if so, how to find all the vertices that are in some cycle.', hint: 'DFS 出现后向边 ⇔ 有环（见 20.4 引理 20.11）。收集被后向边指到的祖先链即得一个环。' },

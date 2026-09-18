@@ -317,7 +317,7 @@ int main(void)
       why:'★ 原书 p.209："no comparisons between input elements occur anywhere in the code"。下界的前提模型不适用。'},
      {kind:'judge',q:'把第 11 行改成正向扫描后，COUNTING-SORT 的输出将不再是有序的。',answer:false,
       why:'★ 输出**仍然有序**，只是**不稳定**（相同值的相对次序被反转）。稳定与否影响的是卫星数据，不是有序性。'},
-     {kind:'simulate',q:'对 A = ⟨2,0,1⟩（k = 2）做计数排序：前缀和后 C = ？（填三个数，逗号分隔，如 1,2,3）',expect:['1,2,3'],placeholder:'例如：1,2,3',
+     {kind:'simulate',q:'对 A = ⟨2,0,1⟩（k = 2）做计数排序：前缀和后 C = ？（填三个数，逗号分隔，如 1,2,3）',expect:[1,2,3],placeholder:'例如：1,2,3',
       why:'数数：C = ⟨1,1,1⟩；前缀和：C[0]=1，C[1]=2，C[2]=3 → ⟨1,2,3⟩。C[2] = 3 = n。'},
     ],
     bookExercises:[

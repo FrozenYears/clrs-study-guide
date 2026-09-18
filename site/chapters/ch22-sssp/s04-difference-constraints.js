@@ -307,7 +307,7 @@ int main(void)
       why:'★ 定理 22.9 的第二个方向：沿负环求和导出 0 ≤ 负数的矛盾。'},
      {kind:'judge',q:'若 x 是可行解，x + 100 也是可行解。',answer:true,
       why:'★ 引理 22.8：差分约束只约束"差"，平移不变。'},
-     {kind:'simulate',q:'判定差分约束可行性用的是哪种算法的哪个功能？（填：负环检测）',expect:['负环检测'],placeholder:'例如：负环检测',
+     {kind:'single',q:'判定差分约束可行性用的是哪种算法的哪个功能？',options:['**Bellman-Ford 的负环检测**','Floyd-Warshall 的最短路矩阵','Dijkstra 的松弛','拓扑排序的入度检查'],answer:0,
       why:'★ 约束图跑 Bellman-Ford，负环 = 无解（C 程序 Part 2 的检测逻辑直接复用）。'},
      {kind:'judge',q:'约束 x_j − x_i ≤ b_k 对应的边方向是从 v_i 指向 v_j（减数指向被减数）。',answer:true,why:'★ 约束图构造：边 (v_i, v_j) 权 b_k（p.628）。'},
      {kind:'single',q:'引理 22.8（平移不变性）说：若 x 是可行解，则 x + d 也是可行解，因为差分约束只涉及什么？',options:['**变量的差**','单个变量的绝对值','乘积','最大值'],answer:0,why:'★ 差分约束只约束"差"，整体平移 d 不改变任何差（p.628）。'},

@@ -222,7 +222,7 @@ int main(void)
    {type:'drill',title:'检验一下',items:[
      {kind:'single',q:'一次旋转改变几条指针？',options:['3','5','7','O(h)'],answer:1,why:'★ 恰好 5 条指针改写 → O(1)。'},
      {kind:'judge',q:'旋转会改变节点的颜色。',answer:false,why:'★ 原书 p.336："Only pointers are changed by a rotation, and all other attributes in a node remain the same."'},
-     {kind:'simulate',q:'LEFT-ROTATE 的前提是什么？（填：x 的哪个孩子非 NIL）',expect:['右孩子','x.right','右'],placeholder:'例如：左孩子',
+     {kind:'single',q:'LEFT-ROTATE 的前提是什么？',options:['**$x$ 的右孩子非 NIL**','$x$ 的左孩子非 NIL','$x$ 的两个孩子都非 NIL','$x$ 必须是根'],answer:0,
       why:'★ y = x.right，y 上升 —— 前提是 x 的右孩子 ≠ NIL。'},
      {kind:'single',q:'LEFT-ROTATE 一共有多少行？',options:['8','**12**','15','O(h)'],answer:1,why:'★ 12 行 = 5 条指针改写 + 3 处边界判断（p.336）。'},
      {kind:'judge',q:'RIGHT-ROTATE 是 LEFT-ROTATE 的镜像。',answer:true,why:'★ 原书 p.337；习题 13.2-1 让你写它，C 程序 right_rotate 即镜像。'},

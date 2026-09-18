@@ -67,7 +67,7 @@ export default {
 #include <stdio.h>
 #define RED 0
 #define BLACK 1
-#define MAXN 64
+#define MAXN 256
 typedef struct node { int key; int color; struct node *left, *right, *p; } node_t;
 static node_t pool[MAXN]; static int used;
 static node_t *mk(int k, int c) { node_t *n = &pool[used++]; n->key = k; n->color = c; n->left = n->right = n->p = NULL; return n; }
@@ -80,11 +80,34 @@ static node_t *right_rotate(node_t *root, node_t *x) { node_t *y = x->left; x->l
 static node_t *rb_insert_fixup(node_t *root, node_t *z) { while (z->p && z->p->color == RED) { if (z->p == z->p->p->left) { node_t *y = z->p->p->right; if (y && y->color == RED) { z->p->color = BLACK; y->color = BLACK; z->p->p->color = RED; z = z->p->p; } else { if (z == z->p->right) { z = z->p; root = left_rotate(root, z); } z->p->color = BLACK; z->p->p->color = RED; root = right_rotate(root, z->p->p); } } else { node_t *y = z->p->p->left; if (y && y->color == RED) { z->p->color = BLACK; y->color = BLACK; z->p->p->color = RED; z = z->p->p; } else { if (z == z->p->left) { z = z->p; root = right_rotate(root, z); } z->p->color = BLACK; z->p->p->color = RED; root = left_rotate(root, z->p->p); } } } root->color = BLACK; return root; }
 static node_t *rb_insert(node_t *root, int key) { node_t *z = mk(key, RED); node_t *y = NULL, *x = root; while (x) { y = x; x = key < x->key ? x->left : x->right; } z->p = y; if (!y) root = z; else if (key < y->key) y->left = z; else y->right = z; return rb_insert_fixup(root, z); }
 static int height(const node_t *x) { if (!x) return -1; int l = height(x->left), r = height(x->right); return 1 + (l > r ? l : r); }
-int main(void) { setvbuf(stdout, NULL, _IONBF, 0); node_t *root = NULL; int keys[] = {11,2,14,1,7,15,5,8}; for (int i = 0; i < 8; i++) { root = rb_insert(root, keys[i]); assert(bh_ok && check_red(root) && root->color == BLACK); int n = 0; /* count */ void count(const node_t*x){if(!x)return;n++;count(x->left);count(x->right);} count(root); assert(height(root) <= 2 * (sizeof(int)*8 - __builtin_clz(8+1))); } printf("part 1: 8 次 RB-INSERT 后五条性质全满足（bh = %d，高 %d <= 2lg(n+1)）\n", bh_root(root), height(root)); /* 随机 100 key */ for (int i = 0; i < 100; i++) { root = rb_insert(root, i * 7 + 3); assert(bh_ok && check_red(root)); } printf("part 2: 100 个 key 全部插入后性质仍满足\n"); puts("all checks passed."); return 0; }
+int main(void) {
+  setvbuf(stdout, NULL, _IONBF, 0);
+  node_t *root = NULL;
+  int keys[] = {11, 2, 14, 1, 7, 15, 5, 8};
+  for (int i = 0; i < 8; i++) {
+    root = rb_insert(root, keys[i]);
+    assert(bh_ok && bh_root(root) >= 0 && check_red(root) && root->color == BLACK);
+    assert(height(root) <= 8);                     /* 性质 1：h <= 2·⌈lg(n+1)⌉ = 2·4 = 8（n = 8） */
+  }
+  printf("part 1: 8 次 RB-INSERT 后五条性质全满足（bh = %d，高 %d <= 2lg(n+1)）\n", bh_root(root), height(root));
+  for (int i = 0; i < 100; i++) {                   /* 再插 100 个 key，共 108 个结点 */
+    root = rb_insert(root, i * 7 + 3);
+    assert(bh_ok && bh_root(root) >= 0 && check_red(root));
+    assert(height(root) <= 14);                     /* 2·⌈lg(109)⌉ = 14 */
+  }
+  printf("part 2: 100 个 key 全部插入后性质仍满足（共 108 结点，高 %d）\n", height(root));
+  puts("all checks passed."); return 0;
+}
 `,
-    notes:[{line:1,zh:'红黑树插入的完整实现。'},{line:15,zh:'FIXUP 的三种情况。'},{line:18,zh:'验证：插入后所有路径黑高一致。'}],
-    tests:[{in:'依次插入 11,2,14,1,7,15,5,8',out:'每步后五条性质全满足'},{in:'随机 100 个 key',out:'全部插入成功且性质满足'}]},
-    mapping:[{pc:16,pcCode:'z.color = RED',c:'`z->color = RED;`'},{pc:17,pcCode:'RB-INSERT-FIXUP(T, z)',c:'`rb_insert_fixup(root, z);`'}]},
+    notes:[{line:1,zh:'红黑树插入的完整实现（含五条性质检查器 f_black / check_red）。'},
+           {line:15,zh:'RB-INSERT-FIXUP：叔叔红 → 变色并上移两层；叔叔黑 → 旋转 + 重上色。'},
+           {line:16,zh:'RB-INSERT 主体：BST 下降找插入位置，新结点恒红（对应伪代码第 1–17 行）。'},
+           {line:18,zh:'两个 part 的验证：8 次插入逐步断言；再插 100 个 key（共 108 结点）。'}],
+    tests:[{in:'依次插入 11,2,14,1,7,15,5,8',out:'part 1：五条性质全满足（黑高 2、高 3 ≤ 8）'},
+           {in:'再插入 100 个 key（i*7+3）',out:'part 2：共 108 结点，性质仍满足，高 10 ≤ 14'}]},
+    mapping:[{pc:9,pcCode:'if y == T.nil',c:'`if (!y) root = z;`'},
+             {pc:16,pcCode:'z.color = RED',c:'`mk(key, RED)`'},
+             {pc:17,pcCode:'RB-INSERT-FIXUP(T, z)',c:'`rb_insert_fixup(root, z)`'}]},
    {type:'analyze',title:'一本账',claims:[
      {expr:'O(\\lg n)',when:'RB-INSERT + FIXUP',page:338,source:'book'},
      {expr:'O(1)',when:'每次旋转',page:336,source:'book'},
@@ -111,7 +134,7 @@ int main(void) { setvbuf(stdout, NULL, _IONBF, 0); node_t *root = NULL; int keys
      {kind:'simulate',q:'原书 Figure 13.4 的序列中，插入 8 触发了几种 FIXUP 情况？（填数字）',expect:[3],placeholder:'例如：2',
       why:'情形 1（镜像，变色）→ 情形 2（三角，左旋）→ 情形 3（变色 + 右旋）—— 共 3 种情况连续触发。'},
      {kind:'judge',q:'RB-INSERT 的运行时间是 O(lg n)。',answer:true,why:'★ 情形 1 上移两层 → 最多 O(lg n) 次变色，外加 O(1) 旋转。'},
-     {kind:'simulate',q:'FIXUP 收尾后，根节点的颜色是？（填：黑 / 红）',expect:['黑','black','B'],placeholder:'例如：红',why:'★ 收尾第 16 行后 T.root.color = BLACK；根恒为黑。'},
+     {kind:'single',q:'FIXUP 收尾后，根节点的颜色是？',options:['**黑（BLACK）**','红（RED）','由插入位置决定','插入后根可能为红'],answer:0,why:'★ 收尾第 16 行后 T.root.color = BLACK；根恒为黑。'},
     ],bookExercises:[
      {id:'13.3-1',page:346,star:0,statement:'Line 16 of RB-I NSERT sets the color of the newly inserted node ´ to red. If in- stead ´’s co',hint:'书上是半截题干（若染黑会怎样）。染黑会违反性质 5（黑高不一致）—— 修复需要沿整条路径调整，代价 O(n) 而非 O(lg n)。'},
      {id:'13.3-2',page:346,star:0,statement:'Show the red-black trees that result after successively inserting the keys 41,38,31; 12,19,8',hint:'逐个画：每步 RB-INSERT + FIXUP。画到最后一个 key。'},

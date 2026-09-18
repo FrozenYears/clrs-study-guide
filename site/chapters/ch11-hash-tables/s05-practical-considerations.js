@@ -575,7 +575,7 @@ int main(void) {
         { kind: 'judge', q: '除法散列 $h(k) = k mod m$ 里，把 $m$ 选成 2 的幂是个坏主意。', answer: true,
           why: '★ 原书 11.3 的结论：$m$ 取 2 的幂时 $h(k)$ 只取决于 $k$ 的低若干位；若 key 低位雷同（如全是偶数），全部冲突。应选与 $2$ 互素的素数。' },
         { kind: 'simulate', q: '用面板①的初态（m=10, h1(k)=k mod 10, 插入 74,43,93,18,82,38,92），删除 43 后，槽 3 与槽 5 里分别是哪两个 key？（按"槽3, 槽5"填写，逗号分隔）',
-          expect: ['93, 92'], placeholder: '例如：12, 34',
+          expect: [93, 92], placeholder: '例如：12, 34',
           why: '★ 搬回法：93 上移到槽 3、92 上移到槽 5（与 Figure 11.6(b) 一致）。' },
       ],
       bookExercises: [

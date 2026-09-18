@@ -448,7 +448,7 @@ int main(void)
           why: '★ 选走一条边就把它关联的所有边删掉，于是 A 中边互不共享端点且不能再加边——是极大匹配（习题 35.1-2）。' },
         { kind: 'single', q: '为什么 |C| = 2|A| 而不是别的数？', options: ['每条边只加一个端点', '**每选一条边就把它的两个端点都加入 C**', 'A 是最小匹配', '覆盖大小随机'], answer: 1,
           why: '★ 第 5 行 `C = C ∪ {u,v}` 一次加两个端点。' },
-        { kind: 'simulate', q: '对 4 顶点路径 P_4 = a-b-c-d，APPROX-VERTEX-COVER 返回哪些顶点？近似比是多少？', expect: ['a', 'b', 'c', 'd'], placeholder: '例如：{a,b,c,d}，比值 2',
+        { kind: 'simulate', q: '对 4 顶点路径 a-b-c-d，APPROX-VERTEX-COVER 返回的顶点集合大小、以及最优解的大小各是多少？（依次填两个整数，空格分隔）', expect: [4, 2], placeholder: '例如：3 2',
           why: '先取 (a,b) 加 {a,b} 并删 (a,b),(b,c)；再取 (c,d) 加 {c,d}；得 {a,b,c,d} 大小 4，最优 {b,d} 大小 2，比值 2。' },
         { kind: 'judge', q: 'APPROX-VERTEX-COVER 的近似比 2 是紧的（存在实例恰好取到 2）。', answer: true,
           why: '★ 路径类图可让近似解恰好是最优解的 2 倍。' },

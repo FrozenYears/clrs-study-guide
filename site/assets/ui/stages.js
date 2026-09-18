@@ -924,6 +924,9 @@ function rDrill(stage, ctx) {
       body = h('div', { class: 'quiz__options' }, btns);
     } else if (it.kind === 'single') {
       const opts = it.options || [];
+      // 作者约定：正确项用 **…** 包裹（便于在源码里一眼找到，且必须与 answer 下标一致）。
+      // 这个标记是给作者看的，不是给读者的 —— 渲染前必须剥掉，否则正确项会被加粗、
+      // 等于作答前就把答案标出来了（判对错只看 answer，标记纯属冗余）。
       const btns = opts.map((o, oi) =>
         h('button', {
           class: 'quiz__opt', type: 'button', role: 'radio',
@@ -936,7 +939,7 @@ function rDrill(stage, ctx) {
             });
             setResult(i, ok, why);
           },
-        }, katex.renderMixed(o))
+        }, katex.renderMixed(typeof o === 'string' ? o.replace(/\*\*/g, '') : o))
       );
       body = h('div', { class: 'quiz__options' }, btns);
     } else if (it.kind === 'simulate') {

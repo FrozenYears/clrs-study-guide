@@ -50,15 +50,17 @@ static int same_bag(const int *x, const int *y, int n)
     return memcmp(xs, ys, (size_t)n * sizeof(int)) == 0;
 }
 
-/* 不稳定版（从前往后扫）—— 用来证明稳定性是必要的 */
+/* 不稳定版 —— 用来证明稳定性是必要的。
+ * 仍然是 count[] 存「结束位置」，但正向扫描时从每个桶的**右端往前**填，
+ * 于是同一个桶里的元素相对次序被反转 —— 排序本身没有越界，只是不再稳定。 */
 static void counting_sort_by_digit_unstable(int *a, int n, int exp)
 {
     int out[MAXN], count[10] = {0};
     for (int i = 0; i < n; i++) count[(a[i] / exp) % 10]++;
     for (int i = 1; i < 10; i++) count[i] += count[i - 1];
-    for (int i = 0; i < n; i++) {   /* ★ 从前往后 → 不稳定 */
-        out[count[(a[i] / exp) % 10] - 1] = a[i];
-        count[(a[i] / exp) % 10]++;
+    for (int i = 0; i < n; i++) {   /* ★ 从前往后扫，却填在桶尾 → 桶内逆序 */
+        int d = (a[i] / exp) % 10;
+        out[--count[d]] = a[i];
     }
     memcpy(a, out, (size_t)n * sizeof(int));
 }

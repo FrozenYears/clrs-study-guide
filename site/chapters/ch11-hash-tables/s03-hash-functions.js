@@ -377,7 +377,7 @@ int main(void)
       why:'★ 原书 p.286 的动机段；C 程序 part 4 实测：$h(k)=k mod 100$ 遇到"全是 100 的倍数"的 key → 50 个元素全撞一个槽。'},
      {kind:'judge',q:'乘法散列（multiply-shift）比除法散列更快、也更有性能保证。',answer:false,
       why:'★ 它确实更快（一次乘法 + 移位，且 $m$ 可取 2 的幂），但原书 p.286 明确说它不提供任何保证 —— 有保证的是随机散列（全域族）。'},
-     {kind:'simulate',q:'$h_{ab}(k) = ((ak+b) mod p) mod m$ 中，若 $p = 10007$、$m = 100$，则任意两个不同 key 的冲突概率上界是多少？（填小数，两位）',expect:['0.01','1/100'],placeholder:'例如：0.05',
+     {kind:'simulate',q:'$h_{ab}(k) = ((ak+b) mod p) mod m$ 中，若 $p = 10007$、$m = 100$，则任意两个不同 key 的冲突概率上界是多少？（填小数，两位）',expect:[0.01],placeholder:'例如：0.05',
       why:'全域族的定义：$\\le 1/m = 1/100 = 0.01$。C 程序 part 3 实测 0.00966 —— 低于上界。'},
     ],
     bookExercises:[

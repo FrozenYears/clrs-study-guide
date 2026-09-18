@@ -290,7 +290,7 @@ int main(void)
       why:'★ max 是半群合成（17.2-3 的框架）—— 定理 17.1 直接适用。'},
      {kind:'simulate',q:'Figure 17.4 的 9 个区间插入后，根结点的 max 是多少？（填数字）',expect:[30],placeholder:'例如：23',
       why:'最大的右端点是 [25,30] 的 30（C 程序 part 1 实测）。'},
-     {kind:'simulate',q:'查询 [14,14] 的返回结果是？（填 nil 或命中区间的 low）',expect:['nil'],placeholder:'例如：15',
+     {kind:'single',q:'查询 $[14,14]$ 的返回结果是？',options:['**nil（无命中）**','14','13','返回全部 9 个区间'],answer:0,
       why:'[14,14] 与全部 9 个区间都不相交 → 返回哨兵 nil（C 程序 part 3）。'},
     ],bookExercises:[
      {id:'17.3-1',page:495,star:0,statement:'Write pseudocode for LEFT-ROTATE that operates on nodes in an interval tree and updates all the max attributes that change in O(1) time.',hint:'标准 LEFT-ROTATE 末尾加两行：先更新 y（先算孩子再算自己），再更新 x。顺序不能反 —— y 的 max 依赖新孩子。'},

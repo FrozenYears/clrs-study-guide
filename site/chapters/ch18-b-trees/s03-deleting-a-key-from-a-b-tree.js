@@ -396,7 +396,7 @@ int main(void)
       why:'★ 内部键是两个子树的分隔符 —— 必须用前驱/后继替换（情形 2a/2b/2c）。'},
      {kind:'simulate',q:'C 程序连删 6 个键后剩多少个键？（填数字）',expect:[14],placeholder:'例如：15',
       why:'20 − 6 = 14，中序严格递增（C 程序 part 4）。'},
-     {kind:'simulate',q:'删除后 SEARCH 被删键返回什么？',expect:['nil'],placeholder:'例如：命中',
+     {kind:'single',q:'删除后 SEARCH 被删键返回什么？',options:['**nil（找不到该键）**','该键的旧值','相邻键的值','报错退出'],answer:0,
       why:'6 个被删键全部正确返回 nil —— 删除彻底（C 程序 part 4）。'},
     ],bookExercises:[
      {id:'18.3-1',page:520,star:0,statement:'Show the results of deleting the keys F, Q, K, C in order from the B-tree of Figure 18.8(f).',hint:'按四情形手工模拟：F 在叶（情形 1）；Q 在内部（看孩子键数选 2a/2b/2c）……每步都先检查孩子键数再下探。'},

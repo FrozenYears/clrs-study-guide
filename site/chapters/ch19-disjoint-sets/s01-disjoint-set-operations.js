@@ -407,7 +407,7 @@ int main(void)
       body:['处理完前 $j$ 条边后：FIND-SET(u) == FIND-SET(v) 当且仅当 u 与 v 在只由前 $j$ 条边构成的子图中连通。',
         '**基础**：$j = 0$ 时每点一个集合，只有自身与自己连通。✓',
         '**保持**：第 $j+1$ 条边 $(u,v)$：若两端已同集合，加这条边不改变连通关系，跳过正确；若不同集合，说明这条边恰把两个连通块连成一个 —— UNION 后不变量保持。∎']},
-     {title:'终止态',en:'Here is how OS-SELECT works.',page:481,
+     {title:'终止态',en:'Show that after all edges are processed by CONNECTED-COMPONENTS , two vertices belong to the same connected component if and only if they belong to the same set.',page:523,
       body:['全部边处理完后，同一连通分量的点必在同一集合 —— 因为连通意味着存在一条路径，路径上的每条边都触发过 UNION。',
         '★ 这正是 Kruskal（21.2）判环的原理：FIND-SET(u) == FIND-SET(v) 说明 u、v 已连通，再加边就成环。∎']},
     ],conclusion:'★ 结论：并查集是"动态等价关系"的标准实现；它的表示与优化在后面三关。',note:''},
