@@ -313,6 +313,8 @@ int main(void)
       why:'★ 性质 22.19 —— π 指针的树性由 RELAX 的更新规则保持。'},
      {kind:'simulate',q:'松弛后 v.d ≤ u.d + w 恒成立，这条性质叫？（填：松弛立即生效）',expect:['松弛立即生效'],placeholder:'例如：收敛性质',
       why:'引理 22.13（松弛立即生效）—— 上界性质的伴生不变量。'},
+     {kind:'judge',q:'上界性质（v.d ≥ δ(s,v)）在松弛过程的任意时刻都成立。',answer:true,why:'★ 初始化正确 + RELAX 保持三角不等式（引理 22.12 / 22.13）。'},
+     {kind:'single',q:'收敛性质（22.15）：一旦 d[u] = δ(s,u)，松弛边 (u,v) 后会立即得到？',options:['d[v] = ∞','**d[v] = δ(s,v)**','d[v] 不变','d[u] = 0'],answer:1,why:'★ 收敛性质：正确值一锤定音（d[v] ≤ d[u] + w 与上界性质夹出等号）。'},
     ],bookExercises:[
      {id:'22.5-1',page:636,star:0,statement:'(...) Give a proof of the lemma... ',hint:'按原书引理编号逐个补全：每个引理的证明要么是归纳（上界），要么是三角不等式变形（松弛），要么是反证（前驱子图）。'},
      {id:'22.5-2',page:636,star:0,statement:'(...) Give an example of a weighted, directed graph... ',hint:'构造最短路不唯一 + π 树随松弛顺序变化的例子 —— 展示"前驱子图是某棵最短路径树"而非"唯一"。'},

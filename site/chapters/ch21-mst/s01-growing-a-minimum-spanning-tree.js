@@ -232,6 +232,8 @@ int main(void)
       why:'★ 权重并列时可能有多个 MST；唯一的是**总权重**（C 程序 part 3：两种算法 37 = 37，选边不同）。'},
      {kind:'simulate',q:'Figure 21.1 的图的 MST 总权重是多少？（填数字）',expect:[37],placeholder:'例如：40',
       why:'37（原书答案；C 程序两种算法实测一致）。'},
+     {kind:'judge',q:'切割性质（轻边安全）要求切割必须尊重 A，否则轻边可能与 A 成环。',answer:true,why:'★ 切割尊重 A 是必要前提（本关 source / 定理 21.1 前提）。'},
+     {kind:'single',q:'一棵有 V 个顶点的生成树恰好有多少条边？',options:['V','**V − 1**','V + 1','2V'],answer:1,why:'★ 终止时 A 恰为生成树，|A| = |V| − 1（p.587）。'},
     ],bookExercises:[
      {id:'21.1-1',page:588,star:0,statement:'Show that the shortest edge from u to v is always... ',hint:'按 GENERIC-MST 跑 Figure 21.1：每步画切割、找轻边 —— 即 21.2 两种算法的手工版。'},
      {id:'21.1-2',page:588,star:0,statement:'Prove that if (u,v) is a light edge... ',hint:'注意"轻边"是相对切割的：同一条边对不同切割的"轻"不同；跨越多个切割时逐一切割验证，或构造反例说明"对某切割轻"≠"在所有 MST 中"。'},

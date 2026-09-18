@@ -425,6 +425,8 @@ int main(void)
       why:'★ 两条等长链合并仍要搬一半 —— 单次最坏 Ω(n)；改善的是总账。'},
      {kind:'simulate',q:'朴素链表最坏序列（n=2048）的指针更新总数？（填数字）',expect:[2096128],placeholder:'例如：1048576',
       why:'n(n-1)/2 = 2048×2047/2 = 2096128（C 程序 Part A）。'},
+     {kind:'judge',q:'即使采用加权合并，单次 UNION 的最坏代价仍可能达到 Θ(n)。',answer:true,why:'★ 两条等长链合并仍要搬一半 → 单次最坏 Ω(n)；改善的是总账（p.525）。'},
+     {kind:'simulate',q:'加权合并链表（n=1024）的总指针更新实测是多少？（填数字）',expect:[3512],placeholder:'例如：5000',why:'★ C 程序 Part B：总更新 3512，远小于上界 n·lg n = 10240。'},
     ],bookExercises:[
      {id:'19.2-1',page:524,star:0,statement:'Show that if the linked-list representation were modified so that the tail pointer of the list pointed to the head, UNION could be performed in O(1) time.',hint:'环形链表：尾指头后，两链 O(1) 接环；代价被推到 FIND-SET（沿环找代表元）。这是"把代价从一个操作搬到另一个操作"的例子 —— 但搬得不对称，会破坏总账。'},
     ]},

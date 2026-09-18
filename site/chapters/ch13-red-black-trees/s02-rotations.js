@@ -224,6 +224,9 @@ int main(void)
      {kind:'judge',q:'旋转会改变节点的颜色。',answer:false,why:'★ 原书 p.336："Only pointers are changed by a rotation, and all other attributes in a node remain the same."'},
      {kind:'simulate',q:'LEFT-ROTATE 的前提是什么？（填：x 的哪个孩子非 NIL）',expect:['右孩子','x.right','右'],placeholder:'例如：左孩子',
       why:'★ y = x.right，y 上升 —— 前提是 x 的右孩子 ≠ NIL。'},
+     {kind:'single',q:'LEFT-ROTATE 一共有多少行？',options:['8','**12**','15','O(h)'],answer:1,why:'★ 12 行 = 5 条指针改写 + 3 处边界判断（p.336）。'},
+     {kind:'judge',q:'RIGHT-ROTATE 是 LEFT-ROTATE 的镜像。',answer:true,why:'★ 原书 p.337；习题 13.2-1 让你写它，C 程序 right_rotate 即镜像。'},
+     {kind:'simulate',q:'C 程序 part 1 对 15 左旋后，哪个节点升为根？（填节点名）',expect:['18'],placeholder:'例如：15',why:'★ part 1：对 15 左旋 → 18 升根（C 程序实测）。'},
     ],bookExercises:[
      {id:'13.2-1',page:336,star:0,statement:'Write pseudocode for RIGHT-ROTATE.',hint:'LEFT-ROTATE 的镜像：把 left 换成 right、right 换成 left。C 程序的 `right_rotate` 就是答案。'},
      {id:'13.2-2',page:337,star:0,statement:'Argue that in every n-node binary search tree, there are exactly n − 1 possible rotations.',hint:'每条边对应一次旋转（把边的下端旋上来）→ n−1 条边 = n−1 种可能的旋转。'},

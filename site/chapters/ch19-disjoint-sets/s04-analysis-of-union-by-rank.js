@@ -431,6 +431,8 @@ int main(void)
       why:'★ C 程序 Part D 打印的台阶：2、3、7、2047。'},
      {kind:'simulate',q:'α(n) 从 3 升到 4 的门槛是 A_4(1)，它比 2047 大多少个量级？（填数字）',expect:[3],placeholder:'例如：2',
       why:'A_4(1) = A_3(A_3(A_3(1)))，即对 2047 做三层指数迭代 —— 远超 3 个量级。'},
+     {kind:'judge',q:'阿克曼台阶上 A_2(1) = 7。',answer:true,why:'★ C 程序 Part D 楼梯：A_0=2、A_1=3、A_2=7、A_3=2047（原书 p.532）。'},
+     {kind:'simulate',q:'阿克曼台阶上 A_1(1) 等于多少？（填数字）',expect:[3],placeholder:'例如：2',why:'★ A_1(1) = 3（C 程序 Part D / 原书 p.532）。'},
     ],bookExercises:[
      {id:'19.4-1',page:536,star:0,statement:'Prove Lemma 19.1 (the loop invariant for the levels analysis)...',hint:'按原书的分层归纳：level_0 = rank 0 的结点；更高层由 A_k 分组。逐层对 FIND-SET 的路径长度记账。'},
      {id:'19.4-2',page:536,star:0,statement:'(*) Give an algorithm CHAPTER-19-PROBLEM that... ',hint:'这是分摊分析的推广练习 —— 用本章的分层记账框架，对自定义操作序列证明类似的 α(n) 上界。'},

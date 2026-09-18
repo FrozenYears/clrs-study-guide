@@ -495,6 +495,8 @@ int main(void) {
       why:'★ 有环则环上的结点互相"先于"，线性序不可能满足 —— 拓扑序存在 ⟺ 无环。'},
      {kind:'simulate',q:'C 程序的教学 DAG 有几条后向边？（填数字）',expect:[0],placeholder:'例如：1',
       why:'back = 0 —— 先判无环再输出拓扑序（C 程序 part 4）。'},
+     {kind:'single',q:'拓扑排序的运行时间是？',options:['O(V²)','**Θ(V + E)**','O(V lg V)','O(E lg V)'],answer:1,why:'★ 一次 DFS + O(V) 链表操作（p.575）。'},
+     {kind:'judge',q:'本关 C 程序对教学 DAG 实测输出的拓扑序是 1, 3, 5, 2, 4, 6。',answer:true,why:'★ C 程序 part 4 实测拓扑序 1 3 5 2 4 6，并逐边验证 u 在 v 前。'},
     ],bookExercises:[
      {id:'20.4-1',page:575,star:0,statement:'Show the ordering of nodes produced by TOPOLOGICAL-SORT when it runs on the dag of Figure 20.8, assuming that the loop of line 2... ',hint:'按 DFS 的访问顺序（结点表字母序）手工模拟：记下每个结点的完成时刻，再按 f 递减排成序。'},
      {id:'20.4-2',page:575,star:0,statement:'Give a linear-time algorithm that takes as input a directed acyclic graph G = (V,E) and determines whether G contains a directed path of exactly... ',hint:'对每个结点 u 定义 reach(u, k)（u 出发走 k 步可达的结点集）；在拓扑序上做动态规划：按序处理结点、松弛 k 步可达标记，总时间 O(V + E)。'},

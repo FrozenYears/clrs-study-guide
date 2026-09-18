@@ -6,14 +6,10 @@
  * ========================================================================== */
 
 import s01 from './s01-sets.js';
-// s02 还没建：建好后把下面这行打开 ——
-// import s02 from './s02-<slug>.js';
-// s03 还没建：建好后把下面这行打开 ——
-// import s03 from './s03-<slug>.js';
-// s04 还没建：建好后把下面这行打开 ——
-// import s04 from './s04-<slug>.js';
-// s05 还没建：建好后把下面这行打开 ——
-// import s05 from './s05-<slug>.js';
+import s02 from './s02-relations.js';
+import s03 from './s03-functions.js';
+import s04 from './s04-graphs.js';
+import s05 from './s05-trees.js';
 
 export default {
   ch: 'B',
@@ -22,5 +18,5 @@ export default {
   title: 'Sets, Etc.',
   titleZh: '集合等离散结构',
   source: { printed: [1153, 1177], pdf: [1174, 1198] },
-  levels: [s01],   // 只登记已建好的关卡
+  levels: [s01, s02, s03, s04, s05],   // 只登记已建好的关卡
 };

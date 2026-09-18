@@ -131,6 +131,9 @@ const SYM = {
   // —— CLRS 常见补充（书里大量使用 ⟨⟩ 表示序列、≔ 表示赋值）——
   langle: "⟨",
   rangle: "⟩",
+  // —— 附录 B–D 补充：空集、度数算子 ——
+  varnothing: "∅",
+  deg: "deg",
   lvert: "|",
   rvert: "|",
   lVert: "‖",
@@ -532,6 +535,16 @@ function parse(src) {
           continue;
         }
         buf += "\\" + name;
+        continue;
+      }
+      // \operatorname{Foo}：正体算子名，内容原样输出（附录 D 的 \deg 等已单独给字形）
+      if (name === "operatorname") {
+        const a = readGroup();
+        if (a) {
+          out.push(textNode(a.text));
+          continue;
+        }
+        buf += "\\operatorname";
         continue;
       }
       // \begin{cases} ... \end{cases}：环境体要一直读到配对的 \end{...}

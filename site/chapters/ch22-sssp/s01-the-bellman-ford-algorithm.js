@@ -321,6 +321,8 @@ int main(void)
       why:'★ 这正是它相对 Dijkstra 的核心优势（负环除外）。'},
      {kind:'simulate',q:'Figure 22.1 的图上，Bellman-Ford 从 s 出发 d[z] = ？（填数字）',expect:[-2],placeholder:'例如：-1',
       why:'d = {0,2,4,7,-2}（原书 p.613；C 程序 part 1 实测）。'},
+     {kind:'judge',q:'Bellman-Ford 的"检查轮"返回 FALSE，当且仅当存在从源点可达的负权环。',answer:true,why:'★ 定理 22.4(b)：第 V 轮仍可松弛 ⟺ 可达负环。'},
+     {kind:'simulate',q:'在 Figure 22.1 的图上，Bellman-Ford 的松弛成功了多少次？（填数字）',expect:[7],placeholder:'例如：10',why:'★ C 程序 part 1：松弛成功仅 7 次（远低于 (V−1)·E = 40 上限）。'},
     ],bookExercises:[
      {id:'22.1-1',page:615,star:0,statement:'Run BELLMAN-FORD on the graph of Figure 22.1, using vertex z as the source...',hint:'以 z 为源逐轮松弛：每轮列出 d 与 π。最终 d[z]=0, d[x]=7, d[y]=4? 按边权自己算一遍 —— C 程序改源点即可核对。'},
      {id:'22.1-2',page:615,star:0,statement:'Show how the Bellman-Ford procedure returns FALSE... ',hint:'构造含负环的图并让算法跑：检查轮中必有一条边 (u,v) 满足 v.d > u.d + w —— 指出这条边即可。'},

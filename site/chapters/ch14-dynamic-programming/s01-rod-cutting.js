@@ -218,6 +218,8 @@ int main(void)
      {kind:'judge',q:'钢条切割的 DP 用额外内存换时间。',answer:true,why:'★ 原书明确称其为 time-memory trade-off。'},
      {kind:'simulate',q:'按原书价格表，长度 4 的钢条最优收益是多少？（填数字）',expect:[10],placeholder:'例如：9',
       why:'切成 2+2 = 5+5 = 10（不切只有 9）。C 程序 part 1 实测。'},
+     {kind:'judge',q:'对 n = 10，朴素 CUT-ROD 的递归调用次数是 1024 次。',answer:true,why:'★ C 程序 part 2：调用 1024 次 = 2^9 量级（指数爆炸）。'},
+     {kind:'single',q:'按原书价格表（p.364），长度 10 的钢条最优收益 r[10] 是多少？',options:['25','**30**','24','28'],answer:1,why:'★ 原书 Figure 14.1 / C 程序 part 6：r[10] = 30（整条不切最优）。'},
     ],bookExercises:[
      {id:'14.1-1',page:372,star:0,statement:'Show that equation (14.4) follows from equation (14.3) and the initial condition',hint:'把递推的"枚举第一刀"改写成"枚举最后一段"（对称形式）—— 两者等价，因为 max 交换律。'},
      {id:'14.1-2',page:372,star:0,statement:'Show, by means of a counterexample, that the follow ing "greedy" strategy does not',hint:'贪心策略（每刀都切"单位价格最高"的长度）会失败：例如 p = [1, 5, 8, 9] 时长度 4 贪心切成 1+3 = 1+8 = 9，而最优是 2+2 = 10。'},

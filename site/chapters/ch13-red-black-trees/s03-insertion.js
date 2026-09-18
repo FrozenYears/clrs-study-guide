@@ -110,6 +110,8 @@ int main(void) { setvbuf(stdout, NULL, _IONBF, 0); node_t *root = NULL; int keys
      {kind:'judge',q:'RB-INSERT-FIXUP 最多需要 2 次旋转。',answer:true,why:'★ 情形 2 + 情形 3 各一次旋转（可能只触发情形 1 或情形 3）。'},
      {kind:'simulate',q:'原书 Figure 13.4 的序列中，插入 8 触发了几种 FIXUP 情况？（填数字）',expect:[3],placeholder:'例如：2',
       why:'情形 1（镜像，变色）→ 情形 2（三角，左旋）→ 情形 3（变色 + 右旋）—— 共 3 种情况连续触发。'},
+     {kind:'judge',q:'RB-INSERT 的运行时间是 O(lg n)。',answer:true,why:'★ 情形 1 上移两层 → 最多 O(lg n) 次变色，外加 O(1) 旋转。'},
+     {kind:'simulate',q:'FIXUP 收尾后，根节点的颜色是？（填：黑 / 红）',expect:['黑','black','B'],placeholder:'例如：红',why:'★ 收尾第 16 行后 T.root.color = BLACK；根恒为黑。'},
     ],bookExercises:[
      {id:'13.3-1',page:346,star:0,statement:'Line 16 of RB-I NSERT sets the color of the newly inserted node ´ to red. If in- stead ´’s co',hint:'书上是半截题干（若染黑会怎样）。染黑会违反性质 5（黑高不一致）—— 修复需要沿整条路径调整，代价 O(n) 而非 O(lg n)。'},
      {id:'13.3-2',page:346,star:0,statement:'Show the red-black trees that result after successively inserting the keys 41,38,31; 12,19,8',hint:'逐个画：每步 RB-INSERT + FIXUP。画到最后一个 key。'},

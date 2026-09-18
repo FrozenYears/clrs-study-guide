@@ -199,6 +199,8 @@ int main(void)
       why:'★ Catalan 数 $\\Omega(4^n/n^{3/2})$ —— 指数级，所以必须用 DP。'},
      {kind:'simulate',q:'$\\langle 30,35,15,5,10,20,25\\rangle$ 的最优乘法次数是多少？（填数字）',expect:[15125],placeholder:'例如：12000',
       why:'$m[1,6] = 15125$（原书 p.378）。C 程序 part 1 实测吻合。'},
+     {kind:'judge',q:'对 ⟨10,100,5,50⟩，两种括号化的最坏代价相差约 10 倍。',answer:true,why:'★ C 程序 part 3：((A1A2)A3)=7500 vs (A1(A2A3))=75000，差 10 倍。'},
+     {kind:'simulate',q:'⟨30,35,15,5,10,20,25⟩（n=6）的子问题 m[i,j] 共有多少个？',expect:[21],placeholder:'例如：15',why:'★ n(n+1)/2 = 21（C 程序 part 4：21 个上三角元素）。'},
     ],bookExercises:[
      {id:'14.2-1',page:381,star:0,statement:'Find an optimal parenthesization of a matrix-chain product whose sequence',hint:'书上是半截题干（给了维数序列，求最优括号化）。用 MATRIX-CHAIN-ORDER 手算或跑 C 程序 —— 关键是按链长递增填 $m$ 表。'},
      {id:'14.2-2',page:381,star:0,statement:'Give a recursive algorithm MATRIX-CHAIN-MULTIPLY (A,s,i,j) that actually',hint:'书上是半截题干（真正执行乘法）。按 $s[i,j]$ 递归：先算左段、右段，再把两个结果矩阵相乘（RECTANGULAR-MATRIX-MULTIPLY）。'},

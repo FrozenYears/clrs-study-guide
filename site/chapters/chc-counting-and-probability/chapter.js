@@ -6,14 +6,10 @@
  * ========================================================================== */
 
 import s01 from './s01-counting.js';
-// s02 还没建：建好后把下面这行打开 ——
-// import s02 from './s02-<slug>.js';
-// s03 还没建：建好后把下面这行打开 ——
-// import s03 from './s03-<slug>.js';
-// s04 还没建：建好后把下面这行打开 ——
-// import s04 from './s04-<slug>.js';
-// s05 还没建：建好后把下面这行打开 ——
-// import s05 from './s05-<slug>.js';
+import s02 from './s02-probability.js';
+import s03 from './s03-discrete-random-variables.js';
+import s04 from './s04-geometric-and-binomial-distributions.js';
+import s05 from './s05-tails-of-the-binomial-distribution.js';
 
 export default {
   ch: 'C',
@@ -22,5 +18,5 @@ export default {
   title: 'Counting and Probability',
   titleZh: '计数与概率',
   source: { printed: [1178, 1213], pdf: [1199, 1234] },
-  levels: [s01],   // 只登记已建好的关卡
+  levels: [s01, s02, s03, s04, s05],   // 只登记已建好的关卡
 };

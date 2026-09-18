@@ -501,6 +501,8 @@ int main(void) {
       why:'★ 互相可达的定义关于边方向对称。'},
      {kind:'simulate',q:'C 程序在 Figure 20.9 的图上找到几个 SCC？（填数字）',expect:[4],placeholder:'例如：3',
       why:'{1}、{2,4,5}、{3}、{6} —— 4 个（C 程序 part 5）。'},
+     {kind:'judge',q:'强连通分量图 G^{SCC} 是无环的（引理 20.6）。',answer:true,why:'★ 若分量图有环，则环上两点互相可达 → 属同一 SCC，矛盾。'},
+     {kind:'single',q:'STRONGLY-CONNECTED-COMPONENTS 的运行时间是？',options:['O(V²)','**Θ(V + E)**','O(VE)','O(E lg V)'],answer:1,why:'★ 两次线性 DFS（一次 G、一次 G^T），p.576。'},
     ],bookExercises:[
      {id:'20.5-1',page:578,star:0,statement:'Show how the procedure STRONGLY-CONNECTED-COMPONENTS works on the graph of Figure 20.8...',hint:'手工跑：记第一次 DFS 的 f 值 → 按递减排成访问序 → 在 G^T 上逐棵树收割。'},
      {id:'20.5-2',page:578,star:0,statement:'Show how the procedure STRONGLY-CONNECTED-COMPONENTS works on the graph of Figure 20.9(b)...',hint:'同上；注意完成时间依赖 DFS 的访问顺序（邻接表序）。'},

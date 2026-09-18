@@ -304,6 +304,8 @@ int main(void)
       why:'★ 原书 p.619：负化权重或改松弛方向 —— PERT 关键路径的算法内核。'},
      {kind:'simulate',q:'C 程序 Part 3 中 x 的最短距离是多少？（DAG 源 r，填数字）',expect:[10],placeholder:'例如：11',
       why:'x = min(s+6=11, t+7=10) = 10（C 程序 part 3 实测）。'},
+     {kind:'judge',q:'DAG-SSSP 可以处理带负权边的图。',answer:true,why:'★ DAG 无环 ⇒ 无负环，负权边免费支持（p.617）。'},
+     {kind:'simulate',q:'Figure 22.8 的 DAG 以 r 为源时，d[t] 是多少？（填数字）',expect:[3],placeholder:'例如：5',why:'★ t = r→t 权 3（C 程序 part 3 实测：r=0 s=5 t=3 x=10 y=7）。'},
     ],bookExercises:[
      {id:'22.2-1',page:619,star:0,statement:'Run DAG-SHORTEST-PATHS on the graph of Figure 22.8... ',hint:'照 C 程序 Part 3 的顺序手工松弛：拓扑序下每个结点只松弛一次出边。'},
      {id:'22.2-2',page:619,star:0,statement:'Suppose we change line 3 of DAG-SHORTEST-PATHS to... ',hint:'改后结点按**逆拓扑序**处理 —— 依赖尚未就绪，松弛无效 → 结果错误。反例：让最短路径经过"拓扑序靠后"的结点。'},

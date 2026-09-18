@@ -106,6 +106,10 @@ int main(void) { setvbuf(stdout, NULL, _IONBF, 0); node_t *root = NULL; int keys
    {type:'drill',title:'检验一下',items:[
      {kind:'single',q:'RB-DELETE 什么时候需要调 FIXUP？',options:['每次删除','删除黑节点时','删除红节点时','只在删根时'],answer:1,why:'★ 删红节点不改变黑高 → 无需 FIXUP。删黑节点 → 该路径黑数减少 → 需要 FIXUP。'},
      {kind:'single',q:'FIXUP 的终止条件是？',options:['x 是红或 x 是根','x 是叶','旋转了 2 次','走了 h 步'],answer:0,why:'★ x 是红 → 染黑消除；x 是根 → 多余的黑分给全树。'},
+     {kind:'judge',q:'删除红节点时不需要调用 RB-DELETE-FIXUP。',answer:true,why:'★ 删红节点不改变黑高 → 无需 FIXUP（p.347 关键判断）。'},
+     {kind:'judge',q:'RB-DELETE-FIXUP 在一次删除中至多做 3 次旋转。',answer:true,why:'★ 原书 p.354：FIXUP O(lg n)、至多 3 次旋转。'},
+     {kind:'single',q:'本关 RB-DELETE 的代码结构（注释首行）是？',options:['**RB-TRANSPLANT 6 + RB-DELETE 22 + RB-DELETE-FIXUP 10**','TRANSPLANT 10 + DELETE 17','DELETE 12 + FIXUP 11','INSERT 17 + FIXUP 11'],answer:0,why:'★ 文件首注释：RB-TRANSPLANT 6 行 + RB-DELETE 22 行 + RB-DELETE-FIXUP 10 行。'},
+     {kind:'simulate',q:'删除黑节点后，整棵树的根节点颜色是？（填：黑 / 红）',expect:['黑','black','B'],placeholder:'例如：红',why:'★ 删黑后根染黑补偿全树 → 根恒为黑（本关 prove 结论）。'},
     ],bookExercises:[
      {id:'13.4-1',page:358,star:0,statement:'Argue that the root of the result of RB-DELETE-FIXUP is black regardless of whether case 1',hint:'四种情况最终都使根为黑：情形 1 旋转后新子树根为黑；情形 2 上移到根时根变黑；情形 3/4 的旋转不改变根颜色。'},
      {id:'13.4-2',page:358,star:0,statement:'In exercise 13.3-4 you answered the question "Does RB-I NSERT-FIXUP ever set T: nil: color to RED?"',hint:'类似 13.3-4：哨兵 color 不会变红。FIXUP 的变色只影响非哨兵节点。'},

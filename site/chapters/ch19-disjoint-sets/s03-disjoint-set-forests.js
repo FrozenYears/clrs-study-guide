@@ -442,6 +442,8 @@ int main(void)
       why:'★ 单独用只有 O(m lg n)；α(n) 需要**两个启发式合用**（19.4）。'},
      {kind:'simulate',q:'C 程序 Part C 中森林的总代价是多少？（n=1000、m=40000，填数字）',expect:[41999],placeholder:'例如：40000',
       why:'实测 41999（其中 find 遍历 58650 个结点）。'},
+     {kind:'single',q:'MAKE-SET(x) 初始化时把 x.rank 设为多少？',options:['1','**0**','x 的高度','不确定'],answer:1,why:'★ MAKE-SET 2 行：x.p = x；x.rank = 0（p.530）。'},
+     {kind:'judge',q:'rank 的值始终是该节点高度的上界（路径压缩只让实际高度变小）。',answer:true,why:'★ rank 是不变量：压缩改指针使高度变小，rank 不动仍 ≥（本关 prove）。'},
     ],bookExercises:[
      {id:'19.3-1',page:529,star:0,statement:'Do the exercise 19.3-1...',hint:'按rank定义手工模拟序列：每次 UNION 判断两根秩；每次 FIND-SET 记录压缩后的指针变化。'},
      {id:'19.3-2',page:529,star:0,statement:'Write a nonrecursive version of FIND-SET with path compression.',hint:'两趟法：第一趟沿父链找到根并记录路径；第二趟把路径上每个结点的 p 改指根。C 程序用的是递归版（返回途中改指针），效果相同。'},
