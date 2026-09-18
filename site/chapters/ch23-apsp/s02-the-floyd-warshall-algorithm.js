@@ -416,6 +416,10 @@ int main(void)
       why:'★ DAG 才有"无负环"保证？不 —— FW 对任意图都能跑，负环由对角元暴露（d_ii < 0）。'},
      {kind:'simulate',q:'C 程序的 Floyd-Warshall 是几重循环？（填数字）',expect:[3],placeholder:'例如：2',
       why:'k、i、j 三重循环 → Θ(n³)。'},
+     {kind:'judge',q:'Floyd-Warshall 用对角元 $d_{ii}^{(n)} < 0$ 检测负权环。',answer:true,
+      why:'★ 若某顶点到自身的最短路为负，说明存在从它出发又回到它的负权环。'},
+     {kind:'single',q:'外层循环跑到第 $k$ 轮时，$d_{ij}^{(k)}$ 允许的中间点集合是？',options:['$\{1..k-1\}$','**$\{1..k\}$**','仅 $\{k\}$','空集'],answer:1,
+      why:'★ 维度 k 表示允许使用前 k 个顶点作中间点，是与边数维度法的根本区别。'},
     ],bookExercises:[
      {id:'23.2-1',page:700,star:0,statement:'Run the Floyd-Warshall algorithm on the weighted, directed graph of Figure 23.2...',hint:'照 C 程序 s02 段的打印：每层 k 记录 d 矩阵的变化（哪些格子被 k"救活"）。'},
      {id:'23.2-2',page:700,star:0,statement:'Show how to express the integer k as a sum of... ',hint:'利用 d 矩阵：重建需要 π 或在 d 上做"路径计数"变体 —— 按 23.2-2 的 π 矩阵思路扩展。'},

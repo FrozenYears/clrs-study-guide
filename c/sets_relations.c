@@ -142,7 +142,7 @@ static void part2(void)
     for (int c = 0; c < 3; c++)
         for (int a = 0; a < csz[c]; a++)
             for (int b = 0; b < csz[c]; b++)
-                E |= (1 << (cls[c][a] * 6 + cls[c][b]));
+                E |= (1LL << (cls[c][a] * 6 + cls[c][b]));
     assert(rel_reflexive(E, 6) && rel_symmetric(E, 6) && rel_transitive(E, 6));
 
     /* 计算等价类（从关系）：每个元素 x 的类 = {y : (x,y)∈E} */
@@ -152,11 +152,12 @@ static void part2(void)
         for (int y = 0; y < 6; y++)
             if (rel_get(E, x, y, 6)) got[x] |= (1 << y);
     }
-    /* 两两不交 + 并为全集 */
+    /* 同一类的元素给出相同的类集合；不同类必不交 → 构成划分 */
     int union_all = 0;
     for (int x = 0; x < 6; x++) {
         for (int y = 0; y < x; y++) {
-            assert((got[x] & got[y]) == 0);   /* 类两两不交 */
+            if (got[x] != got[y])
+                assert((got[x] & got[y]) == 0);   /* 不同类两两不交 */
         }
         union_all |= got[x];
     }
@@ -198,15 +199,15 @@ static void part4(void)
     const int m = 8;                   /* 顶点数 */
     const int p = 40;                  /* 约 40% 概率连边 */
     rng_seed(2024u);
-    int G = 0;
+    long long G = 0;
     int deg[8];
     for (int i = 0; i < m; i++) deg[i] = 0;
     int Ecount = 0;
     for (int i = 0; i < m; i++) {
         for (int j = i + 1; j < m; j++) {
             if ((int)(rng_next() % 100) < p) {
-                G |= (1 << (i * m + j));
-                G |= (1 << (j * m + i));
+                G |= (1LL << (i * m + j));
+                G |= (1LL << (j * m + i));
                 deg[i] += 1; deg[j] += 1;
                 Ecount += 1;
             }

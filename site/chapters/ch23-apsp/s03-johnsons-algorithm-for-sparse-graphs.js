@@ -421,6 +421,10 @@ int main(void)
       why:'★ 稠密图 E≈V²：Johnson O(V²·V lgV) 比 Θ(V³) 更差。'},
      {kind:'simulate',q:'Johnson 要跑几次 Dijkstra？（|V|=5，填数字）',expect:[5],placeholder:'例如：1',
       why:'每个源点一次 → V = 5 次（C 程序 s03 段）。'},
+     {kind:'judge',q:'Johnson 重加权后所有边的权重 $\\hat{w}(u,v) = w(u,v)+h(u)-h(v) \\ge 0$。',answer:true,
+      why:'★ 势函数 $h(v)=\\delta(s,v)$ 由 Bellman-Ford 算出，保证每条边非负（引理 23.1）。'},
+     {kind:'single',q:'Johnson 的整体时间复杂度（用二叉堆 Dijkstra）约为？',options:['$O(VE)$','**$O(V\\cdot E\\lg V)$**','$O(V^3)$','$O(E\\lg V)$'],answer:1,
+      why:'★ $V$ 次 Dijkstra，每次 $O(E\\lg V)$；稀疏图优于 Floyd-Warshall 的 $\\Theta(V^3)$。'},
     ],bookExercises:[
      {id:'23.3-1',page:704,star:0,statement:'Use Johnson\u2019s algorithm on the weighted, directed graph of Figure 23.1...',hint:'照 C 程序 s03 段：先算 h（超级源 BF），再重加权、跑 5 次 Dijkstra、反变换 —— 与 SLOW/FW 的答案对照。'},
      {id:'23.3-2',page:704,star:0,statement:'For what graphs can Johnson... ',hint:'h 重加权后仍有负边 ⟺ 存在"违反三角不等式"的边？不 —— h 恰好修复全部负边；问题在于若原数据有错（不满足定义），逐边检查 ŵ ≥ 0 会失败。'},
