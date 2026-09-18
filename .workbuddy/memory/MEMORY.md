@@ -156,5 +156,15 @@
     _probe/autofill2.py（声明页 ±1 自动选句，保证闸门过但 zh 未必贴切）→
     _probe/fixquote.py（修 statement/en 外层引号误包）。
     另外 derivations/steps 里 `{zh:'…', '…'}` 坏对象用 autofix.py 的 BROKEN 正则拆分。
-33. **ch34/35 交接**：c/np.c 与 c/approx.c 已全绿待接关卡；index.html 条目已就位
-    （34:5、35:5）；生成器半成品在 _probe/gen34.py + gen34data.py（勿直接跑）。
+33. **ch34/35 已全部建成（2026-09-18，136 关/34 章，提交 f2e240f）**：全书 35 章闭环。
+    gen34.py 半成品生成器已无用（05_new_level.py --register 直接可用，勿再绕道）。
+34. **图表 `expr` 是要 eval 的 JS，变量是 `n` 不是 `x`**：growth 渲染器用
+    `new Function('n', ...)` 求值（viz/growth.js 第 56 行）。expr 里写 `x` 会
+    `ReferenceError`，router 吞掉后**页面空白但不报错不白屏**——只有无头 Chrome
+    抓 console 才看得见。写 expr 后必须跑一遍该段的 DOM 抽查。
+35. **路由是 `#/章/关/段`**：`#/ch34/s06/s06` 是「第 6 关」而非「第 6 段」；
+    章内关数不足时页面显示「这个关卡还没有内容」，这不是 bug。抽查矩阵按
+    `#/chNN/s0L/s0stage`（L=关卡、stage=九段序号）生成。
+36. **后台 http.server 会被前台命令结束杀掉**：用 Bash 工具的 run_in_background
+    起服务；同一条命令里探活不代表下一条命令它还活着（ERR_CONNECTION_REFUSED
+    页会被 --dump-dom 当成「渲染结果」，hygiene 全过但内容是错误页）。
