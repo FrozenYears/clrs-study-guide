@@ -283,7 +283,7 @@ int main(void)
           hint: '第一问把自己和别人区分开：至少一人与你同生日 = 1 − (364/365)^m，解 m。第二问考虑“July 4 是否被至少两人占据”，用泊松/二项近似。' },
         { id: '5.4-2', page: 152, star: 0, preview: true,
           statement: 'How many people must there be in a room before the probability that two people have the same birthday is at least 0:99? For that many people, what is the expected number of pairs of people who have the same birthday?',
-          hint: '先解 1 − (364/365)^m ≥ 0.99 得 m（注意 0:99 即 0.99）；再用 E[X]=C(m,2)/365 求期望对数。' },
+          hint: '别用 5.4-1 的式子：那道是「有人与**我**同生日」，可以用 $1-(364/365)^m$；本题是「**任意**两人同生日」，事件之间不独立。按 5.4 的乘积走：$\\Pr\\{\\text{全不同}\\}=\\prod_{k=1}^{m-1}(1-k/365)$，再用 $1-x\\le e^{-x}$ 与定理 5.14 压成 $1-e^{-\\binom{m}{2}/365}$ 去解 $\\ge 0.99$。第二问才是指示器随机变量：$\\binom{m}{2}$ 对，每对同生日的概率 $1/365$，期望 $=\\binom{m}{2}/365$。' },
       ],
     },
   ],
