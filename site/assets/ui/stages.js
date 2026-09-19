@@ -657,7 +657,8 @@ function makeVizPanel(stage, ctx) {
 
 /** 可视化阶段。默认一块面板；stage.panels 可声明多块。 */
 function rVisualize(stage, ctx) {
-  const specs = Array.isArray(stage.panels) && stage.panels.length
+  const declared = Array.isArray(stage.panels) && stage.panels.length > 0;
+  const specs = declared
     ? stage.panels.map((p) => Object.assign({}, p, { viz: p.viz || stage.viz }))
     : [stage];
 
@@ -668,8 +669,15 @@ function rVisualize(stage, ctx) {
 
   const panels = specs.map((spec) => makeVizPanel(spec, ctx));
   panels.forEach((p, i) => {
-    if (panels.length > 1) {
-      kids.push(h('h3', { class: 'card__title' }, '（' + (i + 1) + '）' + (specs[i].title || '')));
+    // ★ 面板小标题必须一直渲染：原先只在「多面板」时才输出，于是 82 个单面板关卡
+    //   写的标题（'C 程序 Part 3：实测 ≤ 2H_k'、'原书 Figure 13.4：插入 8 …'）在页面上
+    //   彻底不见了 —— 第 32 轮复审发现的静默内容丢失。多面板才编号，单面板直接给标题。
+    //   只认显式声明的 panels：回退到 [stage] 时 specs[0].title 就是本段标题，
+    //   再渲染一遍会和 stageHead 重复。标题带公式，所以走 renderMixed。
+    const title = declared ? (specs[i].title || '').trim() : '';
+    if (title) {
+      kids.push(h('h3', { class: 'card__title' },
+        katex.renderMixed((panels.length > 1 ? '（' + (i + 1) + '）' : '') + title)));
     }
     kids.push(p.node);
   });
@@ -803,7 +811,8 @@ function rAnalyze(stage) {
       )
     );
     kids.push(h('details', { class: 'proof-step', open: false },
-      h('summary', null, d.title || '推导'), body));
+      // ★ 同上：推导小标题里带公式（'$w[i,j]$ 为什么能增量维护'），必须走 renderMixed。
+      h('summary', null, katex.renderMixed(d.title || '推导')), body));
   });
 
   // 有的分析阶段需要用**递归树**把推导画出来（如 2.3 的 Figure 2.5）。
