@@ -280,9 +280,9 @@ int main(void)
      {kind:'simulate',q:'C 程序里 n=64 时循环版的并行度约为多少（取整）？',expect:[21845],placeholder:'例如：10000',why:'★ 262144 / 12 ≈ 21845 —— work 相同而 span 小 3 倍多，并行度就高出 3 倍多。'},
      {kind:'single',q:'两种写法的 work 相同，为什么递归版的 span 反而更大？',options:['因为递归版 work 更大','**因为递归版在外层 parallel for 里再套递归，span 从 $\\Theta(\\lg n)$ 变成 $\\Theta(\\lg^2 n)$**','因为函数调用有额外开销','因为递归版用了不同的算法'],answer:1,why:'★ analyze 第二、三条的对照：多一层对数因子，span 由 12 变成 43。'},
     ],bookExercises:[
-     {id:'26.2-1',page:774,star:0,statement:'Draw the trace for computing P-MATRIX-MULTIPLY on 2 × 2 matrices, labeling how the vertices in your diagram correspond to strands in the execution of the algorithm. Assuming that each strand executes in un it time, analyze the work, span, and parallelism of this computation.',hint:'按 P-MATRIX-MULTIPLY 的伪代码分析：两个 parallel for 各 Θ(lg n)、内层 n 次串行 → work Θ(n³)、span Θ(lg n)。'},
-     {id:'26.2-2',page:774,star:0,statement:'Repeat Exercise 26.2-1 for P-MATRIX-MULTIPLY-RECURSIVE .',hint:'习题 26-2：把 8 次 spawn 减少到更少（例如复用临时矩阵、合并累加），span 的递推会变成 $M_\\infty(n) = M_\\infty(n/2) + \\Theta(\\lg n)$ 的不同形式 —— 试给出常数更小的写法并比较并行度。'},
-     {id:'26.2-3',page:774,star:0,statement:'Give pseudocode for a parallel algorithm that multiplies two n × n matrices with work Θ(n 3 ) but span only Θ(lg n). Analyze your algorithm.',hint:'Strassen 并行版：8 次子矩阵乘法可并行，故 span 递推 $S_\\infty(n) = S_\\infty(n/2) + \\Theta(\\lg n)$ → $\\Theta(\\lg^2 n)$，work $\\Theta(n^{\\lg 7})$。'},
+     {id:'26.2-1',page:774,star:0,statement:'Draw the trace for computing P-MATRIX-MULTIPLY on 2 × 2 matrices, labeling how the vertices in your diagram correspond to strands in the execution of the algorithm. Assuming that each strand executes in un it time, analyze the work, span, and parallelism of this computation.',hint:'把每个 (i,j) 的内层求和看成一条 strand（两条乘加指令连着走），外层两层 parallel for 负责扇出与汇合。2x2 就是 4 条 strand 加上 spawn/sync 的边：工作数所有 strand 的长度之和，跨度找最长的那条依赖链，两者相除即并行度。'},
+     {id:'26.2-2',page:774,star:0,statement:'Repeat Exercise 26.2-1 for P-MATRIX-MULTIPLY-RECURSIVE .',hint:'递归版每层派生 8 个子问题，另外还有一次矩阵加法的 strand。n=2 时恰好一层：画出 8 路扇出再 sync 的 DAG，然后按 $M(n) = 8M(n/2) + \\Theta(n^{2})$ 算工作、按 $M_{\\infty}(n) = M_{\\infty}(n/2) + \\Theta(1)$ 算跨度。'},
+     {id:'26.2-3',page:774,star:0,statement:'Give pseudocode for a parallel algorithm that multiplies two n × n matrices with work Θ(n 3 ) but span only Θ(lg n). Analyze your algorithm.',hint:'跨度要压到对数级，就不能让内层串行累加：对每个 (i,j) 先并行算出 n 个部分积，再用一棵二叉归约树把它们加起来。归约树有 $2n-1$ 个结点，所以每项仍是 $\\Theta(n)$ 工作、跨度 $\\Theta(\\lg n)$，外层 (i,j) 整个并行展开。'},
     ]},
   ],
 };

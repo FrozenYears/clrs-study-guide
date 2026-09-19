@@ -530,9 +530,9 @@ int main(void)
      {kind:'single',q:'LUP 分解本身（不含前代回代）的时间是？',options:['$\\Theta(n^2)$','**$\\Theta(n^3)$**','$\\Theta(n^2 \\lg n)$','$\\Theta(n!)$'],answer:1,why:'★ analyze 前三条：消元是三重循环 $\\Theta(n^3)$，而前代、回代各 $\\Theta(n^2)$。'},
      {kind:'judge',q:'任何非奇异矩阵都存在 LUP 分解 —— 这正是「必须选主元」的数学保证。',answer:true,why:'★ analyze 第三条「都存在 LUP 分解（选主元的保证）」；不选主元的朴素 LU 分解则可能中途失败。'},
     ],bookExercises:[
-     {id:'28.1-1',page:832,star:0,statement:'Solve the equation ã 1 0 0 4 1 0 −6 5 1 äã x 1 x 2 x 3 ä D ã −7 ä by using forward substitution.',hint:'照 C 程序 part 1：写 $A$（无置换版）、逐列消元得 $L$、$U$，再前代回代 —— 与 LUP 版的结果应一致（本例无行交换需求）。'},
+     {id:'28.1-1',page:832,star:0,statement:'Solve the equation ã 1 0 0 4 1 0 −6 5 1 äã x 1 x 2 x 3 ä D ã −7 ä by using forward substitution.',hint:'系数矩阵是下三角：第一行直接读出第一个未知数，此后每行只剩一个新的未知量，把已知量代进去即可。本站 c/matrix_ops.c 里前代那段循环就是这个顺序，可以逐步核对（留意对角元都不是 0）。'},
      {id:'28.1-2',page:832,star:0,statement:'Find an LU decomposition of the matrix ã 4 −5 6 8 −6 7 12 −7 12 ä :',hint:'若某步主元为 0，说明该矩阵没有无置换的 LU 分解 —— 这正好说明 LUP 的必要性（把 $P$ 加进来即可）。'},
-     {id:'28.1-3',page:832,star:0,statement:'Solve the equation ã 1 5 4 2 0 3 5 8 2 äã x 1 x 2 x 3 ä D ã ä by using an LUP decomposition.',hint:'本题数据需要行交换：注意**同步置换 $b$**（C 程序 `lup_solve` 的第一步）。'},
+     {id:'28.1-3',page:832,star:0,statement:'Solve the equation ã 1 5 4 2 0 3 5 8 2 äã x 1 x 2 x 3 ä D ã ä by using an LUP decomposition.',hint:'按 LUP 走三步：带选主元地分解出 L、U、P；把同一套行置换作用到右端向量上；先前代解 $Ly = Pb$，再回代解 $Ux = y$。最容易漏的就是第二步 —— 忘了同步置换右端向量，解出来的是另一个方程组的解。'},
     ]},
   ],
 };

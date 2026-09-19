@@ -285,8 +285,8 @@ int main(void)
      {kind:'simulate',q:'C 程序里 P-FIB(20) 的并行度约为多少（取整）？',expect:[1095],placeholder:'例如：1000',why:'★ code 段实测：span 20（$\\Theta(n)$）、work 21891，21891 / 20 ≈ 1095。'},
      {kind:'judge',q:'贪心调度的运行时间与最优调度最多差 2 倍（推论 26.2）。',answer:true,why:'★ analyze 第三条「近似因子 2」，本关 prove 段的命题正是这条定理。'},
     ],bookExercises:[
-     {id:'26.1-1',page:769,star:0,statement:'What does a trace for the execution of a serial algorithm look like?',hint:'按 RACE-EXAMPLE 的 8 条指令手工交错：列出能让 x 最终为 1 与为 2 的两种交错序列。'},
-     {id:'26.1-2',page:769,star:0,statement:'Suppose that line 4 of P-FIB spawns P-FIB(n − 2), rather than calling it as is done in the pseudocode. How would the trace of P-FIB(4) in Figure 26.2 change? What is the impact on the asymptotic work, span, and parallelism?',hint:'DAG 的节点是 strand（一段无并行指令），边是依赖；标出关键路径（长度 = span）。'},
+     {id:'26.1-1',page:769,star:0,statement:'What does a trace for the execution of a serial algorithm look like?',hint:'串行的 trace 退化成一条 strand：DAG 里没有分叉，结点线性相连。于是工作等于跨度（都约等于指令条数）、并行度是 1 —— 与本关那张 spawn/sync 的图对照着画，差别一目了然。'},
+     {id:'26.1-2',page:769,star:0,statement:'Suppose that line 4 of P-FIB spawns P-FIB(n − 2), rather than calling it as is done in the pseudocode. How would the trace of P-FIB(4) in Figure 26.2 change? What is the impact on the asymptotic work, span, and parallelism?',hint:'先检查语义：spawn 出去的结果不会被自动等待，原代码靠「调用」拿回 x，改成 spawn 后必须补 sync 才读得到值。补上之后再算账：跨度递推从「一条链加常数」变成「取两支的 max 加常数」，而工作是两支之和 —— 逐项对比 n 增大时谁占主导。'},
     ]},
   ],
 };

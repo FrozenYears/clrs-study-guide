@@ -291,10 +291,10 @@ int main(void)
      {kind:'judge',q:'第三条增广路 $s \\to v_2 \\to v_4 \\to v_3 \\to t$ 用到了反向边来撤销已有的流。',answer:true,why:'★ code 段明标「含反向调整」：残量网络里的反向边正是 Ford-Fulkerson 能改主意的机制。'},
      {kind:'single',q:'为什么这一节叫 Ford-Fulkerson **method** 而不是 algorithm？',options:['**因为「怎么找增广路」留给了实现（BFS → Edmonds-Karp）**','因为它不是贪心算法','因为它不是多项式时间','因为它只能处理整数容量'],answer:0,why:'★ map 段的原话：找路方式未指定所以是方法；一旦规定用 BFS 选路就得到 Edmonds-Karp 算法。'},
     ],bookExercises:[
-     {id:'24.2-1',page:691,star:0,statement:'Prove that the summations in equation (24.6) equal the summations on the right- hand side of equation (24.5).',hint:'补上零项：$f(u,v)=0$ 当 $(u,v) \\notin E$；以及 $f^\\prime$ 在各点上的守恒式 —— 逐项验证扩展后不改变值。'},
-     {id:'24.2-2',page:691,star:0,statement:'In Figure 24.1(b), what is the net flow across the cut .fs,v 2 ,v 4 g ; fv 1 ,v 3 ,t g/? What is the capacity of this cut?',hint:'点容量 $l(v) \\le f_{in}(v) \\le c(v)$：把每个点拆成 $v_{in} \\to v_{out}$ 带该容量，原入边接 $v_{in}$、出边接 $v_{out}$ —— 结点容量变边容量。'},
-     {id:'24.2-3',page:691,star:0,statement:'Show the execution of the Edmonds-Karp algorithm on the flow network of Fig- ure 24.1(a).',hint:'构造 $f^\\prime$：在 $s$ 处把这条"入流"沿某个 $s \\to \\cdots \\to v$ 的路径抵消（沿残量边推 1 单位），并用 BFS 找该路径 —— O(E)。'},
-     {id:'24.2-4',page:691,star:0,statement:'In the example of Figure 24.6, what is the minimum cut corresponding to the max- imum flow shown? Of the augmenting paths appearing in the example, which one cancels flow?',hint:'整数容量下每次增广 $\ge 1$（瓶颈为整数），从零流出发逐步加整数 → 结束时的流是整数；再用引理 24.9 的"整数流对应整数匹配"。'},
+     {id:'24.2-1',page:691,star:0,statement:'Prove that the summations in equation (24.6) equal the summations on the right- hand side of equation (24.5).',hint:'两式的差别只在求和范围：(24.6) 对所有结点对求和，而约定里凡是 E 之外的边 f 都记 0。把「不存在的边」按 0 补进 (24.5)，再用守恒式把 (u,v) 与 (v,u) 两项合并 —— 逐项对照一遍，注意别把反向边当成新流量。'},
+     {id:'24.2-2',page:691,star:0,statement:'In Figure 24.1(b), what is the net flow across the cut .fs,v 2 ,v 4 g ; fv 1 ,v 3 ,t g/? What is the capacity of this cut?',hint:'净流是「正向跨越的流之和减去反向跨越的流之和」，容量却只累加从 S 侧指向 T 侧的边。把图 (b) 里六条边的 f/c 抄成一张小表，按这条割分组求和；最容易错的地方是那条被反向使用的边：它进分子却不进容量。'},
+     {id:'24.2-3',page:691,star:0,statement:'Show the execution of the Edmonds-Karp algorithm on the flow network of Fig- ure 24.1(a).',hint:'每轮就在残量网络上做一次 BFS 取最短增广路，写下这条路的瓶颈、增广后各边的 f 与 c，以及 s 到 t 的距离什么时候开始变大。四到五轮之后图会稳定下来 —— 顺手把每轮的割也算出来，正好对应「残量网络里从 s 出发可达的最短距离单调不减」那条引理。'},
+     {id:'24.2-4',page:691,star:0,statement:'In the example of Figure 24.6, what is the minimum cut corresponding to the max- imum flow shown? Of the augmenting paths appearing in the example, which one cancels flow?',hint:'最小割取「残量网络里从 s 可达的那批结点」作 S 侧，割边就是原图中跨过去且已饱和的边。至于抵消流的那条增广路：看哪一条用了残量图里的反向边（也就是把已有的 f 往回退一点），它让某些边的实际流量变小而不是变大。'},
     ]},
   ],
 };

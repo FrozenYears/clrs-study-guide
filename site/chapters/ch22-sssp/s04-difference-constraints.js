@@ -314,9 +314,9 @@ int main(void)
     ],bookExercises:[
      {id:'22.4-1',page:631,star:0,statement:'Find a feasible solution or determine that no feasible solution exists for the follow- ing system of difference constraints: x 1 − x 2 ≤ 1 , x 1 − x 4 ≤ −4 , x 2 − x 3 ≤ 2 , x 2 − x 5 ≤ 7 , x 2 − x 6 ≤ 5 , x 3 − x 6 ≤ 10 , x 4 − x 2 ≤ 2 , x 5 − x 1 ≤ −1 , x 5 − x 4 ≤ 3 , x 6 − x 3 ≤ −8 .',hint:'按本关的构造画约束图（含哨兵 v_0），跑 Bellman-Ford 读出 δ 值 —— 每个约束在图上应满足三角不等式。'},
      {id:'22.4-2',page:631,star:0,statement:'Find a feasible solution or determine that no feasible solution exists for the follow- ing system of difference constraints: x 1 − x 2 ≤ 4 , x 1 − x 5 ≤ 5 , x 2 − x 4 ≤ −6 , x 3 − x 2 ≤ 1 , x 4 − x 1 ≤ 3 , x 4 − x 3 ≤ 5 , x 4 − x 5 ≤ 10 , x 5 − x 3 ≤ −4 , x 5 − x 4 ≤ −8 .',hint:'先构造约束图；若 Bellman-Ford 报负环 → 无解（指出那个环并沿环求和导出矛盾）。'},
-     {id:'22.4-3',page:631,star:0,statement:'Can any shortest-path weight from the new vertex v 0 in a constraint graph be posi- tive? Explain.',hint:'可以：把"≥"约束改写成"≤"（两边取负），并把哨兵边反向（或求"最长路"）—— 对照 22.2 的"负化权重"技巧。'},
-     {id:'22.4-4',page:631,star:0,statement:'Express the single-pair shortest-path problem as a linear program.',hint:'在 G′（加了 v_0 的约束图）上跑 Bellman-Ford 得到可行势函数 h = δ(v_0, ·)，用 h 重加权使边权非负（Johnson 的技巧，23.3 预演），再跑 Dijkstra。'},
-     {id:'22.4-5',page:632,star:0,statement:'Show how to modify the Bellman-Ford algorithm slightly so that when using it to solve a system of difference constraints with m inequalities on n unknowns, the running time is O(nm).',hint:'约束图的结构特殊：v_0 的 0 权边使所有 d 初始有限；利用这一点可简化 Bellman-Ford 的轮数分析 —— 具体上界由约束图的"层"决定。'},
+     {id:'22.4-3',page:631,star:0,statement:'Can any shortest-path weight from the new vertex v 0 in a constraint graph be posi- tive? Explain.',hint:'v0 到每个约束结点都有一条 0 权边，所以任何最短路径长都不会超过 0 —— 一行就否掉「可能为正」。再把「不可达时为 $\\infty$」这一种情形也顺带说明白。'},
+     {id:'22.4-4',page:631,star:0,statement:'Express the single-pair shortest-path problem as a linear program.',hint:'把每个结点的 d 看成「从 s 到它某条路径长度的候选上界」：约束就是每条边的三角不等式，再加 d 在源点取 0。目标是让 d 的下界尽量紧 —— 于是该 maximize 还是 minimize，把弱对偶的方向想清楚再落笔。'},
+     {id:'22.4-5',page:632,star:0,statement:'Show how to modify the Bellman-Ford algorithm slightly so that when using it to solve a system of difference constraints with m inequalities on n unknowns, the running time is O(nm).',hint:'省掉 v0 那 n 条 0 权边的逐轮扫描：初始化时直接把所有 d 置 0（等价于已经把 v0 的松弛做完了），此后每轮只扫 m 条约束边，共 n 轮 —— 负环检查仍然成立。'},
     ]},
   ],
 };

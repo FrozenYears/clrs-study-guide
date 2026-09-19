@@ -536,8 +536,8 @@ int main(void) {
         { kind: 'simulate', q: '同一张图从顶点 1 起 BFS，顶点 3、6 的 d 是多少（不可达记 -1）？填两个数', expect: [-1, -1], placeholder: '例如：0 0', why: '★★ 顶点 3、6 从 1 不可达，d=∞（C 程序记 -1）。' },
       ],
       bookExercises: [
-        { id: '20.2-3', page: 562, star: 0, statement: 'Show that using a single bit to store each vertex color suffices by arguing that the BFS procedure produces the same result if line 18 is removed. Then show how to obviate the need for vertex colors altogether.', hint: '矩阵下每个顶点的邻居要扫整行 O(V)，总 Θ(V²)。要回到 Θ(V+E) 只能对每个「还白着的」顶点另开邻接表，或预先由矩阵建出邻接表。' },
-        { id: '20.2-5', page: 563, star: 0, statement: 'Argue that in a breadth-first search, the value u: d assigned to a vertex u is inde- pendent of the order in which the vertices appear i n each adjacency list. Using Figure 20.3 as an example, show that the breadth-first tree computed by BFS can depend on the ordering within adjacency lists.', hint: '距离只取决于「第几层被发现」，与同层内邻居的先后无关——靠引理 20.3/20.4 的队列单调性。' },
+        { id: '20.2-3', page: 562, star: 0, statement: 'Show that using a single bit to store each vertex color suffices by arguing that the BFS procedure produces the same result if line 18 is removed. Then show how to obviate the need for vertex colors altogether.', hint: '第 18 行是 u.color = BLACK。先看颜色在哪里被读：只有「是不是 WHITE」这一处判断。于是问自己：灰色与黑色对 BFS 的结果真能区分开吗？第二问更省——把 d[u] ≠ ∞（或 π[u] 是否已赋过值）直接当作「已访问」的标志，颜色整个删掉。' },
+        { id: '20.2-5', page: 563, star: 0, statement: 'Argue that in a breadth-first search, the value u: d assigned to a vertex u is inde- pendent of the order in which the vertices appear i n each adjacency list. Using Figure 20.3 as an example, show that the breadth-first tree computed by BFS can depend on the ordering within adjacency lists.', hint: '前半：靠引理 20.3（队列里各结点的 d 值单调不减）加对 δ(s,u) 的归纳 —— 不管邻接表内部怎么排，u 第一次被发现都落在某个最短前驱被出队的那一刻，所以 u.d 恒等于 δ(s,u)。后半：在 Figure 20.3 上换一种邻接表次序重跑，让某个结点的 π 换一个父亲（层次全不变、树形变了）。' },
       ] },
   ],
 };

@@ -279,9 +279,9 @@ int main(void)
      {kind:'judge',q:'归约后网络的规模仍是 $\\Theta(E)$ —— 因为 $|E| + |V| \\le 3|E|$。',answer:true,why:'★ analyze 段第一条：往里加源、加汇只增加线性条数的边，不改变量级。'},
      {kind:'simulate',q:'C 程序 part 3 的图左右两侧共几个顶点（$|L| + |R|$）？',expect:[7],placeholder:'例如：6',why:'★ code 段标了 $|L|=4$、$|R|=3$，合计 7 个顶点、6 条边。'},
     ],bookExercises:[
-     {id:'24.3-1',page:696,star:0,statement:'Run the Ford-Fulkerson algorithm on the flow network in Figure 24.8(c) and show the residual network after each flow augmentation. Number the vertices in L top to bottom from 1 to 5 and in R top to bottom from 6 to 9. For each iteration, pick the augmenting path that is lexicographically smallest.',hint:'先按归约画 G′（单位容量），再手工跑 FF：每次找增广路 +1，直到无路可走 —— 匹配大小即 |f|。'},
-     {id:'24.3-2',page:697,star:0,statement:'Prove Theorem 24.10. Use induction on the number of iterations of the Ford- Fulkerson method.',hint:'教材里的引理 24.9 证明：两个方向各自构造映射，再用引理 24.4 的净流等式对齐大小。'},
-     {id:'24.3-3',page:697,star:0,statement:'Let G = (V,E) be a bipartite graph with vertex partition V = L [ R, and let G 0 be its corresponding flow network. Give a good upper bound on the length of any augmenting path found in G 0 during the execution of FORD-FULKERSON .',hint:'完美匹配 ⟺ 流网络的值为 $|V|/2$（左右各半）；用最大流判定。若 $|L| \\ne |R|$ 则不可能完美。'},
+     {id:'24.3-1',page:696,star:0,statement:'Run the Ford-Fulkerson algorithm on the flow network in Figure 24.8(c) and show the residual network after each flow augmentation. Number the vertices in L top to bottom from 1 to 5 and in R top to bottom from 6 to 9. For each iteration, pick the augmenting path that is lexicographically smallest.',hint:'先按题面的编号把归约网络画出来：s 连 L 中各点、R 中各点连 t，原来二部图的边从 L 指向 R，全部单位容量。每轮取字典序最小的增广路（逐位比较结点编号），并把增广后的残量网络整张重画 —— 记住已匹配的边在残量图里是反向出现的。'},
+     {id:'24.3-2',page:697,star:0,statement:'Prove Theorem 24.10. Use induction on the number of iterations of the Ford- Fulkerson method.',hint:'对 Ford-Fulkerson 的迭代次数归纳。归纳假设用引理 24.9 的两个方向的映射：匹配 → 同值的流。归纳步就是把一条增广路翻译成匹配里的一条交错路（偶数条边、两端都是未匹配点），于是匹配大小每轮加一，与流值同步增长。'},
+     {id:'24.3-3',page:697,star:0,statement:'Let G = (V,E) be a bipartite graph with vertex partition V = L [ R, and let G 0 be its corresponding flow network. Give a good upper bound on the length of any augmenting path found in G 0 during the execution of FORD-FULKERSON .',hint:'看结构：归约网络里只有 s→L、L→R、R→t 三类正向边，匹配边在残量图里反向成 R→L。所以增广路必然形如 s、L、R、L、R、…、t，L 与 R 内部没有边可走 —— 于是不重复访问结点的最长增广路长度是结点个数的线性函数，给出那个界即可。'},
     ]},
   ],
 };

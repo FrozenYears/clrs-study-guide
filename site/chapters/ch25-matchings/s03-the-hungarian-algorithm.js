@@ -408,9 +408,9 @@ int main(void)
      {kind:'single',q:'C 程序 part 3 的最优指派中，1 号工人分到哪个任务？',options:['任务 1','**任务 2**','任务 3','任务 4'],answer:1,why:'★ code 段实测的指派是 1→2、2→1、3→3、4→4，总代价 13。'},
      {kind:'judge',q:'对偶势函数满足 $u_i + v_j \\ge w(i,j)$ 时，势和给出任何完美匹配权重的上界，等号成立即为最优。',answer:true,why:'★ analyze 第三条「对偶可行性」—— 这就是 26 章线性规划对偶思想的雏形。'},
     ],bookExercises:[
-     {id:'25.3-1',page:739,star:0,statement:'The FIND-AUGMENTING-PATH procedure checks in two places (lines 19 and 31) whether a vertex it discovers in R is unmatched. Show how to rewrite the pseu- docode so that it checks for an unmatched vertex in R in only one place. What is the downside of doing so?',hint:'照本关 pseudocode：初始化势 → 紧边图上增广 → 不完美就调势；每轮记录匹配与势值，直到紧边完美匹配出现。'},
-     {id:'25.3-2',page:739,star:0,statement:'Show that for any bipartite graph, the GREEDY-BIPARTITE-MATCHING procedure on page 726 returns a matching at least half the size of a maximum matching.',hint:'若目标是最小化成本：把 $w$ 换成 $-w$（或对最大权重 $W$ 用 $W-w$），同一算法即可 —— 对偶势的可行方向相应翻转。'},
-     {id:'25.3-3',page:739,star:0,statement:'Show that if an edge (l,r) belongs to the directed equality subgraph G M,h but is not a member of G M,h 0 , where h 0 is given by equation (25.5), then l 2 L − F L and r 2 F R at the time that h 0 is computed.',hint:'非完美匹配需求（如工人少于任务）时补零权边（或补虚拟工人）→ 归约到完美匹配；若目标是"最大权匹配（不要求完美）"，则加"不选"的零边。'},
+     {id:'25.3-1',page:739,star:0,statement:'The FIND-AUGMENTING-PATH procedure checks in two places (lines 19 and 31) whether a vertex it discovers in R is unmatched. Show how to rewrite the pseu- docode so that it checks for an unmatched vertex in R in only one place. What is the downside of doing so?',hint:'合并的办法是只在一个出口判：把「发现 R 中未匹配点就返回」留在一处，另一处改成同样条件继续循环。代价是同一结点可能被多次入队、同一条边被重复考察 —— 说清楚这个常数膨胀出现在紧边图的哪一步。'},
+     {id:'25.3-2',page:739,star:0,statement:'Show that for any bipartite graph, the GREEDY-BIPARTITE-MATCHING procedure on page 726 returns a matching at least half the size of a maximum matching.',hint:'把贪心结果 M 与任意一个匹配 M 星放在一起比：M 星里任何一条边若不与 M 的某条边共享端点，贪心当时就会先选上它。于是 M 星的每条边都能「记账」到 M 的某条边上，而 M 的一条边最多接住两条（两个端点各一条）—— 得 $|M| \\ge |M^{*}|/2$。'},
+     {id:'25.3-3',page:739,star:0,statement:'Show that if an edge (l,r) belongs to the directed equality subgraph G M,h but is not a member of G M,h 0 , where h 0 is given by equation (25.5), then l 2 L − F L and r 2 F R at the time that h 0 is computed.',hint:'势更新只改两类结点：被减的那一类在「从 L 出发的可达集」里，被加的那一类在补集里（看式 (25.5) 的定义）。若一条边原来紧、更新后不再紧，说明它两端正好分处被减与被加的两类 —— 把这条边的 L 端与 R 端各自落在哪个集合里代进去验证。'},
     ]},
   ],
 };

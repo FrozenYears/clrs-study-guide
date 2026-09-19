@@ -307,9 +307,9 @@ int main(void)
      {kind:'judge',q:'DAG-SSSP 可以处理带负权边的图。',answer:true,why:'★ DAG 无环 ⇒ 无负环，负权边免费支持（p.617）。'},
      {kind:'simulate',q:'Figure 22.8 的 DAG 以 r 为源时，d[t] 是多少？（填数字）',expect:[3],placeholder:'例如：5',why:'★ t = r→t 权 3（C 程序 part 3 实测：r=0 s=5 t=3 x=10 y=7）。'},
     ],bookExercises:[
-     {id:'22.2-1',page:619,star:0,statement:'Show the result of running DAG-SHORTEST-PATHS on the directed acyclic graph of Figure 22.5, using vertex r as the source.',hint:'照 C 程序 Part 3 的顺序手工松弛：拓扑序下每个结点只松弛一次出边。'},
-     {id:'22.2-2',page:619,star:0,statement:'Suppose that you change line 3 of DAG-SHORTEST-PATHS to read 3 for the first |V| − 1 vertices, taken in topologically sorted order Show that the procedure remains correct.',hint:'改后结点按**逆拓扑序**处理 —— 依赖尚未就绪，松弛无效 → 结果错误。反例：让最短路径经过"拓扑序靠后"的结点。'},
-     {id:'22.2-3',page:619,star:0,statement:'An alternative way to represent a PERT chart looks more like the dag of Figure 20.7 on page 574. Vertices represent tasks and edges represent sequencing constraints, that is, edge (u,v) indicates that task u must be performed before task v. Vertices, not edges, have weights. Modify the DAG-SHORTEST-PATHS procedure so that it finds a longest path in a directed acyclic graph with weighted vertices in linear time.',hint:'可以：负化权重（或松弛方向取 max）跑同一算法 —— 关键路径就是 PERT 图的最长路径。'},
+     {id:'22.2-1',page:619,star:0,statement:'Show the result of running DAG-SHORTEST-PATHS on the directed acyclic graph of Figure 22.5, using vertex r as the source.',hint:'先把那张图的一个拓扑序列写出来（本站 c/sssp.c 会打印拓扑序），再按该序逐点松弛它的出边；处理完每个结点就把当前 d 与 $\\pi$ 抄下来，一轮即可收敛。'},
+     {id:'22.2-2',page:619,star:0,statement:'Suppose that you change line 3 of DAG-SHORTEST-PATHS to read 3 for the first |V| − 1 vertices, taken in topologically sorted order Show that the procedure remains correct.',hint:'少掉的只有拓扑序里最后一个结点。问自己：它的出边能指向谁？拓扑序末尾意味着它没有指向未处理结点的边，所以再松弛一遍也不改变任何 d（可达性论证另见引理 22.7 的方向）。'},
+     {id:'22.2-3',page:619,star:0,statement:'An alternative way to represent a PERT chart looks more like the dag of Figure 20.7 on page 574. Vertices represent tasks and edges represent sequencing constraints, that is, edge (u,v) indicates that task u must be performed before task v. Vertices, not edges, have weights. Modify the DAG-SHORTEST-PATHS procedure so that it finds a longest path in a directed acyclic graph with weighted vertices in linear time.',hint:'把权重从边搬到结点之后，松弛式子里加的就不是 w(u,v) 而是 v 自己的权重；求关键路径要求最长路，于是把 min 与初值 $\\infty$ 换成 max 与 $-\\infty$。拓扑序、逐点一遍的框架一字不动。'},
     ]},
   ],
 };
