@@ -179,3 +179,26 @@
 40. **expr 是要 eval 的 JS，变量是 n 不是 x**：growth 渲染器 new Function('n',...)
     （viz/growth.js:56）；写 x 会 ReferenceError 且 router 吞掉后页面空白——
     图表段必须过一遍无头 Chrome 抓 console。
+41. **bookExercises 是闸门盲区**：04 只校验 source/terms/claims/prove 的 en，**不看**
+    drill.bookExercises[].statement。实测 591 题里 **45 关命中率<60%（26 关 0%）**——
+    编号对、语气像、内容不是原书（ch22/s01 写 Figure 22.1，原书是 Figure 22.4）。
+    审计工具已落地：`python tools/09_audit_book_exercises.py [--detail]`（退出码 1=有问题）。
+    修法：按 id 从 data/blocks 的 exercise 块逐字取。**先修内容再加进闸门**，否则长期飘红。
+42. **source.printed 的权威规则**：`printed = [printed_page, pdf_end − 22]`
+    （生成器 05_new_level.py 的规则）。`pdf_end` 是**独占**的——TOC 相邻节 110/110 满足
+    `pdf_end(k) == pdf_index(k+1)`，所以终点要减到「下一节首页 − 1」。
+    `sourceNote` **不参与渲染**（只有 source.printed 会显示成「本节 pp.X–Y」）。
+    闸门 04 第 601–612 行的 structure 比对是**死代码**（sinfo 无 printed 键）；只有
+    640–648 行真用 `printed[1]` 作引号页上界 → **升它安全，降它可能 ERROR**。
+43. **闸门报「引用了本关范围之外的后续页码」时，先查 bookExercises[].page**：
+    本轮 4 关/19 道题的习题页码是第 3 版（638/692/700/704），与 source.printed 同源出错。
+    真实页在 data/blocks 的 exercise 块里（ch21 21.2-x → p598；ch23 23.1→653-655 /
+    23.2→661-662 / 23.3→666-667）。
+44. **审计脚本的章标识要对齐**：关卡对象 ch 是整数（2），语料文件名是 __ch02.json，
+    不做零填充会让第 1–9 章整体误报——本轮先跑出「70 关有问题」的假结果，是假信号。
+45. **答案粗体泄题**：drill options 里的 **…** 经 renderMixed 变成 <strong>，
+    正确答案一上屏就是粗的。213 处加粗**全部精确对齐 answer 下标**（作者侧标答案约定），
+    故在 site/assets/ui/stages.js 渲染选项时剥掉标记（比改 87 个文件外科）。
+    验证手法：无头 Chrome 抓 quiz__opt 里有没有 <strong>。
+46. **simulate 题的 expect 必须可数值化**：渲染器走 it.expect.map(Number) 做数字比较，
+    放文字 → 学员永远答不对（无任何报错）。已修 14 道。
