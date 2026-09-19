@@ -1186,7 +1186,7 @@ export default {
         {
           id: '2.3-1',
           page: 44,
-          star: 1,
+          star: 0,
           statement:
             'Using Figure 2.4 as a model, illustrate the operation of merge sort on an array ' +
             'initially containing the sequence ⟨3, 41, 52, 26, 38, 57, 9, 49⟩.',
@@ -1199,7 +1199,7 @@ export default {
         {
           id: '2.3-2',
           page: 44,
-          star: 2,
+          star: 0,
           statement:
             'The test in line 1 of the MERGE-SORT procedure reads "if p ≥ r " rather than <if p ≠ r .= If MERGE-SORT is called with p>r , then the subarray A[p : r] is empty. Argue that as long as the initial call of MERGE-SORT(A,1,n) has n ≥ 1, the test "if p ≠ r " suffices to ensure that no recursive call has p>r .',
           hint:
@@ -1212,7 +1212,7 @@ export default {
         {
           id: '2.3-3',
           page: 44,
-          star: 4,
+          star: 0,
           statement:
             'State a loop invariant for the while loop of lines 12–18 of the MERGE procedure. ' +
             'Show how to use it, along with the while loops of lines 20–23 and 24–27, to prove ' +
@@ -1229,7 +1229,7 @@ export default {
         {
           id: '2.3-4',
           page: 44,
-          star: 3,
+          star: 0,
           statement:
             'Use mathematical induction to show that when n ≥ 2 is an exact power of 2, the solution of the recurrence T(n) = ( 2 if n = 2; 2T(n/2) + n if n>2 is T(n) = n lg n.',
           hint:
@@ -1242,7 +1242,7 @@ export default {
         {
           id: '2.3-5',
           page: 44,
-          star: 3,
+          star: 0,
           statement:
             'You can also think of insertion sort as a recursive algorithm. In order to sort ' +
             'A[1 : n], recursively sort the subarray A[1 : n − 1] and then insert A[n] into the ' +
@@ -1258,7 +1258,7 @@ export default {
         {
           id: '2.3-7',
           page: 45,
-          star: 4,
+          star: 0,
           statement:
             'The while loop of lines 5–7 of the INSERTION-SORT procedure in Section 2.1 uses a ' +
             'linear search to scan (backward) through the sorted subarray A[1 : j − 1]. What if ' +
@@ -1275,7 +1275,7 @@ export default {
         {
           id: '2-1',
           page: 45,
-          star: 4,
+          star: 0,
           statement:
             'Insertion sort on small arrays in merge sort Although merge sort runs in Θ(n lg n) worst-case time and insertion sort runs in Θ(n 2 ) worst-case time, the constant factors in insertion sort can make it faster in practice for small problem sizes on many machine s. Thus it makes sense to coarsen the leaves of the recursion by using insertion sort within merge sort when subproblems become sufficiently small. Consider a modification to merge sort in which n/k sublists of length k are sorted using insertion sort and then merged using the standard merging mechanism, where k is a value to be determined. a. Show that insertion sort can sort the n/k sublists, each of length k, in Θ(nk) worst-case time. b. Show how to merge the sublists in Θ(n lg(n/k)) worst-case time. c. Given that the modified algorithm runs in Θ(nk + n lg(n/k)) worst-case time, what is the largest value of k as a function of n for which the modified algorithm has the same running time as standard merge sort, in terms of Θ-notation? d. How should you choose k in practice?',
           hint:
@@ -1289,7 +1289,7 @@ export default {
         {
           id: '2-2',
           page: 46,
-          star: 4,
+          star: 0,
           statement:
             'Correctness of bubblesort Bubblesort is a popular, but inefficient, sorting algorithm. It works by repeatedly swapping adjacent elements that are out of order. T he procedure BUBBLESORT sorts array A[1 : n]. BUBBLESORT (A,n) 1 for i = 1 to n − 1 2 for j = n downto i + 1 3 if A[j]<A[j − 1] 4 exchange A[j] with A[j − 1] a. Let A 0 denote the array A after BUBBLESORT (A,n) is executed. To prove that BUBBLESORT is correct, you need to prove that it terminates and that A 0 [1] ≤ A 0 [2] ≤ • • • ≤ A 0 [n]: (2.5) In order to show that BUBBLESORT actually sorts, what else do you need to prove? The next two parts prove inequality (2.5). b. State precisely a loop invariant for the for loop in lines 2–4, and prove that this loop invariant holds. Your proof should use the structure of the loop-invariant proof presented in this chapter. c. Using the termination condition of the loop invariant proved in part (b), state a loop invariant for the for loop in lines 1–4 that allows you to prove inequal- ity (2.5). Your proof should use the structure of the loop-invariant proof pre- sented in this chapter. d. What is the worst-case running time of BUBBLESORT ? …',
           hint:

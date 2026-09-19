@@ -278,7 +278,7 @@ int main(void)
         { kind: 'judge', q: '概率法（23 人）与指示器法（28 人）所需人数，渐近都是 Θ(√n)。', answer: true, why: '原书末句：两种方法人数相同渐近地是 $\\Theta(\\sqrt{n})$。' },
       ],
       bookExercises: [
-        { id: '5.4-1', page: 152, star: 1, preview: true,
+        { id: '5.4-1', page: 152, star: 0, preview: true,
           statement: 'How many people must there be in a room before the probability that someone has the same birthday as you do is at least 1/2? How many people must there be before the probability that at least two people have a birthday on July 4 is greater than 1/2?',
           hint: '第一问把自己和别人区分开：至少一人与你同生日 = 1 − (364/365)^m，解 m。第二问考虑“July 4 是否被至少两人占据”，用泊松/二项近似。' },
         { id: '5.4-2', page: 152, star: 0, preview: true,

@@ -637,7 +637,7 @@ export default {
       bookExercises: [{
           id: '2.1-1',
           page: 24,
-          star: 1,
+          star: 0,
           statement:
             'Using Figure 2.2 as a model, illustrate the operation of INSERTION-SORT on an ' +
             'array initially containing the sequence ⟨31, 41, 59, 26, 41, 58⟩.',
@@ -648,7 +648,7 @@ export default {
         {
           id: '2.1-2',
           page: 24,
-          star: 2,
+          star: 0,
           statement:
             'Consider the procedure SUM-ARRAY on the facing page. It computes the sum of the n numbers in array A[1 : n]. State a loop invariant for this procedure, and use its initialization, maintenance, and termination properties to show that the SUM- ARRAY procedure returns the sum of the numbers in A[1 : n].',
           hint:
@@ -659,7 +659,7 @@ export default {
         {
           id: '2.1-3',
           page: 25,
-          star: 2,
+          star: 0,
           statement:
             'Rewrite the INSERTION-SORT procedure to sort into monotonically decreasing ' +
             'instead of monotonically increasing order.',
@@ -670,7 +670,7 @@ export default {
         {
           id: '2.1-4',
           page: 25,
-          star: 3,
+          star: 0,
           statement:
             'Consider the searching problem: Input: A sequence of n numbers ⟨a₁, a₂, …, aₙ⟩ ' +
             'stored in array A[1 : n] and a value x. Output: An index i such that x equals ' +
@@ -686,7 +686,7 @@ export default {
         {
           id: '2.1-5',
           page: 25,
-          star: 4,
+          star: 0,
           statement:
             'Consider the problem of adding two n-bit binary integers a and b, stored in two n-element arrays A[0 : n − 1] and B[0 : n − 1], where each element is either 0 or 1, a = P n−1 i D0 A[i] • 2 i , and b = P n−1 i D0 B[i] • 2 i . The sum c = a + b of the two integers should be stored in binary form in an (n + 1)-element array C[0 : n], where c = P n i D0 C[i] • 2 i . Write a procedure ADD-BINARY-INTEGERS that takes as input arrays A and B , along with the length n, and returns array C holding the sum.',
           hint:

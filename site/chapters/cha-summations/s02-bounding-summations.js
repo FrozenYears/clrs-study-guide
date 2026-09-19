@@ -20,7 +20,7 @@ export default {
   source: { printed: [1145, 1152], pdf: [1166, 1173] },
   sourceNote: '本关对应原书 A.2 节（印刷页 1145–1152）。',
   prerequisites: [
-    { label: 'A.1 求和公式与性质', url: '#/chA/s01' },
+    { label: 'A.1 求和公式与性质', url: '#/appendix/a/s01' },
   ],
   stages: [
     // ——— 阶段 1 位置感 ———————————————————————————————————————

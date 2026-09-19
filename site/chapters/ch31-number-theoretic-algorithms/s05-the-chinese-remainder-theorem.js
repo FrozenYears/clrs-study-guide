@@ -22,7 +22,7 @@ export default {
      '★★ 两个习题实测：31.5-1 的 $x \\equiv 4 \\ (\\text{mod } 5), x \\equiv 5 \\ (\\text{mod } 11) \\Rightarrow x = 49 \\ (\\text{mod } 55)$；31.5-2 的"除 9 余 1、除 8 余 2、除 7 余 3" $\\Rightarrow x = 10$。',
      '⚠ 实现陷阱（本站真实踩过）：合并公式里的 Bezout 系数**可能是负的**（$5^{-1} \\text{ mod }11$：扩展 Euclid 直接给 $-2$，必须先规范成 9），否则解出 $-6$ 这种"负答案"。',
     ],interactive:{text:''}},
-   {type:'source',title:'书上是怎么说的',lead:'原书英文原文（含语料排版形式，如 $ 代表 ≡、× 代表 φ）。',blocks:[
+   {type:'source',title:'书上是怎么说的',lead:'原书英文原文（保留语料的排版形式：其中的美元符号代表「≡」，乘号位上的字符代表欧拉函数 φ）。',blocks:[
      {kind:'body',page:928,en:'Let n = n 1 n 2 • • • n k , where the n i are pairwise relatively prime.',
       zh:'★★ 定理 31.27 的对应关系 $a \\leftrightarrow (a_1, \\dots, a_k)$。'},
      {kind:'body',page:930,en:'The correspondence is one-to-one, since we can transform in both directions.',

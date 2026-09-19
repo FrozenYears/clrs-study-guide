@@ -1,7 +1,11 @@
 /* =============================================================================
  * 第 D 章 D.2 —— 第 s02 关：D.2 Basic matrix properties
  *
- * 原文锚点：印刷页 1219–1290（pdf_index 1240–1311）
+ * 原文锚点：印刷页 1219–1226（pdf_index 1240–1247）
+ *
+ * ★ 第 32 轮复审收紧：原先写 1219–1290，是从 structure.json 的章末 pdf_end 反推的，
+ *   而那个 end 一直顶到全书最后一页（1227 起是 Bibliography，1290 已是 Index）。
+ *   本关实际引用的最页是 1223，锚点按 D.2 真实末尾收回到 1226。
  *
  * 引述已从 data/blocks 逐字填入并通过溯源判据，请勿改写 en。
  * 本附录无伪代码，pseudocode 阶段已删除；visualize 改为 panels 形态。
@@ -15,8 +19,8 @@ export default {
   title: '矩阵的基本性质',
   shortTitle: 'D.2 矩阵的基本性质',
   titleEn: 'Basic matrix properties',
-  source: { printed: [1219, 1290], pdf: [1240, 1311] },
-  sourceNote: '本关对应原书 D.2 节（印刷页 1219–1290）。',
+  source: { printed: [1219, 1226], pdf: [1240, 1247] },
+  sourceNote: '本关对应原书 D.2 节（印刷页 1219–1226）。',
   prerequisites: [
     { label: 'D.1 Matrices and matrix operations', url: '#/appendix/d/s01' },
   ],
@@ -93,7 +97,7 @@ export default {
         { en: 'invertible', zh: '可逆（非奇异）', page: 1220 },
         { en: 'full column rank', zh: '列满秩', page: 1220 },
         { en: 'positive-definite', zh: '正定', page: 1222 },
-        { en: 'permutation matrix', zh: '置换矩阵', page: 1217 },
+        { en: 'permutation matrix', zh: '置换矩阵（正式定义在 D.1，p1217）', page: 1219 },
       ],
     },
 

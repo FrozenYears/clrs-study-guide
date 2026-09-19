@@ -9,7 +9,9 @@ export default {
   key: 's04', id: 'ch06/s04', chapter: 6, section: '6.4',
   title: '堆排序：把堆顶一个个摘出去', shortTitle: '6.4 堆排序算法',
   titleEn: 'The heapsort algorithm',
-  source: { printed: [170, 171], pdf: [191, 193] },
+  // ★ 第 32 轮复审：本节的运行时间结论与 6.4 的习题都排在 172 页（6.5 那页才起头），
+  //   所以终点必须是 172 —— 原写法 [170,171] 连自己的 sourceNote 和 pdf 区间都不一致。
+  source: { printed: [170, 172], pdf: [191, 193] },
   sourceNote: '本关对应原书 6.4 节（印刷页 170–172）。它是第 6 章的落点：前面三关建起来的堆，到这里变成排序算法。',
   prerequisites: [{ label: '6.3 Building a heap（建堆）', url: '#/ch06/s03' }],
   stages: [

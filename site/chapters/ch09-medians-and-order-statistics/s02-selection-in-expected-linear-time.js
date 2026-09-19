@@ -57,7 +57,9 @@ export default {
       zh:'★★ **Theorem 9.2** 本体：期望 $\\Theta(n)$。'},
     ],
     terms:[
-     {en:'order statistic',zh:'顺序统计量',page:227},
+     // ★ 第 32 轮复审：术语卡页码必须落在本关自己的印刷区间（9.2 起于 230）。
+     //   原先写 227 是 9.1 那页的定义位置，本站把它当作跨页引用挂到了本关的引文上。
+     {en:'order statistic',zh:'顺序统计量',page:230},
      {en:'helpful partitioning',zh:'有帮助的分区（至少淘汰 1/4）',page:233},
     ]},
    {type:'pseudocode',title:'RANDOMIZED-SELECT：9 行（伪代码需按渲染页核对）',

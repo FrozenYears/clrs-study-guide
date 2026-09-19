@@ -15,7 +15,7 @@ export default {
   source: { printed: [1191, 1195], pdf: [1212, 1216] },
   sourceNote: '本关对应原书 C.3 节（印刷页 1191–1195）。',
   prerequisites: [
-    { label: 'C.2 Probability', url: '#/chC/s02' },
+    { label: 'C.2 Probability', url: '#/appendix/c/s02' },
   ],
   stages: [
     // ——— 阶段 1 位置感 ———————————————————————————————————————
@@ -25,7 +25,7 @@ export default {
       why: '把"事件"升级成"随机变量"——给每个结果赋一个实数，于是期望、方差、指示变量都能谈。它是 C.4 分布、第 5 章随机化分析的工具箱。',
       position: '附录 C 的第三节。前置是 C.1 计数、C.2 概率；往后接 C.4 几何/二项、C.5 二项尾部。',
       unlocks: [
-        { label: 'C.4 The geometric and binomial distributions', url: '#/chC/s04' },
+        { label: 'C.4 The geometric and binomial distributions', url: '#/appendix/c/s04' },
       ],
       mathKit: [
         { title: '期望', body: '离散随机变量 $\\mathrm{E}[X]=\\sum_x x\\,\\Pr(X=x)$；线性性 $\\mathrm{E}[aX+b]=\\mathrm{aE}[X]+b$。' },

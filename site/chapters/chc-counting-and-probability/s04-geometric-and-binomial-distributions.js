@@ -15,7 +15,7 @@ export default {
   source: { printed: [1196, 1202], pdf: [1217, 1223] },
   sourceNote: '本关对应原书 C.4 节（印刷页 1196–1202）。',
   prerequisites: [
-    { label: 'C.3 Discrete random variables', url: '#/chC/s03' },
+    { label: 'C.3 Discrete random variables', url: '#/appendix/c/s03' },
   ],
   stages: [
     // ——— 阶段 1 位置感 ———————————————————————————————————————
@@ -25,7 +25,7 @@ export default {
       why: '把"伯努利试验"（只有成败两种结果）串起来，就得到两个最常碰到的分布：几何分布（等到第一次成功要多久）与二项分布（n 次里成功几次）。',
       position: '附录 C 的第四节。前置是 C.1–C.3；往后是 C.5 二项分布的尾部。',
       unlocks: [
-        { label: 'C.5 The tails of the binomial distribution', url: '#/chC/s05' },
+        { label: 'C.5 The tails of the binomial distribution', url: '#/appendix/c/s05' },
       ],
       mathKit: [
         { title: '伯努利试验', body: '单次只有成功(p)/失败(q=1−p)两种结果；多次独立同分布即 Bernoulli trials。' },

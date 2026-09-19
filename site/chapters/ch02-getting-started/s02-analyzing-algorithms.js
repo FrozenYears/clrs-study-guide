@@ -1064,7 +1064,7 @@ export default {
         {
           id: '2.2-1',
           page: 33,
-          star: 1,
+          star: 0,
           statement:
             'Express the function n³/1000 + 100n² − 100n + 3 in terms of Θ-notation.',
           hint:
@@ -1076,7 +1076,7 @@ export default {
         {
           id: '2.2-2',
           page: 33,
-          star: 2,
+          star: 0,
           statement:
             'Consider sorting n numbers stored in array A[1 : n] by first finding the smallest ' +
             'element of A[1 : n] and exchanging it with the element in A[1]. Then find the ' +
@@ -1101,7 +1101,7 @@ export default {
         {
           id: '2.2-3',
           page: [33, 34],
-          star: 2,
+          star: 0,
           statement:
             'Consider linear search again (see Exercise 2.1-4). How many elements of the input array need to be checked on the average, assuming that the element being searched for is equally likely to be any element in the array? How about in the worst case?',
           hint:
@@ -1116,7 +1116,7 @@ export default {
         {
           id: '2.2-4',
           page: 34,
-          star: 1,
+          star: 0,
           statement:
             'How can you modify any sorting algorithm to have a good best-case running time?',
           hint:

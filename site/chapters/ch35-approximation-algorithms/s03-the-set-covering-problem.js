@@ -19,8 +19,10 @@ export default {
   title: '集合覆盖问题',
   shortTitle: '35.3 集合覆盖问题',
   titleEn: 'The set-covering problem',
-  source: { printed: [1115, 1118], pdf: [1136, 1139] },
-  sourceNote: '本关对应原书 35.3 节（印刷页 1115–1118）。',
+  // ★ 第 32 轮复审：定理 35.4 的结论与 35.3 的四道习题都排在 1119 页
+  //   （35.4 同一页才起头），锚点终点收到 1119 而不是 1118。
+  source: { printed: [1115, 1119], pdf: [1136, 1140] },
+  sourceNote: '本关对应原书 35.3 节（印刷页 1115–1119）。',
   prerequisites: [
     { label: '35.2 The traveling-salesperson problem', url: '#/ch35/s02' },
   ],

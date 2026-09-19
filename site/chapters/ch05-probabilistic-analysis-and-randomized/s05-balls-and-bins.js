@@ -273,7 +273,7 @@ int main(void)
         { kind: 'judge', q: '球与箱模型可用于分析哈希表的冲突分布。', answer: true, why: '原书明确指出该模型对分析 hashing（第 11 章）特别有用。' },
       ],
       bookExercises: [
-        { id: '5.4-3', page: 153, star: 1, preview: true,
+        { id: '5.4-3', page: 153, star: 0, preview: true,
           statement: 'You toss balls into b bins until some bin contains two balls. Each toss is independent, and each ball is equally likely to end up in any bin. What is the expected number of ball tosses?',
           hint: '这是生日悖论（5.4.1）的「投掷版」：直到某箱有 2 球，相当于直到出现第一个「重复生日」，期望约 √(π b / 2)。' },
       ] },

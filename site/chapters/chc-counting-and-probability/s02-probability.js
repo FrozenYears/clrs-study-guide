@@ -15,7 +15,7 @@ export default {
   source: { printed: [1184, 1190], pdf: [1205, 1211] },
   sourceNote: '本关对应原书 C.2 节（印刷页 1184–1190）。',
   prerequisites: [
-    { label: 'C.1 Counting', url: '#/chC/s01' },
+    { label: 'C.1 Counting', url: '#/appendix/c/s01' },
   ],
   stages: [
     // ——— 阶段 1 位置感 ———————————————————————————————————————
@@ -25,7 +25,7 @@ export default {
       why: '计数告诉你"有多少种可能"，概率则给每种可能赋一个权重。它是 C.3 随机变量、第 5 章随机化算法的语言基础。',
       position: '附录 C 的第二节。前置是 C.1 计数；往后接 C.3 离散随机变量、C.4 几何/二项、C.5 二项尾部。',
       unlocks: [
-        { label: 'C.3 Discrete random variables', url: '#/chC/s03' },
+        { label: 'C.3 Discrete random variables', url: '#/appendix/c/s03' },
       ],
       mathKit: [
         { title: '样本空间与事件', body: '样本空间 S 是所有基本结果的集合；事件 A 是 S 的子集，概率 P(A)∈[0,1]，P(S)=1。' },

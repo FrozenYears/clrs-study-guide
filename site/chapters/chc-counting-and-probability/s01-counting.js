@@ -23,7 +23,7 @@ export default {
       why: '计数（有多少种可能）是所有概率计算的地基：先会数，才能给事件赋概率。它也是第 5 章随机化分析里"指示随机变量"的工具箱。',
       position: '附录 C 的第一节。往后是 C.2 概率、C.3 随机变量、C.4 几何/二项、C.5 二项尾部。',
       unlocks: [
-        { label: 'C.2 Probability', url: '#/chC/s02' },
+        { label: 'C.2 Probability', url: '#/appendix/c/s02' },
       ],
       mathKit: [
         { title: '加法 / 乘法法则', body: '若 A、B 不交，|A∪B|=|A|+|B|；有序对 |A×B|=|A|·|B|。' },
