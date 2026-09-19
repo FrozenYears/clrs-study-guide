@@ -233,7 +233,7 @@ CASES = [
     ("#/ch10/s01/s05", ["viz-stage", "帧 0"], [NOT_PENDING, "【TODO"]),
     ("#/ch10/s01/s06", ["stack_queue.c", "push"], [NOT_PENDING, "【TODO"]),
     ("#/ch10/s01/s07", ["栈 vs 队列"], [NOT_PENDING, "【TODO"]),
-    ("#/ch10/s01/s08", ["锦标赛", "第一步"], [NOT_PENDING, "【TODO"]),
+    ("#/ch10/s01/s08", ["栈内元素", "第二步"], [NOT_PENDING, "【TODO"]),
     ("#/ch10/s01/s09", ["检验一下", "10.1-1"], [NOT_PENDING, "【TODO"]),
 
     # ---- 10.2 链表（九段式）----
@@ -278,11 +278,11 @@ CASES = [
 
     # ---- 11.5 散列表的工程实践（九段式）----
     ("#/ch11/s05/s01", ["工程实践"], [NOT_PENDING, "【TODO"]),
-    ("#/ch11/s05/s03", ['data-kind="source"', "sentinel"], [NOT_PENDING, "【TODO"]),
+    ("#/ch11/s05/s03", ['data-kind="source"', "linear probing excels"], [NOT_PENDING, "【TODO"]),
     ("#/ch11/s05/s04", ["pc-line"], [NOT_PENDING, "【TODO"]),
     ("#/ch11/s05/s05", ["viz-stage", "viz-hash"], [NOT_PENDING, "【TODO"]),
     ("#/ch11/s05/s06", ["hash_practical.c"], [NOT_PENDING, "【TODO"]),
-    ("#/ch11/s05/s07", ["负载因子"], [NOT_PENDING, "【TODO"]),
+    ("#/ch11/s05/s07", ["Theorem 11.9", "初级聚集"], [NOT_PENDING, "【TODO"]),
     ("#/ch11/s05/s08", ["第一步"], [NOT_PENDING, "【TODO"]),
     ("#/ch11/s05/s09", ["检验一下"], [NOT_PENDING, "【TODO"]),
 

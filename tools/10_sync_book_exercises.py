@@ -57,35 +57,32 @@ def _scan_string(t, i):
 
 
 def _objs(t, start):
-    """t[start] == '[' —— 返回其中每个顶层 '{' 的 (begin, end)。"""
-    out, depth, i, open_at, in_str = [], 0, start, None, None
+    """t[start] == '[' —— 返回其中每个顶层 '{' 的 (begin, end)。
+
+    ★ 深度要同时数 `[` 与 `{`：bookExercises 里 `page: [33, 34]` 这种
+      页码区间会把只数方括号的版本带到 depth=2，那条之后的对象再也匹配不上，
+      于是整段被静默跳过（本轮在 ch02/s02 的 2.2-3 上踩到）。
+    """
+    out, depth, i, open_at = [], 0, start, None
     while i < len(t):
         c = t[i]
-        if in_str:
-            if c == '\\':
-                i += 2
-                continue
-            if c == in_str:
-                in_str = None
-            i += 1
-            continue
         if c in "'\"":
             j = _scan_string(t, i)
             if j < 0:
                 break
             i = j + 1
             continue
-        if c == '[':
-            depth += 1
-            if depth == 1:
-                pass
-        elif c == '{' and depth == 1:
-            open_at = i
-        elif c == '}' and depth == 1 and open_at is not None:
-            out.append((open_at, i))
-            open_at = None
-        elif c == ']' and depth == 1:
-            break
+        if c in '[{':
+            depth += 1                       # 进到这里时 depth==1 就是那条 bookExercises 数组
+            if c == '{' and depth == 2:      # 数组的「第 2 层」才是里面的对象
+                open_at = i
+        elif c in ']}':
+            if c == '}' and depth == 2 and open_at is not None:
+                out.append((open_at, i))
+                open_at = None
+            elif c == ']' and depth == 1:
+                break
+            depth -= 1
         i += 1
     return out
 
@@ -235,7 +232,10 @@ def main():
                                  % ('回填' if report or apply else '待回填',
                                     path, qid, old[:100], new[:100]))
                 pi = vals.get('page')
-                if pi and t[pi[0]:pi[1] + 1].strip() != str(ex['page']):
+                # 只改「单个整数」的页码；写成 page: [33, 34] 的区间值是刻意的
+                # （那道题横跨两页），替换成单个数字会把数组撑坏。
+                if pi and t[pi[0]:pi[1] + 1].strip().isdigit() and \
+                        int(t[pi[0]:pi[1] + 1]) != ex['page']:
                     edits.append((pi[0], pi[1], str(ex['page'])))
                     lines.append('      [页码] %s %s: %s -> %s'
                                  % (path, qid, t[pi[0]:pi[1] + 1].strip(), ex['page']))

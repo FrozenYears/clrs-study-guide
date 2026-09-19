@@ -1103,11 +1103,7 @@ export default {
           page: [33, 34],
           star: 2,
           statement:
-            'Consider linear search again (see Exercise 2.1-4). How many elements of the input ' +
-            'array need to be checked on the average, assuming that the element being searched ' +
-            'for is equally likely to be any element in the array? How about in the worst case? ' +
-            'Using Θ-notation, give the average-case and worst-case running times of linear ' +
-            'search. Justify your answers.',
+            'Consider linear search again (see Exercise 2.1-4). How many elements of the input array need to be checked on the average, assuming that the element being searched for is equally likely to be any element in the array? How about in the worst case?',
           hint:
             '先回到 2.1 的习题 2.1-4 把线性查找的伪代码写出来（你当时写过一遍）。' +
             '设元素出现在每个位置的概率相等，那么检查次数的期望是 ' +
