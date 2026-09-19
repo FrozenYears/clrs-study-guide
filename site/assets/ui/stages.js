@@ -60,7 +60,10 @@ export function pageRef(page, preview) {
 function stageHead(stage) {
   const m = STAGE_META[stage.type] || { no: -1, name: stage.type, en: '' };
   return h('div', { class: 'stage-head' },
-    h('span', { class: 'stage-no' }, '阶段 ' + m.no),
+    // ★ 段号一律 1 基：路由 #/ch02/s01/s01 是「第 1 段」，文案里的跨段指引
+    //   （'阶段 6 的 C 程序'、'阶段 9 有对应考题'）也按 1 基写。原先显示 m.no
+    //   会让第一段顶着「阶段 0」，与路由和文案集体差 1（第 32 轮复审实测）。
+    h('span', { class: 'stage-no' }, '阶段 ' + (m.no + 1)),
     h('h2', { class: 'stage-name' }, stage.title || m.name),
     h('span', { class: 'stage-en' }, m.en)
   );
