@@ -485,7 +485,7 @@ int main(void)
           hint: '★ 随机化算法的运行时间不再由输入决定，而是由**随机选择**决定。对于同一输入，两次运行可能不同 —— 所以"最坏情况"变为"最不走运的随机选择序列"，概率极小。我们关心的变成期望。' },
         { id: '7.3-2', page: 193, star: 0,
           statement: 'When RANDOMIZED-QUICKSORT runs, how many calls are made to the random- number generator RANDOM in the worst case? How about in the best case? Give your answer in terms of Θ-notation.',
-          hint: '每次 RANDOMIZED-PARTITION 都恰好产生两次递归调用（第 3 行和第 4 行）。递归树有 $n$ 个"非空"结点（每个元素最终会就位）加 $n-1$ 个"空"结点。总共 $2n - 1$ 次调用 —— 与 7.1 的确定性版本相同。' },
+          hint: 'RANDOM 只在 RANDOMIZED-PARTITION 里被调用一次，所以要数的是「做了多少次分区」。每个长度 $\\ge 2$ 的子数组恰好被分区一次，递归树 $n$ 个叶 $\\Rightarrow$ 内部结点恒为 $n-1$ —— 与切得多不平衡无关，最坏与最好同阶。' },
       ] },
   ],
 };

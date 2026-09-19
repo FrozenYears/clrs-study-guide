@@ -423,7 +423,7 @@ int main(void)
      {kind:'judge',q:'在朴素链表表示下，FIND-SET 返回代表元（链表头）只需 O(1)。',answer:true,why:'★ 链表表示下 FIND-SET 跟随 set 指针返回链表头，O(1)（p.521）。'},
      {kind:'single',q:'朴素链表表示中，单次 UNION 的最坏代价是？',options:['O(1)','**Θ(n)**','O(lg n)','O(α(n))'],answer:1,why:'★ 朴素链表 UNION 最坏 Θ(n)（p.524）。'},
     ],bookExercises:[
-     {id:'19.1-1',page:523,star:0,statement:'The CONNECTED-COMPONENTS procedure is run on the undirected graph G = (V,E) , where V = fa,b,c,d,e,f,g,h,i,j,k g , and the edges of E are pro- cessed in the order (d,i),.f,k/,.g,i/,.b,g/,.a,h/,.i,j/,.d,k/,.b,j/,.d; f/; (g,j),.a,e/ . List the vertices in each connected component after each iteration of lines 3–5.',hint:'把 x 链的头接到 y 链的尾（或反之），返回另一条的尾指针；注意同时更新每个结点的代表元指针。'},
+     {id:'19.1-1',page:523,star:0,statement:'The CONNECTED-COMPONENTS procedure is run on the undirected graph G = (V,E) , where V = fa,b,c,d,e,f,g,h,i,j,k g , and the edges of E are pro- cessed in the order (d,i),.f,k/,.g,i/,.b,g/,.a,h/,.i,j/,.d,k/,.b,j/,.d; f/; (g,j),.a,e/ . List the vertices in each connected component after each iteration of lines 3–5.',hint:'照 CONNECTED-COMPONENTS 逐条边跑：每读一条边先做两次 FIND-SET，只有两端代表元不同才 LINK 并把分量数 $+1$。每轮把当前的集合列表抄下来 —— 有一两条边的两端已经在同一集合里，那一步分量数不动，正好检查你有没有误并。'},
     ]},
   ],
 };

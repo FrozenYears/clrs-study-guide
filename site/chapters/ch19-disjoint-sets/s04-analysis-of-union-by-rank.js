@@ -434,9 +434,9 @@ int main(void)
      {kind:'judge',q:'阿克曼台阶上 A_2(1) = 7。',answer:true,why:'★ C 程序 Part D 楼梯：A_0=2、A_1=3、A_2=7、A_3=2047（原书 p.532）。'},
      {kind:'simulate',q:'阿克曼台阶上 A_1(1) 等于多少？（填数字）',expect:[3],placeholder:'例如：2',why:'★ A_1(1) = 3（C 程序 Part D / 原书 p.532）。'},
     ],bookExercises:[
-     {id:'19.4-1',page:540,star:0,statement:'Prove Lemma 19.4.',hint:'按原书的分层归纳：level_0 = rank 0 的结点；更高层由 A_k 分组。逐层对 FIND-SET 的路径长度记账。'},
-     {id:'19.4-2',page:540,star:0,statement:'Prove that every node has rank at most blg nc.',hint:'这是分摊分析的推广练习 —— 用本章的分层记账框架，对自定义操作序列证明类似的 α(n) 上界。'},
-     {id:'19.4-3',page:540,star:0,statement:'In light of Exercise 19.4-2, how many bits are necessary to store x: rank for each node x ?',hint:'若合并时随意选方向、只留路径压缩，最坏会退化出 Θ(n) 链 —— α(n) 的证明依赖 rank 的上界性质（MEMORY 规则同源）。'},
+     {id:'19.4-1',page:540,star:0,statement:'Prove Lemma 19.4.',hint:'先把引理 19.4 的原话抄下来（p533：$x$ 的 rank 不超过 $x.p$ 的 rank，非根时严格；rank 初值为 0，成为非根后不再变）。证明只需盯每次 LINK 的两个角色：被挂上去的那根从此冻结，留下当根的那根 rank 只增不减 —— 引理里的不等式与「至多变化一次」都是从这一次赋值读出来的。'},
+     {id:'19.4-2',page:540,star:0,statement:'Prove that every node has rank at most blg nc.',hint:'对 rank 归纳：rank 为 $k$ 的结点，它的子树里至少要有 $2^k$ 个结点（因为 rank 只在两根同秩 LINK 时才 $+1$，那一次的子树是两棵 rank $k-1$ 的子树拼的）。子树不超过 $n$ 个结点，于是 $2^k\\le n$。'},
+     {id:'19.4-3',page:540,star:0,statement:'In light of Exercise 19.4-2, how many bits are necessary to store x: rank for each node x ?',hint:'上一题给了 rank 不超过 $\\lfloor\\lg n\\rfloor$，所以「值域里有多少个不同的数」决定位数：$\\lg(\\lfloor\\lg n\\rfloor + 1)$ 位。把这一步的换算写出来，再顺手说一句为什么这比「存一个结点下标」便宜得多。'},
     ]},
   ],
 };

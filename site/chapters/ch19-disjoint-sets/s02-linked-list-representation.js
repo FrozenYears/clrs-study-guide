@@ -428,7 +428,7 @@ int main(void)
      {kind:'judge',q:'即使采用加权合并，单次 UNION 的最坏代价仍可能达到 Θ(n)。',answer:true,why:'★ 两条等长链合并仍要搬一半 → 单次最坏 Ω(n)；改善的是总账（p.525）。'},
      {kind:'simulate',q:'加权合并链表（n=1024）的总指针更新实测是多少？（填数字）',expect:[3512],placeholder:'例如：5000',why:'★ C 程序 Part B：总更新 3512，远小于上界 n·lg n = 10240。'},
     ],bookExercises:[
-     {id:'19.2-1',page:526,star:0,statement:'Write pseudocode for MAKE-SET, FIND-SET, and UNION using the linked-list representation and the weighted-union heuristic. Make sure to specify the attributes that you assume for set objects and list objects.',hint:'环形链表：尾指头后，两链 O(1) 接环；代价被推到 FIND-SET（沿环找代表元）。这是"把代价从一个操作搬到另一个操作"的例子 —— 但搬得不对称，会破坏总账。'},
+     {id:'19.2-1',page:526,star:0,statement:'Write pseudocode for MAKE-SET, FIND-SET, and UNION using the linked-list representation and the weighted-union heuristic. Make sure to specify the attributes that you assume for set objects and list objects.',hint:'先把要写的属性列清楚：集合对象存 head/tail/size，链表对象存 head/tail 与结点数，链表元素反过来指回集合对象（这就是「MAKE-SET 造一个单元素表」的落点）。weighted-union 的要点：只把短表整体并进长表，并顺手改掉被搬结点的集合指针 —— 于是每个结点被改指针的次数对数级。'},
     ]},
   ],
 };
