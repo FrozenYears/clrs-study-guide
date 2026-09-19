@@ -230,8 +230,8 @@ int main(void)
     ],bookExercises:[
      {id:'13.2-1',page:336,star:0,statement:'Write pseudocode for RIGHT-ROTATE.',hint:'LEFT-ROTATE 的镜像：把 left 换成 right、right 换成 left。C 程序的 `right_rotate` 就是答案。'},
      {id:'13.2-2',page:337,star:0,statement:'Argue that in every n-node binary search tree, there are exactly n − 1 possible rotations.',hint:'每条边对应一次旋转（把边的下端旋上来）→ n−1 条边 = n−1 种可能的旋转。'},
-     {id:'13.2-3',page:337,star:0,statement:'Let a, b, and c be arbitrary nodes in subtrees ˛, ˇ, and Ω , respectively, in the right tree',hint:'书上是半截题干。证明旋转后 a ≤ b ≤ c 的相对顺序不变 —— 就是"中序不变"的局部版本。'},
-     {id:'13.2-4',page:337,star:0,statement:'Show that any arbitrary n-node binary search tree can be transformed into any other arbitrary',hint:'书上是半截题干。用 $O(n^2)$ 次右旋：反复把根右旋直到目标根到位，然后递归处理两棵子树。'},
+     {id:'13.2-3',page:337,star:0,statement:'Let a, b, and c be arbitrary nodes in subtrees ˛, ˇ, and Ω , respectively, in the right tree of Figure 13.2. How do the depths of a, b, and c change when a left rotation is performed on node x in the figure?',hint:'证明旋转后 a ≤ b ≤ c 的相对顺序不变 —— 就是"中序不变"的局部版本。'},
+     {id:'13.2-4',page:337,star:0,statement:'Show that any arbitrary n-node binary search tree can be transformed into any other arbitrary n-node binary search tree using O(n) rotations. (Hint: First show that at most n − 1 right rotations suffice to transform the tree into a right-going chain.)',hint:'用 $O(n^2)$ 次右旋：反复把根右旋直到目标根到位，然后递归处理两棵子树。'},
     ]},
   ],
 };

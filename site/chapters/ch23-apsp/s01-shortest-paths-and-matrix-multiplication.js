@@ -417,12 +417,12 @@ int main(void)
      {kind:'single',q:'单次 EXTEND（一次「最短路矩阵乘法」）的时间是？',options:['$\\Theta(n^2)$','**$\\Theta(n^3)$**','$\\Theta(n^4)$','$\\Theta(n \\lg n)$'],answer:1,why:'★ 三重循环 $i,j,k$ 各走一遍 → 单次 $\\Theta(n^3)$；SLOW-APSP 要做 $n-1$ 次，所以总共 $\\Theta(n^4)$。'},
      {kind:'judge',q:'重复平方把矩阵自乘次数从 $n-1$ 压到了 $\\lceil \\lg(n-1) \\rceil$。',answer:true,why:'★ 用倍增代替逐个相乘：n=5 时 $\\lceil \\lg 4 \\rceil = 2$，C 程序实测两条路结果一致。'},
     ],bookExercises:[
-     {id:'23.1-1',page:653,star:0,statement:'Run SLOW-ALL-PAIRS-SHORTEST-PATHS on the weighted, directed graph of Figure 23.1...',hint:'照 C 程序 s01 段的打印逐矩阵抄：L^(1) = W，L^(2)、L^(3)、L^(4) 依次收敛。'},
-     {id:'23.1-2',page:654,star:0,statement:'Show that matrix L(0) ... ',hint:'$L^{(0)}$ 的定义：0 条边的最短路 = 对角线 0、其余 ∞ —— 它是 min-+ 代数下的"乘法单位元"。'},
-     {id:'23.1-3',page:654,star:0,statement:'What does the matrix used in the shortest-paths algorithms correspond to... ',hint:'对应标准代数的结合律与单位元：min-+ 半环满足结合律，0（∞）是 ⊕ 单位、1（0）是 ⊗ 单位 —— 所以"乘幂"的概念良定义。'},
-     {id:'23.1-4',page:654,star:0,statement:'(...) Show that we can multiply... ',hint:'分块思想：把 n×n 矩阵分成 n/2 的块，用 8 次块乘合成（Strassen 式），最短路版本同样适用 —— 但本章的 FASTER 已从指数入手。'},
-     {id:'23.1-5',page:654,star:0,statement:'(...) Describe an algorithm for APSP on... ',hint:'对无向图：用 22 章的单源算法跑 V 次（每次 Dijkstra/负权用 BF），总 O(V³) —— 与矩阵法对比。'},
-     {id:'23.1-6',page:654,star:0,statement:'(...) Give an O(V³)-time algorithm... ',hint:'结合 23.2 的 Floyd-Warshall：也是 Θ(n³)，无需 lg 因子 —— 下一关的主题。'},
+     {id:'23.1-1',page:653,star:0,statement:'Run SLOW-APSP on the weighted, directed graph of Figure 23.2, showing the matrices that result for each iteration of the loop . Then do the same for FASTER- APSP.',hint:'照 C 程序 s01 段的打印逐矩阵抄：L^(1) = W，L^(2)、L^(3)、L^(4) 依次收敛。'},
+     {id:'23.1-2',page:654,star:0,statement:'Why is it convenient for both SLOW-APSP and FASTER-APSP that w i i = 0 for i = 1,2,…,n ?',hint:'$L^{(0)}$ 的定义：0 条边的最短路 = 对角线 0、其余 ∞ —— 它是 min-+ 代数下的"乘法单位元"。'},
+     {id:'23.1-3',page:654,star:0,statement:'What does the matrix L .0/ = â 0 1 1 • • • 1 1 0 1 • • • 1 1 1 0 • • • 1 : : : : : : : : : : : : : : : 1 1 1 • • • 0 ã used in the shortest-paths algorithms correspond to in regular matrix multiplica- tion?',hint:'对应标准代数的结合律与单位元：min-+ 半环满足结合律，0（∞）是 ⊕ 单位、1（0）是 ⊗ 单位 —— 所以"乘幂"的概念良定义。'},
+     {id:'23.1-4',page:654,star:0,statement:'Show that matrix multiplication defined by EXTEND-SHORTEST-PATHS is asso- ciative.',hint:'分块思想：把 n×n 矩阵分成 n/2 的块，用 8 次块乘合成（Strassen 式），最短路版本同样适用 —— 但本章的 FASTER 已从指数入手。'},
+     {id:'23.1-5',page:654,star:0,statement:'Show how to express the single-source shortest-paths problem as a product of ma- trices and a vector. Describe how evaluating this product corresponds to a Bellman- Ford-like algorithm (see Section 22.1).',hint:'对无向图：用 22 章的单源算法跑 V 次（每次 Dijkstra/负权用 BF），总 O(V³) —— 与矩阵法对比。'},
+     {id:'23.1-6',page:654,star:0,statement:'Argue that we don9t need the matrix M in SLOW-APSP because by substituting L for M and leaving out the initialization of M , the code still works correctly. (Hint: Relate line 5 of EXTEND-SHORTEST-PATHS to RELAX on page 610.) Do we need the matrix M in FASTER-APSP?',hint:'结合 23.2 的 Floyd-Warshall：也是 Θ(n³)，无需 lg 因子 —— 下一关的主题。'},
     ]},
   ],
 };

@@ -480,9 +480,9 @@ int main(void)
      {kind:'judge',q:'CRT 合并两个方程时，唯一需要真正「新算」的一步是求一个模逆。',answer:true,why:'★ 本关 analyze 表把 $n_1^{-1} \text{ mod }n_2$ 单独列出来，注解就是「合并步骤里唯一的新计算」—— 其余都是代入与取模。C 程序对三组方程组都暴力枚举验证了唯一解。'},
      {kind:'simulate',q:'C 程序 part 5 里习题 31.5-1（模 55）的答案 $x$ 是多少？（填整数）',expect:[49],placeholder:'例如：23',why:'49 —— 程序打印 $x = 49 \ (\text{mod }55)$；同一 part 里孙子定理经典组得到 23（模 105），习题 31.5-2 得到 10。'},
     ],bookExercises:[
-     {id:'31.5-1',page:931,star:0,statement:'31.5-1 Find all solutions to the equations x = 4 (mod 5) and x = 5 (mod 11).',hint:'合并：$x = 4 + 5t$，$5t \\equiv 1 \\ (\\text{mod } 11)$，$t \\equiv 9$（$5^{-1} = 9$）→ $x = 49 \\ (\\text{mod } 55)$（C 程序已验证）。'},
-     {id:'31.5-2',page:931,star:0,statement:'31.5-2 Find all integers x that leave remainders 1, 2, and 3 when divided by 9, 8, and 7, respectively.',hint:'从 $x \\equiv 1 \\ (\\text{mod } 9)$ 出发逐条合并；或注意 $x - 3$ 被 9,8,7 整除且 $x - 3 = 7$ —— 答案 $x = 10$。'},
-     {id:'31.5-3',page:931,star:0,statement:'31.5-3 Argue that, under the definitions of Theorem 31.27, if gcd(a,n) = 1, then',hint:'用 CRT 把 $a$ 拆到每个 $\\mathbb{Z}_{n_i}$ 里，条件 $a_i$ 与 $n_i$ 互素逐个成立 —— 对应关系保持互素性。'},
+     {id:'31.5-1',page:931,star:0,statement:'Find all solutions to the equations x = 4 (mod 5) and x = 5 (mod 11).',hint:'合并：$x = 4 + 5t$，$5t \\equiv 1 \\ (\\text{mod } 11)$，$t \\equiv 9$（$5^{-1} = 9$）→ $x = 49 \\ (\\text{mod } 55)$（C 程序已验证）。'},
+     {id:'31.5-2',page:931,star:0,statement:'Find all integers x that leave remainders 1, 2, and 3 when divided by 9, 8, and 7, respectively.',hint:'从 $x \\equiv 1 \\ (\\text{mod } 9)$ 出发逐条合并；或注意 $x - 3$ 被 9,8,7 整除且 $x - 3 = 7$ —— 答案 $x = 10$。'},
+     {id:'31.5-3',page:931,star:0,statement:'Argue that, under the definitions of Theorem 31.27, if gcd(a,n) = 1, then (a −1 mod n) $ ..a −1 1 mod n 1 /,.a −1 2 mod n 2 /,…,.a −1 k mod n k //:',hint:'用 CRT 把 $a$ 拆到每个 $\\mathbb{Z}_{n_i}$ 里，条件 $a_i$ 与 $n_i$ 互素逐个成立 —— 对应关系保持互素性。'},
     ]},
   ],
 };

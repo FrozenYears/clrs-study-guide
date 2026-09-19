@@ -221,12 +221,12 @@ int main(void)
      {kind:'judge',q:'对 n = 10，朴素 CUT-ROD 的递归调用次数是 1024 次。',answer:true,why:'★ C 程序 part 2：调用 1024 次 = 2^9 量级（指数爆炸）。'},
      {kind:'single',q:'按原书价格表（p.364），长度 10 的钢条最优收益 r[10] 是多少？',options:['25','**30**','24','28'],answer:1,why:'★ 原书 Figure 14.1 / C 程序 part 6：r[10] = 30（整条不切最优）。'},
     ],bookExercises:[
-     {id:'14.1-1',page:372,star:0,statement:'Show that equation (14.4) follows from equation (14.3) and the initial condition',hint:'把递推的"枚举第一刀"改写成"枚举最后一段"（对称形式）—— 两者等价，因为 max 交换律。'},
-     {id:'14.1-2',page:372,star:0,statement:'Show, by means of a counterexample, that the follow ing "greedy" strategy does not',hint:'贪心策略（每刀都切"单位价格最高"的长度）会失败：例如 p = [1, 5, 8, 9] 时长度 4 贪心切成 1+3 = 1+8 = 9，而最优是 2+2 = 10。'},
-     {id:'14.1-3',page:373,star:0,statement:'Consider a modification of the rod-cutting problem in which, in addition to a price',hint:'加切割成本 $c$：递推改为 $r_n = \\max(p_n, \\max_i(p_i + r_{n-i} - c))$ —— 注意显式包含"不切"这一项。'},
-     {id:'14.1-4',page:373,star:0,statement:'Modify CUT-ROD and MEMOIZED-CUT-ROD-AUX so that their for loops go up to only ⌊n/2⌋',hint:'因为"切成 i 与 n−i"与"切成 n−i 与 i"对称 —— 只需枚举一半，答案不变（但要注意 $i = n/2$ 的中间情况）。'},
+     {id:'14.1-1',page:372,star:0,statement:'Show that equation (14.4) follows from equation (14.3) and the initial condition T(0) = 1.',hint:'把递推的"枚举第一刀"改写成"枚举最后一段"（对称形式）—— 两者等价，因为 max 交换律。'},
+     {id:'14.1-2',page:372,star:0,statement:'Show, by means of a counterexample, that the follow ing "greedy" strategy does not always determine an optimal way to cut rods. Define the density of a rod of length i to be √i =i , that is, its value per inch. The greedy strategy for a rod of length n cuts off a first piece of length i , where 1 ≤ i ≤ n, having maximum',hint:'贪心策略（每刀都切"单位价格最高"的长度）会失败：例如 p = [1, 5, 8, 9] 时长度 4 贪心切成 1+3 = 1+8 = 9，而最优是 2+2 = 10。'},
+     {id:'14.1-3',page:373,star:0,statement:'Consider a modification of the rod-cutting problem in which, in addition to a price √i for each rod, each cut incurs a fixed cost of c . The revenue associated with a solution is now the sum of the prices of the pieces minus the costs of making the cuts. Give a dynamic-programming algorithm to solve this modified problem.',hint:'加切割成本 $c$：递推改为 $r_n = \\max(p_n, \\max_i(p_i + r_{n-i} - c))$ —— 注意显式包含"不切"这一项。'},
+     {id:'14.1-4',page:373,star:0,statement:'Modify CUT-ROD and MEMOIZED-CUT-ROD-AUX so that their for loops go up to only ⌊n/2⌋, rather than up to n. What other changes to the procedures do you need to make? How are their running times affected?',hint:'因为"切成 i 与 n−i"与"切成 n−i 与 i"对称 —— 只需枚举一半，答案不变（但要注意 $i = n/2$ 的中间情况）。'},
      {id:'14.1-5',page:373,star:0,statement:'Modify MEMOIZED-CUT-ROD to return not only the value but the actual solution.',hint:'加一个数组 $s[n]$ 记录"最优第一刀位置"，递归返回时顺带填写；或改用 EXTENDED-BOTTOM-UP-CUT-ROD + PRINT-CUT-ROD-SOLUTION（原书 p.372）。'},
-     {id:'14.1-6',page:373,star:0,statement:'The Fibonacci numbers are defined by recurrence (3.31) on page 69. Give an',hint:'$F_n$ 的朴素递归是 $O(\\phi^n)$；备忘/自底向上把它变成 $O(n)$ —— 与钢条切割完全同构的教学例子。'},
+     {id:'14.1-6',page:373,star:0,statement:'The Fibonacci numbers are defined by recurrence (3.31) on page 69. Give an O(n)-time dynamic-programming algorithm to compute the nth Fibonacci number. Draw the subproblem graph. How many vertices and edges does the graph contain?',hint:'$F_n$ 的朴素递归是 $O(\\phi^n)$；备忘/自底向上把它变成 $O(n)$ —— 与钢条切割完全同构的教学例子。'},
     ]},
   ],
 };

@@ -316,10 +316,10 @@ int main(void)
     ],
     bookExercises:[
      {id:'12.1-1',page:315,star:0,statement:'For the set f1,4,5,10,16,17,21 g of keys, draw binary search trees of heights 2, 3, 4, 5, and 6.',hint:'高 $h$（边数）的树最多 $2^{h+1}-1$ 个节点：高 2 最多 7 个 —— 7 个 key 恰好能装进一棵完全树（高 2）；高 6 就是每层 1 个的链。画的时候从"每层放几个"入手。'},
-     {id:'12.1-2',page:315,star:0,statement:'What is the difference between the binary-search-tree property and the min-heap property on page 163? Can the min-heap property be used to prin',hint:'书上是半截题干（问：最小堆性质能否像 BST 性质那样输出升序）。答案：**不能** —— 堆只约束"父 ≤ 孩子"，兄弟之间与跨子树之间无序；中序遍历堆得不到任何排序。BST 性质是**全局**的（子树全体 ≤ 根）。'},
-     {id:'12.1-3',page:315,star:0,statement:'Give a nonrecursive algorithm that performs an inorder tree walk. (Hint: An easy solution uses a stack as an auxiliary data structure. A more c',hint:'书上是半截题干（更难版不用栈）。栈版：一路压左链，弹栈访问、转向右子树 —— 10.1 的栈 + 10.2 的指针。无栈版（Morris 遍历）用"线索"临时改指针，$O(1)$ 额外空间但会临时破坏树。'},
+     {id:'12.1-2',page:315,star:0,statement:'What is the difference between the binary-search-tree property and the min-heap property on page 163? Can the min-heap property be used to print out the keys of an n-node tree in sorted order in O(n) time? Show how, or explain why not.',hint:'答案：**不能** —— 堆只约束"父 ≤ 孩子"，兄弟之间与跨子树之间无序；中序遍历堆得不到任何排序。BST 性质是**全局**的（子树全体 ≤ 根）。'},
+     {id:'12.1-3',page:315,star:0,statement:'Give a nonrecursive algorithm that performs an inorder tree walk. (Hint: An easy solution uses a stack as an auxiliary data structure. A more complicated, but ele- gant, solution uses no stack but assumes that you can test two pointers for equality.)',hint:'栈版：一路压左链，弹栈访问、转向右子树 —— 10.1 的栈 + 10.2 的指针。无栈版（Morris 遍历）用"线索"临时改指针，$O(1)$ 额外空间但会临时破坏树。'},
      {id:'12.1-4',page:315,star:0,statement:'Give recursive algorithms that perform preorder and postorder tree walks in Θ(n) time on a tree of n nodes.',hint:'把 INORDER-TREE-WALK 的第 3 行（print）挪到两次递归**之前** = 前序；挪到**之后** = 后序。时间仍是 $\\Theta(n)$（同样的递归式）。'},
-     {id:'12.1-5',page:315,star:0,statement:'Argue that since sorting n elements takes Ω(n lg n) time in the worst case in the comparison model, any comparison-based algorithm for construc',hint:'书上是半截题干（构造 BST 的排序下界）。思路：若能在 $o(n \\lg n)$ 内构造 BST，则**中序遍历 $\\Theta(n)$ 输出升序** → 总共 $o(n \\lg n)$ 完成排序 → 与比较模型排序下界矛盾。★ 这是"用已知下界推新下界"的归约套路。'},
+     {id:'12.1-5',page:315,star:0,statement:'Argue that since sorting n elements takes Ω(n lg n) time in the worst case in the comparison model, any comparison-based algorithm for constructing a binary search tree from an arbitrary list of n elements takes Ω(n lg n) time in the worst case.',hint:'思路：若能在 $o(n \\lg n)$ 内构造 BST，则**中序遍历 $\\Theta(n)$ 输出升序** → 总共 $o(n \\lg n)$ 完成排序 → 与比较模型排序下界矛盾。★ 这是"用已知下界推新下界"的归约套路。'},
     ]},
   ],
 };

@@ -3,7 +3,7 @@ export default {
   key:'s04',id:'ch22/s04',chapter:22,section:'22.4',
   title:'差分约束：把线性不等式变成最短路',shortTitle:'22.4 差分约束',
   titleEn:'Difference constraints and shortest paths',
-  source:{printed:[625,630],pdf:[646,651]},
+  source:{printed:[625,632],pdf:[646,651]},
   prerequisites:[{label:'22.3 Dijkstra\u2019s algorithm',url:'#/ch22/s03'}],
   stages:[
    {type:'map',title:'一个惊人的归约',
@@ -312,11 +312,11 @@ int main(void)
      {kind:'judge',q:'约束 x_j − x_i ≤ b_k 对应的边方向是从 v_i 指向 v_j（减数指向被减数）。',answer:true,why:'★ 约束图构造：边 (v_i, v_j) 权 b_k（p.628）。'},
      {kind:'single',q:'引理 22.8（平移不变性）说：若 x 是可行解，则 x + d 也是可行解，因为差分约束只涉及什么？',options:['**变量的差**','单个变量的绝对值','乘积','最大值'],answer:0,why:'★ 差分约束只约束"差"，整体平移 d 不改变任何差（p.628）。'},
     ],bookExercises:[
-     {id:'22.4-1',page:630,star:0,statement:'Find a feasible solution to the following system of difference constraints... ',hint:'按本关的构造画约束图（含哨兵 v_0），跑 Bellman-Ford 读出 δ 值 —— 每个约束在图上应满足三角不等式。'},
-     {id:'22.4-2',page:630,star:0,statement:'Find a feasible solution... or determine that no feasible solution exists...',hint:'先构造约束图；若 Bellman-Ford 报负环 → 无解（指出那个环并沿环求和导出矛盾）。'},
-     {id:'22.4-3',page:630,star:0,statement:'Can one use the Bellman-Ford algorithm... ',hint:'可以：把"≥"约束改写成"≤"（两边取负），并把哨兵边反向（或求"最长路"）—— 对照 22.2 的"负化权重"技巧。'},
-     {id:'22.4-4',page:630,star:0,statement:'Explain how to solve the single-pair shortest-path problem... ',hint:'在 G′（加了 v_0 的约束图）上跑 Bellman-Ford 得到可行势函数 h = δ(v_0, ·)，用 h 重加权使边权非负（Johnson 的技巧，23.3 预演），再跑 Dijkstra。'},
-     {id:'22.4-5',page:630,star:0,statement:'(*) Show that the Bellman-Ford algorithm, run on the constraint graph... ',hint:'约束图的结构特殊：v_0 的 0 权边使所有 d 初始有限；利用这一点可简化 Bellman-Ford 的轮数分析 —— 具体上界由约束图的"层"决定。'},
+     {id:'22.4-1',page:631,star:0,statement:'Find a feasible solution or determine that no feasible solution exists for the follow- ing system of difference constraints: x 1 − x 2 ≤ 1 , x 1 − x 4 ≤ −4 , x 2 − x 3 ≤ 2 , x 2 − x 5 ≤ 7 , x 2 − x 6 ≤ 5 , x 3 − x 6 ≤ 10 , x 4 − x 2 ≤ 2 , x 5 − x 1 ≤ −1 , x 5 − x 4 ≤ 3 , x 6 − x 3 ≤ −8 .',hint:'按本关的构造画约束图（含哨兵 v_0），跑 Bellman-Ford 读出 δ 值 —— 每个约束在图上应满足三角不等式。'},
+     {id:'22.4-2',page:631,star:0,statement:'Find a feasible solution or determine that no feasible solution exists for the follow- ing system of difference constraints: x 1 − x 2 ≤ 4 , x 1 − x 5 ≤ 5 , x 2 − x 4 ≤ −6 , x 3 − x 2 ≤ 1 , x 4 − x 1 ≤ 3 , x 4 − x 3 ≤ 5 , x 4 − x 5 ≤ 10 , x 5 − x 3 ≤ −4 , x 5 − x 4 ≤ −8 .',hint:'先构造约束图；若 Bellman-Ford 报负环 → 无解（指出那个环并沿环求和导出矛盾）。'},
+     {id:'22.4-3',page:631,star:0,statement:'Can any shortest-path weight from the new vertex v 0 in a constraint graph be posi- tive? Explain.',hint:'可以：把"≥"约束改写成"≤"（两边取负），并把哨兵边反向（或求"最长路"）—— 对照 22.2 的"负化权重"技巧。'},
+     {id:'22.4-4',page:631,star:0,statement:'Express the single-pair shortest-path problem as a linear program.',hint:'在 G′（加了 v_0 的约束图）上跑 Bellman-Ford 得到可行势函数 h = δ(v_0, ·)，用 h 重加权使边权非负（Johnson 的技巧，23.3 预演），再跑 Dijkstra。'},
+     {id:'22.4-5',page:632,star:0,statement:'Show how to modify the Bellman-Ford algorithm slightly so that when using it to solve a system of difference constraints with m inequalities on n unknowns, the running time is O(nm).',hint:'约束图的结构特殊：v_0 的 0 权边使所有 d 初始有限；利用这一点可简化 Bellman-Ford 的轮数分析 —— 具体上界由约束图的"层"决定。'},
     ]},
   ],
 };

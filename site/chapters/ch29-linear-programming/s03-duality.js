@@ -540,9 +540,9 @@ int main(void)
      {kind:'simulate',q:'强对偶证书里对偶最优值 $b^{T}y$ 等于多少（保留两位小数）？',expect:[30.75],placeholder:'例如：10.00',why:'★ code 段实测 $|z - b^{T}y| = 0$，两边同为 30.75 —— 这就是定理 29.4。'},
      {kind:'judge',q:'互补松弛在最优处表现为「六个乘子与松弛的乘积全为 0」。',answer:true,why:'★ code 段实测六个乘积都是 0（最大 1.8e-15）：紧约束配正乘子，松约束配零乘子。'},
     ],bookExercises:[
-     {id:'29.3-1',page:872,star:0,statement:'29.3-1 Formulate the dual of the linear program given in lines (29.6)3(29.10) on page 852.',hint:'照本关的 TAKE-DUAL 三步：$\max \\to \\min$、$c$ 与 $b$ 互换、$A \\to A^{T}$ 且 $\\le \\to \\ge$。写成对偶后可以用 C 程序设计成两个 LP 分别求解，比较两边最优值。'},
-     {id:'29.3-5',page:872,star:0,statement:'29.3-5 Show that the dual of the dual of a linear program is the primal linear program.',hint:'对 $(A, b, c)$ 的原始做两次机械变换：第一次得 $(A^{T}, c, b)$ 的对偶，第二次再变换一次就回到 $\\max c^{T}x$ s.t. $Ax \\le b$ —— 注意两次变换都保持 $\\ge 0$ 与非负约束的对应关系。'},
-     {id:'29.3-6',page:872,star:0,statement:'29.3-6 Which result from Chapter 24 can be interpreted as weak duality for the maximumflow problem?',hint:'最大流的对偶是"最小割"：对偶变量 $y_i$ 取值 0/1 表示顶点在 $S$ 还是 $T$，对偶约束 $y_v \\le y_u$ 保证每条从 $s$ 到 $t$ 的路径都被"切"到 —— 这正是 C 程序 part 4 枚举 16 个割时算的东西。'},
+     {id:'29.3-1',page:872,star:0,statement:'Formulate the dual of the linear program given in lines (29.6)3(29.10) on page 852.',hint:'照本关的 TAKE-DUAL 三步：$\max \\to \\min$、$c$ 与 $b$ 互换、$A \\to A^{T}$ 且 $\\le \\to \\ge$。写成对偶后可以用 C 程序设计成两个 LP 分别求解，比较两边最优值。'},
+     {id:'29.3-5',page:872,star:0,statement:'Show that the dual of the dual of a linear program is the primal linear program.',hint:'对 $(A, b, c)$ 的原始做两次机械变换：第一次得 $(A^{T}, c, b)$ 的对偶，第二次再变换一次就回到 $\\max c^{T}x$ s.t. $Ax \\le b$ —— 注意两次变换都保持 $\\ge 0$ 与非负约束的对应关系。'},
+     {id:'29.3-6',page:872,star:0,statement:'Which result from Chapter 24 can be interpreted as weak duality for the maximum- flow problem?',hint:'最大流的对偶是"最小割"：对偶变量 $y_i$ 取值 0/1 表示顶点在 $S$ 还是 $T$，对偶约束 $y_v \\le y_u$ 保证每条从 $s$ 到 $t$ 的路径都被"切"到 —— 这正是 C 程序 part 4 枚举 16 个割时算的东西。'},
     ]},
   ],
 };

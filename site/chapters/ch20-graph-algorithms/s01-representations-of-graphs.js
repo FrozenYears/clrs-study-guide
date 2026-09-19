@@ -522,7 +522,7 @@ int main(void) {
       ],
       bookExercises: [
         { id: '20.1-1', page: 552, star: 0, statement: 'Given an adjacency-list representation of a directed graph, how long does it take to compute the out-degree of every vertex? How long does it take to compute the in-degrees?', hint: '出度：扫一遍每个顶点的列表，Θ(V+E)。入度：邻接表下要扫「所有」列表累计，也是 Θ(V+E)；若用邻接矩阵则扫每一列 Θ(V)。' },
-        { id: '20.1-3', page: 553, star: 0, statement: 'Describe efficient algorithms for computing G^T from G, for both the adjacency-list and adjacency-matrix representations of G. Analyze the running times of your algorithms.', hint: '转置 = 所有边反向。邻接表：建新表，每条 (u,v) 变成 (v,u) 插入新 Adj[v]，Θ(V+E)；矩阵：A^T[u][v]=A[v][u]，Θ(V²)。C 程序 build_G 同时建好了 G^T。' },
+        { id: '20.1-3', page: 553, star: 0, statement: 'The transpose of a directed graph G = (V,E) is the graph G T = (V,E T ), where E T = f(v,u) 2 V × V W (u,v) 2 Eg. That is, G T is G with all its edges reversed. Describe efficient algorithms for computing G T from G, for both the adjacency- list and adjacency-matrix representations of G. Analyze the running times of your algorithms.', hint: '转置 = 所有边反向。邻接表：建新表，每条 (u,v) 变成 (v,u) 插入新 Adj[v]，Θ(V+E)；矩阵：A^T[u][v]=A[v][u]，Θ(V²)。C 程序 build_G 同时建好了 G^T。' },
       ] },
   ],
 };

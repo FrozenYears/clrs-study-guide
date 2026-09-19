@@ -421,11 +421,11 @@ int main(void)
      {kind:'single',q:'外层循环跑到第 $k$ 轮时，$d_{ij}^{(k)}$ 允许的中间点集合是？',options:['$\{1..k-1\}$','**$\{1..k\}$**','仅 $\{k\}$','空集'],answer:1,
       why:'★ 维度 k 表示允许使用前 k 个顶点作中间点，是与边数维度法的根本区别。'},
     ],bookExercises:[
-     {id:'23.2-1',page:661,star:0,statement:'Run the Floyd-Warshall algorithm on the weighted, directed graph of Figure 23.2...',hint:'照 C 程序 s02 段的打印：每层 k 记录 d 矩阵的变化（哪些格子被 k"救活"）。'},
-     {id:'23.2-2',page:661,star:0,statement:'Show how to express the integer k as a sum of... ',hint:'利用 d 矩阵：重建需要 π 或在 d 上做"路径计数"变体 —— 按 23.2-2 的 π 矩阵思路扩展。'},
-     {id:'23.2-3',page:662,star:0,statement:'The transitive closure of a directed graph... ',hint:'把 min-+ 换成 ∨-∧（布尔半环）：t_ij^(k) = t_ij^(k-1) ∨ (t_ik^(k-1) ∧ t_kj^(k-1)) —— 同样 Θ(n³)，得到可达性矩阵。'},
-     {id:'23.2-4',page:661,star:0,statement:'(*) Suppose that we wish to maintain the transitive closure... ',hint:'动态传递闭包：插入/删除边时更新闭包矩阵，插入 O(n²)（新结点/边的传播），删除较难 —— 这是"部分持久化"练习。'},
-     {id:'23.2-5',page:661,star:0,statement:'(...) Call a graph G = (V,E) precursor-free... ',hint:'无中间点的路径 = 直接边：跑 Floyd-Warshall 时记录 argmin 的 k，即可重建每条最短路的中间点序列（对应 d 与 π 双矩阵）。'},
+     {id:'23.2-1',page:661,star:0,statement:'Run the Floyd-Warshall algorithm on the weighted, directed graph of Figure 23.2. Show the matrix = (k) that results for each iteration of the outer loop.',hint:'照 C 程序 s02 段的打印：每层 k 记录 d 矩阵的变化（哪些格子被 k"救活"）。'},
+     {id:'23.2-2',page:661,star:0,statement:'Show how to compute the transitive closure using the technique of Section 23.1.',hint:'利用 d 矩阵：重建需要 π 或在 d 上做"路径计数"变体 —— 按 23.2-2 的 π 矩阵思路扩展。'},
+     {id:'23.2-3',page:661,star:0,statement:'Modify the FLOYD-WARSHALL procedure to compute the … (k) matrices according to equations (23.7) and (23.8). Prove rigorously that for all i 2 V , the predecessor subgraph G −,i is a shortest-paths tree with root i . ( Hint: To show that G −,i is acyclic, first show that Ω (k) ij = l implies d (k) ij ≥ d (k) i l + w lj , according to the definition of Ω (k) ij . Then adapt the proof of Lemma 22.16.)',hint:'把 min-+ 换成 ∨-∧（布尔半环）：t_ij^(k) = t_ij^(k-1) ∨ (t_ik^(k-1) ∧ t_kj^(k-1)) —— 同样 Θ(n³)，得到可达性矩阵。'},
+     {id:'23.2-4',page:661,star:0,statement:'As it appears on page 657, the Floyd-Warshall algorithm requires Θ(n 3 ) space, since it creates d (k) ij for i,j,k = 1,2,…,n . Show that the procedure FLOYD- WARSHALL 0 , which simply drops all the superscripts, is correct, and thus only Θ(n 2 ) space is required. FLOYD-WARSHALL 0 (W,n) 1 = D W 2 for k = 1 to n 3 for i = 1 to n 4 for j = 1 to n 5 d ij = min fd ij ,d i k + d kj g 6 return =',hint:'动态传递闭包：插入/删除边时更新闭包矩阵，插入 O(n²)（新结点/边的传播），删除较难 —— 这是"部分持久化"练习。'},
+     {id:'23.2-5',page:661,star:0,statement:'Consider the following change to how equation (23.8) handles equality: Ω (k) ij = ( Ω (k−1) kj if d (k−1) ij ≥ d (k−1) i k + d (k−1) kj (k is an intermediate vertex) ; Ω (k−1) ij if d (k−1) ij <d (k−1) i k + d (k−1) kj (k is not an intermediate vertex) : Is this alternative definition of the predecessor matrix … correct?',hint:'无中间点的路径 = 直接边：跑 Floyd-Warshall 时记录 argmin 的 k，即可重建每条最短路的中间点序列（对应 d 与 π 双矩阵）。'},
     ]},
   ],
 };

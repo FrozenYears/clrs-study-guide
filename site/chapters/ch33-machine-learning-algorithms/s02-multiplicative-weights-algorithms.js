@@ -238,8 +238,8 @@ int main(void)
      {kind:'single',q:'引理 33.3 的上界 $4.6\,m_{best} + 2\ln n$ 里，$2\ln n$ 这一项从哪来？',options:['专家个数乘某个常数','**势函数里 $n$ 个专家的初始权重贡献**','随机噪声','最优专家的犯错数'],answer:1,why:'★ 势函数从 $\sum_i w_i = n$ 出发（每人初始权重 1），每次犯错至少砍掉因子 $3/4$，取对数就把 $\ln n$ 带进上界。C 程序 $T = 200, n = 10$ 实测 $133 \le 4.6 \times 77 + 2\ln 10 = 358.8$。'},
      {kind:'judge',q:'加权多数对任意专家序列都能给出与最优专家成比例的犯错上界。',answer:true,why:'★ analyze 表里「统计假设的个数」标的就是 0 —— 不需要任何分布假设，纯靠「犯错就乘 $1/2$」的降权。C 程序 $T = 200$ 实测算法 133 次、最优专家 77 次，稳稳落在 4.6 倍界内。'},
     ],bookExercises:[
-     {id:'33.2-1',page:1021,star:0,statement:'D 2m − C 4 p m − ln n; and so the number of errors is at most twice the number of errors made by the best expert plus a term that is often slower growing than m − .',hint:'若有专家零犯错，势函数论证给出算法犯错 ≤ 2 ln n（加性项单独起作用）—— 用 Φ ≥ w_best = 1 直接读出。'},
-     {id:'33.2-4',page:1022,star:0,statement:'Show that the expected number of mistakes made by this algorithm is dlg ne.',hint:'把"加权多数"换成"按权重抽样"：期望犯错数的界同样成立，且对手无法针对确定性行为设计序列 —— 随机化让上界对"自适应对手"也成立。'},
+     {id:'33.2-1',page:1021,star:0,statement:'The proof of Lemma 33.3 assumes that some expert never makes a mistake. It is possible to generalize the algorithm and analysis t o remove this assumption. The new algorithm begins in the same way. The set S might become empty at some point, however. If that ever happens, reset S to contain all the experts and continue the algorithm. Show that the number of mistakes that this algorithm makes is at most m − dlg ne.',hint:'若有专家零犯错，势函数论证给出算法犯错 ≤ 2 ln n（加性项单独起作用）—— 用 Φ ≥ w_best = 1 直接读出。'},
+     {id:'33.2-4',page:1022,star:0,statement:'Consider a randomized version of WEIGHTED-MAJORITY . The algorithm is the same, except for the prediction step, which interpr ets the weights as a probability distribution over the experts and chooses an expert E i according to that distri- bution. It then chooses its prediction to be the same as the prediction made by expert E i . Show that, for any 0<Ω<1/2 , the expected number of mistakes made by this algorithm is at most .1 + Ω/m − C (ln n)=Ω .',hint:'把"加权多数"换成"按权重抽样"：期望犯错数的界同样成立，且对手无法针对确定性行为设计序列 —— 随机化让上界对"自适应对手"也成立。'},
     ]},
   ],
 };

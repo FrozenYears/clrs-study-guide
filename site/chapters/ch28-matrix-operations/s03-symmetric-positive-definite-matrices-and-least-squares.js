@@ -544,9 +544,9 @@ int main(void)
      {kind:'single',q:'为什么最小二乘的正规方程一定有唯一解？',options:['因为 $A$ 是方阵','**因为系数矩阵 $A^{T}A$ 对称正定**','因为方程个数等于未知数个数','因为残差恰好为 0'],answer:1,why:'★ map 段第三条：正规方程 $A^{T}Ac = A^{T}y$ 的系数矩阵恰是 $A^{T}A$ —— 正定，所以可逆。'},
      {kind:'single',q:'对称正定的定义要求 $x^{T}Ax > 0$ 对哪些 $x$ 成立？',options:['所有 $x$','**一切 $x \\neq 0$**','只有单位向量','只有分量全正的向量'],answer:1,why:'★ analyze 第一条定义：$x = 0$ 时必然等于 0，所以条件只对非零向量提。'},
     ],bookExercises:[
-     {id:'28.3-4',page:846,star:0,statement:'28.3-4 Prove that the determinant of each leading submatrix of a symmetric positivedefinite matrix is positive.',hint:'对前导子矩阵 $A_k$ 用定义：取 $x = (x_k, 0)$ 代入 $x^{T}Ax$，立刻看出 $A_k$ 必须正定（这个构造在引理 28.4 的证明里就用了）。'},
-     {id:'28.3-5',page:846,star:0,statement:'28.3-5 Let A k denote the kth leading submatrix of a symmetric positive-definite matrix A.',hint:'把 $\\det(A_k)/\\det(A_{k-1})$ 与第 $k$ 个主元联系起来（提示里给的就是这个比率）—— 正定性 ⟺ 所有前导行列式为正（Sylvester 判据）。'},
-     {id:'28.3-7',page:846,star:0,statement:'28.3-7 Show that the pseudoinverse A C satisfies the following four equations:',hint:'用 SVD（原书 p.849 提到）写出 $A^{+}$ 逐个验证四条：它们正是 Moore–Penrose 逆的定义式。'},
+     {id:'28.3-4',page:846,star:0,statement:'Prove that the determinant of each leading submatrix of a symmetric positive- definite matrix is positive.',hint:'对前导子矩阵 $A_k$ 用定义：取 $x = (x_k, 0)$ 代入 $x^{T}Ax$，立刻看出 $A_k$ 必须正定（这个构造在引理 28.4 的证明里就用了）。'},
+     {id:'28.3-5',page:846,star:0,statement:'Let A k denote the kth leading submatrix of a symmetric positive-definite matrix A. Prove that ⌈et(A k )/ det(A k−1 ) is th⌉ kth pivot during LU decomposition, where, by convention, det(A 0 ) = 1.',hint:'把 $\\det(A_k)/\\det(A_{k-1})$ 与第 $k$ 个主元联系起来（提示里给的就是这个比率）—— 正定性 ⟺ 所有前导行列式为正（Sylvester 判据）。'},
+     {id:'28.3-7',page:846,star:0,statement:'Show that the pseudoinverse A C satisfies the following four equations: AA + A = A; A C AA + = A C ; .AA C / TDAA C ; (A + A) T = A + A:',hint:'用 SVD（原书 p.849 提到）写出 $A^{+}$ 逐个验证四条：它们正是 Moore–Penrose 逆的定义式。'},
     ]},
   ],
 };

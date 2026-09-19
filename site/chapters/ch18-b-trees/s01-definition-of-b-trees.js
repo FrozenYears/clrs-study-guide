@@ -393,9 +393,9 @@ int main(void)
      {kind:'simulate',q:'C 程序 t = 3、20 个键的 B 树有几片叶？（填数字）',expect:[4],placeholder:'例如：5',
       why:'根 [30 60 80] 把值域切成 4 段 → 4 片叶（C 程序 part 3 打印的结构）。'},
     ],bookExercises:[
-     {id:'18.1-1',page:504,star:0,statement:'Why don\u2019t we allow a minimum degree of t = 1, such that every internal node has 1 or 2 children?',hint:'t = 1 时内部结点只有 1 个键 —— 退化成二叉树，且"至少 1 个键"的约束无法保证 merge/split 有意义；高度界 log_1 无定义。'},
-     {id:'18.1-2',page:504,star:0,statement:'For what values of t_1 and t_2 is the tree of height 2 a legal 2-3-4 tree? What about 1-2-1 and 2-3-4 trees',hint:'按定义逐条核对：根键数 ≥ 1、内部结点孩子数 ∈ [t, 2t]、所有叶同深。对给定的树逐结点检查即可。'},
-     {id:'18.1-3',page:504,star:0,statement:'The minimum degree t of a B-tree is a tuning parameter. Explain why the maximum number of keys in a B-tree of height 2 grows like t^3',hint:'高 2 时：根 ≤ 2t−1 键、2t 个内部结点各 ≤ 2t−1 键、2t·2t 个叶各 ≤ 2t−1 键 → 总键数 Θ(t³) —— 对 t 的三次多项式。'},
+     {id:'18.1-1',page:504,star:0,statement:'Why isn’t a minimum degree of t = 1 allowed?',hint:'t = 1 时内部结点只有 1 个键 —— 退化成二叉树，且"至少 1 个键"的约束无法保证 merge/split 有意义；高度界 log_1 无定义。'},
+     {id:'18.1-2',page:504,star:0,statement:'For what values of t is the tree of Figure 18.1 a legal B-tree?',hint:'按定义逐条核对：根键数 ≥ 1、内部结点孩子数 ∈ [t, 2t]、所有叶同深。对给定的树逐结点检查即可。'},
+     {id:'18.1-3',page:504,star:0,statement:'Show all legal B-trees of minimum degree 2 that store the keys 1,2,3,4,5 .',hint:'高 2 时：根 ≤ 2t−1 键、2t 个内部结点各 ≤ 2t−1 键、2t·2t 个叶各 ≤ 2t−1 键 → 总键数 Θ(t³) —— 对 t 的三次多项式。'},
     ]},
   ],
 };

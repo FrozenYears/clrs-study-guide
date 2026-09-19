@@ -426,7 +426,7 @@ int main(void)
       ],
       bookExercises: [
         { id: '34.1-1', page: 1055, star: 0,
-          statement: 'Define the optimization problem LONGEST-PATH-LENGTH as the relation that associates each instance of an undirected graph and two vertices with the number of edges in a longest simple path between the two vertices. Define the decision problem LONGEST-PATH = fhG,u,v,k i W G = (V,E) is an undirected graph, u,v 2 V , k ≥ 0 is an integer, and there exists a simple path from u to v in G consisting of at least k edgesg. Show that the optimization problem LONGEST-PATH-LENGTH can be solved in polynomial time if and only if',
+          statement: 'Define the optimization problem LONGEST-PATH-LENGTH as the relation that associates each instance of an undirected graph and two vertices with the num- ber of edges in a longest simple path between the two vertices. Define the deci- sion problem LONGEST-PATH = fhG,u,v,k i W G = (V,E) is an undirected graph, u,v 2 V , k ≥ 0 is an integer, and there exists a simple path from u to v in G consisting of at least k edgesg. Show that the optimization prob- lem LONGEST-PATH-LENGTH can be solved in polynomial time if and only if LONGEST-PATH 2 P.',
           hint: '若决策问题 LONGEST-PATH 在 P，则二分 k 调用它即可求出最长长度；反过来优化问题在 P，则取最大 k 即得决策版本。' },
         { id: '34.1-2', page: 1055, star: 0,
           statement: 'Give a formal definition for the problem of finding the longest simple cycle in an undirected graph. Give a related decision problem. Give the language corresponding to the decision problem.',
@@ -441,7 +441,7 @@ int main(void)
           statement: 'Show that if an algorithm makes at most a constant number of calls to polynomialtime subroutines and performs an additional amount of work that also takes polynomial time, then it runs in polynomial time. Also show that a polynomial number of calls to polynomial-time subroutines may result in an exponential-time algorithm.',
           hint: '常数次：多项式常数次幂仍是多项式。多项式次调用时，若每次调用又派生多项式次调用，则总次数可能达 $p(n)^{k}$ 量级，仍多项式——但若用「展开」式递归（如子程序再调用自身多项式次）则会指数爆炸。' },
         { id: '34.1-6', page: 1055, star: 0,
-          statement: 'Show that the class P, viewed as a set of languages , is closed under union, inter- section, concatenation, complement, and Kleene star. That is, if L 1 ,L 2 2 P, then',
+          statement: 'Show that the class P, viewed as a set of languages , is closed under union, inter- section, concatenation, complement, and Kleene star. That is, if L 1 ,L 2 2 P, then L 1 [ L 2 2 P, L 1 \\ L 2 2 P, L 1 L 2 2 P, L 1 2 P, and L − 1 2 P.',
           hint: '对并/交：并行跑两个 P 判定器取与/或；补：把判定器输出取反；连接与 Kleene 星用多项式时间的分点枚举即可，详见 34.1 习题。' },
       ],
     },

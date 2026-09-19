@@ -285,8 +285,8 @@ int main(void)
      {kind:'simulate',q:'C 程序里 P-FIB(20) 的并行度约为多少（取整）？',expect:[1095],placeholder:'例如：1000',why:'★ code 段实测：span 20（$\\Theta(n)$）、work 21891，21891 / 20 ≈ 1095。'},
      {kind:'judge',q:'贪心调度的运行时间与最优调度最多差 2 倍（推论 26.2）。',answer:true,why:'★ analyze 第三条「近似因子 2」，本关 prove 段的命题正是这条定理。'},
     ],bookExercises:[
-     {id:'26.1-1',page:769,star:0,statement:'The text says that a deterministic race occurs... ',hint:'按 RACE-EXAMPLE 的 8 条指令手工交错：列出能让 x 最终为 1 与为 2 的两种交错序列。'},
-     {id:'26.1-2',page:769,star:0,statement:'Draw the computation dag for P-FIB(4)... ',hint:'DAG 的节点是 strand（一段无并行指令），边是依赖；标出关键路径（长度 = span）。'},
+     {id:'26.1-1',page:769,star:0,statement:'What does a trace for the execution of a serial algorithm look like?',hint:'按 RACE-EXAMPLE 的 8 条指令手工交错：列出能让 x 最终为 1 与为 2 的两种交错序列。'},
+     {id:'26.1-2',page:769,star:0,statement:'Suppose that line 4 of P-FIB spawns P-FIB(n − 2), rather than calling it as is done in the pseudocode. How would the trace of P-FIB(4) in Figure 26.2 change? What is the impact on the asymptotic work, span, and parallelism?',hint:'DAG 的节点是 strand（一段无并行指令），边是依赖；标出关键路径（长度 = span）。'},
     ]},
   ],
 };

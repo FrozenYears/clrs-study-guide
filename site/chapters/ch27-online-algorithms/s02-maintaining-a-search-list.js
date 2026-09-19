@@ -361,8 +361,8 @@ int main(void)
      {kind:'judge',q:'实测中 MTF 的总代价约为 OPT 的 1.7 倍，远低于定理 27.1 保证的上界 4 倍。',answer:true,why:'★ 7872 / 4579 ≈ 1.72，最大单例比值也只有 2.250 —— 定理 27.1 是最坏情况保证，实测通常宽松得多。'},
      {kind:'single',q:'竞争比为什么恰好落在 4 这个常数上？',options:['因为表里最多 4 个元素','**因为每对逆序对各贡献 2（1 次搜索 + 1 次交换），势能法再乘 2**','因为每次最多移动 4 步','因为是人为取的方便常数'],answer:1,why:'★ analyze 第三、四条把 4 拆成 $2 \\times 2$：逆序对代价 2，势能差的上界再翻一倍。'},
     ],bookExercises:[
-     {id:'27.2-2',page:802,star:0,statement:'Professor Carnac claims that since FORESEE is an optimal algorithm that knows the future, then at each step it must incur no more cost than MOVE-TO-FRONT .',hint:'反例：FORESEE 为未来"提前搬移"（如原书 Figure 27.1 把 4 提前移到表头），那一步它的代价高于 MTF —— 但总代价更低。逐例核对原书 Figure 27.1 即可否定。'},
-     {id:'27.2-4',page:802,star:0,statement:'The model in this section charged a cost of 1 for each swap. We can consider an alternative cost model in which, after accessing x , you can move x anywhere earlier in the list, and there is no cost for doing so.',hint:'免费移动下势函数只需 $\\Phi = I(L^M, L^F)$（去掉因子 2），摊还成本 $\\le 2 c^F$ —— 这就是 2-竞争的来源。'},
+     {id:'27.2-2',page:801,star:0,statement:'Professor Carnac claims that since FORESEE is an optimal algorithm that knows the future, then at each step it must incur no more cost than MOVE-TO-FRONT . Either prove that Professor Carnac is correct or provide a counterexample.',hint:'反例：FORESEE 为未来"提前搬移"（如原书 Figure 27.1 把 4 提前移到表头），那一步它的代价高于 MTF —— 但总代价更低。逐例核对原书 Figure 27.1 即可否定。'},
+     {id:'27.2-4',page:802,star:0,statement:'The model in this section charged a cost of 1 for each swap. We can consider an alternative cost model in which, after accessing x , you can move x anywhere earlier in the list, and there is no cost for doing so. The only cost is the cost of the actual accesses. Show that MOVE-TO-FRONT is 2-competitive in this cost model, assuming that the number requests is sufficiently large. (Hint: Use the potential function ˆ i = I(L M i ,L F i ).)',hint:'免费移动下势函数只需 $\\Phi = I(L^M, L^F)$（去掉因子 2），摊还成本 $\\le 2 c^F$ —— 这就是 2-竞争的来源。'},
     ]},
   ],
 };

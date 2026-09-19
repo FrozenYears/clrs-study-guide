@@ -415,9 +415,9 @@ int main(void)
      {kind:'simulate',q:'原书 4$\\times$4 偏好表共有多少种完美匹配（填数字）？',expect:[24],placeholder:'例如：16',why:'★ analyze 段标了 24 = $4!$；C 程序暴力枚举全部 24 种，其中稳定的只有 1 个。'},
      {kind:'judge',q:'女方求婚版 Gale-Shapley 的结果，对每个女方都是最优稳定伴侣，对每个男方都是最差稳定伴侣。',answer:true,why:'★ analyze 第二、三条：所以「谁求婚谁占优」—— 这也是住院医师匹配里申请方主动的原因。'},
     ],bookExercises:[
-     {id:'25.2-1',page:723,star:0,statement:'Suppose that we have n women and n men... ',hint:'按本关 algorithm 手工模拟：每个女方按偏好表依次求婚，男方择优；记录每次求婚与被拒/换人。'},
-     {id:'25.2-2',page:723,star:0,statement:'Verify that there are no blocking pairs in the stable matching...',hint:'对每一对未配对的 (w,m) 检查是否双方都更喜欢对方 —— 这正是 C 程序 `has_blocking_pair` 的实现（全对扫描）。'},
-     {id:'25.2-5',page:723,star:0,statement:'The stable-roommates problem is similar to the stable-marriage problem, except that the graph is a complete graph, not bipartite...',hint:'非二分图时"稳定匹配可能不存在"（例如 4 人情形有经典无解实例）—— 与二分图版的"一定有解"形成对比，说明二分性是 25.10 的隐含前提。'},
+     {id:'25.2-1',page:722,star:0,statement:'Describe how to implement the Gale-Shapley algorithm so that it runs in O(n 2 ) time.',hint:'按本关 algorithm 手工模拟：每个女方按偏好表依次求婚，男方择优；记录每次求婚与被拒/换人。'},
+     {id:'25.2-2',page:722,star:0,statement:'Is it possible to have an unstable matching with ju st two women and two men? If so, provide and justify an example. If not, argue why not.',hint:'对每一对未配对的 (w,m) 检查是否双方都更喜欢对方 —— 这正是 C 程序 `has_blocking_pair` 的实现（全对扫描）。'},
+     {id:'25.2-5',page:723,star:0,statement:'The stable-roommates problem is similar to the stable-marriage problem, except that the graph is a complete graph, not bipartite, with an even number of ver- tices. Each vertex represents a person, and each person ranks all the other peo- ple. The definitions of blocking pairs and stable matching extend in the natural way: a blocking pair comprises two people who both prefer each other to their current partner, and a matching is stable if there are no blocking pairs. For exam- ple, consider four people—Wendy, Xenia, Yolanda, and Zelda—with the following preference lists: Wendy: Xenia, Yolanda, Zelda Xenia: Wendy, Zelda, Yolanda Yolanda: Wendy, Zelda, Xenia Zelda: Xenia, Yolanda, Wendy You can verify that the following matching is stable: Wendy and Xenia Yolanda and Zelda Unlike the stable-marriage problem, the stable-roommates problem can have inputs for which no stable matching exists. Find such an input and explain why no stable matching exists.',hint:'非二分图时"稳定匹配可能不存在"（例如 4 人情形有经典无解实例）—— 与二分图版的"一定有解"形成对比，说明二分性是 25.10 的隐含前提。'},
     ]},
   ],
 };

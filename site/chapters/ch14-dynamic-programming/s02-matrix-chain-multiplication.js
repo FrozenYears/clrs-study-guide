@@ -202,12 +202,12 @@ int main(void)
      {kind:'judge',q:'对 ⟨10,100,5,50⟩，两种括号化的最坏代价相差约 10 倍。',answer:true,why:'★ C 程序 part 3：((A1A2)A3)=7500 vs (A1(A2A3))=75000，差 10 倍。'},
      {kind:'simulate',q:'⟨30,35,15,5,10,20,25⟩（n=6）的子问题 m[i,j] 共有多少个？',expect:[21],placeholder:'例如：15',why:'★ n(n+1)/2 = 21（C 程序 part 4：21 个上三角元素）。'},
     ],bookExercises:[
-     {id:'14.2-1',page:381,star:0,statement:'Find an optimal parenthesization of a matrix-chain product whose sequence',hint:'书上是半截题干（给了维数序列，求最优括号化）。用 MATRIX-CHAIN-ORDER 手算或跑 C 程序 —— 关键是按链长递增填 $m$ 表。'},
-     {id:'14.2-2',page:381,star:0,statement:'Give a recursive algorithm MATRIX-CHAIN-MULTIPLY (A,s,i,j) that actually',hint:'书上是半截题干（真正执行乘法）。按 $s[i,j]$ 递归：先算左段、右段，再把两个结果矩阵相乘（RECTANGULAR-MATRIX-MULTIPLY）。'},
-     {id:'14.2-3',page:381,star:0,statement:'Use the substitution method to show that the solution to the recurrence (',hint:'书上是半截题干（用代入法证递推式的解）。$T(n) \\ge 2^{n-1}$ 由归纳直接得出（$T(n) = \\sum_{k=1}^{n-1}(T(k)+T(n-k)+O(1))$）。'},
-     {id:'14.2-4',page:381,star:0,statement:'Describe the subproblem graph for matrix-chain multiplication with an inp',hint:'子问题图：顶点是区间 $[i,j]$（$\\Theta(n^2)$ 个），边 $[i,j] \\to [i,k]$ 与 $[i,j] \\to [k+1,j]$。入度为 2（每个子问题由两个更小的子问题计算而来）→ 无重叠就退化成一棵树。'},
-     {id:'14.2-5',page:381,star:0,statement:'Let R(i,j) be the number of times that table entry m[i,j] is referenced w',hint:'$R(i,j) = 2(n - (j - i))$ 量级 —— 由"哪些更大的区间会用到 $m[i,j]$"决定（每个包含 $[i,j]$ 的区间最多用两次）。'},
-     {id:'14.2-6',page:382,star:0,statement:'Show that a full parenthesization of an n-element expression has exactly',hint:'$n-1$ 对括号 —— 归纳：每次把两个子表达式合并成一个大表达式，恰好加一对括号。'},
+     {id:'14.2-1',page:381,star:0,statement:'Find an optimal parenthesization of a matrix-chain product whose sequence of dimensions is ⟨5,10,3,12,5,50,6⟩.',hint:'用 MATRIX-CHAIN-ORDER 手算或跑 C 程序 —— 关键是按链长递增填 $m$ 表。'},
+     {id:'14.2-2',page:381,star:0,statement:'Give a recursive algorithm MATRIX-CHAIN-MULTIPLY (A,s,i,j) that actually performs the optimal matrix-chain multiplication, given the sequence of matri- ces ⟨A 1 ,A 2 ,…,A n⟩, the stable computed by MATRIX-CHAIN-ORDER , and the indices i and j . (The initial call is MATRIX-CHAIN-MULTIPLY (A,s,1,n) .) As- sume that the call RECTANGULAR-MATRIX-MULTIPLY (A,B) returns the product of matrices A and B .',hint:'按 $s[i,j]$ 递归：先算左段、右段，再把两个结果矩阵相乘（RECTANGULAR-MATRIX-MULTIPLY）。'},
+     {id:'14.2-3',page:381,star:0,statement:'Use the substitution method to show that the solution to the recurrence (14.6) is Ω(2 n ).',hint:'$T(n) \\ge 2^{n-1}$ 由归纳直接得出（$T(n) = \\sum_{k=1}^{n-1}(T(k)+T(n-k)+O(1))$）。'},
+     {id:'14.2-4',page:381,star:0,statement:'Describe the subproblem graph for matrix-chain multiplication with an input chain of length n. How many vertices does it have? How many edges does it have, and which edges are they?',hint:'子问题图：顶点是区间 $[i,j]$（$\\Theta(n^2)$ 个），边 $[i,j] \\to [i,k]$ 与 $[i,j] \\to [k+1,j]$。入度为 2（每个子问题由两个更小的子问题计算而来）→ 无重叠就退化成一棵树。'},
+     {id:'14.2-5',page:381,star:0,statement:'Let R(i,j) be the number of times that table entry m[i,j] is referenced while computing other table entries in a call of MATRIX-CHAIN-ORDER . Show that the total number of references for the entire table is',hint:'$R(i,j) = 2(n - (j - i))$ 量级 —— 由"哪些更大的区间会用到 $m[i,j]$"决定（每个包含 $[i,j]$ 的区间最多用两次）。'},
+     {id:'14.2-6',page:382,star:0,statement:'Show that a full parenthesization of an n-element expression has exactly n − 1 pairs of parentheses.',hint:'$n-1$ 对括号 —— 归纳：每次把两个子表达式合并成一个大表达式，恰好加一对括号。'},
     ]},
   ],
 };

@@ -324,11 +324,11 @@ int main(void)
      {kind:'judge',q:'Bellman-Ford 的"检查轮"返回 FALSE，当且仅当存在从源点可达的负权环。',answer:true,why:'★ 定理 22.4(b)：第 V 轮仍可松弛 ⟺ 可达负环。'},
      {kind:'simulate',q:'在 Figure 22.1 的图上，Bellman-Ford 的松弛成功了多少次？（填数字）',expect:[7],placeholder:'例如：10',why:'★ C 程序 part 1：松弛成功仅 7 次（远低于 (V−1)·E = 40 上限）。'},
     ],bookExercises:[
-     {id:'22.1-1',page:615,star:0,statement:'Run BELLMAN-FORD on the graph of Figure 22.1, using vertex z as the source...',hint:'以 z 为源逐轮松弛：每轮列出 d 与 π。最终 d[z]=0, d[x]=7, d[y]=4? 按边权自己算一遍 —— C 程序改源点即可核对。'},
-     {id:'22.1-2',page:615,star:0,statement:'Show how the Bellman-Ford procedure returns FALSE... ',hint:'构造含负环的图并让算法跑：检查轮中必有一条边 (u,v) 满足 v.d > u.d + w —— 指出这条边即可。'},
-     {id:'22.1-3',page:615,star:0,statement:'Is the path given by the predecessor subgraph produced by the Bellman-Ford... ',hint:'不一定：π 链可能含被"过期"松弛污染的结点 —— 但定理保证其不含负环时是合法最短路树（严格说需要引理 22.9 的论证）。'},
-     {id:'22.1-4',page:615,star:0,statement:'(*) Modify the Bellman-Ford algorithm so that it sets v.d = −∞ for all vertices v for which... ',hint:'先跑一遍标准 Bellman-Ford；再做一轮"传播 −∞"：凡能从"检查轮仍可松弛的边"到达的点都置 −∞（等价于在缩点后的负环 super-node 上做可达性传播）。'},
-     {id:'22.1-5',page:615,star:0,statement:'(*) Let G = (V,E) be a weighted, directed graph... ',hint:'把 $V−1$ 轮改成"边按拓扑/分组批量松弛"——技巧：把 |E| 条边按源点分组，每轮只扫"上轮 d 有变化的源点"发出的边，可用 O(V+E) 实现。'},
+     {id:'22.1-1',page:615,star:0,statement:'Run the Bellman-Ford algorithm on the directed graph of Figure 22.4, using ver- tex ´ as the source. In each pass, relax edges in the same order as in the figure, and show the d and Ω values after each pass. Now, change the weight of edge .´,x/ to 4 and run the algorithm again, using s as the source.',hint:'以 z 为源逐轮松弛：每轮列出 d 与 π。最终 d[z]=0, d[x]=7, d[y]=4? 按边权自己算一遍 —— C 程序改源点即可核对。'},
+     {id:'22.1-2',page:615,star:0,statement:'Prove Corollary 22.3.',hint:'构造含负环的图并让算法跑：检查轮中必有一条边 (u,v) 满足 v.d > u.d + w —— 指出这条边即可。'},
+     {id:'22.1-3',page:616,star:0,statement:'Given a weighted, directed graph G = (V,E) with no negative-weight cycles, let m be the maximum over all vertices v 2 V of the minimum number of edges in a shortest path from the source s to v. (Here, the shortest path is by weight, not the number of edges.) Suggest a simple change to the Bellman-Ford algorithm that allows it to terminate in m + 1 passes, even if m is not known in advance.',hint:'不一定：π 链可能含被"过期"松弛污染的结点 —— 但定理保证其不含负环时是合法最短路树（严格说需要引理 22.9 的论证）。'},
+     {id:'22.1-4',page:616,star:0,statement:'Modify the Bellman-Ford algorithm so that it sets v: d to −1 for all vertices v for which there is a negative-weight cycle on some path from the source to v.',hint:'先跑一遍标准 Bellman-Ford；再做一轮"传播 −∞"：凡能从"检查轮仍可松弛的边"到达的点都置 −∞（等价于在缩点后的负环 super-node 上做可达性传播）。'},
+     {id:'22.1-5',page:616,star:0,statement:'Suppose that the graph given as input to the Bellman-Ford algorithm is represented with a list of |E| edges, where each edge indicates the vertices it leaves and enters, along with its weight. Argue that the Bellman-Ford algorithm runs in O(VE) time without the constraint that |E| = Ω(V ) . Modify the Bellman-Ford algorithm so that it runs in O(VE) time in all cases when the input graph is represent ed with adjacency lists.',hint:'把 $V−1$ 轮改成"边按拓扑/分组批量松弛"——技巧：把 |E| 条边按源点分组，每轮只扫"上轮 d 有变化的源点"发出的边，可用 O(V+E) 实现。'},
     ]},
   ],
 };

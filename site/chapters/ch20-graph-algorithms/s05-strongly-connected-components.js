@@ -3,7 +3,7 @@ export default {
   key:'s05',id:'ch20/s05',chapter:20,section:'20.5',
   title:'强连通分量：两次 DFS 定乾坤',shortTitle:'20.5 强连通分量',
   titleEn:'Strongly connected components',
-  source:{printed:[576,578],pdf:[597,599]},
+  source:{printed:[576,581],pdf:[597,599]},
   prerequisites:[{label:'20.4 Topological sort',url:'#/ch20/s04'}],
   stages:[
    {type:'map',title:'互相可达的"抱团"',
@@ -504,12 +504,12 @@ int main(void) {
      {kind:'judge',q:'强连通分量图 G^{SCC} 是无环的（引理 20.6）。',answer:true,why:'★ 若分量图有环，则环上两点互相可达 → 属同一 SCC，矛盾。'},
      {kind:'single',q:'STRONGLY-CONNECTED-COMPONENTS 的运行时间是？',options:['O(V²)','**Θ(V + E)**','O(VE)','O(E lg V)'],answer:1,why:'★ 两次线性 DFS（一次 G、一次 G^T），p.576。'},
     ],bookExercises:[
-     {id:'20.5-1',page:578,star:0,statement:'Show how the procedure STRONGLY-CONNECTED-COMPONENTS works on the graph of Figure 20.8...',hint:'手工跑：记第一次 DFS 的 f 值 → 按递减排成访问序 → 在 G^T 上逐棵树收割。'},
-     {id:'20.5-2',page:578,star:0,statement:'Show how the procedure STRONGLY-CONNECTED-COMPONENTS works on the graph of Figure 20.9(b)...',hint:'同上；注意完成时间依赖 DFS 的访问顺序（邻接表序）。'},
-     {id:'20.5-3',page:578,star:0,statement:'A professor claims to have a linear-time program that, given a directed graph G = (V,E) and a source s, establishes... ',hint:'反例：若 s 与某点 v 不同 SCC 且 s→v 不可达，$v.\\pi$ 仍为 NIL —— 但若教授声称"每个 v 若 d[v] 有限则 v∈同 SCC"，可举两个互不可达的点戳破。线性时间程序不可能同时给出全部对的可达性。'},
-     {id:'20.5-4',page:578,star:0,statement:'A directed graph G = (V,E) is semiconnected if for all pairs of vertices u,v... ',hint:'在 $G^{SCC}$（DAG）上跑拓扑排序，然后逐个相邻分量检查是否存在跨分量边（u 在前、v 在后）—— 全部存在则半连通。O(V + E)。'},
-     {id:'20.5-5',page:578,star:0,statement:'(*) Give an O(V + E)-time algorithm to find a sink... ',hint:'sink = 入度全有、出度为零的分量（分量图的汇）。用 SCC 算法找分量图，检查每个分量的出边；或 DFS 后从完成时间最大的分量验证。'},
-     {id:'20.5-6',page:578,star:0,statement:'(*) Given a directed graph G = (V,E), explain how to create another graph G\u2032...',hint:'对每个 SCC 收缩成一个结点，权重 = 分量内边数之和；G′ 是 DAG（引理 20.6），直接在拓扑序上做路径计数/最长路 DP。'},
+     {id:'20.5-1',page:580,star:0,statement:'How can the number of strongly connected components of a graph change if a new edge is added?',hint:'手工跑：记第一次 DFS 的 f 值 → 按递减排成访问序 → 在 G^T 上逐棵树收割。'},
+     {id:'20.5-2',page:580,star:0,statement:'Show how the procedure STRONGLY-CONNECTED-COMPONENTS works on the graph of Figure 20.6. Specifically, show the finish times computed in line 1 and the forest produced in line 3. Assume that the loop of lines 5–7 of DFS considers vertices in alphabetical order and that the adjacency lists are in alphabetical order.',hint:'同上；注意完成时间依赖 DFS 的访问顺序（邻接表序）。'},
+     {id:'20.5-3',page:580,star:0,statement:'Professor Bacon rewrites the algorithm for strongly connected components to use the original (instead of the transpose) graph in the second depth-first search and',hint:'反例：若 s 与某点 v 不同 SCC 且 s→v 不可达，$v.\\pi$ 仍为 NIL —— 但若教授声称"每个 v 若 d[v] 有限则 v∈同 SCC"，可举两个互不可达的点戳破。线性时间程序不可能同时给出全部对的可达性。'},
+     {id:'20.5-4',page:581,star:0,statement:'Prove that for any directed graph G, the transpose of the component graph of G T is the same as the component graph of G. That is, ..G T / SCC / TDGSCC .',hint:'在 $G^{SCC}$（DAG）上跑拓扑排序，然后逐个相邻分量检查是否存在跨分量边（u 在前、v 在后）—— 全部存在则半连通。O(V + E)。'},
+     {id:'20.5-5',page:581,star:0,statement:'Give an O(V + E)-time algorithm to compute the component graph of a directed graph G = (V,E) . Make sure that there is at most one edge between two vertices in the component graph your algorithm produces.',hint:'sink = 入度全有、出度为零的分量（分量图的汇）。用 SCC 算法找分量图，检查每个分量的出边；或 DFS 后从完成时间最大的分量验证。'},
+     {id:'20.5-6',page:581,star:0,statement:'Give an O(V + E)-time algorithm that, given a directed graph G = (V,E), con- structs another graph G 0 = (V,E 0 ) such that G and G 0 have the same strongly connected components, G 0 has the same component graph as G, and jE 0 j is as small as possible.',hint:'对每个 SCC 收缩成一个结点，权重 = 分量内边数之和；G′ 是 DAG（引理 20.6），直接在拓扑序上做路径计数/最长路 DP。'},
     ]},
   ],
 };

@@ -356,7 +356,7 @@ int main(void)
      {kind:'single',q:'「等 m 分钟」策略的最坏竞争比公式是？',options:['$(m+k)/(m+1)$','**$\\max(1,\\ (m+k)/(m+1))$**','$k/m$','$m/(m+k)$'],answer:1,why:'★ analyze 第二条：外层取 $\\max$ 是因为竞争比不可能小于 1（prove 段的命题）。'},
      {kind:'judge',q:'竞争比 $c \\ge 1$ 恒成立，因为在线算法不可能比知道全部未来的先知更省。',answer:true,why:'★ analyze 第一条与 prove 段的命题：所以我们只求 $c$ 尽量接近 1，而不是等于 1。'},
     ],bookExercises:[
-     {id:'27.1-1',page:795,star:0,statement:'Consider the online ski-rental problem... Give and analyze an algorithm that has a competitive ratio of 2',hint:'滑雪租赁：每次租 $1$ 或一次买 $r$；策略"租 $r$ 次后买"给出竞争比 2（与电梯问题同型：都是"等多久就放弃"）。'},
+     {id:'27.1-1',page:795,star:0,statement:'Suppose that when hedging your bets, you wait for p minutes, instead of for k minutes, before taking the stairs. What is the comp etitive ratio as a function of p and k? How should you choose p to minimize the competitive ratio?',hint:'滑雪租赁：每次租 $1$ 或一次买 $r$；策略"租 $r$ 次后买"给出竞争比 2（与电梯问题同型：都是"等多久就放弃"）。'},
     ]},
   ],
 };

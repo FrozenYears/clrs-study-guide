@@ -247,7 +247,7 @@ int main(void)
     ],bookExercises:[
      {id:'16.1-1',page:453,star:0,statement:'If the set of stack operations includes a MULTIPUSH operation, which pushes k items onto the stack, does the O(1) bound on the amortized cost of stack operations continue to hold?',hint:'仍成立：MULTIPUSH 压 k 个的代价 k，摊还到这 k 个对象各自"至多一次弹出"上；总账 = 每对象一进一出 ≤ 2n。'},
      {id:'16.1-2',page:453,star:0,statement:'Show that if a DECREMENT operation is included in the k-bit counter example, n operations can cost as much as Θ(nk) time.',hint:'交替 INCREMENT/DECREMENT 于 2^k−1（全 1）附近：每次操作都翻转 k 位。构造 1…1 → INCREMENT 变 10…0 → DECREMENT 变 01…1 → 循环，n/2 对操作各花 Θ(k)。'},
-     {id:'16.1-3',page:453,star:0,statement:'Use aggregate analysis to determine the amortized cost per operation for a sequence of n operations on a data structure in which the i th operation costs i if i is an exact power of 2, and 1 ot',hint:'总代价 ≤ n + Σ_{i=1}^{lg n} 2^i ≤ n + 2n = 3n → 摊还 O(1)。这正是 16.4 动态表的部分预算（那里 i−1 是 2 的幂时花 i）。'},
+     {id:'16.1-3',page:453,star:0,statement:'Use aggregate analysis to determine the amortized cost per operation for a sequence of n operations on a data structure in which the i th operation costs i if i is an exact power of 2, and 1 otherwise.',hint:'总代价 ≤ n + Σ_{i=1}^{lg n} 2^i ≤ n + 2n = 3n → 摊还 O(1)。这正是 16.4 动态表的部分预算（那里 i−1 是 2 的幂时花 i）。'},
     ]},
   ],
 };

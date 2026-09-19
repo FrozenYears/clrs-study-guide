@@ -437,7 +437,7 @@ int main(void)
           statement: 'Show that the problem of determining the satisfiability of boolean formulas in disjunctive normal form is polynomial-time solvable.',
           hint: 'DNF 可满足当且仅当存在一项其所有文字彼此不冲突（无 $x$ 与 $\\neg x$ 同现）；逐项检查多项式时间。' },
         { id: '34.4-6', page: 1080, star: 0,
-          statement: 'Someone gives you a polynomial-time algorithm to decide formula satisfiability.',
+          statement: 'Someone gives you a polynomial-time algorithm to decide formula satisfiability. Describe how to use this algorithm to find satisfying assignments in polynomial time.',
           hint: '若 SAT 有多项式时间算法，则因 SAT 是 NPC 且 SAT ≤ₚ 各 NPC 问题，全 NPC 乃至全 NP 都落入 P，即 P = NP。' },
         { id: '34.4-7', page: 1080, star: 0,
           statement: 'Let 2-CNF-SAT be the set of satisfiable boolean formulas in CNF with exactly two literals per clause. Show that 2-CNF-SAT 2 P. Make your algorithm as efficient as possible. (Hint: Observe that x _ y is equivalent to :x ! y . Reduce 2-CNF-SAT to an efficiently solvable problem on a directed graph.)',

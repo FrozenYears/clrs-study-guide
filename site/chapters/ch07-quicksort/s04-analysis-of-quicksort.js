@@ -536,8 +536,8 @@ int main(void)
       why:'$\\frac{2}{j-i+1} = \\frac{2}{100-1+1} = \\frac{2}{100} = \\frac{1}{50}$。分子是 2。'},
     ],
     bookExercises:[
-     {id:'7.4-1',page:198,star:0,statement:'Show that in the worst case, QUICKSORT\u2019s running time is \u03a9(n\u00b2).',hint:'最坏情况每次分区切出 $(n-1):0$，逐层代价是等差级数 $n + (n-1) + \\dots + 1 = \\Theta(n^2)$。'},
-     {id:'7.4-2',page:198,star:0,statement:'Show that the best-case running time of QUICKSORT is \u03a9(n lg n).',hint:'最好情况的递归深度是 $\\lg n$，每层代价 $\\Theta(n)$，所以 $\\Omega(n\\lg n)$。也可以用递归树的叶子数来论证。'},
+     {id:'7.4-1',page:198,star:0,statement:'Show that the recurrence T(n) = max fT(q) + T(n − q − 1) W 0 ≤ q ≤ n − 1g + Θ(n) has a lower bound of T(n) = Ω(n 2 ).',hint:'最坏情况每次分区切出 $(n-1):0$，逐层代价是等差级数 $n + (n-1) + \\dots + 1 = \\Theta(n^2)$。'},
+     {id:'7.4-2',page:198,star:0,statement:'Show that quicksort’s best-case running time is Ω(n lg n).',hint:'最好情况的递归深度是 $\\lg n$，每层代价 $\\Theta(n)$，所以 $\\Omega(n\\lg n)$。也可以用递归树的叶子数来论证。'},
      {id:'7.4-4',page:198,star:0,statement:'Show that RANDOMIZED-QUICKSORT\u2019s expected running time is \u03a9(n lg n).',hint:'★ 这需要一个下界论证。关键：每次分区至少做 $\\Theta(n)$ 的工作（要扫整个子数组），而递归树至少有 $\\Omega(\\lg n)$ 层。也可以用 $X \\ge \\sum_{\\text{相邻对}} 1 = n - 1$ 的下界。'},
     ]},
   ],

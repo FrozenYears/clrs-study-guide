@@ -3,7 +3,7 @@ export default {
   key:'s01',id:'ch21/s01',chapter:21,section:'21.1',
   title:'通用 MST：安全边的循环不变量',shortTitle:'21.1 生成最小生成树',
   titleEn:'Growing a minimum spanning tree',
-  source:{printed:[586,588],pdf:[607,609]},
+  source:{printed:[586,590],pdf:[607,609]},
   prerequisites:[{label:'20.5 Strongly connected components',url:'#/ch20/s05'}],
   stages:[
    {type:'map',title:'贪心策略的正规军',
@@ -235,11 +235,11 @@ int main(void)
      {kind:'judge',q:'切割性质（轻边安全）要求切割必须尊重 A，否则轻边可能与 A 成环。',answer:true,why:'★ 切割尊重 A 是必要前提（本关 source / 定理 21.1 前提）。'},
      {kind:'single',q:'一棵有 V 个顶点的生成树恰好有多少条边？',options:['V','**V − 1**','V + 1','2V'],answer:1,why:'★ 终止时 A 恰为生成树，|A| = |V| − 1（p.587）。'},
     ],bookExercises:[
-     {id:'21.1-1',page:588,star:0,statement:'Show that the shortest edge from u to v is always... ',hint:'按 GENERIC-MST 跑 Figure 21.1：每步画切割、找轻边 —— 即 21.2 两种算法的手工版。'},
-     {id:'21.1-2',page:588,star:0,statement:'Prove that if (u,v) is a light edge... ',hint:'注意"轻边"是相对切割的：同一条边对不同切割的"轻"不同；跨越多个切割时逐一切割验证，或构造反例说明"对某切割轻"≠"在所有 MST 中"。'},
-     {id:'21.1-3',page:588,star:0,statement:'Give a simple example of a graph such that the set of edges... ',hint:'找一条"非最重却不在任何 MST"的边：让它在与**更轻的边**构成环的位置 —— 循环性质（若环上最重则排除）不足以排除它，需要组合论证。'},
-     {id:'21.1-4',page:588,star:0,statement:'Give a simple example of a graph such that the set of edges that are... ',hint:'循环性质的逆否命题只排除"环上最重"；构造并列权重的环 —— 最重的几条边中有的可能在某个 MST 里。'},
-     {id:'21.1-5',page:588,star:0,statement:'Show that if e belongs to some minimum spanning tree of G, then... ',hint:'收缩/切割构造：把 e 两侧的点集做成切割，e 是该切割的轻边（否则换掉 e 得到更小的树，矛盾）—— 即"e 在某个 MST 中 ⟺ e 对某个切割是轻边"。'},
+     {id:'21.1-1',page:590,star:0,statement:'Let (u,v) be a minimum-weight edge in a connected graph G. Show that (u,v) belongs to some minimum spanning tree of G.',hint:'按 GENERIC-MST 跑 Figure 21.1：每步画切割、找轻边 —— 即 21.2 两种算法的手工版。'},
+     {id:'21.1-2',page:590,star:0,statement:'Professor Sabatier conjectures the following converse of Theorem 21.1. Let G = (V,E) be a connected, undirected graph with a real-valued weight function w de- fined on E. Let A be a subset of E that is included in some minimum spanning tree for G, let (S,V − S) be any cut of G that respects A, and let (u,v) be a safe edge for A crossing (S,V − S). Then, (u,v) is a light edge for the cut. Show that the professor9s conjecture is incorrect by giving a counterexample.',hint:'注意"轻边"是相对切割的：同一条边对不同切割的"轻"不同；跨越多个切割时逐一切割验证，或构造反例说明"对某切割轻"≠"在所有 MST 中"。'},
+     {id:'21.1-3',page:590,star:0,statement:'Show that if an edge (u,v) is contained in some minimum spanning tree, then it is a light edge crossing some cut of the graph.',hint:'找一条"非最重却不在任何 MST"的边：让它在与**更轻的边**构成环的位置 —— 循环性质（若环上最重则排除）不足以排除它，需要组合论证。'},
+     {id:'21.1-4',page:590,star:0,statement:'Give a simple example of a connected graph such that the set of edges f(u,v) W there exists a cut (S,V − S) such that (u,v) is a light edge crossing (S,V − S)g does not form a minimum spanning tree.',hint:'循环性质的逆否命题只排除"环上最重"；构造并列权重的环 —— 最重的几条边中有的可能在某个 MST 里。'},
+     {id:'21.1-5',page:590,star:0,statement:'Let e be a maximum-weight edge on some cycle of connected graph G = (V,E) . Prove that there is a minimum spanning tree of G 0 = (V,E − feg) that is also a minimum spanning tree of G. That is, there is a minimum spanning tree of G that does not include e.',hint:'收缩/切割构造：把 e 两侧的点集做成切割，e 是该切割的轻边（否则换掉 e 得到更小的树，矛盾）—— 即"e 在某个 MST 中 ⟺ e 对某个切割是轻边"。'},
     ]},
   ],
 };

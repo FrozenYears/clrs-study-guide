@@ -532,9 +532,9 @@ int main(void)
      {kind:'single',q:'若线性规划有有限最优值，它在可行区域的什么位置取得？',options:['可行区域内部','**可行区域的某个顶点上**','任意约束交点','原点'],answer:1,why:'★ analyze 第三条：所以单纯形法只需在顶点间游走，而不必扫遍整个可行区域。'},
      {kind:'judge',q:'把变量限制为整数后，问题不再是多项式时间可解的（原书 29-3）。',answer:true,why:'★ analyze 第四条：整数规划是 NP 难的 —— 这正是「先做 LP 松弛」这套做法的价值来源。'},
     ],bookExercises:[
-     {id:'29.1-1',page:858,star:0,statement:'29.1-1 Consider the linear program minimize −2x 1 + 3x 2 subject to x 1 + x 2 = 7 x 1 − 2x 2 ≤ 4 x 1 ≥ 0 :',hint:'把等式约束拆成两个不等式、把 $x_1 \\ge 0$ 之外的符号限制都用两个非负变量之差表示 —— 这就是"化成标准形"的标准三步。'},
-     {id:'29.1-3',page:858,star:0,statement:'29.1-3 Show that the following linear program is infeasible:',hint:'把所有约束两两相加试试：若推出 $0 \\le$ 负数就说明无解（对偶方向的"不可行证书"）。'},
-     {id:'29.1-5',page:859,star:0,statement:'29.1-5 Give an example of a linear program for which the feasible region is not bounded, but the optimal objective value is finite.',hint:'让可行区域沿目标函数的**等值线**方向无界延展：例如 $\\max x_1$ s.t. $x_2 \\ge 0$ 且 $x_1 \\le 5$，区域无界但最优值分明是 5。'},
+     {id:'29.1-1',page:858,star:0,statement:'Consider the linear program minimize −2x 1 + 3x 2 subject to x 1 + x 2 = 7 x 1 − 2x 2 ≤ 4 x 1 ≥ 0 : Give three feasible solutions to this linear program. What is the objective value of each one?',hint:'把等式约束拆成两个不等式、把 $x_1 \\ge 0$ 之外的符号限制都用两个非负变量之差表示 —— 这就是"化成标准形"的标准三步。'},
+     {id:'29.1-3',page:858,star:0,statement:'Show that the following linear program is infeasible: maximize 3x 1 − 2x 2 subject to x 1 + x 2 ≤ 2 −2x 1 − 2x 2 ≤ −10 x 1 ,x 2 ≥ 0 :',hint:'把所有约束两两相加试试：若推出 $0 \\le$ 负数就说明无解（对偶方向的"不可行证书"）。'},
+     {id:'29.1-5',page:859,star:0,statement:'Give an example of a linear program for which the feasible region is not bounded, but the optimal objective value is finite.',hint:'让可行区域沿目标函数的**等值线**方向无界延展：例如 $\\max x_1$ s.t. $x_2 \\ge 0$ 且 $x_1 \\le 5$，区域无界但最优值分明是 5。'},
     ]},
   ],
 };

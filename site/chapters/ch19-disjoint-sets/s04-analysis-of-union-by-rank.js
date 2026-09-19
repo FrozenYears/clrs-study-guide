@@ -434,9 +434,9 @@ int main(void)
      {kind:'judge',q:'阿克曼台阶上 A_2(1) = 7。',answer:true,why:'★ C 程序 Part D 楼梯：A_0=2、A_1=3、A_2=7、A_3=2047（原书 p.532）。'},
      {kind:'simulate',q:'阿克曼台阶上 A_1(1) 等于多少？（填数字）',expect:[3],placeholder:'例如：2',why:'★ A_1(1) = 3（C 程序 Part D / 原书 p.532）。'},
     ],bookExercises:[
-     {id:'19.4-1',page:536,star:0,statement:'Prove Lemma 19.1 (the loop invariant for the levels analysis)...',hint:'按原书的分层归纳：level_0 = rank 0 的结点；更高层由 A_k 分组。逐层对 FIND-SET 的路径长度记账。'},
-     {id:'19.4-2',page:536,star:0,statement:'(*) Give an algorithm CHAPTER-19-PROBLEM that... ',hint:'这是分摊分析的推广练习 —— 用本章的分层记账框架，对自定义操作序列证明类似的 α(n) 上界。'},
-     {id:'19.4-3',page:536,star:0,statement:'(*) Suppose that we replace the union-by-rank heuristic with...',hint:'若合并时随意选方向、只留路径压缩，最坏会退化出 Θ(n) 链 —— α(n) 的证明依赖 rank 的上界性质（MEMORY 规则同源）。'},
+     {id:'19.4-1',page:540,star:0,statement:'Prove Lemma 19.4.',hint:'按原书的分层归纳：level_0 = rank 0 的结点；更高层由 A_k 分组。逐层对 FIND-SET 的路径长度记账。'},
+     {id:'19.4-2',page:540,star:0,statement:'Prove that every node has rank at most blg nc.',hint:'这是分摊分析的推广练习 —— 用本章的分层记账框架，对自定义操作序列证明类似的 α(n) 上界。'},
+     {id:'19.4-3',page:540,star:0,statement:'In light of Exercise 19.4-2, how many bits are necessary to store x: rank for each node x ?',hint:'若合并时随意选方向、只留路径压缩，最坏会退化出 Θ(n) 链 —— α(n) 的证明依赖 rank 的上界性质（MEMORY 规则同源）。'},
     ]},
   ],
 };

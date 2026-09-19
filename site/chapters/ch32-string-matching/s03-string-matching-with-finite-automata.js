@@ -387,8 +387,8 @@ int main(void)
      {kind:'single',q:'按原书给的界，朴素地构造转移表 $\delta$ 需要多少时间？',options:['$\Theta(m)$','$O(m|\Sigma|)$','**$O(m^{3}|\Sigma|)$**','$\Theta(n)$'],answer:2,why:'★ analyze 表里「朴素建表时间（原书给的界）」标的正是 $O(m^{3}|\Sigma|)$。扫描本身是线性的 $\Theta(n)$，代价全在建表上，可优化到 $O(m|\Sigma|)$。'},
      {kind:'judge',q:'字符串匹配自动机的虚假命中个数必然是 0。',answer:true,why:'★ 这里没有哈希碰撞这回事：$\delta$ 是确定性转移，状态 $q = m$ **当且仅当**真的匹配上了。C 程序对 $\delta$ 表做 200 组交叉验证，与定义的分歧数为 0。'},
     ],bookExercises:[
-     {id:'32.3-1',page:974,star:0,statement:'32.3-1 Draw a state-transition diagram for the string-matching automaton for the pattern',hint:'照 C 程序 dfa_build 的定义逐格填：每格是"P[0..q-1]+c 的后缀与 P 前缀的最长公共长度"。'},
-     {id:'32.3-2',page:974,star:0,statement:'32.3-2 Draw a state-transition diagram for the string-matching automaton for the pattern',hint:'同上，注意模式里重复片段带来的"回退链"。'},
+     {id:'32.3-1',page:974,star:0,statement:'Draw a state-transition diagram for the string-matching automaton for the pattern P = aabab over the alphabet † = fa; bg and illustrate its operation on the text string T = aaababaabaababaab .',hint:'照 C 程序 dfa_build 的定义逐格填：每格是"P[0..q-1]+c 的后缀与 P 前缀的最长公共长度"。'},
+     {id:'32.3-2',page:974,star:0,statement:'Draw a state-transition diagram for the string-matching automaton for the pattern P = ababbabbababbababbabb over the alphabet † = fa; bg.',hint:'同上，注意模式里重复片段带来的"回退链"。'},
     ]},
   ],
 };

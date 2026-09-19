@@ -75,6 +75,40 @@ def get_pages():
     return _PAGES
 
 
+_EX = None
+_EC = None
+
+
+def ex_corpus():
+    """语料侧抽题模块（tools/ex_corpus.py）—— 闸门 / 09 审计 / 10 回填共用同一份判据。"""
+    global _EC
+    if _EC is None:
+        import importlib.util as _ilu
+        _spec = _ilu.spec_from_file_location(
+            "ex_corpus", os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                      "ex_corpus.py"))
+        _EC = _ilu.module_from_spec(_spec)
+        _spec.loader.exec_module(_EC)
+    return _EC
+
+
+def exercise_index():
+    """章标识 -> {题号: 原书题干}。"""
+    global _EX
+    if _EX is None:
+        EC = ex_corpus()
+        pages = get_pages()
+        _EX = {k: EC.extract_chapter(pages, lo, hi, qnorm)
+               for k, (lo, hi) in EC.chapter_ranges().items()}
+    return _EX
+
+
+def ex_ch_key(chnum):
+    """关卡侧的章标识必须与语料文件名 __chNN.json 对齐（规则 44：整数要零填充）。"""
+    s = str(chnum)
+    return "%02d" % int(s) if s.isdigit() else s.upper()
+
+
 def load_pages():
     """printed_page -> 去掉页眉页脚后的正文。"""
     pages = {}
@@ -535,6 +569,7 @@ def verify():
     chapters_js = open(CHAPTERS_JS, encoding="utf-8").read() if os.path.exists(CHAPTERS_JS) else ""
 
     n_quotes = 0
+    n_ex = 0
     for chn in data["chapters"]:
         slug = chn["slug"]
         if slug not in chapters_js:
@@ -635,6 +670,34 @@ def verify():
                                         is_term=("/terms[" in q["path"]))
                 if not ok:
                     err("%s 的原文溯源失败：%s" % (q["path"], diag))
+
+            # --- 5b. 原书习题：编号要真的存在于原书、题干要逐字、页码要落在原书该题处 ---
+            #     （规则 41：这里曾是闸门盲区 —— 「编号对、语气像、内容不是原书那句」
+            #       的 184 条凭印象重写因此一路过检查。判据与 09 号审计完全同源。）
+            cex = exercise_index().get(ex_ch_key(chnum), {})
+            for si, st in enumerate(stages):
+                if st.get("type") != "drill":
+                    continue
+                for e in st.get("bookExercises") or []:
+                    qid = str(e.get("id") or "")
+                    tagx = "%s/stages[%d]/bookExercises(%s)" % (tag, si, qid)
+                    n_ex += 1
+                    ex = cex.get(qid)
+                    if ex is None:
+                        err("%s：原书这一章没有编号 %s（能取到的题号：%s）"
+                            % (tagx, qid, sorted(cex)[:6]))
+                        continue
+                    stmt = e.get("statement") or ""
+                    if not stmt.strip():
+                        err("%s 的 statement 为空" % tagx)
+                        continue
+                    ok, diag = verify_quote(ex_corpus().strip_ellipsis(stmt),
+                                            e.get("page"))
+                    if not ok:
+                        err("%s 不是原书原文：%s" % (tagx, diag))
+                    elif isinstance(e.get("page"), int) and e["page"] != ex["page"]:
+                        warn("%s 声明印刷页 %s，原书该题在 %s"
+                             % (tagx, e["page"], ex["page"]))
 
             # --- 6. 前向页码引用必须有 preview 标记 ---
             if printed:
@@ -782,8 +845,8 @@ def verify():
                         if pn.get("algorithm") and pn["algorithm"] not in algo_reg:
                             err("%s 的 panels 用了未注册的 algorithm %r" % (tag, pn["algorithm"]))
 
-    print("关卡数：%d，英文引述：%d 条" % (
-        sum(len(c["levels"]) for c in data["chapters"]), n_quotes))
+    print("关卡数：%d，英文引述：%d 条，原书习题：%d 道" % (
+        sum(len(c["levels"]) for c in data["chapters"]), n_quotes, n_ex))
 
 
 def first_mismatch(needle, hay):

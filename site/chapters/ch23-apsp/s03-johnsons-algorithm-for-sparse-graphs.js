@@ -426,10 +426,10 @@ int main(void)
      {kind:'single',q:'Johnson 的整体时间复杂度（用二叉堆 Dijkstra）约为？',options:['$O(VE)$','**$O(V\\cdot E\\lg V)$**','$O(V^3)$','$O(E\\lg V)$'],answer:1,
       why:'★ $V$ 次 Dijkstra，每次 $O(E\\lg V)$；稀疏图优于 Floyd-Warshall 的 $\\Theta(V^3)$。'},
     ],bookExercises:[
-     {id:'23.3-1',page:666,star:0,statement:'Use Johnson\u2019s algorithm on the weighted, directed graph of Figure 23.1...',hint:'照 C 程序 s03 段：先算 h（超级源 BF），再重加权、跑 5 次 Dijkstra、反变换 —— 与 SLOW/FW 的答案对照。'},
-     {id:'23.3-2',page:667,star:0,statement:'For what graphs can Johnson... ',hint:'h 重加权后仍有负边 ⟺ 存在"违反三角不等式"的边？不 —— h 恰好修复全部负边；问题在于若原数据有错（不满足定义），逐边检查 ŵ ≥ 0 会失败。'},
-     {id:'23.3-3',page:667,star:0,statement:'(*) Suppose that all edge weights in a graph G = (V,E)... ',hint:'非负权下 Johnson 退化为 V 次 Dijkstra；若还要更快，可用矩阵法（23.1）或对稠密图用 Floyd-Warshall —— 按 E 与 V 的关系选。'},
-     {id:'23.3-4',page:667,star:0,statement:'(*) Disjoint-set forests were analyzed... ',hint:'这是把 19 章 α(n) 分析与 23 章 APSP 组合的开放练习 —— 用并查集加速 Johnson 的重复松弛（适用于特殊图类）。'},
+     {id:'23.3-1',page:666,star:0,statement:'Use Johnson9s algorithm to find the shortest paths between all pairs of vertices in the graph of Figure 23.2. Show the values of h and y w computed by the algorithm.',hint:'照 C 程序 s03 段：先算 h（超级源 BF），再重加权、跑 5 次 Dijkstra、反变换 —— 与 SLOW/FW 的答案对照。'},
+     {id:'23.3-2',page:667,star:0,statement:'What is the purpose of adding the new vertex s to V , yielding V 0 ?',hint:'h 重加权后仍有负边 ⟺ 存在"违反三角不等式"的边？不 —— h 恰好修复全部负边；问题在于若原数据有错（不满足定义），逐边检查 ŵ ≥ 0 会失败。'},
+     {id:'23.3-3',page:667,star:0,statement:'Suppose that w(u,v) ≥ 0 for all edges (u,v) 2 E. What is the relationship between the weight functions w and y w?',hint:'非负权下 Johnson 退化为 V 次 Dijkstra；若还要更快，可用矩阵法（23.1）或对稠密图用 Floyd-Warshall —— 按 E 与 V 的关系选。'},
+     {id:'23.3-4',page:667,star:0,statement:'Professor Greenstreet claims that there is a simpler way to reweight edges than the method used in Johnson9s algorithm. Letting w − = min fw(u,v) W (u,v) 2 Eg, just define y w(u,v) = w(u,v) − w − for all edges (u,v) 2 E. What is wrong with the professor9s method of reweighting?',hint:'这是把 19 章 α(n) 分析与 23 章 APSP 组合的开放练习 —— 用并查集加速 Johnson 的重复松弛（适用于特殊图类）。'},
     ]},
   ],
 };

@@ -542,8 +542,8 @@ int main(void) {
         { kind: 'single', q: '同一 DFS 中，边 6→6（自环）被分类成哪种边？', options: ['树边', '**后向边**', '前向边', '横向边'], answer: 1, why: '★★ 自环视为后向边（C 程序 Part 3 实测）。' },
       ],
       bookExercises: [
-        { id: '20.3-2', page: 571, star: 0, statement: 'Show how to determine whether a directed graph G contains a cycle, and if so, how to find all the vertices that are in some cycle.', hint: 'DFS 出现后向边 ⇔ 有环（见 20.4 引理 20.11）。收集被后向边指到的祖先链即得一个环。' },
-        { id: '20.3-5', page: 572, star: 0, statement: 'Show that in a depth-first search of an undirected graph, for any edge (u,v), if u.d < v.d then v is a descendant of u in the depth-first tree.', hint: '无向边 (u,v) 与 (v,u) 是同一条；先探索到谁，谁就是另一个的祖先，故非树即后向。' },
+        { id: '20.3-2', page: 571, star: 0, statement: 'Show how depth-first search works on the graph of Figure 20.6. Assume that the for loop of lines 5–7 of the DFS procedure considers the vertices in alphabetical order, and assume that each adjacency list is order ed alphabetically. Show the discovery and finish times for each vertex, and show the classification of each edge.', hint: 'DFS 出现后向边 ⇔ 有环（见 20.4 引理 20.11）。收集被后向边指到的祖先链即得一个环。' },
+        { id: '20.3-5', page: 571, star: 0, statement: 'Show that in a directed graph, edge (u,v) is a. a tree edge or forward edge if and only if u: d <v: d <v: f <u: f , b. a back edge if and only if v: d ≤ u: d <u: f ≤ v: f , and c. a cross edge if and only if v: d <v: f <u: d <u: f .', hint: '无向边 (u,v) 与 (v,u) 是同一条；先探索到谁，谁就是另一个的祖先，故非树即后向。' },
       ] },
   ],
 };

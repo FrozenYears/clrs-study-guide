@@ -136,12 +136,12 @@ int main(void) {
      {kind:'judge',q:'RB-INSERT 的运行时间是 O(lg n)。',answer:true,why:'★ 情形 1 上移两层 → 最多 O(lg n) 次变色，外加 O(1) 旋转。'},
      {kind:'single',q:'FIXUP 收尾后，根节点的颜色是？',options:['**黑（BLACK）**','红（RED）','由插入位置决定','插入后根可能为红'],answer:0,why:'★ 收尾第 16 行后 T.root.color = BLACK；根恒为黑。'},
     ],bookExercises:[
-     {id:'13.3-1',page:346,star:0,statement:'Line 16 of RB-I NSERT sets the color of the newly inserted node ´ to red. If in- stead ´’s co',hint:'书上是半截题干（若染黑会怎样）。染黑会违反性质 5（黑高不一致）—— 修复需要沿整条路径调整，代价 O(n) 而非 O(lg n)。'},
-     {id:'13.3-2',page:346,star:0,statement:'Show the red-black trees that result after successively inserting the keys 41,38,31; 12,19,8',hint:'逐个画：每步 RB-INSERT + FIXUP。画到最后一个 key。'},
-     {id:'13.3-3',page:346,star:0,statement:'Suppose that the black-height of each of the subtrees ˛; ˇ; Ω; i; " in Figures 13.5 and 13.6',hint:'证明各子树黑高相等（由性质 5），然后验证旋转/变色后黑高仍一致。'},
-     {id:'13.3-4',page:346,star:0,statement:'Professor Teach is concerned that RB-I NSERT-FIXUP might set T: nil: color to RED, in which c',hint:'哨兵的 color 不会变红：情形 1 的变色只影响 z.p 和叔叔（非哨兵），因为如果叔叔是哨兵则 y.color = BLACK，走不到变色分支。'},
-     {id:'13.3-5',page:346,star:0,statement:'Consider a red-black tree formed by inserting n nodes with RB-I NSERT . Argue that if n>1 , t',hint:'书上是半截题干（树中至少有一个红节点）。n > 1 时：根黑，且至少一个叶节点离根最远 —— 插入时最后染红的那个节点如果没被 FIXUP 变黑，就还是红的。'},
-     {id:'13.3-6',page:346,star:0,statement:'Suggest how to implement RB-I NSERT efficiently if the representation for redblack trees incl',hint:'书上是半截题干（包含父指针和后继指针）。可以用 x.succ 来避免从 z 向上找叔叔/祖父 —— 通过后继指针直接定位。'},
+     {id:'13.3-1',page:346,star:0,statement:'Line 16 of RB-I NSERT sets the color of the newly inserted node ´ to red. If in- stead ´’s color were set to black, then property 4 of a red-black tree would not be violated. Why not set ´’s color to black?',hint:'染黑会违反性质 5（黑高不一致）—— 修复需要沿整条路径调整，代价 O(n) 而非 O(lg n)。'},
+     {id:'13.3-2',page:346,star:0,statement:'Show the red-black trees that result after successively inserting the keys 41,38,31; 12,19,8 into an initially empty red-black tree.',hint:'逐个画：每步 RB-INSERT + FIXUP。画到最后一个 key。'},
+     {id:'13.3-3',page:346,star:0,statement:'Suppose that the black-height of each of the subtrees ˛; ˇ; Ω; i; " in Figures 13.5 and 13.6 is k. Label each node in each figure with its black-height to verify that the indicated transformation preserves property 5.',hint:'证明各子树黑高相等（由性质 5），然后验证旋转/变色后黑高仍一致。'},
+     {id:'13.3-4',page:346,star:0,statement:'Professor Teach is concerned that RB-I NSERT-FIXUP might set T: nil: color to RED, in which case the test in line 1 would not cause the loop to terminate when ´ is the root. Show that the professor’s concern is unfounded by arguing that RB- INSERT-FIXUP never sets T: nil: color to RED.',hint:'哨兵的 color 不会变红：情形 1 的变色只影响 z.p 和叔叔（非哨兵），因为如果叔叔是哨兵则 y.color = BLACK，走不到变色分支。'},
+     {id:'13.3-5',page:346,star:0,statement:'Consider a red-black tree formed by inserting n nodes with RB-I NSERT . Argue that if n>1 , the tree has at least one red node.',hint:'n > 1 时：根黑，且至少一个叶节点离根最远 —— 插入时最后染红的那个节点如果没被 FIXUP 变黑，就还是红的。'},
+     {id:'13.3-6',page:346,star:0,statement:'Suggest how to implement RB-I NSERT efficiently if the representation for red- black trees includes no storage for parent pointers.',hint:'可以用 x.succ 来避免从 z 向上找叔叔/祖父 —— 通过后继指针直接定位。'},
     ]},
   ],
 };

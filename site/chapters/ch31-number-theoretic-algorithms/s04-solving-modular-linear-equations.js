@@ -480,9 +480,9 @@ int main(void)
      {kind:'single',q:'$35x \equiv 10 \ (\text{mod } 50)$ 的解集相邻两项相差多少？',options:['1','5','**10**','50'],answer:2,why:'★ 解集 $x_i = x_0 + i(n/d)$（定理 31.24），$d = \gcd(35, 50) = 5$，步长 $n/d = 50/5 = 10$，五个解正是 $\{6, 16, 26, 36, 46\}$。'},
      {kind:'judge',q:'方程 $ax \equiv b \ (\text{mod } n)$ 有解时，解的个数恰好等于 $\gcd(a, n)$。',answer:true,why:'★ 推论 31.22，本关 analyze 表把「解的个数」直接标成 $d$。$35x \equiv 10 \ (\text{mod } 50)$ 的 $d = 5$，C 程序列出 5 个解并全部回代通过。'},
     ],bookExercises:[
-     {id:'31.4-1',page:927,star:0,statement:'31.4-1 Find all solutions to the equation 35x = 10 . mod 50/.',hint:'就是 C 程序 part 4：$d = \\gcd(35,50) = 5$，$x_0 = 6$，解集 $\\{6 + 10i\\} = \\{6,16,26,36,46\\}$。'},
-     {id:'31.4-2',page:927,star:0,statement:'31.4-2 Prove that the equation ax = ay . mod n/ implies x = y (mod n) whenever gcd(a,n) = 1. Show that the con',hint:'正向用"消去律等价于可逆"：$a$ 与 $n$ 互素时 $a^{-1}$ 存在；反例用 $n$ 有平方因子或两个素因子不互素的情形。'},
-     {id:'31.4-3',page:928,star:0,statement:'31.4-3 Consider the following change to line 3 of the procedure MODULAR-LINEAR- EQUATION-SOLVER :',hint:'改 $x_0 = x_0(b/d) \\text{ mod }n$ 为 $x_0(b/d) \\text{ mod }(n/d)$ 会让解落进更小的剩余系 —— 用定理 31.24 的步长论证它破坏了 $d$ 个解的等距性。'},
+     {id:'31.4-1',page:927,star:0,statement:'Find all solutions to the equation 35x = 10 . mod 50/.',hint:'就是 C 程序 part 4：$d = \\gcd(35,50) = 5$，$x_0 = 6$，解集 $\\{6 + 10i\\} = \\{6,16,26,36,46\\}$。'},
+     {id:'31.4-2',page:927,star:0,statement:'Prove that the equation ax = ay . mod n/ implies x = y (mod n) whenever gcd(a,n) = 1. Show that the condition gcd(a,n) = 1 is necessary by supplying a counterexample with gcd(a,n)>1 .',hint:'正向用"消去律等价于可逆"：$a$ 与 $n$ 互素时 $a^{-1}$ 存在；反例用 $n$ 有平方因子或两个素因子不互素的情形。'},
+     {id:'31.4-3',page:928,star:0,statement:'Consider the following change to line 3 of the procedure MODULAR-LINEAR- EQUATION-SOLVER : 3 x 0 = x 0 (b/d) mod (n/d) With this change, will the procedure still work? Explain why or why not.',hint:'改 $x_0 = x_0(b/d) \\text{ mod }n$ 为 $x_0(b/d) \\text{ mod }(n/d)$ 会让解落进更小的剩余系 —— 用定理 31.24 的步长论证它破坏了 $d$ 个解的等距性。'},
     ]},
   ],
 };

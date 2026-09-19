@@ -445,11 +445,11 @@ int main(void)
      {kind:'single',q:'MAKE-SET(x) 初始化时把 x.rank 设为多少？',options:['1','**0**','x 的高度','不确定'],answer:1,why:'★ MAKE-SET 2 行：x.p = x；x.rank = 0（p.530）。'},
      {kind:'judge',q:'rank 的值始终是该节点高度的上界（路径压缩只让实际高度变小）。',answer:true,why:'★ rank 是不变量：压缩改指针使高度变小，rank 不动仍 ≥（本关 prove）。'},
     ],bookExercises:[
-     {id:'19.3-1',page:529,star:0,statement:'Do the exercise 19.3-1...',hint:'按rank定义手工模拟序列：每次 UNION 判断两根秩；每次 FIND-SET 记录压缩后的指针变化。'},
-     {id:'19.3-2',page:529,star:0,statement:'Write a nonrecursive version of FIND-SET with path compression.',hint:'两趟法：第一趟沿父链找到根并记录路径；第二趟把路径上每个结点的 p 改指根。C 程序用的是递归版（返回途中改指针），效果相同。'},
-     {id:'19.3-3',page:529,star:0,statement:'Give a tight asymptotic bound on the running time of the sequence of operations in Figure 19.6 assuming...',hint:'分别按"仅按秩合并"、"仅路径压缩"、"两者合用"三种设定重新算同一序列 —— 用来直观对比三种组合的差距。'},
-     {id:'19.3-4',page:529,star:0,statement:'Suppose that we wish to add the operation PRINT-SET(x)...',hint:'遍历整棵树收集成员最坏 O(n)。更好的方案：每个集合多维护一条成员链表（与森林并行），PRINT-SET 沿链走 —— 修改 MAKE-SET/LINK 时同步维护。'},
-     {id:'19.3-5',page:529,star:0,statement:'Show that any sequence of |V| MAKE-SET, |E| UNION, and FIND-SET operations can be processed in O(V + E) time...',hint:'把 |V| 个 MAKE-SET 与 |E| 个 UNION 全跑完（FIND-SET 均摊后极便宜）：总代价 O(V + E·α(V)) = O(V + E)。这正是 Kruskal 的代价来源。'},
+     {id:'19.3-1',page:531,star:0,statement:'Redo Exercise 19.2-2 using a disjoint-set forest with union by rank and path com- pression. Show the resulting forest with each node including its x i and rank.',hint:'按rank定义手工模拟序列：每次 UNION 判断两根秩；每次 FIND-SET 记录压缩后的指针变化。'},
+     {id:'19.3-2',page:531,star:0,statement:'Write a nonrecursive version of FIND-SET with path compression.',hint:'两趟法：第一趟沿父链找到根并记录路径；第二趟把路径上每个结点的 p 改指根。C 程序用的是递归版（返回途中改指针），效果相同。'},
+     {id:'19.3-3',page:531,star:0,statement:'Give a sequence of m MAKE-SET, UNION , and FIND-SET operations, n of which are MAKE-SET operations, that takes Ω(m lg n) time when using only union by rank and not path compression.',hint:'分别按"仅按秩合并"、"仅路径压缩"、"两者合用"三种设定重新算同一序列 —— 用来直观对比三种组合的差距。'},
+     {id:'19.3-4',page:531,star:0,statement:'Consider the operation PRINT-SET (x), which is given a node x and prints all the members of x ’s set, in any order. Show how to add just a single attribute to each node in a disjoint-set forest so that PRINT-SET (x) takes time linear in the number of members of x ’s set and the asymptotic running times of the other operations are unchanged. Assume that you can print each member of the set in O(1) time.',hint:'遍历整棵树收集成员最坏 O(n)。更好的方案：每个集合多维护一条成员链表（与森林并行），PRINT-SET 沿链走 —— 修改 MAKE-SET/LINK 时同步维护。'},
+     {id:'19.3-5',page:531,star:0,statement:'Show that any sequence of m MAKE-SET, FIND-SET, and LINK operations, where all the LINK operations appear before any of the FIND-SET operations, takes only O(m) time when using both path compression and union by rank. You may assume that the arguments to LINK are roots within the disjoint-set forest. What happens in the same situation when using only path compression and not union by rank?',hint:'把 |V| 个 MAKE-SET 与 |E| 个 UNION 全跑完（FIND-SET 均摊后极便宜）：总代价 O(V + E·α(V)) = O(V + E)。这正是 Kruskal 的代价来源。'},
     ]},
   ],
 };

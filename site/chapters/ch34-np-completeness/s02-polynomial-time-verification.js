@@ -440,7 +440,7 @@ int main(void)
           statement: 'Show that the hamiltonian-path problem from Exercise 34.2-6 can be solved in polynomial time on directed acyclic graphs. Give an efficient algorithm for the problem.',
           hint: '在 DAG 上做拓扑排序后动态规划：dp[v][S] 是否到达 v 且走过集合 S；|S| 指数但 DAG 上可用最长路思想在多项式内求解 HAM-PATH。' },
         { id: '34.2-8', page: 1060, star: 0,
-          statement: 'Let Ω be a boolean formula constructed from the boolean i nput variables x 1 ,x 2 ; …,x k , negations (:), ANDs (^), ORs (_), and parentheses. The formula Ω is a tautology if it evaluates to 1 for every assignment of 1 and 0 to the input variables.',
+          statement: 'Let Ω be a boolean formula constructed from the boolean i nput variables x 1 ,x 2 ; …,x k , negations (:), ANDs (^), ORs (_), and parentheses. The formula Ω is a tautology if it evaluates to 1 for every assignment of 1 and 0 to the input variables. Define TAUTOLOGY as the language of boolean formulas that are tautologies. Show that TAUTOLOGY 2 co-NP.',
           hint: '重言式属于 co-NP：其补语言（非重言式）可由「给一个使公式为 0 的赋值」作为证书在 NP 验证。' },
         { id: '34.2-9', page: 1060, star: 0,
           statement: 'Prove that P ⊆ co-NP.',

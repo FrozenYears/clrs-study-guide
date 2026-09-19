@@ -490,7 +490,7 @@ export default {
           statement: 'Prove that o(g(n)) \\ !.g(n)/ is the empty set.',
           hint: '小 o 是严格上界、Ω 是下界，二者要求 $f/g\\to0$ 又 $f/g\\ge c>0$，不可能同时成立，故交集为空。' },
         { id: '3.2-7', page: 63, star: 0,
-          statement: 'We can extend our notation to the case of two parameters n and m that can go to 1 independently at different rates. For a given function g(n,m) , we denote by O(g(n,m)) the set of functions',
+          statement: 'We can extend our notation to the case of two parameters n and m that can go to 1 independently at different rates. For a given function g(n,m) , we denote by O(g(n,m)) the set of functions O(g(n,m)) = ff(n,m) W there exist positive constants c , n 0 , and m 0 such that 0 ≤ f(n,m) ≤ cg(n,m) for all n ≥ n 0 or m ≥ m 0 g : Give corresponding definitions for Ω(g(n; m)) and Θ(g(n,m)) .',
           hint: '双参数版把"对所有 $n\\ge n_0$"换成"对所有 $n\\ge n_0$ 且 $m\\ge m_0$"。先想清单参数定义里哪些量要变成一对 $(n_0,m_0)$。' },
       ],
     },

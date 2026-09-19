@@ -650,10 +650,7 @@ export default {
           page: 24,
           star: 2,
           statement:
-            'Consider the procedure SUM-ARRAY on the facing page. It computes the sum of the ' +
-            'n numbers in array A[1 : n]. State a loop invariant for this procedure, and use ' +
-            'its initialization, maintenance, and termination properties to show that the ' +
-            'SUM-ARRAY procedure returns the sum of the numbers in A[1 : n].',
+            'Consider the procedure SUM-ARRAY on the facing page. It computes the sum of the n numbers in array A[1 : n]. State a loop invariant for this procedure, and use its initialization, maintenance, and termination properties to show that the SUM- ARRAY procedure returns the sum of the numbers in A[1 : n]. 8 Python’s tuple notation allows return statements to return multiple values without creating objects from a programmer-defined class.',
           hint:
             'SUM-ARRAY 的伪代码在原书印刷页 25。照抄阶段 7 的三步模板就行。' +
             '关键是写出正确的不变量：试着写成「进入第 i 轮时，sum 等于 A[1 : i−1] 的和」，' +
@@ -691,13 +688,7 @@ export default {
           page: 25,
           star: 4,
           statement:
-            'Consider the problem of adding two n-bit binary integers a and b, stored in two ' +
-            'n-element arrays A[0 : n − 1] and B[0 : n − 1], where each element is either 0 ' +
-            'or 1, a = Σ_{i=0}^{n−1} A[i] · 2^i, and b = Σ_{i=0}^{n−1} B[i] · 2^i. The sum ' +
-            'c = a + b of the two integers should be stored in binary form in an (n + 1)-element ' +
-            'array C[0 : n], where c = Σ_{i=0}^{n} C[i] · 2^i. Write a procedure ' +
-            'ADD-BINARY-INTEGERS that takes as input arrays A and B, along with the length n, ' +
-            'and returns array C holding the sum.',
+            'Consider the problem of adding two n-bit binary integers a and b, stored in two n-element arrays A[0 : n − 1] and B[0 : n − 1], where each element is either 0 or 1, a = P n−1 i D0 A[i] • 2 i , and b = P n−1 i D0 B[i] • 2 i . The sum c = a + b of the two integers should be stored in binary form in an (n + 1)-element array C[0 : n], where c = P n i D0 C[i] • 2 i . Write a procedure ADD-BINARY-INTEGERS that takes as input arrays A and B , along with the length n, and returns array C holding the sum.',
           hint:
             '就是小学的竖式加法，唯一的新东西是**进位 carry**。建议从低位往高位扫（i 从 0 到 n−1），' +
             '每轮算 A[i] + B[i] + carry，把和模 2 放进 C[i]，把和除以 2 作为新的 carry。' +

@@ -527,10 +527,10 @@ int main(void)
       why:'每层只切掉一个元素，所以递归深度就是 $n = 1024$。'},
     ],
     bookExercises:[
-     {id:'7.2-1',page:190,star:0,statement:'Use the substitution method to prove that the recurrence T(n) = T(n − 1) + Θ(n) has the solution T(n) = Θ(n²).',hint:'上界：猜 $T(n)\\le cn^2$。下界类似。'},
-     {id:'7.2-2',page:190,star:0,statement:'What is the running time of QUICKSORT when all elements of array A have the same value?',hint:'全部相同时每次分区都是 $(n-1):0$，所以 $\\Theta(n^2)$。'},
-     {id:'7.2-4',page:190,star:0,statement:'Suppose that the splits at every level of quicksort are in the proportion 1 − α to α. Show that the minimum depth of a leaf in the recursion tree is approximately −lg n/ lg α, and the maximum depth is approximately −lg n/ lg(1 − α).',hint:'最小深度沿"切掉较少"的枝（每次乘 $\\alpha$）。对数换底即可。'},
-     {id:'7.2-6',page:190,star:0,statement:'Argue that for any fixed α, 0 < α ≤ 1/2, the probability is approximately 1 − 2α that a random element is the median or a median-like element.',hint:'落在 $[\\alpha n,(1-\\alpha)n]$ 秩区间里的比例是 $1-2\\alpha$。'},
+     {id:'7.2-1',page:191,star:0,statement:'Use the substitution method to prove that the recurrence T(n) = T(n − 1) + Θ(n) has the solution T(n) = Θ(n 2 ), as claimed at the beginning of Section 7.2.',hint:'上界：猜 $T(n)\\le cn^2$。下界类似。'},
+     {id:'7.2-2',page:191,star:0,statement:'What is the running time of QUICKSORT when all elements of array A have the same value?',hint:'全部相同时每次分区都是 $(n-1):0$，所以 $\\Theta(n^2)$。'},
+     {id:'7.2-4',page:191,star:0,statement:'Banks often record transactions on an account in or der of the times of the trans- actions, but many people like to receive their bank statements with checks listed in order by check number. People usually write checks in order by check num- ber, and merchants usually cash them with reasonable dispatch. The problem of converting time-of-transaction ordering to check-number ordering is therefore the problem of sorting almost-sorted input. Explain persuasively why the procedure INSERTION-SORT might tend to beat the procedure QUICKSORT on this problem.',hint:'最小深度沿"切掉较少"的枝（每次乘 $\\alpha$）。对数换底即可。'},
+     {id:'7.2-6',page:191,star:0,statement:'Consider an array with distinct elements and for which all permutations of the ele- ments are equally likely. Argue that for any constant 0<˛ ≤ 1/2, the probability is approximately 1 − 2˛ that PARTITION produces a split at least as balanced as 1 − ˛ to ˛.',hint:'落在 $[\\alpha n,(1-\\alpha)n]$ 秩区间里的比例是 $1-2\\alpha$。'},
     ]},
   ],
 };

@@ -633,7 +633,7 @@ int main(void)
       ],
       bookExercises: [
         { id: '4.4-1', page: 101, star: 0,
-          statement: 'For each of the following recurrences, sketch its recursion tree, and guess a good asymptotic upper bound on its solution. Then use the substitution method to verify your answer. a. T(n) = T(n/2) + n 3 .',
+          statement: 'For each of the following recurrences, sketch its recursion tree, and guess a good asymptotic upper bound on its solution. Then use the substitution method to verify your answer. a. T(n) = T(n/2) + n 3 . b. T(n) = 4T(n/3) + n. c. T(n) = 4T(n/2) + n. d. T(n) = 3T(n − 1) + 1.',
           hint: '每个结点的孩子 1 个、代价 n³：每层合计 n³ 且**不衰减**，树高 log₂n。' +
                 '总账 = n³·log₂n。代入法验证时假设 T(n) ≤ d n³ lg n。' },
         { id: '4.4-2', page: 101, star: 0,
@@ -641,11 +641,11 @@ int main(void)
           hint: '递归式 (4.15) 是叶子计数：L(n) = L(n/3) + L(2n/3)。' +
                 '书上 p.100 已经给出上界 L(n) ≤ dn；下界换个方向放缩（叶子数不会比 n 少）即可。' },
         { id: '4.4-3', page: 101, star: 0,
-          statement: 'Use the substitution method to prove that recurrence (4.14) has the solution T(n) =',
+          statement: 'Use the substitution method to prove that recurrence (4.14) has the solution T(n) = Ω(n lg n). Conclude that T(n) = Θ(n lg n).',
           hint: '对 T(n) = O(n lg n)：假设 T(m) ≤ d m lg m（m < n），代回 T(n) = T(n/3) + T(2n/3) + cn。' +
                 '注意处理边界 m < n₀ 的那一段（书上 p.100 的说法：postpone dealing with the leaves）。' },
         { id: '4.4-4', page: 101, star: 0,
-          statement: 'Use a recursion tree to justify a good guess for the solution to the recurrence',
+          statement: 'Use a recursion tree to justify a good guess for the solution to the recurrence T(n) = T.˛n/ CT..1 −˛/n/CΘ(n), where ˛ is a constant in the range 0<˛<1 .',
           hint: '先画三层，把每层合计写成 (公比)^i 的形式，再看公比与 1 的大小：' +
                 '小于 1 则根主导，等于 1 则每层平摊，大于 1 则叶子主导。' },
       ],

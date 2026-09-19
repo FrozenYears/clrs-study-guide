@@ -274,9 +274,9 @@ int main(void)
      {kind:'single',q:'C 程序里 Figure 24.1 网络的最小割容量是？',options:['**23**','29','17','46'],answer:0,why:'★ 本关 code 段的实测：割容量 23，$S = \\{s, v_1, v_2, v_4\\}$ —— 与最大流值相等，正是最小割定理。'},
      {kind:'simulate',q:'C 程序里最小割的 $S$ 侧共包含几个顶点（含源 $s$）？',expect:[4],placeholder:'例如：3',why:'★ 实测 $S = \\{s, v_1, v_2, v_4\\}$，恰好 4 个顶点。'},
     ],bookExercises:[
-     {id:'24.1-1',page:676,star:0,statement:'For the flow network G = (V,E) and flow f in Figure 24.1, find two different minimum cuts.',hint:'按最大流最小割定理：残量网络中从 s 可达的点集给出一个最小割；换一条等价的最大流可能给出另一个 —— 手工枚举割即可。'},
-     {id:'24.1-2',page:676,star:0,statement:'Show that the flows in Figure 24.1(b) satisfy the capacity constraints... ',hint:'逐边核对 $0 \\le f \\le c$：例 (v1,v3) 流 12 = 容量 12，(s,v2) 流 11 < 13。再做逐点的守恒求和。'},
-     {id:'24.1-3',page:676,star:0,statement:'Where is the max-flow problem... ',hint:'线性规划形式：最大化 $\\sum_v f(s,v)$，约束为容量（双向不等式）与守恒（等式）—— 这就是 29 章 LP 的实例。'},
+     {id:'24.1-1',page:675,star:0,statement:'Show that splitting an edge in a flow network yields an equivalent network. More formally, suppose that flow network G contains edge (u; v), and define a new flow network G 0 by creating a new vertex x and replacing (u; v) by new edges (u; x) and (x; v) with c(u; x) = c(x; v) = c(u; v). Show that a maximum flow in G 0 has the same value as a maximum flow in G.',hint:'按最大流最小割定理：残量网络中从 s 可达的点集给出一个最小割；换一条等价的最大流可能给出另一个 —— 手工枚举割即可。'},
+     {id:'24.1-2',page:675,star:0,statement:'Extend the flow properties and definitions to the multiple-source, multiple-sink problem. Show that any flow in a multiple-source, multiple-sink flow network corresponds to a flow of identical value in the single-source, single-sink network obtained by adding a supersource and a supersink, and vice versa.',hint:'逐边核对 $0 \\le f \\le c$：例 (v1,v3) 流 12 = 容量 12，(s,v2) 流 11 < 13。再做逐点的守恒求和。'},
+     {id:'24.1-3',page:675,star:0,statement:'Suppose that a flow network G = (V; E) violates the assumption that the network contains a path s → v → t for all vertices v 2 V . Let u be a vertex for which there is no path s → u → t . Show that there must exist a maximum flow f in G such that f (u; v) = f (v; u) = 0 for all vertices v 2 V .',hint:'线性规划形式：最大化 $\\sum_v f(s,v)$，约束为容量（双向不等式）与守恒（等式）—— 这就是 29 章 LP 的实例。'},
     ]},
   ],
 };

@@ -481,9 +481,9 @@ int main(void)
      {kind:'single',q:'在 $\mathbb{Z}_n^*$ 里，元素 $a$ 的阶 $\text{ord}(a)$ 与 $\varphi(n)$ 是什么关系？',options:['两者必然相等','**$\text{ord}(a)$ 整除 $\varphi(n)$**','$\varphi(n)$ 整除 $\text{ord}(a)$','两者没有必然关系'],answer:1,why:'★ 这是 Lagrange 定理的元素版（本关 analyze 表第一行）。C 程序打印的 $\mathbb{Z}_7^*$ 阶表里 ord(3)=6、ord(2)=3、ord(6)=2，全部整除 $\varphi(7) = 6$。'},
      {kind:'judge',q:'费马小定理 $a^{p-1} \equiv 1 \ (\text{mod } p)$ 是欧拉定理在素数模下的特例。',answer:true,why:'★ 素数 $p$ 满足 $\varphi(p) = p - 1$，欧拉定理 $a^{\varphi(n)} \equiv 1$（定理 31.30）直接退化成费马小定理（定理 31.31）。C 程序验了 $\mathbb{Z}_7^*$ 六个元素的 $a^{6} \text{ mod } 7$ 全为 1。'},
     ],bookExercises:[
-     {id:'31.6-1',page:935,star:0,statement:'31.6-1 Draw a table showing the order of every element in Z −',hint:'对每个 a ∈ Z*_11 反复乘到 1 计数（C 程序 part 6 的 ORDER-TABLE 照搬）；素因子的阶整除 10，本原根有 ord = 10。'},
-     {id:'31.6-2',page:935,star:0,statement:'31.6-2 Show that x 2 = 1 (mod √e ) is equivalent to √e j (x − 1).x + 1/.',hint:'把 $x^{2} - 1$ 分解成 $(x-1)(x+1)$，再用素数幂的素因子性质逐个归到模 $p$ 上 —— 定理 31.34 的证明骨架。'},
-     {id:'31.6-5',page:936,star:0,statement:'31.6-5 Assuming that you know Ω(n), explain how to compute a −1 mod n for any a 2 Z − n using the procedure MO',hint:'$a^{-1} \\equiv a^{\\varphi(n)-1} \\ (\\text{mod } n)$（欧拉定理两边乘 $a^{-1}$）—— 用 MODULAR-EXPONENTIATION 一次算完，RSA 求 $d$ 正是这么做的。'},
+     {id:'31.6-1',page:935,star:0,statement:'Draw a table showing the order of every element in Z − 11 . Pick the smallest primitive root g and compute a table giving ind 11,g (x) for all x 2 Z − 11 .',hint:'对每个 a ∈ Z*_11 反复乘到 1 计数（C 程序 part 6 的 ORDER-TABLE 照搬）；素因子的阶整除 10，本原根有 ord = 10。'},
+     {id:'31.6-2',page:935,star:0,statement:'Show that x 2 = 1 (mod √e ) is equivalent to √e j (x − 1).x + 1/.',hint:'把 $x^{2} - 1$ 分解成 $(x-1)(x+1)$，再用素数幂的素因子性质逐个归到模 $p$ 上 —— 定理 31.34 的证明骨架。'},
+     {id:'31.6-5',page:936,star:0,statement:'Assuming that you know Ω(n), explain how to compute a −1 mod n for any a 2 Z − n using the procedure MODULAR-EXPONENTIATION .',hint:'$a^{-1} \\equiv a^{\\varphi(n)-1} \\ (\\text{mod } n)$（欧拉定理两边乘 $a^{-1}$）—— 用 MODULAR-EXPONENTIATION 一次算完，RSA 求 $d$ 正是这么做的。'},
     ]},
   ],
 };

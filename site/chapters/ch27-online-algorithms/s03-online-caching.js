@@ -370,8 +370,8 @@ int main(void)
      {kind:'simulate',q:'随机标记相对 OPT 的平均缺失比是多少（填三位小数）？',expect:[1.713],placeholder:'例如：1.000',why:'★ code 段实测：平均比值 1.713 —— 比理论上界 4.167 小得多，但仍是 $>1$ 的代价。'},
      {kind:'single',q:'15.4 的 FFU（Belady）为什么不能直接用在这个在线场景里？',options:['因为它太慢','**因为它要求知道未来的访问序列**','因为它不是 $k$-竞争的','因为它只支持固定块大小'],answer:1,why:'★ map 段点明：FFU 换出「下次最远者」，而在线算法恰恰没有未来 —— 本关所有策略都是它的替代品。'},
     ],bookExercises:[
-     {id:'27.3-1',page:819,star:0,statement:'Show that the randomized marking algorithm... ',hint:'按标记周期分段：证明每个段内 RM 的期望缺失 ≤ 2·(段内首次出现的块数) ≤ 2·OPT 的缺失，再对 $k$ 个"第 i 次随机选择"求和得 $2H_k$。'},
-     {id:'27.3-2',page:819,star:0,statement:'Consider the completion-time scheduling problem... ',hint:'COMPLETION-TIME-SCHEDULE：每次派任务给"最早空闲"的机器 —— 这是在线调度的经典策略，竞争比的分析与缓存同型（把"机器"当缓存槽）。'},
+     {id:'27.3-1',page:814,star:0,statement:'For the cache sequence (27.10), show the contents of the cache after each request and count the number of cache misses. How many misses does each epoch incur?',hint:'按标记周期分段：证明每个段内 RM 的期望缺失 ≤ 2·(段内首次出现的块数) ≤ 2·OPT 的缺失，再对 $k$ 个"第 i 次随机选择"求和得 $2H_k$。'},
+     {id:'27.3-2',page:814,star:0,statement:'Show that LFU has a competitive ratio of Θ(n/k) for the online caching problem with n requests and a cache of size k.',hint:'COMPLETION-TIME-SCHEDULE：每次派任务给"最早空闲"的机器 —— 这是在线调度的经典策略，竞争比的分析与缓存同型（把"机器"当缓存槽）。'},
     ]},
   ],
 };

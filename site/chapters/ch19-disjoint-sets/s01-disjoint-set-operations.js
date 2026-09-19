@@ -423,7 +423,7 @@ int main(void)
      {kind:'judge',q:'在朴素链表表示下，FIND-SET 返回代表元（链表头）只需 O(1)。',answer:true,why:'★ 链表表示下 FIND-SET 跟随 set 指针返回链表头，O(1)（p.521）。'},
      {kind:'single',q:'朴素链表表示中，单次 UNION 的最坏代价是？',options:['O(1)','**Θ(n)**','O(lg n)','O(α(n))'],answer:1,why:'★ 朴素链表 UNION 最坏 Θ(n)（p.524）。'},
     ],bookExercises:[
-     {id:'19.1-1',page:521,star:0,statement:'Suppose that x and y are tail pointers of two linked lists representing disjoint sets. Write pseudocode for UNION(x,y) that returns the tail pointer of the union.',hint:'把 x 链的头接到 y 链的尾（或反之），返回另一条的尾指针；注意同时更新每个结点的代表元指针。'},
+     {id:'19.1-1',page:523,star:0,statement:'The CONNECTED-COMPONENTS procedure is run on the undirected graph G = (V,E) , where V = fa,b,c,d,e,f,g,h,i,j,k g , and the edges of E are pro- cessed in the order (d,i),.f,k/,.g,i/,.b,g/,.a,h/,.i,j/,.d,k/,.b,j/,.d; f/; (g,j),.a,e/ . List the vertices in each connected component after each iteration of lines 3–5.',hint:'把 x 链的头接到 y 链的尾（或反之），返回另一条的尾指针；注意同时更新每个结点的代表元指针。'},
     ]},
   ],
 };

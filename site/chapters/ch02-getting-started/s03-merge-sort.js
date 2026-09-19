@@ -1201,10 +1201,7 @@ export default {
           page: 44,
           star: 2,
           statement:
-            'The test in line 1 of the MERGE-SORT procedure reads “if p ≥ r” rather than ' +
-            '“if p ≠ r.” If MERGE-SORT is called with p > r, then the subarray A[p : r] is ' +
-            'empty. Argue that as long as the initial call of MERGE-SORT(A, 1, n) has n ≥ 1, ' +
-            'the test “if p ≠ r” suffices to ensure that no recursive call has p > r.',
+            'The test in line 1 of the MERGE-SORT procedure reads "if p ≥ r " rather than <if p ≠ r .= If MERGE-SORT is called with p>r , then the subarray A[p : r] is empty. Argue that as long as the initial call of MERGE-SORT(A,1,n) has n ≥ 1, the test "if p ≠ r " suffices to ensure that no recursive call has p>r .',
           hint:
             '思路是**归纳**。先看初始调用：$p = 1 \\le n = r$，所以一开始不会有 $p > r$。' +
             '再看递归步：若当前 $p \\le r$，则 $q = \\lfloor (p+r)/2 \\rfloor$ 满足 $p \\le q \\le r$，' +
@@ -1234,10 +1231,7 @@ export default {
           page: 44,
           star: 3,
           statement:
-            'Use mathematical induction to show that when n ≥ 2 is an exact power of 2, the ' +
-            'solution of the recurrence\n' +
-            'T(n) = { 2 if n = 2 ; 2T(n/2) + n if n > 2 }\n' +
-            'is T(n) = n lg n.',
+            'Use mathematical induction to show that when n ≥ 2 is an exact power of 2, the solution of the recurrence T(n) = ( 2 if n = 2; 2T(n/2) + n if n>2 is T(n) = n lg n.',
           hint:
             '归纳假设：对所有 $2 \\le m < n$（$m$ 是 2 的幂）都有 $T(m) = m\\lg m$。' +
             '归纳步：$T(n) = 2T(n/2) + n = 2 \\cdot \\frac{n}{2}\\lg\\frac{n}{2} + n$，' +
@@ -1283,14 +1277,7 @@ export default {
           page: 45,
           star: 4,
           statement:
-            'Insertion sort on small arrays in merge sort. Although merge sort runs in ' +
-            'Θ(n lg n) worst-case time and insertion sort runs in Θ(n²) worst-case time, the ' +
-            'constant factors in insertion sort can make it faster in practice for small ' +
-            'problem sizes on many machines. Thus it makes sense to coarsen the leaves of the ' +
-            'recursion by using insertion sort within merge sort when subproblems become ' +
-            'sufficiently small. Consider a modification to merge sort in which n/k sublists of ' +
-            'length k are sorted using insertion sort and then merged using the standard ' +
-            'merging mechanism, where k is a value to be determined.',
+            'Insertion sort on small arrays in merge sort Although merge sort runs in Θ(n lg n) worst-case time and insertion sort runs in Θ(n 2 ) worst-case time, the constant factors in insertion sort can make it faster in practice for small problem sizes on many machine s. Thus it makes sense to coarsen the leaves of the recursion by using insertion sort within merge sort when subproblems become sufficiently small. Consider a modification to merge sort in which n/k sublists of length k are sorted using insertion sort and then merged using the standard merging mechanism, where k is a value to be determined. a. Show that insertion sort can sort the n/k sublists, each of length k, in Θ(nk) worst-case time. b. Show how to merge the sublists in Θ(n lg(n/k)) worst-case time. c. Given that the modified algorithm runs in Θ(nk + n lg(n/k)) worst-case time, what is the largest value of k as a function of n for which the modified algorithm has the same running time as standard merge sort, in terms of Θ-notation? d. How should you choose k in practice?',
           hint:
             '这是一道“渐进阶 vs 常数因子”的实战题，也是真实工程里最常见的混合策略。' +
             '(a) 每个长度为 $k$ 的子表用插入排序是 $\\Theta(k^2)$，共 $n/k$ 个，相乘即得。' +
@@ -1304,14 +1291,7 @@ export default {
           page: 46,
           star: 4,
           statement:
-            'Correctness of bubblesort. Bubblesort is a popular, but inefficient, sorting ' +
-            'algorithm. It works by repeatedly swapping adjacent elements that are out of ' +
-            'order. The procedure BUBBLESORT sorts array A[1 : n].\n' +
-            'BUBBLESORT(A, n)\n' +
-            '1  for i = 1 to n − 1\n' +
-            '2      for j = n downto i + 1\n' +
-            '3          if A[j] < A[j − 1]\n' +
-            '4              exchange A[j] with A[j − 1]',
+            'Correctness of bubblesort Bubblesort is a popular, but inefficient, sorting algorithm. It works by repeatedly swapping adjacent elements that are out of order. T he procedure BUBBLESORT sorts array A[1 : n]. BUBBLESORT (A,n) 1 for i = 1 to n − 1 2 for j = n downto i + 1 3 if A[j]<A[j − 1] 4 exchange A[j] with A[j − 1] a. Let A 0 denote the array A after BUBBLESORT (A,n) is executed. To prove that BUBBLESORT is correct, you need to prove that it terminates and that A 0 [1] ≤ A 0 [2] ≤ • • • ≤ A 0 [n]: (2.5) In order to show that BUBBLESORT actually sorts, what else do you need to prove? The next two parts prove inequality (2.5). b. State precisely a loop invariant for the for loop in lines 2–4, and prove that this loop invariant holds. Your proof should use the structure of the loop-invariant proof presented in this chapter. c. Using the termination condition of the loop invariant proved in part (b), state a loop invariant for the for loop in lines 1–4 that allows you to prove inequal- ity (2.5). Your proof should use the structure of the loop-invariant proof pre- sented in this chapter. d. What is the worst-case running time of BUBBLESORT ? …',
           hint:
             '一道把“循环不变量”练到底的好题 —— 注意要证**两层**循环各自的不变量。' +
             '(a) 不等式 (2.5) 只说了“有序”，但排序的定义还要求“同一批元素”（permutation）。' +

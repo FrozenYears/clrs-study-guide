@@ -536,8 +536,8 @@ int main(void) {
         { kind: 'simulate', q: '同一张图从顶点 1 起 BFS，顶点 3、6 的 d 是多少（不可达记 -1）？填两个数', expect: [-1, -1], placeholder: '例如：0 0', why: '★★ 顶点 3、6 从 1 不可达，d=∞（C 程序记 -1）。' },
       ],
       bookExercises: [
-        { id: '20.2-3', page: 562, star: 0, statement: 'What is the running time of BFS if its input graph is represented by an adjacency matrix? How can you make BFS run in O(V + E) time on a graph represented by an adjacency matrix?', hint: '矩阵下每个顶点的邻居要扫整行 O(V)，总 Θ(V²)。要回到 Θ(V+E) 只能对每个「还白着的」顶点另开邻接表，或预先由矩阵建出邻接表。' },
-        { id: '20.2-5', page: 563, star: 0, statement: 'Show that BFS computes the same set of shortest-path distances regardless of the order in which neighbors are visited in line 12.', hint: '距离只取决于「第几层被发现」，与同层内邻居的先后无关——靠引理 20.3/20.4 的队列单调性。' },
+        { id: '20.2-3', page: 562, star: 0, statement: 'Show that using a single bit to store each vertex color suffices by arguing that the BFS procedure produces the same result if line 18 is removed. Then show how to obviate the need for vertex colors altogether.', hint: '矩阵下每个顶点的邻居要扫整行 O(V)，总 Θ(V²)。要回到 Θ(V+E) 只能对每个「还白着的」顶点另开邻接表，或预先由矩阵建出邻接表。' },
+        { id: '20.2-5', page: 563, star: 0, statement: 'Argue that in a breadth-first search, the value u: d assigned to a vertex u is inde- pendent of the order in which the vertices appear i n each adjacency list. Using Figure 20.3 as an example, show that the breadth-first tree computed by BFS can depend on the ordering within adjacency lists.', hint: '距离只取决于「第几层被发现」，与同层内邻居的先后无关——靠引理 20.3/20.4 的队列单调性。' },
       ] },
   ],
 };

@@ -627,7 +627,7 @@ int main(void)
           statement: 'The code for MAX-HEAPIFY is quite efficient in terms of constant factors, except possibly for the recursive call in line 10, for which some compilers might produce inefficient code. Write an efficient MAX-HEAPIFY that uses an iterative control construct (a loop) instead of recursion.',
           hint: '把第 10 行的 `MAX-HEAPIFY(A, largest)` 换成"令 $i = largest$ 然后回到第 1 行"。这正是第 3 版的写法。阶段 6 的 C 程序里第二份实现就是它，并且有 639 组断言保证两版结果与交换次数完全一致。' },
         { id: '6.2-7', page: 167, star: 0,
-          statement: 'Show that the worst-case running time of MAX-HEAPIFY on a heap of size n is Ω(lg n). (Hint: For a heap with n nodes, give node values that cause MAX-HEAPIFY to be called recursively at every node on a simple path from the root down to a leaf.)',
+          statement: 'Show that the worst-case running time of MAX-HEAPIFY on a heap of size n is Ω(lg n). (Hint: For a heap with n nodes, give node values that cause MAX- HEAPIFY to be called recursively at every node on a simple path from the root down to a leaf.)',
           hint: '★ 提示已经把构造说出来了：让递归沿着一条从根到叶的路径一路往下。"把根换成极小值"就能达到这个效果（前提是那条路径上每一步的较大孩子都恰好指向下一个路径结点）。阶段 6 的 C 程序用这个构造在 $n = 2 \\dots 20$ 里找到了 19 个交换次数恰好等于树高的例子。' },
       ] },
   ],

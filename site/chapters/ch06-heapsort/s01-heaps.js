@@ -453,7 +453,7 @@ int main(void)
           statement: 'Is the array with values ⟨33,19,20,15,13,10,2,13,16,12⟩ a max-heap?',
           hint: '★★ 不是。请**按下标**逐个算父子，不要扫相邻位置：违规的是 $A[4]$ 与 $A[9]$（$\\text{PARENT}(9) = 4$，$15 < 16$）。$A[8] = 13$、$A[9] = 16$ 那一对毫无关系。' },
         { id: '6.1-8', page: 164, star: 0,
-          statement: 'Show that, with the array representation for storing an n-element heap, the leaves are the nodes indexed ⌊n/2⌋ + 1, ⌊n/2⌋ + 2,…,n.',
+          statement: 'Show that, with the array representation for storing an n-element heap, the leaves are the nodes indexed ⌊y bn/2⌋ + 1; ⌊n/2⌋ + 2,…,n .',
           hint: '从「$i$ 是叶子 $\\Leftrightarrow 2i > n$」出发做一次整数变换。这条结论在 6.3 直接决定建堆的循环从 $\\lfloor n/2 \\rfloor$ 倒着走。' },
       ] },
   ],

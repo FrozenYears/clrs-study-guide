@@ -482,9 +482,9 @@ int main(void)
      {kind:'single',q:'数论算法的「多项式时间」是按什么尺度计的？',options:['按整数 $a$ 本身的大小','**按输入的位长 $\lg a$**','按 $a$ 的素因子个数','按模数 $n$ 的大小'],answer:1,why:'★ 本关 map 段点明：数论算法的时间按输入的**位数**计，不是按 $a$ 本身；analyze 表把「多项式时间」标成 $\text{poly}(\lg a)$。所以试除法（要试到 $\sqrt{a}$）是指数级的。'},
      {kind:'judge',q:'除法定理里的商 $q$ 与余数 $r$ 是唯一的。',answer:true,why:'★ 定理 31.1（本关 prove 段逐字陈述的那条）：$a = qn + r$ 且 $0 \le r < n$ 时 $q, r$ 唯一。C 程序对 $a = -17, n = 5$ 得 $q = -4, r = 3$ —— 注意 $r$ 不是 $-2$。'},
     ],bookExercises:[
-     {id:'31.1-1',page:909,star:0,statement:'31.1-1 Prove that if a>b>0 and c = a + b, then c mod a = b.',hint:'直接算 $c \\text{ mod }a = (a + b) \\text{ mod }a = b \\text{ mod }a$，再用 $0 \\le b < a$ —— 除法定理的唯一性一步收尾。'},
-     {id:'31.1-2',page:909,star:0,statement:'31.1-2 Prove that there are infinitely many primes. (Hint: Show that none of the primes',hint:'构造 $N = (2,3,5,\dots,p_k)$ 的乘积加 1：$N \bmod p_i = 1$ 对每个 $p_i$ 成立，所以 $N$ 的素因子不在列表里。'},
-     {id:'31.1-10',page:910,preview:true,star:0,statement:'31.1-10 Show that the gcd operator is associative. That is, prove that for all integers a, b, and c , we have ',hint:'用"素因子取最小幂"的刻画（式 31.13）：$\gcd$ 的结合律归结为 $\min$ 的结合律 $\min(e, \min(f, g)) = \min(\min(e, f), g)$。'},
+     {id:'31.1-1',page:909,star:0,statement:'Prove that if a>b>0 and c = a + b, then c mod a = b.',hint:'直接算 $c \\text{ mod }a = (a + b) \\text{ mod }a = b \\text{ mod }a$，再用 $0 \\le b < a$ —— 除法定理的唯一性一步收尾。'},
+     {id:'31.1-2',page:909,star:0,statement:'Prove that there are infinitely many primes. (Hint: Show that none of the primes √1 ,p 2 ,…,p k divide (p 1 √2 • • • √k ) + 1.)',hint:'构造 $N = (2,3,5,\dots,p_k)$ 的乘积加 1：$N \bmod p_i = 1$ 对每个 $p_i$ 成立，所以 $N$ 的素因子不在列表里。'},
+     {id:'31.1-10',page:910,preview:true,star:0,statement:'Show that the gcd operator is associative. That is, prove that for all integers a, b, and c , we have gcd(a; gcd(b,c)) = gcd(gcd(a,b),c):',hint:'用"素因子取最小幂"的刻画（式 31.13）：$\gcd$ 的结合律归结为 $\min$ 的结合律 $\min(e, \min(f, g)) = \min(\min(e, f), g)$。'},
     ]},
   ],
 };

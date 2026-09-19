@@ -413,7 +413,7 @@ int main(void)
      {kind:'judge',q:'把「一次一条增广路」改成「一轮一批互不相交的最短增广路」，复杂度就从 $O(VE)$ 降到 $O(E\\sqrt{V})$。',answer:true,why:'★ map 段原话：这就是复杂度的全部来源 —— 批处理让轮数从 $O(V)$ 降到 $O(\\sqrt V)$。'},
     ],bookExercises:[
      {id:'25.1-1',page:715,star:0,statement:'Use the Hopcroft-Karp algorithm to find a maximum matching for the graph in Figure 25.1.',hint:'照 C 程序 part 1 的思路手工做：先贪心得一个匹配，再分层找等长增广路批次 —— 每轮记录匹配大小直到不再增大。'},
-     {id:'25.1-4',page:715,star:0,statement:'Show how to bound the number of iterations of the the repeat loop of lines 2\u20135 of HOPCROFT-KARP by \u02d9 p',hint:'两段论证（见本关 derivations）：路长 ≤ √V 的轮数 O(√V)；路长 > √V 后剩余增广次数也 O(√V)。'},
+     {id:'25.1-4',page:715,star:0,statement:'Show how to bound the number of iterations of the the repeat loop of lines 2–5 of HOPCROFT-KARP by ˙ p |V|/2 ⌋ .',hint:'两段论证（见本关 derivations）：路长 ≤ √V 的轮数 O(√V)；路长 > √V 后剩余增广次数也 O(√V)。'},
     ]},
   ],
 };

@@ -466,7 +466,7 @@ int main(void)
           statement: 'Give an efficient greedy algorithm that finds an optimal vertex cover for a tree in linear time.',
           hint: '从叶子往上：若一条边 (u,v) 中 u 是叶子，则把 v 放入覆盖并删掉 v 及相邻边，递归即可在线性时间内得到树的最优覆盖。' },
         { id: '35.1-5', page: 1109, star: 0,
-          statement: 'The proof of Theorem 34.12 on page 1084 illustrates that the vertex-cover problem and the NP-complete clique problem are complementary in the sense that an optimal vertex cover is the complement of a maximum-size clique in the complement graph. Does this relationship imply that there is a polynomial-time approximation algorithm with a constant approximation ratio for the clique problem? Justify your answer.',
+          statement: 'The proof of Theorem 34.12 on page 1084 illustrates that the vertex-cover problem and the NP-complete clique problem are complementary in the sense that an opti- mal vertex cover is the complement of a maximum-size clique in the complement graph. Does this relationship imply that there is a polynomial-time approximation algorithm with a constant approximation ratio for the clique problem? Justify your answer.',
           hint: '不蕴含。补图把覆盖大小映射成团大小会放大误差：顶点覆盖的 2-近似在补图上对应的团近似比可达 Ω(n)，不是常数。' },
       ],
     },
