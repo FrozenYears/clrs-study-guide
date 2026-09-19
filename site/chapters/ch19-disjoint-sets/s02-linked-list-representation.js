@@ -3,7 +3,7 @@ export default {
   key:'s02',id:'ch19/s02',chapter:19,section:'19.2',
   title:'链表表示与加权合并',shortTitle:'19.2 链表表示',
   titleEn:'Linked-list representation of disjoint sets',
-  source:{printed:[521,536],pdf:[542,557]},
+  source: { printed: [523, 526], pdf: [544, 548] },
   prerequisites:[{label:'19.1 Disjoint-set operations',url:'#/ch19/s01'}],
   stages:[
    {type:'map',title:'最直观的表示与它的代价',

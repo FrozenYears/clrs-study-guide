@@ -9,7 +9,7 @@ export default {
   key: 's01', id: 'ch06/s01', chapter: 6, section: '6.1',
   title: '堆：数组与二叉树是同一个东西', shortTitle: '6.1 堆',
   titleEn: 'Heaps',
-  source: { printed: [161, 164], pdf: [182, 185] },
+  source: { printed: [161, 163], pdf: [182, 185] },
   sourceNote: '本关对应原书 6.1 节（印刷页 161–164）。本节定下术语（堆、堆性质、高度）与三条下标算式，后面 6.2–6.5 都建立在这上面。',
   prerequisites: [{ label: '5.4.4 The online hiring problem', url: '#/ch05/s07' }],
   stages: [

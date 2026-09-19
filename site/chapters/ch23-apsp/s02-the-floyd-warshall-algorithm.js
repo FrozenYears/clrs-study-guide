@@ -3,7 +3,7 @@ export default {
   key:'s02',id:'ch23/s02',chapter:23,section:'23.2',
   title:'Floyd-Warshall：按"允许的中间点"DP',shortTitle:'23.2 Floyd-Warshall',
   titleEn:'The Floyd-Warshall algorithm',
-  source:{printed:[693,700],pdf:[714,721]},
+  source: { printed: [655, 661], pdf: [676, 683] },
   prerequisites:[{label:'23.1 Shortest paths and matrix multiplication',url:'#/ch23/s01'}],
   stages:[
    {type:'map',title:'换一个 DP 维度：允许的中间点集合',
@@ -421,11 +421,11 @@ int main(void)
      {kind:'single',q:'外层循环跑到第 $k$ 轮时，$d_{ij}^{(k)}$ 允许的中间点集合是？',options:['$\{1..k-1\}$','**$\{1..k\}$**','仅 $\{k\}$','空集'],answer:1,
       why:'★ 维度 k 表示允许使用前 k 个顶点作中间点，是与边数维度法的根本区别。'},
     ],bookExercises:[
-     {id:'23.2-1',page:700,star:0,statement:'Run the Floyd-Warshall algorithm on the weighted, directed graph of Figure 23.2...',hint:'照 C 程序 s02 段的打印：每层 k 记录 d 矩阵的变化（哪些格子被 k"救活"）。'},
-     {id:'23.2-2',page:700,star:0,statement:'Show how to express the integer k as a sum of... ',hint:'利用 d 矩阵：重建需要 π 或在 d 上做"路径计数"变体 —— 按 23.2-2 的 π 矩阵思路扩展。'},
-     {id:'23.2-3',page:700,star:0,statement:'The transitive closure of a directed graph... ',hint:'把 min-+ 换成 ∨-∧（布尔半环）：t_ij^(k) = t_ij^(k-1) ∨ (t_ik^(k-1) ∧ t_kj^(k-1)) —— 同样 Θ(n³)，得到可达性矩阵。'},
-     {id:'23.2-4',page:700,star:0,statement:'(*) Suppose that we wish to maintain the transitive closure... ',hint:'动态传递闭包：插入/删除边时更新闭包矩阵，插入 O(n²)（新结点/边的传播），删除较难 —— 这是"部分持久化"练习。'},
-     {id:'23.2-5',page:700,star:0,statement:'(...) Call a graph G = (V,E) precursor-free... ',hint:'无中间点的路径 = 直接边：跑 Floyd-Warshall 时记录 argmin 的 k，即可重建每条最短路的中间点序列（对应 d 与 π 双矩阵）。'},
+     {id:'23.2-1',page:661,star:0,statement:'Run the Floyd-Warshall algorithm on the weighted, directed graph of Figure 23.2...',hint:'照 C 程序 s02 段的打印：每层 k 记录 d 矩阵的变化（哪些格子被 k"救活"）。'},
+     {id:'23.2-2',page:661,star:0,statement:'Show how to express the integer k as a sum of... ',hint:'利用 d 矩阵：重建需要 π 或在 d 上做"路径计数"变体 —— 按 23.2-2 的 π 矩阵思路扩展。'},
+     {id:'23.2-3',page:662,star:0,statement:'The transitive closure of a directed graph... ',hint:'把 min-+ 换成 ∨-∧（布尔半环）：t_ij^(k) = t_ij^(k-1) ∨ (t_ik^(k-1) ∧ t_kj^(k-1)) —— 同样 Θ(n³)，得到可达性矩阵。'},
+     {id:'23.2-4',page:661,star:0,statement:'(*) Suppose that we wish to maintain the transitive closure... ',hint:'动态传递闭包：插入/删除边时更新闭包矩阵，插入 O(n²)（新结点/边的传播），删除较难 —— 这是"部分持久化"练习。'},
+     {id:'23.2-5',page:661,star:0,statement:'(...) Call a graph G = (V,E) precursor-free... ',hint:'无中间点的路径 = 直接边：跑 Floyd-Warshall 时记录 argmin 的 k，即可重建每条最短路的中间点序列（对应 d 与 π 双矩阵）。'},
     ]},
   ],
 };

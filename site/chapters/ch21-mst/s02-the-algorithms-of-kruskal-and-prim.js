@@ -3,7 +3,7 @@ export default {
   key:'s02',id:'ch21/s02',chapter:21,section:'21.2',
   title:'Kruskal 与 Prim：找安全边的两条路',shortTitle:'21.2 Kruskal 与 Prim',
   titleEn:'The algorithms of Kruskal and Prim',
-  source:{printed:[630,638],pdf:[651,659]},
+  source: { printed: [591, 603], pdf: [612, 625] },
   prerequisites:[{label:'21.1 Growing a minimum spanning tree',url:'#/ch21/s01'}],
   stages:[
    {type:'map',title:'同一目标，两种找安全边的方式',
@@ -257,10 +257,10 @@ int main(void)
      {kind:'simulate',q:'MST 有多少条边？（9 个顶点，填数字）',expect:[8],placeholder:'例如：9',
       why:'V − 1 = 8（C 程序断言 cnt_k == 8）。'},
     ],bookExercises:[
-     {id:'21.2-1',page:638,star:0,statement:'Kruskal and Prim both run on the graph of Figure 21.1... ',hint:'照 C 程序的输出顺序手工画：Kruskal 按权重队列；Prim 从 a 生长并标 key 值。'},
-     {id:'21.2-2',page:638,star:0,statement:'Suppose that all edge weights in a graph are integers in the range from 1 to |V|. How fast can you make Kruskal9s algorithm run? What if the edge weights are integers in the range from 1 to W for some constant W ?',hint:'权重范围小 → 计数排序 O(V + E) 完成排序，Kruskal 降到 O(E α(V))；W 为常数同理。'},
-     {id:'21.2-3',page:638,star:0,statement:'Show that Prim9s algorithm run... ',hint:'给每条边随机加一个微小扰动打破并列 → MST 唯一（用"权重向量字典序"重排）；再论证扰动后的 MST 就是原权重的某个 MST，随机化保证每次运行等价于任意选一种并列处理。'},
-     {id:'21.2-4',page:638,star:0,statement:'Argue that if all edges in G have distinct weights... ',hint:'唯一 MST：假设两棵不同的 MST，取两者并集中互异的轻边做交换论证 —— 它必然更轻/更重产生矛盾。这也解释了"并列权重是 MST 不唯一的唯一原因"。'},
+     {id:'21.2-1',page:598,star:0,statement:'Kruskal and Prim both run on the graph of Figure 21.1... ',hint:'照 C 程序的输出顺序手工画：Kruskal 按权重队列；Prim 从 a 生长并标 key 值。'},
+     {id:'21.2-2',page:598,star:0,statement:'Suppose that all edge weights in a graph are integers in the range from 1 to |V|. How fast can you make Kruskal9s algorithm run? What if the edge weights are integers in the range from 1 to W for some constant W ?',hint:'权重范围小 → 计数排序 O(V + E) 完成排序，Kruskal 降到 O(E α(V))；W 为常数同理。'},
+     {id:'21.2-3',page:598,star:0,statement:'Show that Prim9s algorithm run... ',hint:'给每条边随机加一个微小扰动打破并列 → MST 唯一（用"权重向量字典序"重排）；再论证扰动后的 MST 就是原权重的某个 MST，随机化保证每次运行等价于任意选一种并列处理。'},
+     {id:'21.2-4',page:598,star:0,statement:'Argue that if all edges in G have distinct weights... ',hint:'唯一 MST：假设两棵不同的 MST，取两者并集中互异的轻边做交换论证 —— 它必然更轻/更重产生矛盾。这也解释了"并列权重是 MST 不唯一的唯一原因"。'},
     ]},
   ],
 };

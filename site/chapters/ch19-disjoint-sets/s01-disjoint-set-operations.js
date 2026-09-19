@@ -3,7 +3,7 @@ export default {
   key:'s01',id:'ch19/s01',chapter:19,section:'19.1',
   title:'不相交集合：动态等价问题',shortTitle:'19.1 不相交集合的操作',
   titleEn:'Disjoint-set operations',
-  source:{printed:[520,536],pdf:[541,557]},
+  source: { printed: [520, 522], pdf: [541, 544] },
   prerequisites:[{label:'18.3 Deleting a key from a B-tree',url:'#/ch18/s03'}],
   stages:[
    {type:'map',title:'维护"哪些东西是一伙的"',
@@ -383,8 +383,8 @@ int main(void)
     mapping:[{pc:4,pcCode:'if FIND-SET(u) ≠ FIND-SET(v)',c:'对照 find_set 的代表元比较（见 C 程序相应函数）'}]},
    {type:'analyze',title:'一本账：三种表示的起点',claims:[
      {expr:'O(1)',when:'链表表示下 MAKE-SET / FIND-SET',page:521,source:'book'},
-     {expr:'\\Theta(n)',when:'朴素链表 UNION 的最坏代价',page:524,source:'book'},
-     {expr:'O(m + n\\lg n)',when:'加权合并启发式下 m 个操作的总代价',page:525,source:'book'},
+     {expr:'\\Theta(n)',when:'朴素链表 UNION 的最坏代价',page:524,preview:true,source:'book'},
+     {expr:'O(m + n\\lg n)',when:'加权合并启发式下 m 个操作的总代价',page:525,preview:true,source:'book'},
     ],tables:[{caption:'本章路线图',rows:[
       ['表示','UNION','FIND-SET','总代价'],
       ['朴素链表','Θ(n)','O(1)','Θ(m + n²) 最坏'],

@@ -9,7 +9,7 @@ export default {
   key: 's03', id: 'ch06/s03', chapter: 6, section: '6.3',
   title: '建堆：把 n 次 O(lg n) 压成 O(n)', shortTitle: '6.3 建堆',
   titleEn: 'Building a heap',
-  source: { printed: [167, 170], pdf: [188, 191] },
+  source: { printed: [167, 169], pdf: [188, 191] },
   sourceNote: '本关对应原书 6.3 节（印刷页 167–170）。它的复杂度分析是第 6 章里最漂亮的一段：表面上 n 次 O(lg n) 的调用，实际是 O(n)。',
   prerequisites: [{ label: '6.2 Maintaining the heap property', url: '#/ch06/s02' }],
   stages: [

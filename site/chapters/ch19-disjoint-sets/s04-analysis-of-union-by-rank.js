@@ -3,7 +3,7 @@ export default {
   key:'s04',id:'ch19/s04',chapter:19,section:'19.4',
   title:'O(m·α(n))：阿克曼反函数登场',shortTitle:'19.4 摊还分析 α(n)',
   titleEn:'Analysis of union by rank with path compression',
-  source:{printed:[527,536],pdf:[548,557]},
+  source: { printed: [531, 548], pdf: [552, 570] },
   prerequisites:[{label:'19.3 Disjoint-set forests',url:'#/ch19/s03'}],
   stages:[
    {type:'map',title:'全书最难的分析，最有名的反函数',

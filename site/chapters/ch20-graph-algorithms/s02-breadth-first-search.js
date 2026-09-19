@@ -3,7 +3,7 @@ export default {
   key: 's02', id: 'ch20/s02', chapter: 20, section: '20.2',
   title: '广度优先搜索：分层与最短路', shortTitle: '20.2 广度优先搜索',
   titleEn: 'Breadth-first search',
-  source: { printed: [554, 563], pdf: [575, 584] },
+  source: { printed: [554, 562], pdf: [575, 584] },
   prerequisites: [{ label: '20.1 图的表示', url: '#/ch20/s01' }],
   stages: [
     { type: 'map', title: 'BFS 解决什么',

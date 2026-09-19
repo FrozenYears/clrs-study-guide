@@ -10,7 +10,7 @@ export default {
   key: 's02', id: 'ch06/s02', chapter: 6, section: '6.2',
   title: 'MAX-HEAPIFY：只沿一条路往下修', shortTitle: '6.2 维持堆性质',
   titleEn: 'Maintaining the heap property',
-  source: { printed: [164, 167], pdf: [185, 188] },
+  source: { printed: [164, 166], pdf: [185, 188] },
   sourceNote: '本关对应原书 6.2 节（印刷页 164–167）。伪代码在第 165 页，复杂度分析在第 166 页 —— 那里会用到第 4 章的主方法。',
   prerequisites: [{ label: '6.1 Heaps（堆）', url: '#/ch06/s01' }],
   stages: [

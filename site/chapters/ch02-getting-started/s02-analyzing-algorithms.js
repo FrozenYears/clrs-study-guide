@@ -231,7 +231,7 @@ export default {
   title: '分析算法',
   shortTitle: '2.2 分析算法',
   titleEn: 'Analyzing algorithms',
-  source: { printed: [25, 34], pdf: [46, 55] },
+  source: { printed: [25, 33], pdf: [46, 55] },
   prerequisites: [
     { label: '2.1 插入排序', url: '#/ch02/s01' },
   ],

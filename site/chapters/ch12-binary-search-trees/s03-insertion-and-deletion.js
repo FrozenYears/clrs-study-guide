@@ -11,7 +11,7 @@ export default {
   key:'s03',id:'ch12/s03',chapter:12,section:'12.3',
   title:'插入与删除',shortTitle:'12.3 插入与删除',
   titleEn:'Insertion and deletion',
-  source:{printed:[321,332],pdf:[342,352]},
+  source: { printed: [321, 330], pdf: [342, 352] },
   prerequisites:[{label:'12.2 Querying a binary search tree',url:'#/ch12/s02'}],
   stages:[
    {type:'map',title:'改树：插入直接，删除要拆成三步',

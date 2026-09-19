@@ -11,7 +11,7 @@ export default {
   key: 's01', id: 'ch07/s01', chapter: 7, section: '7.1',
   title: '快速排序：分而治之，原地完成', shortTitle: '7.1 快速排序的描述',
   titleEn: 'Description of quicksort',
-  source: { printed: [183, 187], pdf: [204, 208] },
+  source: { printed: [183, 186], pdf: [204, 208] },
   sourceNote: '本关对应原书 7.1 节（印刷页 183–187）。PARTITION 是整个快速排序的核心，它的循环不变量原书在正文里给了完整证明（p.184）—— 本关阶段 8 就用那三步。',
   prerequisites: [{ label: '6.5 Priority queues（优先队列）', url: '#/ch06/s05' }],
   stages: [

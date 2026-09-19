@@ -3,7 +3,7 @@ export default {
   key:'s03',id:'ch19/s03',chapter:19,section:'19.3',
   title:'森林 + 按秩合并 + 路径压缩',shortTitle:'19.3 不相交集合森林',
   titleEn:'Disjoint-set forests',
-  source:{printed:[524,536],pdf:[545,557]},
+  source: { printed: [527, 530], pdf: [548, 552] },
   prerequisites:[{label:'19.2 Linked-list representation',url:'#/ch19/s02'}],
   stages:[
    {type:'map',title:'两个启发式，一个反函数',
@@ -400,7 +400,7 @@ int main(void)
    {type:'analyze',title:'一本账：为什么单独用不够',claims:[
      {expr:'O(\\lg n)',when:'只用按秩合并（树高 ≤ lg n）',page:528,source:'book'},
      {expr:'\\Theta(m\\lg n)',when:'只用路径压缩时 m 个操作的最坏总代价',page:529,source:'book'},
-     {expr:'O(m\\,\\alpha(n))',when:'两者合用（19.4 的主定理）',page:533,source:'book'},
+     {expr:'O(m\\,\\alpha(n))',when:'两者合用（19.4 的主定理）',page:533,preview:true,source:'book'},
     ],tables:[{caption:'启发式组合的效果',rows:[
       ['按秩合并','路径压缩','m 个操作的总代价'],
       ['✓','✗','O(m lg n)'],

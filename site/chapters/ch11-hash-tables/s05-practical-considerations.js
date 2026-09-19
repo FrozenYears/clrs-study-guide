@@ -18,7 +18,7 @@ export default {
   key: 's05', id: 'ch11/s05', chapter: 11, section: '11.5',
   title: '工程实践：内存层次、删除与 wee', shortTitle: '11.5 散列表 · 工程实践',
   titleEn: 'Practical considerations',
-  source: { printed: [301, 312], pdf: [322, 333] },
+  source: { printed: [301, 311], pdf: [322, 333] },
   prerequisites: [
     { label: '11.2 链接法', url: '#/ch11/s02' },
     { label: '11.3 散列函数（选 h 的基础）', url: '#/ch11/s03' },
