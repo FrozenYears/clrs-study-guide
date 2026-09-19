@@ -61,30 +61,43 @@ def extract_chapter(pages, lo, hi, qn):
     """
     found = {}
     cur = None                      # [id, printed_page, [题干行], 难度前缀]
+    seq = []                        # (印刷页, 行) —— 展平后才能在看下一页时回查
     for printed in sorted(p for p in range(lo, hi + 1) if p in pages):
         for raw in pages[printed].split('\n'):
-            ln = raw.strip()
-            if not ln:
-                continue
-            m = ID_LINE.match(ln)
-            if m:
-                _flush(found, cur, qn)
-                tail = (m.group(3) or '').strip()
-                cur = [m.group(2), printed, [tail] if tail else [], m.group(1) or '']
-                continue
-            if cur is not None and STOP_LINE.match(ln):
+            if raw.strip():
+                seq.append((printed, raw.strip()))
+    for i, (printed, ln) in enumerate(seq):
+        m = ID_LINE.match(ln)
+        if m:
+            _flush(found, cur, qn)
+            tail = (m.group(3) or '').strip()
+            cur = [m.group(2), printed, [tail] if tail else [], m.group(1) or '']
+            continue
+        if cur is not None and STOP_LINE.match(ln):
+            _flush(found, cur, qn)
+            cur = None
+            continue
+        if cur is not None:
+            # 页底的脚注行排成「上标数字 + 空格 + 大写字母」（p24 的
+            # `8 Python’s tuple notation …` 就是脚注，不是 2.1-2 的题干）。
+            # 题干已经成句 + 下一行长这样 → 收题。
+            acc = ' '.join(cur[2]).rstrip()
+            if re.search(r"[.!?…]$", acc) and re.match(r'^\d\s+\S', ln):
                 _flush(found, cur, qn)
                 cur = None
                 continue
-            if cur is not None:
-                cur[2].append(ln)
-        # 翻页的取舍：语料里题干常跨页续写（6.5-7 的循环不变量整个排在下一页，
-        # 页尾只剩「…loop invariant:」），所以「句子明显没说完」时必须续；
-        # 但整句已经说完就别续 —— 否则 2.1-2 会把下一页顶部的 SUM-ARRAY 伪代码
-        # 当成题干吞进来。判据：只有以 `:` `,` `-` 结尾（或还没收到正文）才跨页。
-        if cur is not None and cur[2]:
-            tail = ' '.join(cur[2]).rstrip()[-3:]
-            if not re.search(r'[:,\-]$', tail):
+            cur[2].append(ln)
+        # 翻页要不要收题？语料里题干常跨页续写（6.5-7 的循环不变量整个排在下一页，
+        # 页尾只剩「…loop invariant:」；13.4-7 断在「lines 5–6 are」），
+        # 每页都收会把题干砍成半句；一句说完了又不续，2.1-2 就会把下一页顶部的
+        # SUM-ARRAY 伪代码吞进题干。判据两头都顾上：
+        #   「本行已是句末」且「下一页顶行像另起一段」→ 收题。
+        last_line_of_page = i + 1 == len(seq) or seq[i + 1][0] != printed
+        if cur is not None and last_line_of_page and cur[2]:
+            nxt = seq[i + 1][1] if i + 1 < len(seq) else ''
+            done = re.search(r"[.!?…]$", ln)
+            fresh = re.match(r"^[A-Z0-9'‘“(\[⟨⌊ƒ•]", nxt)
+            if done and fresh:
                 _flush(found, cur, qn)
                 cur = None
     _flush(found, cur, qn)

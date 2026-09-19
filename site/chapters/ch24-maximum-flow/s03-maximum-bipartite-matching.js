@@ -279,7 +279,7 @@ int main(void)
      {kind:'judge',q:'归约后网络的规模仍是 $\\Theta(E)$ —— 因为 $|E| + |V| \\le 3|E|$。',answer:true,why:'★ analyze 段第一条：往里加源、加汇只增加线性条数的边，不改变量级。'},
      {kind:'simulate',q:'C 程序 part 3 的图左右两侧共几个顶点（$|L| + |R|$）？',expect:[7],placeholder:'例如：6',why:'★ code 段标了 $|L|=4$、$|R|=3$，合计 7 个顶点、6 条边。'},
     ],bookExercises:[
-     {id:'24.3-1',page:696,star:0,statement:'Run the Ford-Fulkerson algorithm on the flow network in Figure 24.8(c) and show the residual network after each flow augmentation. Number the vertices in L top',hint:'先按归约画 G′（单位容量），再手工跑 FF：每次找增广路 +1，直到无路可走 —— 匹配大小即 |f|。'},
+     {id:'24.3-1',page:696,star:0,statement:'Run the Ford-Fulkerson algorithm on the flow network in Figure 24.8(c) and show the residual network after each flow augmentation. Number the vertices in L top to bottom from 1 to 5 and in R top to bottom from 6 to 9. For each iteration, pick the augmenting path that is lexicographically smallest.',hint:'先按归约画 G′（单位容量），再手工跑 FF：每次找增广路 +1，直到无路可走 —— 匹配大小即 |f|。'},
      {id:'24.3-2',page:697,star:0,statement:'Prove Theorem 24.10. Use induction on the number of iterations of the Ford- Fulkerson method.',hint:'教材里的引理 24.9 证明：两个方向各自构造映射，再用引理 24.4 的净流等式对齐大小。'},
      {id:'24.3-3',page:697,star:0,statement:'Let G = (V,E) be a bipartite graph with vertex partition V = L [ R, and let G 0 be its corresponding flow network. Give a good upper bound on the length of any augmenting path found in G 0 during the execution of FORD-FULKERSON .',hint:'完美匹配 ⟺ 流网络的值为 $|V|/2$（左右各半）；用最大流判定。若 $|L| \\ne |R|$ 则不可能完美。'},
     ]},

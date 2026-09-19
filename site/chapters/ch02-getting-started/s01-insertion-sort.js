@@ -650,7 +650,7 @@ export default {
           page: 24,
           star: 2,
           statement:
-            'Consider the procedure SUM-ARRAY on the facing page. It computes the sum of the n numbers in array A[1 : n]. State a loop invariant for this procedure, and use its initialization, maintenance, and termination properties to show that the SUM- ARRAY procedure returns the sum of the numbers in A[1 : n]. 8 Python’s tuple notation allows return statements to return multiple values without creating objects from a programmer-defined class.',
+            'Consider the procedure SUM-ARRAY on the facing page. It computes the sum of the n numbers in array A[1 : n]. State a loop invariant for this procedure, and use its initialization, maintenance, and termination properties to show that the SUM- ARRAY procedure returns the sum of the numbers in A[1 : n].',
           hint:
             'SUM-ARRAY 的伪代码在原书印刷页 25。照抄阶段 7 的三步模板就行。' +
             '关键是写出正确的不变量：试着写成「进入第 i 轮时，sum 等于 A[1 : i−1] 的和」，' +

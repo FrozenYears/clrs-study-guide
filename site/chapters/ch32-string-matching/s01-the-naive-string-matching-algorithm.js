@@ -371,7 +371,7 @@ int main(void)
      {kind:'judge',q:'朴素匹配会检查全部 $n - m + 1$ 个位移。',answer:true,why:'★ map 段：有效位移是使 $P$ 与 $T$ 对应段相同的 $s$，朴素法不跳过任何一个。C 程序里 $n = 11, m = 4$，一共 8 个位移，命中 {0, 2}。'},
     ],bookExercises:[
      {id:'32.1-2',page:961,star:0,statement:'Suppose that all characters in the pattern P are different. Show how to accelerate NAIVE-STRING-MATCHER to run in O(n) time on an n-character text T .',hint:'模式字符互不相同时，第一位失配即可断定整个位移失败（不存在部分匹配可复用）—— 每个位移只需 $O(1)$ 期望比较。'},
-     {id:'32.1-4',page:961,star:0,statement:'Suppose that the pattern P may contain occurrences of a gap character } that can match an arbitrary string of characters (even one of 0 length). For example, the pattern ab}ba}c occurs in the text cabccbacbacab as',hint:'把间隔字符当作"通配任意串"：对每个间隔长度枚举，或构造对应的 NFA —— 这正是 32.3 自动机方法的延伸题。'},
+     {id:'32.1-4',page:961,star:0,statement:'Suppose that the pattern P may contain occurrences of a gap character } that can match an arbitrary string of characters (even one of 0 length). For example, the pattern ab}ba}c occurs in the text cabccbacbacab as c ab ’ ab cc ’ } ba ’ ba cba “ } c ’ c ab and as c ab ’ ab ccbac — } ba ’ ba ’ } c ’ c ab : The gap character may occur an arbitrary number of times in the pattern but not at all in the text. Give a polynomial-time algorithm to determine whether such a pattern P occurs in a given text T , and analyze the running time of your algorithm.',hint:'把间隔字符当作"通配任意串"：对每个间隔长度枚举，或构造对应的 NFA —— 这正是 32.3 自动机方法的延伸题。'},
     ]},
   ],
 };
