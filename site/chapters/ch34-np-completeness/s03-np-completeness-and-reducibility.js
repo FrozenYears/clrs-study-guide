@@ -429,7 +429,7 @@ int main(void)
           hint: '原题排版有歧义；按「L ≤ₚ L」自反性理解：恒等映射 $f(x)=x$ 是平凡的多项式时间归约，故任何 L 都 ≤ₚ 自身。' },
         { id: '34.3-4', page: 1071, star: 0,
           statement: 'Show that an alternative proof of Lemma 34.5 can use a satisfying assignment as a certificate. Which certificate makes for an easier proof?',
-          hint: '用「满足赋值」作证书比「每条线的值」更短；但验证时需重算电路，故前者证书小、后者验证简单——看侧重哪头。' },
+          hint: '两问都要落到判断上，「看侧重哪头」不算答案。 第一问（用满足赋值当证书怎么证）：证书是 $n$ 位赋值 $a$。验证器按拓扑序给每个门算值 （输入门取 $a$ 的对应位，与门/或门/非门看已算出的前件），最后检查输出门是否为 1； 每一步都是常数时间，故总时间 $O(\\text{门数})$，多项式 —— 这给出 $\\text{CIRCUIT-SAT} \\in NP$。 第二问（哪个更好证）：**给每条线赋值的那个证书更好证**。因为验证时根本不用「按序算」， 只需对每个门做一次局部检查（它的值是否等于输入门的值按该门运算算出来的结果）， 连拓扑序都不用讲；也不用论证「我算的值与电路真实值一致」这种归纳。 代价是证书更长（线数而非输入位数）。 结论：局部一致性 ⟹ 整体正确，这一向的推理更短， 所以「用全部线的值」是更容易的那个证明；满足赋值胜在证书小。' },
         { id: '34.3-5', page: 1071, star: 0,
           statement: 'The proof of Lemma 34.6 assumes that the working storage for algorithm A occupies a contiguous region of polynomial size. Wher e does the proof exploit this assumption? Argue that this assumption does not involve any loss of generality.',
           hint: '归约把证书位直接接成电路输入，要求工作存储连续可编码；散落内存可先「重排地址」压缩到连续区，不改变多项式规模。' },
