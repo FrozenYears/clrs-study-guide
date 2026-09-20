@@ -481,7 +481,7 @@ int main(void)
      {kind:'simulate',q:'C 程序 part 5 里习题 31.5-1（模 55）的答案 $x$ 是多少？（填整数）',expect:[49],placeholder:'例如：23',why:'49 —— 程序打印 $x = 49 \ (\text{mod }55)$；同一 part 里孙子定理经典组得到 23（模 105），习题 31.5-2 得到 10。'},
     ],bookExercises:[
      {id:'31.5-1',page:931,star:0,statement:'Find all solutions to the equations x = 4 (mod 5) and x = 5 (mod 11).',hint:'合并：$x = 4 + 5t$，$5t \\equiv 1 \\ (\\text{mod } 11)$，$t \\equiv 9$（$5^{-1} = 9$）→ $x = 49 \\ (\\text{mod } 55)$（C 程序已验证）。'},
-     {id:'31.5-2',page:931,star:0,statement:'Find all integers x that leave remainders 1, 2, and 3 when divided by 9, 8, and 7, respectively.',hint:'从 $x \\equiv 1 \\ (\\text{mod } 9)$ 出发逐条合并；或注意 $x - 3$ 被 9,8,7 整除且 $x - 3 = 7$ —— 答案 $x = 10$。'},
+     {id:'31.5-2',page:931,star:0,statement:'Find all integers x that leave remainders 1, 2, and 3 when divided by 9, 8, and 7, respectively.',hint:'题干是 $x \\equiv 1$（模 9）、$x \\equiv 2$（模 8）、$x \\equiv 3$（模 7）。 「$x-3$ 同时被 9、8、7 整除」这句话不成立：$x = 10$ 时 $x-3 = 7$，既不被 9 也不被 8 整除。 （成立的是 $x-1$ 被 9、$x-2$ 被 8、$x-3$ 被 7 整除 —— 三个余数不同，没有公用的整除式可抄。） 逐条合并才是正路：由第一条设 $x = 1 + 9k$；代第二条，$9 \\equiv 1$（模 8）， 所以 $1 + k \\equiv 2$，得 $k \\equiv 1$（模 8），即 $k = 1 + 8j$、于是 $x = 10 + 72j$； 代第三条，$10 \\equiv 3$、$72 \\equiv 2$（模 7），得 $3 + 2j \\equiv 3$，故 $j \\equiv 0$（模 7）。 于是 $x = 10 + 504m$。 别只写「答案 $x = 10$」—— 题干要的是**所有**整数， $504 = 9 \\cdot 8 \\cdot 7$（两两互素，所以模数是三者之积）。'},
      {id:'31.5-3',page:931,star:0,statement:'Argue that, under the definitions of Theorem 31.27, if gcd(a,n) = 1, then (a −1 mod n) $ ..a −1 1 mod n 1 /,.a −1 2 mod n 2 /,…,.a −1 k mod n k //:',hint:'用 CRT 把 $a$ 拆到每个 $\\mathbb{Z}_{n_i}$ 里，条件 $a_i$ 与 $n_i$ 互素逐个成立 —— 对应关系保持互素性。'},
     ]},
   ],
