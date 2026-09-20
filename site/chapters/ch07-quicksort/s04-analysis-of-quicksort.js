@@ -538,7 +538,7 @@ int main(void)
     bookExercises:[
      {id:'7.4-1',page:198,star:0,statement:'Show that the recurrence T(n) = max fT(q) + T(n − q − 1) W 0 ≤ q ≤ n − 1g + Θ(n) has a lower bound of T(n) = Ω(n 2 ).',hint:'最坏情况每次分区切出 $(n-1):0$，逐层代价是等差级数 $n + (n-1) + \\dots + 1 = \\Theta(n^2)$。'},
      {id:'7.4-2',page:198,star:0,statement:'Show that quicksort’s best-case running time is Ω(n lg n).',hint:'最好情况的递归深度是 $\\lg n$，每层代价 $\\Theta(n)$，所以 $\\Omega(n\\lg n)$。也可以用递归树的叶子数来论证。'},
-     {id:'7.4-4',page:198,star:0,statement:'Show that RANDOMIZED-QUICKSORT\u2019s expected running time is \u03a9(n lg n).',hint:'★ 「每次分区做 $\\Theta(n)$」是错的 —— 规模 $m$ 的子数组只花 $\\Theta(m)$，这样乘不出 $n\\lg n$。 两条正路：(1) 按**层**算：同一层的子问题互不相交，且递归树深度至少 $\\lceil\\lg n\\rceil$ （每次划分总有一边规模 $\\ge (m-1)/2$）；第 $k$ 层上面最多摘走 $2^k - 1$ 个枢轴， 所以 $k \\le \\lg(n/2)$ 的那些层合计规模 $\\ge n/2$，每层 $\\Omega(n)$ 工作 × $\\Omega(\\lg n)$ 层 = $\\Omega(n\\lg n)$。 (2) 用配对指示变量：$E[X] = \\sum_{i<j} \\frac{2}{j-i+1} = \\Omega(n\\lg n)$（调和级数）， 第 8 章定理 8.1 也给同样的界。'},
+     {id:'7.4-4',page:198,star:0,statement:'Show that RANDOMIZED-QUICKSORT\u2019s expected running time is \u03a9(n lg n).',hint:'★ 「每次分区做 $\\Theta(n)$」是错的 —— 规模 $m$ 的子数组只花 $\\Theta(m)$，这样乘不出 $n\\lg n$。 两条正路：(1) 按**层**算：同一层的子问题互不相交，且递归树深度至少 $\\lceil\\lg n\\rceil$ （每次划分总有一边规模 $\\ge (m-1)/2$）；第 $k$ 层上面最多摘走 $2^k - 1$ 个枢轴， 所以 $k \\le \\lg(n/2)$ 的那些层合计规模 $\\ge n/2$，每层 $\\Omega(n)$ 工作 × $\\Omega(\\lg n)$ 层 = $\\Omega(n\\lg n)$。 (2) 用配对指示变量：$E[X] = \\sum_{i<j} \\frac{2}{j-i+1} = \\Omega(n\\lg n)$（调和级数）。★ 别拿第 8 章定理 8.1 顶替它：那条说的是「任何比较排序在**最坏输入**上要 $\\Omega(n\\lg n)$ 次比较」，量级相同但口径不同，本题要的是**对每个输入**的期望时间，还得靠上面的和式。'},
     ]},
   ],
 };

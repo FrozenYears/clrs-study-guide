@@ -80,7 +80,7 @@ export default {
         {
           kind: 'body', page: 5,
           en: 'Thus, given the input sequence ⟨31,41,59,26,41,58⟩, a correct sorting algorithm returns as output the sequence ⟨26,31,41,41,58,59⟩. Such an input sequence is called an instance of the sorting problem. In general, an instance of a problem 1 consists of the input (satisfying whatever constraints are imposed in the problem statement) needed to compute a solution to the problem.',
-          zh: '★★ 全书第一个具体实例，请记住这串数字：阶段 4 的动画、阶段 6 的 C 程序、闯关区 1.1-1 都用它。注意「instance（实例）」是术语，指**一次具体的输入**，不是「例子」的随口说法 —— 正确性要求对**每个实例**成立，这个量词后面要反复用到。',
+          zh: '★★ 全书第一个具体实例，请记住这串数字：阶段 5 的动画、阶段 6 的 C 程序、闯关区 1.1-1 都用它。注意「instance（实例）」是术语，指**一次具体的输入**，不是「例子」的随口说法 —— 正确性要求对**每个实例**成立，这个量词后面要反复用到。',
         },
         {
           kind: 'body', page: 6,
@@ -540,7 +540,7 @@ int main(void) {
         {
           id: '1.1-4', page: 11, star: 0,
           statement: 'How are the shortest-path and traveling-salesperson problems given above similar? How are they different?',
-          hint: '相似之处从**问题陈述的形式**找：两者的输入是不是一张带权图？两者的输出是不是一串边？不同之处从**要求覆盖多少点**找：一个只要两点之间的路，另一个要求每个地址都到、还得回到起点。想清这一点，你就能解释为什么前者有高效算法（第 22 章）而后者是 NP 完全的（第 34 章）—— 阶段 3 里那句「问题陈述的小改动会让最好已知算法的效率大变」说的就是这种差别。',
+          hint: '相似之处从**问题陈述的形式**找：两者的输入是不是一张带权图？两者的输出是不是一串边？不同之处从**要求覆盖多少点**找：一个只要两点之间的路，另一个要求每个地址都到、还得回到起点。想清这一点，你就能解释为什么前者有高效算法（第 22 章）而后者是 NP 完全的（第 34 章）原书 p.10 讲 NP 完全问题时有一句正好说的是这件事："a small change to the problem statement can cause a big change to the efficiency of the best known algorithm"（本关阶段 3 没收录这句，要回原书 p.10 看）。',
         },
         {
           id: '1.1-5', page: 11, star: 0,

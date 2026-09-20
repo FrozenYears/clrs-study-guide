@@ -641,7 +641,7 @@ int main(void)
                 '书上 p.100 已经给出上界 L(n) ≤ dn；下界换个方向放缩（叶子数不会比 n 少）即可。' },
         { id: '4.4-3', page: 101, star: 0,
           statement: 'Use the substitution method to prove that recurrence (4.14) has the solution T(n) = Ω(n lg n). Conclude that T(n) = Θ(n lg n).',
-          hint: '要证的是**下界**，别把不等号方向抄反：假设 $T(m)\\ge d\\,m\\lg m$（$m<n$）代回 $T(n)=T(n/3)+T(2n/3)+cn$，得 $d\\,n\\lg n-d\\,n\\left[\\tfrac{1}{3}\\lg 3+\\tfrac{2}{3}\\lg(3/2)\\right]+cn$，方括号里约 $0.918$，取 $d$ 不超过 $c/0.918$ 就能收下。书上 p.100 那句 postpone dealing with the leaves 是说：先把充分大的 $n$ 证完，叶子那一段再单独兜。' },
+          hint: '要证的是**下界**，别把不等号方向抄反：假设 $T(m)\\ge d\\,m\\lg m$（$m<n$）代回 $T(n)=T(n/3)+T(2n/3)+cn$，得 $d\\,n\\lg n-d\\,n\\left[\\tfrac{1}{3}\\lg 3+\\tfrac{2}{3}\\lg(3/2)\\right]+cn$，方括号里约 $0.918$，取 $d$ 不超过 $c/0.918$ 就能收下。书上 p.99 那句 postpone dealing with the leaves 是说：先把充分大的 $n$ 证完，叶子那一段再单独兜。' },
         { id: '4.4-4', page: 101, star: 0,
           statement: 'Use a recursion tree to justify a good guess for the solution to the recurrence T(n) = T.˛n/ CT..1 −˛/n/CΘ(n), where ˛ is a constant in the range 0<˛<1 .',
           hint: '这题的巧处在「两个子问题的规模相加恰好还是 $n$」：$\\alpha n+(1-\\alpha)n=n$，所以**每层合计恒为 $\\Theta(n)$**，总代价 = 每层 × 层数。层数由最长与最短两条路径夹住：沿 $\\alpha n$ 一路缩到 1 要 $\\log_{1/\\alpha}n$ 层，沿 $(1-\\alpha)n$ 要 $\\log_{1/(1-\\alpha)}n$ 层，两者都是 $\\Theta(\\lg n)$，于是猜 $\\Theta(n\\lg n)$。' },

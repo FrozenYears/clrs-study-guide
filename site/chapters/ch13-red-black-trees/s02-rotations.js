@@ -28,7 +28,7 @@ export default {
      '★ 中序不变的原因：三条中序片段 $\\alpha, \\beta, \\gamma$（$x$ 的左、$y$ 的左、$y$ 的右）在旋转前后拼接顺序都是 $\\alpha, \\beta, \\gamma$ —— 只有树的"骨架"变了。',
      '★ 右旋是左旋的镜像。习题 13.2-1 让你写 RIGHT-ROTATE。',
     ],
-    interactive:{text:'阶段 5 的 C 程序：对 Figure 12.2 的树连续左右旋 100 次，中序恒不变。'}},
+    interactive:{text:'阶段 6 的 C 程序：对 Figure 12.2 的树连续左右旋 100 次，中序恒不变。'}},
    {type:'source',title:'书上是怎么说的',
     lead:'下面每条都是原书英文原文（衬线体）。',
     blocks:[
