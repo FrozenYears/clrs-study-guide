@@ -47,6 +47,7 @@ import cha from '../chapters/cha-summations/chapter.js';
 import chb from '../chapters/chb-sets-etc/chapter.js';
 import chc from '../chapters/chc-counting-and-probability/chapter.js';
 import chd from '../chapters/chd-matrices/chapter.js';
+import ch1 from '../chapters/ch01-the-role-of-algorithms/chapter.js';
 
 const CHAPTERS = new Map([
   ['2', ch02],
@@ -87,6 +88,7 @@ const CHAPTERS = new Map([
   ['B', chb],
   ['C', chc],
   ['D', chd],
+  ['1', ch1],
 ]);
 
 /**

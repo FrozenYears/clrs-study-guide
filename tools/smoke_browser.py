@@ -20,11 +20,38 @@ BASE = f"http://127.0.0.1:{PORT}/index.html"
 NOT_PENDING = "该章的关卡文件还没写"
 CASES = [
     # 首页 = 书的目录 + 进度层（2026-09 编辑部风改版：卡片宫格 -> 目录条目）
-    ("#/", ["闯关式学习站", "toc__row", "Part I Foundations", "待建", "从这里开始"],
+    # ★ 第 32 轮补建第 1 章后，39 章全部建成，目录里不再有「待建」标记，
+    #   这条期望换成第一章的目录条目（它同时验证地图能渲染新章）。
+    ("#/", ["闯关式学习站", "toc__row", "Part I Foundations", "算法在计算中的作用", "从这里开始"],
      ["页面走丢了", "card--link"]),
     # 阶段顺序：s01=map s02=intuition s03=source s04=pseudocode
     #           s05=visualize s06=code s07=analyze s08=prove s09=drill
     # 注意：每个阶段用的是关卡文件里的**自定义标题**，不是类型名。
+    # ——— 第 1 章（第 32 轮补建）———
+    ("#/ch01/s01/s01", ["这一关不教算法", "数学急救包", "全书第一关"], [NOT_PENDING]),
+    ("#/ch01/s01/s02", ["先被「笨办法」逼一次", "六张写着数字的卡片"], [NOT_PENDING]),
+    ("#/ch01/s01/s03", ["well-defined computational procedure",
+                        'data-kind="source"', "instance of the sorting problem"], [NOT_PENDING]),
+    ("#/ch01/s01/s04", ["本节在原书里没有伪代码框", "INSERTION-SORT"], [NOT_PENDING]),
+    ("#/ch01/s01/s05", ["viz-array", "原书 1.1 的实例", "输出必须是输入的一个排列"], [NOT_PENDING]),
+    ("#/ch01/s01/s06", ["sorting_and_correctness.c", "全部断言通过", "单趟相邻交换"], [NOT_PENDING]),
+    ("#/ch01/s01/s07", ["候选解的数量级", "分别落到本书哪一章"], [NOT_PENDING]),
+    ("#/ch01/s01/s08", ["for every problem in- stance provided as input",
+                        "把「正确」拆成三条"], [NOT_PENDING]),
+    ("#/ch01/s01/s09", ["drill-exercise__stmt", "Describe your own real-world example"],
+     [NOT_PENDING]),
+    ("#/ch01/s02/s01", ["换一台快 1000 倍的机器", "算法是一种技术", "数学急救包"], [NOT_PENDING]),
+    ("#/ch01/s02/s02", ["一台好机器救不了一个坏办法", "世上最熟练的程序员"], [NOT_PENDING]),
+    ("#/ch01/s02/s03", ["Machine learning is itself a collection of algorithms",
+                        'data-kind="source"', "bounded resource"], [NOT_PENDING]),
+    ("#/ch01/s02/s04", ["本节在原书里没有伪代码框", "2.3 关才有伪代码"], [NOT_PENDING]),
+    ("#/ch01/s02/s05", ["两条曲线什么时候分道扬镳", "把常数差 1000 倍也画进来"], [NOT_PENDING]),
+    ("#/ch01/s02/s06", ["technology_crossover.c", "反复平方法", "全部断言通过"], [NOT_PENDING]),
+    ("#/ch01/s02/s07", ["Problem 1-1", "交叉点一定存在", "62500"], [NOT_PENDING]),
+    ("#/ch01/s02/s08", ["No matter how much smaller c 1 is than c 2", "造出交叉点并收尾"],
+     [NOT_PENDING]),
+    ("#/ch01/s02/s09", ["drill-exercise__stmt", "insertion sort runs in 8n 2 steps"],
+     [NOT_PENDING]),
     ("#/ch02/s01/s01", ["为什么学这一关", "它在整本书里的位置", "数学急救包"], [NOT_PENDING]),
     ("#/ch02/s01/s02", ["整理一手扑克牌", "左手", "桌上"], [NOT_PENDING]),
     ("#/ch02/s01/s03", ["循环不变量", "loop invariant", 'data-kind="source"'], [NOT_PENDING]),
