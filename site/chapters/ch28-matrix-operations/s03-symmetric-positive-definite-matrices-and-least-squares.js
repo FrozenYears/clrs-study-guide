@@ -545,7 +545,7 @@ int main(void)
      {kind:'single',q:'对称正定的定义要求 $x^{T}Ax > 0$ 对哪些 $x$ 成立？',options:['所有 $x$','**一切 $x \\neq 0$**','只有单位向量','只有分量全正的向量'],answer:1,why:'★ analyze 第一条定义：$x = 0$ 时必然等于 0，所以条件只对非零向量提。'},
     ],bookExercises:[
      {id:'28.3-4',page:846,star:0,statement:'Prove that the determinant of each leading submatrix of a symmetric positive- definite matrix is positive.',hint:'对前导子矩阵 $A_k$ 用定义：取 $x = (x_k, 0)$ 代入 $x^{T}Ax$，立刻看出 $A_k$ 必须正定（这个构造在引理 28.4 的证明里就用了）。'},
-     {id:'28.3-5',page:846,star:0,statement:'Let A k denote the kth leading submatrix of a symmetric positive-definite matrix A. Prove that ⌈et(A k )/ det(A k−1 ) is th⌉ kth pivot during LU decomposition, where, by convention, det(A 0 ) = 1.',hint:'把 $\\det(A_k)/\\det(A_{k-1})$ 与第 $k$ 个主元联系起来（提示里给的就是这个比率）—— 正定性 ⟺ 所有前导行列式为正（Sylvester 判据）。'},
+     {id:'28.3-5',page:846,star:0,statement:'Let A k denote the kth leading submatrix of a symmetric positive-definite matrix A. Prove that ⌈et(A k )/ det(A k−1 ) is th⌉ kth pivot during LU decomposition, where, by convention, det(A 0 ) = 1.',hint:'关键的一步是**行列式与主元之积**的联系，不是把结论再念一遍。 正定 ⇒ 每个前导子矩阵 $A_k$ 都可逆且 $\\det(A_k) > 0$，所以 LU 分解一路不需要选主元。 对 $A_k = L_k U_k$ 取行列式：$L_k$ 下三角对角全 1，$U_k$ 上三角的对角就是前 $k$ 个主元 $u_{11}, \\dots, u_{kk}$，于是 $\\det(A_k) = \\prod_{i \\le k} u_{ii}$。 两式相除立刻得 $\\det(A_k) / \\det(A_{k-1}) = u_{kk}$，正是第 $k$ 个主元（约定 $\\det(A_0) = 1$ 让 $k=1$ 也成立）。 顺带把这为什么和正定有关写清楚：$u_{kk} = \\det(A_k)/\\det(A_{k-1}) > 0$， 所以正定矩阵的 LU 主元全为正 —— 这也是 28.3 那套「正定不必选主元」的依据。'},
      {id:'28.3-7',page:846,star:0,statement:'Show that the pseudoinverse A C satisfies the following four equations: AA + A = A; A C AA + = A C ; .AA C / TDAA C ; (A + A) T = A + A:',hint:'用 SVD（原书 p.849 提到）写出 $A^{+}$ 逐个验证四条：它们正是 Moore–Penrose 逆的定义式。'},
     ]},
   ],

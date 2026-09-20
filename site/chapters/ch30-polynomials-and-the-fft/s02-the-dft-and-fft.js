@@ -468,7 +468,7 @@ int main(void)
     ],bookExercises:[
      {id:'30.2-2',page:893,star:0,statement:'Compute the DFT of the vector .0,1,2,3/ .',hint:'逐个 $k$ 算 $\\sum_j a_j i^{jk}$：$k=0$ 得 6，$k=1$ 得 $-2-2i$，$k=2$ 得 $-2$，$k=3$ 得 $-2+2i$（C 程序 part 2 的断言就是这四个值）。'},
      {id:'30.2-4',page:893,star:0,statement:'Write pseudocode to compute DFT −1 n in Θ(n lg n) time.',hint:'把 FFT 里的 $\\omega_n$ 换成 $\\omega_n^{-1}$（等价于对输入取共轭、做完再取共轭），最后把每个结果除以 $n$ —— C 程序的 `fft_iter_inv` 就是这么写的。'},
-     {id:'30.2-5',page:893,star:0,statement:'Describe the generalization of the FFT procedure to the case in which n is an exact power of 3. Give a recurrence for the running time, and solve the recurrence.',hint:'换成 3 的幂后每层拆成 3 个子问题、每个规模 $n/3$，旋转因子用 $\\omega_n^{2}$ 之外的第三个根；递推 $T(n) = 3T(n/3) + \\Theta(n)$ 由主定理情况 2 得 $\\Theta(n \\lg n)$。'},
+     {id:'30.2-5',page:893,star:0,statement:'Describe the generalization of the FFT procedure to the case in which n is an exact power of 3. Give a recurrence for the running time, and solve the recurrence.',hint:'三分情形的旋转因子要写准：$n = 3^k$，把 $A(x)$ 按 $x^{n/3}$ 的幂拆成 $A = A_0 + x^{n/3} A_1 + x^{2n/3} A_2$（三个长度 $n/3$ 的子问题）。 求值点取 $n$ 次单位根的三份：$\\omega_n^0$、$\\omega_n^{n/3}$、$\\omega_n^{2n/3}$， 也就是 $1$、$\\omega_3$、$\\omega_3^2$ 这三乘 $\\omega_n$ 的 $n/3$ 次幂 —— 「用 $\\omega_n^2$ 之外的第三个根」这句说不清是哪三个，别照抄。 代入后得到 3 个长度为 $n/3$ 的子 DFT，合并时每个输出点是 3 项加权和： $T(n) = 3T(n/3) + \\Theta(n)$，主定理第 2 种情况给 $T(n) = \\Theta(n\\lg n)$ （$\\lg$ 换成以 3 为底也无所谓，换底只差常数）。 写清楚一点：$\\omega^{n/3}$ 与 $\\omega^{2n/3}$ 是**共轭**的，实数输入时结果成共轭对，可以少算一次。'},
     ]},
   ],
 };

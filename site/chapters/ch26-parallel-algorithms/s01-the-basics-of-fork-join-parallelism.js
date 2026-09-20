@@ -285,7 +285,7 @@ int main(void)
      {kind:'simulate',q:'C 程序里 P-FIB(20) 的并行度约为多少（取整）？',expect:[1095],placeholder:'例如：1000',why:'★ code 段实测：span 20（$\\Theta(n)$）、work 21891，21891 / 20 ≈ 1095。'},
      {kind:'judge',q:'贪心调度的运行时间与最优调度最多差 2 倍（推论 26.2）。',answer:true,why:'★ analyze 第三条「近似因子 2」，本关 prove 段的命题正是这条定理。'},
     ],bookExercises:[
-     {id:'26.1-1',page:769,star:0,statement:'What does a trace for the execution of a serial algorithm look like?',hint:'串行的 trace 退化成一条 strand：DAG 里没有分叉，结点线性相连。于是工作等于跨度（都约等于指令条数）、并行度是 1 —— 与本关那张 spawn/sync 的图对照着画，差别一目了然。'},
+     {id:'26.1-1',page:769,star:0,statement:'What does a trace for the execution of a serial algorithm look like?',hint:'串行执行的 trace 只有一条 strand：每一步都只有一个结点在算， 所以依赖图 $G’ = (V’, E’)$ 里 $V’$ 是一条线串下来的（相邻两步一条边），没有分叉、也没有多余的同步边。 两个后果立刻出来：$T_{\\Pi} = \\sum_{t}|P_t| = 1$ 恒成立（每行只有一个圆）， 于是工作 $T_1$ 等于跨度 $T_{\\infty}$，两者都是「指令条数」量级，平均并行度是 1。 对照的画法：把同一个算法的 spawn/sync 版本画出来，差别就在**有没有第二行**（同一时刻多个圆）， 以及跨步依赖的那些虚线边 —— 串行版一样都没有。 这个「1 行」的对照是理解工作/跨度/并行度三个量最省事的起点。'},
      {id:'26.1-2',page:769,star:0,statement:'Suppose that line 4 of P-FIB spawns P-FIB(n − 2), rather than calling it as is done in the pseudocode. How would the trace of P-FIB(4) in Figure 26.2 change? What is the impact on the asymptotic work, span, and parallelism?',hint:'先检查语义：spawn 出去的结果不会被自动等待，原代码靠「调用」拿回 x，改成 spawn 后必须补 sync 才读得到值。补上之后再算账：跨度递推从「一条链加常数」变成「取两支的 max 加常数」，而工作是两支之和 —— 逐项对比 n 增大时谁占主导。'},
     ]},
   ],
