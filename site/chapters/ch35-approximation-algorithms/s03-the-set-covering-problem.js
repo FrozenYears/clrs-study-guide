@@ -469,7 +469,7 @@ int main(void)
           hint: '用合适的数据结构（如按剩余新覆盖数维护集合的堆）可把每轮选择降到近乎线性，整体 O(|X|+|F|) 量级。' },
         { id: '35.3-4', page: 1119, star: 0,
           statement: 'The proof of Theorem 35.4 says that when GREEDY-SET-COVER, run on the in- stance (X; F ), returns the subfamily C , then |C| ≤ j C − j dln X e. Show that the following weaker bound is trivially true: |C| ≤ jC − j max f|S| W S 2 F g :',
-          hint: '用 $\\max|S|$ 代替 $|C^*|$：$|C|\\le|C^*|\\le\\max|S|$，因为每个集合至多盖 $\\max|S|$ 个元素、总共要盖 |X| 个。' },
+          hint: '不等号方向：$C$ 是贪心解、$C^*$ 是最优解，必有 $|C| \\ge |C^*|$，写成 $|C| \\le |C^*|$ 恰好反了。 被 $\\max|S|$ 顶替掉的也不是 $|C^*|$，而是 $\\lceil \\ln |X| \\rceil$ 那个因子。正确的推法是： 每选一个集合至少带入 1 个新元素，所以 $|C| \\le |X|$；另一方面 $X$ 能被 $C^*$ 覆盖， $|X| \\le |C^*| \\cdot \\max|S|$。两式接起来就是 $|C| \\le |C^*| \\cdot \\max|S|$（再乘上 $\\lceil \\ln |X| \\rceil$ 那条界另算）。' },
         { id: '35.3-5', page: 1119, star: 0,
           statement: 'GREEDY-SET-COVER can return a number of different solutions, depending on how it breaks ties in line 5. Give a procedure BAD-SET-COVER-INSTANCE (n) that returns an n-element instance of the set-covering problem for which, depending on how line 5 breaks ties, GREEDY-SET-COVER can return a number of different solutions that is exponential in n.',
           hint: '构造 n 个「几乎相同」的集合，使每条 tie 分支都导致不同的后续选择，从而产生指数级多的不同贪心解。' },

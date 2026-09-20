@@ -442,7 +442,7 @@ int main(void)
           hint: '常数次：多项式常数次幂仍是多项式。多项式次调用时，若每次调用又派生多项式次调用，则总次数可能达 $p(n)^{k}$ 量级，仍多项式——但若用「展开」式递归（如子程序再调用自身多项式次）则会指数爆炸。' },
         { id: '34.1-6', page: 1055, star: 0,
           statement: 'Show that the class P, viewed as a set of languages , is closed under union, inter- section, concatenation, complement, and Kleene star. That is, if L 1 ,L 2 2 P, then L 1 [ L 2 2 P, L 1 \\ L 2 2 P, L 1 L 2 2 P, L 1 2 P, and L − 1 2 P.',
-          hint: '对并/交：并行跑两个 P 判定器取与/或；补：把判定器输出取反；连接与 Kleene 星用多项式时间的分点枚举即可，详见 34.1 习题。' },
+          hint: '两个语言都在 P，判定器直接串起来就行，但对应关系别配反： $L_1 \\cup L_2$ 用**或** —— 并行跑两个判定器，任一接受就接受； $L_1 \\cap L_2$ 用**与** —— 两个都接受才接受。 补集则是把判定器的接受/拒绝反过来。三种情形的时间都是 $O(\\max(T_1, T_2))$，仍是多项式。 写答案时把「并→或、交→与」明确写出来，别让读者去猜语序。' },
       ],
     },
   ],

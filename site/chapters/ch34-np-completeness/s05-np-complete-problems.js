@@ -454,7 +454,7 @@ int main(void)
           hint: '从 SUBSET-SUM 归约：给定 (S, t)，构造新集合 $S^{\\prime} = S \\cup \\{2t - \\sum S\\}$，则存在和为 t 的子集 ⟺ $S^{\\prime}$ 可平分。' },
         { id: '34.5-6', page: 1098, star: 0,
           statement: 'Show that the hamiltonian-path problem is NP-complete.',
-          hint: '从 HAM-CYCLE 归约：加一个与所有顶点相连的新顶点，则「含哈密顿环」⟺「新图含从新顶点出发的哈密顿路径」。' },
+          hint: '「加一个与所有顶点相连的新顶点」这个构造**反方向不成立**： 取 $G$ 为路径 $a - b - c$，它没有哈密顿环；加一个全连接点 $s$ 之后 $s, a, b, c$ 就是一条哈密顿路径 （$s \\to a \\to b \\to c$ 边都在），可 $G$ 依然无环 —— 新图只保证存在一条哈密顿路径，封不成环。 正确的归约是把某个顶点 $v$ **拆成两个** $v’$、$v’’$：各继承 $v$ 的一条入边与一条出边， 再问「$v’$ 到 $v’’$ 的哈密顿路径」（HAM-PATH 的两个端点必须指定，这一点也别忘了写）。 环被拆开成路径的两端，两个方向才都对得上。' },
         { id: '34.5-7', page: 1098, star: 0,
           statement: 'The longest-simple-cycle problem is the problem of determining a simple cycle (no repeated vertices) of maximum length in a graph. Formulate a related decision problem, and show that the decision problem is NP-complete.',
           hint: '从 HAM-CYCLE 归约：图含哈密顿环 ⟺ 最长简单环长度 = |V|；故最长简单环问题 NPC。' },

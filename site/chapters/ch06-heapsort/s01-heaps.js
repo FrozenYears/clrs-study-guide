@@ -362,9 +362,9 @@ int main(void)
       derivations: [
         { kind: 'summation', title: '为什么高度恰好是 ⌊lg n⌋（习题 6.1-2）', steps: [
           { zh: '把近似完全二叉树的结点从上到下、从左到右编号。前 $h$ 层（第 0 层到第 $h-1$ 层）是**填满**的，一共 $2^h - 1$ 个结点。' },
-          { tex: 'n \\ge 2^h - 1 \\quad\\Longrightarrow\\quad h \\le \\lg(n+1)', zh: '高度为 $h$ 需要的结点数下界。' },
-          { tex: 'n \\le 2^{h+1} - 1 \\quad\\Longrightarrow\\quad h \\ge \\lg(n+1) - 1', zh: '结点数上界（最多填满第 $h$ 层）。' },
-          { tex: 'h = \\lfloor \\lg n \\rfloor', zh: '两条不等式夹出来的整数解。阶段 6 的 C 程序对 $n = 1 \\dots 1024$ 逐个验证了这个等式。' },
+          { tex: 'n \\ge (2^h - 1) + 1 = 2^h \\quad\\Longrightarrow\\quad h \\le \\lg n', zh: '★ 下界要用紧的那个：第 $h$ 层**至少有 1 个**结点，所以 $n \\ge 2^h$。若只写 $n \\ge 2^h - 1$，只能得到 $h \\le \\lg(n+1)$，在 $n = 2^k - 1$（整层正好填满）那一档夹不出唯一整数。' },
+          { tex: 'n \\le 2^{h+1} - 1 < 2^{h+1} \\quad\\Longrightarrow\\quad h > \\lg n - 1', zh: '上界：最多把第 $h$ 层也填满。两条合起来是 $\\lg n - 1 < h \\le \\lg n$。' },
+          { tex: 'h = \\lfloor \\lg n \\rfloor', zh: '这个半开区间里只有一个整数，就是 $\\lfloor \\lg n \\rfloor$。阶段 6 的 C 程序对 $n = 1 \\dots 1024$ 逐个验证了这个等式。' },
         ] },
         { kind: 'summation', title: '为什么「叶子是 ⌊n/2⌋+1 … n」也是对的（习题 6.1-8）', steps: [
           { zh: '$i$ 没有左孩子 $\\Leftrightarrow$ $2i > n$ $\\Leftrightarrow$ $i > n/2$ $\\Leftrightarrow$ $i \\ge \\lfloor n/2 \\rfloor + 1$（整数）。' },

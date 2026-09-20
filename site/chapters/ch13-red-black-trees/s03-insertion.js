@@ -141,7 +141,7 @@ int main(void) {
      {id:'13.3-3',page:346,star:0,statement:'Suppose that the black-height of each of the subtrees ˛; ˇ; Ω; i; " in Figures 13.5 and 13.6 is k. Label each node in each figure with its black-height to verify that the indicated transformation preserves property 5.',hint:'证明各子树黑高相等（由性质 5），然后验证旋转/变色后黑高仍一致。'},
      {id:'13.3-4',page:346,star:0,statement:'Professor Teach is concerned that RB-I NSERT-FIXUP might set T: nil: color to RED, in which case the test in line 1 would not cause the loop to terminate when ´ is the root. Show that the professor’s concern is unfounded by arguing that RB- INSERT-FIXUP never sets T: nil: color to RED.',hint:'哨兵的 color 不会变红：情形 1 的变色只影响 z.p 和叔叔（非哨兵），因为如果叔叔是哨兵则 y.color = BLACK，走不到变色分支。'},
      {id:'13.3-5',page:346,star:0,statement:'Consider a red-black tree formed by inserting n nodes with RB-I NSERT . Argue that if n>1 , the tree has at least one red node.',hint:'n > 1 时：根黑，且至少一个叶节点离根最远 —— 插入时最后染红的那个节点如果没被 FIXUP 变黑，就还是红的。'},
-     {id:'13.3-6',page:346,star:0,statement:'Suggest how to implement RB-I NSERT efficiently if the representation for red- black trees includes no storage for parent pointers.',hint:'可以用 x.succ 来避免从 z 向上找叔叔/祖父 —— 通过后继指针直接定位。'},
+     {id:'13.3-6',page:346,star:0,statement:'Suggest how to implement RB-I NSERT efficiently if the representation for red- black trees includes no storage for parent pointers.',hint:'题干只给你「不存父指针」，可没给你后继指针 —— 新结点的后继身上不带任何祖先信息， 拿 `succ` 定位父/祖父是凭空多了个字段。正解是**插入时把走过的路径存下来**： 从根下降找位置，沿途把祖先压栈；FIXUP 需要 $z.p$、$z.p.p$、叔叔 $z.p.p.p$ 的哪个孩子时，从栈顶数出来即可。 空间 $O(\\lg n)$（树高），时间不变。反过来想更清楚：红黑插入的修正只可能涉及刚走下来的这条路径， 栈里正好有全部所需信息。'},
     ]},
   ],
 };

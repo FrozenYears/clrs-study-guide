@@ -55,7 +55,7 @@ export default {
      {kind:'body',page:256,en:'Initially, we have Q: head = Q: tail = 1. An attempt to dequeue an element from an empty queue causes the queue to underflow.',
       zh:'★ 初始 `head = tail = 1`（空）；空队出队是 underflow。'},
      {kind:'body',page:257,en:'Q: head = 1 and Q: tail = Q: size, the queue is full, and an attempt to enqueue an element causes the queue to overflow.',
-      zh:'★ 判满的两种形态：`tail = head + 1`（一般情况）或 `head = 1 且 tail = size`（回绕边界）—— 这正是实现里最容易写错的两处。'},
+      zh:'★ 判满的两种形态：`head = tail + 1`（一般情况）或 `head = 1 且 tail = size`（回绕边界）—— 这正是实现里最容易写错的两处。'},
      {kind:'body',page:257,en:'In the procedures ENQUEUE and DEQUEUE , we have omitted the error checking for underflow and overflow. (Exercise 10.1-5 asks you to supply these checks.)',
       zh:'★ 原书的 ENQUEUE/DEQUEUE 伪代码**故意省掉了**边界检查 —— 习题 10.1-5 让你补。本关的 C 程序补上了。'},
      {kind:'body',page:257,en:'Figure 10.3 shows the effects of the ENQUEUE and DEQUEUE operations. Each operation takes O(1) time.',
@@ -318,7 +318,7 @@ int main(void)
       {tex:'T_{\\text{PUSH}} = \\Theta(1), \\quad T_{\\text{POP}} = \\Theta(1)',zh:'★ 关键：**没有任何循环、没有任何元素搬移**。与数组的"删除中间元素要挪动 $\\Theta(n)$ 个元素"形成对比 —— 受限的接口换来了常数时间。'}]},
      {kind:'summation',title:'队列为什么要"少用一格"',steps:[
       {zh:'容量 $n$ 的数组，队列最多存 $n-1$ 个元素：因为要用 `head == tail` 表示空。'},
-      {tex:'\\text{满} \\iff \\text{tail} = \\text{head} + 1 \\ (\\text{或回绕边界})',zh:'若允许存满 $n$ 个，`head == tail` 就同时表示空和满 —— **歧义**。C 程序用额外的 `count` 字段规避了这个限制（工程上的常见折中）。'}]},
+      {tex:'\\text{满} \\iff \\text{head} = \\text{tail} + 1 \\ (\\text{或回绕边界})',zh:'若允许存满 $n$ 个，`head == tail` 就同时表示空和满 —— **歧义**。C 程序用额外的 `count` 字段规避了这个限制（工程上的常见折中）。'}]},
     ],
     note:'★ 中心图：绿线（常数）与红线（$n$）的对比 —— 如果"出栈"每次要挪动整个数组，栈就不可能是 $O(1)$。受限接口 + 指针 = 常数时间。'},
    {type:'prove',title:'栈操作的常数时间：一条不变量撑起两行代码',

@@ -349,7 +349,7 @@ int main(void) {
           hint: '随机把每个顶点独立以 1/2 概率放入 S；每条边以 1/2 概率成为割边，期望割边数 = |E|/2，而最大割 ≥ |E|/2，故是 2-近似。' },
         { id: '35.4-4', page: 1124, star: 0,
           statement: 'Show that the constraints in line (35.17) are redundant in the sense that remov- ing them from the linear-programming relaxation in lines (35.15)3(35.18) yields a linear program for which any optimal solution x must satisfy x(v) ≤ 1 for each v 2 V .',
-          hint: '若某 $x(v)>1$，把所有 $x(u)$ 同时缩放到使其 ≤1 仍满足边约束且目标值更小，故最优解天然有 $x(v)\\le 1$。' },
+          hint: '整根缩放在这里**会破坏约束**：边约束是 $x(u) + x(v) \\ge 1$（式 35.16）， 所有分量同时乘以 $\\beta < 1$ 会让某条本来刚好 $1.1 + 1.1$ 的边变成 $0.11 + 0.11 < 1$，不再可行。 正确做法是**逐个削**：把任何 $x(v) > 1$ 的分量单独下调到 1。 边约束仍成立（另一端 $x(u) \\ge 0$，于是 $1 + x(u) \\ge 1$）， 而目标函数系数全为正，改小的那个分量只会让总值变小 —— 于是可以假定 $0 \\le x(v) \\le 1$。' },
       ],
     },
   ],

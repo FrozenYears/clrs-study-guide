@@ -293,7 +293,7 @@ int main(void)
     ],bookExercises:[
      {id:'24.2-1',page:691,star:0,statement:'Prove that the summations in equation (24.6) equal the summations on the right- hand side of equation (24.5).',hint:'两式的差别只在求和范围：(24.6) 对所有结点对求和，而约定里凡是 E 之外的边 f 都记 0。把「不存在的边」按 0 补进 (24.5)，再用守恒式把 (u,v) 与 (v,u) 两项合并 —— 逐项对照一遍，注意别把反向边当成新流量。'},
      {id:'24.2-2',page:691,star:0,statement:'In Figure 24.1(b), what is the net flow across the cut .fs,v 2 ,v 4 g ; fv 1 ,v 3 ,t g/? What is the capacity of this cut?',hint:'净流 = 正向跨越这条割的流之和 **减去** 反向跨越的流之和；容量只累加从 $S$ 侧指向 $T$ 侧的边，反向边不进容量。做法：把 $\\{s, v_2, v_4\\}$ 与 $\\{v_1, v_3, t\\}$ 之间**所有**相连的边列成一张小表，逐条标清方向，再按两个式子分别求和。最容易错的就是那条被反向使用的边 —— 它进净流的减项，却不进容量。'},
-     {id:'24.2-3',page:691,star:0,statement:'Show the execution of the Edmonds-Karp algorithm on the flow network of Fig- ure 24.1(a).',hint:'每轮就在残量网络上做一次 BFS 取最短增广路，写下这条路的瓶颈、增广后各边的 f 与 c，以及 s 到 t 的距离什么时候开始变大。四到五轮之后图会稳定下来 —— 顺手把每轮的割也算出来，正好对应「残量网络里从 s 出发可达的最短距离单调不减」那条引理。'},
+     {id:'24.2-3',page:691,star:0,statement:'Show the execution of the Edmonds-Karp algorithm on the flow network of Fig- ure 24.1(a).',hint:'Edmonds-Karp 每轮取最短增广路，轮数由「距离单调不减」撑着。 在 Figure 24.1 上实算是**三轮**就再无增广路：$s \\to v_1 \\to v_3 \\to t$ 推 12、 $s \\to v_2 \\to v_4 \\to t$ 推 4、$s \\to v_2 \\to v_4 \\to v_3 \\to t$ 推 7，合计 23 = 最大流。 （别答成「四到五轮」—— 本关第 5 阶段的模拟填空要的就是 3，把等长的候选路径全枚举过也还是 3 轮。） 注意这里轮数少不代表 Edmonds-Karp 快：它的界 $O(VE^2)$ 是最坏情形，这张图只是碰巧短。'},
      {id:'24.2-4',page:691,star:0,statement:'In the example of Figure 24.6, what is the minimum cut corresponding to the max- imum flow shown? Of the augmenting paths appearing in the example, which one cancels flow?',hint:'最小割取「残量网络里从 s 可达的那批结点」作 S 侧，割边就是原图中跨过去且已饱和的边。至于抵消流的那条增广路：看哪一条用了残量图里的反向边（也就是把已有的 f 往回退一点），它让某些边的实际流量变小而不是变大。'},
     ]},
   ],

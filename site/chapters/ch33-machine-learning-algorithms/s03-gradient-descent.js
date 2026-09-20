@@ -240,7 +240,7 @@ int main(void)
      {kind:'simulate',q:'C 程序 part 4 里投影版 30 步后的 $f$ 量级是多少？（填 1.2e-09 形式的指数）',expect:[9],placeholder:'例如：-3',why:'9 —— 程序打印投影版 30 步后 $f = 1.2\text{e-}09$、$w = (1.200, -0.700)$（投影到 $|w|_\infty \le 2$ 内）。与无约束版的 1.6e-08 相比，投影并没有拖慢收敛。'},
     ],bookExercises:[
      {id:'33.3-1',page:1037,star:0,statement:'Prove Lemma 33.6. Start from the definition of a convex function given in equa- tion (33.18). (Hint: You can prove the statement when n = 1 first. The proof for general values of n is similar.)',hint:'从凸性的定义不等式出发，用"两点连线在函数图象上方"的几何意义推出一阶下界（切线在图象下方）。'},
-     {id:'33.3-4',page:1037,star:0,statement:'Show that the function f in equation (33.32) is a convex function of the variables w 0 ,w 1 ,…,w n .',hint:'逐项看式 (33.32)：平方项是凸的、交叉项写成二次型后半正定 —— Hessian 半正定即凸。'},
+     {id:'33.3-4',page:1037,star:0,statement:'Show that the function f in equation (33.32) is a convex function of the variables w 0 ,w 1 ,…,w n .',hint:'式 (33.32) 是 $f(x) = w_0 + \\sum_j w_j x_j$ —— 对 $w$ 是**仿射**函数， 既没有平方项也没有交叉项，Hessian 是零矩阵。所以凸性一句话就完： $f(\\lambda w + (1-\\lambda) w’) = \\lambda f(w) + (1-\\lambda) f(w’)$，等号成立 ⇒ 既凸又凹。 带平方与交叉项的是**下一个**式子 (33.33)（误差平方和，那才是 33.3-5 要讨论凸性的对象）， 别把两条式子的性质对调。'},
     ]},
   ],
 };

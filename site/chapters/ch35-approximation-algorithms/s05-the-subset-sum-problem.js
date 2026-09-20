@@ -485,7 +485,7 @@ int main(void)
           hint: '式 (35.21) $P_i = P_{i-1} \\cup (P_{i-1}+x_i)$ 直接归纳；MERGE-LISTS 归并两有序表得有序表。' },
         { id: '35.5-2', page: 1130, star: 0,
           statement: 'Using induction on i , prove inequality (35.24).',
-          hint: '对 i 归纳：每轮 TRIM 用 δ=ε/2n，使 L_i 中代表 y 的元素 ´ 满足 $y(1+ε/2n)^i \\le ´ \\le y$。' },
+          hint: '照原书式 (35.24)，分层是**往下**取的：$\\frac{y}{(1 + \\frac{\\varepsilon}{2n})^i} \\le \\bar{y} \\le y$。 提示里写成 $y(1 + \\frac{\\varepsilon}{2n})^i \\le \\bar{y} \\le y$ 是自相矛盾的 —— $y > 0$ 时左端已经大于 $y$，区间为空。用除法（等价地乘 $(1 + \\frac{\\varepsilon}{2n})^{-i}$） 才是「把 $y$ 舍到一个不高于它的分层值」，这也正是它能把误差控制住的原因。' },
         { id: '35.5-3', page: 1130, star: 0,
           statement: 'Prove inequality (35.28).',
           hint: '式 (35.28) 是 $(1+ε/2n)^n$ 关于 n 递增；用不等式 (3.15)/(3.16) 放缩到 $e^{ε/2} \\le 1+ε$。' },

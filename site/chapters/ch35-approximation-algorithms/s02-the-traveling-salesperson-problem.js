@@ -463,7 +463,7 @@ int main(void)
           hint: '取 w = u：三角不等式 $c(u,u) \\le c(u,v)+c(v,u)=2c(u,v)$，而 $c(u,u)=0$（同点代价为 0），故 $c(u,v)\\ge 0$。' },
         { id: '35.2-2', page: 1114, star: 0,
           statement: 'Show how in polynomial time to transform one instance of the traveling-sales- person problem into another instance whose cost function satisfies the triangle in- equality. The two instances must have the same set of optimal tours. Explain why such a polynomial-time transformation does not contradict Theorem 35.3, assum- ing that P ≠ NP.',
-          hint: '对每个不满足三角不等式的三元组，把 $c(u,w)$ 提升到 $c(u,v)+c(v,w)$ 的上确界；新代价满足三角不等式且最优巡游集合不变。' },
+          hint: '度量闭包取的是**下确界**，不是上确界：$c’(u, v) = $ 以 $c$ 为边权时 $u$ 到 $v$ 的**最短路长度** （Floyd-Warshall 多项式可算），所以 $c’ \\le c$，代价只会降低，不会「提升」。 这样 $(V, c’)$ 满足三角不等式，且任意哈密顿圈在 $c’$ 下的长度 $\\le$ 它在 $c$ 下的长度 （$c’$ 是路径长，绕过去不会更长），于是「最优巡游集合」的对应关系成立，与定理 35.3 不冲突。 反复对三元组抬上界既可能不存在（发散），也保不住最优解 —— 方向反了。' },
         { id: '35.2-3', page: 1115, star: 0,
           statement: 'Consider the following closest-point heuristic for building an approximate trav- eling-salesperson tour whose cost function satisfies the triangle inequality. Begin with a trivial cycle consisting of a single arbitrarily chosen vertex. At each step, identify the vertex u that is not on the cycle but whose distance to any vertex on the cycle is minimum. Suppose that the vertex on the cycle that is nearest u is vertex v. Extend the cycle to include u by inserting u just after v. Repeat until all vertices are on the cycle. Prove that this heuristic returns a tour whose total cost is not more than twice the cost of an optimal tour.',
           hint: '这就是「最近插入」启发式；可证其巡游代价不超过最优的 2 倍（与 MST 思路同构，留作练习）。' },
