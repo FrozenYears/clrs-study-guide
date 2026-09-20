@@ -209,7 +209,7 @@ static void heapsort(int *a, int n, stats_t *st, int trace_lines)
         st->swap++;
         /* 第 4 行：A.heap-size = A.heap-size − 1 —— 就是让 heap_size 跟着 i 走 */
         max_heapify(a, i - 1, 1, st);                /* 第 5 行 */
-        if (trace_lines > 0 && (i <= 4 || i == n)) {
+        if (trace_lines > 0) {
             printf("      [i = %2d 后] ", i);
             for (int k = 0; k < n; k++) { printf("%d%s", a[k], k + 1 < n ? " " : ""); }
             printf("\n");
