@@ -502,7 +502,7 @@ int main(void)
           hint: '关键在于「0-排列只有几种」。空序列只有一种，所以「空子数组包含某个 0-排列」是必然事件。若想避开这个争议，把第 1 轮单独拿出来当初始化（先确定性做一次交换），不变量就可以从非空子数组开始。' },
         { id: '5.3-2', page: 138, star: 0,
           statement: 'Professor Kelp decides to write a procedure that produces at random any permu- tation except the identity permutation, in which every element ends up where it started. He proposes the procedure PERMUTE-WITHOUT-IDENTITY . Does this procedure do what Professor Kelp intends? PERMUTE-WITHOUT-IDENTITY (A,n) 1 for i = 1 to n − 1 2 swap A[i ] with A[RANDOM(i + 1; n)]',
-          hint: '它的循环是 `for i = 1 to n − 1`，每轮与 $A[i+1 : n]$ 里的某个元素交换。想一想：如果这一轮抽到的是「本来就该在这里」的元素呢？再考虑恒等排列是否真的被排除干净。' },
+          hint: '别停在「想一想抽到本该在这儿的元素怎么办」——先数路径。 第 $i$ 步有 $n - i$ 种等概率选择，所以整个过程的执行路径只有 $\\prod_{i=1}^{n-1}(n-i) = (n-1)!$ 条，每条概率 $1/(n-1)!$， 最多只能产生 $(n-1)!$ 个不同排列。 而「非恒等排列」一共有 $n! - 1$ 个，$n \\ge 3$ 时 $(n-1)! < n! - 1$ —— 一堆排列它**根本产生不出来**，谈不上「等概率地产生任何非恒等排列」。 最小的反例 $n = 3$：路径只有 2 条（第 1 步选 2 或 3，第 2 步只能选 3）， 从 $(1,2,3)$ 出发分别得到 $(2,3,1)$ 和 $(3,1,2)$， 而 5 个非恒等排列里的 $(2,1,3)$、$(1,3,2)$、$(3,2,1)$ 永远出不来。 所以答案是：**做不到**。（恒等排列它确实排除了：第 1 步就把 $A[1]$ 跟后面的某个位置换掉，而此后再没有 任何步骤会碰位置 1，所以 $A[1]$ 永远回不到原位；不成立的是「均匀覆盖其余所有排列」。）' },
         { id: '5.3-3', page: 138, star: 0,
           statement: 'Consider the PERMUTE-WITH-ALL procedure on the facing page, which instead of swapping element A[i ] with a random element from the subarray A[i : n], swaps it with a random element from anywhere in the array. Does PERMUTE-WITH-ALL produce a uniform random permutation? Why or why not?',
           hint: '★ 这是必做的一题。本站阶段 6 的 C 程序已经把它跑出来了：$A[1]$ 的卡方 291，而正确版本只有 3.3。想清楚「为什么从整个数组里挑会偏」：前面几轮定下来的元素在后面的轮次里还有机会被换走。' },
