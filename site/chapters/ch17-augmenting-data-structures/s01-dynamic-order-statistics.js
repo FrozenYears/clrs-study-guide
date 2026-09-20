@@ -61,7 +61,8 @@ export default {
    {type:'visualize',title:'两个方向的两个查询',panels:[
      {title:'① OS-SELECT(4)：沿树下降（C 程序 part 3 的树）',viz:'tree',vizMode:'tree',
       trees:[{root:{"label": "26 (size 7)", "cost": "i=4，r=2 → 右", "children": [{"label": "20 (size 1)", "cost": "左子树"}, {"label": "38 (size 5)", "cost": "i=2，r=3 → 左", "children": [{"label": "30 (size 2)", "cost": "i=2，r=1 → 右", "children": [{"label": "—"}, {"label": "35 (size 1)", "cost": "r=1，i=1 → 命中 35"}]}, {"label": "41 (size 2)", "cost": "子树 {41,43}"}]}]}}],
-      treeNotes:['键集 {20,26,30,35,38,41,43}（Figure 17.1 同款键集）。',
+      treeNotes:['键集 {20,26,30,35,38,41,43} —— 本关 C 程序按插入序建出来的 7 结点教学树。',
+        '★ 它**不是** Figure 17.1 那棵树：图 17.1 有 20 个结点、根是 26(size 20)，左边一整支是 17(size 12)。',
         '★ 本树形状是 C 程序的插入序决定的教学树；SELECT 的思想与树形无关。',
         '★ 第 4 小 = 35：r = 左.size + 1 与 i 比较，决定向左/向右。'],
      },
@@ -270,7 +271,7 @@ int main(void)
       why:'20, 26, 30 之后第 4 小 → 秩 4（C 程序 part 5）。'},
     ],bookExercises:[
      {id:'17.1-1',page:485,star:0,statement:'Show how OS-SELECT (T:root ,10) operates on the red-black tree T shown in Figure 17.1.',hint:'照 OS-SELECT 的三步走：每到一个结点算 r = 左.size + 1，与 i 比较后向左/向右，i 不断被减去跳过的结点数。把每层的 (x, i) 写成表格。'},
-     {id:'17.1-2',page:485,star:0,statement:'Show how OS-RANK(T,x) operates on the red-black tree T shown in Figure 17.1 and the node x with x:key = 35.',hint:'从 key=35 的结点向上：每遇 y == y.p.right 就把 y.p.left.size + 1 加进 r。C 程序 part 5 的树就是这个键集的教学版（答案 4 对应 Figure 17.1 键集里的 35 的秩）。'},
+     {id:'17.1-2',page:485,star:0,statement:'Show how OS-RANK(T,x) operates on the red-black tree T shown in Figure 17.1 and the node x with x:key = 35.',hint:'题干点名**在 Figure 17.1 上走一遍**，别拿本关 C 程序那棵 7 结点树来答（那棵树上 OS-RANK(35) = 4，图 17.1 上是另一个数）。 图 17.1 里 key 35 的祖先链是 35(size 1) → 38(size 3) → 30(size 5) → 41(size 7) → 26(size 20，根)。按 7 行伪代码逐步走： 起手 $r$ = 35 的左子树 size + 1 = 1； $y = 35$ 是左孩子 $\\to$ 不加； $y = 38$ 是 30 的右孩子 $\\to$ 加上「30 的左子树 size + 1」= 1 + 1 = 2，$r = 3$； $y = 30$ 是 41 的左孩子 $\\to$ 不加； $y = 41$ 是 26 的右孩子 $\\to$ 加上「26 的左子树 size + 1」= 12 + 1 = 13，$r = 16$； $y$ 到根，循环结束，**返回 16**。 自查办法（不用重新数中序）：原书 p.484 自己算了 key 38 的秩是 17， 而 35 正是 38 的左孩子、自己又没有孩子，所以 35 的秩 = 17 − 1 = 16，两条路对得上。'},
      {id:'17.1-3',page:485,star:0,statement:'Write a nonrecursive version of OS-SELECT .',hint:'把递归改成 while 循环：每步先算 r，若 i > r 就 i = i − r 并 x = x.right；i == r 返回。递归是尾递归，改写直接。'},
      {id:'17.1-4',page:485,star:0,statement:'Write a procedure OS-KEY-RANK(T,k) that takes an order-statistic tree T and a key k and returns the rank of k in the dynamic set represented by T . Assume that the keys of T are distinct.',hint:'先像二分查找一样沿树下降找到 key == k 的结点，再对它调用 OS-RANK —— 两段都是 O(lg n)。'},
      {id:'17.1-5',page:486,star:0,statement:'Given an element x in an n-node order-statistic tree and a natural number i , show how to determine the i th successor of x in the linear order of the tree in O(lg n) time.',hint:'第 i 个后继 = OS-SELECT(OS-RANK(x) + i)。两个 O(lg n) 拼起来仍是 O(lg n) —— 顺序统计树的组合能力。'},
