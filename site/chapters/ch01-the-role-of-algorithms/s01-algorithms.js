@@ -386,11 +386,11 @@ int main(void) {
       ],
       chart: {
         xMax: 16,
-        caption: '$n!$ 与 $2^n$、$n\\lg n$ 同框：阶乘最终碾压一切指数',
+        caption: 'n! 与 2ⁿ、n lg n 同框：阶乘最终碾压一切指数',
         series: [
           { name: 'n lg n', color: '--viz-done', expr: 'n * Math.log2(n)' },
           { name: '2^n', color: '--viz-compare', expr: 'Math.pow(2, n)' },
-          { name: 'n!', color: '--viz-active', expr: 'let f = 1; for (let k = 2; k <= n; k++) f *= k; return f;' },
+          { name: 'n!（斯特林近似 $n^n e^{-n}$）', color: '--viz-active', expr: 'Math.exp(n * Math.log(n) - n)' },
         ],
       },
       derivations: [
@@ -422,7 +422,7 @@ int main(void) {
       intro: '★ 这一关没有定理要证，但有一句定义值得逐字拆开 —— 因为全书后面每次说「这个算法是正确的」，用的都是这三条。下面三步对应定义里的三个成分：量词范围、停机、答案对。',
       steps: [
         {
-          title: '第一步 · 量词：对**每一个**实例',
+          title: '第一步 · 量词：对每一个实例',
           en: 'for every problem in- stance provided as input',
           page: 6,
           body: [
