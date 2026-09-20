@@ -466,7 +466,7 @@ int main(void)
           hint: '顶点覆盖实例 (G,k)：令 X = E(G)，每个顶点 v 对应集合 S_v = {与 v 关联的边}；则大小 ≤ k 的顶点覆盖 ⇔ 覆盖 X 的大小 ≤ k 的子族。' },
         { id: '35.3-3', page: 1119, star: 0,
           statement: 'Show how to implement GREEDY-SET-COVER to run in O − P S2F |S| ] time.',
-          hint: '用合适的数据结构（如按剩余新覆盖数维护集合的堆）可把每轮选择降到近乎线性，整体 O(|X|+|F|) 量级。' },
+          hint: '题干的界是「所有集合的元素数之和」，即 O(Σ|S|)，也就是**输入的总规模**； 写成 $O(|X| + |F|)$ 连把输入读完都不够（$\\sum|S|$ 可以到 $|X| \\cdot |F|$）。 也别用堆 —— 每轮弹一次堆会带进 $\\lg$ 因子，达不到线性。 要领是把「每个集合还剩多少个未覆盖元素」这个计数维护成**桶**： 用数组按计数值挂集合（计数最大 $|X|$，所以桶数线性），指针从高处往下找非空桶。 一轮里选中某个集合后，遍历它的元素：对每个**第一次被覆盖**的元素 $e$， 扫一遍「含 $e$ 的集合」链表（建输入时一次做好，总共 $\\sum|S|$ 条链项）， 把那些集合的计数减一并挪到新桶。 关键的成本账：每个「元素—集合」的关联只在它那个元素被覆盖时被碰一次， 所以挪桶总次数 $\\le \\sum|S|$；指针只会往下走，全程 $O(|X|)$。合计线性于输入规模。' },
         { id: '35.3-4', page: 1119, star: 0,
           statement: 'The proof of Theorem 35.4 says that when GREEDY-SET-COVER, run on the in- stance (X; F ), returns the subfamily C , then |C| ≤ j C − j dln X e. Show that the following weaker bound is trivially true: |C| ≤ jC − j max f|S| W S 2 F g :',
           hint: '不等号方向：$C$ 是贪心解、$C^*$ 是最优解，必有 $|C| \\ge |C^*|$，写成 $|C| \\le |C^*|$ 恰好反了。 被 $\\max|S|$ 顶替掉的也不是 $|C^*|$，而是 $\\lceil \\ln |X| \\rceil$ 那个因子。正确的推法是： 每选一个集合至少带入 1 个新元素，所以 $|C| \\le |X|$；另一方面 $X$ 能被 $C^*$ 覆盖， $|X| \\le |C^*| \\cdot \\max|S|$。两式接起来就是 $|C| \\le |C^*| \\cdot \\max|S|$（再乘上 $\\lceil \\ln |X| \\rceil$ 那条界另算）。' },

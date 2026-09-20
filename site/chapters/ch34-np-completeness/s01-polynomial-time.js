@@ -427,10 +427,10 @@ int main(void)
       bookExercises: [
         { id: '34.1-1', page: 1055, star: 0,
           statement: 'Define the optimization problem LONGEST-PATH-LENGTH as the relation that associates each instance of an undirected graph and two vertices with the num- ber of edges in a longest simple path between the two vertices. Define the deci- sion problem LONGEST-PATH = fhG,u,v,k i W G = (V,E) is an undirected graph, u,v 2 V , k ≥ 0 is an integer, and there exists a simple path from u to v in G consisting of at least k edgesg. Show that the optimization prob- lem LONGEST-PATH-LENGTH can be solved in polynomial time if and only if LONGEST-PATH 2 P.',
-          hint: '若决策问题 LONGEST-PATH 在 P，则二分 k 调用它即可求出最长长度；反过来优化问题在 P，则取最大 k 即得决策版本。' },
+          hint: '两问都要给**双向**的构造，而且第二问的方向别说反了。 （$\\Rightarrow$）决策版在 P：最长简单路径的边数至多 $|V|-1$， 对 $k$ 做二分（每次问 LONGEST-PATH 的判定器），$O(\\lg n)$ 次判定就定出那个数，仍是多项式。 （$\\Leftarrow$）优化版在 P：拿它算出真正的最长边数 $\\ell$，然后 **$\\langle G,u,v,k \\rangle$ 的答案是「是」当且仅当 $\\ell \\ge k$** —— 不是「取最大的 $k$」， 判定问题的输入里 $k$ 已经是给定的了，你要做的是拿 $\\ell$ 去和它比。' },
         { id: '34.1-2', page: 1055, star: 0,
           statement: 'Give a formal definition for the problem of finding the longest simple cycle in an undirected graph. Give a related decision problem. Give the language corresponding to the decision problem.',
-          hint: '决策版：给定图 G 与整数 k，是否存在长度至少为 k 的简单环？对应语言为所有 ⟨G,k⟩ 使存在这样环的串。' },
+          hint: '题干要三样，只给判定问题不够。 （1）优化问题的**形式定义**：它是把每个无向图 $G$ 映到「$G$ 中最长简单环的边数」的一个关系； 没有任何简单环时值为 0（别漏这种）。 （2）相关的判定问题：LONGEST-CYCLE $= \\{\\langle G, k \\rangle : G$ 含一条边数至少为 $k$ 的简单环$\\}$。 （3）对应的**语言**：就是上面这个集合 —— 一切满足条件的编码串 $\\langle G, k \\rangle$ 的集合。 写的时候注意「简单环」要说清楚是顶点不重复（除起点 $=$ 终点）， 以及编码 $\\langle G, k \\rangle$ 是把图与整数一起编码成一个串，语言里的元素是串不是图。' },
         { id: '34.1-3', page: 1055, star: 0,
           statement: 'Give a formal encoding of directed graphs as binary strings using an adjacencymatrix representation. Do the same using an adjacency-list representation. Argue that the two representations are polynomially related.',
           hint: '邻接矩阵编码长度 $\\Theta(n^2)$，邻接表 $\\Theta(n+m)$；二者皆可由对方在多项式时间内转换，故多项式相关。' },

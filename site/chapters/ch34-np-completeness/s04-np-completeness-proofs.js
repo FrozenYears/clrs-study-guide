@@ -438,7 +438,7 @@ int main(void)
           hint: 'DNF 可满足当且仅当存在一项其所有文字彼此不冲突（无 $x$ 与 $\\neg x$ 同现）；逐项检查多项式时间。' },
         { id: '34.4-6', page: 1080, star: 0,
           statement: 'Someone gives you a polynomial-time algorithm to decide formula satisfiability. Describe how to use this algorithm to find satisfying assignments in polynomial time.',
-          hint: '若 SAT 有多项式时间算法，则因 SAT 是 NPC 且 SAT ≤ₚ 各 NPC 问题，全 NPC 乃至全 NP 都落入 P，即 P = NP。' },
+          hint: '题干要的是**求出一个满足赋值**，不是推 P=NP。 逐个变元钉死（自归约）：设 $\\varphi$ 的变元是 $x_1, \\dots, x_n$。 先问黑箱 $A$：把 $x_1$ 置 1 后代入得到的公式 $\\varphi[x_1 := 1]$ 还可满足吗？ 可满足就把 $x_1 = 1$ 钉住；不可满足就取 $x_1 = 0$（此时 $\\varphi[x_1 := 0]$ 必可满足， 因为原式可满足而两个值里至少有一个能留下解）。 然后在**已代入的公式**上对 $x_2$ 重复，如此直到 $x_n$。 $n$ 次调用，每次代入都让公式变小（少一个变元），每次调用是多项式时间 → 总时间多项式。 最后把钉住的这组值回代验一遍 $\\varphi$，养成收尾检查的习惯。' },
         { id: '34.4-7', page: 1080, star: 0,
           statement: 'Let 2-CNF-SAT be the set of satisfiable boolean formulas in CNF with exactly two literals per clause. Show that 2-CNF-SAT 2 P. Make your algorithm as efficient as possible. (Hint: Observe that x _ y is equivalent to :x ! y . Reduce 2-CNF-SAT to an efficiently solvable problem on a directed graph.)',
           hint: '把 $x\\lor y$ 写成 $\\neg x\\to y$，建蕴含图；2-SAT 可满足 ⟺ 不存在变量 $x$ 使 $x$ 与 $\\neg x$ 在同一强连通分量；SCC 可线性时间求解。' },

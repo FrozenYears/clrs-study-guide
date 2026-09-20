@@ -469,7 +469,7 @@ int main(void)
           hint: '这就是「最近插入」启发式；可证其巡游代价不超过最优的 2 倍（与 MST 思路同构，留作练习）。' },
         { id: '35.2-4', page: 1115, star: 0,
           statement: 'A solution to the bottleneck traveling-salesperson problem is the hamiltonian cy- cle that minimizes the cost of the most costly edge in the cycle. Assuming that the cost function satisfies the triangle inequality, show that there exists a polynomial- time approximation algorithm with approximation ratio 3 for this problem. ( Hint: Show recursively how to visit all the nodes in a bottleneck spanning tree, as dis- cussed in Problem 21-4 on page 601, exactly once by taking a full walk of the tree and skipping nodes, but without skipping more than two consecutive intermedi- ate nodes. Show that the costliest edge in a bottleneck spanning tree has a cost bounded from above by the cost of the costliest edge in a bottleneck hamiltonian cycle.)',
-          hint: '先用 MST 得到瓶颈边权的 2 倍上界，再沿 MST 构造巡游，瓶颈边权放大约 3 倍。' },
+          hint: '两个数字都要摆正，别「2 倍再 3 倍」。 **瓶颈界是 1 倍不是 2 倍**：设最优瓶颈圈的 most costly 边为 $\\beta$。 从那个圈里删掉一条边，得到的是一棵生成树，其最大边 $\\le \\beta$； 而 MST 的最大边不超过**任何**生成树的最大边（否则拿那棵树换掉 MST 里更重的边就能更好， 或按 cut 性质直接看），所以 $MST$ 的最贵边 $\\le \\beta$ —— 题干那句提示说的就是这个。 **3 倍从哪来**：以 MST 为骨架递归地走（根 → 每个子树的走法 → 回根）， 把子树里绕出去的路径用捷径接起来时，一条捷径最多跨过 2 个中间结点， 于是由三角不等式，这条捷径 $\\le$ 它所代替的那 3 条树边，每条 $\\le \\beta$ → 圈里每条边 $\\le 3\\beta$。 近似比就是 3，不要再乘那个 2。' },
         { id: '35.2-5', page: 1115, star: 0,
           statement: 'Suppose that the vertices for an instance of the traveling-salesperson problem are points in the plane and that the cost c(u,v) is the euclidean distance between points u and v. Show that an optimal tour never crosses itself.',
           hint: '若两条边交叉，把交叉的四边形改成不交叉的两条对边，由三角不等式总代价不增，故可去交叉得到不交的最优巡游。' },

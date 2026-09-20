@@ -435,7 +435,7 @@ int main(void)
           hint: '归约把证书位直接接成电路输入，要求工作存储连续可编码；散落内存可先「重排地址」压缩到连续区，不改变多项式规模。' },
         { id: '34.3-6', page: 1072, star: 0,
           statement: 'A language L is complete for a language class C with respect to polynomial-time reductions if L 2 C and L 0 ≤ P L for all L 0 2 C . Show that ; and f0; 1g − are the only languages in P that are not complete for P with respect to polynomial-time reductions.',
-          hint: '∅ 与 {0,1}* 没有非平凡的归约源（没有任何别的语言能归约到它们给出非平凡答案），故它们对 P 不是完全的；其余 P 语言都 P-完全。' },
+          hint: '结论要证两件事，缺一不可，别只报「它们没得归约」。 **这两者确实不完全**：若 $L’ \\le_p \\emptyset$，则 $x \\in L’ \\iff f(x) \\in \\emptyset$ 恒假， 于是 $L’ = \\emptyset$ —— 任何**非空**语言都归约不到 $\\emptyset$； 同理 $L’ \\le_p \\{0,1\\}^{*}$ 逼出 $L’ = \\Sigma^{*}$，所以任何**非全**语言都归约不到它。 **其余的 P 语言都完全**：设 $L \\in P$、$L \\ne \\emptyset$、$L \\ne \\Sigma^{*}$， 取定一个串 $y_1$ 满足 $y_1 \\in L$、一个串 $y_0$ 满足 $y_0 \\notin L$（两者存在就是这两个条件的意思）。 对任意 $L’ \\in P$，用它的多项式判定器 $M’$ 定义归约 $f(x) = y_1$（若 $M’$ 接受 $x$）否则 $f(x) = y_0$ —— 可多项式时间计算， 且 $x \\in L’ \\iff f(x) \\in L$ 由构造直接成立。 $y_0, y_1$ 是**固定的常数串**，写进归约程序里，不需要「找出」它们。' },
         { id: '34.3-7', page: 1072, star: 0,
           statement: 'Show that, with respect to polynomial-time reductions (see Exercise 34.3-6), L is complete for NP if and only if L is complete for co-NP.',
           hint: 'L ≤ₚ 的补语言关系：$L$ 是 NP 完全 ⟺ $\\bar L$ 是 co-NP 完全，因归约保持补。' },
