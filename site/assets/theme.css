@@ -74,6 +74,15 @@
   --accent: #1d4e79;
   --accent-fg: #fbf9f4;
 
+  /* 代码框语法高亮（core/highlight.js 产出的 6 个 class 用）
+     原则：注释退到背景、字符串与数字给暖冷两色、关键词就是全站那个墨蓝。 */
+  --tok-comment: #665f51;   /* 与代码底色对比度 4.6:1，仍比正文淡 */
+  --tok-str:     #7a4f2a;
+  --tok-num:     #2f6160;
+  --tok-kw:      #1d4e79;
+  --tok-pre:     #5c4a80;
+  --tok-fn:      #55541b;
+
   /* 可视化上的文字颜色（绘制标签/数字时用） */
   --viz-fg: #fbf9f4;
   --viz-track: #e2ded3; /* 柱/条轨道背景 */
@@ -190,6 +199,14 @@
 
   --accent: #86b4dc;
   --accent-fg: #14161a;
+
+  /* 暗色下同一族颜色整体提亮，保证在深底上够对比 */
+  --tok-comment: #9c9484;
+  --tok-str:     #d9a06a;
+  --tok-num:     #7fc3bd;
+  --tok-kw:      #86b4dc;
+  --tok-pre:     #b79ad9;
+  --tok-fn:      #cfc777;
 
   --viz-fg: #14161a;
   --viz-track: #2c2c33;

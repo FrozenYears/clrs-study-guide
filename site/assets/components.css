@@ -176,6 +176,15 @@
   tab-size: 4;
 }
 
+/* 语法高亮：core/highlight.js 只负责切 token，颜色全在这里。
+   刻意不加粗（除关键词）、不换字号 —— 代码的等宽栅格不能被打乱。 */
+.tok-comment { color: var(--tok-comment); font-style: italic; }
+.tok-str     { color: var(--tok-str); }
+.tok-num     { color: var(--tok-num); }
+.tok-kw      { color: var(--tok-kw); font-weight: 600; }
+.tok-pre     { color: var(--tok-pre); }
+.tok-fn      { color: var(--tok-fn); }
+
 .code-block {
   margin: var(--sp-4) 0;
 }

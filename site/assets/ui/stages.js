@@ -13,6 +13,7 @@
 
 import { h, svg, $ } from '../core/dom.js';
 import * as katex from '../core/katex.js';
+import { highlight } from '../core/highlight.js';
 import * as store from '../core/store.js';
 import { createStepper } from '../core/stepper.js';
 import { getViz, getAlgorithm } from './registry.js';
@@ -717,7 +718,7 @@ function rCode(stage) {
   const tabs = [
     { key: 'c', label: 'C 实现', build: () => {
         const box = h('div', { class: 'code-block' },
-          h('pre', { class: 'code' }, stage.c.code));
+          h('pre', { class: 'code' }, highlight(stage.c.code, 'c')));
         const notes = (stage.c.notes || []);
         return h('div', null,
           box,
@@ -745,7 +746,7 @@ function rCode(stage) {
           '页面上的动画由一份 JS 生成器驱动：它每 yield 一次就输出一帧状态。' +
           '这份实现不要求你读，但它是「同一份代码既是实现、又是动画数据源」的由来。'),
         stage.engine.code
-          ? h('pre', { class: 'code' }, stage.engine.code)
+          ? h('pre', { class: 'code' }, highlight(stage.engine.code, 'js'))
           : h('p', { class: 'card__meta' }, stage.engine.note || '')),
     });
   }
