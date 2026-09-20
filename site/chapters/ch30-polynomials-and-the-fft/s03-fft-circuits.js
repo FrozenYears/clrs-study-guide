@@ -88,7 +88,7 @@ export default {
  *   part 5  递归 FFT 与迭代 FFT（位反转 + 蝶形）逐元素一致；n=8 时蝶形 12 个
  *           = (n/2)·lg n，深度 lg n = 3 级；
  *   part 6  位反转是自逆置换（rev(rev(k)) = k）；
- *   part 7  n = 1024 时 FFT 的复数乘法比朴素 DFT 少约 200 倍。
+ *   part 7  n = 1024 时 FFT 的复数乘法比朴素 DFT 少约 102 倍（实测 102.4）。
  *
  * 编译：gcc -std=c99 -Wall -Wextra -Werror -o fft fft.c -lm
  */
