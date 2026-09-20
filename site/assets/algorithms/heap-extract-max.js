@@ -9,11 +9,17 @@
 //
 // 输入必须是一个最大堆。行号只用这 5 行，第 4 行内部的下沉动作写在每帧说明里。
 // ★ MAX-HEAP-MAXIMUM 本身在 Θ(1)：根就是最大值；但「取走根」会破坏堆性质，所以要第 4 行修。
+//
+// 用法：heapExtractMax(A, heapSize)
+//   A         —— 整个数组（堆外可能还留着以前被摘出去的元素）
+//   heapSize  —— A.heap-size，默认 = A.length。习题 6.5-1 的写法
+//                ⟨15,13,9,5,12,8,7,4,0; 6,2,1⟩ 就是「数组 12 格、堆区只有前 9 格」，
+//                不传这个参数就只能把 12 格全当堆区，跑出来的是另一种情形。
 
-export function* heapExtractMax(A) {
+export function* heapExtractMax(A, heapSizeIn = null) {
   const a = A.slice();
   const n = a.length;
-  let heapSize = n;
+  let heapSize = Number.isInteger(heapSizeIn) ? Math.max(0, Math.min(heapSizeIn, n)) : n;
   const counts = { cmp: 0, move: 0, extract: 0 };
 
   const frame = (line, extra = {}) => ({
@@ -28,11 +34,12 @@ export function* heapExtractMax(A) {
     done: false,
   });
 
-  if (n === 0) {
+  if (heapSize < 1) {
     yield {
-      line: 1, array: [], heapSize: 0, pointers: {}, highlight: { violation: [] },
+      line: 1, array: a.slice(), heapSize, pointers: {}, highlight: { violation: [] },
       counts: { ...counts },
-      note: 'A.heap-size = 0 < 1：MAX-HEAP-MAXIMUM 会报错 "heap underflow"。',
+      note: `A.heap-size = ${heapSize} < 1：MAX-HEAP-MAXIMUM 会报错 "heap underflow"`
+        + `（堆区里没有元素可取，哪怕数组后面还躺着摘出去的老元素）。`,
       invariantHolds: false, done: true,
     };
     return;
@@ -41,7 +48,9 @@ export function* heapExtractMax(A) {
   yield frame(1, {
     pointers: { i: 1 },
     highlight: { active: [1] },
-    note: `MAX-HEAP-MAXIMUM(A)：最大堆的根 A[1] = ${a[0]} 就是集合里的最大键，Θ(1) 取到。`,
+    note: `MAX-HEAP-MAXIMUM(A)：最大堆的根 A[1] = ${a[0]} 就是集合里的最大键，Θ(1) 取到。`
+      + (heapSize < n ? `（数组共 ${n} 格，但 A.heap-size = ${heapSize}：只有前 ${heapSize} 格是堆，`
+        + `后面的 ${n - heapSize} 格是早已摘出堆的老元素，本操作完全不看它们。）` : ''),
   });
 
   const maxVal = a[0];
@@ -65,7 +74,7 @@ export function* heapExtractMax(A) {
   counts.extract++;
   yield frame(3, {
     highlight: { done: Array.from({ length: n - heapSize }, (_, k) => heapSize + 1 + k) },
-    note: `A.heap-size = ${heapSize}：第 ${n} 位被摘出堆外（虚线格子），它保存着刚取走的最大值 ${maxVal}。`
+    note: `A.heap-size = ${heapSize}：第 ${heapSize + 1} 位被摘出堆外（虚线格子），它保存着刚取走的最大值 ${maxVal}。`
       + `这一步只是把计数器减 1，**没有搬运任何数据** —— 摘出去的元素立刻变成「数组里的普通元素」，`
       + `不再受堆性质约束。`,
   });
@@ -114,7 +123,7 @@ export function* heapExtractMax(A) {
     array: a.slice(),
     heapSize,
     pointers: {},
-    highlight: { result: [n] },
+    highlight: { result: [heapSize + 1] },
     counts: { ...counts },
     note: `return max = ${maxVal}。总共 ${counts.cmp} 次比较、${counts.move} 次写，`
       + `加上 MAX-HEAPIFY 的 O(lg n) —— 整个操作是 O(lg n)。`,

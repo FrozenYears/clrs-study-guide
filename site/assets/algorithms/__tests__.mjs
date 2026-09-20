@@ -466,6 +466,28 @@ console.log('\n[9] 第 6 章堆生成器');
     ok(allOk, `EXTRACT-MAX：${checked} 组都取出了最大值，且剩下的 A[1 : heap-size] 仍是最大堆`);
     ok([...heapExtractMax([])].at(-1).invariantHolds === false,
       'EXTRACT-MAX：空堆时报 heap underflow（invariantHolds = false）');
+    // ★ heap-size 形参：习题 6.5-1 的原始数据（数组 12 格，堆区只有前 9 格）
+    {
+      const A = [15, 13, 9, 5, 12, 8, 7, 4, 0, 6, 2, 1];
+      const frames = [...heapExtractMax(A, 9)];
+      const last = frames.at(-1);
+      ok(last.heapSize === 8 &&
+        JSON.stringify(last.array) === JSON.stringify([13, 12, 9, 5, 0, 8, 7, 4, 15, 6, 2, 1]),
+        'EXTRACT-MAX：习题 6.5-1 原数据（A.heap-size = 9）的终态与手工推导一致');
+      ok(isMaxHeap(last.array, 8), 'EXTRACT-MAX：heap-size 情形下堆区 A[1 : 8] 仍是最大堆');
+      ok(last.array.slice(9).join(',') === '6,2,1',
+        'EXTRACT-MAX：堆外的 6,2,1 全程不参与（下沉只在 A[1 : heap-size] 里发生）');
+      ok([...heapExtractMax(A, 0)].at(-1).invariantHolds === false,
+        'EXTRACT-MAX：A.heap-size = 0 时报 heap underflow，哪怕数组本身非空');
+    }
+    // 不传 heap-size 时行为必须与旧版一致（关卡里已有的预设不受影响）
+    {
+      const A = [15, 13, 9, 5, 12, 8, 7, 4, 0, 6, 2, 1];
+      const d = [...heapExtractMax(A)].at(-1);
+      const f = [...heapExtractMax(A, A.length)].at(-1);
+      ok(JSON.stringify(d.array) === JSON.stringify(f.array) && d.heapSize === f.heapSize,
+        'EXTRACT-MAX：省略 heap-size 与显式传 A.length 结果完全相同');
+    }
   }
 
   // ---- 9f INCREASE-KEY：变大之后仍是最大堆；变小必须报错 ----
@@ -523,6 +545,22 @@ console.log('\n[9] 第 6 章堆生成器');
       const heap = [...buildMaxHeap([16, 14, 10, 8, 7])].at(-1).array;
       const last = [...heapInsert(heap, 5, heap.length)].at(-1);
       ok(last.line === 2 && last.invariantHolds === false, 'INSERT：容量已满时报 heap overflow');
+    }
+    // ★ heap-size 形参：习题 6.5-2 的原始数据（容量 12、堆区只有前 10 格）
+    {
+      const A = [15, 13, 9, 5, 12, 8, 7, 4, 0, 6, 2, 1];
+      const last = [...heapInsert(A, 10, 12, 10)].at(-1);
+      ok(last.heapSize === 11 &&
+        JSON.stringify(last.array) === JSON.stringify([15, 13, 9, 5, 12, 8, 7, 4, 0, 6, 10, 1]),
+        'INSERT：习题 6.5-2 原数据（容量 12、A.heap-size = 10）的终态与手工推导一致'
+        + '（新元素落在第 11 格，覆盖掉那一格里早已摘出堆的 2）');
+      ok(isMaxHeap(last.array, 11), 'INSERT：heap-size 情形下堆区 A[1 : 11] 仍是最大堆');
+      ok(last.counts.cmp === 1 && last.counts.move === 1,
+        'INSERT：6.5-2 只比一次就停（父 A[5] = 12 ≥ 10，不上浮）');
+      const d = [...heapInsert(A, 10, A.length + 1)].at(-1);
+      const e = [...heapInsert(A, 10, A.length + 1, A.length)].at(-1);
+      ok(JSON.stringify(d.array) === JSON.stringify(e.array) && d.heapSize === e.heapSize,
+        'INSERT：省略 heap-size 与显式传 A.length 结果完全相同');
     }
     // 与原书 BUILD-MAX-HEAP′（习题 6-1）等价：逐个插入也能建出最小最大堆（可能不同但合法）
     {

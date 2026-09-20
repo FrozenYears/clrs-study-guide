@@ -10,10 +10,14 @@
 //   7 map x to index heap-size in the array
 //   8 MAX-HEAP-INCREASE-KEY(A, x, k)
 //
-// 用法：heapInsert(A, key, capacity)
-//   A        —— 当前的堆（帧里的 array 会随插入长一位）
+// 用法：heapInsert(A, key, capacity, heapSize)
+//   A        —— 整个数组（堆外可能还留着以前摘出去的元素）
 //   key      —— 要插入的键
 //   capacity —— 数组容量 n（第 1 行用来判溢出），默认 = A.length + 1
+//   heapSize —— A.heap-size，默认 = A.length。习题 6.5-2 的
+//               ⟨15,13,9,5,12,8,7,4,0,6; 2,1⟩ 是「数组 12 格、堆区只有前 10 格」，
+//               新元素落在第 11 格、**覆盖掉**那一格里躺着的 2 —— 不传这个参数
+//               就只能演示「堆区正好铺满数组」那种最常见情形。
 //
 // ★ 为什么要先把新元素的键设成 −∞（第 5 行）再调 INCREASE-KEY（第 8 行）？
 //   因为 INCREASE-KEY 第 1 行要求「新键不小于旧键」。设成 −∞ 就恒满足这个前提，
@@ -23,10 +27,13 @@
 
 const NEG_INF_DISPLAY = -1;
 
-export function* heapInsert(A, key = 0, capacity = null) {
+export function* heapInsert(A, key = 0, capacity = null, heapSizeIn = null) {
   const a = A.slice();
   const n = Number.isInteger(capacity) ? capacity : a.length + 1;
-  let heapSize = a.length;
+  let heapSize = Number.isInteger(heapSizeIn) ? Math.max(0, Math.min(heapSizeIn, a.length)) : a.length;
+  // 把值写进 1 基下标 pos：堆区右端若还在数组内部就直接覆盖那一格（那里躺着
+  // 早已摘出堆的老元素），只有确实要长出一格时才 push。
+  const place = (pos, v) => { if (pos - 1 < a.length) a[pos - 1] = v; else a.push(v); };
   const counts = { cmp: 0, move: 0 };
 
   const frame = (line, extra = {}) => ({
@@ -42,7 +49,9 @@ export function* heapInsert(A, key = 0, capacity = null) {
   });
 
   yield frame(1, {
-    note: `if A.heap-size == n：当前堆有 ${heapSize} 个元素，数组容量 n = ${n}。`,
+    note: `if A.heap-size == n：当前堆有 ${heapSize} 个元素，数组容量 n = ${n}`
+      + (heapSize < a.length ? `（数组里另有 ${a.length - heapSize} 格是摘出堆的老元素，不算在堆内）。` : '')
+      + `。`,
   });
 
   if (heapSize >= n) {
@@ -70,7 +79,7 @@ export function* heapInsert(A, key = 0, capacity = null) {
     note: `k = x.key：先把要插入的键 ${key} 存起来 —— 因为第 5 行会把它临时抹掉。`,
   });
 
-  a.push(NEG_INF_DISPLAY);
+  place(heapSize, NEG_INF_DISPLAY);
   yield frame(5, {
     pointers: { i: heapSize },
     highlight: { move: [heapSize] },
@@ -81,7 +90,8 @@ export function* heapInsert(A, key = 0, capacity = null) {
   yield frame(6, {
     pointers: { i: heapSize },
     highlight: { active: [heapSize] },
-    note: `A[A.heap-size] = x：把新对象放到数组最后一位（下标 ${heapSize}）。`
+    note: `A[A.heap-size] = x：把新对象放到堆区的最后一格（下标 ${heapSize}，`
+      + `${heapSize <= a.length ? '覆盖掉那一格里摘出堆的老元素' : '也就是数组新长出的一格'}）。`
       + `此刻它不是合法的堆元素 —— 它比父小得多，但别忘了最大堆只要求「父 ≥ 子」，`
       + `所以真正的问题不在它身上，而在第 8 行要把它抬到正确位置。`,
   });

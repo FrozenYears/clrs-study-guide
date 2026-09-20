@@ -160,7 +160,7 @@ export default {
           invariants: [{ label: '每一帧结束时 A[1 : heap-size] 仍是最大堆（除了刚搬上来的根还没修）' }],
           presets: [
             { name: '原书 Figure 6.1 的堆 ⟨16,14,10,8,7,9,3,2,4,1⟩，取一次最大值', array: [16, 14, 10, 8, 7, 9, 3, 2, 4, 1] },
-            { name: '习题 6.5-1 的堆 ⟨15,13,9,5,12,8,7,4,0,6,2,1⟩，取一次最大值', array: [15, 13, 9, 5, 12, 8, 7, 4, 0, 6, 2, 1] },
+            { name: '习题 6.5-1：⟨15,13,9,5,12,8,7,4,0; 6,2,1⟩（数组 12 格、A.heap-size = 9）取一次最大值', array: [15, 13, 9, 5, 12, 8, 7, 4, 0, 6, 2, 1], args: [9] },
             { name: '只有两个元素：取走根之后堆只剩一项，无需下沉', array: [9, 3] },
           ] },
         { title: '② INCREASE-KEY：把下标 9 的键从 1 抬到 15（原书 Figure 6.5）',
@@ -181,7 +181,7 @@ export default {
           invariants: [{ label: '每一帧结束时（除最后一帧）：堆区长度已经 +1，且 A[1 : heap-size] 是最大堆' }],
           presets: [
             { name: '往 Figure 6.1 的堆里插入键 15 —— 会与 8、14 交换后停在根下', array: [16, 14, 10, 8, 7, 9, 3, 2, 4, 1], args: [15, 11] },
-            { name: '习题 6.5-2：往 ⟨15,13,9,5,12,8,7,4,0,6,2,1⟩ 里插入键 10', array: [15, 13, 9, 5, 12, 8, 7, 4, 0, 6, 2, 1], args: [10, 13] },
+            { name: '习题 6.5-2：往 ⟨15,13,9,5,12,8,7,4,0,6; 2,1⟩（容量 12、A.heap-size = 10）插入键 10', array: [15, 13, 9, 5, 12, 8, 7, 4, 0, 6, 2, 1], args: [10, 12, 10] },
             { name: '插入一个比根还大的键 —— 一路浮到根', array: [16, 14, 10, 8, 7, 9, 3, 2, 4, 1], args: [99, 11] },
             { name: '★ 容量已满（数组 5 个元素、容量也给 5）：应当在第 2 行报 heap overflow', array: [16, 14, 10, 8, 7], args: [5, 5] },
           ] },
@@ -839,10 +839,10 @@ int main(void)
       bookExercises: [
         { id: '6.5-1', page: 176, star: 0,
           statement: 'Suppose that the objects in a max-priority queue are just keys. Illustrate the opera- tion of MAX-HEAP-EXTRACT-MAX on the heap A = ⟨15,13,9,5,12,8,7,4,0; 6,2,1⟩.',
-          hint: '先认清分号：$\\langle 15,13,9,5,12,8,7,4,0; 6,2,1 \\rangle$ 的堆区只有分号**前**的 9 个元素（heap-size = 9）， $6,2,1$ 是堆外残留。照 $\\text{EXTRACT-MAX}$ 五行走：记下 $A[1]=15$ → 把**堆内**最后一个 $A[9]=0$ 搬到根 → heap-size 缩成 8 → 从根下沉：0 先与 13 换、再与 12 换，落在结点 5 停（孩子已出堆）。 终态 $\\langle 13,12,9,5,0,8,7,4; 6,2,1 \\rangle$。 阶段 5 面板 ① 的第 2 组用同一串数字，但把 12 个元素**全当堆区**（动画没有 heap-size 这个参数）， 所以那一组跑出来的是另一种情形，别照抄它的中间态。' },
+          hint: '先认清分号：$\\langle 15,13,9,5,12,8,7,4,0; 6,2,1 \\rangle$ 的堆区只有分号**前**的 9 个元素（A.heap-size = 9），$6,2,1$ 是早已摘出堆外的老元素，本操作不看它们。 照 EXTRACT-MAX 的五行走：记下 $A[1] = 15$ → 把**堆内**最后一个 $A[9] = 0$ 搬到根 → heap-size 缩成 8 → 从根下沉：0 先与 13 换、再与 12 换，落在第 5 位停 （它的孩子该是第 10、11 位，已经在堆外）。 终态的堆区是 $\\langle 13,12,9,5,0,8,7,4 \\rangle$。 第 9 格里留什么要看写法：原书第 2 行是**直接覆盖**（那一格仍是 0）， 本站动画为了让你看见被取走的是 15 而改成交换（那一格是 15）—— 堆区 $A[1 : 8]$ 两种写法完全一样，第 4 行的下沉也只在这 8 格里发生。 阶段 5 面板 ① 的第 2 组就是这组原始数据（A.heap-size = 9），可以逐帧对照。' },
         { id: '6.5-2', page: 176, star: 0,
           statement: 'Suppose that the objects in a max-priority queue are just keys. Illustrate the opera- tion of MAX-HEAP-INSERT (A,10) on the heap A = ⟨15,13,9,5,12,8,7,4,0,6; 2,1⟩.',
-          hint: '按 8 行走：heap-size 10 < 容量 12 → 加 1 → 新位置 $A[11]$ 先设 $-\\infty$ → 调 $\\text{INCREASE-KEY}(A,11,10)$。 上浮只看一次：$11$ 的父是 $\\lfloor 11/2\\rfloor = 5$，$A[5] = 12 \\ge 10$，**不换，就地停**。 终态 $\\langle 15,13,9,5,12,8,7,4,0,6,10; 2,1\\rangle$（heap-size 11）。 阶段 5 面板 ③ 的第 2 组同数组同键，但它把 12 个元素全当堆区、新元素落在 13 号位，父是 8 → 会换一次； 两处结果不同是 heap-size 造成的，不是谁算错。' },
+          hint: '按 8 行走：A.heap-size $= 10 <$ 容量 $12$ ⟹ 不溢出，计数器加 1 变成 11 → 新元素落到**第 11 格**、键先设成 $-\\infty$ → 第 8 行调 $\\text{INCREASE-KEY}(A, 11, 10)$。 上浮只需一次比较：11 的父是 $\\lfloor 11/2 \\rfloor = 5$，$A[5] = 12 \\ge 10$ ⟹ 不换、就地停。 终态 $\\langle 15,13,9,5,12,8,7,4,0,6,10 \\mid 1 \\rangle$，A.heap-size $= 11$。 ★ 一处容易写错的地方：第 11 格原本躺着摘出堆的老元素 $2$，插入时它是被**覆盖**掉的， 所以堆外只剩第 12 格的 $1$，不是「$2,1$」。 阶段 5 面板 ③ 的第 2 组就是这组数据（容量 12、A.heap-size = 10），逐帧对照即可。' },
         { id: '6.5-3', page: 176, star: 0,
           statement: 'Write pseudocode to implement a min-priority queue with a min-heap by writing the procedures MIN-HEAP-MINIMUM, MIN-HEAP-EXTRACT-MIN, MIN-HEAP-DECREASE-KEY, and MIN-HEAP-INSERT.',
           hint: '把每一处"较大/最大"改成"较小/最小"：$\\text{MAX-HEAPIFY}$ → $\\text{MIN-HEAPIFY}$（比较符号反过来）、$\\text{INCREASE-KEY}$ → $\\text{DECREASE-KEY}$、$\\text{MAXIMUM}$ → $\\text{MINIMUM}$。$\\text{MIN-HEAP-INSERT}$ 里那个"先设成 $-\\infty$"要改成"先设成 $+\\infty$"。运行时间完全不变。' },
