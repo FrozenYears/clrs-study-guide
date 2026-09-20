@@ -445,7 +445,7 @@ int main(void)
           hint: '只可能在**叶子**上：任何一个非叶子都有孩子，而父 ≥ 子，所以它不可能是最小值。用下标说就是 $\\lfloor n/2 \\rfloor + 1 \\dots n$。想验证的话，阶段 6 的 C 程序会把最小值找出来并断言它落在叶子区间。' },
         { id: '6.1-5', page: 164, star: 0,
           statement: 'At which levels in a max-heap might the kth largest element reside, for 2 ≤ k ≤ ⌊n/2⌋, assuming that all elements are distinct?',
-          hint: '根（第 1 层）已经被最大值占了，所以第 $k$ 大的元素只可能落在第 $2$ 层及以下 —— 但"能落在多深"取决于 $k$：越大的元素越靠上。可以从 $k = 2,3$ 开始画几个小例子找规律。' },
+          hint: '题干问「第 $k$ 大**可能**在哪几层」，要给的是区间而不是「画例子找规律」。 两头都夹得住：第 $k$ 大的结点上面必有 $k-1$ 个更大的，而祖先链上每个结点都比它大， 所以它**不能在第 1 层**（那是最大值），且深度至多 $k-1$，即**最深层是第 $k$ 层**； 反过来第 $k$ 层真的能放：把 $k-1$ 个较大者沿一条路径从上往下排（$1 \\to 2 \\to \\dots \\to k$ 层）， 每个结点挂一个孩子就够，堆性质处处成立。 所以答案是**第 $2$ 层到第 $\\min(k, \\lfloor \\lg n \\rfloor + 1)$ 层**都可能，中间每层都能构造出来。 注意上界是 $k$ 不是 $\\lg k$：$k = 3$ 时第 3 层也放得下（堆 $\\langle 10,9,1,3,8\\rangle$ 里 8 就是第 3 大）。' },
         { id: '6.1-6', page: 164, star: 0,
           statement: 'Is an array that is in sorted order a min-heap?',
           hint: '递增序：父恒 ≤ 子，满足最小堆性质 → 是。递减序则满足最大堆性质。阶段 6 的 C 程序把这两个方向都断言了（当初写注释时差点想当然答错）。' },

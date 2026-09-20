@@ -485,7 +485,7 @@ int main(void)
           hint: '★ 随机化算法的运行时间不再由输入决定，而是由**随机选择**决定。对于同一输入，两次运行可能不同 —— 所以"最坏情况"变为"最不走运的随机选择序列"，概率极小。我们关心的变成期望。' },
         { id: '7.3-2', page: 193, star: 0,
           statement: 'When RANDOMIZED-QUICKSORT runs, how many calls are made to the random- number generator RANDOM in the worst case? How about in the best case? Give your answer in terms of Θ-notation.',
-          hint: 'RANDOM 只在 RANDOMIZED-PARTITION 里被调用一次，所以要数的是「做了多少次分区」。每个长度 $\\ge 2$ 的子数组恰好被分区一次，递归树 $n$ 个叶 $\\Rightarrow$ 内部结点恒为 $n-1$ —— 与切得多不平衡无关，最坏与最好同阶。' },
+          hint: '结论是**最坏与最好都是 $\\Theta(n)$ 次** $\\text{RANDOM}$ 调用，但别用「$n$ 个叶 $\\Rightarrow$ 内部结点 $n-1$」来推 —— 只有每个内部结点都恰好有两个孩子时那条恒等式才成立，而这里一边划空的情况很常见。 正确的账是这么算的：每次划分消耗掉一个枢轴、剩两个子问题，设划分次数 $P$、结束时非空小区间数 $C$， 则 $P$ 恰好等于「成为过枢轴的元素数」，而 $C = n - P$；每次划分让 $C$ 净增「非空孩子数 $-1$」（$-1$、$0$ 或 $+1$）。 最坏是每次只有一边非空（链式）：$P = n-1$。最好是每边都非空（$n = 2^m - 1$ 时最整齐）： $P = (n-1)/2$。两端都随 $n$ 线性，所以 $\\Theta(n)$。' },
       ] },
   ],
 };
