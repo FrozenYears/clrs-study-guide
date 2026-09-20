@@ -493,7 +493,6 @@ int main(void)
     ],bookExercises:[
      {id:'31.8-1',page:953,star:0,statement:'Prove that if an odd integer n>1 is not a prime or a prime power, then there exists a nontrivial square root of 1, modulo n.',hint:'按素因子分解配对选 ±1 用 CRT 造出 $x$：$x^{2} \\equiv 1$ 但 $x \\neq \\pm 1$ —— 定理 31.34 的反向构造。'},
      {id:'31.8-3',page:953,star:0,statement:'Prove that if x is a nontrivial square root of 1, modulo n, then gcd(x − 1,n) and gcd(x + 1,n) are both nontrivial divisors of n.',hint:'$n \\mid (x-1)(x+1)$ 但 $n \\nmid (x-1)$ 且 $n \\nmid (x+1)$ → 两个 gcd 都落在中间，必然是非平凡因子 —— 这也是 Miller-Rabin"顺手分解"的原理。'},
-     {id:'31.8-3',page:953,star:0,statement:'Prove that if x is a nontrivial square root of 1, modulo n, then gcd(x − 1,n) and gcd(x + 1,n) are both nontrivial divisors of n.',hint:'找 341 的分解 11·31，再用 CRT 说明 $2^{340} \\equiv 1$ 对两个素因子分别成立 —— 基 2 伪素数的完整机制。'},
     ]},
   ],
 };

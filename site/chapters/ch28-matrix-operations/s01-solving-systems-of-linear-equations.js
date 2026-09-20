@@ -531,7 +531,7 @@ int main(void)
      {kind:'judge',q:'任何非奇异矩阵都存在 LUP 分解 —— 这正是「必须选主元」的数学保证。',answer:true,why:'★ analyze 第三条「都存在 LUP 分解（选主元的保证）」；不选主元的朴素 LU 分解则可能中途失败。'},
     ],bookExercises:[
      {id:'28.1-1',page:832,star:0,statement:'Solve the equation ã 1 0 0 4 1 0 −6 5 1 äã x 1 x 2 x 3 ä D ã −7 ä by using forward substitution.',hint:'系数矩阵是下三角：第一行直接读出第一个未知数，此后每行只剩一个新的未知量，把已知量代进去即可。本站 c/matrix_ops.c 里前代那段循环就是这个顺序，可以逐步核对（留意对角元都不是 0）。'},
-     {id:'28.1-2',page:832,star:0,statement:'Find an LU decomposition of the matrix ã 4 −5 6 8 −6 7 12 −7 12 ä :',hint:'若某步主元为 0，说明该矩阵没有无置换的 LU 分解 —— 这正好说明 LUP 的必要性（把 $P$ 加进来即可）。'},
+     {id:'28.1-2',page:832,star:0,statement:'Find an LU decomposition of the matrix ã 4 −5 6 8 −6 7 12 −7 12 ä :',hint:'这题要的是**具体分解**，不是讨论主元为零会怎样。 按 $\\text{LU-DECOMPOSITION}$ 逐列消元，三行依次是 $4,-5,6$；$8,-6,7$；$12,-7,12$： 第一列主元 4，乘数 $l_{21} = 8/4 = 2$、$l_{31} = 12/4 = 3$，消完第二行剩 $0,4,-5$、第三行剩 $0,8,-6$； 第二列主元 4（不是 0），乘数 $l_{32} = 8/4 = 2$，第三行剩 $0,0,4$。 三个主元 $4,4,4$ 全不为零，所以不加置换就能分解：$U$ 的三行是 $4,-5,6$；$0,4,-5$；$0,0,4$， $L$ 对角线全 1、下三角依次填 $l_{21}=2$、$l_{31}=3$、$l_{32}=2$。 最后把 $LU$ 乘回去逐格核对一遍（第 2 行应为 $2 \\times (4,-5,6) + (0,4,-5) = (8,-6,7)$）—— 乘数下标别写反，$l_{32}$ 不是 $l_{23}$。'},
      {id:'28.1-3',page:832,star:0,statement:'Solve the equation ã 1 5 4 2 0 3 5 8 2 äã x 1 x 2 x 3 ä D ã ä by using an LUP decomposition.',hint:'按 LUP 走三步：带选主元地分解出 L、U、P；把同一套行置换作用到右端向量上；先前代解 $Ly = Pb$，再回代解 $Ux = y$。最容易漏的就是第二步 —— 忘了同步置换右端向量，解出来的是另一个方程组的解。'},
     ]},
   ],

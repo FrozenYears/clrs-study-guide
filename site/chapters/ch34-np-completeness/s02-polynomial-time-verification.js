@@ -438,7 +438,7 @@ int main(void)
           hint: '证书取从 $u$ 到 $v$ 的顶点序列；验证其简单性、端点与逐边存在性均多项式时间。' },
         { id: '34.2-7', page: 1060, star: 0,
           statement: 'Show that the hamiltonian-path problem from Exercise 34.2-6 can be solved in polynomial time on directed acyclic graphs. Give an efficient algorithm for the problem.',
-          hint: '在 DAG 上做拓扑排序后动态规划：dp[v][S] 是否到达 v 且走过集合 S；|S| 指数但 DAG 上可用最长路思想在多项式内求解 HAM-PATH。' },
+          hint: '别把上一题（34.2-6 的通用图算法）的子集 DP 直接搬过来：dp[v][S] 有 $|V| \\cdot 2^{|V|}$ 个状态， 它本身就是指数级的，说不出口「多项式」。DAG 上真正的事实是：**哈密顿路径就是最长路**， 而 DAG 的最长路按拓扑序扫一遍就能算出来。做法：先拓扑排序，再按拓扑序取 $len[v] = 1 + \\max_{(u,v) \\in E} len[u]$（没有前驱则 $len[v] = 1$），同时记下取到最大的那个 $u$ 作 $pred[v]$； 最后看 $\\max_v len[v]$ 是否等于 $|V|$ —— 等于就沿 $pred$ 从那个 $v$ 回溯出整条路径。 总时间 $O(V+E)$。为什么等价：路径不重复经过顶点，所以长度至多 $|V|$，能取到 $|V|$ 就是哈密顿路径； 反过来哈密顿路径当然是最长的那条。再想一想这招在有环图上为什么不灵（环可以反复绕，最长路根本不存在）。' },
         { id: '34.2-8', page: 1060, star: 0,
           statement: 'Let Ω be a boolean formula constructed from the boolean i nput variables x 1 ,x 2 ; …,x k , negations (:), ANDs (^), ORs (_), and parentheses. The formula Ω is a tautology if it evaluates to 1 for every assignment of 1 and 0 to the input variables. Define TAUTOLOGY as the language of boolean formulas that are tautologies. Show that TAUTOLOGY 2 co-NP.',
           hint: '重言式属于 co-NP：其补语言（非重言式）可由「给一个使公式为 0 的赋值」作为证书在 NP 验证。' },

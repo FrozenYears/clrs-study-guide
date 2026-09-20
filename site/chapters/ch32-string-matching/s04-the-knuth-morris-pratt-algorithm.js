@@ -405,7 +405,7 @@ int main(void)
     ],bookExercises:[
      {id:'32.4-1',page:984,star:0,statement:'Compute the prefix function Ω for the pattern ababbabbabbababbabb .',hint:'照 C 程序 compute_prefix 的递推逐位算：每一步沿失败链回退后看能否延长。'},
      {id:'32.4-4',page:985,star:0,statement:'Use an aggregate analysis to show that the running time of KMP-MATCHER is Θ(n).',hint:'聚集分析：q 的每次上升 ≤ 1 且非负 → 总回退 ≤ n —— 本关"收支账本"的推导就是答案。'},
-     {id:'32.4-7',page:985,star:0,statement:'Give a linear-time algorithm to determine whether a text T is a cyclic rotation of another string T 0 . For example, braze and zebra are cyclic rotations of each other.',hint:'$T$ 是 $T′$ 的循环旋转 ⟺ $T$ 出现在 $TT′$ 中（长度 $2n$）—— 用 KMP 在 $TT′$ 里找 $T$，线性时间。'},
+     {id:'32.4-7',page:985,star:0,statement:'Give a linear-time algorithm to determine whether a text T is a cyclic rotation of another string T 0 . For example, braze and zebra are cyclic rotations of each other.',hint:'判据是「$T$ 出现在 $T’T’$ 里」—— 拼接的是**同一个串自己接自己**，不是 $TT’$： 后者以 $T$ 开头，位移 0 处永远命中，什么也判不出来。 两串长度不等直接否；等长时「$T$ 是 $T’$ 的循环旋转」$\\iff$「$T$ 是 $T’T’$ 的子串」， 而且只需看起点 $\\le n$ 的那几个位移。 做法：拼出长度 $2n$ 的 $T’T’$，用 32.2 的 KMP（$\\text{COMPUTE-PREFIX-FUNCTION}$ 加 $\\text{STRING-MATCHER}$） 在其上匹配 $T$，$O(n) + O(2n)$ = 线性。'},
     ]},
   ],
 };

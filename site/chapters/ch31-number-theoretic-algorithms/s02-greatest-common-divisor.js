@@ -486,7 +486,7 @@ int main(void)
     ],bookExercises:[
      {id:'31.2-2',page:915,star:0,statement:'Compute the values (d,x,y) that the call EXTENDED-EUCLID .899,493/ returns.',hint:'手工追一遍递归（899 mod 493 = 406 → 87 → 58 → 29 → 0），再回代拼系数 —— 答案 (29, −6, 11) 已由 C 程序验证。'},
      {id:'31.2-4',page:915,star:0,statement:'Rewrite EUCLID in an iterative form that uses only a constant amount of memory (that is, stores only a constant number of integer values).',hint:'递归只有一层依赖（tail call）：用 while (b != 0) { (a, b) = (b, a % b); } 即可 —— 需要的正是扩展版时多带两个变量的滚动更新。'},
-     {id:'31.2-6',page:916,star:0,statement:'What does EXTENDED-EUCLID (F k + 1 ,F k ) return? Prove your answer correct.',hint:'对奇数 $k$：$(F_{k+1}, F_k) = (1, 0)$；对偶数 $k$：$(-1, F_{k-1} + 1)$。用归纳法沿 EXTENDED-EUCLID 的回代式走一遍 —— C 程序的 Fibonacci 计数实验正好是它的数据。'},
+     {id:'31.2-6',page:916,star:0,statement:'What does EXTENDED-EUCLID (F k + 1 ,F k ) return? Prove your answer correct.',hint:'别硬猜，先算几个小的：照 EXTENDED-EUCLID 的五行手跑 $k = 1..6$， $(d,x,y)$ 依次是 $(1,0,1)$、$(1,0,1)$、$(1,1,-1)$、$(1,-1,2)$、$(1,2,-3)$、$(1,-3,5)$ （关卡里那段 C 程序已经有现成的 extended_euclid 与 fib，改一行把 $x$、$y$ 打出来就能自查）。 $d$ **恒为 1**，因为相邻 Fibonacci 数互素 —— 注意 $\\gcd$ 不可能等于 $-1$。 $x$、$y$ 交替变号、绝对值仍是 Fibonacci 数：$k \\ge 2$ 时 $(d,x,y) = (1, (-1)^{k+1} F_{k-2}, (-1)^k F_{k-1})$， $k=1$ 单独退化（那时 $F_2 = F_1 = 1$）。 证法就是对 $k$ 归纳走回代式：$F_{k+1}$ 除以 $F_k$ 的余数是 $F_{k-1}$，且 $\\lfloor a/b \\rfloor = 1$， 于是回代变成 $(x,y) = (y’, x’ - y’)$ —— 恰是 Fibonacci 递推倒着走。'},
     ]},
   ],
 };

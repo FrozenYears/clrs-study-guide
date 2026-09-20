@@ -12,7 +12,7 @@ export default {
     unlocks:[{label:'25.1 Maximum bipartite matching',url:'#/ch25/s01'}],
     mathKit:[
      {title:'归约构造',body:'$G^{\\prime}$：$s \\to$ 每个 $u \\in L$（容量 1）；每条 $(u,v) \\in E$（容量 1）；每个 $v \\in R \\to t$（容量 1）。'},
-     {title:'整数流',body:'整数容量下最大流**可取整数**（引理 24.9）→ 每条边的流非 0 即 1 → 天然对应匹配。'},
+     {title:'整数流',body:'整数容量下最大流**可取整数**（定理 24.10）→ 每条边的流非 0 即 1 → 天然对应匹配。'},
      {title:'规模',body:'$|V^{\\prime}| = |V| + 2$、$|E^{\\prime}| = |E| + |V| = \\Theta(E)$。'},
     ]},
    {type:'intuition',title:'容量 1 就是"至多选一次"',scene:'Figure 24.8 的二分图（C 程序 Part 3）',body:[
@@ -29,9 +29,9 @@ export default {
      {kind:'body',page:694,en:'|E| C |V| \u2264 3 |E|, and so jE 0 j = \u0398(E).',
       zh:'★ 归约后的网络规模：$|E^{\\prime}| = |E| + |V| = \\Theta(E)$。'},
      {kind:'body',page:696,en:'If the capacity function c takes on only integer values, then the maximum flow f produced by the Ford-Fulkerson method has the property that |f| is an integer.',
-      zh:'★★ 整数流定理（引理 24.9 的前提）。'},
+      zh:'★★ **定理 24.10（整数流定理）**：整数容量 ⇒ 最大流可取整数值。'},
      {kind:'body',page:696,en:'The cardinality of a maximum matching M in a bipartite graph G equals the value of a maximum flow f in its corresponding flow network G 0 .',
-      zh:'★★ **推论 24.10**：最大匹配大小 = 对应流网络的最大流值。'},
+      zh:'★★ **推论 24.11**：最大匹配大小 = 对应流网络的最大流值。'},
     ],terms:[{en:'bipartite matching',zh:'二分匹配',page:693},
               {en:'integer-valued',zh:'整数值的流',page:695}]},
    {type:'pseudocode',title:'归约：从匹配到流',algo:'BIPARTITE-MATCHING-VIA-FLOW',signature:'匹配 → 最大流 的归约构造（原书 p.694，本站整理）',page:694,
@@ -228,8 +228,8 @@ int main(void)
              {pc:6,pcCode:'M = {(u,v) : f(u,v) = 1}',c:'`if (mf[u][v] > 0) { printf(...) }`（第 114 行）'}]},
    {type:'analyze',title:'一本账：归约的三个数字',claims:[
      {expr:'\\Theta(E)',when:'归约后网络的边数（$|E| + |V| \\le 3|E|$）',page:694,source:'book'},
-     {expr:'\\text{整数流}',when:'整数容量下最大流可取整数（引理 24.9）',page:696,source:'book'},
-     {expr:'|M| = |f|',when:'最大匹配 = 最大流（推论 24.10）',page:696,source:'book'},
+     {expr:'\\text{整数流}',when:'整数容量下最大流可取整数（定理 24.10）',page:696,source:'book'},
+     {expr:'|M| = |f|',when:'最大匹配 = 最大流（推论 24.11）',page:696,source:'book'},
     ],tables:[{caption:'C 程序 Part 3 的实测',rows:[
       ['量','值'],
       ['|L| / |R|','4 / 3'],
@@ -247,10 +247,10 @@ int main(void)
     derivations:[{kind:'summation',title:'两个方向的对应',steps:[
       {zh:'**匹配 ⇒ 流**：给定匹配 $M$，令 $f$ 在 $s\\to u$、$(u,v) \\in M$、$v \\to t$ 上为 1，其余 0 —— 满足容量与守恒，且 $|f| = |M|$。'},
       {zh:'**流 ⇒ 匹配**：整数流下每条 $(u,v) \\in E$ 的流非 0 即 1；由 $(s,u)$ 容量 1 知每个 u 至多配一条、由 $(v,t)$ 容量 1 知每个 v 至多配一条 → $M$ 是合法匹配。'},
-      {tex:'|M| = |f|',zh:'★ 两方向合起来即推论 24.10。C 程序 part 3 在具体图上验证了这一等号。∎'}]},
+      {tex:'|M| = |f|',zh:'★ 两方向合起来即推论 24.11（要把最大流取成整数值，用的是定理 24.10）。C 程序 part 3 在具体图上验证了这一等号。∎'}]},
      ],
     note:''},
-   {type:'prove',title:'推论 24.10：匹配大小 = 流值',statement:'The cardinality of a maximum matching M in a bipartite graph G equals the value of a maximum flow f in its corresponding flow network G 0 .',page:696,
+   {type:'prove',title:'推论 24.11：匹配大小 = 流值',statement:'The cardinality of a maximum matching M in a bipartite graph G equals the value of a maximum flow f in its corresponding flow network G 0 .',page:696,
     intro:'★ 证明就是上面两个方向的对应；整数性保证"流 → 匹配"这一步不产生半个匹配。',
     steps:[
      {title:'匹配 → 流（正方向）',en:'The Ford-Fulkerson method provides a basis for finding a maximum matching in an undirected bipartite graph G = (V,E) in time polynomial in |V| and |E|.',page:694,
@@ -269,7 +269,7 @@ int main(void)
    {type:'drill',title:'检验一下',items:[
      {kind:'single',q:'归约中每条边（含 s→L 与 R→t）的容量是？',options:['∞','**1**','|V|','边的权重'],answer:1,
       why:'★ 容量 1 对应"每个顶点至多匹配一次"。'},
-     {kind:'single',q:'为什么"流 → 匹配"这一步合法？',options:['因为流量总是 0/1','**因为整数容量下的最大流是整数值的（引理 24.9）**','因为图是二分图','因为 FF 用 BFS'],answer:1,
+     {kind:'single',q:'为什么"流 → 匹配"这一步合法？',options:['因为流量总是 0/1','**因为整数容量下的最大流可取整数值（定理 24.10）**','因为图是二分图','因为 FF 用 BFS'],answer:1,
       why:'★ 整数流保证 f(u,v) ∈ {0,1}，不会出现"半个匹配"。'},
      {kind:'judge',q:'最大匹配的大小可以超过 min(|L|, |R|)。',answer:false,
       why:'★ 匹配边需两端各异 → 上界 min(|L|,|R|)；C 程序 part 3 正是被 |R|=3 卡住。'},
@@ -280,7 +280,7 @@ int main(void)
      {kind:'simulate',q:'C 程序 part 3 的图左右两侧共几个顶点（$|L| + |R|$）？',expect:[7],placeholder:'例如：6',why:'★ code 段标了 $|L|=4$、$|R|=3$，合计 7 个顶点、6 条边。'},
     ],bookExercises:[
      {id:'24.3-1',page:696,star:0,statement:'Run the Ford-Fulkerson algorithm on the flow network in Figure 24.8(c) and show the residual network after each flow augmentation. Number the vertices in L top to bottom from 1 to 5 and in R top to bottom from 6 to 9. For each iteration, pick the augmenting path that is lexicographically smallest.',hint:'先按题面的编号把归约网络画出来：s 连 L 中各点、R 中各点连 t，原来二部图的边从 L 指向 R，全部单位容量。每轮取字典序最小的增广路（逐位比较结点编号），并把增广后的残量网络整张重画 —— 记住已匹配的边在残量图里是反向出现的。'},
-     {id:'24.3-2',page:697,star:0,statement:'Prove Theorem 24.10. Use induction on the number of iterations of the Ford- Fulkerson method.',hint:'对 Ford-Fulkerson 的迭代次数归纳。归纳假设用引理 24.9 的两个方向的映射：匹配 → 同值的流。归纳步就是把一条增广路翻译成匹配里的一条交错路（偶数条边、两端都是未匹配点），于是匹配大小每轮加一，与流值同步增长。'},
+     {id:'24.3-2',page:697,star:0,statement:'Prove Theorem 24.10. Use induction on the number of iterations of the Ford- Fulkerson method.',hint:'先把编号认清，这题就成功了一半：**定理 24.10 是整数流定理** —— 容量全为整数时，Ford-Fulkerson 产出的最大流满足 $|f|$ 为整数、且每条边 $f(u,v)$ 都是整数。 匹配↔流的对应是引理 24.9，「最大匹配 = 最大流」是**推论 24.11**，这三条别串。 对迭代次数归纳：基例是零流，所有 $f(u,v)=0$，显然全整； 归纳步设第 $i$ 轮末 $f$ 全整，第 $i+1$ 轮沿增广路 $p$ 增广 —— 残量容量要么等于 $c(u,v)-f(u,v)$、要么等于 $f(u,v)$，两者都是整数，故瓶颈 $c_f(p)$ 是整数； $p$ 上的边各自加上或减去同一个 $c_f(p)$，$p$ 之外的边一律不动，于是新的 $f$ 仍然全整。 三个要点凑齐才算证完：在残量图上找路、瓶颈取到整数、只有路径上的边被改。'},
      {id:'24.3-3',page:697,star:0,statement:'Let G = (V,E) be a bipartite graph with vertex partition V = L [ R, and let G 0 be its corresponding flow network. Give a good upper bound on the length of any augmenting path found in G 0 during the execution of FORD-FULKERSON .',hint:'看结构：归约网络里只有 s→L、L→R、R→t 三类正向边，匹配边在残量图里反向成 R→L。所以增广路必然形如 s、L、R、L、R、…、t，L 与 R 内部没有边可走 —— 于是不重复访问结点的最长增广路长度是结点个数的线性函数，给出那个界即可。'},
     ]},
   ],

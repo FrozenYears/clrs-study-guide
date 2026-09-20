@@ -839,7 +839,7 @@ int main(void)
       bookExercises: [
         { id: '6.5-1', page: 176, star: 0,
           statement: 'Suppose that the objects in a max-priority queue are just keys. Illustrate the opera- tion of MAX-HEAP-EXTRACT-MAX on the heap A = ⟨15,13,9,5,12,8,7,4,0; 6,2,1⟩.',
-          hint: '照着 Figure 6.5/6.4 的画法来：先画出树，然后按 $\\text{EXTRACT-MAX}$ 的五行走 —— 记下取走的 15、把最后一个元素 1 搬到根上、堆区缩成 11、再下沉修根。阶段 5 面板 ① 的第 2 组预设就是这道题。' },
+          hint: '先认清分号：$\\langle 15,13,9,5,12,8,7,4,0; 6,2,1 \\rangle$ 的堆区只有分号**前**的 9 个元素 （heap-size = 9），$6,2,1$ 是堆外残留，不算进树里、也不参与搬动。 照 $\\text{EXTRACT-MAX}$ 的五行走：记下取走的 $A[1]=15$ → 把**堆内**最后一个 $A[9]=0$ 搬到根 → heap-size 缩成 8（不是 11）→ 从根做一次 MAX-HEAPIFY。下沉两步：根上的 0 先与左孩子 13 交换， 到结点 2 再与 12 交换，落在结点 5 停下（它的孩子已在堆外）。 终态 $\\langle 13,12,9,5,0,8,7,4; 6,2,1 \\rangle$，返回 15。阶段 5 面板 ① 的第 2 组预设就是这道题。' },
         { id: '6.5-2', page: 176, star: 0,
           statement: 'Suppose that the objects in a max-priority queue are just keys. Illustrate the opera- tion of MAX-HEAP-INSERT (A,10) on the heap A = ⟨15,13,9,5,12,8,7,4,0,6; 2,1⟩.',
           hint: '按书上 8 行走：容量够 → $A.\\text{heap-size}$ 加 1 → 记住 $k = 10$ → 把新位置设成 $-\\infty$ → 放进去 → 调用 $\\text{INCREASE-KEY}$ 抬到 10。于是它会从末尾一路与父比较、该换就换。阶段 5 面板 ③ 的第 2 组预设就是这道题。' },
