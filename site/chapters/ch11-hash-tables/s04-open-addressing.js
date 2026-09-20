@@ -511,7 +511,7 @@ int main(void)
      {id:'11.4-3',page:300,star:0,statement:'Consider an open-address hash table with independent uniform permutation hashing and no deletions. Give upper bounds on the expected number of probes in an unsuccessful search and on the expected number of probes in a successful search when the load factor is 3/4 and when it is 7/8.',
       hint:'不成功（Theorem 11.6）：α=3/4 → 1/(1−α)=4；α=7/8 → 8。成功（Theorem 11.8）：α=3/4 → (4/3)·ln 4 ≈ 1.85；α=7/8 → (8/7)·ln 8 ≈ 2.38。这些都是理想假设下的上界。'},
      {id:'11.4-4',page:301,star:0,statement:'Show that the expected number of probes required for a successful search when ˛ = 1 (that is, when n = m), is H m , the mth harmonic number.',
-      hint:'满表（α=1）时成功查找要探完所有 m 个槽：期望 = 1 + 1/2 + 1/3 + … + 1/m = H_m（第 m 个调和数），这正是 Theorem 11.8 公式中令 α→1 的极限。'},
+      hint:'别用「满表要探完所有 $m$ 个槽」来算 —— 那给的是 $(m+1)/2$，不是 $H_m$； 也不能说成「Theorem 11.8 令 $\\alpha \\to 1$ 的极限」：那条公式 $(1/\\alpha)\\ln(1/(1-\\alpha))$ 在 $\\alpha \\to 1$ 时发散，给不出 $H_m$。 正确的账按**插入次序**算： 第 $i$ 个键插入时表里已有 $i-1$ 个占位、空槽比例 $\\frac{m-i+1}{m}$， 均匀散列下它要探到的第一个空槽位置期望是 $\\frac{m}{m-i+1}$； 而成功查找这个键的探测长度恰等于它当初的插入探测长度（它前面那些槽都被占着，否则它不会落在这）。 于是期望 $= \\frac{1}{m}\\sum_{i=1}^{m} \\frac{m}{m-i+1} = \\sum_{j=1}^{m} \\frac{1}{j} = H_m$。'},
     ]},
   ],
 };
