@@ -429,7 +429,7 @@ int main(void)
           hint: '若能在 P 内判定哈密顿性，则逐项「删边 / 加顶点」地贪心构造出环的顶点序列，每步多项式。' },
         { id: '34.2-4', page: 1060, star: 0,
           statement: 'Prove that the class NP of languages is closed under union, intersection, concatenation, and Kleene star. Discuss the closure of NP under complement.',
-          hint: '并/交：并行跑两个验证算法；补：未知——NP 是否对补封闭等价于 NP = co-NP，尚未解决。' },
+          hint: '题干点了四样运算，提示只答了两样。验证器的构造各给一遍（$L_1, L_2 \\in NP$，证书 $c_1, c_2$）： **并**：证书是 $(1, w, c_1)$ 或 $(2, w, c_2)$，指明进哪一个语言； **交**：证书 $(w, c_1, c_2)$，两个都验。 **连接** $L_1 \\circ L_2$：证书要**多给一个分割点** $i$（$0 \\le i \\le |w|$）与两份证书， 验 $w[1..i] \\in L_1$ 且 $w[i+1..|w|] \\in L_2$ —— 猜 $i$ 是多项式长度的信息，这正是 NP 好用的地方。 **Kleene 星** $L_1^{*}$：证书给出段的个数 $k \\le |w|$ 与每段的边界、以及每段的证书，逐段验； 注意 $\\varepsilon$ 恒在 $L^{*}$ 里（取 $k=0$），而如果 $\\varepsilon \\in L_1$，段数仍可由 $|w|$ 界住， 验证器不会因为「空段」而卡住。 补（complement）：未知 —— NP 对补封闭等价于 $NP = co\\text{-}NP$，这是没解决的问题； 说清「不知道」就是这问的答案，不必硬找构造。' },
         { id: '34.2-5', page: 1060, star: 0,
           statement: 'Show that any language in NP can be decided by an algorithm with a running time of 2 O(n k ) for some constant k.',
           hint: '证书长度 $O(n^k)$，枚举全部证书最多 $2^{O(n^k)} = 2^{O(n^k)}$ 种，逐张验证即该界。' },

@@ -460,7 +460,7 @@ int main(void)
       bookExercises: [
         { id: '35.3-1', page: 1119, star: 0,
           statement: 'Consider each of the following words as a set of letters: farid; dash; drain; heard; lost ; nose ; shun; slate; snare; threadg. Show which set cover GREEDY-SET-COVER produces when you break ties in favor of the word that ap- pears first in the dictionary.',
-          hint: '把每个单词看成「字母集合」，求覆盖全部所需字母的最少单词数；例如 {farid, dash, drain, heard, lost, nose, shun, slate, snare, thread} 中选覆盖所有 26 字母的最小子族。' },
+          hint: '题干不是「选最小子族」，也不是覆盖 26 个字母 —— 这 10 个词的并集只有 $\\{a,d,e,f,h,i,l,n,o,r,s,t,u\\}$ **13 个**字母，贪心要跑到把这 13 个全覆盖住为止； 要交的是**GREEDY-SET-COVER 实际产出的那一族**，平局按词典序取最前的词。 逐轮记录（脚本核过）：thread 新覆盖 6 个 → lost 再补 3 个 → drain 补 2 个 → farid 补 1 个 → shun 补最后 1 个， 结果 $\\{\\text{thread, lost, drain, farid, shun}\\}$。 自己走一遍时最容易错的两处：平局要看「词典序最前的词」而不是最先被读到的词； 每轮的「新覆盖数」是跟**当前还没被覆盖的字母**求交，不是词的长度。' },
         { id: '35.3-2', page: 1119, star: 0,
           statement: 'Show that the decision version of the set-covering problem is NP-complete by reducing the vertex-cover problem to it.',
           hint: '顶点覆盖实例 (G,k)：令 X = E(G)，每个顶点 v 对应集合 S_v = {与 v 关联的边}；则大小 ≤ k 的顶点覆盖 ⇔ 覆盖 X 的大小 ≤ k 的子族。' },

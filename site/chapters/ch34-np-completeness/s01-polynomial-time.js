@@ -439,7 +439,7 @@ int main(void)
           hint: '不是：其运行时间含容量 W，而 W 的编码长度仅 $\\lg W$，故相对输入长度是伪多项式（pseudo-polynomial），非真正多项式。' },
         { id: '34.1-5', page: 1055, star: 0,
           statement: 'Show that if an algorithm makes at most a constant number of calls to polynomialtime subroutines and performs an additional amount of work that also takes polynomial time, then it runs in polynomial time. Also show that a polynomial number of calls to polynomial-time subroutines may result in an exponential-time algorithm.',
-          hint: '常数次：多项式常数次幂仍是多项式。多项式次调用时，若每次调用又派生多项式次调用，则总次数可能达 $p(n)^{k}$ 量级，仍多项式——但若用「展开」式递归（如子程序再调用自身多项式次）则会指数爆炸。' },
+          hint: '第一问按「$O(p(n)^{c} \\cdot q(n)^{c})$ 仍是多项式」说就行，卡在第二问： **多项式次调用可以跑出指数时间，诀窍是让传给子程序的输入变大**。 一个干净的反例：子程序是「两个二进制整数相乘」（输入规模是两者位数之和，时间多项式）。 主程序在输入 $1^m$ 上这样做：$x \\leftarrow 2$；然后 $m$ 次令 $x \\leftarrow x \\cdot x$。 调用次数是 $m$ 次（多项式！），但第 $i$ 次之后 $x$ 的位数已经是 $2^{i}$ 的级别， 最后一次乘法本身的输入规模就是指数级 —— 总时间与输出长度 $2^{2^{m}}$ 同阶，是指数。 所以「多项式时间」只对**输入规模的多项式**成立，链条上每一次调用的输入都得被多项式界住； 反过来这题也提醒：写归约时要检查中间量有没有长胖。' },
         { id: '34.1-6', page: 1055, star: 0,
           statement: 'Show that the class P, viewed as a set of languages , is closed under union, inter- section, concatenation, complement, and Kleene star. That is, if L 1 ,L 2 2 P, then L 1 [ L 2 2 P, L 1 \\ L 2 2 P, L 1 L 2 2 P, L 1 2 P, and L − 1 2 P.',
           hint: '两个语言都在 P，判定器直接串起来就行，但对应关系别配反： $L_1 \\cup L_2$ 用**或** —— 并行跑两个判定器，任一接受就接受； $L_1 \\cap L_2$ 用**与** —— 两个都接受才接受。 补集则是把判定器的接受/拒绝反过来。三种情形的时间都是 $O(\\max(T_1, T_2))$，仍是多项式。 写答案时把「并→或、交→与」明确写出来，别让读者去猜语序。' },
