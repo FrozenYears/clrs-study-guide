@@ -436,7 +436,7 @@ int main(void)
           hint: '高度 $h$ 的数的是边数，所以一共 $h+1$ 层。最少：最后一层只放 1 个（$2^h$ 个结点）；最多：最后一层填满（$2^{h+1}-1$ 个结点）。' },
         { id: '6.1-2', page: 163, star: 0,
           statement: 'Show that an n-element heap has height blg nc.',
-          hint: '★ 阶段 7 的推导里有完整两步夹逼：$n \\ge 2^h - 1$ 给上界，$n \\le 2^{h+1} - 1$ 给下界。阶段 6 的 C 程序对 $n = 1 \\dots 1024$ 逐个验证了结论。' },
+          hint: '★ 夹逼要有两条**够紧**的不等式：高 $h$ 的近似完全二叉树，前 $h$ 层（深度 $0 \\dots h-1$）填满共 $2^h-1$ 个， 第 $h$ 层**至少还有 1 个**，所以 $n \\ge 2^h$ —— 别写成 $n \\ge 2^h - 1$，那只能给出 $h \\le \\lg(n+1)$， 在 $n = 2^k - 1$（整层填满）处夹不出唯一整数。上侧用 $n \\le 2^{h+1}-1 < 2^{h+1}$ 得 $h > \\lg n - 1$。 两条合起来，落在 $(\\lg n - 1, \\lg n]$ 里的整数只有一个：$h = \\lfloor \\lg n \\rfloor$。 阶段 6 的 C 程序对 $n = 1 \\dots 1024$ 逐个验证了这个等式。' },
         { id: '6.1-3', page: 164, star: 0,
           statement: 'Show that in any subtree of a max-heap, the root of the subtree contains the largest value occurring anywhere in that subtree.',
           hint: '★ 阶段 8 的第三步就是它。关键观察：子树里任一结点的父链**不会走出这棵子树**，所以沿父链用不等式传递即可。' },

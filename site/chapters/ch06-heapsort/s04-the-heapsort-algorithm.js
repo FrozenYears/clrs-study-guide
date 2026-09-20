@@ -602,10 +602,10 @@ int main(void)
           hint: '★ 阶段 8 的三步就是这道题的参考论证。要点：① 初始时第二半是空区间，"已排序"对空区间自动成立；② 每轮要把"有序性"与"元素归属"两件事**分别**验证（前者靠新放入的 $A[i]$ 大于已排序区全部元素，后者靠计数）；③ 循环在 $i = 2$ 之后结束时，第二半已覆盖 $A[2:n]$，加上第 1 位剩下的最小值，整个数组有序。' },
         { id: '6.4-3', page: 172, star: 0,
           statement: 'What is the running time of HEAPSORT on an array A of length n that is already sorted in increasing order? How about if the array is already sorted in decreasing order?',
-          hint: '两种情况都是 $\\Theta(n\\lg n)$ —— 堆排序对输入顺序不敏感。递增输入只会让**建堆**那一步少做几次交换，而主体循环的 $n-1$ 轮一次都少不了。阶段 6 的 C 程序实测 $n=32$ 时递增 231、递减 202、随机 224 次比较。想清楚"为什么递减输入也没变快"：递减数组本身就是最大堆，建堆几乎不用干活，但每轮的 MAX-HEAPIFY 照样要走满。' },
+          hint: '两种都是 $\\Theta(n\\lg n)$ —— 堆排序对输入顺序不敏感，但**别把方向记反**： 递减数组 $A[i] \\ge A[2i]$ 本来就满足最大堆性质，BUILD-MAX-HEAP 一次交换都不做； 反过来递增数组每个内部结点都违例，建堆最费。省下建堆也省不掉主体： HEAPSORT 的 $n-1$ 轮里堆顶换上来的是堆尾小元素，MAX-HEAPIFY 照样要往下走。 阶段 6 的 C 程序实测 $n=32$ 时递增 231、递减 202、随机 224 次比较 —— 递增最多、递减最少，正是这个方向。' },
         { id: '6.4-4', page: 172, star: 0,
           statement: 'Show that the worst-case running time of HEAPSORT is Ω(n lg n).',
-          hint: '★ 与"下界"的通常证法不同：这里**顺序无关**。思路是数比较次数 —— 每轮的 MAX-HEAPIFY 至少要做常数次比较，而它处理的是一个规模不小于某个值的堆；把这 $n-1$ 轮加起来就能得到 $\\Omega(n\\lg n)$。阶段 6 的 C 程序换了个方向验证：对每个 $n$ 测 60 组互异输入，取**最少**的比较次数，仍然不低于 $n\\lfloor\\lg n\\rfloor/4$ —— 也就是说连"最好情况"都逃不掉这个量级。' },
+          hint: '★ 「每轮至少常数次比较 × $n-1$ 轮」只给得出 $\\Omega(n)$，凑不出 $n\\lg n$，这条路不通。 两条走得通的：(1) **构造最坏的输入**，让前 $n/2$ 轮里每轮下沉都到底 —— 堆规模 $\\ge n/2$ 的轮有 $n/2$ 轮， 每轮 $\\Omega(\\lg n)$ 次比较，合计 $\\Omega(n\\lg n)$。(2) 更省事：HEAPSORT 是比较排序， 第 8 章定理 8.1 直接给出最坏情况 $\\Omega(n\\lg n)$（决策树至少 $n!$ 个叶子）。 阶段 6 的 C 程序换了个方向做实证：对每个 $n$ 测 60 组互异输入取**最少**的比较次数，仍不低于 $n\\lfloor\\lg n\\rfloor/4$。' },
       ] },
   ],
 };
