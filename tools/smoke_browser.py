@@ -6,6 +6,7 @@
 
 用法：python tools/smoke_browser.py [port]
 """
+import html as html_mod
 import os
 import re
 import subprocess
@@ -481,6 +482,17 @@ def visible_text(html):
     return re.sub(r"<[^>]+>", " ", txt)
 
 
+def plain_text(html):
+    """去掉标签并解开实体，得到「读者在页面上读到的那一行字」。
+
+    visible_text() 不行：它为了查渲染印记会整块丢掉 <pre>/<code>。
+    代码块自从上了语法高亮，一行 C 代码被切成许多 <span>，
+    按原始 HTML 做子串匹配的行内代码断言就会失效（#/ch02/s01/s06 栽过一次），
+    所以匹配要看这份文本。
+    """
+    return html_mod.unescape(re.sub(r"<[^>]+>", "", html))
+
+
 def hygiene(html):
     """渲染印记检查：返回问题清单。
 
@@ -517,7 +529,11 @@ def main():
         #   在源码里被误命中。这里先把脚本与样式内容剥掉，只看真正渲染出来的 DOM。
         html = re.sub(r"<script[\s\S]*?</script>", "", raw)
         html = re.sub(r"<style[\s\S]*?</style>", "", html)
-        missing = [m for m in must if m not in html]
+        # 断言既允许命中原始 HTML，也允许命中「去掉标签并解开实体」后的可读文本：
+        # 代码块上语法高亮后一行被切成许多 <span>，只看原始 HTML 会误报「缺少」。
+        flat = plain_text(html)
+        missing = [m for m in must
+                   if m not in html and html_mod.unescape(m) not in flat]
         present = [m for m in mustnot if m in html]
         uncaught = re.findall(r"Uncaught[^\n]*", err)
         dirty = hygiene(html)
