@@ -199,9 +199,9 @@ int main(void)
       type: 'drill',
       title: '检验一下',
       items: [
-        { kind: 'single', q: 'Akra–Bazzi 相比主方法最关键的扩展是什么？', options: ['允许负的子问题权重', '允许不同子问题使用不同的缩小比例', '完全不需要驱动函数', '只适用于整数 n'], answer: 1, why: '式 (4.22) 中每个 bᵢ 可以不同，主方法的等比例限制被放宽（p.115）。' },
+        { kind: 'single', q: 'Akra–Bazzi 相比主方法最关键的扩展是什么？', options: ['允许权重 $a_i$ 取负数，从而覆盖有相减的递推', '允许不同子问题使用不同的缩小比例', '完全不需要驱动函数 $g(n)$，没有这一项', '只适用于整数 n'], answer: 1, why: '式 (4.22) 中每个 bᵢ 可以不同，主方法的等比例限制被放宽（p.115）。' },
         { kind: 'judge', q: '平衡指数 p 满足 Σ aᵢ/bᵢᵖ=1。', answer: true, why: '这是 Akra–Bazzi 方法的第一步（p.117）。' },
-        { kind: 'single', q: '示例 T(n)=T(n/5)+T(7n/10)+n 中，为什么 p 在 0 与 1 之间？', options: ['因为 p 被定义为 1/2', 'p=0 时和为 2，p=1 时和为 0.9，且左侧随 p 下降', '因为 n 总是整数', '因为积分不存在'], answer: 1, why: '书中用端点代入夹住 p，再利用单调性（p.117–118）。' },
+        { kind: 'single', q: '示例 T(n)=T(n/5)+T(7n/10)+n 中，为什么 p 在 0 与 1 之间？', options: ['因为 $p$ 在定理里就被定为 $1/2$，是预先给定的常数，不是算出来的', 'p=0 时和为 2，p=1 时和为 0.9，且左侧随 p 下降', '因为 n 总是整数', '因为积分不存在'], answer: 1, why: '书中用端点代入夹住 p，再利用单调性（p.117–118）。' },
         { kind: 'single', q: '当 f(x)=x 且 0<p<1 时，积分项的主阶是什么？', options: ['$n^p$', '$n^{1-p}$', '$\\lg n$', '$1/n$'], answer: 1, why: '∫x^{-p}dx=(n^{1-p}−1)/(1−p)，且 1−p>0（p.118）。' },
         { kind: 'judge', q: '只要 f(Θ(n))=Θ(f(n))，就一定可以忽略 Akra–Bazzi 递归中的 floors 和 ceilings。', answer: false, why: '书中特别指出 polynomial-growth condition 比这个直觉说法更强；需要满足正式条件（p.116）。' },
         { kind: 'simulate', q: '示例在 p=0 时平衡方程左侧是多少？', expect: [2], placeholder: '例如：2', why: '(1/5)^0+(7/10)^0=1+1=2。' },

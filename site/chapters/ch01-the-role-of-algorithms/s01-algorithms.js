@@ -479,7 +479,7 @@ int main(void) {
         {
           kind: 'single',
           q: '下面哪一种**不是** 1.1 里给出的「算法可以是」的形式？',
-          options: ['用英语写的描述', '计算机程序', '硬件设计', '某个具体编程语言的库函数'],
+          options: ['用英语写的描述，只要精确到没有歧义', '计算机程序', '硬件设计', '某个具体编程语言的库函数'],
           answer: 3,
           why: '原话是 An algorithm can be specified in English, as a computer program, or even as a hardware design，唯一的条件是描述必须精确。它刻意不绑定任何语言或库 —— 这也是本书能用伪代码的理由。',
         },
@@ -489,7 +489,7 @@ int main(void) {
           options: [
             '答案无法验证',
             '候选解极多，绝大多数不解决问题',
-            '必须用递归才能写出来',
+            '必须用上递归，否则根本写不出对应的算法',
             '只能在多核机器上加速',
           ],
           answer: 1,

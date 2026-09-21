@@ -219,7 +219,7 @@ int main(void)
         { kind: 'single', q: '情况 2 比情况 1 多出的一个 lg n 来自哪里？', options: ['每个结点都多算一次乘法，一层层乘出了 $\\lg n$', '递归树高度约为 lg_b n，临界层成本需要跨层相加', '基例从 1 换成 $n_0$，树就多出整整一层', '临界情形里 $a$ 要按 $a + 1$ 来计算'], answer: 1, why: '临界时各层在同一主尺度上，约 lg n 层相加（p.109–114）。' },
         { kind: 'judge', q: '情况 3 只需要 f(n)=Ω(n^{log_b a+ε})，不需要正则性条件。', answer: false, why: '连续主定理还要求 af(n/b)≤cf(n)，且 c<1；这保证内部层向下几何下降（p.112、114）。' },
         { kind: 'simulate', q: '取 a=4、b=2、n=16、f(x)=x，按 g(n)=Σ4ʲf(16/2ʲ) 计算内部节点总成本。', expect: [496], placeholder: '例如：496', why: '四层加上叶前一层的账为 16·(1+2+4+8+16)=496。' },
-        { kind: 'single', q: 'Theorem 4.4 用 T′(n)=T(n₀n) 的目的是什么？', options: ['改变渐进阶', '把任意阈值 n₀ 缩放为 Lemma 4.2 使用的阈值 1', '删除驱动函数', '把实数递归变成整数递归'], answer: 1, why: '尺度变换让简化引理可用，再把常数 n₀ 吸收到渐进记号中（p.113–114）。' },
+        { kind: 'single', q: 'Theorem 4.4 用 T′(n)=T(n₀n) 的目的是什么？', options: ['改变渐进阶：换成 $T(n_0 n)$ 之后增长阶也跟着变了', '把任意阈值 n₀ 缩放为 Lemma 4.2 使用的阈值 1', '删除驱动函数', '把定义在实数上的递归变成只在整数上成立的递归'], answer: 1, why: '尺度变换让简化引理可用，再把常数 n₀ 吸收到渐进记号中（p.113–114）。' },
       ],
       bookExercises: [
         { id: '4.6-1', page: 114, star: 0, statement: 'Show that P blog b nc j D0 (log b n − j) k = Ω(log k + 1 b n).', hint: '令 $L = \\lfloor \\log_b n \\rfloor$，把求和指标倒过来（$r = L - j$）：$\\sum_{j=0}^{L} (\\log_b n - j)^k = \\sum_{r=0}^{L} (\\log_b n - L + r)^k \\ge \\sum_{r=0}^{L} r^k$，最后一步用了 $\\log_b n \\ge L$。不必算整段：只留 $r$ 从 $\\lceil L/2 \\rceil$ 到 $L$ 的项，每项 $\\ge (L/2)^k$、至少 $L/2$ 项，合计 $\\ge (L/2)^{k+1}$。再把 $L$ 换回来：$\\log_b n \\ge 1$ 时 $L \\ge (\\log_b n)/2$，所以原式 $\\ge ((\\log_b n)/4)^{k+1}$，即 $\\Omega((\\log_b n)^{k+1})$。★ 题目要的就是「取一半项」这种放缩，别去背幂和公式。' },
