@@ -416,6 +416,98 @@
   opacity: 0.55;
 }
 
+/* ---------- 错题本（#/wrong） ----------
+ * 排版取「档案卡」意：一组 = 一关，组内每题一张卡。
+ * 「你的答案 / 正确答案」用状态色对置，且颜色之外还有文字标签 ——
+ * 色觉障碍下也读得出来（与可视化引擎同一条原则）。
+ */
+.wb-lede {
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--fg-1);
+}
+.wb-lede b {
+  font-family: var(--font-mono);
+  color: var(--fg-0);
+}
+
+.wb-group {
+  border-top: 2px solid var(--fg-0);
+  padding-top: var(--sp-3);
+}
+.wb-group__head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-3);
+}
+.wb-group__title {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--fs-lg);
+  font-weight: 700;
+}
+.wb-group__count {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--fg-2);
+}
+.wb-group__head .spacer,
+.wb-item__head .spacer {
+  flex: 1 1 auto;
+}
+
+.wb-item {
+  border: var(--bd-w) solid var(--bd-0);
+  border-left: 3px solid var(--c-err);
+  border-radius: var(--radius-sm);
+  background: var(--bg-1);
+  padding: var(--sp-3) var(--sp-4);
+  margin-bottom: var(--sp-3);
+}
+.wb-item__head {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-2);
+}
+.wb-item__kind {
+  font-size: var(--fs-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg-2);
+}
+.wb-item__id {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--fg-2);
+}
+.wb-item__q {
+  margin: 0 0 var(--sp-2);
+  font-family: var(--font-sans);
+  line-height: var(--lh-base);
+}
+.wb-item__ans {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2) var(--sp-5);
+  font-size: var(--fs-sm);
+}
+.wb-ans--bad {
+  color: var(--c-err);
+}
+.wb-ans--ok {
+  color: var(--c-ok);
+}
+.wb-item__why {
+  margin: var(--sp-2) 0 0;
+  padding-left: var(--sp-3);
+  border-left: 2px solid var(--bd-0);
+  font-size: var(--fs-sm);
+  color: var(--fg-1);
+  line-height: var(--lh-base);
+}
+
 /* ---------- 提示框（callout） ---------- */
 .callout {
   border-radius: var(--radius-sm);

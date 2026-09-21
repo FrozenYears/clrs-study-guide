@@ -907,8 +907,32 @@ function rDrill(stage, ctx) {
     if (ctx.onStageDone) ctx.onStageDone('drill', score);
   }
 
-  function setResult(i, ok, whyEl) {
+  /**
+   * 判一道题，并同步错题本。
+   * ★ 错题本此前只有数据层、没有任何写入点，等于建了本子从不记事（A1 的根因）。
+   *   id 用「关卡 + 题序」，与题干解耦：题干日后被校订，同一条错题仍能对上。
+   *   答对即从错题本移除 —— 重做答对就该销案，不然本子只会单向膨胀。
+   */
+  function setResult(i, ok, whyEl, picked) {
     results[i] = ok;
+    const it = items[i] || {};
+    const id = `${ctx.ch}/${ctx.section}/q${i + 1}`;
+    if (ok) {
+      store.clearWrong(id);
+    } else {
+      store.addWrong({
+        id,
+        ch: ctx.ch,
+        sec: ctx.section,
+        kind: it.kind,
+        q: it.q,
+        options: it.kind === 'single' ? (it.options || []).map((o) => (typeof o === 'string' ? o.replace(/\*\*/g, '') : o)) : null,
+        answer: it.kind === 'single' || it.kind === 'judge' ? it.answer : null,
+        expect: it.kind === 'simulate' ? it.expect : null,
+        why: it.why || null,
+        picked: picked == null ? null : String(picked),
+      });
+    }
     if (whyEl) {
       whyEl.removeAttribute('hidden');
       whyEl.dataset.ok = ok ? '1' : '0';
@@ -934,7 +958,7 @@ function rDrill(stage, ctx) {
               if (opts[bi][1] === it.answer) b.classList.add('is-correct');
               if (opts[bi][1] === val && !ok) b.classList.add('is-wrong');
             });
-            setResult(i, ok, why);
+            setResult(i, ok, why, label);
           },
         }, label)
       );
@@ -957,7 +981,7 @@ function rDrill(stage, ctx) {
               if (order[bi] === it.answer) b.classList.add('is-correct');
               if (bi === pos && !ok) b.classList.add('is-wrong');
             });
-            setResult(i, ok, why);
+            setResult(i, ok, why, opts[src]);
           },
         }, katex.renderMixed(typeof opts[src] === 'string' ? opts[src].replace(/\*\*/g, '') : opts[src]))
       );
@@ -969,7 +993,7 @@ function rDrill(stage, ctx) {
         const got = inp.value.trim().split(/[\s,，]+/).filter(Boolean).map(Number);
         const exp = it.expect.map(Number);
         const ok = got.length === exp.length && got.every((v, k) => v === exp[k]);
-        setResult(i, ok, why);
+        setResult(i, ok, why, inp.value.trim());
       } }, '检查');
       body = h('div', { class: 'row' }, inp, check);
     } else {

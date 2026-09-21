@@ -31,6 +31,9 @@ CASES = [
     #   这条期望换成第一章的目录条目（它同时验证地图能渲染新章）。
     ("#/", ["闯关式学习站", "toc__row", "Part I Foundations", "算法在计算中的作用", "从这里开始"],
      ["页面走丢了", "card--link"]),
+    # 错题本（A1）：无头浏览器每次都是全新 profile，本机存档为空 —— 断言空状态。
+    ("#/wrong", ["错题本是空的", "闯关测验里答错的题会自动记到这里", "回到学习地图"],
+     [NOT_PENDING, "页面走丢了"]),
     # 阶段顺序：s01=map s02=intuition s03=source s04=pseudocode
     #           s05=visualize s06=code s07=analyze s08=prove s09=drill
     # 注意：每个阶段用的是关卡文件里的**自定义标题**，不是类型名。

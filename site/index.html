@@ -21,6 +21,7 @@
         <a class="brand" href="#/">算法导论 · 闯关式学习站</a>
         <span class="spacer"></span>
         <span class="header-progress" id="header-progress" aria-live="polite"></span>
+        <a id="wrong-link" class="btn btn--ghost btn--sm" href="#/wrong">错题本</a>
         <button id="theme-toggle" class="btn btn--ghost btn--sm" type="button" aria-label="切换主题">
           主题：自动
         </button>
@@ -42,6 +43,7 @@
       import * as katex from "./assets/core/katex.js";
       import { getChapter } from "./assets/chapters.js";
       import { renderChapter } from "./assets/ui/chapter-view.js";
+      import { renderWrong } from "./assets/ui/wrong-view.js";
 
       /* ----------------------------------------------------------------------
        * 九段式关卡：每关固定 9 个阶段（见 docs/开发规范.md 4.2）。
@@ -219,6 +221,15 @@
       });
       store.applyTheme();
       refreshThemeLabel();
+
+      /* ---------------- 顶栏的错题本入口 ---------------- */
+      function refreshWrongLink() {
+        const el = $("#wrong-link");
+        if (!el) return;
+        const n = store.getWrong().length;
+        el.textContent = n ? "错题本 " + n : "错题本";
+        el.setAttribute("aria-label", n ? "错题本，" + n + " 道待回炉" : "错题本，当前为空");
+      }
 
       /* ---------------- 顶栏的全局进度 ---------------- */
       function refreshHeaderProgress() {
@@ -423,20 +434,26 @@
         refreshHeaderProgress();
       }
 
-      router.onChange((route) => {
+      function teardownView() {
         if (currentView && currentView.destroy) {
           try { currentView.destroy(); } catch (e) { console.error(e); }
         }
         currentView = null;
+      }
+
+      /**
+       * 渲染一条路由。
+       * ★ 必须是具名函数：错题本里「移除一条」之后页面当场就短了，得就地重画，
+       *   不能等 hash 变化（hash 没变，onChange 不会再触发）。
+       */
+      function renderRoute(route) {
+        teardownView();
         main.replaceChildren();
 
-        if (route.kind === "home") {
-          renderHome();
-          window.scrollTo(0, 0);
-          return;
-        }
-
-        if (route.kind === "chapter" || route.kind === "appendix") {
+        if (route.kind === "wrong") {
+          currentView = renderWrong({ onMutate: () => renderRoute(route) });
+          main.appendChild(currentView.node);
+        } else if (route.kind === "chapter" || route.kind === "appendix") {
           const chapter = getChapter(route.ch);
           if (chapter) {
             currentView = renderChapter(chapter, route);
@@ -444,14 +461,18 @@
           } else {
             main.appendChild(renderPending(route));
           }
-          refreshHeaderProgress();
-          window.scrollTo(0, 0);
-          return;
+        } else if (route.kind === "home") {
+          main.appendChild(renderMap());
+        } else {
+          main.appendChild(router.view404());
         }
 
-        main.appendChild(router.view404());
         refreshHeaderProgress();
-      });
+        refreshWrongLink();
+        window.scrollTo(0, 0);
+      }
+
+      router.onChange(renderRoute);
       router.start();
 
       /* 进度变化（做完某一段、测验得分）时刷新顶栏与目录上的读数 */
@@ -462,6 +483,7 @@
         } else {
           refreshHeaderProgress();
         }
+        refreshWrongLink();
       });
     </script>
   </body>

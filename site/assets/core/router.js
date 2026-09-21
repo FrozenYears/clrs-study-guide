@@ -49,6 +49,11 @@ export function parse(hash) {
 
   if (segments.length === 0) return base;
 
+  // 错题本：不是「章」也不是「附录」，单独一档（#/wrong）
+  if (segments[0] === "wrong") {
+    return Object.assign(base, { kind: "wrong" });
+  }
+
   if (segments[0] === "appendix") {
     const letter = (segments[1] || "").toLowerCase();
     if (!APPENDIX_LETTERS.includes(letter) || segments.length < 2) {

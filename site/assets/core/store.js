@@ -231,12 +231,23 @@ export function chapterDone(ch, sec) {
 }
 
 /* ---------- 错题本 ---------- */
+/**
+ * 记一条错题。
+ * ★ id 由调用方给（`ch/sec/qN`），同一题重复答错只累加次数、刷新内容，不堆叠条目 ——
+ *   否则一道题错三次就是三条记录，错题本会越用越乱（重做判对时也才有确定的 id 可清）。
+ */
 export function addWrong(item) {
   const s = load();
-  const entry = Object.assign(
-    { id: `w${Date.now()}-${Math.random().toString(36).slice(2, 7)}`, at: Date.now() },
-    item || {}
-  );
+  const entry = Object.assign({ at: Date.now(), times: 0 }, item || {});
+  const id = entry.id || `w${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
+  const hit = s.wrong.find((w) => w.id === id);
+  if (hit) {
+    Object.assign(hit, entry, { id, times: (hit.times || 1) + 1 });
+    save();
+    return hit;
+  }
+  entry.id = id;
+  entry.times = 1;
   s.wrong.push(entry);
   save();
   return entry;
