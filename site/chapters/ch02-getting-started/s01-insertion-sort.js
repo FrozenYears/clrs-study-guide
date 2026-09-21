@@ -254,7 +254,7 @@ export default {
           zh:
             '★ 对你有用的正是第二段。你有 C 基础，一定会被"书上从 1 开始、C 从 0 开始"绊到。' +
             '书上给了两个做法：**每个下标都减 1**，或者**多开一格、把 0 号位空着不用**。' +
-            '本站后面所有 C 代码统一用第一种（下标减 1），并在阶段 5 给你完整的对应表。',
+            '本站后面所有 C 代码统一用第一种（下标减 1），并在阶段 6 给你完整的对应表。',
         },
         {
           kind: 'remark',
@@ -340,7 +340,7 @@ export default {
       lines: [
         { n: 1, code: 'for i = 2 to n', zh: 'i 是「现在要插哪一张牌」。从第 2 张开始，因为只有 1 张牌时天然有序。注意循环结束时 i 会变成 n + 1（书上 p.22 专门讲了这一点）。' },
         { n: 2, code: '    key = A[i]', zh: '把当前这张牌先拿出来攥在手里，记作 key。为什么要先拿出来？因为下一步右移会覆盖掉 A[i] 这个位置。' },
-        { n: 3, code: '    // Insert A[i] into the sorted subarray A[1 : i − 1].', zh: '注释行。书上 p.29 明确说「注释不是可执行语句，不计时间」，所以阶段 6 的代价表里它的 cost 是 0。' },
+        { n: 3, code: '    // Insert A[i] into the sorted subarray A[1 : i − 1].', zh: '注释行。书上 p.29 明确说「注释不是可执行语句，不计时间」，所以原书 p.30 的代价表里它的 cost 记 0（times 仍是 $n-1$）。' },
         { n: 4, code: '    j = i − 1', zh: 'j 从左边那叠牌的**最右边**开始，准备往左找位置。' },
         { n: 5, code: '    while j > 0 and A[j] > key', zh: '★ 两个条件缺一不可：j > 0 是防止越界（牌看完了就停），A[j] > key 是判断"这张牌要不要给它让位"。注意 and 是短路的：j = 0 时后面的 A[j] 根本不会被求值，这条细节在阶段 6 数 tᵢ 时非常关键。' },
         { n: 6, code: '        A[j + 1] = A[j]', zh: '比 key 大的元素整体右移一格，给 key 腾位置。这正是 Figure 2.2 里橙色箭头画的动作。' },
@@ -377,7 +377,7 @@ export default {
       tasks: [
         '先选「原书 Figure 2.2 的数组」，一路单步走完，数一数第 5 行一共被求值了几次。',
         '换成「已经排好序」，观察每轮 while 是不是只看一眼就退出来了。',
-        '再换成「完全逆序」，看看计数器的数字涨得多快 —— 记住这个感觉，阶段 6 要用。',
+        '再换成「完全逆序」，看看计数器的数字涨得多快 —— 记住这个感觉，阶段 7 要拿它数次数。',
       ],
     },
 
@@ -623,7 +623,7 @@ export default {
           placeholder: '例如：2 4 5 6 1 3',
           why:
             'i = 4 时 key = 6。比较 A[3] = 5 > 6 不成立，所以一次都没搬，key 原地放回。' +
-            '此时 A[1 : 4] = ⟨2, 4, 5, 6⟩ 有序。你可以回阶段 4 用单步验证。',
+            '此时 A[1 : 4] = ⟨2, 4, 5, 6⟩ 有序。你可以回阶段 5 用单步验证。',
         },
         {
           kind: 'judge',
@@ -652,7 +652,7 @@ export default {
           statement:
             'Consider the procedure SUM-ARRAY on the facing page. It computes the sum of the n numbers in array A[1 : n]. State a loop invariant for this procedure, and use its initialization, maintenance, and termination properties to show that the SUM- ARRAY procedure returns the sum of the numbers in A[1 : n].',
           hint:
-            'SUM-ARRAY 的伪代码在原书印刷页 25。照抄阶段 7 的三步模板就行。' +
+            'SUM-ARRAY 的伪代码在原书印刷页 25。照抄阶段 8 的三步模板就行。' +
             '关键是写出正确的不变量：试着写成「进入第 i 轮时，sum 等于 A[1 : i−1] 的和」，' +
             '然后你会发现 Termination 时 i = n + 1，结论自然就是全部的和。',
         },

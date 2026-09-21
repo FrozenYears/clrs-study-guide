@@ -65,7 +65,7 @@ export default {
           zh: '★★ **关键问题（第 9 行）**：若 $g(k\\prime,q) < g(k\\prime,q\\prime)$，说明插入 $k\\prime$ 时**槽 $q$ 先于 $q\\prime$ 被探测到**；现在 $q$ 空了，一次查找会在 $q$ 处停下、错过 $k\\prime$——所以 $k\\prime$ 必须搬回 $q$。（注意原文 `q 0` 即 $q\\prime$ 的排版形式。）' },
         { kind: 'figure-caption', page: 303,
           en: 'Figure 11.6 Deletion in a hash table that uses linear probing. The hash table has size 10 with h 1 (k) = k mod 10. (a) The hash table after inserting keys in the order 74, 43, 93, 18, 82, 38, 92.',
-          zh: '★★ Figure 11.6：删除的完整例子（m = 10、h1(k) = k mod 10）。(a) 插入 74,43,93,18,82,38,92 后的表；(b) 删除 43 后 93 上移到槽 3、92 上移到槽 5。阶段 4 逐帧复现。' },
+          zh: '★★ Figure 11.6：删除的完整例子（m = 10、h1(k) = k mod 10）。(a) 插入 74,43,93,18,82,38,92 后的表；(b) 删除 43 后 93 上移到槽 3、92 上移到槽 5。阶段 5 逐帧复现。' },
         { kind: 'body', page: 303,
           en: 'Linear probing is popular to implement, but it exhibits a phenomenon known as primary clustering. Long runs of occupied slots build up, increasing the average search time. Clusters arise because an empty slot preceded by i full slots gets filled next with probability (i + 1)/m. Long runs of occupied slots tend to get longer, and the average search time increases.',
           zh: '★★ **初级聚集（primary clustering）**：连续被占的槽越积越长（因为"前面有 $i$ 个满槽的空槽"下一次以 $(i+1)/m$ 的概率被填上），平均查找时间随之上升。这是线性探测在标准模型下的软肋——但在层次模型下它反而有益（见下一条）。' },

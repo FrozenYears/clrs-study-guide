@@ -25,6 +25,7 @@
       import { insertionSort } from '../assets/algorithms/insertion-sort.js';
       import { renderStage } from '../assets/ui/stages.js';
       import * as store from '../assets/core/store.js';
+      import { optionOrder, displayIndexOf } from '../assets/core/quiz-order.js';
       import level from '../chapters/ch02-getting-started/s01-insertion-sort.js';
 
       const log = document.getElementById('log');
@@ -144,7 +145,11 @@
           if (btns.length === 2) { btns[it.answer === true ? 0 : 1].click(); clicked++; }
         } else if (it.kind === 'single') {
           const btns = qz.querySelectorAll('.quiz__opt');
-          if (btns[it.answer]) { btns[it.answer].click(); clicked++; }
+          // 选项在渲染时按题干做了确定性乱序（core/quiz-order.js），数据里的 answer 下标
+          // 已经不是页面上的第几个按钮 —— 必须换算，否则这里点的其实是错误选项。
+          const order = optionOrder(it.q, (it.options || []).length);
+          const at = displayIndexOf(order, it.answer);
+          if (btns[at]) { btns[at].click(); clicked++; }
         } else if (it.kind === 'simulate') {
           const inp = qz.querySelector('.drill-input');
           const btn = [...qz.querySelectorAll('button')].find((b) => b.textContent === '检查');
