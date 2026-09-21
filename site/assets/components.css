@@ -903,6 +903,32 @@
   border-bottom-color: var(--accent);
 }
 
+/* 自评勾选：章末题不给答案、不判分，所以这里是**读者自己的**完成标记。
+   视觉上刻意做得轻（左侧一条细线 + 题号旁的小方框），不学「正确答案」那种
+   实心色块 —— 免得看起来像系统判过的成绩。 */
+.boss-problem__mark {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  cursor: pointer;
+}
+.boss-problem__check {
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--c-ok);
+  cursor: pointer;
+}
+.boss-problem__check:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.boss-problem.is-done {
+  border-left: 3px solid var(--c-ok);
+}
+.boss-problem.is-done .drill-exercise__id {
+  color: var(--c-ok);
+}
+
 /* 侧栏里的 Boss 入口：与关卡条目同族，但不参与「第 N 关」编号 */
 .rail-item--boss {
   margin-top: var(--sp-2);
@@ -911,6 +937,136 @@
 }
 .rail-item--boss .rail-no {
   color: var(--accent);
+}
+
+/* ---------- 算法选择器（#/algorithms） ----------
+ * 一屏要能横向对照「排序类有哪些、各自多快」，所以每条压成三行：
+ *   ① 名称 + 可单步标记；② 出处（节号 + 印刷页）；③ 复杂度结论。
+ * 不做卡片、不留大片空白 —— 这一页的价值是密度，不是好看。
+ */
+.algo-group {
+  border-top: 2px solid var(--fg-0);
+  padding-top: var(--sp-2);
+}
+.algo-part {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+  margin: 0 0 var(--sp-2);
+  font-family: var(--font-sans);
+  font-size: var(--fs-lg);
+  font-weight: 700;
+}
+.algo-part__no {
+  font-family: var(--font-display);
+  color: var(--accent);
+}
+.algo-part__count {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 400;
+  color: var(--fg-2);
+}
+
+.algo-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: var(--sp-1) var(--sp-5);
+  align-items: baseline;
+  padding: var(--sp-2) 0;
+  border-bottom: var(--bd-w) solid var(--bd-0);
+}
+@media (max-width: 760px) {
+  .algo-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.algo-row__main {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--sp-2) var(--sp-3);
+  min-width: 0;
+}
+.algo-row__name {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--fg-0);
+  text-decoration: none;
+  border-bottom: var(--bd-w) solid var(--bd-0);
+}
+.algo-row__name:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+.algo-row__name:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+.algo-row__sig {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--fg-2);
+}
+/* 「可单步」是真实能力（阶段 5 有生成器驱动动画），不是装饰徽章 */
+.algo-row__anim {
+  font-size: var(--fs-xs);
+  text-decoration: none;
+  color: var(--c-ok);
+  border-color: color-mix(in srgb, var(--c-ok) 45%, var(--bd-0));
+}
+
+.algo-row__where {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--sp-2) var(--sp-3);
+  font-size: var(--fs-xs);
+}
+.algo-row__level {
+  color: var(--fg-1);
+  text-decoration: none;
+  border-bottom: var(--bd-w) solid var(--bd-0);
+}
+.algo-row__level:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.algo-row__extras {
+  grid-column: 1 / -1;
+  font-size: var(--fs-xs);
+  color: var(--fg-2);
+}
+.algo-row__extra {
+  font-family: var(--font-mono);
+  color: var(--fg-1);
+  text-decoration: none;
+  border-bottom: var(--bd-w) solid var(--bd-0);
+}
+.algo-row__extra:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+.algo-row__extra-page {
+  font-family: var(--font-mono);
+}
+
+.algo-row__cost {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2) var(--sp-4);
+  font-size: var(--fs-sm);
+}
+.algo-cost {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--sp-2);
 }
 
 /* ---------- 提示框（callout） ---------- */

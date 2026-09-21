@@ -69,6 +69,11 @@ export function parse(hash) {
     return Object.assign(base, { kind: "review" });
   }
 
+  // 算法选择器：按部分横向对照（#/algorithms）
+  if (segments[0] === "algorithms") {
+    return Object.assign(base, { kind: "algorithms" });
+  }
+
   // 伪代码速查：全站聚合页（#/pseudocode）
   if (segments[0] === "pseudocode") {
     return Object.assign(base, { kind: "pseudocode" });

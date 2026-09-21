@@ -27,6 +27,7 @@
           <a class="btn btn--ghost btn--sm" href="#/glossary">术语表</a>
           <a class="btn btn--ghost btn--sm" href="#/complexity">复杂度</a>
           <a class="btn btn--ghost btn--sm" href="#/pseudocode">伪代码</a>
+          <a class="btn btn--ghost btn--sm" href="#/algorithms">算法</a>
         </nav>
         <button id="theme-toggle" class="btn btn--ghost btn--sm" type="button" aria-label="切换主题">
           主题：自动
@@ -55,88 +56,14 @@
       import { renderReview } from "./assets/ui/review-view.js";
       import { renderBoss } from "./assets/ui/boss-view.js";
       import { renderPseudocode } from "./assets/ui/pseudocode-view.js";
+      import { renderAlgorithms } from "./assets/ui/algorithms-view.js";
+      import { STRUCTURE, APPENDICES, TOTAL_LEVELS, TOTAL_CHAPTERS, allChapters } from "./assets/data/structure.js";
 
       /* ----------------------------------------------------------------------
        * 九段式关卡：每关固定 9 个阶段（见 docs/开发规范.md 4.2）。
        * 进度层的分母就是它。
        * -------------------------------------------------------------------- */
       const STAGE_COUNT = 9;
-
-      /* ----------------------------------------------------------------------
-       * 全书结构（硬编码自 data/structure.json，不 fetch —— file:// 下 CORS 会拦截）。
-       * 8 部分 / 35 章 + 附录 A–D。
-       * zh 是通行中文译名，只用于目录导航；英文 title 是原书章名。
-       *
-       * ★ count 是**关卡数**，不是节数：绝大多数章两者相等（一节一关），
-       *   但当某一节长到装不下一关时会被拆开 —— 目前只有第 5 章的 5.4 一节
-       *   （38.5K 字符，含四个独立例子）拆成了 4 关，所以第 5 章 count = 7 而节数是 4。
-       *   首页的离散刻度与「N 关」标签都读这个字段，进度则以实际已建关卡数为分母。
-       * -------------------------------------------------------------------- */
-      const STRUCTURE = [
-        { no: "I", title: "Part I Foundations", zh: "基础", chapters: [
-          { n: 1, title: "The Role of Algorithms in Computing", zh: "算法在计算中的作用", count: 2 },
-          { n: 2, title: "Getting Started", zh: "算法基础", count: 3 },
-          { n: 3, title: "Characterizing Running Times", zh: "刻画运行时间", count: 3 },
-          { n: 4, title: "Divide-and-Conquer", zh: "分治策略", count: 7 },
-          { n: 5, title: "Probabilistic Analysis and Randomized Algorithms", zh: "概率分析与随机化算法", count: 7 },
-        ]},
-        { no: "II", title: "Part II Sorting and Order Statistics", zh: "排序与顺序统计", chapters: [
-          { n: 6, title: "Heapsort", zh: "堆排序", count: 5 },
-          { n: 7, title: "Quicksort", zh: "快速排序", count: 4 },
-          { n: 8, title: "Sorting in Linear Time", zh: "线性时间排序", count: 4 },
-          { n: 9, title: "Medians and Order Statistics", zh: "中位数与顺序统计量", count: 3 },
-        ]},
-        { no: "III", title: "Part III Data Structures", zh: "数据结构", chapters: [
-          { n: 10, title: "Elementary Data Structures", zh: "基本数据结构", count: 3 },
-          { n: 11, title: "Hash Tables", zh: "散列表", count: 5 },
-          { n: 12, title: "Binary Search Trees", zh: "二叉搜索树", count: 3 },
-          { n: 13, title: "Red-Black Trees", zh: "红黑树", count: 4 },
-        ]},
-        { no: "IV", title: "Part IV Advanced Design and Analysis Techniques", zh: "高级设计与分析技术", chapters: [
-          { n: 14, title: "Dynamic Programming", zh: "动态规划", count: 5 },
-          { n: 15, title: "Greedy Algorithms", zh: "贪心算法", count: 4 },
-          { n: 16, title: "Amortized Analysis", zh: "摊还分析", count: 4 },
-        ]},
-        { no: "V", title: "Part V Advanced Data Structures", zh: "高级数据结构", chapters: [
-          { n: 17, title: "Augmenting Data Structures", zh: "数据结构的扩张", count: 3 },
-          { n: 18, title: "B-Trees", zh: "B 树", count: 3 },
-          { n: 19, title: "Data Structures for Disjoint Sets", zh: "不相交集合的数据结构", count: 4 },
-        ]},
-        { no: "VI", title: "Part VI Graph Algorithms", zh: "图算法", chapters: [
-          { n: 20, title: "Elementary Graph Algorithms", zh: "基本的图算法", count: 5 },
-          { n: 21, title: "Minimum Spanning Trees", zh: "最小生成树", count: 2 },
-          { n: 22, title: "Single-Source Shortest Paths", zh: "单源最短路径", count: 5 },
-          { n: 23, title: "All-Pairs Shortest Paths", zh: "所有结点对的最短路径", count: 3 },
-          { n: 24, title: "Maximum Flow", zh: "最大流", count: 3 },
-          { n: 25, title: "Matchings in Bipartite Graphs", zh: "二分图中的匹配", count: 3 },
-        ]},
-        { no: "VII", title: "Part VII Selected Topics", zh: "专题选讲", chapters: [
-          { n: 26, title: "Parallel Algorithms", zh: "并行算法", count: 3 },
-          { n: 27, title: "Online Algorithms", zh: "在线算法", count: 3 },
-          { n: 28, title: "Matrix Operations", zh: "矩阵运算", count: 3 },
-          { n: 29, title: "Linear Programming", zh: "线性规划", count: 3 },
-          { n: 30, title: "Polynomials and the FFT", zh: "多项式与 FFT", count: 3 },
-          { n: 31, title: "Number-Theoretic Algorithms", zh: "数论算法", count: 8 },
-          { n: 32, title: "String Matching", zh: "字符串匹配", count: 5 },
-          { n: 33, title: "Machine-Learning Algorithms", zh: "机器学习算法", count: 3 },
-          { n: 34, title: "NP-Completeness", zh: "NP 完全性", count: 5 },
-          { n: 35, title: "Approximation Algorithms", zh: "近似算法", count: 5 },
-        ]},
-      ];
-
-      /* 附录单独放：它的版式与正文部分不同（见 layout.css ④） */
-      const APPENDICES = [
-        { n: "A", title: "Summations", zh: "求和", count: 2 },
-        { n: "B", title: "Sets, Etc.", zh: "集合等", count: 5 },
-        { n: "C", title: "Counting and Probability", zh: "计数与概率", count: 5 },
-        { n: "D", title: "Matrices", zh: "矩阵", count: 2 },
-      ];
-
-      const TOTAL_LEVELS =
-        STRUCTURE.reduce((acc, p) => acc + p.chapters.reduce((a, c) => a + c.count, 0), 0) +
-        APPENDICES.reduce((a, c) => a + c.count, 0);
-      const TOTAL_CHAPTERS =
-        STRUCTURE.reduce((acc, p) => acc + p.chapters.length, 0) + APPENDICES.length;
 
       /* ======================================================================
        * 进度层：全部读自本机存档（store），没有记录就是 0。
@@ -162,10 +89,6 @@
           else if (s > 0) started += 1;
         });
         return { built: built.length, done, started, stages, capacity: built.length * STAGE_COUNT };
-      }
-
-      function allChapters() {
-        return STRUCTURE.reduce((a, p) => a.concat(p.chapters), []).concat(APPENDICES);
       }
 
       function globalProgress() {
@@ -484,6 +407,9 @@
           main.appendChild(currentView.node);
         } else if (route.kind === "review") {
           currentView = renderReview();
+          main.appendChild(currentView.node);
+        } else if (route.kind === "algorithms") {
+          currentView = renderAlgorithms();
           main.appendChild(currentView.node);
         } else if (route.kind === "chapter" || route.kind === "appendix") {
           const chapter = getChapter(route.ch);
