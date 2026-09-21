@@ -449,7 +449,7 @@ export default {
             'time you can just take the remaining input pile and flip over the entire pile, ' +
             'placing it face down onto the output pile.',
           zh:
-            '这就是阶段 1 那段类比的原话。逐句对照：' +
+            '这就是阶段 3 那段类比的原话。逐句对照：' +
             '“face up（正面朝上）”是为了能看见顶牌；' +
             '“which exposes a new top card（露出新的顶牌）”说明为什么拿走后能继续比；' +
             '“until one input pile is empty（直到一边空）”之后“直接把剩下那叠整个翻过来” —— ' +
@@ -613,7 +613,7 @@ export default {
         { n: 2, code: '    return', zh: '直接返回。不需要做任何事 —— 单个元素的子数组天然有序。这就是 Divide / Conquer / Combine 里“解”的最小情形。' },
         { n: 3, code: '    q = ⌊(p + r)/2⌋', zh: '这是 Divide 步骤的全部内容：算中点。用下取整保证 A[p:q] 有 ⌈n/2⌉ 个元素、A[q+1:r] 有 ⌊n/2⌋ 个 —— 左半可能比右半多 1 个（n 为奇数时）。' },
         { n: 4, code: '    MERGE-SORT(A, p, q)', zh: 'Conquer（左）：递归排序左半。注意这里**不是循环**，是函数调用自己。程序会一路钻到最底层，再一层层返回。' },
-        { n: 5, code: '    MERGE-SORT(A, q + 1, r)', zh: 'Conquer（右）：递归排序右半。左右是**先后**执行的，不是并行 —— 这一点在数运行时间时很关键（见阶段 6 的递归树）。' },
+        { n: 5, code: '    MERGE-SORT(A, q + 1, r)', zh: 'Conquer（右）：递归排序右半。左右是**先后**执行的，不是并行 —— 这一点在数运行时间时很关键（见阶段 7 的递归树）。' },
         { n: 6, code: '// Merge A[p : q] and A[q + 1 : r] into A[p : r].', zh: '注释行。注意它和第 7 行的关系：第 7 行做的是一个**原地**操作 —— 结果直接写回 A[p:r]，不返回新数组。' },
         { n: 7, code: 'MERGE(A, p, q, r)', zh: '★ Combine 步骤：调用关键的合并过程。到这里，A[p:q] 与 A[q+1:r] 各自已经有序，MERGE 负责把它们并成有序的 A[p:r]。下一张表就是它的 27 行。' },
       ],
@@ -744,9 +744,9 @@ export default {
         '★ 两块面板对着原书两张图看。' +
         'Figure 2.3 给你的信息是“**合并**怎么做”；' +
         'Figure 2.4 给你的信息是“**递归**展开长什么样”。' +
-        '阶段 6 要算的那棵树（Figure 2.5）和这里的 Figure 2.4 长得像，' +
+        '阶段 7 要算的那棵树（Figure 2.5）和这里的 Figure 2.4 长得像，' +
         '但节点上标的不再是数组，而是**代价** —— 这是本关最容易混淆的一处，' +
-        '到阶段 6 我们会把两者的区别讲清楚。',
+        '到阶段 7 我们会把两者的区别讲清楚。',
     },
 
     /* ================= 阶段 5 · 双轨实现 ================= */
