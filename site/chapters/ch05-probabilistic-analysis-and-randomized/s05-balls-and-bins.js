@@ -275,7 +275,7 @@ int main(void)
       bookExercises: [
         { id: '5.4-3', page: 153, star: 0, preview: true,
           statement: 'You toss balls into b bins until some bin contains two balls. Each toss is independent, and each ball is equally likely to end up in any bin. What is the expected number of ball tosses?',
-          hint: '这是生日悖论（5.4.1）的「投掷版」：直到某箱有 2 球，相当于直到出现第一个「重复生日」，期望约 √(π b / 2)。' },
+          hint: '记 $T$ = 第一次出现「某个箱子里有 2 个球」的投掷序号。$T > k$ 意味着前 $k$ 球全落在不同箱子：$\\Pr[T > k] = \\frac{b(b-1)\\cdots(b-k+1)}{b^k}$，而 $E[T] = \\sum_{k \\ge 0} \\Pr[T > k]$。这就是 5.4.1 生日问题的等待时间版本（那里问「概率」，这里问「期望投几次」），首项是 $\\Theta(\\sqrt{b})$，量级与 $\\sqrt{\\pi b / 2}$ 一致。★ 本轮把求和直接算了：$b = 2$ 得 $2.5$；$b = 365$ 得 $24.617$（$\\sqrt{\\pi b/2} = 23.944$）；$b = 10^4$ 得 $125.999$，两者之差随 $b$ 增大收敛到约 $0.667$。' },
       ] },
   ],
 };

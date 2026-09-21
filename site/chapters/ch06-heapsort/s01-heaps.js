@@ -439,7 +439,7 @@ int main(void)
           hint: '★ 夹逼要有两条**够紧**的不等式：高 $h$ 的近似完全二叉树，前 $h$ 层（深度 $0 \\dots h-1$）填满共 $2^h-1$ 个， 第 $h$ 层**至少还有 1 个**，所以 $n \\ge 2^h$ —— 别写成 $n \\ge 2^h - 1$，那只能给出 $h \\le \\lg(n+1)$， 在 $n = 2^k - 1$（整层填满）处夹不出唯一整数。上侧用 $n \\le 2^{h+1}-1 < 2^{h+1}$ 得 $h > \\lg n - 1$。 两条合起来，落在 $(\\lg n - 1, \\lg n]$ 里的整数只有一个：$h = \\lfloor \\lg n \\rfloor$。 阶段 6 的 C 程序对 $n = 1 \\dots 1024$ 逐个验证了这个等式。' },
         { id: '6.1-3', page: 164, star: 0,
           statement: 'Show that in any subtree of a max-heap, the root of the subtree contains the largest value occurring anywhere in that subtree.',
-          hint: '★ 阶段 8 的第三步就是它。关键观察：子树里任一结点的父链**不会走出这棵子树**，所以沿父链用不等式传递即可。' },
+          hint: '堆序 $A[\\text{PARENT}(i)] \\ge A[i]$ 是「沿父链」的不等式，把它沿链传下去就行：取子树里任一结点 $v$，从 $v$ 沿父链往上走 $v, \\text{PARENT}(v), \\ldots$ 直到该子树的根 —— ★ 关键是这条链**不会走出那棵子树**（子树里每个结点的父结点仍在子树内，除根之外），于是沿途逐个套用堆序，得 $A[\\text{root}] \\ge A[v]$。$v$ 任意，根就是子树里的最大者。（本关阶段 8 的第二步「沿路径传递」走的就是这条链。）' },
         { id: '6.1-4', page: 164, star: 0,
           statement: 'Where in a max-heap might the smallest element reside, assuming that all elements are distinct?',
           hint: '只可能在**叶子**上：任何一个非叶子都有孩子，而父 ≥ 子，所以它不可能是最小值。用下标说就是 $\\lfloor n/2 \\rfloor + 1 \\dots n$。想验证的话，阶段 6 的 C 程序会把最小值找出来并断言它落在叶子区间。' },

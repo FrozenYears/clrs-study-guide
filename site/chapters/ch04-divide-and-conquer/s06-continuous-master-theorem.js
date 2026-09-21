@@ -222,7 +222,7 @@ int main(void)
         { kind: 'single', q: 'Theorem 4.4 用 T′(n)=T(n₀n) 的目的是什么？', options: ['改变渐进阶', '把任意阈值 n₀ 缩放为 Lemma 4.2 使用的阈值 1', '删除驱动函数', '把实数递归变成整数递归'], answer: 1, why: '尺度变换让简化引理可用，再把常数 n₀ 吸收到渐进记号中（p.113–114）。' },
       ],
       bookExercises: [
-        { id: '4.6-1', page: 114, star: 0, statement: 'Show that P blog b nc j D0 (log b n − j) k = Ω(log k + 1 b n).', hint: '把求和倒序或令 r=⌊log_b n⌋−j，把它化成 1^k+2^k+… 的下界；只需取最后若干项即可。' },
+        { id: '4.6-1', page: 114, star: 0, statement: 'Show that P blog b nc j D0 (log b n − j) k = Ω(log k + 1 b n).', hint: '令 $L = \\lfloor \\log_b n \\rfloor$，把求和指标倒过来（$r = L - j$）：$\\sum_{j=0}^{L} (\\log_b n - j)^k = \\sum_{r=0}^{L} (\\log_b n - L + r)^k \\ge \\sum_{r=0}^{L} r^k$，最后一步用了 $\\log_b n \\ge L$。不必算整段：只留 $r$ 从 $\\lceil L/2 \\rceil$ 到 $L$ 的项，每项 $\\ge (L/2)^k$、至少 $L/2$ 项，合计 $\\ge (L/2)^{k+1}$。再把 $L$ 换回来：$\\log_b n \\ge 1$ 时 $L \\ge (\\log_b n)/2$，所以原式 $\\ge ((\\log_b n)/4)^{k+1}$，即 $\\Omega((\\log_b n)^{k+1})$。★ 题目要的就是「取一半项」这种放缩，别去背幂和公式。' },
       ],
     },
   ],

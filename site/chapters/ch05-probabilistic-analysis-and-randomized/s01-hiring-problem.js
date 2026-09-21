@@ -164,7 +164,7 @@ int main(void)
         { kind: 'simulate', q: '资格顺序为 1, 2, 3, 4 时，最终会招聘多少人？', expect: [4], placeholder: '例如：4', why: '严格递增时每一位候选人都刷新当前最佳。' },
         { kind: 'single', q: '为什么要使用虚拟候选人 0？', options: ['避免面试第一位候选人', '保证第一位真实候选人能统一地通过同一条比较逻辑', '随机打乱候选人', '降低招聘费用'], answer: 1, why: '虚拟候选人资格最低，因此不需要为首位真实候选人写特殊分支（p.126–127）。' },
       ],
-      bookExercises: [{ id: '5.1-1', page: 129, star: 0, statement: 'Show that the assumption that you are always able to determine which candidate is best, in line 4 of procedure HIRE-ASSISTANT , implies that you know a total order on the ranks of the candidates.', hint: '把“任意两位候选人可比较”写成二元关系，再检查可比性、传递性与无并列的要求。' }],
+      bookExercises: [{ id: '5.1-1', page: 129, star: 0, statement: 'Show that the assumption that you are always able to determine which candidate is best, in line 4 of procedure HIRE-ASSISTANT , implies that you know a total order on the ranks of the candidates.', hint: '把「第 4 行永远认得出最佳」翻译成一个比较关系：说「$x$ 不比 $y$ 好」，意思是两人同时在场时面试官不会选 $x$。然后逐条补全序的三件事：① 可比性 —— 任取两人，循环里必须挑得出一个，所以「$x$ 不比 $y$ 好」与「$y$ 不比 $x$ 好」至少一条成立；② 反对称 —— 两条同时成立就是并列，而题干把名次定义成 $\\langle 1,2,\\ldots,n\\rangle$ 的一个排列，没有并列，故只能是同一人；③ 传递性 —— 反过来说：若「$x$ 不比 $y$ 好」、「$y$ 不比 $z$ 好」，而 $z$ 又严格优于 $x$，这三个人里就没有「最佳」（谁都能被另一个压住），与「任何在场集合都挑得出最佳」直接矛盾。★ 这题不需要算法，只需要把假设改写成三条性质再逐条落。' }],
     },
   ],
 };

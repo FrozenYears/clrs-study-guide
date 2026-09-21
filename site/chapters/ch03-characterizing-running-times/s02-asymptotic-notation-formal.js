@@ -482,7 +482,7 @@ export default {
           hint: '第一问：提取 $2^{n+1}=2\\cdot2^n$，常数倍成立 → 是。第二问：$2^{2n}=(2^n)^2$，与 $2^n$ 之比是 $2^n\\to\\infty$，不是常数倍 → 否（其实是 $\\omega$）。' },
         { id: '3.2-4', page: 62, star: 0,
           statement: 'Prove Theorem 3.1.',
-          hint: '就是阶段 8 证的那条：正向用 Θ 定义直接拆出 O 与 Ω；反向把两个定义的起点取 $\\max$ 合并。' },
+          hint: '定理 3.1 就是本关阶段 8 三步证的这条，照它的骨架自己写一遍：正向：$f(n)=\\Theta(g(n))$ 给出 $c_1,c_2,n_0$，使得 $c_1 g(n)\\le f(n)\\le c_2 g(n)$ 对一切 $n\\ge n_0$ 成立。右半截单独拿出来就是 $O(g(n))$ 的定义（见证 $c_2,n_0$），左半截单独拿出来就是 $\\Omega(g(n))$ 的定义（见证 $c_1,n_0$）。反向：$O$ 给 $(c_1,n_1)$、$\\Omega$ 给 $(c_2,n_2)$，两者的起点不一样，必须取 $n_0$ 为二者较大者才能同时成立；$\\Theta$ 要求的两个常数正好由两边各自提供，且都严格为正。' },
         { id: '3.2-5', page: 63, star: 0,
           statement: 'Prove that the running time of an algorithm is Θ(g(n)) if and only if its worst-case running time is O(g(n)) and its best-case running time is Ω(g(n)).',
           hint: '把"最坏情况 $=O(g)$"与"最好情况 $=\\Omega(g)$"代入：最坏给上界、最好给下界，合起来正是 Θ 的夹逼。注意必须分别挂在 worst / best 上，不能混。' },

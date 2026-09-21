@@ -350,8 +350,8 @@ int main(void)
     ],
     bookExercises:[
      {id:'9.2-1',page:236,star:0,statement:'Show that RANDOMIZED-SELECT never makes a recursive call to a 0-length array.',hint:'若 $i = k$ 直接返回；$i < k$ 时低侧至少有 $i \\ge 1$ 个元素；$i > k$ 时高侧至少有 $r - q \\ge r - p + 1 - k = n - k \\ge i - k \\ge 1$ 个。'},
-     {id:'9.2-2',page:236,star:0,statement:'Write an iterative version of RANDOMIZED-SELECT .',hint:'尾递归 → 循环：每轮算 $k$，要么返回要么把区间收缩成单侧、更新 $i$。C 程序里几行就能写。'},
-     {id:'9.2-3',page:236,star:0,statement:'Suppose that RANDOMIZED-SELECT is used to select the minimum element of the array A = ⟨2,3,0,5,7,9,1,8,6,4⟩. Describe a sequence of partitions that results in a worst-case performance of RANDOMIZED-SELECT .',hint:'最坏 = 每次轴都是当前区间最大。找最小值时每次"轴是最大、答案在低侧" → 每层只减 1。按降序分区即可构造。'},
+     {id:'9.2-2',page:236,star:0,statement:'Write an iterative version of RANDOMIZED-SELECT .',hint:'RANDOMIZED-SELECT 的递归调用只有一次、且在函数末尾 —— 尾递归，直接换成循环：$p$ 不动，循环体里 $q \\leftarrow$ RANDOMIZED-PARTITION$(A,p,r)$；若 $i == q$ 返回 $A[q]$；若 $i < q$ 令 $r \\leftarrow q - 1$；否则 $p \\leftarrow q + 1$。★ 秩的口径要选好：$i$ 全程用**绝对下标**就不用改；若按书里 $k = q - p + 1$ 记相对秩，则走到右支时要把 $i$ 减去 $k$。两种都写对才算会。'},
+     {id:'9.2-3',page:236,star:0,statement:'Suppose that RANDOMIZED-SELECT is used to select the minimum element of the array A = ⟨2,3,0,5,7,9,1,8,6,4⟩. Describe a sequence of partitions that results in a worst-case performance of RANDOMIZED-SELECT .',hint:'要找的是最小元（值为 0），最坏情况 = 每次选到的主元都是**当前区间里最大的那个**：划分后左块少一个元素、答案永远在左块，规模每层只减 1。对 $A = \\langle 2,3,0,5,7,9,1,8,6,4\\rangle$，依次取主元 $9,8,7,6,5,4,3,2,1$（每次都恰好是当前子数组的最大者），九次划分后才轮到 0。★ 检查你的答案：每次划分都要满足「主元是块内最大 $\\Rightarrow$ 它落在块尾」，这样第 $i$ 步代价 $\\Theta(\\text{块长})$，总和 $\\Theta(n^2)$。'},
      {id:'9.2-4',page:236,star:0,statement:'Argue that the expected running time of RANDOMIZED-SELECT does not depend on the order of the elements in its input array A[p : r]. That is, the expected running time is the same for any permutation of the input a rray A[p : r]. (Hint: Argue by induction on the length n of the input array.)',hint:'对 $n$ 归纳：轴均匀随机 → 名次 $k$ 的分布只依赖 $n$，与排列无关；两侧子问题的期望由归纳假设也只依赖大小。C 程序 part 3 实测验证。'},
     ]},
   ],
