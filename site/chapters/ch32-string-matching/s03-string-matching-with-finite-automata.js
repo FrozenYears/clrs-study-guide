@@ -388,7 +388,7 @@ int main(void)
      {kind:'judge',q:'字符串匹配自动机的虚假命中个数必然是 0。',answer:true,why:'★ 这里没有哈希碰撞这回事：$\delta$ 是确定性转移，状态 $q = m$ **当且仅当**真的匹配上了。C 程序对 $\delta$ 表做 200 组交叉验证，与定义的分歧数为 0。'},
     ],bookExercises:[
      {id:'32.3-1',page:974,star:0,statement:'Draw a state-transition diagram for the string-matching automaton for the pattern P = aabab over the alphabet † = fa; bg and illustrate its operation on the text string T = aaababaabaababaab .',hint:'两问都要做，只把 $\\delta$ 表填满不算完。 第一问：模式 $P = \\text{aabab}$ 有 5 个字符，状态是「当前已匹配的长度」$q = 0..5$，共 6 个状态； 每格按定义取「$(P[0..q-1]$ 加上字符 $c$ 的所有后缀里，是 $P$ 的前缀的最长那个的长度」—— 先把 6×2 = 12 格逐格算出来，再画成带箭头的状态转移图（同一字符的两条出边要分得开）。 第二问：把 $T = \\text{aaababaabaababaab}$ 从 $q=0$ 开始逐字符喂进去， 每读一个字符就按图转移并把当前状态标在 $T$ 的对应位置下方； 一旦到达 $q = 5$ 就报一次「出现在 $i - 5 + 1$」，然后按图继续走（**不是**回到 0）。 两边对不上时优先检查 $q=5$ 之后那一步：那里的转移最容易被误画成 0。'},
-     {id:'32.3-2',page:974,star:0,statement:'Draw a state-transition diagram for the string-matching automaton for the pattern P = ababbabbababbababbabb over the alphabet † = fa; bg.',hint:'同上，注意模式里重复片段带来的"回退链"。'},
+     {id:'32.3-2',page:974,star:0,statement:'Draw a state-transition diagram for the string-matching automaton for the pattern P = ababbabbababbababbabb over the alphabet † = fa; bg.',hint:'自动机只有 $m + 1 = 22$ 个状态（$0..21$），画法是「一条链 $0 \\to 1 \\to \\cdots \\to 21$ 配上往回跳的边」，每条边按输入字符 $a$ 或 $b$ 定。转移函数就一句话：$\\sigma(q, c) = $ 「把 $P[1..q]$ 后面接上 $c$，取所有后缀里最长的那个恰好是 $P$ 的前缀的长度」。所以状态 $q$ 的 $a$ 边去向 $q + 1$（若 $P[q+1] = a$），否则沿前缀函数 $\\pi$ 回退再试。★ 本轮把全表算过，抽 4 个当自测点：$\\sigma(0,b) = 0$、$\\sigma(3,a) = 1$、$\\sigma(15,b) = 8$、$\\sigma(21,a) = 9$。最容易画错的是最后两个：模式尾部 $ababb$ 重复出现，状态 15 收一个 $b$ 不是回到 0，而是退到 8（因为 $P[1..8]$ 正好是那段后缀）；接受态 21 也有出边，不算「无路可走」。'},
     ]},
   ],
 };

@@ -223,7 +223,7 @@ int main(void)
      {kind:'simulate',q:'C 程序 part 1 收敛时的目标函数 $f$ 是多少？（填一位小数）',expect:[462.7],placeholder:'例如：100.0',why:'462.7 —— 程序打印在第 2 轮（零移动）收敛时的 $f$ 值；analyze 表里也把这个数字存成了曲线基准。'},
     ],bookExercises:[
      {id:'33.1-1',page:1013,star:0,statement:'Show that the objective function f(S,C) of equation (33.2) may be alternatively written as f(S,C) = k X `D1 2 jS .`/ j X x2S .`/ X y2S .`/ Wx≠y Ω(x; y ):',hint:'把 $\\lVert x_i - c_{S(i)}\\rVert^{2}$ 展开，用"每个点恰属一个簇"把双重求和换成按簇分组的形式。'},
-     {id:'33.1-4',page:1013,star:0,statement:'Show how to find an optimal k-clustering in polynomial time when there is just one attribute (d = 1).',hint:'一维时把点排序，最优 k-聚类必然是"切 k−1 刀"的连续段 —— 动态规划即可多项式求解。'},
+     {id:'33.1-4',page:1013,star:0,statement:'Show how to find an optimal k-clustering in polynomial time when there is just one attribute (d = 1).',hint:'一维的突破口是「最优聚类一定是排序后的连续段」：把点按坐标排好，若某一簇里出现 $x_i, x_k$ 同簇而中间的 $x_j$ 在别的簇，交换 $x_j$ 与那个外层点不会让平方误差变大（标准的交换论证，写两行即可）。于是问题变成「在 $n - 1$ 个间隙里切 $k - 1$ 刀」。动规：$best[i, c]$ = 前 $i$ 个点分成 $c$ 簇的最小误差，$best[i,c] = \\min_{j < i} best[j, c-1] + cost(j+1, i)$，其中 $cost$ 是一段内点的平方偏差 —— 用前缀和 $\\sum x$、$\\sum x^2$ 可以 $O(1)$ 拿到。★ 规模：状态 $O(nk)$、转移 $O(n)$，总 $O(n^2 k)$，是多项式；$k$ 固定时就是 $O(n^2)$。'},
     ]},
   ],
 };

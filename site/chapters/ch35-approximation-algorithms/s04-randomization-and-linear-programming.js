@@ -340,10 +340,10 @@ int main(void) {
       bookExercises: [
         { id: '35.4-1', page: 1124, star: 0,
           statement: 'Show that even if a clause is allowed to contain bo th a variable and its negation, randomly setting each variable to 1 with probability 1/2 and to 0 with probability 1/2 still yields a randomized 8/7-approximation algorithm.',
-          hint: '允许变量与其否定同现后，一条子句可能「必满足」（如含 x 与 ¬x），此时满足概率更高；最坏仍是各文字独立，7/8 成立。' },
+          hint: '要证的只有一件事：一条子句**不被满足**的概率 $\\le 1/8$。子句里有 3 个文字时，若三个文字涉及的变量互不相同，唯一让它为 0 的那一种取值概率就是 $1/8$；有变量重复出现（比如两次 $x$）时约束更紧，不满足的概率只会更小。★ 关键是题干放宽的那一条：子句里同时含 $x$ 与 $\\neg x$ 时，这条子句**恒为真**，不满足的概率是 0 —— 也仍然 $\\le 1/8$。所以期望满足数 $\\ge \\frac78 m \\ge \\frac78 \\text{OPT}$，$8/7$ 近似照旧成立，推导一个字都不用改。' },
         { id: '35.4-2', page: 1124, star: 0,
           statement: 'The MAX-CNF satisfiability problem is like the MAX-3-CNF satisfiability problem, except that it does not restrict each clause to have exactly three literals. Give a randomized 2-approximation algorithm for the MAX-CNF satisfiability problem.',
-          hint: '每条子句至少含 1 个文字，独立随机赋值使其以 ≥ 1/2 概率满足；总期望 ≥ m/2，近似比 ≤ 2。' },
+          hint: '还是随机赋值，只是每条子句被满足的概率变高了：含 $k$ 个文字的子句要全为 0 才不被满足，概率 $\\le (1/2)^k \\le 1/2$（$k \\ge 1$）。令 $X_j$ = 第 $j$ 条子句被满足的指示器，$E[X_j] \\ge 1/2$，于是满足数的期望 $\\ge m/2 \\ge \\text{OPT}/2$（$\\text{OPT} \\le m$）。算法：独立抛硬币赋值，然后把为真的子句数报出来即可（要**输出**赋值就取随机那次）。★ 与 35.4-1 的区别只在 $1/8 \\to 1/2$，所以 $8/7 \\to 2$；顺手说明为什么不能对「子句长短不一」再抠出更好的界。' },
         { id: '35.4-3', page: 1124, star: 0,
           statement: 'In the MAX-CUT problem, the input is an unweighted undirected graph G = (V,E). We define a cut (S,V − S) as in Chapter 21 and the weight of a cut as the number of edges crossing the cut. The goal is to find a cut of maximum weight. Suppose that each vertex v is randomly and independently placed into S with probability 1/2 and into V − S with probability 1/2. Show that this algorithm is a randomized 2-approximation algorithm.',
           hint: '随机把每个顶点独立以 1/2 概率放入 S；每条边以 1/2 概率成为割边，期望割边数 = |E|/2，而最大割 ≥ |E|/2，故是 2-近似。' },

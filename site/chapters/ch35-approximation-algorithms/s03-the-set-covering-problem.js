@@ -472,7 +472,7 @@ int main(void)
           hint: '不等号方向：$C$ 是贪心解、$C^*$ 是最优解，必有 $|C| \\ge |C^*|$，写成 $|C| \\le |C^*|$ 恰好反了。 被 $\\max|S|$ 顶替掉的也不是 $|C^*|$，而是 $\\lceil \\ln |X| \\rceil$ 那个因子。正确的推法是： 每选一个集合至少带入 1 个新元素，所以 $|C| \\le |X|$；另一方面 $X$ 能被 $C^*$ 覆盖， $|X| \\le |C^*| \\cdot \\max|S|$。两式接起来就是 $|C| \\le |C^*| \\cdot \\max|S|$（再乘上 $\\lceil \\ln |X| \\rceil$ 那条界另算）。' },
         { id: '35.3-5', page: 1119, star: 0,
           statement: 'GREEDY-SET-COVER can return a number of different solutions, depending on how it breaks ties in line 5. Give a procedure BAD-SET-COVER-INSTANCE (n) that returns an n-element instance of the set-covering problem for which, depending on how line 5 breaks ties, GREEDY-SET-COVER can return a number of different solutions that is exponential in n.',
-          hint: '构造 n 个「几乎相同」的集合，使每条 tie 分支都导致不同的后续选择，从而产生指数级多的不同贪心解。' },
+          hint: '「不同解的个数」要指数级，最省事的构造是：**让每一轮都只剩「等价的二选一」**。取论域 $U = \\{1, 2, \\ldots, n\\}$（$n$ 偶），族 $\\mathcal{F}$ = $U$ 的全部二元子集。每轮未盖元素数还是偶数，总存在能盖 2 个新元素的集合，而贪心只看「盖住多少未盖元素」，于是它必然一直选 2 个的那种，最后一个解正好是 $U$ 的一个二元划分 ⟹ 解的个数 $= (n-1)!! = 1 \\cdot 3 \\cdot 5 \\cdots (n-1)$。★ 本轮枚举过全部平手取法核对：$n = 4$ 得 3 个、$n = 6$ 得 15 个、$n = 8$ 得 105 个 —— 这是 $2^{\\Omega(n \\lg n)}$，比指数还多一点。若嫌族太大（$\\binom{n}{2}$ 个集合），也可以只放一条哈密顿路上的相邻对，但那时要重新数解的个数，别口头宣称指数级。' },
       ],
     },
   ],

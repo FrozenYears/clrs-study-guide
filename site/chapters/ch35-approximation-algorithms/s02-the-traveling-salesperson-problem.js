@@ -472,7 +472,7 @@ int main(void)
           hint: '两个数字都要摆正，别「2 倍再 3 倍」。 **瓶颈界是 1 倍不是 2 倍**：设最优瓶颈圈的 most costly 边为 $\\beta$。 从那个圈里删掉一条边，得到的是一棵生成树，其最大边 $\\le \\beta$； 而 MST 的最大边不超过**任何**生成树的最大边（否则拿那棵树换掉 MST 里更重的边就能更好， 或按 cut 性质直接看），所以 $MST$ 的最贵边 $\\le \\beta$ —— 题干那句提示说的就是这个。 **3 倍从哪来**：以 MST 为骨架递归地走（根 → 每个子树的走法 → 回根）， 把子树里绕出去的路径用捷径接起来时，一条捷径最多跨过 2 个中间结点， 于是由三角不等式，这条捷径 $\\le$ 它所代替的那 3 条树边，每条 $\\le \\beta$ → 圈里每条边 $\\le 3\\beta$。 近似比就是 3，不要再乘那个 2。' },
         { id: '35.2-5', page: 1115, star: 0,
           statement: 'Suppose that the vertices for an instance of the traveling-salesperson problem are points in the plane and that the cost c(u,v) is the euclidean distance between points u and v. Show that an optimal tour never crosses itself.',
-          hint: '若两条边交叉，把交叉的四边形改成不交叉的两条对边，由三角不等式总代价不增，故可去交叉得到不交的最优巡游。' },
+          hint: '反证加局部改写：设最优巡游里有两条边 $(a,c)$、$(b,d)$ 交叉（四点互异，交叉点是这两条线段的内点）。把巡游里这两条边换成 $(a,b)$、$(c,d)$（或 $(a,d)$、$(c,b)$，取保持巡游连通的那一对），由三角不等式两次相加可得这两条新边的长度和**严格小于**原两条（交叉时按三角形两边之和，等号只在四点共线时出现）。于是得到更短的巡游，矛盾 ⟹ 最优巡游不自交。★ 要交代换边后仍是合法巡游（把中间那段反向走一遍即可），以及共线退化情形怎么处理 —— 这两处是扣分点。' },
         { id: '35.2-6', page: 1115, star: 0,
           statement: 'Adapt the proof of Theorem 35.3 to show that for any constant c ≥ 0, there is no polynomial-time approximation algorithm with approximation ratio |V| c for the general traveling-salesperson problem.',
           hint: '把不在原图的边定价成 $\\Omega|V|^{c+1}$，使「非哈密顿环」的巡游代价至少比哈密顿环大 $\\Omega|V|^c$ 倍，归约同理。' },
