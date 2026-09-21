@@ -13,6 +13,12 @@ import subprocess
 import sys
 import tempfile
 
+# Windows 控制台默认 GBK：把输出重定向到文件时，页面里的 ↔ ′ 等字符会让 print 直接抛
+# UnicodeEncodeError，跑到一半就看不到结果了。这里强制按 UTF-8 写。
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+    sys.stderr.reconfigure(encoding='utf-8', errors='replace')
+
 CHROME = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
 PORT = sys.argv[1] if len(sys.argv) > 1 else "8317"
 BASE = f"http://127.0.0.1:{PORT}/index.html"
@@ -55,7 +61,9 @@ CASES = [
      [NOT_PENDING]),
     ("#/ch02/s01/s01", ["为什么学这一关", "它在整本书里的位置", "数学急救包"], [NOT_PENDING]),
     ("#/ch02/s01/s02", ["整理一手扑克牌", "左手", "桌上"], [NOT_PENDING]),
-    ("#/ch02/s01/s03", ["循环不变量", "loop invariant", 'data-kind="source"'], [NOT_PENDING]),
+    ("#/ch02/s01/s03", ["循环不变量", "loop invariant", 'data-kind="source"',
+                        # 第 37 轮：原书插图上站后，这一段的段尾要出现 Figure 2.2 的切图
+                        'class="book-fig"', "figs/fig-2-2.png", "原书印刷页 22"], [NOT_PENDING]),
     ("#/ch02/s01/s04", ["for i = 2 to n", "pc-line", "变量表"], [NOT_PENDING]),
     ("#/ch02/s01/s05", ["viz-stage", "viz-array", "帧 0", "is-active", "Σtᵢ"], [NOT_PENDING]),
     ("#/ch02/s01/s06", ["insertion_sort.c", "for (int i = 1; i &lt; n; i++)", "伪代码 ↔ C 对应表"], [NOT_PENDING]),
@@ -336,13 +344,18 @@ CASES = [
 
     # ---- 12.2 查询 BST（九段式）----
     ("#/ch12/s02/s01", ["查询"], [NOT_PENDING, "【TODO"]),
-    ("#/ch12/s02/s03", ['data-kind="source"', "SUCCESSOR"], [NOT_PENDING, "【TODO"]),
+    ("#/ch12/s02/s03", ['data-kind="source"', "SUCCESSOR",
+                        'class="book-fig"', "figs/fig-12-2.png"], [NOT_PENDING, "【TODO"]),
     ("#/ch12/s02/s04", ["TREE-SEARCH(x, k)", "pc-line"], [NOT_PENDING, "【TODO"]),
     ("#/ch12/s02/s05", ["viz-stage", "viz-tree"], [NOT_PENDING, "【TODO"]),
     ("#/ch12/s02/s06", ["bst_query.c", "tree_search"], [NOT_PENDING, "【TODO"]),
     ("#/ch12/s02/s07", ["O(h)"], [NOT_PENDING, "【TODO"]),
     ("#/ch12/s02/s08", ["第一步"], [NOT_PENDING, "【TODO"]),
     ("#/ch12/s02/s09", ["检验一下", "12.2-1"], [NOT_PENDING, "【TODO"]),
+    # 第 37 轮新增：红黑树插入的三种情形只有原书 Figure 13.4 / 13.5 / 13.6 说得清，
+    # 这一路由专门盯住「段尾把引用的原书切图挂出来了」（插图上站前的 coverage 空白点）。
+    ("#/ch13/s03/s09", ["13.3-1", 'class="book-fig"', "figs/fig-13-4.png",
+                        "figs/fig-13-5.png", "figs/fig-13-6.png"], [NOT_PENDING]),
 
     # ---- 12.3 插入与删除（九段式）----
     ("#/ch12/s03/s01", ["插入与删除"], [NOT_PENDING, "【TODO"]),
