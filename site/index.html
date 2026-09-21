@@ -53,6 +53,7 @@
       import { renderGlossary } from "./assets/ui/glossary-view.js";
       import { renderComplexity } from "./assets/ui/complexity-view.js";
       import { renderReview } from "./assets/ui/review-view.js";
+      import { renderBoss } from "./assets/ui/boss-view.js";
       import { renderPseudocode } from "./assets/ui/pseudocode-view.js";
 
       /* ----------------------------------------------------------------------
@@ -486,7 +487,12 @@
           main.appendChild(currentView.node);
         } else if (route.kind === "chapter" || route.kind === "appendix") {
           const chapter = getChapter(route.ch);
-          if (chapter) {
+          if (chapter && route.section === 'boss') {
+            // 章末 Boss 区（#/ch03/boss）：section 解析出来是 boss，不是关卡，
+            // 必须在 renderChapter 之前拦下，否则会显示「这个关卡还没有内容」。
+            currentView = renderBoss(chapter);
+            main.appendChild(currentView.node);
+          } else if (chapter) {
             currentView = renderChapter(chapter, route);
             main.appendChild(currentView.node);
           } else {

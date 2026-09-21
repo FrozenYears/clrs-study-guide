@@ -131,7 +131,16 @@ export function renderChapter(chapter, route) {
   const rail = h('aside', { class: 'lv-rail' },
     h('div', null,
       h('p', { class: 'rail-group__title' }, '本章关卡'),
-      levelList
+      levelList,
+      // 章末 Boss 区的入口：整章完成度与章末 Problems 只在那一页讲，
+      // 没这个入口的话，不在闯关测验里的 Problem 就无从到达。
+      h('ul', { class: 'rail-list' },
+        h('li', null,
+          h('a', { class: 'rail-item rail-item--boss', href: router.buildUrl(chapter.ch, 'boss', 1) },
+            h('span', { class: 'rail-no' }, '★'),
+            h('span', null, '章末 Boss'),
+            h('span', { class: 'rail-mark' }, '')))
+      )
     ),
     h('div', null,
       h('p', { class: 'rail-group__title' }, '本关九段'),
