@@ -14,6 +14,7 @@
 import { h, svg, $ } from '../core/dom.js';
 import * as katex from '../core/katex.js';
 import { highlight } from '../core/highlight.js';
+import { optionOrder } from '../core/quiz-order.js';
 import * as store from '../core/store.js';
 import { createStepper } from '../core/stepper.js';
 import { getViz, getAlgorithm } from './registry.js';
@@ -943,19 +944,22 @@ function rDrill(stage, ctx) {
       // 作者约定：正确项用 **…** 包裹（便于在源码里一眼找到，且必须与 answer 下标一致）。
       // 这个标记是给作者看的，不是给读者的 —— 渲染前必须剥掉，否则正确项会被加粗、
       // 等于作答前就把答案标出来了（判对错只看 answer，标记纯属冗余）。
-      const btns = opts.map((o, oi) =>
+      // 展示顺序按题干做确定性乱序（core/quiz-order.js）：数据里 353/478 题的正确项
+      // 写在下标 1，不洗牌就等于「永远选第二个」可得 74% 分。
+      const order = optionOrder(it.q, opts.length);
+      const btns = order.map((src, pos) =>
         h('button', {
           class: 'quiz__opt', type: 'button', role: 'radio',
           onClick: () => {
-            const ok = oi === it.answer;
+            const ok = src === it.answer;
             btns.forEach((b, bi) => {
               b.disabled = true;
-              if (bi === it.answer) b.classList.add('is-correct');
-              if (bi === oi && !ok) b.classList.add('is-wrong');
+              if (order[bi] === it.answer) b.classList.add('is-correct');
+              if (bi === pos && !ok) b.classList.add('is-wrong');
             });
             setResult(i, ok, why);
           },
-        }, katex.renderMixed(typeof o === 'string' ? o.replace(/\*\*/g, '') : o))
+        }, katex.renderMixed(typeof opts[src] === 'string' ? opts[src].replace(/\*\*/g, '') : opts[src]))
       );
       body = h('div', { class: 'quiz__options' }, btns);
     } else if (it.kind === 'simulate') {

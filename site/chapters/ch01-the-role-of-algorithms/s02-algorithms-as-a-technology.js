@@ -574,7 +574,7 @@ int main(void) {
             '算法的重要性只在教科书里成立：真实系统的瓶颈都在网络与 I/O 上',
           ],
           answer: 1,
-          why: 'p.13 的原话是 Total system performance depends on choosing efficient algorithms as much as on choosing fast hardware。注意别滑到第三个选项：硬件仍然重要，只是**不再是唯一的一条路**，而且它的收益会被硬件天花板卡住（p.10 的多核那段）。',
+          why: 'p.13 的原话是 Total system performance depends on choosing efficient algorithms as much as on choosing fast hardware。注意别滑到「买更快的机器永远比改算法划算」那一项：硬件仍然重要，只是**不再是唯一的一条路**，而且它的收益会被硬件天花板卡住（p.10 的多核那段）。',
         },
       ],
       bookExercises: [

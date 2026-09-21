@@ -413,7 +413,7 @@ int main(void)
           why: '$\\text{PARENT}(i) = \\lfloor i/2 \\rfloor$。注意 $2i$ 与 $2i+1$ 是**孩子**，方向正好相反 —— 这是最常见的记反。' },
         { kind: 'single', q: '怎样只用下标判断下标 $i$ 的结点是不是叶子？',
           options: ['$i > n/2$', '$\\text{LEFT}(i) > n$', '$\\text{RIGHT}(i) > n$', '$i = n$'], answer: 1,
-          why: '★ 没有左孩子就必然没有右孩子（左右下标相邻），所以用 $\\text{LEFT}(i) > n$ 判定。选项 1 在**整数下标**下与它等价（$i \\ge \\lfloor n/2\\rfloor+1$），但写成 $i > n/2$ 在浮点或奇偶边界上容易出错，不推荐。' },
+          why: '★ 没有左孩子就必然没有右孩子（左右下标相邻），所以用 $\\text{LEFT}(i) > n$ 判定。「$i > n/2$」那一项在**整数下标**下与它等价（$i \\ge \\lfloor n/2\\rfloor+1$），但写成 $i > n/2$ 在浮点或奇偶边界上容易出错，不推荐。' },
         { kind: 'judge', q: '一个只有根结点的堆，高度是 1。', answer: false,
           why: '高度数的是**边数**，不是结点数。只有根时没有边，高度是 0。（原书 p.163：the number of edges on the longest simple downward path from the node to a leaf）' },
         { kind: 'single', q: '堆的数组长度 $n$ 与 $A.\\text{heap-size}$ 的关系是？',
