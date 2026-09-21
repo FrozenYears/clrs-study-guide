@@ -531,7 +531,7 @@ int main(void)
           statement: 'Using Figure 6.3 as a model, illustrate the operation of BUILD-MAX-HEAP on the array A = ⟨5,3,17,10,84,19,6,22,9⟩.',
           hint: '照着 Figure 6.3 的画法来：先写出初始树，然后从 $i = \\lfloor 9/2 \\rfloor = 4$ 开始逐个往左，每次画出"调用前"与"调用后"两幅图。阶段 5 的第 2 组预设就是这道题，可以先自己画完再核对。程序给的最终结果是 ⟨84,22,19,10,3,17,6,5,9⟩。' },
         { id: '6.3-2', page: 170, star: 0,
-          statement: 'Show that ⌊ n/2 h + 1 ⌋ ≥ 1/2 for 0 ≤ h ≤ blg nc.',
+          statement: 'Show that ⌊ n/2 h + 1 ⌋ ≥ 1/2 for 0 ≤ h ≤ ⌊lg n⌋.',
           hint: '★ 原书上这里是上取整（语料把括号抽成了下取整）。要证的是 $\\lceil n/2^{h+1} \\rceil \\ge 1/2$ —— 因为左边是**正整数**，而 $h \\le \\lfloor \\lg n \\rfloor$ 保证 $n/2^{h+1} \\ge 1/2$，所以左边至少是 1。它的用途是配合 $\\lceil x \\rceil \\le 2x$（$x \\ge 1/2$）把上取整放大掉，见阶段 7 的推导。' },
         { id: '6.3-3', page: 170, star: 0,
           statement: 'Why does the loop index i in line 2 of BUILD-MAX-HEAP decrease from ⌊n/2⌋ to 1 rather than increase from 1 to ⌊n/2⌋?',

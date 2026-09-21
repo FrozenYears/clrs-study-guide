@@ -426,10 +426,10 @@ int main(void)
      {kind:'single',q:'Johnson 的整体时间复杂度（用二叉堆 Dijkstra）约为？',options:['$O(VE)$：跑 V 轮松弛，每轮扫过全部 E 条边','**$O(V\\cdot E\\lg V)$**','$O(V^3)$','$O(E\\lg V)$'],answer:1,
       why:'★ $V$ 次 Dijkstra，每次 $O(E\\lg V)$；稀疏图优于 Floyd-Warshall 的 $\\Theta(V^3)$。'},
     ],bookExercises:[
-     {id:'23.3-1',page:666,star:0,statement:'Use Johnson9s algorithm to find the shortest paths between all pairs of vertices in the graph of Figure 23.2. Show the values of h and y w computed by the algorithm.',hint:'三步照做：加超级源跑 BELLMAN-FORD 得 h，按 $\\hat{w}(u,v) = w(u,v) + h(u) - h(v)$ 逐边重算，再对每个源跑一次 DIJKSTRA，最后把距离换回原权重。本站 c/apsp.c 的 Johnson 分支会打出 h 与重加权后的边表。'},
+     {id:'23.3-1',page:666,star:0,statement:'Use Johnson’s algorithm to find the shortest paths between all pairs of vertices in the graph of Figure 23.2. Show the values of h and y w computed by the algorithm.',hint:'三步照做：加超级源跑 BELLMAN-FORD 得 h，按 $\\hat{w}(u,v) = w(u,v) + h(u) - h(v)$ 逐边重算，再对每个源跑一次 DIJKSTRA，最后把距离换回原权重。本站 c/apsp.c 的 Johnson 分支会打出 h 与重加权后的边表。'},
      {id:'23.3-2',page:667,star:0,statement:'What is the purpose of adding the new vertex s to V , yielding V 0 ?',hint:'h 必须对每条边都满足三角不等式，才能保住重加权后非负；这个 h 是「从某个源出发到各点的最短路」，所以要有一个能到达**所有**结点的源 —— 那些 0 权入边就是干这个的，负环检测也顺带在这里完成。'},
      {id:'23.3-3',page:667,star:0,statement:'Suppose that w(u,v) ≥ 0 for all edges (u,v) 2 E. What is the relationship between the weight functions w and y w?',hint:'非负权时 h 恒为 0：s 的 0 权入边给出 $h(v) \\le 0$，而非负边又给出 $h(v) \\ge 0$。于是重加权是恒等变换，Johnson 退化成「每个源点各跑一次 Dijkstra」。'},
-     {id:'23.3-4',page:667,star:0,statement:'Professor Greenstreet claims that there is a simpler way to reweight edges than the method used in Johnson9s algorithm. Letting w − = min fw(u,v) W (u,v) 2 Eg, just define y w(u,v) = w(u,v) − w − for all edges (u,v) 2 E. What is wrong with the professor9s method of reweighting?',hint:'重加权要保住的是「同一对结点之间，所有路径的长短次序不变」。Johnson 的 $h(u)-h(v)$ 在一条路径上是望远镜求和，只与首尾有关；教授减的是每条边一个常数，路径边数不同减量就不同 —— 造一条「边数多但总权更小」的对照路径就能戳破。'},
+     {id:'23.3-4',page:667,star:0,statement:'Professor Greenstreet claims that there is a simpler way to reweight edges than the method used in Johnson’s algorithm. Letting w − = min fw(u,v) W (u,v) 2 Eg, just define y w(u,v) = w(u,v) − w − for all edges (u,v) 2 E. What is wrong with the professor’s method of reweighting?',hint:'重加权要保住的是「同一对结点之间，所有路径的长短次序不变」。Johnson 的 $h(u)-h(v)$ 在一条路径上是望远镜求和，只与首尾有关；教授减的是每条边一个常数，路径边数不同减量就不同 —— 造一条「边数多但总权更小」的对照路径就能戳破。'},
     ]},
   ],
 };

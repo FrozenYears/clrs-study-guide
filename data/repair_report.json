@@ -714,7 +714,7 @@
     "•": 1530,
     "Ω": 1308,
     "Θ": 1074,
-    "’": 1658,
+    "’": 1827,
     "—": 295,
     "–": 697,
     "⟨": 224,
@@ -727,10 +727,10 @@
     "♥": 38,
     "≠": 231,
     "≥": 551,
-    "⌊": 126,
-    "⌋": 118,
-    "⌈": 55,
-    "⌉": 55,
+    "⌊": 154,
+    "⌋": 146,
+    "⌈": 100,
+    "⌉": 100,
     "ã": 115,
     "ä": 113,
     "ˆ": 185,
@@ -799,7 +799,7 @@
     {
       "glyph": "’",
       "codepoint": "U+2019",
-      "count": 1658,
+      "count": 1827,
       "note": "U+2019 right single quote / apostrophe — already correct, kept."
     },
     {
@@ -899,6 +899,18 @@
       "note": "U+02C6 circumflex — diacritic, left as-is."
     },
     {
+      "glyph": "⌊",
+      "codepoint": "U+230A",
+      "count": 154,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "⌋",
+      "codepoint": "U+230B",
+      "count": 146,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
       "glyph": "ˇ",
       "codepoint": "U+02C7",
       "count": 140,
@@ -909,18 +921,6 @@
       "codepoint": "U+02DA",
       "count": 131,
       "note": "U+02DA ring — diacritic, left as-is."
-    },
-    {
-      "glyph": "⌊",
-      "codepoint": "U+230A",
-      "count": 126,
-      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
-    },
-    {
-      "glyph": "⌋",
-      "codepoint": "U+230B",
-      "count": 118,
-      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
     },
     {
       "glyph": "ã",
@@ -938,6 +938,18 @@
       "glyph": "⊆",
       "codepoint": "U+2286",
       "count": 104,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "⌈",
+      "codepoint": "U+2308",
+      "count": 100,
+      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
+    },
+    {
+      "glyph": "⌉",
+      "codepoint": "U+2309",
+      "count": 100,
       "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
     },
     {
@@ -963,18 +975,6 @@
       "codepoint": "U+221E",
       "count": 62,
       "note": "U+221E infinity — correct, kept."
-    },
-    {
-      "glyph": "⌈",
-      "codepoint": "U+2308",
-      "count": 55,
-      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
-    },
-    {
-      "glyph": "⌉",
-      "codepoint": "U+2309",
-      "count": 55,
-      "note": "left as-is (legit Unicode or unresolvable display-math delimiter)"
     },
     {
       "glyph": "˝",

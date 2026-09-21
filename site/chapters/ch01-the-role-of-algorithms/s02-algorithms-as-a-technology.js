@@ -595,7 +595,7 @@ int main(void) {
         },
         {
           id: '1-1', page: 15, star: 0,
-          statement: 'Comparison of running times',
+          statement: 'Comparison of running times For each function f(n) and time t in the following table, determine the largest size n of a problem that can be solved in time t , assuming that the algorithm to solve the problem takes f(n) microseconds.',
           hint: '这是本章的 Problem（原题还带一张表：对每个 $f(n)$ 与时间 $t$，求在 $t$ 内能解的最大 $n$）。做法是把每一列反解：$n\\le t$、$n^2\\le t\\Rightarrow n\\le\\sqrt t$、$n^3\\le t\\Rightarrow n\\le t^{1/3}$、$2^n\\le t\\Rightarrow n\\le\\lg t$、$\\lg n\\le t\\Rightarrow n\\le 2^t$；只有 $n\\lg n\\le t$ 没有闭式，取整试或二分。⚠ 单位先统一成**微秒**（1 秒 = $10^6$、1 世纪 $\\approx 3.15\\times10^{15}$）。本站阶段 6 的 C 程序 part 3 把整张表打出来了，可以拿来对答案 —— 但请先自己填，尤其注意 $\\lg n$ 那一列会大到无法表示，这恰恰是本题想让你体会的。',
         },
       ],

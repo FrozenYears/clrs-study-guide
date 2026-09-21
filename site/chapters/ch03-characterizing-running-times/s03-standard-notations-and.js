@@ -432,7 +432,7 @@ export default {
           statement: 'Prove that b˛nc + d.1 − ˛/ne = n for any integer n and real number ˛ in the range 0 ≤ ˛ ≤ 1.',
           hint: '原书要证 $\\lfloor n\\alpha\\rfloor + \\lceil n(1-\\alpha)\\rceil = n$。先分 $\\alpha$ 是否整数，再用 $\\lfloor x\\rfloor+\\lceil -x\\rceil=0$ 这类恒等式。' },
         { id: '3.3-3', page: 70, star: 0,
-          statement: 'Use equation (3.14) or other means to show that (n + o(n)) k = Θ(n k ) for any real constant k. Conclude that dne k = Θ(n k ) and bnc k = Θ(n k ).',
+          statement: 'Use equation (3.14) or other means to show that (n + o(n)) k = Θ(n k ) for any real constant k. Conclude that ⌈n⌉ k = Θ(n k ) and ⌊n⌋ k = Θ(n k ).',
           hint: '取整只改变量不到 1，故 $\\lfloor n\\rfloor = n + O(1) = n(1+o(1))$，其 $k$ 次幂仍是 $\\Theta(n^k)$。关键：$\\lfloor n\\rfloor/n\\to1$。' },
         { id: '3.3-4', page: 70, star: 0,
           statement: 'Prove the following: a. Equation (3.21). b. Equations (3.26)3(3.28). c. lg(Θ(n)) = Θ(lg n).',
