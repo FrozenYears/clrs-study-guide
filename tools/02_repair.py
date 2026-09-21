@@ -373,7 +373,13 @@ def _resolve_math_parens(txt):
                 while k < n and txt[k].isalnum():
                     k += 1
                 word = "".join(txt[i + 1:k])
-                ok_prev = (len(word) == 1 and word.isalpha()) or word.lower() in MATH_FUNCS
+                # A 1-2 digit operand is accepted too: the book writes base cases
+                # as `L .0/` / `T .1/` = L(0) / T(1).  Only matched pairs are
+                # rewritten (the stack below), so a decimal like `2.5` in prose
+                # never produces a paren.  Measured shapes: `.0/`, `.1/`, `.2/`.
+                ok_prev = ((len(word) == 1 and word.isalpha())
+                           or (word.isdigit() and len(word) <= 2)
+                           or word.lower() in MATH_FUNCS)
             if not ok_prev:
                 continue
             # preceding word must not be a prose abbreviation
