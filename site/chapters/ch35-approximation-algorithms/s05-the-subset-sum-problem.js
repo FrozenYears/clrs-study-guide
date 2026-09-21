@@ -464,7 +464,7 @@ int main(void)
       type: 'drill',
       title: '检验一下',
       items: [
-        { kind: 'single', q: 'APPROX-SUBSET-SUM 是什么类型的近似算法？', options: ['常数近似', '**FPTAS（完全多项式时间近似方案）**', '精确多项式', '指数时间'], answer: 1,
+        { kind: 'single', q: 'APPROX-SUBSET-SUM 是什么类型的近似算法？', options: ['常数近似：误差是一个与输入规模无关的常数因子', '**FPTAS（完全多项式时间近似方案）**', '精确多项式', '指数时间'], answer: 1,
           why: '★ 定理 35.7：误差可任意小，运行时间对 1/ε 与输入规模均多项式。' },
         { kind: 'judge', q: 'TRIM 通过删除「彼此太接近」的元素来压缩列表长度。', answer: true,
           why: '★ 若两值接近，只留较小的「代表」较大的，列表变短而解仍够好。' },

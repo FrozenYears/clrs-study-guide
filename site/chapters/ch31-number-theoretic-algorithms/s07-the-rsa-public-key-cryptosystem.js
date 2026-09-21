@@ -478,7 +478,7 @@ int main(void)
         '★ 现实约束：2048 位 $n$ 的分解远超算力；本教学例的 3233 只是演示尺寸。∎']},
     ],conclusion:'★ 结论：RSA 的锁芯是"分解很难"这条计算复杂性假设 —— 数论算法（31.2/31.6）负责造锁，复杂性负责上锁。',note:''},
    {type:'drill',title:'检验一下',items:[
-     {kind:'single',q:'RSA 里 $d$ 是怎么算出来的？',options:['随机猜','$d = e^{-1} \\text{ mod }\\varphi(n)$（扩展 Euclid）','$d = e + \\varphi(n)$','$d = n - e$'],answer:1,
+     {kind:'single',q:'RSA 里 $d$ 是怎么算出来的？',options:['随机猜','$d = e^{-1} \\text{ mod }\\varphi(n)$（扩展 Euclid）','$d = e + \\varphi(n)$：把公钥指数与欧拉函数直接相加，解密时用它去除密文','$d = n - e$'],answer:1,
       why:'★ 需要 $\u03c6(n) = (p-1)(q-1)$，所以只有会分解 $n$ 的人能算。'},
      {kind:'single',q:'习题 31.7-1（p=11, q=29, e=3）的 d 是多少？',options:['**187**','113','17','3'],answer:0,
       why:'★ $3 \\times 187 = 561 = 2 \\times 280 + 1$（C 程序断言）。'},
