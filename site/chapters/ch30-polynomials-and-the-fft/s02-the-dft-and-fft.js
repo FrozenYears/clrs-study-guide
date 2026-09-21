@@ -453,7 +453,7 @@ int main(void)
         '★ 逆变换不需要新算法：定理 30.7 说用 $\\omega_n^{-1}$ 跑一遍同样的 FFT，再除以 $n$ 即可（C 程序 `fft_iter_inv` 用取共轭实现）。∎']},
     ],conclusion:'★ 结论：$\\Theta(n \\lg n)$ —— 与排序同阶，于是多项式乘法也被拉进了"$n \\lg n$ 俱乐部"（定理 30.2）。',note:''},
    {type:'drill',title:'检验一下',items:[
-     {kind:'single',q:'主 $n$ 次单位根是什么？',options:['$\\omega_n = 1$','**$\\omega_n = e^{2\\pi i/n}$**','$\\omega_n = \\cos(1/n)$','$\\omega_n = -1$'],answer:1,
+     {kind:'single',q:'主 $n$ 次单位根是什么？',options:['$\\omega_n = 1$：单位根就是模长为 1 的那一个数','**$\\omega_n = e^{2\\pi i/n}$**','$\\omega_n = \\cos(1/n)$','$\\omega_n = -1$'],answer:1,
       why:'★ 原书式 (30.6)。'},
      {kind:'single',q:'FFT 的递推是哪一个？',options:['$T(n) = 2T(n/2) + \\Theta(n^{2})$','**$T(n) = 2T(n/2) + \\Theta(n)$**','$T(n) = T(n/2) + \\Theta(n)$','$T(n) = 4T(n/2) + \\Theta(n)$'],answer:1,
       why:'★ 两个 $n/2$ 子问题 + $n/2$ 个蝶形（$\\Theta(n)$ 合并）。'},
@@ -463,7 +463,7 @@ int main(void)
       why:'★ 定理 30.7：用 $\\omega_n^{-1}$ 跑同一个 FFT 再除以 $n$（C 程序用取共轭实现）。'},
      {kind:'simulate',q:'C 程序 part 2 里 DFT of (0,1,2,3) 的 $y_1$ 的实部是多少？（填整数，带负号）',expect:[-2],placeholder:'例如：-1',
       why:'−2 —— $y_1 = -2 - 2i$，与手算一致（$\\omega_4 = i$）。'},
-     {kind:'single',q:'卷积定理说，两个序列的「卷积」可以用 DFT 怎样算出来？',options:['两次 DFT 的结果相加','**逐点相乘后再做一次逆 DFT**','逐点相除后再做一次 DFT','DFT 无法表示卷积'],answer:1,why:'★ 定理 30.8：$a \otimes b = \text{DFT}^{-1}(\text{DFT}(a) \cdot \text{DFT}(b))$。这正是用 FFT 做多项式乘法的全部依据：求值 → 逐点乘 → 插值。'},
+     {kind:'single',q:'卷积定理说，两个序列的「卷积」可以用 DFT 怎样算出来？',options:['两次 DFT 的结果逐点相加，再做一次逆变换','**逐点相乘后再做一次逆 DFT**','逐点相除后再做一次 DFT','DFT 无法表示卷积'],answer:1,why:'★ 定理 30.8：$a \otimes b = \text{DFT}^{-1}(\text{DFT}(a) \cdot \text{DFT}(b))$。这正是用 FFT 做多项式乘法的全部依据：求值 → 逐点乘 → 插值。'},
      {kind:'simulate',q:'C 程序 part 2 里 DFT of $(0,1,2,3)$ 的 $y_3$ 的虚部是多少？（填整数，带正负号）',expect:[2],placeholder:'例如：-2',why:'2 —— 程序打印的四点是 $(6, -2-2i, -2, -2+2i)$，$y_3 = -2 + 2i$，虚部为 $+2$。'},
     ],bookExercises:[
      {id:'30.2-2',page:893,star:0,statement:'Compute the DFT of the vector .0,1,2,3/ .',hint:'逐个 $k$ 算 $\\sum_j a_j i^{jk}$：$k=0$ 得 6，$k=1$ 得 $-2-2i$，$k=2$ 得 $-2$，$k=3$ 得 $-2+2i$（C 程序 part 2 的断言就是这四个值）。'},

@@ -514,9 +514,9 @@ int main(void)
         '★ 反过来说：差分约束系统（原书 22.4）的存在告诉我们这个 LP 的对偶里藏着 Bellman-Ford。∎']},
     ],conclusion:'★ 结论：一个问题的 LP 写法要能"双向翻译" —— 任何可行解都对应原问题的候选解，任何原问题的解都可行。C 程序 part 4 对最大流的可行域做的正是这种双向检查（逐条验证容量与守恒）。',note:''},
    {type:'drill',title:'检验一下',items:[
-     {kind:'single',q:'最大流的 LP 里，中间顶点的守恒写成了什么？',options:['不等式 $f \\le c$','**一对反向不等式（等价于等式）**','目标函数','松弛变量的非负性'],answer:1,
+     {kind:'single',q:'最大流的 LP 里，中间顶点的守恒写成了什么？',options:['不等式 $f \\le c$','**一对反向不等式（等价于等式）**','目标函数里的一项，用来惩罚不守恒的流','松弛变量的非负性'],answer:1,
       why:'★ 单纯形法只吃 $\\le$ 型约束，所以 $= 0$ 要写成两个 $\\le 0$；C 程序 part 4 的 8 行就是这么来的。'},
-     {kind:'single',q:'最短路 LP 的目标为什么是 $\\max d_t$？',options:['因为距离要最大','**约束只给上界，最大化把上界逼到最紧**','为了让单纯形收敛','因为权重非负'],answer:1,
+     {kind:'single',q:'最短路 LP 的目标为什么是 $\\max d_t$？',options:['因为要求的是最长路径，距离当然越大越好','**约束只给上界，最大化把上界逼到最紧**','为了让单纯形法收敛得快一些，避免退化','因为权重非负'],answer:1,
       why:'★ 原书 p.861 特别提醒：反过来最小化在非负权时会被平凡地打到 0。'},
      {kind:'judge',q:'C 程序 part 5 里二分图匹配的 LP 松弛给出了整数解。',answer:true,
       why:'★ 6 条边的 $x_e$ 全是 0/1 —— 但这是二分图的性质（系数矩阵全幺模）。'},
@@ -526,7 +526,7 @@ int main(void)
       why:'23 —— 与原书 Figure 24.1 的答案一致，且暴力枚举 16 个割得最小割同为 23。'},
      {kind:'simulate',q:'C 程序 part 5 里二分图匹配的 LP 松弛最优值是多少？（填整数）',expect:[3],placeholder:'例如：2',why:'★ code 段实测 3，而且解本身是 0/1 —— 松弛恰好紧。'},
      {kind:'simulate',q:'同一个匹配松弛用在三角形 $K_3$ 上的最优值是多少（填一位小数）？',expect:[1.5],placeholder:'例如：1.0',why:'★ code 段实测 1.5（非整）—— 所以匹配的 LP 松弛只对二分图紧，这正是 24.3 归约能成立的关键。'},
-     {kind:'single',q:'多商品流写法的约束条数是多少？',options:['$|E| + 1$','**$2|V|^{2} + |V| - 2$**','$|V| + |E| + 1$','$|V|^{2}$'],answer:1,why:'★ analyze 第二条：变量与约束规模随商品数放大，所以目前只有「直接解 LP」这条多项式路线。'},
+     {kind:'single',q:'多商品流写法的约束条数是多少？',options:['$|E| + 1$：一条边一条约束，最后再加一条','**$2|V|^{2} + |V| - 2$**','$|V| + |E| + 1$','$|V|^{2}$'],answer:1,why:'★ analyze 第二条：变量与约束规模随商品数放大，所以目前只有「直接解 LP」这条多项式路线。'},
     ],bookExercises:[
      {id:'29.2-1',page:865,star:0,statement:'Write out explicitly the linear program corresponding to finding the shortest path from vertex s to vertex x in Figure 22.2(a) on page 609.',hint:'指路指错了：本关程序里**没有**最短路 LP —— part 4 是最大流的 LP（Figure 24.1 的 9 条容量约束 + 4 个中间顶点各两条守恒），part 5 是二分图匹配的 LP 松弛，两条都跟本题不是一回事。 自己写的时候照原书 p.861 的 (29.22)–(29.24)： 决策变量是源点之外每个结点的 $d_v$；目标是**最大化** $d_x$ —— 这一步最反直觉：约束 $d_v \\le d_u + w(u,v)$ 只给每个 $d_v$ 上了界，最小化会一路掉到 $-\\infty$（原书 p.861 特意警告「Minimizing the objective function would be a mistake」），只有最大化才把 $d_x$ 顶到「所有上界里最小的那个」，也就是真正的最短路权； 对 Figure 22.2(a) 的**每条边** $(u,v)$ 写一行 $d_v \\le d_u + w(u,v)$； 源点条件 $d_s = 0$ 要写成**两条**反向不等式（$d_s \\le 0$ 与 $-d_s \\le 0$）， 因为 LP 的标准形式里没有等式；变量非负约束按题面要不要给 $d_v \\ge 0$ 想清楚 （最短路权可正可负时不能强加 $d_v \\ge 0$）。写完数一下：Figure 22.2(a) 有几条边就有几行不等式，再加上源点那两行。'},
      {id:'29.2-3',page:865,star:0,statement:'Write out explicitly the linear program corresponding to finding the maximum flow in Figure 24.1(a).',hint:'把 C 程序 part 4 的 9 条容量行按图抄出来（16,13,12,4,14,9,20,7,4），守恒行四个中间顶点各两条 —— 解出来应该是 23。'},

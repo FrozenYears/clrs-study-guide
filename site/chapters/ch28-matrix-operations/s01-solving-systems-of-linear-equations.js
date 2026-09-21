@@ -518,7 +518,7 @@ int main(void)
         '★ 这也解释了为什么参数里必须同时带 $P$ 与 $LU$。∎']},
     ],conclusion:'★ 结论：$\\Theta(n^3)$ 分解 + 两次 $\\Theta(n^2)$ 代入 = 线性方程组的标准解法。',note:''},
    {type:'drill',title:'检验一下',items:[
-     {kind:'single',q:'LUP 分解中的 $P$ 起什么作用？',options:['存解','**置换（选主元）**','存特征值','加速乘法'],answer:1,
+     {kind:'single',q:'LUP 分解中的 $P$ 起什么作用？',options:['把前代求出来的解存起来复用','**置换（选主元）**','存特征值','用行置换来减少乘法的次数'],answer:1,
       why:'★ 用行交换避开零/过小主元，保证每个非奇异矩阵都能分解。'},
      {kind:'single',q:'分解完成后解一个新的 $b$ 需要多久？',options:['$\\Theta(n^3)$','**$\\Theta(n^2)$**','$\\Theta(n)$','$\\Theta(n\\lg n)$'],answer:1,
       why:'★ 只需前代 + 回代。'},

@@ -435,7 +435,7 @@ int main(void)
    {type:'drill',title:'检验一下',items:[
      {kind:'single',q:'点值表示下两个多项式相乘要多少时间？',options:['$\\Theta(n^{2})$','**$\\Theta(n)$**','$\\Theta(n \\lg n)$','$\\Theta(\\lg n)$'],answer:1,
       why:'★ 逐点相乘即可：$C(x_k) = A(x_k)B(x_k)$。'},
-     {kind:'single',q:'次数界为 $n$ 的多项式 A 与 B 相乘，至少要取多少个点？',options:['$n$','$n+1$','**$2n-1$**','$2n$'],answer:2,
+     {kind:'single',q:'次数界为 $n$ 的多项式 A 与 B 相乘，至少要取多少个点？',options:['$n$：次数界不变，$n$ 个点就够','$n+1$：插值一向要 $n+1$ 个点','**$2n-1$**','$2n$'],answer:2,
       why:'★ 乘积的次数界是 $2n - 1$；点不够会发生混叠。C 程序补零到 8（$4+4-1=7$）。'},
      {kind:'judge',q:'单点求值用 Horner 法则需要 $\\Theta(n)$ 时间。',answer:true,
       why:'★ 原书 p.879：反复"乘 $x_0$ 再加"即可。'},

@@ -360,7 +360,7 @@ int main(void)
    {type:'drill',title:'检验一下',items:[
      {kind:'single',q:'LRU 与 FIFO 的竞争比是多少？',options:['1','**$k$**','$2H_k$','无界'],answer:1,
       why:'★ 15.4 已实测（k=2/3 时最坏 1.83 倍）；与随机标记的 $O(\\lg k)$ 对比明显。'},
-     {kind:'single',q:'随机标记的竞争比是？',options:['$k$','$\\lg k$','**$2H_k$（≈ 2 ln k）**','无界'],answer:2,
+     {kind:'single',q:'随机标记的竞争比是？',options:['$k$：最坏情况跟标记的个数同阶','$\\lg k$：只对数级，因为标记是随机挑的','**$2H_k$（≈ 2 ln k）**','无界'],answer:2,
       why:'★ 原书 p.808 的结论。'},
      {kind:'judge',q:'LIFO 也是一个 k-竞争的策略。',answer:false,
       why:'★ LIFO 无界（15.4 part 5 实测最坏 3.00 倍，且可构造任意差）。'},
@@ -368,7 +368,7 @@ int main(void)
       why:'1.925 ≤ 2H₄ = 4.167（200 组实测）。'},
      {kind:'simulate',q:'k=4 时 $2H_4$ 的值是多少（填三位小数）？',expect:[4.167],placeholder:'例如：2.000',why:'★ code 段的断言就写成 1.925 ≤ 2H₄ = 4.167，$H_4 = 1 + 1/2 + 1/3 + 1/4$。'},
      {kind:'simulate',q:'随机标记相对 OPT 的平均缺失比是多少（填三位小数）？',expect:[1.713],placeholder:'例如：1.000',why:'★ code 段实测：平均比值 1.713 —— 比理论上界 4.167 小得多，但仍是 $>1$ 的代价。'},
-     {kind:'single',q:'15.4 的 FFU（Belady）为什么不能直接用在这个在线场景里？',options:['因为它太慢','**因为它要求知道未来的访问序列**','因为它不是 $k$-竞争的','因为它只支持固定块大小'],answer:1,why:'★ map 段点明：FFU 换出「下次最远者」，而在线算法恰恰没有未来 —— 本关所有策略都是它的替代品。'},
+     {kind:'single',q:'15.4 的 FFU（Belady）为什么不能直接用在这个在线场景里？',options:['因为它太慢：每次换出之前都要把未来的请求扫一遍','**因为它要求知道未来的访问序列**','因为它不是 $k$-竞争的','因为它只支持固定块大小'],answer:1,why:'★ map 段点明：FFU 换出「下次最远者」，而在线算法恰恰没有未来 —— 本关所有策略都是它的替代品。'},
     ],bookExercises:[
      {id:'27.3-1',page:814,star:0,statement:'For the cache sequence (27.10), show the contents of the cache after each request and count the number of cache misses. How many misses does each epoch incur?',hint:'照那个请求序列逐个模拟标记式算法：命中就把该块的「未用过」标记清掉，一旦所有块都被标过就开新一轮（epoch）并重置标记。把每一步的缓存内容列成表，缺失数按 epoch 分组自己数出来 —— 别凭记忆给结论。'},
      {id:'27.3-2',page:814,star:0,statement:'Show that LFU has a competitive ratio of Θ(n/k) for the online caching problem with n requests and a cache of size k.',hint:'给对手一套固定打法：先用 k 个各只出现过一次的块填满缓存，再不断引入「只出现一次的新块」并穿插高频块。LFU 每次踢掉的都是刚进来的低频块，而 OPT 每轮只需一次缺失。把两段代价之比写成 n 与 k 的函数，上下界都要给。'},

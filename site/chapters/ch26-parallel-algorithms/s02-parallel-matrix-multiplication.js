@@ -270,7 +270,7 @@ int main(void)
    {type:'drill',title:'检验一下',items:[
      {kind:'single',q:'P-MATRIX-MULTIPLY（循环版）的 span 是？',options:['$\\Theta(1)$','**$\\Theta(\\lg n)$**','$\\Theta(\\lg^2 n)$','$\\Theta(n)$'],answer:1,
       why:'★ 两层并行循环各 $\\lg n$。'},
-     {kind:'single',q:'递归版与循环版的 work 关系是？',options:['递归版更小','**两者都是 Θ(n³)**','循环版更小','无法比较'],answer:1,
+     {kind:'single',q:'递归版与循环版的 work 关系是？',options:['递归版更小：递归能把相同的乘法合并掉','**两者都是 Θ(n³)**','循环版更小：三重循环的乘加次数少一些','无法比较'],answer:1,
       why:'★ 乘加总次数不变。'},
      {kind:'judge',q:'递归版的并行度比循环版大。',answer:false,
       why:'★ 递归版 span 更大 → 并行度更小（C 程序实测 6096 vs 21845）。'},

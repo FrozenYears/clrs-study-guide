@@ -532,7 +532,7 @@ int main(void)
    {type:'drill',title:'检验一下',items:[
      {kind:'single',q:'对称正定矩阵的 LU 分解不会遇到什么？',options:['很大的数','**零主元**','行交换','非对角元'],answer:1,
       why:'★ 推论 28.6：主元严格为正，所以免选主元。'},
-     {kind:'single',q:'最小二乘的解满足哪条等式？',options:['$Ac = y$','**$A^{T}Ac = A^{T}y$**','$A^{T}c = y$','$AA^{T}c = y$'],answer:1,
+     {kind:'single',q:'最小二乘的解满足哪条等式？',options:['$Ac = y$：要求解精确落在每一条方程上','**$A^{T}Ac = A^{T}y$**','$A^{T}c = y$：只转置系数矩阵，右端不动','$AA^{T}c = y$'],answer:1,
       why:'★ 正规方程；等价说法是"残差与 $A$ 的每一列正交"。'},
      {kind:'judge',q:'正定矩阵的每个前导子矩阵仍正定（引理 28.4）。',answer:true,
       why:'★ 这是 28.2 分治求逆能递归的前提。'},
@@ -541,8 +541,8 @@ int main(void)
      {kind:'simulate',q:'C 程序 part 3c 用原书五点数据拟合出的二次项系数 $c_2$ 是多少？（填数值，保留三位小数）',expect:[0.214,0.2135,0.2145],placeholder:'例如：0.500',
       why:'0.214 —— 与原书 $F(x) = 1.200 - 0.757x + 0.214x^{2}$ 一致（阈值 1e-3）。'},
      {kind:'simulate',q:'原书五点数据拟合出的常数项系数 $c_0$ 是多少（保留三位小数）？',expect:[1.2],placeholder:'例如：0.500',why:'★ code 段实测 $F(x) = 1.200 - 0.757x + 0.214x^2$，与原书 Figure 28.3 一致。'},
-     {kind:'single',q:'为什么最小二乘的正规方程一定有唯一解？',options:['因为 $A$ 是方阵','**因为系数矩阵 $A^{T}A$ 对称正定**','因为方程个数等于未知数个数','因为残差恰好为 0'],answer:1,why:'★ map 段第三条：正规方程 $A^{T}Ac = A^{T}y$ 的系数矩阵恰是 $A^{T}A$ —— 正定，所以可逆。'},
-     {kind:'single',q:'对称正定的定义要求 $x^{T}Ax > 0$ 对哪些 $x$ 成立？',options:['所有 $x$','**一切 $x \\neq 0$**','只有单位向量','只有分量全正的向量'],answer:1,why:'★ analyze 第一条定义：$x = 0$ 时必然等于 0，所以条件只对非零向量提。'},
+     {kind:'single',q:'为什么最小二乘的正规方程一定有唯一解？',options:['因为 $A$ 是方阵，方阵的方程组总有唯一解','**因为系数矩阵 $A^{T}A$ 对称正定**','因为方程个数等于未知数个数','因为残差恰好为 0'],answer:1,why:'★ map 段第三条：正规方程 $A^{T}Ac = A^{T}y$ 的系数矩阵恰是 $A^{T}A$ —— 正定，所以可逆。'},
+     {kind:'single',q:'对称正定的定义要求 $x^{T}Ax > 0$ 对哪些 $x$ 成立？',options:['所有 $x$，包括零向量在内','**一切 $x \\neq 0$**','只有单位向量，即分量全为 1 的那些','只有分量全正的向量'],answer:1,why:'★ analyze 第一条定义：$x = 0$ 时必然等于 0，所以条件只对非零向量提。'},
     ],bookExercises:[
      {id:'28.3-4',page:846,star:0,statement:'Prove that the determinant of each leading submatrix of a symmetric positive- definite matrix is positive.',hint:'对前导子矩阵 $A_k$ 用定义：取 $x = (x_k, 0)$ 代入 $x^{T}Ax$，立刻看出 $A_k$ 必须正定（这个构造在引理 28.4 的证明里就用了）。'},
      {id:'28.3-5',page:846,star:0,statement:'Let A k denote the kth leading submatrix of a symmetric positive-definite matrix A. Prove that ⌈et(A k )/ det(A k−1 ) is th⌉ kth pivot during LU decomposition, where, by convention, det(A 0 ) = 1.',hint:'关键的一步是**行列式与主元之积**的联系，不是把结论再念一遍。 正定 ⇒ 每个前导子矩阵 $A_k$ 都可逆且 $\\det(A_k) > 0$，所以 LU 分解一路不需要选主元。 对 $A_k = L_k U_k$ 取行列式：$L_k$ 下三角对角全 1，$U_k$ 上三角的对角就是前 $k$ 个主元 $u_{11}, \\dots, u_{kk}$，于是 $\\det(A_k) = \\prod_{i \\le k} u_{ii}$。 两式相除立刻得 $\\det(A_k) / \\det(A_{k-1}) = u_{kk}$，正是第 $k$ 个主元（约定 $\\det(A_0) = 1$ 让 $k=1$ 也成立）。 顺带把这为什么和正定有关写清楚：$u_{kk} = \\det(A_k)/\\det(A_{k-1}) > 0$， 所以正定矩阵的 LU 主元全为正 —— 这也是 28.3 那套「正定不必选主元」的依据。'},

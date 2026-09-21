@@ -273,15 +273,15 @@ int main(void)
         '工程对策：互斥锁、原子操作，或改用确定性并行（原书 p.790 引用的论文表明确定性并行常同样快）。∎']},
     ],conclusion:'★ 结论：work/span 是并行算法的设计尺；贪心调度把理论界变成工程可用（2 倍以内）。',note:''},
    {type:'drill',title:'检验一下',items:[
-     {kind:'single',q:'span（$T_\\infty$）指什么？',options:['总工作量','**最长依赖链（关键路径）**','处理器数','平均并行度'],answer:1,
+     {kind:'single',q:'span（$T_\\infty$）指什么？',options:['总工作量，也就是所有结点加起来的时间','**最长依赖链（关键路径）**','处理器的个数，机器有几核就是几','平均并行度'],answer:1,
       why:'★ $T_\\infty$ 是无限处理器下的最短时间。'},
-     {kind:'single',q:'任何 $P$ 处理器的运行时间下界是？',options:['$T_1$','**$\\max(T_1/P, T_\\infty)$**','$T_\\infty/P$','$T_1 \\cdot P$'],answer:1,
+     {kind:'single',q:'任何 $P$ 处理器的运行时间下界是？',options:['$T_1$','**$\\max(T_1/P, T_\\infty)$**','$T_\\infty/P$：关键路径也能按处理器数平分','$T_1 \\cdot P$'],answer:1,
       why:'★ work 分不完 + 关键路径走不完。'},
      {kind:'judge',q:'spawn 会改变算法的工作总量 $T_1$。',answer:false,
       why:'★ 删掉 spawn/sync 得到的串行投影与并行版 work 相同。'},
      {kind:'simulate',q:'C 程序里 FIB(20) 的调用次数是多少？（填数字）',expect:[21891],placeholder:'例如：10000',
       why:'21891 = 2·F(21) − 1（C 程序 part 1 与迭代 Fibonacci 对照）。'},
-     {kind:'single',q:'贪心调度定理 26.1 给出的运行时间上界是？',options:['$T_P \\le T_1/P$','**$T_P \\le T_1/P + T_\\infty$**','$T_P \\le T_\\infty$','$T_P \\le 2T_1/P$'],answer:1,why:'★ analyze 第二条：把工作均摊到 $P$ 个处理器之外，还要再加一条关键路径 $T_\\infty$。'},
+     {kind:'single',q:'贪心调度定理 26.1 给出的运行时间上界是？',options:['$T_P \\le T_1/P$：工作均摊到 $P$ 个处理器，正好线性加速','**$T_P \\le T_1/P + T_\\infty$**','$T_P \\le T_\\infty$','$T_P \\le 2T_1/P$'],answer:1,why:'★ analyze 第二条：把工作均摊到 $P$ 个处理器之外，还要再加一条关键路径 $T_\\infty$。'},
      {kind:'simulate',q:'C 程序里 P-FIB(20) 的并行度约为多少（取整）？',expect:[1095],placeholder:'例如：1000',why:'★ code 段实测：span 20（$\\Theta(n)$）、work 21891，21891 / 20 ≈ 1095。'},
      {kind:'judge',q:'贪心调度的运行时间与最优调度最多差 2 倍（推论 26.2）。',answer:true,why:'★ analyze 第三条「近似因子 2」，本关 prove 段的命题正是这条定理。'},
     ],bookExercises:[

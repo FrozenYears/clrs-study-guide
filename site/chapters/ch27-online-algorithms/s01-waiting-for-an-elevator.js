@@ -344,7 +344,7 @@ int main(void)
         '★ 这是在线算法的典型教训：**没有上限的等待是灾难**；参数 $m$ 提供的就是"退出开关"。∎']},
     ],conclusion:'★ 结论：竞争比是在线算法唯一可依赖的定量指标；"等 k−1 分钟"给出 < 2 的保证。',note:''},
    {type:'drill',title:'检验一下',items:[
-     {kind:'single',q:'$c$-竞争的含义是？',options:['最坏情况时间 ≤ c','**成本 ≤ c · 离线最优成本**','平均成本 ≤ c','空间 ≤ c','处理器数 ≤ c'],answer:1,
+     {kind:'single',q:'$c$-竞争的含义是？',options:['最坏情况时间不超过最优情况时间的 c 倍','**成本 ≤ c · 离线最优成本**','平均成本 ≤ c','空间 ≤ c','处理器数不超过 c，即至多开 c 台机器'],answer:1,
       why:'★ 与离线最优（知道未来）的比值。'},
      {kind:'single',q:'"等 m 分钟后走楼梯"策略的最优 m 是？',options:['0','k/2','**k−1**','k'],answer:2,
       why:'★ $c(m)=(m+k)/(m+1)$ 递减，最大可行的 $m=k-1$ 给出 $2-1/k$。'},
@@ -353,7 +353,7 @@ int main(void)
      {kind:'simulate',q:'C 程序 k=10 时最优竞争比是多少？（填两位小数）',expect:[1.9],placeholder:'例如：2.0',
       why:'1.900 = 19/10（m = 9）。'},
      {kind:'simulate',q:'用「永远走楼梯」（m=0）在 k=10 时的竞争比是多少？（填数字）',expect:[10],placeholder:'例如：2',why:'★ code 段实测：m=0 时比值 10 —— 楼梯固定耗 10 分钟，而电梯最优情况只需 1 分钟。'},
-     {kind:'single',q:'「等 m 分钟」策略的最坏竞争比公式是？',options:['$(m+k)/(m+1)$','**$\\max(1,\\ (m+k)/(m+1))$**','$k/m$','$m/(m+k)$'],answer:1,why:'★ analyze 第二条：外层取 $\\max$ 是因为竞争比不可能小于 1（prove 段的命题）。'},
+     {kind:'single',q:'「等 m 分钟」策略的最坏竞争比公式是？',options:['$(m+k)/(m+1)$','**$\\max(1,\\ (m+k)/(m+1))$**','$k/m$：把分母写成 $m$ 而不是 $m+1$，其他都一样','$m/(m+k)$'],answer:1,why:'★ analyze 第二条：外层取 $\\max$ 是因为竞争比不可能小于 1（prove 段的命题）。'},
      {kind:'judge',q:'竞争比 $c \\ge 1$ 恒成立，因为在线算法不可能比知道全部未来的先知更省。',answer:true,why:'★ analyze 第一条与 prove 段的命题：所以我们只求 $c$ 尽量接近 1，而不是等于 1。'},
     ],bookExercises:[
      {id:'27.1-1',page:795,star:0,statement:'Suppose that when hedging your bets, you wait for p minutes, instead of for k minutes, before taking the stairs. What is the comp etitive ratio as a function of p and k? How should you choose p to minimize the competitive ratio?',hint:'两个方向各算一个比值：电梯在 p 分钟内来的情形（你白等了 p），以及它始终不来、你最终走楼梯的情形。把两个比值写成 p 与 k 的函数，一个随 p 上升、一个随 p 下降，最优点就在两条线交叉的地方。'},

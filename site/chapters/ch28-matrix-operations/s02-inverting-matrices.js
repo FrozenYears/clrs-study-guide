@@ -531,7 +531,7 @@ int main(void)
         '★ $n$ 不是 2 的幂时补零到 $n + k$（原书 p.837）—— 正则条件保证这种"补齐"不改变阶。∎']},
     ],conclusion:'★ 结论：$\\text{求逆} = \\Theta(\\text{乘法})$ —— 两条定理合起来把两者的阶锁在一起。',note:''},
    {type:'drill',title:'检验一下',items:[
-     {kind:'single',q:'定理 28.1 里构造的 $\\mathcal{A} = \\begin{bmatrix} I & A \\\\ B & 0 \\end{bmatrix}$，它的逆的哪个块给出 $AB$？',options:['左上块','**右上块（取负）**','右下块','左下块'],answer:1,
+     {kind:'single',q:'定理 28.1 里构造的 $\\mathcal{A} = \\begin{bmatrix} I & A \\\\ B & 0 \\end{bmatrix}$，它的逆的哪个块给出 $AB$？',options:['左上块，也就是 $I$ 所在的那一块','**右上块（取负）**','右下块','左下块'],answer:1,
       why:'★ 右上块是 $-AB$；一次 $3n$ 阶求逆换一次乘法。'},
      {kind:'single',q:'分治求逆每层做几次 $n/2$ 阶矩阵乘法？',options:['4 次','5 次','**7 次**','8 次'],answer:2,
       why:'★ C 程序数出来的 $T(2) = 7$ 就是这七次；$T(4) = 2 \\times 7 + 7 \\times 8 = 70$。'},
