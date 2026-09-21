@@ -162,12 +162,16 @@ export function renderBoss(chapter) {
     const countEl = h('b', null, String(problems.filter((p) => doneSet.has(p.id)).length));
 
     kids.push(h('h2', { class: 'card__title' }, '原书 Problems（' + problems.length + ' 道）'));
+    // ★ 这段文案里有 **粗体** 标记，必须走 renderMixed —— 直接当纯文本塞进 h() 的话，
+    //   页面上会原样露出星号（冒烟会把「可见文本里有未渲染的 ** 粗体标记」判成渲染印记）。
+    //   全站文案统一走 renderMixed，就是为了一次收掉这类问题。
     kids.push(h('p', { class: 'card__meta' },
-      '原书章末题**全量**收录，题干逐字照录（衬线体），页码标在题号旁。'
-      + '只给提示不给答案 —— 章末题是开放长题，本站没有权威解答，硬编一份就是杜撰。'
-      + (withHints < problems.length
-          ? ' 其中 ' + withHints + ' 道另有中文提示（标「给个提示」），其余 ' + (problems.length - withHints) + ' 道只有原文。'
-          : '')));
+      katex.renderMixed(
+        '原书章末题**全量**收录，题干逐字照录（衬线体），页码标在题号旁。'
+        + '只给提示不给答案 —— 章末题是开放长题，本站没有权威解答，硬编一份就是杜撰。'
+        + (withHints < problems.length
+            ? ' 其中 ' + withHints + ' 道另有中文提示（标「给个提示」），其余 ' + (problems.length - withHints) + ' 道只有原文。'
+            : ''))));
     kids.push(h('p', { class: 'card__meta' },
       '右上的勾选是给你自己用的「做完了」标记 —— 它是自评，不是系统判分。已自评 ',
       countEl, ' / ' + problems.length + ' 道。'));
