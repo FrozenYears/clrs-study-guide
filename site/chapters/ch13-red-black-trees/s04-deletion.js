@@ -22,13 +22,13 @@ export default {
     interactive:{text:'本关用 C 程序实测删除后性质满足；动画留待 RB-DELETE 生成器扩展。'}},
    {type:'source',title:'书上是怎么说的',lead:'原书英文原文。',blocks:[
      {kind:'body',page:347,en:'In either case, node y has at most one child: node x , which takes y’s place in the tree.',
-      zh:'★ RB-DELETE $O(\\\\lg n)$。'},
+      zh:'★ RB-DELETE $O(\\lg n)$。'},
      {kind:'body',page:347,en:'• Because node y’s color might change, the variable y-original-color stores y’s color before any changes occur.',
       zh:'★★ **关键判断**：只有删除的节点（或替换节点）是**黑**时才需要 FIXUP —— 红节点删除不改变黑高。'},
      {kind:'body',page:350,en:'The procedure RB-DELETE-FIXUP on the next page restores properties 1, 2, and 4.',
       zh:'★ 最简单的消除：x 是红 → 染黑即完成（一个红补一个黑缺失）。'},
      {kind:'body',page:354,en:'Thus, the procedure RB-DELETE-FIXUP takes O(lg n) time and performs at most three rotations, and the overall time for RB-DELETE is therefore also O(lg n).',
-      zh:'★ FIXUP 也是 $O(\\\\lg n)$ —— 沿树向上最多走 $h$ 步。'},
+      zh:'★ FIXUP 也是 $O(\\lg n)$ —— 沿树向上最多走 $h$ 步。'},
     ],terms:[{en:'RB-DELETE-FIXUP',zh:'红黑删除修复（四种情况）',page:351}]},
    {type:'pseudocode',title:'RB-DELETE：22 行',algo:'RB-DELETE',signature:'RB-DELETE(T, z)',page:348,
     lines:[
@@ -157,12 +157,12 @@ int main(void) {
              {pc:21,pcCode:'if y-original-color == BLACK',c:'`if (y_orig == BLACK)`'},
              {pc:22,pcCode:'RB-DELETE-FIXUP(T, x)',c:'`rb_delete_fixup(root, x)`'}]},
    {type:'analyze',title:'一本账',claims:[
-     {expr:'O(\\\\lg n)',when:'RB-DELETE + FIXUP',page:354,source:'book'},
+     {expr:'O(\\lg n)',when:'RB-DELETE + FIXUP',page:354,source:'book'},
      {expr:'O(1)',when:'每次旋转',page:354,source:'book'},
     ],tables:[],chart:{xMax:64,series:[{name:'RB-DELETE O(lg n)',expr:'Math.log2(n)',color:'--viz-done'}]},
     derivations:[{kind:'summation',title:'FIXUP 为什么是 O(lg n)',steps:[
       {zh:'情形 2 上移 → 最多 O(lg n) 次。'},{zh:'情形 1/3/4 用旋转终止 → O(1)。'},
-      {tex:'T = O(\\\\lg n)',zh:'∎'}]},
+      {tex:'T = O(\\lg n)',zh:'∎'}]},
      ],
     note:''},
    {type:'prove',title:'RB-DELETE-FIXUP 终止性与正确性',statement:'The procedure RB-DELETE-FIXUP restores properties 4 and 5 in O(lg n) time.',page:354,
