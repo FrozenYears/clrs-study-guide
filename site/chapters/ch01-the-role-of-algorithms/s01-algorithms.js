@@ -505,10 +505,10 @@ int main(void) {
           kind: 'single',
           q: '「没有一种数据结构适合所有目的」这句话的含义是？',
           options: [
-            '所以应该尽量不用数据结构',
+            '所以应该尽量不用数据结构：结构越简单越不容易出错，效率损失交给更快的机器补回来',
             '所以要掌握好几种，知道各自 strengths 与 limitations',
             '所以本书只讲一种最通用的',
-            '所以数据结构比算法更重要',
+            '所以数据结构比算法更重要：把数据存对了，算法怎么写都不会差到哪里去',
           ],
           answer: 1,
           why: '原话是 you should know the strengths and limitations of several of them。选对表示是算法设计的一部分，这也是第 10–19 章存在的原因，以及 1.1-3 要你做的事。',

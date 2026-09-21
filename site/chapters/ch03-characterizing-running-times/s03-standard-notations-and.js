@@ -418,7 +418,7 @@ export default {
         {
           kind: 'single',
           q: '斐波那契数 $F_i$ 的渐进界是？',
-          options: ['$\\Theta(\\varphi^i)$（φ 为黄金比例）', '$\\Theta(i)$', '$\\Theta(2^i)$', '$\\Theta(i!)$'],
+          options: ['$\\Theta(\\varphi^i)$（φ 为黄金比例）', '$\\Theta(i)$：递推式每步只做一次加法，步数是 $i$', '$\\Theta(2^i)$：递归树每层分两个子问题，层数为 $i$', '$\\Theta(i!)$：第 $i$ 项要把前面各项的贡献累乘'],
           answer: 0,
           why:
             '原书 p69 给出封闭形式 $F_i\\approx\\varphi^i/\\sqrt5$（$\\varphi=(1+\\sqrt5)/2$），故 $F_i=\\Theta(\\varphi^i)$。',
