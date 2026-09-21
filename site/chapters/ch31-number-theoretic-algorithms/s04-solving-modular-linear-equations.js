@@ -467,7 +467,7 @@ int main(void)
         '★ C 程序 part 4 的 $d = 5$：$35x \\text{ mod }50$ 的值域正是 10 个 $5$ 的倍数，每个被 5 个 $x$ 命中。∎']},
     ],conclusion:'★ 结论：一条方程的"可解性、解的个数、解的公式"全部由 $\\gcd(a,n)$ 一个量决定。',note:''},
    {type:'drill',title:'检验一下',items:[
-     {kind:'single',q:'$ax \\equiv b \\ (\\text{mod } n)$ 何时有解？',options:['$a \\mid b$','**$\\gcd(a,n) \\mid b$**','$b \\mid n$','总是有解'],answer:1,
+     {kind:'single',q:'$ax \\equiv b \\ (\\text{mod } n)$ 何时有解？',options:['$a \\mid b$：只要 $a$ 整除 $b$ 就解得出','**$\\gcd(a,n) \\mid b$**','$b \\mid n$','总是有解'],answer:1,
       why:'★ 推论 31.21；C 程序的 11 mod 5 ≠ 0 反例。'},
      {kind:'single',q:'$35x \\equiv 10 \\ (\\text{mod } 50)$ 有几个解？',options:['1','**5**','10','50'],answer:1,
       why:'★ $d = 5$ → 5 个解 {6,16,26,36,46}（习题 31.4-1，C 程序回代验证）。'},

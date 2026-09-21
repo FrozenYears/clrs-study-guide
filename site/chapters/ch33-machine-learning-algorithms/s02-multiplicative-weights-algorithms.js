@@ -229,13 +229,13 @@ int main(void)
    {type:'drill',title:'检验一下',items:[
      {kind:'single',q:'加权多数如何惩罚犯错的专家？',options:['权重清零','**权重减半**','权重加 1','移出专家池'],answer:1,
       why:'★ 乘法更新 w_i ← w_i/2 —— 指数级边缘化。'},
-     {kind:'single',q:'引理 33.3 的上界里与 n 相关的项是？',options:['n','**2 ln n**','n²','√n'],answer:1,
+     {kind:'single',q:'引理 33.3 的上界里与 n 相关的项是？',options:['n 本身，专家数线性进入上界','**2 ln n**','n 的平方：两两专家要比一次','$\\sqrt{n}$：开方以后的专家数'],answer:1,
       why:'★ 专家数只以对数进入 —— 这是乘法权重的招牌优势。'},
      {kind:'judge',q:'加权多数需要假设专家序列是随机的。',answer:false,
       why:'★ 对任意（甚至对抗的）序列，界都成立 —— 无统计假设。'},
      {kind:'simulate',q:'C 程序 part 2 里算法犯错多少次？（填整数）',expect:[133],placeholder:'例如：100',
       why:'133 —— 落在界 358.8 内，比最优专家（77）多 73%。'},
-     {kind:'single',q:'引理 33.3 的上界 $4.6\,m_{best} + 2\ln n$ 里，$2\ln n$ 这一项从哪来？',options:['专家个数乘某个常数','**势函数里 $n$ 个专家的初始权重贡献**','随机噪声','最优专家的犯错数'],answer:1,why:'★ 势函数从 $\sum_i w_i = n$ 出发（每人初始权重 1），每次犯错至少砍掉因子 $3/4$，取对数就把 $\ln n$ 带进上界。C 程序 $T = 200, n = 10$ 实测 $133 \le 4.6 \times 77 + 2\ln 10 = 358.8$。'},
+     {kind:'single',q:'引理 33.3 的上界 $4.6\,m_{best} + 2\ln n$ 里，$2\ln n$ 这一项从哪来？',options:['专家个数 $n$ 直接乘上一个常数，跟权重无关','**势函数里 $n$ 个专家的初始权重贡献**','随机噪声','最优专家的犯错数 $m_{best}$ 本身'],answer:1,why:'★ 势函数从 $\sum_i w_i = n$ 出发（每人初始权重 1），每次犯错至少砍掉因子 $3/4$，取对数就把 $\ln n$ 带进上界。C 程序 $T = 200, n = 10$ 实测 $133 \le 4.6 \times 77 + 2\ln 10 = 358.8$。'},
      {kind:'judge',q:'加权多数对任意专家序列都能给出与最优专家成比例的犯错上界。',answer:true,why:'★ analyze 表里「统计假设的个数」标的就是 0 —— 不需要任何分布假设，纯靠「犯错就乘 $1/2$」的降权。C 程序 $T = 200$ 实测算法 133 次、最优专家 77 次，稳稳落在 4.6 倍界内。'},
     ],bookExercises:[
      {id:'33.2-1',page:1021,star:0,statement:'The proof of Lemma 33.3 assumes that some expert never makes a mistake. It is possible to generalize the algorithm and analysis t o remove this assumption. The new algorithm begins in the same way. The set S might become empty at some point, however. If that ever happens, reset S to contain all the experts and continue the algorithm. Show that the number of mistakes that this algorithm makes is at most m − dlg ne.',hint:'先看清失去的是什么：原证明靠「某个专家永不犯错」保证 $S$ 非空、且最好专家的权重不小于 1。现在 $S$ 可能空 —— 题面给的规则是清空后重置全部专家。于是权重的下界变了：把最好专家的权重用「它总共错的次数」写出来（每次出错至多减半），再重跑势函数的乘积论证，界里就会多出一项与犯错次数成正比的加性代价。'},

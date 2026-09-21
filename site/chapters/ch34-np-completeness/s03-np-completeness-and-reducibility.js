@@ -404,7 +404,7 @@ int main(void)
         { kind: 'judge', q: '多项式时间归约关系 ≤ₚ 是传递的。', answer: true,
           why: '★ 习题 34.3-2：若 L₁≤ₚL₂ 且 L₂≤ₚL₃，则串联归约得 L₁≤ₚL₃。' },
         { kind: 'single', q: 'C 程序 part4 中，可满足的 3 子句公式归约出的图，最大团是多少？',
-          options: ['1', '2', '3（= 子句数）', '9'], answer: 2,
+          options: ['1', '2', '3', '9'], answer: 2,
           why: '★ part4 打印「可满足公式（3 子句）→ 归约图的最大团 = 3（= 子句数）」。' },
         { kind: 'judge', q: 'C 程序 part4 中，不可满足公式 (v1)∧(¬v1) 归约出的图最大团小于 2。', answer: true,
           why: '★ part4 打印「不可满足公式 → 归约图的最大团 = 1 < 2」。' },

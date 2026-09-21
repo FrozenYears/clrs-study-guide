@@ -469,7 +469,7 @@ int main(void)
         '★ 后续所有章节（模幂、CRT、RSA）里的 mod 都继承这条定义与它的唯一性。∎']},
     ],conclusion:'★ 结论：mod 不是"取余运算符"，而是除法定理承诺的唯一余数 —— 这就是它能一致地参与模运算的原因。',note:''},
    {type:'drill',title:'检验一下',items:[
-     {kind:'single',q:'$d \\mid a$ 的含义是？',options:['$d < a$','$a = kd$（$k$ 为整数）','$d$ 是素数','$a = d + k$'],answer:1,
+     {kind:'single',q:'$d \\mid a$ 的含义是？',options:['$d \\mid a$：$a$ 是 $d$ 的整数倍','$a = kd$（$k$ 为整数）','$d$ 是素数','$a = d + k$'],answer:1,
       why:'★ 整除即"能整除着分解"，每个整数都整除 0。'},
      {kind:'single',q:'$-17$ 除以 $5$ 的余数（按除法定理 $0 \\le r < n$）是多少？',options:['-2','**3**','2','7'],answer:1,
       why:'★ $-17 = -4 \\times 5 + 3$；C 的 % 会给出 -2，需要修正（C 程序 part 1）。'},

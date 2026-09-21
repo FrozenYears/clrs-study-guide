@@ -359,7 +359,7 @@ int main(void)
         '★ 这正是"先写一个显然正确的版本，再验证聪明的版本"的工程范式。∎']},
     ],conclusion:'★ 结论：朴素匹配 = 定义本身。它的价值不在速度，而在"永远对"。',note:''},
    {type:'drill',title:'检验一下',items:[
-     {kind:'single',q:'朴素匹配最坏情况的比较次数是？',options:['$\\Theta(n + m)$','**$\\Theta((n-m+1)m)$**','$\\Theta(\\lg n)$','$\\Theta(n)$'],answer:1,
+     {kind:'single',q:'朴素匹配最坏情况的比较次数是？',options:['$\\Theta(n + m)$：文本扫一遍、模式扫一遍','**$\\Theta((n-m+1)m)$**','$\\Theta(\\lg n)$','$\\Theta(n)$'],answer:1,
       why:'★ 每个位移最多 $m$ 次比较，共 $n-m+1$ 个。'},
      {kind:'single',q:'T = abababacaba、P = abab 的有效位移是？',options:['{0, 1}','**{0, 2}**','{1, 3}','{0, 4}'],answer:1,
       why:'★ C 程序 part 1 实测；Figure 32.1 的例子。'},

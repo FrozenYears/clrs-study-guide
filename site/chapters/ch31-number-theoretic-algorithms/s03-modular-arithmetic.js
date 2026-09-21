@@ -473,7 +473,7 @@ int main(void)
         '★ C 程序 part 3 在 $\\mathbb{Z}_7^*$ 上验证：阶 ∈ {1,2,3,6}，全部整除 6。∎']},
     ],conclusion:'★ 结论：Lagrange 定理把"阶"锁进群阶的因子里 —— 31.6 的 Euler/Fermat 定理与 31.8 的 Miller-Rabin 都是它的直接推论。',note:''},
    {type:'drill',title:'检验一下',items:[
-     {kind:'single',q:'$(\\mathbb{Z}_{12}, \\cdot)$ 为什么不是群？',options:['没有单位元','**部分元素无乘法逆**','不封闭','不满足结合律'],answer:1,
+     {kind:'single',q:'$(\\mathbb{Z}_{12}, \\cdot)$ 为什么不是群？',options:['没有乘法单位元，1 并不在这个集合里','**部分元素无乘法逆**','乘法不封闭：两个元素相乘会跑出这个集合','不满足结合律'],answer:1,
       why:'★ 与 12 不互素的元素（如 2）没有逆 —— 乘法群只留互素元素。'},
      {kind:'single',q:'$\\mathbb{Z}_7^*$ 有多少个元素？',options:['7','**6**','5','3'],answer:1,
       why:'★ $\\varphi(7) = 6$；C 程序穷举列出 {1,2,3,4,5,6}。'},

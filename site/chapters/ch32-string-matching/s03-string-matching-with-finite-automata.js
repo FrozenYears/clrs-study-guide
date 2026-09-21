@@ -376,7 +376,7 @@ int main(void)
         '★ 建表 $O(m^{3}|\\Sigma|)$ 是朴素实现的代价；KMP（下一关）把预处理压到 $\\Theta(m)$ 且不需要字符表。∎']},
     ],conclusion:'★ 结论：DFA 把"回退"变成了"查表" —— 空间换时间、预处理换扫描的经典交易。',note:''},
    {type:'drill',title:'检验一下',items:[
-     {kind:'single',q:'自动机的状态 q 表示什么？',options:['已扫描的文本长度','**已匹配的 P 前缀长度**','失配次数','当前位移'],answer:1,
+     {kind:'single',q:'自动机的状态 q 表示什么？',options:['已经扫描过的文本字符数，也就是当前位移','**已匹配的 P 前缀长度**','到这一步失配的次数，跌一次就加一','当前位移'],answer:1,
       why:'★ q = P 的最长前缀，恰是当前文本后缀。'},
      {kind:'single',q:'什么时候输出一次命中？',options:['q = 0','**q = m**','每一步','q < 0'],answer:1,
       why:'★ 到达终态 m：整个模式都已匹配。'},
@@ -384,7 +384,7 @@ int main(void)
       why:'★ 只前进；回退被转移到表里消化（这正是它与朴素匹配的本质区别）。'},
      {kind:'simulate',q:'C 程序 part 3 里随机测试的分歧数是多少？',expect:[0],placeholder:'例如：1',
       why:'0 —— 四种算法的位移集合在 200 组上完全一致。'},
-     {kind:'single',q:'按原书给的界，朴素地构造转移表 $\delta$ 需要多少时间？',options:['$\Theta(m)$','$O(m|\Sigma|)$','**$O(m^{3}|\Sigma|)$**','$\Theta(n)$'],answer:2,why:'★ analyze 表里「朴素建表时间（原书给的界）」标的正是 $O(m^{3}|\Sigma|)$。扫描本身是线性的 $\Theta(n)$，代价全在建表上，可优化到 $O(m|\Sigma|)$。'},
+     {kind:'single',q:'按原书给的界，朴素地构造转移表 $\delta$ 需要多少时间？',options:['$Theta(m)$：每个状态算一次转移就够了','$O(m|Sigma|)$：建表时只查每个字符一次','**$O(m^{3}|\Sigma|)$**','$\Theta(n)$'],answer:2,why:'★ analyze 表里「朴素建表时间（原书给的界）」标的正是 $O(m^{3}|\Sigma|)$。扫描本身是线性的 $\Theta(n)$，代价全在建表上，可优化到 $O(m|\Sigma|)$。'},
      {kind:'judge',q:'字符串匹配自动机的虚假命中个数必然是 0。',answer:true,why:'★ 这里没有哈希碰撞这回事：$\delta$ 是确定性转移，状态 $q = m$ **当且仅当**真的匹配上了。C 程序对 $\delta$ 表做 200 组交叉验证，与定义的分歧数为 0。'},
     ],bookExercises:[
      {id:'32.3-1',page:974,star:0,statement:'Draw a state-transition diagram for the string-matching automaton for the pattern P = aabab over the alphabet † = fa; bg and illustrate its operation on the text string T = aaababaabaababaab .',hint:'两问都要做，只把 $\\delta$ 表填满不算完。 第一问：模式 $P = \\text{aabab}$ 有 5 个字符，状态是「当前已匹配的长度」$q = 0..5$，共 6 个状态； 每格按定义取「$(P[0..q-1]$ 加上字符 $c$ 的所有后缀里，是 $P$ 的前缀的最长那个的长度」—— 先把 6×2 = 12 格逐格算出来，再画成带箭头的状态转移图（同一字符的两条出边要分得开）。 第二问：把 $T = \\text{aaababaabaababaab}$ 从 $q=0$ 开始逐字符喂进去， 每读一个字符就按图转移并把当前状态标在 $T$ 的对应位置下方； 一旦到达 $q = 5$ 就报一次「出现在 $i - 5 + 1$」，然后按图继续走（**不是**回到 0）。 两边对不上时优先检查 $q=5$ 之后那一步：那里的转移最容易被误画成 0。'},
