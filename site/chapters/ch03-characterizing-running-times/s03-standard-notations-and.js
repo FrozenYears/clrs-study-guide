@@ -104,8 +104,8 @@ export default {
           title: '取整与取模',
           body:
             'floor $\\lfloor x\\rfloor$ 是不大于 $x$ 的最大整数，ceiling $\\lceil x\\rceil$ 是不小于 $x$ 的最小整数。' +
-            '一个重要恒等式：$\\lfloor x\\rfloor+\\lceil x\\rceil=x$ 当 $x$ 为整数；更常用的工程近似是' +
-            '$\\lfloor n/2\\rfloor+\\lceil n/2\\rceil=n$。取整函数都是单调不减的。',
+            '原书 p.63 的两个恒等式：对任意整数 $n$ 有 $\\lfloor n\\rfloor=n=\\lceil n\\rceil$（式 (3.1)）；' +
+            '对任意整数 $n$ 有 $\\lfloor n/2\\rfloor+\\lceil n/2\\rceil=n$。取整函数都是单调不减的。',
         },
         {
           title: '多项式按次数排序',
