@@ -257,7 +257,7 @@ int main(void)
         '★ 运行时间：while 至多 h 次，每次 O(1) → O(lg n)。∎']},
     ],conclusion:'★ 结论：size 域 + 两个沿树行走的查询 = 动态顺序统计；SELECT/RANK 互逆（C 程序往返验证）。',note:''},
    {type:'drill',title:'检验一下',items:[
-     {kind:'single',q:'顺序统计树的 size 域存什么？',options:['结点深度','**以该结点为根的子树的结点数**','该结点的秩','子树高度'],answer:1,
+     {kind:'single',q:'顺序统计树的 size 域存什么？',options:['结点在原树中的深度，用来算路径长度','**以该结点为根的子树的结点数**','该结点在中序序列里的秩，即它是第几小','子树高度'],answer:1,
       why:'★ x.size = x.left.size + x.right.size + 1。'},
      {kind:'single',q:'OS-SELECT 在 i > r 时怎么走？',options:['去左子树找第 i 小','去右子树找第 i − r 小','去右子树找第 r 小','回退到父结点'],answer:1,
       why:'★ 左子树的 r − 1 个结点与 x 自己都被跳过，所以剩余名次是 i − r。'},

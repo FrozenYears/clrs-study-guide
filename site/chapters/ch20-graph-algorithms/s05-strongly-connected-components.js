@@ -493,9 +493,9 @@ int main(void) {
         '分量图 4 结点无环；总代价 Θ(V+E) 两次 DFS。∎']},
     ],conclusion:'★ 结论：SCC 算法 = 拓扑排序思想（20.4）+ 转置图 + 两次 DFS 的组合拳。',note:''},
    {type:'drill',title:'检验一下',items:[
-     {kind:'single',q:'STRONGLY-CONNECTED-COMPONENTS 共用几次 DFS？',options:['1 次','**2 次（G 与 G^T 各一次）**','3 次','每个 SCC 一次'],answer:1,
+     {kind:'single',q:'STRONGLY-CONNECTED-COMPONENTS 共用几次 DFS？',options:['1 次','**2 次（G 与 G^T 各一次）**','3 次：遍历、转置、在转置图上跑，各算一次','每个 SCC 一次'],answer:1,
       why:'★ 两次线性扫描：第一次算完成时间，第二次在 G^T 上按 f 递减访问。'},
-     {kind:'single',q:'第二次 DFS 为什么按完成时间递减访问？',options:['随意','**使各 SCC 按分量图拓扑序被逐块收割**','为了省内存','红黑树要求'],answer:1,
+     {kind:'single',q:'第二次 DFS 为什么按完成时间递减访问？',options:['随意','**使各 SCC 按分量图拓扑序被逐块收割**','为了省内存：按完成时间递减就不用另外存一张分量图','红黑树要求'],answer:1,
       why:'★ 分量图无环（引理 20.6）；递减完成序对准其拓扑序。'},
      {kind:'judge',q:'G 与 G^T 的 SCC 划分相同。',answer:true,
       why:'★ 互相可达的定义关于边方向对称。'},

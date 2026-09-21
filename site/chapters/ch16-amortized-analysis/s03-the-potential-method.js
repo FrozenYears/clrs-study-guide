@@ -218,9 +218,9 @@ int main(void)
         '★ 栈例子两种方法都给出 PUSH 摊还 2、POP/MULTIPOP 摊还 0（C 程序 part 1）。∎']},
     ],conclusion:'★ 结论：势能法 = 选一个非负且初始为 0 的 Φ，摊还代价自动带上"预付/透支"的语义；16.4 的动态表是它最重要的应用。',note:''},
    {type:'drill',title:'检验一下',items:[
-     {kind:'single',q:'势能法中摊还代价的定义式是？',options:['$\\hat{c}_i = c_i$','$\\hat{c}_i = c_i + \\Phi(D_i) - \\Phi(D_{i-1})$','$\\hat{c}_i = \\Phi(D_i)$','$\\hat{c}_i = c_i \\cdot \\Phi(D_i)$'],answer:1,
+     {kind:'single',q:'势能法中摊还代价的定义式是？',options:['$\\hat{c}_i = c_i$','$\\hat{c}_i = c_i + \\Phi(D_i) - \\Phi(D_{i-1})$','$\\hat{c}_i = \\Phi(D_i)$','$\\hat{c}_i = c_i \\cdot \\Phi(D_i) - \\Phi(D_{i-1})$'],answer:1,
       why:'★ 式 (16.2)：实际代价加势能变化。'},
-     {kind:'single',q:'总摊还 ≥ 总实际 成立的条件是？',options:['Φ 处处为 0','$\\Phi(D_n) \\ge \\Phi(D_0)$','$\\Phi$ 单调递减','操作序列随机'],answer:1,
+     {kind:'single',q:'总摊还 ≥ 总实际 成立的条件是？',options:['Φ 处处为 0','$\\Phi(D_n) \\ge \\Phi(D_0)$','$\\Phi(D_i)$ 随 $i$ 单调递减，越往后势能越小','操作序列随机'],answer:1,
       why:'★ 由望远镜求和：Σĉ = Σc + Φ(Dn) − Φ(D0)。'},
      {kind:'judge',q:'势能法给出的 Σĉ = Σc + ΔΦ 是近似式。',answer:false,
       why:'★ 是精确恒等式 —— 中间势能项两两相消。'},

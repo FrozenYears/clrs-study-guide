@@ -352,7 +352,7 @@ int main(void)
         '同一批数据里 LRU / FIFO 的最坏 miss/OPT 是 1.83（不超过 $k$），LIFO 最坏 3.00（没有保证）。∎']},
     ],conclusion:'★ 结论：离线缓存的贪心是最优的（竞争比 1）；在线设定下没有确定性最优策略，只能追求 $k$-竞争。',note:''},
    {type:'drill',title:'检验一下',items:[
-     {kind:'single',q:'最优离线缓存的换出规则是？',options:['换出最久未使用的','换出最早进入的','换出**下次访问最远**的','换出最近进入的'],answer:2,
+     {kind:'single',q:'最优离线缓存的换出规则是？',options:['换出最久未使用的（LRU：只回头看过去）','换出最早进入的','换出**下次访问最远**的','换出最近进入的'],answer:2,
       why:'★ furthest-in-future（定理 15.5）。C 程序用暴力 DP 在 3000 组序列上验证了它的最优性。'},
      {kind:'single',q:'LRU 的竞争比上界是？',options:['$1$','$\\lg k$','$k$','无上界'],answer:2,
       why:'★ miss(LRU) ≤ k · miss(OPT)。实测最坏 1.83 倍（k = 2/3），没有触到上界但也没超过。'},

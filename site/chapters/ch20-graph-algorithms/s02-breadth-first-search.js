@@ -529,7 +529,7 @@ int main(void) {
     { type: 'drill', title: '检验一下',
       items: [
         { kind: 'single', q: '在邻接表表示的图上，BFS 的运行时间是？', options: ['Θ(V)', 'Θ(V+E)', 'Θ(V²)', 'Θ(E lg V)'], answer: 1, why: '★★ 每个邻接表至多扫一次，合计 Θ(V+E)（原书 p.558）。' },
-        { kind: 'single', q: '从 s 起 BFS 结束时，可达顶点 v 的 v.d 等于？', options: ['v 的入度', 'δ(s,v) 最短路距离', '图的直径', '∞'], answer: 1, why: '★★ 定理 20.5：v.d = δ(s,v)。' },
+        { kind: 'single', q: '从 s 起 BFS 结束时，可达顶点 v 的 v.d 等于？', options: ['v 的入度，即指向它的边的条数', 'δ(s,v) 最短路距离', '图的直径：从源点出发最远的那个距离', '∞'], answer: 1, why: '★★ 定理 20.5：v.d = δ(s,v)。' },
         { kind: 'judge', q: 'BFS 广度优先树的形状与邻接表里邻居的访问顺序无关，但算出的 d 值会因顺序而不同。', answer: false, why: '★★ 原书 p.556：树可能变，但 d 值不变。' },
         { kind: 'judge', q: 'BFS 用一个 FIFO 队列，保证按距离分层扩散。', answer: true, why: '★★ 队列里顶点的 d 至多差 1，正是「按层」的体现。' },
         { kind: 'simulate', q: '原书 Figure 20.2 从顶点 1 起 BFS，顶点 5（0 基 index 4）的 d 是多少？填数字', expect: [2], placeholder: '例如：1', why: '★★ 1→2→5 两条边，d=2（C 程序 Part 2 实测）。' },

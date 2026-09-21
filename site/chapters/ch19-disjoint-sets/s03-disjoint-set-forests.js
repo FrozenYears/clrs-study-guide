@@ -436,7 +436,7 @@ int main(void)
    {type:'drill',title:'检验一下',items:[
      {kind:'single',q:'路径压缩会改变结点的 rank 吗？',options:['会 +1','会清零','**不变**','视树高而定'],answer:2,
       why:'★ 原书 p.528 明确：Path compression does not change any ranks。'},
-     {kind:'single',q:'什么时候 LINK 才把 rank +1？',options:['每次 UNION','**两根 rank 相等时**','低秩挂高秩时','路径压缩后'],answer:1,
+     {kind:'single',q:'什么时候 LINK 才把 rank +1？',options:['每次 UNION 都 +1，并一次就长高一层','**两根 rank 相等时**','低秩挂到高秩上的时候，rank 永远不变','路径压缩后'],answer:1,
       why:'★ 等秩合并树才会长高，rank +1 仍是对高度的上界。'},
      {kind:'judge',q:'按秩合并单独使用就能得到 O(m·α(n))。',answer:false,
       why:'★ 单独用只有 O(m lg n)；α(n) 需要**两个启发式合用**（19.4）。'},

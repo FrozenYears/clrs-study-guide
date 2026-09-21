@@ -280,7 +280,7 @@ int main(void)
         '★ max 不变量另由 check_max 递归验证（根 max = 30）。∎']},
     ],conclusion:'★ 结论：max 域让"找任一重叠区间"变成一次下降 —— 定理 17.1 的又一实例。',note:''},
    {type:'drill',title:'检验一下',items:[
-     {kind:'single',q:'区间树的结点属性 max 存什么？',options:['子树最大键 low','**子树中所有区间的最大右端点**','子树最深区间','自身区间的 high'],answer:1,
+     {kind:'single',q:'区间树的结点属性 max 存什么？',options:['子树里最大的 $low$ 端点，即最靠右的那个左端点','**子树中所有区间的最大右端点**','子树最深区间','自身区间的 high'],answer:1,
       why:'★ max = max(high, left.max, right.max) —— 注意不只有自己的 high。'},
      {kind:'single',q:'第 3 行走向左子树的条件 x.left.max ≥ i.low 的含义是？',options:['左子树必有一个重叠区间','左子树可能有重叠，去左不会漏','左子树全在 i 右边','左子树为空'],answer:1,
       why:'★ 条件为真时两种情形（真有重叠 / 全在左边）都不会漏 —— 原书 p.493 的论证。'},

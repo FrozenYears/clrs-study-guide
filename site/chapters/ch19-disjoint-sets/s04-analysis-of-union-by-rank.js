@@ -423,7 +423,7 @@ int main(void)
         '★ 工程结论：并查集在实用中是**常数时间**的数据结构 —— 尽管它的精确分析横跨十几页。∎']},
     ],conclusion:'★ 结论：O(m·α(n)) 是"渐近意义上未解决、实践意义上已解决"的著名范例。',note:''},
    {type:'drill',title:'检验一下',items:[
-     {kind:'single',q:'α(n) 的定义是？',options:['lg lg n','$\\min\\{k : A_k(1) \\ge n\\}$','n 的对数的对数','阿克曼函数本身'],answer:1,
+     {kind:'single',q:'α(n) 的定义是？',options:['lg lg n','$\\min\\{k : A_k(1) \\ge n\\}$','n 取两次对数，即 $\\lg \\lg n$，与阿克曼函数无关','阿克曼函数本身'],answer:1,
       why:'★ 式 (19.2)。'},
      {kind:'single',q:'按秩合并 + 路径压缩的总代价是？',options:['O(m lg n)','O(m+n²)','**O(m·α(n))**','Θ(m)'],answer:2,
       why:'★ 主定理；α(n) ≤ 4 对实践 n 成立，故实际就是 O(m)。'},

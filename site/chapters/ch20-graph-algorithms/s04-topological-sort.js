@@ -489,7 +489,7 @@ int main(void) {
    {type:'drill',title:'检验一下',items:[
      {kind:'single',q:'拓扑排序算法的核心动作是？',options:['反复删除入度 0 的点（唯一方法）','**DFS 按完成时间逆序输出**','对边排序','广度优先搜索'],answer:1,
       why:'★ TOPOLOGICAL-SORT 就 3 行（p.615）；反复删零入度点是等价替代。'},
-     {kind:'single',q:'引理 20.4 说什么？',options:['DAG 一定有唯一拓扑序','**G 无环 ⟺ DFS 无后向边**','DFS 总是 O(V)','后向边指向非祖先'],answer:1,
+     {kind:'single',q:'引理 20.4 说什么？',options:['DAG 一定有唯一的拓扑序，所以拓扑排序能当校验','**G 无环 ⟺ DFS 无后向边**','DFS 总是 $O(V)$，跟边数没关系','后向边指向非祖先'],answer:1,
       why:'★ 它把"无环判定"免费并入了 DFS。'},
      {kind:'judge',q:'拓扑序对带环的有向图也可能存在。',answer:false,
       why:'★ 有环则环上的结点互相"先于"，线性序不可能满足 —— 拓扑序存在 ⟺ 无环。'},
