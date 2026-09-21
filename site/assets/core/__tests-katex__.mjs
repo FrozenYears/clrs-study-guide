@@ -309,6 +309,31 @@ console.log("\n[10] \\text / 箭头族 / cases / underbrace / xrightarrow（曾�
   ok(binom1.textContent.indexOf("\\") < 0, `\\binom{x} 缺第二个参数时不残留命令（得到 ${JSON.stringify(binom1.textContent)}）`);
 }
 
+console.log("\n[10b] 重音符的空格形式：\\bar L 与 \\bar{L} 必须同义");
+{
+  // 存在意义：LaTeX 允许 `\bar L`（命令后直接跟基字符），关卡文案里有 19 处这么写。
+  // 旧实现里 readGroup 会把命令后面那个**空格**当成基字符，于是页面上出现
+  // 「浮在字母前面的横线」（先输出 ̄ 再输出 L），字母根本没被盖住。
+  const braces = renderInline("\\bar{L}").textContent;
+  const space = renderInline("\\bar L").textContent;
+  ok(braces.indexOf("L") >= 0, `\\bar{{L}} 有基字符（得到 ${JSON.stringify(braces)}）`);
+  ok(space === braces,
+     `\\bar L 与 \\bar{{L}} 渲染一致（得到 ${JSON.stringify(space)} vs ${JSON.stringify(braces)}）`);
+  ok(space.indexOf("̄") > space.indexOf("L"),
+     `重音字符排在基字符之后（得到 ${JSON.stringify(space)}）`);
+  ok(renderInline("\\hat x = x^{*}").textContent.indexOf("\\") < 0,
+     "\\hat x 不残留命令名");
+  ok(renderInline("\\vec a + \\vec b").textContent.indexOf("\\") < 0,
+     "\\vec a 不残留命令名");
+  // 命令后面什么都没有：不能崩、也不能把反斜杠漏出去
+  const lone = renderInline("\\bar");
+  ok(lone.textContent.indexOf("\\") < 0, `光杆 \\bar 不残留（得到 ${JSON.stringify(lone.textContent)}）`);
+  // 重音吃掉空白但不能吃掉后面的运算符
+  const rel = renderInline("x \\in \\bar L \\subseteq U").textContent;
+  ok(rel.indexOf("L") >= 0 && rel.indexOf("U") >= 0 && rel.indexOf("\\") < 0,
+     `重音在关系式中不吞掉后面的内容（得到 ${JSON.stringify(rel)}）`);
+}
+
 console.log("\n[11] 静态扫描：关卡文案里用到的每条 \\命令都必须是渲染器认识的");
 {
   // ★ 存在意义：这份 PDF 转写的关卡文案会不断引入新的数学命令，

@@ -496,6 +496,10 @@ function parse(src) {
       }
       // \hat{x} / \tilde{x} / \bar{x} / \vec{x} / \dot{x} / \ddot{x} -> 组合重音符
       if (name in ACCENTS) {
+        // ★ 先跳过空白：LaTeX 的 `\bar L`（空格形式）与 `\bar{L}` 同义。
+        //   不跳的话 readGroup 会把那个**空格**当成基字符，页面上就成了
+        //   「浮在字母前面的重音符」—— 全站 19 处这种写法都是这么坏的。
+        while (i < n && (s[i] === " " || s[i] === "\t")) i++;
         const a = readGroup();
         if (a) {
           // 组合字符追加在基字符后；相邻文本节点在渲染上等价于同一文本
@@ -503,6 +507,9 @@ function parse(src) {
           out.push(textNode(ACCENTS[name]));
           continue;
         }
+        // 命令后什么都没有（`…\bar$`）：吃掉命令名，别把反斜杠漏到页面上。
+        // 未知命令才原样保留（见 __tests-katex__ 的 [7]），\bar 是已知命令。
+        if (i >= n) continue;
         buf += "\\" + name;
         continue;
       }
