@@ -54,6 +54,11 @@ export function parse(hash) {
     return Object.assign(base, { kind: "wrong" });
   }
 
+  // 术语表：同上，全站聚合页（#/glossary）
+  if (segments[0] === "glossary") {
+    return Object.assign(base, { kind: "glossary" });
+  }
+
   if (segments[0] === "appendix") {
     const letter = (segments[1] || "").toLowerCase();
     if (!APPENDIX_LETTERS.includes(letter) || segments.length < 2) {

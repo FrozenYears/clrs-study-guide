@@ -34,6 +34,10 @@ CASES = [
     # 错题本（A1）：无头浏览器每次都是全新 profile，本机存档为空 —— 断言空状态。
     ("#/wrong", ["错题本是空的", "闯关测验里答错的题会自动记到这里", "回到学习地图"],
      [NOT_PENDING, "页面走丢了"]),
+    # 术语表（A3）：全站聚合，断言有字母头、有英文术语、可直接反查到关卡。
+    ("#/glossary", ["术语表", "中英对照与出处反查", "loop invariant", "gloss-link",
+                    "#/ch02/s01/s03"],
+     [NOT_PENDING, "页面走丢了"]),
     # 阶段顺序：s01=map s02=intuition s03=source s04=pseudocode
     #           s05=visualize s06=code s07=analyze s08=prove s09=drill
     # 注意：每个阶段用的是关卡文件里的**自定义标题**，不是类型名。
