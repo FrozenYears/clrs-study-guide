@@ -42,13 +42,21 @@ CASES = [
     ("#/pseudocode", ["伪代码速查", "全书算法一页查尽", "pcx-name", "INSERTION-SORT",
                       "MERGE-SORT", "MERGE(A, p, q, r)", "#/ch02/s03/s04"],
      [NOT_PENDING, "页面走丢了"]),
+    # 算法选择器（A4）：按部分分组，逐条给名称、出处与复杂度。
+    ("#/algorithms", ["算法选择器", "按部分横向对照", "algo-part", "algo-row__name",
+                      "INSERTION-SORT", "MERGE-SORT", "Part II Sorting and Order Statistics"],
+     [NOT_PENDING, "页面走丢了"]),
     # 章末 Boss 区（A7）：第 3 章在原书里收了 7 道 Problems，逐条断言。
     ("#/ch03/boss", ["章末 Boss", "boss-badge", "boss-level", "本章关卡",
                      "3-1", "3-7", "原书 Problems", "boss-problem__src"],
      [NOT_PENDING, "页面走丢了"]),
-    # 无 Problems 的章（第 5 章）：不该出现 Problems 块，也不该提「下面有 Problems」。
-    ("#/ch05/boss", ["章末 Boss", "boss-level", "本章关卡"],
-     [NOT_PENDING, "页面走丢了", "原书 Problems"]),
+    # 第 5 章原书收了 2 道章末题（5-1 Probabilistic counting、5-2 Searching an unsorted
+    # array）—— 第 41 轮把 Problems 来源换成全量 problems.js 后它们才出现。
+    # 原先那条「第 5 章无 Problems」的断言是基于旧数据（只从各关 bookExercises
+    # 里捞到 37 道）写的，实测原书有 2 道，故改成正向断言。
+    ("#/ch05/boss", ["章末 Boss", "boss-level", "本章关卡", "原书 Problems",
+                     "5-1", "5-2", "Probabilistic counting"],
+     [NOT_PENDING, "页面走丢了"]),
     # 复习模式（A2）：无头浏览器是全新 profile，台账为空 —— 断言空状态与说明。
     ("#/review", ["复习", "按遗忘曲线推题", "还没有可复习的题", "遗忘曲线"],
      [NOT_PENDING, "页面走丢了"]),

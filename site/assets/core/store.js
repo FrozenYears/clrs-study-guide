@@ -68,6 +68,11 @@ function defaultState() {
     //   而遗忘曲线需要**每一道做过的题**都留一条记录 —— 否则答对过的题
     //   第二天该复习时，数据层根本不知道它存在过。所以两个结构各管一摊。
     review: {}, // { "ch02/s01/q1": { box, due, seen, right, wrong, at } }
+    // 章末挑战的自我核对：章 -> [题号]。
+    // ★ 原书章末 Problems 是开放长题（含 a/b/c 小问），本站**不给答案也不判分**，
+    //   所以这里存的是读者自己的「做完了」勾选 —— 是自评，不是系统判定的成绩。
+    //   页面上必须如实说成「自评完成」，不能包装成通过率。
+    problems: {}, // { "2": ["2-1", "2-3"] }
     settings: defaultSettings(),
   };
 }
@@ -107,6 +112,7 @@ function read() {
     // 老存档没有 review 字段（schema 1），这里补上空对象 —— 等价于「一道题都还没复习过」，
     // 不需要写迁移函数：缺省即空，语义上就是全新状态。
     base.review = (parsed.review && typeof parsed.review === "object") ? parsed.review : {};
+    base.problems = (parsed.problems && typeof parsed.problems === "object") ? parsed.problems : {};
     base.settings = Object.assign(defaultSettings(), parsed.settings || {});
     base.v = parsed.v || 0;
     return migrate(base);
@@ -383,6 +389,32 @@ export function recordAnswer(rec) {
   });
 }
 
+/* ---------- 章末挑战：自评勾选 ---------- */
+
+/** 章的题号集合（数组，按登记顺序）。 */
+export function getProblemSet(ch) {
+  const s = load();
+  const v = s.problems[String(ch)];
+  return Array.isArray(v) ? v.slice() : [];
+}
+
+/** 某道章末题是否被勾为「已完成」。 */
+export function isProblemDone(ch, id) {
+  return getProblemSet(ch).indexOf(String(id)) >= 0;
+}
+
+/** 勾选 / 取消勾选一道章末题。返回勾选后的集合。 */
+export function markProblem(ch, id, done = true) {
+  const s = load();
+  const key = String(ch);
+  const cur = new Set(Array.isArray(s.problems[key]) ? s.problems[key] : []);
+  if (done) cur.add(String(id));
+  else cur.delete(String(id));
+  s.problems[key] = [...cur];
+  save();
+  return s.problems[key];
+}
+
 /**
  * 到期待复习的题 id 列表，按到期时间升序（最该复习的排最前）。
  * @param {number} [now] 注入当前时间，便于确定性测试
@@ -425,6 +457,9 @@ export default {
   clearReview,
   dueReviews,
   recordAnswer,
+  getProblemSet,
+  isProblemDone,
+  markProblem,
   REVIEW_INTERVALS,
   REVIEW_MAX_BOX,
 };

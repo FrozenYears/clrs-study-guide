@@ -79,7 +79,9 @@ def extract_chapter(pages, lo, hi, qn, caps=None):
         if m:
             flush(cur)
             tail = (m.group(3) or '').strip()
-            cur = [m.group(2), printed, [tail] if tail else [], m.group(1) or '']
+            # 第 5 个元素记「题目最后一行的所在页」：章末长题常跨 3–4 页，
+            # 只声明起始页会让闸门的 ±1 页窗覆盖不到整题（见 13_publish_problems.py）。
+            cur = [m.group(2), printed, [tail] if tail else [], m.group(1) or '', printed]
             continue
         if cur is not None and STOP_LINE.match(ln):
             flush(cur)
@@ -95,6 +97,7 @@ def extract_chapter(pages, lo, hi, qn, caps=None):
                 cur = None
                 continue
             cur[2].append(ln)
+            cur[4] = printed
         # 翻页要不要收题？语料里题干常跨页续写（6.5-7 的循环不变量整个排在下一页，
         # 页尾只剩「…loop invariant:」；13.4-7 断在「lines 5–6 are」），
         # 每页都收会把题干砍成半句；一句说完了又不续，2.1-2 就会把下一页顶部的
@@ -117,7 +120,7 @@ def _flush(found, cur, qn, caps=None):
     if not cur:
         return
     caps = caps or CAP
-    qid, printed, parts, mark = cur
+    qid, printed, parts, mark, end_page = cur
     body = re.sub(r'\s+', ' ', ' '.join(parts)).strip()
     ms = STAR.match(body)           # 题号与题干之间也可能排着难度标记
     if ms:
@@ -131,7 +134,7 @@ def _flush(found, cur, qn, caps=None):
     star = len(mark) if mark and '?' not in mark else 0
     if qid not in found and len(qn(body)) >= 6:
         found[qid] = {'id': qid, 'statement': body, 'page': printed,
-                      'star': star, 'mark': mark}
+                      'end_page': end_page, 'star': star, 'mark': mark}
 
 
 def strip_ellipsis(s):
