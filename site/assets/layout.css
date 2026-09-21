@@ -90,6 +90,15 @@ p:last-child {
   flex: 1 1 auto;
 }
 
+/* 顶栏右侧的学习辅助入口（错题本 / 术语表 / 复杂度）。
+ * 三个都是 btn--ghost，视觉上不该抢过品牌与进度读数 —— 所以成组排列、间距收紧。 */
+.app-header__tools {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-1);
+  min-width: 0;
+}
+
 .app-main {
   flex: 1 1 auto;
   width: 100%;

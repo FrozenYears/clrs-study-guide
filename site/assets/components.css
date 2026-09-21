@@ -601,6 +601,109 @@
   font-family: var(--font-sans);
 }
 
+/* ---------- 复杂度对照表（#/complexity） ----------
+ * 结论与语境两列：左列是短公式（不换行、等宽数字），右列是中文长句（要能换行）。
+ * 与「复杂度」阶段（.kv--claims）同一份数据、不同用途：那里是单关内自上而下读，
+ * 这里是全书横向扫 —— 所以每条都带可点的节号，扫到可疑的一行能直接跳过去。
+ */
+.cx-group {
+  border-top: 2px solid var(--fg-0);
+  padding-top: var(--sp-2);
+}
+.cx-chapter {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-3);
+  margin: 0 0 var(--sp-2);
+  font-family: var(--font-sans);
+  font-size: var(--fs-lg);
+  font-weight: 700;
+}
+.cx-chapter__link {
+  color: inherit;
+  text-decoration: none;
+}
+.cx-chapter__link:hover {
+  color: var(--accent);
+}
+.cx-chapter__link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+.cx-chapter__count {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 400;
+  color: var(--fg-2);
+}
+
+.cx-table {
+  table-layout: fixed;
+}
+.cx-table thead th {
+  font-size: var(--fs-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-2);
+  font-weight: 500;
+}
+.cx-table .cx-expr {
+  width: 34%;
+  white-space: normal;
+  vertical-align: top;
+}
+.cx-table .cx-when {
+  vertical-align: top;
+  font-size: var(--fs-sm);
+  line-height: var(--lh-base);
+  color: var(--fg-1);
+}
+.cx-src {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--sp-2) var(--sp-3);
+  margin-top: var(--sp-1);
+}
+.cx-link {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: var(--bd-w) solid color-mix(in srgb, var(--accent) 40%, transparent);
+}
+.cx-link:hover {
+  border-bottom-color: var(--accent);
+}
+.cx-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+/* 窄屏：两列挤不下，改成一块一块地摞（结论在上、语境在下） */
+@media (max-width: 700px) {
+  .cx-table,
+  .cx-table tbody,
+  .cx-table tr,
+  .cx-table th,
+  .cx-table td {
+    display: block;
+    width: auto;
+  }
+  .cx-table thead {
+    display: none;
+  }
+  .cx-table tr {
+    padding: var(--sp-2) 0;
+    border-bottom: var(--bd-w) solid var(--bd-0);
+  }
+  .cx-table th,
+  .cx-table td {
+    border-bottom: none;
+    padding: 0;
+  }
+}
+
 /* ---------- 提示框（callout） ---------- */
 .callout {
   border-radius: var(--radius-sm);

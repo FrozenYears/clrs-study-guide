@@ -12,6 +12,7 @@
  * ========================================================================== */
 
 import { h, svg, $ } from '../core/dom.js';
+import { pageRef } from '../core/page.js';
 import * as katex from '../core/katex.js';
 import { highlight } from '../core/highlight.js';
 import { optionOrder } from '../core/quiz-order.js';
@@ -50,15 +51,10 @@ const KIND_LABEL = {
 
 /* ============================ 通用小组件 ============================ */
 
-export function pageRef(page, preview) {
-  const label = Array.isArray(page) ? page.join('–') : String(page);
-  return h('span', {
-    class: 'pg-ref' + (preview ? ' pg-ref--preview' : ''),
-    title: preview
-      ? '此结论出自后续小节，这里只作预告 —— 完整推导在对应的那一关'
-      : '出处：原书印刷页 ' + label,
-  }, (preview ? '预告 · 印刷页 ' : '印刷页 ') + label);
-}
+// 页码锚（含区间归一）由 core/page.js 统管：原文块、结论表、习题头、术语表、
+// 复杂度表都要用，散在各处就会各自处理 [lo, hi] 与缺页码，迟早不一致。
+// 这里再导出一次，是为了不改 chapter-view.js 等既有引用点。
+export { pageRef, formatPage } from '../core/page.js';
 
 function stageHead(stage) {
   const m = STAGE_META[stage.type] || { no: -1, name: stage.type, en: '' };

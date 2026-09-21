@@ -38,6 +38,10 @@ CASES = [
     ("#/glossary", ["术语表", "中英对照与出处反查", "loop invariant", "gloss-link",
                     "#/ch02/s01/s03"],
      [NOT_PENDING, "页面走丢了"]),
+    # 复杂度对照表（A6）：断言逐条结论、出处页码、以及「本站补充」的显式标注。
+    ("#/complexity", ["复杂度对照表", "全书结论横向对照", "cx-table", "cx-link",
+                      "MATRIX-MULTIPLY 的运行时间", "本站补充"],
+     [NOT_PENDING, "页面走丢了"]),
     # 阶段顺序：s01=map s02=intuition s03=source s04=pseudocode
     #           s05=visualize s06=code s07=analyze s08=prove s09=drill
     # 注意：每个阶段用的是关卡文件里的**自定义标题**，不是类型名。

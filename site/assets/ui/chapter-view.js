@@ -11,6 +11,7 @@
 import { h } from '../core/dom.js';
 import * as store from '../core/store.js';
 import * as router from '../core/router.js';
+import { chapterLabel } from '../chapters.js';
 import { renderStage, STAGE_META, pageRef } from './stages.js';
 
 /** 按 STAGE_META.no 排序，过滤掉未知类型。 */
@@ -55,7 +56,7 @@ export function renderChapter(chapter, route) {
     h('nav', { class: 'lv-crumbs' },
       h('a', { href: '#/' }, '学习地图'),
       ' / ',
-      chapter.chSpan || ('第 ' + chapter.ch + ' 章')
+      chapterLabel(chapter.ch)
     ),
     // 编号 + 标题：编号用展示衬线，像教科书的节号
     h('div', { class: 'lv-heading' },

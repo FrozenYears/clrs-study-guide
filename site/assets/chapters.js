@@ -114,3 +114,16 @@ export function listChapterKeys() {
 export function chapterCount() {
   return CHAPTERS.size;
 }
+
+/**
+ * 章的展示名：正文用章节模块里的 chSpan（'第 2 章 · Getting Started（起步）'），
+ * 附录用 '附录 A'；模块没写 chSpan 时降级成 '第 N 章'。
+ * 目录条目、面包屑、待建占位、术语表、复杂度表都要显示它 —— 收在这里一份，
+ * 免得每个页面各拼一遍，附录与正文章号的写法迟早走样。
+ */
+export function chapterLabel(ch) {
+  const mod = getChapter(ch);
+  if (mod && mod.chSpan) return mod.chSpan;
+  const s = String(ch);
+  return /^\d+$/.test(s) ? '第 ' + s + ' 章' : '附录 ' + s.toUpperCase();
+}

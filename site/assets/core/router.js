@@ -59,6 +59,11 @@ export function parse(hash) {
     return Object.assign(base, { kind: "glossary" });
   }
 
+  // 复杂度对照表：全站聚合页（#/complexity）
+  if (segments[0] === "complexity") {
+    return Object.assign(base, { kind: "complexity" });
+  }
+
   if (segments[0] === "appendix") {
     const letter = (segments[1] || "").toLowerCase();
     if (!APPENDIX_LETTERS.includes(letter) || segments.length < 2) {

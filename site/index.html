@@ -21,8 +21,11 @@
         <a class="brand" href="#/">算法导论 · 闯关式学习站</a>
         <span class="spacer"></span>
         <span class="header-progress" id="header-progress" aria-live="polite"></span>
-        <a id="wrong-link" class="btn btn--ghost btn--sm" href="#/wrong">错题本</a>
-        <a class="btn btn--ghost btn--sm" href="#/glossary">术语表</a>
+        <nav class="app-header__tools" aria-label="学习辅助">
+          <a id="wrong-link" class="btn btn--ghost btn--sm" href="#/wrong">错题本</a>
+          <a class="btn btn--ghost btn--sm" href="#/glossary">术语表</a>
+          <a class="btn btn--ghost btn--sm" href="#/complexity">复杂度</a>
+        </nav>
         <button id="theme-toggle" class="btn btn--ghost btn--sm" type="button" aria-label="切换主题">
           主题：自动
         </button>
@@ -46,6 +49,7 @@
       import { renderChapter } from "./assets/ui/chapter-view.js";
       import { renderWrong } from "./assets/ui/wrong-view.js";
       import { renderGlossary } from "./assets/ui/glossary-view.js";
+      import { renderComplexity } from "./assets/ui/complexity-view.js";
 
       /* ----------------------------------------------------------------------
        * 九段式关卡：每关固定 9 个阶段（见 docs/开发规范.md 4.2）。
@@ -457,6 +461,9 @@
           main.appendChild(currentView.node);
         } else if (route.kind === "glossary") {
           currentView = renderGlossary();
+          main.appendChild(currentView.node);
+        } else if (route.kind === "complexity") {
+          currentView = renderComplexity();
           main.appendChild(currentView.node);
         } else if (route.kind === "chapter" || route.kind === "appendix") {
           const chapter = getChapter(route.ch);

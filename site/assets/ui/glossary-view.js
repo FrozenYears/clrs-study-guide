@@ -16,33 +16,15 @@
 import { h } from '../core/dom.js';
 import * as katex from '../core/katex.js';
 import * as router from '../core/router.js';
-import { getChapter, listChapterKeys } from '../chapters.js';
+import { formatPage } from '../core/page.js';
+import { getChapter, listChapterKeys, chapterLabel } from '../chapters.js';
 
 /** 该术语所在「原文精读」段的阶段号（1 基）。术语就长在这一段里。 */
 const SOURCE_STAGE = 3;
 
-/**
- * 印刷页字段归一：数据里有整数（22）与区间（[31, 32]）两种写法。
- * 缺页码返回空串，调用方据此决定要不要渲染页锚。
- */
-export function formatPage(page) {
-  if (Array.isArray(page)) {
-    const nums = page.filter((n) => Number.isFinite(n));
-    if (!nums.length) return '';
-    const lo = nums[0];
-    const hi = nums[nums.length - 1];
-    // 两端相同就没有区间可写（数据里真出现过 [7, 7] 这种写法）。
-    return lo === hi ? String(lo) : lo + '–' + hi;
-  }
-  return Number.isFinite(page) ? String(page) : '';
-}
-
-/** 章的展示名（'第 2 章 · Getting Started（起步）' / '附录 A'）。 */
-function chapterLabel(mod, ch) {
-  if (mod && mod.chSpan) return mod.chSpan;
-  const s = String(ch);
-  return /^\d+$/.test(s) ? '第 ' + s + ' 章' : '附录 ' + s.toUpperCase();
-}
+// 页码归一由 core/page.js 统一提供（整数 / 区间 / 缺省三种形态）。
+// 这里再导出一次，让 __tests-glossary__.mjs 仍能从本模块直接测到它。
+export { formatPage } from '../core/page.js';
 
 /**
  * 收集全站术语（每条带出处）。
@@ -63,7 +45,7 @@ export function collectTerms() {
             zh: String(t.zh).trim(),
             page: t.page,
             ch: mod.ch,
-            chLabel: chapterLabel(mod, mod.ch),
+            chLabel: chapterLabel(mod.ch),
             sec: lv.key,
             section: lv.section,
             shortTitle: lv.shortTitle || lv.title || lv.key,
