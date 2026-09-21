@@ -412,8 +412,8 @@ int main(void)
      {kind:'simulate',q:'C 程序里 300 组随机二分图的平均最大匹配是多大（保留一位小数）？',expect:[6.6],placeholder:'例如：5.0',why:'★ code 段实测平均 6.6 —— 被 $|L|=7$ 卡住：匹配数不可能超过较小的一侧。'},
      {kind:'judge',q:'把「一次一条增广路」改成「一轮一批互不相交的最短增广路」，复杂度就从 $O(VE)$ 降到 $O(E\\sqrt{V})$。',answer:true,why:'★ map 段原话：这就是复杂度的全部来源 —— 批处理让轮数从 $O(V)$ 降到 $O(\\sqrt V)$。'},
     ],bookExercises:[
-     {id:'25.1-1',page:715,star:0,statement:'Use the Hopcroft-Karp algorithm to find a maximum matching for the graph in Figure 25.1.',hint:'照 C 程序 part 1 的思路手工做：先贪心得一个匹配，再分层找等长增广路批次 —— 每轮记录匹配大小直到不再增大。'},
-     {id:'25.1-4',page:715,star:0,statement:'Show how to bound the number of iterations of the the repeat loop of lines 2–5 of HOPCROFT-KARP by ˙ p |V|/2 ⌋ .',hint:'两段论证（见本关 derivations）：路长 ≤ √V 的轮数 O(√V)；路长 > √V 后剩余增广次数也 O(√V)。'},
+     {id:'25.1-1',page:715,star:0,statement:'Use the Hopcroft-Karp algorithm to find a maximum matching for the graph in Figure 25.1.',hint:'Hopcroft–Karp 手做，每轮记三样：① BFS 分层：从**左部未匹配点**出发，按「未匹配边 → 匹配边 → 未匹配边 …」交替走，第一次够到右部未匹配点的那个层号就是本轮增广路的长度；② 在这一层里挑一组**顶点不相交**的最短增广路，一次全部翻转匹配状态；③ 匹配大小写进表里，直到 BFS 再也够不到右部未匹配点。★ 图就照 Figure 25.1 自己数顶点和边；本关阶段 6 的 C 程序 part 1 是「300 组随机二分图上比对 HK 与朴素增广」的结果，与 Figure 25.1 无关，数字不要拿去对答案。'},
+     {id:'25.1-4',page:715,star:0,statement:'Show how to bound the number of iterations of the the repeat loop of lines 2–5 of HOPCROFT-KARP by ˙ p |V|/2 ⌋ .',hint:'论证分两段，分界是「本轮增广路的长度 $> \\sqrt{|V|}$」：① 短的那些轮：增广路长度每轮**严格变长**（这是本关阶段 7 那条推导），长度只能取 $1, 2, \\ldots, \\lceil \\sqrt{|V|} \\rceil$，所以这种轮至多 $\\sqrt{|V|}$ 个；② 长的那些轮：设最大匹配 $M^*$，对称差 $M^* \\oplus M$ 里能拆出 $|M^*| - |M|$ 条两两不相交的增广路，每条长度 $> \\sqrt{|V|}$ 且互不共用顶点，故 $|M^*| - |M| < \\sqrt{|V|}$；每轮至少让匹配 $+1$，所以这种轮也不超过 $\\sqrt{|V|}$ 个。合起来 $O(\\sqrt{|V|})$。★ 题干那个 $\\lfloor \\sqrt{|V|}/2 \\rfloor$ 是把常数也抠掉的版本，要点在「每轮匹配的增量」与「增广路互不共用顶点」这两句。'},
     ]},
   ],
 };

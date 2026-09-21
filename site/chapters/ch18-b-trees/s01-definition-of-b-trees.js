@@ -394,7 +394,7 @@ int main(void)
       why:'根 [30 60 80] 把值域切成 4 段 → 4 片叶（C 程序 part 3 打印的结构）。'},
     ],bookExercises:[
      {id:'18.1-1',page:504,star:0,statement:'Why isn’t a minimum degree of t = 1 allowed?',hint:'把 t=1 代回定义里看会发生什么：内部结点的键数区间变成 $[t-1, 2t-1]=[0,1]$ —— 允许一个「不存任何键、也不存孩子指针」的结点，树高与结点数的界同时失效。再想想 $t=1$ 时的分裂还能不能推进。'},
-     {id:'18.1-2',page:504,star:0,statement:'For what values of t is the tree of Figure 18.1 a legal B-tree?',hint:'按定义逐条核对：根键数 ≥ 1、内部结点孩子数 ∈ [t, 2t]、所有叶同深。对给定的树逐结点检查即可。'},
+     {id:'18.1-2',page:504,star:0,statement:'For what values of t is the tree of Figure 18.1 a legal B-tree?',hint:'定义是两条区间，孩子数与键数**各自**从上下两侧夹住 $t$，一共四条不等式：① $t \\le$ 最少孩子数；② $2t \\ge$ 最多孩子数；③ $t - 1 \\le$ 最少键数；④ $2t - 1 \\ge$ 最多键数（都只对内部结点取）。做法：先从图上数出这四个极值，各自解出 $t$ 的范围再取交集。另有两条单独查：根若不是叶，至少 2 个孩子、至少 1 个键；所有叶（NIL）必须同深。★ 别拿本关阶段 6 的 C 程序数字对答案：那里面 part 1、part 3 跑的是自设的 $t = 3$、20 个整数键，与 Figure 18.1 无关。'},
      {id:'18.1-3',page:504,star:0,statement:'Show all legal B-trees of minimum degree 2 that store the keys 1,2,3,4,5 .',hint:'$t=2$ 就是 2-3-4 树：每个结点 1–3 个键、2–4 个孩子，根至少 2 个孩子，且所有叶同深。5 个键放不进单结点（最多 3 键），所以只有「根 1 键 + 2 叶」与「根 2 键 + 3 叶」两种骨架，把 $1..5$ 按中序切成连续段就是全部答案。'},
     ]},
   ],
