@@ -50,6 +50,7 @@ PDF ──→ 01_extract.py ──→ data/pages.jsonl (原始逐页文本)
     ──→ 02_repair.py    ──→ data/pages_fixed.jsonl (修复后) + repair_report.json
     ──→ 03_segment.py   ──→ data/blocks/<part>__ch<NN>.json (结构化知识块)
     ──→ 04_figures.py   ──→ data/figs/*.png + figures.json (插图)
+    ──→ 12_publish_figs.py ──→ site/figs/*.png + site/assets/data/figures.js (发布)
 ```
 
 ### 各步骤要点
@@ -60,6 +61,7 @@ PDF ──→ 01_extract.py ──→ data/pages.jsonl (原始逐页文本)
 | `02_repair.py` | `pages.jsonl` → `pages_fixed.jsonl` | 修复数学符号编码损坏 + 词内空格伪影 | `test_repair.py` (184) |
 | `03_segment.py` | `pages_fixed.jsonl` → `blocks/*.json` | 按节切块，识别类型（body/theorem/pseudocode/exercise…） | `test_segment.py` (42) |
 | `04_figures.py` | PDF → `figs/*.png` + `figures.json` | 按图注定位裁剪插图 | `test_figures.py` |
+| `12_publish_figs.py` | `figures.json` + `tools/_levels.json` → `site/figs/` + `site/assets/data/figures.js` | 把**关卡引用到**的切图发布上站（图号识别与 `ui/figures.js` 必须一致） | `assets/ui/__tests-figures__.mjs` |
 
 ### 02_repair.py 的修复规则（已验证，不要随意改）
 
@@ -262,6 +264,8 @@ python tools/04_verify_level.py      # 闸门：引述溯源 + C 一致性 + 链
 cd site && node tools/check-syntax.mjs .    # 语法（ES Module）
 node site/assets/algorithms/__tests__.mjs   # 算法正确性
 node site/assets/core/__tests-katex__.mjs   # 数学渲染器
+node site/assets/core/__tests-highlight__.mjs  # 代码框语法高亮（含伪代码）
+node site/assets/ui/__tests-figures__.mjs   # 原书插图：清单与文件一一对应
 python tools/test_repair.py                 # 语料修复
 python tools/test_segment.py                # 语料分块
 python tools/smoke_browser.py 8317          # 无头 Chrome 逐路由渲染
@@ -393,7 +397,8 @@ python tools/smoke_browser.py 8317          # 无头 Chrome 逐路由渲染
 │   ├── repair_report.json         # 修复规则报告
 │   ├── figures.json               # 插图索引
 │   ├── figures_suspect.json       # 可疑插图
-│   ├── figs/                      # 233 张插图 PNG + contact-sheet.html
+│   ├── figs/                      # 233 张插图 PNG（切图全量，站内只发布引用到的）
+│   │                              # + contact-sheet.html（人检用的拼图）
 │   └── blocks/                    # 40 个章级 JSON（35 章 + 4 附录 + 1 索引）
 │
 ├── tools/                         # 流水线与验证脚本
@@ -401,6 +406,7 @@ python tools/smoke_browser.py 8317          # 无头 Chrome 逐路由渲染
 │   ├── 02_repair.py               # 符号修复（含词内空格合并）
 │   ├── 03_segment.py              # 结构化分块
 │   ├── 04_figures.py              # 插图切图
+│   ├── 12_publish_figs.py         # 把引用到的插图发布到 site/figs/
 │   ├── 04_verify_level.py         # ★ 关卡合规闸门
 │   ├── 05_new_level.py            # ★ 关卡骨架生成器
 │   ├── 07_pick_quotes.py          # ★ 引述挑选 / 预检（写关卡的第一步；复用 04 的判据）

@@ -17,6 +17,7 @@ import { highlight } from '../core/highlight.js';
 import * as store from '../core/store.js';
 import { createStepper } from '../core/stepper.js';
 import { getViz, getAlgorithm } from './registry.js';
+import { figurePlate } from './figures.js';
 import { chartSVG, chartLegend } from '../viz/growth.js';
 
 export const STAGE_META = {
@@ -1030,5 +1031,14 @@ export function renderStage(stage, ctx) {
       destroy() {},
     };
   }
-  return fn(stage, ctx || {});
+  const rec = fn(stage, ctx || {});
+  // —— 原书插图（第 31 轮起欠着的一件）———————————————————————————————
+  // 文案里写「见 Figure 2.2」的地方，页面上要真有那张图。做法是在**段尾**挂一块
+  // 「本段引用的原书插图」：图号从文本里认（不给 152 关手写一遍字段），
+  // 同一段里一张图只出现一次、按第一次被提到的顺序排。详见 ui/figures.js。
+  if (rec && rec.node) {
+    const plate = figurePlate(stage);
+    if (plate) rec.node.appendChild(plate);
+  }
+  return rec;
 }

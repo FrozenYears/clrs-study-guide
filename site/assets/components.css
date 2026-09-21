@@ -242,6 +242,57 @@
   font-weight: inherit;
 }
 
+/* ---------- 原书插图（PDF 裁图，不是重绘的示意图）----------
+ * 版式取向：像「夹进讲义的一页书」——纸色底 + 发丝边框，图注走衬线体，
+ * 与 data-kind="source" 的原文惯例一致（图注是原文的一部分，不是我们的讲解）。
+ * 暗色下 --fig-paper 会压一档亮度，避免黑底上一块发光的白板。
+ */
+.fig-plate {
+  margin: var(--sp-5) 0 0;
+  padding: var(--sp-3) var(--sp-4) var(--sp-4);
+  border: var(--bd-w) solid var(--bd-0);
+  border-radius: var(--radius-md);
+  background: var(--bg-1);
+}
+.fig-plate__label {
+  font-size: var(--fs-xs);
+  letter-spacing: 0.12em;
+  color: var(--fg-2);
+  margin-bottom: var(--sp-1);
+}
+.book-fig {
+  margin: var(--sp-4) 0 0;
+}
+.book-fig__link {
+  display: block;
+  background: var(--fig-paper);
+  border: var(--bd-w) solid var(--fig-edge);
+  border-radius: var(--radius-sm);
+  padding: var(--sp-2);
+}
+.book-fig__link:hover {
+  border-color: var(--accent);
+}
+.book-fig img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.book-fig__cap {
+  font-family: var(--font-serif);
+  font-size: var(--fs-sm);
+  line-height: 1.55;
+  color: var(--fg-1);
+  margin-top: var(--sp-2);
+}
+.book-fig__page {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--fg-2);
+  margin-left: var(--sp-2);
+  white-space: nowrap;
+}
+
 /* ---------- 术语卡（中英对照） ---------- */
 .term {
   display: inline-flex;
