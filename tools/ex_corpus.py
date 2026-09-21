@@ -54,13 +54,21 @@ def chapter_ranges():
     return out
 
 
-def extract_chapter(pages, lo, hi, qn):
+def extract_chapter(pages, lo, hi, qn, caps=None):
     """在本章页范围内抽题：id -> {id, statement, page, star, mark}。
 
     qn 必须传闸门的 qnorm —— 全项目只有一套引述归一化（规则 7）。
+
+    caps 覆盖默认截断上限（{'exercise': …, 'problem': …}）。默认是给**关卡内**
+    列出的习题用的（题干太长会变成一堵墙）；章末挑战页要的是整题原文，
+    所以那边显式传一个不截断的 caps —— 同一套状态机、同一套判据，只是取全长。
     """
+    caps = caps or CAP
     found = {}
     cur = None                      # [id, printed_page, [题干行], 难度前缀]
+
+    def flush(item):
+        _flush(found, item, qn, caps)
     seq = []                        # (印刷页, 行) —— 展平后才能在看下一页时回查
     for printed in sorted(p for p in range(lo, hi + 1) if p in pages):
         for raw in pages[printed].split('\n'):
@@ -69,12 +77,12 @@ def extract_chapter(pages, lo, hi, qn):
     for i, (printed, ln) in enumerate(seq):
         m = ID_LINE.match(ln)
         if m:
-            _flush(found, cur, qn)
+            flush(cur)
             tail = (m.group(3) or '').strip()
             cur = [m.group(2), printed, [tail] if tail else [], m.group(1) or '']
             continue
         if cur is not None and STOP_LINE.match(ln):
-            _flush(found, cur, qn)
+            flush(cur)
             cur = None
             continue
         if cur is not None:
@@ -83,7 +91,7 @@ def extract_chapter(pages, lo, hi, qn):
             # 题干已经成句 + 下一行长这样 → 收题。
             acc = ' '.join(cur[2]).rstrip()
             if re.search(r"[.!?…]$", acc) and re.match(r'^\d\s+\S', ln):
-                _flush(found, cur, qn)
+                flush(cur)
                 cur = None
                 continue
             cur[2].append(ln)
@@ -98,23 +106,24 @@ def extract_chapter(pages, lo, hi, qn):
             done = re.search(r"[.!?…]$", ln)
             fresh = re.match(r"^[A-Z0-9'‘“(\[⟨⌊ƒ•]", nxt)
             if done and fresh:
-                _flush(found, cur, qn)
+                flush(cur)
                 cur = None
-    _flush(found, cur, qn)
+    flush(cur)
     return found
 
 
-def _flush(found, cur, qn):
+def _flush(found, cur, qn, caps=None):
     """收一题：折叠空白、剥难度标记、按类型截断，每题只取首次出现。"""
     if not cur:
         return
+    caps = caps or CAP
     qid, printed, parts, mark = cur
     body = re.sub(r'\s+', ' ', ' '.join(parts)).strip()
     ms = STAR.match(body)           # 题号与题干之间也可能排着难度标记
     if ms:
         mark = mark or ms.group(1)
         body = body[ms.end():].strip()
-    cap = CAP['problem'] if '.' not in qid else CAP['exercise']
+    cap = caps['problem'] if '.' not in qid else caps['exercise']
     if len(body) > cap:
         cut = body[:cap]
         k = max(cut.rfind('. '), cut.rfind('? '), cut.rfind('! '))
