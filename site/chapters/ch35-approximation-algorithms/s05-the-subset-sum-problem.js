@@ -100,6 +100,9 @@ export default {
       ],
       more: [
         { subtitle: '子过程 EXACT-SUBSET-SUM（原书 5 行）',
+          // ★ 页码锚必须逐段都有（红线 R1）：这两段子过程是原书 35.5 的伪代码框，
+          //   此前漏标页码，速查页一列就露出来了（EXACT-SUBSET-SUM 在 p.1125、TRIM 在 p.1127）。
+          page: [1125, 1126],
           lines: [
             { n: 1, code: 'L_0 = ⟨0⟩', zh: '★ 初始列表只含 0。' },
             { n: 2, code: 'for i = 1 to n', zh: '★ 逐个加入元素 x_i。' },
@@ -108,6 +111,7 @@ export default {
             { n: 5, code: 'return the largest element in L_n', zh: '★ 返回不超过 t 的最大和（精确最优）。' },
           ] },
         { subtitle: '子过程 TRIM（原书 8 行）',
+          page: 1127,
           lines: [
             { n: 1, code: 'let m be the length of L', zh: '★ 列表长度 m。' },
             { n: 2, code: 'L′ = ⟨y_1⟩', zh: '★ 结果列表初值为最小元素。' },

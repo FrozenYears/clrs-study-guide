@@ -42,6 +42,13 @@ CASES = [
     ("#/pseudocode", ["伪代码速查", "全书算法一页查尽", "pcx-name", "INSERTION-SORT",
                       "MERGE-SORT", "MERGE(A, p, q, r)", "#/ch02/s03/s04"],
      [NOT_PENDING, "页面走丢了"]),
+    # 章末 Boss 区（A7）：第 3 章在原书里收了 7 道 Problems，逐条断言。
+    ("#/ch03/boss", ["章末 Boss", "boss-badge", "boss-level", "本章关卡",
+                     "3-1", "3-7", "原书 Problems", "boss-problem__src"],
+     [NOT_PENDING, "页面走丢了"]),
+    # 无 Problems 的章（第 5 章）：不该出现 Problems 块，也不该提「下面有 Problems」。
+    ("#/ch05/boss", ["章末 Boss", "boss-level", "本章关卡"],
+     [NOT_PENDING, "页面走丢了", "原书 Problems"]),
     # 复习模式（A2）：无头浏览器是全新 profile，台账为空 —— 断言空状态与说明。
     ("#/review", ["复习", "按遗忘曲线推题", "还没有可复习的题", "遗忘曲线"],
      [NOT_PENDING, "页面走丢了"]),
