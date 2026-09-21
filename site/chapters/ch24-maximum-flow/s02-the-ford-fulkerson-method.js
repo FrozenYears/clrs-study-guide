@@ -279,7 +279,7 @@ int main(void)
         '若某个 $f$ 满足 $|f| = c(S,T)$，它已触到上界 → 必为最大流。∎']},
     ],conclusion:'★ 结论：最大流 = 最小割（对偶），且两者都由"残量网络无增广路"刻画 —— 算法的停机条件就是最优性证明。',note:''},
    {type:'drill',title:'检验一下',items:[
-     {kind:'single',q:'残量网络中的反向边代表什么？',options:['额外容量','**可以退掉已推的流（反悔）**','边的方向','割','容量'],answer:1,
+     {kind:'single',q:'残量网络中的反向边代表什么？',options:['额外容量：等于这条边原来还没用掉的余量','**可以退掉已推的流（反悔）**','边的方向','割','容量'],answer:1,
       why:'★ $c_f(v,u) = f(u,v)$ —— 把已推的流"还给"网络。'},
      {kind:'single',q:'最大流最小割定理的三条等价条件是哪三条？',options:['最大 / 无增广路 / 某割取等','最大 / 唯一 / 无环','整数 / 最大 / 割','最小 / 无环 / 连通'],answer:0,
       why:'★ 定理 24.6：$f$ 最大 ⟺ 残量网络无增广路 ⟺ $|f| = c(S,T)$。'},
@@ -289,7 +289,7 @@ int main(void)
       why:'3 次（瓶颈 12、4、7），|f| = 23。'},
      {kind:'simulate',q:'C 程序里第一条增广路 $s \\to v_1 \\to v_3 \\to t$ 的瓶颈值是多少？',expect:[12],placeholder:'例如：4',why:'★ code 段第 1 条实测：瓶颈 12 —— 瓶颈值取增广路上最小的残量。'},
      {kind:'judge',q:'第三条增广路 $s \\to v_2 \\to v_4 \\to v_3 \\to t$ 用到了反向边来撤销已有的流。',answer:true,why:'★ code 段明标「含反向调整」：残量网络里的反向边正是 Ford-Fulkerson 能改主意的机制。'},
-     {kind:'single',q:'为什么这一节叫 Ford-Fulkerson **method** 而不是 algorithm？',options:['**因为「怎么找增广路」留给了实现（BFS → Edmonds-Karp）**','因为它不是贪心算法','因为它不是多项式时间','因为它只能处理整数容量'],answer:0,why:'★ map 段的原话：找路方式未指定所以是方法；一旦规定用 BFS 选路就得到 Edmonds-Karp 算法。'},
+     {kind:'single',q:'为什么这一节叫 Ford-Fulkerson **method** 而不是 algorithm？',options:['**因为「怎么找增广路」留给了实现（BFS → Edmonds-Karp）**','因为它没有写死每一步该挑哪条边，可以先随便试再回头改，谈不上是一种贪心策略','因为原书这里只给了一段文字说明，没有写出伪代码','因为它只能处理整数容量'],answer:0,why:'★ map 段的原话：找路方式未指定所以是方法；一旦规定用 BFS 选路就得到 Edmonds-Karp 算法。'},
     ],bookExercises:[
      {id:'24.2-1',page:691,star:0,statement:'Prove that the summations in equation (24.6) equal the summations on the right- hand side of equation (24.5).',hint:'范围要说对：**对全体 $V$ 求和的是 (24.5) 的右边**， 而 (24.6) 的右边四个和式分别只跑 $V_{out}(u)$、$V_{in}(u)$、 $V_{out}(u) \\cup V_{in}(u)$。要证的就是「把 (24.6) 的四个和式扩到全体 $V$， 得到的正是 (24.5) 的右边」。 扩出去多出来的那些项全是 0，理由有两条： 一是流量的定义域——$(x,y) \\notin E$ 时 $f(x,y)$ 记 0； 二是对固定的 $u$，$V_{out}(u) \\cup V_{in}(u)$ 已经包含了所有与 $u$ 有边相连的 $v$， 落在并集之外的 $v$ 既没有 $(u,v)$ 也没有 $(v,u)$，所以 $f’(u,v) = f’(v,u) = 0$。 另外别忘了 $G$ 里不允许反向平行边，所以 $V_{out}(u) \\cap V_{in}(u) = \\emptyset$—— 这正是 (24.6) 最后能把 $f’$ 的两项合并成「并集上求和」的依据。 把这三点按顺序写出来就是完整证明，不需要动守恒式。'},
      {id:'24.2-2',page:691,star:0,statement:'In Figure 24.1(b), what is the net flow across the cut .fs,v 2 ,v 4 g ; fv 1 ,v 3 ,t g/? What is the capacity of this cut?',hint:'净流 = 正向跨越这条割的流之和 **减去** 反向跨越的流之和；容量只累加从 $S$ 侧指向 $T$ 侧的边，反向边不进容量。做法：把 $\\{s, v_2, v_4\\}$ 与 $\\{v_1, v_3, t\\}$ 之间**所有**相连的边列成一张小表，逐条标清方向，再按两个式子分别求和。最容易错的就是那条被反向使用的边 —— 它进净流的减项，却不进容量。'},

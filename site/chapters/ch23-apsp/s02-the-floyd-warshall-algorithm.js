@@ -408,7 +408,7 @@ int main(void)
         '★ 方法论对照：23.1 按边数、23.2 按中间点集合 —— 两种 DP 切入同一个问题。∎']},
     ],conclusion:'★ 结论：Floyd-Warshall = Θ(n³) + 原地更新 + 天然负权支持；对角元 < 0 即负环。',note:''},
    {type:'drill',title:'检验一下',items:[
-     {kind:'single',q:'Floyd-Warshall 的 DP 状态 d_ij^(k) 的含义是？',options:['经过 k 条边的最短路','**只允许 {1..k} 为中间点的最短路**','经过 k 次的最短路','第 k 行的最短路'],answer:1,
+     {kind:'single',q:'Floyd-Warshall 的 DP 状态 d_ij^(k) 的含义是？',options:['经过恰好 $k$ 条边的最短路，也就是矩阵法的那个维度','**只允许 {1..k} 为中间点的最短路**','经过 k 次的最短路','第 k 行的最短路'],answer:1,
       why:'★ 与矩阵法的"边数"维度不同 —— 这是两章方法论的分野。'},
      {kind:'single',q:'Floyd-Warshall 的时间与空间是？',options:['Θ(n³) / Θ(n²)','Θ(n⁴) / Θ(n³)','Θ(n³ lg n) / Θ(n²)','Θ(n²) / Θ(n)'],answer:0,
       why:'★ 三重循环；原地更新只需一张表。'},

@@ -307,15 +307,15 @@ int main(void)
         '★ C 程序 part 4 的交叉验证展示了非负权下两算法的一致性。∎']},
     ],conclusion:'★ 结论：Dijkstra = 贪心 + 非负权；数据结构决定复杂度档位（数组/二叉堆/斐波那契堆）。',note:''},
    {type:'drill',title:'检验一下',items:[
-     {kind:'single',q:'Dijkstra 的贪心选择是？',options:['边权最小的边','**d 最小的未确定结点**','度数最小的结点','任意结点'],answer:1,
+     {kind:'single',q:'Dijkstra 的贪心选择是？',options:['边权最小的那条边，贪心嘛，每次都挑最轻的','**d 最小的未确定结点**','度数最小的结点','任意结点'],answer:1,
       why:'★ EXTRACT-MIN：非负权保证它的 d 已是最终最短距。'},
-     {kind:'single',q:'Dijkstra 不能处理负权边的根本原因？',options:['实现复杂','**非负性是正确性证明（定理 22.6）的必要条件**','队列不支持','比较函数写不了'],answer:1,
+     {kind:'single',q:'Dijkstra 不能处理负权边的根本原因？',options:['实现复杂：负权边要额外的标记位和回退逻辑，代码难以写对','**非负性是正确性证明（定理 22.6）的必要条件**','队列不支持','比较函数写不了'],answer:1,
       why:'★ 负边会让"当前 d 最小"的结点后来被超越 —— 贪心失效（习题 22.3-4）。'},
      {kind:'judge',q:'Dijkstra 在稠密图上用数组实现反而最优。',answer:true,
       why:'★ 数组 O(V²) 与 E=Θ(V²) 同阶；堆的 lg V 因子反而多余。'},
      {kind:'simulate',q:'C 程序 G2 上 Dijkstra 的 d[x] = ？（填数字）',expect:[13],placeholder:'例如：14',
       why:'x = min(y+9=14, z+6=13) = 13（C 程序 part 4 与 Bellman-Ford 交叉验证）。'},
-     {kind:'single',q:'用斐波那契堆实现 Dijkstra 的时间是？',options:['$O(V^2)$','**$O(V \\lg V + E)$**','$O(E \\lg V)$','$O(VE)$'],answer:1,why:'★ 本关复杂度账的三行对照：二叉堆 $O((V+E)\\lg V)$、斐波那契堆 $O(V \\lg V + E)$、数组 $O(V^2)$。'},
+     {kind:'single',q:'用斐波那契堆实现 Dijkstra 的时间是？',options:['$O(V^2)$：每轮线性扫一遍取最小值，这就是总时间','**$O(V \\lg V + E)$**','$O(E \\lg V)$','$O(VE)$'],answer:1,why:'★ 本关复杂度账的三行对照：二叉堆 $O((V+E)\\lg V)$、斐波那契堆 $O(V \\lg V + E)$、数组 $O(V^2)$。'},
      {kind:'judge',q:'C 程序在 G2 上跑出的 Dijkstra 结果与 Bellman-Ford 逐点一致。',answer:true,why:'★ 本关 code 段的交叉验证条目写着与 Bellman-Ford 逐点一致 —— 非负权图上两种算法必须同解。'},
      {kind:'judge',q:'Dijkstra 每轮从队列取出 $d$ 最小的结点时，它的 $d$ 已经是最终最短距离。',answer:true,why:'★ 这正是本关 prove 段的命题 $u.d = \\delta(s,u)$：边权非负保证后取的结点不可能再把它改小。'},
     ],bookExercises:[

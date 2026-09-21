@@ -400,9 +400,9 @@ int main(void)
         '★ C 程序 part 1 的 300 组实验结果与之相容：HK 与 Kuhn 都靠这条引理单调增大匹配，最终一致。∎']},
     ],conclusion:'★ 结论：增广引理 + "每轮一批" 的工程化 = $O(E\\sqrt{V})$。',note:''},
    {type:'drill',title:'检验一下',items:[
-     {kind:'single',q:'M-增广路的特征是什么？',options:['两端都是已匹配点','**两端都是未匹配点的交替路**','只含 M 的边','长度为偶数'],answer:1,
+     {kind:'single',q:'M-增广路的特征是什么？',options:['两端都是已匹配的点，中间的边交替出现','**两端都是未匹配点的交替路**','只含 M 的边','长度为偶数'],answer:1,
       why:'★ 两端未匹配 → 对称差后匹配大 1。'},
-     {kind:'single',q:'Hopcroft-Karp 每轮做什么？',options:['找一条增广路','**找一批互不相交的最短增广路**','重排顶点','求最小割'],answer:1,
+     {kind:'single',q:'Hopcroft-Karp 每轮做什么？',options:['找一条增广路，找到就立刻做对称差更新','**找一批互不相交的最短增广路**','重排顶点','求最小割'],answer:1,
       why:'★ 这正是它比"一条一条找"快的原因。'},
      {kind:'judge',q:'Hopcroft-Karp 的时间是 O(E√V)。',answer:true,
       why:'★ √V 轮 × 每轮 O(E)。'},

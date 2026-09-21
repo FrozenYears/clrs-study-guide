@@ -413,7 +413,7 @@ int main(void)
         '★ 22 章的每一个组件（BF、Dijkstra、势函数）都在这里就位。∎']},
     ],conclusion:'★ 结论：Johnson = 差分约束的势函数 + Dijkstra × V —— 稀疏图 APSP 的最优选择。',note:''},
    {type:'drill',title:'检验一下',items:[
-     {kind:'single',q:'Johnson 的第一步为什么跑 Bellman-Ford？',options:['求最短路径本身','**算势函数 h 并检测负环**','生成邻接表','排序'],answer:1,
+     {kind:'single',q:'Johnson 的第一步为什么跑 Bellman-Ford？',options:['求从源点到各点的最短路径本身，结果直接就是答案','**算势函数 h 并检测负环**','生成邻接表','排序'],answer:1,
       why:'★ h(v) = δ(s,v) 用于重加权；负环 = 直接报告无解。'},
      {kind:'single',q:'重加权后最短路径会改变吗？',options:['路径不变，权重平移','路径和权重都变','只有权重变','都变'],answer:0,
       why:'★ 引理 23.1：h 项在路径上望远镜相消 —— 路径排名不变。'},
@@ -423,7 +423,7 @@ int main(void)
       why:'每个源点一次 → V = 5 次（C 程序 s03 段）。'},
      {kind:'judge',q:'Johnson 重加权后所有边的权重 $\\hat{w}(u,v) = w(u,v)+h(u)-h(v) \\ge 0$。',answer:true,
       why:'★ 势函数 $h(v)=\\delta(s,v)$ 由 Bellman-Ford 算出，保证每条边非负（引理 23.1）。'},
-     {kind:'single',q:'Johnson 的整体时间复杂度（用二叉堆 Dijkstra）约为？',options:['$O(VE)$','**$O(V\\cdot E\\lg V)$**','$O(V^3)$','$O(E\\lg V)$'],answer:1,
+     {kind:'single',q:'Johnson 的整体时间复杂度（用二叉堆 Dijkstra）约为？',options:['$O(VE)$：跑 V 轮松弛，每轮扫过全部 E 条边','**$O(V\\cdot E\\lg V)$**','$O(V^3)$','$O(E\\lg V)$'],answer:1,
       why:'★ $V$ 次 Dijkstra，每次 $O(E\\lg V)$；稀疏图优于 Floyd-Warshall 的 $\\Theta(V^3)$。'},
     ],bookExercises:[
      {id:'23.3-1',page:666,star:0,statement:'Use Johnson9s algorithm to find the shortest paths between all pairs of vertices in the graph of Figure 23.2. Show the values of h and y w computed by the algorithm.',hint:'三步照做：加超级源跑 BELLMAN-FORD 得 h，按 $\\hat{w}(u,v) = w(u,v) + h(u) - h(v)$ 逐边重算，再对每个源跑一次 DIJKSTRA，最后把距离换回原权重。本站 c/apsp.c 的 Johnson 分支会打出 h 与重加权后的边表。'},

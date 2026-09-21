@@ -244,9 +244,9 @@ int main(void)
         '★ 两种"找轻边"的方式给出权重相同的树（37）：MST 总权重唯一。∎']},
     ],conclusion:'★ 结论：Kruskal/Prim = 定理 21.1 + 各自的数据结构；复杂度差异完全来自"找轻边"的方式。',note:''},
    {type:'drill',title:'检验一下',items:[
-     {kind:'single',q:'Kruskal 判"成环"用什么数据结构？',options:['邻接矩阵','**并查集（不相交集合）**','优先队列','栈'],answer:1,
+     {kind:'single',q:'Kruskal 判"成环"用什么数据结构？',options:['邻接矩阵：查一下两行有没有共同邻居','**并查集（不相交集合）**','优先队列：取最小边时顺带就知道连不连通','栈'],answer:1,
       why:'★ FIND-SET(u) == FIND-SET(v) 说明 u、v 已连通，再加边即成环（19 章的应用）。'},
-     {kind:'single',q:'Prim 的 key[v] 存什么？',options:['v 到源点的距离','**v 连回当前树的最轻边权**','v 的度数','子树大小'],answer:1,
+     {kind:'single',q:'Prim 的 key[v] 存什么？',options:['v 到源点 s 的距离，跟 Prim 里的 d 一样','**v 连回当前树的最轻边权**','v 的度数','子树大小'],answer:1,
       why:'★ 每轮 EXTRACT-MIN 选出的就是横跨切口的轻边。'},
      {kind:'judge',q:'Kruskal 运行过程中维护的始终是一棵树。',answer:false,
       why:'★ Kruskal 维护森林（多棵树逐步合并）；Prim 才是单树生长。'},

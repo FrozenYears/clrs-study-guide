@@ -305,7 +305,7 @@ int main(void)
         '★ C 程序 part 2 的负环检出正是这条推论的实测。∎']},
     ],conclusion:'★ 结论：四性质是全部最短路算法的公共地基 —— 22 章闭环。',note:''},
    {type:'drill',title:'检验一下',items:[
-     {kind:'single',q:'上界性质断言什么？',options:['v.d 只增不减','$v.d \\ge \\delta(s,v)$ 恒成立','v.d 最终为 0','π 永不变'],answer:1,
+     {kind:'single',q:'上界性质断言什么？',options:['v.d 只增不减：上界性质讲的就是它一路单调往上走','$v.d \\ge \\delta(s,v)$ 恒成立','v.d 最终为 0','π 永不变'],answer:1,
       why:'★ 初始化正确 + RELAX 保持三角不等式。'},
      {kind:'single',q:'路径松弛引理的条件是？',options:['按任意顺序松弛路径上的边','**按路径顺序松弛路径上的边**','松弛全部边 V−1 次','只松弛叶结点'],answer:1,
       why:'★ 顺序是关键：前驱的 d 正确后松弛才有用。'},
@@ -314,7 +314,7 @@ int main(void)
      {kind:'single',q:'松弛后 $v.d \le u.d + w$ 恒成立，这条性质叫？',options:['上界性质','收敛性质','**松弛立即生效**','路径松弛性质'],answer:2,
       why:'引理 22.13（松弛立即生效）—— 上界性质的伴生不变量。'},
      {kind:'judge',q:'上界性质（v.d ≥ δ(s,v)）在松弛过程的任意时刻都成立。',answer:true,why:'★ 初始化正确 + RELAX 保持三角不等式（引理 22.12 / 22.13）。'},
-     {kind:'single',q:'收敛性质（22.15）：一旦 d[u] = δ(s,u)，松弛边 (u,v) 后会立即得到？',options:['d[v] = ∞','**d[v] = δ(s,v)**','d[v] 不变','d[u] = 0'],answer:1,why:'★ 收敛性质：正确值一锤定音（d[v] ≤ d[u] + w 与上界性质夹出等号）。'},
+     {kind:'single',q:'收敛性质（22.15）：一旦 d[u] = δ(s,u)，松弛边 (u,v) 后会立即得到？',options:['d[v] = ∞：松弛会把尚未确定的邻居重新置回','**d[v] = δ(s,v)**','d[v] 不变','d[u] = 0'],answer:1,why:'★ 收敛性质：正确值一锤定音（d[v] ≤ d[u] + w 与上界性质夹出等号）。'},
     ],bookExercises:[
      {id:'22.5-1',page:638,star:0,statement:'Give two shortest-paths trees for the directed graph of Figure 22.2 on page 609 other than the two shown.',hint:'同一组 d 值往往对应多组 $\\pi$ 选法。在图上找两条等权但走法不同的最短路，各自决定一组前驱，就能拼出两棵新的最短路径树（结点的父边可以整体换一支）。'},
      {id:'22.5-2',page:638,star:0,statement:'Give an example of a weighted, directed graph G = (V,E) with weight function w W E ! R and source vertex s such that G satisfies the following property: For every edge (u,v) 2 E, there is a shortest-paths tree rooted at s that contains (u,v) and another shortest-paths tree rooted at s that does not contain (u,v) .',hint:'题干要的是「每条边都在**某棵**最短路径树里，又不在**所有**里」，所以图必须让某些顶点有**两条等长的最后一步**。判据先用起来：边 $(u,v)$ 属于某棵 SPT $\\iff$ $d(s,u) + w(u,v) = d(s,v)$（紧边）；若 $v$ 有两个不同的紧前驱 $u_1, u_2$，那么选 $u_1$ 的那棵树就不含 $(u_2, v)$。最小例子骨架：$s \\to a \\to t$ 与 $s \\to b \\to t$ 两条等长链（再给 $b \\to a$ 之类造第二条紧边），逐条边验一遍「有一棵树含它」+「有一棵树不含它」。★ 记得说清那两棵树怎么来的：松弛顺序不同 ⟹ 前驱子图不同，这正是本节「前驱子图是**某棵**树」的意思。'},

@@ -313,7 +313,7 @@ int main(void)
         '★ 两个方向的定理都得到实验印证。∎']},
     ],conclusion:'★ 结论：Bellman-Ford = "V−1 轮松弛" + "负环探测器"；O(VE) 换来对负边的完全支持。',note:''},
    {type:'drill',title:'检验一下',items:[
-     {kind:'single',q:'Bellman-Ford 的第 V−1 轮之后还做什么？',options:['直接返回结果','**再扫一遍所有边检查是否仍可松弛**','重新初始化','转置图再跑一遍'],answer:1,
+     {kind:'single',q:'Bellman-Ford 的第 V−1 轮之后还做什么？',options:['直接返回结果：V−1 轮之后 d 就已经全对了','**再扫一遍所有边检查是否仍可松弛**','重新初始化','转置图再跑一遍'],answer:1,
       why:'★ 检查轮是负环探测器：仍可松弛 ⇒ 从 s 可达负环。'},
      {kind:'single',q:'Bellman-Ford 的运行时间是？',options:['O(V+E)','**O(VE)**','O(V lg V)','O(E lg V)'],answer:1,
       why:'★ (V−1) 轮 × 全边扫描。'},

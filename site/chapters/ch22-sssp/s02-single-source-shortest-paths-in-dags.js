@@ -296,7 +296,7 @@ int main(void)
         '★ 负权边 x→y(−1) 被正确处理（DAG 无环 → 无负环）。∎']},
     ],conclusion:'★ 结论：拓扑序是 DAG 的"万能预处理" —— 一次排序换来线性时间与负权支持。',note:''},
    {type:'drill',title:'检验一下',items:[
-     {kind:'single',q:'DAG-SSSP 相对 Bellman-Ford 的两大优势是？',options:['支持负环','**线性时间 + 支持负权边**','不需要权重','可以处理无向图'],answer:1,
+     {kind:'single',q:'DAG-SSSP 相对 Bellman-Ford 的两大优势是？',options:['支持负环：DAG 上跑最短路连负环都能处理','**线性时间 + 支持负权边**','不需要权重','可以处理无向图'],answer:1,
       why:'★ 拓扑序松弛一次到位；DAG 天然无负环。'},
      {kind:'single',q:'DAG-SSSP 的第一步是？',options:['初始化','**拓扑排序**','建邻接矩阵','堆化'],answer:1,
       why:'★ 没有拓扑序就没有"每个结点处理一次"的正确性。'},

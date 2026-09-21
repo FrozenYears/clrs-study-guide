@@ -224,9 +224,9 @@ int main(void)
         '所以 $(u,v)$ 对 $A$ 是**安全边** —— GENERIC-MST 的每一步都成立，终止时 $A$ 就是 MST。∎']},
     ],conclusion:'★ 结论：切割性质把"全局最优"降解为"局部找轻边" —— Kruskal 与 Prim 只是找轻边的两种方式。',note:''},
    {type:'drill',title:'检验一下',items:[
-     {kind:'single',q:'GENERIC-MST 的循环不变量是？',options:['A 是唯一的 MST','**A 是某个 MST 的子集**','A 的边按权重有序','A 中无环'],answer:1,
+     {kind:'single',q:'GENERIC-MST 的循环不变量是？',options:['A 已经就是唯一的 MST，剩下的边按权重补上就行','**A 是某个 MST 的子集**','A 的边按权重有序','A 中无环'],answer:1,
       why:'★ "某个"二字是关键：MST 不唯一，不变量只要存在性。'},
-     {kind:'single',q:'切割性质的完整前提是？',options:['切割任意','**切割尊重 A，且 (u,v) 是横跨切割的轻边**','(u,v) 是全图最轻边','u、v 都是叶'],answer:1,
+     {kind:'single',q:'切割性质的完整前提是？',options:['切割任意','**切割尊重 A，且 (u,v) 是横跨切割的轻边**','(u,v) 是全图最轻的那条边，不需要管它横跨哪个切割','u、v 都是叶'],answer:1,
       why:'★ 尊重 A 是必要前提，否则轻边可能与 A 成环。'},
      {kind:'judge',q:'MST 的边集是唯一的。',answer:false,
       why:'★ 权重并列时可能有多个 MST；唯一的是**总权重**（C 程序 part 3：两种算法 37 = 37，选边不同）。'},
