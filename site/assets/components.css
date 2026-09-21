@@ -233,6 +233,14 @@
 .pc-line.is-done .pc-code {
   color: var(--fg-2);
 }
+/* 伪代码行上了语法高亮后，"走过的那几行变淡"这条状态提示会被 token 自己的
+   颜色盖掉（子元素颜色优先于父元素继承）。这里让已执行行的着色全部让位，
+   保证动画里「已经走完」仍然看得出来。 */
+.pc-line.is-done .pc-code span {
+  color: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+}
 
 /* ---------- 术语卡（中英对照） ---------- */
 .term {

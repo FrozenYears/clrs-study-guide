@@ -139,7 +139,9 @@ function pseudocodeTable(lines, opts = {}) {
   const list = h('div', { class: 'pseudocode' });
 
   (lines || []).forEach((ln) => {
-    const codeEl = h('span', { class: 'pc-code' }, ln.code);
+    // 伪代码走 pseudo 词法（见 core/highlight.js 顶部说明）。着色只拆 span，
+    // 可见文本与 ln.code 逐字符相同 —— 冒烟检查与「逐字对书」的规则都不受影响。
+    const codeEl = h('span', { class: 'pc-code' }, ...highlight(ln.code, 'pseudo'));
     const row = h('div', {
       class: 'pc-line' + (opts.interactive ? ' pc-clickable' : ''),
       dataset: { line: String(ln.n) },

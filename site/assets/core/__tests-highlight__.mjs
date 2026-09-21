@@ -95,9 +95,122 @@ console.log('\n[4] 语言支持与兜底');
 {
   ok("支持 'c'", supports('c'));
   ok("支持 'js'", supports('js'));
+  ok("支持 'pseudo'", supports('pseudo'));
   ok('未知语言按 C 处理且不报错', textOf(highlight('int x;', 'brainfuck')) === 'int x;');
   ok('null 输入返回空', highlight(null).length === 0 || textOf(highlight(null)) === '');
 }
 
+/* ---------------------------- 伪代码（第 4 段） ---------------------------- */
+
+const toks = (src, lang) =>
+  highlight(src, lang).map((n) => [n.className || null, n.textContent]);
+const coloredOf = (src, cls, text) =>
+  toks(src, 'pseudo').some(([c, t]) => c === cls && t === text);
+// 这个词有没有落到任何一个着色片段里（注释整段也算着色片段，所以只用于无注释的行）
+const coloredAny = (src, w) => {
+  const re = new RegExp('(^|[^A-Za-z0-9])' + w + '([^A-Za-z0-9]|$)');
+  return toks(src, 'pseudo').some(([c, t]) => !!c && re.test(t));
+};
+
+console.log('\n[5] 伪代码：着色规则本身');
+{
+  ok('行首 for 是关键字', coloredOf('for i = 2 to n', 'tok-kw', 'for'));
+  ok('缩进行的首词也算行首', coloredOf('    for j = 1 to n', 'tok-kw', 'for'));
+  ok('行中的 else / return 也认',
+    coloredOf('else return EUCLID(b, a mod b)', 'tok-kw', 'else')
+    && coloredOf('else return EUCLID(b, a mod b)', 'tok-kw', 'return'));
+  ok('NIL / TRUE / FALSE 是常量关键字', coloredOf('while x ≠ NIL', 'tok-kw', 'NIL'));
+  ok('mod 运算符着色', coloredOf('return EUCLID(b, a mod b)', 'tok-kw', 'mod'));
+  ok('to / and 一律不着色：伪代码记号与英文介词连词同形，词法分不开',
+    !coloredAny('for i = 2 to n', 'to')
+    && !coloredAny('while j > 0 and A[j] > key', 'and'));
+  ok('散文句首的大写 For / If 不着色',
+    !coloredAny('5. For each node, all simple paths from the node to descendant leaves contain the same number of black nodes.', 'For')
+    && !coloredAny('4. If a node is red, then both its children are black.', 'If'));
+  ok('散文行中间的小写 for / if 也不着色（关键字只认行首）',
+    !coloredAny('    find an edge (u,v) that is safe for A', 'for')
+    && !coloredAny('3. Show that if you make the greedy choice, only one subproblem remains.', 'if'));
+  ok('then 不着色（全站 1193 行里它只出现在注释与散文里）',
+    !coloredAny('4. If a node is red, then both its children are black.', 'then'));
+  ok('MAX-HEAPIFY 这类带连字符的调用名整体成 tok-fn',
+    coloredOf('    MAX-HEAPIFY(A, i, n)', 'tok-fn', 'MAX-HEAPIFY'));
+  ok('函数名与括号之间有空格时不算调用（"find an edge (u,v)" 是散文）',
+    !coloredAny('    find an edge (u,v) that is safe for A', 'edge'));
+  ok('// 注释整行成一个 token',
+    toks('    // Insert A[i] into the sorted subarray A[1 : i − 1].', 'pseudo')
+      .filter(([c]) => c === 'tok-comment').length === 1);
+  ok('抽取语料的 "/ /" 注释记号也当注释（原书伪代码注释在语料里就是这么写的）',
+    toks('best = 0 / / candidate 0 is a least-qualified dummy candidate', 'pseudo')
+      .some(([c, t]) => c === 'tok-comment' && t.startsWith('/ /')),
+    toks('best = 0 / / candidate 0 is a least-qualified dummy candidate', 'pseudo'));
+  ok('注释里的引号不会被劈成字符串',
+    toks('else    // same as lines 3–15, but with "right" and "left" exchanged', 'pseudo')
+      .every(([c]) => c !== 'tok-str'));
+  ok('字符串（print "occurs with shift"）成 tok-str',
+    coloredOf('            print "occurs with shift" s', 'tok-str', '"occurs with shift"'));
+  ok('数字不吃句号："1. 先取两个大素数" 里的点是普通文本',
+    coloredOf('    1. 先取两个大素数 p, q', 'tok-num', '1')
+    && !toks('    1. 先取两个大素数 p, q', 'pseudo').some(([c, t]) => c && t.endsWith('.')),
+    toks('    1. 先取两个大素数 p, q', 'pseudo'));
+  ok('区间写法 P[1..m] 不会把 1.. 当成一个数字',
+    !toks('        if P[1..m] == T[s+1..s+m]', 'pseudo').some(([c, t]) => c && t.includes('..')),
+    toks('        if P[1..m] == T[s+1..s+m]', 'pseudo'));
+  ok('减号不会被粘进词干：n-1 里的 1 仍是数字，n-1 不是 token',
+    coloredOf('    for j = n-1 downto 0:', 'tok-num', '1')
+    && !toks('    for j = n-1 downto 0:', 'pseudo').some(([c, t]) => c && t === 'n-1'),
+    toks('    for j = n-1 downto 0:', 'pseudo'));
+  ok('heap-size 是词干但不是函数调用（后面跟的是方括号）',
+    coloredOf('    while heap-size[H] > 0', 'tok-kw', 'while')
+    && !toks('    while heap-size[H] > 0', 'pseudo').some(([, t]) => t === 'heap-size'),
+    toks('    while heap-size[H] > 0', 'pseudo'));
+  ok('中文混排的伪代码行不炸',
+    textOf(highlight('    若无正系数：return 无界', 'pseudo')) === '    若无正系数：return 无界'
+    && coloredOf('    若无正系数：return 无界', 'tok-kw', 'return'));
+  ok('C 与 JS 的既有着色不受伪代码改动影响',
+    toks('#include <stdio.h>\nint main(void){return 0;}', 'c').some(([c]) => c === 'tok-pre')
+    && coloredOf('for i = 2 to n', 'tok-kw', 'for')
+    && toks('const x = f(1);', 'js').some(([c]) => c === 'tok-kw')
+    && toks('const x = f(1);', 'js').some(([c]) => c === 'tok-fn'));
+}
+
+console.log('\n[6] 伪代码：全站关卡数据逐字符保真');
+{
+  // 直接从关卡模块拿真实伪代码行（不用 tools/_levels.json：它是一次性产物，可能不存在）
+  const url = await import('node:url');
+  const chRoot = path.join(process.cwd(), 'chapters');
+  const dirs = fs.readdirSync(chRoot).filter((d) => {
+    try { return fs.statSync(path.join(chRoot, d)).isDirectory(); } catch (e) { return false; }
+  });
+  let lines = 0, files = 0, broken = null;
+  const collect = (o, sink) => {
+    if (Array.isArray(o)) return o.forEach((v) => collect(v, sink));
+    if (!o || typeof o !== 'object') return;
+    if (typeof o.code === 'string' && o.n !== undefined) sink.push(o.code);
+    Object.values(o).forEach((v) => collect(v, sink));
+  };
+  for (const d of dirs) {
+    const cf = path.join(chRoot, d, 'chapter.js');
+    if (!fs.existsSync(cf)) continue;
+    let mod;
+    try {
+      mod = await import(url.pathToFileURL(cf).href);
+    } catch (e) {
+      broken = ['import 失败 ' + d, e.message];
+      break;
+    }
+    files++;
+    const sink = [];
+    (mod.default?.levels || []).forEach((lv) => collect(lv.stages, sink));
+    for (const src of sink) {
+      lines++;
+      if (textOf(highlight(src, 'pseudo')) !== src) { broken = [d, src]; break; }
+    }
+    if (broken) break;
+  }
+  ok('找到关卡模块', files >= 30, files);
+  ok(`${lines} 行伪代码（含动画面板里复用的那些）全部逐字符相同`, !broken, broken);
+}
+
 console.log(`\n==== 结果：${pass} passed, ${fail} failed ====`);
 if (fail) process.exit(1);
+
