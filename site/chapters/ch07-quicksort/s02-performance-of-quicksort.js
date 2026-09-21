@@ -522,7 +522,7 @@ int main(void)
      {kind:'single',q:'最坏情况发生在输入处于什么状态时？',options:['全部相同','已经完全有序','随机乱序','逆序'],answer:1,why:'★ 原书 p.188："occurs when the input array is already completely sorted"—— 此时插入排序只要 $O(n)$。'},
      {kind:'single',q:'9:1 的分裂给出的运行时间是？',options:['$\\Theta(n^2)$','$O(n\\lg n)$','$\\Theta(n)$','$O(n^2)$'],answer:1,why:'深度 $\\log_{10/9}n=\\Theta(\\lg n)$、每层代价 $n$。'},
      {kind:'judge',q:'快速排序是原地排序，所以它使用的额外空间是常数。',answer:false,why:'★ 原书 p.187 专门纠正：额外空间 = 递归栈的最大深度，最坏 $\\Theta(n)$。'},
-     {kind:'single',q:'解最坏情况的递推式时，逐层求和得到的是哪一类级数？',options:['几何级数','等差级数，和为 Θ(n²)','调和级数','无法求和'],answer:1,why:'等差级数（A.3），和为 $\\Theta(n^2)$。'},
+     {kind:'single',q:'解最坏情况的递推式时，逐层求和得到的是哪一类级数？',options:['几何级数，公比小于 1','等差级数，和为 Θ(n²)','调和级数，$\\Theta(n\\lg n)$','发散级数，写不出闭式'],answer:1,why:'等差级数（A.3），和为 $\\Theta(n^2)$。'},
      {kind:'simulate',q:'对 n = 1024 的已排序输入做快速排序，递归深度约是几？（填整数）',expect:[1024],placeholder:'例如：1024',
       why:'每层只切掉一个元素，所以递归深度就是 $n = 1024$。'},
     ],

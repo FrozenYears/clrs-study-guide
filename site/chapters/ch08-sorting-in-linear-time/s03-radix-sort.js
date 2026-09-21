@@ -288,7 +288,7 @@ int main(void)
       options:['原地','稳定','自适应','比较'],answer:1,
       why:'★ "In order for radix sort to work correctly, the digit sorts must be stable"（p.212）。平手时靠稳定性保住低位的排序成果。'},
      {kind:'single',q:'b 位键、r 位一组时，RADIX-SORT + 计数排序的总时间？',
-      options:['Θ(bn)','Θ((b/r)(n + 2^r))','Θ(n·2^r)','Θ(b + nr)'],answer:1,
+      options:['$\\Theta(bn)$：每趟线性、共 $b$ 趟','Θ((b/r)(n + 2^r))','$\\Theta(n \\cdot 2^r)$：每趟清桶','$\\Theta(b + nr)$：组数与桶数相加'],answer:1,
       why:'★ d = b/r 趟、每趟 Θ(n + 2^r)：Theorem 8.3 的推广形式（p.214）。'},
      {kind:'single',q:'b ≥ lg n 时，r 的最优选择（差常数因子以内）是？',
       options:['r = b','r = 1','r = ⌊lg n⌋','r = ⌈b/2⌉'],answer:2,

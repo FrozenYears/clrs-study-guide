@@ -409,7 +409,7 @@ int main(void)
     { type: 'drill', title: '检验一下',
       items: [
         { kind: 'single', q: '在堆的数组表示里，下标 $i$ 的结点的父是哪个下标？',
-          options: ['$\\lfloor i/2 \\rfloor$', '$2i$', '$2i+1$', '$i-1$'], answer: 0,
+          options: ['$\\lfloor i/2 \\rfloor$', '$2i$：那是它左孩子的下标', '$2i + 1$：那是它右孩子的下标', '$i - 1$：数组里的前一个位置，与父子关系无关'], answer: 0,
           why: '$\\text{PARENT}(i) = \\lfloor i/2 \\rfloor$。注意 $2i$ 与 $2i+1$ 是**孩子**，方向正好相反 —— 这是最常见的记反。' },
         { kind: 'single', q: '怎样只用下标判断下标 $i$ 的结点是不是叶子？',
           options: ['$i > n/2$', '$\\text{LEFT}(i) > n$', '$\\text{RIGHT}(i) > n$', '$i = n$'], answer: 1,

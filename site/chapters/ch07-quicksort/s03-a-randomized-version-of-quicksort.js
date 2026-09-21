@@ -464,10 +464,10 @@ int main(void)
     { type: 'drill', title: '检验一下',
       items: [
         { kind: 'single', q: 'RANDOMIZED-PARTITION 在调用 PARTITION 之前做了什么？',
-          options: ['把数组排序', '把随机选中的元素交换到 $A[r]$', '把轴删掉', '把数组反转'], answer: 1,
+          options: ['它先把整个数组排好序，再取中间那个元素当轴', '把随机选中的元素交换到 $A[r]$', '它把随机选中的那个轴元素从数组里删掉', '它把数组整体反转一次，让轴落到 $A[r]$'], answer: 1,
           why: '★ 第 2 行：`exchange A[r] with A[i]`。这样原版 PARTITION 就不需要任何修改 —— 它看到的 $A[r]$ 就是随机选的轴。' },
         { kind: 'single', q: 'RANDOMIZED-QUICKSORT 相比 QUICKSORT 改了几行？',
-          options: ['全部重写', '只改第 2 行（PARTITION 换成 RANDOMIZED-PARTITION）', '加了三行新代码', '删了一些行'], answer: 1,
+          options: ['整个递归结构都要重写：轴的选法一换，递归区间、终止条件和合并步骤全都得跟着改一遍', '只改第 2 行（PARTITION 换成 RANDOMIZED-PARTITION）', '加了三行新代码：随机取一个下标、把那个元素交换到区间末尾、递归返回后再还原回去', '删掉了若干行冗余比较，因为随机选轴已经把那些退化分支提前排除掉了'], answer: 1,
           why: '★ 原书说 "The changes to PARTITION and QUICKSORT are small"。实际上 QUICKSORT 的四行里只有一行的函数名变了。' },
         { kind: 'judge', q: '随机化快速排序的最坏情况是 $\\Theta(n^2)$，这和确定性版本一样。', answer: true,
           why: '★ 理论上最坏情况仍然是 $\\Theta(n^2)$ —— 随机化不能消灭它，但能让它**极不可能发生**。原书说的是"no particular input elicits its worst-case behavior"，不是"最坏情况不存在"。' },
