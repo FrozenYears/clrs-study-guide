@@ -281,9 +281,9 @@ int main(void)
         '★ 输出与 Figure 14.8 的表逐格一致（含 $c[1,4] = 1$、$c[5,2] = 2$ 这些拐点）。∎']},
     ],conclusion:'★ 结论：$\Theta(mn)$ 时间、$\Theta(mn)$ 空间（只求长度可压到 $O(\\min(m,n))$）。',note:''},
    {type:'drill',title:'检验一下',items:[
-     {kind:'single',q:'$c[i,j]$ 的定义是？',options:['**$X$ 的前 $i$ 个与 $Y$ 的前 $j$ 个字符的 LCS 长度**','$X[i]$ 到 $Y[j]$ 的最短编辑距离','$X$ 与 $Y$ 的最长公共子串长度','第 $i$ 行第 $j$ 列的字符是否相同'],answer:0,
+     {kind:'single',q:'$c[i,j]$ 的定义是？',options:['**$X$ 的前 $i$ 个与 $Y$ 的前 $j$ 个字符的 LCS 长度**','$X[i]$ 到 $Y[j]$ 的最短编辑距离','$X$ 与 $Y$ 的最长公共子串长度，它要求这些字符在原串里连续出现，不能像子序列那样跳着取','第 $i$ 行第 $j$ 列的字符是否相同'],answer:0,
       why:'★ 前缀对 —— 这是 LCS 的建模核心（原书 p.396）。'},
-     {kind:'single',q:'$x_i \\ne y_j$ 时 $c[i,j]$ 怎么算？',options:['$c[i-1,j-1]$','$\\max(c[i-1,j],\\,c[i,j-1])$','$c[i-1,j]+c[i,j-1]$','$0$'],answer:1,
+     {kind:'single',q:'$x_i \\ne y_j$ 时 $c[i,j]$ 怎么算？',options:['取 $c[i-1,j-1]$：左上角那一格，因为这一位不相等就沿对角退回','$\\max(c[i-1,j],\\,c[i,j-1])$','$c[i-1,j]+c[i,j-1]$','$0$'],answer:1,
       why:'★ 两种退让取较大者：丢掉 $x_i$ 或丢掉 $y_j$。'},
      {kind:'judge',q:'LCS 问题要求公共部分在原序列中连续。',answer:false,
       why:'★ 那是**子串**。子序列只要求相对顺序（原书 p.394：删掉 0 个或多个元素）。'},

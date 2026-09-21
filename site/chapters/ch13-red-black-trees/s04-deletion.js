@@ -177,7 +177,7 @@ int main(void) {
      {kind:'single',q:'FIXUP 的终止条件是？',options:['x 是红或 x 是根','x 是叶','旋转了 2 次','走了 h 步'],answer:0,why:'★ x 是红 → 染黑消除；x 是根 → 多余的黑分给全树。'},
      {kind:'judge',q:'删除红节点时不需要调用 RB-DELETE-FIXUP。',answer:true,why:'★ 删红节点不改变黑高 → 无需 FIXUP（p.347 关键判断）。'},
      {kind:'judge',q:'RB-DELETE-FIXUP 在一次删除中至多做 3 次旋转。',answer:true,why:'★ 原书 p.354：FIXUP O(lg n)、至多 3 次旋转。'},
-     {kind:'single',q:'C 实现里为什么需要一个恒黑的哨兵 T.nil？',options:['节省内存','**删除黑叶时 x 会落到空叶：没有哨兵就无法表示「双重黑」，修复循环提前退出、黑高失衡**','为了加快查找','伪代码要求结点不可为空'],answer:1,why:'★ x = T.nil 时双重黑挂在哨兵上继续修正 —— 本关程序用哨兵后，含「删根 11」在内的 3 次删除与 100 次混合操作全部通过。'},
+     {kind:'single',q:'C 实现里为什么需要一个恒黑的哨兵 T.nil？',options:['节省内存','**删除黑叶时 x 会落到空叶：没有哨兵就无法表示「双重黑」，修复循环提前退出、黑高失衡**','为了加快查找','因为伪代码要求每个结点的 $left$、$right$、$p$ 都不能为空，为 NIL 时第一行就解引用失败'],answer:1,why:'★ x = T.nil 时双重黑挂在哨兵上继续修正 —— 本关程序用哨兵后，含「删根 11」在内的 3 次删除与 100 次混合操作全部通过。'},
      {kind:'single',q:'删除黑节点后，整棵树的根节点颜色是？',options:['**黑（BLACK）**','红（RED）','由删除位置决定','删除后根可能为红'],answer:0,why:'★ 删黑后根染黑补偿全树 → 根恒为黑（本关 prove 结论）。'},
     ],bookExercises:[
      {id:'13.4-1',page:354,star:0,statement:'Show that if node y in RB-DELETE is red, then no black-heights change.',hint:'$y$ 是红色时，被摘掉的结点不计入黑高：任何根到叶路径的黑结点数不变（性质 5 保住）。顺手检查性质 4 —— 红色的 $y$ 与孩子相连会不会留下红红相邻。'},

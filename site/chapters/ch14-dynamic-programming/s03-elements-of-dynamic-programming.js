@@ -326,7 +326,7 @@ int main(void)
    {type:'drill',title:'检验一下',items:[
      {kind:'single',q:'动态规划成立的**两个**要素是？',options:['最优子结构 + 分治','最优子结构 + 重叠子问题','贪心选择 + 无后效性','多项式时间 + 线性空间'],answer:1,
       why:'★ 原书 p.382 的纲领：optimal substructure + overlapping subproblems。'},
-     {kind:'single',q:'为什么备忘能让矩阵链的朴素递归从指数降到多项式？',options:['因为递归树变浅了','因为每个子问题只被**真正计算**一次','因为减少了枚举的劈开点数','因为用了更小的数据类型'],answer:1,
+     {kind:'single',q:'为什么备忘能让矩阵链的朴素递归从指数降到多项式？',options:['因为递归树变浅了','因为每个子问题只被**真正计算**一次','因为备忘之后每一层要枚举的劈开点变少了','因为用了更小的数据类型'],answer:1,
       why:'★ 备忘把"重复计算"变成"查表"：$\\Theta(n^2)$ 个子问题各算一次。'},
      {kind:'judge',q:'备忘（memoization）能加速 MERGE-SORT。',answer:false,
       why:'★ MERGE-SORT 的子问题互不重叠，没有可命中的表项 —— 习题 14.3-2 的答案。'},

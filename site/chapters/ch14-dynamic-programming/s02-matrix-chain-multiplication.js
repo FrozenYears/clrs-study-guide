@@ -191,7 +191,7 @@ int main(void)
         '★ 若用备忘递归（自上而下）也能work，但自底向上的常数更小（无递归开销）—— 与 14.1 的结论一致。']},
     ],conclusion:'★ 结论：$\\Theta(n^3)$ 时间、$\\Theta(n^2)$ 空间。DP 的两要素在 14.1/14.2 各出现一次，14.3 将正式提炼。',note:''},
    {type:'drill',title:'检验一下',items:[
-     {kind:'single',q:'矩阵链乘法的 DP 子问题是什么？',options:['单个矩阵','长度 $l$','**区间** $m[i,j]$','劈开点 $k$'],answer:2,
+     {kind:'single',q:'矩阵链乘法的 DP 子问题是什么？',options:['单个矩阵','子链的长度 $l$：按长度递推，长度就是子问题','**区间** $m[i,j]$','劈开点 $k$'],answer:2,
       why:'★ 子问题是"$A_i\\cdots A_j$ 的最小代价"，共 $\\Theta(n^2)$ 个。'},
      {kind:'single',q:'MATRIX-CHAIN-ORDER 的时间复杂度？',options:['$\\Theta(n^2)$','$\\Theta(n^3)$','$\\Theta(2^n)$','$\\Theta(n\\lg n)$'],answer:1,
       why:'★ $\\Theta(n^2)$ 个子问题 × 每个 $O(n)$ 枚举 = $\\Theta(n^3)$。'},

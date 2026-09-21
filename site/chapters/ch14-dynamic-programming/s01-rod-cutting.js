@@ -214,7 +214,7 @@ int main(void)
     ],conclusion:'★ 结论：DP 的正确性靠**最优子结构**，效率靠**消除重叠子问题**。这两条也是 14.3 的正式议题。',note:''},
    {type:'drill',title:'检验一下',items:[
      {kind:'single',q:'长为 n 的钢条共有多少种切法？',options:['$n$','$n^2$','$2^{n-1}$','$n!$'],answer:2,why:'★ 每个位置"切/不切"独立 → $2^{n-1}$（原书 p.363）。'},
-     {kind:'single',q:'DP 相比朴素递归的关键改进是？',options:['更少的递归深度','每个子问题只解一次（备忘/查表）','更好的价格表','并行计算'],answer:1,why:'★ 原书 p.369："arrange for each subproblem to be solved only once"。'},
+     {kind:'single',q:'DP 相比朴素递归的关键改进是？',options:['更少的递归深度：子问题不重复算，递归栈自然就没那么深','每个子问题只解一次（备忘/查表）','更好的价格表','并行计算'],answer:1,why:'★ 原书 p.369："arrange for each subproblem to be solved only once"。'},
      {kind:'judge',q:'钢条切割的 DP 用额外内存换时间。',answer:true,why:'★ 原书明确称其为 time-memory trade-off。'},
      {kind:'simulate',q:'按原书价格表，长度 4 的钢条最优收益是多少？（填数字）',expect:[10],placeholder:'例如：9',
       why:'切成 2+2 = 5+5 = 10（不切只有 9）。C 程序 part 1 实测。'},
