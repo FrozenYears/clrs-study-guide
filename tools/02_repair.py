@@ -163,11 +163,15 @@ def _resolve_fffd(txt):
 # Words that end in '.' in ordinary prose.  Their '.' is a full stop, never a
 # math paren.  Deliberately EXCLUDES single letters f/g/h/n/o/x/... and w, c, b,
 # d, T, O because those are math variables (f.n/, c.u;v/, w.p/, b.kI n;p/).
+#   * `cf` / `max` / `min` were REMOVED: they are math operators here.  Measured
+#     on the raw corpus, every glued occurrence is a paren pair -- `cf.n/` x11,
+#     `max.v/` x1, `min.u/` x2 -- while the prose abbreviations always carry a
+#     space after the dot (`cf. Figure 3.1`), so the glued guard never sees them.
 ABBREV_WORDS = {
     "fig", "figure", "figs", "figures", "no", "eq", "eqs", "ch", "chs",
-    "sec", "secs", "ex", "exs", "cf", "vs", "al", "etc", "approx", "resp",
+    "sec", "secs", "ex", "exs", "vs", "al", "etc", "approx", "resp",
     "vol", "ed", "eds", "inc", "ltd", "dr", "prof", "st", "nd", "rd", "th",
-    "chap", "app", "ref", "refs", "max", "min", "iff",
+    "chap", "app", "ref", "refs", "iff",
 }
 
 # The Latin abbreviations are exactly two: "i.e." and "e.g.".  Measured over the
@@ -275,6 +279,30 @@ def _range_split(s):
 
 def _range_list(m):
     return m.group(1) + _range_split(m.group(2)) + _range_split(m.group(3))
+
+# --- apostrophe: the right single quote extracts as the ASCII digit '9' whenever
+#     it sits INSIDE a word (the font's quote glyph shares the '9' slot).  Measured
+#     over the whole book: 169 hits of `letter 9 letter`, and every one is a
+#     contraction/possessive (146 `9s`, 17 `9ll`, 6 `9t`); the 4 bare `9` are the
+#     same glyph at a word end.  Real digits are never preceded by a letter, so the
+#     `(?<=[A-Za-z])` lookbehind alone excludes COVID-19 / the 9th / 1990s / h9;16i.
+APOSTROPHE_RE = re.compile(r"(?<=[A-Za-z])9(?=[A-Za-z])")
+
+# --- bare floor/ceil residue: the math font drops the vertical bars entirely when
+#     the operand has no '/', leaving `blg nc` = ⌊lg n⌋ and `dne` = ⌈n⌉.  The
+#     closing letter is always glued to the operand (`nc`, `ne`, `n/2c`).  Two
+#     shapes only, both guarded against the English words that the loose form would
+#     eat (`basic`, `dice`, `done`, `dense`, `dele`):
+#       * a math-function operand: b/d + (lg|ln|log) + operand + c/e
+#       * a bare variable operand: b/d + (n|m|k) + c/e
+#     Measured residue over the whole book: `blg nc`, `dlg ne`, `bnc`, `dne`.
+FLOOR_FUNC_BARE_RE = re.compile(
+    r"(?<![A-Za-z0-9])b(lg|ln|log)\s*([a-z0-9]{1,3})c(?![A-Za-z0-9])")
+CEIL_FUNC_BARE_RE = re.compile(
+    r"(?<![A-Za-z0-9])d(lg|ln|log)\s*([a-z0-9]{1,3})e(?![A-Za-z0-9])")
+FLOOR_SYM_BARE_RE = re.compile(r"(?<![A-Za-z0-9])b([nmk])c(?![A-Za-z0-9])")
+CEIL_SYM_BARE_RE = re.compile(r"(?<![A-Za-z0-9])d([nmk])e(?![A-Za-z0-9])")
+
 
 BAR_PAIR_RE = re.compile(r"j\s*(?!D)([A-Za-z0-9])\s*j")
 EMDASH_RE = re.compile(r"([A-Za-z])4([A-Za-z])")
@@ -626,6 +654,9 @@ def repair_text(txt, state=None):
     # --- 2b. resolve FFFD (needs '[' already present) ---
     txt = _resolve_fffd(txt)
 
+    # --- 2b. apostrophe: in-word ASCII '9' is the right single quote ---
+    txt = APOSTROPHE_RE.sub("\u2019", txt)
+
     # --- 2b'. ':::' is the math font's ellipsis '…' (895 hits = the whole '::'
     #          population).  Runs first so the tuple/list rules below can see it
     #          as a separator. ---
@@ -672,6 +703,11 @@ def repair_text(txt, state=None):
     #         which would otherwise eat the '=' inside them) ---
     txt = CEIL_RE.sub("⌈\\1/\\2⌉", txt)
     txt = FLOOR_RE.sub("⌊\\1/\\2⌋", txt)
+    # bare residue (no '/' inside): blg nc -> ⌊lg n⌋, dne -> ⌈n⌉
+    txt = CEIL_FUNC_BARE_RE.sub("⌈\\1 \\2⌉", txt)
+    txt = FLOOR_FUNC_BARE_RE.sub("⌊\\1 \\2⌋", txt)
+    txt = CEIL_SYM_BARE_RE.sub("⌈\\1⌉", txt)
+    txt = FLOOR_SYM_BARE_RE.sub("⌊\\1⌋", txt)
     # 闭合取整符在 PDF 里常被抽成开口符（p38：⌈n/2⌈ 应为 ⌈n/2⌉）。取整记号的
     # 两个括号必须是一对开口/闭合，短跨度内出现两个开口就是抽取伪影。
     txt = re.sub(r"⌈([^⌉⌈]{1,24})⌈", "⌈\\1⌉", txt)
