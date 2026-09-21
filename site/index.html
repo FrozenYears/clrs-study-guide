@@ -22,9 +22,11 @@
         <span class="spacer"></span>
         <span class="header-progress" id="header-progress" aria-live="polite"></span>
         <nav class="app-header__tools" aria-label="学习辅助">
+          <a id="review-link" class="btn btn--ghost btn--sm" href="#/review">复习</a>
           <a id="wrong-link" class="btn btn--ghost btn--sm" href="#/wrong">错题本</a>
           <a class="btn btn--ghost btn--sm" href="#/glossary">术语表</a>
           <a class="btn btn--ghost btn--sm" href="#/complexity">复杂度</a>
+          <a class="btn btn--ghost btn--sm" href="#/pseudocode">伪代码</a>
         </nav>
         <button id="theme-toggle" class="btn btn--ghost btn--sm" type="button" aria-label="切换主题">
           主题：自动
@@ -50,6 +52,8 @@
       import { renderWrong } from "./assets/ui/wrong-view.js";
       import { renderGlossary } from "./assets/ui/glossary-view.js";
       import { renderComplexity } from "./assets/ui/complexity-view.js";
+      import { renderReview } from "./assets/ui/review-view.js";
+      import { renderPseudocode } from "./assets/ui/pseudocode-view.js";
 
       /* ----------------------------------------------------------------------
        * 九段式关卡：每关固定 9 个阶段（见 docs/开发规范.md 4.2）。
@@ -235,6 +239,15 @@
         const n = store.getWrong().length;
         el.textContent = n ? "错题本 " + n : "错题本";
         el.setAttribute("aria-label", n ? "错题本，" + n + " 道待回炉" : "错题本，当前为空");
+      }
+
+      /* ---------------- 顶栏的复习入口（显示到期题数） ---------------- */
+      function refreshReviewLink() {
+        const el = $("#review-link");
+        if (!el) return;
+        const n = store.dueReviews().length;
+        el.textContent = n ? "复习 " + n : "复习";
+        el.setAttribute("aria-label", n ? "复习，" + n + " 道题到期" : "复习，当前没有到期的题");
       }
 
       /* ---------------- 顶栏的全局进度 ---------------- */
@@ -465,6 +478,12 @@
         } else if (route.kind === "complexity") {
           currentView = renderComplexity();
           main.appendChild(currentView.node);
+        } else if (route.kind === "pseudocode") {
+          currentView = renderPseudocode();
+          main.appendChild(currentView.node);
+        } else if (route.kind === "review") {
+          currentView = renderReview();
+          main.appendChild(currentView.node);
         } else if (route.kind === "chapter" || route.kind === "appendix") {
           const chapter = getChapter(route.ch);
           if (chapter) {
@@ -481,6 +500,7 @@
 
         refreshHeaderProgress();
         refreshWrongLink();
+        refreshReviewLink();
         window.scrollTo(0, 0);
       }
 
@@ -496,6 +516,7 @@
           refreshHeaderProgress();
         }
         refreshWrongLink();
+        refreshReviewLink();
       });
     </script>
   </body>

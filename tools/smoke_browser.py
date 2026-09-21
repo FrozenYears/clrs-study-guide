@@ -38,6 +38,13 @@ CASES = [
     ("#/glossary", ["术语表", "中英对照与出处反查", "loop invariant", "gloss-link",
                     "#/ch02/s01/s03"],
      [NOT_PENDING, "页面走丢了"]),
+    # 伪代码速查（A5）：断言具名算法、辅助过程（MERGE 在 more 里）、以及跳转链接。
+    ("#/pseudocode", ["伪代码速查", "全书算法一页查尽", "pcx-name", "INSERTION-SORT",
+                      "MERGE-SORT", "MERGE(A, p, q, r)", "#/ch02/s03/s04"],
+     [NOT_PENDING, "页面走丢了"]),
+    # 复习模式（A2）：无头浏览器是全新 profile，台账为空 —— 断言空状态与说明。
+    ("#/review", ["复习", "按遗忘曲线推题", "还没有可复习的题", "遗忘曲线"],
+     [NOT_PENDING, "页面走丢了"]),
     # 复杂度对照表（A6）：断言逐条结论、出处页码、以及「本站补充」的显式标注。
     ("#/complexity", ["复杂度对照表", "全书结论横向对照", "cx-table", "cx-link",
                       "MATRIX-MULTIPLY 的运行时间", "本站补充"],

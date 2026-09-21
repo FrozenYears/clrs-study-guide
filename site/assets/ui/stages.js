@@ -15,7 +15,7 @@ import { h, svg, $ } from '../core/dom.js';
 import { pageRef } from '../core/page.js';
 import * as katex from '../core/katex.js';
 import { highlight } from '../core/highlight.js';
-import { optionOrder } from '../core/quiz-order.js';
+import { createQuizItem } from './quiz-item.js';
 import * as store from '../core/store.js';
 import { createStepper } from '../core/stepper.js';
 import { getViz, getAlgorithm } from './registry.js';
@@ -904,103 +904,27 @@ function rDrill(stage, ctx) {
   }
 
   /**
-   * 判一道题，并同步错题本。
+   * 一道题判完之后：更新本关得分 + 同步错题本 + 推进复习台账。
    * ★ 错题本此前只有数据层、没有任何写入点，等于建了本子从不记事（A1 的根因）。
    *   id 用「关卡 + 题序」，与题干解耦：题干日后被校订，同一条错题仍能对上。
    *   答对即从错题本移除 —— 重做答对就该销案，不然本子只会单向膨胀。
+   * ★ 复习台账要的是**每一道做过的题**（答对也要记），否则昨天答对的题
+   *   今天该复习时数据层不知道它存在过。两个结构各管一摊，所以这里都写。
    */
-  function setResult(i, ok, whyEl, picked) {
+  function setResult(i, ok, picked) {
     results[i] = ok;
-    const it = items[i] || {};
-    const id = `${ctx.ch}/${ctx.section}/q${i + 1}`;
-    if (ok) {
-      store.clearWrong(id);
-    } else {
-      store.addWrong({
-        id,
-        ch: ctx.ch,
-        sec: ctx.section,
-        kind: it.kind,
-        q: it.q,
-        options: it.kind === 'single' ? (it.options || []).map((o) => (typeof o === 'string' ? o.replace(/\*\*/g, '') : o)) : null,
-        answer: it.kind === 'single' || it.kind === 'judge' ? it.answer : null,
-        expect: it.kind === 'simulate' ? it.expect : null,
-        why: it.why || null,
-        picked: picked == null ? null : String(picked),
-      });
-    }
-    if (whyEl) {
-      whyEl.removeAttribute('hidden');
-      whyEl.dataset.ok = ok ? '1' : '0';
-    }
+    // 记账口径只有一份（错题本 + 复习台账），复习模式走的是同一个函数。
+    store.recordAnswer({ ch: ctx.ch, sec: ctx.section, n: i + 1, item: items[i], ok, picked });
     finish();
   }
 
+  // 题目渲染与判分只有一份实现（ui/quiz-item.js），本段只接住结果。
   items.forEach((it, i) => {
-    const why = it.why
-      ? h('p', { class: 'quiz__why', hidden: true }, katex.renderMixed(it.why))
-      : null;
-    let body;
-
-    if (it.kind === 'judge') {
-      const opts = [['对', true], ['错', false]];
-      const btns = opts.map(([label, val]) =>
-        h('button', {
-          class: 'quiz__opt', type: 'button', role: 'radio',
-          onClick: () => {
-            const ok = it.answer === val;
-            btns.forEach((b, bi) => {
-              b.disabled = true;
-              if (opts[bi][1] === it.answer) b.classList.add('is-correct');
-              if (opts[bi][1] === val && !ok) b.classList.add('is-wrong');
-            });
-            setResult(i, ok, why, label);
-          },
-        }, label)
-      );
-      body = h('div', { class: 'quiz__options' }, btns);
-    } else if (it.kind === 'single') {
-      const opts = it.options || [];
-      // 作者约定：正确项用 **…** 包裹（便于在源码里一眼找到，且必须与 answer 下标一致）。
-      // 这个标记是给作者看的，不是给读者的 —— 渲染前必须剥掉，否则正确项会被加粗、
-      // 等于作答前就把答案标出来了（判对错只看 answer，标记纯属冗余）。
-      // 展示顺序按题干做确定性乱序（core/quiz-order.js）：数据里 353/478 题的正确项
-      // 写在下标 1，不洗牌就等于「永远选第二个」可得 74% 分。
-      const order = optionOrder(it.q, opts.length);
-      const btns = order.map((src, pos) =>
-        h('button', {
-          class: 'quiz__opt', type: 'button', role: 'radio',
-          onClick: () => {
-            const ok = src === it.answer;
-            btns.forEach((b, bi) => {
-              b.disabled = true;
-              if (order[bi] === it.answer) b.classList.add('is-correct');
-              if (bi === pos && !ok) b.classList.add('is-wrong');
-            });
-            setResult(i, ok, why, opts[src]);
-          },
-        }, katex.renderMixed(typeof opts[src] === 'string' ? opts[src].replace(/\*\*/g, '') : opts[src]))
-      );
-      body = h('div', { class: 'quiz__options' }, btns);
-    } else if (it.kind === 'simulate') {
-      const inp = h('input', { class: 'drill-input', type: 'text', 'aria-label': '你的答案',
-        placeholder: it.placeholder || '例如：2 4 5 6 1 3' });
-      const check = h('button', { class: 'btn btn--sm', type: 'button', onClick: () => {
-        const got = inp.value.trim().split(/[\s,，]+/).filter(Boolean).map(Number);
-        const exp = it.expect.map(Number);
-        const ok = got.length === exp.length && got.every((v, k) => v === exp[k]);
-        setResult(i, ok, why, inp.value.trim());
-      } }, '检查');
-      body = h('div', { class: 'row' }, inp, check);
-    } else {
-      body = h('p', { class: 'card__meta' }, '（题型 ' + it.kind + ' 暂无渲染器）');
-    }
-
-    list.appendChild(h('div', { class: 'quiz' },
-      h('div', { class: 'quiz__q' }, katex.renderMixed(it.q)),
-      body, why
-    ));
+    const rec = createQuizItem(it, { onResult: (ok, picked) => setResult(i, ok, picked) });
+    list.appendChild(rec.node);
   });
+
+
 
   kids.push(list, scoreEl);
 

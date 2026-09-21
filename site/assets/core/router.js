@@ -64,6 +64,16 @@ export function parse(hash) {
     return Object.assign(base, { kind: "complexity" });
   }
 
+  // 复习模式：按遗忘曲线推题（#/review）
+  if (segments[0] === "review") {
+    return Object.assign(base, { kind: "review" });
+  }
+
+  // 伪代码速查：全站聚合页（#/pseudocode）
+  if (segments[0] === "pseudocode") {
+    return Object.assign(base, { kind: "pseudocode" });
+  }
+
   if (segments[0] === "appendix") {
     const letter = (segments[1] || "").toLowerCase();
     if (!APPENDIX_LETTERS.includes(letter) || segments.length < 2) {

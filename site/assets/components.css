@@ -601,6 +601,64 @@
   font-family: var(--font-sans);
 }
 
+/* ---------- 伪代码速查（#/pseudocode） ----------
+ * 这里只列「算法名 + 行数 + 出处」，不铺开代码：
+ * 一页铺 130 段伪代码会变成没法扫的墙；要看代码点进那一关的「伪代码骨架」段，
+ * 那里有逐行中文讲解与变量表。所以本页的角色是**索引**，不是第二份代码。
+ */
+.pcx-group {
+  border-top: 2px solid var(--fg-0);
+  padding-top: var(--sp-2);
+}
+.pcx-chapter {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-3);
+  margin: 0 0 var(--sp-2);
+  font-family: var(--font-sans);
+  font-size: var(--fs-lg);
+  font-weight: 700;
+}
+.pcx-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+  gap: 0 var(--sp-5);
+}
+.pcx-item {
+  padding: var(--sp-2) 0;
+  border-bottom: var(--bd-w) solid var(--bd-0);
+  min-width: 0;
+}
+.pcx-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+/* 算法名是等宽（与伪代码正文同一套字形），像清单里的条目 */
+.pcx-name {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  color: var(--fg-0);
+}
+.pcx-sig {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--fg-2);
+}
+.pcx-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--sp-1) var(--sp-3);
+  margin-top: var(--sp-1);
+}
+.pcx-dim {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--fg-2);
+}
+
 /* ---------- 复杂度对照表（#/complexity） ----------
  * 结论与语境两列：左列是短公式（不换行、等宽数字），右列是中文长句（要能换行）。
  * 与「复杂度」阶段（.kv--claims）同一份数据、不同用途：那里是单关内自上而下读，
@@ -702,6 +760,66 @@
     border-bottom: none;
     padding: 0;
   }
+}
+
+/* ---------- 复习模式（#/review） ----------
+ * 复习页每题上方有一条「来历」行：哪一关的题、记得牢不牢、逾期多久、回原关的链接。
+ * 放在题干上方而不是下方，是因为复习时第一件事是想起「这是哪儿的题」，
+ * 而不是做完再看它出自哪里。
+ */
+.rev-summary__lead {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--fs-md);
+  line-height: var(--lh-base);
+}
+.rev-summary__lead b {
+  font-family: var(--font-mono);
+}
+
+.rev-progress {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  color: var(--fg-1);
+}
+
+.rev-origin {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--sp-1) var(--sp-3);
+  margin-bottom: var(--sp-2);
+  padding-bottom: var(--sp-2);
+  border-bottom: var(--bd-w) solid var(--bd-0);
+  font-size: var(--fs-xs);
+}
+.rev-origin__where {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  color: var(--fg-0);
+}
+.rev-origin__box {
+  color: var(--accent);
+  border: var(--bd-w) solid color-mix(in srgb, var(--accent) 45%, var(--bd-0));
+  border-radius: var(--radius-pill);
+  padding: 0 var(--sp-2);
+}
+.rev-origin__due {
+  color: var(--fg-2);
+}
+.rev-origin__link {
+  margin-left: auto;
+  color: var(--fg-1);
+  text-decoration: none;
+  border-bottom: var(--bd-w) solid var(--bd-0);
+}
+.rev-origin__link:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+.rev-origin__link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
 }
 
 /* ---------- 提示框（callout） ---------- */
