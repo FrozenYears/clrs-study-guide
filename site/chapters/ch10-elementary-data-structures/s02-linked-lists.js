@@ -442,7 +442,7 @@ int main(void)
       options:['O(1)','Θ(lg n)','Θ(n)','Θ(n²)'],answer:2,
       why:'★ 最坏要把整条链走到底才知道"没有"（原书 p.260）。链表没有随机访问，这是它的性格。'},
      {kind:'single',q:'LIST-INSERT(x, y) 为什么不需要 L 作为参数？',
-      options:['因为书里写错了','因为插入只依赖 y 的指针，不涉及"哪个链表"','因为 x 里存了 L','因为 L 是全局变量'],answer:1,
+      options:['因为原书这里漏写了参数，后面的调用其实都把 $L$ 传了进去','因为插入只依赖 y 的指针，不涉及"哪个链表"','因为元素 $x$ 里存着它所属链表 $L$ 的地址','因为 $L$ 是全局变量，任何过程都能直接访问'],answer:1,
       why:'★ 原书 p.260："Since LIST-INSERT never references the list object L, it is not supplied as a parameter."'},
      {kind:'single',q:'已知 x 指针时，LIST-DELETE 的代价是？',
       options:['O(1)','Θ(lg n)','Θ(n)','Θ(n²)'],answer:0,
