@@ -50,7 +50,7 @@ export default {
       ],
       terms: [
         { en: 'Strassen’s algorithm', zh: 'Strassen 算法：用七次半规模递归乘法完成块矩阵乘法', page: 85 },
-        { en: 'submatrix', zh: '子矩阵：把 n×n 矩阵按四块切分后得到的 n/2×n/2 块', page: 86 },
+        { en: 'submatrix', zh: '子矩阵：把 n×n 矩阵按四块切分后得到的 n/2×n/2 块', page: 87 },
         { en: 'recursion tree', zh: '递归树：每次递归调用形成一个子结点；分支数决定树的宽度', page: 85 },
       ],
     },

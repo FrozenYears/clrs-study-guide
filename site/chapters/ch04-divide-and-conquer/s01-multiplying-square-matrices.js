@@ -53,7 +53,7 @@ export default {
         { kind: 'body', page: 83, en: 'The procedure MATRIX-MULTIPLY-RECURSIVE uses equations (4.5)3(4.8) to implement a divide-and-conquer strategy for square-matrix multiplication.', zh: '递归过程把四个结果块各拆成两项，因此一层产生八个规模为 $n/2$ 的递归调用。' },
       ],
       terms: [
-        { en: 'matrix product', zh: '矩阵乘积：$C=A\\cdot B$，每个 $c_{ij}$ 是一行与一列的点积', page: 80 },
+        { en: 'matrix product', zh: '矩阵乘积：$C=A\\cdot B$，每个 $c_{ij}$ 是一行与一列的点积', page: 81 },
         { en: 'dense', zh: '稠密矩阵：大多数 $n^2$ 个元素都不是 0', page: 81 },
         { en: 'submatrix', zh: '子矩阵：分块后得到的 $n/2\\times n/2$ 矩阵', page: 82 },
       ],

@@ -54,7 +54,7 @@ export default {
         { en: 'polynomial-growth condition', zh: '多项式增长条件：限制 f 在常数倍输入上的变化幅度', page: 116 },
         { en: 'Akra-Bazzi method', zh: 'Akra–Bazzi 方法：用平衡指数与积分求解不等比例递归', page: 117 },
         { en: 'driving function', zh: '驱动函数：递归每个节点的非递归成本', page: 115 },
-        { en: 'regularity condition', zh: '正则性条件：保证取整/扰动不改变渐进解的附加条件', page: 116 },
+        { en: 'floors and ceilings', zh: '取整扰动：只要驱动函数满足 polynomial-growth，$\\lfloor n/b_i\\rfloor$ 或 $\\lceil n/b_i\\rceil$ 不改变解的渐进阶', page: 115 },
       ],
     },
     {

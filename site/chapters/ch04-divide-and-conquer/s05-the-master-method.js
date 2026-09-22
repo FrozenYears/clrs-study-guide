@@ -67,7 +67,7 @@ export default {
       blocks: [
         { kind: 'body', page: 101,
           en: 'strategy altogether is to use more-powerful mathematics, typically in the form of the master method in the next section (which unfortunately doesn’t apply to recurrence (4.14)) or the Akra-Bazzi method (which does, but requires calculus). Even if you use a powerful method, a recursion tree can improve your intuition for what’s going on beneath the heavy math.',
-          zh: '4.4 节的递归树法不是万能的——书上 $T(n) = T(n/3) + T(2n/3) + \Theta(n)$ 这个歪树的例子主方法就**不覆盖**（因为 $a \ne b^k$）。但递归树仍然有价值：帮你理解「重数学底下在发生什么」。★ 主方法的适用范围是**标准形状** $T(n) = aT(n/b) + f(n)$。' },
+          zh: '4.4 节的递归树法不是万能的——书上 $T(n) = T(n/3) + T(2n/3) + \Theta(n)$ 这个歪树的例子主方法就**不覆盖**。★ 原因是**它根本不是主递归式**：两个子问题规模不同（$n/3$ 与 $2n/3$），写不成 $aT(n/b)+f(n)$ 的形状——不是某个条件没满足，是形状不匹配（p.101 只说「doesn’t apply」，并指出 Akra–Bazzi 可以处理它）。但递归树仍然有价值：帮你理解「重数学底下在发生什么」。★ 主方法的适用范围是**标准形状** $T(n) = aT(n/b) + f(n)$。' },
         { kind: 'body', page: 101,
           en: 'The master method provides a "cookbook" method for solving algorithmic recurrences of the form',
           zh: '★ "cookbook"（菜谱）是书上的原话——不是比喻，是定位：主方法的用法就是**查表**。代价是你要背三个条件，好处是「solve many master recurrences quite easily」。' },
@@ -112,7 +112,7 @@ export default {
         { name: 'n^(log_b a)', meaning: '分水岭函数 = 叶子层总代价' },
         { name: 'f(n)', meaning: '驱动函数 = 每层内部结点的总代价' },
       ],
-      note: '★ 三种情况的直觉：叶子与根**谁说了算**。情况 1 叶子贵；情况 2 势均力敌；情况 3 根贵。',
+      note: '★ 这张表整理自 Theorem 4.1（p.103）的三种情况，原书没有把它写成程序伪代码。★ 三种情况的直觉：叶子与根**谁说了算**。情况 1 叶子贵；情况 2 势均力敌；情况 3 根贵。',
     },
 
     // ——— 阶段 5 动手看见 ———————————————————————————————————————
