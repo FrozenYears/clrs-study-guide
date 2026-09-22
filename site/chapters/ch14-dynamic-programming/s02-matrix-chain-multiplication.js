@@ -52,7 +52,7 @@ export default {
    {type:'visualize',title:'子问题表与代价对比',panels:[
      {title:'括号化的代价差异（原书 p.375 的例子）',viz:'growth',
       chart:{xMax:12,series:[
-       {name:'((A1A2)A3) 代价',expr:'750 + 2500',color:'--viz-done'},
+       {name:'((A1A2)A3) 代价',expr:'5000 + 2500',color:'--viz-done'},
        {name:'(A1(A2A3)) 代价',expr:'50000 + 25000',color:'--viz-violation'}]},
       note:'★ 同样的三个矩阵，括号不同代价差 10 倍 —— DP 就是用来挑括号的。'},
     ],tasks:['对照 C 程序 part 3 的实测：7500 vs 75000。'],note:''},

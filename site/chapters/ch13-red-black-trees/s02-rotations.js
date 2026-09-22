@@ -19,7 +19,7 @@ export default {
     mathKit:[
      {title:'LEFT-ROTATE',body:'假设 $x.right \\neq NIL$：把 $x$ 与其右孩子 $y$ 之间的边"翻转"—— $y$ 上升为子树根，$x$ 变为 $y$ 的左孩子。'},
      {title:'中序不变',body:'旋转前后中序遍历输出**完全相同**的 key 序列（原书 p.337 明确说明）—— 这是旋转"合法"的全部理由。'},
-     {title:'O(1)',body:'恰好改 5 条指针。与其余 $O(h)$ 操作相比，旋转是"免费的"。'},
+     {title:'O(1)',body:'只改常数条指针（至多 6 次字段赋值）。与其余 $O(h)$ 操作相比，旋转是"免费的"。'},
     ]},
    {type:'intuition',title:'把"右高"变成"左高"：跷跷板',
     scene:'跷跷板：右边的孩子升上来当支点，原来的节点降到左边',
@@ -189,8 +189,8 @@ int main(void)
     }
     printf("part 3: 100 次交替旋转后中序恒为升序 —— 旋转只改指针、不改中序\n");
 
-    /* ④ 指针改写计数：LEFT-ROTATE 恰好改 5 条指针（y.p、y.left、x.right、x.p 链、y.left/x）*/
-    printf("part 4: 每次旋转改 5 条指针（O(1)）—— 13.3/13.4 用它在 O(1) 内调整结构\n");
+    /* ④ 指针改写计数：LEFT-ROTATE 只改常数条指针（y.p、y.left、x.right、x.p、y.left.p，条件分支下再 +1） */
+    printf("part 4: 每次旋转只改常数条指针（O(1)）—— 13.3/13.4 用它在 O(1) 内调整结构\n");
 
     puts("all checks passed.");
     return 0;

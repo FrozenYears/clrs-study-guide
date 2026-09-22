@@ -38,7 +38,7 @@ export default {
      {kind:'body',page:429,en:'Obeying a greedy strategy, the thief begins by taking as much as possible of t he item with the greatest value per pound.',
       zh:'★ 分数背包的贪心规则：按单位价值 $v_i/w_i$ 从高到低尽量拿。'},
     ],terms:[{en:'greedy-choice property',zh:'贪心选择性质',page:427},
-              {en:'optimal substructure',zh:'最优子结构',page:426},
+              {en:'optimal substructure',zh:'最优子结构',page:428},
               {en:'0-1 knapsack problem',zh:'0-1 背包（整件取舍）',page:428},
               {en:'fractional knapsack problem',zh:'分数背包（可切分）',page:429}]},
    {type:'pseudocode',title:'贪心算法的五步设计法',algo:'GREEDY-STRATEGY',signature:'设计一个贪心算法的五个步骤',page:426,

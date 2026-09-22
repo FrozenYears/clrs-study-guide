@@ -7,7 +7,7 @@ export default {
   prerequisites:[{label:'14.5 Optimal binary search trees',url:'#/ch14/s05'}],
   stages:[
    {type:'map',title:'从 DP 到贪心的分水岭',
-    why:'有 $n$ 个活动争用同一间教室，每个活动有开始时间 $s_i$ 与结束时间 $f_i$，求最大的**互不相容**活动子集。14 章说这是 DP（$\\Theta(n^3)$），本章说只要一个 $\\Theta(n\\lg n)$ 的贪心就够。',
+    why:'有 $n$ 个活动争用同一间教室，每个活动有开始时间 $s_i$ 与结束时间 $f_i$，求最大的**互相兼容**活动子集。14 章说这是 DP（$\\Theta(n^3)$），本章说只要一个 $\\Theta(n\\lg n)$ 的贪心就够。',
     position:'第 14 章的 DP 是"到处试"，本章的贪心是"一次定"。本关先证明**为什么只试一个选择就够**（定理 15.1），下一关（15.2）把这条经验提炼成判据。',
     unlocks:[{label:'15.2 Elements of the greedy strategy',url:'#/ch15/s02'}],
     mathKit:[
@@ -34,7 +34,7 @@ export default {
      {kind:'body',page:424,en:'Like the recursive version, GREEDY-ACTIVITY-SELECTOR schedules a set of n activities in \u0398(n) time, assuming that the activities were already sorted initially by their finish times.',
       zh:'★ 时间：扫描 $\\Theta(n)$；若含排序则 $\\Theta(n\\lg n)$。'},
     ],terms:[{en:'activity-selection problem',zh:'活动选择问题',page:418},
-              {en:'mutually compatible',zh:'互不相容（区间不重叠）',page:418},
+              {en:'mutually compatible',zh:'互相兼容（区间不重叠）',page:418},
               {en:'greedy choice',zh:'贪心选择',page:420}]},
    {type:'pseudocode',title:'GREEDY-ACTIVITY-SELECTOR：7 行',algo:'GREEDY-ACTIVITY-SELECTOR',signature:'GREEDY-ACTIVITY-SELECTOR(s, f)',page:424,
     lines:[

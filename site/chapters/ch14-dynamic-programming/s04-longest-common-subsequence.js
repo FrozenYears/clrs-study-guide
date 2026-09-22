@@ -55,7 +55,7 @@ export default {
      {n:14,code:'        else c[i,j] = c[i,j − 1]',zh:''},
      {n:15,code:'            b[i,j] = "←"',zh:''},
      {n:16,code:'return c and b',zh:''}],
-    vars:[{name:'c[i,j]',meaning:'$X_i$ 与 $Y_j$ 的 LCS 长度'},{name:'b[i,j]',meaning:'重建 LCS 时的方向箭头'}],
+    vars:[{name:'c[i,j]',meaning:'$X$ 的前 $i$ 个字符与 $Y$ 的前 $j$ 个字符的 LCS 长度'},{name:'b[i,j]',meaning:'重建 LCS 时的方向箭头'}],
     note:'★ 表中箭头（原书用 ↖ ↑ ← 三个符号，语料把它们抽成了伪影如 <"= ）—— 本关按原书的三个方向重写，含义与 Figure 14.8 一致。',
     more:[{algo:'PRINT-LCS',subtitle:'PRINT-LCS(b, X, i, j) —— 8 行重建一个 LCS（p.397）',signature:'PRINT-LCS(b, X, i, j)',page:397,
       lines:[{n:1,code:'if i == 0 or j == 0',zh:''},{n:2,code:'    return    // the LCS has length 0',zh:''},

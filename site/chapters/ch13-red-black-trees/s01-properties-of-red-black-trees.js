@@ -86,8 +86,8 @@ export default {
      '思考：为什么这棵树不能出现"红节点的唯一孩子是红"？（性质 4 禁止红-红）',
     ],
     note:'★ 颜色取自 rbtree.js 的 RB-INSERT 算法输出（单一真相源），不是手抄原书图。'},
-   {type:'code',title:'实测：五条性质逐条校验 + Lemma 13.1',
-    intro:'`c/rb_basics.c` 手工构建与 RB-INSERT 产出一致的红黑树（颜色取自算法输出），对五条性质逐条断言，并验证 Lemma 13.1。',
+   {type:'code',title:'实测：性质 2/4/5 校验 + Lemma 13.1',
+    intro:'`c/rb_basics.c` 手工构建与 RB-INSERT 产出一致的红黑树（颜色取自算法输出），对性质 2/4/5 逐条断言（性质 1/3 由数据表示与 NIL 约定保证），并验证 Lemma 13.1。',
     c:{file:'rb_basics.c',code:String.raw`/* rb_basics.c -- 13.1 节：红黑性质的逐条校验与 Lemma 13.1 的归纳验证。
  *   ① 性质 1–5 逐条检查（含哨兵省略的内部节点视图）；
  *   ② 黑高 bh(x) 的计算与"所有路径黑节点数相同"（性质 5）；
@@ -222,7 +222,7 @@ int main(void)
     tables:[{caption:'性质 4 + 5 的联合推论',rows:[
       ['','最短路径','最长路径'],
       ['构成','全黑','红黑交替'],
-      ['长度（节点数）','$bh + 1$（含 NIL）','$2(bh) + 1$'],
+      ['长度（不含起点、含 NIL）','$bh$','$2bh$'],
       ['比值','—','最长 ≤ 2 × 最短'],
      ]},
      {caption:'第 12 章操作在红黑树上的新代价',rows:[
@@ -290,7 +290,7 @@ int main(void)
      {id:'13.1-2',page:334,star:0,statement:'Draw the red-black tree that results after TREE-INSERT is called on the tree in Figure 13.1 with key 36. If the inserted node is colored red, is the resulting tree a red-black tree? What if it is colored black?',hint:'TREE-INSERT 是第 12 章那个普通二叉查找树插入：只把新结点挂上去， **不旋转、也不改别人的颜色**（旋转和变色是 RB-INSERT-FIXUP 的活）。 先找位置：36 沿 26 → 41 → 30 → 38 → 35 下去，35 没有右孩子， 所以 36 挂成 35 的**右孩子**（图 13.1 里 35 是个红叶子）。然后两种染色分别查五条性质： 染红 —— 父亲 35 本来就是红的，父子皆红，违反性质 4，**不是**红黑树。 染黑 —— 性质 4 过了（红结点 35 的两个孩子都黑），但性质 5 破了： 从 35 往左只遇到一个黑叶子 NIL，往右是「35 → 36(黑) → NIL」多一个黑结点， 两条路的黑结点数不等，**也不是**红黑树。 所以两问的答案都是「不是」，只是破的性质不同。'},
      {id:'13.1-3',page:334,star:0,statement:'Define a relaxed red-black tree as a binary search tree that satisfies red-black prop- erties 1, 3, 4, and 5, but whose root may be either red or black. Consider a relaxed red-black tree T whose root is red. If the root of T is changed to black but no other changes occur, is the resulting tree a red-black tree?',hint:'先把原书那五条性质逐条列出来，看清「根必须是黑」是第几条、它约束的是谁。然后把红根改成黑，逐条回头看 1、3、4、5 会不会被这一步破坏 —— 性质 5 要留意黑高算不算根自己。'},
      {id:'13.1-4',page:335,star:0,statement:'Suppose that every black node in a red-black tree "absorbs" all of its red children, so that the children of any red node become children of the black parent. (Ignore what happens to the keys.) What are the possible degrees of a black node after all its red children are absorbed? What can you say about the depths of the leaves of the resulting tree?',hint:'吸收后每个节点度 ≤ 4（黑孩子 + 最多 2 个被吸收的红孩子）。问：吸收后的树高与黑高的关系 —— 答案是**高恰为黑高 bh**（吸收把红黑交替压成纯黑链）。'},
-     {id:'13.1-5',page:335,star:0,statement:'Show that the longest simple path from a node x in a red-black tree to a descendant leaf has length at most twice that of the shortest simple path from node x to a descendant leaf.',hint:'最短路径全黑（bh 个黑 + NIL），最长路径红黑交替（2bh 个）—— 由性质 4（红被黑隔开）+ 性质 5（黑数相同）直接得出比值 ≤ 2。'},
+     {id:'13.1-5',page:335,star:0,statement:'Show that the longest simple path from a node x in a red-black tree to a descendant leaf has length at most twice that of the shortest simple path from node x to a descendant leaf.',hint:'最短路径至少含 $bh$ 个黑结点（NIL 计入），最长路径红黑交替至多 $2bh$—— 由性质 4（红被黑隔开）+ 性质 5（黑数相同）直接得出比值 ≤ 2。'},
      {id:'13.1-6',page:335,star:0,statement:'What is the largest possible number of internal nodes in a red-black tree with black- height k? What is the smallest possible number?',hint:'两头要按同一个口径数黑高：从某结点**不算它自己**、往下到 NIL 叶**算上**，路径上的黑结点数就是根的黑高 $k$。 **最小**：全黑的满树，根下面正好 $k-1$ 层内部结点加 NIL，共 $2^k - 1$ 个内部结点（红结点只会让结点数变多，所以最省是能不塞红就不塞）。 **最大**：根黑，往下红黑交替、共 $2k$ 层（最后一层是红结点，它的两个孩子都是黑 NIL），满树共 $2^{2k} - 1$ 个内部结点。 拿 $k = 1$ 自检：最小 1 个结点（只有根），最大 3 个（黑根 + 两个红孩子）；$k = 2$：最小 3、最大 15。'},
     ]},
   ],

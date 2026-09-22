@@ -44,7 +44,7 @@ export default {
    {type:'visualize',title:'信用曲线',panels:[
      {title:'① 2000 个随机操作的账本（C 程序 part 2）',viz:'growth',
       chart:{xMax:2400,series:[
-       {name:'总摊还 = 3n 上界',expr:'2 * n',color:'--viz-done'},
+       {name:'总摊还 ≤ 3n（实画 2·push 次）',expr:'2 * n',color:'--viz-done'},
        {name:'最坏序列的错误估计 n²',expr:'n * n / 2000',color:'--viz-violation'}]},
       note:'★ 实测：总摊还 2078 = 总实际 2078 + 剩余信用 0 —— 每一分钱都有去向。'},
      {title:'② PUSH 定价 1 元 vs 2 元',viz:'growth',

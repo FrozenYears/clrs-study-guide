@@ -109,8 +109,8 @@ int main(void)
     }
     printf("part 3: 100 次交替旋转后中序恒为升序 —— 旋转只改指针、不改中序\n");
 
-    /* ④ 指针改写计数：LEFT-ROTATE 恰好改 5 条指针（y.p、y.left、x.right、x.p 链、y.left/x）*/
-    printf("part 4: 每次旋转改 5 条指针（O(1)）—— 13.3/13.4 用它在 O(1) 内调整结构\n");
+    /* ④ 指针改写计数：LEFT-ROTATE 只改常数条指针（y.p、y.left、x.right、x.p、y.left.p，条件分支下再 +1） */
+    printf("part 4: 每次旋转只改常数条指针（O(1)）—— 13.3/13.4 用它在 O(1) 内调整结构\n");
 
     puts("all checks passed.");
     return 0;

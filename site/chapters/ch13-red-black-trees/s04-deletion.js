@@ -165,7 +165,7 @@ int main(void) {
       {tex:'T = O(\\lg n)',zh:'∎'}]},
      ],
     note:''},
-   {type:'prove',title:'RB-DELETE-FIXUP 终止性与正确性',statement:'The procedure RB-DELETE-FIXUP restores properties 4 and 5 in O(lg n) time.',page:354,
+   {type:'prove',title:'RB-DELETE-FIXUP 终止性与正确性',statement:'The procedure RB-DELETE-FIXUP restores properties 1, 2, and 4.',page:350,
     intro:'★ 四种情况的策略：消除双重黑或上移到根。',steps:[
      {title:'双重黑的含义',en:'• Because node y’s color might change, the variable y-original-color stores y’s color before any changes occur.',page:347,
       body:['删黑节点 → 路径黑数减 1 → 接替者 x 承担"双重黑"—— x 自己算黑一次，还欠一个黑。']},

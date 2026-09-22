@@ -486,7 +486,7 @@ int main(void) {
       claims: [
         { expr: 'O(1)', when: '层次内存模型下，线性探测的查找/插入/删除期望（连续探测常落在同一 cache block）', page: 302, source: 'book' },
         { expr: 'O(1)', when: 'Theorem 11.9：h1 是 5-independent 且 α ≤ 2/3 时，线性探测查找/插入/删除期望 O(1)', page: 304, source: 'book' },
-        { expr: '1/(1 − α)', when: '开放寻址线性探测的期望探测次数随 α 上升（α → 1 时发散；11.4 Theorem 11.8）', page: 304, source: 'instructor', preview: true },
+        { expr: '1/(1 − α)', when: '开放寻址线性探测的期望探测次数随 α 上升（α → 1 时发散；11.4 Theorem 11.6）', page: 298, source: 'instructor', preview: true },
         { expr: '≈ 1/(1 − α)', when: '初级聚集让线性探测在 α 较大时比双散列更易退化（标准 RAM 模型下）', page: 303, source: 'book' },
         { expr: '2–10×', when: 'wee 求值比"探测一个随机槽"还快（实验：2019 MacBook Pro，w=64，a=123）', page: 305, source: 'book' },
       ],
@@ -511,7 +511,7 @@ int main(void) {
       chart: {
         xMax: 9,
         series: [
-          { name: '期望探测次数 ≈ 1/(1−α)（α = n/10，α→1 发散；11.4 Theorem 11.8, preview）', expr: '1/(1 - n/10)', color: '--viz-violation' },
+          { name: '期望探测次数 ≈ 1/(1−α)（α = n/10，α→1 发散；11.4 Theorem 11.6, preview）', expr: '1/(1 - n/10)', color: '--viz-violation' },
         ],
       },
       derivations: [
