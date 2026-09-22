@@ -26,7 +26,7 @@ export default {
      '找最小值的算法就是一场淘汰赛：每次比较淘汰一个（大的出局），$n$ 个人打到只剩 1 个，恰好 $n-1$ 场。**为什么不能更少？** 因为任何"不是最小"的元素都必须至少输过一次，否则它还可能是最小 —— 下界 $n-1$ 就这么朴素。',
      '★ 同时找 min 和 max 的朴素做法是各办一场锦标赛：$2n-2$ 次。**改进的关键是"配对"**：先让两个元素比一场（败者只可能争 min、胜者只可能争 max），这一场的信息被复用了两次 —— 于是每 2 个元素只要 3 次比较。',
      '★ 这是全书第一次出现"**省常数因子**也算贡献"的分析（之前都是 $\\Theta$ 层面）。对渐近记号，$2n$ 与 $1.5n$ 都是 $\\Theta(n)$；但比较次数是真实代价（尤其比较很贵的时候，比如加密数据的比较）。',
-     '★ 为什么标题里的下界是 $\\lceil 3n/2\\rceil - 2$ 而正文说 $3\\lfloor n/2\\rfloor$？习题 9.1-2 让你证明这个更紧的版本（$n$ 偶时两者相等：$3n/2 - 2$；$n$ 奇时 $3(n-1)/2 = \\lceil 3n/2\\rceil - 2$）。',
+     '★ 为什么标题里的下界是 $\\lceil 3n/2\\rceil - 2$ 而正文说 $3\\lfloor n/2\\rfloor$？习题 9.1-4 让你证明这个更紧的版本（$n$ 偶时两者相等：$3n/2 - 2$；$n$ 奇时 $3(n-1)/2 = \\lceil 3n/2\\rceil - 2$）。',
     ],
     interactive:{text:'阶段 6 的 C 程序实测三种方法：n = 10 时 9 / 18 / 13 次。'}},
    {type:'source',title:'书上是怎么说的',
@@ -87,7 +87,7 @@ export default {
       chart:{xMax:64,series:[
        {name:'独立找：2n − 2',expr:'2 * n - 2',color:'--viz-compare'},
        {name:'成对法：≈ 3n/2',expr:'1.5 * n',color:'--viz-done'},
-       {name:'只找 min：n − 1',expr:'n - 1',color:'--viz-frontier'},
+       {name:'只找 min：n − 1',expr:'n - 1',color:'--viz-mark'},
       ]},
       note:'★ 三条线同阶（都是 $\\Theta(n)$），但常数差可见 —— 本关的"优化"就活在这两条线的间距里。'},
     ],
@@ -239,7 +239,7 @@ int main(void)
      {expr:'n - 1',when:'找最小值的比较次数 —— 上界且是下界 → 最优',page:228,source:'book'},
      {expr:'2n - 2',when:'独立找 min 和 max',page:228,source:'book'},
      {expr:'3 \\lfloor n/2 \\rfloor',when:'成对法找 min 和 max（上界）',page:229,source:'book'},
-     {expr:'\\lceil 3n/2 \\rceil - 2',when:'成对法的最坏比较下界（习题 9.1-2 的答案）',page:229,source:'book'},
+     {expr:'\\lceil 3n/2 \\rceil - 2',when:'成对法的最坏比较下界（习题 9.1-4 的答案）',page:229,source:'book'},
     ],
     tables:[{caption:'n 的奇偶与账尾',rows:[
       ['','初始','配对部分','总计'],
@@ -265,7 +265,7 @@ int main(void)
      {kind:'summation',title:'成对法：那 1 次对内比较被复用两次',steps:[
       {zh:'朴素法里每个元素要分别面对 min 和 max 各一次 —— 但元素之间的相对关系是免费的：'},
       {tex:'\\text{对内 } 1 \\Rightarrow \\text{败者进 min 赛道、胜者进 max 赛道}',zh:'败者永远不可能是 max、胜者永远不可能是 min —— 各省 1 次。'},
-      {tex:'\\frac{3(n-1)}{2} \\text{ 或 } 1 + \\frac{3(n-2)}{2} \\le 3\\lfloor n/2 \\rfloor',zh:'★ 习题 9.1-2 证明 $\\lceil 3n/2\\rceil - 2$ 同时也是**下界** —— 成对法是最优的。'}]},
+      {tex:'\\frac{3(n-1)}{2} \\text{ 或 } 1 + \\frac{3(n-2)}{2} \\le 3\\lfloor n/2 \\rfloor',zh:'★ 习题 9.1-4 证明 $\\lceil 3n/2\\rceil - 2$ 同时也是**下界** —— 成对法是最优的。'}]},
     ],
     note:'★ 中心图：绿线（$3n/2$）与蓝线（$2n$）的间距就是"复用一次比较"的全部价值 —— 25%。'},
    {type:'prove',title:'锦标赛论证：为什么 n − 1 不能再少',
@@ -286,9 +286,9 @@ int main(void)
       en:'Hence the algorithm MINIMUM is optimal with respect to the number of comparisons performed.',
       body:['MINIMUM 每轮恰好 1 次、共 $n-1$ 次 = 下界。',
         '★ 上界 = 下界 = $n-1$：这个问题在比较模型下被**完全解决**。',
-        '★ 同样的论证稍加改造（胜败两个方向 + 配对复用），习题 9.1-2 证明成对法的 $\\lceil 3n/2\\rceil - 2$ 也是下界。这个" adversary 论证"的雏形将在 8.1（决策树）之后继续长成第 9 章的脊梁。']},
+        '★ 同样的论证稍加改造（胜败两个方向 + 配对复用），习题 9.1-4 证明成对法的 $\\lceil 3n/2\\rceil - 2$ 也是下界。这个" adversary 论证"的雏形将在 8.1（决策树）之后继续长成第 9 章的脊梁。']},
     ],
-    conclusion:'★ 结论：$n-1$ 是找最小值的精确比较复杂度 —— 最优算法已到手。同时找两个？成对法把常数从 2 压到 1.5，且习题 9.1-2 说明这也压到了底。下一节：任意的第 $i$ 小。',
+    conclusion:'★ 结论：$n-1$ 是找最小值的精确比较复杂度 —— 最优算法已到手。同时找两个？成对法把常数从 2 压到 1.5，且习题 9.1-4 说明这也压到了底。下一节：任意的第 $i$ 小。',
     note:''},
    {type:'drill',title:'检验一下',
     items:[

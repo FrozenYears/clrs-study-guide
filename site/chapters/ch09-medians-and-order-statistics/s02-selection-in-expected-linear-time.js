@@ -289,7 +289,7 @@ int main(void)
     chart:{xMax:128,series:[
      {name:'理想世界 ∼ n log₄/₃ n ≈ 2.41n',expr:'2.41 * n',color:'--viz-done'},
      {name:'现实（×2 分区）∼ 4.8n',expr:'4.8 * n',color:'--viz-compare'},
-     {name:'快排（对照）',expr:'n * Math.log2(n)',color:'--viol'},
+     {name:'快排（对照）',expr:'n * Math.log2(n)',color:'--viz-violation'},
     ]},
     derivations:[
      {kind:'summation',title:'理想世界：几何级数收敛',steps:[

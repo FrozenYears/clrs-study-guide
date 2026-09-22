@@ -322,7 +322,7 @@ int main(void)
     chart:{xMax:100,series:[
      {name:'主递归 ≤ 7n/10 + 6',expr:'0.7 * n + 6',color:'--viz-done'},
      {name:'选轴 T(n/5)',expr:'0.2 * n',color:'--viz-compare'},
-     {name:'cn（代入法目标）',expr:'n',color:'--viol'},
+     {name:'cn（代入法目标）',expr:'n',color:'--viz-violation'},
     ]},
     derivations:[
      {kind:'summation',title:'淘汰账：3g/2 从哪来',steps:[

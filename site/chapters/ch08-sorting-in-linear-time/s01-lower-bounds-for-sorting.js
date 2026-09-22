@@ -104,7 +104,7 @@ export default {
       chart:{xMax:64,series:[
        {name:'lg n!（Stirling）',expr:'n * Math.log2(n) - n / Math.LN2',color:'--viz-done'},
        {name:'n lg n / 2',expr:'n * Math.log2(n) / 2',color:'--viz-compare'},
-       {name:'n（线性，作对照）',expr:'n',color:'--viol'},
+       {name:'n（线性，作对照）',expr:'n',color:'--viz-violation'},
       ]},
       note:'★ $\\lg n!$ 与 $n\\lg n$ 只差一个常数因子（1 对 1），与线性 $n$ 差一个 $\\lg n$ 因子 —— 下界是实打实的。'},
     ],
