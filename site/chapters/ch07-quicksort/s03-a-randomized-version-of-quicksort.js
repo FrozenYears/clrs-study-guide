@@ -397,7 +397,7 @@ int main(void)
     { type: 'analyze', title: '改动量与效果：三行代码换来的保险',
       intro: '本节的复杂度结论很简单：**改动量是三行，效果是"没有任何输入能触发最坏行为"**。7.4 会证明期望运行时间是 $\\Theta(n\\lg n)$。',
       claims: [
-        { expr: 'O(n \\lg n)', when: '随机化快速排序的**期望**运行时间（7.4 证明）', page: 192, source: 'book', preview: true },
+        { expr: 'O(n \\lg n)', when: '随机化快速排序的**期望**运行时间（Theorem 7.4）', page: 197, source: 'book', preview: true },
         { expr: '\\Theta(n)', when: 'RANDOMIZED-PARTITION 的时间（PARTITION + 一次交换）', page: 192, source: 'book' },
         { expr: 'O(1)', when: '随机选轴的额外开销（一次 RANDOM + 一次交换）', page: 192, source: 'book' },
         { expr: '\\Theta(n^2)', when: '确定性版的**最坏**时间（对照 —— 随机化版不再有任何输入确定触发它）', page: 188, source: 'book', preview: true },

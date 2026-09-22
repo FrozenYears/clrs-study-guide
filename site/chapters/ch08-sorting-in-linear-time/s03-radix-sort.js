@@ -45,7 +45,7 @@ export default {
      {kind:'body',page:213,en:'Although the pseudocode for RADIX-SORT does not specify which stable sort to use, COUNTING-SORT is commonly used. If you use COUNTING-SORT as the stable sort, you can make RADIX-SORT a little more efficient by revising COUNTING- SORT to take a pointer to the output array as a parameter, having RADIX-SORT preallocate this array, and alternating input and output between the two arrays in successive iterations of the for loop in RADIX-SORT.',
       zh:'★ 工程细节：交替使用两个数组避免每趟重新分配 —— 这是实际实现里的标准做法（C 程序里也这么做）。'},
      {kind:'body',page:213,en:'Given nd -digit numbers in which each digit can take on up to k possible values, RADIX-SORT correctly sorts these numbers in Θ(d(n + k)) time if the stable sort it uses takes Θ(n + k) time.',
-      zh:'★★ **Theorem 8.3**（正文形式）：$\\Theta(d(n+k))$。$d$ 常数 + $k = O(n)$ → 线性。'},
+      zh:'★★ **Lemma 8.3**（正文形式）：$\\Theta(d(n+k))$。$d$ 常数 + $k = O(n)$ → 线性。'},
      {kind:'body',page:214,en:'If b ≥ b lg nc, then choosing r = b lg nc gives the best running time to within a constant factor, which we can see as follows.',
       zh:'★ 位宽选择的结论：$b \\ge \\lceil\\lg n\\rceil$ 时取 $r = \\lfloor\\lg n\\rfloor$ 最优（差常数因子以内），运行时间 $\\Theta(bn/\\lg n)$。'},
     ],
@@ -224,7 +224,7 @@ int main(void)
    {type:'analyze',title:'Θ(d(n + k)) 与位宽 r 的权衡',
     intro:'两层分析：先算 d 趟的总代价，再决定"一位"应该多宽。',
     claims:[
-     {expr:'\\Theta(d(n+k))',when:'d 趟稳定排序的总代价（Theorem 8.3）',page:213,source:'book'},
+     {expr:'\\Theta(d(n+k))',when:'d 趟稳定排序的总代价（Lemma 8.3）',page:213,source:'book'},
      {expr:'\\Theta(n)',when:'d 为常数且 k = O(n) 时',page:213,source:'book'},
      {expr:'\\Theta\\!\(\\frac{b}{r}(n+2^r)\)',when:'b 位键、r 位一组',page:214,source:'book'},
      {expr:'\\Theta\\!\(\\frac{bn}{\\lg n}\)',when:'b ≥ lg n 时取 r = ⌊lg n⌋（最优到常数因子）',page:214,source:'book'},
@@ -247,7 +247,7 @@ int main(void)
      {name:'bn/lg n（r = lg n）',expr:'n * Math.log2(n)',color:'--viz-violation'},
     ]},
     derivations:[
-     {kind:'summation',title:'Theorem 8.3：d 趟的代价',steps:[
+     {kind:'summation',title:'Lemma 8.3：d 趟的代价',steps:[
       {tex:'d \\times \\Theta(n + k) = \\Theta(d(n+k))',zh:'每趟对 $n$ 个数按一位稳定排序，位取值 $k$ 种。'},
       {zh:'$d$ 为常数、$k = O(n)$ → $\\Theta(n)$。★ 这就是"32 位整数、拆 4 个字节、每字节计数排序"跑线性时间的理论根据。'}]},
      {kind:'summation',title:'位宽 r：把 b 位键拆成 b/r 组',steps:[
@@ -257,7 +257,7 @@ int main(void)
       {tex:'b \\ge \\lceil\\lg n\\rceil \\Rightarrow r = \\lfloor\\lg n\\rfloor \\Rightarrow \\Theta\(\\tfrac{bn}{\\lg n}\)',zh:'★ 注意这不是 $O(n)$：$b$ 随 $n$ 增长时（如 $b = \\lg^2 n$），线性就没了。'}]},
     ],
     note:'★ 中心图：绿线（r=8 固定）是真正的线性（常数 4 倍）；红线（r = lg n 自适应）渐近仍是 n lg n 形状 —— 位宽策略决定基数排序是"线性"还是"近线性"。'},
-   {type:'prove',title:'Theorem 8.3 的正确性：归纳 + 稳定性',
+   {type:'prove',title:'Lemma 8.3 的正确性：归纳 + 稳定性',
     statement:'Given n d-digit numbers in which each digit can take on up to k possible values, RADIX-SORT correctly sorts these numbers in Θ(d(n + k)) time if the stable sort it uses takes Θ(n + k) time.',
     page:213,
     intro:'★ 时间部分是乘法；真正要证的是**正确性**：为什么 d 趟低位优先的稳定排序等于一次完整排序。原书说"对列归纳（见习题 8.3-3）"，这里把归纳展开。',
@@ -289,7 +289,7 @@ int main(void)
       why:'★ "In order for radix sort to work correctly, the digit sorts must be stable"（p.212）。平手时靠稳定性保住低位的排序成果。'},
      {kind:'single',q:'b 位键、r 位一组时，RADIX-SORT + 计数排序的总时间？',
       options:['$\\Theta(bn)$：每趟线性、共 $b$ 趟','Θ((b/r)(n + 2^r))','$\\Theta(n \\cdot 2^r)$：每趟清桶','$\\Theta(b + nr)$：组数与桶数相加'],answer:1,
-      why:'★ d = b/r 趟、每趟 Θ(n + 2^r)：Theorem 8.3 的推广形式（p.214）。'},
+      why:'★ d = b/r 趟、每趟 Θ(n + 2^r)：Lemma 8.3 的推广形式（p.214）。'},
      {kind:'single',q:'b ≥ lg n 时，r 的最优选择（差常数因子以内）是？',
       options:['r = b','r = 1','r = ⌊lg n⌋','r = ⌈b/2⌉'],answer:2,
       why:'★ p.214：此时 2^r ≈ n，趟数与单趟代价平衡，总时间 Θ(bn/lg n)。'},

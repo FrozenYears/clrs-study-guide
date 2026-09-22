@@ -8,7 +8,7 @@ export default {
   key:'s04',id:'ch07/s04',chapter:7,section:'7.4',
   title:'快速排序的分析：期望 O(n lg n)',shortTitle:'7.4 快速排序的分析',
   titleEn:'Analysis of quicksort',
-  source:{printed:[193,201],pdf:[214,222]},
+  source:{printed:[193,198],pdf:[214,219]},
   prerequisites:[{label:'7.3 A randomized version of quicksort',url:'#/ch07/s03'}],
   stages:[
    {type:'map',title:'用指示器随机变量算出期望 O(n lg n)',
@@ -41,7 +41,7 @@ export default {
      {kind:'body',page:195,en:'During the execution of RANDOMIZED-QUICKSORT on an array of n distinct elements \u00b4 1 <\u00b4 2 < \u2022 \u2022 \u2022 <\u00b4 n , an element \u00b4 i is compared with an element \u00b4 j , where i <j , if and only if one of them is chosen as a pivot before any other element in the set Z ij . Moreover, no two elements are ever compared twice.',
       zh:'★★ **本分析的灵魂**：Lemma 7.2 的陈述。$z_i$ 与 $z_j$ 被比较 $\\Leftrightarrow$ $z_i$ 或 $z_j$ 是 $Z_{ij}$ 中**第一个**被选为轴的。\n\n★ "no two elements are ever compared twice" —— 这也是为什么比较次数可以被精确计数：每对最多比较一次。'},
      {kind:'body',page:196,en:'Consider an execution of the procedure RANDOMIZED-QUICKSORT on an array of n distinct elements \u00b4 1 <\u00b4 2 < \u2022 \u2022 \u2022 <\u00b4 n . Given two arbitrary elements \u00b4 i and \u00b4 j where i "j , the probability that they are compared is 2".j \u2212 i + 1/.',
-      zh:'★★ **Theorem 7.3**：$z_i$ 与 $z_j$ 被比较的概率 = $\\frac{2}{j-i+1}$。\n\n★ 为什么是 2？因为 $Z_{ij}$ 中有 $j - i + 1$ 个元素，每个被第一个选为轴的概率都是 $\\frac{1}{j-i+1}$，而 $z_i$ 或 $z_j$ 中的**任何一个**被选中都会导致它们被比较 —— 所以概率是 $\\frac{2}{j-i+1}$。\n\n★ 当 $j = i + 1$（相邻元素）时概率是 $\\frac{2}{2} = 1$ —— 相邻元素**总是**被比较。当 $j - i + 1 = n$（最小与最大）时概率是 $\\frac{2}{n}$ —— 极值对很少被比较。'},
+      zh:'★★ **Lemma 7.3**：$z_i$ 与 $z_j$ 被比较的概率 = $\\frac{2}{j-i+1}$。\n\n★ 为什么是 2？因为 $Z_{ij}$ 中有 $j - i + 1$ 个元素，每个被第一个选为轴的概率都是 $\\frac{1}{j-i+1}$，而 $z_i$ 或 $z_j$ 中的**任何一个**被选中都会导致它们被比较 —— 所以概率是 $\\frac{2}{j-i+1}$。\n\n★ 当 $j = i + 1$（相邻元素）时概率是 $\\frac{2}{2} = 1$ —— 相邻元素**总是**被比较。当 $j - i + 1 = n$（最小与最大）时概率是 $\\frac{2}{n}$ —— 极值对很少被比较。'},
      {kind:'body',page:198,en:'This bound and Lemma 7.1 allow us to conclude that the expected running time of RANDOMIZED-QUICKSORT is O(n lg n) (assuming that the element values are distinct).',
       zh:'★★ 最终结论：期望运行时间 $O(n\\lg n)$。\n\n★ 注意假设："assuming that the element values are distinct"。习题 7-2 让你放宽这个假设。'},
     ],
@@ -451,7 +451,7 @@ int main(void)
     intro:'本关的推导有四步，每步都用到了前面章节的工具。这条链是第 7 章的高峰 —— 它把 5.2 的指示器随机变量、2.3 的递归树、4.3 的代入法全部串了起来。',
     claims:[
      {expr:'T(n) = O(n + X)',when:'运行时间由比较次数 X 主导（Lemma 7.1 的推论）',page:195,source:'book'},
-     {expr:'2/(j-i+1)',when:'z_i 与 z_j 被比较的概率（Theorem 7.3）',page:196,source:'book'},
+     {expr:'2/(j-i+1)',when:'z_i 与 z_j 被比较的概率（Lemma 7.3）',page:196,source:'book'},
      {expr:'O(n \\lg n)',when:'RANDOMIZED-QUICKSORT 的期望运行时间',page:198,source:'book'},
      {expr:'\\Theta(n^2)',when:'最坏运行时间（代入法证明 O(n²)，7.2 给了 Ω(n²) 的实例）',page:194,source:'book'},
     ],
@@ -459,7 +459,7 @@ int main(void)
       ['步','做什么','工具'],
       ['①','把运行时间归约到比较次数 $X$','$T(n) = O(n + X)$'],
       ['②','刻画"哪些对会被比较"','Lemma 7.2（$Z_{ij}$ 中第一个被选为轴）'],
-      ['③','算单对的比较概率','Theorem 7.3：$2/(j-i+1)$'],
+      ['③','算单对的比较概率','Lemma 7.3：$2/(j-i+1)$'],
       ['④','求和','指示器随机变量 + 线性期望 + 调和数'],
     ]},
      {caption:'调和数的出现',rows:[
@@ -481,7 +481,7 @@ int main(void)
      {kind:'summation',title:'Step ②：Lemma 7.2 —— 谁和谁被比较',steps:[
       {zh:'把元素按**排序后**的位置编号：$z_1 < z_2 < \\dots < z_n$。设 $Z_{ij} = \\{z_i, z_{i+1}, \\dots, z_j\\}$。'},
       {tex:'z_i \\text{ 与 } z_j \\text{ 被比较} \\iff \\text{第一个从 } Z_{ij} \\text{ 中被选为轴的是 } z_i \\text{ 或 } z_j',zh:'★ 原书用一个 1..10 的例子说明：第一次选轴 7 之后，$\\{1..6\\}$ 与 $\\{8,9,10\\}$ 之间的任何元素对**永不再比较**。'}]},
-     {kind:'summation',title:'Step ③：Theorem 7.3 —— 概率 2/(j−i+1)',steps:[
+     {kind:'summation',title:'Step ③：Lemma 7.3 —— 概率 2/(j−i+1)',steps:[
       {zh:'$Z_{ij}$ 有 $j-i+1$ 个元素，每个被第一个选为轴的概率都是 $1/(j-i+1)$（均匀随机）。'},
       {tex:'\\Pr\\{z_i \\text{ 与 } z_j \\text{ 被比较}\\} = \\Pr\\{z_i \\text{ 或 } z_j \\text{ 第一个被选}\\} = \\frac{2}{j-i+1}',zh:'★ 两个事件互斥（只能有一个"第一个"），所以概率相加：$\\frac{1}{j-i+1} + \\frac{1}{j-i+1} = \\frac{2}{j-i+1}$。'}]},
      {kind:'summation',title:'Step ④：求和得到 O(n lg n)',steps:[
@@ -492,7 +492,7 @@ int main(void)
       {tex:'T(n) = O(n + X) = O(n + n\\lg n) = O(n\\lg n)',zh:'结论：RANDOMIZED-QUICKSORT 的期望运行时间是 $O(n\\lg n)$（假设元素互异）。'}]},
     ],
     note:'★ 中心图：最坏 $n^2/2$（红线）一路上扬；期望 $2n\\ln n$（绿线）增长慢得多；下界 $\\Omega(n\\lg n)$（蓝线）与期望在同一阶 —— 随机化快速排序已经到了比较排序的极限。'},
-   {type:'prove',title:'Theorem 7.3：为什么概率恰好是 2/(j−i+1)',
+   {type:'prove',title:'Lemma 7.2 与 7.3：谁和谁被比较、概率是多少',
     statement:'During the execution of RANDOMIZED-QUICKSORT on an array of n distinct elements \u00b4 1 <\u00b4 2 < \u2022 \u2022 \u2022 <\u00b4 n , an element \u00b4 i is compared with an element \u00b4 j , where i <j , if and only if one of them is chosen as a pivot before any other element in the set Z ij . Moreover, no two elements are ever compared twice.',
     page:195,
     intro:'★ 这是原书的 **Lemma 7.2**（"谁和谁被比较"的刻画）—— 它是整个期望分析的基石。三步分别对应：三种情况的排除、"当且仅当"的两个方向、以及"不比较两次"。',
@@ -512,9 +512,9 @@ int main(void)
       en:'Consider an execution of the procedure RANDOMIZED-QUICKSORT on an array of n distinct elements \u00b4 1 <\u00b4 2 < \u2022 \u2022 \u2022 <\u00b4 n . Given two arbitrary elements \u00b4 i and \u00b4 j where i "j , the probability that they are compared is 2".j \u2212 i + 1/.',page:196,
       body:['$Z_{ij}$ 有 $j - i + 1$ 个元素，每个被第一个选为轴的概率都是 $\\frac{1}{j-i+1}$（因为轴是均匀随机选的）。',
         '$z_i$ 或 $z_j$ 被第一个选中的概率 = 两个互斥事件的概率之和 = $\\frac{2}{j-i+1}$。',
-        '★ 这就是 **Theorem 7.3**。把它代入 Step ④ 的求和（用指示器随机变量 + 线性期望），就得到 $E[X] = O(n\\lg n)$。']},
+        '★ 这就是 **Lemma 7.3**。把它代入 Step ④ 的求和（用指示器随机变量 + 线性期望），就得到 $E[X] = O(n\\lg n)$。']},
     ],
-    conclusion:'★ 结论：$z_i$ 与 $z_j$ 被比较的概率是 $\\frac{2}{j-i+1}$（Theorem 7.3）。把它代入 $E[X] = \\sum\\sum \\frac{2}{j-i+1} = O(n\\lg n)$，加上 Lemma 7.1 的 $T(n) = O(n + X)$，就得到 RANDOMIZED-QUICKSORT 的期望运行时间 $O(n\\lg n)$。',
+    conclusion:'★ 结论：$z_i$ 与 $z_j$ 被比较的概率是 $\\frac{2}{j-i+1}$（Lemma 7.3）。把它代入 $E[X] = \\sum\\sum \\frac{2}{j-i+1} = O(n\\lg n)$，加上 Lemma 7.1 的 $T(n) = O(n + X)$，就得到 RANDOMIZED-QUICKSORT 的期望运行时间 $O(n\\lg n)$。',
     note:''},
    {type:'drill',title:'检验一下',
     items:[
