@@ -292,7 +292,7 @@ int main(void)
           { tex: '\\text{块数} = \\lfloor n/\\lfloor(\\lg n)/2\\rfloor\\rfloor,\\quad s = \\lfloor(\\lg n)/2\\rfloor', zh: '把 $n$ 次抛掷切成约 $n/s$ 段、每段长 $s$ 的互不相交块。' },
           { tex: '\\text{Pr}(\\text{某块全正面}) = 1/2^s', zh: '每块内部独立，$s$ 次全是正面的概率就是 $1/2^s$。' },
           { tex: '\\text{Pr}(\\text{全失败}) \\le (1 - 1/\\sqrt{n})^{\\lfloor n/s\\rfloor} \\le e^{-\\lfloor n/s\\rfloor/\\sqrt{n}}', zh: '★ 各块独立，全部失败的概率用尾界 $1+x\\le e^x$ 折成指数。' },
-          { tex: '\\lfloor n/s\\rfloor/\\sqrt{n} \\ge \\ln n', zh: '代入 $s=\\lfloor(\\lg n)/2\\rfloor$，指数里的系数不小于 $\\ln n$，于是全失败概率 $=O(1/n)$。' },
+          { tex: '\\lfloor n/s\\rfloor/\\sqrt{n} \\ge \\ln n\\quad(n\\text{ 充分大})', zh: '代入 $s=\\lfloor(\\lg n)/2\\rfloor$，指数里的系数（当 $n$ 充分大时）不小于 $\\ln n$，于是全失败概率 $=O(1/n)$。★ 原书这一句带限定：$(2n/\\lg n-1)/\\sqrt n\\ge\\ln n$ 只在 $n$ 足够大时成立（例如 $n=100$ 时左边约 3.3 < 4.605）。' },
           { tex: 'E[\\text{最长连胜}] \\ge \\Omega(\\lg n)', zh: '至少一段全正面的概率 $=1-O(1/n)$，期望下界为 $\\Omega(\\lg n)$。' },
         ] },
       ],
