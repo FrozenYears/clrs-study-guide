@@ -18,7 +18,7 @@ export default {
    {type:'intuition',title:'完成得晚的排在最前',scene:'穿衣顺序（Figure 20.7）',body:[
      '对 DAG 跑 DFS，结点**完成时间越晚，越该排在拓扑序前面** —— 直觉：完成得晚，说明它依赖的东西都已处理完。',
      '★ C 程序 Part 4：对教学 DAG 实测拓扑序 1,3,5,2,4,6，并逐边验证"每条 u→v 都有 u 在前"。',
-     '★ 无环性的判据（引理 20.4）：**G 无环 ⟺ DFS 不产生后向边**。C 程序 part 4 先断言"边分类中 back = 0"再输出排序 —— 证明与工程互证。',
+     '★ 无环性的判据（引理 20.11）：**G 无环 ⟺ DFS 不产生后向边**。C 程序 part 4 先断言"边分类中 back = 0"再输出排序 —— 证明与工程互证。',
      '⚠ 若图有环，拓扑序不存在 —— DFS 会挖出后向边，恰好暴露那个环。',
     ],interactive:{text:''}},
    {type:'source',title:'书上是怎么说的',lead:'原书英文原文。',blocks:[
@@ -27,11 +27,11 @@ export default {
      {kind:'body',page:573,en:'To prove the correctness of this remarkably simple and efficient algorithm, we start with the following key lemma characterizing directed acyclic graphs.',
       zh:'★ 正确性证明从刻画 DAG 的关键引理开始。'},
      {kind:'body',page:573,en:'A directed graph G is acyclic if and only if a depth-first search of G yields no back edges.',
-      zh:'★★ **引理 20.4**：G 无环 ⟺ DFS 无后向边。'},
+      zh:'★★ **引理 20.11**：G 无环 ⟺ DFS 无后向边。'},
      {kind:'body',page:574,en:'Proof ): Suppose that a depth-first search produces a back edge (u,v) . Then vertex v is an ancestor of vertex u in the depth-first forest. Thus, G contains a path from v to u, and the back edge (u,v) completes a cycle.',
       zh:'★★ 引理的 ⇒ 方向：后向边 (u,v) 补全 v→u 的树路径，构成环。'},
      {kind:'body',page:574,en:'TOPOLOGICAL-SORT produces a topological sort of the directed acyclic graph provided as its input.',
-      zh:'★ 定理 20.5：算法正确（对输入 DAG 产出拓扑序）。'},
+      zh:'★ 定理 20.12：算法正确（对输入 DAG 产出拓扑序）。'},
     ],terms:[{en:'topological sort',zh:'拓扑排序',page:574},
               {en:'directed acyclic graph',zh:'有向无环图（DAG）',page:573}]},
    {type:'pseudocode',title:'TOPOLOGICAL-SORT：3 行',algo:'TOPOLOGICAL-SORT',signature:'TOPOLOGICAL-SORT(G)',page:575,
@@ -40,7 +40,7 @@ export default {
      {n:2,code:'as each vertex is finished, insert it onto the front of a linked list',zh:'★★ 完成即头插。'},
      {n:3,code:'return the linked list of vertices',zh:'链表顺序 = 拓扑序。'}],
     vars:[{name:'finish time',meaning:'结点变黑的时刻'}],
-    note:'★ 全部逻辑就一句：按完成时间**逆序**排列。正确性证明（定理 20.5）走 20.3 的白灰黑路径引理。',
+    note:'★ 全部逻辑就一句：按完成时间**逆序**排列。正确性证明（定理 20.12）走 20.3 的白灰黑路径引理。',
     more:[]},
    {type:'visualize',title:'拓扑序与无环判定',panels:[
      {title:'C 程序 Part 4：教学 DAG 的实测',viz:'growth',
@@ -443,7 +443,7 @@ int main(void) {
 }
 `,
     notes:[{line:1,zh:'★ 五关共用本文件；本关注释聚焦 Part 4（拓扑排序）。'},
-           {line:335,zh:'★★ Part 4：先断言 back = 0（引理 20.4），再输出拓扑序 1 3 5 2 4 6。'},
+           {line:335,zh:'★★ Part 4：先断言 back = 0（引理 20.11），再输出拓扑序 1 3 5 2 4 6。'},
            {line:339,zh:'★ 逐边断言 u 在 v 之前 —— 拓扑序的定义式检查。'},
            {line:121,zh:'`dfs`：边分类在 DFS 里顺带完成（tree/back/forward/cross）。'}]},
     tests:[{in:'教学 DAG（6 顶点）',out:'back = 0；拓扑序 1 3 5 2 4 6'},
@@ -451,26 +451,26 @@ int main(void) {
     mapping:[{pc:2,pcCode:'完成即头插',c:'拓扑序按 f 值递减排序（C 程序 Part 4 的排序段）'}]},
    {type:'analyze',title:'一本账：无环 ⟺ 无后向边',claims:[
      {expr:'\\Theta(V + E)',when:'拓扑排序的运行时间（一次 DFS）',page:575,source:'book'},
-     {expr:'\\text{no back edges}',when:'G 无环 ⟺ DFS 无后向边（引理 20.4）',page:573,source:'book'},
+     {expr:'\\text{no back edges}',when:'G 无环 ⟺ DFS 无后向边（引理 20.11）',page:573,source:'book'},
      {expr:'1',when:'DAG 中每个结点 u→v 满足 f[u] > f[v]（白路径引理推论）',page:574,source:'book'},
     ],tables:[{caption:'C 程序 Part 3/4 的实测关联',rows:[
       ['图','后向边数','拓扑序'],
       ['有向图 G（Figure 20.2）','2 条 back','不存在（有环）'],
       ['教学 DAG','0 条 back','1 3 5 2 4 6'],
-     ]},{caption:'引理 20.4 的两个方向',rows:[
+     ]},{caption:'引理 20.11 的两个方向',rows:[
       ['方向','论证'],
       ['有后向边 ⇒ 有环','后向边 (u,v)：v 是 u 的祖先，v→u 的树路径 + (u,v) = 环'],
       ['有环 ⇒ 有后向边','环上最早发现的结点是其余结点的祖先；沿环走必产生指向它的后向边'],
      ]}],chart:{xMax:16,series:[
      {name:'DFS 一次的代价 V+E',expr:'n + n',color:'--viz-done'},
      {name:'反复删零入度点（Kahn）：也是 V+E 但更繁琐',expr:'n + n',color:'--viz-compare'}]},
-    derivations:[{kind:'summation',title:'定理 20.5 的证明骨架',steps:[
+    derivations:[{kind:'summation',title:'定理 20.12 的证明骨架',steps:[
       {zh:'考察任意边 $(u,v)$：DFS 中 $v$ 被发现时，$u$ 的状态有三种可能（白/灰/黑）。'},
       {zh:'灰 → $v$ 是 $u$ 的后裔 → $f[u] > f[v]$（括号化定理）；白 → 同理经白路径；黑 → $v$ 早已完成 → 也是 $f[u] > f[v]$。'},
       {tex:'(u,v) \\in E \\;\\Longrightarrow\\; f[u] > f[v]',zh:'★ 所以按 f 递减排序必然 u 在 v 前 —— 拓扑序成立。∎'}]},
      ],
     note:''},
-   {type:'prove',title:'引理 20.4：有环必有后向边',statement:'A directed graph G is acyclic if and only if a depth-first search of G yields no back edges.',page:573,
+   {type:'prove',title:'引理 20.11：有环必有后向边',statement:'A directed graph G is acyclic if and only if a depth-first search of G yields no back edges.',page:573,
     intro:'★ 两个方向：⇒ 用括号化定理；⇐ 用环上"最早发现的结点"。',
     steps:[
      {title:'⇒ 有后向边则必有环',en:'Proof ): Suppose that a depth-first search produces a back edge (u,v) . Then vertex v is an ancestor of vertex u in the depth-first forest. Thus, G contains a path from v to u, and the back edge (u,v) completes a cycle.',page:574,
@@ -488,8 +488,8 @@ int main(void) {
     ],conclusion:'★ 结论：无环性可以"顺带"从 DFS 的边分类里读出来 —— 这是 DFS 强表达力的第一个展示。',note:''},
    {type:'drill',title:'检验一下',items:[
      {kind:'single',q:'拓扑排序算法的核心动作是？',options:['反复删除入度 0 的点（唯一方法）','**DFS 按完成时间逆序输出**','对边排序','广度优先搜索'],answer:1,
-      why:'★ TOPOLOGICAL-SORT 就 3 行（p.615）；反复删零入度点是等价替代。'},
-     {kind:'single',q:'引理 20.4 说什么？',options:['DAG 一定有唯一的拓扑序，所以拓扑排序能当校验','**G 无环 ⟺ DFS 无后向边**','DFS 总是 $O(V)$，跟边数没关系','后向边指向非祖先'],answer:1,
+      why:'★ TOPOLOGICAL-SORT 就 3 行（p.573）；反复删零入度点是等价替代。'},
+     {kind:'single',q:'引理 20.11 说什么？',options:['DAG 一定有唯一的拓扑序，所以拓扑排序能当校验','**G 无环 ⟺ DFS 无后向边**','DFS 总是 $O(V)$，跟边数没关系','后向边指向非祖先'],answer:1,
       why:'★ 它把"无环判定"免费并入了 DFS。'},
      {kind:'judge',q:'拓扑序对带环的有向图也可能存在。',answer:false,
       why:'★ 有环则环上的结点互相"先于"，线性序不可能满足 —— 拓扑序存在 ⟺ 无环。'},

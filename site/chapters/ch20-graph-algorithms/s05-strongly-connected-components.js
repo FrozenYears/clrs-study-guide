@@ -18,7 +18,7 @@ export default {
    {type:'intuition',title:'为什么第二次 DFS 要按完成时间递减',scene:'Figure 20.9 的图（C 程序 Part 5）',body:[
      '直觉：第一次 DFS 里**完成得最晚**的结点，一定属于一个"上游"SCC（它能到很多地方，别的 SCC 到不了它）。在 $G^T$ 里方向反转 —— 上游 SCC 变下游 —— 从它出发的第二遍 DFS 恰好只能扫到**它自己的分量**。',
      '★ C 程序 Part 5：完成时间递减序 3,6,1,2,5,4 → 第二次 DFS 找出 **4 个 SCC**：{1}、{2,4,5}、{3}、{6}（原书 Figure 20.9 的答案）。',
-     '★ 分量图 $G^{SCC}$ 是 **DAG**（引理 20.6）—— 这就是第二次 DFS 按"递减完成时间"访问的合法性来源。',
+     '★ 分量图 $G^{SCC}$ 是 **DAG**（引理 20.13）—— 这就是第二次 DFS 按"递减完成时间"访问的合法性来源。',
     ],interactive:{text:''}},
    {type:'source',title:'书上是怎么说的',lead:'原书英文原文（含语料排版形式，如 v 2 C 代表 v ∈ C）。',blocks:[
      {kind:'body',page:576,en:'Recall from Appendix B that a strongly connected component of a directed graph G = (V,E) is a maximal set of vertices C \u2286 V such that for every pair of vertices u,v 2 C , both u \u2192 v and v \u2192 u, that is, vertices u and v are reachable from each other.',
@@ -456,7 +456,7 @@ int main(void) {
              {pc:4,pcCode:'输出每棵树',c:'`dfs_comp_visit`（第 149 行，标分量号）'}]},
    {type:'analyze',title:'一本账：算法的三块积木',claims:[
      {expr:'\\Theta(V + E)',when:'STRONGLY-CONNECTED-COMPONENTS 的运行时间',page:576,source:'book'},
-     {expr:'G^{SCC} \\text{ 无环}',when:'引理 20.6：分量图无环',page:577,source:'book'},
+     {expr:'G^{SCC} \\text{ 无环}',when:'引理 20.13：分量图无环',page:577,source:'book'},
      {expr:'2',when:'DFS 的次数（一次 G、一次 G^T）',page:576,source:'book'},
     ],tables:[{caption:'C 程序 Part 5 的实测账',rows:[
       ['步骤','结果'],
@@ -472,12 +472,12 @@ int main(void) {
      {name:'两次 DFS：2(V+E)',expr:'2 * (n + n)',color:'--viz-done'},
      {name:'逐对可达性检查 V(V+E)',expr:'n * (n + n)',color:'--viz-violation'}]},
     derivations:[{kind:'summation',title:'"按完成时间递减"如何对准分量',steps:[
-      {zh:'引理（原书 p.618）：设 $C$、$C^{\\prime}$ 是两个 SCC，若存在边 $C \\to C^{\\prime}$（分量图意义），则 $C$ 中**最晚完成**的 $u$ 满足 $f[u] > $ $C^{\\prime}$ 中一切结点的 $f$。'},
+      {zh:'引理 20.14（原书 p.578）：设 $C$、$C^{\\prime}$ 是两个 SCC，若存在边 $C \\to C^{\\prime}$（分量图意义），则 $C$ 中**最晚完成**的 $u$ 满足 $f[u] > $ $C^{\\prime}$ 中一切结点的 $f$。'},
       {zh:'于是在 $G^T$ 上按 $f$ 递减访问时：$C^{\\prime}$ 中的结点全比 $C$ 的"晚完成"，但 $G^T$ 的边方向反了 —— 从 $C$ 出发的第二遍 DFS **到不了** $C^{\\prime}$。'},
       {tex:'G^{SCC} \\text{ 无环} \\Rightarrow \\text{按拓扑序逐块收割}',zh:'★ 每棵树恰好是一个 SCC。∎'}]},
      ],
     note:''},
-   {type:'prove',title:'引理 20.6：分量图无环',statement:'The following lemma gives the key property that the component graph is acyclic.',page:577,
+   {type:'prove',title:'引理 20.13：分量图无环',statement:'The following lemma gives the key property that the component graph is acyclic.',page:577,
     intro:'★ 没有"分量图无环"，第二次 DFS 的顺序就没有意义 —— 这是整个算法的支点。',
     steps:[
      {title:'反证：若分量图有环',en:'Recall from Appendix B that a strongly connected component of a directed graph G = (V,E) is a maximal set of vertices C \u2286 V such that for every pair of vertices u,v 2 C , both u \u2192 v and v \u2192 u, that is, vertices u and v are reachable from each other.',page:576,
@@ -496,12 +496,12 @@ int main(void) {
      {kind:'single',q:'STRONGLY-CONNECTED-COMPONENTS 共用几次 DFS？',options:['1 次','**2 次（G 与 G^T 各一次）**','3 次：遍历、转置、在转置图上跑，各算一次','每个 SCC 一次'],answer:1,
       why:'★ 两次线性扫描：第一次算完成时间，第二次在 G^T 上按 f 递减访问。'},
      {kind:'single',q:'第二次 DFS 为什么按完成时间递减访问？',options:['随意','**使各 SCC 按分量图拓扑序被逐块收割**','为了省内存：按完成时间递减就不用另外存一张分量图','红黑树要求'],answer:1,
-      why:'★ 分量图无环（引理 20.6）；递减完成序对准其拓扑序。'},
+      why:'★ 分量图无环（引理 20.13）；递减完成序对准其拓扑序。'},
      {kind:'judge',q:'G 与 G^T 的 SCC 划分相同。',answer:true,
       why:'★ 互相可达的定义关于边方向对称。'},
      {kind:'simulate',q:'C 程序在 Figure 20.9 的图上找到几个 SCC？（填数字）',expect:[4],placeholder:'例如：3',
       why:'{1}、{2,4,5}、{3}、{6} —— 4 个（C 程序 part 5）。'},
-     {kind:'judge',q:'强连通分量图 G^{SCC} 是无环的（引理 20.6）。',answer:true,why:'★ 若分量图有环，则环上两点互相可达 → 属同一 SCC，矛盾。'},
+     {kind:'judge',q:'强连通分量图 G^{SCC} 是无环的（引理 20.13）。',answer:true,why:'★ 若分量图有环，则环上两点互相可达 → 属同一 SCC，矛盾。'},
      {kind:'single',q:'STRONGLY-CONNECTED-COMPONENTS 的运行时间是？',options:['O(V²)','**Θ(V + E)**','O(VE)','O(E lg V)'],answer:1,why:'★ 两次线性 DFS（一次 G、一次 G^T），p.576。'},
     ],bookExercises:[
      {id:'20.5-1',page:580,star:0,statement:'How can the number of strongly connected components of a graph change if a new edge is added?',hint:'只会不变或变少。两端同分量 → 不变；否则在分量图（DAG）上看：新边把从 comp(u) 到 comp(v) 可达的那一整片分量并成一个。极端例子是加一条边让整图变成一个强连通分量。'},

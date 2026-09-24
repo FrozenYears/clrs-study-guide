@@ -29,11 +29,11 @@ export default {
      {kind:'body',page:717,en:'Wanda: Brent, Hank, Oscar, Davis Emma: Davis, Hank, Oscar, Brent',
       zh:'★ 例子的偏好表（语料把两行并成了一行）。'},
      {kind:'body',page:720,en:'The procedure GALE-SHAPLEY always terminates and returns a stable matching.',
-      zh:'★★ 定理 25.10：一定停机且返回稳定匹配。'},
+      zh:'★★ 定理 25.9：一定停机且返回稳定匹配。'},
      {kind:'body',page:721,en:'Regardless of how women are chosen in line 2 of GALE-SHAPLEY , the procedure always returns the same stable matching, and in this stable matching, each woman has the best partner possible in any stable matching.',
       zh:'★★ 定理 25.11：结果唯一，且对**女方最优**。'},
      {kind:'body',page:722,en:'In the stable matching returned by the procedure GALE-SHAPLEY , each man has the worst partner possible in any stable matching.',
-      zh:'★ 推论 25.12：对男方最差（镜面对称）。'},
+      zh:'★ 推论 25.13：对男方最差（镜面对称）。'},
     ],terms:[{en:'stable matching',zh:'稳定匹配',page:716},
               {en:'blocking pair',zh:'阻塞对',page:716}]},
    {type:'pseudocode',title:'GALE-SHAPLEY：10 行',algo:'GALE-SHAPLEY',signature:'GALE-SHAPLEY(men, women, rankings)',page:719,
@@ -369,7 +369,7 @@ int main(void)
    {type:'analyze',title:'一本账：一方最优、一方最差',claims:[
      {expr:'O(n^2)',when:'Gale-Shapley 的时间（至多 n² 次求婚）',page:719,source:'book'},
      {expr:'\\text{女方最优}',when:'女方求婚版的结果对每个女方是最优稳定伴侣',page:721,source:'book'},
-     {expr:'\\text{男方最差}',when:'同一结果对每个男方是最差稳定伴侣（推论 25.12）',page:722,source:'book'},
+     {expr:'\\text{男方最差}',when:'同一结果对每个男方是最差稳定伴侣（推论 25.13）',page:722,source:'book'},
     ],tables:[{caption:'C 程序 Part 2 的实测数据',rows:[
       ['量','值'],
       ['规模','4 女 4 男'],
@@ -384,14 +384,14 @@ int main(void)
      ]}],chart:{xMax:26,series:[
      {name:'求婚次数上界 n² = 16',expr:'16',color:'--viz-compare'},
      {name:'完美匹配数 4! = 24',expr:'24',color:'--viz-done'}]},
-    derivations:[{kind:'summation',title:'定理 25.10 的证明骨架',steps:[
+    derivations:[{kind:'summation',title:'定理 25.9 的证明骨架',steps:[
       {zh:'**停机**：每次求婚都消耗一个"（女,男）对"，总对数 $n^2$ → 至多 $n^2$ 次求婚。'},
       {zh:'**稳定**：设 $w$ 与 $m$ 未配对且 $w$ 更喜欢 $m$。则 $w$ 一定向 $m$ 求过婚；$m$ 当时拒绝了她（或后来换掉了她）→ $m$ 更喜欢现任 → 不是阻塞对。'},
       {tex:'\\text{无阻塞对} \\Rightarrow \\text{稳定}',zh:'★ C 程序 part 2 的 16 对暴力检查就是这条论证的机器版本。∎'}]},
      ],
     note:''},
-   {type:'prove',title:'定理 25.10 与 25.11',statement:'The procedure GALE-SHAPLEY always terminates and returns a stable matching.',page:720,
-    intro:'★ 两个定理：一定停机且稳定（25.10）；结果唯一且对女方最优（25.11）。',
+   {type:'prove',title:'定理 25.9 与 25.11',statement:'The procedure GALE-SHAPLEY always terminates and returns a stable matching.',page:720,
+    intro:'★ 两个定理：一定停机且稳定（25.9）；结果唯一且对女方最优（25.11）。',
     steps:[
      {title:'停机与稳定',en:'If a woman and a man are not matched to each other but each prefers the other over their assigned partner, they form a blocking pair. A blocking pair has incentive to opt out of the assigned pairing and get together on their own.',page:716,
       body:['求婚次数 ≤ $n^2$ → 必停机。',
@@ -406,7 +406,7 @@ int main(void)
      {kind:'single',q:'Gale-Shapley 中男方何时换掉现任？',options:['随机决定：现任和新求婚者之间抽签','**新求婚者更被他喜欢时**','只要女方提出要求就换，不看她的偏好次序','每轮都换'],answer:1,
       why:'★ 男方择优 —— 这是"稳定"的关键机制。'},
      {kind:'single',q:'女方求婚版的 Gale-Shapley 结果对哪一方最有利？',options:['男方最优：求婚的一方总是拿到能拿到的最好结果','**女方最优（男方最差）**','双方中立','与偏好无关'],answer:1,
-      why:'★ 定理 25.11 + 推论 25.12。'},
+      why:'★ 定理 25.11 + 推论 25.13。'},
      {kind:'judge',q:'同一个偏好表可能有多个稳定匹配。',answer:true,
       why:'★ 原书 p.721 给出 3 女 3 男有多个稳定匹配的例子；但**GS 的输出**唯一（本关例子恰好只有 1 个稳定匹配）。'},
      {kind:'simulate',q:'C 程序 part 2 枚举出的稳定匹配数是多少？（填数字）',expect:[1],placeholder:'例如：2',
