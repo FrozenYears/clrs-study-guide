@@ -1,4 +1,4 @@
-/* 第 22 章 22.5：最短路径性质的证明（Proofs of shortest-paths properties）。印刷页 631–636（pdf 652–657）。 */
+/* 第 22 章 22.5：最短路径性质的证明（Proofs of shortest-paths properties）。印刷页 631–639（pdf 652–657）。 */
 export default {
   key:'s05',id:'ch22/s05',chapter:22,section:'22.5',
   title:'性质证明：把欠下的账一次结清',shortTitle:'22.5 性质证明',

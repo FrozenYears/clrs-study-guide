@@ -1,4 +1,4 @@
-/* 第 21 章 21.1：生成一棵最小生成树（Growing a minimum spanning tree）。印刷页 624–630（pdf 645–651）。 */
+/* 第 21 章 21.1：生成一棵最小生成树（Growing a minimum spanning tree）。印刷页 586–590（pdf 607–609）。 */
 export default {
   key:'s01',id:'ch21/s01',chapter:21,section:'21.1',
   title:'通用 MST：安全边的循环不变量',shortTitle:'21.1 生成最小生成树',

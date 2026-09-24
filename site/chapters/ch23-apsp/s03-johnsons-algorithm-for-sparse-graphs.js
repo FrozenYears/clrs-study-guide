@@ -1,4 +1,4 @@
-/* 第 23 章 23.3：稀疏图上的 Johnson 算法（Johnson's algorithm for sparse graphs）。印刷页 700–704（pdf 721–725）。 */
+/* 第 23 章 23.3：稀疏图上的 Johnson 算法（Johnson's algorithm for sparse graphs）。印刷页 662–669（pdf 683–691）。 */
 export default {
   key:'s03',id:'ch23/s03',chapter:23,section:'23.3',
   title:'Johnson：重加权让 Dijkstra 上场',shortTitle:'23.3 Johnson 算法',

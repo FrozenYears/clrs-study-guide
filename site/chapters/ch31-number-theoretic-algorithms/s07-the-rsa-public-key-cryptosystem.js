@@ -1,4 +1,4 @@
-/* 第 31 章 31.7：RSA 公钥密码系统（The RSA public-key cryptosystem）。印刷页 936–943（pdf 957–964）。 */
+/* 第 31 章 31.7：RSA 公钥密码系统（The RSA public-key cryptosystem）。印刷页 936–941（pdf 957–963）。 */
 export default {
   key:'s07',id:'ch31/s07',chapter:31,section:'31.7',
   title:'RSA：把"分解很难"变成锁',shortTitle:'31.7 RSA',

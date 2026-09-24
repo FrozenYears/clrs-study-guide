@@ -1,4 +1,4 @@
-/* 第 19 章 19.4：按秩合并与路径压缩的分析（Analysis of union by rank with path compression）。印刷页 527–536（pdf 548–557）。 */
+/* 第 19 章 19.4：按秩合并与路径压缩的分析（Analysis of union by rank with path compression）。印刷页 531–548（pdf 552–570）。 */
 export default {
   key:'s04',id:'ch19/s04',chapter:19,section:'19.4',
   title:'O(m·α(n))：阿克曼反函数登场',shortTitle:'19.4 摊还分析 α(n)',

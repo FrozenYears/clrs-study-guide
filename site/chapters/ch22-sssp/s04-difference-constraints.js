@@ -1,4 +1,4 @@
-/* 第 22 章 22.4：差分约束与最短路径（Difference constraints and shortest paths）。印刷页 625–630（pdf 646–651）。 */
+/* 第 22 章 22.4：差分约束与最短路径（Difference constraints and shortest paths）。印刷页 625–632（pdf 646–651）。 */
 export default {
   key:'s04',id:'ch22/s04',chapter:22,section:'22.4',
   title:'差分约束：把线性不等式变成最短路',shortTitle:'22.4 差分约束',

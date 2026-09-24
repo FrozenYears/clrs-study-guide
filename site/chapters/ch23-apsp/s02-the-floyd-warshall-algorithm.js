@@ -1,4 +1,4 @@
-/* 第 23 章 23.2：Floyd-Warshall 算法（The Floyd-Warshall algorithm）。印刷页 693–700（pdf 714–721）。 */
+/* 第 23 章 23.2：Floyd-Warshall 算法（The Floyd-Warshall algorithm）。印刷页 655–661（pdf 676–683）。 */
 export default {
   key:'s02',id:'ch23/s02',chapter:23,section:'23.2',
   title:'Floyd-Warshall：按"允许的中间点"DP',shortTitle:'23.2 Floyd-Warshall',

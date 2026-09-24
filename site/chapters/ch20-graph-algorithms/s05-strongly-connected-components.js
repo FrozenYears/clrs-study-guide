@@ -1,4 +1,4 @@
-/* 第 20 章 20.5：强连通分量（Strongly connected components）。印刷页 615–620（pdf 636–641）。 */
+/* 第 20 章 20.5：强连通分量（Strongly connected components）。印刷页 576–581（pdf 597–599）。 */
 export default {
   key:'s05',id:'ch20/s05',chapter:20,section:'20.5',
   title:'强连通分量：两次 DFS 定乾坤',shortTitle:'20.5 强连通分量',

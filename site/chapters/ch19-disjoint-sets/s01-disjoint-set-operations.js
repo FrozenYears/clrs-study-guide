@@ -1,4 +1,4 @@
-/* 第 19 章 19.1：不相交集合的操作（Disjoint-set operations）。印刷页 520–521（pdf 541–542）。 */
+/* 第 19 章 19.1：不相交集合的操作（Disjoint-set operations）。印刷页 520–522（pdf 541–544）。 */
 export default {
   key:'s01',id:'ch19/s01',chapter:19,section:'19.1',
   title:'不相交集合：动态等价问题',shortTitle:'19.1 不相交集合的操作',

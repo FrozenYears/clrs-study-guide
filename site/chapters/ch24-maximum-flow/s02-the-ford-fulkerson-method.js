@@ -1,4 +1,4 @@
-/* 第 24 章 24.2：Ford-Fulkerson 方法（The Ford-Fulkerson method）。印刷页 676–704（pdf 697–725）。 */
+/* 第 24 章 24.2：Ford-Fulkerson 方法（The Ford-Fulkerson method）。印刷页 676–693（pdf 697–714）。 */
 export default {
   key:'s02',id:'ch24/s02',chapter:24,section:'24.2',
   title:'增广路与最小割定理',shortTitle:'24.2 Ford-Fulkerson',

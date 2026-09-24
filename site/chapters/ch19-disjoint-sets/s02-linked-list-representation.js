@@ -1,4 +1,4 @@
-/* 第 19 章 19.2：不相交集合的链表表示（Linked-list representation）。印刷页 521–524（pdf 542–545）。 */
+/* 第 19 章 19.2：不相交集合的链表表示（Linked-list representation）。印刷页 523–526（pdf 544–548）。 */
 export default {
   key:'s02',id:'ch19/s02',chapter:19,section:'19.2',
   title:'链表表示与加权合并',shortTitle:'19.2 链表表示',

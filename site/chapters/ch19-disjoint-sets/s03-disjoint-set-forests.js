@@ -1,4 +1,4 @@
-/* 第 19 章 19.3：不相交集合森林（Disjoint-set forests）。印刷页 524–527（pdf 545–548）。 */
+/* 第 19 章 19.3：不相交集合森林（Disjoint-set forests）。印刷页 527–530（pdf 548–552）。 */
 export default {
   key:'s03',id:'ch19/s03',chapter:19,section:'19.3',
   title:'森林 + 按秩合并 + 路径压缩',shortTitle:'19.3 不相交集合森林',

@@ -1,4 +1,4 @@
-/* 第 23 章 23.1：最短路径与矩阵乘法（Shortest paths and matrix multiplication）。印刷页 684–692（pdf 705–713）。 */
+/* 第 23 章 23.1：最短路径与矩阵乘法（Shortest paths and matrix multiplication）。印刷页 648–654（pdf 669–676）。 */
 export default {
   key:'s01',id:'ch23/s01',chapter:23,section:'23.1',
   title:'APSP 开篇：把最短路当成矩阵乘法',shortTitle:'23.1 最短路 × 矩阵乘法',

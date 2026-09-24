@@ -1,4 +1,4 @@
-/* 第 20 章 20.4：拓扑排序（Topological sort）。印刷页 612–615（pdf 633–636）。 */
+/* 第 20 章 20.4：拓扑排序（Topological sort）。印刷页 573–575（pdf 594–596）。 */
 export default {
   key:'s04',id:'ch20/s04',chapter:20,section:'20.4',
   title:'拓扑排序：DFS 的第一次应用',shortTitle:'20.4 拓扑排序',

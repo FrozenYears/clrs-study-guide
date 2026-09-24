@@ -1,4 +1,4 @@
-/* 第 21 章 21.2：Kruskal 与 Prim 算法（The algorithms of Kruskal and Prim）。印刷页 630–638（pdf 651–659）。 */
+/* 第 21 章 21.2：Kruskal 与 Prim 算法（The algorithms of Kruskal and Prim）。印刷页 591–603（pdf 612–625）。 */
 export default {
   key:'s02',id:'ch21/s02',chapter:21,section:'21.2',
   title:'Kruskal 与 Prim：找安全边的两条路',shortTitle:'21.2 Kruskal 与 Prim',
