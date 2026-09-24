@@ -1,7 +1,7 @@
 /* online.c -- 27 章：在线算法（电梯等待、搜索表 MTF、在线缓存）。
  * 关键数字：
  *   part 1  电梯策略：等待 m 分钟的竞争比 = max(1, (m+k)/(m+1))，最优 m = k−1 → 比值 < 2；
- *   part 2  搜索表：MTF 与**精确最优**（对排列做 DP）对照，验证 MTF ≤ 2·OPT；
+ *   part 2  搜索表：MTF 与**精确最优**（对排列做 DP）对照，验证 MTF ≤ 4·OPT；
  *   part 3  缓存：随机标记（randomized marking）的缺失次数 vs OPT，验证 ≤ 2H_k·OPT。 */
 #include <assert.h>
 #include <stdio.h>
