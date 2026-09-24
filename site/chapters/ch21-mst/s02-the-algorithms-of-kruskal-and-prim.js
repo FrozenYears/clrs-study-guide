@@ -68,7 +68,7 @@ export default {
       note:'★ Kruskal 前四条：(g,h)1 (c,i)2 (f,g)2 (a,b)4；Prim 前四条：(a,b)4 (b,c)8 (c,i)2 (c,f)4 —— 顺序迥异，总价相同。'},
     ],tasks:['对照 C 程序 part 1/2 的逐边输出。'],note:''},
    {type:'code',title:'实测：37 与 37',c:{file:'mst_kruskal_prim.c',code:String.raw`/* mst_kruskal_prim.c -- 21.2: Kruskal 与 Prim。
- * 数据：原书 Figure 21.1 的图（顶点 a..i，13 条加权无向边）。
+ * 数据：原书 Figure 21.1 的图（顶点 a..i，14 条加权无向边）。
  * 关键数字：MST 总权重 = 37（原书答案）；Kruskal 与 Prim 选出的边集权重一致。 */
 #include <assert.h>
 #include <stdio.h>

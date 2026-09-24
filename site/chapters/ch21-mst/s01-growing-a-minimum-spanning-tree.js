@@ -56,7 +56,7 @@ export default {
       note:'★ 用 Figure 21.1 的 MST 总权重 37 做锚：任何"不用轻边"的选择都不会更优。'},
     ],tasks:['对照 c/mst_kruskal_prim.c：Kruskal 与 Prim 各自选出总权重 37 的树。'],note:''},
    {type:'code',title:'实测：两种贪心都到 37',c:{file:'mst_kruskal_prim.c',code:String.raw`/* mst_kruskal_prim.c -- 21.2: Kruskal 与 Prim。
- * 数据：原书 Figure 21.1 的图（顶点 a..i，13 条加权无向边）。
+ * 数据：原书 Figure 21.1 的图（顶点 a..i，14 条加权无向边）。
  * 关键数字：MST 总权重 = 37（原书答案）；Kruskal 与 Prim 选出的边集权重一致。 */
 #include <assert.h>
 #include <stdio.h>
