@@ -219,7 +219,7 @@ static void gt_union(int a, int b)
 
 /* alpha(n) = min{k : A_k(1) >= n}；A_k(1) 由闭式给出：
  *   A_0(1) = 2, A_1(1) = 3, A_2(1) = 2^{1+1}(1+1)-1 = 7, A_3(1) = A_2^{2}(1) = A_2(7) = 2^8*8-1 = 2047,
- *   A_4(1) = 2^2059-1 远超 64 位整数。 */
+ *   A_4(1) = A_3(2047) 远大于 A_2(2047) = 2^2059-1，远超 64 位整数。 */
 static unsigned long long A_level1(int k)
 {
     if (k <= 0) return 2ULL;
@@ -367,7 +367,7 @@ int main(void)
             printf("        alpha(%llu) = %d\n", nval, a);
             assert(a <= 4);
         }
-        printf("        => 只有 n > A_4(1)（约 2^2059，远超宇宙原子数 10^80）才使 alpha(n) > 4。\n");
+        printf("        => 只有 n > A_4(1)（远大于 2^2059，远超宇宙原子数 10^80）才使 alpha(n) > 4。\n");
     }
 
     puts("all checks passed.");
