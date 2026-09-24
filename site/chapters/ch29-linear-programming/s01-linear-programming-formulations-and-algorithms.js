@@ -238,7 +238,7 @@ int main(void)
         for (int i = 0; i < m; i++) { w += b[i] * y[i]; }
         printf("part 1: 原书 (29.37)-(29.41) 的 LP：max 3x1+x2+4x3 -> 最优值 z = %.6f\n", z);
         printf("        x = (%.6f, %.6f, %.6f)，迭代 %ld 次转轴\n", x[0], x[1], x[2], it);
-        printf("        对偶（29.42)-(29.44) 的最优解 y = (%.6f, %.6f, %.6f)，bᵀy = %.6f\n",
+        printf("        对偶（29.42)-(29.46) 的最优解 y = (%.6f, %.6f, %.6f)，bᵀy = %.6f\n",
                y[0], y[1], y[2], w);
         assert(fabs(z - 30.75) < 1e-7);
         assert(fabs(x[0] - 8.25) < 1e-7 && fabs(x[1]) < 1e-7 && fabs(x[2] - 1.5) < 1e-7);
