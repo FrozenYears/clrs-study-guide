@@ -11,13 +11,13 @@ export default {
     position:'本章也是全书的分析顶点：16 章的势能法在这里被推到极限（结点按 rank 分层，逐层记账）。',
     unlocks:[{label:'21.2 The algorithms of Kruskal and Prim',url:'#/ch21/s02'}],
     mathKit:[
-     {title:'阿克曼函数',body:'$A_0(j) = j+1$；$A_k(j) = A_{k-1}^{(j+1)}(j)$（$k \\ge 1$）：$A_1(1)=3, A_2(1)=7, A_3(1)=2047, A_4(1)=A_3^{(3)}(1)$ 巨大。'},
+     {title:'阿克曼函数',body:'$A_0(j) = j+1$；$A_k(j) = A_{k-1}^{(j+1)}(j)$（$k \\ge 1$）：$A_1(1)=3, A_2(1)=7, A_3(1)=2047, A_4(1)=A_3^{(2)}(1)=A_3(A_3(1)) > 10^{80}$。'},
      {title:'反函数',body:'$\\alpha(n) = \\min\\{k : A_k(1) \\ge n\\}$（式 19.2）。'},
      {title:'主定理',body:'$m$ 个操作至多 $O(m\\,\\alpha(n))$；且 $\\alpha(n) \\le 4$ 对一切实践 $n$ 成立。'},
     ]},
    {type:'intuition',title:'A_k(1) 的台阶',scene:'C 程序 Part D',body:[
      '阿克曼函数按 k 分层爆炸：$A_0(1)=2$、$A_1(1)=3$、$A_2(1)=7$、$A_3(1)=2047$、$A_4(1)$ 天文数字。',
-     '★ α(n) = "跨过 n 需要④几层台阶"：n ≤ 7 → α=2；n ≤ 2047 → α=3；n 超过 $A_4(1)$ 才 α=4 —— 而 $A_4(1)$ 远大于宇宙原子数。',
+     '★ α(n) = "跨过 n 需要几层台阶"：$n \\le 2 \\to \\alpha=0$；$n=3 \\to 1$；$4 \\le n \\le 7 \\to 2$；$8 \\le n \\le 2047 \\to 3$；$2048 \\le n \\le A_4(1) \\to 4$ —— 而 $A_4(1)$ 远大于宇宙原子数，所以实践里 $\\alpha(n) \\le 4$。',
      '★ 所以 **O(m·α(n)) 实际上就是 O(m)** —— 理论上不是常数，实践上是。',
      '★ 分析的骨架（原书 §19.4）：结点按 rank 分层 —— 第 0 层（rank 0）、叶子层、α(n) 个"分组"层；每层的摊还代价分别记账，非叶子层合计 O((m+n)·α(n))。',
     ],interactive:{text:''}},
@@ -32,10 +32,10 @@ export default {
    {type:'pseudocode',title:'A_k(1) 的台阶表',algo:'ACKERMAN-LEVELS',signature:'阿克曼函数的分层（原书 p.532，本站整理）',page:532,
     lines:[
      {n:1,code:'A_0(j) = j + 1',zh:'最底层：加一。'},
-     {n:2,code:'A_1(j) = j + 2        （≈ 2j + 3）',zh:''},
-     {n:3,code:'A_2(j) = 2j + 3',zh:'线性。'},
-     {n:4,code:'A_3(j) = 2^(j+3) − 3',zh:'指数。'},
-     {n:5,code:'A_4(1) = 2^16 − 3 = 65533',zh:'已经超出直观。'},
+     {n:2,code:'A_1(j) = 2j + 1',zh:'线性（原书引理 19.2）。'},
+     {n:3,code:'A_2(j) = 2^(j+1)·(j+1) − 1',zh:'指数（原书引理 19.3）。'},
+     {n:4,code:'A_3(1) = A_2(A_2(1)) = A_2(7) = 2047',zh:'再叠一层迭代。'},
+     {n:5,code:'A_4(1) = A_3(A_3(1)) = A_3(2047) > 10^80',zh:'远超可观测宇宙的原子数。'},
      {n:6,code:'A_k(1) = A_{k-1}^{(2)}(1)  （k >= 2）',zh:'★ 每上一层 = 对下层做迭代。'}],
     vars:[{name:'A_k^{(j)}',meaning:'函数 A_k 迭代 j 次'}],
     note:'★ C 程序 Part D：alpha(n) 的计算与 A_k(1) 的台阶 —— n=2047 时 α=3，再往上要跨 A_4(1) 才 α=4。',
@@ -43,7 +43,7 @@ export default {
    {type:'visualize',title:'台阶与 α(n)',panels:[
      {title:'A_k(1) 的爆炸（对数纵轴意义下）',viz:'growth',
       chart:{xMax:10,series:[
-       {name:'α(n)：台阶 2,3,3,4',expr:'1 + n / 8',color:'--viz-done'},
+       {name:'α(n)：0,1,2,3 的台阶',expr:'n <= 2 ? 0 : (n === 3 ? 1 : (n <= 7 ? 2 : 3))',color:'--viz-done'},
        {name:'lg n（对照）',expr:'Math.log2(n)',color:'--viz-compare'},
        {name:'n（阿克曼本尊方向）',expr:'n',color:'--viz-violation'}]},
       note:'★ α(n) 的增长比 lg n 慢得多 —— "慢"到宇宙范围内是常数。'},
@@ -389,14 +389,14 @@ int main(void)
    {type:'analyze',title:'一本账：分层的记账',claims:[
      {expr:'\\alpha(n) \\le 4',when:'对一切可实践的 n',page:533,source:'book'},
      {expr:'O(m\\,\\alpha(n))',when:'按秩合并 + 路径压缩下 m 个操作的总代价',page:533,source:'book'},
-     {expr:'A_3(1) = 2047',when:'α(n) 从 3 升到 4 的门槛',page:532,source:'book'},
+     {expr:'A_3(1) = 2047',when:'α(n) = 3 的最大 n（升到 4 从 n = 2048 开始）',page:533,source:'book'},
     ],tables:[{caption:'C 程序 Part D 的台阶',rows:[
       ['k','A_k(1)','含义'],
       ['0','2','+1'],
       ['1','3','+2'],
       ['2','7','线性翻倍量级'],
       ['3','2047','指数'],
-      ['4','65533 之后再迭代','α(n) > 3 的门槛'],
+      ['4','> 10^80（远超宇宙原子数）','α(n) = 4 的上界'],
      ]},{caption:'本章三关的最终答案',rows:[
       ['表示','总代价'],
       ['朴素链表','Θ(m + n²)'],
@@ -415,7 +415,7 @@ int main(void)
     intro:'★ 这一步只需数字事实：A_3(1) = 2047、A_4(1) 天文数字。',
     steps:[
      {title:'A_k(1) 的数值',en:'A very quickly growing function and its very slowly growing inverse',page:531,
-      body:['$A_0(1) = 2$；$A_1(1) = 3$；$A_2(1) = 7$；$A_3(1) = 2047$；$A_4(1) = A_3(A_3(A_3(1)))$ —— 以 2047 为种子再做三层指数迭代。',
+      body:['$A_0(1) = 2$；$A_1(1) = 3$；$A_2(1) = 7$；$A_3(1) = 2047$；$A_4(1) = A_3^{(2)}(1) = A_3(A_3(1)) = A_3(2047) > 10^{80}$。',
         'C 程序 Part D 逐层打印了这些台阶。']},
      {title:'跨过 α = 4 的门槛',en:'(greater than A 4 .1/, a huge number) that \u02db.n/ > 4 , and so \u02db.n/ \u2264 4 for all practical purposes.',page:533,
       body:['α(n) > 4 需要 $n > A_4(1)$ —— 一个远超可观测宇宙原子数的整数。',
