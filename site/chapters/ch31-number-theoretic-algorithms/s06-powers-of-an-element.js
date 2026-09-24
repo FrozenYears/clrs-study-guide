@@ -62,7 +62,7 @@ export default {
  * 关键数字（全部断言）：
  *   part 1  除法定理：a = qn + r（0 ≤ r < n）对负数也成立；10000 以内素数 1229 个；
  *   part 2  EUCLID 与 EXTENDED-EUCLID：gcd(30,21)=3 且 3 = 30·3 + 21·(−4)；
- *           Fibonacci 最坏情形：gcd(F_20, F_19) 恰好递归 20 次；
+ *           Fibonacci 最坏情形：gcd(F_21, F_20) 恰好递归 20 次；
  *   part 3  (Z_7*, ·) 是群：单位元 1、每个元素有逆、元素阶整除 |G| = 6（Lagrange）；
  *   part 4  35x ≡ 10 (mod 50) 恰有 d = 5 个解 {6,16,26,36,46}；35x ≡ 11 无解；
  *   part 5  CRT：x≡2(3), x≡3(5), x≡2(7) 的唯一解是 x = 23（模 105）；
