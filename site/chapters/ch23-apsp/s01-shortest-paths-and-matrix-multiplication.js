@@ -17,7 +17,7 @@ export default {
     ]},
    {type:'intuition',title:'l^(m) 的含义与平方的威力',scene:'Figure 23.1 的 5 结点图（C 程序实测）',body:[
      '$l_{ij}^{(m)}$ = 从 i 到 j 至多 m 条边的最短路。$L^{(m)}$ 相当于权重矩阵 $W$ 的 m 次"最小乘幂"。',
-     '★ C 程序实测（Figure 23.1，n=5）：SLOW 调 4 次 EXTEND 得 $L^{(4)}$（最终答案，第 1 行 0 2 −2 3 −4）；FASTER 重复平方 2 次得同样的 $L^{(4)}$ —— 指数从 1→2→4，覆盖 n−1=4。',
+     '★ C 程序实测（Figure 23.1，n=5）：SLOW 调 4 次 EXTEND 得 $L^{(4)}$（最终答案，第 1 行 0 1 −3 2 −4）；FASTER 重复平方 2 次得同样的 $L^{(4)}$ —— 指数从 1→2→4，覆盖 n−1=4。',
      '★ 平方的威力：$m$ 从 1 到 $\\lceil \\lg(n-1) \\rceil$ 就够 —— 从 Θ(n⁴) 降到 Θ(n³ lg n)。',
      '★ 与 22 章的关系：EXTEND-SHORTEST-PATHS 的第 5 行本质上是"全体边 $(k,j)$ 的批量松弛"。',
     ],interactive:{text:''}},
@@ -54,11 +54,11 @@ export default {
  *   s03 Johnson 算法（Bellman-Ford 重加权 + Dijkstra）
  *
  * 固定输入：原书 Figure 23.1 的有向图（5 结点、9 条边）。
- *   边：1->2(3) 1->3(8) 1->5(-4) 2->4(1) 2->5(7) 3->2(4) 4->1(5) 4->3(-3) 5->3(2)
- *   关键数字（最终 d 矩阵 D，1 基下标）：
- *     D[1][5] = -4（直达边），D[1][3] = -2（1->5->3 = -4+2），
- *     D[5][1] = 12（5->3->2->4->1 = 2+4+1+5），D[2][1] = 6（2->4->1 = 1+5），
- *     D[4][2] = 1（4->3->2 = -3+4）。
+ *   边：1->2(3) 1->3(8) 1->5(-4) 2->4(1) 2->5(7) 3->2(4) 4->1(2) 4->3(-5) 5->4(6)
+ *   关键数字（最终 d 矩阵 D，1 基下标；与原书 p.658 的 D^(5) 逐元一致）：
+ *     D[1][5] = -4（直达边），D[1][3] = -3（1->5->4->3 = -4+6-5），
+ *     D[5][1] = 8（5->4->1 = 6+2），D[2][1] = 3（2->4->1 = 1+2），
+ *     D[4][2] = -1（4->3->2 = -5+4）。
  *   复杂度：SLOW Θ(n^4)（n-1 次 EXTEND，每次 Θ(n^3)）；
  *           FASTER 重复平方 Θ(n^3 lg n)（⌈lg(n-1)⌉ 次 EXTEND）；
  *           Floyd-Warshall Θ(n^3)；Johnson O(V^2 lg V + VE)（二叉堆）/ O(V^2 lg V + VE) 最优。
@@ -126,9 +126,9 @@ static void build_W(int *W)
     W[1 * N + 3] = 1;             /* 2->4 */
     W[1 * N + 4] = 7;             /* 2->5 */
     W[2 * N + 1] = 4;             /* 3->2 */
-    W[3 * N + 0] = 5;             /* 4->1 */
-    W[3 * N + 2] = -3;            /* 4->3 */
-    W[4 * N + 2] = 2;             /* 5->3 */
+    W[3 * N + 0] = 2;             /* 4->1 */
+    W[3 * N + 2] = -5;            /* 4->3 */
+    W[4 * N + 3] = 6;             /* 5->4 */
 }
 
 /* ============ s01：矩阵乘法版 SLOW-APSP 与 FASTER-APSP ============ */
@@ -200,8 +200,8 @@ static void floyd_warshall(const int *W, int *out)
 
 /* 边表：Figure 23.1 的 9 条边（0 基下标）。 */
 static const int EU[9] = {0, 0, 0, 1, 1, 2, 3, 3, 4};
-static const int EV[9] = {1, 2, 4, 3, 4, 1, 0, 2, 2};
-static const int EW[9] = {3, 8, -4, 1, 7, 4, 5, -3, 2};
+static const int EV[9] = {1, 2, 4, 3, 4, 1, 0, 2, 3};
+static const int EW[9] = {3, 8, -4, 1, 7, 4, 2, -5, 6};
 
 /* Bellman-Ford：在 G'（加新源点 s=5）上从 s 求单源最短路，得到 h(v)=δ(s,v)。 */
 static void bellman_ford(int h[6])
@@ -341,29 +341,29 @@ int main(void)
 
     printf("\n关键数字（最终 d 矩阵 D，1 基下标）：\n");
     printf("  D[1][5] = %d  （直达边 1->5，权 -4）\n", Dj[0 * N + 4]);
-    printf("  D[1][3] = %d  （1->5->3 = -4 + 2）\n", Dj[0 * N + 2]);
-    printf("  D[5][1] = %d  （5->3->2->4->1 = 2+4+1+5）\n", Dj[4 * N + 0]);
-    printf("  D[2][1] = %d  （2->4->1 = 1 + 5）\n", Dj[1 * N + 0]);
-    printf("  D[4][2] = %d  （4->3->2 = -3 + 4）\n", Dj[3 * N + 1]);
+    printf("  D[1][3] = %d  （1->5->4->3 = -4+6-5）\n", Dj[0 * N + 2]);
+    printf("  D[5][1] = %d  （5->4->1 = 6+2）\n", Dj[4 * N + 0]);
+    printf("  D[2][1] = %d  （2->4->1 = 1+2）\n", Dj[1 * N + 0]);
+    printf("  D[4][2] = %d  （4->3->2 = -5+4）\n", Dj[3 * N + 1]);
 
     assert(Dj[0 * N + 4] == -4);
-    assert(Dj[0 * N + 2] == -2);
-    assert(Dj[4 * N + 0] == 12);
-    assert(Dj[1 * N + 0] == 6);
-    assert(Dj[3 * N + 1] == 1);
+    assert(Dj[0 * N + 2] == -3);
+    assert(Dj[4 * N + 0] == 8);
+    assert(Dj[1 * N + 0] == 3);
+    assert(Dj[3 * N + 1] == -1);
     assert(Dj[0 * N + 0] == 0 && Dj[2 * N + 2] == 0);
 
     puts("all checks passed.");
     return 0;
 }
 `,
-    notes:[{line:1,zh:'★ 三关共用本文件；数据 = Figure 23.1 的图（n=5，含负边 −4/−3）。'},
+    notes:[{line:1,zh:'★ 三关共用本文件；数据 = Figure 23.1 的图（n=5，含负边 −4/−5）。'},
            {line:45,zh:'`extend`：EXTEND-SHORTEST-PATHS 的直译（min + 加权行）。'},
            {line:90,zh:'`slow_apsp`：n−1 次扩展，Θ(n⁴)。'},
            {line:109,zh:'`faster_apsp`：重复平方，Θ(n³ lg n)。'},
-           {line:257,zh:'★★ s01 段：打印 L^(1)…L^(4) —— 第 1 行 0 2 -2 3 -4。'},
+           {line:257,zh:'★★ s01 段：打印 L^(1)…L^(4) —— 第 1 行 0 1 -3 2 -4。'},
            {line:290,zh:'★ 三法对照：SLOW/FASTER/FW/Johnson 的最终 d 矩阵完全一致。'}]},
-    tests:[{in:'Figure 23.1 的图',out:'L^(4) 第 1 行 = 0 2 -2 3 -4'},
+    tests:[{in:'Figure 23.1 的图',out:'L^(4) 第 1 行 = 0 1 -3 2 -4'},
            {in:'SLOW vs FASTER',out:'4 次 EXTEND vs 2 次平方；结果一致'}],
     mapping:[{pc:4,pcCode:'L(m+1) = EXTEND-SHORTEST-PATHS(L(m), W)',c:'`slow_apsp`（第 90 行）'}]},
    {type:'analyze',title:'一本账：n⁴ → n³lg n',claims:[
