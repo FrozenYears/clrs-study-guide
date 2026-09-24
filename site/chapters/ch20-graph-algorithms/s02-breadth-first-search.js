@@ -81,8 +81,8 @@ export default {
             '树边 = 前驱关系：2.π=1, 4.π=1, 5.π=2。'] },
         { title: '② 运行时间 Θ(V+E)', viz: 'growth',
           chart: { xMax: 64, series: [
-            { name: 'BFS Θ(V+E)', expr: 'x', color: '--viz-done' },
-            { name: '邻接矩阵下 Θ(V²)', expr: 'x * x', color: '--viz-violation' },
+            { name: 'BFS Θ(V+E)', expr: 'n', color: '--viz-done' },
+            { name: '邻接矩阵下 Θ(V²)', expr: 'n * n', color: '--viz-violation' },
           ] },
           note: '★ 稀疏图上 BFS 线性于边数；若用邻接矩阵枚举邻居则退化成 Θ(V²)。' },
       ],
@@ -506,8 +506,8 @@ int main(void) {
         ['定理 20.5', '终止时 v.d = δ(s,v)', 'p.560'],
       ] }],
       chart: { xMax: 64, series: [
-        { name: 'BFS Θ(V+E)', expr: 'x', color: '--viz-done' },
-        { name: '矩阵代价 Θ(V²)', expr: 'x * x', color: '--viz-violation' },
+        { name: 'BFS Θ(V+E)', expr: 'n', color: '--viz-done' },
+        { name: '矩阵代价 Θ(V²)', expr: 'n * n', color: '--viz-violation' },
       ] },
       derivations: [{ kind: 'summation', title: '运行时间 Θ(V+E) 怎么来的', steps: [
         { zh: '初始化：每个顶点涂色、置 ∞、置 NIL，共 $O(V)$。' },

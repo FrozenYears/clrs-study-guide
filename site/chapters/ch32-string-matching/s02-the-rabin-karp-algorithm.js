@@ -352,7 +352,7 @@ int main(void)
       ['虚假命中','3 个（"15", "59", "92"）'],
       ['复核的额外成本','每次哈希命中后 ≤ m 次比较'],
      ]}],chart:{xMax:64,series:[
-     {name:'期望 O(n+m)',expr:'n + m',color:'--viz-done'},
+     {name:'期望 O(n+m)，取 m=16',expr:'n + 16',color:'--viz-done'},
      {name:'最坏 (n−m+1)m',expr:'n * n',color:'--viz-violation'}]},
     derivations:[{kind:'line',title:'虚假命中的期望为什么小',steps:[
       {zh:'若 $q$ 是随机素数且 $q \\ge m$，两个不同窗口哈希相等的概率 $\\le 1/q$（多项式次数的碰撞）。 取 $q = m$ 的随机素数 → 虚假命中期望 $O(n/m)$，复核总代价期望 $O(n)$。'},

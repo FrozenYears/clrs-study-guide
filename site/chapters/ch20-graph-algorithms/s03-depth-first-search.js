@@ -512,8 +512,8 @@ int main(void) {
         ['BLACK', '前向/横向', 'u.d < v.d 为前向，否则横向'],
       ] }],
       chart: { xMax: 64, series: [
-        { name: 'DFS Θ(V+E)', expr: 'x', color: '--viz-done' },
-        { name: 'naive Θ(V²)', expr: 'x * x', color: '--viz-violation' },
+        { name: 'DFS Θ(V+E)', expr: 'n', color: '--viz-done' },
+        { name: 'naive Θ(V²)', expr: 'n * n', color: '--viz-violation' },
       ] },
       derivations: [{ kind: 'summation', title: '运行时间 Θ(V+E)', steps: [
         { zh: 'DFS 外层两个循环各扫一遍顶点，初值 $O(V)$。' },

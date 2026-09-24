@@ -68,7 +68,7 @@ export default {
             '所有「孩子」总数 = |E| = 8；加上 V = 6 个根，总空间 Θ(V + E)。'] },
         { title: '② 空间：邻接表 Θ(V+E) vs 邻接矩阵 Θ(V²)', viz: 'growth',
           chart: { xMax: 64, series: [
-            { name: '邻接表 Θ(V+E)，取 V=8', expr: '8 + x', color: '--viz-done' },
+            { name: '邻接表 Θ(V+E)，取 V=8', expr: '8 + n', color: '--viz-done' },
             { name: '邻接矩阵 Θ(V²)=64', expr: '64', color: '--viz-violation' },
           ] },
           note: '★ E 越大，矩阵这层「天花板」越离谱；稀疏图上邻接表省一个数量级。' },
@@ -493,7 +493,7 @@ int main(void) {
         ['枚举所有边', 'Θ(V+E)', 'Θ(V²)'],
       ] }],
       chart: { xMax: 64, series: [
-        { name: '邻接表 Θ(V+E)，V=8', expr: '8 + x', color: '--viz-done' },
+        { name: '邻接表 Θ(V+E)，V=8', expr: '8 + n', color: '--viz-done' },
         { name: '邻接矩阵 Θ(V²)=64', expr: '64', color: '--viz-violation' },
       ] },
       derivations: [{ kind: 'space', title: '为什么邻接表是 Θ(V+E)', steps: [
