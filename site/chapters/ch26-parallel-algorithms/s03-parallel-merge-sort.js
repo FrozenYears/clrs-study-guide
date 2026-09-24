@@ -13,7 +13,7 @@ export default {
     mathKit:[
      {title:'P-MERGE-SORT',body:'`spawn` 两个递归调用 + `sync`：work $\\Theta(n\\lg n)$、span $2\\lg n$ 层的递归 + P-MERGE 的 span。'},
      {title:'P-MERGE',body:'取较大段的中位 $x$，在另一段二分找分割点 → 把问题劈成两半递归。'},
-     {title:'结局',body:'P-MERGE 的 work $\\Theta(n)$、span $\\Theta(\\lg^2 n)$ → P-MERGE-SORT 并行度 $\\Theta(n/\\lg^3 n)$。'},
+     {title:'结局',body:'P-MERGE 的 work $\\Theta(n)$、span $\\Theta(\\lg^2 n)$ → P-MERGE-SORT 并行度 $\\Theta(n/\\lg^2 n)$。'},
     ]},
    {type:'intuition',title:'二分分割点：把归并变成"两次二分"',scene:'C 程序 Part 3（n = 1024）',body:[
      '串行归并一个一个比；**P-MERGE** 每次取"较大段"的中位 $x$，在另一段二分出 $x$ 应插入的位置 —— 于是 $x$ 的最终位置也确定了，问题劈成两半。',
@@ -31,7 +31,7 @@ export default {
      {kind:'body',page:781,en:'\u0398(lg 2 n) span overall for P-MERGE . The parallel for loop contains \u0398(n) work, matching the asymptotic work of P-MERGE-AUX and yielding \u0398(n) work overall for P-MERGE .',
       zh:'★★ P-MERGE：span $\\Theta(\\lg^2 n)$、work $\\Theta(n)$。'},
      {kind:'body',page:782,en:'MERGE procedure, is only \u0398(lg n). For P-MERGE-SORT, the parallelism is T 1 (n)/T 1 (n) = \u0398(n lg n)=\u0398(lg 3 n)',
-      zh:'★★ 对照：用串行 MERGE 的 P-NAIVE-MERGE-SORT 并行度只有 $\\Theta(\\lg n)$；P-MERGE-SORT 是 $\\Theta(n/\\lg^3 n)$。'},
+      zh:'★★ 对照：用串行 MERGE 的 P-NAIVE-MERGE-SORT 并行度只有 $\\Theta(\\lg n)$；P-MERGE-SORT 是 $\\Theta(n/\\lg^2 n)$。'},
     ],terms:[{en:'P-MERGE',zh:'并行归并（二分分割点）',page:779},
               {en:'P-MERGE-SORT',zh:'并行归并排序',page:775}]},
    {type:'pseudocode',title:'P-MERGE-SORT：8 行',algo:'P-MERGE-SORT',signature:'P-MERGE-SORT(A, p, r)',page:775,
@@ -45,7 +45,7 @@ export default {
      {n:7,code:'P-MERGE(A, p, q, r)',zh:'★★ 用并行归并（而不是串行 MERGE）。'},
      {n:8,code:'（返回 A[p..r] 已排序）',zh:''}],
     vars:[{name:'p, q, r',meaning:'子数组边界'}],
-    note:'★ 只有把第 7 行换成 P-MERGE，并行度才从 $\\Theta(\\lg n)$ 升到 $\\Theta(n/\\lg^3 n)$。',
+    note:'★ 只有把第 7 行换成 P-MERGE，并行度才从 $\\Theta(\\lg n)$ 升到 $\\Theta(n/\\lg^2 n)$。',
     more:[{algo:'FIND-SPLIT-POINT',subtitle:'FIND-SPLIT-POINT(A, p, r, x) —— 二分找插入位置（p.778，8 行）',signature:'FIND-SPLIT-POINT(A, p, r, x)',page:778,
       lines:[{n:1,code:'low = p    // low end of search range',zh:''},
         {n:2,code:'high = r + 1    // high end of search range',zh:''},
@@ -244,7 +244,7 @@ int main(void)
    {type:'analyze',title:'一本账：三种归并的并行度',claims:[
      {expr:'\\Theta(n)',when:'P-MERGE 的 work',page:781,source:'book'},
      {expr:'\\Theta(\\lg^2 n)',when:'P-MERGE 的 span',page:781,source:'book'},
-     {expr:'\\Theta(n/\\lg^3 n)',when:'P-MERGE-SORT 的并行度（$\\Theta(n\\lg n)/\\Theta(\\lg^3 n)$）',page:782,source:'book'},
+     {expr:'\\Theta(n/\\lg^2 n)',when:'P-MERGE-SORT 的并行度（$\\Theta(n\\lg n)/\\Theta(\\lg^3 n)$）',page:782,source:'book'},
     ],tables:[{caption:'C 程序 Part 3 实测（n = 1024）',rows:[
       ['量','串行 MERGE','P-MERGE'],
       ['比较次数','1023','1271（二分）'],
@@ -254,7 +254,7 @@ int main(void)
       ['写法','work','span','并行度'],
       ['串行 MERGE-SORT','$\\Theta(n\\lg n)$','$\\Theta(n)$','$\\Theta(\\lg n)$'],
       ['P-NAIVE-MERGE-SORT（并行递归 + 串行归并）','$\\Theta(n\\lg n)$','$\\Theta(\\lg^2 n)$','$\\Theta(\\lg n)$'],
-      ['**P-MERGE-SORT**','$\\Theta(n\\lg n)$','$\\Theta(\\lg^3 n)$','$\\Theta(n/\\lg^3 n)$'],
+      ['**P-MERGE-SORT**','$\\Theta(n\\lg n)$','$\\Theta(\\lg^3 n)$','$\\Theta(n/\\lg^2 n)$'],
      ]}],chart:{xMax:1024,series:[
      {name:'P-MERGE 的 span ≈ lg²n',expr:'Math.log2(n) * Math.log2(n) / 4',color:'--viz-done'},
      {name:'串行归并的 span ≈ n',expr:'n',color:'--viz-violation'}]},
@@ -277,7 +277,7 @@ int main(void)
         '★ C 程序 part 3 的实测：P-MERGE 的比较次数 1271 虽比串行 1023 多，但对应的是"更浅的关键路径"。∎']},
      {title:'与并行度结论的连接',en:'MERGE procedure, is only \u0398(lg n). For P-MERGE-SORT, the parallelism is T 1 (n)/T 1 (n) = \u0398(n lg n)=\u0398(lg 3 n)',page:782,
       body:['P-MERGE-SORT：work $\\Theta(n\\lg n)$、span $\\Theta(\\lg^2 n)$（归并）+ $\\Theta(\\lg n)$（递归）→ 总 span $\\Theta(\\lg^3 n)$。',
-        '并行度 $= \\Theta(n/\\lg^3 n)$ —— 比"并行递归 + 串行归并"的 $\\Theta(\\lg n)$ 高出多项式级别。',
+        '并行度 $= \\Theta(n/\\lg^2 n)$ —— 比"并行递归 + 串行归并"的 $\\Theta(\\lg n)$ 高出多项式级别。',
         '★ 这就是把"瓶颈步骤（归并）"也并行化的价值。∎']},
     ],conclusion:'★ 结论：P-MERGE 用"中位 + 二分"把归并的关键路径从 $\\Theta(n)$ 压到 $\\Theta(\\lg^2 n)$；work 不变。',note:''},
    {type:'drill',title:'检验一下',items:[
@@ -291,7 +291,7 @@ int main(void)
       why:'1271 次（串行为 1023 次；搬动都是 n = 1024）。'},
      {kind:'simulate',q:'C 程序里 n=1024 时串行归并的比较次数是多少？',expect:[1023],placeholder:'例如：1024',why:'★ code 段实测：串行归并只需 $n-1 = 1023$ 次比较。'},
      {kind:'judge',q:'P-MERGE 的 work 仍是 $\\Theta(n)$，只是常数更大（多出二分搜索的比较）。',answer:true,why:'★ n=1024 时比较次数由 1023 涨到 1271，搬动次数两者都是 1024 —— 这就是换来小 span 的代价。'},
-     {kind:'single',q:'P-MERGE-SORT 的并行度是多少？',options:['$\\Theta(\\lg n)$：串行归并排序的递归深度','**$\\Theta(n/\\lg^3 n)$**','$\\Theta(n)$','$\\Theta(\\lg^2 n)$'],answer:1,why:'★ analyze 第三条：$\\Theta(n\\lg n) / \\Theta(\\lg^3 n)$，比串行归并版的 $\\Theta(\\lg n)$ 高出好几个量级。'},
+     {kind:'single',q:'P-MERGE-SORT 的并行度是多少？',options:['$\\Theta(\\lg n)$：串行归并排序的递归深度','**$\\Theta(n/\\lg^2 n)$**','$\\Theta(n)$','$\\Theta(\\lg^2 n)$'],answer:1,why:'★ analyze 第三条：$\\Theta(n\\lg n) / \\Theta(\\lg^3 n)$，比串行归并版的 $\\Theta(\\lg n)$ 高出好几个量级。'},
     ],bookExercises:[
      {id:'26.3-1',page:782,star:0,statement:'Explain how to coarsen the base case of P-MERGE .',hint:'粗化就是给递归加一个**长度阈值**：当子问题长度不足 $k$ 时不再 spawn，改用串行合并。 两项代价分开算： 工作不变 —— 每个元素仍然只被搬运常数次，$T_{\\Pi} = \\Theta(n)$； 跨度变成「并行那 $\\lg(n/k)$ 层」加上「最后一次串行合并的 $\\Theta(k)$」，即 $T_{\\infty}(k) = \\Theta(k + \\lg(n/k))$。 所以 $k$ 不能任意大：取 $k$ 让两项平衡（实践中按机器的调度开销选）， 跨度从原来的 $\\Theta(\\lg^2 n)$ 降到 $\\Theta(\\sqrt{\\lg n})$ 量级（把 $k = \\sqrt{\\lg n}$ 代进去看）， 而 spawn 的总次数从 $\\Theta(n)$ 降到 $\\Theta(n/k)$ —— 这才是粗化的收益： **调度开销摊薄，工作不变**。'},
      {id:'26.3-2',page:782,star:0,statement:'Instead of finding a median element in the larger subarray, as P-MERGE does, sup- pose that the merge procedure finds a median of all the elements in the two sorted subarrays using the result of Exercise 9.3-10. Give pseudocode for an efficient parallel merging procedure that uses this median-finding procedure. Analyze your algorithm.',hint:'整体中位数把两个有序段各切成两半：一半元素不大于它、一半不小于它。先由中位数的秩反推出两个切点，把合并拆成左右两个独立子问题并行递归 —— 关键是保证两半规模均衡，才能让跨度递推成立。'},
