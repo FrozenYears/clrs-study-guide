@@ -63,7 +63,7 @@ export default {
  *   part 3  四种匹配器在 200 组随机 (T,P) 上找到完全相同的位移集合；
  *   part 4  KMP 前缀函数 π("ababaca") = (0,0,1,2,3,0,1)（原书 Figure 32.10）；
  *   part 5  最坏情形比较数：T = a^30、P = aaab 时朴素 vs KMP；
- *   part 6  后缀数组："banana" → SA = [5,3,1,0,4,2]，LCP 与暴力一致，倍增 3 轮。
+ *   part 6  后缀数组："banana" → SA = [5,3,1,0,4,2]，LCP 与暴力一致，倍增 2 轮。
  *
  * 编译：gcc -std=c99 -Wall -Wextra -Werror -o sm string_match.c
  */
