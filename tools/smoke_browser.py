@@ -499,6 +499,68 @@ CASES = [
 ]
 
 
+# ---------------------------------------------------------------------------
+# 自动补齐：ch16–ch35 与附录 A–D。
+#
+# 上面的 CASES 是逐章手写的，写完它的时候全书只建到第 15 章，之后的章一直没回填
+# ——于是全书约 2/3 从来没有过站点级浏览器验证（第 42 轮实测：348 条 case 覆盖
+# 章号 [1..15, 99]）。这里从 tools/_levels.json 自动生成兜底路由，避免再欠新账。
+#
+# 兜底路由**不**断言各关的自定义标题（那没法自动知道），只靠三个通用判据：
+# 没有占位页、没有 Uncaught 异常、hygiene() 没抓到渲染印记（未渲染的 ** 粗体、
+# [object …]、原样吐出的 LaTeX 命令）。这三条恰好是「页面悄悄坏掉」的主要形态。
+# ---------------------------------------------------------------------------
+def _auto_cases():
+    import json
+    import os as _os
+
+    here = _os.path.dirname(_os.path.abspath(__file__))
+    path = _os.path.join(here, "_levels.json")
+    if not _os.path.exists(path):
+        print("  (跳过自动补齐：找不到 tools/_levels.json，先跑 node tools/dump_levels.mjs)")
+        return []
+
+    with open(path, encoding="utf-8") as fh:
+        data = json.load(fh)
+
+    covered = {c[0] for c in CASES}
+    out = []
+    for ch in data.get("chapters", []):
+        for lv in ch.get("levels", []):
+            lid = lv.get("id") or ""
+            stages = lv.get("stages") or []
+            if not lid or not stages:
+                continue
+            # 附录的关卡 id 是 chA/chB…，路由要写成 #/appendix/a/…
+            parts = lid.split("/")
+            if len(parts) != 2:
+                continue
+            chp, sec = parts
+            if chp.startswith("ch") and len(chp) == 3 and chp[2].isalpha():
+                base = "#/appendix/%s/%s" % (chp[2].lower(), sec)
+            else:
+                base = "#/%s/%s" % (chp, sec)
+
+            # 取首段与 code 段：能覆盖「整关能否渲染」与「最重的内容段」。
+            picks = [1]
+            for i, st in enumerate(stages, 1):
+                if st.get("type") == "code":
+                    picks.append(i)
+                    break
+            for n in picks:
+                if n > len(stages):
+                    continue
+                route = "%s/s%02d" % (base, n)
+                if route in covered:
+                    continue
+                covered.add(route)
+                out.append((route, [], [NOT_PENDING]))
+    return out
+
+
+CASES += _auto_cases()
+
+
 def dump(url):
     with tempfile.TemporaryDirectory() as td:
         cmd = [
