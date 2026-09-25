@@ -95,7 +95,10 @@ def main():
         else:
             ok += 1
 
-    with open(SUSPECT, "w", encoding="utf-8") as f:
+    # ★ newline="\n" 不能省：Windows 上 Python 的文本模式会把 "\n" 写成 "\r\n"，
+    #   而 .gitattributes 把本文件钉成 LF —— 于是每跑一次图片检查，
+    #   git status 就多一个「已修改」的 data/figures_suspect.json（内容其实没变）。
+    with open(SUSPECT, "w", encoding="utf-8", newline="\n") as f:
         json.dump(suspects, f, ensure_ascii=False, indent=1)
 
     # 重绘总览页，把可疑图标红
