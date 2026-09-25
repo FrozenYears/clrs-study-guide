@@ -130,7 +130,7 @@ python tools/smoke_browser.py 8317     # 需先起本地服务（见第十章）
 
 > ⚠️ 上面的 `python` / `node` 是**通用写法**。本机 Git Bash 的 PATH 是坏的，
 > 实际执行必须用第十章的绝对路径，例如：
-> `C:/Users/FrozenYears/.workbuddy/binaries/python/versions/3.13.12/python.exe tools/05_new_level.py 4 4.4 --register`
+> `python tools/05_new_level.py 4 4.4 --register`
 
 ### ★ 三条硬约束（第 5、6 章踩出来的）
 
@@ -548,8 +548,8 @@ python tools/smoke_browser.py 8317          # 无头 Chrome 逐路由渲染
 |---|---|
 | Git Bash PATH 坏了 | `ls`/`mkdir`/`rm`/`sleep`/`head` 全部 command not found。用 PowerShell 或 Python 绝对路径 |
 | PowerShell 不回显 stdout | 要看输出就用 Python 打印，或写进文件再读 |
-| Python | `C:\Users\FrozenYears\.workbuddy\binaries\python\versions\3.13.12\python.exe` |
-| Node | `C:\Users\FrozenYears\.workbuddy\binaries\node\versions\22.22.2-3\node.exe` |
+| Python | `python` |
+| Node | `node` |
 | Chrome | `C:\Program Files\Google\Chrome\Application\chrome.exe`（无头模式 `--headless=new`） |
 | GCC | `C:\msys64\ucrt64\bin\gcc.exe` |
 | 本地服务 | `cd site && python -m http.server 8317 --bind 127.0.0.1` |

@@ -99,8 +99,8 @@ def kebab(s, maxwords=3):
 
 
 def find_node():
-    for c in (shutil.which("node"), r"D:\nodejs\node.exe",
-              r"C:\Users\FrozenYears\.workbuddy\binaries\node\versions\22.22.2-3\node.exe"):
+    for c in (shutil.which("node"), os.environ.get("NODE_BIN"),
+              r"C:\Program Files\nodejs\node.exe", r"D:\nodejs\node.exe"):
         if c and os.path.exists(c):
             return c
     return None

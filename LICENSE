@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2026 CLRS Quest contributors
+Copyright (c) 2026 clrs-quest contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -23,19 +23,12 @@ SOFTWARE.
 -------------------------------------------------------------------------------
 Scope note (not part of the MIT license text)
 
-The MIT license above covers the **source code** in this repository: the site
-runtime under site/assets/, the level-shell and view modules, the build and
-verification tooling under tools/, and the C reference implementations under
-c/.
+The MIT license above covers the **source code**: the site runtime (site/assets/),
+the level shell and view modules, the tooling (tools/), and the C reference
+implementations (c/).
 
-It does NOT cover the copyrighted book content that this project quotes or
-reproduces. See the "License and copyright scope" section of README.md for the
-full statement. In short:
-
-  * Introduction to Algorithms, Fourth Edition (Cormen, Leiserson, Rivest,
-    Stein; MIT Press, 2022) remains (c) its authors and publisher.
-  * The verbatim English quotations, the reproduced figures, the exercise
-    statements, and the PDF used as pipeline input are NOT licensed to you by
-    this repository.
-  * If you redistribute this project, you are responsible for determining
-    whether your use of that material is permitted in your jurisdiction.
+Introduction to Algorithms, Fourth Edition (Cormen, Leiserson, Rivest, Stein;
+MIT Press, 2022) and the material taken from it -- the PDF, the verbatim English
+quotations, the figures and the exercise statements -- remain the property of
+its authors and publisher. They are included in this repository so that the site
+can be built and reproduced end to end. See README section 6.

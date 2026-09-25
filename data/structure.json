@@ -1,5 +1,5 @@
 {
-  "source_pdf": "Introduction to Algorithms (TOMAS H.CORMEN, CHARLES E.LEISERSON ...) (z-library.sk, 1lib.sk, z-lib.sk).pdf",
+  "source_pdf": "Introduction to Algorithms (TOMAS H.CORMEN, CHARLES E.LEISERSON ...).pdf",
   "total_pdf_pages": 1312,
   "page_offset": 21,
   "note": "printed_page = pdf_index - 21 ; pdf_index is 0-based",

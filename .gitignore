@@ -9,6 +9,9 @@ tools/_*
 # 写关卡时从语料里导出的临时原文摘录（供逐字核对，写完后可随手删）
 data/_*
 
+# 图检工具的可再生产物（下划线前缀；由 04_figures.py / test_figures.py 重新生成）
+data/figs/_*
+
 # 编辑器 / 系统
 .vscode/
 .idea/
