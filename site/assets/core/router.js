@@ -69,6 +69,11 @@ export function parse(hash) {
     return Object.assign(base, { kind: "review" });
   }
 
+  // 学习数据备份：导出 / 导入 / 清空（#/data）
+  if (segments[0] === "data") {
+    return Object.assign(base, { kind: "data" });
+  }
+
   // 算法选择器：按部分横向对照（#/algorithms）
   if (segments[0] === "algorithms") {
     return Object.assign(base, { kind: "algorithms" });

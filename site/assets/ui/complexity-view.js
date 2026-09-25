@@ -18,7 +18,7 @@ import { h } from '../core/dom.js';
 import * as katex from '../core/katex.js';
 import * as router from '../core/router.js';
 import { formatPage, pageRef } from '../core/page.js';
-import { getChapter, listChapterKeys, chapterLabel } from '../chapters.js';
+import { loadChapters, listChapterKeys, chapterLabel } from '../chapters.js';
 
 /** 结论出在「复杂度」段的阶段号（1 基）。 */
 const ANALYZE_STAGE = 7;
@@ -32,10 +32,12 @@ function chapterOrder(ch) {
 /**
  * 收集全站结论。每条保留出处（章 / 关 / 页码 / 是否本站补充）。
  */
-export function collectClaims() {
+export async function collectClaims() {
   const out = [];
+  // 本页是全书聚合：只有打开它才会把 39 章一起拉下来（loadChapters 并发 + 按章去重）。
+  const mods = await loadChapters(listChapterKeys());
   for (const key of listChapterKeys()) {
-    const mod = getChapter(key);
+    const mod = mods.get(key);
     if (!mod || !Array.isArray(mod.levels)) continue;
     for (const lv of mod.levels) {
       for (const st of lv.stages || []) {
@@ -116,8 +118,8 @@ function tableOf(items) {
  * 渲染复杂度对照表。
  * @returns {{node: Node, destroy: Function}}
  */
-export function renderComplexity() {
-  const all = collectClaims();
+export async function renderComplexity() {
+  const all = await collectClaims();
   const allGroups = groupClaims(all);
   const instructorCount = all.filter((c) => c.source === 'instructor').length;
 

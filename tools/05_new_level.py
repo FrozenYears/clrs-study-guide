@@ -39,7 +39,7 @@
     --slug        关卡文件名后缀（默认由节标题推出来，不满意就手动给）
     --title-zh    关卡中文标题（默认留 【TODO】）
     --chapter-title-zh  章中文名（只在新建 chapter.js 时用到）
-    --register    写进 site/assets/chapters.js 并（必要时）新建 chapter.js
+    --register    生成（必要时）并确认 chapter.js；之后跑 dump_levels.mjs 出清单
     --dry-run     只打印，不写文件
 """
 import argparse
@@ -542,31 +542,21 @@ def ensure_chapter_file(slug, ch, chapter_title, title_zh, section_titles, src_r
 
 
 def register(slug, ch, level_key, chapter_title, title_zh):
-    """把一章接进 site/assets/chapters.js。返回 (是否改动, 说明)。"""
-    notes = []
-    reg = open(REGISTRY, encoding="utf-8").read()
-    ch_key = str(ch) if str(ch).isdigit() else str(ch).upper()
-    var = "ch%s" % str(ch).lower()
+    """确认新关卡已接进 chapters/<slug>/chapter.js。返回 (是否改动, 说明)。
 
-    if "from '../chapters/%s/" % slug not in reg:
-        anchor = "const CHAPTERS = new Map(["
-        imp = "import %s from '../chapters/%s/chapter.js';\n" % (var, slug)
-        # 插到最后一个 import 之后
-        last = reg.rfind("\nimport ")
-        end = reg.find("\n", last + 1)
-        reg = reg[:end + 1] + imp + reg[end + 1:]
-        notes.append("已加 import %s" % var)
-
-    if "['%s'" % ch_key not in reg:
-        anchor = "const CHAPTERS = new Map([\n"
-        i = reg.find(anchor)
-        j = reg.find("]);", i)
-        reg = reg[:j] + "  ['%s', %s],\n" % (ch_key, var) + reg[j:]
-        notes.append("已注册章键 '%s'" % ch_key)
-
-    if notes:
-        open(REGISTRY, "w", encoding="utf-8", newline="\n").write(reg)
-    return bool(notes), notes
+    ★ 第 43 轮改：站点不再把 39 章静态 import 进 assets/chapters.js —— 那会让打开
+      首页就把全书 191 个关卡模块、约 5.2 MB JS 一起拉下来。现在站点读的是
+      tools/dump_levels.mjs 生成的 assets/data/manifest.js，所以这里**没有可写的
+      注册表了**：只确认 chapter.js 的 levels 数组里有这一关，清单随后由
+      dump_levels.mjs 重新生成（同一份数据，天然不会与关卡目录漂移）。
+    """
+    path = os.path.join(CH_DIR, slug, "chapter.js")
+    if not os.path.exists(path):
+        return False, ["%s 还不存在，无法确认" % os.path.relpath(path, ROOT)]
+    text = open(path, encoding="utf-8").read()
+    if ("'./%s-" % level_key) not in text and ('"./%s-' % level_key) not in text:
+        return False, ["%s 还没 import 进 chapter.js，请手动补上" % level_key]
+    return False, ["%s 已在 chapter.js 里（清单由 node tools/dump_levels.mjs 生成）" % level_key]
 
 
 # ---------------------------------------------------------------------------
@@ -665,13 +655,15 @@ def main():
             with open(p, "w", encoding="utf-8", newline="\n") as fh:
                 fh.write(ch_text)
             print("已新建 %s" % os.path.relpath(p, ROOT))
-        changed, notes = register(slug_dir, chapter["number"], key,
-                                  chapter["title"], args.chapter_title_zh)
-        print("注册      %s" % ("；".join(notes) if changed else "已注册，无需改动"))
+        _changed, notes = register(slug_dir, chapter["number"], key,
+                                   chapter["title"], args.chapter_title_zh)
+        print("注册      %s" % "；".join(notes or ["已注册，无需改动"]))
+        print("下一步    node tools/dump_levels.mjs            # 重新生成站点章节清单")
+        print("          node tools/dump_levels.mjs --check    # 或只校验清单是否最新")
         if not created:
             print("注意      %s 已存在，请手动确认 levels 数组里有 %s" % (os.path.relpath(p, ROOT), key))
     else:
-        print("未注册。加 --register 可自动写进 site/assets/chapters.js")
+        print("未注册。加 --register 可生成并确认 chapter.js")
 
     # 语法检查放在最后，且**检查整个 site**：chapter.js 是注册时才写出来的，
     # 只查关卡目录会漏掉它（漏过一次，产出的 chapter.js 里有个 `#` 注释，

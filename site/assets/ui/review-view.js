@@ -18,7 +18,7 @@ import { h } from '../core/dom.js';
 import * as katex from '../core/katex.js';
 import * as router from '../core/router.js';
 import * as store from '../core/store.js';
-import { buildQueue, sessionStats } from '../core/review-queue.js';
+import { buildQueue, resolveLocation, sessionStats } from '../core/review-queue.js';
 import { createQuizItem } from './quiz-item.js';
 
 /** 一次会话最多问几题（见文件头 ①）。 */
@@ -76,8 +76,11 @@ export function renderReview() {
     const all = store.getReviewAll();
     const ids = Object.keys(all);
     const dueIds = store.dueReviews();
-    const queue = buildQueue(dueIds.map((id) => Object.assign({ id }, all[id])), Date.now(), SESSION_LIMIT);
-    const stats = sessionStats(queue);
+    // 到期的题先只读清单（同步、零下载）筛一遍：解不出的记录（关卡已删、题号越界）
+    // 直接不排，页面读数才不会把不存在的题算成「到期」。真正的题目对象要等到
+    // 点「开始复习」才按需下载涉及的那几章 —— 数一数到期题不该把全书拉下来。
+    const known = dueIds.filter((id) => resolveLocation(id));
+    const stats = sessionStats(known.map((id) => ({ box: Number.isFinite(all[id].box) ? all[id].box : 1 })));
 
     if (!ids.length) {
       body.appendChild(h('div', { class: 'callout' },
@@ -90,7 +93,7 @@ export function renderReview() {
       return;
     }
 
-    if (!queue.length) {
+    if (!known.length) {
       // 有记录但都还没到期：把「最近一次什么时候该复习」如实告知。
       const next = ids
         .map((id) => all[id] && all[id].due)
@@ -108,16 +111,22 @@ export function renderReview() {
 
     body.appendChild(h('div', { class: 'rev-summary' },
       h('p', { class: 'rev-summary__lead' },
-        '现在有 ', h('b', null, String(queue.length)), ' 道题到期',
-        queue.length < dueIds.length
-          ? '（另有 ' + (dueIds.length - queue.length) + ' 道排在后面）'
+        '现在有 ', h('b', null, String(known.length)), ' 道题到期',
+        known.length < dueIds.length
+          ? '（另有 ' + (dueIds.length - known.length) + ' 道排在后面）'
           : '',
         stats.weak ? '，其中 ' + stats.weak + ' 道是「刚答错 / 不熟」的。' : '。'),
       h('p', { class: 'card__meta' },
         '答对 → 下次隔得更久；答错 → 5 分钟后再来一次。复习不影响闯关进度与测验成绩。')));
 
-    const startBtn = h('button', { class: 'btn btn--primary', type: 'button' }, '开始复习（' + queue.length + ' 题）');
-    startBtn.addEventListener('click', () => renderSession(queue));
+    const startBtn = h('button', { class: 'btn btn--primary', type: 'button' }, '开始复习（' + known.length + ' 题）');
+    startBtn.addEventListener('click', async () => {
+      startBtn.disabled = true;
+      startBtn.textContent = '正在加载题目…';
+      // 只下载队列涉及的那几章；loadChapter 内部按章去重并缓存，同一章多题只下一次。
+      const queue = await buildQueue(known.map((id) => Object.assign({ id }, all[id])), Date.now(), SESSION_LIMIT);
+      renderSession(queue);
+    });
     body.appendChild(h('div', { class: 'row' }, startBtn,
       h('a', { class: 'btn btn--ghost', href: '#/' }, '先不复习')));
   }

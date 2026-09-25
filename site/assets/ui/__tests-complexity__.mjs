@@ -45,7 +45,7 @@ ok('3 在 21 之前', two[0].key === '3' && two[1].key === '21', two.map((g) => 
 
 /* ---------- 3 全站取数 ---------- */
 console.log('\n[3] 全站取数：可溯源字段齐全');
-const all = collectClaims();
+const all = await collectClaims();
 ok('取到结论（不是空数组）', all.length > 0, '得到 ' + all.length + ' 条');
 const missingExpr = all.filter((c) => !c.expr);
 ok('每条都有公式', missingExpr.length === 0, missingExpr.length + ' 条缺公式');

@@ -24,7 +24,11 @@ PORT = sys.argv[1] if len(sys.argv) > 1 else "8317"
 BASE = f"http://127.0.0.1:{PORT}/index.html"
 
 # (路由, 必须出现的关键片段, 不允许出现的片段)
-NOT_PENDING = "该章的关卡文件还没写"
+# ★ 第 43 轮改：原先未建章节会渲染一页「该章的关卡文件还没写」的占位，
+#   现在路由统一走 renderMissing（章号不在清单里）。判据串必须跟着换，
+#   否则这个串在新站点里根本不存在，全部 NOT_PENDING 断言会退化
+#   成一条恒真的废话。
+NOT_PENDING = "这一章还没有内容"
 CASES = [
     # 首页 = 书的目录 + 进度层（2026-09 编辑部风改版：卡片宫格 -> 目录条目）
     # ★ 第 32 轮补建第 1 章后，39 章全部建成，目录里不再有「待建」标记，
@@ -96,7 +100,7 @@ CASES = [
     ("#/ch02/s01/s02", ["整理一手扑克牌", "左手", "桌上"], [NOT_PENDING]),
     ("#/ch02/s01/s03", ["循环不变量", "loop invariant", 'data-kind="source"',
                         # 第 37 轮：原书插图上站后，这一段的段尾要出现 Figure 2.2 的切图
-                        'class="book-fig"', "figs/fig-2-2.png", "原书印刷页 22"], [NOT_PENDING]),
+                        'class="book-fig"', "figs/fig-2-2.webp", "原书印刷页 22"], [NOT_PENDING]),
     ("#/ch02/s01/s04", ["for i = 2 to n", "pc-line", "变量表"], [NOT_PENDING]),
     ("#/ch02/s01/s05", ["viz-stage", "viz-array", "帧 0", "is-active", "Σtᵢ"], [NOT_PENDING]),
     ("#/ch02/s01/s06", ["insertion_sort.c", "for (int i = 1; i &lt; n; i++)", "伪代码 ↔ C 对应表"], [NOT_PENDING]),
@@ -378,7 +382,7 @@ CASES = [
     # ---- 12.2 查询 BST（九段式）----
     ("#/ch12/s02/s01", ["查询"], [NOT_PENDING, "【TODO"]),
     ("#/ch12/s02/s03", ['data-kind="source"', "SUCCESSOR",
-                        'class="book-fig"', "figs/fig-12-2.png"], [NOT_PENDING, "【TODO"]),
+                        'class="book-fig"', "figs/fig-12-2.webp"], [NOT_PENDING, "【TODO"]),
     ("#/ch12/s02/s04", ["TREE-SEARCH(x, k)", "pc-line"], [NOT_PENDING, "【TODO"]),
     ("#/ch12/s02/s05", ["viz-stage", "viz-tree"], [NOT_PENDING, "【TODO"]),
     ("#/ch12/s02/s06", ["bst_query.c", "tree_search"], [NOT_PENDING, "【TODO"]),
@@ -387,8 +391,8 @@ CASES = [
     ("#/ch12/s02/s09", ["检验一下", "12.2-1"], [NOT_PENDING, "【TODO"]),
     # 第 37 轮新增：红黑树插入的三种情形只有原书 Figure 13.4 / 13.5 / 13.6 说得清，
     # 这一路由专门盯住「段尾把引用的原书切图挂出来了」（插图上站前的 coverage 空白点）。
-    ("#/ch13/s03/s09", ["13.3-1", 'class="book-fig"', "figs/fig-13-4.png",
-                        "figs/fig-13-5.png", "figs/fig-13-6.png"], [NOT_PENDING]),
+    ("#/ch13/s03/s09", ["13.3-1", 'class="book-fig"', "figs/fig-13-4.webp",
+                        "figs/fig-13-5.webp", "figs/fig-13-6.webp"], [NOT_PENDING]),
 
     # ---- 12.3 插入与删除（九段式）----
     ("#/ch12/s03/s01", ["插入与删除"], [NOT_PENDING, "【TODO"]),
@@ -493,7 +497,9 @@ CASES = [
     # 功能验证页：动画管线 + 测验交互 + 进度持久化（不只是「能渲染」，而是「真能跑」）
     ("_dev/dbg-func.html", ["FUNC_ALL_OK"], []),
     # 逐阶段渲染自检页
-    ("_dev/dbg-stages.html", ["ALL_STAGES_OK"], []),
+    # _dev 页是内部自检页：既要在本地能用（ALL_STAGES_OK），又必须带 noindex
+    # 标记（不参与对外发布面、不被搜索引擎收录）。
+    ("_dev/dbg-stages.html", ["ALL_STAGES_OK", "noindex"], []),
     # 树引擎逐帧自检页（2.3 的 Figure 2.4 / 2.5 两组序列）
     ("_dev/dbg-tree.html", ["TREE_ALL_OK"], []),
 ]

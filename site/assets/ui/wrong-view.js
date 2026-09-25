@@ -12,7 +12,7 @@ import { h } from '../core/dom.js';
 import * as katex from '../core/katex.js';
 import * as store from '../core/store.js';
 import * as router from '../core/router.js';
-import { getChapter } from '../chapters.js';
+import { chapterOf, loadChapters } from '../chapters.js';
 
 const KIND_LABEL = { judge: '判断题', single: '单选题', simulate: '手动模拟' };
 
@@ -28,9 +28,8 @@ function qNo(id) {
   return m ? Number(m[1]) : 0;
 }
 
-/** 「第 2 章 · Getting Started（起步） · 2.1 插入排序」 */
-function levelLabel(entry) {
-  const mod = getChapter(entry.ch);
+/** 「第 2 章 · Getting Started（起步） · 2.1 插入排序」；mod 是已加载的章节模块。 */
+function levelLabel(entry, mod) {
   const lv = mod && (mod.levels || []).find((l) => l.key === entry.sec);
   const chName = mod
     ? (mod.chSpan || '第 ' + mod.ch + ' 章')
@@ -68,7 +67,7 @@ function pickedText(entry) {
  * @param {{onMutate?: Function}} opts 移除/清空之后调它，让外壳重新渲染本页
  * @returns {{node: Node, destroy: Function}}
  */
-export function renderWrong(opts = {}) {
+export async function renderWrong(opts = {}) {
   const onMutate = typeof opts.onMutate === 'function' ? opts.onMutate : () => {};
   const entries = store.getWrong();
 
@@ -98,6 +97,19 @@ export function renderWrong(opts = {}) {
       h('a', { class: 'btn btn--primary', href: '#/' }, '← 回到学习地图')));
     return { node: h('div', { class: 'stack' }, head, body), destroy() {} };
   }
+
+  // 只加载「错题里真的出现过」的那几章 —— 打开错题本不该把全书 191 个关卡文件拉下来。
+  // 章号先经清单归一化（存档里是 '2'/'A'，手工改过的存档可能是 'ch02'）。
+  const keys = [];
+  for (const w of entries) {
+    const m = chapterOf(w.ch);
+    if (m && keys.indexOf(m.ch) < 0) keys.push(m.ch);
+  }
+  const mods = await loadChapters(keys);
+  const modOf = (ch) => {
+    const m = chapterOf(ch);
+    return m ? (mods.get(m.ch) || null) : null;
+  };
 
   /* ---------------- 引言 + 清空 ---------------- */
   const stat = h('p', { class: 'wb-lede' },
@@ -135,7 +147,7 @@ export function renderWrong(opts = {}) {
     const drillUrl = router.buildUrl(g.sample.ch, g.sample.sec, 9);
     body.appendChild(h('section', { class: 'wb-group' },
       h('div', { class: 'wb-group__head' },
-        h('h2', { class: 'wb-group__title' }, levelLabel(g.sample)),
+        h('h2', { class: 'wb-group__title' }, levelLabel(g.sample, modOf(g.sample.ch))),
         h('span', { class: 'wb-group__count' }, g.items.length + ' 道'),
         h('span', { class: 'spacer' }),
         h('a', { class: 'btn btn--sm', href: drillUrl }, '重做这一关的测验 →')

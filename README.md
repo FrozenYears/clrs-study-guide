@@ -101,6 +101,8 @@ http://127.0.0.1:8317/_dev/shot.html?t=light&r=%23/ch02/s01/s03&w=375&h=2000
 
 ### 站点功能自检页（`site/_dev/`）
 
+> `_dev/` 是内部自检页，已加 `noindex, nofollow` 且被 `site/robots.txt` 排除，不参与对外发布面。
+
 | 页面 | 用途 |
 |---|---|
 | `smoke.html` | 路由 / 存档 / 步进引擎 / 数学渲染联通性 |

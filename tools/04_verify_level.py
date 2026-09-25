@@ -42,6 +42,10 @@ C_DIR = "c"
 ALGO_DIR = "site/assets/algorithms"
 REGISTRY_JS = "site/assets/ui/registry.js"
 CHAPTERS_JS = "site/assets/chapters.js"
+# 章节清单（由 dump_levels.mjs 生成）：slug ↔ 章号 的权威映射。
+# ★ 第 43 轮改：chapters.js 不再静态 import 每一章（改成按章 import()），
+#   所以「哪一章注册过」不能再去那个文件里找字符串，得问这份清单。
+MANIFEST_JS = "site/assets/data/manifest.js"
 
 STAGE_ORDER = [
     "map", "intuition", "source", "pseudocode",
@@ -566,14 +570,33 @@ def verify():
         for lv in chn["levels"]:
             all_ids.add(lv["id"])
 
-    chapters_js = open(CHAPTERS_JS, encoding="utf-8").read() if os.path.exists(CHAPTERS_JS) else ""
+    # ★ 第 43 轮：站点的 chapters.js 改成「清单 + 按章 import()」，不再静态 import
+    #   每一章。所以「这一章注册过没有」不能再去那个文件里找字符串，改问生成的清单
+    #   （tools/dump_levels.mjs 与 _levels.json 同源产出，天然不会漂移）。
+    if not os.path.exists(MANIFEST_JS):
+        err("找不到 %s —— 请先跑 `node tools/dump_levels.mjs`" % MANIFEST_JS)
+        return
+    manifest_js = open(MANIFEST_JS, encoding="utf-8").read()
+    registered_slugs = set(re.findall(r'"slug": "([^"]+)"', manifest_js))
+    registered_keys = set(re.findall(r'^  "([^"]+)": \{', manifest_js, re.M))
+
+    def ch_registered(seg):
+        """路由片段（ch02 / 2 / appendix / A）是否指向一个已注册的章。"""
+        s = str(seg)
+        if s == "appendix":
+            return True
+        s = re.sub(r"^ch", "", s, flags=re.I)
+        if s.isdigit():
+            return str(int(s)) in registered_keys
+        return s.upper() in registered_keys
 
     n_quotes = 0
     n_ex = 0
     for chn in data["chapters"]:
         slug = chn["slug"]
-        if slug not in chapters_js:
-            err("章 %s 的 chapter.js 没有被 site/assets/chapters.js 注册" % slug)
+        if slug not in registered_slugs:
+            err("章 %s 的 chapter.js 没有被 site/assets/data/manifest.js 收录"
+                "（跑 node tools/dump_levels.mjs 重新生成清单）" % slug)
 
         for lv in chn["levels"]:
             tag = "%s/%s" % (slug, lv["key"])
@@ -826,7 +849,7 @@ def verify():
                                     % (path, u, sorted(all_ids)))
                 else:
                     # 章级链接：#/ch02 或 #/
-                    if parts[0] not in ("",) and parts[0] not in chapters_js:
+                    if parts[0] not in ("",) and not ch_registered(parts[0]):
                         warn("%s 的章节链接 %s 指向未注册的章" % (path, u))
 
             # --- 10. viz / algorithm 已注册 ---

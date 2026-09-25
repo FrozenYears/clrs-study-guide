@@ -23,7 +23,7 @@ function ok(name, cond, extra) {
 
 /* ---------- 1 只收有算法名的关 ---------- */
 console.log('\n[1] 只收有算法名的关');
-const all = collectAlgorithms();
+const all = await collectAlgorithms();
 ok('取到条目（不是空数组）', all.length > 0, '得到 ' + all.length + ' 条');
 const noName = all.filter((a) => !a.algo || !a.algo.trim());
 ok('每条都有算法名', noName.length === 0, noName.length + ' 条缺名');

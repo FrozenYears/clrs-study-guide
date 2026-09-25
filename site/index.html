@@ -28,6 +28,7 @@
           <a class="btn btn--ghost btn--sm" href="#/complexity">复杂度</a>
           <a class="btn btn--ghost btn--sm" href="#/pseudocode">伪代码</a>
           <a class="btn btn--ghost btn--sm" href="#/algorithms">算法</a>
+          <a class="btn btn--ghost btn--sm" href="#/data">备份</a>
         </nav>
         <button id="theme-toggle" class="btn btn--ghost btn--sm" type="button" aria-label="切换主题">
           主题：自动
@@ -48,7 +49,7 @@
       import * as store from "./assets/core/store.js";
       import * as router from "./assets/core/router.js";
       import * as katex from "./assets/core/katex.js";
-      import { getChapter } from "./assets/chapters.js";
+      import { chapterOf, loadChapter } from "./assets/chapters.js";
       import { renderChapter } from "./assets/ui/chapter-view.js";
       import { renderWrong } from "./assets/ui/wrong-view.js";
       import { renderGlossary } from "./assets/ui/glossary-view.js";
@@ -57,6 +58,7 @@
       import { renderBoss } from "./assets/ui/boss-view.js";
       import { renderPseudocode } from "./assets/ui/pseudocode-view.js";
       import { renderAlgorithms } from "./assets/ui/algorithms-view.js";
+      import { renderData } from "./assets/ui/data-view.js";
       import { STRUCTURE, APPENDICES, TOTAL_LEVELS, TOTAL_CHAPTERS, allChapters } from "./assets/data/structure.js";
 
       /* ----------------------------------------------------------------------
@@ -69,9 +71,14 @@
        * 进度层：全部读自本机存档（store），没有记录就是 0。
        * 只统计「已经建好关卡文件」的章 —— 没建的章不假装有进度。
        * ==================================================================== */
-      function builtLevels(n) {
-        const mod = getChapter(n);
-        return mod && Array.isArray(mod.levels) ? mod.levels : [];
+      /**
+       * 一章的关卡清单条目。★ 只读 assets/data/manifest.js（约 180 KB），
+       * 不再为了画目录去 import 每一章的 chapter.js —— 那会把全书 191 个关卡文件
+       * 一起拉下来。阶段正文要等真正打开某一关时才加载（见 renderRoute）。
+       */
+      function levelsOf(n) {
+        const m = chapterOf(n);
+        return m && Array.isArray(m.levels) ? m.levels : [];
       }
 
       function levelStages(n, key) {
@@ -80,7 +87,7 @@
 
       /** 一章的进度：已完成关数 / 已开始未完成关数 / 已过阶段数 */
       function chapterProgress(ch) {
-        const built = builtLevels(ch.n);
+        const built = levelsOf(ch.n);
         let done = 0, started = 0, stages = 0;
         built.forEach((lv) => {
           const s = levelStages(ch.n, lv.key);
@@ -105,7 +112,7 @@
       /** 下一步该学哪一关：第一个「已建但没做完」的关卡 */
       function nextUp() {
         for (const ch of allChapters()) {
-          for (const lv of builtLevels(ch.n)) {
+          for (const lv of levelsOf(ch.n)) {
             if (!store.chapterDone(ch.n, lv.key)) {
               return { ch, lv, stages: levelStages(ch.n, lv.key) };
             }
@@ -116,7 +123,7 @@
 
       /** 每关一格的进度刻度（无背景轨道，不是进度条） */
       function ticks(ch) {
-        const built = builtLevels(ch.n);
+        const built = levelsOf(ch.n);
         const cells = [];
         for (let i = 0; i < ch.count; i++) {
           const lv = built[i];
@@ -220,7 +227,7 @@
       function renderResume() {
         const nx = nextUp();
         if (!nx) {
-          const built = allChapters().filter((ch) => builtLevels(ch.n).length);
+          const built = allChapters().filter((ch) => levelsOf(ch.n).length);
           return h("section", { class: "resume" },
             h("span", { class: "resume__no" }, "✓"),
             h("div", null,
@@ -284,7 +291,7 @@
         return h("nav", { class: "toc", "aria-label": "全书目录" },
           ...STRUCTURE.map((part) => {
             const levels = part.chapters.reduce((a, c) => a + c.count, 0);
-            const builtCount = part.chapters.filter((ch) => builtLevels(ch.n).length).length;
+            const builtCount = part.chapters.filter((ch) => levelsOf(ch.n).length).length;
             const doneCount = part.chapters.reduce((a, ch) => a + chapterProgress(ch).done, 0);
             return h("section", { class: "toc__part" },
               h("div", { class: "toc__part-head" },
@@ -345,32 +352,40 @@
         );
       }
 
-      /* ---------------- 渲染：章节尚未建设时的占位 ---------------- */
-      function renderPending(route) {
-        const label = route.isAppendix
-          ? `附录 ${String(route.ch).toUpperCase()}`
-          : `第 ${route.chNum} 章`;
-        const found = allChapters().find(
-          (c) => String(c.n).toUpperCase() === String(route.isAppendix ? route.ch : route.chNum).toUpperCase()
-        );
-        return h("div", { class: "pending" },
-          h("div", { class: "pending__eyebrow" }, "Not yet written"),
-          h("h1", { class: "pending__title" }, label, found ? ` ${found.zh}` : ""),
-          found ? h("p", { class: "pending__en" }, found.title) : null,
-          h("p", { class: "pending__note" },
-            "该章的关卡文件还没写。请回到学习地图，查看当前已建章节与关卡。"),
-          h("p", { class: "pending__route" }, "当前路由：", route.raw || "#/"),
-          h("div", { class: "pending__actions" },
-            h("a", { class: "btn btn--primary", href: "#/ch02/s01/s01" },
-              "去看已完成的关卡：2.1 插入排序"),
-            h("a", { class: "btn btn--ghost", href: "#/" }, "回到目录")
-          )
+      /* ---------------- 首屏骨架（渲染报头/目录之前先占住版面） ---------------- */
+      function routeLabel(route) {
+        if (route.isAppendix) {
+          const m = chapterOf(route.ch);
+          return "附录 " + String(route.ch).toUpperCase() + (m ? " · " + m.titleZh : "");
+        }
+        const m = chapterOf(route.chNum != null ? route.chNum : route.ch);
+        return "第 " + route.chNum + " 章" + (m ? " · " + m.titleZh : "");
+      }
+
+      /** 加载章节内容期间先渲染的骨架：报头/目录随路由不同，免得整块空白。 */
+      function homeNode(isHome) {
+        return h("div", null, isHome ? renderMap() : renderMasthead());
+      }
+
+      /** 章号不在清单里（章节文件缺失 / 手工敲错地址）时的说明页。 */
+      function renderMissing(msg) {
+        return h("div", { class: "stack" },
+          h("header", { class: "lv-header" },
+            h("nav", { class: "lv-crumbs" }, h("a", { href: "#/" }, "学习地图"), " / 未找到"),
+            h("div", { class: "lv-heading" },
+              h("span", { class: "lv-heading__no" }, "?"))),
+          h("div", { class: "callout callout--warn" },
+            h("strong", null, "这一章还没有内容。"),
+            h("span", null, " ", msg || "该章号不在站点清单里。")),
+          h("div", { class: "row" },
+            h("a", { class: "btn btn--primary", href: "#/" }, "← 回到学习地图"))
         );
       }
 
       /* ---------------- 路由驱动渲染 ---------------- */
       const main = $("#main");
       let currentView = null; // 持有上一个视图，用于清理定时器与监听
+      let routeSeq = 0;       // 渲染序号：异步加载期间用户又切了路由，旧的那趟就作废
 
       function renderHome() {
         main.appendChild(renderMap());
@@ -388,48 +403,68 @@
        * 渲染一条路由。
        * ★ 必须是具名函数：错题本里「移除一条」之后页面当场就短了，得就地重画，
        *   不能等 hash 变化（hash 没变，onChange 不会再触发）。
+       * ★ 章节内容（chapters/<slug>/chapter.js，几十到几百 KB）按需加载：
+       *   打开首页或某一关只下载必要的那几章，聚合页（术语表/复杂度/伪代码/
+       *   算法/错题本）打开时才按需加载它们要遍历的章节。
        */
-      function renderRoute(route) {
+      async function renderRoute(route) {
+        const seq = ++routeSeq;
         teardownView();
-        main.replaceChildren();
+        main.replaceChildren(homeNode(route.kind === "home"));
 
-        if (route.kind === "wrong") {
-          currentView = renderWrong({ onMutate: () => renderRoute(route) });
-          main.appendChild(currentView.node);
-        } else if (route.kind === "glossary") {
-          currentView = renderGlossary();
-          main.appendChild(currentView.node);
-        } else if (route.kind === "complexity") {
-          currentView = renderComplexity();
-          main.appendChild(currentView.node);
-        } else if (route.kind === "pseudocode") {
-          currentView = renderPseudocode();
-          main.appendChild(currentView.node);
-        } else if (route.kind === "review") {
-          currentView = renderReview();
-          main.appendChild(currentView.node);
-        } else if (route.kind === "algorithms") {
-          currentView = renderAlgorithms();
-          main.appendChild(currentView.node);
-        } else if (route.kind === "chapter" || route.kind === "appendix") {
-          const chapter = getChapter(route.ch);
-          if (chapter && route.section === 'boss') {
-            // 章末 Boss 区（#/ch03/boss）：section 解析出来是 boss，不是关卡，
-            // 必须在 renderChapter 之前拦下，否则会显示「这个关卡还没有内容」。
-            currentView = renderBoss(chapter);
-            main.appendChild(currentView.node);
-          } else if (chapter) {
-            currentView = renderChapter(chapter, route);
-            main.appendChild(currentView.node);
+        try {
+          if (route.kind === "wrong") {
+            currentView = await renderWrong({ onMutate: () => renderRoute(route) });
+          } else if (route.kind === "review") {
+            currentView = renderReview();
+          } else if (route.kind === "glossary") {
+            currentView = await renderGlossary();
+          } else if (route.kind === "complexity") {
+            currentView = await renderComplexity();
+          } else if (route.kind === "pseudocode") {
+            currentView = await renderPseudocode();
+          } else if (route.kind === "algorithms") {
+            currentView = await renderAlgorithms();
+          } else if (route.kind === "data") {
+            currentView = renderData({
+              // 只刷新顶栏的进度 / 错题 / 复习读数；重建整页会把导入结果提示抹掉。
+              onRefresh: () => { refreshHeaderProgress(); refreshWrongLink(); refreshReviewLink(); },
+            });
+          } else if (route.kind === "chapter" || route.kind === "appendix") {
+            // route.ch 是路由片段（'02' / 'a'），loadChapter 自己会归一化。
+            const chapter = await loadChapter(route.ch);
+            if (seq !== routeSeq) return; // 等待期间用户又点了别的路由，这一趟作废
+            if (chapter && route.section === 'boss') {
+              // 章末 Boss 区（#/ch03/boss）：section 解析出来是 boss，不是关卡，
+              // 必须在 renderChapter 之前拦下，否则会显示「这个关卡还没有内容」。
+              currentView = renderBoss(chapter);
+            } else if (chapter) {
+              currentView = renderChapter(chapter, route);
+            } else {
+              // ★ renderMissing 返回的是**元素**，不是 {node, destroy} 那种视图对象。
+              //   这里必须就地塞进去并把 currentView 置空 —— 直接赋值给 currentView
+              //   会让末尾那句 replaceChildren(currentView.node) 拿到 undefined 而抛错，
+              //   页面就只剩骨架（ch99 冒烟就是这么暴露出来的）。
+              currentView = null;
+              main.replaceChildren(renderMissing(routeLabel(route) + " 不在站点清单里。"));
+            }
+          } else if (route.kind === "home") {
+            currentView = null;
+            main.replaceChildren(renderMap());
           } else {
-            main.appendChild(renderPending(route));
+            currentView = null;
+            main.replaceChildren(router.view404());
           }
-        } else if (route.kind === "home") {
-          main.appendChild(renderMap());
-        } else {
-          main.appendChild(router.view404());
+        } catch (e) {
+          console.error("[route] 渲染失败：", e);
+          if (seq === routeSeq) {
+            currentView = null;
+            main.replaceChildren(renderMissing(e && e.message ? e.message : String(e)));
+          }
         }
 
+        if (seq !== routeSeq) return;
+        if (currentView) main.replaceChildren(currentView.node);
         refreshHeaderProgress();
         refreshWrongLink();
         refreshReviewLink();

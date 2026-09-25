@@ -1,6 +1,9 @@
 # 《算法导论》交互式学习站 · 项目进度（Done / Todo）
 
-> 截至 2026-09-24，第 42 轮。工作区：HEAD = 本轮 9 个提交（2 处内容修复 + 冒烟覆盖面修复 + 文档修正）；闸门、10 套 JS 测试、冒烟（561/561）与**辅助面功能级验证**全绿。
+> 截至 2026-09-25，第 43 轮。本轮完成交接文档 §四 列出的**四项收尾优化**：
+> ① 按章懒加载；② 进度导出/导入；③ `_dev/` 下线（noindex + robots.txt）；④ 插图转 WebP。
+> 闸门 0 ERROR / 0 WARN / 0 TODO、10 套 JS 测试（456 项）全绿、269/269 语法通过。
+> **第 42 轮**（2026-09-24）的结论仍成立：9 个提交（2 处内容修复 + 冒烟覆盖面修复 + 文档修正），561/561 冒烟与辅助面功能级验证全绿。
 >
 > ⚠ **接手先跑 `git log --oneline -20` 与 `git status`** —— 这份文档与历轮交接都可能滞后于磁盘。
 >
@@ -26,6 +29,9 @@
 | JS 算法生成器 | 31 个，断言测试通过 |
 | 可视化引擎 | 8 个：array / tree / heap / hash-table / linked-list / matrix / matrix-product / growth |
 | 语料 | 1312 页 PDF → 1312 页修复文本 → 14273 个结构块 + 233 张插图 PNG |
+| 站点插图 | `site/figs/` **108 张无损 WebP（3.05 MB，原 PNG 6.4 MB；像素零偏差）** |
+| 章节加载 | 首页只读 `assets/data/manifest.js`（约 180 KB）；关卡正文按章 `import()`，打开一关只下 1 个 `chapter.js` |
+| 学习数据 | 本机 `localStorage` + **`#/data` 备份页**（导出 / 导入 / 清空，离线、无依赖） |
 | 约束 | 零构建、零 npm 依赖、零网络资源、离线可用 |
 
 ---
@@ -41,6 +47,15 @@
   - 单选题**位置偏置**由渲染层确定性洗牌解决、长度偏置降到 32.6%（第 37 轮）；
   - 原书插图**上站**（只发布被引用到的 108 张，第 37 轮）；
   - 题干 PDF 抽取**伪影归零**（第 38 轮，改上游 `02_repair.py`）。
+
+### 任务 C · 第 43 轮四项收尾优化 —— ✅ 全部完成
+
+| 项目 | 做法 | 实测 |
+|---|---|---|
+| **按章懒加载** | `chapters.js` 拆成「清单层 + 内容层」：清单由 `tools/dump_levels.mjs` 生成 `assets/data/manifest.js`（39 章 / 152 关的标题、节号、页码、阶段类型）；章节正文改成 `loadChapter()` 动态 `import()` | 首页零关卡模块下载；打开一关只下 1 个 `chapter.js`；聚合页各章各下一次；重复加载走缓存（`tools/_probe/r43_lazyload.mjs` 15 项断言全过） |
+| **进度导出/导入** | `store.js` 新增 `exportState/exportJSON/validateBackup/importState/clearAll`；新增 `#/data` 备份页（导出下载、复制、选文件导入、合并/替换、清空） | `tools/_probe/r43_backup.mjs` 40 项断言全过：导出可往返、坏文件被拦且不改存档、合并取并集且测验分取较高、替换整份采用、清空保留主题偏好 |
+| **`_dev/` 下线** | 8 个 `_dev/*.html` 加 `noindex,nofollow`；新增 `site/robots.txt`（`Disallow: /_dev/`） | 冒烟断言 `_dev/dbg-stages.html` 同时有 `ALL_STAGES_OK` 与 `noindex` |
+| **插图转 WebP** | `tools/12_publish_figs.py` 改为无损 WebP 转码（lossy 仅省 11.6% 且 36 张反而更大，故取 lossless） | `site/figs/` 108 张 6.4 MB → **3.05 MB**；逐张解码后 RGB 像素与原 PNG **零偏差**；清单 0 处 `.png` |
 
 ### 任务 A · 用户体验辅助面 —— ✅ 七项全部完成并提交
 
@@ -105,7 +120,12 @@
 
 本轮两处真错都出在这里。一次性扫描脚本 `tools/_probe/r44_sweep.py` **不进版本库**（`tools/_*` 被 `.gitignore` 排除），下次接手需重写。
 
-### 3. 浏览器冒烟覆盖面 —— 已在第 42 轮修好并跑全绿
+### 3. 浏览器冒烟覆盖面 —— 已在第 42 轮修好并跑全绿（第 43 轮加了 noindex 断言）
+
+> ★ 第 43 轮踩坑：第一次跑 smoke 时站点服务已被别的进程关掉，结果是 **561 条路由全部 FAIL**
+> （DOM 全是 Chrome 的错误页，连静态报头文字都没有）。看 DOM 字节数就能一眼分辨：
+> 正常首页约 17 KB，错误页约 43 KB。跑 smoke 前务必确认服务在跑，且要用**受监督服务**
+> 起（带 timeout 的普通命令会中途被杀）。
 
 `tools/smoke_browser.py` 的路由表是逐章手写的 `CASES = [...]`。实测：348 条 case、335 条关卡路由，覆盖章号 **`[1..15, 99]`**；而站点有 35 章 + 附录 A–D。**ch16–ch35 与全部附录都没有站点级浏览器验证**——约全书 2/3。
 
@@ -167,7 +187,9 @@ cd site
 node assets/core/__tests-katex__.mjs         # 90
 node assets/core/__tests-highlight__.mjs     # 38
 node assets/core/__tests-quiz-order__.mjs    # 30
-node assets/core/__tests-review__.mjs        # 32
+node assets/core/__tests-review__.mjs        # 39
+node assets/core/__tests-chapters__.mjs      # 15（按章懒加载：首页零下载 / 一关一章 / 缓存）
+node assets/core/__tests-backup__.mjs        # 33（备份：导出往返 / 坏文件被拦 / 合并与替换）
 node assets/ui/__tests-figures__.mjs         # 21
 node assets/ui/__tests-complexity__.mjs      # 13
 node assets/ui/__tests-glossary__.mjs        # 16
@@ -182,6 +204,11 @@ python tools/_probe/r42_chartvars.py         # growth 图表 expr 变量：0 处
 python tools/_probe/r42_simulate.py          # simulate expect：0 处不可数值化
 python tools/_probe/r42_headerverify.py      # 6 处口径差异（待复核，非缺陷）
 python tools/_probe/r44_ccheck.py            # 89 个 C 程序编译+运行
+python tools/_probe/r43_lazyload.mjs         # 懒加载反证：首页零下载 / 一关一章 / 缓存生效
+python tools/_probe/r43_backup.mjs           # 备份逻辑：导出往返 / 坏文件被拦 / 合并与替换口径
+python tools/_probe/r43_routes.py 8317       # 14 条关键路由真机渲染（含 #/data 与未知章）
+python tools/12_publish_figs.py --check      # 插图清单与文件一一对应（.webp）
+node tools/dump_levels.mjs --check           # 章节清单是否与 chapters/ 同步
 
 # --- 冒烟（第 42 轮已跑：561/561 通过；约 25 分钟，必须单独跑）---
 python tools/smoke_browser.py 8317
@@ -198,7 +225,9 @@ python tools/smoke_browser.py 8317
 
 **内容侧本轮未发现待修错误**：43 关逐条对书，错处 2 处已修。
 
-**本轮已闭环两项**：① 浏览器冒烟覆盖面（自动生成路由，**561/561 通过**，覆盖全部 152 关 + 附录）；② `claims[].page` 闸门问题（已决定只记录、不改）。**仍未闭环** —— §三 剩 2 项结构性盲区（1、2）+ 6 处页范围待复核（4）+ 用户决定项（5）。
+**第 43 轮闭环四项**（交接文档 §四 指定）：① 按章懒加载；② 进度导出/导入；③ `_dev/` 下线；④ 插图转 WebP。
+
+**仍未闭环**（与第 42 轮相同，本轮未动）：§三 的 2 项结构性盲区（claims 页码内容级校验、内嵌 C 注释与断言的持续闸门）+ 6 处页范围待复核 + 用户决定项（线上同步）。
 
 下一步优先级：① 6 处页范围复核（§三-4）；② 新增章节时冒烟自动补齐已就绪，无需手改；③ 其余为记录项。冒烟覆盖面已于第 42 轮闭环（561/561 通过），claims 闸门已决定只记录不改。
 

@@ -37,6 +37,10 @@ import { createStepper } from "./assets/core/stepper.js";
 `setQuiz(ch, sec, score0to1)` / `getQuiz(ch, sec) -> number|null` — 记录/读取测验得分。
 `chapterDone(ch, sec) -> bool` — 九段式（9 阶段）是否全部完成。
 `addWrong({ch, sec, q, detail?})` / `clearWrong(id)` / `getWrong() -> array` — 错题本增删查。
+`exportState(now?)` / `exportJSON(now?)` — 导出学习数据（进度 / 错题 / 复习 / 自评 / 设置），纯文本、不联网。
+`validateBackup(input)` — 导入前校验：只做结构校验，坏输入给出人话解释。
+`importState(input, opts)` — 导入；opts.mode 默认 merge（阶段取并集、测验得分取较高、错题次数相加、复习取最近作答、自评取并集；设置默认保留本机），可为 replace。
+`clearAll(opts)` — 清空学习数据；默认保留主题偏好。
 `subscribe(cb) -> () => void` — 状态变更订阅（落盘时回调）。
 
 ## router.js — 三级 hash 路由

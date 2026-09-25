@@ -20,7 +20,7 @@ import { h } from '../core/dom.js';
 import * as katex from '../core/katex.js';
 import * as router from '../core/router.js';
 import { pageRef } from '../core/page.js';
-import { getChapter, listChapterKeys } from '../chapters.js';
+import { loadChapters, listChapterKeys } from '../chapters.js';
 import { partOf, STRUCTURE, APPENDICES } from '../data/structure.js';
 
 /** 伪代码出在「伪代码骨架」段（1 基第 4 段）；复杂度出在第 7 段。 */
@@ -36,10 +36,12 @@ function chapterOrder(ch) {
 /**
  * 收集全站「算法关」。一关一条；配套过程（如 MERGE-SORT 的 MERGE）附在条内。
  */
-export function collectAlgorithms() {
+export async function collectAlgorithms() {
   const out = [];
+  // 本页是全书聚合：只有打开它才会把 39 章一起拉下来（loadChapters 并发 + 按章去重）。
+  const mods = await loadChapters(listChapterKeys());
   for (const key of listChapterKeys()) {
-    const mod = getChapter(key);
+    const mod = mods.get(key);
     if (!mod || !Array.isArray(mod.levels)) continue;
     for (const lv of mod.levels) {
       let mainAlgo = '';
@@ -167,8 +169,8 @@ function algoRow(item) {
  * 渲染算法选择器。
  * @returns {{node: Node, destroy: Function}}
  */
-export function renderAlgorithms() {
-  const all = collectAlgorithms();
+export async function renderAlgorithms() {
+  const all = await collectAlgorithms();
   const groups = groupByPart(all);
   const animCount = all.filter((a) => a.anim).length;
 

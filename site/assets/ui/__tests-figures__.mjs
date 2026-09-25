@@ -104,9 +104,15 @@ console.log('\n[2] 清单完整性（每条 src 都要有文件）');
   ok('每条 src 都指向真实文件', missing.length === 0, missing.slice(0, 6));
   ok('没有可疑的小图（<1000 字节）', tiny.length === 0, tiny.slice(0, 6));
   ok('页码都是整数', badpage.length === 0, badpage.slice(0, 6));
-  const dirPng = fs.readdirSync(path.join(SITE, 'figs')).filter((f) => f.endsWith('.png'));
+  // 清单已改 webp：这里同时钉住「都在」与「没有旧格式残留」——
+  // 只按 webp 数会漏掉同名 .png，那正是转格式最容易剩下来的半个现场。
+  const dirFiles = fs.readdirSync(path.join(SITE, 'figs'));
+  const dirPng = dirFiles.filter((f) => f.endsWith('.png'));
+  const dirWebp = dirFiles.filter((f) => f.endsWith('.webp'));
   ok('site/figs 里没有孤儿文件（清单外的图）',
-    dirPng.length === ids.length, dirPng.length + ' vs ' + ids.length);
+    dirWebp.length === ids.length && dirPng.length === 0,
+    dirFiles.length + ' 个文件 / webp ' + dirWebp.length + ' / png ' + dirPng.length
+      + ' vs 清单 ' + ids.length);
 }
 
 console.log('\n[3] 降级：没发布过的图号不产节点');

@@ -430,8 +430,222 @@ export function dueReviews(now) {
     .sort((a, b) => s.review[a].due - s.review[b].due);
 }
 
+/* ---------- 备份：导出 / 导入 / 清空 ----------
+ * 为什么需要它：学习进度、错题本、复习台账、章末自评全在 localStorage，
+ *   清一次浏览器缓存或换一台设备就全没了，而这些东西是几百小时的学习记录。
+ *   这里只做「导出成 JSON / 从 JSON 读回来」，不联网、不引依赖（离线设计）。
+ *
+ * 合入口径（宁可保守也不丢数据）：
+ *   进度 progress  —— 阶段取并集（两处都做过就是做过）；测验得分取较高的一次。
+ *   错题 wrong     —— 同 id 合并，次数相加、内容取时间较晚的那条。
+ *   复习 review    —— 同 id 取「最近一次作答」的那条记录（at 大的胜出）。
+ *   自评 problems  —— 取并集。
+ *   设置 settings  —— **默认保留本机设置**（主题等是本机偏好，不该被备份覆盖）；
+ *                     只有整份替换（mode:'replace'）或显式 overwriteSettings 才采用备份里的。
+ * 不做「按时间戳二选一」的整体覆盖：一份旧备份不该把你新做的关退回去。
+ */
+
+/** 备份文件的格式标识：导入时先认它，避免把随便一个 JSON 灌进存档。 */
+export const BACKUP_FORMAT = "clrs-quest-state";
+export const BACKUP_VERSION = 1;
+
+/** 导出的纯数据对象（不含函数），可直接 JSON.stringify。 */
+export function exportState(now) {
+  const s = load();
+  const t = Number.isFinite(now) ? now : Date.now();
+  return {
+    format: BACKUP_FORMAT,
+    version: BACKUP_VERSION,
+    exportedAt: new Date(t).toISOString(),
+    state: {
+      v: s.v,
+      progress: s.progress,
+      wrong: s.wrong,
+      review: s.review,
+      problems: s.problems,
+      settings: s.settings,
+    },
+  };
+}
+
+/** 导出的 JSON 文本（缩进 2 格，方便人肉看一眼再存）。 */
+export function exportJSON(now) {
+  return JSON.stringify(exportState(now), null, 2);
+}
+
+function isPlainObject(v) {
+  return !!v && typeof v === "object" && !Array.isArray(v);
+}
+
+/**
+ * 校验一份备份数据，返回 { ok, errors[], state }。
+ * 只做结构校验（类型对不对、像不像本站的存档），不校验内容真实性。
+ */
+export function validateBackup(input) {
+  const errors = [];
+  let data = input;
+  if (typeof input === "string") {
+    try {
+      data = JSON.parse(input);
+    } catch (e) {
+      return { ok: false, errors: ["不是合法的 JSON：" + e.message], state: null };
+    }
+  }
+  if (!isPlainObject(data)) return { ok: false, errors: ["备份内容不是一个对象"], state: null };
+
+  if (data.format != null && data.format !== BACKUP_FORMAT) {
+    errors.push("format 字段是 " + JSON.stringify(data.format) + "，不是本站备份（应为 " + BACKUP_FORMAT + "）");
+  }
+  // 认三种形态：带 format 的完整备份、只有 state 的、以及直接把 state 摊平在顶层的老写法。
+  const st = isPlainObject(data.state) ? data.state : data;
+  if (!isPlainObject(st)) return { ok: false, errors: ["备份里找不到 state 对象"], state: null };
+  if (data.format == null && st.progress == null && st.wrong == null && st.review == null) {
+    errors.push("既没有 format 标识，也没有 progress / wrong / review 字段 —— 不像本站的存档");
+  }
+  if (st.progress != null && !isPlainObject(st.progress)) errors.push("progress 应是对象");
+  if (st.wrong != null && !Array.isArray(st.wrong)) errors.push("wrong 应是数组");
+  if (st.review != null && !isPlainObject(st.review)) errors.push("review 应是对象");
+  if (st.problems != null && !isPlainObject(st.problems)) errors.push("problems 应是对象");
+  if (st.settings != null && !isPlainObject(st.settings)) errors.push("settings 应是对象");
+
+  if (errors.length) return { ok: false, errors, state: null };
+  return { ok: true, errors: [], state: st };
+}
+
+/** 阶段集合取并集；quiz 取较高分（null 视作没有）。 */
+function mergeProgress(cur, inc) {
+  const out = Object.assign({}, cur || {});
+  for (const [k, v] of Object.entries(inc || {})) {
+    if (!isPlainObject(v)) continue;
+    const prev = isPlainObject(out[k]) ? out[k] : { stages: {}, quiz: null };
+    const stages = Object.assign({}, prev.stages || {});
+    for (const [name, done] of Object.entries(isPlainObject(v.stages) ? v.stages : {})) {
+      if (done) stages[name] = true;
+    }
+    const a = Number.isFinite(prev.quiz) ? prev.quiz : null;
+    const b = Number.isFinite(v.quiz) ? v.quiz : null;
+    const quiz = a == null ? b : (b == null ? a : Math.max(a, b));
+    out[k] = { stages, quiz };
+  }
+  return out;
+}
+
+/** 错题按 id 合并：次数相加，其余字段取时间较晚的那条。 */
+function mergeWrong(cur, inc) {
+  const out = (cur || []).map((w) => Object.assign({}, w));
+  for (const w of inc || []) {
+    if (!isPlainObject(w)) continue;
+    const id = w.id || null;
+    const hit = id ? out.find((x) => x.id === id) : null;
+    if (!hit) { out.push(Object.assign({}, w)); continue; }
+    const newer = (Number.isFinite(w.at) ? w.at : 0) >= (Number.isFinite(hit.at) ? hit.at : 0) ? w : hit;
+    Object.assign(hit, newer, {
+      id,
+      times: (Number.isFinite(hit.times) ? hit.times : 1) + (Number.isFinite(w.times) ? w.times : 1),
+    });
+  }
+  return out;
+}
+
+/** 复习台账按 id 合并：取 at 较晚（最近作答）的那条。 */
+function mergeReview(cur, inc) {
+  const out = Object.assign({}, cur || {});
+  for (const [id, v] of Object.entries(inc || {})) {
+    if (!isPlainObject(v)) continue;
+    const prev = out[id];
+    const newer = !prev || (Number.isFinite(v.at) ? v.at : 0) >= (Number.isFinite(prev.at) ? prev.at : 0) ? v : prev;
+    out[id] = Object.assign({}, newer);
+  }
+  return out;
+}
+
+/** 章末自评按章取并集。 */
+function mergeProblems(cur, inc) {
+  const out = Object.assign({}, cur || {});
+  for (const [ch, ids] of Object.entries(inc || {})) {
+    const set = new Set(Array.isArray(out[ch]) ? out[ch] : []);
+    if (Array.isArray(ids)) ids.forEach((x) => set.add(String(x)));
+    out[ch] = [...set];
+  }
+  return out;
+}
+
+/**
+ * 导入一份备份。
+ * @param {string|object} input 备份 JSON 文本或对象
+ * @param {{mode?: 'merge'|'replace', overwriteSettings?: boolean, now?: number}} [opts]
+ *   mode 默认 'merge'（与现有存档合并）；'replace' 直接整份替换学习数据。
+ * @returns {{ok: boolean, errors: string[], summary?: object}}
+ */
+export function importState(input, opts = {}) {
+  const v = validateBackup(input);
+  if (!v.ok) return { ok: false, errors: v.errors };
+  const inc = v.state;
+  const s = load();
+  const mode = opts.mode === "replace" ? "replace" : "merge";
+
+  if (mode === "replace") {
+    s.progress = isPlainObject(inc.progress) ? inc.progress : {};
+    s.wrong = Array.isArray(inc.wrong) ? inc.wrong : [];
+    s.review = isPlainObject(inc.review) ? inc.review : {};
+    s.problems = isPlainObject(inc.problems) ? inc.problems : {};
+    if (opts.overwriteSettings && isPlainObject(inc.settings)) {
+      s.settings = Object.assign(defaultSettings(), inc.settings);
+      applyTheme();
+    }
+  } else {
+    s.progress = mergeProgress(s.progress, inc.progress);
+    s.wrong = mergeWrong(s.wrong, inc.wrong);
+    s.review = mergeReview(s.review, inc.review);
+    s.problems = mergeProblems(s.problems, inc.problems);
+    if (opts.overwriteSettings && isPlainObject(inc.settings)) {
+      s.settings = Object.assign({}, s.settings, inc.settings);
+      applyTheme();
+    }
+  }
+
+  // 导入必须立刻落盘：导入完立刻关页面（或刷新）不该把刚导进来的数据丢了。
+  flush();
+  return {
+    ok: true,
+    errors: [],
+    summary: {
+      mode,
+      levels: Object.keys(s.progress).length,
+      wrong: s.wrong.length,
+      review: Object.keys(s.review).length,
+      problems: Object.values(s.problems).reduce((a, x) => a + (Array.isArray(x) ? x.length : 0), 0),
+    },
+  };
+}
+
+/**
+ * 清空学习数据（本机记录，不可恢复）。默认**保留设置**（主题等是本机偏好）。
+ * @param {{settings?: boolean}} [opts] settings:true 连主题偏好一起复位
+ */
+export function clearAll(opts = {}) {
+  const s = load();
+  s.progress = {};
+  s.wrong = [];
+  s.review = {};
+  s.problems = {};
+  if (opts.settings) {
+    s.settings = defaultSettings();
+    applyTheme();
+  }
+  flush();
+  return true;
+}
+
 export default {
   STORE_SCHEMA,
+  BACKUP_FORMAT,
+  BACKUP_VERSION,
+  exportState,
+  exportJSON,
+  validateBackup,
+  importState,
+  clearAll,
   load,
   getState,
   save,

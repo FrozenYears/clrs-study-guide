@@ -50,7 +50,7 @@ PDF ──→ 01_extract.py ──→ data/pages.jsonl (原始逐页文本)
     ──→ 02_repair.py    ──→ data/pages_fixed.jsonl (修复后) + repair_report.json
     ──→ 03_segment.py   ──→ data/blocks/<part>__ch<NN>.json (结构化知识块)
     ──→ 04_figures.py   ──→ data/figs/*.png + figures.json (插图)
-    ──→ 12_publish_figs.py ──→ site/figs/*.png + site/assets/data/figures.js (发布)
+    ──→ 12_publish_figs.py ──→ site/figs/*.webp + site/assets/data/figures.js (发布)
 ```
 
 ### 各步骤要点
@@ -61,7 +61,7 @@ PDF ──→ 01_extract.py ──→ data/pages.jsonl (原始逐页文本)
 | `02_repair.py` | `pages.jsonl` → `pages_fixed.jsonl` | 修复数学符号编码损坏 + 词内空格伪影 | `test_repair.py` (184) |
 | `03_segment.py` | `pages_fixed.jsonl` → `blocks/*.json` | 按节切块，识别类型（body/theorem/pseudocode/exercise…） | `test_segment.py` (42) |
 | `04_figures.py` | PDF → `figs/*.png` + `figures.json` | 按图注定位裁剪插图 | `test_figures.py` |
-| `12_publish_figs.py` | `figures.json` + `tools/_levels.json` → `site/figs/` + `site/assets/data/figures.js` | 把**关卡引用到**的切图发布上站（图号识别与 `ui/figures.js` 必须一致） | `assets/ui/__tests-figures__.mjs` |
+| `12_publish_figs.py` | `figures.json` + `tools/_levels.json` → `site/figs/*.webp` + `site/assets/data/figures.js` | 把**关卡引用到**的切图无损转成 WebP 发布上站（图号识别与 `ui/figures.js` 必须一致） | `assets/ui/__tests-figures__.mjs` |
 
 ### 02_repair.py 的修复规则（已验证，不要随意改）
 

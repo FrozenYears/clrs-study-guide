@@ -42,7 +42,7 @@ ok('两样都没有退回节号', listingName({ algo: '', signature: '', section
 
 /* ---------- 3 全站取数 ---------- */
 console.log('\n[3] 全站取数');
-const all = collectListings();
+const all = await collectListings();
 ok('取到伪代码段（不是空数组）', all.length > 0, String(all.length));
 const noLines = all.filter((x) => !(x.lines > 0));
 ok('每段都有行数（无 lines 的段不收）', noLines.length === 0, noLines.length + ' 段行数为 0');

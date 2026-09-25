@@ -17,7 +17,7 @@ import { h } from '../core/dom.js';
 import * as katex from '../core/katex.js';
 import * as router from '../core/router.js';
 import { formatPage } from '../core/page.js';
-import { getChapter, listChapterKeys, chapterLabel } from '../chapters.js';
+import { loadChapters, listChapterKeys, chapterLabel } from '../chapters.js';
 
 /** 该术语所在「原文精读」段的阶段号（1 基）。术语就长在这一段里。 */
 const SOURCE_STAGE = 3;
@@ -30,10 +30,12 @@ export { formatPage } from '../core/page.js';
  * 收集全站术语（每条带出处）。
  * 遍历顺序即注册表顺序；排序与去重交给 groupTerms。
  */
-export function collectTerms() {
+export async function collectTerms() {
   const out = [];
+  // 本页是全书聚合：只有打开它才会把 39 章一起拉下来（loadChapters 并发 + 按章去重）。
+  const mods = await loadChapters(listChapterKeys());
   for (const key of listChapterKeys()) {
-    const mod = getChapter(key);
+    const mod = mods.get(key);
     if (!mod || !Array.isArray(mod.levels)) continue;
     for (const lv of mod.levels) {
       for (const st of lv.stages || []) {
@@ -121,8 +123,8 @@ function termNode(g) {
  * 渲染术语表。
  * @returns {{node: Node, destroy: Function}}
  */
-export function renderGlossary() {
-  const all = groupTerms(collectTerms());
+export async function renderGlossary() {
+  const all = groupTerms(await collectTerms());
   const totalEntries = all.reduce((a, g) => a + g.sources.length, 0);
 
   const head = h('header', { class: 'lv-header' },

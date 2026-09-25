@@ -1,129 +1,131 @@
 /* =============================================================================
- * chapters.js — 章节模块注册表（章节外壳 Agent 拥有）
+ * chapters.js — 章节清单（同步）与章节内容（按章动态加载）
  *
- * 为什么不用 fetch 读 structure.json：
- *   本站是零构建静态站，可能以 file:// 打开；file:// 下 fetch 会被 CORS 拦掉。
- *   所以章节清单走静态 import（ES Module 在 http(s) 下正常，file:// 下需本地
- *   起静态服务，见 docs/README-运行方式.md）。
+ * 为什么拆成两层：
+ *   原先这里把 39 个 chapter.js 全部静态 import，而每个 chapter.js 又 import
+ *   它下面全部关卡文件 —— 打开首页就要把全书 191 个关卡模块、约 5.2 MB JS
+ *   全部下载执行，哪怕只想看第 2 章。现在分两层：
+ *     · 清单层（data/manifest.js，由 tools/dump_levels.mjs 生成）给出章号、展示名、
+ *       每关的节号/标题/页码/阶段类型，约 180 KB，首页与聚合页只读它；
+ *     · 内容层（chapters/<slug>/chapter.js）从几十 KB 到几百 KB，只有真正打开
+ *       那一章（或复习模式要判那一关的题）时才 import()。
+ *   import() 说明符必须静态可见，所以路径模式写死在下面一处；清单里只存 slug。
  *
- * 新增一章：把 chapter.js 加进来即可，不用动其他任何文件。
+ * 新增一章：写好 chapters/<slug>/chapter.js 后跑 node tools/dump_levels.mjs
+ *   重新生成清单，站点侧其余文件都不用改。
  * ========================================================================== */
 
-import ch02 from '../chapters/ch02-getting-started/chapter.js';
-import ch3 from '../chapters/ch03-characterizing-running-times/chapter.js';
-import ch4 from '../chapters/ch04-divide-and-conquer/chapter.js';
-import ch5 from '../chapters/ch05-probabilistic-analysis-and-randomized/chapter.js';
-import ch6 from '../chapters/ch06-heapsort/chapter.js';
-import ch7 from '../chapters/ch07-quicksort/chapter.js';
-import ch8 from '../chapters/ch08-sorting-in-linear-time/chapter.js';
-import ch9 from '../chapters/ch09-medians-and-order-statistics/chapter.js';
-import ch10 from '../chapters/ch10-elementary-data-structures/chapter.js';
-import ch11 from '../chapters/ch11-hash-tables/chapter.js';
-import ch12 from '../chapters/ch12-binary-search-trees/chapter.js';
-import ch13 from '../chapters/ch13-red-black-trees/chapter.js';
-import ch14 from '../chapters/ch14-dynamic-programming/chapter.js';
-import ch15 from '../chapters/ch15-greedy-algorithms/chapter.js';
-import ch16 from '../chapters/ch16-amortized-analysis/chapter.js';
-import ch17 from '../chapters/ch17-augmenting-data-structures/chapter.js';
-import ch18 from '../chapters/ch18-b-trees/chapter.js';
-import ch19 from '../chapters/ch19-disjoint-sets/chapter.js';
-import ch20 from '../chapters/ch20-graph-algorithms/chapter.js';
-import ch21 from '../chapters/ch21-mst/chapter.js';
-import ch22 from '../chapters/ch22-sssp/chapter.js';
-import ch23 from '../chapters/ch23-apsp/chapter.js';
-import ch24 from '../chapters/ch24-maximum-flow/chapter.js';
-import ch25 from '../chapters/ch25-matchings/chapter.js';
-import ch26 from '../chapters/ch26-parallel-algorithms/chapter.js';
-import ch27 from '../chapters/ch27-online-algorithms/chapter.js';
-import ch28 from '../chapters/ch28-matrix-operations/chapter.js';
-import ch29 from '../chapters/ch29-linear-programming/chapter.js';
-import ch30 from '../chapters/ch30-polynomials-and-the-fft/chapter.js';
-import ch31 from '../chapters/ch31-number-theoretic-algorithms/chapter.js';
-import ch32 from '../chapters/ch32-string-matching/chapter.js';
-import ch33 from '../chapters/ch33-machine-learning-algorithms/chapter.js';
-import ch34 from '../chapters/ch34-np-completeness/chapter.js';
-import ch35 from '../chapters/ch35-approximation-algorithms/chapter.js';
-import cha from '../chapters/cha-summations/chapter.js';
-import chb from '../chapters/chb-sets-etc/chapter.js';
-import chc from '../chapters/chc-counting-and-probability/chapter.js';
-import chd from '../chapters/chd-matrices/chapter.js';
-import ch1 from '../chapters/ch01-the-role-of-algorithms/chapter.js';
+import { MANIFEST } from './data/manifest.js';
 
-const CHAPTERS = new Map([
-  ['2', ch02],
-  ['3', ch3],
-  ['4', ch4],
-  ['5', ch5],
-  ['6', ch6],
-  ['7', ch7],
-  ['8', ch8],
-  ['9', ch9],
-  ['10', ch10],
-  ['11', ch11],
-  ['12', ch12],
-  ['13', ch13],
-  ['14', ch14],
-  ['15', ch15],
-  ['16', ch16],
-  ['17', ch17],
-  ['18', ch18],
-  ['19', ch19],
-  ['20', ch20],
-  ['21', ch21],
-  ['22', ch22],
-  ['23', ch23],
-  ['24', ch24],
-  ['25', ch25],
-  ['26', ch26],
-  ['27', ch27],
-  ['28', ch28],
-  ['29', ch29],
-  ['30', ch30],
-  ['31', ch31],
-  ['32', ch32],
-  ['33', ch33],
-  ['34', ch34],
-  ['35', ch35],
-  ['A', cha],
-  ['B', chb],
-  ['C', chc],
-  ['D', chd],
-  ['1', ch1],
-]);
-
-/**
- * 按章号取章节模块。
- * 注意：路由解析出来的是带前导零的字符串（'02'、'1'、'a'），
- * 而注册表的键是规范化后的形式（'2'、'1'、'A'），所以这里要做归一化匹配。
- */
-export function getChapter(ch) {
+/** 章号归一化：路由给的是 'ch02' / '02' / 'a'，清单键是 '2' / 'A'。 */
+function normKey(ch) {
   if (ch == null) return null;
-  const s = String(ch);
-  if (CHAPTERS.has(s)) return CHAPTERS.get(s);
+  const s = String(ch).replace(/^ch/i, '');
+  if (Object.prototype.hasOwnProperty.call(MANIFEST, s)) return s;
   const n = parseInt(s, 10);
-  if (Number.isFinite(n) && CHAPTERS.has(String(n))) return CHAPTERS.get(String(n));
+  if (Number.isFinite(n) && Object.prototype.hasOwnProperty.call(MANIFEST, String(n))) return String(n);
   const up = s.toUpperCase();
-  if (CHAPTERS.has(up)) return CHAPTERS.get(up);
-  return null;
+  return Object.prototype.hasOwnProperty.call(MANIFEST, up) ? up : null;
 }
 
+/** 清单里的全部章号，顺序同 chapters/ 目录名（ch01…ch35、cha…chd）。 */
 export function listChapterKeys() {
-  return [...CHAPTERS.keys()];
+  return Object.keys(MANIFEST);
 }
 
 export function chapterCount() {
-  return CHAPTERS.size;
+  return Object.keys(MANIFEST).length;
+}
+
+/** 章号在清单里的规范写法（'ch02' -> '2'）；不在清单里返回 null。 */
+export function chapterKey(ch) {
+  return normKey(ch);
 }
 
 /**
- * 章的展示名：正文用章节模块里的 chSpan（'第 2 章 · Getting Started（起步）'），
- * 附录用 '附录 A'；模块没写 chSpan 时降级成 '第 N 章'。
+ * 按章号取清单条目（同步）：ch / chSpan / title / titleZh / levels[] / source。
+ * 关卡条目里有 key / section / shortTitle / source / stages（**只有类型名**）。
+ * 需要阶段正文（原文、伪代码、题目）时用 loadChapter。
+ */
+export function chapterOf(ch) {
+  const k = normKey(ch);
+  return k ? MANIFEST[k] : null;
+}
+
+/**
+ * 章的展示名：正文用清单里的 chSpan（'第 2 章 · Getting Started（起步）'），
+ * 附录用 '附录 A'；清单里没有时降级成 '第 N 章'。
  * 目录条目、面包屑、待建占位、术语表、复杂度表都要显示它 —— 收在这里一份，
  * 免得每个页面各拼一遍，附录与正文章号的写法迟早走样。
  */
 export function chapterLabel(ch) {
-  const mod = getChapter(ch);
-  if (mod && mod.chSpan) return mod.chSpan;
+  const m = chapterOf(ch);
+  if (m && m.chSpan) return m.chSpan;
   const s = String(ch);
   return /^\d+$/.test(s) ? '第 ' + s + ' 章' : '附录 ' + s.toUpperCase();
 }
+
+/* ============================ 内容层 ============================ */
+
+const _promises = new Map(); // slug -> Promise<chapter>
+const _loaded = new Map();   // slug -> chapter（已加载完的，供同步查询）
+
+/** 动态 import 的说明符是字面量前缀 —— 路径模式只此一处。 */
+function importChapter(slug) {
+  return import('../chapters/' + slug + '/chapter.js');
+}
+
+/**
+ * 加载一章的完整内容（含全部关卡与九段正文）。同一章只加载一次，失败不缓存。
+ * @returns {Promise<object|null>} chapter 模块的 default 导出；章号不存在返回 null
+ */
+export function loadChapter(ch) {
+  const m = chapterOf(ch);
+  if (!m) return Promise.resolve(null);
+  if (_promises.has(m.slug)) return _promises.get(m.slug);
+  const p = importChapter(m.slug)
+    .then((mod) => {
+      const chapter = mod.default;
+      _loaded.set(m.slug, chapter);
+      return chapter;
+    })
+    .catch((e) => {
+      _promises.delete(m.slug);
+      throw e;
+    });
+  _promises.set(m.slug, p);
+  return p;
+}
+
+/** 已经加载完的章（同步）。没加载过返回 null —— 调用方必须先 await loadChapter。 */
+export function loadedChapter(ch) {
+  const m = chapterOf(ch);
+  return m ? (_loaded.get(m.slug) || null) : null;
+}
+
+/**
+ * 等若干章加载完并等齐（聚合页与复习模式一次要扫全书）。
+ * @param {Iterable<string>} keys 章号，可混写 'ch02' / '2' / 'A'
+ * @returns {Promise<Map<string, object>>} 规范章号 -> chapter（顺序同 listChapterKeys）
+ */
+export async function loadChapters(keys) {
+  const wanted = new Set();
+  for (const k of keys) {
+    const n = normKey(k);
+    if (n) wanted.add(n);
+  }
+  const out = new Map();
+  await Promise.all([...wanted].map(async (k) => { out.set(k, await loadChapter(k)); }));
+  return out;
+}
+
+export default {
+  listChapterKeys,
+  chapterCount,
+  chapterKey,
+  chapterOf,
+  chapterLabel,
+  loadChapter,
+  loadedChapter,
+  loadChapters,
+};
