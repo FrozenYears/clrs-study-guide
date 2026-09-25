@@ -1,0 +1,83 @@
+# 把 site/ 发布到 GitHub Pages。
+#
+# 用法：仓库 Settings → Pages → Source 选 "GitHub Actions"，然后推到 master（或手动跑本工作流）。
+#
+# 为什么用「上传产物」而不是「发布分支」：
+#   site/_dev/ 是内部自检页、site/tools/ 是本地脚本，都不该出现在公开站点上。
+#   发布分支会把整个目录照搬上线；产物上传可以只挑该公开的那部分。
+#   本地预览与自检完全不受影响（它们读的是工作区，不是这份产物）。
+#
+# 为什么不需要任何构建：
+#   本站是零构建静态站，全部资源都是相对路径、无外部网络请求，
+#   直接把 site/ 原样上传即可，子路径（https://<user>.github.io/<repo>/）下也能跑。
+
+name: Deploy site to GitHub Pages
+
+on:
+  push:
+    branches: [master, main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  # 先自检再发布：站点坏了就别往线上推。只跑纯 Node 的部分（零依赖、几秒），
+  # 不跑 Python 侧的内容检查 —— 那需要 29 MB 语料与 PDF，不适合放进 CI。
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 取出仓库
+        uses: actions/checkout@v4
+
+      - name: 准备 Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: 全站 JS 语法
+        working-directory: site
+        run: node tools/check-syntax.mjs .
+
+      - name: 12 套行为测试
+        working-directory: site
+        run: |
+          for f in assets/core/__tests-*.mjs assets/ui/__tests-*.mjs assets/algorithms/__tests__.mjs; do
+            echo "---- $f"
+            node "$f"
+          done
+
+  deploy:
+    needs: check
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: 取出仓库
+        uses: actions/checkout@v4
+
+      - name: 挑出要公开的静态文件
+        run: |
+          mkdir -p _site
+          rsync -a --exclude '_dev/' --exclude 'tools/' --exclude '.nojekyll' site/ _site/
+          touch _site/.nojekyll
+          echo "发布内容：" && du -sh _site && find _site -maxdepth 1 | sort
+
+      - name: 配置 Pages
+        uses: actions/configure-pages@v5
+
+      - name: 上传产物
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: 部署
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -79,10 +79,10 @@ http://127.0.0.1:8317/_dev/shot.html?t=light&r=%23/ch02/s01/s03&w=375&h=2000
 | 看某块的完整正文 | `<py> tools/07_pick_quotes.py show <章> <节> <块下标…>` |
 | 生成关卡骨架 | `<py> tools/05_new_level.py 3 3.1 --register` |
 | 导出关卡数据 | `<node> tools/dump_levels.mjs` |
-| **关卡合规闸门** | `<py> tools/04_verify_level.py`（要求 0 ERROR） |
+| **关卡合规检查** | `<py> tools/04_verify_level.py`（要求 0 ERROR） |
 | 两步一起（改完必跑） | `<node> tools/dump_levels.mjs && <py> tools/04_verify_level.py` |
 
-写一关的标准流程 = **挑引述 → 生成骨架 → 填掉所有 `【TODO …】` → 跑闸门直到 0 ERROR / 0 TODO**。
+写一关的标准流程 = **挑引述 → 生成骨架 → 填掉所有 `【TODO …】` → 跑检查直到 0 ERROR / 0 TODO**。
 细节与全部已知坑见 `docs/关卡编写手册.md`。
 
 ### 语料流水线（只有改 PDF 解析规则时才需要）
@@ -121,7 +121,7 @@ http://127.0.0.1:8317/_dev/shot.html?t=light&r=%23/ch02/s01/s03&w=375&h=2000
 docs/            建设计划、开发规范（契约）、关卡编写手册、各阶段报告
 data/            pages.jsonl（原文抽取）→ pages_fixed.jsonl（修复后）
                  blocks/（按章切好的知识块）· figures.json + figs/（插图）
-tools/           语料流水线 01–04、关卡闸门 04_verify_level、关卡生成器 05、各测试
+tools/           语料流水线 01–04、关卡检查 04_verify_level、关卡生成器 05、各测试
 site/            静态站本体（改完直接生效，无构建）
   index.html       首页 = 全书目录 + 进度层
   assets/
@@ -134,7 +134,7 @@ site/            静态站本体（改完直接生效，无构建）
     chapters.js    章节注册表（新章要在这里登记）
   chapters/      关卡内容：一章一个目录，一节一个文件
   _dev/          开发自检页（见上表）
-c/               C 语言实现（与关卡内嵌的 C 代码必须逐字节一致，闸门会查）
+c/               C 语言实现（与关卡内嵌的 C 代码必须逐字节一致，检查会查）
 ```
 
 **文件归属**（谁可以改什么）见 `docs/开发规范.md` 第二节 —— 并行开发时一个 agent 只碰自己那一章。
@@ -148,6 +148,37 @@ c/               C 语言实现（与关卡内嵌的 C 代码必须逐字节一�
   但要能打开仍需要 HTTP 服务（本地或线上）。
 - **进度存在浏览器里**：换浏览器 / 清缓存会丢；不同设备之间不同步。
 - **`data/` 与 `c/` 是「源」**：`data/pages_fixed.jsonl` 是内容溯源的唯一依据，`c/*.c` 是 C 轨道的唯一副本。
-  关卡里内嵌的 C 与引述都由闸门与源文件比对，不要手改内嵌副本。
+  关卡里内嵌的 C 与引述都由检查与源文件比对，不要手改内嵌副本。
 - **本机 Git Bash 的 PATH 是坏的**：`ls`/`mkdir`/`rm`/`head`/`tail`/`dirname` 都用不了。
   用 PowerShell，或直接用上文的 Python 绝对路径执行脚本（删除文件用 Python 的 `os.remove`）。
+
+---
+
+## 六、许可与版权边界（公开前必读）
+
+**代码**：本仓库的源代码以 **MIT** 许可发布（见 `LICENSE`）。覆盖范围是站点运行时
+（`site/assets/**`）、关卡外壳与视图模块、工具链（`tools/**`）以及 C 参考实现（`c/*.c`）。
+你可以自由复制、修改、二次分发，包括商用。
+
+**书的内容不属于 MIT 覆盖范围**，本项目无权授权，也**没有**授权给你：
+
+| 材料 | 位置 | 权利归属 |
+|---|---|---|
+| CLRS 第 4 版 PDF（1312 页） | 仓库根目录 `.pdf` | Pearson / 作者 |
+| 逐字英文引述（约 1880 条） | `site/chapters/**` 的 `en` 字段 | 同上 |
+| 原书插图（108 张站点图 / 233 张切片） | `site/figs/`、`data/figs/` | 同上 |
+| 原书习题与章末题题干（599 道） | `site/assets/data/problems.js`、关卡内 | 同上 |
+| 抽取语料 | `data/pages*.jsonl`、`data/blocks/` | 同上 |
+
+`Introduction to Algorithms, Fourth Edition`（Cormen, Leiserson, Rivest, Stein；MIT Press, 2022）
+的著作权属于其作者与出版方。把它们逐字搬进本站**不产生**任何新的权利，也不改变原权利的归属。
+
+**因此，如果你要 fork 或转载这个项目**：
+
+1. 你可以自由使用其中的**代码**；
+2. 但书的内容（引述、插图、习题、PDF、语料）需要你**自行判断**在你所在法域内能否使用；
+3. 若你打算公开部署，最稳妥的做法是把书的内容从发布面剥离（做法见 `docs/上线评估.md`），
+   只发布代码与你自己有权使用的材料。
+
+> 引用与评论在多数法域有合理使用/引用例外，但**「公开部署一整套逐字复刻」通常超出该例外**。
+> 这不是技术问题，请自行评估或咨询专业人士。

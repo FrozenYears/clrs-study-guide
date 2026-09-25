@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """11_align_printed.py —— 把 source.printed 的终点抬到「覆盖本节自己的习题页」。
 
-问题：闸门第 6 项拿 source.printed[1] 当页码上界，凡是 page > printed[1] 的
+问题：检查第 6 项拿 source.printed[1] 当页码上界，凡是 page > printed[1] 的
       引用都要求 preview:true。不少关卡把终点写得比本节窄（只声明本关用到的页），
       于是**本节末尾的习题页**被误判成「越界前向引用」。
 
@@ -12,7 +12,7 @@
 
 本脚本**只抬终点、只抬到权威终点、且只为「确实引用了这些页」的关卡抬**：
     新终点 = max(现终点, min(权威终点 + 1, 本关所有页码引用的最大值))
-  （+1 是闸门自己的容差：本节习题常排在下一节首页顶部，而 structure 的
+  （+1 是检查自己的容差：本节习题常排在下一节首页顶部，而 structure 的
     pdf_end 是独占的，两者恰好差一页。）
 起点不动 —— 起点写得窄是刻意的保守（交接文档 §6.2 明示不要大面积统一口径）。
 若某关引用的页超出本节权威区间 +1，那才是真问题，脚本只报告不改。
@@ -29,7 +29,7 @@ import sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 
-# 直接复用闸门的遍历：它认 preview:true（带标记的后续页引用是合法的），
+# 直接复用检查的遍历：它认 preview:true（带标记的后续页引用是合法的），
 # 自己再写一遍只会在「该不该抬终点」上得出不同结论。
 import importlib.util as _ilu
 _spec = _ilu.spec_from_file_location('ver04', os.path.join(ROOT, 'tools', '04_verify_level.py'))
@@ -38,7 +38,7 @@ _spec.loader.exec_module(ver)
 
 
 def collect_pages(level):
-    """关卡里「闸门会拦」的整数页码：preview:true 子树下的引用不计。"""
+    """关卡里「检查会拦」的整数页码：preview:true 子树下的引用不计。"""
     acc = []
     ver.walk_pages(level, '', acc)
     out = []
@@ -88,7 +88,7 @@ def main():
                 already += 1
                 continue
             want = max(refs)
-            # 闸门本身留了 ±1 页容差（本节习题常排在下一节首页顶部，
+            # 检查本身留了 ±1 页容差（本节习题常排在下一节首页顶部，
             # 而 structure 的 pdf_end 是独占的，正好差一页）。
             if want <= printed[1] + 1:
                 already += 1

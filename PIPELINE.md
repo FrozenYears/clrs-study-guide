@@ -30,7 +30,7 @@
 2. **跑一遍测试基线**（第九章那张表的 7 条命令）——确认你拿到的代码是全绿的，
    如果不是，先弄清是谁改坏了什么，**不要**带着红色的基线往前走；
 3. **看第九章「待建」表**——确定本轮要写哪一节；
-4. **按第三章三步法开工**：生成骨架 → 填 TODO → 过闸门；
+4. **按第三章三步法开工**：生成骨架 → 填 TODO → 过检查；
 5. **改动前先 git 提交存档，改完再提交**（提交规范见第七章·流程原则）。
 
 > ⚠️ 本机环境有坑（Git Bash PATH 损坏、PowerShell 不回显），
@@ -110,8 +110,8 @@ PDF ──→ 01_extract.py ──→ data/pages.jsonl (原始逐页文本)
 ### 四步法
 
 ```bash
-# 0) 先把引述挑好（闸门对引述没有相似度阈值，这一步能省掉大量返工）
-python tools/07_pick_quotes.py pick <章号> <节号>          # 列出能通过闸门的引述候选
+# 0) 先把引述挑好（检查对引述没有相似度阈值，这一步能省掉大量返工）
+python tools/07_pick_quotes.py pick <章号> <节号>          # 列出能通过检查的引述候选
 python tools/07_pick_quotes.py check my_quotes.json       # 自己拼/改过的引述逐条预检
 python tools/07_pick_quotes.py show <章号> <节号> 7 8 12   # 按块下标看完整正文
 
@@ -134,7 +134,7 @@ python tools/smoke_browser.py 8317     # 需先起本地服务（见第十章）
 
 ### ★ 三条硬约束（第 5、6 章踩出来的）
 
-1. **闸门只看得见 `chapter.js` 的 `levels` 数组里登记过的关卡。**
+1. **检查只看得见 `chapter.js` 的 `levels` 数组里登记过的关卡。**
    `dump_levels.mjs` 逐章 `import chapter.js` 再取 `ch.levels`，**没登记的关卡文件
    根本不会被检查**，跑出来的「0 ERROR」是假的。
    自己写单关时：先在 `chapter.js` 里临时登记，验收完由协调者收口重写。
@@ -214,21 +214,21 @@ countLabels: { leaves: { label: '叶子结点', unit: '个' } }    // → 叶子
 - **书后习题**：从 exercise/problem 块中取题号 + 题干 + 页码
 - **页码锚点**：从 structure.json 取节的印刷页范围
 
-每条候选引述在写入前都会用闸门自己的 `verify_quote` 判据自检——
+每条候选引述在写入前都会用检查自己的 `verify_quote` 判据自检——
 通不过的不写进文件，而是打印原因。**生成即合规**。
 
 ---
 
-## 四、质量闸门
+## 四、质量检查
 
-### 闸门工具链
+### 检查工具链
 
 ```
 node tools/dump_levels.mjs           # 从关卡 JS 模块导出 JSON（不读源码，读模块）
-python tools/04_verify_level.py      # 闸门：引述溯源 + C 一致性 + 链接 + 引擎注册
+python tools/04_verify_level.py      # 检查：引述溯源 + C 一致性 + 链接 + 引擎注册
 ```
 
-闸门检查什么：
+检查什么：
 
 | 检查 | 严重度 | 说明 |
 |---|---|---|
@@ -334,11 +334,11 @@ python tools/smoke_browser.py 8317          # 无头 Chrome 逐路由渲染
 | # | 坑 | 后果 | 防止方式 |
 |---|---|---|---|
 | 1 | 符号映射凭推断不核实 | 全书的 `+` 变减号 | 渲染原页图像作为地面真值 |
-| 2 | 引述凭记忆写 | Figure 2.4 示例数组写错 | 逐字从语料提取，闸门检查 |
+| 2 | 引述凭记忆写 | Figure 2.4 示例数组写错 | 逐字从语料提取，检查 |
 | 3 | 切片扫描器越界 | 吞掉 11393 行正文（约两成） | 修好 + 42 条断言锁住 |
 | 4 | chapter.js import 不存在的文件 | 整站加载失败 | 生成器只 import 已存在的文件 |
 | 5 | JS 注释用 `#`（Python 习惯） | 语法错误 | 生成器已修 + 语法检查 |
-| 6 | 闸门匹配太松（子序列+大 gap） | 6/8 篡改漏报 | v3 改为连续性判据 |
+| 6 | 检查匹配太松（子序列+大 gap） | 6/8 篡改漏报 | v3 改为连续性判据 |
 | 7 | 页眉剥离正则太宽 | 把正文句 "Chapter 4 presents..." 整行删掉 | 共用 03_segment 的严格正则 |
 | 8 | 术语卡用词表匹配而非 qnorm | `randomaccessma- chine` 永远匹配不上 | 统一用 qnorm 子串判断 |
 | 9 | h() 把数组当属性对象 | 所有表格行消失 | 修根因 + 冒烟断言 |
@@ -349,7 +349,7 @@ python tools/smoke_browser.py 8317          # 无头 Chrome 逐路由渲染
 | 14 | 词内空格合并的边界分支丢文本 | p14/p19 丢行 | 修掉 + 测试 |
 | 15 | 生成器语法检查跑在写 chapter.js 之前 | 漏掉 chapter.js 的语法错误 | 移到最后并检查整个 site |
 | 16 | growth 面板 replaceChildren 传数组不展开 | 判定读数条变 [object…] | 修掉 + 冒烟断言 |
-| 17 | 图注的行号写错（12–18 vs 8–18） | 读者学到错的东西 | 严格闸门 + 回渲染页核对 |
+| 17 | 图注的行号写错（12–18 vs 8–18） | 读者学到错的东西 | 严格检查 + 回渲染页核对 |
 
 ---
 
@@ -364,12 +364,12 @@ python tools/smoke_browser.py 8317          # 无头 Chrome 逐路由渲染
 ### 代码原则
 1. **一条代码两种用途** —— 算法生成器既能跑测试（Node），又能驱动动画（浏览器）。
 2. **0 基 vs 1 基** —— 书中伪代码下标从 1 开始，C 从 0 开始。每个 C 文件头注明对应关系。
-3. **内嵌 C 与磁盘 C 逐字节一致** —— 闸门会查。改一份就同步另一份。
+3. **内嵌 C 与磁盘 C 逐字节一致** —— 检查会查。改一份就同步另一份。
 4. **render 幂等** —— 同一帧重复渲染结果一致，不累积 DOM。
 
 ### 流程原则
 1. **生成 → 填 → 验** —— 三步缺一不可，验收不过不许提交。
-2. **闸门是唯一的裁判** —— 不要凭感觉说「应该没问题」，跑一下闸门。
+2. **检查是唯一的裁判** —— 不要凭感觉说「应该没问题」，跑一下检查。
 3. **浏览器自检不能省** —— 语法通过不等于渲染正确。
 4. **审计在原文上做** —— 修复后的语料里伪影已消失，拿它当依据会得出错误结论。
 5. **提交信息用英文**，格式 `类型: 简述`（如 `feat(ch04): build level 4.5 ...`、
@@ -407,10 +407,10 @@ python tools/smoke_browser.py 8317          # 无头 Chrome 逐路由渲染
 │   ├── 03_segment.py              # 结构化分块
 │   ├── 04_figures.py              # 插图切图
 │   ├── 12_publish_figs.py         # 把引用到的插图发布到 site/figs/
-│   ├── 04_verify_level.py         # ★ 关卡合规闸门
+│   ├── 04_verify_level.py         # ★ 关卡合规检查
 │   ├── 05_new_level.py            # ★ 关卡骨架生成器
 │   ├── 07_pick_quotes.py          # ★ 引述挑选 / 预检（写关卡的第一步；复用 04 的判据）
-│   ├── dump_levels.mjs            # 关卡 JS → JSON（闸门的输入）
+│   ├── dump_levels.mjs            # 关卡 JS → JSON（检查的输入）
 │   ├── smoke_browser.py           # 无头 Chrome 逐路由自检
 │   ├── test_repair.py             # 修复回归测试 (184)
 │   ├── test_segment.py            # 分块回归测试 (42)
@@ -480,9 +480,9 @@ python tools/smoke_browser.py 8317          # 无头 Chrome 逐路由渲染
 ## 九、当前进度与下一步
 
 **共 25 关 / 5 章**（第 2–6 章全部完成）。完整清单跑
-`node tools/dump_levels.mjs` 之后看 `tools/_levels.json`，或直接跑闸门看首行。
+`node tools/dump_levels.mjs` 之后看 `tools/_levels.json`，或直接跑检查看首行。
 
-### 已完成（25 关，闸门 0 ERROR / 0 TODO）
+### 已完成（25 关，检查 0 ERROR / 0 TODO）
 
 | 章 | 关数 | 说明 |
 |---|---|---|
@@ -533,7 +533,7 @@ python tools/smoke_browser.py 8317          # 无头 Chrome 逐路由渲染
 | 数学渲染器 | 83 passed | `cd site && node assets/core/__tests-katex__.mjs` |
 | 语料修复 | 184 passed | `python tools/test_repair.py` |
 | 语料分块 | 42 passed | `python tools/test_segment.py` |
-| 关卡闸门 | 0 ERROR / 3 WARN / 0 TODO，25 关 409 条引述 | `node tools/dump_levels.mjs && python tools/04_verify_level.py` |
+| 关卡检查 | 0 ERROR / 3 WARN / 0 TODO，25 关 409 条引述 | `node tools/dump_levels.mjs && python tools/04_verify_level.py` |
 | 浏览器路由 | 235 / 235 | `python tools/smoke_browser.py 8317` |
 | 引述工具自检 | 6 / 6 | `python tools/07_pick_quotes.py selftest` |
 
@@ -568,7 +568,7 @@ python tools/smoke_browser.py 8317          # 无头 Chrome 逐路由渲染
 
 **同步步骤**（用户明确要求后执行）：
 
-1. 确认本地工作已提交（`git status` 干净、闸门全绿）——别把半成品发上线；
+1. 确认本地工作已提交（`git status` 干净、检查全绿）——别把半成品发上线；
 2. 调用 `workbuddy_sites_deploy` 工具，参数固定为：
    - `directory` = `E:\Projects\Mid\Introduction to Algorithms\site`（注意指向 `site/`，不是仓库根）
    - `domainPrefix` = `clrs-algo-quest`（保持域名不变）

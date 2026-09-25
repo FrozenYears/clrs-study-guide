@@ -4,14 +4,14 @@
 
 为什么需要这个工具
 ==================
-全项目最大的风险点是**英文引述的溯源**：闸门（tools/04_verify_level.py）要求每条 `en`
+全项目最大的风险点是**英文引述的溯源**：检查（tools/04_verify_level.py）要求每条 `en`
 的字「一个不缺、按原序」出现在声明页 ±1 的窗口里，**没有相似度阈值**。所以写关卡时
 反复出现同一个浪费的循环：
 
-    挑一条引述 → 写进文件 → 跑闸门 → 报"溯源失败" → 回去改 → 再跑
+    挑一条引述 → 写进文件 → 跑检查 → 报"溯源失败" → 回去改 → 再跑
 
 两轮实战（第 5、6 章）里这个循环出现了几十次。本工具把判据**前移**：
-挑的时候就用闸门自己的 `verify_quote` 判一遍，通过与否当场知道。
+挑的时候就用检查自己的 `verify_quote` 判一遍，通过与否当场知道。
 「生成即合规」这条原则，从 05_new_level.py（骨架）扩展到了手写引述。
 
 判据只有一个入口
@@ -23,7 +23,7 @@
 
 用法
 ====
-    # ① 挑：列出某节里所有能通过闸门的引述候选（附页码与块下标）
+    # ① 挑：列出某节里所有能通过检查的引述候选（附页码与块下标）
     python tools/07_pick_quotes.py pick 6 6.5
     python tools/07_pick_quotes.py pick 6 6.5 --from 20 --to 30 --min 90
     python tools/07_pick_quotes.py pick 6 6.5 --fail      # 只看不通过的，用于排查
@@ -34,7 +34,7 @@
     # ③ 看：按块下标打印完整正文（挑选时看上下文，块是句子的碎片时尤其需要）
     python tools/07_pick_quotes.py show 6 6.5 7 8 12
 
-    # ④ 自检：确认本工具与闸门判据一致（改了 04 之后跑一下）
+    # ④ 自检：确认本工具与检查判据一致（改了 04 之后跑一下）
     python tools/07_pick_quotes.py selftest
 
 关于「节的块下标」
@@ -59,7 +59,7 @@ QUOTABLE = ('body', 'lemma', 'theorem', 'corollary', 'definition',
 
 
 def load_verifier():
-    """加载闸门模块（判据的唯一入口）。"""
+    """加载检查模块（判据的唯一入口）。"""
     path = os.path.join(ROOT, 'tools', '04_verify_level.py')
     if not os.path.exists(path):
         sys.stderr.write('找不到 tools/04_verify_level.py —— 本工具依赖它的 verify_quote\n')
@@ -172,9 +172,9 @@ def cmd_show(args, ver):
     return 0
 
 
-# 自检用的固定用例：与闸门判据必须一致（改 04 之后跑这个）
+# 自检用的固定用例：与检查判据必须一致（改 04 之后跑这个）
 #
-# ★ 最后一条是**已知边界**，不是本工具或闸门"写错了"：闸门为了容忍行内字距伪影，
+# ★ 最后一条是**已知边界**，不是本工具或检查"写错了"：检查为了容忍行内字距伪影，
 #   给「极小夹带」留了口子（单段 ≤2 字符、总计 ≤4 字符）。所以删掉 1–2 个字符
 #   的篡改仍可能漏过 —— 这条边界记录在 docs/reports/Q1-质量审计.md 里。
 #   把它写进自检，是为了让"边界在哪"变成可执行的记录，而不是靠记忆。
@@ -182,13 +182,13 @@ SELFTEST = [
     # (en, page, 期望通过?)
     ('A priority queue is a data structure for maintaining a set S of elements, '
      'each with an associated value called a key.', 173, True),
-    # 人为换词（maintaining -> keeping）：闸门必须拦住
+    # 人为换词（maintaining -> keeping）：检查必须拦住
     ('A priority queue is a data structure for keeping a set S of elements, '
      'each with an associated value called a key.', 173, False),
-    # 人为删掉一个长词（priority）：闸门必须拦住
+    # 人为删掉一个长词（priority）：检查必须拦住
     ('A priority queue is a data structure for maintaining a set S of elements, '
      'each with an associated value called a key.'.replace('priority ', ''), 173, False),
-    # 页码错：闸门必须拦住（这条内容在第 173 页，不在第 100 页）
+    # 页码错：检查必须拦住（这条内容在第 173 页，不在第 100 页）
     ('A priority queue is a data structure for maintaining a set S of elements, '
      'each with an associated value called a key.', 100, False),
     # 省略号分段：两段各自逐字，必须通过
@@ -221,7 +221,7 @@ def main():
     ap = argparse.ArgumentParser(description='引述挑选 / 预检 / 正文提取')
     sub = ap.add_subparsers(dest='cmd', required=True)
 
-    p1 = sub.add_parser('pick', help='列出某节里能通过闸门的引述候选')
+    p1 = sub.add_parser('pick', help='列出某节里能通过检查的引述候选')
     p1.add_argument('ch', help='章号（如 6）或语料文件路径')
     p1.add_argument('section', help='节号（如 6.5）')
     p1.add_argument('--from', dest='start', type=int, default=None, help='起始块下标（节内）')
@@ -238,7 +238,7 @@ def main():
     p3.add_argument('section')
     p3.add_argument('index', nargs='+', type=int)
 
-    sub.add_parser('selftest', help='自检：确认本工具与闸门判据一致')
+    sub.add_parser('selftest', help='自检：确认本工具与检查判据一致')
 
     args = ap.parse_args()
     ver = load_verifier()

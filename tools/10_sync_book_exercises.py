@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """10_sync_book_exercises.py —— 把关卡里的「原书习题」逐字回填成原书原文。
 
-背景（闸门盲区，见 docs/reports/内容复审-2026-09-19.md §二）：
+背景（检查盲区，见 docs/reports/内容复审-2026-09-19.md §二）：
     04_verify_level.py 只校验 source/terms/claims/prove 的 en，
     **完全不看** drill.bookExercises[].statement。于是「按编号凭印象重写一遍」
     不会被拦住 —— 读者看到「原书习题 22.1-2」，页面文本却与原书无关。
@@ -10,7 +10,7 @@
 （分段器把题干里的显示公式切成了独立块，块级文本半句即止）。
 本脚本用**逐页版面状态机**从 data/pages_fixed.jsonl 取整句原文。
 
-产出：每条 statement 都是页窗内的**连续原文**，因此必然通过闸门的 verify_quote
+产出：每条 statement 都是页窗内的**连续原文**，因此必然通过检查的 verify_quote
       —— 写盘前逐条过一遍 verify_quote，过不了就不写（生成即合规）。
 用法：
     python tools/10_sync_book_exercises.py --report           # 只看清单
@@ -33,7 +33,7 @@ ver = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(ver)
 qnorm, verify_quote = ver.qnorm, ver.verify_quote
 
-import ex_corpus as EC      # noqa: E402  语料侧抽题（与闸门、09 共用同一份）
+import ex_corpus as EC      # noqa: E402  语料侧抽题（与检查、09 共用同一份）
 chapter_pages = EC.chapter_ranges
 extract_chapter = lambda pages, lo, hi: EC.extract_chapter(pages, lo, hi, qnorm)
 
@@ -152,7 +152,7 @@ def js_str(text, quote):
     """把语料文本放进 JS 字符串；优先沿用原引号风格，装不下才切换。
 
     ★ 与 tools/08_fill_quotes.py 同一套约定：正文里的 ASCII 撇号换成 U+2019
-      （语料本就是 U+2019，闸门按码点比对，换成别的撇号会被拒），
+      （语料本就是 U+2019，检查按码点比对，换成别的撇号会被拒），
       反斜杠转义；这样单引号字符串不需要 `\'`，避免规则 21 那类提前闭合。
     """
     s = text.replace('\\', '\\\\').replace("'", '\u2019')
@@ -215,12 +215,12 @@ def main():
                 new = ex['statement']
                 # 尾部省略号是「本关只引了题干前半」的标记，不是原文的一部分：
                 # verify_quote 会把 … 折成 '.' 去页窗里找，因此校验前先剥掉。
-                # （09 审计与新增的闸门检查同样先剥尾省略号。）
+                # （09 审计与新增的检查同样先剥尾省略号。）
                 ok, diag = verify_quote(EC.strip_ellipsis(new), ex['page'])
                 if not ok:
-                    # 逐字性由闸门同一判据把关；过不了就绝不写盘（规则 5）。
+                    # 逐字性由检查同一判据把关；过不了就绝不写盘（规则 5）。
                     stats['bad-verify'] += 1
-                    lines.append('  [抽取未过闸门] %s %s p%s :: %s'
+                    lines.append('  [抽取未过检查] %s %s p%s :: %s'
                                  % (path, qid, ex['page'], diag[:110]))
                     continue
                 if qnorm(old.rstrip(' .…')) == qnorm(new.rstrip(' .…')):
@@ -248,7 +248,7 @@ def main():
             open(path, 'w', encoding='utf-8').write(t)
 
     print('模式: %s' % ('写盘' if apply else '试运行'))
-    print('逐字已一致 %d / 待回填 %d / 编号不存在 %d / 抽取未过闸门 %d / 改动文件 %d'
+    print('逐字已一致 %d / 待回填 %d / 编号不存在 %d / 抽取未过检查 %d / 改动文件 %d'
           % (stats['same'], stats['fill'], stats['no-id'], stats['bad-verify'],
              stats['files']))
     open('tools/_probe/ex_fill_log.txt', 'w', encoding='utf-8').write('\n'.join(lines))

@@ -4,7 +4,7 @@
  * 为什么是 JS 模块而不是 fetch JSON：本站零构建、可能以 file:// 打开，
  *   而 file:// 下 fetch 会被 CORS 拦掉（与 assets/chapters.js、data/figures.js 同一套理由）。
  * 题干逐字来自 data/pages_fixed.jsonl（tools/ex_corpus.py 的逐页版面状态机），
- *   生成前逐条过了闸门的 verify_quote —— 没有一条是凭印象写的。
+ *   生成前逐条过了检查的 verify_quote —— 没有一条是凭印象写的。
  *
  * ★ 这里**没有**难度标记：第 4 版不印难度星号，全量语料里带星/带问号的章末题号
  *   实测 0 条。所以站点不做「精选」，只把题原样摆出来。

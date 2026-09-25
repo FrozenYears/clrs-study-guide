@@ -7,7 +7,7 @@
     @@Q|834|Theorem 28.1|inversion)@@
     @@Q|840|LU decomposition of a symmetric|division by 0.@@
 
-- page   ：语料块上的 printed_page（闸门按 ±1 取干草堆，所以只要对得上块）
+- page   ：语料块上的 printed_page（检查按 ±1 取干草堆，所以只要对得上块）
 - start  ：块文本中出现的起始片段（空格折叠后比对）
 - end    ：结束片段（含）；留空则取 start 之后的第一个句号
 

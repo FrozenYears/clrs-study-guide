@@ -119,7 +119,7 @@ export function renderChapter(chapter, route) {
         },
           // ★ 侧栏编号必须与它自己的 href（第 116 行的 i+1，1 基）一致：
           //   原先显示 m.no，出现「写着 4、点了跳到 s05」的自相矛盾。
-          //   闸门要求九段齐全，所以 i+1 与 m.no+1 恒等。
+          //   检查要求九段齐全，所以 i+1 与 m.no+1 恒等。
           h('span', { class: 'rail-no' }, String(i + 1)),
           h('span', null, s.title || m.name),
           h('span', { class: 'rail-mark' }, done ? '✓' : '')

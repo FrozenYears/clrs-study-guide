@@ -181,8 +181,8 @@ class Checker(object):
         self.pages = self.ver.load_pages()
 
     def ok(self, en, page):
-        # ★ 与关卡闸门同一条判据（v3 的 verify_quote：连续命中 + 四条结构化豁免）。
-        #   生成即合规 —— 生成器放行的引述，闸门不会再打回。
+        # ★ 与关卡检查同一条判据（v3 的 verify_quote：连续命中 + 四条结构化豁免）。
+        #   生成即合规 —— 生成器放行的引述，检查不会再打回。
         good, diag = self.ver.verify_quote(en, page)
         return good, diag
 
@@ -275,7 +275,7 @@ def build_level(ch, section, blocks, checker, title_zh, slug):
     A("  key: %s," % js(slug["key"]))
     A("  id: %s," % js(level_id))
     # ★ chapter 与手写样板一致：数字章写数字字面量（chapter: 3），
-    #   附录章写字符串（chapter: 'A'）。闸门按这个推 id = ch<两位章号>/<key>。
+    #   附录章写字符串（chapter: 'A'）。检查按这个推 id = ch<两位章号>/<key>。
     A("  chapter: %s," % (ch_key if ch_key.isdigit() else js(ch_key)))
     A("  section: %s," % js(section))
     A("  title: %s," % js(title_zh or todo("中文标题")))
@@ -304,7 +304,7 @@ def build_level(ch, section, blocks, checker, title_zh, slug):
     for sid, stitle, skey in unlocks:
         A("        { label: %s, url: %s },"
           % (js("%s %s" % (sid, stitle.split(" ", 1)[-1])), js("#/%s/%s" % (id_prefix, skey))))
-    A("        // 想预告后面章节也能这么写（闸门会以 WARN 提示该章尚未构建，属正常）：")
+    A("        // 想预告后面章节也能这么写（检查会以 WARN 提示该章尚未构建，属正常）：")
     A("        // { label: '第 4 章 分治法', url: '#/ch04/s01' },")
     A("      ],")
     A("      mathKit: [],        // %s" % todo("本节用到的数学工具，2–3 条"))
@@ -406,7 +406,7 @@ def build_level(ch, section, blocks, checker, title_zh, slug):
     A("      c: {")
     A("        file: %s," % js(todo("如 insertion_sort.c")))
     A("        code: %s," % js("// %s" % todo("把 c/<name>.c 的全文粘到这里；")
-                                if False else "// 【TODO 把 c/<name>.c 的全文粘到这里；两份必须逐字节一致（闸门会查）】"))
+                                if False else "// 【TODO 把 c/<name>.c 的全文粘到这里；两份必须逐字节一致（检查会查）】"))
     A("      },")
     A("      mapping: [],     // %s" % todo("伪代码行 ↔ C 行的对应表：{ line: 1, c: 'for (int i = 1; …)' }"))
     A("    },")
@@ -685,7 +685,7 @@ def main():
     # 3) 待办清单
     todos = [(i + 1, ln) for i, ln in enumerate(text.split("\n")) if TODO in ln]
     print()
-    print("剩余待办 %d 处（都在上面那个文件里，改完即可跑闸门）：" % len(todos))
+    print("剩余待办 %d 处（都在上面那个文件里，改完即可跑检查）：" % len(todos))
     for ln, s in todos[:14]:
         print("  L%-4d %s" % (ln, s.strip()[:96]))
     if len(todos) > 14:

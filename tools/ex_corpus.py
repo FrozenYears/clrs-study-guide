@@ -11,7 +11,7 @@
 被三处共用：
     tools/10_sync_book_exercises.py  按编号逐字回填关卡
     tools/09_audit_book_exercises.py 审计关卡是否逐字
-    tools/04_verify_level.py         闸门第 8 项检查（习题原文溯源 + 编号存在性）
+    tools/04_verify_level.py         检查第 8 项检查（习题原文溯源 + 编号存在性）
 """
 import glob
 import json
@@ -57,7 +57,7 @@ def chapter_ranges():
 def extract_chapter(pages, lo, hi, qn, caps=None):
     """在本章页范围内抽题：id -> {id, statement, page, star, mark}。
 
-    qn 必须传闸门的 qnorm —— 全项目只有一套引述归一化（规则 7）。
+    qn 必须传检查的 qnorm —— 全项目只有一套引述归一化（规则 7）。
 
     caps 覆盖默认截断上限（{'exercise': …, 'problem': …}）。默认是给**关卡内**
     列出的习题用的（题干太长会变成一堵墙）；章末挑战页要的是整题原文，
@@ -80,7 +80,7 @@ def extract_chapter(pages, lo, hi, qn, caps=None):
             flush(cur)
             tail = (m.group(3) or '').strip()
             # 第 5 个元素记「题目最后一行的所在页」：章末长题常跨 3–4 页，
-            # 只声明起始页会让闸门的 ±1 页窗覆盖不到整题（见 13_publish_problems.py）。
+            # 只声明起始页会让检查的 ±1 页窗覆盖不到整题（见 13_publish_problems.py）。
             cur = [m.group(2), printed, [tail] if tail else [], m.group(1) or '', printed]
             continue
         if cur is not None and STOP_LINE.match(ln):

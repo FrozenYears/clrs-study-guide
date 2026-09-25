@@ -117,7 +117,7 @@ export default {
         '一句话：这一关是"复杂度语言"的语法书，后面所有算法都讲这门语言。',
       unlocks: [
         { label: '3.3 Standard notations and common functions', url: '#/ch03/s03' },
-        // 预告后面章节（闸门会以 WARN 提示该章尚未构建，属正常）：
+        // 预告后面章节（检查会以 WARN 提示该章尚未构建，属正常）：
         { label: '第 4 章 分治法（递归式将套用本关的 Θ 定义）', url: '#/ch04/s01' },
       ],
       mathKit: [

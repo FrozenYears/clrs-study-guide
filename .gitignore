@@ -18,3 +18,8 @@ desktop.ini
 
 # 本地预览服务日志
 *.log
+
+# 智能体工作台/IDE 的本地状态（与本项目无关，不该进版本库）
+.workbuddy/
+.wbapp_*
+*.genie

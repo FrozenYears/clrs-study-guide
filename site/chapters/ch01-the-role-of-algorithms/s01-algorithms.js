@@ -3,9 +3,9 @@
  *
  * 原文锚点：印刷页 5–11（pdf_index 26–32）
  *
- * 引述全部逐字取自 data/blocks/part-i-foundations__ch01.json，每条都通过闸门溯源判据
+ * 引述全部逐字取自 data/blocks/part-i-foundations__ch01.json，每条都通过检查溯源判据
  * （含语料排版伪影，如 in- stance / out- puts 的断字，一律照抄，不要"顺手修正"）。
- * 本节原书没有伪代码框，pseudocode 段按闸门要求保留为空（规则 5）。
+ * 本节原书没有伪代码框，pseudocode 段按检查要求保留为空（规则 5）。
  *
  * 交付前必跑：node tools/dump_levels.mjs && python tools/04_verify_level.py
  * ========================================================================== */

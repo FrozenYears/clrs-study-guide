@@ -34,7 +34,7 @@ export default {
       position: '前置：3.1 的记号、4.3 的代入法（验证工具）、4.4 的递归树（直觉基础）。本关把递归树法的直觉编成三种情况；4.6 证明主定理；4.7 推广到 Akra-Bazzi。★ 第 4 章到此你将拥有完整的三件套：猜（4.4）→ 验（4.3）→ 查（4.5）。',
       unlocks: [
         { label: '4.6 Proof of the continuous master theorem', url: '#/ch04/s06' },
-        // 想预告后面章节也能这么写（闸门会以 WARN 提示该章尚未构建，属正常）：
+        // 想预告后面章节也能这么写（检查会以 WARN 提示该章尚未构建，属正常）：
         // { label: '第 4 章 分治法', url: '#/ch04/s01' },
       ],
       mathKit: [

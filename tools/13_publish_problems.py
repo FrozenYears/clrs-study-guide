@@ -14,7 +14,7 @@
 
     site/assets/data/problems.js    章标识 -> [{id, statement, page}] 的清单模块
 
-做题干文本的唯一来源是 tools/ex_corpus.py 的逐页版面状态机（与闸门、09 审计、
+做题干文本的唯一来源是 tools/ex_corpus.py 的逐页版面状态机（与检查、09 审计、
 10 回填同一份判据）。本脚本**生成前逐条过 verify_quote**，过不了的直接报错退出 ——
 「生成即合规」，不让一条没溯源的文本落地。
 
@@ -75,7 +75,7 @@ def collect(pages, qn):
                 continue                  # 带点的是节末习题，章末区不要
             if k.split("-")[0] != prefix:
                 continue                  # 串到别的章了
-            # 跨页长题声明成页码区间，闸门的 ±1 页窗才覆盖得到整题
+            # 跨页长题声明成页码区间，检查的 ±1 页窗才覆盖得到整题
             # （只写起始页时，长题会被判「逐字失败」—— 实测 6 条）。
             end = v.get("end_page")
             page = v["page"] if end in (None, v["page"]) else [v["page"], end]
@@ -104,7 +104,7 @@ def build_text(data):
         " * 为什么是 JS 模块而不是 fetch JSON：本站零构建、可能以 file:// 打开，\n"
         " *   而 file:// 下 fetch 会被 CORS 拦掉（与 assets/chapters.js、data/figures.js 同一套理由）。\n"
         " * 题干逐字来自 data/pages_fixed.jsonl（tools/ex_corpus.py 的逐页版面状态机），\n"
-        " *   生成前逐条过了闸门的 verify_quote —— 没有一条是凭印象写的。\n"
+        " *   生成前逐条过了检查的 verify_quote —— 没有一条是凭印象写的。\n"
         " *\n"
         " * ★ 这里**没有**难度标记：第 4 版不印难度星号，全量语料里带星/带问号的章末题号\n"
         " *   实测 0 条。所以站点不做「精选」，只把题原样摆出来。\n"
@@ -136,7 +136,7 @@ def main():
     data = collect(pages, qnorm)
     total = sum(len(v) for v in data.values())
 
-    # 生成即合规：每条都过闸门判据，过不了就停在这里。
+    # 生成即合规：每条都过检查判据，过不了就停在这里。
     problems = []
     for key, rows in data.items():
         for r in rows:

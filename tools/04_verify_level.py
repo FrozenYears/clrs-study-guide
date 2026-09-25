@@ -13,7 +13,7 @@
   4. C 代码漂移   —— 关卡里内嵌一份 C 代码副本，与 c/*.c 是两份文件，会各自演化。
   5. 未注册/坏链接 —— 关卡文件写好但没进 chapter.js，或 url: '#/ch03/s01' 指向不存在的关。
 
-本脚本把这些全部变成机器检查。它不是风格洁癖，是内容正确性的闸门。
+本脚本把这些全部变成机器检查。它不是风格洁癖，是内容正确性的检查。
 
 用法
 ====
@@ -84,7 +84,7 @@ _EC = None
 
 
 def ex_corpus():
-    """语料侧抽题模块（tools/ex_corpus.py）—— 闸门 / 09 审计 / 10 回填共用同一份判据。"""
+    """语料侧抽题模块（tools/ex_corpus.py）—— 检查 / 09 审计 / 10 回填共用同一份判据。"""
     global _EC
     if _EC is None:
         import importlib.util as _ilu
@@ -695,7 +695,7 @@ def verify():
                     err("%s 的原文溯源失败：%s" % (q["path"], diag))
 
             # --- 5b. 原书习题：编号要真的存在于原书、题干要逐字、页码要落在原书该题处 ---
-            #     （规则 41：这里曾是闸门盲区 —— 「编号对、语气像、内容不是原书那句」
+            #     （规则 41：这里曾是检查盲区 —— 「编号对、语气像、内容不是原书那句」
             #       的 184 条凭印象重写因此一路过检查。判据与 09 号审计完全同源。）
             cex = exercise_index().get(ex_ch_key(chnum), {})
             for si, st in enumerate(stages):
@@ -810,7 +810,7 @@ def verify():
                 if not parts:
                     continue
                 # ★ 附录 URL 归一化：#/appendix/<letter>/<关卡>[/<阶段>]
-                #   路由（core/router.js）对附录走 letter 形态，闸门按 chX/sNN
+                #   路由（core/router.js）对附录走 letter 形态，检查按 chX/sNN
                 #   记关卡 id —— 在这里把两种形态对齐，后面统一按 ch 判断。
                 if parts[0] == "appendix" and len(parts) >= 3:
                     parts = ["ch" + parts[1].upper()] + parts[2:]
@@ -890,7 +890,7 @@ def collect_todos(data=None):
 
     单独一档：它既不是 ERROR（内容没错）也不是 WARN（不是可接受的现状），
     而是一张待办清单——由 tools/05_new_level.py 生成骨架时留下，填完即消失。
-    不计入退出码，所以骨架可以在仓库里存在而不让闸门变红。
+    不计入退出码，所以骨架可以在仓库里存在而不让检查变红。
     """
     if data is None:
         try:
