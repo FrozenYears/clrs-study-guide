@@ -263,6 +263,14 @@
     --accent: #86b4dc;
     --accent-fg: #14161a;
 
+    /* 暗色下同一族颜色整体提亮，保证在深底上够对比 */
+    --tok-comment: #9c9484;
+    --tok-str:     #d9a06a;
+    --tok-num:     #7fc3bd;
+    --tok-kw:      #86b4dc;
+    --tok-pre:     #b79ad9;
+    --tok-fn:      #cfc777;
+
     --viz-fg: #14161a;
     --viz-track: #2c2c33;
     --viz-grid: #3d3d45;
