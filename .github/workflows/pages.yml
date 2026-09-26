@@ -1,6 +1,6 @@
 # 把 site/ 发布到 GitHub Pages。
 #
-# 用法：仓库 Settings → Pages → Source 选 "GitHub Actions"，然后推到 master（或手动跑本工作流）。
+# 用法：仓库 Settings → Pages → Source 选 "GitHub Actions"，然后推到 main（或手动跑本工作流）。
 #
 # 为什么用「上传产物」而不是「发布分支」：
 #   site/_dev/ 是内部自检页、site/tools/ 是本地脚本，都不该出现在公开站点上。

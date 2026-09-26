@@ -40,12 +40,12 @@ http://127.0.0.1:8317/_dev/shot.html?t=light&r=%23/ch02/s01/s03&w=375&h=2000
 
 ## 二、发布
 
-仓库自带 GitHub Pages 工作流：推到 `master`（或手动触发）即自动发布。
+仓库自带 GitHub Pages 工作流：推到 `main`（或手动触发）即自动发布。
 
 | 步骤 | 怎么做 |
 |---|---|
 | 1 | 仓库 Settings → Pages → Source 选 **GitHub Actions** |
-| 2 | `git push` 到 `master`，或到 Actions 页手动跑 `Deploy site to GitHub Pages` |
+| 2 | `git push` 到 `main`，或到 Actions 页手动跑 `Deploy site to GitHub Pages` |
 | 3 | 发布地址形如 `https://<你的用户名>.github.io/clrs-study-guide/` |
 
 工作流会先把 `site/` 里该公开的部分挑出来（**排除 `_dev/` 内部自检页与 `tools/`**），
