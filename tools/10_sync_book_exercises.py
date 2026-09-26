@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """10_sync_book_exercises.py —— 把关卡里的「原书习题」逐字回填成原书原文。
 
-背景（检查盲区，见 docs/reports/内容复审-2026-09-19.md §二）：
+背景（检查盲区，见作者本地报告《内容复审-2026-09-19》§二）：
     04_verify_level.py 只校验 source/terms/claims/prove 的 en，
     **完全不看** drill.bookExercises[].statement。于是「按编号凭印象重写一遍」
     不会被拦住 —— 读者看到「原书习题 22.1-2」，页面文本却与原书无关。

@@ -62,7 +62,7 @@
       import { STRUCTURE, APPENDICES, TOTAL_LEVELS, TOTAL_CHAPTERS, allChapters } from "./assets/data/structure.js";
 
       /* ----------------------------------------------------------------------
-       * 九段式关卡：每关固定 9 个阶段（见 docs/开发规范.md 4.2）。
+       * 九段式关卡：每关固定 9 个阶段（见作者本地《开发规范》4.2）。
        * 进度层的分母就是它。
        * -------------------------------------------------------------------- */
       const STAGE_COUNT = 9;
@@ -234,9 +234,7 @@
               h("h2", { class: "resume__title" }, "已建好的关卡都做完了"),
               h("p", { class: "resume__meta" },
                 "继续学习需要新章节的关卡文件。目前已完成 ",
-                String(built.length), " 章的关卡；下一章可以按 ",
-                h("span", { class: "mono" }, "docs/关卡编写手册.md"),
-                " 里的三步流程开工。")),
+                String(built.length), " 章的关卡；新增关卡请按《关卡编写手册》里的三步流程开工。")),
             null
           );
         }

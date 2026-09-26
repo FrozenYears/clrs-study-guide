@@ -26,3 +26,6 @@ desktop.ini
 .workbuddy/
 .wbapp_*
 *.genie
+
+# 本地工作文档（交接/进度/规范/编写手册）：不随仓库发布，仅作者本机保留
+docs/

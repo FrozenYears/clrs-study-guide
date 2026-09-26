@@ -4,7 +4,7 @@
 
 This repository builds a zero-build, offline-friendly interactive study site for *Introduction to Algorithms*. `site/` is the application: `assets/core/` contains runtime modules, `assets/ui/` renders chapter shells and nine learning stages, `assets/viz/` holds visualizations, and `assets/algorithms/` contains animation generators and their assertions. Learning content lives in `site/chapters/chXX-*/`; register new chapters in `site/assets/chapters.js`.
 
-`c/` is the canonical source for C examples. `data/` contains extracted book data, repaired pages, blocks, and figures. Use `tools/` for the extraction pipeline, level generation, validation, and browser smoke checks. Read `docs/开发规范.md` and `docs/关卡编写手册.md` before adding or changing a level.
+`c/` is the canonical source for C examples. `data/` contains extracted book data, repaired pages, blocks, and figures. Use `tools/` for the extraction pipeline, level generation, validation, and browser smoke checks. Before adding or changing a level, read the author-local working documents under `docs/` — they are not published with the repository.
 
 ## Build, Test, and Development Commands
 
