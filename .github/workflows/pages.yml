@@ -45,6 +45,9 @@ jobs:
         working-directory: site
         run: node tools/check-syntax.mjs .
 
+      - name: 生成关卡清单（__tests-quiz-order__ 要读它）
+        run: node tools/dump_levels.mjs
+
       - name: 12 套行为测试
         working-directory: site
         run: |
