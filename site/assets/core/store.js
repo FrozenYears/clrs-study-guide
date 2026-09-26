@@ -446,7 +446,7 @@ export function dueReviews(now) {
  */
 
 /** 备份文件的格式标识：导入时先认它，避免把随便一个 JSON 灌进存档。 */
-export const BACKUP_FORMAT = "clrs-quest-state";
+export const BACKUP_FORMAT = "clrs-study-guide-state";
 export const BACKUP_VERSION = 1;
 
 /** 导出的纯数据对象（不含函数），可直接 JSON.stringify。 */

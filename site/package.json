@@ -1,5 +1,5 @@
 {
-  "name": "clrs-quest",
+  "name": "clrs-study-guide",
   "private": true,
   "type": "module",
   "description": "零构建静态站。此文件只为让 node --check / node <file>.js 把 .js 当 ES Module 处理（浏览器不读它）。",

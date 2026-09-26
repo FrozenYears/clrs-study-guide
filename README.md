@@ -1,4 +1,4 @@
-# clrs-quest
+# clrs-study-guide
 
 《算法导论》（CLRS）第 4 版闯关式学习站：**可视化、可交互、代码严谨**，
 面向「有 C 语言基础、没有算法基础」的读者。零构建、离线可用，每条结论都能溯源到原书页码。
@@ -46,7 +46,7 @@ http://127.0.0.1:8317/_dev/shot.html?t=light&r=%23/ch02/s01/s03&w=375&h=2000
 |---|---|
 | 1 | 仓库 Settings → Pages → Source 选 **GitHub Actions** |
 | 2 | `git push` 到 `master`，或到 Actions 页手动跑 `Deploy site to GitHub Pages` |
-| 3 | 发布地址形如 `https://<你的用户名>.github.io/clrs-quest/` |
+| 3 | 发布地址形如 `https://<你的用户名>.github.io/clrs-study-guide/` |
 
 工作流会先把 `site/` 里该公开的部分挑出来（**排除 `_dev/` 内部自检页与 `tools/`**），
 再上传。所以本地自检能力完全保留，线上也不会出现内部调试页。
