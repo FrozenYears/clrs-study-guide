@@ -3,8 +3,8 @@
 《算法导论》（CLRS）第 4 版闯关式学习站：**可视化、可交互、代码严谨**，
 面向「有 C 语言基础、没有算法基础」的读者。零构建、离线可用，每条结论都能溯源到原书页码。
 
-- **线上地址**：<https://frozenyears.github.io/clrs-study-guide/>（GitHub Pages，唯一发布源）
-  （旧的 WorkBuddy host 已停止同步，样式会落后，请勿再对外引用。）
+- **线上地址**：<https://frozenyears.github.io/clrs-study-guide/>（GitHub Pages）
+- **另一入口**：<https://clrs-algo-quest.app.workbuddy.host/>（WorkBuddy host）
 - **技术形态**：零构建静态站 + 原生 ES Module。无 npm、无打包器、**不引任何外部网络资源**
   （字体只用系统已装字体，所以断网也能跑）。
 - **内容模型**：全书 8 部分 / 35 章 + 4 附录 / 149 节；每节一关，每关**九段式**递进
